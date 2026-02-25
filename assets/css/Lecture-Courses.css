@@ -1,0 +1,260 @@
+/* =========================================================
+   LAYOUT DE ARTIGO (Página de Leitura/Publicação)
+   ========================================================= */
+
+.article-main {
+    align-items: center; /* Centraliza a coluna de texto na tela */
+    padding: 60px 20px 100px 20px;
+    overflow-y: auto;
+}
+
+.article-container {
+    width: 100%;
+    max-width: 760px; /* Largura ideal para leitura sem cansar os olhos */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Cabeçalho do Artigo (Meta, Título, Subtítulo) */
+.article-header {
+    text-align: center;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.article-meta {
+    font-size: 13px;
+    font-weight: 600;
+    color: #888888;
+    
+    letter-spacing: 0.5px;
+    margin-bottom: 24px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.meta-dot {
+    color: #444444;
+}
+
+.article-title {
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    margin-bottom: 24px;
+    color: #ffffff;
+}
+
+.article-subtitle {
+    font-size: 20px;
+    line-height: 1.5;
+    color: #aaaaaa;
+    max-width: 680px;
+    margin-bottom: 35px;
+}
+
+/* Botão de Ação (Pílula) */
+.btn-read-paper {
+    background-color: #2f2f2f;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+    border: 1px solid #444;
+}
+
+.btn-read-paper:hover {
+    background-color: #444444;
+}
+
+/* Imagem/Gráfico Central */
+.article-hero {
+    width: 100%;
+    margin: 20px 0 5px 0;
+}
+
+.article-hero img {
+    width: 100%;
+    border-radius: 12px;
+    display: block;
+}
+
+/* Corpo do Texto */
+.article-body {
+    width: 100%;
+    text-align: left;
+    color: #d1d5db; /* Um cinza muito claro, melhor que branco puro para leitura longa */
+}
+
+.article-body p {
+    font-size: 19px;
+    line-height: 1.7;
+    margin-bottom: 28px;
+}
+
+.article-body h2 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 50px 0 20px 0;
+    letter-spacing: -0.5px;
+}
+
+/* Responsividade para celular */
+@media (max-width: 768px) {
+    .article-title {
+        font-size: 36px;
+    }
+    
+    .article-subtitle {
+        font-size: 18px;
+    }
+    
+    .article-body p {
+        font-size: 17px;
+    }
+    
+    .article-main {
+        padding: 40px 20px;
+    }
+}
+
+/* Estilo para a legenda da imagem */
+.article-hero figcaption {
+    text-align: center;
+    font-size: 14px;
+    color: #888888;
+    margin-top: 15px;
+    font-style: normal; /* Você pode mudar para 'italic' se preferir um visual mais clássico */
+    line-height: 1.5;
+}
+
+
+
+
+
+
+
+
+
+/* Container isolado para o sumário */
+.lecture-summary-wrapper {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.course-main-title {
+    font-size: 48px;
+    font-weight: 600;
+    letter-spacing: -1.5px;
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+.course-intro-text {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #a1a1aa;
+    max-width: 700px;
+    margin-bottom: 60px;
+}
+
+/* Seção da lista */
+.lectures-list-section {
+    width: 100%;
+}
+
+.lectures-list-title {
+    font-size: 24px;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0;
+    border-bottom: 1px solid #27272a;
+    padding-bottom: 10px;
+    margin-top: 50px;
+}
+
+.lectures-items-container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Item individual da lista (Link) */
+.lecture-anchor-item {
+    display: flex;
+    padding: 35px 0;
+    border-bottom: 1px solid #18181b;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.lecture-anchor-item:hover {
+    opacity: 0.6;
+}
+
+/* Meta dados à esquerda */
+.lecture-meta-data {
+    flex: 0 0 180px; /* Largura fixa para alinhar os textos à direita */
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.lecture-tag {
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.lecture-timestamp {
+    font-size: 13px;
+    color: #52525b;
+}
+
+/* Conteúdo à direita */
+.lecture-text-content {
+    flex: 1;
+}
+
+.lecture-text-content h3 {
+    font-size: 22px;
+    font-weight: 500;
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.lecture-text-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #a1a1aa;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .lecture-anchor-item {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .lecture-meta-data {
+        flex: none;
+        flex-direction: row;
+        gap: 20px;
+        align-items: center;
+    }
+}
+
