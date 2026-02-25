@@ -1,0 +1,277 @@
+/* Reset básico e configurações gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Cabeçalho */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.search-icon {
+    cursor: pointer;
+    color: #ccc;
+}
+
+.btn-entrar {
+    background-color: #333333;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-entrar:hover {
+    background-color: #444444;
+}
+
+/* Layout Principal */
+.container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Menu Lateral (Sidebar) */
+.sidebar {
+    width: 260px;
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+    /* A linha abaixo cria a animação suave de fechar/abrir */
+    transition: width 0.3s ease, padding 0.3s ease, opacity 0.3s ease;
+}
+
+.sidebar a:hover {
+    color: #aaaaaa;
+}
+
+.sidebar a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+
+
+.sidebar-section {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Estado "Escondido" da barra lateral */
+.sidebar.collapsed {
+    width: 0;
+    padding-left: 0;
+    padding-right: 0;
+    opacity: 0;
+    overflow: hidden; /* Evita que o texto vaze enquanto ela fecha */
+}
+
+/* Atualização da área central para o novo layout de portfólio */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    overflow-y: auto; /* Permite rolar a página */
+    align-items: center; /* Centraliza a galeria na tela */
+}
+
+.portfolio-wrapper {
+    width: 100%;
+    max-width: 1000px; /* Largura máxima elegante */
+    display: flex;
+    flex-direction: column;
+    gap: 50px; /* Espaço entre o widget principal e a galeria */
+    padding-bottom: 50px;
+}
+
+/* Estilos gerais dos Cards (Widgets) */
+.card {
+    text-decoration: none;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+/* Garante que a imagem respeite as bordas arredondadas da div pai */
+.card-image {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden; /* Corta qualquer pedaço da imagem que passe da borda */
+    display: flex;
+}
+
+/* Formata a imagem para preencher o espaço sem distorcer */
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* O segredo está aqui: faz a imagem cobrir tudo como um papel de parede */
+    transition: transform 0.3s ease; /* Prepara a imagem para a animação de hover */
+}
+
+/* EFEITO BÔNUS: Dá um zoom leve na imagem quando você passa o mouse por cima do card! */
+.card:hover .card-image img {
+    transform: scale(1.05);
+}
+
+.card-text h2 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+.card-text h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.card-text p {
+    font-size: 14px;
+    color: #999999;
+}
+
+.card-text p span {
+    margin: 0 4px;
+}
+
+/* Tamanhos específicos - Destaque vs Menores */
+.featured-card .card-image {
+    aspect-ratio: 21 / 9; /* Formato wide (retângulo deitado) */
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas iguais */
+    gap: 25px; /* Espaço entre os 3 widgets menores */
+}
+
+.small-card .card-image {
+    aspect-ratio: 4 / 3; /* Formato um pouco mais quadrado */
+}
+
+/* Cores de Fundo (Simulando as imagens de exemplo) */
+.bg-gradient-blue {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+}
+
+.bg-gradient-purple {
+    background: linear-gradient(135deg, #581c87 0%, #8b5cf6 100%);
+}
+
+.bg-gradient-orange {
+    background: linear-gradient(135deg, #c2410c 0%, #f97316 100%);
+}
+
+.bg-gradient-dark {
+    background: linear-gradient(135deg, #1f2937 0%, #4b5563 100%);
+}
+
+/* Responsividade: transforma em 1 coluna no celular */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 20px;
+    }
+    
+    .featured-card .card-image {
+        aspect-ratio: 16 / 9;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr; /* 1 card por linha no celular */
+    }
+}
+
+
+.left-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.icon-btn {
+    background: transparent;
+    border: none;
+    color: #cccccc;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.icon-btn:hover {
+    background-color: #2f2f2f;
+    color: #ffffff;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Responsividade básica */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none; 
+    }
+    h1 {
+        font-size: 28px;
+    }
+}
