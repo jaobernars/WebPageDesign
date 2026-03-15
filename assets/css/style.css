@@ -1,0 +1,626 @@
+/* Reset básico e configurações gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Cabeçalho */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.search-icon {
+    cursor: pointer;
+    color: #ccc;
+}
+
+.btn-entrar {
+    background-color: #333333;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-entrar:hover {
+    background-color: #444444;
+}
+
+/* Layout Principal */
+.container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Menu Lateral (Sidebar) */
+.sidebar {
+    width: 260px;
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+    /* A linha abaixo cria a animação suave de fechar/abrir */
+    transition: width 0.3s ease, padding 0.3s ease, opacity 0.3s ease;
+}
+
+.sidebar a:hover {
+    color: #aaaaaa;
+}
+
+.sidebar a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+
+
+.sidebar-section {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Estado "Escondido" da barra lateral */
+.sidebar.collapsed {
+    width: 0;
+    padding-left: 0;
+    padding-right: 0;
+    opacity: 0;
+    overflow: hidden; /* Evita que o texto vaze enquanto ela fecha */
+}
+
+/* Atualização da área central para o novo layout de portfólio */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    overflow-y: auto; /* Permite rolar a página */
+    align-items: center; /* Centraliza a galeria na tela */
+}
+
+.portfolio-wrapper {
+    width: 100%;
+    max-width: 1000px; /* Largura máxima elegante */
+    display: flex;
+    flex-direction: column;
+    gap: 50px; /* Espaço entre o widget principal e a galeria */
+    padding-bottom: 50px;
+}
+
+.portfolio-wrapper h1 {
+    font-size: 36px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+    text-align: center;
+}
+
+
+/* Estilos gerais dos Cards (Widgets) */
+.card {
+    text-decoration: none;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+/* Garante que a imagem respeite as bordas arredondadas da div pai */
+.card-image {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden; /* Corta qualquer pedaço da imagem que passe da borda */
+    display: flex;
+}
+
+/* Formata a imagem para preencher o espaço sem distorcer */
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* O segredo está aqui: faz a imagem cobrir tudo como um papel de parede */
+    transition: transform 0.3s ease; /* Prepara a imagem para a animação de hover */
+}
+
+/* EFEITO BÔNUS: Dá um zoom leve na imagem quando você passa o mouse por cima do card! */
+.card:hover .card-image img {
+    transform: scale(1.05);
+}
+
+.card-text h2 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+.card-text h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.card-text p {
+    font-size: 14px;
+    color: #999999;
+}
+
+.card-text p span {
+    margin: 0 4px;
+}
+
+/* Tamanhos específicos - Destaque vs Menores */
+.featured-card .card-image {
+    aspect-ratio: 21 / 9; /* Formato wide (retângulo deitado) */
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas iguais */
+    gap: 25px; /* Espaço entre os 3 widgets menores */
+}
+
+.small-card .card-image {
+    aspect-ratio: 4 / 3; /* Formato um pouco mais quadrado */
+}
+
+/* Cores de Fundo (Simulando as imagens de exemplo) */
+.bg-gradient-blue {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+}
+
+.bg-gradient-purple {
+    background: linear-gradient(135deg, #581c87 0%, #8b5cf6 100%);
+}
+
+.bg-gradient-orange {
+    background: linear-gradient(135deg, #c2410c 0%, #f97316 100%);
+}
+
+.bg-gradient-dark {
+    background: linear-gradient(135deg, #1f2937 0%, #4b5563 100%);
+}
+
+/* Responsividade: transforma em 1 coluna no celular */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 20px;
+    }
+    
+    .featured-card .card-image {
+        aspect-ratio: 16 / 9;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr; /* 1 card por linha no celular */
+    }
+}
+
+
+.left-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.icon-btn {
+    background: transparent;
+    border: none;
+    color: #cccccc;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.icon-btn:hover {
+    background-color: #2f2f2f;
+    color: #ffffff;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Responsividade básica */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none; 
+    }
+    h1 {
+        font-size: 28px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   SEÇÃO DE BOAS-VINDAS (Hero)
+   ========================================================= */
+
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    min-height: 75vh; /* Ocupa 75% da altura da tela ao abrir o site */
+    margin-bottom: 40px; /* Espaço de respiro antes de começar a galeria de projetos */
+
+}
+
+.hero-title {
+    font-size: 64px;
+    font-weight: 600;
+    letter-spacing: -2px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.hero-subtitle {
+    font-size: 20px;
+    color: #a1a1aa;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 600px;
+}
+
+/* Botão Centralizado estilo OpenAI */
+.hero-btn {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    text-decoration: none;
+    padding: 12px 32px;
+    border-radius: 10px; /* Bordas totalmente arredondadas */
+    font-size: 16px;
+    font-weight: 500;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-btn:hover {
+    background-color: #e4e4e7;
+    transform: translateY(-2px); /* Efeito sutil de levantar ao passar o mouse */
+}
+
+/* Ajustes da apresentação para telas de celular */
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 50vh;
+    }
+    .hero-title {
+        font-size: 48px;
+    }
+    .hero-subtitle {
+        font-size: 18px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   SEÇÃO TRABALHOS RECENTES (Página Principal)
+   ========================================================= */
+
+.recent-work-section {
+    width: 100%;
+    margin-top: 80px; /* Espaço considerável após os cards */
+    padding-top: 40px;
+}
+
+.section-title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    letter-spacing: -0.5px;
+    text-align: left; /* Alinhado à esquerda como no modelo de Investigações */
+}
+
+.list-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.list-item {
+    display: flex;
+    padding: 24px 0;
+    border-top: 1px solid #222; /* Linha divisória fina */
+    text-decoration: none;
+    color: #ffffff;
+    transition: opacity 0.2s ease;
+}
+
+.list-item:hover {
+    opacity: 0.7;
+}
+
+/* Coluna da Esquerda (Meta) */
+.item-meta {
+    flex: 0 0 180px; /* Largura fixa para alinhar os títulos na direita */
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.item-category {
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.item-date {
+    font-size: 13px;
+    color: #666;
+}
+
+/* Coluna da Direita (Conteúdo) */
+.item-content {
+    flex: 1;
+}
+
+.item-content h3 {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.item-content p {
+    font-size: 15px;
+    color: #999;
+    line-height: 1.5;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .list-item {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .item-meta {
+        flex: none;
+        flex-direction: row;
+        gap: 15px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   FOOTER (Rodapé Estilo Minimalista)
+   ========================================================= */
+
+.site-footer {
+    width: 100%;
+    background-color: #000000;
+    padding: 60px 20px 40px 20px;
+    border-top: 1px solid #1a1a1a;
+    display: flex;
+    justify-content: center;
+    margin-top: 80px; /* Garante distância dos trabalhos recentes */
+}
+
+.footer-container {
+    width: 100%;
+    max-width: 1000px; /* Mesmo alinhamento dos seus cards */
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.footer-logo {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 80px;
+    flex-wrap: wrap;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-column h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.footer-column a {
+    font-size: 14px;
+    color: #888888;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-column a:hover {
+    color: #ffffff;
+}
+
+/* Parte Inferior do Footer */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 30px;
+    border-top: 1px solid #1a1a1a;
+    font-size: 12px;
+    color: #666666;
+}
+
+.footer-info {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-info a {
+    color: #666666;
+    text-decoration: none;
+}
+
+.footer-info a:hover {
+    color: #888888;
+}
+
+/* Ajustes para Celular */
+@media (max-width: 768px) {
+    .footer-links {
+        gap: 40px;
+    }
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

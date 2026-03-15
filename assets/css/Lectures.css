@@ -1,0 +1,461 @@
+/* =========================================================
+   LAYOUT DE LISTA (Página Lectures e Anotações)
+   ========================================================= */
+
+.list-view-main {
+    align-items: flex-start; /* Alinha ao topo em vez do centro */
+    padding: 40px 60px;
+}
+
+.list-wrapper {
+    width: 100%;
+    max-width: 1100px; /* Mantém uma largura confortável para leitura */
+    margin: 0 auto;
+}
+
+.page-title {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    text-align: left;
+    letter-spacing: -0.5px;
+}
+
+/* Barra de Filtros / Abas */
+.list-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+}
+
+.toolbar-tabs {
+    display: flex;
+    gap: 25px;
+}
+
+.toolbar-tabs a {
+    position: relative;
+    transition: color 0.2s ease, border-color 0.2s ease;
+    color: #888888;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.toolbar-tabs a:hover {
+    color: #e0e0e0;
+}
+
+.toolbar-tabs a.active {
+    color: #fff;
+    border-bottom: 2px solid #818cf8;
+}
+
+.toolbar-controls {
+    display: flex;
+    gap: 20px;
+}
+
+.btn-text {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+}
+
+.btn-text:hover {
+    color: #aaaaaa;
+}
+
+/* Itens da Lista */
+.list-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.list-item {
+    display: flex;
+    padding: 30px 0;
+    border-bottom: 1px solid #333333;
+    text-decoration: none;
+    color: #ffffff;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.list-item:hover {
+    opacity: 0.7; /* Efeito sutil ao passar o mouse */
+}
+
+/* Coluna da Esquerda: Meta Dados */
+.item-meta {
+    flex: 0 0 200px; /* Largura fixa para alinhar todas as categorias */
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-right: 20px;
+}
+
+.item-category {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.item-date {
+    font-size: 14px;
+    color: #888888;
+}
+
+/* Coluna da Direita: Conteúdo */
+.item-content {
+    flex: 1; /* Ocupa o resto do espaço */
+}
+
+.item-content h2 {
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.item-content p {
+    font-size: 16px;
+    color: #aaaaaa;
+    line-height: 1.6;
+}
+
+/* ====== Tag Badges ====== */
+.item-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    vertical-align: middle;
+}
+
+.tag-lecture {
+    background-color: rgba(59, 130, 246, 0.15);
+    color: #3b82f6;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.tag-class-lecture {
+    background-color: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.tag-project {
+    background-color: rgba(168, 85, 247, 0.15);
+    color: #a855f7;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.tag-research {
+    background-color: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* ====== Toolbar Tabs ====== */
+.toolbar-tabs a {
+    position: relative;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.toolbar-tabs a:hover {
+    color: #e0e0e0;
+}
+
+.toolbar-tabs a.active {
+    color: #fff;
+    border-bottom: 2px solid #818cf8;
+}
+
+/* ====== Filter Count ====== */
+.filter-count {
+    margin-left: 8px;
+    padding: 2px 8px;
+    font-size: 0.72rem;
+    color: #666;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 4px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+}
+
+/* ====== Toolbar Controls ====== */
+.toolbar-controls {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* ====== Dropdown Wrapper ====== */
+.dropdown-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+/* ====== Dropdown Menu ====== */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    min-width: 210px;
+    background: #191919;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5),
+                0 2px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    padding: 6px 0;
+    animation: dropdownSlide 0.18s ease;
+}
+
+.dropdown-menu.open {
+    display: block;
+}
+
+@keyframes dropdownSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-4px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ====== Dropdown Header ====== */
+.dropdown-header {
+    padding: 8px 14px 4px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #555;
+    user-select: none;
+}
+
+/* ====== Dropdown Item (label e button) ====== */
+.dropdown-menu .dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 7px 14px;
+    font-size: 0.8rem;
+    color: #999;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    line-height: 1.4;
+    transition: background 0.12s ease, color 0.12s ease;
+    font-family: inherit;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #d4d4d4;
+}
+
+/* Sort option active state */
+.dropdown-menu button.dropdown-item.active {
+    color: #e0e0e0;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.dropdown-menu button.dropdown-item.active::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background: #e0e0e0;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-right: -2px;
+}
+
+/* ====== Checkbox / Radio Inputs ====== */
+.dropdown-item input[type="checkbox"],
+.dropdown-item input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    cursor: pointer;
+    flex-shrink: 0;
+    position: relative;
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.dropdown-item input[type="checkbox"] {
+    border-radius: 3px;
+}
+
+.dropdown-item input[type="radio"] {
+    border-radius: 50%;
+}
+
+.dropdown-item input[type="checkbox"]:checked,
+.dropdown-item input[type="radio"]:checked {
+    background: #e0e0e0;
+    border-color: #e0e0e0;
+}
+
+.dropdown-item input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 4.5px;
+    width: 3px;
+    height: 6px;
+    border: solid #191919;
+    border-width: 0 1.5px 1.5px 0;
+    transform: rotate(45deg);
+}
+
+.dropdown-item input[type="radio"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 6px;
+    height: 6px;
+    background: #191919;
+    border-radius: 50%;
+}
+
+.dropdown-item input[type="checkbox"]:indeterminate {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.dropdown-item input[type="checkbox"]:indeterminate::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 2.5px;
+    width: 7px;
+    height: 1.5px;
+    background: #191919;
+    border-radius: 1px;
+}
+
+.dropdown-item input:hover {
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* ====== Dropdown Divider ====== */
+.dropdown-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.07);
+    margin: 5px 0;
+}
+
+/* ====== Clear / Reset Button ====== */
+.dropdown-clear {
+    display: block;
+    width: calc(100% - 20px);
+    margin: 6px 10px;
+    padding: 6px 10px;
+    font-size: 0.75rem;
+    font-family: inherit;
+    color: #777;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+}
+
+.dropdown-clear:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #bbb;
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ====== Filter Active Indicator (ponto no botão) ====== */
+.btn-text.has-filter {
+    color: #d4d4d4;
+}
+
+.btn-text.has-filter::after {
+    content: '';
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    background: #e0e0e0;
+    border-radius: 50%;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+/* ====== Animações de filtragem ====== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+}
+
+.list-item {
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* Responsividade para a lista no celular */
+@media (max-width: 768px) {
+    .list-view-main {
+        padding: 20px;
+    }
+    
+    .list-toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        overflow-x: auto; /* Permite rolar as abas no celular */
+    }
+
+    .list-item {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .item-meta {
+        flex: auto;
+        flex-direction: row;
+        align-items: center;
+    }
+}

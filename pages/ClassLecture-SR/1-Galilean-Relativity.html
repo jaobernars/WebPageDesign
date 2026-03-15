@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galilean Relativity | The Journal of a Physicist</title>
+    <link rel="stylesheet" href="../../assets/css/class-lecture.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                        <line x1="9" x2="9" y1="3" y2="21"></line>
+                    </svg>
+                </button>
+                <button id="theme-toggle" class="sidebar-toggle" aria-label="Toggle Theme">
+                    <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="breadcrumbs-header">
+                    <a href="index.html" class="breadcrumb-link active">Introduction to Special Relativity</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-category" class="breadcrumb-link">Capítulo 1</span>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-current" class="breadcrumb-link active">Galilean Relativity</span>
+                </div>
+            </div>
+            <nav class="top-nav">
+                <a href="../Lectures.html">Lectures</a>
+                <a href="../../index.html">Home</a>
+            </nav>
+        </div>
+
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script>
+            MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']]
+                }
+            };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+    </header>
+
+    <div class="main-layout">
+        <aside class="left-sidebar" id="left-sidebar">
+            <div class="sidebar-content">
+
+                <button class="search-trigger" id="search-trigger">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                    </svg>
+                    <span>Search docs...</span>
+                </button>
+
+                <div class="sidebar-group">
+                    <h3>Início</h3>
+                    <ul>
+                        <li><a href="index.html">Overview</a></li>
+                    </ul>
+                </div>
+                <div class="sidebar-group">
+                    <h3>Capítulo 1</h3>
+                    <ul>
+                        <li><a href="1-Galilean-Relativity.html" class="active">Galilean Relativity</a></li>
+                        <li><a href="1-Spacetime-Algebra.html">Spacetime Algebra</a></li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="prose">
+
+                <h1>Galilean Relativity</h1>
+                <p class="lead">A brief and engaging introductory paragraph explaining the purpose of this page and the
+                    concepts it covers.</p>
+
+                <h2 id="intro">1. Espaço Euclidiano tridimensional $\mathbb{E}^3$</h2>
+
+                <p>Em Relatividade Galileana, o espaço é modelado como um espaço euclidiano tridimensional
+                    ($\mathbb{E}^3$). O espaço $\mathbb{E}^3$ é construído como um espaço afim real modelado sobre o
+                    espaço vetorial $\mathbb{R}^3$, o qual é definido sobre o corpo dos números reais $\mathbb{R}$ e
+                    estruturado por duas operações:</p>
+
+                <div class="definition-box">
+
+                    <strong>Adição vetorial</strong>: Uma função binária $[ \ +\ ]: \mathbb{R}^3 \times
+                    \mathbb{R}^3
+                    \to \mathbb{R}^3$ que
+                    associa a cada par de vetores $\vert v \rangle, \vert w \rangle \in \mathbb{R}^3$ o vetor
+                    $\vert
+                    v \rangle +
+                    \vert w \rangle \in \mathbb{R}^3$.
+                    <br>
+                    <br>
+                    <strong>Multiplicação por escalar</strong>: Uma função binária $[ \ \cdot\ ]: \mathbb{R}
+                    \times
+                    \mathbb{R}^3 \to
+                    \mathbb{R}^3$ que associa a cada par de escalar $\alpha \in \mathbb{R}$ e vetor $\vert v
+                    \rangle
+                    \in
+                    \mathbb{R}^3$ o vetor $\alpha \vert v \rangle \in \mathbb{R}^3$.
+
+
+                </div>
+
+                <p>
+                    Que juntas asseguram a estrutura algébrica através dos axiomas de <strong>comutatividade</strong>,
+                    <strong>associatividade</strong> e <strong>distributividade</strong>. Para garantir a validade dessa
+                    estrutura, as operações devem satisfazer as seguintes condições, aplicáveis para todos os vetores
+                    $\vert u \rangle, \vert v \rangle, \vert w \rangle \in \mathbb{R}^3$ e todos os escalares $a, b \in
+                    \mathbb{R}$:
+                </p>
+
+                <ul>
+                    <li>
+                        <strong>Fechamento sob a adição</strong>: Para todo $\vert v \rangle, \vert w \rangle \in
+                        \mathbb{R}^3$, o vetor $\vert v \rangle + \vert w \rangle \in \mathbb{R}^3$.
+                    </li>
+                    <li>
+                        <strong>Associatividade da adição</strong>: Para todo $\vert u \rangle, \vert v \rangle,
+                        \vert w \rangle \in \mathbb{R}^3$, temos $\vert u \rangle + (\vert v \rangle + \vert w \rangle)
+                        =
+                        (\vert u \rangle + \vert v \rangle) + \vert w \rangle$
+                    </li>
+                    <li>
+                        <strong>Comutatividade da adição</strong>: Para todo $\vert v \rangle, \vert w \rangle
+                        \in \mathbb{R}^3$, temos $\vert v \rangle + \vert w \rangle = \vert w \rangle + \vert v \rangle$
+                    </li>
+                    <li>
+                        <strong>Elemento neutro</strong>(<strong>vetor nulo</strong>): Existe um elemento $\vert 0
+                        \rangle \in \mathbb{R}^3$ tal que, para todo $\vert v \rangle \in \mathbb{R}^3$, temos $\vert 0
+                        \rangle + \vert v \rangle = \vert v \rangle$.
+                    </li>
+                    <li>
+                        <strong>Elemento oposto</strong>(<strong>inverso aditivo</strong>): Para cada $\vert v
+                        \rangle \in \mathbb{R}^3$, existe um vetor $-\vert v \rangle \in \mathbb{R}^3$ tal que $\vert v
+                        \rangle + (-\vert v \rangle )=\vert 0 \rangle$
+                    </li>
+                </ul>
+
+                <p>
+                    <strong>Multiplicação Escalar</strong>:
+                </p>
+                <ul>
+                    <li>
+                        <strong>Fechamento sob a multiplicação por escalar</strong>: Para todo $\alpha \in \mathbb{R}$ e
+                        todo $\vert v \rangle \in \mathbb{R}^3$, o vetor $\alpha \vert v \rangle \in \mathbb{R}^3$.
+                    </li>
+                    <li>
+                        <strong>Associatividade da multiplicação por escalar</strong>: Para todo $\alpha, \beta \in
+                        \mathbb{R}$ e todo $\vert v \rangle \in \mathbb{R}^3$, temos $(\alpha \beta) \vert v \rangle =
+                        \alpha (\beta \vert v \rangle)$.
+                    </li>
+                    <li>
+                        <strong>Elemento neutro da multiplicação por escalar</strong>: Existe um escalar $1 \in
+                        \mathbb{R}$ tal que, para todo $\vert v \rangle \in \mathbb{R}^3$, temos $1 \vert v \rangle =
+                        \vert v \rangle$.
+                    </li>
+                    <li>
+                        <strong>Distributividade da multiplicação por escalar em relação à adição de vetores</strong>:
+                        Para todo $\alpha \in \mathbb{R}$ e todo $\vert v \rangle, \vert w \rangle \in \mathbb{R}^3$,
+                        temos $\alpha (\vert v \rangle + \vert w \rangle) = \alpha \vert v \rangle + \alpha
+                        \vert w \rangle$.
+                    </li>
+                    <li>
+                        <strong>Distributividade da multiplicação por escalar em relação à adição de escalares</strong>:
+                        Para todo $\alpha, \beta \in \mathbb{R}$ e todo $\vert v \rangle \in \mathbb{R}^3$, temos
+                        $(\alpha + \beta) \vert v \rangle = \alpha \vert v \rangle + \beta \vert v \rangle$.
+                    </li>
+                </ul>
+
+                <p>
+                    Para dotar esse espaço de <strong>propriedades geométricas</strong> quantificáveis — essenciais para
+                    definir
+                    <u>distâncias</u> e <u>ângulos</u> na física clássica — introduz-se o <strong>produto
+                        interno</strong>, uma forma bilinear, simétrica e positiva-definida:
+                </p>
+
+                <div class="definition-box">
+
+                    <strong>Produto Interno</strong>: Uma função $g: \mathbb{R}^3 \times \mathbb{R}^3 \to
+                    \mathbb{R}$ ou em notação de Dirac $\langle \cdot | \cdot \rangle : \mathbb{R}^3 \times
+                    \mathbb{R}^3 \to \mathbb{R}$, que a cada par de vetores $\vert v \rangle, \vert w \rangle
+                    \in
+                    \mathbb{R}^3$ associa um número real denotado por $\langle v \vert w \rangle$ (ou $g(\vert v
+                    \rangle, \vert w \rangle)$).
+
+                </div>
+
+                <p>
+                    O produto interno deve satisfazer as seguintes propriedades (axiomas), válidas para todos os vetores
+                    $\vert u \rangle, \vert v \rangle, \vert w \rangle \in \mathbb{R}^3$ e todos os escalares $\alpha,
+                    \beta \in \mathbb{R}$:
+                </p>
+                <ul>
+                    <li>
+                        <strong>Simetria (Comutatividade)</strong>: Para todo $\vert v \rangle, \vert w \rangle \in
+                        \mathbb{R}^3$, temos $\langle v \vert w \rangle = \langle w \vert v \rangle$.
+                    </li>
+                    <li>
+                        <strong>Linearidade no primeiro argumento</strong>: Para todos $\vert u \rangle, \vert v
+                        \rangle, \vert w \rangle \in \mathbb{R}^3$ e escalares $\alpha, \beta \in \mathbb{R}$, temos
+                        $\langle \alpha u + \beta v \vert w \rangle = \alpha \langle u \vert w \rangle + \beta \langle v
+                        \vert w \rangle$. (Pela simetria, também é linear no segundo argumento, sendo assim uma forma
+                        bilinear).
+                    </li>
+                    <li>
+                        <strong>Positiva-definida</strong>: Para todo $\vert v \rangle \in \mathbb{R}^3$, $\langle v
+                        \vert v \rangle \geq 0$, e $\langle v \vert v \rangle = 0$ se, e somente se, $\vert v \rangle =
+                        \vert 0 \rangle$.
+                    </li>
+                </ul>
+
+                <p>
+                    Com essas propriedades, podemos calcular o produto interno de dois vetores em uma base ortonormal de
+                    forma analítica. Seja um sistema de coordenadas cartesiano com uma base ortonormal $\{ \vert e_1
+                    \rangle, \vert e_2 \rangle, \vert e_3 \rangle \}$, ou seja, vetores que satisfazem a relação
+                    $\langle e_i \vert e_j \rangle = \delta_{ij}$ (Delta de Kronecker).
+                </p>
+
+                <p>
+                    Dados os vetores $\vert u \rangle$ e $\vert v \rangle$, podemos escrevê-los como combinações
+                    lineares dessa base:
+                    $$ \vert u \rangle = u_1 \vert e_1 \rangle + u_2 \vert e_2 \rangle + u_3 \vert e_3 \rangle =
+                    \sum_{i=1}^{3} u_i \vert e_i \rangle $$
+                    $$ \vert v \rangle = v_1 \vert e_1 \rangle + v_2 \vert e_2 \rangle + v_3 \vert e_3 \rangle =
+                    \sum_{j=1}^{3} v_j \vert e_j \rangle $$
+                </p>
+
+                <p>
+                    O produto interno $\langle u \vert v \rangle$ é calculado utilizando a linearidade (forma bilinear)
+                    mostrada nos axiomas:
+                </p>
+                <p>
+                    $$ \langle u \vert v \rangle = \left\langle \sum_{i=1}^{3} u_i e_i \Bigg| \sum_{j=1}^{3} v_j e_j
+                    \right\rangle $$
+                    $$ \langle u \vert v \rangle = \sum_{i=1}^{3} \sum_{j=1}^{3} u_i v_j \langle e_i \vert e_j \rangle
+                    $$
+                    Substituindo a condição de ortonormalidade $\langle e_i \vert e_j \rangle = \delta_{ij}$:
+                    $$ \langle u \vert v \rangle = \sum_{i=1}^{3} \sum_{j=1}^{3} u_i v_j \delta_{ij} $$
+                    Como a Delta de Kronecker vale $1$ apenas quando $i = j$ e $0$ para $i \neq j$, o somatório duplo
+                    colapsa para:
+                    $$ \langle u \vert v \rangle = \sum_{i=1}^{3} u_i v_i $$
+                </p>
+
+                <p>
+                    Expandindo os termos, chegamos à clássica componente algébrica do produto interno:
+                    $$ \langle u \vert v \rangle = u_1 v_1 + u_2 v_2 + u_3 v_3 $$
+                </p>
+
+                <div class="definition-box">
+
+                    <strong>Norma (ou Módulo)</strong>: A norma de um vetor $\vert v \rangle$, denotada por $\|
+                    \vert v \rangle \| $, é a medida geométrica de seu comprimento. Ela é intrinsecamente
+                    definida por meio do produto interno como a raiz quadrada da projeção do vetor sobre si
+                    mesmo:
+                    <br>
+                    $$ \| \vert v \rangle \| = \sqrt{\langle v \vert v \rangle} = \sqrt{v_1^2 + v_2^2 + v_3^2}
+                    $$
+
+                </div>
+
+                <div class="definition-box">
+
+                    <strong>Métrica de Distância</strong>: A distância euclidiana $d$ entre dois pontos
+                    definidos pelos vetores $\vert u \rangle$ e $\vert v \rangle$ é dada pela norma do vetor
+                    diferença entre eles:
+                    <br>
+                    $$ d(\vert u \rangle, \vert v \rangle) = \| \vert u \rangle - \vert v \rangle \| =
+                    \sqrt{\langle u - v \vert u - v \rangle} $$
+                    $$ d(\vert u \rangle, \vert v \rangle) = \sqrt{(u_1 - v_1)^2 + (u_2 - v_2)^2 + (u_3 -
+                    v_3)^2} $$
+
+                </div>
+
+                <p>
+                    De forma complementar e mais elegante — especialmente útil ao tratar de tensores na física — podemos
+                    utilizar a <strong>Convenção de Soma de Einstein</strong> (ou notação de índice). Nessa notação,
+                    omitimos o símbolo de somatório $\Sigma$ sempre que um índice aparece repetido duas vezes: uma vez
+                    subscrito (embaixo) e uma vez sobrescrito (em cima).
+                </p>
+
+                <p>
+                    Para isso, fazemos a distinção entre os elementos do espaço vetorial $\mathbb{R} ^3$ e do seu
+                    <strong>espaço dual</strong> $(\mathbb{R}^3)^*$:
+                </p>
+                <ul>
+                    <li>
+                        <strong>Vetores (contravariantes)</strong>: Representados pelos <em>kets</em> $\vert v \rangle$,
+                        cujos componentes em uma base recebem índices superiores (sobrescritos): $v^i$.
+                    </li>
+                    <li>
+                        <strong>Covetores (covariantes)</strong>: Representados pelos <em>bras</em> $\langle u \vert$,
+                        pertencentes ao espaço dual. Seus componentes na base dual recebem índices inferiores
+                        (subscritos): $u_i$.
+                    </li>
+                </ul>
+
+                <p>
+                    O produto interno (ou contração) entre um covetor $\langle u \vert$ e um vetor $\vert v \rangle$ é
+                    simplesmente a ação do funcional linear $\langle u \vert$ sobre $\vert v \rangle$. Em notação de
+                    índice, isso é escrito de forma extremamente compacta como a contração de um índice superior com um
+                    índice inferior:
+                </p>
+                <p>
+                    $$ \langle u \vert v \rangle = u_i v^i $$
+                </p>
+                <p>
+                    Pela convenção de Einstein, o índice $i$ repetido implica uma soma implícita sobre todas as
+                    dimensões espaciais ($i = 1, 2, 3$):
+                </p>
+                <p>
+                    $$ u_i v^i \equiv \sum_{i=1}^{3} u_i v^i = u_1 v^1 + u_2 v^2 + u_3 v^3 $$
+                </p>
+                <p>
+                    Em um espaço euclidiano (como o espaço tridimensional da relatividade galileana) com um sistema de
+                    coordenadas cartesiano, a métrica $g_{ij}$ e a sua inversa $g^{ij}$ são matrizes identidade
+                    $\delta_{ij}$. A transformação que permite mapear vetores em covetores é dada pela aplicação direta
+                    do tensor métrico para "abaixar" o índice (isomorfismo musical):
+                </p>
+
+                <p>
+                    $$ u_i = g_{ij} u^j = \delta_{ij} u^j $$
+                </p>
+
+                <p>
+                    Assim como feito na demonstração anterior, podemos definir os vetores contravariantes $\vert u
+                    \rangle$ e $\vert v \rangle$:
+                    $$ \vert u \rangle = u^i \vert e_i \rangle $$
+                    $$ \vert v \rangle = v^j \vert e_j \rangle $$
+                </p>
+
+                <p>
+                    Aplicando a operação do produto interno, que mapeia $\mathbb{R}^3 \times \mathbb{R}^3 \to
+                    \mathbb{R}$
+                    por meio da métrica do espaço:
+                </p>
+
+                <p>
+                    $$ \langle u \vert v \rangle = g(\vert u \rangle, \vert v \rangle) $$
+                    $$ \langle u \vert v \rangle = g(u^i \vert e_i \rangle, v^j \vert e_j \rangle) $$
+                </p>
+                <p>
+                    Pela bilinearidade do tensor métrico, podemos fatorar as componentes:
+                </p>
+                <p>
+                    $$ \langle u \vert v \rangle = u^i v^j g(\vert e_i \rangle, \vert e_j \rangle) $$
+                </p>
+
+                <p>
+                    Sendo a aplicação da métrica nos vetores de base igual às componentes covariantes do tensor métrico
+                    ($ g(\vert e_i \rangle, \vert e_j \rangle) = \langle e_i \vert e_j \rangle \equiv g_{ij} $):
+                </p>
+
+                <p>
+                    $$ \langle u \vert v \rangle = u^i v^j g_{ij} $$
+                    Aplicando a contração do índice $j$ entre a componente contravariante e o tensor métrico ($g_{ij}
+                    v^j = v_i$), obtemos a contração trivial covetor-vetor apresentada inicialmente:
+                    $$ \langle u \vert v \rangle = u^i v_i $$
+                </p>
+
+                <p>
+                    Em uma base ortonormal euclidiana onde $g_{ij} = \delta_{ij}$:
+                    $$ \langle u \vert v \rangle = u^i v^j \delta_{ij} $$
+                    $$ \langle u \vert v \rangle = u^i v_i = \sum_{i=1}^{3} u_i v_i = u_1 v_1 + u_2 v_2 + u_3 v_3 $$
+                </p>
+
+                <div class="definition-box">
+
+                    <strong>Norma Euclidiana (Notação de Índice)</strong>: A contração do tensor métrico com as
+                    componentes contravariantes do vetor nos dá o quadrado de sua norma. Na métrica
+                    $\delta_{ij}$, extraímos a raiz quadrada da contração direta do vetor com seu dual (covetor
+                    correspondente, $v_i = \delta_{ij}v^j$):
+                    <br>
+                    $$ \| \vert v \rangle \|^2 = \langle v \vert v \rangle = g_{ij} v^i v^j = v_i v^i $$
+                    $$ \| \vert v \rangle \| = \sqrt{v_i v^i} $$
+
+                </div>
+
+                <div class="definition-box">
+
+                    <strong>Métrica de Distância Euclidiana (Notação de Índice)</strong>: A distância geométrica
+                    $d$ entre dois pontos dados pelos vetores $\vert u \rangle$ e $\vert v \rangle$ é extraída
+                    mediante a contração tensorial do vetor deslocamento $u^i - v^i$ com seu próprio dual $u_i -
+                    v_i$:
+                    <br>
+                    $$ d(\vert u \rangle, \vert v \rangle)^2 = g_{ij} (u^i - v^i) (u^j - v^j) = (u_i - v_i)(u^i
+                    - v^i) $$
+                    $$ d(\vert u \rangle, \vert v \rangle) = \sqrt{(u_i - v_i)(u^i - v^i)} $$
+
+                </div>
+
+                <p>
+                    Toda essa meticulosa construção algébrica e geométrica não é apenas um exercício de rigor
+                    matemático, mas o verdadeiro alicerce conceitual sob o qual a mecânica clássica repousa. Essa
+                    estrutura fixa, em linguagem matemática contemporânea, as propriedades da geometria do
+                    <strong>espaço absoluto de Newton</strong>. Na formulação original dos <em>Principia</em> (1687),
+                    Isaac Newton postulava a existência de um espaço que <em>"em sua própria natureza, sem relação com
+                        qualquer coisa externa, permanece sempre semelhante e imóvel"</em>. Ao dotar o conjunto básico
+                    $\mathbb{R}^3$ das operações essenciais de espaço vetorial (adição espacial e redimensionamento por
+                    escalar) juntamente com a métrica definida positiva do produto interno, nós não só formalizamos
+                    matematicamente esse conceito absoluto transcendente, mas lhe damos estrutura calculável.
+                </p>
+
+                <p>
+                    Fisicamente, essa estrutura topológica e algébrica dota o universo clássico de simetrias exigidas e
+                    vitais para as leis da física da época. Primeiramente, a simples linearidade garantida pelos axiomas
+                    matemáticos do espaço vetorial assegura a premissa de que não existe ponto, extremidade ou "origem
+                    verdadeira" privilegiada nesse espaço. O universo mecânico é um "palco" infinito, ou seja,
+                    postula-se a premissa da <strong>homogeneidade espacial</strong> (suas leis atuam de igual modo,
+                    quer você translade a geometria da experiência para qualquer direção vetorial). Por sua vez, a
+                    introdução das métricas (quer seja pelo clássico axioma de $v_i v_i$ ou métricas de contração
+                    isotrópicas) introduz com sucesso a <strong>isotropia geométrica do espaço</strong>: nenhuma direção
+                    aponta ou confere propriedades matemáticas intrínsecas "mais potentes" do que a outra, não há
+                    anisotropias no vácuo de Newton, há invariância de rotação total na arena $SO(3)$ da cinemática.
+                </p>
+
+                <p>
+                    Adicionalmente, as definições de norma geométrica fixam não a percepção, mas a "régua universal da
+                    mecânica clássica": distâncias $d(\vert u \rangle, \vert v \rangle)$ separando quaisquer dois
+                    eventos passados, presentes ou futuros constituem um dos maiores invarariantes do universo
+                    não-relativístico. Independentemente do referencial estático adotado, e indiferente à quem mede a
+                    distância ao longo dessa malha vetorial do nosso construto, a medição resultará sempre no mesmo
+                    escalar numérico. Essa construção imponente transformou a física de uma ciência natural em uma
+                    matemática analítica exata, na qual os infinitos vetores como $\mathbf{r}$, $\mathbf{v}$,
+                    $\mathbf{a}$, força e momento perdem sua ambiguidade. Só sob tais rígidas restrições métricas,
+                    diferenciação cruzada e cálculo numérico vetorial a Segunda Lei de Newton, por exemplo, alcança todo
+                    seu valor de previsão empírica, provando que modelar o palco com axiomas rígidos é a chave mestre
+                    pro sucesso de simular os movimentos inerciais com cálculos de previsão analítica. E é, no entanto,
+                    exatamente tal fixação métrica e geométrica rígida — e sua separação ontológica do tempo — o
+                    principal edifício científico que foi derrubado em escalas absurdas pela revolucionária curvatura
+                    variável tenso-métrica e entrelaçada da Relatividade de Einstein; mas até lá, para galáxias inteiras
+                    até a dimensão de nossos corpos celestes rotineiros, ele perdura, confiável, invicto.
+                </p>
+
+                <div class="definition-box" style="margin-bottom: 4rem;">
+                    Por fim, unimos e consolidamos todo esse imenso percurso algébrico desta seção pioneira não mais em
+                    textos físicos, mas compactando todas estas propriedades físicas recém descobertas na elegante e
+                    solitária denotação oficial do Espaço Euclidiano Tridimensional Clássico:
+                    <br><br>
+                    <div style="text-align: center; font-size: 1.25rem;">
+                        $$ \mathbb{E}^3 \equiv (\mathbb{R}^3, +, \cdot, \langle \cdot \vert \cdot \rangle) $$
+                    </div>
+                </div>
+
+                <h2 id="tempo">Tempo</h2>
+
+                <p>
+                    Embora a formulação rigorosa de $\mathbb{E}^3$ descrita até agora exponha a forma da
+                    geometria espacial exigida pela cinemática clássica, essa estrutura — por si só — é incompleta para
+                    descrever os fenômenos da natureza. A estrutura algébrica de <strong>vetores</strong>,
+                    <strong>normas</strong> e
+                    <strong>distâncias</strong> que
+                    acabamos de definir fixa a geometria de um <strong>espaço estático</strong>: ela descreve o
+                    universo perfeitamente, mas se comporta apenas como uma única fotografia instantânea da realidade. O
+                    espaço matemático que moldamos tem lugar para medir <i>"onde"</i> as coisas estão (posição, $x, y,
+                    z$),
+                    mas é cego e inerte em relação ao <i>"quando"</i> elas acontecem.
+                </p>
+
+                <p>
+                    Toda a fenomenologia da física baseia-se num fluxo ordenado de <strong>mudanças</strong>, e para
+                    mensurar a taxa ou a evolução destas
+                    mudanças ao longo da nossa rígida grade tridimensional, faz-se estritamente necessário introduzir um
+                    quarto parâmetro fundamental contínuo: o <strong><u>Tempo</u> ($t$)</strong>. Na Relatividade
+                    Galileana (em
+                    harmonia direta com os <em>Principia</em> de Newton), o tempo flui <em>"uniformemente, em si mesmo e
+                        por sua própria natureza, sem relação com nada externo"</em>. Matematicamente, a fim de
+                    formalizar essa entidade com o mesmo rigor algébrico aplicado a $\mathbb{E}^3$, o tempo é modelado
+                    como um Espaço Afim unidimensional $\mathcal{T}$:
+                </p>
+
+                <div class="definition-box">
+
+                    <strong>Tempo Absoluto ($\mathcal{T}$)</strong>: É um espaço afim unidimensional modelado sobre o
+                    espaço vetorial unidimensional real $\mathbb{R}$. Seus elementos topológicos, os pontos $t \in
+                    \mathcal{T}$, são comumente referidos na física como <strong>instantes</strong>. O uso da estrutura
+                    de espaço afim em detrimento do espaço vetorial simples traduz perfeitamente a premissa de que o
+                    referencial é destituído de uma "origem" temporal privilegiada universal (um instante "$0$" fixo
+                    para todos); garantindo o poderoso postulado de simetria na mecânica invariante chamado
+                    <strong>homogeneidade temporal</strong>.
+                    <br>
+                    <br>
+                    <strong>Intervalo de Tempo ($\Delta t$)</strong>: Em conformidade à construção afim, coordenadas
+                    solitárias pontuais não detêm propriedades quantificáveis intrínsecas: a métrica temporal surge
+                    somente da extração da diferença (deslocamento) entre elas. Portanto, a progressão ou duração
+                    cronológica dá-se mapeando uma operação de diferença, $\Delta: \mathcal{T} \times \mathcal{T} \to
+                    \mathbb{R}$, que a dois recortes experimentais arbitrários $t_1, t_2 \in \mathcal{T}$ imputa
+                    inexoravelmente um real invariante na reta $\mathbb{R}$:
+                    <br>
+                    $$ \Delta t = t_2 - t_1 $$
+                    <br>
+                    Cujas somatórias cumprem ferrenhamente a exatidão linear causal <em>(Identidade de Chasles)</em>: no
+                    decorrer transeunte $t_1, t_2, t_3 \in \mathcal{T}$, o saldo evolutivo será matematicamente
+                    indissociável da união, regendo o balanceamento escalar clássico $(t_3 - t_2) + (t_2 - t_1) = t_3 -
+                    t_1$.
+                    <br>
+                    <br>
+                    <strong>O Fim da Isotropia: Ordem Cronológica ($<$)</strong>: Para afastar completamente a
+                            dimensionalidade temporal da isometria isotrópica irrestrita regente das direções do palco
+                            geométrico tridimensional (onde mover-se para "$+x$" equivale analiticamente a ir para
+                            "$-x$"), exige-se na essência basilar de $\mathcal{T}$ a assunção de uma estrita
+                            <strong>Relação de Ordem Total</strong>. Para instantes apartados $t_A \neq t_B$, obriga-se
+                            que o avanço topológico admita uma e tão somente uma sentença excludente: $t_A < t_B$
+                                (assumindo precedência casual no passado do primeiro instante) ou sua antagônica $t_B <
+                                t_A$. Ao fazê-lo, consagra-se analiticamente a irreversibilidade física impiedosa
+                                outrora abstraída e invisível: a constância vetorial da <strong>Seta Clássica do
+                                Tempo</strong>.
+
+                </div>
+
+                <p>
+                    A introdução deste fluxo temporal traz ao palco cartesiano o conceito crucial da
+                    <strong>simultaneidade absoluta</strong>. Na física de Galileu e Newton, diz-se categoricamente que
+                    a afirmação <em>"dois eventos ocorrem no mesmo instante de tempo"</em> é perfeitamente verdadeira
+                    (invariante) para quaisquer observadores mecânicos que observem o fenômeno. Ou seja: embora
+                    diferentes observadores inerciais discordem veementemente das coordenadas vetorais de onde a posição
+                    das coisas está dependendo de suas velocidades relativas (translação de Galileu do "Onde"), existe
+                    um enorme consenso absoluto sobre o relógio cósmico que dita o "Quando", fluindo igual para todos,
+                    do passado para o futuro. O papel do tempo clássico é ser o grande maestro
+                    universal: ele indexa e ordena, de forma rígida, sequências invariantes de "fotografias" de nosso
+                    antigo espaço tridimensional $\mathbb{E}^3$, compondo assim a evolução do espaço-tempo Galileano.
+                </p>
+
+                <p>
+
+                </p>
+
+
+
+                <p>
+                    Com a introdução matemática do tempo, surge uma profunda e sutil questão física, frequentemente
+                    negligenciada em cursos introdutórios: <strong>o que significa afirmar que um ponto permaneceu no
+                        "mesmo lugar" ao longo do tempo?</strong> Quando dizemos que um objeto se moveu de uma posição
+                    $A$ (em um instante $t_1$) para uma posição $B$ (em um tempo $t_2$), estamos fazendo uma declaração
+                    que embute pressupostos conceituais fortíssimos relativos à identidade fundamental do próprio espaço
+                    contínuo.
+                </p>
+
+                <p>
+                    Para que possamos rastrear de forma não ambígua qualquer cinemática (como se identificar movimento
+                    ou repouso), devemos assumir imperativamente a declaração abstrata de que <em>"o ponto matemático do
+                        espaço em que o objeto estava em $t_1$ deve corresponder analogamente a algum lugar no espaço no
+                        momento de $t_2$"</em>. Contudo, em uma formulação geométrica restritamente rigorosa, cada
+                    instante contínuo no tempo descreve por si só um espaço tridimensional fechado e completamente
+                    separado $\mathbb{E}^3$ (uma "fatia" ou "fotografia instantânea" ("snapshot") espacial independente
+                    do universo no exato instante $t$). Em suma, a matemática do bloco do espaço perfeitamente estático
+                    de $t_1$ não impõe conexões lógicas inatas e transcendentais ao bloco tridimensional indep                <h3>O Mapa da Identidade (Estrutura Trivial)</h3>
+
+                <p>
+                    Para descrever rigorosamente a cinemática de qualquer corpo, torna-se imperativo rastrear a evolução dos pontos espaciais ao longo do fluir contínuo do tempo. Em termos estritamente analíticos, devemos postular uma definição não ambígua do que significa afirmar que um ponto geométrico intrínseco a um determinado momento temporal $t_0$ encontra-se "no mesmo lugar" que um ponto análogo alocado em um momento temporal subsequente $t_1$.
+                </p>
+
+                <p>
+                    Para elucidar a construção desse mapeamento fundamental, consideremos inicialmente um cenário experimental trivial e perfeitamente isolado: um observador postado no interior de um laboratório em repouso escolhe arbitrariamente uma quina específica da estrutura física para servir como a origem absoluta determinística ($\mathbf{0}$) de seu sistema euclidiano de coordenadas locais. A partir deste vértice inercial referencial, ele projeta tridimensionalmente três eixos ortogonais estritamente fixados — digamos, estendendo-se paralelos e solidários às arestas tangíveis das dimensões da sala — e, utilizando ferramentas de métrica espacial, atribui coordenadas escalares $(x^1, x^2, x^3)$ a cada ponto contido no volume sob observação, ancorado invariavelmente nas distâncias radiais medidas ao longo de tais eixos diretrizes.
+                </p>
+
+                <p>
+                    Suponhamos subsequentemente que este mesmíssimo observador efetue duas aferições analíticas distintas do seu sistema, em fatias temporais independentes $t_0$ e $t_1$, valendo-se invariavelmente do exato mesmo sistema de referência topológico: a matriz da origem inalterada, as diretrizes axiais fixas e o idêntico tensor de abstração de distâncias geométricas euclidianas. Sob estas rigorosas invariâncias construtivas, o observador é induzido a identificar com total naturalidade a correspondência espacial de "um mesmíssimo ponto contínuo no espaço absoluto" cruzando os abismos de ambos os instantes através do atrelamento matricial da conservação matemática de suas coordenadas descritivas:
+                </p>
+
+                <p>
+                    $$ \mathbf{x}_{1} = \mathbf{x}_{0} $$
+                </p>
+
+                <p>
+                    Esta equivalência algébrica impávida formulação estabelece o que formalmente definimos sob a alcunha de <strong>Mapa da Identidade</strong> (ou a conceituação do Mapeamento de Identificação Trivial do Espaço Estático):
+                </p>
+
+                <p>
+                    $$ \phi: \mathbb{E}^3_{t_0} \to \mathbb{E}^3_{t_1}, \quad \phi(\mathbf{x}_{0}) = \mathbf{x}_{0} $$
+                </p>
+
+                <p>
+                    Alinhado aos preceitos dessa lei restritiva de mapeamento paramétrico, postula-se o axioma de que todo objeto submetido a esta ontologia permanece encerrado no estado de repouso inercial verdadeiro caso, submetido aos fluxos intersecantes de $\mathcal{T}$, as magnitudes de suas referidas coordenadas cartesianas resultem analiticamente invariáveis sob a translação do tempo. Tal identificação de imobilidade perene, contudo, desvencilha-se inteiramente de qualquer pretensão de natureza global ou absoluta; ela encontra-se visceral, irrevogavelmente incrustada e ontologicamente dependente ao sistema particular de referência erguido pelas deliberações arbitrárias do observador que atrelou a malha referencial às paredes geométricas inertes de seu recorte experimental local.
+                </p>
+
+                <div class="definition-box" style="margin-bottom: 2rem;">
+                    <strong>A Distinção Transversal: Coordenadas Espaciais versus O Referencial Físico</strong>
+                    <br><br>
+                    Esta separação analítica revela-se, por conseguinte, inegociável na estruturação de qualquer arcabouço lógico e descritivo clássico:
+                    <ul style="margin-top: 1rem;">
+                        <li><strong>A Fração Pontual e a Atribuição das Coordenadas:</strong> Este estágio requisita impreterivelmente objetos materiais tangíveis e referências físicas exatas — sejam elas recortes de alvenaria inerte, vértices estruturais ou feixes projetados a partir de bases imutáveis — com a única finalidade ontológica de balizar limites estritos e definir posicionamentos quantificáveis das essências confinados estritamente à fotografia e escopo imutável de um e somente um <strong>único cenário isolado de instante $t$</strong>.</li>
+                        <li><strong>O Quadro Persistente e a Construção Subjacente do Referencial:</strong> É a estrutura contínua do mapeamento algorítmico, a formulação analítica pregressa que rege sob quais termos topológicos iremos rastrear a genealogia da posição física dos centros de massa através das progressivas e inumeráveis fatias do escoar do tempo cósmico.</li>
+                    </ul>
+                </div>
+
+                <p>
+                    Consequentemente, observa-se pragmaticamente que, não raro na condução corriqueira de formulações mecânicas, ao procedermos à representação gráfica diagramática do invólucro do espaço euclidiano $\mathbb{E}^3$, os tratadistas incorrem e importam no silêncio da premissa a vigência integral do mapa contínuo da configuração trivial inercial, partindo pressuposto invisível de que o palco base da "malha" geométrica de referências estáticas e de que a parede por de trás dos eixos coordenados sequer flutuam ontológico ou inercialmente ante ao fluir transeunte dos eventos no tempo dimensional paramétrico. Assim fundamentando-nos, a totalidade de nossa atenção científica converge imperturbável e focada tão apenas à averiguação e à aferição da flutuação linear, percurso e evolução dos demais centros de corpos exógenos à malha projetados e comparados sobre o silêncio atemporal deste cenário de repouso profundo.
+                </p>
+
+                <p>
+                    É imperioso admitirmos categoricamente, entretanto, que a identificação estática trivial configura tão somente uma faceta singular, simplificada e específica no interior de um gigantesco panorama contínuo de matrizes analíticas concebíveis ao mapeamento físico de coordenadas sobrepostas. Mapeamentos generalizados introduzem formidavelmente uma flexibilidade algébrica irrestrita que traduz simetrias e peculiaridades analíticas transicionadas aos ditames de quadros não trivializados; referências mutáveis que espelham referenciais tracionados que, enquanto as observações prosseguem, fluem mutuamente sob domínios de campos inerciais translacionais com vetor velocidade perene e constante ante a malha das fatias contíguas. O profundo e analítico estudo das naturezas atreladas a tais translações dinâmicas simétricas de distorção não-trivial desemboca justamente no desvendar do aparato e equacionamento principal regente da cinemática linear clássica, conhecidos universalmente na literatura como <strong>os vetores do impulso referencial e as Transformações Cinemáticas de Galileu (Galilean Boosts)</strong>.
+                </p>
+
+                <h3>Os Mapas devem refletir as Expectativas Físicas</h3>
+
+                <p>
+                    Ao flexibilizarmos nosso formalismo para acomodar observadores inerciais distintos e dinâmicas cinemáticas mais gerais (abandonando a restrição da identificação trivial), faz-se mandatório impor rigorosas <strong>restrições topológicas e físicas</strong> às propriedades matemáticas dos mapeamentos $\phi$ que propomos para conectar as infindáveis "fatias fotográficas" espaciais de $\mathbb{E}^3$ através do contínuo temporal. Essas delimitações analíticas não brotam de axiomas abstratos soltos, mas derivam invariavelmente da nossa empiria cosmológica macroscópica e do modo basilar como a natureza prescreve que a matéria real se preserve e interaja.
+                </p>
+
+                <p>
+                    Sob o paradigma de trajetórias corpusculares ininterruptas, elegemos as seguintes assunções indissociáveis:
+                </p>
+
+                <ul>
+                    <li>
+                        <strong>Princípio da Exclusão de Colisões Interpenetrantes (Injetividade):</strong> É impensável que dois pontos topológicos intrínseca e espacialmente distintos num instante gerador $t_0$ venham a colapsar, sendo mapeados simultaneamente para o mesmíssimo e exato ponto em um tempo subsequente $t_1$. Caso esse colapso ocorresse, o mapeamento obliteraria a distinguibilidade fundamental das identidades materiais, destroçando a premissa basal de que partículas elementares clássicas detêm trajetórias determinísticas individuais, singulares e inalienáveis.
+                    </li>
+                    <li style="margin-top: 1rem;">
+                        <strong>Princípio da Conservação da Presença (Sobrevivência Ontológica e Sobrejetividade):</strong> Nenhum ponto do tecido paramétrico pode, sob hipótese alguma, imiscuir-se arbitrariamente ao nada ou emergir do vácuo absoluto sem causa. Isso exige estruturalmente que cada ponto pertencente à fatia fotográfica futura $t_1$ possua, impreterivelmente, uma e somente uma raiz ancestral correspondente na fatia geradora pretérita $t_0$. A ausência dessa continuidade permitiria aberrações físicas como o aniquilamento espontâneo não-causal e a geração espontânea inercial de coordenadas sem passado atrelado.
+                    </li>
+                </ul>
+
+                <p>
+                    Fundindo estas duas propriedades indispensáveis ao amálgama da matemática estrita, exigimos imperiosamente que:
+                </p>
+
+                <div class="code-block" style="background-color: transparent; border: none; border-left: 4px solid var(--text-secondary); border-radius: 0; padding-left: 1.5rem; margin: 2rem 0;">
+                    <span style="font-size: 1.125rem; font-weight: 500; color: var(--text-primary);">
+                        O Mapa cinemático evolutivo $\phi: \mathbb{E}^3_{t_0} \to \mathbb{E}^3_{t_1}$ seja rigorosamente estruturado como uma <strong>Função Bijetiva</strong> (uma correspondência um-para-um e sobrejetiva).
+                    </span>
+                </div>
+
+                <p>
+                    Indo além, embasados ferrenhamente em como a termodinâmica causal e a mecânica rotineira presidem sobre a continuidade dos corpos macroscópicos — destituídos inteiramente de saltos quânticos de teletransporte ou rasgos topológicos descontinuados em sua locomoção —, refinamos nosso mapeamento instilando a expectativa máxima do cálculo diferencial:
+                </p>
+
+                <div class="code-block" style="background-color: transparent; border: none; border-left: 4px solid var(--text-secondary); border-radius: 0; padding-left: 1.5rem; margin: 2rem 0;">
+                    <span style="font-size: 1.125rem; font-weight: 500; color: var(--text-primary);">
+                        O Mapa deve espelhar uma <strong>Evolução Suave</strong>: variações infinitesimais e pequenas flutuações de posição na malha em $t_0$ devem incorrer invariavelmente em pequenas mudanças residuais traduzidas sobre a fatia contígua $t_1$.
+                    </span>
+                </div>
+
+                <p>
+                    A consolidação de toda essa herança empírica nos induz irrevogavelmente a não apenas modelar o mapa $\phi$ como uma mera bijeção topológica isolada, mas consagra-lo com as vestes analíticas supremas regentes das geometrias diferenciais: um <strong>Difeomorfismo</strong>. Estipula-se assim a aplicação formal de uma função estruturalmente suave, cuja inversa causal no tempo também exibe garantias incontestáveis de suavidade matemática absoluta ao refletir seu trajeto vetorial.
+                </p>
+
+                <div class="definition-box" style="margin-bottom: 3rem;">
+                    Reitera-se aos menos atentos: tal armadura de rigidez funcional atrelada (as assunções de Bijeção Suave e Difeomorfismos não-ambos) não emanam de uma tirania oca exigida pelos numerais da matemática cartesiana abstrata. Constituem, pelo contrário, as modelagens de contorno e premissas restritivas mais puras construídas por intermédio da observação ininterrupta da natureza; onde a fluidez irrefreável, a causa, a consequência e o movimento vetorial contínuo não abrem precedentes para teleportes descontinuados ou a dissolução temporal da matéria visível.
+                </div>
+                <h2 id="congelamento">2. Second Major Section</h2>
+
+
+
+
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="toc-container">
+                <h4>Nesta página</h4>
+                <ul>
+                    <li><a href="#intro">Espaço Euclidiano Tridimensional $\mathbb{E}^3$</a></li>
+                    <li><a href="#tempo">Tempo</a></li>
+                    <li><a href="#congelamento">Second Major Section</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Search Modal Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-modal">
+            <div class="search-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search documentation..." autocomplete="off">
+            </div>
+            <div class="search-results" id="search-results"></div>
+            <div class="search-footer">
+                <div class="search-commands">
+                    <span class="cmd-key">↑</span>
+                    <span class="cmd-key">↓</span>
+                    <span class="cmd-label">navigate</span>
+                    <span class="cmd-key">↵</span>
+                    <span class="cmd-label">select</span>
+                </div>
+                <div class="search-commands">
+                    <span class="cmd-key">esc</span>
+                    <span class="cmd-label">close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../assets/js/class-lecture.js"></script>
+</body>
+
+</html>
