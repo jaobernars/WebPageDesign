@@ -346,7 +346,7 @@
                     <strong>Teorema (Invariância da Dimensão — Teorema de Steinitz)</strong>: Se $\mathcal{B}_1$ e $\mathcal{B}_2$ são duas bases quaisquer de $\mathbb{R}^3$, então $|\mathcal{B}_1| = |\mathcal{B}_2|$.
                     <br><br>
                     Este resultado garante que o número de elementos de uma base é um invariante intrínseco do espaço vetorial, independente da escolha particular de base. Esse número recebe o nome de <strong>dimensão</strong>:
-                    $$ \dim(\mathbb{R}^3) := |\mathcal{B}| = 3 $$
+                    $$ \dim(\mathbb{R}^3) \equiv |\mathcal{B}| = 3 $$
                     para qualquer base $\mathcal{B}$ de $\mathbb{R}^3$.
 
                 </div>
@@ -368,39 +368,47 @@
                     Em ambos os casos, a condição complementar é forçada pela restrição dimensional: num espaço de dimensão $3$, qualquer conjunto L.I. com $3$ vetores já não pode ser ampliado sem gerar dependência, logo necessariamente cobre todo o espaço; e qualquer conjunto gerador com $3$ vetores já não pode ser reduzido sem perder cobertura, logo necessariamente é livre de redundâncias.
                 </p>
 
+                <h3>Sistema de Coordenadas</h3>
+
                 <p>
-                    A base mais natural e recorrente em coordenadas cartesianas é a <strong>base canônica</strong> (ou base padrão) de $\mathbb{R}^3$:
+                    Com o conceito de base firmemente estabelecido, dispomos finalmente do aparato necessário para atribuir uma <strong>identidade numérica</strong> a cada vetor do espaço. Escolher uma base $\mathcal{B} = \{ \hat{e}_1, \hat{e}_2, \hat{e}_3 \}$ de $\mathbb{R}^3$ equivale, na prática, a instalar um <strong>sistema de coordenadas</strong>: cada vetor $\vec{v} \in \mathbb{R}^3$ passa a ser unicamente descrito pela tripla ordenada de escalares $(v^1, v^2, v^3)$ que aparecem em sua decomposição $\vec{v} = v^1 \hat{e}_1 + v^2 \hat{e}_2 + v^3 \hat{e}_3$. O Teorema da Decomposição Única garante que essa correspondência entre vetores e triplas é uma bijeção — a cada vetor corresponde uma e somente uma tripla, e vice-versa — de modo que o vetor abstrato e sua representação numérica carregam exatamente a mesma informação.
+                </p>
+
+                <p>
+                    A escolha mais imediata e recorrente em coordenadas cartesianas é a <strong>base canônica</strong> (ou base padrão) de $\mathbb{R}^3$:
                 </p>
                 <p>
                     $$ \hat{e}_1 = (1, 0, 0), \quad \hat{e}_2 = (0, 1, 0), \quad \hat{e}_3 = (0, 0, 1) $$
                 </p>
                 <p>
-                    Nessa base, as componentes de um vetor coincidem com suas coordenadas cartesianas habituais: $\vec{v} = v^1 \hat{e}_1 + v^2 \hat{e}_2 + v^3 \hat{e}_3 = (v^1, v^2, v^3)$.
+                    Nessa base, as componentes de um vetor coincidem diretamente com suas coordenadas cartesianas habituais: $\vec{v} = v^1 \hat{e}_1 + v^2 \hat{e}_2 + v^3 \hat{e}_3 = (v^1, v^2, v^3)$. É importante ressaltar, contudo, que a base canônica não é a única possível — qualquer conjunto de três vetores linearmente independentes serve igualmente como base, e a escolha de uma ou outra depende exclusivamente da conveniência do problema em questão. O que muda entre bases distintas são os valores numéricos das componentes; o vetor em si permanece o mesmo objeto geométrico.
                 </p>
 
                 <p>
-                    <strong>Representação Matricial:</strong> A decomposição em base permite representar vetores e operações lineares de forma compacta por meio de matrizes. Um vetor $\vec{v} \in \mathbb{R}^3$, uma vez fixada uma base $\mathcal{B}$, é representado como um <strong>vetor-coluna</strong> de suas componentes:
+                    Uma vez fixada uma base, a linguagem das <strong>matrizes</strong> emerge como a forma mais compacta e operacional de manipular vetores e suas relações. Um vetor $\vec{v} \in \mathbb{R}^3$ é representado como um <strong>vetor-coluna</strong> de suas componentes:
                 </p>
                 <p>
                     $$ [\vec{v}]_{\mathcal{B}} = \begin{pmatrix} v^1 \\ v^2 \\ v^3 \end{pmatrix} $$
                 </p>
                 <p>
-                    Analogamente, uma combinação linear $\vec{w} = \alpha \vec{u} + \beta \vec{v}$ se traduz na operação matricial elementar:
+                    e toda combinação linear $\vec{w} = \alpha \vec{u} + \beta \vec{v}$ se traduz numa operação componente a componente:
                 </p>
                 <p>
                     $$ [\vec{w}]_{\mathcal{B}} = \alpha [\vec{u}]_{\mathcal{B}} + \beta [\vec{v}]_{\mathcal{B}} = \alpha \begin{pmatrix} u^1 \\ u^2 \\ u^3 \end{pmatrix} + \beta \begin{pmatrix} v^1 \\ v^2 \\ v^3 \end{pmatrix} = \begin{pmatrix} \alpha u^1 + \beta v^1 \\ \alpha u^2 + \beta v^2 \\ \alpha u^3 + \beta v^3 \end{pmatrix} $$
                 </p>
                 <p>
-                    A verificação de independência linear de um conjunto $\{ \vec{v}_1, \vec{v}_2, \vec{v}_3 \}$ reduz-se, nessa linguagem, à análise da <strong>matriz</strong> formada por seus vetores-coluna:
+                    Essa notação matricial não é meramente cosmética — ela transforma questões abstratas de álgebra linear em operações aritméticas concretas. A própria verificação de independência linear de um conjunto $\{ \vec{v}_1, \vec{v}_2, \vec{v}_3 \}$ reduz-se à análise da <strong>matriz</strong> cujas colunas são os vetores-coluna dos três vetores:
                 </p>
                 <p>
                     $$ M = \begin{pmatrix} v_1^1 & v_2^1 & v_3^1 \\ v_1^2 & v_2^2 & v_3^2 \\ v_1^3 & v_2^3 & v_3^3 \end{pmatrix} $$
                 </p>
                 <p>
-                    O conjunto é linearmente independente (e portanto forma uma base) se, e somente se, o <strong>determinante</strong> desta matriz é não nulo: $\det(M) \neq 0$. Essa condição assegura que a transformação linear associada a $M$ é inversível — nenhuma direção do espaço é "colapsada" — e que todo vetor de $\mathbb{R}^3$ admite uma decomposição única naquela base.
+                    O conjunto é linearmente independente — e portanto constitui uma base — se, e somente se, o <strong>determinante</strong> desta matriz é não nulo: $\det(M) \neq 0$. Geometricamente, um determinante nulo significa que os três vetores são coplanares: eles "colapsam" o espaço tridimensional sobre um plano (ou uma reta), perdendo uma dimensão inteira. Um determinante não nulo, ao contrário, assegura que a transformação linear associada a $M$ preserva todas as três dimensões — nenhuma direção do espaço é destruída — e que todo vetor de $\mathbb{R}^3$ admite uma decomposição única naquela base.
                 </p>
 
-
+                <p>
+                    Até aqui, toda a maquinaria construída — espaço vetorial, combinação linear, independência, base e sistema de coordenadas — é de natureza estritamente <strong>algébrica</strong>: ela fornece os meios para decompor e recombinar vetores, mas permanece inteiramente omissa quanto a questões genuinamente <em>geométricas</em>. Dispondo apenas dessa estrutura, somos capazes de expressar um vetor como $\vec{v} = (3, 4, 0)$ em coordenadas, porém não possuímos nenhum instrumento formal para determinar o comprimento desse vetor, nem para quantificar o ângulo formado entre $\vec{u}$ e $\vec{v}$. A estrutura vetorial, por si só, não confere ao espaço nenhuma noção intrínseca de magnitude, distância ou perpendicularidade — tais propriedades constituem informação geométrica adicional que necessita ser explicitamente introduzida mediante uma estrutura suplementar.
+                </p>
 
                 <p>
                     Para dotar esse espaço de <strong>propriedades geométricas</strong> quantificáveis — essenciais para
