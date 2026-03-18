@@ -716,3 +716,54 @@ a {
     height: auto;
     display: block;
 }
+
+/* ==========================================
+   MathJax Responsive Overflow Fix
+   ========================================== */
+
+mjx-container {
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-width: 100%;
+    padding: 0.25rem 0;
+}
+
+mjx-container[jax="CHTML"][display="true"] {
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-width: 100%;
+}
+
+.prose p,
+.prose li,
+.definition-box {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+.definition-box {
+    overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+    mjx-container {
+        font-size: 90% !important;
+    }
+
+    mjx-container[jax="CHTML"][display="true"] {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 0.5rem 0;
+    }
+
+    .prose {
+        overflow-x: hidden;
+    }
+
+    .prose p,
+    .prose > *,
+    .definition-box {
+        max-width: 100%;
+        overflow-x: auto;
+    }
+}
