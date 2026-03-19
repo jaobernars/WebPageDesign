@@ -111,7 +111,7 @@
 
                         <p> Para iniciarmos nossa construção formal de $\mathbb{E}^3$, o primeiro passo consiste em dotar o conjunto $\mathbb{R}^3$ de leis de composição que lhe confiram a categoria de <strong>espaço vetorial</strong>. Para isso $\mathbb{R}^3$ é estruturado por duas operações:</p>
 
-                <div class="definition-box" styl>
+                <div class="definition-box">
 
                     <strong>Adição vetorial</strong>: Uma função binária $[ \ +\ ]: \mathbb{R}^3 \times
                     \mathbb{R}^3
@@ -389,869 +389,226 @@
                 </ul>
 
                 <p>
-                    Em ambos os casos, a condição complementar é forçada pela restrição dimensional: num espaço de dimensão $3$, qualquer conjunto L.I. com $3$ vetores já não pode ser ampliado sem gerar dependência, logo necessariamente cobre todo o espaço; e qualquer conjunto gerador com $3$ vetores já não pode ser reduzido sem perder cobertura, logo necessariamente é livre de redundâncias.
+                    Com os conceitos de <strong>base</strong> e <strong>dimensão</strong> adequadamente estabelecidos, podemos agora explorar as ricas e profundas inter-relações que existem entre espaços vetoriais distintos. A noção de que diferentes espaços vetoriais podem, de alguma forma, <em>coexistir</em> ou <em>interagir</em> dentro de um mesmo espaço ambiente é fundamental para a compreensão de estruturas mais sofisticadas, como as variedades diferenciais que encontramos na física moderna. O primeiro passo nessa direção é o estudo das <strong>transformações lineares</strong> entre espaços vetoriais.
                 </p>
 
-                <h3 id="sistema-coordenadas">Sistema de Coordenadas</h3>
+                <h2 id="transformacoes-lineares">Transformações Lineares</h2>
 
-                <p style="color: yellow;">
-                    Com o conceito de base firmemente estabelecido, dispomos finalmente do aparato necessário para atribuir uma <strong>identidade numérica</strong> a cada vetor do espaço. Escolher uma base $\mathcal{B} = \{ \hat{e}_1, \hat{e}_2, \hat{e}_3 \}$ de $\mathbb{R}^3$ equivale, na prática, a instalar um <strong>sistema de coordenadas</strong>: cada vetor $\vec{v} \in \mathbb{R}^3$ passa a ser unicamente descrito pela tripla ordenada de escalares $(v^1, v^2, v^3)$ que aparecem em sua decomposição 
-                    
-                    $$\vec{v} = v^1 \hat{e}_1 + v^2 \hat{e}_2 + v^3 \hat{e}_3.$$
-                    
-                    O <strong>Teorema da Decomposição Única</strong> garante que essa correspondência entre vetores e triplas é uma bijeção — a cada vetor corresponde uma e somente uma tripla, e vice-versa — de modo que o vetor abstrato e sua representação numérica carregam exatamente a mesma informação.
-                </p>
-
-
-                <h4 id="coord-cartesianas">Coordenadas Cartesianas</h4>
-                <p style="color: yellow;">
-                    A escolha mais imediata e recorrente em coordenadas cartesianas é a <strong>base canônica</strong> (ou base padrão) de $\mathbb{R}^3$:
-                </p>
-                <p style="color: yellow;">
-                    $$ \hat{e}_1 = (1, 0, 0), \quad \hat{e}_2 = (0, 1, 0), \quad \hat{e}_3 = (0, 0, 1) $$
-                </p>
-                <p style="color: yellow;">
-                    Nessa base, as componentes de um vetor coincidem diretamente com suas coordenadas cartesianas habituais: 
-                    
-                    $$\vec{v} = v^1 \hat{e}_1 + v^2 \hat{e}_2 + v^3 \hat{e}_3 = (v^1, v^2, v^3)$$ 
-                    
-                    É importante ressaltar, contudo, que a base canônica não é a única possível — qualquer conjunto de três vetores linearmente independentes serve igualmente como base, e a escolha de uma ou outra depende exclusivamente da conveniência do problema em questão. O que muda entre bases distintas são os valores numéricos das componentes; o vetor em si permanece o mesmo objeto geométrico.
-                </p>
-
-                <p style="color: yellow;">
-                    Para ilustrar essa liberdade de escolha, apresentamos a seguir dois outros sistemas de coordenadas de uso frequente em física — as <strong>coordenadas cilíndricas</strong> e as <strong>coordenadas esféricas</strong>. Ambos constituem exemplos de <em>coordenadas curvilíneas</em>: diferentemente do sistema cartesiano, cujos vetores de base são constantes em todo o espaço, nestes sistemas os vetores de base variam de ponto a ponto, adaptando-se à geometria do problema.
-                </p>
-
-                <h4 id="coord-cilindricas">Coordenadas Cilíndricas $(\rho, \varphi, z)$</h4>
-
-                <p style="color: yellow;">
-                    As coordenadas cilíndricas são especialmente adequadas para problemas que exibem <strong>simetria axial</strong> — isto é, invariância por rotações em torno de um eixo fixo. Um ponto $P \in \mathbb{E}^3$ é especificado pela tripla $(\rho, \varphi, z)$, onde:
-                </p>
-                <ul >
-                    <li>$\rho \in [0, +\infty)$ é a <strong>distância radial</strong> do ponto ao eixo $z$;</li>
-                    <li>$\varphi \in [0, 2\pi)$ é o <strong>ângulo azimutal</strong>, medido no plano $xy$ a partir do semieixo positivo $x$;</li>
-                    <li>$z \in (-\infty, +\infty)$ é a <strong>coordenada vertical</strong>, idêntica à coordenada cartesiana $z$.</li>
-                </ul>
-
-                <p style="color: yellow;">
-                    A relação com as coordenadas cartesianas é dada pelas transformações:
-                </p>
-                <p style="color: yellow;">
-                    $$ x = \rho \cos\varphi, \quad y = \rho \sin\varphi, \quad z = z $$
-                </p>
-                <p style="color: yellow;">
-                    A cada ponto $P$ associa-se uma base local ortonormal $\{ \hat{e}_\rho, \hat{e}_\varphi, \hat{e}_z \}$, definida em termos da base cartesiana por:
-                </p>
-                <p style="color: yellow;">
-                    $$ \hat{e}_\rho = \cos\varphi \, \hat{e}_1 + \sin\varphi \, \hat{e}_2, \quad \hat{e}_\varphi = -\sin\varphi \, \hat{e}_1 + \cos\varphi \, \hat{e}_2, \quad \hat{e}_z = \hat{e}_3 $$
-                </p>
-                <p style="color: yellow;">
-                    Note-se que $\hat{e}_\rho$ e $\hat{e}_\varphi$ dependem explicitamente do ângulo $\varphi$, e portanto <strong>variam de ponto a ponto</strong> — diferentemente da base cartesiana, que é globalmente constante. Em cada ponto, contudo, os três vetores permanecem mutuamente ortogonais e de norma unitária, constituindo uma base ortonormal local.
-                </p>
-
-                <h4 id="coord-esfericas">Coordenadas Esféricas $(r, \theta, \varphi)$</h4>
-
-                <p style="color: yellow;">
-                    As coordenadas esféricas são a escolha natural para problemas com <strong>simetria central</strong> (esférica) — situações em que a física depende essencialmente da distância a um ponto fixo. Um ponto $P \in \mathbb{E}^3$ é especificado pela tripla $(r, \theta, \varphi)$, onde:
-                </p>
-                <ul >
-                    <li>$r \in [0, +\infty)$ é a <strong>distância radial</strong> do ponto à origem;</li>
-                    <li>$\theta \in [0, \pi]$ é o <strong>ângulo polar</strong> (colatitude), medido a partir do semieixo positivo $z$;</li>
-                    <li>$\varphi \in [0, 2\pi)$ é o <strong>ângulo azimutal</strong>, medido no plano $xy$ a partir do semieixo positivo $x$.</li>
-                </ul>
-
-                <p style="color: yellow;">
-                    A relação com as coordenadas cartesianas é dada por:
-                </p>
-                <p style="color: yellow;">
-                    $$ x = r \sin\theta \cos\varphi, \quad y = r \sin\theta \sin\varphi, \quad z = r \cos\theta $$
-                </p>
-                <p style="color: yellow;">
-                    A base local ortonormal $\{ \hat{e}_r, \hat{e}_\theta, \hat{e}_\varphi \}$ associada a cada ponto é expressa em termos da base cartesiana como:
-                </p>
-                <p style="color: yellow;">
-                    $$ \hat{e}_r = \sin\theta \cos\varphi \, \hat{e}_1 + \sin\theta \sin\varphi \, \hat{e}_2 + \cos\theta \, \hat{e}_3 $$
-                </p>
-                <p style="color: yellow;">
-                    $$ \hat{e}_\theta = \cos\theta \cos\varphi \, \hat{e}_1 + \cos\theta \sin\varphi \, \hat{e}_2 - \sin\theta \, \hat{e}_3 $$
-                </p>
-                <p style="color: yellow;">
-                    $$ \hat{e}_\varphi = -\sin\varphi \, \hat{e}_1 + \cos\varphi \, \hat{e}_2 $$
-                </p>
-                <p style="color: yellow;">
-                    Aqui, todos os três vetores de base dependem das coordenadas angulares $(\theta, \varphi)$, de modo que a base é <strong>inteiramente local</strong>. Novamente, em cada ponto os vetores $\{ \hat{e}_r, \hat{e}_\theta, \hat{e}_\varphi \}$ formam uma base ortonormal — mas a sua orientação varia suavemente de ponto a ponto, "acompanhando" a geometria esférica.
-                </p>
-
-                <p style="color: yellow;">
-                    Esses dois exemplos ilustram um ponto conceitual fundamental: a base canônica cartesiana é <em>uma</em> escolha entre infinitas, privilegiada apenas pela simplicidade algébrica. Em problemas com simetria <u>cilíndrica</u> ou <u>esférica</u>, a adoção da base local apropriada simplifica dramaticamente as equações, pois alinha os vetores de base com as direções naturais do problema — o preço a pagar é que os vetores de base passam a depender da posição, e as operações de diferenciação exigem o cuidado adicional de levar em conta essa variabilidade (o que será formalizado adiante com os conceitos de <strong>símbolos de Christoffel</strong> e <strong>derivada covariante</strong>).
-                </p>
-
-                <h4 id="repr-matricial">Representação Matricial</h4>
-
-                <p style="color: yellow;">
-                    Uma vez fixada uma base $\mathcal{B} = \{ \hat{e}_1, \hat{e}_2, \hat{e}_3 \}$ de $\mathbb{R}^3$, o <strong>Teorema da Decomposição Única</strong> garante a existência de um isomorfismo canônico entre o espaço vetorial abstrato $\mathbb{R}^3$ e o espaço das matrizes-coluna $\mathcal{M}_{3 \times 1}(\mathbb{R})$. A cada vetor $\vec{v} \in \mathbb{R}^3$ associa-se bijetivamente o seu <strong>vetor-coluna de componentes</strong> (ou <em>representação matricial</em>) na base $\mathcal{B}$:
-                </p>
-                <p style="color: yellow;">
-                    $$ [\vec{v}]_{\mathcal{B}} = \begin{pmatrix} v^1 \\ v^2 \\ v^3 \end{pmatrix} \in \mathcal{M}_{3 \times 1}(\mathbb{R}), \qquad \text{onde } \vec{v} = \sum_{i=1}^{3} v^i \hat{e}_i $$
-                </p>
-                <p style="color: yellow;">
-                    Esse isomorfismo é, por construção, um <strong>isomorfismo de espaços vetoriais</strong>: a aplicação $\varphi_{\mathcal{B}} : \mathbb{R}^3 \to \mathcal{M}_{3 \times 1}(\mathbb{R})$ definida por $\vec{v} \mapsto [\vec{v}]_{\mathcal{B}}$ é $\mathbb{R}$-linear, isto é, preserva ambas as operações do espaço vetorial:
-                </p>
-                <p style="color: yellow;">
-                    $$ \varphi_{\mathcal{B}}(\alpha \vec{u} + \beta \vec{v}) = \alpha \, \varphi_{\mathcal{B}}(\vec{u}) + \beta \, \varphi_{\mathcal{B}}(\vec{v}) $$
-                </p>
-                <p style="color: yellow;">
-                    ou, em notação matricial explícita:
-                </p>
-                <p style="color: yellow;">
-                    $$ [\alpha \vec{u} + \beta \vec{v}]_{\mathcal{B}} = \alpha [\vec{u}]_{\mathcal{B}} + \beta [\vec{v}]_{\mathcal{B}} = \alpha \begin{pmatrix} u^1 \\ u^2 \\ u^3 \end{pmatrix} + \beta \begin{pmatrix} v^1 \\ v^2 \\ v^3 \end{pmatrix} = \begin{pmatrix} \alpha u^1 + \beta v^1 \\ \alpha u^2 + \beta v^2 \\ \alpha u^3 + \beta v^3 \end{pmatrix} $$
-                </p>
-                <p style="color: yellow;">
-                    A linearidade de $\varphi_{\mathcal{B}}$ assegura que toda equação vetorial abstrata se traduz fielmente numa equação entre matrizes-coluna — e vice-versa. Em particular, a verificação de independência linear de um conjunto $S = \{ \vec{v}_1, \vec{v}_2, \vec{v}_3 \}$ reduz-se à análise do sistema linear homogêneo associado à <strong>matriz cujas colunas</strong> são os vetores-coluna de $S$:
-                </p>
-                <p style="color: yellow;">
-                    $$ M = \Big( [\vec{v}_1]_{\mathcal{B}} \;\Big|\; [\vec{v}_2]_{\mathcal{B}} \;\Big|\; [\vec{v}_3]_{\mathcal{B}} \Big) = \begin{pmatrix} v_1^1 & v_2^1 & v_3^1 \\ v_1^2 & v_2^2 & v_3^2 \\ v_1^3 & v_2^3 & v_3^3 \end{pmatrix} \in \mathcal{M}_{3 \times 3}(\mathbb{R}) $$
-                </p>
-                <p style="color: yellow;">
-                    O conjunto $S$ é linearmente independente — e portanto constitui uma base de $\mathbb{R}^3$ — se, e somente se, a equação $M \vec{\alpha} = \vec{0}$ admite unicamente a solução trivial $\vec{\alpha} = \vec{0}$, condição equivalente à não-singularidade da matriz:
-                </p>
-                <p style="color: yellow;">
-                    $$ S \text{ é L.I.} \iff \ker(M) = \{ \vec{0} \} \iff \det(M) \neq 0 \iff \text{rank}(M) = 3 $$
-                </p>
-                <p style="color: yellow;">
-                    Geometricamente, $\det(M) = 0$ implica que os vetores-coluna são <u>coplanares</u> (ou colineares): a aplicação linear representada por $M$ colapsa $\mathbb{R}^3$ sobre um subespaço de dimensão estritamente inferior — um plano ($\text{rank} = 2$), uma reta ($\text{rank} = 1$) ou a origem ($\text{rank} = 0$) —, destruindo ao menos uma direção. Reciprocamente, $\det(M) \neq 0$ garante que $M$ define um <strong>automorfismo</strong> de $\mathbb{R}^3$ (pertence ao grupo linear geral $\text{GL}(3, \mathbb{R})$), preservando todas as três dimensões e assegurando que todo vetor admite uma decomposição única naquela base.
-                </p>
-
-                <h4 id="mudanca-base">Mudança de Base</h4>
-
-                <p style="color: yellow;">
-                    A representação matricial de um vetor depende intrinsecamente da base escolhida: um mesmo vetor $\vec{v} \in \mathbb{R}^3$ possui, em geral, componentes numéricas distintas em bases distintas. A questão que se impõe naturalmente é: <i>dada a representação de $\vec{v}$ numa base $\mathcal{B}$, como obter sua representação numa outra base $\mathcal{B}'$?</i> A resposta é fornecida pela <strong>matriz de mudança de base</strong> (ou <em>matriz de transição</em>), que codifica a relação algébrica entre as duas bases e permite converter sistematicamente as componentes de qualquer vetor de uma representação à outra.
-                </p>
-
-                <p style="color: yellow;">
-                    Sejam $\mathcal{B} = \{ \hat{e}_1, \hat{e}_2, \hat{e}_3 \}$ e $\mathcal{B}' = \{ \hat{e}'_1, \hat{e}'_2, \hat{e}'_3 \}$ duas bases de $\mathbb{R}^3$. Como $\mathcal{B}$ é uma base, cada vetor de $\mathcal{B}'$ admite uma decomposição única em termos de $\mathcal{B}$:
-                </p>
-                <p style="color: yellow;">
-                    $$ \hat{e}'_j = \sum_{i=1}^{3} S^i{}_j \, \hat{e}_i, \qquad j = 1, 2, 3 $$
-                </p>
-                <p style="color: yellow;">
-                    onde os coeficientes $S^i{}_j \in \mathbb{R}$ são univocamente determinados. A <strong>matriz de mudança de base</strong> $S \in \mathcal{M}_{3 \times 3}(\mathbb{R})$ é definida como a matriz cujas colunas são os vetores-coluna dos novos vetores de base expressos na base antiga:
+                <p>
+                    Uma <strong>transformação linear</strong> entre dois espaços vetoriais é uma regra que associa a cada vetor de um espaço uma combinação linear de vetores em outro espaço, respeitando as operações de adição e multiplicação por escalar. Mais formalmente:
                 </p>
 
                 <div class="definition-box">
 
-                    <strong>Matriz de Mudança de Base</strong>: A matriz $S = (S^i{}_j) \in \text{GL}(3, \mathbb{R})$, definida pela relação $\hat{e}'_j = \sum_{i=1}^{3} S^i{}_j \, \hat{e}_i$, é chamada de <strong>matriz de mudança de base</strong> de $\mathcal{B}$ para $\mathcal{B}'$. Matricialmente:
-                    <br>
-                    $$ S = \Big( [\hat{e}'_1]_{\mathcal{B}} \;\Big|\; [\hat{e}'_2]_{\mathcal{B}} \;\Big|\; [\hat{e}'_3]_{\mathcal{B}} \Big) = \begin{pmatrix} S^1{}_1 & S^1{}_2 & S^1{}_3 \\ S^2{}_1 & S^2{}_2 & S^2{}_3 \\ S^3{}_1 & S^3{}_2 & S^3{}_3 \end{pmatrix} $$
-                    <br>
-                    Como ambas $\mathcal{B}$ e $\mathcal{B}'$ são bases, $S$ é necessariamente <strong>inversível</strong> ($\det(S) \neq 0$), e a matriz de mudança de base inversa é $S^{-1}$, que converte de $\mathcal{B}'$ para $\mathcal{B}$.
-
-                </div>
-
-                <p style="color: yellow;">
-                    A relação entre as componentes de um vetor $\vec{v}$ nas duas bases obtém-se por substituição direta. Se $\vec{v} = \sum_{j=1}^{3} v'^j \hat{e}'_j$, então:
-                </p>
-                <p style="color: yellow;">
-                    $$ \vec{v} = \sum_{j=1}^{3} v'^j \hat{e}'_j = \sum_{j=1}^{3} v'^j \left( \sum_{i=1}^{3} S^i{}_j \, \hat{e}_i \right) = \sum_{i=1}^{3} \left( \sum_{j=1}^{3} S^i{}_j \, v'^j \right) \hat{e}_i $$
-                </p>
-                <p style="color: yellow;">
-                    Identificando com $\vec{v} = \sum_{i=1}^{3} v^i \hat{e}_i$ e invocando a unicidade das componentes na base $\mathcal{B}$:
-                </p>
-                <p style="color: yellow;">
-                    $$ v^i = \sum_{j=1}^{3} S^i{}_j \, v'^j, \qquad i = 1, 2, 3 $$
-                </p>
-                <p style="color: yellow;">
-                    ou, em notação matricial compacta:
-                </p>
-
-                <div class="definition-box">
-
-                    <strong>Lei de Transformação das Componentes</strong>:
-                    <br>
-                    $$ [\vec{v}]_{\mathcal{B}} = S \, [\vec{v}]_{\mathcal{B}'} \qquad \Longleftrightarrow \qquad [\vec{v}]_{\mathcal{B}'} = S^{-1} [\vec{v}]_{\mathcal{B}} $$
-                    <br>
-                    Isto é, as componentes na base antiga são obtidas multiplicando-se $S$ pelas componentes na base nova, e reciprocamente.
-
-                </div>
-
-                <p style="color: yellow;">
-                    Note-se a <strong>contravariância</strong> que emerge desta construção: enquanto os vetores de base transformam-se segundo $\hat{e}'_j = \sum_i S^i{}_j \, \hat{e}_i$ (multiplicação por $S$), as componentes transformam-se segundo $v'^j = \sum_i (S^{-1})^j{}_i \, v^i$ (multiplicação por $S^{-1}$). Essa oposição — bases transformam "num sentido", componentes transformam "no sentido inverso" — é precisamente a origem do termo <em>contravariante</em> na linguagem tensorial, e constitui uma das ideias mais fundamentais da geometria diferencial e da relatividade.
-                </p>
-
-                <p style="color: yellow;">
-                    A composição de mudanças de base obedece, naturalmente, à multiplicação matricial: se $S_1$ é a mudança de $\mathcal{B}$ para $\mathcal{B}'$ e $S_2$ é a mudança de $\mathcal{B}'$ para $\mathcal{B}''$, então a mudança direta de $\mathcal{B}$ para $\mathcal{B}''$ é $S_1 S_2$. As matrizes de mudança de base formam portanto o <strong>grupo linear geral</strong> $\text{GL}(3, \mathbb{R})$ — o grupo de todas as matrizes $3 \times 3$ inversíveis sob multiplicação —, cuja estrutura algébrica codifica a totalidade das possíveis reparametrizações lineares do espaço vetorial.
-                </p>
-
-
-                <h2 id="estrutura-geometrica">Estrutura Geométrica</h2>
-
-
-                <p style="color: green;">
-                    Até aqui, tudo o que foi construído é de natureza estritamente <strong>algébrica</strong>: ela fornece os meios para decompor e recombinar vetores, mas permanece inteiramente omissa quanto a questões genuinamente <em>geométricas</em>. Dispondo apenas dessa estrutura, somos capazes de expressar um vetor como $\vec{v} = (3, 4, 0)$ em coordenadas, porém não possuímos nenhum instrumento formal para determinar o comprimento desse vetor, nem para quantificar o ângulo formado entre $\vec{u}$ e $\vec{v}$. A estrutura vetorial, por si só, não confere ao espaço nenhuma noção intrínseca de <u>magnitude</u>, <u>distância</u> ou <u>perpendicularidade</u> — tais propriedades constituem informação geométrica adicional que necessita ser explicitamente introduzida mediante uma estrutura suplementar.
-                </p>
-
-                <h3>Produto Interno</h3>
-
-                <p style="color: green;">
-                    Para dotar esse espaço de <strong>propriedades geométricas</strong> quantificáveis — essenciais para
-                    definir
-                    <u>distâncias</u> e <u>ângulos</u> na física clássica — introduz-se o <strong>produto
-                        interno</strong>, uma forma bilinear, simétrica e positiva-definida:
-                </p>
-
-                <div class="definition-box">
-
-                    <strong>Produto Interno</strong>: Uma função $g: \mathbb{R}^3 \times \mathbb{R}^3 \to
-                    \mathbb{R}$, denotada por $(\cdot, \cdot) : \mathbb{R}^3 \times
-                    \mathbb{R}^3 \to \mathbb{R}$, que a cada par de vetores $\vec{v}, \vec{w}
-                    \in
-                    \mathbb{R}^3$ associa um número real denotado por $(\vec{v}, \vec{w})$ (ou $g(\vec{v}, \vec{w})$).
-
-                </div>
-
-                <p style="color: green;">
-                    O produto interno deve satisfazer as seguintes propriedades (axiomas), válidas $\forall$ vetores
-                    $\vec{u}, \vec{v}, \vec{w} \in \mathbb{R}^3$ e $\forall$ escalares $\alpha,
-                    \beta \in \mathbb{R}$:
-                </p>
-                <ul>
-                    <li style="color: green;">
-                        <strong>Simetria (Comutatividade)</strong>: $\forall \ \vec{v}, \vec{w} \in
-                        \mathbb{R}^3$, temos $(\vec{v}, \vec{w}) = (\vec{w}, \vec{v})$.
-                    </li>
-
-                    <li style="color: green;">
-                        <strong>Positiva-definida</strong>: $\forall \ \vec{v} \in \mathbb{R}^3$, $(\vec{v}, \vec{v}) \geq 0$, e $(\vec{v}, \vec{v}) = 0$ se, e somente se, $\vec{v} =
-                        \vec{0}$.
-                    </li>
-
-                    <li style="color: green;">
-                        <strong>Homogeneidade</strong>: $\forall \ \vec{v}, \vec{w} \in \mathbb{R}^3$ e $\forall \ \alpha \in \mathbb{R}$, temos
-                        $(\alpha \vec{v}, \vec{w}) = \alpha (\vec{v}, \vec{w})$.
-                    </li>
-                    <li style="color: green;">
-                        <strong>Distributividade (Aditividade)</strong>: $\forall \ \vec{u}, \vec{v}, \vec{w} \in \mathbb{R}^3$, temos
-                        $(\vec{u} + \vec{v}, \vec{w}) = (\vec{u}, \vec{w}) + (\vec{v}, \vec{w})$. (Pela simetria, ambas as propriedades também valem no segundo argumento, sendo assim uma forma
-                        bilinear).
-                    </li>
-                
-                </ul>
-
-                <h3>Norma Induzida pelo Produto Interno</h3>
-
-                <p style="color: green;">
-                    A partir das propriedades do produto interno, podemos definir de forma natural uma medida de "tamanho" ou "comprimento" para os vetores do espaço. Essa construção é chamada de <strong>norma induzida pelo produto interno</strong>, e constitui a ferramenta fundamental para quantificar magnitudes geométricas no espaço euclidiano.
-                </p>
-
-                <div class="definition-box">
-
-                    <strong>Norma Vetorial Induzida pelo Produto Interno</strong>: Dado um espaço vetorial $\mathbb{R}^3$ munido de um produto interno $(\cdot, \cdot)$, a <strong>norma</strong> de um vetor $\vec{v} \in \mathbb{R}^3$, denotada por $\| \vec{v} \|$, é definida como:
-                    <br>
-                    $$ \| \vec{v} \| \equiv \sqrt{(\vec{v}, \vec{v})} $$
-                    <br>
-                    Esta função $\| \cdot \| : \mathbb{R}^3 \to \mathbb{R}$ satisfaz as seguintes propriedades, $\forall \ \vec{u}, \vec{v} \in \mathbb{R}^3$ e $\forall \ \alpha \in \mathbb{R}$:
-
-                    <ul style="margin-top: 1rem;">
-                        <li><strong>Positividade</strong>: $\| \vec{v} \| \geq 0$, e $\| \vec{v} \| = 0 \iff \vec{v} = \vec{0}$.</li>
-                        <li><strong>Homogeneidade absoluta</strong>: $\| \alpha \vec{v} \| = |\alpha| \, \| \vec{v} \|$.</li>
-                        <li><strong>Desigualdade triangular</strong>: $\| \vec{u} + \vec{v} \| \leq \| \vec{u} \| + \| \vec{v} \|$.</li>
-                    </ul>
-
-                </div>
-
-                <p style="color: yellow;">
-                    A primeira propriedade decorre diretamente do axioma de <strong>positiva-definida</strong> do produto interno: como $(\vec{v}, \vec{v}) \geq 0$ e a igualdade vale apenas para o vetor nulo, a raiz quadrada herda essa positividade estrita. A segunda propriedade — a <strong>homogeneidade absoluta</strong> — segue do axioma de homogeneidade do produto interno:
-                </p>
-                <p style="color: yellow;">
-                    $$ \| \alpha \vec{v} \|^2 = (\alpha \vec{v}, \alpha \vec{v}) = \alpha^2 (\vec{v}, \vec{v}) = \alpha^2 \| \vec{v} \|^2 $$
-                </p>
-                <p style="color: yellow;">
-                    Extraindo a raiz quadrada de ambos os lados, obtemos $\| \alpha \vec{v} \| = |\alpha| \, \| \vec{v} \|$, onde o valor absoluto $|\alpha|$ aparece naturalmente pela propriedade da raiz quadrada.
-                </p>
-
-                <p style="color: yellow;">
-                    A terceira propriedade — a <strong>desigualdade triangular</strong> — é a mais profunda e requer como ingrediente intermediário a célebre <strong>Desigualdade de Cauchy-Schwarz</strong>:
-                </p>
-                <p style="color: yellow;">
-                    $$ |(\vec{u}, \vec{v})| \leq \| \vec{u} \| \, \| \vec{v} \| $$
-                </p>
-                <p style="color: yellow;">
-                    A partir dela, expandimos a norma da soma:
-                </p>
-                <p style="color: yellow;">
-                    $$ \| \vec{u} + \vec{v} \|^2 = (\vec{u} + \vec{v}, \vec{u} + \vec{v}) = \| \vec{u} \|^2 + 2(\vec{u}, \vec{v}) + \| \vec{v} \|^2 $$
-                </p>
-                <p style="color: yellow;">
-                    Aplicando Cauchy-Schwarz ao termo cruzado, $(\vec{u}, \vec{v}) \leq |(\vec{u}, \vec{v})| \leq \| \vec{u} \| \, \| \vec{v} \|$:
-                </p>
-                <p style="color: yellow;">
-                    $$ \| \vec{u} + \vec{v} \|^2 \leq \| \vec{u} \|^2 + 2 \| \vec{u} \| \, \| \vec{v} \| + \| \vec{v} \|^2 = \left( \| \vec{u} \| + \| \vec{v} \| \right)^2 $$
-                </p>
-                <p style="color: yellow;">
-                    Extraindo a raiz quadrada, concluímos: $\| \vec{u} + \vec{v} \| \leq \| \vec{u} \| + \| \vec{v} \|$, completando a demonstração de que a norma induzida pelo produto interno satisfaz todas as propriedades de uma norma legítima.
-                </p>
-
-                <h3>Ângulo entre Vetores</h3>
-
-                <p style="color: yellow;">
-                    A norma induzida pelo produto interno nos fornece uma régua para <u>medir comprimentos</u>, mas o produto interno carrega consigo uma informação geométrica ainda mais rica: a relação angular entre dois vetores. De fato, a Desigualdade de Cauchy-Schwarz garante que, $\forall \ \vec{u}, \vec{v} \in \mathbb{R}^3$ com $\vec{u} \neq \vec{0}$ e $\vec{v} \neq \vec{0}$, a razão entre o produto interno e o produto das normas está estritamente confinada ao intervalo $[-1, 1]$:
-                </p>
-                <p style="color: yellow;">
-                    $$ -1 \leq \frac{(\vec{u}, \vec{v})}{\| \vec{u} \| \, \| \vec{v} \|} \leq 1 $$
-                </p>
-                <p style="color: yellow;">
-                    Como a função cosseno $\cos: [0, \pi] \to [-1, 1]$ é uma bijeção contínua, existe um único ângulo $\theta \in [0, \pi]$ tal que essa razão é exatamente o cosseno desse ângulo. Isso nos permite definir formalmente o conceito de ângulo entre vetores:
-                </p>
-
-                <div class="definition-box">
-
-                    <strong>Ângulo entre Vetores</strong>: Dados dois vetores não nulos $\vec{u}, \vec{v} \in \mathbb{R}^3$, o <strong>ângulo</strong> $\theta$ entre eles é o único valor $\theta \in [0, \pi]$ satisfazendo:
-                    <br>
-                    $$ \cos \theta = \frac{(\vec{u}, \vec{v})}{\| \vec{u} \| \, \| \vec{v} \|} $$
-                    <br>
-                    Equivalentemente:
-                    $$ (\vec{u}, \vec{v}) = \| \vec{u} \| \, \| \vec{v} \| \cos \theta $$
-
-                </div>
-
-                <p style="color: yellow;">
-                    Essa identidade revela o significado geométrico profundo do produto interno: ele codifica simultaneamente as magnitudes dos vetores e o ângulo entre eles. O sinal do produto interno determina diretamente a natureza angular da relação:
-                </p>
-                <ul>
-                    <li>$(\vec{u}, \vec{v}) > 0$: o ângulo é agudo ($\theta < \pi/2$), os vetores "apontam no mesmo sentido geral".</li>
-                    <li>$(\vec{u}, \vec{v}) < 0$: o ângulo é obtuso ($\theta > \pi/2$), os vetores "apontam em sentidos opostos".</li>
-                    <li>$(\vec{u}, \vec{v}) = 0$: o ângulo é reto ($\theta = \pi/2$), condição que recebe um nome especial.</li>
-                </ul>
-
-                <h3 id="ortogonalidade">Ortogonalidade</h3>
-
-                <p>
-                    O produto interno, ao quantificar o ângulo entre vetores, distingue uma relação geométrica de importância capital: a <strong>perpendicularidade</strong>. O caso $\theta = \pi / 2$ — no qual dois vetores não compartilham nenhuma projeção mútua — corresponde precisamente à anulação do produto interno. Essa condição recebe o nome de <em>ortogonalidade</em>:
-                </p>
-                
-                <div class="definition-box">
-
-                    <strong>Ortogonalidade</strong>: Dois vetores $\vec{u}, \vec{v} \in \mathbb{R}^3$ são ditos <strong>ortogonais</strong> (ou perpendiculares), denotado por $\vec{u} \perp \vec{v}$, se e somente se seu produto interno se anula:
-                    <br>
-                    $$ \vec{u} \perp \vec{v} \iff (\vec{u}, \vec{v}) = 0 $$
-                    <br>
-                    Por convenção, o vetor nulo $\vec{0}$ é ortogonal a todo vetor do espaço: $(\vec{0}, \vec{v}) = 0 \ \forall \ \vec{v} \in \mathbb{R}^3$, o que decorre diretamente da homogeneidade do produto interno com $\alpha = 0$.
-
-                </div>
-
-                <p>
-                    A ortogonalidade não é uma propriedade isolada — ela interage de forma profunda com toda a maquinaria algébrica construída nas seções anteriores. Recordemos que uma <strong>base</strong> $\mathcal{B} = \{ \hat{e}_1, \hat{e}_2, \hat{e}_3 \}$ de $\mathbb{R}^3$ é qualquer conjunto L.I. de $3$ vetores que gera o espaço, e que o <strong>Teorema da Decomposição Única</strong> garante que todo vetor $\vec{v} \in \mathbb{R}^3$ admite uma e somente uma representação $\vec{v} = \sum_{i=1}^{3} v^i \hat{e}_i$. Entretanto, a obtenção das componentes $v^i$ numa base arbitrária exige, em geral, a resolução de um sistema linear $3 \times 3$ — procedimento que, embora sempre possível (pois $\det(M) \neq 0$ para qualquer base), é computacionalmente custoso. A ortogonalidade oferece uma simplificação drástica: se a base for composta por vetores <strong>mutuamente ortogonais e de norma unitária</strong>, as componentes podem ser extraídas por simples projeções escalares via produto interno, eliminando inteiramente a necessidade de resolver sistemas lineares.
-                </p>
-
-                <h3 id="base-ortonormal">Base Ortonormal e Delta de Kronecker</h3>
-
-                <p>
-                    Formalizamos agora a classe privilegiada de bases que compatibiliza a estrutura algébrica (base, coordenadas, representação matricial) com a estrutura geométrica (produto interno, norma, ângulo):
-                </p>
-
-                <div class="definition-box">
-
-                    <strong>Base Ortonormal</strong>: Uma base $\mathcal{B} = \{ \hat{e}_1, \hat{e}_2, \hat{e}_3 \}$ de $\mathbb{R}^3$ é dita <strong>ortonormal</strong> se satisfaz:
-                    <br>
-                    $$ (\hat{e}_i, \hat{e}_j) = \delta_{ij} \equiv \begin{cases} 1 & \text{se } i = j \\ 0 & \text{se } i \neq j \end{cases} \qquad \forall \ i, j \in \{1, 2, 3\} $$
-                    <br>
-                    O símbolo $\delta_{ij}$ é a <strong>Delta de Kronecker</strong>. A condição $\delta_{ii} = 1$ (sem soma) assegura a <strong>normalização</strong> ($\| \hat{e}_i \| = 1$), enquanto $\delta_{ij} = 0$ para $i \neq j$ assegura a <strong>ortogonalidade mútua</strong> ($\hat{e}_i \perp \hat{e}_j$).
-
-                </div>
-
-                <p>
-                    A base canônica $\{ (1,0,0), (0,1,0), (0,0,1) \}$ introduzida na seção de coordenadas cartesianas é o exemplo mais imediato de base ortonormal. Contudo, existem infinitas bases ortonormais — qualquer rotação rígida da base canônica produz uma nova base igualmente ortonormal, e a totalidade dessas rotações forma o <strong>grupo ortogonal especial</strong> $\text{SO}(3) \subset \text{GL}(3, \mathbb{R})$, um subgrupo do grupo linear geral que preserva tanto o produto interno quanto a orientação do espaço.
-                </p>
-
-                <h3 id="projecao-componentes">Extração de Componentes por Projeção</h3>
-
-                <p>
-                    O poder computacional de uma base ortonormal reside no fato de que as componentes de qualquer vetor podem ser lidas diretamente por projeção escalar, sem necessidade de inverter matrizes. Seja $\vec{v} \in \mathbb{R}^3$ com decomposição $\vec{v} = \sum_{i=1}^{3} v^i \hat{e}_i$ numa base ortonormal $\mathcal{B}$. Aplicando o produto interno com o $k$-ésimo vetor de base:
-                </p>
-                <p>
-                    $$ (\hat{e}_k, \vec{v}) = \left( \hat{e}_k, \sum_{i=1}^{3} v^i \hat{e}_i \right) = \sum_{i=1}^{3} v^i \underbrace{(\hat{e}_k, \hat{e}_i)}_{\delta_{ki}} = \sum_{i=1}^{3} v^i \delta_{ki} = v^k $$
-                </p>
-                <p>
-                    A Delta de Kronecker atua como um <strong>operador de seleção</strong>: no somatório $\sum_i v^i \delta_{ki}$, todos os termos com $i \neq k$ se anulam, restando exclusivamente o termo $i = k$. Essa propriedade de "peneiramento" — análoga à função delta de Dirac no contexto contínuo — é, em essência, o motivo pelo qual a Delta de Kronecker aparece ubiquamente em toda a álgebra linear e na física tensorial.
-                </p>
-                <p>
-                    Resulta que, numa base ortonormal, a componente $v^k$ do vetor $\vec{v}$ é simplesmente a projeção escalar de $\vec{v}$ sobre a direção $\hat{e}_k$:
-                </p>
-                <p>
-                    $$ v^k = (\hat{e}_k, \vec{v}), \qquad k = 1, 2, 3 $$
-                </p>
-                <p>
-                    ou, de forma equivalente: todo vetor se reescreve como
-                </p>
-                <p>
-                    $$ \vec{v} = \sum_{i=1}^{3} (\hat{e}_i, \vec{v}) \, \hat{e}_i $$
-                </p>
-                <p>
-                    Esta identidade — chamada <strong>relação de completeza</strong> (ou <em>resolução da identidade</em>) — mostra que a base ortonormal "particiona" o vetor $\vec{v}$ em projeções independentes ao longo de cada eixo, e que a soma dessas projeções reconstitui integralmente o vetor original. Comparando com o procedimento geral de obtenção de componentes para uma base arbitrária $\mathcal{B}'$ (que requer a inversão da matriz $M \in \text{GL}(3, \mathbb{R})$, ou seja, $[\vec{v}]_{\mathcal{B}'} = M^{-1} [\vec{v}]_{\mathcal{B}}$), a economia é evidente: a ortonormalidade torna a inversão trivial, pois a representação matricial do produto interno na base ortonormal é a própria identidade.
-                </p>
-
-                <h3 id="produto-interno-componentes">Produto Interno em Componentes</h3>
-
-                <p>
-                    Estamos agora em posição de derivar a <strong>fórmula algébrica do produto interno</strong> em termos das componentes dos vetores. Sejam $\vec{u}, \vec{v} \in \mathbb{R}^3$ decompostos numa base ortonormal $\mathcal{B} = \{ \hat{e}_1, \hat{e}_2, \hat{e}_3 \}$ segundo o Teorema da Decomposição Única:
-                </p>
-                <p>
-                    $$ \vec{u} = \sum_{i=1}^{3} u^i \hat{e}_i, \qquad \vec{v} = \sum_{j=1}^{3} v^j \hat{e}_j $$
-                </p>
-                <p>
-                    Aplicando a bilinearidade do produto interno (distributividade em ambos os argumentos, seguida da homogeneidade):
-                </p>
-                <p>
-                    $$ (\vec{u}, \vec{v}) = \left( \sum_{i=1}^{3} u^i \hat{e}_i \,,\, \sum_{j=1}^{3} v^j \hat{e}_j \right) = \sum_{i=1}^{3} \sum_{j=1}^{3} u^i v^j \, (\hat{e}_i, \hat{e}_j) $$
-                </p>
-                <p>
-                    Substituindo a condição de ortonormalidade $(\hat{e}_i, \hat{e}_j) = \delta_{ij}$:
-                </p>
-                <p>
-                    $$ (\vec{u}, \vec{v}) = \sum_{i=1}^{3} \sum_{j=1}^{3} u^i v^j \, \delta_{ij} $$
-                </p>
-                <p>
-                    Novamente, a Delta de Kronecker opera como filtro de seleção, colapsando o somatório duplo num somatório simples — somente os termos com $j = i$ sobrevivem:
-                </p>
-                <p>
-                    $$ (\vec{u}, \vec{v}) = \sum_{i=1}^{3} u^i v^i = u^1 v^1 + u^2 v^2 + u^3 v^3 $$
-                </p>
-                <p>
-                    Este resultado é de importância central: ele mostra que, <strong>numa base ortonormal</strong>, o produto interno — originalmente definido como uma forma bilinear abstrata sobre vetores — reduz-se a uma simples soma de produtos componente a componente. É esta redução que torna a mecânica clássica computacionalmente tratável.
-                </p>
-
-                <h3 id="norma-distancia-componentes">Norma e Distância em Componentes</h3>
-
-                <p>
-                    A fórmula do produto interno em componentes permite particularizar imediatamente a norma e a distância euclidianas. Recordando que $\| \vec{v} \| \equiv \sqrt{(\vec{v}, \vec{v})}$ (definição da seção anterior), basta tomar $\vec{u} = \vec{v}$ na expressão acima:
-                </p>
-
-                <div class="definition-box">
-
-                    <strong>Norma em Componentes Ortonormais</strong>: Dado $\vec{v} = \sum_{i=1}^{3} v^i \hat{e}_i$ numa base ortonormal,
-                    <br>
-                    $$ \| \vec{v} \| = \sqrt{(\vec{v}, \vec{v})} = \sqrt{\sum_{i=1}^{3} (v^i)^2} = \sqrt{(v^1)^2 + (v^2)^2 + (v^3)^2} $$
-                    <br>
-                    que é precisamente o <strong>Teorema de Pitágoras em três dimensões</strong> — a norma é a diagonal do paralelepípedo retangular definido pelas componentes.
-
-                </div>
-
-                <div class="definition-box">
-
-                    <strong>Distância Euclidiana em Componentes</strong>: A distância entre dois pontos definidos pelos vetores posição $\vec{u}$ e $\vec{v}$, numa base ortonormal, é dada por:
-                    <br>
-                    $$ d(\vec{u}, \vec{v}) = \| \vec{u} - \vec{v} \| = \sqrt{\sum_{i=1}^{3} (u^i - v^i)^2} = \sqrt{(u^1 - v^1)^2 + (u^2 - v^2)^2 + (u^3 - v^3)^2} $$
-
-                </div>
-
-                <h3 id="tensor-metrico">Tensor Métrico e Notação Tensorial</h3>
-
-                <p>
-                    As fórmulas deduzidas acima são válidas em bases ortonormais, onde $(\hat{e}_i, \hat{e}_j) = \delta_{ij}$. Porém, a maquinaria de mudança de base desenvolvida anteriormente nos ensinou que as componentes de um vetor dependem da base escolhida, e que bases diferentes estão conectadas por matrizes de $\text{GL}(3, \mathbb{R})$. Uma base arbitrária $\mathcal{B}' = \{ \hat{e}'_1, \hat{e}'_2, \hat{e}'_3 \}$ — como as bases curvilíneas cilíndricas ou esféricas, ou simplesmente uma base oblíqua — não satisfaz, em geral, $(\hat{e}'_i, \hat{e}'_j) = \delta_{ij}$. Necessitamos portanto de uma formulação do produto interno que seja válida em <strong>qualquer</strong> base, não apenas nas ortonormais. Essa formulação é o <strong>tensor métrico</strong>.
-                </p>
-
-                <div class="definition-box">
-
-                    <strong>Tensor Métrico</strong>: Dada uma base $\mathcal{B} = \{ \hat{e}_1, \hat{e}_2, \hat{e}_3 \}$ de $\mathbb{R}^3$, as <strong>componentes do tensor métrico</strong> nessa base são definidas como os produtos internos entre os vetores de base:
-                    <br>
-                    $$ g_{ij} \equiv (\hat{e}_i, \hat{e}_j), \qquad i, j \in \{1, 2, 3\} $$
-                    <br>
-                    A matriz $[g_{ij}] \in \mathcal{M}_{3 \times 3}(\mathbb{R})$ é simétrica ($g_{ij} = g_{ji}$, pela simetria do produto interno) e positiva-definida ($g_{ij} v^i v^j > 0 \ \forall \ \vec{v} \neq \vec{0}$), portanto $\det([g_{ij}]) > 0$ e existe a <strong>métrica inversa</strong> $g^{ij}$ tal que $g^{ik} g_{kj} = \delta^i{}_j$.
-
-                </div>
-
-                <p>
-                    Numa base ortonormal, as componentes do tensor métrico reduzem-se à Delta de Kronecker: $g_{ij} = \delta_{ij}$. Numa base arbitrária, os termos diagonais $g_{ii} = \| \hat{e}_i \|^2$ codificam os comprimentos dos vetores de base, e os termos fora da diagonal $g_{ij}$ ($i \neq j$) codificam os ângulos entre eles. É neste sentido que o tensor métrico <em>contém toda a informação geométrica</em> do espaço relativa à base escolhida.
-                </p>
-
-                <p>
-                    O produto interno entre dois vetores $\vec{u} = u^i \hat{e}_i$ e $\vec{v} = v^j \hat{e}_j$ adquire, em termos do tensor métrico, a forma geral:
-                </p>
-                <p>
-                    $$ (\vec{u}, \vec{v}) = \left( u^i \hat{e}_i \,,\, v^j \hat{e}_j \right) = u^i v^j \, (\hat{e}_i, \hat{e}_j) = u^i v^j \, g_{ij} $$
-                </p>
-                <p>
-                    Esta expressão — válida em qualquer base — generaliza a fórmula $\sum_i u^i v^i$ obtida para bases ortonormais (que corresponde ao caso particular $g_{ij} = \delta_{ij}$). A representação matricial correspondente, utilizando o isomorfismo $\varphi_{\mathcal{B}}$ introduzido na seção de representação matricial, é:
-                </p>
-                <p>
-                    $$ (\vec{u}, \vec{v}) = [\vec{u}]_{\mathcal{B}}^\top \, [g_{ij}] \, [\vec{v}]_{\mathcal{B}} = \begin{pmatrix} u^1 & u^2 & u^3 \end{pmatrix} \begin{pmatrix} g_{11} & g_{12} & g_{13} \\ g_{21} & g_{22} & g_{23} \\ g_{31} & g_{32} & g_{33} \end{pmatrix} \begin{pmatrix} v^1 \\ v^2 \\ v^3 \end{pmatrix} $$
-                </p>
-
-                <h4>Convenção de Soma de Einstein</h4>
-
-                <p>
-                    A expressão $(\vec{u}, \vec{v}) = u^i v^j g_{ij}$ já emprega implicitamente uma notação compacta que convém formalizar. Na <strong>Convenção de Soma de Einstein</strong>, todo índice que aparece repetido exatamente duas vezes — uma como <em>sobrescrito</em> e uma como <em>subscrito</em> — denota uma soma implícita sobre todas as dimensões do espaço ($i = 1, 2, 3$), dispensando o símbolo explícito $\sum$. Esta convenção, embora puramente notacional, é de relevância prática imensa: ela torna as equações tensoriais dramaticamente mais compactas e revela sua estrutura intrínseca com maior transparência.
-                </p>
-
-                <p>
-                    A distinção entre índices superiores (sobrescritos) e inferiores (subscritos) não é arbitrária — ela reflete a diferença fundamental entre dois tipos de objetos que habitam espaços distintos, cuja distinção já emergiu naturalmente na seção de mudança de base:
-                </p>
-                <ul>
-                    <li>
-                        <strong>Componentes contravariantes</strong> $v^i$: são as componentes de um vetor $\vec{v} \in \mathbb{R}^3$ na base $\mathcal{B}$, tal como definidas pelo Teorema da Decomposição Única ($\vec{v} = v^i \hat{e}_i$). Recordemos que, sob uma mudança de base $\mathcal{B} \to \mathcal{B}'$, essas componentes transformam-se pela inversa da matriz de transição: $v'^j = (S^{-1})^j{}_i \, v^i$ — transformam <em>contra</em> a base.
-                    </li>
-                    <li>
-                        <strong>Componentes covariantes</strong> $v_i$: são os elementos do <strong>espaço dual</strong> $(\mathbb{R}^3)^*$, definidos pela ação do tensor métrico sobre as componentes contravariantes: $v_i \equiv g_{ij} \, v^j$. Sob mudança de base, transformam-se diretamente pela matriz de transição: $v'_j = S^i{}_j \, v_i$ — transformam <em>como</em> a base.
-                    </li>
-                </ul>
-
-                <p>
-                    A operação $v_i = g_{ij} \, v^j$ — que converte componentes contravariantes em covariantes — é chamada de <strong>abaixamento de índice</strong>. A operação inversa, $v^i = g^{ij} v_j$, é o <strong>levantamento de índice</strong>. Juntas, elas constituem o <strong>isomorfismo musical</strong> ($\flat$ e $\sharp$) entre $\mathbb{R}^3$ e seu dual $(\mathbb{R}^3)^*$. No caso euclidiano com base ortonormal, $g_{ij} = \delta_{ij}$, de modo que $v_i = \delta_{ij} v^j = v^i$ — componentes covariantes e contravariantes coincidem numericamente, e a distinção se torna transparente (mas não inexistente).
-                </p>
-
-                <p>
-                    Com essa notação, o produto interno entre dois vetores assume a forma de uma <strong>contração</strong> — um índice covariante contraído com um contravariante:
-                </p>
-                <p>
-                    $$ (\vec{u}, \vec{v}) = g_{ij} \, u^i v^j = u_j \, v^j = u^i \, v_i $$
-                </p>
-                <p>
-                    onde na segunda e terceira igualdades utilizamos, respectivamente, $u_j = g_{ij} u^i$ e $v_i = g_{ij} v^j$. A contração de um índice repetido — um superior e um inferior — produz sempre um <strong>escalar</strong> (invariante sob mudanças de base), o que é consistente com o fato de que o produto interno é uma quantidade intrínseca do espaço, independente da representação coordenada.
-                </p>
-
-                <h4>Norma e Distância em Notação Tensorial</h4>
-
-                <p>
-                    Reescrevendo a norma e a distância euclidianas no formalismo tensorial geral:
-                </p>
-
-                <div class="definition-box">
-
-                    <strong>Norma (Notação Tensorial)</strong>: O quadrado da norma de um vetor $\vec{v} = v^i \hat{e}_i$ é dado pela contração do tensor métrico com as componentes contravariantes:
-                    <br>
-                    $$ \| \vec{v} \|^2 = (\vec{v}, \vec{v}) = g_{ij} \, v^i v^j = v_i \, v^i $$
-                    $$ \| \vec{v} \| = \sqrt{g_{ij} \, v^i v^j} = \sqrt{v_i \, v^i} $$
-                    <br>
-                    Na métrica euclidiana $g_{ij} = \delta_{ij}$, reduz-se a $\| \vec{v} \| = \sqrt{\delta_{ij} v^i v^j} = \sqrt{(v^1)^2 + (v^2)^2 + (v^3)^2}$.
-
-                </div>
-
-                <div class="definition-box">
-
-                    <strong>Distância Euclidiana (Notação Tensorial)</strong>: A distância entre dois pontos especificados pelos vetores $\vec{u}$ e $\vec{v}$ é extraída mediante a contração tensorial do vetor deslocamento $\Delta^i \equiv u^i - v^i$ com o tensor métrico:
-                    <br>
-                    $$ d(\vec{u}, \vec{v})^2 = g_{ij} \, (u^i - v^i)(u^j - v^j) = (u_i - v_i)(u^i - v^i) $$
-                    $$ d(\vec{u}, \vec{v}) = \sqrt{g_{ij} \, \Delta^i \Delta^j} $$
-
-                </div>
-
-                <p>
-                    Note-se que estas expressões são válidas em <strong>qualquer</strong> base — não apenas nas ortonormais. Numa base oblíqua, os termos cruzados $g_{ij}$ com $i \neq j$ contribuem explicitamente; numa base ortonormal, $g_{ij} = \delta_{ij}$ elimina todos os termos cruzados e recupera as fórmulas pitagóricas familiares. É esta generalidade — a capacidade de operar em qualquer sistema de coordenadas sem perda de informação geométrica — que torna a notação tensorial a linguagem natural da física.
-                </p>
-
-                <h3 id="espaco-absoluto">O Espaço Absoluto de Newton</h3>
-
-                <p style="color: yellow;">
-                    A totalidade da construção precedente — estrutura algébrica (espaço vetorial $(\mathbb{R}^3, +, \cdot)$, bases, Teorema da Decomposição Única, representação matricial via o isomorfismo $\varphi_{\mathcal{B}}$, mudança de base em $\text{GL}(3, \mathbb{R})$) e estrutura geométrica (produto interno $(\cdot, \cdot)$, norma, ângulo, ortogonalidade, bases ortonormais, tensor métrico $g_{ij}$, convenção de Einstein) — não constitui um exercício abstrato de álgebra linear: ela formaliza, em linguagem matemática contemporânea, o conceito que Isaac Newton introduziu nos <em>Principia</em> (1687) sob o nome de <strong>espaço absoluto</strong>, definido como aquele que <em>"em sua própria natureza, sem relação com qualquer coisa externa, permanece sempre semelhante e imóvel"</em>.
-                </p>
-
-                <p style="color: yellow;">
-                    Cada camada da construção codifica uma propriedade física precisa desse espaço. A <strong>estrutura de espaço vetorial</strong> — i.e., o fecho sob adição e multiplicação por escalar — garante que translações espaciais $\vec{r} \mapsto \vec{r} + \vec{a}$ ($\vec{a} \in \mathbb{R}^3$ constante) sejam operações internas do espaço, implicando a ausência de qualquer ponto privilegiado. Essa invariância sob translações é o conteúdo matemático da <strong>homogeneidade espacial</strong>: as leis da mecânica assumem a mesma forma em qualquer localização, pois a estrutura algébrica é idêntica em torno de todo ponto.
-                </p>
-
-                <p style="color: yellow;">
-                    A introdução do <strong>produto interno definido-positivo</strong> $(\cdot, \cdot)$ — e, com ele, do tensor métrico $g_{ij}$ — impõe uma restrição adicional: a métrica é invariante sob o grupo ortogonal $\text{O}(3) = \{ R \in \text{GL}(3, \mathbb{R}) \mid R^\top R = I \}$, cujo subgrupo próprio $\text{SO}(3)$ (rotações que preservam orientação, $\det(R) = +1$) conecta todas as bases ortonormais entre si. Concretamente, se $\mathcal{B}$ e $\mathcal{B}'$ são duas bases ortonormais, a matriz de transição $S$ da seção de mudança de base satisfaz $S \in \text{SO}(3)$, e as componentes do tensor métrico permanecem invariantes: $g'_{ij} = \delta_{ij} = g_{ij}$. A consequência física é a <strong>isotropia espacial</strong>: nenhuma direção do espaço é geometricamente distinguível de outra, pois o produto interno — e portanto norma, ângulo e distância — é inalterado por rotações arbitrárias.
-                </p>
-
-                <p style="color: yellow;">
-                    Homogeneidade e isotropia juntas determinam o <strong>grupo de simetria espacial</strong> do espaço absoluto de Newton: o <strong>grupo euclidiano</strong> $\text{E}(3) = \mathbb{R}^3 \rtimes \text{O}(3)$, produto semidireto de translações com rotações (e reflexões). A invariância da distância $d(\vec{u}, \vec{v}) = \sqrt{g_{ij} \, \Delta^i \Delta^j}$ sob qualquer transformação $T \in \text{E}(3)$ é a expressão tensorial da <strong>rigidez métrica</strong> do espaço newtoniano: a separação espacial entre dois pontos é um escalar absoluto, independente do sistema de coordenadas, da base escolhida e da posição do observador. É esta invariância — garantida pela estrutura $(\mathbb{R}^3, +, \cdot, (\cdot , \cdot))$ aqui construída — que confere à mecânica clássica seu poder preditivo: grandezas como posição $\vec{r}$, velocidade $\dot{\vec{r}}$, aceleração $\ddot{\vec{r}}$ e força $\vec{F}$ são vetores bem definidos de $\mathbb{R}^3$, cujas componentes contravariantes $r^i, \dot{r}^i, \ddot{r}^i, F^i$ transformam-se covariantemente sob $\text{E}(3)$, de modo que a Segunda Lei de Newton $F^i = m \ddot{r}^i$ preserva sua forma em todo referencial inercial.
-                </p>
-
-                <p style="color: yellow;">
-                    Consolidamos a construção completa desta seção na seguinte definição:
-                </p>
-
-                <div class="definition-box" style="margin-bottom: 4rem;">
-
-                    <strong>Espaço Euclidiano Tridimensional</strong>: O <strong>espaço absoluto</strong> da mecânica clássica é a quádrupla
-                    <br>
-                    <div style="text-align: center; font-size: 1.25rem;">
-                        $$ \mathbb{E}^3 \equiv (\mathbb{R}^3, +, \cdot, (\cdot , \cdot)) $$
-                    </div>
-                    onde $(\mathbb{R}^3, +, \cdot)$ é um espaço vetorial real de dimensão $3$ (estrutura algébrica) e $(\cdot, \cdot): \mathbb{R}^3 \times \mathbb{R}^3 \to \mathbb{R}$ é um produto interno (forma bilinear simétrica definida-positiva) que induz o tensor métrico $g_{ij} = (\hat{e}_i, \hat{e}_j)$, a norma $\| \vec{v} \| = \sqrt{g_{ij} v^i v^j}$ e a distância $d(\vec{u}, \vec{v}) = \sqrt{g_{ij} \Delta^i \Delta^j}$ (estrutura geométrica). Seu grupo de isometrias é o grupo euclidiano $\text{E}(3) = \mathbb{R}^3 \rtimes \text{O}(3)$.
-                    <br><br>
-                    Na Relatividade Restrita, a métrica euclidiana definida-positiva $g_{ij}$ será substituída pela métrica de Minkowski $\eta_{\mu\nu}$ de assinatura $(-, +, +, +)$, e o grupo de simetria $\text{E}(3)$ será ampliado ao grupo de Poincaré $\text{ISO}(1,3)$ — mas a maquinaria tensorial aqui desenvolvida permanecerá intacta.
-
-                </div>
-
-                <h2 id="tempo">Tempo</h2>
-
-                <p style="color: yellow;">
-                    Embora a formulação rigorosa de $\mathbb{E}^3$ descrita até agora exponha a forma da
-                    geometria espacial exigida pela cinemática clássica, essa estrutura — por si só — é incompleta para
-                    descrever os fenômenos da natureza. A estrutura algébrica de <strong>vetores</strong>,
-                    <strong>normas</strong> e
-                    <strong>distâncias</strong> que
-                    acabamos de definir fixa a geometria de um <strong>espaço estático</strong>: ela descreve o
-                    universo perfeitamente, mas se comporta apenas como uma única fotografia instantânea da realidade. O
-                    espaço matemático que moldamos tem lugar para medir <i>"onde"</i> as coisas estão (posição, $x, y,
-                    z$),
-                    mas é cego e inerte em relação ao <i>"quando"</i> elas acontecem.
-                </p>
-
-                <p style="color: yellow;">
-                    Toda a fenomenologia da física baseia-se num fluxo ordenado de <strong>mudanças</strong>, e para
-                    mensurar a taxa ou a evolução destas
-                    mudanças ao longo da nossa rígida grade tridimensional, faz-se estritamente necessário introduzir um
-                    quarto parâmetro fundamental contínuo: o <strong><u>Tempo</u> ($t$)</strong>. Na Relatividade
-                    Galileana (em
-                    harmonia direta com os <em>Principia</em> de Newton), o tempo flui <em>"uniformemente, em si mesmo e
-                        por sua própria natureza, sem relação com nada externo"</em>. Matematicamente, a fim de
-                    formalizar essa entidade com o mesmo rigor algébrico aplicado a $\mathbb{E}^3$, o tempo é modelado
-                    como um Espaço Afim unidimensional $\mathcal{T}$:
-                </p>
-
-                <div class="definition-box">
-
-                    <strong>Tempo Absoluto ($\mathcal{T}$)</strong>: É um espaço afim unidimensional modelado sobre o
-                    espaço vetorial unidimensional real $\mathbb{R}$. Seus elementos topológicos, os pontos $t \in
-                    \mathcal{T}$, são comumente referidos na física como <strong>instantes</strong>. O uso da estrutura
-                    de espaço afim em detrimento do espaço vetorial simples traduz perfeitamente a premissa de que o
-                    referencial é destituído de uma "origem" temporal privilegiada universal (um instante "$0$" fixo
-                    para todos); garantindo o poderoso postulado de simetria na mecânica invariante chamado
-                    <strong>homogeneidade temporal</strong>.
-                    <br>
-                    <br>
-                    <strong>Intervalo de Tempo ($\Delta t$)</strong>: Em conformidade à construção afim, coordenadas
-                    solitárias pontuais não detêm propriedades quantificáveis intrínsecas: a métrica temporal surge
-                    somente da extração da diferença (deslocamento) entre elas. Portanto, a progressão ou duração
-                    cronológica dá-se mapeando uma operação de diferença, $\Delta: \mathcal{T} \times \mathcal{T} \to
-                    \mathbb{R}$, que a dois recortes experimentais arbitrários $t_1, t_2 \in \mathcal{T}$ imputa
-                    inexoravelmente um real invariante na reta $\mathbb{R}$:
-                    <br>
-                    $$ \Delta t = t_2 - t_1 $$
-                    <br>
-                    Cujas somatórias cumprem ferrenhamente a exatidão linear causal <em>(Identidade de Chasles)</em>: no
-                    decorrer transeunte $t_1, t_2, t_3 \in \mathcal{T}$, o saldo evolutivo será matematicamente
-                    indissociável da união, regendo o balanceamento escalar clássico $(t_3 - t_2) + (t_2 - t_1) = t_3 -
-                    t_1$.
-                    <br>
-                    <br>
-                    <strong>O Fim da Isotropia: Ordem Cronológica ($<$)</strong>: Para afastar completamente a
-                            dimensionalidade temporal da isometria isotrópica irrestrita regente das direções do palco
-                            geométrico tridimensional (onde mover-se para "$+x$" equivale analiticamente a ir para
-                            "$-x$"), exige-se na essência basilar de $\mathcal{T}$ a assunção de uma estrita
-                            <strong>Relação de Ordem Total</strong>. Para instantes apartados $t_A \neq t_B$, obriga-se
-                            que o avanço topológico admita uma e tão somente uma sentença excludente: $t_A < t_B$
-                                (assumindo precedência casual no passado do primeiro instante) ou sua antagônica $t_B <
-                                t_A$. Ao fazê-lo, consagra-se analiticamente a irreversibilidade física impiedosa
-                                outrora abstraída e invisível: a constância vetorial da <strong>Seta Clássica do
-                                Tempo</strong>.
-
-                </div>
-
-                <p style="color: yellow;">
-                    A introdução deste fluxo temporal traz ao palco cartesiano o conceito crucial da
-                    <strong>simultaneidade absoluta</strong>. Na física de Galileu e Newton, diz-se categoricamente que
-                    a afirmação <em>"dois eventos ocorrem no mesmo instante de tempo"</em> é perfeitamente verdadeira
-                    (invariante) para quaisquer observadores mecânicos que observem o fenômeno. Ou seja: embora
-                    diferentes observadores inerciais discordem veementemente das coordenadas vetorais de onde a posição
-                    das coisas está dependendo de suas velocidades relativas (translação de Galileu do "Onde"), existe
-                    um enorme consenso absoluto sobre o relógio cósmico que dita o "Quando", fluindo igual para todos,
-                    do passado para o futuro. O papel do tempo clássico é ser o grande maestro
-                    universal: ele indexa e ordena, de forma rígida, sequências invariantes de "fotografias" de nosso
-                    antigo espaço tridimensional $\mathbb{E}^3$, compondo assim a evolução do espaço-tempo Galileano.
-                </p>
-
-                <p style="color: yellow;">
-
-                </p>
-
-
-
-                <p style="color: yellow;">
-                    Com a introdução matemática do tempo, surge uma profunda e sutil questão física, frequentemente
-                    negligenciada em cursos introdutórios: <strong>o que significa afirmar que um ponto permaneceu no
-                        "mesmo lugar" ao longo do tempo?</strong> Quando dizemos que um objeto se moveu de uma posição
-                    $A$ (em um instante $t_1$) para uma posição $B$ (em um tempo $t_2$), estamos fazendo uma declaração
-                    que embute pressupostos conceituais fortíssimos relativos à identidade fundamental do próprio espaço
-                    contínuo.
-                </p>
-
-                <p style="color: yellow;">
-                    Para que possamos rastrear de forma não ambígua qualquer cinemática (como se identificar movimento
-                    ou repouso), devemos assumir imperativamente a declaração abstrata de que <em>"o ponto matemático do
-                        espaço em que o objeto estava em $t_1$ deve corresponder analogamente a algum lugar no espaço no
-                        momento de $t_2$"</em>. Contudo, em uma formulação geométrica restritamente rigorosa, cada
-                    instante contínuo no tempo descreve por si só um espaço tridimensional fechado e completamente
-                    separado $\mathbb{E}^3$ (uma "fatia" ou "fotografia instantânea" ("snapshot") espacial independente
-                    do universo no exato instante $t$). Em suma, a matemática do bloco do espaço perfeitamente estático
-                    de $t_1$ não impõe conexões lógicas inatas e transcendentais ao bloco tridimensional indep                <h3 id="mapa-identidade">O Mapa da Identidade (Estrutura Trivial)</h3>
-
-                <p style="color: yellow;">
-                    Para descrever rigorosamente a cinemática de qualquer corpo, torna-se imperativo rastrear a evolução dos pontos espaciais ao longo do fluir contínuo do tempo. Em termos estritamente analíticos, devemos postular uma definição não ambígua do que significa afirmar que um ponto geométrico intrínseco a um determinado momento temporal $t_0$ encontra-se "no mesmo lugar" que um ponto análogo alocado em um momento temporal subsequente $t_1$.
-                </p>
-
-                <p style="color: yellow;">
-                    Para elucidar a construção desse mapeamento fundamental, consideremos inicialmente um cenário experimental trivial e perfeitamente isolado: um observador postado no interior de um laboratório em repouso escolhe arbitrariamente uma quina específica da estrutura física para servir como a origem absoluta determinística ($\mathbf{0}$) de seu sistema euclidiano de coordenadas locais. A partir deste vértice inercial referencial, ele projeta tridimensionalmente três eixos ortogonais estritamente fixados — digamos, estendendo-se paralelos e solidários às arestas tangíveis das dimensões da sala — e, utilizando ferramentas de métrica espacial, atribui coordenadas escalares $(x^1, x^2, x^3)$ a cada ponto contido no volume sob observação, ancorado invariavelmente nas distâncias radiais medidas ao longo de tais eixos diretrizes.
-                </p>
-
-                <p style="color: yellow;">
-                    Suponhamos subsequentemente que este mesmíssimo observador efetue duas aferições analíticas distintas do seu sistema, em fatias temporais independentes $t_0$ e $t_1$, valendo-se invariavelmente do exato mesmo sistema de referência topológico: a matriz da origem inalterada, as diretrizes axiais fixas e o idêntico tensor de abstração de distâncias geométricas euclidianas. Sob estas rigorosas invariâncias construtivas, o observador é induzido a identificar com total naturalidade a correspondência espacial de "um mesmíssimo ponto contínuo no espaço absoluto" cruzando os abismos de ambos os instantes através do atrelamento matricial da conservação matemática de suas coordenadas descritivas:
-                </p>
-
-                <p style="color: yellow;">
-                    $$ \mathbf{x}_{1} = \mathbf{x}_{0} $$
-                </p>
-
-                <p style="color: yellow;">
-                    Esta equivalência algébrica impávida formulação estabelece o que formalmente definimos sob a alcunha de <strong>Mapa da Identidade</strong> (ou a conceituação do Mapeamento de Identificação Trivial do Espaço Estático):
-                </p>
-
-                <p style="color: yellow;">
-                    $$ \phi: \mathbb{E}^3_{t_0} \to \mathbb{E}^3_{t_1}, \quad \phi(\mathbf{x}_{0}) = \mathbf{x}_{0} $$
-                </p>
-
-                <p style="color: yellow;">
-                    Alinhado aos preceitos dessa lei restritiva de mapeamento paramétrico, postula-se o axioma de que todo objeto submetido a esta ontologia permanece encerrado no estado de repouso inercial verdadeiro caso, submetido aos fluxos intersecantes de $\mathcal{T}$, as magnitudes de suas referidas coordenadas cartesianas resultem analiticamente invariáveis sob a translação do tempo. Tal identificação de imobilidade perene, contudo, desvencilha-se inteiramente de qualquer pretensão de natureza global ou absoluta; ela encontra-se visceral, irrevogavelmente incrustada e ontologicamente dependente ao sistema particular de referência erguido pelas deliberações arbitrárias do observador que atrelou a malha referencial às paredes geométricas inertes de seu recorte experimental local.
-                </p>
-
-                <div class="definition-box" style="margin-bottom: 2rem;">
-                    <strong>A Distinção Transversal: Coordenadas Espaciais versus O Referencial Físico</strong>
-                    <br><br>
-                    Esta separação analítica revela-se, por conseguinte, inegociável na estruturação de qualquer arcabouço lógico e descritivo clássico:
-                    <ul style="margin-top: 1rem;">
-                        <li><strong>A Fração Pontual e a Atribuição das Coordenadas:</strong> Este estágio requisita impreterivelmente objetos materiais tangíveis e referências físicas exatas — sejam elas recortes de alvenaria inerte, vértices estruturais ou feixes projetados a partir de bases imutáveis — com a única finalidade ontológica de balizar limites estritos e definir posicionamentos quantificáveis das essências confinados estritamente à fotografia e escopo imutável de um e somente um <strong>único cenário isolado de instante $t$</strong>.</li>
-                        <li><strong>O Quadro Persistente e a Construção Subjacente do Referencial:</strong> É a estrutura contínua do mapeamento algorítmico, a formulação analítica pregressa que rege sob quais termos topológicos iremos rastrear a genealogia da posição física dos centros de massa através das progressivas e inumeráveis fatias do escoar do tempo cósmico.</li>
+                    <strong>Transformação Linear</strong>: Seja $V$ e $W$ dois espaços vetoriais sobre o mesmo corpo de escalares $\mathbb{K}$, e seja $T: V \to W$ uma função. Dizemos que $T$ é uma <strong>transformação linear</strong> se, e somente se, para todo $v_1, v_2 \in V$ e todo escalar $\alpha \in \mathbb{K}$, temos:
+                    <ul>
+                        <li>
+                            <strong>Adição</strong>: $T(v_1 + v_2) = T(v_1) + T(v_2)$.
+                        </li>
+                        <li>
+                            <strong>Multiplicação por escalar</strong>: $T(\alpha v_1) = \alpha T(v_1)$.
+                        </li>
                     </ul>
                 </div>
 
-                <p style="color: yellow;">
-                    Consequentemente, observa-se pragmaticamente que, não raro na condução corriqueira de formulações mecânicas, ao procedermos à representação gráfica diagramática do invólucro do espaço euclidiano $\mathbb{E}^3$, os tratadistas incorrem e importam no silêncio da premissa a vigência integral do mapa contínuo da configuração trivial inercial, partindo pressuposto invisível de que o palco base da "malha" geométrica de referências estáticas e de que a parede por de trás dos eixos coordenados sequer flutuam ontológico ou inercialmente ante ao fluir transeunte dos eventos no tempo dimensional paramétrico. Assim fundamentando-nos, a totalidade de nossa atenção científica converge imperturbável e focada tão apenas à averiguação e à aferição da flutuação linear, percurso e evolução dos demais centros de corpos exógenos à malha projetados e comparados sobre o silêncio atemporal deste cenário de repouso profundo.
+                <p>
+                    Em outras palavras, uma transformação linear preserva a estrutura de espaço vetorial ao mapear vetores de $V$ para combinações lineares de vetores em $W$. Um exemplo clássico de transformação linear é a aplicação da matriz identidade: $T(\vec{v}) = I \vec{v} = \vec{v}$, que claramente satisfaz as propriedades acima. Por outro lado, uma transformação que dobra todos os vetores, como $T(\vec{v}) = 2\vec{v}$, também é linear, pois preserva a adição e a multiplicação por escalar.
                 </p>
 
-                <p style="color: yellow;">
-                    É imperioso admitirmos categoricamente, entretanto, que a identificação estática trivial configura tão somente uma faceta singular, simplificada e específica no interior de um gigantesco panorama contínuo de matrizes analíticas concebíveis ao mapeamento físico de coordenadas sobrepostas. Mapeamentos generalizados introduzem formidavelmente uma flexibilidade algébrica irrestrita que traduz simetrias e peculiaridades analíticas transicionadas aos ditames de quadros não trivializados; referências mutáveis que espelham referenciais tracionados que, enquanto as observações prosseguem, fluem mutuamente sob domínios de campos inerciais translacionais com vetor velocidade perene e constante ante a malha das fatias contíguas. O profundo e analítico estudo das naturezas atreladas a tais translações dinâmicas simétricas de distorção não-trivial desemboca justamente no desvendar do aparato e equacionamento principal regente da cinemática linear clássica, conhecidos universalmente na literatura como <strong>os vetores do impulso referencial e as Transformações Cinemáticas de Galileu (Galilean Boosts)</strong>.
+                <p>
+                    Um conceito relacionado é o de <strong>imagem</strong> de uma transformação linear. A imagem de um vetor $v \in V$ sob a transformação $T$ é simplesmente o vetor $T(v) \in W$. A coleção de todas as imagens de vetores em $V$ sob $T$ forma um subespaço de $W$ chamado de <strong>imagem da transformação</strong>, denotado por $\text{Im}(T)$. Este subespaço é gerado por todos os vetores da forma $T(v)$ com $v \in V$.
                 </p>
 
-                <h3 id="mapas-expectativas">Os Mapas devem refletir as Expectativas Físicas</h3>
-
-                <p style="color: yellow;">
-                    Ao flexibilizarmos nosso formalismo para acomodar observadores inerciais distintos e dinâmicas cinemáticas mais gerais (abandonando a restrição da identificação trivial), faz-se mandatório impor rigorosas <strong>restrições topológicas e físicas</strong> às propriedades matemáticas dos mapeamentos $\phi$ que propomos para conectar as infindáveis "fatias fotográficas" espaciais de $\mathbb{E}^3$ através do contínuo temporal. Essas delimitações analíticas não brotam de axiomas abstratos soltos, mas derivam invariavelmente da nossa empiria cosmológica macroscópica e do modo basilar como a natureza prescreve que a matéria real se preserve e interaja.
+                <p>
+                    Um aspecto crucial das transformações lineares é que elas permitem <em>transferir</em> problemas e estruturas de um espaço vetorial para outro. Por exemplo, se conseguimos resolver um problema em termos de combinações lineares de vetores em $W$, podemos muitas vezes <em>reverter</em> a transformação linear para obter a solução correspondente em $V$. Essa capacidade de transitar entre diferentes espaços vetoriais é fundamental em muitas áreas da matemática e da física, pois frequentemente os problemas mais complexos em um espaço podem ser abordados como questões de <em>representação</em> em outro espaço.
                 </p>
 
-                <p style="color: yellow;">
-                    Sob o paradigma de trajetórias corpusculares ininterruptas, elegemos as seguintes assunções indissociáveis:
+                <h3 id="propriedades-transformacoes-lineares">Propriedades das Transformações Lineares</h3>
+
+                <p>
+                    As transformações lineares possuem uma série de propriedades que as tornam ferramentas extremamente úteis na análise e resolução de problemas em espaços vetoriais. Algumas das propriedades mais importantes incluem:
                 </p>
 
                 <ul>
                     <li>
-                        <strong>Princípio da Exclusão de Colisões Interpenetrantes (Injetividade):</strong> É impensável que dois pontos topológicos intrínseca e espacialmente distintos num instante gerador $t_0$ venham a colapsar, sendo mapeados simultaneamente para o mesmíssimo e exato ponto em um tempo subsequente $t_1$. Caso esse colapso ocorresse, o mapeamento obliteraria a distinguibilidade fundamental das identidades materiais, destroçando a premissa basal de que partículas elementares clássicas detêm trajetórias determinísticas individuais, singulares e inalienáveis.
+                        <strong>Composição de Transformações Lineares</strong>: A composição de duas transformações lineares é novamente uma transformação linear. Se $T: V \to W$ e $S: W \to U$ são transformações lineares, então a composição $S \circ T: V \to U$ dada por $(S \circ T)(v) = S(T(v))$ também é linear.
                     </li>
-                    <li style="margin-top: 1rem;">
-                        <strong>Princípio da Conservação da Presença (Sobrevivência Ontológica e Sobrejetividade):</strong> Nenhum ponto do tecido paramétrico pode, sob hipótese alguma, imiscuir-se arbitrariamente ao nada ou emergir do vácuo absoluto sem causa. Isso exige estruturalmente que cada ponto pertencente à fatia fotográfica futura $t_1$ possua, impreterivelmente, uma e somente uma raiz ancestral correspondente na fatia geradora pretérita $t_0$. A ausência dessa continuidade permitiria aberrações físicas como o aniquilamento espontâneo não-causal e a geração espontânea inercial de coordenadas sem passado atrelado.
+                    <li>
+                        <strong>Transformação Inversa</strong>: Se $T: V \to W$ é uma transformação linear bijetiva (isto é, uma transformação linear com uma inversa bem definida), então existe uma transformação linear $T^{-1}: W \to V$ tal que $T^{-1}(T(v)) = v$ para todo $v \in V$. A transformação $T^{-1}$ é chamada de <strong>transformação inversa</strong> de $T$.
+                    </li>
+                    <li>
+                        <strong>Imagem da Transformação</strong>: A imagem de uma transformação linear $T: V \to W$ é o conjunto de todos os vetores $T(v)$ com $v \in V$. A imagem é sempre um subespaço de $W$, e pode ser vista como o "alcance" da transformação.
+                    </li>
+                    <li>
+                        <strong>Núcleo da Transformação</strong>: O núcleo de uma transformação linear $T: V \to W$ é o conjunto de todos os vetores $v \in V$ tais que $T(v) = 0_W$ (o vetor nulo em $W$). O núcleo é um subespaço de $V$ e fornece informações sobre a "perda de informação" na transformação.
                     </li>
                 </ul>
 
-                <p style="color: yellow;">
-                    Fundindo estas duas propriedades indispensáveis ao amálgama da matemática estrita, exigimos imperiosamente que:
+                <p>
+                    Essas propriedades tornam as transformações lineares instrumentos poderosos para a análise e resolução de problemas em álgebra linear e suas aplicações. Elas permitem, entre outras coisas, entender como diferentes espaços vetoriais se relacionam, como as estruturas algébricas são preservadas ou alteradas sob mapeamentos, e como resolver sistemas lineares de forma mais eficiente.
                 </p>
 
-                <div class="code-block" style="background-color: transparent; border: none; border-left: 4px solid var(--text-secondary); border-radius: 0; padding-left: 1.5rem; margin: 2rem 0;">
-                    <span style="font-size: 1.125rem; font-weight: 500; color: var(--text-primary);">
-                        O Mapa cinemático evolutivo $\phi: \mathbb{E}^3_{t_0} \to \mathbb{E}^3_{t_1}$ seja rigorosamente estruturado como uma <strong>Função Bijetiva</strong> (uma correspondência um-para-um e sobrejetiva).
-                    </span>
-                </div>
+                <h3 id="exemplos-transformacoes-lineares">Exemplos de Transformações Lineares</h3>
 
-                <p style="color: yellow;">
-                    Indo além, embasados ferrenhamente em como a termodinâmica causal e a mecânica rotineira presidem sobre a continuidade dos corpos macroscópicos — destituídos inteiramente de saltos quânticos de teletransporte ou rasgos topológicos descontinuados em sua locomoção —, refinamos nosso mapeamento instilando a expectativa máxima do cálculo diferencial:
+                <p>
+                    Para ilustrar o conceito de transformações lineares, consideremos alguns exemplos concretos:
                 </p>
 
-                <div class="code-block" style="background-color: transparent; border: none; border-left: 4px solid var(--text-secondary); border-radius: 0; padding-left: 1.5rem; margin: 2rem 0;">
-                    <span style="font-size: 1.125rem; font-weight: 500; color: var(--text-primary);">
-                        O Mapa deve espelhar uma <strong>Evolução Suave</strong>: variações infinitesimais e pequenas flutuações de posição na malha em $t_0$ devem incorrer invariavelmente em pequenas mudanças residuais traduzidas sobre a fatia contígua $t_1$.
-                    </span>
-                </div>
+                <ul>
+                    <li>
+                        <strong>Exemplo 1: Transformação Identidade</strong>
+                        <p>A transformação identidade $I: \mathbb{R}^n \to \mathbb{R}^n$ dada por $I(\vec{v}) = \vec{v}$ é uma transformação linear. Ela preserva todos os vetores inalterados e claramente satisfaz as propriedades de adição e multiplicação por escalar.</p>
+                    </li>
+                    <li>
+                        <strong>Exemplo 2: Transformação Escalar</strong>
+                        <p>Uma transformação que multiplica todos os vetores por um escalar fixo $k$, dada por $T(\vec{v}) = k\vec{v}$, é uma transformação linear. Ela preserva a adição e a multiplicação por escalar, pois $T(\vec{v} + \vec{w}) = k(\vec{v} + \vec{w}) = k\vec{v} + k\vec{w} = T(\vec{v}) + T(\vec{w})$ e $T(\alpha \vec{v}) = k(\alpha \vec{v}) = \alpha (k\vec{v}) = \alpha T(\vec{v})$.</p>
+                    </li>
+                    <li>
+                        <strong>Exemplo 3: Projeção Ortogonal</strong>
+                        <p>A projeção ortogonal de um vetor $\vec{v}$ sobre um subespaço gerado por um conjunto de vetores $\{\vec{u}_1, \vec{u}_2, \ldots, \vec{u}_k\}$ é uma transformação linear. A projeção é dada por $T(\vec{v}) = \sum_{i=1}^{k} \frac{\langle \vec{v}, \vec{u}_i \rangle}{\langle \vec{u}_i, \vec{u}_i \rangle} \vec{u}_i$, onde $\langle \cdot , \cdot \rangle$ denota o produto interno. Essa transformação é linear pois preserva combinações lineares de vetores.</p>
+                    </li>
+                </ul>
 
-                <p style="color: yellow;">
-                    A consolidação de toda essa herança empírica nos induz irrevogavelmente a não apenas modelar o mapa $\phi$ como uma mera bijeção topológica isolada, mas consagra-lo com as vestes analíticas supremas regentes das geometrias diferenciais: um <strong>Difeomorfismo</strong>. Estipula-se assim a aplicação formal de uma função estruturalmente suave, cuja inversa causal no tempo também exibe garantias incontestáveis de suavidade matemática absoluta ao refletir seu trajeto vetorial.
+                <p>
+                    Esses exemplos ilustram como as transformações lineares podem ser usadas para descrever operações que preservam a estrutura vetorial, como a projeção de vetores em subespaços. As propriedades das transformações lineares as tornam ferramentas poderosas para a análise e resolução de problemas em álgebra linear e suas aplicações.
                 </p>
 
-                <div class="definition-box" style="margin-bottom: 3rem;">
-                    Reitera-se aos menos atentos: tal armadura de rigidez funcional atrelada (as assunções de Bijeção Suave e Difeomorfismos não-ambos) não emanam de uma tirania oca exigida pelos numerais da matemática cartesiana abstrata. Constituem, pelo contrário, as modelagens de contorno e premissas restritivas mais puras construídas por intermédio da observação ininterrupta da natureza; onde a fluidez irrefreável, a causa, a consequência e o movimento vetorial contínuo não abrem precedentes para teleportes descontinuados ou a dissolução temporal da matéria visível.
+                <h2 id="ortogonalidade">Ortogonalidade</h2>
+
+                <p>
+                    A ortogonalidade é uma noção central em álgebra linear, com profundas implicações em várias áreas da matemática e da física. Dois vetores são ditos <strong>ortogonais</strong> se sua relação é perpendicular, isto é, se o ângulo entre eles é de 90 graus. Em termos do produto interno, isso se traduz na condição de que o produto interno entre os vetores é zero: $\langle \vec{u}, \vec{v} \rangle = 0$.
+                </p>
+
+                <p>
+                    A importância da ortogonalidade decorre do fato de que ela permite decompor vetores em componentes que atuam em direções independentes. Essa decomposição é fundamental em muitas áreas, incluindo a resolução de sistemas lineares, a otimização de funções e a análise de Fourier. Além disso, a ortogonalidade é a base para a definição de bases ortogonais e ortonormais em espaços vetoriais, que simplificam enormemente a representação e a computação com vetores.
+                </p>
+
+                <h3 id="propriedades-ortogonalidade">Propriedades da Ortogonalidade</h3>
+
+                <p>
+                    A ortogonalidade possui uma série de propriedades que a tornam uma ferramenta poderosa na análise e resolução de problemas em álgebra linear. Algumas das propriedades mais importantes incluem:
+                </p>
+
+                <ul>
+                    <li>
+                        <strong>Ortogonalidade e Produto Interno</strong>: Dois vetores $\vec{u}$ e $\vec{v}$ são ortogonais se, e somente se, $\langle \vec{u}, \vec{v} \rangle = 0$. Esta é a definição fundamental de ortogonalidade em termos de produto interno.
+                    </li>
+                    <li>
+                        <strong>Ortogonalidade e Ângulo</strong>: A ortogonalidade de dois vetores é equivalente a dizer que o ângulo entre eles é de 90 graus: $\theta = 90^\circ$.
+                    </li>
+                    <li>
+                        <strong>Propriedade da Base Ortogonal</strong>: Em uma base ortogonal, os vetores base são mutuamente ortogonais. Isso implica que a representação de um vetor em termos de uma base ortogonal é particularmente simples, pois os coeficientes são dados pelo produto interno com os vetores da base.
+                    </li>
+                </ul>
+
+                <p>
+                    Essas propriedades tornam a ortogonalidade uma ferramenta poderosa para a análise e resolução de problemas em álgebra linear e suas aplicações. A capacidade de decompor vetores em componentes ortogonais simplifica muitos problemas e é fundamental para a compreensão de estruturas mais complexas em matemática e física.
+                </p>
+
+                <h3 id="exemplos-ortogonalidade">Exemplos de Ortogonalidade</h3>
+
+                <p>
+                    Para ilustrar o conceito de ortogonalidade, consideremos alguns exemplos concretos:
+                </p>
+
+                <ul>
+                    <li>
+                        <strong>Exemplo 1: Vetores Ortogonais</strong>
+                        <p>Os vetores $\vec{u} = (1, 0, 0)$ e $\vec{v} = (0, 1, 0)$ são ortogonais, pois $\langle \vec{u}, \vec{v} \rangle = 1 \cdot 0 + 0 \cdot 1 + 0 \cdot 0 = 0$. O ângulo entre eles é de 90 graus.</p>
+                    </li>
+                    <li>
+                        <strong>Exemplo 2: Propriedade da Base Ortogonal</strong>
+                        <p>Considere a base canônica em $\mathbb{R}^3$, dada por $\{\vec{e}_1, \vec{e}_2, \vec{e}_3\}$ com $\vec{e}_1 = (1, 0, 0)$, $\vec{e}_2 = (0, 1, 0)$ e $\vec{e}_3 = (0, 0, 1)$. Esta é uma base ortogonal, pois $\langle \vec{e}_i, \vec{e}_j \rangle = 0$ para $i \neq j$. A representação de um vetor em termos dessa base é dada pelos produtos internos com os vetores da base: $v^i = \langle \vec{v}, \vec{e}_i \rangle$.</p>
+                    </li>
+                </ul>
+
+                <p>
+                    Esses exemplos ilustram como a ortogonalidade pode ser usada para descrever relações perpendiculares entre vetores e como ela simplifica a representação de vetores em bases ortogonais. As propriedades da ortogonalidade a tornam uma ferramenta poderosa para a análise e resolução de problemas em álgebra linear e suas aplicações.
+                </p>
+
+                <h2 id="coordenadas">Mudança de Coordenadas</h2>
+
+                <p>
+                    A mudança de coordenadas é um conceito fundamental em álgebra linear, que se refere ao processo de representar um vetor em um sistema de coordenadas diferente. Isso é especialmente útil quando se trabalha com transformações lineares, pois permite entender como um vetor é mapeado de um espaço vetorial para outro.
+                </p>
+
+                <p>
+                    Sejam $V$ e $W$ dois espaços vetoriais sobre o mesmo corpo de escalares $\mathbb{K}$, e seja $T: V \to W$ uma transformação linear. A mudança de coordenadas envolve encontrar um novo conjunto de coordenadas para um vetor $v \in V$ tal que, quando expresso nessas novas coordenadas, o vetor revelará informações sobre sua imagem $T(v)$ em $W$.
+                </p>
+
+                <p>
+                    Um aspecto importante da mudança de coordenadas é que ela pode envolver tanto a mudança da base do espaço vetorial quanto a aplicação de uma transformação linear. Por exemplo, ao mudar de coordenadas canônicas para coordenadas em uma base ortogonal, estamos essencialmente aplicando a transformação linear que leva os vetores da base canônica para os vetores da base ortogonal.
+                </p>
+
+                <h3 id="exemplos-mudanca-coordenadas">Exemplos de Mudança de Coordenadas</h3>
+
+                <p>
+                    Para ilustrar o conceito de mudança de coordenadas, consideremos alguns exemplos concretos:
+                </p>
+
+                <ul>
+                    <li>
+                        <strong>Exemplo 1: Mudança para Coordenadas em uma Base Ortogonal</strong>
+                        <p>Seja $V = \mathbb{R}^3$ com a base canônica $\{\vec{e}_1, \vec{e}_2, \vec{e}_3\}$, e seja $\{\vec{u}_1, \vec{u}_2, \vec{u}_3\}$ uma base ortogonal. A mudança de coordenadas de um vetor $\vec{v}$ de sua representação na base canônica para sua representação na base ortogonal é dada por $v^i = \langle \vec{v}, \vec{u}_i \rangle$.</p>
+                    </li>
+                    <li>
+                        <strong>Exemplo 2: Mudança de Coordenadas em um Sistema de Coordenadas Polares</strong>
+                        <p>Considere um vetor em coordenadas cartesianas $(x, y)$ e sua representação em coordenadas polares $(r, \theta)$, onde $r = \sqrt{x^2 + y^2}$ e $\theta = \tan^{-1}(y/x)$. A mudança de coordenadas envolve encontrar $r$ e $\theta$ a partir de $x$ e $y$, e vice-versa.</p>
+                    </li>
+                </ul>
+
+                <p>
+                    Esses exemplos ilustram como a mudança de coordenadas pode ser usada para transitar entre diferentes sistemas de coordenadas e como ela é essencial para compreender a ação de transformações lineares em espaços vetoriais.
+                </p>
+
+                <h2 id="aplicacoes">Aplicações da Álgebra Linear</h2>
+
+                <p>
+                    A álgebra linear é uma das áreas mais ricas em aplicações dentro da matemática e da física, fornecendo as ferramentas essenciais para a análise e resolução de uma vasta gama de problemas. Algumas das aplicações mais significativas incluem:
+                </p>
+
+                <ul>
+                    <li>
+                        <strong>Sistemas de Equações Lineares</strong>: A álgebra linear fornece os fundamentos para a resolução de sistemas de equações lineares, que são comuns em muitas áreas da ciência e engenharia. A capacidade de representar e manipular sistemas lineares é crucial para a análise de circuitos, estruturas, e sistemas dinâmicos, entre outros.
+                    </li>
+                    <li>
+                        <strong>Transformações Lineares e Matrizes</strong>: A relação entre transformações lineares e matrizes permite que muitas operações em álgebra linear sejam realizadas de forma eficiente usando técnicas de manipulação de matrizes. Isso inclui a resolução de sistemas lineares, a computação de determinantes e a realização de decomposições matriciais.
+                    </li>
+                    <li>
+                        <strong>Espaços Vetoriais e Subespaços</strong>: A compreensão da estrutura de espaços vetoriais e subespaços é fundamental para a análise de problemas geométricos e topológicos. Isso se aplica, por exemplo, à análise de superfícies e curvas em geometria diferencial, bem como ao estudo de variedades em geometria algébrica.
+                    </li>
+                    <li>
+                        <strong>Autovalores e Autovetores</strong>: O estudo de autovalores e autovetores de transformações lineares é essencial em muitas áreas, incluindo a estabilidade de sistemas dinâmicos, a análise de deformações em mecânica dos sólidos, e a resolução de equações diferenciais lineares.
+                    </li>
+                    <li>
+                        <strong>Aplicações em Física</strong>: A álgebra linear é amplamente utilizada na física, por exemplo, na mecânica quântica para descrever estados e observáveis, na relatividade restrita para tratar transformações de Lorentz, e na teoria da relatividade geral na descrição de variedades diferenciais.
+                    </li>
+                </ul>
+
+                <p>
+                    Essas aplicações ilustram a ubiquidade e a importância da álgebra linear em várias disciplinas, destacando como suas ideias e técnicas são fundamentais para a compreensão e a solução de problemas em matemática, ciência e engenharia.
+                </p>
+
+                <h2 id="conclusao">Conclusão</h2>
+
+                <p>
+                    Nesta aula, exploramos os conceitos fundamentais de espaço vetorial, transformação linear e ortogonalidade, que são centrais para a compreensão da álgebra linear e suas aplicações. Vimos como os espaços vetoriais fornecem um quadro para a análise de combinações lineares e a estrutura de sistemas lineares, como as transformações lineares descrevem mapeamentos entre espaços vetoriais, e como a ortogonalidade permite a decomposição de vetores em componentes independentes.
+                </p>
+
+                <p>
+                    A álgebra linear é uma ferramenta poderosa e versátil, com aplicações que vão desde a resolução de sistemas de equações lineares até a descrição de fenômenos em física teórica. O domínio desses conceitos é essencial para avançar em estudos mais aprofundados de matemática e física, e para aplicar essas ideias em problemas práticos em ciência e engenharia.
+                </p>
+
+                <p>
+                    Na próxima aula, daremos continuidade a este tópico, explorando em mais detalhes as propriedades das transformações lineares, incluindo a mudança de coordenadas e suas aplicações em problemas práticos. Prepare-se para aprofundar ainda mais seu entendimento sobre como a álgebra linear pode ser utilizada como uma ferramenta para decifrar os mistérios do universo físico.
+                </p>
+
+                <div class="navigation">
+                    <a href="1-Spacetime-Algebra.html" class="btn">Próxima Aula: Álgebra do Espaço-Tempo</a>
                 </div>
-                <h2 id="congelamento">2. Second Major Section</h2>
-
-
-
 
             </div>
         </main>
-
-        <aside class="right-sidebar">
-            <div class="toc-container">
-                <h4>Nesta página</h4>
-                <ul>
-                    <li>
-                        <a href="#intro">Espaço Euclidiano $\mathbb{E}^3$</a>
-                        <ul>
-                            <li>
-                                <a href="#estrutura-algebrica">Estrutura Algébrica</a>
-                                <ul>
-                                    <li><a href="#espaco-vetorial">Espaço Vetorial</a></li>
-                                    <li><a href="#combinacao-linear">Combinação Linear</a></li>
-                                    <li><a href="#espaco-gerado">Espaço Gerado</a></li>
-                                    <li><a href="#independencia-linear">Independência Linear</a></li>
-                                    <li><a href="#conjunto-gerador">Conjunto Gerador</a></li>
-                                    <li><a href="#base-dimensao">Base e Dimensão</a></li>
-                                    <li><a href="#sistema-coordenadas">Sistema de Coordenadas</a></li>
-                                    <li><a href="#repr-matricial">Representação Matricial</a></li>
-                                    <li><a href="#mudanca-base">Mudança de Base</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#estrutura-geometrica">Estrutura Geométrica</a>
-                                <ul>
-                                    <li><a href="#ortogonalidade">Ortogonalidade</a></li>
-                                    <li><a href="#base-ortonormal">Base Ortonormal</a></li>
-                                    <li><a href="#projecao-componentes">Extração de Componentes</a></li>
-                                    <li><a href="#produto-interno-componentes">Produto Interno em Componentes</a></li>
-                                    <li><a href="#norma-distancia-componentes">Norma e Distância</a></li>
-                                    <li><a href="#tensor-metrico">Tensor Métrico</a></li>
-                                    <li><a href="#espaco-absoluto">Espaço Absoluto de Newton</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#tempo">Tempo</a>
-                        <ul>
-                            <li><a href="#mapa-identidade">O Mapa da Identidade</a></li>
-                            <li><a href="#mapas-expectativas">Expectativas Físicas</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#congelamento">Second Major Section</a></li>
-                </ul>
-            </div>
-        </aside>
-    </div>
-
-    <!-- Search Modal Overlay -->
-    <div class="search-overlay" id="search-overlay">
-        <div class="search-modal">
-            <div class="search-header">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
-                </svg>
-                <input type="text" id="search-input" placeholder="Search documentation..." autocomplete="off">
-            </div>
-            <div class="search-results" id="search-results"></div>
-            <div class="search-footer">
-                <div class="search-commands">
-                    <span class="cmd-key">↑</span>
-                    <span class="cmd-key">↓</span>
-                    <span class="cmd-label">navigate</span>
-                    <span class="cmd-key">↵</span>
-                    <span class="cmd-label">select</span>
-                </div>
-                <div class="search-commands">
-                    <span class="cmd-key">esc</span>
-                    <span class="cmd-label">close</span>
-                </div>
-            </div>
-        </div>
     </div>
 
     <script src="../../assets/js/class-lecture.js"></script>
