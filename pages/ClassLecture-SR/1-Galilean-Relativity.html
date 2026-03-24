@@ -687,51 +687,51 @@
                     norma unitária, constituindo uma base ortonormal local.
                 </p>
 
-                <!--Testando TikZ-->
                 <div class="tikz-container">
                     <script type="text/tikz">
                         \usetikzlibrary{arrows.meta}
-                        \begin{tikzpicture}[scale=1.2, >=Stealth]
-                            \def\radius{1.2}
-                            \def\anglephi{30}
-                            
-                            % Coordinate system
-                            \draw[->, thick] (-1.5,0,0) -- (1.5,0,0) node[below left]{$x$};
-                            \draw[->, thick] (0,-1.5,0) -- (0,1.5,0) node[right]{$y$};
-                            \draw[->, thick] (0,0,-1.5) -- (0,0,1.5) node[above]{$z$};
-                            
-                            % Point P in cylindrical coordinates
-                            \coordinate (P) at (\anglephi: \radius, 0);
-                            
-                            % Projection on xy plane
-                            \coordinate (Pxy) at (\anglephi: \radius, 0, 0);
-                            
-                            % Draw vector v
-                            \draw[->, very thick, purple] (0,0,0) -- (P) node[above right]{$\vec{v}$};
-                            
-                            % Draw projection on xy plane
-                            \draw[->, thick, orange] (0,0,0) -- (Pxy) node[below right, font=\small]{$\vec{\rho}$};
-                            
-                            % Draw radial line in xy plane
-                            \draw[dashed, thin, gray] (0,0,0) -- (Pxy);
-                            
-                            % Draw angle phi
-                            \draw[->, thick, blue] (0.5,0,0) arc (0:\anglephi:0.5);
-                            \node[blue, right] at (0.5*cos(\anglephi), 0.5*sin(\anglephi), 0) {$\varphi$};
-                            
-                            % Draw basis vectors at P
-                            \coordinate (Ex) at (\anglephi: 1, 0, 0);
-                            \coordinate (Ey) at (\anglephi: 0, 1, 0);
-                            \coordinate (Ez) at (0, 0, 1);
-                            
-                            \draw[->, thick, red] (P) -- ++(Ex) node[right, font=\small]{$\hat{e}_\rho$};
-                            \draw[->, thick, green!60!black] (P) -- ++(Ey) node[above, font=\small]{$\hat{e}_\varphi$};
-                            \draw[->, thick, blue] (P) -- ++(Ez) node[above, font=\small]{$\hat{e}_z$};
-                            
-                            % Origin dot
-                            \filldraw[black] (0,0,0) circle (1pt);
-                            \node[below left, font=\tiny, inner sep=1pt] at (0,0,0) {$0$};
-                            \filldraw[purple] (P) circle (1pt);
+                        \begin{tikzpicture}[x={(-0.6cm,-0.4cm)}, y={(1cm,0cm)}, z={(0cm,1cm)}, scale=2]
+                            \def\r{1.2}
+                            \def\ang{50} % This is \varphi
+                            \def\h{1.1} % This is z
+
+                            \coordinate (O) at (0,0,0);
+                            \coordinate (Pxy) at ({\r*cos(\ang)}, {\r*sin(\ang)}, 0);
+                            \coordinate (P) at ({\r*cos(\ang)}, {\r*sin(\ang)}, \h);
+
+                            % Cylinder geometric guidelines (1st quadrant wedge)
+                            \draw[gray!40, thin] plot[domain=0:90, samples=30] ({\r*cos(\x)}, {\r*sin(\x)}, 0);
+                            \draw[gray!40, thin] plot[domain=0:90, samples=30] ({\r*cos(\x)}, {\r*sin(\x)}, \h);
+                            \draw[gray!40, thin] (\r,0,0) -- (\r,0,\h);
+                            \draw[gray!40, thin] (0,\r,0) -- (0,\r,\h);
+                            \draw[gray!60, thin, dotted] plot[domain=0:\ang, samples=20] ({\r*cos(\x)}, {\r*sin(\x)}, \h);
+
+                            % Axes
+                            \draw[-{Stealth[scale=1.2]}, thick] (0,0,0) -- (1.6,0,0) node[below left]{$x$};
+                            \draw[-{Stealth[scale=1.2]}, thick] (0,0,0) -- (0,1.6,0) node[right]{$y$};
+                            \draw[-{Stealth[scale=1.2]}, thick] (0,0,0) -- (0,0,1.8) node[above]{$z$};
+
+                            % Projections
+                            \draw[dashed, thin, gray] (O) -- (Pxy);
+                            \draw[dashed, thin, gray] (Pxy) -- (P);
+                            \draw[dashed, thin, gray] ({\r*cos(\ang)},0,0) -- (Pxy) -- (0,{\r*sin(\ang)},0);
+                            \draw[dashed, thin, gray] (P) -- (0,0,\h);
+
+                            % Arc for \varphi
+                            \draw[-{Stealth}, thin, blue] plot[smooth, domain=0:\ang, samples=20] ({0.4*cos(\x)}, {0.4*sin(\x)}, 0);
+                            \node[blue, below right, inner sep=1pt] at ({0.45*cos(\ang/2)}, {0.45*sin(\ang/2)}, 0) {$\varphi$};
+
+                            % Vector P
+                            \draw[-{Stealth[scale=1.2]}, very thick, purple] (O) -- (P) node[above right]{$P(\rho, \varphi, z)$};
+
+                            % Basis vectors at P
+                            \draw[-{Stealth}, thick, red] (P) -- ++({0.5*cos(\ang)}, {0.5*sin(\ang)}, 0) node[below right, font=\small]{$\hat{e}_\rho$};
+                            \draw[-{Stealth}, thick, green!60!black] (P) -- ++({-0.5*sin(\ang)}, {0.5*cos(\ang)}, 0) node[above right, font=\small]{$\hat{e}_\varphi$};
+                            \draw[-{Stealth}, thick, blue] (P) -- ++(0, 0, 0.5) node[left, font=\small]{$\hat{e}_z$};
+
+                            % Origin dot/label
+                            \node[below right, font=\tiny, inner sep=1pt] at (O) {$0$};
+                            \filldraw[purple] (P) circle (0.6pt);
                         \end{tikzpicture}
                     </script>
                 </div>
@@ -779,57 +779,63 @@
                     suavemente de ponto a ponto, "acompanhando" a geometria esférica.
                 </p>
 
-                <!--Testando TikZ-->
                 <div class="tikz-container">
                     <script type="text/tikz">
                         \usetikzlibrary{arrows.meta}
-                        \begin{tikzpicture}[scale=1.2, >=Stealth]
-                            \def\radius{1.2}
-                            \def\anglephi{30}
-                            \def\angletheta{45}
+                        \begin{tikzpicture}[x={(-0.6cm,-0.4cm)}, y={(1cm,0cm)}, z={(0cm,1cm)}, scale=2]
+                            \def\r{1.4}
+                            \def\theta{40} % polar angle (from z)
+                            \def\phi{55} % azimutal angle (from x)
+
+                            \coordinate (O) at (0,0,0);
+                            \coordinate (P) at ({\r*sin(\theta)*cos(\phi)}, {\r*sin(\theta)*sin(\phi)}, {\r*cos(\theta)});
+                            \coordinate (Pxy) at ({\r*sin(\theta)*cos(\phi)}, {\r*sin(\theta)*sin(\phi)}, 0);
+                            \coordinate (Pz) at (0, 0, {\r*cos(\theta)});
+
+                            % Sphere geometric guidelines (1st octant lines)
+                            \draw[gray!40, thin] plot[domain=0:90, samples=30] ({\r*cos(\x)}, {\r*sin(\x)}, 0); % Equator
+                            \draw[gray!40, thin] plot[domain=0:90, samples=30] ({\r*sin(\x)}, 0, {\r*cos(\x)}); % xz meridian
+                            \draw[gray!40, thin] plot[domain=0:90, samples=30] (0, {\r*sin(\x)}, {\r*cos(\x)}); % yz meridian
                             
-                            % Coordinate system
-                            \draw[->, thick] (-1.5,0,0) -- (1.5,0,0) node[below left]{$x$};
-                            \draw[->, thick] (0,-1.5,0) -- (0,1.5,0) node[right]{$y$};
-                            \draw[->, thick] (0,0,-1.5) -- (0,0,1.5) node[above]{$z$};
-                            
-                            % Point P in spherical coordinates
-                            \coordinate (P) at (\anglephi: \angletheta: \radius);
-                            
-                            % Projection on xy plane
-                            \coordinate (Pxy) at (\anglephi: \radius, 0, 0);
-                            
-                            % Draw vector v
-                            \draw[->, very thick, purple] (0,0,0) -- (P) node[above right]{$\vec{v}$};
-                            
-                            % Draw projection on xy plane
-                            \draw[->, thick, orange] (0,0,0) -- (Pxy) node[below right, font=\small]{$\vec{\rho}$};
-                            
-                            % Draw radial line in xy plane
-                            \draw[dashed, thin, gray] (0,0,0) -- (Pxy);
-                            
-                            % Draw angle phi
-                            \draw[->, thick, blue] (0.5,0,0) arc (0:\anglephi:0.5);
-                            \node[blue, right] at (0.5*cos(\anglephi), 0.5*sin(\anglephi), 0) {$\varphi$};
-                            
-                            % Draw angle theta
-                            \draw[->, thick, red] (0,0,0.5) arc (90:90-\angletheta:0.5);
-                            \node[red, left] at (0.5*sin(\angletheta), 0, 0.5*cos(\angletheta)) {$\theta$};
-                            
-                            % Draw basis vectors at P
-                            \coordinate (Er) at (\anglephi: \angletheta: 1);
-                            \coordinate (Etheta) at (\anglephi: \angletheta+90: 1);
-                            \coordinate (Ephi) at (\anglephi+90: \angletheta: 1);
-                            
-                            \draw[->, thick, green!60!black] (P) -- ++(Er) node[right, font=\small]{$\hat{e}_r$};
-                            \draw[->, thick, brown] (P) -- ++(Etheta) node[above, font=\small]{$\hat{e}_\theta$};
-                            \draw[->, thick, cyan] (P) -- ++(Ephi) node[left, font=\small]{$\hat{e}_\varphi$};
-                            
-                            % Origin dot
-                            \filldraw[black] (0,0,0) circle (1pt);
-                            \node[below left, font=\tiny, inner sep=1pt] at (0,0,0) {$0$};
-                            \filldraw[purple] (P) circle (1pt);
-                        \end{tikzpicture>
+                            % Latitude curve passing through P
+                            \draw[gray!60, thin, dotted] plot[domain=0:90, samples=30] ({\r*sin(\theta)*cos(\x)}, {\r*sin(\theta)*sin(\x)}, {\r*cos(\theta)});
+                            % Longitude curve passing through P
+                            \draw[gray!60, thin, dotted] plot[domain=0:90, samples=30] ({\r*sin(\x)*cos(\phi)}, {\r*sin(\x)*sin(\phi)}, {\r*cos(\x)});
+
+                            % Axes
+                            \draw[-{Stealth[scale=1.2]}, thick] (0,0,0) -- (1.5,0,0) node[below left]{$x$};
+                            \draw[-{Stealth[scale=1.2]}, thick] (0,0,0) -- (0,1.5,0) node[right]{$y$};
+                            \draw[-{Stealth[scale=1.2]}, thick] (0,0,0) -- (0,0,1.6) node[above]{$z$};
+
+                            % Projections
+                            \draw[dashed, thin, gray] (O) -- (Pxy);
+                            \draw[dashed, thin, gray] (Pxy) -- (P);
+                            \draw[dashed, thin, gray] (P) -- (Pz);
+                            \draw[dashed, thin, gray] ({\r*sin(\theta)*cos(\phi)},0,0) -- (Pxy) -- (0,{\r*sin(\theta)*sin(\phi)},0);
+
+                            % Arc for \varphi
+                            \draw[-{Stealth}, thin, blue] plot[smooth, domain=0:\phi, samples=20] ({0.4*cos(\x)}, {0.4*sin(\x)}, 0);
+                            \node[blue, below right, inner sep=1pt] at ({0.5*cos(\phi/2)}, {0.5*sin(\phi/2)}, 0) {$\varphi$};
+
+                            % Arc for \theta (from z-axis to vector P)
+                            \draw[-{Stealth}, thin, red] plot[smooth, domain=0:\theta, samples=20] ({0.4*sin(\x)*cos(\phi)}, {0.4*sin(\x)*sin(\phi)}, {0.4*cos(\x)});
+                            \node[red, above left, inner sep=1pt] at ({0.5*sin(\theta/2)*cos(\phi)}, {0.5*sin(\theta/2)*sin(\phi)}, {0.5*cos(\theta/2)}) {$\theta$};
+
+                            % Vector P
+                            \draw[-{Stealth[scale=1.2]}, very thick, purple] (O) -- (P) node[above right]{$P(r, \theta, \varphi)$};
+
+                            % Basis vectors at P
+                            % e_r
+                            \draw[-{Stealth}, thick, magenta] (P) -- ++({0.4*sin(\theta)*cos(\phi)}, {0.4*sin(\theta)*sin(\phi)}, {0.4*cos(\theta)}) node[below right, font=\small]{$\hat{e}_r$};
+                            % e_theta
+                            \draw[-{Stealth}, thick, brown] (P) -- ++({0.4*cos(\theta)*cos(\phi)}, {0.4*cos(\theta)*sin(\phi)}, {-0.4*sin(\theta)}) node[below right, font=\small]{$\hat{e}_\theta$};
+                            % e_phi
+                            \draw[-{Stealth}, thick, cyan!80!black] (P) -- ++({-0.4*sin(\phi)}, {0.4*cos(\phi)}, 0) node[above left, font=\small]{$\hat{e}_\varphi$};
+
+                            % Dots
+                            \node[below right, font=\tiny, inner sep=1pt] at (O) {$0$};
+                            \filldraw[purple] (P) circle (0.6pt);
+                        \end{tikzpicture}
                     </script>
                 </div>
 
