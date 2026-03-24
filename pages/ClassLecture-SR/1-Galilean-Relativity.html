@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -8,6 +8,30 @@
     <link rel="icon" type="image/png" href="images/Gravity.png">
     <link rel="stylesheet" href="../../assets/css/class-lecture.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- TikZJax for LaTeX/TikZ rendering in the browser -->
+    <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+    <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+    <style>
+        .tikz-container {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .tikz-container svg {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+        }
+        /* Ensure dark mode visibility for TikZ */
+        [data-theme='dark'] .tikz-container {
+            background: #ffffff;
+        }
+    </style>
 </head>
 
 <body>
@@ -100,6 +124,7 @@
                     <ul>
                         <li><a href="1-Galilean-Relativity.html" class="active">Galilean Relativity</a></li>
                         <li><a href="1-Spacetime-Algebra.html">Spacetime Algebra</a></li>
+                        <li><a href="2-Galilean-Spacetime.html">Galilean Spacetime</a></li>
                     </ul>
                 </div>
             </div>
@@ -577,6 +602,47 @@
                     os valores numéricos das componentes; o vetor em si permanece o mesmo objeto geométrico.
                 </p>
 
+
+                <!--Testando TikZ-->
+                <div class="tikz-container">
+                    <script type="text/tikz">
+                        \usetikzlibrary{arrows.meta}
+                        \begin{tikzpicture}[x={(-0.6cm,-0.4cm)}, y={(1cm,0cm)}, z={(0cm,1cm)}, scale=2]
+                            % Origin
+                            \coordinate (O) at (0,0,0);
+                            
+                            % Axes
+                            \draw[-{Stealth[scale=1.2]}, thick] (0,0,0) -- (1.5,0,0) node[below left]{$x$};
+                            \draw[-{Stealth[scale=1.2]}, thick] (0,0,0) -- (0,1.5,0) node[right]{$y$};
+                            \draw[-{Stealth[scale=1.2]}, thick] (0,0,0) -- (0,0,1.5) node[above]{$z$};
+
+                            % Basis vectors
+                            \draw[-{Stealth}, thick, red] (0,0,0) -- (1,0,0) node[midway, below left, font=\small]{$\hat{e}_1$};
+                            \draw[-{Stealth}, thick, green!60!black] (0,0,0) -- (0,1,0) node[midway, below right, font=\small]{$\hat{e}_2$};
+                            \draw[-{Stealth}, thick, blue] (0,0,0) -- (0,0,1) node[midway, left, font=\small]{$\hat{e}_3$};
+
+                            % Origin dot/label
+                            \node[below right, font=\tiny, inner sep=1pt] at (O) {$0$};
+
+                            % Vector v
+                            \coordinate (P) at (1, 1.2, 0.8);
+                            \draw[-{Stealth[scale=1.2]}, very thick, purple] (0,0,0) -- (P) node[above right]{$\vec{v}$};
+
+                            % Projections
+                            \draw[dashed, thin, gray] (1,0,0) -- (1,1.2,0) -- (0,1.2,0);
+                            \draw[dashed, thin, gray] (1,1.2,0) -- (P);
+                            \draw[dashed, thin, gray] (P) -- (0,0,0.8);
+                            \draw[dashed, thin, gray] (1,0,0.8) -- (1,0,0);
+                            \draw[dashed, thin, gray] (0,1.2,0.8) -- (0,1.2,0);
+                            \draw[dashed, thin, gray] (0,0,0.8) -- (1,0,0.8) -- (P);
+                            \draw[dashed, thin, gray] (0,0,0.8) -- (0,1.2,0.8) -- (P);
+                            
+                            % Point dot
+                            \filldraw[purple] (P) circle (0.6pt);
+                        \end{tikzpicture}
+                    </script>
+                </div>
+
                 <p style="color: yellow;">
                     Para ilustrar essa liberdade de escolha, apresentamos a seguir dois outros sistemas de coordenadas
                     de uso frequente em física — as <strong>coordenadas cilíndricas</strong> e as <strong>coordenadas
@@ -621,6 +687,55 @@
                     norma unitária, constituindo uma base ortonormal local.
                 </p>
 
+                <!--Testando TikZ-->
+                <div class="tikz-container">
+                    <script type="text/tikz">
+                        \usetikzlibrary{arrows.meta}
+                        \begin{tikzpicture}[scale=1.2, >=Stealth]
+                            \def\radius{1.2}
+                            \def\anglephi{30}
+                            
+                            % Coordinate system
+                            \draw[->, thick] (-1.5,0,0) -- (1.5,0,0) node[below left]{$x$};
+                            \draw[->, thick] (0,-1.5,0) -- (0,1.5,0) node[right]{$y$};
+                            \draw[->, thick] (0,0,-1.5) -- (0,0,1.5) node[above]{$z$};
+                            
+                            % Point P in cylindrical coordinates
+                            \coordinate (P) at (\anglephi: \radius, 0);
+                            
+                            % Projection on xy plane
+                            \coordinate (Pxy) at (\anglephi: \radius, 0, 0);
+                            
+                            % Draw vector v
+                            \draw[->, very thick, purple] (0,0,0) -- (P) node[above right]{$\vec{v}$};
+                            
+                            % Draw projection on xy plane
+                            \draw[->, thick, orange] (0,0,0) -- (Pxy) node[below right, font=\small]{$\vec{\rho}$};
+                            
+                            % Draw radial line in xy plane
+                            \draw[dashed, thin, gray] (0,0,0) -- (Pxy);
+                            
+                            % Draw angle phi
+                            \draw[->, thick, blue] (0.5,0,0) arc (0:\anglephi:0.5);
+                            \node[blue, right] at (0.5*cos(\anglephi), 0.5*sin(\anglephi), 0) {$\varphi$};
+                            
+                            % Draw basis vectors at P
+                            \coordinate (Ex) at (\anglephi: 1, 0, 0);
+                            \coordinate (Ey) at (\anglephi: 0, 1, 0);
+                            \coordinate (Ez) at (0, 0, 1);
+                            
+                            \draw[->, thick, red] (P) -- ++(Ex) node[right, font=\small]{$\hat{e}_\rho$};
+                            \draw[->, thick, green!60!black] (P) -- ++(Ey) node[above, font=\small]{$\hat{e}_\varphi$};
+                            \draw[->, thick, blue] (P) -- ++(Ez) node[above, font=\small]{$\hat{e}_z$};
+                            
+                            % Origin dot
+                            \filldraw[black] (0,0,0) circle (1pt);
+                            \node[below left, font=\tiny, inner sep=1pt] at (0,0,0) {$0$};
+                            \filldraw[purple] (P) circle (1pt);
+                        \end{tikzpicture}
+                    </script>
+                </div>
+
                 <h4 id="coord-esfericas">Coordenadas Esféricas $(r, \theta, \varphi)$</h4>
 
                 <p style="color: yellow;">
@@ -663,6 +778,60 @@
                     \hat{e}_\theta, \hat{e}_\varphi \}$ formam uma base ortonormal — mas a sua orientação varia
                     suavemente de ponto a ponto, "acompanhando" a geometria esférica.
                 </p>
+
+                <!--Testando TikZ-->
+                <div class="tikz-container">
+                    <script type="text/tikz">
+                        \usetikzlibrary{arrows.meta}
+                        \begin{tikzpicture}[scale=1.2, >=Stealth]
+                            \def\radius{1.2}
+                            \def\anglephi{30}
+                            \def\angletheta{45}
+                            
+                            % Coordinate system
+                            \draw[->, thick] (-1.5,0,0) -- (1.5,0,0) node[below left]{$x$};
+                            \draw[->, thick] (0,-1.5,0) -- (0,1.5,0) node[right]{$y$};
+                            \draw[->, thick] (0,0,-1.5) -- (0,0,1.5) node[above]{$z$};
+                            
+                            % Point P in spherical coordinates
+                            \coordinate (P) at (\anglephi: \angletheta: \radius);
+                            
+                            % Projection on xy plane
+                            \coordinate (Pxy) at (\anglephi: \radius, 0, 0);
+                            
+                            % Draw vector v
+                            \draw[->, very thick, purple] (0,0,0) -- (P) node[above right]{$\vec{v}$};
+                            
+                            % Draw projection on xy plane
+                            \draw[->, thick, orange] (0,0,0) -- (Pxy) node[below right, font=\small]{$\vec{\rho}$};
+                            
+                            % Draw radial line in xy plane
+                            \draw[dashed, thin, gray] (0,0,0) -- (Pxy);
+                            
+                            % Draw angle phi
+                            \draw[->, thick, blue] (0.5,0,0) arc (0:\anglephi:0.5);
+                            \node[blue, right] at (0.5*cos(\anglephi), 0.5*sin(\anglephi), 0) {$\varphi$};
+                            
+                            % Draw angle theta
+                            \draw[->, thick, red] (0,0,0.5) arc (90:90-\angletheta:0.5);
+                            \node[red, left] at (0.5*sin(\angletheta), 0, 0.5*cos(\angletheta)) {$\theta$};
+                            
+                            % Draw basis vectors at P
+                            \coordinate (Er) at (\anglephi: \angletheta: 1);
+                            \coordinate (Etheta) at (\anglephi: \angletheta+90: 1);
+                            \coordinate (Ephi) at (\anglephi+90: \angletheta: 1);
+                            
+                            \draw[->, thick, green!60!black] (P) -- ++(Er) node[right, font=\small]{$\hat{e}_r$};
+                            \draw[->, thick, brown] (P) -- ++(Etheta) node[above, font=\small]{$\hat{e}_\theta$};
+                            \draw[->, thick, cyan] (P) -- ++(Ephi) node[left, font=\small]{$\hat{e}_\varphi$};
+                            
+                            % Origin dot
+                            \filldraw[black] (0,0,0) circle (1pt);
+                            \node[below left, font=\tiny, inner sep=1pt] at (0,0,0) {$0$};
+                            \filldraw[purple] (P) circle (1pt);
+                        \end{tikzpicture>
+                    </script>
+                </div>
 
                 <p style="color: yellow;">
                     Esses dois exemplos ilustram um ponto conceitual fundamental: a base canônica cartesiana é
