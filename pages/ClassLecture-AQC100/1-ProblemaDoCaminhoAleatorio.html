@@ -22,10 +22,21 @@
                     </svg>
                 </button>
                 <button id="theme-toggle" class="sidebar-toggle" aria-label="Toggle Theme">
-                    <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
-                    <svg id="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                    <svg id="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="display: none;">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
                 </button>
@@ -78,7 +89,8 @@
                     <h3>Introdução aos Métodos Estatísticos</h3>
                     <ul>
                         <li><a href="1-Introducao.html">Introdução</a></li>
-                        <li><a href="1-ProblemaDoCaminhoAleatorio.html" class="active">Problema do Caminho Aleatório</a></li>
+                        <li><a href="1-ProblemaDoCaminhoAleatorio.html" class="active">Problema do Caminho Aleatório</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -88,32 +100,32 @@
             <div class="prose">
 
                 <h1 id="caminho-aleatorio">O Problema do Caminho Aleatório</h1>
-                <p class="lead">Nesta seção, apresentamos a formulação rigorosa do problema do
-                    caminho aleatório em uma
-                    dimensão. A compreensão deste modelo elementar é o ponto de partida essencial para a exploração
+                <p class="lead">Nesta seção, apresentamos a formulação rigorosa do Problema do Caminho Aleatório em uma
+                    dimensão. A compreensão deste modelo é o ponto de partida essencial para a exploração
                     estatística de sistemas físicos com muitos graus de liberdade.</p>
 
                 <h2 id="objetivo">Objetivo Central</h2>
                 <p>O <strong>objetivo fundamental</strong> ao estudar este problema é determinar a
                     probabilidade
                     exata de encontrarmos uma partícula em uma posição final específica, dada após a
-                    ocorrência sucessiva de um número total de passos ao longo do tempo. Através da dedução desta
-                    métrica analítica, almejamos compreender empiricamente como o puro caos da incerteza microscópica
+                    ocorrência sucessiva de um número total de passos ao longo do tempo. Através desta dedução
+                    analítica, almejamos compreender empiricamente como a incerteza microscópica
                     probabilística (os passos unitários e isolados de uma partícula) acaba produzindo, em larga escala
                     de observação, um comportamento macroscópico perfeitamente consistente, como limites de deslocamento
                     médio e distribuições contínuas de difusão de fluidos.</p>
 
                 <h2 id="enunciado">As Regras e o Enunciado do Modelo</h2>
+
                 <p>Consideremos uma partícula física puntiforme imaginária que se encontra disposta
                     inicialmente, no
                     tempo originário constante \( t = 0 \), posicionada de forma exata na origem do eixo coordenado real
                     em uma única dimensão (ou seja, partindo rigidamente em \( x = 0 \)).</p>
-                <p>Em cada pequeno fragmento de intervalo fixo de tempo uniforme, a partícula será
+                <p>Em cada intervalo de tempo uniforme, a partícula será
                     submetida a realizar
-                    obrigatoriamente um deslocamento estocástico elementar de comprimento contínuo estrutural idêntico
-                    que rotularemos genericamente de constante \( l \). Cada passo sucessivo independe e não carrega
+                    obrigatoriamente um deslocamento estocástico de comprimento idêntico
+                    que rotularemos de constante \( l \). Cada passo sucessivo independe e não carrega
                     memórias de movimentos efetuados historicamente, assumindo perfeitamente as definições ideais
-                    relativas de uma <strong>Cadeia de Markov</strong>, obedecendo regras absolutas puramente
+                    relativas de uma <strong>Cadeia de Markov</strong>, obedecendo regras puramente
                     estocásticas:</p>
 
                 <div class="feature-grid">
@@ -122,46 +134,45 @@
                         <p>A partícula movimenta-se instantaneamente para a respectiva coordenada
                             em direção favorável
                             no avanço da posição progressiva \( +l \) a partir da posição base com a probabilidade
-                            individual invariável referida pela chance <strong>\( p \)</strong>.</p>
+                            individual <strong>\( p \)</strong>.</p>
                     </div>
                     <div class="feature-card">
                         <h3 id="movimento-esquerda">2. Passo para a Esquerda</h3>
-                        <p>A mesma partícula inverte-se com tendência equitativa se deslocando
-                            recuadamente,
-                            orientando-se na diminuição com saltos de tamanho direcional inferior relativo a \( -l \),
-                            sujeita a um parâmetro de probabilidade unitário batizado de variável <strong>\( q
-                                \)</strong>.</p>
+                        <p>A mesma partícula inverte-se se deslocando recuadamente, orientando-se na diminuição, com saltos de tamanho direcional \( -l \), sujeita a um parâmetro de probabilidade <strong>\(q\)</strong>.
+                        </p>
                     </div>
                 </div>
 
-                <p>Uma vez que o fato isolado de a partícula sofrer o movimento individual
-                    constitui uma obrigação
-                    determinística a cada janela regular de transição evolutiva de eventos no cronograma, ela deve
-                    estritamente convergir no ato compulsório de caminhar pelo menos e unicamente em um dos dois únicos
-                    caminhos direcionais disponíveis, acarretando assim na obviedade imposta pela normalização de todas
-                    as tendências estocásticas absolutas parciais relativas aos seus graus de autonomia:</p>
 
-                <p>$$ p + q = 1 $$</p>
+                <p>
+                    <br>
+                    Como a partícula obrigatoriamente se desloca em cada intervalo de tempo, seja para a direita ou para
+                    a esquerda, a soma das probabilidades dessas duas direções deve ser igual a 1 (normalização):</p>
 
-                <p>A partir dessas simples regras delimitadoras, levantamos nossa principal indagação formal
-                    ao modelo: em dada amostragem envolvendo uma contagem considerável de eventos caracterizados por
-                    <strong>\( N \)</strong> repetições de passos probabilísticos globais, em que há <strong>\( n_1
-                        \)</strong> transições observadas favorecendo ao avanço com ganho da trajetória (passo para
-                    direita) acumulando na somatória de contribuições correspondente com outras <strong>\( n_2
-                        \)</strong> ocorrências limitantes retrocedentes com avanço inverso (os sucessivos recuos
-                    computados no espaço esquerdo da distribuição), permitindo assim obter a somatória total contida
-                    como os componentes parciais numéricos tal que o total computado é expresso por
-                    
-                    $$N = n_1 + n_2.$$
-                </p>
+                <p>$$ p + q = 1. $$</p>
 
-                                <p>Dada essa definição, observe que a probabilidade de ocorrência de uma
+                <p>Com as regras delimitadas, levantamos a principal indagação do modelo: qual é a probabilidade de, em
+                    um total de <strong>\( N \)</strong> passos, a partícula dar <strong>\( n_1 \)</strong> passos para
+                    a direita e <strong>\( n_2 \)</strong> passos para a esquerda?</p>
+
+                <p>
+                    Para determinarmos isso, definimos primeiro que o número total de passos é a soma dos passos dados em
+                    cada direção, o que é expresso por:</p>
+
+                <p>$$ N = n_1 + n_2.$$</p>
+
+
+
+
+
+
+                <p>Dada essa definição, observe que a probabilidade de ocorrência de uma
                     <strong>única sequência específica</strong> composta de \( N \) passos, na qual os passos para a
                     direita (probabilidade \( p \)) aparecem exatamente \( n_1 \) vezes e os passos para a esquerda
                     (probabilidade \( q \)) aparecem exatamente \( n_2 \) vezes, é simplesmente o produto contínuo
                     destas probabilidades individuais e independentes. Assim, a probabilidade dessa exata sequência ou
                     caminho particular de acontecimentos é dada pela potência:
-                    
+
                     $$\underbrace{(p \cdot p \dots p)}_{n_1 \text{ vezes}} \cdot \underbrace{(q \cdot q \dots q)}_{n_2
                     \text{ vezes}} = p^{n_1} q^{n_2}.$$
                 </p>
@@ -224,7 +235,7 @@
                         estritamente positivo (ou nulo) e totalmente limitado pela normalização</strong>. Em outras
                     palavras, a probabilidade é uma grandeza definida rigorosamente no intervalo fechado de $$ 0 \le
                     P_N(m) \le 1, $$ garantindo irredutível aderência aos pilares fundamentais da <strong>Teoria das
-                    Probabilidades.</strong></p>
+                        Probabilidades.</strong></p>
 
             </div>
         </main>
