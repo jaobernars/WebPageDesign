@@ -90,7 +90,7 @@
                     <ul>
                         <li><a href="1-Introducao.html">Introdução</a></li>
                         <li><a href="1-ProblemaDoCaminhoAleatorio.html">Problema do Caminho Aleatório</a>
-                        <li><a href="1-VMDP.html" class = "active">Valores Médios e Desvio Padrão</a></li>
+                        <li><a href="1-VMDP.html" class="active">Valores Médios e Desvio Padrão</a></li>
 
                         </li>
                     </ul>
@@ -101,12 +101,193 @@
         <main class="content-area">
             <div class="prose">
 
-                <h2>Introdução</h2>
-                <h2>Valores Médios e Desvio Padrão</h2>
+                <h1>Valores Médios e Desvio Padrão</h1>
+
+                <p>
+                    Na Mecânica Estatística, a transição formal entre as probabilidades dos microestados e as
+                    propriedades termodinâmicas macroscópicas é obtida através dos momentos de uma distribuição. Como
+                    vimos no problema associado ao Caminho Aleatório, modelar o sistema com as variáveis individuais é
+                    inviável, de modo que precisamos construir nosso conhecimento com grandezas mensuráveis combinadas.
+                    O comportamento físico macroscópico é definido tipicamente em torno do seu <strong>Valor
+                        Médio</strong> (a observação termodinâmica esperada e que domina o sistema escalarmente) e do
+                    seu <strong>Desvio Padrão</strong> (que reflete naturalmente a escala da incerteza, dispersão
+                    experimental e intensidade das flutuações estatísticas do sistema).
+                </p>
+
+                <h2>Distribuição de Probabilidade</h2>
+
+                <p>
+                    Seja $u$ uma <i>variável aleatória</i> que pode assumir M valores discretos, $u_1, u_2, \dots, u_M$.
+                    A <strong>probabilidade</strong> $P(u_i)\equiv P_i$ de que a variável assuma o valor $u_i$ deve
+                    estar no
+                    intervalo $0 \le P_i \le 1$, para qualquer $i \in \{1, 2, \dots, M\}$. A <strong>distribuição
+                        normalizada</strong> significa que a soma das probabilidades de todos os
+                    eventos
+                    mutuamente exclusivos e exaustivos deve ser igual a 1:
+                </p>
+
+                <p>$$ \sum_{i=1}^{M} P(u_i) = 1 $$</p>
+
+                <h3 id="valor-medio">Valor Médio</h3>
+                <p>
+                    O <strong>valor médio</strong> (ou valor esperado) da variável $u$, denotado como $\bar{u}$ ou
+                    $\langle u \rangle$,
+                    é definido como a soma dos possíveis valores de $u$ multiplicados pelas suas respectivas
+                    probabilidades:
+                </p>
+                <p>$$ \bar{u} \equiv \langle u \rangle = \sum_{i=1}^{M} u_i P(u_i) $$</p>
+
+                <p>Se $f(u)$ é uma função de $u$, então o valor médio de $f(u)$ é dado por:</p>
+                <p>$$ \bar{f(u)} \equiv \langle f(u) \rangle = \sum_{i=1}^{M} f(u_i) P(u_i) $$</p>
+
+                <p>Se $u$ é uma variável contínua, então o valor médio de $u$ é dado por:</p>
+                <p>$$ \bar{u} \equiv \langle u \rangle = \int_{-\infty}^{\infty} u P(u) du $$</p>
+
+                <p>Se $u$ é uma variável contínua, então o valor médio de $f(u)$ é dado por:</p>
+                <p>$$ \bar{f(u)} \equiv \langle f(u) \rangle = \int_{-\infty}^{\infty} f(u) P(u) du $$</p>
+
+                <h4 id="propriedades-valor-medio">Propriedades do Valor Médio</h4>
+                <p>A operação de valor médio, denotada por $\langle \cdot \rangle$, comporta-se como um
+                    <strong>operador linear</strong>. Para quaisquer funções $f(u)$ e $g(u)$ de uma variável aleatória
+                    $u$, e constantes $c$, $a$ e $b$, as propriedades mais essenciais são:
+                </p>
+
+                <ul>
+                    <li>
+                        <strong>Valor médio de uma constante:</strong> A média de um valor constante $c$ é a própria
+                        constante.
+                        <p>$$ \langle c \rangle = c $$</p>
+                    </li>
+                    <li>
+                        <strong>Multiplicação de função por constante (Homogeneidade):</strong> Constantes podem ser
+                        fatoradas para fora do cálculo do valor médio.
+                        <p>$$ \langle c f(u) \rangle = c \langle f(u) \rangle $$</p>
+                    </li>
+                    <li>
+                        <strong>Soma de função com constante:</strong> A média de uma função somada com uma constante é
+                        igual à média funcional acrescida da constante.
+                        <p>$$ \langle f(u) + c \rangle = \langle f(u) \rangle + c $$</p>
+                    </li>
+                    <li>
+                        <strong>Soma de funções (Aditividade):</strong> O valor médio da soma de funções é idêntico à
+                        soma dos respectivos valores médios de cada função.
+                        <p>$$ \langle f(u) + g(u) \rangle = \langle f(u) \rangle + \langle g(u) \rangle $$</p>
+                    </li>
+                    <li>
+                        <strong>Linearidade geral (para funções):</strong> Combinação direta das propriedades de
+                        aditividade e homogeneidade acima.
+                        <p>$$ \langle a f(u) + b g(u) \rangle = a \langle f(u) \rangle + b \langle g(u) \rangle $$</p>
+                    </li>
+                    <li>
+                        <strong>Produto de funções (de variáveis independentes):</strong> Se tivermos duas variáveis
+                        aleatórias distintas $u$ e $v$, e funções que dependem exclusivamente de cada uma delas,
+                        denotadas por $f(u)$ e $g(v)$, ocorre a separação:
+                        <p>$$ \langle f(u) g(v) \rangle = \langle f(u) \rangle \langle g(v) \rangle $$</p>
+                        apenas se, e somente se, as variáveis $u$ e $v$ forem estatisticamente
+                        <strong>independentes</strong>. <em>Cuidado:</em> para o produto de duas funções da
+                        <em>mesma</em> variável, em geral a relação não se divide: $\langle f(u) g(u) \rangle \neq
+                        \langle f(u) \rangle \langle g(u) \rangle$.
+                    </li>
+                </ul>
+
+                <h4 id="desvio-da-media">Desvio da Média</h4>
+                <p>
+                    O <strong>desvio da média</strong> é definido como:
+                </p>
+
+                <p>
+                    $$ \Delta u = u - \bar{u} = u - \langle u \rangle $$
+                </p>
+
+                <p> É claro que o valor médio do desvio da média é zero:</p>
+                <p>$$ \langle \Delta u \rangle = \langle (u - \langle u \rangle) \rangle = \langle u \rangle - \langle
+                    \langle u \rangle \rangle = \langle u \rangle - \langle u \rangle = 0
+                    $$</p>
+
+                <p>ou seja, a média dos desvios da média é zero.</p>
+
+                <h4 id="desvio-quadratico">Desvio Quadrático e Dispersão</h4>
+                <p>O <strong>desvio quadrático</strong> é dado por:</p>
+
+                <p>$$ (\Delta u)^2 = (u - \langle u \rangle)^2 = u^2 - 2u\langle u \rangle + \langle u \rangle^2 $$
+                </p>
+
+                <p>
+                    A <strong>dispersão</strong>, ou segundo momento é o valor médio do desvio quadrático:
+                </p>
+
+                <p>
+                    $$ \langle (\Delta u)^2 \rangle = \langle (u - \langle u \rangle)^2 \rangle = \langle u^2 \rangle -
+                    \langle u \rangle^2 $$
+                </p>
+
+                <p>
+                    É claro que $\langle (\Delta u)^2 \rangle \geq 0$, pois é o valor médio de uma soma de quadrados.
+                </p>
 
 
+                <h3 id="desvio-padrao">Desvio Padrão</h3>
+                <p>
+                    A raiz quadrada da dispersão é chamada de <strong>desvio padrão</strong> e é denotada por
+                    $\sigma_u$:
+                </p>
 
+                <p>
+                    $$ \sigma_u = \sqrt{\langle (\Delta u)^2 \rangle} = \sqrt{\langle u^2 \rangle - \langle u \rangle^2}
+                    $$
+                </p>
 
+                <p>
+                    O desvio padrão é uma medida de dispersão que indica o quanto os valores de uma variável aleatória
+                    se desviam da sua média. A comparação entre o desvio padrão e o valor médio é muito importante para
+                    determinar a precisão das medições e nos fornece uma ideia da largura da distribuição de
+                    probabilidade(ou seja, o quão fina ou larga é a distribuição).
+                </p>
+
+                <h4 id="momentos">Momentos</h4>
+
+                <p> Finalmente, podemos definir o <strong>momento em relação à média</strong> de ordem $n$ de uma
+                    variável aleatória $u$ como:</p>
+
+                <p>
+                    $$ \langle (u - \langle u \rangle)^n \rangle = \int_{-\infty}^{\infty} (u - \langle u \rangle)^n
+                    p(u) du $$
+                </p>
+
+                <p>Note que para $n=1$, temos $\langle (u - \langle u \rangle)^1 \rangle = \langle u - \langle u \rangle
+                    \rangle = 0$, como já vimos anteriormente.</p>
+
+                <p>
+                    Por meio dos momentos, sempre é possivel reconstruir a função de distribuição de probabilidade
+                    $p(u)$. No entanto, em muitos casos de interesse físico, para um número grande de eventos, é
+                    possivel obter uma boa aproximação de $p(u)$ utilizando apenas os dois primeiros momentos (média e
+                    desvio padrão).
+                </p>
+
+                <h5 id="exemplo">Exemplo: Caminho Aleatório</h5>
+
+                <p>
+                    No caso do problema do caminho aleatório, temos:
+                </p>
+
+                <p>
+                    $$ \langle N_1 \rangle = \sum_{N_1=0}^{N} N_1 P(N_1) = \sum_{N_1=0}^{N} N_1 \frac{N!}{N_1!(N_2)!}
+                    p^{N_1} q^{N_2} = N p $$
+                </p>
+
+                <p>onde $N_2 = N - N_1$ e $q = 1 - p$. Portanto podemos escrever:</p>
+
+                <p>
+                    $$ \langle N_1 \rangle = p \frac{\partial}{\partial p} \sum_{N_1=0}^{N} P(N_1) = p
+                    \frac{\partial}{\partial p} (p + q)^N = p \cdot N (p + q)^{N-1} = pN $$
+                </p>
+
+                <p>Para $N_2$ temos:</p>
+
+                <p>
+                    $$ \langle N_2 \rangle = q \frac{\partial}{\partial q} \sum_{N_1=0}^{N} P(N_1) = q
+                    \frac{\partial}{\partial q} (p + q)^N = q \cdot N (p + q)^{N-1} = qN $$
+                </p>
 
             </div>
         </main>
@@ -115,9 +296,24 @@
             <div class="toc-container">
                 <h4>Nesta página</h4>
                 <ul>
-                    <li><a href="#caminho-aleatorio"></a></li>
-                    <li><a href="#objetivo"></a></li>
-                    <li><a href="#enunciado"></a></li>
+                    <li><a href="#valor-medio">Valor Médio</a>
+                        <ul>
+                            <li><a href="#propriedades-valor-medio">Propriedades do Valor Médio</a></li>
+                            <li><a href="#desvio-da-media">Desvio da Média</a></li>
+                            <li><a href="#desvio-quadratico">Desvio Quadrático e Dispersão</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#desvio-padrao">Desvio Padrão</a></li>
+                    <li>
+                        <ul>
+                            <li><a href="#momentos">Momentos</a></li>
+                            <li>
+                                <ul>
+                                    <li><a href="#exemplo">Exemplo: Caminho Aleatório</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </aside>
