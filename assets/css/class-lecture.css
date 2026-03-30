@@ -988,3 +988,58 @@ sup {
     line-height: 1.6;
     margin-bottom: 0;
 }
+
+/* ==========================================
+   Side-by-Side Content Layout
+   ========================================== */
+.side-by-side-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 3.5rem;
+    margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+    .side-by-side-layout {
+        flex-direction: row;
+        align-items: center;
+        gap: 3.5rem;
+    }
+
+    .side-by-side-text {
+        flex: 1.4;
+    }
+
+    .side-by-side-image {
+        flex: 0.7;
+    }
+}
+
+@media (min-width: 1024px) {
+
+    /* Quebra de Simetria: Vaza propositalmente para a região direita da tela */
+    .side-by-side-layout {
+        margin-right: -80px;
+        gap: 4rem;
+    }
+}
+
+@media (min-width: 1300px) {
+    .side-by-side-layout {
+        margin-right: -160px;
+        gap: 5rem;
+    }
+
+    .side-by-side-text {
+        flex: 1.2;
+    }
+}
+
+.side-by-side-image img {
+    border-radius: 12px;
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
