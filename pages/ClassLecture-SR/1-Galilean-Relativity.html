@@ -22,11 +22,13 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             overflow: hidden;
         }
+
         .tikz-container svg {
             width: 100%;
             max-width: 500px;
             height: auto;
         }
+
         /* Ensure dark mode visibility for TikZ */
         [data-theme='dark'] .tikz-container {
             background: #ffffff;
@@ -151,10 +153,10 @@
         <main class="content-area">
             <div class="prose">
 
-                <h1>Relatividade Galileana</h1>
+            <h1>Relatividade Galileana</h1>
                 <p class="lead">A brief and engaging introductory paragraph explaining the purpose of this page and the
                     concepts it covers.</p>
-                
+
                 <p style="color: red">
                     Desenvolver texto de introdução ao capítulo.
                 </p>
@@ -1279,6 +1281,8 @@
                     orientação do espaço.
                 </p>
 
+                dsadas
+
                 <h3 id="projecao-componentes">Extração de Componentes por Projeção</h3>
 
                 <p style="color: red"> Colocar diagramas de sistemas de coordenadas nesse tópico</p>
@@ -1549,19 +1553,19 @@
 
                 <h3 id="espaco-absoluto">O Espaço Absoluto de Newton</h3>
 
-                <p style="color: yellow;">
+                <p style="color: orange;">
                     A totalidade da construção precedente — estrutura algébrica (espaço vetorial $(\mathbb{R}^3, +,
                     \cdot)$, bases, Teorema da Decomposição Única, representação matricial via o isomorfismo
                     $\varphi_{\mathcal{B}}$, mudança de base em $\text{GL}(3, \mathbb{R})$) e estrutura geométrica
                     (produto interno $(\cdot, \cdot)$, norma, ângulo, ortogonalidade, bases ortonormais, tensor métrico
-                    $g_{ij}$, convenção de Einstein) — não constitui um exercício abstrato de álgebra linear: ela
-                    formaliza, em linguagem matemática contemporânea, o conceito que Isaac Newton introduziu nos
-                    <em>Principia</em> (1687) sob o nome de <strong>espaço absoluto</strong>, definido como aquele que
-                    <em>"em sua própria natureza, sem relação com qualquer coisa externa, permanece sempre semelhante e
-                        imóvel"</em>.
+                    $g_{ij}$, convenção de Einstein) — formaliza, em linguagem matemática contemporânea, o conceito que
+                    Isaac Newton introduziu no "<em>Philosophiæ Naturalis Principia Mathematica</em>" (1687) sob o
+                    nome de <strong>espaço absoluto</strong>,
+                    definido como aquele que <em>"em sua própria natureza, sem relação com qualquer coisa externa,
+                        permanece sempre semelhante e imóvel"</em>.
                 </p>
 
-                <p style="color: yellow;">
+                <p style="color: orange;">
                     Cada camada da construção codifica uma propriedade física precisa desse espaço. A <strong>estrutura
                         de espaço vetorial</strong> — i.e., o fecho sob adição e multiplicação por escalar — garante que
                     translações espaciais $\vec{r} \mapsto \vec{r} + \vec{a}$ ($\vec{a} \in \mathbb{R}^3$ constante)
@@ -1571,7 +1575,7 @@
                     idêntica em torno de todo ponto.
                 </p>
 
-                <p style="color: yellow;">
+                <p style="color: orange;">
                     A introdução do <strong>produto interno definido-positivo</strong> $(\cdot, \cdot)$ — e, com ele, do
                     tensor métrico $g_{ij}$ — impõe uma restrição adicional: a métrica é invariante sob o grupo
                     ortogonal $\text{O}(3) = \{ R \in \text{GL}(3, \mathbb{R}) \mid R^\top R = I \}$, cujo subgrupo
@@ -1584,7 +1588,7 @@
                     arbitrárias.
                 </p>
 
-                <p style="color: yellow;">
+                <p style="color: orange;">
                     Homogeneidade e isotropia juntas determinam o <strong>grupo de simetria espacial</strong> do espaço
                     absoluto de Newton: o <strong>grupo euclidiano</strong> $\text{E}(3) = \mathbb{R}^3 \rtimes
                     \text{O}(3)$, produto semidireto de translações com rotações (e reflexões). A invariância da
@@ -1600,7 +1604,7 @@
                     inercial.
                 </p>
 
-                <p style="color: yellow;">
+                <p style="color: orange;">
                     Consolidamos a construção completa desta seção na seguinte definição:
                 </p>
 
@@ -1619,7 +1623,8 @@
                     \Delta^i \Delta^j}$ (estrutura geométrica). Seu grupo de isometrias é o grupo euclidiano
                     $\text{E}(3) = \mathbb{R}^3 \rtimes \text{O}(3)$.
                     <br><br>
-                    Na Relatividade Restrita, a métrica euclidiana definida-positiva $g_{ij}$ será substituída pela
+                    <strong>Nota:</strong> Na Relatividade Restrita, a métrica euclidiana definida-positiva $g_{ij}$
+                    será substituída pela
                     métrica de Minkowski $\eta_{\mu\nu}$ de assinatura $(-, +, +, +)$, e o grupo de simetria
                     $\text{E}(3)$ será ampliado ao grupo de Poincaré $\text{ISO}(1,3)$ — mas a maquinaria tensorial aqui
                     desenvolvida permanecerá intacta.
@@ -1628,20 +1633,21 @@
 
                 <h2 id="tempo">Tempo</h2>
 
-                <p style="color: yellow;">
+                <p style="color: orange;">
                     Embora a formulação rigorosa de $\mathbb{E}^3$ descrita até agora exponha a forma da
                     geometria espacial exigida pela cinemática clássica, essa estrutura — por si só — é incompleta para
-                    descrever os fenômenos da natureza. A estrutura algébrica de <strong>vetores</strong>,
+                    descrever os fenômenos da natureza. A estrutura de <strong>vetores</strong>,
                     <strong>normas</strong> e
                     <strong>distâncias</strong> que
-                    acabamos de definir fixa a geometria de um <strong>espaço estático</strong>: ela descreve o
-                    universo perfeitamente, mas se comporta apenas como uma única fotografia instantânea da realidade. O
-                    espaço matemático que moldamos tem lugar para medir <i>"onde"</i> as coisas estão (posição, $x, y,
-                    z$),
-                    mas é cego e inerte em relação ao <i>"quando"</i> elas acontecem.
+                    acabamos de definir fixa a geometria de um <strong>espaço estático</strong>: <i>ela descreve o
+                        universo perfeitamente, mas se comporta apenas como uma única fotografia instantânea da
+                        realidade</i>. O
+                    espaço matemático que moldamos tem lugar para medir <i>"onde"</i> as coisas estão (posições $x, y$ e
+                    $z$),
+                    mas é cego e inerte em relação ao <i>"<u>quando</u>"</i> elas acontecem.
                 </p>
 
-                <p style="color: yellow;">
+                <p style="color: orange;">
                     Toda a fenomenologia da física baseia-se num fluxo ordenado de <strong>mudanças</strong>, e para
                     mensurar a taxa ou a evolução destas
                     mudanças ao longo da nossa rígida grade tridimensional, faz-se estritamente necessário introduzir um
@@ -1689,16 +1695,20 @@
                     t_1$.
                     <br>
                     <br>
-                    O Fim da Isotropia: Ordem Cronológica ($<$): Para afastar completamente a dimensionalidade temporal
-                        da isometria isotrópica irrestrita regente das direções do palco geométrico tridimensional (onde
-                        mover-se para "$+x$" equivale analiticamente a ir para "$-x$" ), exige-se na essência basilar de
-                        $\mathcal{T}$ a assunção de uma estrita <strong>Relação de Ordem Total</strong>. Para instantes
-                        apartados $t_A \neq t_B$, obriga-se
-                        que o avanço topológico admita uma e tão somente uma sentença excludente: $t_A < t_B$ (assumindo
-                            precedência casual no passado do primeiro instante) ou sua antagônica $t_B < t_A$. Ao
-                            fazê-lo, consagra-se analiticamente a irreversibilidade física impiedosa outrora abstraída e
-                            invisível: a constância vetorial da <strong>Seta Clássica do
-                            Tempo</strong>.
+                    <strong>Nota: O Fim da Isotropia - Ordem Cronológica ($<$):</strong> Para afastar completamente a
+                    dimensionalidade temporal
+                    da isometria isotrópica irrestrita regente das direções do palco geométrico tridimensional
+                    (onde
+                    mover-se para "$+x$" equivale analiticamente a ir para "$-x$" ), exige-se na essência
+                    basilar de
+                    $\mathcal{T}$ a assunção de uma estrita <strong>Relação de Ordem Total</strong>. Para
+                    instantes
+                    apartados $t_A \neq t_B$, obriga-se
+                    que o avanço topológico admita uma e tão somente uma sentença excludente: $t_A < t_B$
+                    (assumindo precedência casual no passado do primeiro instante) ou sua antagônica $t_B < t_A$.
+                    Ao fazê-lo, consagra-se analiticamente a irreversibilidade física impiedosa
+                    outrora abstraída e invisível: a constância vetorial da <strong>Seta Clássica do
+                        Tempo</strong>.
 
                 </div>
 
@@ -1721,16 +1731,16 @@
 
                 </div>
 
-                <p style="color: yellow;">
+                <p style="color: orange;">
                     Contudo, em uma formulação geométrica restritamente rigorosa, cada
                     instante contínuo no tempo descreve por si só um espaço tridimensional fechado e completamente
                     separado $\mathbb{E}^3$ (uma "fatia" ou "fotografia instantânea" ("snapshot") espacial independente
                     do universo no exato instante $t$). Em suma, a matemática do bloco do espaço perfeitamente estático
                     de $t_1$ não impõe conexões lógicas inatas e transcendentais ao bloco tridimensional independente
                     do instante $t_2$.
-                    </p>
+                </p>
 
-                <p style="color: yellow;">
+                <p style="color: orange;">
                     A formalização acima estabelece que os hiperplanos da realidade em tempos diferentes são instâncias
                     do
                     espaço estritamente separadas. A própria geometria imposta não nos oferta de <em>a priori</em>
@@ -1743,7 +1753,7 @@
 
                 <p style="color: red;"> Fazer a definição do espaço-tempo Galileano</p>
 
-                <p style="color: yellow;">
+                <p style="color: orange;">
                     Apesar desta violenta desconexão ponto a ponto, a introdução deste fluxo temporal sequenciado traz
                     ao
                     palco cartesiano o conceito crucial da <strong>simultaneidade absoluta</strong>. Na física de
@@ -1764,16 +1774,16 @@
 
 
 
-                <p style="color: yellow;">
+                <p style="color: orange;">
                     Com a introdução matemática do tempo, surge uma profunda e sutil questão física, frequentemente
-                    negligenciada em cursos introdutórios: <strong>o que significa afirmar que um ponto permaneceu no
-                        "mesmo lugar" ao longo do tempo?</strong> Quando dizemos que um objeto se moveu de uma posição
+                    negligenciada em cursos introdutórios: <i>o que significa afirmar que um ponto permaneceu no
+                        "mesmo lugar" ao longo do tempo?</i> Quando dizemos que um objeto se moveu de uma posição
                     $A$ (em um instante $t_1$) para uma posição $B$ (em um tempo $t_2$), estamos fazendo uma declaração
                     que embute pressupostos conceituais fortíssimos relativos à identidade fundamental do próprio espaço
                     contínuo.
                 </p>
 
-                <p style="color: yellow;">
+                <p style="color: orange;">
                     Para que possamos rastrear de forma não ambígua qualquer cinemática (como se identificar movimento
                     ou repouso), devemos assumir imperativamente a declaração abstrata de que <em>"o ponto matemático do
                         espaço em que o objeto estava em $t_1$ deve corresponder analogamente a algum lugar no espaço no
@@ -1827,147 +1837,145 @@
                 </p>
 
                 <p style="color: yellow;">
-                    Alinhado aos preceitos dessa lei restritiva de mapeamento paramétrico, postula-se o axioma de que
-                    todo objeto submetido a esta ontologia permanece encerrado no estado de repouso inercial verdadeiro
-                    caso, submetido aos fluxos intersecantes de $\mathcal{T}$, as magnitudes de suas referidas
-                    coordenadas cartesianas resultem analiticamente invariáveis sob a translação do tempo. Tal
-                    identificação de imobilidade perene, contudo, desvencilha-se inteiramente de qualquer pretensão de
-                    natureza global ou absoluta; ela encontra-se visceral, irrevogavelmente incrustada e ontologicamente
-                    dependente ao sistema particular de referência erguido pelas deliberações arbitrárias do observador
-                    que atrelou a malha referencial às paredes geométricas inertes de seu recorte experimental local.
+                    Alinhado a esses princípios, postula-se que um objeto encontra-se em um estado de repouso inercial
+                    caso suas coordenadas cartesianas permaneçam invariáveis ao longo do tempo $\mathcal{T}$. Contudo,
+                    essa definição de imobilidade não tem caráter absoluto ou global; ela é intrínseca e totalmente
+                    dependente do sistema de referência particular escolhido pelo observador, que fixou sua malha de
+                    coordenadas aos limites do seu próprio ambiente experimental.
                 </p>
 
                 <div class="definition-box" style="margin-bottom: 2rem;">
-                    <strong>A Distinção Transversal: Coordenadas Espaciais versus O Referencial Físico</strong>
+                    <strong>A Distinção Fundamental: Coordenadas Espaciais versus Referencial Físico</strong>
                     <br><br>
-                    Esta separação analítica revela-se, por conseguinte, inegociável na estruturação de qualquer
-                    arcabouço lógico e descritivo clássico:
+                    Esta separação analítica é indispensável para construir a descrição da mecânica clássica:
                     <ul style="margin-top: 1rem;">
-                        <li><strong>A Fração Pontual e a Atribuição das Coordenadas:</strong> Este estágio requisita
-                            impreterivelmente objetos materiais tangíveis e referências físicas exatas — sejam elas
-                            recortes de alvenaria inerte, vértices estruturais ou feixes projetados a partir de bases
-                            imutáveis — com a única finalidade ontológica de balizar limites estritos e definir
-                            posicionamentos quantificáveis das essências confinados estritamente à fotografia e escopo
-                            imutável de um e somente um <strong>único cenário isolado de instante $t$</strong>.</li>
-                        <li><strong>O Quadro Persistente e a Construção Subjacente do Referencial:</strong> É a
-                            estrutura contínua do mapeamento algorítmico, a formulação analítica pregressa que rege sob
-                            quais termos topológicos iremos rastrear a genealogia da posição física dos centros de massa
-                            através das progressivas e inumeráveis fatias do escoar do tempo cósmico.</li>
+                        <li><strong>A Atribuição das Coordenadas Espaciais:</strong> Requer objetos materiais tangíveis
+                            e referências físicas exatas (como vértices, estruturas fixas ou marcações geométricas) para
+                            medir posições de forma rigorosa. Tudo isso serve para enquadrar a posição do sistema de
+                            forma estática em um <strong>único cenário isolado no instante $t$</strong> (como se fosse
+                            uma fotografia).</li>
+                        <li><strong>O Referencial Físico Contínuo e sua Construção:</strong> É a estrutura matemática e
+                            topológica que define as regras e o mapeamento necessário para acompanharmos e rastrearmos
+                            a evolução da posição dos corpos com o passar do tempo contínuo (como se formasse o filme
+                            dos eventos).</li>
                     </ul>
                 </div>
 
                 <p style="color: yellow;">
-                    Consequentemente, observa-se pragmaticamente que, não raro na condução corriqueira de formulações
-                    mecânicas, ao procedermos à representação gráfica diagramática do invólucro do espaço euclidiano
-                    $\mathbb{E}^3$, os tratadistas incorrem e importam no silêncio da premissa a vigência integral do
-                    mapa contínuo da configuração trivial inercial, partindo pressuposto invisível de que o palco base
-                    da "malha" geométrica de referências estáticas e de que a parede por de trás dos eixos coordenados
-                    sequer flutuam ontológico ou inercialmente ante ao fluir transeunte dos eventos no tempo dimensional
-                    paramétrico. Assim fundamentando-nos, a totalidade de nossa atenção científica converge
-                    imperturbável e focada tão apenas à averiguação e à aferição da flutuação linear, percurso e
-                    evolução dos demais centros de corpos exógenos à malha projetados e comparados sobre o silêncio
-                    atemporal deste cenário de repouso profundo.
+                    Na prática, frequentemente observa-se que em grande parte das formulações mecânicas comuns, ao
+                    representar graficamente o espaço euclidiano $\mathbb{E}^3$, assume-se implicitamente que toda a
+                    malha espacial e os eixos coordenados estão perfeitamente estáticos e imutáveis ante à passagem do
+                    tempo. Dessa forma, com a presunção desse ambiente de fundo congelado num estado de "repouso
+                    absoluto", a nossa atenção científica restringe-se tão-somente a analisar a evolução, a variação e o
+                    deslocamento de outros corpos no interior desse palco.
                 </p>
 
                 <p style="color: yellow;">
-                    É imperioso admitirmos categoricamente, entretanto, que a identificação estática trivial configura
-                    tão somente uma faceta singular, simplificada e específica no interior de um gigantesco panorama
-                    contínuo de matrizes analíticas concebíveis ao mapeamento físico de coordenadas sobrepostas.
-                    Mapeamentos generalizados introduzem formidavelmente uma flexibilidade algébrica irrestrita que
-                    traduz simetrias e peculiaridades analíticas transicionadas aos ditames de quadros não
-                    trivializados; referências mutáveis que espelham referenciais tracionados que, enquanto as
-                    observações prosseguem, fluem mutuamente sob domínios de campos inerciais translacionais com vetor
-                    velocidade perene e constante ante a malha das fatias contíguas. O profundo e analítico estudo das
-                    naturezas atreladas a tais translações dinâmicas simétricas de distorção não-trivial desemboca
-                    justamente no desvendar do aparato e equacionamento principal regente da cinemática linear clássica,
-                    conhecidos universalmente na literatura como <strong>os vetores do impulso referencial e as
-                        Transformações Cinemáticas de Galileu (Galilean Boosts)</strong>.
+                    Entretanto, é fundamental reconhecer que a premissa de um referencial puramente fixo e estático é
+                    apenas um cenário particular e bastante simplificado dentro de possibilidades bem mais vastas. O
+                    estudo de mapeamentos coordenados gerais introduz a liberdade e a possibilidade algébrica de
+                    lidarmos com referenciais físicos que fluem mutuamente com uma velocidade relativa inercial
+                    constante
+                    ao longo de suas fatias contínuas de tempo. O estudo analítico profundo dessas mudanças e das regras
+                    de distorção entre referenciais distintos constitui, na verdade, a principal fundação do aparelho
+                    matemático da cinemática relacional, conhecida de forma universal na literatura como o uso e
+                    aplicação de <strong>vetores de impulso referencial e das Transformações Cinemáticas de Galileu
+                        (Galilean Boosts)</strong>.
                 </p>
 
                 <h3 id="mapas-expectativas">Os Mapas devem refletir as Expectativas Físicas</h3>
 
                 <p style="color: yellow;">
-                    Ao flexibilizarmos nosso formalismo para acomodar observadores inerciais distintos e dinâmicas
-                    cinemáticas mais gerais (abandonando a restrição da identificação trivial), faz-se mandatório impor
-                    rigorosas <strong>restrições topológicas e físicas</strong> às propriedades matemáticas dos
-                    mapeamentos $\phi$ que propomos para conectar as infindáveis "fatias fotográficas" espaciais de
-                    $\mathbb{E}^3$ através do contínuo temporal. Essas delimitações analíticas não brotam de axiomas
-                    abstratos soltos, mas derivam invariavelmente da nossa empiria cosmológica macroscópica e do modo
-                    basilar como a natureza prescreve que a matéria real se preserve e interaja.
+                    Ao expandirmos nosso formalismo para descrever observadores inerciais em movimento e dinâmicas
+                    mais gerais (abandonando a ideia de um espaço perfeitamente estático), torna-se necessário impor
+                    rigorosas <strong>restrições matemáticas e físicas</strong> ao mapeamento $\phi$ que conecta as
+                    inúmeras "fotografias" do espaço $\mathbb{E}^3$ ao longo do escoar do tempo. Essas regras não
+                    surgem como mero capricho abstrato, mas derivam diretamente da nossa observação diária do mundo
+                    físico e de como a natureza dita que a matéria deve interagir e ser preservada.
                 </p>
 
                 <p style="color: yellow;">
-                    Sob o paradigma de trajetórias corpusculares ininterruptas, elegemos as seguintes assunções
-                    indissociáveis:
+                    Considerando o princípio de que os corpos físicos se movem em trajetórias contínuas,
+                    estabelecemos as seguintes premissas fundamentais:
                 </p>
 
                 <ul>
                     <li>
-                        <strong>Princípio da Exclusão de Colisões Interpenetrantes (Injetividade):</strong> É impensável
-                        que dois pontos topológicos intrínseca e espacialmente distintos num instante gerador $t_0$
-                        venham a colapsar, sendo mapeados simultaneamente para o mesmíssimo e exato ponto em um tempo
-                        subsequente $t_1$. Caso esse colapso ocorresse, o mapeamento obliteraria a distinguibilidade
-                        fundamental das identidades materiais, destroçando a premissa basal de que partículas
-                        elementares clássicas detêm trajetórias determinísticas individuais, singulares e inalienáveis.
+                        <strong>Nenhuma Colisão Irreversível (Injetividade):</strong> Dois pontos distintos no espaço,
+                        em um instante inicial $t_0$, não podem ser simplesmente mapeados e fundidos em um único
+                        ponto em um instante futuro $t_1$. Se isso ocorresse, perderíamos a capacidade de distinguir
+                        os objetos, violando a premissa basal da mecânica clássica de que as partículas possuem
+                        trajetórias individuais, bem-definidas e determinísticas.
                     </li>
                     <li style="margin-top: 1rem;">
-                        <strong>Princípio da Conservação da Presença (Sobrevivência Ontológica e
-                            Sobrejetividade):</strong> Nenhum ponto do tecido paramétrico pode, sob hipótese alguma,
-                        imiscuir-se arbitrariamente ao nada ou emergir do vácuo absoluto sem causa. Isso exige
-                        estruturalmente que cada ponto pertencente à fatia fotográfica futura $t_1$ possua,
-                        impreterivelmente, uma e somente uma raiz ancestral correspondente na fatia geradora pretérita
-                        $t_0$. A ausência dessa continuidade permitiria aberrações físicas como o aniquilamento
-                        espontâneo não-causal e a geração espontânea inercial de coordenadas sem passado atrelado.
+                        <strong>Conservação da Existência (Sobrejetividade):</strong> Nenhum ponto do espaço pode
+                        simplesmente desaparecer no nada, nem surgir espontaneamente do vácuo. Isso exige que cada
+                        posição no instante futuro $t_1$ tenha se originado de uma posição ancestral correspondente
+                        no instante passado $t_0$. Sem essa continuidade, a matemática permitiria aberrações como o
+                        aniquilamento ou a criação de matéria sem qualquer causa natural ou física.
                     </li>
                 </ul>
 
                 <p style="color: yellow;">
-                    Fundindo estas duas propriedades indispensáveis ao amálgama da matemática estrita, exigimos
-                    imperiosamente que:
+                    Unindo essas duas propriedades indispensáveis na modelagem matemática, estabelecemos que:
                 </p>
 
                 <div class="code-block"
                     style="background-color: transparent; border: none; border-left: 4px solid var(--text-secondary); border-radius: 0; padding-left: 1.5rem; margin: 2rem 0;">
                     <span style="font-size: 1.125rem; font-weight: 500; color: var(--text-primary);">
-                        O Mapa cinemático evolutivo $\phi: \mathbb{E}^3_{t_0} \to \mathbb{E}^3_{t_1}$ seja rigorosamente
-                        estruturado como uma <strong>Função Bijetiva</strong> (uma correspondência um-para-um e
-                        sobrejetiva).
+                        O Mapeamento cinemático evolutivo $\phi: \mathbb{E}^3_{t_0} \to \mathbb{E}^3_{t_1}$ deve
+                        ser estruturado rigorosamente como uma <strong>Função Bijetiva</strong> (uma correspondência
+                        exata de um-para-um).
                     </span>
                 </div>
 
                 <p style="color: yellow;">
-                    Indo além, embasados ferrenhamente em como a termodinâmica causal e a mecânica rotineira presidem
-                    sobre a continuidade dos corpos macroscópicos — destituídos inteiramente de saltos quânticos de
-                    teletransporte ou rasgos topológicos descontinuados em sua locomoção —, refinamos nosso mapeamento
-                    instilando a expectativa máxima do cálculo diferencial:
+                    Indo além, com base na observação de que os corpos macroscópicos se movem de forma sempre
+                    contínua — sem teleportes, "saltos" instantâneos ou rasgos espaciais —, refinamos nosso modelo
+                    aplicando os preceitos do cálculo diferencial:
                 </p>
 
                 <div class="code-block"
                     style="background-color: transparent; border: none; border-left: 4px solid var(--text-secondary); border-radius: 0; padding-left: 1.5rem; margin: 2rem 0;">
                     <span style="font-size: 1.125rem; font-weight: 500; color: var(--text-primary);">
-                        O Mapa deve espelhar uma <strong>Evolução Suave</strong>: variações infinitesimais e pequenas
-                        flutuações de posição na malha em $t_0$ devem incorrer invariavelmente em pequenas mudanças
-                        residuais traduzidas sobre a fatia contígua $t_1$.
+                        O mapeamento deve refletir uma <strong>Evolução Suave</strong>: variações muito pequenas e
+                        infinitesimais na posição durante o instante $t_0$ devem resultar invariavelmente em mudanças
+                        proporcionais e suaves na fatia de tempo seguinte $t_1$.
                     </span>
                 </div>
 
                 <p style="color: yellow;">
-                    A consolidação de toda essa herança empírica nos induz irrevogavelmente a não apenas modelar o mapa
-                    $\phi$ como uma mera bijeção topológica isolada, mas consagra-lo com as vestes analíticas supremas
-                    regentes das geometrias diferenciais: um <strong>Difeomorfismo</strong>. Estipula-se assim a
-                    aplicação formal de uma função estruturalmente suave, cuja inversa causal no tempo também exibe
-                    garantias incontestáveis de suavidade matemática absoluta ao refletir seu trajeto vetorial.
+                    A consolidação de todas essas restrições baseadas no mundo real nos leva a descrever o mapa
+                    $\phi$ não apenas como uma bijeção simples, mas a consagrá-lo matematicamente como um
+                    <strong>Difeomorfismo</strong>. Isso significa que estamos operando com uma função que é
+                    matematicamente suave (contínua e derivável) em ambos os sentidos: tanto na sua progressão para
+                    o futuro, quanto em sua função inversa ao revertermos para o passado.
                 </p>
 
                 <div class="definition-box" style="margin-bottom: 3rem;">
-                    Reitera-se aos menos atentos: tal armadura de rigidez funcional atrelada (as assunções de Bijeção
-                    Suave e Difeomorfismos não-ambos) não emanam de uma tirania oca exigida pelos numerais da matemática
-                    cartesiana abstrata. Constituem, pelo contrário, as modelagens de contorno e premissas restritivas
-                    mais puras construídas por intermédio da observação ininterrupta da natureza; onde a fluidez
-                    irrefreável, a causa, a consequência e o movimento vetorial contínuo não abrem precedentes para
-                    teleportes descontinuados ou a dissolução temporal da matéria visível.
+                    Reitera-se aos menos familiarizados: toda essa exigência de rigor analítico formal (lidar com
+                    bijeções suaves e difeomorfismos) não é uma dificuldade imposta por mero preciosismo matemático.
+                    Pelo contrário, essas restrições da modelagem são a tradução técnica mais pura da nossa observação
+                    cotidiana da natureza. Nosso mundo dita que o movimento é fluido, os eventos têm causas sólidas
+                    e as trajetórias são contínuas, de maneira que não há precedentes físicos para "teleportes" ou para
+                    a
+                    criação e destruição inexplicável da matéria no tempo.
                 </div>
-                <h2 id="congelamento">2. Second Major Section</h2>
+                
+            
+            <h2 id="geometria-espaco-tempo">Geometria do Espaço-Tempo Galileano</h2>
+
+            <h2 id="cinematica-galileana">Cinemática Galileana</h2>
+
+
+            <h2 id="dinamica-galileana">Dinâmica Galileana</h2>
+
+
+
+
+
+
+
 
 
 
@@ -2017,7 +2025,33 @@
                             <li><a href="#mapas-expectativas">Expectativas Físicas</a></li>
                         </ul>
                     </li>
-                    <li><a href="#congelamento">Second Major Section</a></li>
+                    <li><a href="#geometria-espaco-tempo">Geometria do Espaço-Tempo Galileano</a></li>
+                    <li>
+                        <ul>
+                            <li><a href="#grupo-galileu">Grupo de Galileu(Simetrias da Mecânica Clássica)</a></li>
+                            <li>
+                                <ul>
+                                    <li><a href="#transformacoes-simetria">Transformações de Simetria do Espaço-Tempo</a></li>
+                                    <li><a href="#geradores-grupo-galileu">Geradores do Grupo de Galileu</a></li>
+                                    <li><a href="#representacao-analitica-matricial">Representação Analítica e Matricial</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="#cinematica-galileana">Cinemática Galileana</a>
+                        <ul>
+                            <li><a href="#transformacao-posicoes-trajetorias">Transformação de Posições e Trajetórias</a></li>
+                            <li><a href="#transformacao-velocidades">Transformação de Velocidades</a></li>
+                            <li><a href="#transformacao-aceleracoes">Transformação de Acelerações</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#dinamica-galileana">Dinâmica Galileana</a>
+                        <ul>
+                            <li><a href="#referenciais-inerciais">Referenciais Inerciais</a></li>
+                            <li><a href="#covariancia-leis-newton">Covariância das Leis de Newton</a></li>
+                            <li><a href="#relatividade-galileu">Relatividade de Galileu</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </aside>
