@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossa Equipe | LFNA UEL</title>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .page-header {
+            padding: calc(var(--nav-height) + 4rem) 0 4rem;
+            background: linear-gradient(to bottom, var(--color-bg-subtle), var(--color-bg-light));
+            text-align: center;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-member {
+            background: var(--color-bg-light);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: var(--shadow-sm);
+            transition: transform var(--transition-normal);
+        }
+
+        [data-theme="dark"] .team-member {
+            background: var(--color-bg-subtle);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #d9d9d6, #c5c5c1);
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--color-text-main);
+            font-weight: 700;
+        }
+
+        [data-theme="dark"] .avatar {
+            background: linear-gradient(135deg, #4b473f, #3b3731);
+        }
+
+        .team-member h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .team-member p {
+            color: var(--color-primary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .team-member .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--color-bg-subtle);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--color-text-main);
+        }
+
+        [data-theme="dark"] .team-member .contact-btn {
+            background: var(--color-bg-dark);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-text"></span>
+                <img src="../images/lfna.jpg" alt="Logo Grupo" class="logo-badge">
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">INÍCIO</a>
+
+                <div class="dropdown">
+                    <a href="#" class="nav-link">SOBRE</a>
+                    <!--<div class="dropdown-content">
+                        <a href="#">História</a>
+                        <a href="#">Pesquisas</a>
+                        <a href="#">Equipe</a>
+                        <a href="#">Infraestrutura</a>
+                    </div>-->
+                </div>
+
+                <a href="#" class="nav-link">NOTÍCIAS</a>
+                <a href="publications.html" class="nav-link">PUBLICAÇÕES</a>
+                <a href="#" class="nav-link">CONTATO</a>
+                <a href="https://www.uel.br" target="_blank" class="nav-link">PORTAL UEL</a>
+            </div>
+
+            <div class="nav-actions">
+                <button class="icon-button" aria-label="Pesquisar">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container animate-on-scroll">
+            <h1 class="section-title">Membros do Grupo</h1>
+            <p class="section-desc">Conheça o nosso talentoso corpo de pesquisadores, fundadores, professores,
+                pós-graduandos e bolsistas envolvidos do LFNA.</p>
+        </div>
+    </header>
+
+    <main class="container section">
+        <div class="team-grid">
+            <div class="team-member animate-on-scroll">
+                <div class="avatar">CA</div>
+                <h3>Carlos Roberto Appoloni</h3>
+                <p>Professor Sênior / Coordenador</p>
+                <a href="mailto:appoloni@uel.br" class="contact-btn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    appoloni@uel.br
+                </a>
+            </div>
+
+            <div class="team-member animate-on-scroll">
+                <div class="avatar">EG</div>
+                <h3>Eduardo Galliano</h3>
+                <p>Membro e Administrador de Infraestrutura</p>
+                <a href="mailto:galliano@uel.br" class="contact-btn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    galliano@uel.br
+                </a>
+            </div>
+
+            <div class="team-member animate-on-scroll">
+                <div class="avatar">PE</div>
+                <h3>Pesquisadores</h3>
+                <p>Pós-Graduação e Doutorado</p>
+                <div class="contact-btn" style="cursor:default">Ativos</div>
+            </div>
+
+            <div class="team-member animate-on-scroll">
+                <div class="avatar">IC</div>
+                <h3>Bolsistas IC</h3>
+                <p>Iniciação Científica</p>
+                <div class="contact-btn" style="cursor:default">Física e Engenharias</div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <div class="logo-icon">LF</div> LFNA UEL
+                    </div>
+                    <p class="footer-desc">Laboratório de Física Nuclear Aplicada<br>Centro de Ciências
+                        Exatas<br>Universidade Estadual de Londrina</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Laboratório de Física Nuclear Aplicada - UEL.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/script.js"></script>
+</body>
+
+</html>
