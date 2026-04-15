@@ -5,73 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Publicações | LFNA UEL</title>
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/style.css">
-    <style>
-        .page-header {
-            padding: calc(var(--nav-height) + 4rem) 0 4rem;
-            background: linear-gradient(to bottom, var(--color-bg-subtle), var(--color-bg-light));
-            text-align: center;
-        }
-
-        .pub-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .pub-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            background: var(--color-bg-light);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            padding: 1.5rem;
-            border-radius: 16px;
-            box-shadow: var(--shadow-sm);
-            transition: all var(--transition-fast);
-        }
-
-        [data-theme="dark"] .pub-item {
-            background: var(--color-bg-subtle);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .pub-item:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
-            border-color: var(--color-primary);
-        }
-
-        .pub-icon {
-            color: var(--color-primary);
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-        }
-
-        .pub-year {
-            font-size: 1.25rem;
-            font-weight: 700;
-            font-family: var(--font-heading);
-            color: var(--color-text-main);
-        }
-
-        .folder-group {
-            margin-bottom: 4rem;
-        }
-
-        .folder-title {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            border-bottom: 2px solid var(--color-bg-subtle);
-            padding-bottom: 0.5rem;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/publications.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -89,18 +25,12 @@
 
                 <div class="dropdown">
                     <a href="#" class="nav-link">Sobre</a>
-                    <!--<div class="dropdown-content">
-                        <a href="#">História</a>
-                        <a href="#">Pesquisas</a>
-                        <a href="#">Equipe</a>
-                        <a href="#">Infraestrutura</a>
-                    </div>-->
                 </div>
 
                 <a href="news.html" class="nav-link">Notícias</a>
                 <a href="publications.html" class="nav-link active">Publicações</a>
-                <a href="#" class="nav-link">Contato</a>
                 <a href="#" class="nav-link">Serviços</a>
+                <a href="#" class="nav-link">Contato</a>
                 <a href="https://www.uel.br" target="_blank" class="nav-link">Portal UEL</a>
             </div>
 
@@ -116,132 +46,320 @@
         </div>
     </nav>
 
-    <header class="page-header">
-        <div class="container animate-on-scroll">
-            <h1 class="section-title">Publicações e Acervo</h1>
-            <p class="section-desc">Acesse nosso registro histórico de publicações do grupo, cobrindo mais de 40 anos de
-                pesquisa na área de Física Nuclear.</p>
-        </div>
-    </header>
-
-    <main class="container section">
-
-        <div class="folder-group animate-on-scroll">
-            <h2 class="folder-title">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round" class="pub-icon">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                    <polyline points="14 2 14 8 20 8"></polyline>
-                    <line x1="16" y1="13" x2="8" y2="13"></line>
-                    <line x1="16" y1="17" x2="8" y2="17"></line>
-                    <polyline points="10 9 9 9 8 9"></polyline>
-                </svg>
-                Artigos Recentes (Anual)
-            </h2>
-            <div class="pub-grid">
-                <a href="#" class="pub-item">
-                    <div class="pub-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="7 10 12 15 17 10"></polyline>
-                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                        </svg>
+    <!-- Hero Section -->
+    <section class="pub-hero">
+        <div class="container">
+            <div class="pub-hero-layout">
+                <div class="pub-hero-left">
+                    <h1 class="pub-hero-title">Publicações<br>e Acervo</h1>
+                </div>
+                <div class="pub-hero-right">
+                    <p class="pub-hero-desc">
+                        Acesse nosso registro histórico de publicações do grupo, cobrindo mais de 40 anos de pesquisa
+                        na área de Física Nuclear Aplicada. Nossos pesquisadores investigam novas técnicas analíticas e
+                        aplicações interdisciplinares com impacto positivo na ciência e na sociedade.
+                    </p>
+                    <div class="pub-tags">
+                        <span class="pub-tag">Áreas de atuação:</span>
+                        <a href="#" class="pub-tag-link">Espectroscopia</a>
+                        <a href="#" class="pub-tag-link">Patrimônio Cultural</a>
+                        <a href="#" class="pub-tag-link">Meio Ambiente</a>
+                        <a href="#" class="pub-tag-link">Solos</a>
+                        <a href="#" class="pub-tag-link">Saúde</a>
+                        <a href="#" class="pub-tag-link">Instrumentação</a>
                     </div>
-                    <span class="pub-year">2024</span>
-                </a>
-                <a href="#" class="pub-item">
-                    <div class="pub-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="7 10 12 15 17 10"></polyline>
-                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                        </svg>
-                    </div>
-                    <span class="pub-year">2023</span>
-                </a>
-                <a href="#" class="pub-item">
-                    <div class="pub-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="7 10 12 15 17 10"></polyline>
-                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                        </svg>
-                    </div>
-                    <span class="pub-year">2022</span>
-                </a>
-                <a href="#" class="pub-item">
-                    <div class="pub-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="7 10 12 15 17 10"></polyline>
-                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                        </svg>
-                    </div>
-                    <span class="pub-year">2021</span>
-                </a>
+                </div>
             </div>
         </div>
+    </section>
 
-        <div class="folder-group animate-on-scroll">
-            <h2 class="folder-title">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round" class="pub-icon">
-                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                </svg>
-                Histórico (Arquivo)
-            </h2>
-            <div class="pub-grid">
-                <a href="#" class="pub-item">
-                    <div class="pub-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    <!-- Featured Publication -->
+    <!-- <section class="pub-featured">
+        <div class="container">
+            <a href="#" class="pub-featured-card">
+                <div class="pub-featured-card__img">
+                    <img src="https://ars.els-cdn.com/content/image/X01659936.jpg"
+                        alt="Publicação em destaque">
+                </div>
+                <div class="pub-featured-card__body">
+                    <span class="pub-featured-card__label">Publicação em Destaque</span>
+                    <h2 class="pub-featured-card__title">Explainability in vis-NIR and XRF-based modeling for soil
+                        fertility analysis</h2>
+                    <p class="pub-featured-card__excerpt">
+                        Revisão abrangente publicada em periódico internacional de alto impacto, consolidando as
+                        contribuições do LFNA na área de análise de solos por técnicas espectroscópicas e
+                        fluorescência de raios X. O artigo apresenta modelos de machine learning com
+                        interpretabilidade aprimorada.
+                    </p>
+                    <span class="pub-featured-card__cta">Ver publicação &rarr;</span>
+                </div>
+            </a>
+        </div>
+    </section> -->
+
+    <!-- Publications Table Section -->
+    <section class="pub-table-section">
+        <div class="container">
+            <div class="pub-table-header">
+                <h2>Publicações Recentes</h2>
+                <div class="pub-search">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" placeholder="Buscar publicações..." id="pubSearchInput">
+                </div>
+            </div>
+
+            <div class="pub-filter-tabs">
+                <button class="pub-filter-tab active" data-filter="all">Todos</button>
+                <button class="pub-filter-tab" data-filter="Artigo">Artigos</button>
+                <button class="pub-filter-tab" data-filter="Congresso">Congressos</button>
+                <button class="pub-filter-tab" data-filter="Tese">Teses & Dissertações</button>
+            </div>
+
+            <div class="pub-table-wrapper">
+                <table class="pub-table">
+                    <thead>
+                        <tr>
+                            <th>Ano</th>
+                            <th>Tipo</th>
+                            <th>Título</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="pub-table-year">2024</td>
+                            <td class="pub-table-type">Artigo</td>
+                            <td class="pub-table-title"><a href="#">Explainability in vis-NIR and XRF-based modeling
+                                    for soil fertility analysis</a></td>
+                        </tr>
+                        <tr>
+                            <td class="pub-table-year">2024</td>
+                            <td class="pub-table-type">Artigo</td>
+                            <td class="pub-table-title"><a href="#">Determination of trace elements in rainwater
+                                    after wildfire events using EDXRF</a></td>
+                        </tr>
+                        <tr>
+                            <td class="pub-table-year">2024</td>
+                            <td class="pub-table-type">Congresso</td>
+                            <td class="pub-table-title"><a href="#">Non-destructive analysis of pre-colonial ceramics
+                                    from northern Paraná by EDXRF and PIXE</a></td>
+                        </tr>
+                        <tr>
+                            <td class="pub-table-year">2023</td>
+                            <td class="pub-table-type">Artigo</td>
+                            <td class="pub-table-title"><a href="#">Multivariate calibration for soil fertility
+                                    assessment using vis-NIR spectroscopy</a></td>
+                        </tr>
+                        <tr>
+                            <td class="pub-table-year">2023</td>
+                            <td class="pub-table-type">Artigo</td>
+                            <td class="pub-table-title"><a href="#">Geochemical mapping of trace elements in soils of
+                                    Paraná state, Brazil</a></td>
+                        </tr>
+                        <tr>
+                            <td class="pub-table-year">2023</td>
+                            <td class="pub-table-type">Tese</td>
+                            <td class="pub-table-title"><a href="#">Desenvolvimento de detector portátil de XRF de
+                                    baixo custo para análise elementar</a></td>
+                        </tr>
+                        <tr>
+                            <td class="pub-table-year">2022</td>
+                            <td class="pub-table-type">Artigo</td>
+                            <td class="pub-table-title"><a href="#">Nuclear techniques applied to bone mineral density
+                                    evaluation: a comparative study</a></td>
+                        </tr>
+                        <tr>
+                            <td class="pub-table-year">2022</td>
+                            <td class="pub-table-type">Artigo</td>
+                            <td class="pub-table-title"><a href="#">Rapid identification of metallic alloys using
+                                    portable X-ray fluorescence</a></td>
+                        </tr>
+                        <tr>
+                            <td class="pub-table-year">2022</td>
+                            <td class="pub-table-type">Congresso</td>
+                            <td class="pub-table-title"><a href="#">Análise de contaminantes em solos urbanos por
+                                    fluorescência de raios X</a></td>
+                        </tr>
+                        <tr>
+                            <td class="pub-table-year">2021</td>
+                            <td class="pub-table-type">Artigo</td>
+                            <td class="pub-table-title"><a href="#">Application of LIBS and XRF techniques for
+                                    cultural heritage characterization</a></td>
+                        </tr>
+                        <tr>
+                            <td class="pub-table-year">2021</td>
+                            <td class="pub-table-type">Tese</td>
+                            <td class="pub-table-title"><a href="#">Análise multielementar de amostras ambientais por
+                                    espectroscopia de raios X</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Acervo / Collections Section -->
+    <section class="pub-collections">
+        <div class="container">
+            <h2 class="pub-collections-title">Acervo Completo</h2>
+            <div class="pub-collections-grid">
+
+                <a href="#" class="pub-collection-card">
+                    <div class="pub-collection-card__icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="7 10 12 15 17 10"></polyline>
-                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
                         </svg>
                     </div>
-                    <span class="pub-year">1999 - 2020</span>
+                    <h3 class="pub-collection-card__title">Artigos 2021–2024</h3>
+                    <p class="pub-collection-card__desc">Publicações recentes em periódicos internacionais e
+                        nacionais indexados, organizadas por ano.</p>
+                    <span class="pub-collection-card__link">Acessar &rarr;</span>
                 </a>
-                <a href="#" class="pub-item">
-                    <div class="pub-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+
+                <a href="#" class="pub-collection-card">
+                    <div class="pub-collection-card__icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="pub-collection-card__title">Arquivo Histórico (1999–2020)</h3>
+                    <p class="pub-collection-card__desc">Mais de duas décadas de contribuições científicas do
+                        laboratório, incluindo artigos, resumos e relatórios.</p>
+                    <span class="pub-collection-card__link">Acessar &rarr;</span>
+                </a>
+
+                <a href="#" class="pub-collection-card">
+                    <div class="pub-collection-card__icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z">
                             </path>
                         </svg>
                     </div>
-                    <span>Arquivos e Apresentações Antigas</span>
+                    <h3 class="pub-collection-card__title">Apresentações e Arquivos</h3>
+                    <p class="pub-collection-card__desc">Apresentações de congressos, seminários e materiais
+                        complementares disponíveis para download.</p>
+                    <span class="pub-collection-card__link">Acessar &rarr;</span>
                 </a>
+
+                <a href="#" class="pub-collection-card">
+                    <div class="pub-collection-card__icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="pub-collection-card__title">Teses e Dissertações</h3>
+                    <p class="pub-collection-card__desc">Trabalhos de conclusão de mestrado e doutorado realizados
+                        no âmbito do LFNA.</p>
+                    <span class="pub-collection-card__link">Acessar &rarr;</span>
+                </a>
+
+                <a href="#" class="pub-collection-card">
+                    <div class="pub-collection-card__icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path
+                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="pub-collection-card__title">Revista LFNATEC</h3>
+                    <p class="pub-collection-card__desc">Publicação própria do laboratório com artigos de
+                        divulgação científica e notas técnicas.</p>
+                    <span class="pub-collection-card__link">Acessar &rarr;</span>
+                </a>
+
             </div>
         </div>
-
-    </main>
+    </section>
 
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <div class="logo">
-                        <div class="logo-icon">LF</div> LFNA UEL
-                    </div>
+                    <a href="index.html" class="logo-footer" style="display: inline-block; margin-bottom: 1.5rem;">
+                        <img src="../images/LOGO FOOTER.png" alt="Logo LFNA UEL"
+                            style="max-height: 70px; width: auto; max-width: 100%;">
+                    </a>
                     <p class="footer-desc">Laboratório de Física Nuclear Aplicada<br>Centro de Ciências
                         Exatas<br>Universidade Estadual de Londrina</p>
                 </div>
+
+                <div class="footer-links">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="research.html">Pesquisas</a></li>
+                        <li><a href="team.html">Equipe</a></li>
+                        <li><a href="publications.html">Publicações</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Redes & Contato</h4>
+                    <ul style="opacity: 0.8; line-height: 2;">
+                        <li>Eduardo Galliano (Admin): <a href="mailto:galliano@uel.br">galliano@uel.br</a></li>
+                        <li>Projetos LFNATEC</li>
+                        <li>Patrimônio Cultural (LAPAC)</li>
+                    </ul>
+                </div>
             </div>
+
             <div class="footer-bottom">
-                <p>&copy; 2026 Laboratório de Física Nuclear Aplicada - UEL.</p>
+                <p>&copy; 2026 Laboratório de Física Nuclear Aplicada - UEL. Protótipo.</p>
             </div>
         </div>
     </footer>
 
     <!-- Scripts -->
     <script src="../js/script.js"></script>
+    <script>
+        // Search filter for publications table
+        const pubSearchInput = document.getElementById('pubSearchInput');
+        if (pubSearchInput) {
+            pubSearchInput.addEventListener('input', function () {
+                const filter = this.value.toLowerCase();
+                const rows = document.querySelectorAll('.pub-table tbody tr');
+                rows.forEach(row => {
+                    const text = row.textContent.toLowerCase();
+                    row.style.display = text.includes(filter) ? '' : 'none';
+                });
+            });
+        }
+
+        // Filter tabs for publication type
+        const filterTabs = document.querySelectorAll('.pub-filter-tab');
+        filterTabs.forEach(tab => {
+            tab.addEventListener('click', function () {
+                filterTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                const filterValue = this.dataset.filter;
+                const rows = document.querySelectorAll('.pub-table tbody tr');
+                rows.forEach(row => {
+                    if (filterValue === 'all') {
+                        row.style.display = '';
+                    } else {
+                        const type = row.querySelector('.pub-table-type').textContent.trim();
+                        row.style.display = type === filterValue ? '' : 'none';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
