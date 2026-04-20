@@ -411,13 +411,14 @@
                     contribui com nenhuma direção genuinamente nova. Geometricamente, é como adicionar uma terceira seta
                     que já aponta ao longo do plano definido pelas duas anteriores: o plano não cresce. Algebricamente,
                     essa redundância se manifesta na possibilidade de combinar os vetores de $S$ com
-                    <strong>coeficientes não
-                        todos nulos</strong> e ainda assim obter o vetor nulo, ou seja, a equação
+                    <strong>coeficientes não todos nulos</strong> e ainda assim obter o vetor nulo, ou seja, a equação
 
-                    $$\sum_{i=1}^{k} \alpha_i \vec{v}_i = \vec{0}$$
+                    $$
+                    \sum_{i=1}^{k} \alpha_i \vec{v}_i = \vec{0}
+                    $$
 
                     admite soluções além da trivial. Detectar e eliminar essa redundância é precisamente o papel do
-                    próximo conceito — a <strong>independência linear</strong>.
+                    próximo conceito, a <strong>independência linear</strong>.
                 </p>
 
                 <div class="definition-box" style="border-left: 4px solid #45503B;">
@@ -425,14 +426,18 @@
                     <strong>Independência Linear</strong>: Seja $S = \{ \vec{v}_1, \vec{v}_2, \ldots, \vec{v}_k \}
                     \subset \mathbb{R}^3$ um conjunto finito de vetores com $k \geq 1$. Dizemos que $S$ é
                     <strong>linearmente independente</strong> (L.I.) se, e somente se, a equação vetorial homogênea
-                    <br>
-                    $$ \sum_{i=1}^{k} \alpha_i \vec{v}_i = \vec{0}, \quad \alpha_i \in \mathbb{R} $$
-                    <br>
+
+                    $$
+                    \sum_{i=1}^{k} \alpha_i \vec{v}_i = \vec{0}, \quad \alpha_i \in \mathbb{K}
+                    $$
+
                     admite como única solução, a <strong>solução trivial</strong> $\alpha_1 = \alpha_2 = \cdots =
                     \alpha_k = 0$. Formalmente:
-                    <br>
-                    $$ S \text{ é L.I.} \iff \left[ \sum_{i=1}^{k} \alpha_i \vec{v}_i = \vec{0} \implies \alpha_i = 0, \
-                    \forall \ i \in \{1, \ldots, k\} \right] $$
+
+                    $$
+                    S \text{ é L.I.} \iff \left[ \sum_{i=1}^{k} \alpha_i \vec{v}_i = \vec{0} \implies \alpha_i = 0, \
+                    \forall \ i \in \{1, \ldots, k\} \right]
+                    $$
 
                 </div>
 
@@ -503,15 +508,15 @@
 
                 <p>
                     As propriedades acima revelam que a independência linear é, em essência, uma condição de
-                    <em><u>eficiência</u></em>: ela assegura que cada vetor do conjunto contribui com informação
+                    eficiência: ela assegura que cada vetor do conjunto contribui com informação
                     direcional
                     <strong>genuinamente nova</strong>, sem que nenhum possa ser descartado sem perda. No entanto,
                     eficiência não implica
-                    <em><u>suficiência</u></em>. Um conjunto $S$ pode ser perfeitamente L.I. e ainda assim gerar apenas
+                    suficiência. Um conjunto $S$ pode ser perfeitamente L.I. e ainda assim gerar apenas
                     um
                     subespaço próprio de $\mathbb{R}^3$ — dois vetores L.I., por exemplo, varrem no máximo um plano,
                     deixando toda uma dimensão fora de alcance. A questão que se impõe naturalmente é a dual: <i>o
-                        conjunto, além de não conter <u>redundâncias</u>, é capaz de <strong>alcançar todo o
+                        conjunto, além de não conter redundâncias, é capaz de <strong>alcançar todo o
                             espaço</strong>?
                         Isto é, $\text{span}(S) = \mathbb{R}^3$?</i> Formalizar essa exigência de cobertura total conduz
                     ao conceito de <strong>conjunto gerador</strong>.
