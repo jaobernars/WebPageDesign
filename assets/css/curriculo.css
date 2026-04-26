@@ -1,0 +1,278 @@
+/* =========================================================
+   PÁGINA DE CURRÍCULO
+   ========================================================= */
+
+.cv-main {
+    align-items: flex-start;
+    padding: 40px 60px;
+}
+
+.cv-wrapper {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-bottom: 80px;
+}
+
+/* ---- Cabeçalho do CV ---- */
+.cv-header {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    padding-bottom: 50px;
+    border-bottom: 1px solid #222;
+    margin-bottom: 0px;
+}
+
+.cv-avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    flex-shrink: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+    font-size: 13px;
+}
+
+.cv-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cv-identity {
+    flex: 1;
+}
+
+.cv-name {
+    font-size: 48px;
+    font-weight: 600;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    margin-bottom: 8px;
+}
+
+.cv-title {
+    font-size: 18px;
+    color: #888;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+.cv-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+}
+
+.cv-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 14px;
+    color: #aaa;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.cv-contact-item:hover {
+    color: #fff;
+}
+
+.cv-contact-item svg {
+    flex-shrink: 0;
+    color: #555;
+}
+
+/* ---- Download Button ---- */
+.cv-download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 10px 22px;
+    background-color: #fff;
+    color: #000;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.cv-download-btn:hover {
+    background-color: #e4e4e7;
+    transform: translateY(-1px);
+}
+
+/* ---- Seções do CV ---- */
+.cv-section {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 0 50px;
+    padding: 40px 0;
+    border-bottom: 1px solid #1c1c1c;
+}
+
+.cv-section-label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #555;
+    padding-top: 4px;
+}
+
+.cv-section-body {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* ---- Item de Entrada (Educação, Experiência) ---- */
+.cv-entry {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.cv-entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.cv-entry-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.3;
+}
+
+.cv-entry-period {
+    font-size: 13px;
+    color: #555;
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding-top: 2px;
+}
+
+.cv-entry-institution {
+    font-size: 15px;
+    color: #888;
+}
+
+.cv-entry-desc {
+    font-size: 15px;
+    color: #777;
+    line-height: 1.6;
+    margin-top: 4px;
+}
+
+.cv-entry-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 6px;
+}
+
+.cv-tag {
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    background-color: #1a1a1a;
+    color: #888;
+    border: 1px solid #2a2a2a;
+}
+
+/* ---- Habilidades ---- */
+.cv-skills-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.cv-skill-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.cv-skill-group-name {
+    font-size: 13px;
+    color: #666;
+    font-weight: 500;
+}
+
+.cv-skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+/* ---- Texto simples ---- */
+.cv-text {
+    font-size: 16px;
+    color: #aaa;
+    line-height: 1.7;
+}
+
+/* ---- Idiomas ---- */
+.cv-lang-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cv-lang-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cv-lang-name {
+    font-size: 15px;
+    color: #ddd;
+}
+
+.cv-lang-level {
+    font-size: 13px;
+    color: #555;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .cv-main {
+        padding: 20px;
+    }
+
+    .cv-header {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .cv-name {
+        font-size: 36px;
+    }
+
+    .cv-section {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .cv-section-label {
+        font-size: 11px;
+    }
+
+    .cv-entry-header {
+        flex-direction: column;
+        gap: 4px;
+    }
+}
