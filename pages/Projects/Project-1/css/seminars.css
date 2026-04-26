@@ -1,0 +1,592 @@
+/* Seminars Page Styles */
+
+/* ── Hero ── */
+.sem-hero {
+    padding-top: calc(var(--nav-height) + 4rem);
+    padding-bottom: 4rem;
+    background: linear-gradient(to bottom, var(--color-bg-subtle), var(--color-bg-light));
+    border-bottom: 1px solid #eaeaea;
+}
+
+.sem-hero-layout {
+    display: flex;
+    align-items: flex-start;
+    gap: 4rem;
+}
+
+.sem-hero-left {
+    flex: 0 0 30%;
+}
+
+.sem-hero-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 800;
+    font-family: var(--font-heading);
+    color: var(--color-text-main);
+    line-height: 1.1;
+    margin: 0;
+}
+
+.sem-hero-right {
+    flex: 1;
+    padding-top: 0.5rem;
+}
+
+.sem-hero-desc {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 1.5rem;
+    max-width: 1200px;
+}
+
+.sem-tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.sem-tag {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: #888;
+    font-weight: 500;
+}
+
+.sem-tag-link {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #555;
+    background-color: #f0efec;
+    padding: 0.35rem 0.85rem;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.sem-tag-link:hover,
+.sem-tag-link.active {
+    background-color: #ea9a16;
+    color: #fff;
+    border-color: #ea9a16;
+}
+
+/* ── Próximo Seminário (Destaque) ── */
+.sem-next {
+    padding: 5rem 0;
+    background-color: #ffffff;
+}
+
+.sem-next-label {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #ea9a16;
+    margin-bottom: 2rem;
+}
+
+.sem-next-card {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+    background-color: #fff;
+}
+
+.sem-next-card__aside {
+    background-color: var(--color-bg-dark);
+    color: #fff;
+    padding: 3rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sem-next-date-block {
+    margin-bottom: 2rem;
+}
+
+.sem-next-weekday {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--color-accent);
+    margin-bottom: 0.25rem;
+}
+
+.sem-next-day {
+    font-family: var(--font-heading);
+    font-size: 4.5rem;
+    font-weight: 800;
+    line-height: 1;
+    color: #fff;
+}
+
+.sem-next-month-year {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: #d9d9d6;
+    margin-top: 0.25rem;
+}
+
+.sem-next-time-place {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.sem-next-info-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: #d9d9d6;
+}
+
+.sem-next-info-row svg {
+    flex-shrink: 0;
+    color: var(--color-accent);
+}
+
+.sem-next-card__body {
+    padding: 3rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sem-next-area {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ea9a16;
+    background-color: rgba(234, 154, 22, 0.08);
+    display: inline-block;
+    padding: 0.3rem 0.75rem;
+    border-radius: 3px;
+    margin-bottom: 1rem;
+}
+
+.sem-next-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 700;
+    color: #222;
+    line-height: 1.25;
+    margin-bottom: 1rem;
+}
+
+.sem-next-abstract {
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 1.75rem;
+}
+
+.sem-next-speaker {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-top: 1px solid #f0efec;
+    padding-top: 1.5rem;
+}
+
+.sem-next-speaker__avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: var(--color-bg-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-bg-dark);
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.sem-next-speaker__avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sem-next-speaker__name {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.sem-next-speaker__affiliation {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: #999;
+    margin-top: 0.1rem;
+}
+
+/* ── Próximos Seminários (Lista) ── */
+.sem-upcoming {
+    padding: 5rem 0;
+    background-color: #faf9f7;
+    border-top: 1px solid #eaeaea;
+}
+
+.sem-section-header {
+    margin-bottom: 2.5rem;
+}
+
+.sem-section-header h2 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #222;
+}
+
+.sem-upcoming-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.sem-upcoming-item {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    align-items: center;
+    gap: 2rem;
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 6px;
+    padding: 1.5rem 2rem;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.sem-upcoming-item:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+    border-color: #ea9a16;
+}
+
+.sem-upcoming-date {
+    text-align: center;
+}
+
+.sem-upcoming-date__day {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 800;
+    color: #222;
+    line-height: 1;
+}
+
+.sem-upcoming-date__month {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ea9a16;
+    margin-top: 0.2rem;
+}
+
+.sem-upcoming-info {
+    min-width: 0;
+}
+
+.sem-upcoming-area {
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #ea9a16;
+    margin-bottom: 0.3rem;
+}
+
+.sem-upcoming-title {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 0.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sem-upcoming-speaker {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    color: #888;
+}
+
+.sem-upcoming-meta {
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.sem-upcoming-time {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #444;
+}
+
+.sem-upcoming-place {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    color: #aaa;
+    margin-top: 0.2rem;
+}
+
+/* ── Arquivo (Tabela) ── */
+.sem-archive {
+    padding: 5rem 0;
+    background-color: #ffffff;
+    border-top: 1px solid #eaeaea;
+}
+
+.sem-archive-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.sem-archive-header h2 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #222;
+}
+
+.sem-search {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    background-color: #faf9f7;
+    transition: border-color 0.2s ease;
+}
+
+.sem-search:focus-within {
+    border-color: #ea9a16;
+}
+
+.sem-search svg {
+    color: #aaa;
+    flex-shrink: 0;
+}
+
+.sem-search input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: #333;
+    width: 200px;
+}
+
+.sem-search input::placeholder {
+    color: #bbb;
+}
+
+.sem-table-wrapper {
+    overflow-x: auto;
+}
+
+.sem-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-body);
+}
+
+.sem-table thead {
+    border-bottom: 2px solid #eaeaea;
+}
+
+.sem-table th {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #aaa;
+    text-align: left;
+    padding: 0.75rem 1rem;
+}
+
+.sem-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #f0efec;
+    vertical-align: middle;
+}
+
+.sem-table tbody tr {
+    transition: background-color 0.15s ease;
+}
+
+.sem-table tbody tr:hover {
+    background-color: #faf9f7;
+}
+
+.sem-table-date {
+    font-size: 0.82rem;
+    color: #999;
+    white-space: nowrap;
+    width: 130px;
+}
+
+.sem-table-area {
+    width: 140px;
+}
+
+.sem-table-area span {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #ea9a16;
+    background-color: rgba(234, 154, 22, 0.08);
+    padding: 0.25rem 0.6rem;
+    border-radius: 3px;
+}
+
+.sem-table-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.sem-table-title a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+}
+
+.sem-table-title a:hover {
+    color: #ea9a16;
+}
+
+.sem-table-title small {
+    display: block;
+    font-size: 0.78rem;
+    color: #aaa;
+    font-weight: 400;
+    margin-top: 0.15rem;
+}
+
+.sem-table-slides {
+    text-align: center;
+    width: 80px;
+}
+
+.sem-table-slides a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    transition: color 0.2s ease;
+}
+
+.sem-table-slides a:hover {
+    color: #ea9a16;
+}
+
+/* ── Footer ── */
+.sem-footer {
+    padding: 3rem 0;
+    background-color: var(--color-bg-dark);
+    text-align: center;
+}
+
+.sem-footer p {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    color: #d9d9d6;
+}
+
+.sem-footer a {
+    color: var(--color-accent);
+    text-decoration: none;
+}
+
+.sem-footer a:hover {
+    text-decoration: underline;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+    .sem-hero-layout {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .sem-hero-left {
+        flex: 0 0 auto;
+    }
+
+    .sem-next-card {
+        grid-template-columns: 1fr;
+    }
+
+    .sem-next-card__aside {
+        flex-direction: row;
+        align-items: center;
+        gap: 2rem;
+        padding: 2rem;
+    }
+
+    .sem-next-date-block {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .sem-hero-title {
+        font-size: 2.5rem;
+    }
+
+    .sem-upcoming-item {
+        grid-template-columns: 60px 1fr;
+        gap: 1rem;
+    }
+
+    .sem-upcoming-meta {
+        display: none;
+    }
+
+    .sem-archive-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .sem-search input {
+        width: 100%;
+    }
+
+    .sem-next-card__body {
+        padding: 2rem 1.5rem;
+    }
+}
