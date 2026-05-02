@@ -265,46 +265,6 @@ header {
     color: #ffffff;
 }
 
-
-
-
-
-
-
-
-
-
-
-/* Responsividade básica */
-@media (max-width: 768px) {
-    .sidebar {
-        display: none; 
-    }
-    h1 {
-        font-size: 28px;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* =========================================================
    SEÇÃO DE BOAS-VINDAS (Hero)
    ========================================================= */
@@ -372,30 +332,6 @@ header {
         font-size: 18px;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* =========================================================
    SEÇÃO TRABALHOS RECENTES (Página Principal)
@@ -483,26 +419,6 @@ header {
         gap: 15px;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* =========================================================
    FOOTER (Rodapé Estilo Minimalista)
@@ -594,15 +510,52 @@ header {
     color: #888888;
 }
 
-/* Ajustes para Celular */
+/* Responsividade básica */
 @media (max-width: 768px) {
-    .footer-links {
-        gap: 40px;
+    h1 {
+        font-size: 28px;
     }
-    .footer-bottom {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
+}
+
+/* --- Mobile Sidebar Overlay & Behaviors --- */
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9998; /* Fica acima do cabeçalho */
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    backdrop-filter: blur(2px);
+}
+
+.sidebar-overlay.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed !important;
+        display: flex !important; /* Garante que a barra não fique invisível devido ao display:none antigo */
+        width: 260px !important; /* Força a largura ignorando a classe .collapsed */
+        padding: 20px 24px !important; /* Força o espaçamento ignorando a classe .collapsed */
+        opacity: 1 !important; /* Força a opacidade ignorando a classe .collapsed */
+        top: 0;
+        left: -100%; /* Começa escondida fora da tela */
+        height: 100vh;
+        z-index: 9999 !important; /* Fica acima do overlay e do cabeçalho */
+        transition: left 0.3s ease;
+        box-shadow: 4px 0 15px rgba(0, 0, 0, 0.8);
+        max-width: 80%;
+        background-color: #000000; /* Mantém o fundo alinhado com o tema dark global */
+    }
+
+    .sidebar.mobile-active {
+        left: 0; /* Desliza para dentro da tela */
     }
 }
 
