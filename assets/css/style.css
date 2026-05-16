@@ -665,25 +665,28 @@ body.landing footer {
 
 /* =========================================================
    MEDIA QUERIES ADICIONAIS PARA DISPOSITIVOS MÓVEIS
+   (Afetam APENAS a landing page - body.landing)
    ========================================================= */
 
 @media (max-width: 600px) {
   body.landing {
     padding: 2rem 1.25rem;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
   body.landing h1 {
-    font-size: 1.9rem;
+    font-size: 1.75rem;
     line-height: 1.25;
   }
 
-  .social-links {
+  body.landing .social-links {
     flex-direction: column;
     align-items: center;
     gap: 0.6rem;
   }
 
-  .social-links a {
+  body.landing .social-links a {
     width: 100%;
     max-width: 280px;
     justify-content: center;
@@ -694,7 +697,7 @@ body.landing footer {
     max-width: 100%;
   }
 
-  .btn-start {
+  body.landing .btn-start {
     width: 100%;
     max-width: 280px;
     text-align: center;
@@ -704,7 +707,7 @@ body.landing footer {
 
   body.landing footer {
     position: static;
-    margin-top: 8rem;
+    margin-top: 2rem;
     margin-bottom: 1.5rem;
     font-size: 0.75rem;
   }
@@ -720,7 +723,7 @@ body.landing footer {
     font-size: 0.88rem;
   }
 
-  .btn-start {
+  body.landing .btn-start {
     font-size: 0.9rem;
     padding: 0.75rem 1.25rem;
   }
@@ -736,18 +739,16 @@ body.landing footer {
     font-size: 0.92rem;
   }
 
-  .btn-start {
+  body.landing .btn-start {
     font-size: 0.95rem;
   }
 }
 
-/* Garante padding seguro para o notch/Dynamic Island */
+/* Garante padding seguro para o notch/Dynamic Island (apenas landing) */
 @supports (padding-top: env(safe-area-inset-top)) {
-  body {
-    padding-top: calc(1.5rem + env(safe-area-inset-top));
-    padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
-    padding-left: calc(1.25rem + env(safe-area-inset-left));
-    padding-right: calc(1.25rem + env(safe-area-inset-right));
+  body.landing {
+    padding-top: calc(2rem + env(safe-area-inset-top));
+    padding-bottom: calc(2rem + env(safe-area-inset-bottom));
   }
 }
 
