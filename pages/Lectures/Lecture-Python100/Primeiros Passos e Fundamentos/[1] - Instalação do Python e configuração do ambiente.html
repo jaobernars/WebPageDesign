@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instalação do Python e Configuração do Ambiente | The Journal of a Physicist</title>
+    <link rel="stylesheet" href="../../../../assets/css/class-lecture.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                        <line x1="9" x2="9" y1="3" y2="21"></line>
+                    </svg>
+                </button>
+                <button id="theme-toggle" class="sidebar-toggle" aria-label="Toggle Theme">
+                    <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="breadcrumbs-header">
+                    <a href="../index.html" class="breadcrumb-link">Introduction to Python</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span class="breadcrumb-link">Primeiros Passos e Fundamentos</span>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-current" class="breadcrumb-link active">Instalação e Configuração</span>
+                </div>
+            </div>
+            <nav class="top-nav">
+                <a href="../../../Lectures.html">Lectures</a>
+                <a href="../../../../index.html">Home</a>
+            </nav>
+        </div>
+
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script>
+            MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']]
+                }
+            };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    </header>
+
+    <div class="main-layout">
+        <aside class="left-sidebar" id="left-sidebar">
+            <div class="sidebar-content">
+
+                <button class="search-trigger" id="search-trigger">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                    </svg>
+                    <span>Search docs...</span>
+                </button>
+
+                <div class="sidebar-group">
+                    <h3>Início</h3>
+                    <ul>
+                        <li><a href="../index.html">Overview</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Primeiros Passos e Fundamentos</h3>
+                    <ul>
+                        <li><a href="[1] - Instalação do Python e configuração do ambiente.html" class="active">Instalação do Python e configuração do ambiente</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="prose">
+
+                <h1>Instalação do Python e Configuração do Ambiente</h1>
+
+                <div class="image-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Python_logo_and_wordmark.svg/1280px-Python_logo_and_wordmark.svg.png"
+                        alt="Logo do Python">
+                </div>
+
+                <p class="lead">Nesta seção, você aprenderá a instalar o Python e configurar um ambiente de desenvolvimento adequado para programação científica e geral.</p>
+
+                <h2 id="introducao">Introdução</h2>
+                <p>
+                    Python é uma linguagem de programação de alto nível, interpretada e de propósito geral, criada por Guido van Rossum e lançada em 1991. 
+                    Sua filosofia de design enfatiza a legibilidade do código, utilizando indentação significativa. 
+                    Antes de começar a programar, é necessário instalar o interpretador Python e configurar um ambiente de desenvolvimento adequado.
+                </p>
+
+                <h2 id="instalacao-windows">Instalação no Windows</h2>
+                <p>A forma mais simples de instalar o Python no Windows é através do instalador oficial:</p>
+                <ol>
+                    <li>Acesse <a href="https://www.python.org/downloads/" target="_blank">python.org/downloads</a> e baixe a versão mais recente.</li>
+                    <li>Execute o instalador <code>.exe</code> baixado.</li>
+                    <li><strong>Importante:</strong> Marque a opção <em>"Add Python to PATH"</em> antes de clicar em "Install Now".</li>
+                    <li>Após a instalação, abra o Prompt de Comando e verifique a instalação:</li>
+                </ol>
+                <pre><code>python --version
+pip --version</code></pre>
+
+                <h2 id="instalacao-linux">Instalação no Linux</h2>
+                <p>Na maioria das distribuições Linux, o Python já vem pré-instalado. Para instalar ou atualizar:</p>
+                <pre><code># Ubuntu/Debian
+sudo apt update
+sudo apt install python3 python3-pip
+
+# Fedora
+sudo dnf install python3 python3-pip
+
+# Verificar instalação
+python3 --version
+pip3 --version</code></pre>
+
+                <h2 id="instalacao-macos">Instalação no macOS</h2>
+                <p>No macOS, recomenda-se usar o <a href="https://brew.sh/" target="_blank">Homebrew</a>:</p>
+                <pre><code># Instalar Homebrew (caso não tenha)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Instalar Python
+brew install python
+
+# Verificar instalação
+python3 --version</code></pre>
+
+                <h2 id="ambientes-virtuais">Ambientes Virtuais</h2>
+                <p>
+                    Ambientes virtuais são espaços isolados onde você pode instalar pacotes Python sem afetar a instalação global do sistema.
+                    Isso é especialmente útil quando diferentes projetos requerem versões diferentes de um mesmo pacote.
+                </p>
+                <p>Para criar e ativar um ambiente virtual usando o módulo <code>venv</code> nativo do Python:</p>
+                <pre><code># Criar ambiente virtual
+python -m venv meu_ambiente
+
+# Ativar no Windows
+meu_ambiente\Scripts\activate
+
+# Ativar no Linux/macOS
+source meu_ambiente/bin/activate
+
+# Instalar pacotes dentro do ambiente
+pip install numpy matplotlib
+
+# Desativar o ambiente
+deactivate</code></pre>
+
+                <h2 id="anaconda">Anaconda e Conda</h2>
+                <p>
+                    O <a href="https://www.anaconda.com/" target="_blank">Anaconda</a> é uma distribuição Python voltada para computação científica. 
+                    Ele inclui o gerenciador de pacotes <code>conda</code>, o Jupyter Notebook e diversas bibliotecas científicas pré-instaladas (NumPy, SciPy, Matplotlib, etc.).
+                </p>
+                <p>Após instalar o Anaconda, você pode gerenciar ambientes com:</p>
+                <pre><code># Criar um novo ambiente conda
+conda create --name ciencia python=3.11
+
+# Ativar o ambiente
+conda activate ciencia
+
+# Instalar pacotes
+conda install numpy scipy matplotlib jupyter
+
+# Listar ambientes disponíveis
+conda env list</code></pre>
+
+                <h2 id="editores">Editores e IDEs</h2>
+                <p>Escolher um bom editor de código é fundamental para a produtividade. As opções mais populares são:</p>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>VS Code</h3>
+                        <p>Editor leve, altamente extensível, com excelente suporte a Python via extensão oficial da Microsoft. Recomendado para iniciantes e profissionais.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>Jupyter Notebook</h3>
+                        <p>Ambiente interativo ideal para exploração de dados, cálculos científicos e aprendizado. Permite misturar código, texto e visualizações.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>PyCharm</h3>
+                        <p>IDE completa desenvolvida pela JetBrains. Possui ferramentas avançadas de depuração, refatoração e análise de código. Versão Community é gratuita.</p>
+                    </div>
+                </div>
+
+                <h2 id="primeiro-programa">Primeiro Programa</h2>
+                <p>Com o Python instalado, vamos escrever o clássico "Hello, World!":</p>
+                <pre><code>print("Hello, World!")</code></pre>
+                <p>Para executar, salve o arquivo como <code>hello.py</code> e no terminal execute:</p>
+                <pre><code>python hello.py</code></pre>
+                <p>Você também pode abrir o interpretador interativo diretamente no terminal com:</p>
+                <pre><code>python</code></pre>
+                <p>E digitar o comando diretamente. Para sair, use <code>exit()</code> ou <kbd>Ctrl+D</kbd>.</p>
+
+                <h2 id="referencias">Referências</h2>
+                <ol>
+                    <li>Python Software Foundation. <em>Python Documentation</em>. Disponível em: <a href="https://docs.python.org/3/" target="_blank">docs.python.org</a>.</li>
+                    <li>Van Rossum, G.; Drake, F. L. <em>The Python Language Reference</em>. Python Software Foundation, 2023.</li>
+                    <li>McKinney, W. <em>Python for Data Analysis</em>. O'Reilly Media, 2022.</li>
+                    <li>Anaconda Inc. <em>Anaconda Distribution Documentation</em>. Disponível em: <a href="https://docs.anaconda.com/" target="_blank">docs.anaconda.com</a>.</li>
+                </ol>
+
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="toc-container">
+                <h4>Nesta página</h4>
+                <ul>
+                    <li><a href="#introducao">Introdução</a></li>
+                    <li><a href="#instalacao-windows">Instalação no Windows</a></li>
+                    <li><a href="#instalacao-linux">Instalação no Linux</a></li>
+                    <li><a href="#instalacao-macos">Instalação no macOS</a></li>
+                    <li><a href="#ambientes-virtuais">Ambientes Virtuais</a></li>
+                    <li><a href="#anaconda">Anaconda e Conda</a></li>
+                    <li><a href="#editores">Editores e IDEs</a></li>
+                    <li><a href="#primeiro-programa">Primeiro Programa</a></li>
+                    <li><a href="#referencias">Referências</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Search Modal Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-modal">
+            <div class="search-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search documentation..." autocomplete="off">
+            </div>
+            <div class="search-results" id="search-results"></div>
+            <div class="search-footer">
+                <div class="search-commands">
+                    <span class="cmd-key">↑</span>
+                    <span class="cmd-key">↓</span>
+                    <span class="cmd-label">navigate</span>
+                    <span class="cmd-key">↵</span>
+                    <span class="cmd-label">select</span>
+                </div>
+                <div class="search-commands">
+                    <span class="cmd-key">esc</span>
+                    <span class="cmd-label">close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../assets/js/class-lecture.js"></script>
+</body>
+
+</html>
