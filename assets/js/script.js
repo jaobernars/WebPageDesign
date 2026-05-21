@@ -66,6 +66,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+/* =========================================================
+   THEME TOGGLE
+   ========================================================= */
+(function () {
+    const btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+
+    // Aplica o tema salvo ao carregar a página
+    if (localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light-theme');
+    }
+
+    btn.addEventListener('click', () => {
+        const isLight = document.body.classList.toggle('light-theme');
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+})();
+
 
 
 
