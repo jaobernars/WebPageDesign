@@ -238,6 +238,48 @@
                     P_N(m) \le 1, $$ garantindo irredutível aderência aos pilares fundamentais da <strong>Teoria das
                         Probabilidades.</strong></p>
 
+                <p>
+                    
+                </p>
+
+                <h2 id="equacao-estocastica">A Equação Estocástica de Diferenças</h2>
+
+                <p>Para estabelecermos a ponte formal entre o modelo discreto do caminho aleatório e os fenômenos contínuos de difusão, convém reformularmos o problema sob a linguagem de uma <strong>equação estocástica de diferenças</strong>. Essa abordagem nos permitirá, posteriormente, tomar um limite contínuo bem definido que conduz naturalmente à <strong>Equação de Difusão</strong> — um dos resultados mais profundos da Física Estatística.</p>
+
+                <p>Definamos a posição da partícula após \( N \) passos como \( x_N \). A regra de evolução do sistema é imediata: a cada instante discreto de tempo, a partícula avança ou recua de uma unidade \( l \), de modo que a posição no passo seguinte satisfaz a relação de recorrência</p>
+
+                <p>$$ x_{N+1} = x_N + l \, \eta_N, $$</p>
+
+                <p>onde \( \eta_N \) é uma <strong>variável aleatória de Bernoulli</strong> independente a cada passo, assumindo o valor \( +1 \) com probabilidade \( p \) e o valor \( -1 \) com probabilidade \( q = 1 - p \). Essa única equação encapsula toda a dinâmica do modelo: a posição atual é propagada pela adição de um ruído estocástico elementar \( l\,\eta_N \), cuja natureza estatística é completamente especificada pelos dois momentos fundamentais</p>
+
+                <p>$$ \langle \eta_N \rangle = p - q, \qquad \langle \eta_N^2 \rangle = 1. $$</p>
+
+                <p>Iterando a equação de diferenças a partir da condição inicial \( x_0 = 0 \), obtemos a solução exata em forma de soma:</p>
+
+                <p>$$ x_N = l \sum_{k=0}^{N-1} \eta_k. $$</p>
+
+                <p>Como os incrementos \( \eta_k \) são <strong>independentes e identicamente distribuídos</strong>, os valores esperados se propagam linearmente. O deslocamento médio e a variância após \( N \) passos são então, respectivamente:</p>
+
+                <p>$$ \langle x_N \rangle = Nl(p - q), \qquad \langle x_N^2 \rangle - \langle x_N \rangle^2 = Nl^2 \cdot 4pq. $$</p>
+
+                <p>O resultado central aqui é que o <strong>desvio quadrático médio cresce linearmente com \( N \)</strong> — assinatura inequívoca do transporte difusivo.</p>
+
+                <h2 id="limite-difusivo">O Limite Contínuo e a Equação de Difusão</h2>
+
+                <p>A conexão com os fenômenos macroscópicos de difusão emerge de forma precisa ao tomarmos o chamado <strong>limite difusivo</strong>, no qual o comprimento do passo \( l \) e o intervalo de tempo \( \tau \) entre passos consecutivos tendem a zero de maneira coordenada, mantendo finita a razão que define o coeficiente de difusão:</p>
+
+                <p>$$ D = \lim_{\substack{l,\,\tau \to 0}} \frac{l^2}{2\tau}. $$</p>
+
+                <p>Nesse limite, o número de passos \( N = t/\tau \) torna-se muito grande para um tempo físico \( t \) fixo, e a soma discreta de variáveis aleatórias independentes converge — pelo <strong>Teorema Central do Limite</strong> — para uma variável aleatória Gaussiana. A distribuição binomial \( P_N(m) \) que derivamos anteriormente aproxima-se assim da distribuição normal:</p>
+
+                <p>$$ P(x, t) = \frac{1}{\sqrt{4\pi D t}} \exp\!\left(-\frac{x^2}{4Dt}\right), $$</p>
+
+                <p>válida para o caso simétrico \( p = q = 1/2 \). Esta função \( P(x,t) \) não é apenas uma distribuição de probabilidade — ela satisfaz rigorosamente a <strong>Equação de Difusão</strong> (ou equação do calor de Fourier):</p>
+
+                <p>$$ \frac{\partial P}{\partial t} = D \frac{\partial^2 P}{\partial x^2}. $$</p>
+
+                <p>Esse resultado é de profunda significância física: a mesma equação que governa a condução de calor em sólidos, a difusão de partículas em soluções e o espalhamento de concentrações químicas emerge diretamente do modelo microscópico mais elementar possível — uma partícula que, a cada instante, simplesmente <em>lança uma moeda</em> para decidir sua direção. A desordem microscópica dos passos individuais, quando acumulada sobre um grande número de eventos, gera a ordem macroscópica característica da difusão, com a largura da distribuição crescendo como \( \sqrt{Dt} \) e o coeficiente \( D \) codificando toda a informação relevante da dinâmica microscópica.</p>
+
             </div>
         </main>
 
@@ -248,6 +290,8 @@
                     <li><a href="#caminho-aleatorio">O Problema do Caminho Aleatório</a></li>
                     <li><a href="#objetivo">Objetivo Central</a></li>
                     <li><a href="#enunciado">As Regras e o Enunciado do Modelo</a></li>
+                    <li><a href="#equacao-estocastica">A Equação Estocástica de Diferenças</a></li>
+                    <li><a href="#limite-difusivo">O Limite Contínuo e a Equação de Difusão</a></li>
                 </ul>
             </div>
         </aside>
