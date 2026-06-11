@@ -531,6 +531,7 @@ header {
 }
 
 .footer-logo {
+    font-family: 'Lora', Georgia, serif;
     font-size: 16px;
     font-weight: 600;
     letter-spacing: -0.5px;
@@ -860,6 +861,165 @@ body.landing footer {
 
 .hero-section--post .hero-subtitle {
     text-align: center;
+}
+
+/* =========================================================
+   SEÇÃO LECTURES
+   ========================================================= */
+
+.lectures-section {
+    width: 100%;
+    max-width: 1400px;
+    padding: 80px 0;
+    border-top: 1px solid #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.lectures-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    text-align: center;
+}
+
+.lectures-description {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.1rem;
+    color: #a1a1aa;
+    line-height: 1.7;
+    max-width: 600px;
+}
+
+.lectures-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.lecture-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    padding: 1.75rem;
+    background: #0d0d0d;
+    border: 1px solid #1a1a1a;
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.3s ease, transform 0.2s ease;
+}
+
+.lecture-card:hover {
+    border-color: #333;
+    transform: translateY(-2px);
+}
+
+.lecture-card__icon {
+    font-size: 1.75rem;
+    color: #555;
+    line-height: 1;
+    flex-shrink: 0;
+    width: 40px;
+    text-align: center;
+    font-family: 'Lora', Georgia, serif;
+}
+
+.lecture-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.lecture-card__tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #93c5fd;
+    background: rgba(59, 130, 246, 0.12);
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    width: fit-content;
+}
+
+.lecture-card__title {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #e2e8f0;
+    line-height: 1.4;
+}
+
+.lecture-card__desc {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 0.875rem;
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+.lectures-cta {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #a1a1aa;
+    text-decoration: none;
+    border-bottom: 1px solid #333;
+    padding-bottom: 2px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.lectures-cta:hover {
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+/* Tema claro */
+body.light-theme .lectures-section {
+    border-top-color: #e5e7eb;
+}
+
+body.light-theme .lectures-description {
+    color: #4b5563;
+}
+
+body.light-theme .lecture-card {
+    background: #f9fafb;
+    border-color: #e5e7eb;
+}
+
+body.light-theme .lecture-card:hover {
+    border-color: #d1d5db;
+}
+
+body.light-theme .lecture-card__title {
+    color: #111111;
+}
+
+body.light-theme .lecture-card__desc {
+    color: #6b7280;
+}
+
+body.light-theme .lectures-cta {
+    color: #4b5563;
+    border-color: #d1d5db;
+}
+
+body.light-theme .lectures-cta:hover {
+    color: #111111;
+    border-color: #111111;
+}
+
+@media (max-width: 768px) {
+    .lectures-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* =========================================================
