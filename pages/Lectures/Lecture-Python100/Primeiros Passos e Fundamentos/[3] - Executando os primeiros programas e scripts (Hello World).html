@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instalação do Python e Configuração do Ambiente | The Journal of a Physicist</title>
+    <link rel="stylesheet" href="../../../../assets/css/class-lecture.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                        <line x1="9" x2="9" y1="3" y2="21"></line>
+                    </svg>
+                </button>
+                <button id="theme-toggle" class="sidebar-toggle" aria-label="Toggle Theme">
+                    <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="breadcrumbs-header">
+                    <a href="../index.html" class="breadcrumb-link">Introduction to Python</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span class="breadcrumb-link">Primeiros Passos e Fundamentos</span>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-current" class="breadcrumb-link active">Instalação e Configuração</span>
+                </div>
+            </div>
+            <nav class="top-nav">
+                <a href="../../../Lectures.html">Lectures</a>
+                <a href="../../../../index.html">Home</a>
+            </nav>
+        </div>
+
+        <script>
+            MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']]
+                }
+            };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    </header>
+
+    <div class="main-layout">
+        <aside class="left-sidebar" id="left-sidebar">
+            <div class="sidebar-content">
+
+                <button class="search-trigger" id="search-trigger">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                    </svg>
+                    <span>Search docs...</span>
+                </button>
+
+                <div class="sidebar-group">
+                    <h3>Início</h3>
+                    <ul>
+                        <li><a href="../index.html">Overview</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Primeiros Passos e Fundamentos</h3>
+                    <ul>
+                        <li><a href="[1] - Instalação do Python e configuração do ambiente.html" class="active">Instalação do Python e configuração do ambiente</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="prose">
+
+                <h1>Executando os primeiros programas e scripts (Hello World)</h1>
+
+
+
+                <pre><code class="language-python">print("Hello, World!")</code></pre>
+
+                <h2>Introdução</h2>
+
+                <p>
+                    Para iniciar a jornada de programação em Python, o primeiro passo consiste na criação de um arquivo de código-fonte. Diferentemente de linguagens que exigem estruturas complexas de projeto ou processos de compilação prévia, o Python permite que um programa completo resida em um único arquivo de texto simples. Para criá-lo, basta utilizar qualquer editor de texto — seja um editor básico como o Bloco de Notas no Windows ou o gedit no Linux, seja um ambiente de desenvolvimento integrado (IDE) mais robusto como o Visual Studio Code, o PyCharm ou o Thonny.
+                </p>
+
+                <p>
+                    O processo de criação é direto: abre-se um novo arquivo no editor escolhido, digita-se o código Python desejado e, ao salvar, atribui-se ao arquivo a extensão <code>.py</code>. Esta extensão é a convenção universal que identifica arquivos contendo instruções em Python. Por exemplo, para o clássico programa "Hello World", pode-se nomear o arquivo como <code>hello_world.py</code>, <code>main.py</code> ou qualquer denominação descritiva seguida de <code>.py</code>.
+                </p>
+
+                <p>
+                    A nomenclatura do arquivo segue convenções recomendadas pelo guia de estilo oficial da linguagem, o PEP 8: utilizar letras minúsculas, separar palavras com underscores (<em>snake_case</em>) e evitar espaços ou caracteres especiais no nome. Tais práticas garantem portabilidade entre sistemas operacionais e permitem que o arquivo seja importado como módulo por outros programas sem conflitos de nomenclatura.
+                </p>
+
+                <p>
+                    A execução de um script inicial, classicamente exemplificado pelo programa "Hello World", fundamenta-se em uma cadeia de processos de compilação e interpretação acionados pelo ambiente de desenvolvimento e pelo sistema operacional. O código-fonte deve ser redigido em texto plano (plaintext) e armazenado em um arquivo contendo a extensão obrigatória .py. Esta extensão sinaliza formalmente à interface de desenvolvimento (IDE ou editor de texto) e ao sistema subjacente que o arquivo contém instruções em Python, viabilizando o destaque de sintaxe adequado e o mapeamento dos comandos de compilação e execução.
+                </p>
+
+                <p>
+                    A invocação primária de um script ocorre através da interface de linha de comando (terminal ou shell) mediante a execução da instrução:
+                </p>
+
+                <pre><code class="language-python">python nome_do_arquivo.py</code></pre>
+
+                <br>
+
+                <p>
+                    Este comando instrui o shell do sistema a acionar o interpretador Python, passando o arquivo especificado como o script alvo a ser processado. Internamente, a mecânica de execução dita que o interpretador leia o programa de forma sequencial, analisando o código para determinar o significado léxico e sintático de cada instrução.
+                </p>
+                <p>
+                    Em vez de atuar diretamente no processador em nível de código de máquina, o interpretador compila as instruções do código-fonte para uma representação estrutural intermediária denominada bytecode. Este bytecode (que frequentemente é salvo com a extensão .pyc dentro de um diretório local __pycache__ para otimizar o tempo de carregamento em execuções subsequentes) é então submetido à execução pela máquina virtual do Python.
+                </p>
+
+                <h2>Compreendendo a função print()</h2>
+                <p>
+                    No contexto restrito do programa "Hello World", a instrução fundamental consiste na invocação da função interna print(). Sintaticamente, as versões de Python 3 diferem do padrão do Python 2, pois implementam o print estritamente como uma função que exige o encapsulamento dos seus argumentos por parênteses, em contraposição ao Python 2 que o tratava como uma declaração de sintaxe (statement) sem parênteses mandatórios.
+                </p>
+                <p>
+                    O interpretador reconhece a chamada a print(), avalia o valor interno – uma sequência literal de caracteres (string) demarcada por aspas simples ou duplas – e instrui o roteamento desse dado para a saída padrão (standard output), exibindo-o na tela do terminal.
+                </p>
+                <p>
+                    Em ecossistemas de desenvolvimento de execução iterativa, como o IPython, scripts podem contornar a invocação direta do sistema operacional utilizando comandos mágicos intrínsecos. A execução via %run nome_do_arquivo.py compila e executa as instruções, injetando as funções e variáveis processadas no espaço de nomes (namespace) da sessão ativa do interpretador.
+                </p>
+                <p>
+                    Paralelamente, qualquer script também se comporta como um módulo e pode ser submetido ao interpretador através da declaração import nome_do_módulo, operação que invoca o processo de compilação de bytecode e leitura do arquivo e aloca suas definições globais na memória computacional para acesso pelo programa principal.
+                </p>
+                <p>
+                    Em resumo, a execução de scripts em Python envolve uma série de etapas que vão desde a escrita do código-fonte até a sua execução pelo interpretador, passando pela compilação em bytecode e pela gestão de namespaces. Compreender esse fluxo é fundamental para qualquer desenvolvedor que deseje trabalhar de forma eficaz com a linguagem.  
+                </p>
+
+
+                
+
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="toc-container">
+                <h4>Nesta página</h4>
+                <ul>
+                    <li><a href="#introducao">Introdução</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Search Modal Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-modal">
+            <div class="search-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search documentation..." autocomplete="off">
+            </div>
+            <div class="search-results" id="search-results"></div>
+            <div class="search-footer">
+                <div class="search-commands">
+                    <span class="cmd-key">↑</span>
+                    <span class="cmd-key">↓</span>
+                    <span class="cmd-label">navigate</span>
+                    <span class="cmd-key">↵</span>
+                    <span class="cmd-label">select</span>
+                </div>
+                <div class="search-commands">
+                    <span class="cmd-key">esc</span>
+                    <span class="cmd-label">close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../assets/js/class-lecture.js"></script>
+</body>
+
+</html>
