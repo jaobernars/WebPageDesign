@@ -2102,6 +2102,103 @@ body.light-theme .logo-img {
         min-height: 0;        /* sem crescimento vertical no mobile (evita cortar o conteúdo empilhado) */
     }
     .cta-asset img { min-height: 0; }   /* sem crescimento da imagem no mobile */
+    .cta-button { align-self: center; }   /* centraliza o botão no mobile (o resto do texto fica à esquerda) */
+}
+
+/* =========================================================
+   SEÇÃO LOCAIS — globo 3D giratório (estilo Perplexity)
+   Globo pontilhado via biblioteca "cobe" (script em index.html).
+   ========================================================= */
+.globe-section {
+    width: 100%;
+    max-width: 1400px;
+    padding: 80px 0;
+    border-top: 1px solid #1a1a1a;
+    overflow-x: clip;   /* segurança: cards do globo não geram scroll horizontal */
+}
+
+.globe-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #888;
+    padding-bottom: 1.25rem;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.globe-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.globe-headline {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 2.6rem;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+}
+
+.globe-text {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #cbd5e1;
+    max-width: 560px;
+    margin-bottom: 1.2rem;
+}
+
+.globe-text--muted {
+    color: #8b93a1;
+    font-size: 1.05rem;
+}
+
+.globe-place {
+    color: #67e8e0;   /* ciano — combina com os marcadores do globo */
+    font-weight: 600;
+}
+
+.globe-visual {
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto;
+    aspect-ratio: 1 / 1;
+}
+
+.globe-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+    cursor: grab;
+    touch-action: none;                 /* permite arrastar o globo sem rolar a página */
+    opacity: 0;                         /* revela suave quando o globo carrega */
+    transition: opacity 1s ease;
+}
+
+/* Se o globo não carregar (offline/CDN), remove a área para não deixar buraco */
+.globe-visual.globe-failed { display: none; }
+
+/* Tema claro */
+body.light-theme .globe-section { border-top-color: #e5e7eb; }
+body.light-theme .globe-label { color: #6b7280; border-bottom-color: #e5e7eb; }
+body.light-theme .globe-headline { color: #111111; }
+body.light-theme .globe-text { color: #4b5563; }
+body.light-theme .globe-text--muted { color: #6b7280; }
+body.light-theme .globe-place { color: #0e7490; }
+
+@media (max-width: 768px) {
+    .globe-section { padding: 60px 0; }
+    .globe-row { grid-template-columns: 1fr; gap: 2.5rem; }
+    .globe-headline { font-size: 2rem; }
+    .globe-visual { max-width: 420px; }
 }
 
 /* =========================================================
