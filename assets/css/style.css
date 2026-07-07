@@ -1923,3 +1923,219 @@ body.light-theme .logo-img {
             .posts-nav { gap: 1.5rem; }
             .post-featured-center__title { font-size: 1.2rem; }
         }
+
+/* =========================================================
+   SEÇÃO CTA DE DESTAQUE (estilo Anthropic) — Pilar da Ciência
+   Card grande arredondado que se expande com o scroll e revela
+   os elementos com fade-in (animação via GSAP em index.html).
+   ========================================================= */
+
+.cta-section {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    justify-content: center;   /* centraliza o card mesmo quando ele fica maior que a section */
+    padding: 20px 0;
+}
+
+.cta-bg {
+    --cta: 0;                     /* progresso: 0 = recolhido · 1 = tela cheia (animado via GSAP) */
+    --cta-w0: min(1200px, 100%);  /* largura no estado recolhido (maior que antes) */
+    --cta-gap: 40px;              /* margem vertical no estado recolhido */
+    flex-shrink: 0;               /* deixa o card ultrapassar a largura da section ao expandir */
+    display: flex;                /* centraliza o conteúdo quando o card cresce em altura */
+    align-items: center;
+    justify-content: center;
+    /* --vw = largura visível real (sem a barra de rolagem), medida pelo JS.
+       Assim o card chega até a borda da tela sem gerar scroll horizontal. */
+    width: calc(var(--cta-w0) + (var(--vw, 100vw) - var(--cta-w0)) * var(--cta));
+    min-height: calc(100vh * var(--cta));   /* cresce na vertical até a tela inteira */
+    margin-top: calc(var(--cta-gap) * (1 - var(--cta)));      /* margem some ao expandir */
+    margin-bottom: calc(var(--cta-gap) * (1 - var(--cta)));
+    border-radius: calc(24px * (1 - var(--cta)));   /* bordas somem ao expandir */
+    overflow: hidden;
+    background:
+        radial-gradient(120% 140% at 12% 12%, rgba(59, 130, 246, 0.38) 0%, rgba(59, 130, 246, 0) 55%),
+        linear-gradient(135deg, #0a1834 0%, #122a55 55%, #1e3a8a 100%);
+    box-shadow: 0 30px 80px -40px rgba(30, 58, 138, 0.75);
+    will-change: width, min-height, margin, border-radius;
+}
+
+/* Variações de cor por pilar */
+.cta-bg--arte {
+    background:
+        radial-gradient(120% 140% at 12% 12%, rgba(168, 85, 247, 0.38) 0%, rgba(168, 85, 247, 0) 55%),
+        linear-gradient(135deg, #1c1030 0%, #3b1d63 55%, #7c3aed 100%);
+    box-shadow: 0 30px 80px -40px rgba(124, 58, 237, 0.7);
+}
+
+.cta-bg--arte .cta-eyebrow { color: #d8b4fe; }
+
+/* Arte: imagem à esquerda, texto à direita (para diferenciar das demais) */
+.cta-bg--arte .cta-asset { order: -1; }
+
+.cta-bg--tech {
+    background:
+        radial-gradient(120% 140% at 12% 12%, rgba(45, 212, 191, 0.35) 0%, rgba(45, 212, 191, 0) 55%),
+        linear-gradient(135deg, #06201c 0%, #0b3d35 55%, #0f766e 100%);
+    box-shadow: 0 30px 80px -40px rgba(15, 118, 110, 0.7);
+}
+
+.cta-bg--tech .cta-eyebrow { color: #5eead4; }
+
+.cta-container {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    /* Ao expandir, o conteúdo ocupa a largura toda do card: o texto vai para
+       a esquerda e a imagem para a direita, acompanhando o tamanho da página.
+       O respiro das bordas vem do padding horizontal, que também cresce. */
+    max-width: calc(1200px + (100% - 1200px) * var(--cta));
+    gap: calc(2.5rem + 2.5rem * var(--cta));
+    padding: 3.5rem calc(3.5rem + 2.5vw * var(--cta));
+}
+
+.cta-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.1rem;
+}
+
+.cta-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #93c5fd;
+}
+
+.cta-title {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 3rem;
+    font-weight: 600;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    color: #ffffff;
+}
+
+.cta-subtitle {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: #cbd5e1;
+    max-width: 520px;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.6rem;
+    background-color: #ffffff;
+    color: #0a1834;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.8rem 1.6rem;
+    border-radius: 999px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.cta-button:hover {
+    background-color: #e2e8f0;
+    transform: translateY(-2px);
+}
+
+.cta-button__arrow {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.cta-button:hover .cta-button__arrow {
+    transform: translateX(3px);
+}
+
+.cta-asset {
+    width: 100%;
+}
+
+.cta-asset img {
+    width: 100%;
+    aspect-ratio: 4 / 3;                    /* proporção no estado recolhido */
+    min-height: calc(78vh * var(--cta));    /* a imagem cresce junto com o scroll */
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
+    box-shadow: 0 20px 50px -30px rgba(0, 0, 0, 0.85);
+}
+
+/* Estado inicial da animação: elementos escondidos até o reveal (GSAP).
+   Só aplica quando o JS marcou html.cta-js e sem prefers-reduced-motion. */
+@media (prefers-reduced-motion: no-preference) {
+    html.cta-js .cta-section [data-scroll='title'],
+    html.cta-js .cta-section [data-scroll='subtitle'],
+    html.cta-js .cta-section [data-scroll='button'],
+    html.cta-js .cta-section [data-scroll='asset'] {
+        opacity: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .cta-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem;
+        max-width: none;      /* sem espalhamento lateral no mobile */
+    }
+    .cta-title { font-size: 2.2rem; }
+    .cta-subtitle { font-size: 1.05rem; }
+    .cta-bg {
+        --cta-gap: 24px;      /* margem vertical menor no mobile (sem quebrar a animação) */
+        min-height: 0;        /* sem crescimento vertical no mobile (evita cortar o conteúdo empilhado) */
+    }
+    .cta-asset img { min-height: 0; }   /* sem crescimento da imagem no mobile */
+}
+
+/* =========================================================
+   SIDEBAR COMO CAMADA (desktop)
+   A barra lateral abre por cima do conteúdo, sem empurrar a
+   página. Fica fixa e desliza para dentro/fora. No mobile, o
+   comportamento continua sendo o do @media (max-width: 768px).
+   ========================================================= */
+@media (min-width: 769px) {
+    .sidebar {
+        position: fixed;
+        top: 60px;                      /* logo abaixo do header */
+        left: 0;
+        height: calc(100vh - 60px);
+        width: 260px;
+        padding: 20px 24px;
+        z-index: 900;                   /* acima do conteúdo, abaixo do header (1000) */
+        background-color: #000000;      /* opaca, para cobrir o conteúdo atrás */
+        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.35);
+        overflow-y: auto;
+        transform: translateX(0);
+        transition: transform 0.3s ease;  /* desliza em vez de mudar a largura */
+    }
+
+    /* Fechada: desliza para fora da tela (sem ocupar espaço no fluxo) */
+    .sidebar.collapsed {
+        width: 260px;                   /* mantém o tamanho, só sai da tela */
+        padding: 20px 24px;
+        opacity: 1;
+        overflow-y: auto;
+        transform: translateX(-100%);
+        box-shadow: none;
+        pointer-events: none;           /* não intercepta cliques quando escondida */
+    }
+
+    /* Tema claro: fundo branco para a camada */
+    body.light-theme .sidebar {
+        background-color: #ffffff;
+        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.12);
+    }
+}

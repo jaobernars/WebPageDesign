@@ -464,3 +464,211 @@
         align-items: center;
     }
 }
+
+/* =========================================================
+   TOOLBAR ESTILO OPENAI (research index — list view)
+   Reskin do .list-toolbar. Mantém a marcação/JS existentes;
+   só muda a aparência. Compatível com tema claro e escuro.
+   ========================================================= */
+
+/* Título com a fonte do "The Journal of a Physicist" */
+.page-title {
+    font-family: 'Lora', Georgia, serif;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+.list-toolbar {
+    flex-wrap: wrap;
+    gap: 16px;
+    padding-bottom: 20px;
+    margin-bottom: 26px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.toolbar-tabs {
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* Abas e botões como "pílulas" (aparência OpenAI) */
+.toolbar-tabs a,
+.btn-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    background: transparent;
+    color: #a3a3a3;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.toolbar-tabs a:hover,
+.btn-text:hover {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.45);
+}
+
+/* Aba ativa: pílula preenchida */
+.toolbar-tabs a.active {
+    background: #ffffff;
+    border: 1px solid #ffffff;
+    color: #000000;
+}
+
+.toolbar-controls {
+    gap: 10px;
+}
+
+/* Indicador de filtro ativo (substitui o pontinho antigo) */
+.btn-text.has-filter {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.btn-text.has-filter::after {
+    background: #ffffff;
+}
+
+.filter-count {
+    margin-left: 4px;
+    padding: 0;
+    background: transparent;
+    color: #6b7280;
+    font-size: 0.8rem;
+    letter-spacing: 0;
+}
+
+.dropdown-menu {
+    border-radius: 12px;
+}
+
+/* ---------------- TEMA CLARO ---------------- */
+body.light-theme .list-toolbar {
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .toolbar-tabs a,
+body.light-theme .btn-text {
+    border-color: rgba(0, 0, 0, 0.16);
+    color: #555555;
+}
+
+body.light-theme .toolbar-tabs a:hover,
+body.light-theme .btn-text:hover {
+    color: #111111;
+    border-color: rgba(0, 0, 0, 0.4);
+}
+
+body.light-theme .toolbar-tabs a.active {
+    background: #111111;
+    border: 1px solid #111111;
+    color: #ffffff;
+}
+
+body.light-theme .btn-text.has-filter {
+    color: #111111;
+    border-color: rgba(0, 0, 0, 0.4);
+}
+
+body.light-theme .btn-text.has-filter::after {
+    background: #111111;
+}
+
+body.light-theme .filter-count {
+    color: #9ca3af;
+}
+
+body.light-theme .dropdown-menu {
+    background: #ffffff;
+    border-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+body.light-theme .dropdown-header {
+    color: #9ca3af;
+}
+
+body.light-theme .dropdown-menu .dropdown-item {
+    color: #4b5563;
+}
+
+body.light-theme .dropdown-menu .dropdown-item:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: #111111;
+}
+
+body.light-theme .dropdown-menu button.dropdown-item.active {
+    color: #111111;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+body.light-theme .dropdown-menu button.dropdown-item.active::before {
+    background: #111111;
+}
+
+body.light-theme .dropdown-item input[type="checkbox"],
+body.light-theme .dropdown-item input[type="radio"] {
+    border-color: rgba(0, 0, 0, 0.25);
+}
+
+body.light-theme .dropdown-item input[type="checkbox"]:checked,
+body.light-theme .dropdown-item input[type="radio"]:checked {
+    background: #111111;
+    border-color: #111111;
+}
+
+body.light-theme .dropdown-item input[type="checkbox"]:checked::after {
+    border-color: #ffffff;
+}
+
+body.light-theme .dropdown-item input[type="radio"]:checked::after {
+    background: #ffffff;
+}
+
+body.light-theme .dropdown-item input[type="checkbox"]:indeterminate {
+    background: rgba(0, 0, 0, 0.4);
+    border-color: rgba(0, 0, 0, 0.4);
+}
+
+body.light-theme .dropdown-item input[type="checkbox"]:indeterminate::after {
+    background: #ffffff;
+}
+
+body.light-theme .dropdown-divider {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+body.light-theme .dropdown-clear {
+    color: #6b7280;
+    border-color: rgba(0, 0, 0, 0.12);
+}
+
+body.light-theme .dropdown-clear:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: #111111;
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile: mantém as pílulas em linha, com quebra natural */
+@media (max-width: 768px) {
+    .list-toolbar {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px;
+        overflow: visible;
+    }
+    .toolbar-tabs {
+        flex: 1 1 auto;
+        overflow-x: auto;
+    }
+}
