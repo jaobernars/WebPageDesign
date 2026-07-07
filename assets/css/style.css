@@ -2161,7 +2161,7 @@ body.light-theme .logo-img {
 }
 
 .globe-place {
-    color: #67e8e0;   /* ciano — combina com os marcadores do globo */
+    color: #e0aad6;   /* rosa-lilás — combina com os marcadores do globo */
     font-weight: 600;
 }
 
@@ -2186,13 +2186,89 @@ body.light-theme .logo-img {
 /* Se o globo não carregar (offline/CDN), remove a área para não deixar buraco */
 .globe-visual.globe-failed { display: none; }
 
+/* Cards (popups) ancorados nos marcadores do globo */
+.globe-pins {
+    position: absolute;
+    inset: 0;
+    overflow: visible;
+    pointer-events: none;
+}
+
+.globe-pin {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transform: translate(-9999px, -9999px);   /* fora da tela até o 1º frame posicionar */
+    will-change: transform, opacity;
+    transition: opacity 0.25s ease;
+}
+
+.globe-pin__dot {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 9px;
+    height: 9px;
+    margin: -4.5px;                 /* centraliza o ponto exatamente em (px, py) */
+    border-radius: 50%;
+    background: #f0b4e2;
+    box-shadow: 0 0 8px 2px rgba(224, 130, 210, 0.7);
+}
+
+.globe-pin__card {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate(-50%, calc(-100% - 12px));   /* card acima do ponto */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1px;
+    padding: 5px 10px;
+    border-radius: 9px;
+    background: rgba(18, 12, 32, 0.82);
+    border: 1px solid rgba(224, 170, 214, 0.28);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    white-space: nowrap;
+    line-height: 1.25;
+}
+
+.globe-pin__card::after {   /* seta apontando para o ponto */
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid rgba(18, 12, 32, 0.82);
+}
+
+.globe-pin__card strong {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #f4e9f7;
+}
+
+.globe-pin__card span {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #c9a9d4;
+}
+
 /* Tema claro */
 body.light-theme .globe-section { border-top-color: #e5e7eb; }
 body.light-theme .globe-label { color: #6b7280; border-bottom-color: #e5e7eb; }
 body.light-theme .globe-headline { color: #111111; }
 body.light-theme .globe-text { color: #4b5563; }
 body.light-theme .globe-text--muted { color: #6b7280; }
-body.light-theme .globe-place { color: #0e7490; }
+body.light-theme .globe-place { color: #a21caf; }
 
 @media (max-width: 768px) {
     .globe-section { padding: 60px 0; }

@@ -526,31 +526,46 @@
         })();
     </script>
 
-    <!-- Globo 3D giratório com marcadores (biblioteca "cobe", via CDN) -->
+    <!-- Globo 3D giratório com cards nos pontos (biblioteca "cobe", via CDN) -->
     <script type="module">
         import('https://esm.sh/cobe@0.6.3').then(function (mod) {
             var createGlobe = mod.default;
             var canvas = document.getElementById('globe-canvas');
+            var pinsLayer = document.getElementById('globe-pins');
             if (!canvas) return;
 
-            // Centros de ciência (latitude, longitude). Londrina em destaque (marcador maior).
-            var markers = [
-                { location: [46.23, 6.05],    size: 0.06 },  // CERN — Genebra
-                { location: [41.84, -88.26],  size: 0.05 },  // Fermilab — Chicago
-                { location: [40.35, -74.65],  size: 0.05 },  // Princeton
-                { location: [34.14, -118.13], size: 0.05 },  // Caltech — Pasadena
-                { location: [51.51, -0.13],   size: 0.05 },  // Londres
-                { location: [52.52, 13.40],   size: 0.05 },  // Berlim
-                { location: [35.68, 139.69],  size: 0.05 },  // Tóquio
-                { location: [-24.5, -69.25],  size: 0.05 },  // Atacama
-                { location: [-23.31, -51.16], size: 0.09 },  // Londrina (base)
+            var THETA = 0.3;   // inclinação do globo (usada no globo E na projeção dos cards)
+
+            // Centros de ciência: [lat, lng], tamanho do marcador e rótulo do card.
+            var data = [
+                { lat: 46.23,  lng: 6.05,    size: 0.06, label: 'CERN',      sub: 'Genebra' },
+                { lat: 41.84,  lng: -88.26,  size: 0.05, label: 'Fermilab',  sub: 'Chicago' },
+                { lat: 40.35,  lng: -74.65,  size: 0.05, label: 'Princeton', sub: 'EUA' },
+                { lat: 34.14,  lng: -118.13, size: 0.05, label: 'Caltech',   sub: 'Pasadena' },
+                { lat: 51.51,  lng: -0.13,   size: 0.05, label: 'Londres',   sub: 'Reino Unido' },
+                { lat: 52.52,  lng: 13.40,   size: 0.05, label: 'Berlim',    sub: 'Alemanha' },
+                { lat: 35.68,  lng: 139.69,  size: 0.05, label: 'Tóquio',    sub: 'Japão' },
+                { lat: -24.5,  lng: -69.25,  size: 0.05, label: 'Atacama',   sub: 'Chile' },
+                { lat: -23.31, lng: -51.16,  size: 0.09, label: 'Londrina',  sub: 'Base' },
             ];
+
+            // Cria os cards (um por ponto) uma única vez
+            var pins = data.map(function (m) {
+                var el = document.createElement('div');
+                el.className = 'globe-pin';
+                el.innerHTML = '<span class="globe-pin__dot"></span>' +
+                    '<span class="globe-pin__card"><strong>' + m.label + '</strong>' +
+                    (m.sub ? '<span>' + m.sub + '</span>' : '') + '</span>';
+                if (pinsLayer) pinsLayer.appendChild(el);
+                return { el: el, lat: m.lat, lng: m.lng };
+            });
+
+            var markers = data.map(function (m) { return { location: [m.lat, m.lng], size: m.size }; });
 
             var phi = 0;
             var width = 0;
             var pointerInteracting = null;
             var pointerInteractionMovement = 0;
-            var globe = null;
             var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
             function measure() { if (canvas) width = canvas.offsetWidth; }
@@ -558,41 +573,53 @@
             if (window.ResizeObserver) new ResizeObserver(measure).observe(canvas);
             else window.addEventListener('resize', measure);
 
-            function themeColors() {
-                var light = document.body.classList.contains('light-theme');
-                return light
-                    ? { dark: 0, baseColor: [0.82, 0.85, 0.9], glow: [0.9, 0.95, 1.0], bright: 2.2 }
-                    : { dark: 1, baseColor: [0.28, 0.32, 0.4], glow: [0.14, 0.2, 0.32], bright: 6 };
+            // Projeta cada ponto (lat/lng) para a tela usando a MESMA matemática do cobe,
+            // e posiciona/oculta o card conforme o ponto está na frente ou atrás do globo.
+            function updatePins(phiEff) {
+                var W = width;
+                var d = Math.cos(phiEff), sp = Math.sin(phiEff), c = Math.cos(THETA), e = Math.sin(THETA);
+                for (var i = 0; i < pins.length; i++) {
+                    var p = pins[i];
+                    var latR = p.lat * Math.PI / 180, lngR = p.lng * Math.PI / 180 - Math.PI, cl = Math.cos(latR);
+                    var x0 = -cl * Math.cos(lngR), y0 = Math.sin(latR), z0 = cl * Math.sin(lngR);
+                    var vz = -sp * c * x0 + e * y0 + d * c * z0;   // profundidade (>0 = frente)
+                    if (vz <= 0.02) { p.el.style.opacity = '0'; p.el.style.visibility = 'hidden'; continue; }
+                    var vx = d * x0 + sp * z0;
+                    var vy = sp * e * x0 + c * y0 - d * e * z0;
+                    var px = (0.8 * vx + 1) / 2 * W, py = (1 - 0.8 * vy) / 2 * W;
+                    p.el.style.visibility = 'visible';
+                    p.el.style.opacity = String(Math.min(1, (vz - 0.02) / 0.2));   // some suave na borda
+                    p.el.style.transform = 'translate(' + px + 'px,' + py + 'px)';
+                }
             }
 
-            function build() {
-                if (globe) globe.destroy();
-                var t = themeColors();
-                globe = createGlobe(canvas, {
-                    devicePixelRatio: 2,
-                    width: width * 2,
-                    height: width * 2,
-                    phi: 0,
-                    theta: 0.28,
-                    dark: t.dark,
-                    diffuse: 1.2,
-                    mapSamples: 16000,
-                    mapBrightness: t.bright,
-                    baseColor: t.baseColor,
-                    markerColor: [0.4, 0.9, 0.9],   // ciano — casa com .globe-place
-                    glowColor: t.glow,
-                    markers: markers,
-                    onRender: function (state) {
-                        if (pointerInteracting === null && !reduceMotion) phi += 0.004;  // auto-rotação
-                        state.phi = phi + pointerInteractionMovement / 200;
-                        state.width = width * 2;
-                        state.height = width * 2;
-                    }
-                });
-                requestAnimationFrame(function () { canvas.style.opacity = '1'; });
-            }
+            createGlobe(canvas, {
+                devicePixelRatio: 2,
+                width: width * 2,
+                height: width * 2,
+                phi: 0,
+                theta: THETA,
+                dark: 1,
+                diffuse: 1.2,
+                mapSamples: 16000,
+                mapBrightness: 5,
+                baseColor: [0.22, 0.16, 0.35],    // continentes em roxo escuro (imagem da Ciência)
+                markerColor: [0.92, 0.5, 0.85],   // marcadores magenta/rosa
+                glowColor: [0.28, 0.1, 0.3],      // brilho roxo/magenta
+                markers: markers,
+                onRender: function (state) {
+                    if (pointerInteracting === null && !reduceMotion) phi += 0.004;  // auto-rotação
+                    var phiEff = phi + pointerInteractionMovement / 200;
+                    state.phi = phiEff;
+                    state.width = width * 2;
+                    state.height = width * 2;
+                    updatePins(phiEff);
+                }
+            });
 
-            // Arrastar para girar
+            requestAnimationFrame(function () { canvas.style.opacity = '1'; });
+
+            // Arrastar para girar (mouse e toque)
             canvas.addEventListener('pointerdown', function (e) {
                 pointerInteracting = e.clientX - pointerInteractionMovement;
                 canvas.style.cursor = 'grabbing';
@@ -603,15 +630,6 @@
             canvas.addEventListener('pointermove', function (e) {
                 if (pointerInteracting !== null) pointerInteractionMovement = e.clientX - pointerInteracting;
             });
-
-            build();
-
-            // Recria o globo com as cores certas ao alternar o tema
-            var wasLight = document.body.classList.contains('light-theme');
-            new MutationObserver(function () {
-                var isLight = document.body.classList.contains('light-theme');
-                if (isLight !== wasLight) { wasLight = isLight; build(); }
-            }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
         }).catch(function () {
             var v = document.querySelector('.globe-visual');
             if (v) v.classList.add('globe-failed');   // sem globo: remove a área
