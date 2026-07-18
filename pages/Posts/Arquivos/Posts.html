@@ -8,6 +8,24 @@
     <link rel="stylesheet" href="../../../assets/css/style.css">
     <link rel="stylesheet" href="../../../assets/css/Lectures.css">
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,500;1,600&display=swap" rel="stylesheet">
+    <style>
+        /* Tira a linha de separação da toolbar e a margem extra para remover a assimetria */
+        .list-toolbar {
+            border-bottom: none !important;
+            margin-bottom: 0 !important;
+        }
+
+        /* Ajustar o espaçamento do contêiner da lista */
+        .list-container {
+            margin-top: 0;
+            padding-top: 0;
+        }
+
+        /* Garante que o primeiro item não tenha borda superior */
+        .list-container .list-item:first-of-type {
+            border-top: none !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -81,7 +99,9 @@
                 <div class="list-toolbar">
                     <div class="toolbar-tabs">
                         <a href="#" class="active" data-filter="all">Tudo</a>
-                        <a href="#" data-filter="post">Posts</a>
+                        <a href="#" data-filter="jornada">Jornada</a>
+                        <a href="#" data-filter="ciencia">Ciência e Tecnologia</a>
+                        <a href="#" data-filter="arte">Arte</a>
                     </div>
                     <div class="toolbar-controls">
                         <div class="dropdown-wrapper">
@@ -136,43 +156,53 @@
 
                 <div class="list-container">
 
-                    <!-- <a href="Arte/004-post.html" class="list-item" data-category="post">
+                    <a href="Jornada/003/003-Jornada.html" class="list-item" data-category="jornada">
                         <div class="item-meta">
-                            <span class="item-category"></span>
-                            <span class="item-tag tag-post"></span>
-                            <span class="item-date"></span>
+                            <span class="item-category">Jornada</span>
+                            <span class="item-tag tag-jornada">Jornada</span>
+                            <span class="item-date">Recente</span>
+                        </div>
+                        <div class="item-content">
+                            <h2>The Soul of Matter</h2>
+                            <p>O mistério da existência humana não consiste em simplesmente ficar vivo, mas em encontrar algo pelo qual viver. Você já parou para se perguntar que tipo de pessoa você quer ser?</p>
+                        </div>
+                    </a>
+
+                    <a href="Ciência e Tecnologia/001/001-C&T.html" class="list-item" data-category="ciencia">
+                        <div class="item-meta">
+                            <span class="item-category">Ciência</span>
+                            <span class="item-tag tag-ciencia">Ciência</span>
+                            <span class="item-date">Recente</span>
+                        </div>
+                        <div class="item-content">
+                            <h2>A Equação Mais Bela da Matemática</h2>
+                            <p>O encontro improvável entre o crescimento, a geometria e o imaginário. Como Euler uniu as cinco constantes fundamentais do universo em uma única e harmoniosa linha.</p>
+                        </div>
+                    </a>
+
+                    <a href="Jornada/2-post.html" class="list-item" data-category="jornada">
+                        <div class="item-meta">
+                            <span class="item-category">Jornada</span>
+                            <span class="item-tag tag-jornada">Jornada</span>
+                            <span class="item-date">17/06/2026</span>
+                        </div>
+                        <div class="item-content">
+                            <h2>The Art, The Science and The Technology</h2>
+                            <p>A união dos três pilares fundamentais. Comece a sua jornada aqui.</p>
+                        </div>
+                    </a>
+
+                    <a href="Arte/001/001-art.html" class="list-item" data-category="arte">
+                        <div class="item-meta">
+                            <span class="item-category">Arte</span>
+                            <span class="item-tag tag-arte">Arte</span>
+                            <span class="item-date">05/06/2026</span>
                         </div>
                         <div class="item-content">
                             <h2>The Art of Light</h2>
                             <p>Como três pintores do século XVII representaram, com olhos e tinta, leis da física que a ciência só escreveria séculos depois.</p>
-                            <p>05/06/2026</p>
                         </div>
-                    </a> -->
-
-                    <!-- <a href="Posts/Estudo/2-post.html" class="list-item" data-category="post">
-                        <div class="item-meta">
-                            <span class="item-category">[Categoria]</span>
-                            <span class="item-tag tag-post"></span>
-                            <span class="item-date">[Data]</span>
-                        </div>
-                        <div class="item-content">
-                            <h2>Art, Science and Technology</h2>
-                            <p>[Text]</p>
-                        </div>
-                    </a> -->
-
-                    <!-- <a href="Posts/Estudo/1-Post.html" class="list-item" data-category="post">
-                        <div class="item-meta">
-                            <span class="item-category">Lógica</span>
-                            <span class="item-tag tag-post"></span>
-                            <span class="item-date">11 de Abril de 2026</span>
-                        </div>
-                        <div class="item-content">
-                            <h2>As três obras do Intelecto</h2>
-                            <p>A lógica é a ciência que estuda os princípios e os métodos de inferência, tendo como objetivo principal
-                            determinar em que condições certas conclusões se seguem (ou não) de determinadas premissas. As três obras do intelecto trazem uma análise do pensamento humano e como podemos usá-lo para chegar a conclusões válidas.</p>
-                        </div>
-                    </a> -->
+                    </a>
 
                 </div>
             </div>
