@@ -8,15 +8,21 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/Lectures.css">
     <style>
-        /* Ajustar o espaçamento do contêiner da lista para alinhar visualmente com a toolbar */
+        /* Tira a linha de separação da toolbar e a margem extra para remover a assimetria */
+        .list-toolbar {
+            border-bottom: none !important;
+            margin-bottom: 0 !important;
+        }
+
+        /* Ajustar o espaçamento do contêiner da lista */
         .list-container {
             margin-top: 0;
             padding-top: 0;
         }
 
-        /* Remove a borda superior do primeiro item para evitar linha dupla com a toolbar */
-        .list-container .list-item:first-child {
-            border-top: none;
+        /* Garante que o primeiro item não tenha borda superior */
+        .list-container .list-item:first-of-type {
+            border-top: none !important;
         }
     </style>
 </head>
@@ -151,7 +157,7 @@
 
                     <!-- ====== CLASS LECTURES (Anotações de Aulas da Faculdade) ====== -->
 
-                    <a href="ClassLectures/ClassLecture-SR/index.html" class="list-item" data-category="class-lecture">
+                    <!--<a href="ClassLectures/ClassLecture-SR/index.html" class="list-item" data-category="class-lecture">
                         <div class="item-meta">
                             <span class="item-category">SR100</span>
                             <span class="item-tag tag-class-lecture">Class Lecture</span>
@@ -162,7 +168,7 @@
                             <p>Anotações das aulas de Relatividade Restrita do curso de Física da UEL, ministradas pelo
                                 professor <strong>Sandro Dias Pinto Vitenti</strong>.</p>
                         </div>
-                    </a>
+                    </a> -->
 
                     <a href="ClassLectures/ClassLecture-AQC100/index.html" class="list-item" data-category="class-lecture">
                         <div class="item-meta">
@@ -176,7 +182,7 @@
                         </div>
                     </a>
 
-                    <a href="ClassLectures/ClassLecture-QM100/index.html" class="list-item" data-category="class-lecture">
+                    <!-- <a href="ClassLectures/ClassLecture-QM100/index.html" class="list-item" data-category="class-lecture">
                         <div class="item-meta">
                             <span class="item-category">QM100</span>
                             <span class="item-tag tag-class-lecture">Class Lecture</span>
@@ -186,7 +192,7 @@
                             <h2>Introduction to Quantum Mechanics</h2>
                             <p>Anotações das aulas de Mecânica Quântica do curso de Física da UEL, ministradas pelo professor <strong>Carlos Andre Hernaski</strong>.</p>
                         </div>
-                    </a>
+                    </a> -->
 
 
 
@@ -227,11 +233,11 @@
                         </div>
                         <div class="item-content">
                             <h2>Introduction to Python</h2>
-                            <p>[Em Progresso]</p>
+                            <p>Introdução prática à linguagem Python, focada em análise de dados, computação científica e automação. Do básico da sintaxe até as principais bibliotecas da área matemática.</p>
                         </div>
                     </a>  
 
-                    <a href="Lectures/Lecture-DS100/index.html" class="list-item" data-category="lecture">
+                    <!-- <a href="Lectures/Lecture-DS100/index.html" class="list-item" data-category="lecture">
                         <div class="item-meta">
                             <span class="item-category">DS100</span>
                             <span class="item-tag tag-lecture">Lecture</span>
@@ -241,7 +247,7 @@
                             <h2>Introduction to Data Science</h2>
                             <p>[Em progresso]</p>
                         </div>
-                    </a>
+                    </a> -->
 
                     <a href="Lectures/Lecture-AIML100/index.html" class="list-item" data-category="lecture">
                         <div class="item-meta">
@@ -251,7 +257,7 @@
                         </div>
                         <div class="item-content">
                             <h2>Introduction to Machine Learning</h2>
-                            <p>[Em Progresso]</p>
+                            <p>Introdução nos fundamentos teóricos e práticos do aprendizado de máquina. Exploração de algoritmos clássicos, redes neurais e a matemática por trás da capacidade de generalização dos modelos.</p>
                         </div>
                     </a>
 
@@ -269,7 +275,7 @@
                         </div>
                     </a> -->
 
-                    <a href="#" class="list-item" data-category="lecture">
+                    <!-- <a href="#" class="list-item" data-category="lecture">
                         <div class="item-meta">
                             <span class="item-category">AIML100</span>
                             <span class="item-tag tag-lecture">Lecture</span>
@@ -277,9 +283,9 @@
                         </div>
                         <div class="item-content">
                             <h2>Introduction to Artificial Intelligence and Machine Learning</h2>
-                            <p>[Em Progresso]</p>
+                            <p>Os pilares do pensamento computacional focado em IA. Como as máquinas aprendem a reconhecer padrões complexos nos dados para tomar decisões sem regras explicitamente programadas.</p>
                         </div>
-                    </a>
+                    </a> -->
 
                     <!-- <a href="#" class="list-item" data-category="lecture">
                         <div class="item-meta">
@@ -360,7 +366,7 @@
                         </div>
                     </a> -->
 
-                    <a href="TecLectures/TecLecture-AutomotiveMechanics/index.html" class="list-item" data-category="tec-lecture">
+                    <!-- <a href="TecLectures/TecLecture-AutomotiveMechanics/index.html" class="list-item" data-category="tec-lecture">
                         <div class="item-meta">
                             <span class="item-category">TEC100</span>
                             <span class="item-tag tag-tec-lecture">Technology Lecture</span>
@@ -371,7 +377,7 @@
                             <p><strong>Engenharia Mecânica</strong> - <strong>Ciclo específico</strong>: Mecânica e de  Automóveis. <strong>Objetivo</strong>: Proporcionar uma visão sistêmica da industria automotiva, abordando os principais sistemas e componentes de um automóvel, bem como os fundamentos da mecânica automotiva, incluindo motores de combustão interna, transmissão, suspensão, freios e direção. O curso também visa discutir as tendências atuais e futuras da indústria automotiva, como veículos elétricos, híbridos e autônomos.
                             </p>
                         </div>
-                    </a>
+                    </a> -->
 
                     <!-- <a href="TecLectures/TecLecture-AutomotiveSystems/index.html" class="list-item" data-category="tec-lecture">
                         <div class="item-meta">

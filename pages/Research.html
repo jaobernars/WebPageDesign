@@ -8,15 +8,21 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/Lectures.css">
     <style>
-        /* Ajustar o espaçamento do contêiner da lista para alinhar visualmente com a toolbar */
-        .list-container {
-            margin-top: 0;
-            padding-top: -20px;
+        /* Tira a linha de separação da toolbar e a margem extra para remover a assimetria */
+        .list-toolbar {
+            border-bottom: none !important;
+            margin-bottom: 0 !important;
         }
 
-        /* Remove a borda superior do primeiro item para evitar linha dupla com a toolbar */
-        .list-container .list-item:first-child {
-            border-top: none;
+        /* Ajustar o espaçamento do contêiner da lista */
+        .list-container {
+            margin-top: 0;
+            padding-top: 0;
+        }
+
+        /* Garante que o primeiro item não tenha borda superior */
+        .list-container .list-item:first-of-type {
+            border-top: none !important;
         }
     </style>
 </head>
