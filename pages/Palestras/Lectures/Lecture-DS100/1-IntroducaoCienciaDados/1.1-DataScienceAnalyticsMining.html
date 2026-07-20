@@ -1,0 +1,260 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.1 O que é Data Science, Data Analytics e Data Mining | Introduction to Data Science</title>
+    <link rel="stylesheet" href="../../../../../assets/css/class-lecture.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .left-sidebar { scrollbar-width: none; -ms-overflow-style: none; }
+        .left-sidebar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect><line x1="9" x2="9" y1="3" y2="21"></line></svg>
+                </button>
+                <button id="theme-toggle" class="sidebar-toggle" aria-label="Toggle Theme">
+                    <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg id="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+                <div class="breadcrumbs-header">
+                    <a href="../../../../../Páginas Principais/Lectures.html" class="breadcrumb-link">Lectures</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                    <a href="../index.html" class="breadcrumb-link">Introduction to Data Science</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                    <span id="breadcrumb-current" class="breadcrumb-link active">1.1 O que é Data Science, Data Analytics e Data Mining</span>
+                </div>
+            </div>
+            <nav class="top-nav">
+                <a href="../../../../../Páginas Principais/Lectures.html">Lectures</a>
+                <a href="../../../../../Página Principal/index.html">Home</a>
+            </nav>
+        </div>
+        <script>MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };</script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    </header>
+
+    <div class="main-layout">
+        <aside class="left-sidebar" id="left-sidebar">
+            <div class="sidebar-content">
+                <button class="search-trigger" id="search-trigger">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></svg>
+                    <span>Search docs...</span>
+                </button>
+                <div class="sidebar-group"><h3>Início</h3><ul><li><a href="../index.html">Overview</a></li></ul></div>
+                <div class="sidebar-group">
+                    <h3>1. Introdução à Ciência de Dados</h3>
+                    <ul>
+                        <li><a href="1.1-DataScienceAnalyticsMining.html" class="active">1.1 O que é Data Science, Data Analytics e Data Mining</a></li>
+                        <li><a href="1.2-AscensaoDadosBigData.html">1.2 A Ascensão dos Dados e o Big Data</a></li>
+                        <li><a href="1.3-BusinessIntelligence.html">1.3 Business Intelligence e Estratégia de Negócios</a></li>
+                        <li><a href="1.4-CRISPKDD.html">1.4 O Processo de Mineração de Dados: CRISP-DM e KDD</a></li>
+                        <li><a href="1.5-PensamentoAnalitico.html">1.5 Pensamento Analítico de Dados e Engenharia Analítica</a></li>
+                        <li><a href="1.6-EticaPrivacidade.html">1.6 Ética e Privacidade na Mineração de Dados</a></li>
+                    </ul>
+                </div>
+                <div class="sidebar-group">
+                    <h3>2. Fundamentos de Programação e Ferramentas</h3>
+                    <ul>
+                        <li><a href="../2-FundamentosProgramacao/2.1-PythonAmbientes.html">2.1 Introdução ao Python e Ambientes de Desenvolvimento</a></li>
+                        <li><a href="../2-FundamentosProgramacao/2.2-VariaveisTiposEstruturas.html">2.2 Variáveis, Tipos e Estruturas de Dados em Python</a></li>
+                        <li><a href="../2-FundamentosProgramacao/2.3-ControlesFuncoesPOO.html">2.3 Estruturas de Controle, Funções e POO em Python</a></li>
+                        <li><a href="../2-FundamentosProgramacao/2.4-LinguagemR.html">2.4 Introdução à Linguagem R e Integração R-Python</a></li>
+                        <li><a href="../2-FundamentosProgramacao/2.5-ComputacaoParalelaSpark.html">2.5 Computação Paralela Básica e Spark</a></li>
+                    </ul>
+                </div>
+                <div class="sidebar-group">
+                    <h3>3. Fundamentos de Matemática e Estatística</h3>
+                    <ul>
+                        <li><a href="../3-FundamentosMatematica/3.1-AlgebraLinear.html">3.1 Álgebra Linear: Vetores e Matrizes</a></li>
+                        <li><a href="../3-FundamentosMatematica/3.2-EstatisticaDescritiva.html">3.2 Estatística Descritiva: Tendências Centrais e Dispersão</a></li>
+                        <li><a href="../3-FundamentosMatematica/3.3-CorrelacaoCausalidade.html">3.3 Correlação vs. Causalidade</a></li>
+                        <li><a href="../3-FundamentosMatematica/3.4-Probabilidade.html">3.4 Probabilidade: Teorema de Bayes e Variáveis Aleatórias</a></li>
+                        <li><a href="../3-FundamentosMatematica/3.5-Hipoteses.html">3.5 Hipóteses, Inferência Estatística e P-values</a></li>
+                        <li><a href="../3-FundamentosMatematica/3.6-GradienteDescendente.html">3.6 Gradiente Descendente e Funções Objetivas</a></li>
+                    </ul>
+                </div>
+                <div class="sidebar-group">
+                    <h3>4. Coleta, Armazenamento e Preparação de Dados</h3>
+                    <ul>
+                        <li><a href="../4-ColetaArmazenamento/4.1-FontesDados.html">4.1 Fontes de Dados: CSV, Excel e JSON</a></li>
+                        <li><a href="../4-ColetaArmazenamento/4.2-WebScrapingAPIs.html">4.2 Web Scraping e Uso de APIs</a></li>
+                        <li><a href="../4-ColetaArmazenamento/4.3-BancoDados.html">4.3 Bancos de Dados, SQL e NoSQL</a></li>
+                        <li><a href="../4-ColetaArmazenamento/4.4-LimpezaDados.html">4.4 Limpeza de Dados: Ausentes e Duplicados</a></li>
+                        <li><a href="../4-ColetaArmazenamento/4.5-TransformacaoIntegracao.html">4.5 Transformação, Integração e Joins</a></li>
+                        <li><a href="../4-ColetaArmazenamento/4.6-ReducaoDimensionalidade.html">4.6 Redução de Dimensionalidade (PCA)</a></li>
+                    </ul>
+                </div>
+                <div class="sidebar-group">
+                    <h3>5. Análise Exploratória e Visualização de Dados</h3>
+                    <ul>
+                        <li><a href="../5-AnaliseVisualizacao/5.1-TiposAtributos.html">5.1 Tipos de Atributos: Numéricos, Categóricos, Ordinais</a></li>
+                        <li><a href="../5-AnaliseVisualizacao/5.2-FerramentasVisualizacao.html">5.2 Ferramentas: Matplotlib, Seaborn e ggplot2</a></li>
+                        <li><a href="../5-AnaliseVisualizacao/5.3-GraficosBasicos.html">5.3 Gráficos Básicos: Linhas, Barras, Dispersão e Histogramas</a></li>
+                        <li><a href="../5-AnaliseVisualizacao/5.4-VisualizacoesAvancadas.html">5.4 Visualizações Avançadas: Correlação, Boxplots e Densidade</a></li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="prose">
+                <h1 id="data-science-analytics-mining">O que é Data Science, Data Analytics e Data Mining</h1>
+                <p class="lead">Definições, diferenças e intersecções entre os três campos — e como eles se posicionam dentro do ecossistema mais amplo da Inteligência Artificial e da Ciência da Computação.</p>
+
+                <h2 id="data-science">O que é Data Science?</h2>
+
+                <p>
+                    Data Science (<u>Ciência de Dados</u>) é uma área interdisciplinar ampla, focada em resolver problemas analiticamente complexos, utilizando <strong>grandes conjuntos de dados</strong> como núcleo de operação; extraindo conhecimento a partir de dados brutos, muitas vezes desorganizados, para apoiar e melhorar <strong>processos</strong> e <strong>tomadas de decisões</strong>. Ela é construída essencialmente sobre técnicas de <u>computação</u>, <u>matemática aplicada</u>, <u>inteligência artificial</u>, <u>estatística</u> e <u>otimização</u>.
+                </p>
+
+                <p>
+                    Para entender de forma objetiva a composição de Data Science, a área é tradicionalmente definida por um Diagrama de Venn (proposto por Drew Conway) que a posiciona na interseção de três pilares fundamentais:
+
+                    <ol>
+                        <li><strong>Habilidades de Programação (Hacking Skills):</strong> É a capacidade técnica do cientista da computação de <strong>desenhar algoritmos</strong> para <u>armazenar</u>, <u>processar</u> e <u>visualizar</u> grandes volumes de dados de forma eficiente.</li>
+                        <li><strong>Conhecimento em Matemática e Estatística:</strong> É a base necessária para <u>analisar</u>, <u>resumir</u> e <u>criar</u> <strong>modelos precisos</strong> a partir dos conjuntos de dados.</li>
+                        <li><strong>Expertise de Domínio (Competência Significativa):</strong> É o <strong>conhecimento profundo</strong> sobre o negócio ou sobre a área específica de estudo. Essa expertise é vital para que se saiba formular as perguntas corretas e colocar as respostas encontradas no contexto adequado.</li>
+                    </ol>
+                </p>
+
+                <p>
+                    Embora o termo seja muito associado ao uso de modelos complexos, como o aprendizado de máquina (Machine Learning), a Ciência de Dados vai muito além disso. Na prática, ela consiste em transformar <strong>problemas de dados</strong>, o que envolve um trabalho intenso e fundamental de <u>coletar</u>, <u>entender</u>, <u>limpar</u> e <u>formatar</u> as informações antes de qualquer modelagem em <strong>modelos preditivos</strong>.
+                </p>
+
+                <figure style="text-align: center; margin: 2rem 0;">
+                    <img src="https://miro.medium.com/v2/resize:fit:1200/1*5idRzGKu2OU8J_VCiu4FkQ.png" 
+                         alt="Diagrama de Venn da Ciência de Dados" 
+                         style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                    <figcaption style="margin-top: 0.5rem; font-size: 0.9em; color: var(--text-secondary);">
+                        <em>Figura 1: Diagrama de Venn da Ciência de Dados (Drew Conway)</em>
+                    </figcaption>
+                </figure>
+
+                <p>
+                    No mundo dos negócios, o objetivo final de todo esse processo analítico é viabilizar a <strong>Tomada de Decisão Baseada em Dados</strong> (Data-Driven Decision Making - DDD). O propósito da Data Science é fazer com que as empresas e organizações deixem de tomar decisões baseadas puramente na intuição e passem a agir com base em análises concretas.
+                </p>
+
+                <p>
+                    Por fim, o Data Science pode ser visto como o conjunto de princípios fundamentais que orientam a extração do conhecimento. É a partir dessa base conceitual e científica que ferramentas mais específicas, como as utilizadas na Mineração de Dados (Data Mining), são aplicadas tecnologicamente para extrair os padrões e gerar resultados coerentes em diferentes contextos.
+                </p>
+
+                <h2 id="data-analytics">O que é Data Analytics?</h2>
+
+                <p>
+                    Data Analytics (Análise de Dados) é uma área de caráter mais restrito e de viés tecnológico, voltada para a aplicação de teorias, ferramentas, tecnologias e processos que possibilitam e viabilizam o processo de tomada de decisão. A área concentra-se em organizar e modelar os dados para testar hipóteses ou responder a perguntas específicas, exigindo para isso conhecimentos em estatística e aprendizado de máquina (machine learning).
+                </p>
+
+                <p>
+                    A disciplina foca especificamente nas etapas de construção de modelos para o apoio à decisão, executando tarefas do processo de descoberta de conhecimento como a seleção, o pré-processamento, a transformação, a mineração e a interpretação de dados.
+                </p>
+
+                <p>
+                    Para entender o campo em sua totalidade, é necessário compreender as suas três formas de atuação:
+                </p>
+
+                <ol>
+                    <li><strong>Análise Descritiva:</strong> É a forma mais básica de análise, cujo objetivo é simplesmente explorar e chegar a conclusões a partir dos dados históricos que você já tem em mãos.</li>
+                    <li><strong>Análise Preditiva:</strong> Trata do processo de construir modelos com o objetivo de fazer predições para o futuro. O foco preditivo atua tanto na resolução de problemas de classificação (quando se deseja prever um atributo alvo qualitativo/ordinal) quanto em problemas de regressão (quando se deseja prever um valor contínuo).</li>
+                    <li><strong>Análise Prescritiva:</strong> Representa o nível mais avançado e o apoio máximo no processo de tomada de decisão dentro do Data Analytics. Nesta etapa, não apenas se constrói um bom modelo que faz predições, mas o sistema também sugere e recomenda ações práticas e específicas que devem ser tomadas frente à situação em que o usuário se encontra.</li>
+                </ol>
+
+                <p>
+                    Quando essas ferramentas e capacidades descritivas, preditivas e prescritivas do Data Analytics são utilizadas para suportar as decisões táticas e estratégicas no mundo dos negócios e em empresas, elas passam a caracterizar o que chamamos de <u>Business Intelligence</u> (BI).
+                </p>
+
+                <h2 id="data-mining">O que é Data Mining?</h2>
+
+                <p>
+                    Mineração de Dados (Data Mining) é a ciência de descobrir padrões úteis, inovadores e ocultos em grandes coleções de dados organizados. Fazendo uma analogia direta, assim como a mineração de diamantes envolve escavar grandes quantidades de minério bruto para descobrir pedras preciosas, o Data Mining é o processo tecnológico de explorar montanhas de dados para extrair insights valiosos.
+                </p>
+
+                <p>
+                    Para que o conhecimento extraído tenha real valor, os padrões encontrados devem ser não triviais (ou seja, não óbvios), implícitos, previamente desconhecidos e potencialmente úteis para apoiar a tomada de decisão no mundo real. Essa área atua na automação do processo de análise de dados massivos, indo muito além de estatísticas simples ou buscas comuns. Enquanto uma consulta tradicional a um banco de dados (como um comando SQL) recupera informações específicas de hipóteses que o usuário já sabe procurar, a mineração de dados busca descobrir automaticamente as regras, tendências e relações complexas que os humanos sequer sabiam que existiam.
+                </p>
+
+                <p>
+                    A disciplina utiliza tecnologias estatísticas e de inteligência artificial, atuando fundamentalmente em duas frentes analíticas de aprendizagem de máquina (Machine Learning):
+                </p>
+
+                <ol>
+                    <li><strong>Aprendizado Supervisionado (Modelagem Preditiva):</strong> Consiste em usar dados históricos, nos quais o valor alvo (rótulo) já é conhecido, para construir modelos capazes de prever o que acontecerá com novos dados no futuro. Suas tarefas mais comuns são a Classificação (quando o objetivo é prever uma categoria restrita, como aprovar/negar um crédito, ou classificar um e-mail como spam) e a Regressão (quando o objetivo é estimar um valor numérico contínuo, como o tempo de atraso de um voo em minutos).</li>
+                    <li><strong>Aprendizado Não Supervisionado (Análise Exploratória):</strong> Aplica-se quando não há um alvo ou resposta pré-definida a ser alcançada, permitindo que a tecnologia vasculhe os dados para identificar regularidades e similaridades naturais por conta própria. Destacam-se nesta categoria o Agrupamento (Clustering), que divide os indivíduos em segmentos baseados nas suas semelhanças (muito usado em segmentação de clientes), e a Mineração de Regras de Associação, que descobre itens que ocorrem frequentemente juntos (como na análise de cesta de compras para sugerir produtos). Essa abordagem também é muito aplicada à Detecção de Anomalias (Outliers), sendo fundamental para encontrar fraudes ou comportamentos atípicos que fogem do padrão de uma série temporal.</li>
+                </ol>
+
+                <p>
+                    No âmbito tecnológico, corporativo e acadêmico, o Data Mining funciona como motor de metodologias maiores, como o KDD (Descoberta de Conhecimento em Bancos de Dados) e o modelo CRISP-DM (Cross-Industry Standard Process for Data Mining).
+                </p>
+
+                <p>
+                    Antes de submeter os dados aos algoritmos de mineração, é absolutamente essencial realizar etapas de integração, pré-processamento, transformação e limpeza dos dados. Esse preparo pode tomar de 60% a 80% do tempo de um projeto, mas garante que os algoritmos encontrem padrões verdadeiros em vez de ruídos, operando sob o princípio de que a qualidade da saída depende da qualidade da entrada.
+                </p>
+
+                <p>
+                    Por fim, os modelos ou regras geradas pela mineração precisam ser rigorosamente avaliados (fase de Avaliação) com dados de teste para atestar sua acurácia e capacidade de generalização, garantindo que o conhecimento encontrado não seja obra do acaso, e sim algo sólido pronto para ser colocado em operação.
+                </p>
+
+                <h2 id="correlacao-entre-as-areas">Correlações entre as áreas</h2>
+
+                <p>
+                    Para finalizar a compreensão desse ciclo de aprendizado, é fundamental entender que Data Science, Data Analytics, Data Mining e Business Intelligence (BI) operam como engrenagens interdependentes na tomada de decisão de uma organização, possuindo focos complementares, porém distintos.
+                </p>
+
+                <p>
+                    <Strong>Diferenciação, Foco Tecnológico vs. Foco de Negócios — </Strong>A principal diferença entre essas áreas reside no seu escopo de atuação. Data Science, Data Analytics e Data Mining são termos essencialmente orientados à tecnologia, à metodologia científica e aos processos de modelagem. Eles englobam o uso de ferramentas, estatística e algoritmos de aprendizado de máquina para organizar dados, testar hipóteses e extrair padrões não triviais.
+                </p>
+
+                <p>
+                    Por outro lado, o Business Intelligence (BI) é um termo estritamente orientado aos negócios. O BI pode ser entendido como o apoio do Data Analytics voltado exclusivamente para o suporte a decisões táticas e estratégicas da empresa. Enquanto as outras áreas focam em "como" modelar o dado, o BI foca no domínio do negócio em si: monitorar a concorrência, o desempenho organizacional, acompanhar Indicadores-Chave de Desempenho (KPIs) e projetar cenários futuros para a empresa.
+                </p>
+
+                <p>
+                    <strong>Conexão, A Cadeia de Geração de Valor — </strong>Essas disciplinas se conectam em um fluxo contínuo de processamento e inteligência. A Data Science fornece a base ampla e interdisciplinar. O Data Analytics entra com os processos para viabilizar decisões (descritivas, preditivas e prescritivas). O Data Mining funciona como o motor de escavação, mergulhando nos dados para descobrir as regras e relações ocultas. Por fim, o Business Intelligence consome todo esse rigor tecnológico e matemático e o entrega aos executivos de forma mastigada, estruturando os insights em relatórios, métricas e painéis de controle (dashboards) customizados e de fácil compreensão.
+                </p>
+
+                <p>
+                    <strong>Geração de Vantagem Competitiva (Conclusão) — </strong>No mundo dos negócios, o futuro é incerto, complexo e repleto de riscos. A vantagem competitiva real é consolidada quando as ferramentas de BI conseguem integrar o conhecimento e os padrões extraídos pela Mineração e Ciência de Dados para apoiar líderes a tomarem decisões rápidas e com baixos níveis de risco.
+                </p>
+
+                <p>
+                    As empresas que unem essas áreas deixam de atuar baseadas puramente em sentimentos ou intuição e passam a ser guiadas por fatos. Com modelos que predizem eventos e prescrevem ações, essas organizações conseguem segmentar clientes com precisão, otimizar estoques, evitar fraudes e aplicar estratégias de retenção (churn) no momento exato. Em suma, a Ciência de Dados descobre as respostas e cria os modelos; o BI traduz esses achados em estratégias de mercado aplicáveis, garantindo que a organização inove, opere com eficiência máxima e mantenha-se sistematicamente à frente da concorrência.
+                </p>
+
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="toc-container">
+                <h4>Nesta página</h4>
+                <ul>
+                    <li><a href="#data-science">O que é Data Science?</a></li>
+                    <li><a href="#data-analytics">O que é Data Analytics?</a></li>
+                    <li><a href="#data-mining">O que é Data Mining?</a></li>
+                    <li><a href="#correlacao-entre-as-areas">Correlação entre as áreas</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-modal">
+            <div class="search-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></svg>
+                <input type="text" id="search-input" placeholder="Search documentation..." autocomplete="off">
+            </div>
+            <div class="search-results" id="search-results"></div>
+            <div class="search-footer">
+                <div class="search-commands"><span class="cmd-key">↑</span><span class="cmd-key">↓</span><span class="cmd-label">navigate</span><span class="cmd-key">↵</span><span class="cmd-label">select</span></div>
+                <div class="search-commands"><span class="cmd-key">esc</span><span class="cmd-label">close</span></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../../assets/js/class-lecture.js"></script>
+</body>
+</html>

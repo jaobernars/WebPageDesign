@@ -1,0 +1,440 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lectures e Anotações | Portfólio</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/Lectures.css">
+    <style>
+        /* Tira a linha de separação da toolbar e a margem extra para remover a assimetria */
+        .list-toolbar {
+            border-bottom: none !important;
+            margin-bottom: 0 !important;
+        }
+
+        /* Ajustar o espaçamento do contêiner da lista */
+        .list-container {
+            margin-top: 0;
+            padding-top: 0;
+        }
+
+        /* Garante que o primeiro item não tenha borda superior */
+        .list-container .list-item:first-of-type {
+            border-top: none !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="left-header">
+            <button id="btn-toggle-sidebar" class="icon-btn" title="Fechar barra lateral">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="9" y1="3" x2="9" y2="21"></line>
+                </svg>
+            </button>
+        </div>
+
+        <div class="logo">
+            <a href="../Página Principal/index.html"><img src="../assets/images/Header, Título.png" alt="The Journal of a Physicist" class="logo-img"></a>
+        </div>
+
+        <div class="header-actions">
+            <button id="theme-toggle" class="icon-btn theme-btn" title="Alternar tema">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+
+            <div class="sidebar-section">
+                <a href="../Página Principal/index.html">Principal</a>
+            </div>
+
+            <div class="sidebar-section">
+                <a href="Curriculo.html">Currículo</a>
+            </div>
+
+            <div class="sidebar-section">
+                <a href="Research.html">Pesquisa</a>
+            </div>
+
+            <div class="sidebar-section">
+                <a href="Projects.html">Projetos</a>
+            </div>
+
+            <div class="sidebar-section">
+                <a href="#">Lectures</a>
+            </div>
+
+            <div class="sidebar-section">
+                <a href="../pages/Postagens/Início/index.html">Postagens</a>
+            </div>
+        </aside>
+
+        <main class="main-content list-view-main">
+            <div class="list-wrapper">
+
+                <h1 class="page-title">Lectures</h1>
+
+                <div class="list-toolbar">
+                    <div class="toolbar-tabs">
+                        <a href="#" class="active" data-filter="all">Tudo</a>
+                        <a href="#" data-filter="lecture">Lectures</a>
+                        <a href="#" data-filter="class-lecture">Class Lectures</a>
+                        <a href="#" data-filter="tec-lecture">Technology Lectures</a>
+                    </div>
+                    <div class="toolbar-controls">
+                        <div class="dropdown-wrapper">
+                            <button class="btn-text" id="btn-filter">Filtro <svg width="14" height="14"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="4" y1="21" x2="4" y2="14"></line>
+                                    <line x1="4" y1="10" x2="4" y2="3"></line>
+                                    <line x1="12" y1="21" x2="12" y2="12"></line>
+                                    <line x1="12" y1="8" x2="12" y2="3"></line>
+                                    <line x1="20" y1="21" x2="20" y2="16"></line>
+                                    <line x1="20" y1="12" x2="20" y2="3"></line>
+                                    <line x1="1" y1="14" x2="7" y2="14"></line>
+                                    <line x1="9" y1="8" x2="15" y2="8"></line>
+                                    <line x1="17" y1="16" x2="23" y2="16"></line>
+                                </svg></button>
+                            <div class="dropdown-menu" id="filter-dropdown">
+                                <div class="dropdown-header">Filtrar por Categoria</div>
+                                <label class="dropdown-item"><input type="checkbox" value="all" checked> Todas as
+                                    Categorias</label>
+                                <div class="dropdown-divider"></div>
+                                <div class="dropdown-header">Status</div>
+                                <label class="dropdown-item"><input type="radio" name="status-filter" value="all"
+                                        checked> Todos</label>
+                                <label class="dropdown-item"><input type="radio" name="status-filter" value="completo">
+                                    Completo</label>
+                                <label class="dropdown-item"><input type="radio" name="status-filter"
+                                        value="em-progresso"> Em Progresso</label>
+                                <div class="dropdown-divider"></div>
+                                <button class="dropdown-clear" id="btn-clear-filters">Limpar Filtros</button>
+                            </div>
+                        </div>
+                        <div class="dropdown-wrapper">
+                            <button class="btn-text" id="btn-sort">Classificar <svg width="14" height="14"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg></button>
+                            <div class="dropdown-menu" id="sort-dropdown">
+                                <div class="dropdown-header">Ordenar por</div>
+                                <button class="dropdown-item sort-option active" data-sort="default">Padrão</button>
+                                <button class="dropdown-item sort-option" data-sort="name-asc">Nome (A → Z)</button>
+                                <button class="dropdown-item sort-option" data-sort="name-desc">Nome (Z → A)</button>
+                                <button class="dropdown-item sort-option" data-sort="category-asc">Categoria (A →
+                                    Z)</button>
+                                <button class="dropdown-item sort-option" data-sort="category-desc">Categoria (Z →
+                                    A)</button>
+                                <button class="dropdown-item sort-option" data-sort="status">Status (Completo
+                                    primeiro)</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="list-container">
+
+                    <!-- ====== CLASS LECTURES (Anotações de Aulas da Faculdade) ====== -->
+
+                    <!--<a href="../pages/Palestras/Class Lectures/ClassLecture-SR/index.html" class="list-item" data-category="class-lecture">
+                        <div class="item-meta">
+                            <span class="item-category">SR100</span>
+                            <span class="item-tag tag-class-lecture">Class Lecture</span>
+                            <span class="item-date">Última atualização: 10/04/2026 - 18:02</span>
+                        </div>
+                        <div class="item-content">
+                            <h2>Introduction to Special Relativity</h2>
+                            <p>Anotações das aulas de Relatividade Restrita do curso de Física da UEL, ministradas pelo
+                                professor <strong>Sandro Dias Pinto Vitenti</strong>.</p>
+                        </div>
+                    </a> -->
+
+                    <a href="../pages/Palestras/Class Lectures/ClassLecture-AQC100/index.html" class="list-item" data-category="class-lecture">
+                        <div class="item-meta">
+                            <span class="item-category">AQC100</span>
+                            <span class="item-tag tag-class-lecture">Class Lecture</span>
+                            <span class="item-date">Última atualização: 30/03/2026 - 21:08</span>
+                        </div>
+                        <div class="item-content">
+                            <h2>Introduction to Statistical Mechanics</h2>
+                            <p>Anotações das aulas de Mecânica Estatística do curso de Física da UEL, ministradas pela professora <strong>Paula Fernanda Bienzobas</strong>.</p>
+                        </div>
+                    </a>
+
+                    <!-- <a href="../pages/Palestras/Class Lectures/ClassLecture-QM100/index.html" class="list-item" data-category="class-lecture">
+                        <div class="item-meta">
+                            <span class="item-category">QM100</span>
+                            <span class="item-tag tag-class-lecture">Class Lecture</span>
+                            <span class="item-date">Última atualização: 24/03/2026 - 21:55</span>
+                        </div>
+                        <div class="item-content">
+                            <h2>Introduction to Quantum Mechanics</h2>
+                            <p>Anotações das aulas de Mecânica Quântica do curso de Física da UEL, ministradas pelo professor <strong>Carlos Andre Hernaski</strong>.</p>
+                        </div>
+                    </a> -->
+
+
+
+                    <!-- <a href="#" class="list-item">
+                        <div class="item-meta">
+                            <span class="item-category">GEAF</span>
+                            <span class="item-date">28 de jan. de 2026</span>
+                        </div>
+                        <div class="item-content">
+                            <h2>The Physics Talk: Preparação e Storytelling</h2>
+                            <p>Anotações de estrutura para as apresentações no Grupo de Estudos Avançados em Física, focando em como comunicar conceitos complexos de forma intuitiva.</p>
+                        </div>
+                    </a> -->
+
+                    
+
+                    <!-- ====== LECTURES ====== -->
+
+                    <!--<a href="../pages/Palestras/Lectures/Lecture-Logic100/index.html" class="list-item" data-category="lecture">
+                        <div class="item-meta">
+                            <span class="item-category">LOGIC100</span>
+                            <span class="item-tag tag-lecture">Lecture</span>
+                            <span class="item-date">11 de Abril de 2026</span>
+                        </div>
+                        <div class="item-content">
+                            <h2>Introduction to Logic</h2>
+                            <p>[Em Progresso]</p>
+                        </div>
+                    </a> -->
+
+                
+
+                    <a href="../pages/Palestras/Lectures/Lecture-Python100/index.html" class="list-item" data-category="lecture">
+                        <div class="item-meta">
+                            <span class="item-category">PY100</span>
+                            <span class="item-tag tag-lecture">Lecture</span>
+                            <span class="item-date">Última atualização: 21/03/2026</span>
+                        </div>
+                        <div class="item-content">
+                            <h2>Introduction to Python</h2>
+                            <p>Introdução prática à linguagem Python, focada em análise de dados, computação científica e automação. Do básico da sintaxe até as principais bibliotecas da área matemática.</p>
+                        </div>
+                    </a>  
+
+                    <!-- <a href="../pages/Palestras/Lectures/Lecture-DS100/index.html" class="list-item" data-category="lecture">
+                        <div class="item-meta">
+                            <span class="item-category">DS100</span>
+                            <span class="item-tag tag-lecture">Lecture</span>
+                            <span class="item-date">Última atualização: 20/05/2026</span>
+                        </div>
+                        <div class="item-content">
+                            <h2>Introduction to Data Science</h2>
+                            <p>[Em progresso]</p>
+                        </div>
+                    </a> -->
+
+                    <a href="../pages/Palestras/Lectures/Lecture-AIML100/index.html" class="list-item" data-category="lecture">
+                        <div class="item-meta">
+                            <span class="item-category">AIML100</span>
+                            <span class="item-tag tag-lecture">Lecture</span>
+                            <span class="item-date">Última atualização: 22/03/2026 - 22:40</span>
+                        </div>
+                        <div class="item-content">
+                            <h2>Introduction to Machine Learning</h2>
+                            <p>Introdução nos fundamentos teóricos e práticos do aprendizado de máquina. Exploração de algoritmos clássicos, redes neurais e a matemática por trás da capacidade de generalização dos modelos.</p>
+                        </div>
+                    </a>
+
+                    
+                    
+                    <!-- <a href="#" class="list-item" data-category="lecture">
+                        <div class="item-meta">
+                            <span class="item-category">AIML100</span>
+                            <span class="item-tag tag-lecture">Lecture</span>
+                            <span class="item-date">[Data]</span>
+                        </div>
+                        <div class="item-content">
+                            <h2>Data Assimilation through Machine Learning</h2>
+                            <p>[Em Progresso]</p>
+                        </div>
+                    </a> -->
+
+                    <!-- <a href="#" class="list-item" data-category="lecture">
+                        <div class="item-meta">
+                            <span class="item-category">AIML100</span>
+                            <span class="item-tag tag-lecture">Lecture</span>
+                            <span class="item-date">[Data]</span>
+                        </div>
+                        <div class="item-content">
+                            <h2>Introduction to Artificial Intelligence and Machine Learning</h2>
+                            <p>Os pilares do pensamento computacional focado em IA. Como as máquinas aprendem a reconhecer padrões complexos nos dados para tomar decisões sem regras explicitamente programadas.</p>
+                        </div>
+                    </a> -->
+
+                    <!-- <a href="#" class="list-item" data-category="lecture">
+                        <div class="item-meta">
+                            <span class="item-category">PIML100</span>
+                            <span class="item-tag tag-lecture">Lecture</span>
+                            <span class="item-date">[Data]</span>
+                        </div>
+                        <div class="item-content">
+                            <h2>Introduction to Physics-Informed Machine Learning (PIML)</h2>
+                            <p>[Em Progresso]</p>
+                        </div>
+                    </a> -->
+
+                    <!-- <a href="#" class="list-item" data-category="lecture">
+                        <div class="item-meta">
+                            <span class="item-category">PINN100</span>
+                            <span class="item-tag tag-lecture">Lecture</span>
+                            <span class="item-date">[Data]</span>
+                        </div>
+                        <div class="item-content">
+                            <h2>Introduction to Physics-Informed Neural Networks (PINNs)</h2>
+                            <p>[Em Progresso]</p>
+                        </div>
+                    </a> -->
+
+                    <!-- <a href="../pages/Palestras/Lectures/Lecture-QC100/index.html" class="list-item" data-category="lecture">
+                        <div class="item-meta">
+                            <span class="item-category">QC100</span>
+                            <span class="item-tag tag-lecture">Lecture</span>
+                            <span class="item-date">[Data]</span>
+                        </div>
+                        <div class="item-content">
+                            <h2>Introduction to Quantum Computing</h2>
+                            <p>[Em Progresso]</p>
+                        </div>
+                    </a> -->
+
+
+                    <!-- <a href="../pages/Palestras/Lectures/Lecture-AQC100/index.html" class="list-item" data-category="lecture">
+                        <div class="item-meta">
+                            <span class="item-category">AQC100</span>
+                            <span class="item-tag tag-lecture">Lecture</span>
+                            <span class="item-date">[Data]</span>
+                        </div>
+                        <div class="item-content">
+                            <h2>Advanced Quantum Computing</h2>
+                            <p>[Em Progresso]</p>
+                        </div>
+                    </a> -->
+
+                    <!-- <a href="../pages/Palestras/Lectures/Lecture-FCM100/index.html" class="list-item" data-category="lecture">
+                        <div class="item-meta">
+                            <span class="item-category">FCM100</span>
+                            <span class="item-tag tag-lecture">Lecture</span>
+                            <span class="item-date">[Data]</span>
+                        </div>
+                        <div class="item-content">
+                            <h2>The Formalism of Classical Mechanics</h2>
+                            <p>O presente documento tem como objetivo apresentar aos leitores a formulação matemática da
+                                Mecânica Clássica, utilizando a linguagem da Mecânica Analítica para descrever a
+                                evolução temporal dos sistemas físicos.</p>
+                        </div>
+                    </a> -->
+
+
+
+                    <!-- ====== TECHNOLOGY LECTURES ====== -->
+
+                    <!-- <a href="TecLectures/index.html" class="list-item" data-category="tec-lecture">
+                        <div class="item-meta">
+                            <span class="item-category">TEC100</span>
+                            <span class="item-tag tag-tec-lecture">Technology Lecture</span>
+                            <span class="item-date">[Data]</span>
+                        </div>
+                        <div class="item-content">
+                            <h2>Fundamentos de Engenharia Aeronáutica</h2>
+                            <p>[Em Progresso]</p>
+                        </div>
+                    </a> -->
+
+                    <!-- <a href="../pages/Palestras/Tech Lectures/TecLecture-AutomotiveMechanics/index.html" class="list-item" data-category="tec-lecture">
+                        <div class="item-meta">
+                            <span class="item-category">TEC100</span>
+                            <span class="item-tag tag-tec-lecture">Technology Lecture</span>
+                            <span class="item-date"><strong>Última Atualização:</strong> 02/05/2026</span>
+                        </div>
+                        <div class="item-content">
+                            <h2>Introdução à Mecânica Automobilística</h2>
+                            <p><strong>Engenharia Mecânica</strong> - <strong>Ciclo específico</strong>: Mecânica e de  Automóveis. <strong>Objetivo</strong>: Proporcionar uma visão sistêmica da industria automotiva, abordando os principais sistemas e componentes de um automóvel, bem como os fundamentos da mecânica automotiva, incluindo motores de combustão interna, transmissão, suspensão, freios e direção. O curso também visa discutir as tendências atuais e futuras da indústria automotiva, como veículos elétricos, híbridos e autônomos.
+                            </p>
+                        </div>
+                    </a> -->
+
+                    <!-- <a href="../pages/Palestras/Tech Lectures/TecLecture-AutomotiveSystems/index.html" class="list-item" data-category="tec-lecture">
+                        <div class="item-meta">
+                            <span class="item-category">TEC101</span>
+                            <span class="item-tag tag-tec-lecture">Technology Lecture</span>
+                            <span class="item-date"><strong>Última Atualização:</strong> 02/05/2026</span>
+                        </div>
+                        <div class="item-content">
+                            <h2>Introdução à Sistemas Automotivos</h2>
+                            <p><strong>Engenharia Mecânica</strong> - <strong>Ciclo específico</strong>: Mecânica e de  Automóveis. <strong>Objetivo</strong>: Proporcionar uma visão sistêmica de um sistema automotivo, incluindo motor, unidades eletrônicas de gerenciamento, rede de comunicação, sistemas de assistência ao motorista, condução autônoma, veículos elétricos e híbridos.</p>
+                        </div>
+                    </a> --->
+
+                    <!-- <a href="#" class="list-item" data-category="tec-lecture">
+                        <div class="item-meta">
+                            <span class="item-category">TEC200</span>
+                            <span class="item-tag tag-tec-lecture">Technology Lecture</span>
+                            <span class="item-date"><strong>Última Atualização:</strong> 02/05/2026</span>
+                        </div>
+                        <div class="item-content">
+                            <h2>Fundamentos de Engenharia Aeronáutica</h2>
+                            <p><strong>Engenharia Aeronáutica</strong> - <strong>Ciclo específico</strong>: Aeronáutica. <strong>Objetivo</strong>: Proporcionar uma visão sistêmica da engenharia aeronáutica, abordando os principais sistemas e componentes de uma aeronave, bem como os fundamentos da aerodinâmica, propulsão, controle de voo e segurança aeronáutica.
+                            </p>
+                        </div>
+                    </a> -->
+
+                    <!--<a href="TecLectures/index.html" class="list-item" data-category="tec-lecture">
+                        <div class="item-meta">
+                            <span class="item-category">TEC100</span>
+                            <span class="item-tag tag-tec-lecture">Technology Lecture</span>
+                            <span class="item-date">[Data]</span>
+                        </div>
+                        <div class="item-content">
+                            <h2>Motores de Combustão Interna</h2>
+                            <p>Engenharia Mecânica, Ciclo específico: Mecânica e de  Automóveis</p>
+                        </div>
+                    </a> -->
+                    
+                    <!-- <a href="TecLectures/index.html" class="list-item" data-category="tec-lecture">
+                        <div class="item-meta">
+                            <span class="item-category">TEC100</span>
+                            <span class="item-tag tag-tec-lecture">Technology Lecture</span>
+                            <span class="item-date">[Data]</span>
+                        </div>
+                        <div class="item-content">
+                            <h2>Modelagem de Sistemas Mecânicos</h2>
+                            <p>Engenharia Mecânica, Ciclo Básico</p>
+                        </div>
+                    </a> -->
+
+                </div><!-- end list-container -->
+            </div>
+        </main>
+    </div>
+
+    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/lectures-filter.js"></script>
+</body>
+
+</html>
