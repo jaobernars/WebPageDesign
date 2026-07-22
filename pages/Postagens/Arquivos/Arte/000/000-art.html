@@ -163,16 +163,46 @@
 
         @media (max-width: 600px) {
             .art-series-card {
-                min-height: 240px;
+                /* Substitui a min-height fixa por um aspect-ratio: mantém o corte da
+                   imagem previsível mesmo quando o excerpt varia de tamanho entre posts */
+                aspect-ratio: 4 / 3;
+                min-height: 0;
+                border-radius: 14px;
+            }
+
+            .art-series-card::after {
+                background: linear-gradient(0deg, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.4) 55%, rgba(0, 0, 0, 0) 85%);
+            }
+
+            .art-series-card__body {
+                padding: 18px 20px;
             }
 
             .art-series-card__title {
                 min-width: 0;
-                font-size: 20px;
+                font-size: 19px;
+                padding-bottom: 8px;
+                margin-bottom: 8px;
             }
 
-            .art-series-card__body {
-                padding: 20px 22px;
+            .art-series-card__excerpt {
+                font-size: 14px;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+
+            /* Evita hover "grudado" em telas de toque; usa :active para feedback ao tocar */
+            a.art-series-card:hover {
+                transform: none;
+                box-shadow: none;
+            }
+
+            a.art-series-card:active {
+                transform: scale(0.98);
+                box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
             }
         }
 
@@ -376,7 +406,7 @@
                 </p>
 
                 <p>
-                    Eu me recuso a olhar para esse trabalho e não reconhecer que existe beleza nele. E quem pensa que essa análise meticulosa é fria ou puramente mecânica cometeu um grande erro. Há uma estética muito forte nesse processo, e o olhar do físico carrega uma tridimensionalização inevitavelmente artística. Essa investigação do mundo é, fundamentalmente, uma experiência estética. Entender a realidade em seu nível mais íntimo revela a verdadeira obra de arte que sustenta o nossa realidade.
+                    Eu me recuso a olhar para esse trabalho e não reconhecer que existe beleza nele. E quem pensa que essa análise meticulosa é fria ou puramente mecânica cometeu um grande erro. Há uma estética muito forte nesse processo, e o olhar do físico carrega uma tridimensionalização inevitavelmente artística. Essa investigação do mundo é, fundamentalmente, uma experiência estética. Entender a realidade em seu nível mais íntimo revela a verdadeira obra de arte que sustenta a nossa realidade.
                 </p>
 
                 <p>
@@ -482,9 +512,9 @@
                     Sejam bem-vindos ao <strong>The Art</strong>.
                 </p>
 
-                <div class="post-cover">
-                <img src="../../../../../assets/images/Logo Horse.png"
-                    alt="Capa do post">
+                <div class="post-cover-final">
+                <a href="../../../../../Página Principal/index.html"><img src="../../../../../assets/images/Logo Horse.png"
+                    alt="Capa do post"></a>
                 </div>
 
 
