@@ -648,13 +648,16 @@
         var sctx = scratch.getContext('2d');
         sctx.clearRect(0, 0, cols, rows);
 
-        // 1. the deep field itself, averaged down to one pixel per block and
-        //    held well below the web's line brightness so it stays a backdrop
+        // 1. the deep field itself, in its own colour, averaged down to one
+        //    pixel per block and held well below the web's line brightness
+        //    so it stays a backdrop. The source is black already outside the
+        //    stars/galaxies, so no separate black-background step is needed.
         if (img) {
             sctx.imageSmoothingEnabled = true;
             // averaging 960px down to ~145 blocks dims the galaxies badly, so
-            // the brightness has to be pushed hard to bring them back
-            sctx.filter = 'grayscale(1) brightness(1.85) contrast(1.28)';
+            // the brightness has to be pushed hard to bring them back;
+            // saturate a bit too, since the dimming flattens colour with it
+            sctx.filter = 'brightness(1.85) contrast(1.28) saturate(1.6)';
             drawCover(sctx, img, cols, rows);
             sctx.filter = 'none';
         }
