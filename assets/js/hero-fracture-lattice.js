@@ -266,25 +266,6 @@
             points = next;
         }
 
-        // ---- spine-hugging seed pairs, added AFTER relaxation (unrelaxed) so ----
-        // their bisector edges trace tightly along each spine segment: the
-        // lattice visibly grows out of the spine instead of floating near it.
-        for (var seg = 0; seg < spinePts.length - 1; seg++) {
-            var segA = spinePts[seg], segB = spinePts[seg + 1];
-            var segTan = spineTangents[seg];
-            var perpx = -segTan[1], perpy = segTan[0];
-            var nSamples = Math.max(2, Math.round(spineSegLen[seg] / (0.045 * spineStraightLen)));
-            for (var ss = 0; ss <= nSamples; ss++) {
-                var tt = ss / nSamples;
-                var globalU = (spineCumLen[seg] + tt * spineSegLen[seg]) / spineTotalLen;
-                if (globalU < 0.05 || globalU > 0.95) continue;
-                var cpt = [segA[0] + (segB[0] - segA[0]) * tt, segA[1] + (segB[1] - segA[1]) * tt];
-                var sep = 0.0055 * Lw * (0.7 + rng() * 0.6);
-                points.push([cpt[0] + perpx * sep, cpt[1] + perpy * sep]);
-                points.push([cpt[0] - perpx * sep, cpt[1] - perpy * sep]);
-            }
-        }
-
         // ---- global vertex jitter (organic junctions), shared vertices move together ----
         var meanCellDiam = Math.sqrt((Lw * Lh) / Math.max(points.length, 1)) * 1.13;
         var jitterAmt = 0.015 * meanCellDiam;
@@ -338,14 +319,13 @@
             maxV = Math.max(maxV, closestOnSpine(corners[ci][0], corners[ci][1])[1]);
         }
 
-        var edges = [];
-        for (var r = 0; r < rawEdges.length; r++) {
-            var ja = jitteredVertex(rawEdges[r].a);
-            var jb = jitteredVertex(rawEdges[r].b);
-            var elen = dist(ja[0], ja[1], jb[0], jb[1]);
-            if (elen < 1e-4) continue;
+        // Turns two raw points into a finished edge: reveal timing (gated on
+        // the spine's own draw progress), decay color, grow direction.
+        function finalizeEdge(pa, pb) {
+            var elen = dist(pa[0], pa[1], pb[0], pb[1]);
+            if (elen < 1e-4) return null;
 
-            var mx = (ja[0] + jb[0]) / 2, my = (ja[1] + jb[1]) / 2;
+            var mx = (pa[0] + pb[0]) / 2, my = (pa[1] + pb[1]) / 2;
             var muv = closestOnSpine(mx, my);
             var u = clamp(muv[0], 0, 1);
             var v = clamp(muv[1] / maxV, 0, 1);
@@ -356,17 +336,57 @@
             var effectiveReveal = Math.max(tReveal, gate);
 
             // grow outward: start from whichever endpoint sits closer to the spine
-            var va = closestOnSpine(ja[0], ja[1])[1], vb = closestOnSpine(jb[0], jb[1])[1];
-            var p1 = va <= vb ? ja : jb;
-            var p2 = va <= vb ? jb : ja;
+            var va = closestOnSpine(pa[0], pa[1])[1], vb = closestOnSpine(pb[0], pb[1])[1];
+            var p1 = va <= vb ? pa : pb;
+            var p2 = va <= vb ? pb : pa;
 
             var lightness = Math.round(lerp(0xB4, 0xDC, rng()));
 
-            edges.push({
+            return {
                 x1: p1[0], y1: p1[1], x2: p2[0], y2: p2[1],
                 revealTime: effectiveReveal,
                 steadyLightness: lightness
-            });
+            };
+        }
+
+        var edges = [];
+        for (var r = 0; r < rawEdges.length; r++) {
+            var e = finalizeEdge(jitteredVertex(rawEdges[r].a), jitteredVertex(rawEdges[r].b));
+            if (e) edges.push(e);
+        }
+
+        // ---- triangular notches along the spine: a wedge whose base sits ----
+        // right on the spine and whose apex reaches into the lattice, for most
+        // (not all) sample points — the two apex-ward sides are what read as
+        // "connected to the spine"; the base blends into the spine's own line.
+        for (var nseg = 0; nseg < spinePts.length - 1; nseg++) {
+            var nA = spinePts[nseg], nB = spinePts[nseg + 1];
+            var nTan = spineTangents[nseg];
+            var nPerpx = -nTan[1], nPerpy = nTan[0];
+            var baseHalf = 0.017 * spineStraightLen;
+            var nSamples = Math.max(1, Math.round(spineSegLen[nseg] / (0.044 * spineStraightLen)));
+            for (var ns = 0; ns <= nSamples; ns++) {
+                var ntt = ns / nSamples;
+                var nGlobalU = (spineCumLen[nseg] + ntt * spineSegLen[nseg]) / spineTotalLen;
+                if (nGlobalU < 0.05 || nGlobalU > 0.95) continue;
+                if (rng() > 0.7) continue; // majority of anchors get a notch, not all
+
+                var anchor = [nA[0] + (nB[0] - nA[0]) * ntt, nA[1] + (nB[1] - nA[1]) * ntt];
+                var p1n = [anchor[0] - nTan[0] * baseHalf, anchor[1] - nTan[1] * baseHalf];
+                var p2n = [anchor[0] + nTan[0] * baseHalf, anchor[1] + nTan[1] * baseHalf];
+                var side = rng() < 0.5 ? -1 : 1;
+                var depth = (0.028 + rng() * 0.02) * spineStraightLen;
+                var tanShift = (rng() - 0.5) * baseHalf * 0.8;
+                var apex = [
+                    anchor[0] + nPerpx * side * depth + nTan[0] * tanShift,
+                    anchor[1] + nPerpy * side * depth + nTan[1] * tanShift
+                ];
+
+                var e1 = finalizeEdge(p1n, apex);
+                var e2 = finalizeEdge(p2n, apex);
+                if (e1) edges.push(e1);
+                if (e2) edges.push(e2);
+            }
         }
 
         var maxDone = 1.4; // spine draw duration
@@ -497,10 +517,10 @@
             var pts = model.spinePts, cum = model.spineCumLen;
             var targetLen = clamp(progress, 0, 1) * model.spineTotalLen;
 
-            targetCtx.strokeStyle = '#FFFFFF';
-            targetCtx.lineWidth = 2.5;
+            targetCtx.strokeStyle = '#EDEDED';
+            targetCtx.lineWidth = 1.6;
             targetCtx.shadowColor = '#FFFFFF';
-            targetCtx.shadowBlur = 9;
+            targetCtx.shadowBlur = 3;
             targetCtx.beginPath();
             var p0d = toDevice(pts[0][0], pts[0][1]);
             targetCtx.moveTo(p0d[0], p0d[1]);
