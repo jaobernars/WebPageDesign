@@ -815,19 +815,29 @@
             linesCacheValid = true;
         }
 
-        // Soft violet "field" that sweeps diagonally (lower-left to upper-right)
-        // across the finished cells and loops forever once the web settles.
+        // Soft "field" that sweeps diagonally (lower-left to upper-right)
+        // across the finished cells and loops forever once the web settles —
+        // blue at the trailing tail, violet at the leading front.
+        var SWEEP_TAIL = [90, 140, 245];    // blue
+        var SWEEP_FRONT = [186, 100, 240];  // violet
         function drawSweep(targetCtx, phase) {
             var half = model.sweepBandHalfWidth;
             var bandCenter = phase * (1 + 2 * half) - half;
             var cells = model.cells, nodes = model.nodes;
             for (var i = 0; i < cells.length; i++) {
                 var c = cells[i];
-                var d = Math.abs(c.sweepProj - bandCenter);
+                var dSigned = c.sweepProj - bandCenter;   // + = ahead (front), - = behind (tail)
+                var d = Math.abs(dSigned);
                 if (d > half) continue;
                 var tt = 1 - d / half;
                 var opacity = 0.18 * (tt * tt * (3 - 2 * tt));
                 if (opacity < 0.004) continue;
+
+                var along = clamp(dSigned / half, -1, 1) * 0.5 + 0.5;   // 0 tail -> 1 front
+                var r = Math.round(lerp(SWEEP_TAIL[0], SWEEP_FRONT[0], along));
+                var g = Math.round(lerp(SWEEP_TAIL[1], SWEEP_FRONT[1], along));
+                var b = Math.round(lerp(SWEEP_TAIL[2], SWEEP_FRONT[2], along));
+
                 var ring = c.ring;
                 targetCtx.beginPath();
                 for (var pv = 0; pv < ring.length; pv++) {
@@ -836,7 +846,7 @@
                     else targetCtx.lineTo(sx(p[0]), sy(p[1]));
                 }
                 targetCtx.closePath();
-                targetCtx.fillStyle = 'rgba(186,148,240,' + opacity.toFixed(3) + ')';
+                targetCtx.fillStyle = 'rgba(' + r + ',' + g + ',' + b + ',' + opacity.toFixed(3) + ')';
                 targetCtx.fill();
             }
         }
