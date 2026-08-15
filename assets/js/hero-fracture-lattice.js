@@ -1,9 +1,9 @@
 /*
  * FRACTURE LATTICE — hero canvas animation.
  * Vanilla <canvas> 2D, no dependencies. Deterministic (seeded PRNG).
- * A gently curved "spine" fissure sweeps across a dark field, sprouting a
- * Voronoi-hairline lattice that visibly grows out of it, over a static 1-bit
- * dither plate. Once settled, a soft translucent sweep loops diagonally
+ * A gently curved "spine" fissure sweeps across a black field, sprouting a
+ * Voronoi-hairline lattice that visibly grows out of it, over a flickering
+ * 1-bit dither plate. Once settled, a soft translucent sweep loops diagonally
  * across the filled cells, forever.
  */
 (function () {
@@ -350,16 +350,6 @@
             var u = clamp(muv[0], 0, 1);
             var v = clamp(muv[1] / maxV, 0, 1);
 
-            // Right next to the spine, drop edges that meet it near
-            // perpendicular (~90 degrees) — keep only the hugging edges
-            // (near-parallel) and the obliquely-angled branches, like real
-            // fracture splits instead of a ladder of perpendicular rungs.
-            if (v < 0.09) {
-                var edx = (jb[0] - ja[0]) / elen, edy = (jb[1] - ja[1]) / elen;
-                var alignment = Math.abs(edx * muv[2] + edy * muv[3]);
-                if (alignment < 0.42) continue;
-            }
-
             var jitter = (rng() - 0.5) * 0.2;
             var tReveal = 0.20 + 1.15 * u + 1.55 * v + jitter;
             var gate = u * 1.4;
@@ -397,9 +387,16 @@
     }
 
     // ---------------------------------------------------------------
-    // Plate (static 1-bit dither grain), rasterised at actual device px.
+    // Plate — 1-bit dither grain, rasterised at actual device px.
+    // The large-scale clump structure comes from a fixed noise field, so it
+    // stays put across variants; only the per-block grain is re-rolled per
+    // variant. Cycling the variants makes the plate flicker like a noisy
+    // sensor readout without the clumps swimming around.
     // ---------------------------------------------------------------
-    function renderPlate(targetCanvas, Rw, Rh) {
+    var PLATE_VARIANTS = 6;
+    var PLATE_FPS = 11;
+
+    function renderPlate(targetCanvas, Rw, Rh, variant) {
         Rw = Math.max(1, Math.round(Rw));
         Rh = Math.max(1, Math.round(Rh));
         targetCanvas.width = Rw;
@@ -408,9 +405,14 @@
         ctx.imageSmoothingEnabled = false;
         ctx.clearRect(0, 0, Rw, Rh);
 
-        var rng = mulberry32(PLATE_SEED);
-        var noiseLow = makeValueNoise2D(rng, 8);
-        var noiseMid = makeValueNoise2D(rng, 18);
+        var structRng = mulberry32(PLATE_SEED);
+        var noiseLow = makeValueNoise2D(structRng, 8);
+        var noiseMid = makeValueNoise2D(structRng, 18);
+        // Stable grain keeps most blocks put; the small per-variant jitter only
+        // flips the ones sitting near the threshold, so the plate shimmers
+        // instead of boiling into static.
+        var stableGrainRng = mulberry32(PLATE_SEED + 104729);
+        var flickerRng = mulberry32(PLATE_SEED + 7919 * (variant + 1));
 
         var blockSize = Math.max(1, Math.round(Rw / 145));
         var cols = Math.ceil(Rw / blockSize);
@@ -420,7 +422,8 @@
             var v = by / rows;
             for (var bx = 0; bx < cols; bx++) {
                 var u = bx / cols;
-                var n = 0.55 * noiseLow(u, v) + 0.30 * noiseMid(u, v) + 0.15 * rng();
+                var n = 0.55 * noiseLow(u, v) + 0.30 * noiseMid(u, v)
+                    + 0.075 * stableGrainRng() + 0.075 * flickerRng();
                 var leftBoost = 0.30 * (1 - smoothstep(0, 0.6, u));
                 var val = n + leftBoost - 0.603;
                 if (val <= 0) continue;
@@ -444,7 +447,8 @@
         var ctx = canvas.getContext('2d');
 
         var model = buildLatticeModel();
-        var plateCanvas = document.createElement('canvas');
+        var plateFrames = [];
+        for (var pf = 0; pf < PLATE_VARIANTS; pf++) plateFrames.push(document.createElement('canvas'));
         var linesCache = document.createElement('canvas');
         var linesCacheValid = false;
 
@@ -482,7 +486,9 @@
             canvas.height = canvasH;
             canvas.style.width = '100%';
             canvas.style.height = '100%';
-            renderPlate(plateCanvas, R.w, R.h);
+            for (var pi = 0; pi < plateFrames.length; pi++) {
+                renderPlate(plateFrames[pi], R.w, R.h, pi);
+            }
             linesCacheValid = false;
             if (reduceMotion) draw(Infinity);
         }
@@ -575,11 +581,14 @@
             ctx.imageSmoothingEnabled = true;
             ctx.shadowBlur = 0;
             ctx.shadowColor = 'transparent';
-            ctx.fillStyle = '#0A0A0A';
+            ctx.fillStyle = '#000000';
             ctx.fillRect(0, 0, canvasW, canvasH);
 
+            var plateIdx = forceFinal
+                ? 0
+                : Math.floor(elapsedSec * PLATE_FPS) % plateFrames.length;
             ctx.imageSmoothingEnabled = false;
-            ctx.drawImage(plateCanvas, Math.round(R.x), Math.round(R.y));
+            ctx.drawImage(plateFrames[plateIdx], Math.round(R.x), Math.round(R.y));
             ctx.imageSmoothingEnabled = true;
 
             var settledNow = forceFinal || elapsedSec >= model.totalDuration;
