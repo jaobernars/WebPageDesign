@@ -33,7 +33,6 @@
         return t * t * (3 - 2 * t);
     }
     function dist(x0, y0, x1, y1) { return Math.sqrt((x1 - x0) * (x1 - x0) + (y1 - y0) * (y1 - y0)); }
-    function lerpPoint(a, b, t) { return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t]; }
 
     function bezierPoint(P0, P1, P2, t) {
         var mt = 1 - t;
@@ -41,13 +40,6 @@
             mt * mt * P0[0] + 2 * mt * t * P1[0] + t * t * P2[0],
             mt * mt * P0[1] + 2 * mt * t * P1[1] + t * t * P2[1]
         ];
-    }
-    // De Casteljau subdivision: control points of the sub-curve covering [0, t].
-    function bezierTrim(P0, P1, P2, t) {
-        var Q1 = lerpPoint(P0, P1, t);
-        var R1 = lerpPoint(P1, P2, t);
-        var Q2 = lerpPoint(Q1, R1, t);
-        return [P0, Q1, Q2];
     }
 
     function makeValueNoise2D(rng, gridSize) {
@@ -162,8 +154,12 @@
         var Ly1 = VH + 0.025 * VH;           // bottom overflow 2.5%
         var Lw = Lx1 - Lx0, Lh = Ly1 - Ly0;
 
-        // ---- spine geometry: gentle quadratic-bezier crack through R's ----
-        // centre, upper-left to lower-right, extending slightly past L.
+        // ---- spine geometry: a handful of slightly-angled straight paths ----
+        // (not one smooth mathematical curve) whose chord bows upward overall,
+        // through R's centre, from upper-left to lower-right, extending
+        // slightly past L. Faceted like this, it reads as "mostly a curved
+        // line" while staying visually consistent with the straight hairline
+        // edges of the lattice around it.
         var Rcx = VW / 2, Rcy = VH / 2;
         var diagHalf = Math.sqrt(VW * VW + VH * VH) / 2 * 1.09;
         var dirx = Math.SQRT1_2, diry = Math.SQRT1_2;
@@ -171,30 +167,54 @@
         var spineP2 = [Rcx + dirx * diagHalf, Rcy + diry * diagHalf];
         var spineStraightLen = dist(spineP0[0], spineP0[1], spineP2[0], spineP2[1]);
         var bowx = diry, bowy = -dirx; // perpendicular to the straight diagonal, bowed upward
-        var curveAmt = 0.045 * spineStraightLen;
-        var spineP1 = [
+        var curveAmt = 0.05 * spineStraightLen;
+        var guideP1 = [
             (spineP0[0] + spineP2[0]) / 2 + bowx * curveAmt,
             (spineP0[1] + spineP2[1]) / 2 + bowy * curveAmt
         ];
 
-        var CURVE_SAMPLES = 48;
-        var curvePts = [];
-        for (var cs = 0; cs <= CURVE_SAMPLES; cs++) {
-            curvePts.push(bezierPoint(spineP0, spineP1, spineP2, cs / CURVE_SAMPLES));
+        // Sample the guide curve at a few waypoints and nudge each one a
+        // little, so the path is a short chain of distinct straight segments
+        // that only trends toward the bowed shape rather than tracing it exactly.
+        var SPINE_SEGMENTS = 5;
+        var spinePts = [spineP0];
+        for (var wi = 1; wi < SPINE_SEGMENTS; wi++) {
+            var wt = wi / SPINE_SEGMENTS;
+            var guide = bezierPoint(spineP0, guideP1, spineP2, wt);
+            var wobble = (rng() - 0.5) * 2 * (0.016 * spineStraightLen);
+            spinePts.push([guide[0] + bowx * wobble, guide[1] + bowy * wobble]);
         }
-        // closest point on the spine polyline: returns [u (0..1 along spine), v (perp distance)]
+        spinePts.push(spineP2);
+
+        var spineSegLen = [], spineCumLen = [0], spineTotalLen = 0;
+        var spineTangents = [];
+        for (var sg = 0; sg < spinePts.length - 1; sg++) {
+            var sdx = spinePts[sg + 1][0] - spinePts[sg][0], sdy = spinePts[sg + 1][1] - spinePts[sg][1];
+            var slen = Math.sqrt(sdx * sdx + sdy * sdy) || 1e-6;
+            spineSegLen.push(slen);
+            spineTotalLen += slen;
+            spineCumLen.push(spineTotalLen);
+            spineTangents.push([sdx / slen, sdy / slen]);
+        }
+
+        // closest point on the spine polyline: returns [u (0..1 by arc length),
+        // v (perp distance), tangentX, tangentY of the matched segment]
         function closestOnSpine(px, py) {
-            var bestD2 = Infinity, bestU = 0;
-            for (var si = 0; si < CURVE_SAMPLES; si++) {
-                var a = curvePts[si], b = curvePts[si + 1];
+            var bestD2 = Infinity, bestU = 0, bestTan = spineTangents[0];
+            for (var si = 0; si < spinePts.length - 1; si++) {
+                var a = spinePts[si], b = spinePts[si + 1];
                 var abx = b[0] - a[0], aby = b[1] - a[1];
                 var abLen2 = abx * abx + aby * aby || 1e-9;
                 var t = clamp(((px - a[0]) * abx + (py - a[1]) * aby) / abLen2, 0, 1);
                 var cxp = a[0] + abx * t, cyp = a[1] + aby * t;
                 var d2 = (px - cxp) * (px - cxp) + (py - cyp) * (py - cyp);
-                if (d2 < bestD2) { bestD2 = d2; bestU = (si + t) / CURVE_SAMPLES; }
+                if (d2 < bestD2) {
+                    bestD2 = d2;
+                    bestU = (spineCumLen[si] + t * spineSegLen[si]) / spineTotalLen;
+                    bestTan = spineTangents[si];
+                }
             }
-            return [bestU, Math.sqrt(bestD2)];
+            return [bestU, Math.sqrt(bestD2), bestTan[0], bestTan[1]];
         }
 
         // ---- seed scatter (jittered grid + density modulation) ----
@@ -247,17 +267,22 @@
         }
 
         // ---- spine-hugging seed pairs, added AFTER relaxation (unrelaxed) so ----
-        // their bisector edges trace tightly along the curve: the lattice
-        // visibly grows out of the spine instead of floating near it.
-        for (var st = 0.06; st <= 0.94; st += 0.042) {
-            var cpt = bezierPoint(spineP0, spineP1, spineP2, st);
-            var tanx = 2 * (1 - st) * (spineP1[0] - spineP0[0]) + 2 * st * (spineP2[0] - spineP1[0]);
-            var tany = 2 * (1 - st) * (spineP1[1] - spineP0[1]) + 2 * st * (spineP2[1] - spineP1[1]);
-            var tanLen = Math.sqrt(tanx * tanx + tany * tany) || 1;
-            var perpx = -tany / tanLen, perpy = tanx / tanLen;
-            var sep = 0.0055 * Lw * (0.7 + rng() * 0.6);
-            points.push([cpt[0] + perpx * sep, cpt[1] + perpy * sep]);
-            points.push([cpt[0] - perpx * sep, cpt[1] - perpy * sep]);
+        // their bisector edges trace tightly along each spine segment: the
+        // lattice visibly grows out of the spine instead of floating near it.
+        for (var seg = 0; seg < spinePts.length - 1; seg++) {
+            var segA = spinePts[seg], segB = spinePts[seg + 1];
+            var segTan = spineTangents[seg];
+            var perpx = -segTan[1], perpy = segTan[0];
+            var nSamples = Math.max(2, Math.round(spineSegLen[seg] / (0.045 * spineStraightLen)));
+            for (var ss = 0; ss <= nSamples; ss++) {
+                var tt = ss / nSamples;
+                var globalU = (spineCumLen[seg] + tt * spineSegLen[seg]) / spineTotalLen;
+                if (globalU < 0.05 || globalU > 0.95) continue;
+                var cpt = [segA[0] + (segB[0] - segA[0]) * tt, segA[1] + (segB[1] - segA[1]) * tt];
+                var sep = 0.0055 * Lw * (0.7 + rng() * 0.6);
+                points.push([cpt[0] + perpx * sep, cpt[1] + perpy * sep]);
+                points.push([cpt[0] - perpx * sep, cpt[1] - perpy * sep]);
+            }
         }
 
         // ---- global vertex jitter (organic junctions), shared vertices move together ----
@@ -325,6 +350,16 @@
             var u = clamp(muv[0], 0, 1);
             var v = clamp(muv[1] / maxV, 0, 1);
 
+            // Right next to the spine, drop edges that meet it near
+            // perpendicular (~90 degrees) — keep only the hugging edges
+            // (near-parallel) and the obliquely-angled branches, like real
+            // fracture splits instead of a ladder of perpendicular rungs.
+            if (v < 0.09) {
+                var edx = (jb[0] - ja[0]) / elen, edy = (jb[1] - ja[1]) / elen;
+                var alignment = Math.abs(edx * muv[2] + edy * muv[3]);
+                if (alignment < 0.42) continue;
+            }
+
             var jitter = (rng() - 0.5) * 0.2;
             var tReveal = 0.20 + 1.15 * u + 1.55 * v + jitter;
             var gate = u * 1.4;
@@ -353,7 +388,7 @@
             virtualW: VW, virtualH: VH,
             edges: edges,
             cells: cells,
-            spineP0: spineP0, spineP1: spineP1, spineP2: spineP2,
+            spinePts: spinePts, spineCumLen: spineCumLen, spineTotalLen: spineTotalLen,
             spineDuration: 1.4,
             totalDuration: maxDone + 0.15,
             sweepLoopDuration: 3.4,
@@ -453,17 +488,32 @@
         }
 
         function drawSpine(targetCtx, progress) {
-            var P0 = toDevice(model.spineP0[0], model.spineP0[1]);
-            var P1 = toDevice(model.spineP1[0], model.spineP1[1]);
-            var P2 = toDevice(model.spineP2[0], model.spineP2[1]);
-            var ctl = progress >= 1 ? [P0, P1, P2] : bezierTrim(P0, P1, P2, progress);
+            var pts = model.spinePts, cum = model.spineCumLen;
+            var targetLen = clamp(progress, 0, 1) * model.spineTotalLen;
+
             targetCtx.strokeStyle = '#FFFFFF';
             targetCtx.lineWidth = 2.5;
             targetCtx.shadowColor = '#FFFFFF';
             targetCtx.shadowBlur = 9;
             targetCtx.beginPath();
-            targetCtx.moveTo(ctl[0][0], ctl[0][1]);
-            targetCtx.quadraticCurveTo(ctl[1][0], ctl[1][1], ctl[2][0], ctl[2][1]);
+            var p0d = toDevice(pts[0][0], pts[0][1]);
+            targetCtx.moveTo(p0d[0], p0d[1]);
+            for (var i = 0; i < pts.length - 1; i++) {
+                var segStart = cum[i], segEnd = cum[i + 1];
+                if (targetLen >= segEnd) {
+                    var pd = toDevice(pts[i + 1][0], pts[i + 1][1]);
+                    targetCtx.lineTo(pd[0], pd[1]);
+                } else if (targetLen > segStart) {
+                    var localT = (targetLen - segStart) / (segEnd - segStart);
+                    var ix = pts[i][0] + (pts[i + 1][0] - pts[i][0]) * localT;
+                    var iy = pts[i][1] + (pts[i + 1][1] - pts[i][1]) * localT;
+                    var pd2 = toDevice(ix, iy);
+                    targetCtx.lineTo(pd2[0], pd2[1]);
+                    break;
+                } else {
+                    break;
+                }
+            }
             targetCtx.stroke();
             targetCtx.shadowBlur = 0;
             targetCtx.shadowColor = 'transparent';
