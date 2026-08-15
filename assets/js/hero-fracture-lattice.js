@@ -2,15 +2,17 @@
  * FRACTURE LATTICE — hero canvas animation.
  * Vanilla <canvas> 2D, no dependencies. Deterministic (seeded PRNG).
  *
- * A Voronoi web grows outward from a main fissure over a flickering 1-bit
- * dither plate. The web is built as a real graph — shared nodes, deduped
- * edges — and every junction is filleted, so edges curve into each other
+ * A Voronoi web grows outward from a main fissure over the Hubble Ultra-Deep
+ * Field, resampled onto a coarse block grid and twinkling like a sensor
+ * readout. The web is built as a real graph — shared nodes, deduped edges —
+ * and every junction is filleted and capped, so edges curve into each other
  * near the nodes like a spider web instead of meeting at hard corners.
  * The main line is not drawn on top of the web: it IS a chain of the web's
  * own edges (seeded by placing cell centres in pairs straddling it), so
  * branches meet it at genuine, visibly rounded nodes.
  *
- * Once settled, a soft translucent sweep loops diagonally across the cells.
+ * Once settled, a soft translucent sweep loops across every cell, bottom-left
+ * corner to top-right.
  */
 (function () {
     'use strict';
@@ -34,10 +36,6 @@
 
     function clamp(v, lo, hi) { return v < lo ? lo : (v > hi ? hi : v); }
     function lerp(a, b, t) { return a + (b - a) * t; }
-    function smoothstep(edge0, edge1, x) {
-        var t = clamp((x - edge0) / (edge1 - edge0), 0, 1);
-        return t * t * (3 - 2 * t);
-    }
     function dist(x0, y0, x1, y1) { return Math.sqrt((x1 - x0) * (x1 - x0) + (y1 - y0) * (y1 - y0)); }
 
     function bezierPoint(P0, P1, P2, t) {
@@ -46,27 +44,6 @@
             mt * mt * P0[0] + 2 * mt * t * P1[0] + t * t * P2[0],
             mt * mt * P0[1] + 2 * mt * t * P1[1] + t * t * P2[1]
         ];
-    }
-
-    function makeValueNoise2D(rng, gridSize) {
-        var n = gridSize + 1;
-        var g = new Float32Array(n * n);
-        for (var i = 0; i < g.length; i++) g[i] = rng();
-        return function (x, y) {
-            var gx = x * gridSize, gy = y * gridSize;
-            var x0 = Math.floor(gx), y0 = Math.floor(gy);
-            if (x0 < 0) x0 = 0; if (y0 < 0) y0 = 0;
-            if (x0 > gridSize - 1) x0 = gridSize - 1;
-            if (y0 > gridSize - 1) y0 = gridSize - 1;
-            var x1 = x0 + 1, y1 = y0 + 1;
-            var fx = gx - x0, fy = gy - y0;
-            var sx = fx * fx * (3 - 2 * fx), sy = fy * fy * (3 - 2 * fy);
-            var v00 = g[y0 * n + x0], v10 = g[y0 * n + x1];
-            var v01 = g[y1 * n + x0], v11 = g[y1 * n + x1];
-            var top = v00 + (v10 - v00) * sx;
-            var bot = v01 + (v11 - v01) * sx;
-            return top + (bot - top) * sy;
-        };
     }
 
     // ---------------------------------------------------------------
@@ -178,12 +155,15 @@
             (guideStart[1] + guideEnd[1]) / 2 + bowy * (0.05 * spineStraightLen)
         ];
 
-        var SPINE_SEGMENTS = 5;
+        // Many short segments track the bow closely, so the main line reads as
+        // one smooth curve rather than a few visible facets. A whisper of
+        // wobble keeps it from looking mathematically perfect.
+        var SPINE_SEGMENTS = 11;
         var spinePts = [guideStart];
         for (var wi = 1; wi < SPINE_SEGMENTS; wi++) {
             var wt = wi / SPINE_SEGMENTS;
             var g = bezierPoint(guideStart, guideMid, guideEnd, wt);
-            var wobble = (rng() - 0.5) * 2 * (0.014 * spineStraightLen);
+            var wobble = (rng() - 0.5) * 2 * (0.004 * spineStraightLen);
             spinePts.push([g[0] + bowx * wobble, g[1] + bowy * wobble]);
         }
         spinePts.push(guideEnd);
@@ -273,8 +253,11 @@
         // branch that reaches it terminates in a genuine shared node.
         // Separation is a healthy fraction of a cell so the neighbours are
         // normal-sized cells, not slivers.
-        var straddleStep = 0.92 * meanCellDiam;
-        var straddleSep = 0.44 * meanCellDiam;
+        // The pair must sit closer to each other than to the next anchor,
+        // otherwise the boundary between mismatched neighbours (left[i] vs
+        // right[i+1]) takes over in places and kinks the line into a zigzag.
+        var straddleStep = 1.0 * meanCellDiam;
+        var straddleSep = 0.24 * meanCellDiam;
         var nStraddle = Math.max(2, Math.round(spineTotalLen / straddleStep));
         for (var sIdx = 0; sIdx <= nStraddle; sIdx++) {
             var su = sIdx / nStraddle;
@@ -289,11 +272,13 @@
             var tan = spineTangents[segI];
             var nx = -tan[1], ny = tan[0];
             // slide along the tangent a little so junctions are not evenly spaced
-            var slide = (rng() - 0.5) * straddleStep * 0.45;
-            var sepA = straddleSep * (0.85 + rng() * 0.3);
-            var sepB = straddleSep * (0.85 + rng() * 0.3);
-            points.push([basePt[0] + tan[0] * slide + nx * sepA, basePt[1] + tan[1] * slide + ny * sepA]);
-            points.push([basePt[0] + tan[0] * slide - nx * sepB, basePt[1] + tan[1] * slide - ny * sepB]);
+            var slide = (rng() - 0.5) * straddleStep * 0.22;
+            // the two seeds MUST be mirrored by the same amount: an uneven pair
+            // shifts its bisector off the guide and kinks the main line
+            var sep = straddleSep * (0.85 + rng() * 0.3);
+            var bx2 = basePt[0] + tan[0] * slide, by2 = basePt[1] + tan[1] * slide;
+            points.push([bx2 + nx * sep, by2 + ny * sep]);
+            points.push([bx2 - nx * sep, by2 - ny * sep]);
         }
 
         // ---- Voronoi -> graph (deduped nodes + edges) ----------------
@@ -337,16 +322,16 @@
             var idxRing = [];
             for (var pv = 0; pv < nV; pv++) idxRing.push(nodeIndex(verts[pv]));
 
+            for (var e = 0; e < nV; e++) {
+                if (tags[e] === 'rect') continue;   // never draw the clip box
+                addEdge(idxRing[e], idxRing[(e + 1) % nV]);
+            }
+
             var ringPts = [];
             for (var rp = 0; rp < idxRing.length; rp++) ringPts.push(nodes[idxRing[rp]]);
             var centroid = polygonCentroid(ringPts);
             var sweepProj = ((centroid[0] - bottomLeft[0]) * sweepDx + (centroid[1] - bottomLeft[1]) * sweepDy) / sweepLen2;
             cells.push({ ring: idxRing, sweepProj: sweepProj });
-
-            for (var e = 0; e < nV; e++) {
-                if (tags[e] === 'rect') continue;   // never draw the clip box
-                addEdge(idxRing[e], idxRing[(e + 1) % nV]);
-            }
         }
 
         // per-edge and per-node position along / distance from the guide path
@@ -425,7 +410,7 @@
                     var pP = nodes[pick], pQ = nodes[nb];
                     var segLen = dist(pP[0], pP[1], pQ[0], pQ[1]);
                     var strayed = (nodeUV[pick][1] + nodeUV[nb][1]) / 2 / meanCellDiam;
-                    var w = segLen * (1 + 6 * strayed * strayed);
+                    var w = segLen * (1 + 16 * strayed * strayed);
                     if (distTo[pick] + w < distTo[nb]) {
                         distTo[nb] = distTo[pick] + w;
                         prevEdge[nb] = eIdx;
@@ -469,7 +454,7 @@
                 t.revealTime = u0 * SPINE_DURATION;
                 t.growDuration = Math.max(0.05, (u1 - u0) * SPINE_DURATION);
                 t.growFromA = t.uA <= t.uB;
-                t.steadyLightness = 244;
+                t.steadyLightness = 255;
             } else {
                 var vN = clamp(t.vMid / maxV, 0, 1);
                 var uN = clamp(t.uMid, 0, 1);
@@ -486,7 +471,7 @@
 
         // ---- trim every edge back from its nodes, so the gap can be ---
         // filled by a fillet curve that bends one edge into the next.
-        var filletR = 0.27 * meanCellDiam;
+        var filletR = 0.17 * meanCellDiam;
         var edges = [];
         for (var fe = 0; fe < rawEdges.length; fe++) {
             var re = rawEdges[fe];
@@ -518,22 +503,36 @@
         // edge's direction and arrives along the other's — the join is
         // tangent-continuous and reads as a soft web node.
         var fillets = [];
+        var nodeCaps = [];
         for (var nn = 0; nn < nodes.length; nn++) {
             var ring = adj[nn];
             if (ring.length < 2) continue;
             var nodePt = nodes[nn];
+
+            var capPts = [];          // trim points in angular order, for the cap fill
+            var capReveal = 0, capLight = 255, capAllSpine = true, capOk = true;
+
             for (var ri = 0; ri < ring.length; ri++) {
                 var eiA = ring[ri].edge;
                 var eiB = ring[(ri + 1) % ring.length].edge;
+
+                var recA = edges[eiA];
+                if (!recA) { capOk = false; continue; }
+                var srcA = rawEdges[eiA];
+                var startX = srcA.a === nn ? recA.ax : recA.bx;
+                var startY = srcA.a === nn ? recA.ay : recA.by;
+
+                capPts.push([startX, startY]);
+                capReveal = Math.max(capReveal, recA.revealTime + recA.growDuration);
+                capLight = Math.min(capLight, recA.steadyLightness);
+                if (!recA.isSpine) capAllSpine = false;
+
                 if (eiA === eiB) continue;
                 if (ring.length === 2 && ri === 1) break;   // avoid drawing the pair twice
 
-                var recA = edges[eiA], recB = edges[eiB];
-                if (!recA || !recB) continue;
-                var srcA = rawEdges[eiA], srcB = rawEdges[eiB];
-
-                var startX = srcA.a === nn ? recA.ax : recA.bx;
-                var startY = srcA.a === nn ? recA.ay : recA.by;
+                var recB = edges[eiB];
+                if (!recB) { capOk = false; continue; }
+                var srcB = rawEdges[eiB];
                 var endX = srcB.a === nn ? recB.ax : recB.bx;
                 var endY = srcB.a === nn ? recB.ay : recB.by;
 
@@ -547,9 +546,22 @@
                         recB.revealTime + recB.growDuration
                     ),
                     steadyLightness: bothSpine
-                        ? 244
+                        ? 255
                         : Math.min(recA.steadyLightness, recB.steadyLightness),
                     isSpine: bothSpine
+                });
+            }
+
+            // The fillets bound a small hollow at the heart of every junction.
+            // Cap it with the same stroke colour so the node reads as one
+            // solid piece of web instead of an empty triangle.
+            if (capOk && capPts.length >= 3) {
+                nodeCaps.push({
+                    pts: capPts,
+                    cx: nodePt[0], cy: nodePt[1],
+                    revealTime: capReveal,
+                    steadyLightness: capAllSpine ? 255 : capLight,
+                    isSpine: capAllSpine
                 });
             }
         }
@@ -571,6 +583,7 @@
             nodes: nodes,
             edges: edges,
             fillets: fillets,
+            nodeCaps: nodeCaps,
             cells: cells,
             spineDuration: SPINE_DURATION,
             totalDuration: maxDone + 0.15,
@@ -580,52 +593,95 @@
     }
 
     // ---------------------------------------------------------------
-    // Plate — 1-bit dither grain, rasterised at actual device px.
-    // The large-scale clump structure comes from a fixed noise field, so it
-    // stays put across variants; only the per-block grain is re-rolled per
-    // variant. Cycling the variants makes the plate flicker like a noisy
-    // sensor readout without the clumps swimming around.
+    // Plate — the Hubble Ultra-Deep Field, resampled onto a coarse block
+    // grid so it reads as a low-res sensor readout, plus per-block grain.
+    // The grain has a stable part (same in every variant) and a flickering
+    // part (re-rolled per variant); cycling the variants makes the field
+    // twinkle without the galaxies swimming around.
     // ---------------------------------------------------------------
     var PLATE_VARIANTS = 6;
     var PLATE_FPS = 11;
+    var PLATE_BLOCKS_ACROSS = 145;
 
-    function renderPlate(targetCanvas, Rw, Rh, variant) {
+    // Resolved against this script's own URL, so the page's directory depth
+    // does not matter.
+    var PLATE_IMAGE_URL = (function () {
+        var rel = '../images/Vídeo/Hubble_ultra_deep_field.jpg';
+        try {
+            var s = document.currentScript && document.currentScript.src;
+            if (s) return new URL(rel, s).href;
+        } catch (e) { /* fall through */ }
+        return '../assets/images/Vídeo/Hubble_ultra_deep_field.jpg';
+    })();
+
+    function loadPlateImage(done) {
+        var img = new Image();
+        img.onload = function () { done(img); };
+        img.onerror = function () { done(null); };
+        img.src = PLATE_IMAGE_URL;
+    }
+
+    // scale the (square) source to cover the block grid, centred
+    function drawCover(ctx, img, cols, rows) {
+        var iw = img.naturalWidth || img.width;
+        var ih = img.naturalHeight || img.height;
+        if (!iw || !ih) return;
+        var scale = Math.max(cols / iw, rows / ih);
+        var dw = iw * scale, dh = ih * scale;
+        ctx.drawImage(img, (cols - dw) / 2, (rows - dh) / 2, dw, dh);
+    }
+
+    function renderPlate(targetCanvas, Rw, Rh, variant, img, scratch) {
         Rw = Math.max(1, Math.round(Rw));
         Rh = Math.max(1, Math.round(Rh));
         targetCanvas.width = Rw;
         targetCanvas.height = Rh;
         var ctx = targetCanvas.getContext('2d');
-        ctx.imageSmoothingEnabled = false;
         ctx.clearRect(0, 0, Rw, Rh);
 
-        var structRng = mulberry32(PLATE_SEED);
-        var noiseLow = makeValueNoise2D(structRng, 8);
-        var noiseMid = makeValueNoise2D(structRng, 18);
-        // Stable grain keeps most blocks put; the small per-variant jitter only
-        // flips the ones sitting near the threshold, so the plate shimmers
-        // instead of boiling into static.
-        var stableGrainRng = mulberry32(PLATE_SEED + 104729);
-        var flickerRng = mulberry32(PLATE_SEED + 7919 * (variant + 1));
-
-        var blockSize = Math.max(1, Math.round(Rw / 145));
+        var blockSize = Math.max(1, Math.round(Rw / PLATE_BLOCKS_ACROSS));
         var cols = Math.ceil(Rw / blockSize);
         var rows = Math.ceil(Rh / blockSize);
 
+        scratch.width = cols;
+        scratch.height = rows;
+        var sctx = scratch.getContext('2d');
+        sctx.clearRect(0, 0, cols, rows);
+
+        // 1. the deep field itself, averaged down to one pixel per block and
+        //    held well below the web's line brightness so it stays a backdrop
+        if (img) {
+            sctx.imageSmoothingEnabled = true;
+            // averaging 960px down to ~145 blocks dims the galaxies badly, so
+            // the brightness has to be pushed hard to bring them back
+            sctx.filter = 'grayscale(1) brightness(1.85) contrast(1.28)';
+            drawCover(sctx, img, cols, rows);
+            sctx.filter = 'none';
+        }
+
+        // 2. sensor grain on top: a stable speckle plus a per-variant one, so
+        //    part of the noise holds still and part of it twinkles
+        var stableRng = mulberry32(PLATE_SEED + 104729);
+        var flickerRng = mulberry32(PLATE_SEED + 7919 * (variant + 1));
+        sctx.globalCompositeOperation = 'lighter';
         for (var by = 0; by < rows; by++) {
-            var v = by / rows;
             for (var bx = 0; bx < cols; bx++) {
-                var u = bx / cols;
-                var n = 0.55 * noiseLow(u, v) + 0.30 * noiseMid(u, v)
-                    + 0.075 * stableGrainRng() + 0.075 * flickerRng();
-                var leftBoost = 0.30 * (1 - smoothstep(0, 0.6, u));
-                var val = n + leftBoost - 0.603;
-                if (val <= 0) continue;
-                var t = clamp(val * 3.2, 0, 1);
-                var lightness = Math.round(lerp(0x1A, 0x3E, clamp(t + leftBoost * 0.4, 0, 1)));
-                ctx.fillStyle = 'rgb(' + lightness + ',' + lightness + ',' + lightness + ')';
-                ctx.fillRect(bx * blockSize, by * blockSize, blockSize, blockSize);
+                var stable = stableRng(), flick = flickerRng();
+                var n = 0;
+                if (stable > 0.928) n += 0x0C + stable * 0x10;
+                if (flick > 0.952) n += 0x0E + flick * 0x14;
+                if (n < 1) continue;
+                n = Math.round(Math.min(n, 0x34));
+                sctx.fillStyle = 'rgb(' + n + ',' + n + ',' + n + ')';
+                sctx.fillRect(bx, by, 1, 1);
             }
         }
+        sctx.globalCompositeOperation = 'source-over';
+
+        // 3. blow the block grid up with no interpolation, so every block
+        //    stays a crisp square
+        ctx.imageSmoothingEnabled = false;
+        ctx.drawImage(scratch, 0, 0, cols, rows, 0, 0, cols * blockSize, rows * blockSize);
     }
 
     // ---------------------------------------------------------------
@@ -642,6 +698,8 @@
         var model = buildLatticeModel();
         var plateFrames = [];
         for (var pf = 0; pf < PLATE_VARIANTS; pf++) plateFrames.push(document.createElement('canvas'));
+        var plateScratch = document.createElement('canvas');
+        var plateImage = null;
         var linesCache = document.createElement('canvas');
         var linesCacheValid = false;
 
@@ -678,7 +736,7 @@
             canvas.style.width = '100%';
             canvas.style.height = '100%';
             for (var pi = 0; pi < plateFrames.length; pi++) {
-                renderPlate(plateFrames[pi], R.w, R.h, pi);
+                renderPlate(plateFrames[pi], R.w, R.h, pi, plateImage, plateScratch);
             }
             linesCacheValid = false;
             if (reduceMotion) draw(Infinity);
@@ -686,7 +744,7 @@
 
         function styleFor(targetCtx, lightByte, isSpine, glow) {
             targetCtx.strokeStyle = 'rgb(' + lightByte + ',' + lightByte + ',' + lightByte + ')';
-            targetCtx.lineWidth = isSpine ? 1.7 : 1;
+            targetCtx.lineWidth = isSpine ? 2.1 : 1;
             if (glow > 0.05) {
                 targetCtx.shadowColor = '#FFFFFF';
                 targetCtx.shadowBlur = glow;
@@ -696,14 +754,27 @@
             }
         }
 
-        // Draws the settled web: trimmed edge bodies plus the fillet curves
-        // that round every junction.
+        // Fills the hollow at a junction, bounded by the same quadratics the
+        // fillets stroke, so the node becomes solid.
+        function capPath(targetCtx, cap) {
+            var pts = cap.pts, n = pts.length;
+            targetCtx.beginPath();
+            targetCtx.moveTo(sx(pts[0][0]), sy(pts[0][1]));
+            for (var i = 0; i < n; i++) {
+                var nxt = pts[(i + 1) % n];
+                targetCtx.quadraticCurveTo(sx(cap.cx), sy(cap.cy), sx(nxt[0]), sy(nxt[1]));
+            }
+            targetCtx.closePath();
+        }
+
+        // Draws the settled web: trimmed edge bodies, the fillet curves that
+        // round every junction, and the solid caps at the junction centres.
         function paintWeb(targetCtx) {
             targetCtx.lineCap = 'round';
             var edges = model.edges, i;
             for (i = 0; i < edges.length; i++) {
                 var e = edges[i];
-                styleFor(targetCtx, e.steadyLightness, e.isSpine, e.isSpine ? 2.2 : 0);
+                styleFor(targetCtx, e.steadyLightness, e.isSpine, e.isSpine ? 3.2 : 0);
                 targetCtx.beginPath();
                 targetCtx.moveTo(sx(e.ax), sy(e.ay));
                 targetCtx.lineTo(sx(e.bx), sy(e.by));
@@ -712,7 +783,7 @@
             var fils = model.fillets;
             for (i = 0; i < fils.length; i++) {
                 var f = fils[i];
-                styleFor(targetCtx, f.steadyLightness, f.isSpine, f.isSpine ? 2.2 : 0);
+                styleFor(targetCtx, f.steadyLightness, f.isSpine, f.isSpine ? 3.2 : 0);
                 targetCtx.beginPath();
                 targetCtx.moveTo(sx(f.x0), sy(f.y0));
                 targetCtx.quadraticCurveTo(sx(f.cx), sy(f.cy), sx(f.x1), sy(f.y1));
@@ -720,6 +791,14 @@
             }
             targetCtx.shadowBlur = 0;
             targetCtx.shadowColor = 'transparent';
+            var caps = model.nodeCaps;
+            for (i = 0; i < caps.length; i++) {
+                var cp = caps[i];
+                var L = cp.steadyLightness;
+                targetCtx.fillStyle = 'rgb(' + L + ',' + L + ',' + L + ')';
+                capPath(targetCtx, cp);
+                targetCtx.fill();
+            }
         }
 
         // Once growth has settled the web no longer changes frame to frame —
@@ -744,7 +823,7 @@
                 var d = Math.abs(c.sweepProj - bandCenter);
                 if (d > half) continue;
                 var tt = 1 - d / half;
-                var opacity = 0.22 * (tt * tt * (3 - 2 * tt));
+                var opacity = 0.18 * (tt * tt * (3 - 2 * tt));
                 if (opacity < 0.004) continue;
                 var ring = c.ring;
                 targetCtx.beginPath();
@@ -803,7 +882,7 @@
                 var lightByte = e.isSpine
                     ? e.steadyLightness
                     : Math.round(lerp(255, e.steadyLightness, decay));
-                var glow = e.isSpine ? 2.2 : lerp(6, 0, decay);
+                var glow = e.isSpine ? 3.2 : lerp(6, 0, decay);
 
                 styleFor(ctx, lightByte, e.isSpine, glow);
                 ctx.beginPath();
@@ -821,7 +900,7 @@
                 var fLight = f.isSpine
                     ? f.steadyLightness
                     : Math.round(lerp(255, f.steadyLightness, fdecay));
-                var fGlow = f.isSpine ? 2.2 : lerp(6, 0, fdecay);
+                var fGlow = f.isSpine ? 3.2 : lerp(6, 0, fdecay);
 
                 styleFor(ctx, fLight, f.isSpine, fGlow);
                 ctx.beginPath();
@@ -832,6 +911,20 @@
 
             ctx.shadowBlur = 0;
             ctx.shadowColor = 'transparent';
+
+            var caps = model.nodeCaps;
+            for (i = 0; i < caps.length; i++) {
+                var cp = caps[i];
+                var clocal = elapsedSec - cp.revealTime;
+                if (clocal < 0) continue;
+                var cdecay = clamp(clocal / 0.6, 0, 1);
+                var cL = cp.isSpine
+                    ? cp.steadyLightness
+                    : Math.round(lerp(255, cp.steadyLightness, cdecay));
+                ctx.fillStyle = 'rgb(' + cL + ',' + cL + ',' + cL + ')';
+                capPath(ctx, cp);
+                ctx.fill();
+            }
         }
 
         function loop(now) {
@@ -840,20 +933,28 @@
             rafId = requestAnimationFrame(loop);
         }
 
-        resize();
-
-        if (reduceMotion) {
-            draw(Infinity);
-        } else {
-            rafId = requestAnimationFrame(loop);
-        }
-
+        var ro = null;
         if (window.ResizeObserver) {
-            var ro = new ResizeObserver(function () { resize(); });
+            ro = new ResizeObserver(function () { resize(); });
             ro.observe(container);
         } else {
             window.addEventListener('resize', resize);
         }
+
+        // The deep field has to be on the plate before the first line is
+        // drawn, so hold the start until the image has resolved either way.
+        loadPlateImage(function (img) {
+            plateImage = img;
+            resize();
+            if (reduceMotion) {
+                draw(Infinity);
+                return;
+            }
+            // paint the complete plate straight away, so it is already there
+            // at t=0 even if rAF is throttled (background tab, etc.)
+            draw(0);
+            rafId = requestAnimationFrame(loop);
+        });
     }
 
     if (document.readyState === 'loading') {
