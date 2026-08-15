@@ -2,10 +2,9 @@
  * FRACTURE LATTICE — hero canvas animation.
  * Vanilla <canvas> 2D, no dependencies. Deterministic (seeded PRNG).
  *
- * A Voronoi web grows outward from a main fissure over a photo picked at
- * random from a small gallery, resampled onto a coarse block grid and
- * twinkling like a sensor readout. The web is built as a real graph — shared
- * nodes, deduped edges —
+ * A Voronoi web grows outward from a main fissure over the Hubble Ultra-Deep
+ * Field, resampled onto a coarse block grid and twinkling like a sensor
+ * readout. The web is built as a real graph — shared nodes, deduped edges —
  * and every junction is filleted and capped, so edges curve into each other
  * near the nodes like a spider web instead of meeting at hard corners.
  * The main line is not drawn on top of the web: it IS a chain of the web's
@@ -594,47 +593,32 @@
     }
 
     // ---------------------------------------------------------------
-    // Plate — a gallery photo, resampled onto a coarse block grid so it
-    // reads as a low-res sensor readout, plus per-block grain. The grain has
-    // a stable part (same in every variant) and a flickering part (re-rolled
-    // per variant); cycling the variants makes the field twinkle without the
-    // image swimming around.
+    // Plate — the Hubble Ultra-Deep Field, resampled onto a coarse block
+    // grid so it reads as a low-res sensor readout, plus per-block grain.
+    // The grain has a stable part (same in every variant) and a flickering
+    // part (re-rolled per variant); cycling the variants makes the field
+    // twinkle without the galaxies swimming around.
     // ---------------------------------------------------------------
     var PLATE_VARIANTS = 6;
     var PLATE_FPS = 11;
     var PLATE_BLOCKS_ACROSS = 145;
 
-    // A gallery of source images for the plate — one is picked at random on
-    // every load, so the backdrop is not always the same photograph.
-    var PLATE_GALLERY_FILES = [
-        'agAkX76PzJWDuNrJLtLw6R.jpg',
-        'Hubble_ultra_deep_field.jpg',
-        'images (1).jpg',
-        'images.jpg',
-        'pilares-da-criacao.webp'
-    ];
-
     // Resolved against this script's own URL, so the page's directory depth
     // does not matter.
-    var PLATE_GALLERY_DIR_URL = (function () {
-        var rel = '../images/Início/';
+    var PLATE_IMAGE_URL = (function () {
+        var rel = '../images/Vídeo/Hubble_ultra_deep_field.jpg';
         try {
             var s = document.currentScript && document.currentScript.src;
             if (s) return new URL(rel, s).href;
         } catch (e) { /* fall through */ }
-        return '../assets/images/Início/';
+        return '../assets/images/Vídeo/Hubble_ultra_deep_field.jpg';
     })();
-
-    function pickPlateImageURL() {
-        var name = PLATE_GALLERY_FILES[Math.floor(Math.random() * PLATE_GALLERY_FILES.length)];
-        return new URL(name, PLATE_GALLERY_DIR_URL).href;
-    }
 
     function loadPlateImage(done) {
         var img = new Image();
         img.onload = function () { done(img); };
         img.onerror = function () { done(null); };
-        img.src = pickPlateImageURL();
+        img.src = PLATE_IMAGE_URL;
     }
 
     // scale the (square) source to cover the block grid, centred
