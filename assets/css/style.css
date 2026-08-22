@@ -333,6 +333,13 @@ header {
     text-align: left;
 }
 
+.hero-stamp {
+    display: block;
+    width: 200px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
 .hero-title {
     font-family: 'Lora', Georgia, serif;
     font-size: 64px;
@@ -407,9 +414,11 @@ header {
         align-items: center;
         text-align: center;
     }
+    .hero-stamp {
+        margin: 50px auto 20px auto;
+    }
     .hero-title {
         font-size: 48px;
-        margin-top: 50px;
     }
     .hero-subtitle {
         font-size: 18px;
@@ -703,7 +712,7 @@ body.landing {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 2rem;
+    padding: 2rem 2rem 6rem 2rem;   /* padding inferior maior eleva a composição inteira */
 }
 
 body.landing::-webkit-scrollbar {
@@ -772,6 +781,7 @@ body.landing p {
     border: none;
     border-radius: 8px;
     padding: 0.75rem 2rem;
+    font-family: 'Lora', Georgia, serif;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
@@ -840,7 +850,7 @@ body.landing footer {
 
 @media (max-width: 600px) {
   body.landing {
-    padding: 2rem 1.25rem;
+    padding: 2rem 1.25rem 4rem 1.25rem;
     overflow-y: auto;
     overflow-x: hidden;
   }
@@ -918,7 +928,7 @@ body.landing footer {
 @supports (padding-top: env(safe-area-inset-top)) {
   body.landing {
     padding-top: calc(2rem + env(safe-area-inset-top));
-    padding-bottom: calc(2rem + env(safe-area-inset-bottom));
+    padding-bottom: calc(6rem + env(safe-area-inset-bottom));
   }
 }
 
@@ -1150,12 +1160,27 @@ body.light-theme .lectures-cta:hover {
     max-width: 680px;
 }
 
-strong {
-            font-family: 'Lora', Georgia, serif;
-            font-style: normal;
-            font-weight: 600;
-            transition: color 0.4s ease;
-        }
+strong,
+b {
+    font-family: inherit;
+    font-style: normal;
+    font-weight: 600;
+    transition: color 0.4s ease;
+}
+
+em,
+i {
+    font-family: inherit;
+    font-weight: inherit;
+    font-style: italic;
+    transition: color 0.4s ease;
+}
+
+u {
+    font-family: inherit;
+    font-weight: inherit;
+    transition: color 0.4s ease;
+}
 
 
 .about-pillars {
@@ -1245,6 +1270,108 @@ body.light-theme .about-section {
         font-size: 2rem;
     }
     .about-description {
+        font-size: 1rem;
+    }
+}
+
+/* =========================================================
+   SEÇÃO DE APRESENTAÇÃO PESSOAL (foto + texto, lados alternados)
+   ========================================================= */
+
+.intro-section {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 80px 0;
+    border-top: 1px solid #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.intro-section .about-label,
+.intro-section .about-title {
+    text-align: center;
+}
+
+.intro-row {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    align-items: center;
+    gap: 3rem;
+}
+
+.intro-row--reverse {
+    grid-template-columns: 3fr 1fr;
+}
+
+.intro-row--reverse .intro-row__image {
+    order: 2;
+}
+
+.intro-row--reverse .intro-row__text {
+    order: 1;
+}
+
+.intro-row__image img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
+    box-shadow: 0 20px 50px -30px rgba(0, 0, 0, 0.85);
+}
+
+.intro-row__title {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
+}
+
+.intro-row__text p {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #cbd5e1;
+}
+
+body.light-theme .intro-section {
+    border-top-color: #e5e7eb;
+}
+
+body.light-theme .intro-row__title {
+    color: #111111;
+}
+
+body.light-theme .intro-row__text p {
+    color: #4b5563;
+}
+
+@media (max-width: 768px) {
+    .intro-section {
+        gap: 2.5rem;
+        padding: 60px 0;
+    }
+    .intro-row,
+    .intro-row--reverse {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+    .intro-row--reverse .intro-row__image,
+    .intro-row--reverse .intro-row__text {
+        order: initial;
+    }
+    .intro-row__image img {
+        aspect-ratio: 16 / 10;
+        max-width: 320px;
+        margin: 0 auto;
+    }
+    .intro-row__title {
+        font-size: 1.3rem;
+    }
+    .intro-row__text p {
         font-size: 1rem;
     }
 }
