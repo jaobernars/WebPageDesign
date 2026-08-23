@@ -575,9 +575,29 @@ header {
     min-height: 240px;
 }
 
+/* Agrupa o logo e o título por cima, como um bloco só, para o espaço
+   entre eles ("copyright + redes") continuar sendo o único outro item
+   flex de .footer-brand — preserva o layout responsivo existente. */
+.footer-brand__top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
 .footer-brand__logo-link {
     display: inline-block;
     width: fit-content;
+}
+
+.footer-brand__title {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    line-height: 1.25;
+    color: #ffffff;
+    max-width: 220px;
 }
 
 .footer-brand__logo {
@@ -706,6 +726,15 @@ header {
 @media (max-width: 640px) {
     .footer-container {
         grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-brand__top {
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-brand__title {
+        max-width: none;
     }
 
     .footer-brand {
@@ -1800,6 +1829,10 @@ body.light-theme .footer-social a:hover {
 /* No tema claro o fundo é branco: a arte azul-marinho do selo aparece naturalmente */
 body.light-theme .footer-brand__logo {
     filter: none;
+}
+
+body.light-theme .footer-brand__title {
+    color: #111111;
 }
 
 /* Divisor da marca no layout tablet, tema claro */
