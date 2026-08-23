@@ -276,7 +276,7 @@ header {
     .main-content {
         padding: 20px;
     }
-    
+
     .featured-card .card-image {
         aspect-ratio: 16 / 9;
     }
@@ -520,9 +520,32 @@ header {
    FOOTER (Rodapé Estilo Minimalista)
    ========================================================= */
 
+/* Footer encostando nas bordas.
+   O .main-content tem padding, o que deixava uma moldura preta em volta do
+   rodapé (laterais e parte de baixo). Nas páginas que envolvem o conteúdo
+   num .page-content, esse respiro passa para o wrapper: o footer fica sem
+   padding em volta e ocupa a largura inteira até o fim da página. */
+.main-content:has(> .page-content) {
+    padding: 0;
+    align-items: stretch;
+}
+
+.page-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+}
+
+@media (max-width: 768px) {
+    .page-content {
+        padding: 20px;
+    }
+}
+
 .site-footer {
     width: 100%;
-    background-color: #000000;
+    background-color: #161616;
     padding: 80px 40px 48px 40px;
     border-top: 1px solid #1a1a1a;
     display: flex;
@@ -530,12 +553,15 @@ header {
     margin-top: 80px;
 }
 
-/* Grid principal: coluna da marca (larga) + 4 colunas de links, no estilo Anthropic */
+/* Grid principal: coluna da marca (larga) + colunas de links, no estilo Anthropic.
+   O auto-fit colapsa as trilhas vazias, então as colunas de links se distribuem
+   sozinhas pela largura — dá para comentar ou acrescentar uma coluna no HTML
+   sem sobrar buraco nem precisar mexer aqui. */
 .footer-container {
     width: 100%;
     max-width: 1400px;
     display: grid;
-    grid-template-columns: minmax(200px, 1.3fr) repeat(4, minmax(120px, 1fr));
+    grid-template-columns: minmax(200px, 1.3fr) repeat(auto-fit, minmax(120px, 1fr));
     gap: 48px 32px;
     align-items: start;
 }
@@ -654,7 +680,7 @@ header {
     }
 
     .footer-container {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
         gap: 40px 24px;
     }
 
