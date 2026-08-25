@@ -105,7 +105,7 @@
 
                 <p class="lead">Nesta seção, você aprenderá a instalar o Python e configurar um ambiente de desenvolvimento adequado para programação científica e geral.</p>
 
-                <h2 id="introducao">Introdução</h2>
+                <h1 id="introducao">Introdução</h1>
                 <p>
                     Python é uma linguagem de programação de <u>alto nível</u>, <u>interpretada</u> e de propósito geral, criada por Guido van Rossum e lançada em 1991. 
                     Sua filosofia de design enfatiza a <u>legibilidade do código</u>, utilizando <u>indentação significativa</u>. 
@@ -113,15 +113,22 @@
                 </p>
                 
                 <p>
-                    A instalação e a configuração do ambiente Python fundamentam-se em três pilares arquitetônicos: a alocação do interpretador no sistema operacional, o isolamento de dependências via ambientes virtuais e a parametrização das interfaces de desenvolvimento (Editores de Texto e IDEs<sup id="fnref:1"><a href="#fn:1" class="footnote-ref">1</a></sup>).
+                    A instalação e a configuração do ambiente Python fundamentam-se em três pilares arquitetônicos: <i style="color:whitesmoke">a alocação do interpretador no sistema operacional</i>, o <i style="color:whitesmoke">isolamento de dependências via ambientes virtuais</i> e a <i style="color:whitesmoke">parametrização das interfaces de desenvolvimento</i> (<i>Editores de Texto e IDEs</i><sup id="fnref:1"><a href="#fn:1" class="footnote-ref">1</a></sup>).
                 </p>
 
-                
-                    <ol>
-                        <li><strong>Instalação do Interpretador:</strong> A base da execução em Python requer a presença do interpretador no sistema. Em sistemas baseados em Unix (Linux e Mac OS X), o Python tipicamente integra o sistema operacional de forma nativa, embora frequentemente na sua versão legada (Python 2). O desenvolvimento moderno exige a instalação explícita do Python 3, dado que não há retrocompatibilidade com a versão anterior. No Windows, a instalação é manual e requer a vinculação do executável do Python à variável de ambiente `PATH` do sistema, uma etapa crítica que permite a invocação direta do comando `python` via interface de linha de comando (terminal).</li>
+                <h1 id="instalacao-interpretador">Instalação do Interpretador</h1>
 
-                        <h2 id="instalacao-linux">Instalação no Linux</h2>
-                            <p>Na maioria das distribuições Linux, o Python já vem pré-instalado. Para instalar ou atualizar:</p>
+                    <p>
+                        A base da execução em Python requer a presença do interpretador no sistema. Em sistemas baseados em Unix (Linux e Mac OS X), o Python tipicamente integra o sistema operacional de forma nativa, embora frequentemente na sua versão legada (Python 2). O desenvolvimento moderno exige a instalação explícita do Python 3, dado que não há retrocompatibilidade com a versão anterior. No Windows, a instalação é manual e requer a vinculação do executável do Python à variável de ambiente <code style="color:aliceblue">`PATH`</code>  do sistema, uma etapa crítica que permite a invocação direta do comando <code style="color:aliceblue">python</code> via interface de linha de comando (terminal).
+                    </p>
+
+
+
+<h2 id="instalacao-linux">Instalação no Linux</h2>
+    <p>
+        Na maioria das distribuições Linux, o Python já vem pré-instalado. Para instalar ou atualizar:
+    </p>
+
 <pre><code style="color:aliceblue"># Ubuntu/Debian
     sudo apt update
     sudo apt install python3 python3-pip
@@ -134,8 +141,11 @@
     pip3 --version
 </code></pre>
 
-                        <h2 id="instalacao-macos">Instalação no macOS</h2>
-                            <p>No macOS, recomenda-se usar o <a href="https://brew.sh/" target="_blank"><u>Homebrew</u></a>:</p>
+<h2 id="instalacao-macos">Instalação no macOS</h2>
+    <p>
+        No macOS, recomenda-se usar o <a href="https://brew.sh/" target="_blank"><u>Homebrew</u></a>:
+    </p>
+    
 <pre><code style="color:aliceblue"># Instalar Homebrew (caso não tenha)
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
@@ -146,33 +156,38 @@
     python3 --version
 </code></pre>
 
-                        <h2 id="instalacao-windows">Instalação no Windows</h2>
-                            <p>A forma mais simples de instalar o Python no Windows é através do instalador oficial:</p>
-                                <ol>
-                                    <li>Acesse <a href="https://www.python.org/downloads/" target="_blank"><u>python.org/downloads</u></a> e baixe a versão mais recente.</li>
-                                    <li>Execute o instalador <code style="color:aliceblue">.exe</code> baixado.</li>
-                                    <li><strong>Importante:</strong> Marque a opção <em>"Add Python to PATH"</em> antes de clicar em "Install Now".</li>
-                                    <li>Após a instalação, abra o Prompt de Comando e verifique a instalação:</li>
-                                </ol>
-                <pre><code style="color:aliceblue">       python --version
-        pip --version
+<h2 id="instalacao-windows">Instalação no Windows</h2>
+<p>A forma mais simples de instalar o Python no Windows é através do instalador oficial:</p>
+    <ol>
+        <li>Acesse <a href="https://www.python.org/downloads/" target="_blank"><u>python.org/downloads</u></a> e baixe a versão mais recente.</li>
+        <li>Execute o instalador <code style="color:aliceblue">.exe</code> baixado.</li>
+        <li><strong>Importante:</strong> Marque a opção <em>"Add Python to PATH"</em> antes de clicar em "Install Now".</li>
+        <li>Após a instalação, abra o Prompt de Comando e verifique a instalação:</li>
+
+<pre><code style="color:aliceblue"> python --version
+    pip --version
     
     </code></pre>
-
+    </ol>
                     
-        
+                    
 
+                    <h1 id="ambiente-virtual">Ambiente Virtual</h1>
 
-                        <li> <strong>Ambientes Virtuais e Gerenciamento de Pacotes:</strong> O uso de ambientes virtuais é uma prática para o isolamento de bibliotecas. Um ambiente virtual é uma sandbox no sistema de arquivos que confina as dependências de um projeto específico, prevenindo conflitos entre diferentes versões de pacotes e garantindo a replicabilidade da implantação (deployment) em servidores de produção.
-                        
-                        <br>
+                    <p>
+                        Ambientes virtuais são espaços isolados onde você pode instalar pacotes Python sem afetar a instalação global do sistema. Isso é especialmente útil quando diferentes projetos requerem versões diferentes de um mesmo pacote.
+                    </p>
 
-                        A instanciação desse ambiente dá-se por meio do módulo nativo `venv` (no Python 3) ou da ferramenta `virtualenv`. A mecânica de uso exige a sua "ativação" (via script `activate`), operação que modifica dinamicamente o contexto do _shell_ do sistema operacional para que os executáveis do Python e do gerenciador de pacotes `pip` passem a apontar exclusivamente para o diretório isolado. É através do `pip` (ou `conda`) que se faz o download e a instalação de código-fonte e binários diretamente do Python Package Index (PyPI) ou repositórios equivalentes.</li>
+                    <p>
+                        Um ambiente virtual é uma sandbox no sistema de arquivos que confina as dependências de um projeto específico, prevenindo conflitos entre diferentes versões de pacotes e garantindo a replicabilidade da implantação (deployment) em servidores de produção.
+                    </p>
 
-                        <h2 id="ambientes-virtuais">Ambientes Virtuais</h2>
+                    <p>
+                        A instanciação desse ambiente dá-se por meio do módulo nativo <code style="color:aliceblue">`venv`</code> (no Python 3) ou da ferramenta <code style="color:aliceblue">`virtualvenv`</code>. A mecânica de uso exige a sua "ativação" (via script <code style="color:aliceblue">`activate`</code>), operação que modifica dinamicamente o contexto do _shell_ do sistema operacional para que os executáveis do Python e do gerenciador de pacotes <code style="color:aliceblue">`pip`</code> passem a apontar exclusivamente para o diretório isolado. É através do <code style="color:aliceblue">`pip`</code> (ou <code style="color:aliceblue">`conda`</code>) que se faz o download e a instalação de código-fonte e binários diretamente do Python Package Index (PyPI) ou repositórios equivalentes.
+                    </p>                   
+                    
+                    <h2 id="ambientes-virtuais">Ambientes Virtuais</h2>
                 <p>
-                    Ambientes virtuais são espaços isolados onde você pode instalar pacotes Python sem afetar a instalação global do sistema.
-                    Isso é especialmente útil quando diferentes projetos requerem versões diferentes de um mesmo pacote.
                 </p>
                 <p>Para criar e ativar um ambiente virtual usando o módulo <code style="color:aliceblue">venv</code> nativo do Python:</p>
                 <pre><code style="color:aliceblue"># Criar ambiente virtual
@@ -286,14 +301,23 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#introducao">Introdução</a></li>
-                    <li><a href="#instalacao-windows">Instalação no Windows</a></li>
-                    <li><a href="#instalacao-linux">Instalação no Linux</a></li>
-                    <li><a href="#instalacao-macos">Instalação no macOS</a></li>
-                    <li><a href="#ambientes-virtuais">Ambientes Virtuais</a></li>
-                    <li><a href="#anaconda">Anaconda e Conda</a></li>
+                    <li>
+                        <a href="#instalacao-interpretador">Instalação do Interpretador</a>
+                        <ul>
+                            <li><a href="#instalacao-linux">Instalação no Linux</a></li>
+                            <li><a href="#instalacao-macos">Instalação no macOS</a></li>
+                            <li><a href="#instalacao-windows">Instalação no Windows</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#ambiente-virtual">Ambiente Virtual</a>
+                        <ul>
+                            <li><a href="#ambientes-virtuais">Ambientes Virtuais</a></li>
+                            <li><a href="#anaconda">Anaconda e Conda</a></li>
+                        </ul>
+                    </li>
                     <li><a href="#editores">Editores e IDEs</a></li>
                     <li><a href="#primeiro-programa">Primeiro Programa</a></li>
-                    <li><a href="#referencias">Referências</a></li>
                 </ul>
             </div>
         </aside>
