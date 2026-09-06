@@ -115,11 +115,11 @@
                         alt="Logo do Python">
                 </div>
 
-                <p class="lead" style="color: green;">Nesta seção, você aprenderá a instalar o Python e configurar um
-                    ambiente de desenvolvimento adequado para programação científica e geral.</p>
+                <p class="lead">Nesta seção, você aprenderá a <u>instalar o Python</u> e configurar um
+                    <u>ambiente de desenvolvimento</u> adequado para programação científica e geral.</p>
 
                 <h1 id="introducao">Introdução</h1>
-                <p style="color: green;">
+                <p>
                     Python é uma linguagem de programação de <u>alto nível</u>, <u>interpretada</u> e de propósito
                     geral, criada por Guido van Rossum e lançada em 1991.
                     Sua filosofia de design enfatiza a <u>legibilidade do código</u>, utilizando <u>indentação
@@ -128,7 +128,7 @@
                     de desenvolvimento adequado.
                 </p>
 
-                <p style="color: green;">
+                <p>
                     A instalação e a configuração do ambiente Python fundamentam-se em três pilares arquitetônicos: <i
                         style="color:whitesmoke">a alocação do interpretador no sistema operacional</i>, o <i
                         style="color:whitesmoke">isolamento de dependências via ambientes virtuais</i> e a <i
@@ -138,13 +138,13 @@
 
                 <h1 id="instalacao-interpretador">Instalação do Interpretador</h1>
 
-                <p style="color: green;">
+                <p>
                     A base da execução em Python requer a presença do <u>interpretador no sistema</u>. Em sistemas
-                    baseados em Unix (Linux e Mac OS X), o Python tipicamente integra o sistema operacional de forma
+                    baseados em <u>Unix</u> (Linux e Mac OS X), o Python tipicamente integra o sistema operacional de forma
                     nativa, embora frequentemente na sua versão legada (Python 2). O desenvolvimento moderno exige a
                     instalação explícita do Python 3, dado que não há retrocompatibilidade com a versão anterior. No
                     Windows, a instalação é manual e requer a vinculação do executável do Python à variável de ambiente
-                    <code style="color:aliceblue">`PATH`</code> do sistema, uma etapa crítica que permite a invocação
+                    <code style="color:aliceblue">PATH</code> do sistema, uma etapa que permite a invocação
                     direta do comando <code style="color:aliceblue">python</code> via interface de linha de comando
                     (terminal).
                 </p>
@@ -152,7 +152,7 @@
 
 
                 <h2 id="instalacao-linux">Instalação no Linux</h2>
-                <p style="color: green;">
+                <p>
                     Na maioria das distribuições Linux, o Python já vem pré-instalado. Para instalar ou atualizar:
                 </p>
 
@@ -168,8 +168,8 @@
     pip3 --version
 </code></pre>
 
-                <h2 id="instalacao-macos">Instalação no macOS</h2>
-                <p style="color: green;">
+                <h2>Instalação no macOS</h2>
+                <p>
                     No macOS, recomenda-se usar o <a href="https://brew.sh/" target="_blank"><u>Homebrew</u></a>:
                 </p>
 
@@ -184,16 +184,16 @@
 </code></pre>
 
                 <h2 id="instalacao-windows">Instalação no Windows</h2>
-                <p style="color: green;">A forma mais simples de instalar o Python no Windows é através do instalador
+                <p>A forma mais simples de instalar o Python no Windows é através do instalador
                     oficial:</p>
                 <ol>
-                    <li style="color: green;">Acesse <a href="https://www.python.org/downloads/"
+                    <li>Acesse <a href="https://www.python.org/downloads/"
                             target="_blank"><u>python.org/downloads</u></a> e baixe a versão mais recente.</li>
-                    <li style="color: green;">Execute o instalador <code style="color:aliceblue">.exe</code> baixado.
+                    <li>Execute o instalador <code style="color:aliceblue">.exe</code> baixado.
                     </li>
-                    <li style="color: green;"><strong>Importante:</strong> Marque a opção <em>"Add Python to PATH"</em>
+                    <li><strong>Importante:</strong> Marque a opção <em>"Add Python to PATH"</em>
                         antes de clicar em "Install Now".</li>
-                    <li style="color: green;">Após a instalação, abra o Prompt de Comando e verifique a instalação:</li>
+                    <li>Após a instalação, abra o Prompt de Comando e verifique a instalação:</li>
 
                     <pre><code style="color:aliceblue"> python --version
     pip --version
@@ -205,34 +205,34 @@
 
                 <h1 id="ambiente-virtual">Ambiente Virtual</h1>
 
-                <p style="color: green;">
-                    Ambientes virtuais são espaços isolados onde você pode instalar pacotes Python sem afetar a
+                <p>
+                    Ambientes virtuais são espaços isolados onde você pode instalar <u>pacotes Python</u> sem afetar a
                     instalação global do sistema. Isso é especialmente útil quando diferentes projetos requerem versões
                     diferentes de um mesmo pacote.
                 </p>
 
-                <p style="color: green;">
-                    Um ambiente virtual é uma <i>sandbox</i> no sistema de arquivos que confina as dependências de um
+                <p>
+                    Um ambiente virtual é uma <i><u>sandbox</u></i> no sistema de arquivos que confina as dependências de um
                     projeto específico, prevenindo conflitos entre diferentes versões de pacotes e garantindo a
                     replicabilidade da implantação (deployment) em servidores de produção.
                 </p>
 
-                <p style="color: green">
+                <p>
                     A instanciação desse ambiente dá-se por meio do módulo nativo <code
-                        style="color:aliceblue">`venv`</code> (no Python 3) ou da ferramenta <code
-                        style="color:aliceblue">`virtualvenv`</code>. A mecânica de uso exige a sua "ativação" (via
-                    script <code style="color:aliceblue">`activate`</code>), operação que modifica dinamicamente o
+                        style="color:aliceblue">venv</code> (no Python 3) ou da ferramenta <code
+                        style="color:aliceblue">virtualvenv</code>. A mecânica de uso exige a sua "ativação" (via
+                    script <code style="color:aliceblue">activate</code>), operação que modifica dinamicamente o
                     contexto do <i>_shell_</i> do sistema operacional para que os executáveis do Python e do gerenciador
-                    de pacotes <code style="color:aliceblue">`pip`</code> passem a apontar exclusivamente para o
-                    diretório isolado. É através do <code style="color:aliceblue">`pip`</code> (ou <code
-                        style="color:aliceblue">`conda`</code>) que se faz o download e a instalação de código-fonte e
-                    binários diretamente do Python Package Index (PyPI) ou repositórios equivalentes.
+                    de pacotes <code style="color:aliceblue">pip</code> passem a apontar exclusivamente para o
+                    diretório isolado. É através do <code style="color:aliceblue">pip</code> (ou <code
+                        style="color:aliceblue">conda</code>) que se faz o download e a instalação de código-fonte e
+                    binários diretamente do <u>Python Package Index</u> (PyPI) ou repositórios equivalentes.
                 </p>
 
                 <h2 id="ambientes-virtuais">Ambientes Virtuais</h2>
                 <p>
                 </p>
-                <p style="color: green;">Para criar e ativar um ambiente virtual usando o módulo <code
+                <p>Para criar e ativar um ambiente virtual usando o módulo <code
                         style="color:aliceblue">venv</code> nativo do Python:</p>
                 <pre><code style="color:aliceblue"># Criar ambiente virtual
     python -m venv meu_ambiente
@@ -251,7 +251,7 @@
 
                 <h2 id="anaconda">Anaconda e Conda: Ecossistema Científico</h2>
 
-                <p style="color: green;">
+                <p>
                     O <strong><a href="https://www.anaconda.com/" target="_blank">Anaconda</a></strong> é uma
                     distribuição Python completa e otimizada para Computação Científica e Ciência de Dados. Ao
                     instalá-la, você baixa de uma só vez o interpretador Python, programas utilitários (Jupyter Notebook
@@ -259,7 +259,7 @@
                     Matplotlib).
                 </p>
 
-                <p style="color: green;">
+                <p>
                     Seu grande atrativo é o <strong><code style="color: aliceblue;">conda</code></strong>, o gerenciador
                     de pacotes nativo do Anaconda. Diferente do instalador <code style="color: aliceblue;">pip</code>
                     convencional, o conda garante a instalação fácil de dependências raízes (em C e C++), evitando os
@@ -267,7 +267,7 @@
                     ou de IA no Python puro.
                 </p>
 
-                <p style="color: green;">
+                <p>
                     Para usuários que preferem economizar espaço no computador e instalar apenas o necessário, existe a
                     versão <strong>Miniconda</strong>. Ele fornece apenas o Python limpo acompanhado do comando <code
                         style="color: aliceblue;">conda</code>, garantindo controle total sobre o que será de fato
@@ -275,18 +275,20 @@
                 </p>
 
                 <h3 id="instalar-conda">Como Instalar</h3>
-                <ul style="color: green; margin-bottom: 25px;">
+                <ul style="margin-bottom: 25px;">
                     <li style="margin-bottom: 10px;"><strong>Anaconda:</strong> Acesse a <a
-                            href="https://www.anaconda.com/download" target="_blank">página oficial de downloads</a>,
+                            href="https://www.anaconda.com/download" target="_blank"><u>página oficial de
+                                downloads</u></a>,
                         baixe o instalador referente ao seu sistema (Windows, macOS ou Linux) e execute o arquivo de
                         instalação clicando em Next -> Install.</li>
                     <li><strong>Miniconda:</strong> Acesse a <a href="https://docs.anaconda.com/free/miniconda/"
-                            target="_blank">documentação do Miniconda</a>, baixe o executável para a sua arquitetura e
+                            target="_blank"><u>documentação do Miniconda</u></a>, baixe o executável para a sua
+                        arquitetura e
                         siga as instruções na tela. <i>(Dica: no Windows, marque "Add to PATH" durante a instalação para
                             acessar os comandos direto do terminal de forma global).</i></li>
                 </ul>
 
-                <p style="color: yellow;">Após instalar o Anaconda (ou Miniconda), você passa a gerenciar seus ambientes
+                <p>Após instalar o Anaconda (ou Miniconda), você passa a gerenciar seus ambientes
                     interativos pelo terminal utilizando os comandos:</p>
                 <pre><code style="color:aliceblue"># Criar um novo ambiente conda
     conda create --name ciencia python=3.11
@@ -305,7 +307,7 @@
 
                 <h1 id="IDEs">Interfaces de Desenvolvimento</h1>
 
-                <p style="color: green;">
+                <p>
                     Para desenvolvedores Python, o ambiente onde o código é escrito e testado é tão importante quanto o
                     próprio interpretador. A escrita de código-fonte (seja em texto puro estruturado ou em um paradigma
                     de experimentação em blocos) ocorre primariamente através de três categorias de interfaces, cuja
@@ -315,13 +317,13 @@
                 <div class="interface-category" style="margin-bottom: 40px;">
                     <h3 id="editores-avancados" style="color: var(--accent-color, #1e90ff); margin-bottom: 10px;">1.
                         Editores de Texto Avançados</h3>
-                    <p style="color: green;">
+                    <p>
                         Originalmente conceituados como ferramentas modulares e minimalistas focadas estritamente na
                         digitação de scripts textuais curtos. Hoje, editores modernos como <strong>VS Code</strong>,
                         <strong>Sublime Text</strong> e <strong>Neovim</strong> transcenderam absolutamente a edição
                         simples.
                     </p>
-                    <p style="color: green;">
+                    <p>
                         A grande sacada dos editores avançados é sua base enxuta aliada a um ecossistema extremamente
                         formidável e extensível de <i>plugins</i>. Ao invés da ferramenta ditar como você deve
                         trabalhar, você é quem constrói o ambiente instalando apenas o que precisa, sob demanda. No caso
@@ -330,7 +332,7 @@
                         semântica e sintaxe em tempo real, auto-completando funções, formatando regras da PEP 8 de forma
                         autônoma e executando as rotinas com um único atalho de teclado.
                     </p>
-                    <p style="color: green;">
+                    <p>
                         <strong>Vantagens:</strong> O grande atrativo da categoria é o balanço formidável entre
                         desempenho, ultra personalização e minimalismo, consumindo ordens de grandeza menos memória
                         (RAM) em detrimento às pesadas IDEs de mercado.
@@ -340,12 +342,12 @@
                 <div class="interface-category" style="margin-bottom: 40px;">
                     <h3 id="ides-ambientes" style="color: var(--accent-color, #1e90ff); margin-bottom: 10px;">2. IDEs
                         (<i>Integrated Development Environments</i>)</h3>
-                    <p style="color: green;">
+                    <p>
                         Os Ambientes de Desenvolvimento Integrado representam montanhas arquitetônicas gigantes e
-                        softwares robustos formados nativamente para engenharia colossal — como é o clássico caso do
-                        colossal <strong>PyCharm</strong>, Spyder e o Eclipse (acompanhado da extensão PyDev).
+                        softwares robustos formados nativamente para engenharia colossal, como é o clássico caso do
+                        <strong>PyCharm</strong>, Spyder e o Eclipse (acompanhado da extensão PyDev).
                     </p>
-                    <p style="color: green;">
+                    <p>
                         Enquanto no editor precisamos plugar módulos de recursos ao longo da jornada, uma verdadeira IDE
                         surge já configurada <i>"out-of-the-box"</i> para atacar o sistema nas nuances mais assustadoras
                         da programação. Suas engrenagens são acopladas nas vísceras do seu Sistema Operacional: possuem
@@ -354,7 +356,7 @@
                         visuais para monitorar o banco de dados SQL estruturado contínuo e controladores de versão
                         complexos (Git interativo).
                     </p>
-                    <p style="color: green;">
+                    <p>
                         <strong>Vantagens:</strong> Abstraem as integrações, conectam de forma hermética todo o
                         ecossistema tecnológico, proporcionando confiança e poder extremo a refatoração diária do
                         profissional de programação empresarial, cobrando em contrapartida um preço enorme do fluxo
@@ -365,14 +367,14 @@
                 <div class="interface-category" style="margin-bottom: 40px;">
                     <h3 id="ambientes-interativos" style="color: var(--accent-color, #1e90ff); margin-bottom: 10px;">3.
                         Ambientes Interativos e Notebooks</h3>
-                    <p style="color: green;">
+                    <p>
                         Essa classe constitui o padrão universal na Ciência Exploratória Contemporânea. São ecossistemas
                         de prototipagem baseados no paradigma REPL (<i>Read-Eval-Print Loop</i> — Ler-Avaliar-Imprimir
                         Repetir), cuja face primordial para o mundo é imersa através do browser usando um laboratório
                         visual vivo, o famoso <strong>Jupyter Notebook / JupyterLab</strong> (ou o <strong>Google
                             Colab</strong> na premissa operando inteiramente pela nuvem).
                     </p>
-                    <p style="color: green;">
+                    <p>
                         Nestes ambientes, as linhas de processamento quebram a matriz temporal convencional de
                         "passo-a-passo top-down inteiro" que os programas Python costumam ditar, subdividindo-se
                         livremente em <i>células autônomas</i> alocadas no servidor. Esse método processual flexível
@@ -380,9 +382,9 @@
                         analítico no manejo e tratamento bruto das <i>Big Datas</i> e criação progressiva experimental
                         de redes cibernéticas de <i>Deep Learning</i> nas engrenagens de I.A.
                     </p>
-                    <p style="color: green;">
+                    <p>
                         <strong>Vantagens:</strong> Empoderam assombrosamente o utilizador fornecendo uma mescla
-                        incrivelmente valiosa entre instrução algorítmica lógica, formulação matemática refinada via $
+                        incrivelmente valiosa entre instrução algorítmica lógica, formulação matemática via $
                         \LaTeX $ e elaboração textual via formato Markdown fluente. Culminando numa verdadeira peça
                         transparente renderizando gráficos na tela enquanto processamentos pesados terminam
                         dinamicamente seus <i>outputs</i> logo abaixo.
@@ -411,14 +413,52 @@
                         e análise de código. Versão Community é gratuita.</p>
                 </div>
 
-                <h2 id="primeiro-programa">Primeiro Programa</h2>
-                <p>Com o Python instalado, vamos escrever o clássico "Hello, World!":</p>
-                <pre><code>print("Hello, World!")</code></pre>
-                <p>Para executar, salve o arquivo como <code>hello.py</code> e no terminal execute:</p>
-                <pre><code>python hello.py</code></pre>
-                <p>Você também pode abrir o interpretador interativo diretamente no terminal com:</p>
-                <pre><code>python</code></pre>
-                <p>E digitar o comando diretamente. Para sair, use <code>exit()</code> ou <kbd>Ctrl+D</kbd>.</p>
+                <hr style="margin: 40px 0; border: 0; border-top: 1px solid var(--border-color, #e0e0e0);">
+
+                <h2 id="primeiro-programa">O Primeiro Programa</h2>
+
+                <p>
+                    Com o ambiente preparado, chegou a hora do batismo na linguagem. Na tradição da programação,
+                    inaugurada nos anos 70, rodar um código que emita a mensagem <strong>"Hello, World!"</strong> (Olá,
+                    Mundo!) provou-se o teste supremo universal. Se a frase aparecer na tela, significa que o
+                    interpretador e a máquina estão vinculados corretamente.
+                </p>
+
+                <p>Para garantir um começo direto e profissional, faremos isso utilizando o
+                    <strong>Visual Studio Code (VS Code)</strong>, que é hoje o editor mais flexível e recomendável do
+                    mercado. Siga os passos:</p>
+
+                <ol>
+                    <li style="margin-bottom: 20px;">
+                        <strong>Passo 1 - Prepare o VS Code:</strong> Abra seu editor VS Code. Vá na aba de extensões
+                        (ícone de blocos na lateral ou <kbd style="color: aliceblue;">Ctrl+Shift+X</kbd>) e instale a extensão oficial chamada
+                        "Python" elaborada pela Microsoft.
+                    </li>
+                    <li style="margin-bottom: 20px;">
+                        <strong>Passo 2: Crie o arquivo.</strong> Abra no editor uma pasta vazia reservada para seus
+                        testes na sua máquina. Nela, crie um novo arquivo garantindo a extensão ".py" no final (por
+                        exemplo, <code style="color: aliceblue;">hello.py</code>).
+                    </li>
+                    <li style="margin-bottom: 20px;">
+                        <strong>Passo 3: Escreva o código.</strong> Abra o arquivo recém-criado e digite a clássica
+                        instrução nativa de impressão textual:
+                        <pre style="margin-top: 10px;"><code class="language-python" style="color: aliceblue;">print("Hello, World!")</code></pre>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        <strong>Passo 4: Execute via Terminal Integrado.</strong> O VS Code possui um terminal embutido
+                        fenomenal. Abra-o no menu superior navegando para <code style="color:aliceblue">Terminal > New Terminal</code> e basta
+                        chamar o interpretador invocando o seu arquivo criado:
+                        <pre style="margin-top: 10px;"><code class="language-bash" style="color:aliceblue">python hello.py</code></pre>
+                    </li>
+                </ol>
+
+                <p style="margin-top: 20px;">
+                    Pronto! Você verá que o texto <code style="color: aliceblue;">Hello, World!</code> será solto no seu console validando com
+                    precisão que sua infraestrutura básica foi bem sucedida. <br><br>
+                    <i><strong>Nota</strong>: se desejar testar códigos rápidos sem passar pela rotina de salvar um arquivo físico,
+                        aperte apenas o comando solitário <code style="color: aliceblue;">python</code> no seu terminal para abrir o interpretador
+                        ao vivo. Ao final, ative <code style="color: aliceblue;">exit()</code> para desativá-lo e livrar o console.</i>
+                </p>
 
                 <!-- <h2 id="referencias">Referências</h2>
                 <ol>
