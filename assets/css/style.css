@@ -358,6 +358,35 @@ header {
     max-width: 600px;
 }
 
+/* Meta do post (categoria + data) no mesmo estilo de tag usado no acervo */
+.hero-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    margin-bottom: 40px;
+}
+
+.hero-meta__category {
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #93c5fd;
+    background: rgba(59, 130, 246, 0.12);
+    padding: 0.22rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    white-space: nowrap;
+}
+
+.hero-meta__date {
+    font-family: 'Lora', Georgia, serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: #a1a1aa;
+}
+
 .hero-image {
     width: 100%;
     height: 100%;
@@ -422,6 +451,13 @@ header {
     }
     .hero-subtitle {
         font-size: 18px;
+    }
+    .hero-meta {
+        justify-content: center;
+        gap: 0.6rem;
+    }
+    .hero-meta__date {
+        font-size: 0.85rem;
     }
     .hero-image {
         min-height: 300px;
@@ -1013,6 +1049,10 @@ body.landing footer {
 
 .hero-section--post .hero-subtitle {
     text-align: center;
+}
+
+.hero-section--post .hero-meta {
+    justify-content: center;
 }
 
 /* =========================================================
@@ -1656,6 +1696,10 @@ body.light-theme .hero-subtitle {
     color: #4b5563;
 }
 
+body.light-theme .hero-meta__date {
+    color: #6b7280;
+}
+
 body.light-theme .hero-btn {
     background-color: #111111;
     color: #ffffff;
@@ -1714,6 +1758,15 @@ body.light-theme .post-content em strong {
 
 body.light-theme .post-content u {
     text-decoration-color: #363737;
+}
+
+body.light-theme .post-content p.post-note {
+    color: #6b7280;
+    border-left-color: #d1d5db;
+}
+
+body.light-theme .post-content p.post-note strong {
+    color: #363737;
 }
 
 /* Posts page editorial */
@@ -2093,8 +2146,9 @@ body.light-theme .logo-img {
         /* ── Lista de posts + newsletter ── */
         .posts-bottom {
             display: grid;
-            grid-template-columns: 1fr 260px;
+            grid-template-columns: 1fr 320px;
             gap: 3rem;
+            align-items: stretch;
         }
 
         .posts-list { display: flex; flex-direction: column; }
@@ -2112,7 +2166,6 @@ body.light-theme .logo-img {
         }
 
         .post-list-item:hover { opacity: 0.75; }
-        .post-list-item:first-child { border-top: 1px solid #1a1a1a; }
 
         .post-list-item__body { flex: 1; }
 
@@ -2156,35 +2209,36 @@ body.light-theme .logo-img {
         .newsletter-box {
             display: flex;
             flex-direction: column;
-            gap: 0.75rem;
-            padding: 1.5rem;
+            justify-content: center;
+            gap: 1rem;
+            padding: 2.5rem 2.25rem;
             border: 1px solid #1f1f1f;
             border-radius: 10px;
             background: #0d0d0d;
-            height: fit-content;
         }
 
         .newsletter-box__title {
-            font-size: 0.95rem;
+            font-size: 1.15rem;
             font-weight: 700;
             color: #e2e8f0;
         }
 
         .newsletter-box p {
-            font-size: 0.8rem;
+            font-size: 0.875rem;
             color: #6b7280;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         .newsletter-box input[type="email"] {
             width: 100%;
-            padding: 0.6rem 0.85rem;
+            padding: 0.8rem 1rem;
             background: #161616;
             border: 1px solid #2a2a2a;
             border-radius: 8px;
             color: #e2e8f0;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             outline: none;
+            margin-top: 0.35rem;
             transition: border-color 0.2s, background-color 0.4s ease, color 0.4s ease;
         }
 
@@ -2193,12 +2247,12 @@ body.light-theme .logo-img {
 
         .newsletter-box button {
             width: 100%;
-            padding: 0.6rem;
+            padding: 0.8rem;
             background: #e2e8f0;
             color: #000;
             border: none;
             border-radius: 8px;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 600;
             cursor: pointer;
             transition: background 0.2s, background-color 0.4s ease, color 0.4s ease;
