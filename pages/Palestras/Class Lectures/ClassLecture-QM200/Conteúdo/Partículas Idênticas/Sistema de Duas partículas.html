@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Duas partículas | Mecânica Quântica II | The Journal of a Physicist</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../../../assets/images/Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../../../assets/images/Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../../../assets/images/Favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="../../../../../../assets/images/Favicon/favicon.ico">
+    <link rel="stylesheet" href="../../../../../../assets/css/class-lecture.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                        <line x1="9" x2="9" y1="3" y2="21"></line>
+                    </svg>
+                </button>
+                <button id="theme-toggle" class="sidebar-toggle" aria-label="Toggle Theme">
+                    <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="breadcrumbs-header">
+                    <a href="../../../../../../Páginas Principais/Lectures.html" class="breadcrumb-link">← Lectures</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <a href="../../index.html" class="breadcrumb-link active">Mecânica Quântica II</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-current" class="breadcrumb-link active">Sistema de Duas partículas</span>
+                </div>
+            </div>
+            <nav class="top-nav">
+                <a href="../../../../../../Páginas Principais/Lectures.html">Lectures</a>
+                <a href="../../../../../../index.html">Home</a>
+            </nav>
+        </div>
+
+        <script>
+            MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']]
+                }
+            };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    </header>
+
+    <div class="main-layout">
+        <aside class="left-sidebar" id="left-sidebar">
+            <div class="sidebar-content">
+
+                <button class="search-trigger" id="search-trigger">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                    </svg>
+                    <span>Search docs...</span>
+                </button>
+
+                <div class="sidebar-group">
+                    <h3>Início</h3>
+                    <ul>
+                        <li><a href="../../index.html">Overview</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Capítulo 1</h3>
+                    <ul>
+                        <li><a href="../[0] - Capítulo 1/Tópico 1.html">Tópico 1</a></li>
+                        <li><a href="../[0] - Capítulo 1/Tópico 2.html">Tópico 2</a></li>
+                    </ul>
+
+                    <h3>Capítulo 2</h3>
+                    <ul>
+                        <li><a href="../[1] - Capítulo 2/Tópico 1.html">Tópico 1</a></li>
+                        <li><a href="../[1] - Capítulo 2/Tópico 2.html">Tópico 2</a></li>
+                    </ul>
+
+                    <h3>Partículas Idênticas</h3>
+                    <ul>
+                        <li><a href="Sistema de Duas partículas.html" class="active">Sistema de Duas partículas</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="prose">
+
+                <h1 id="sistema-de-duas-particulas">Sistema de Duas partículas</h1>
+                <p class="lead">Recapitulação e Introdução a Sistemas de Multipartículas.</p>
+
+                <p>
+                    Na mecânica quântica, o estado de um sistema de uma única partícula é descrito por uma função de
+                    onda $\Psi(\mathbf{r}, t)$. Esta função depende fundamentalmente apenas das coordenadas espaciais
+                    $\mathbf{r}$ da partícula e do tempo $t$. Através dela, podemos extrair todas as informações
+                    probabilisticas e propriedades dinâmicas sobre este sistema isolado.
+                </p>
+
+                <p>
+                    No entanto, ao analisar problemas mais complexos, precisamos expandir
+                    essa descrição formal. Ao passarmos para um sistema não-relativístico de duas partículas, a
+                    representação do estado exige a codificação das informações de ambos os constituintes
+                    simultaneamente.
+                </p>
+
+                <p>
+                    Assim, o estado de um sistema de duas partículas é condicionado por uma função de onda conjunta
+                    $\Psi(\mathbf{r}_1, \mathbf{r}_2, t)$. Nessa notação, $\mathbf{r}_1$ denota a posição da primeira
+                    partícula no espaço e $\mathbf{r}_2$ denota a posição da segunda partícula, além de preservar a
+                    dependência global do tempo $t$.
+                </p>
+
+                <p>
+                    A evolução no tempo dessa função de onda é perfeitamente determinada pela Equação de Schrödinger:
+                </p>
+
+                <p>
+                    $$ i\hbar \frac{\partial \Psi}{\partial t} = \hat{H}\Psi $$
+                </p>
+
+                <p>
+                    Para um sistema composto por duas partículas (com massas $m_1$ e $m_2$), o operador Hamiltoniano
+                    $\hat{H}$ inclui
+                    as energias cinéticas de ambas as partículas associadas à um campo de potencial $V$, que pode
+                    depender mutuamente
+                    da posição de ambas as partículas. Explicitamente, o Hamiltoniano é dado por:
+                </p>
+
+                <p>
+                    $$ \hat{H} = -\frac{\hbar^2}{2m_1}\nabla_1^2 - \frac{\hbar^2}{2m_2}\nabla_2^2 + V(\mathbf{r}_1,
+                    \mathbf{r}_2, t) $$
+                </p>
+
+                <p>
+                    Onde o operador Laplaciano $\nabla_1^2$ atua somente nas coordenadas da partícula 1, enquanto
+                    $\nabla_2^2$
+                    afeta somente as coordenadas da partícula 2.
+                </p>
+
+                <p>
+                    Seguindo a interpretação estatística de Born, a densidade de probabilidade do sistema é representada
+                    por $|\Psi(\mathbf{r}_1, \mathbf{r}_2, t)|^2$. Exprimindo matematicamente, a probabilidade
+                    infinitesimal
+                    $dP$ de se encontrar, num instante de tempo $t$, a partícula 1 no volume infinitesimal
+                    $d^3\mathbf{r}_1$ e
+                    simultaneamente a partícula 2 no volume $d^3\mathbf{r}_2$ pode ser escrita como:
+                </p>
+
+                <p>
+                    $$ dP(\mathbf{r}_1, \mathbf{r}_2, t) = |\Psi(\mathbf{r}_1, \mathbf{r}_2, t)|^2 d^3\mathbf{r}_1
+                    d^3\mathbf{r}_2 $$
+                </p>
+
+                <p>
+                    Naturalmente, como as partículas devem existir em algum lugar, a probabilidade total de se encontrar
+                    ambas
+                    as partículas sobre todo o domínio de espaço permitido tem que ser rigorosamente 1. Dessa premissa,
+                    decorre
+                    a condição de normalização da função de onda, configurada como uma integral dupla no espaço
+                    volumétrico (uma integral sêxtupla sobre as componentes escalares):
+                </p>
+
+                <p>
+                    $$ \int |\Psi(\mathbf{r}_1, \mathbf{r}_2, t)|^2 d^3\mathbf{r}_1 d^3\mathbf{r}_2 = 1 $$
+                </p>
+
+                <p>
+                    Uma importante simplificação ocorre quando o potencial $V(\mathbf{r}_1, \mathbf{r}_2)$ é
+                    independente do tempo.
+                    Sendo este o caso, o operador Hamiltoniano passa a não depender de variáveis temporais. Isso nos
+                    permite aplicar a
+                    técnica matemática de separação de variáveis para desvincular o tempo do espaço. Obtemos uma família
+                    de soluções na
+                    forma de um pacote puramente espacial modulado por uma oscilação complexa elementar no tempo:
+                </p>
+
+                <p>
+                    $$ \Psi(\mathbf{r}_1, \mathbf{r}_2, t) = \psi(\mathbf{r}_1, \mathbf{r}_2) e^{-iEt/\hbar} $$
+                </p>
+
+                <p>
+                    Nessa decomposição, a função de estado estacionário $\psi(\mathbf{r}_1, \mathbf{r}_2)$ satisfaz, por
+                    conseguinte, a
+                    Equação de Schrödinger independente do tempo generalizada para as duas partículas, denotada
+                    compactamente por:
+                </p>
+
+                <p>
+                    $$ \hat{H}\psi(\mathbf{r}_1, \mathbf{r}_2) = E\psi(\mathbf{r}_1, \mathbf{r}_2) $$
+                </p>
+
+                <p>
+                    O que, expandindo o operador Hamiltoniano explicitamente, revela a equação diferencial que dita a
+                    estrutura espacial do par:
+                </p>
+
+                <p>
+                    $$ \left[ -\frac{\hbar^2}{2m_1}\nabla_1^2 - \frac{\hbar^2}{2m_2}\nabla_2^2 + V(\mathbf{r}_1,
+                    \mathbf{r}_2) \right] \psi(\mathbf{r}_1, \mathbf{r}_2) = E\psi(\mathbf{r}_1, \mathbf{r}_2) $$
+                </p>
+
+                <p>
+                    Resolver essa equação diferencial parcial acoplada de forma analítica para um potencial arbitrário
+                    $V(\mathbf{r}_1, \mathbf{r}_2)$ é, de maneira geral, muito difícil. No entanto, existem dois casos
+                    especiais onde podemos reduzir o problema de duas partículas a um problema equivalente de uma única
+                    partícula.
+                </p>
+
+                <h3>1. Partículas não-interagentes (Potenciais Separados)</h3>
+
+                <p>
+                    O primeiro caso ocorre quando assumimos que não há interação (atração ou repulsão) entre as duas
+                    partículas. Cada partícula interage apenas com o potencial de seu respectivo ambiente. Portanto, o
+                    termo de energia potencial do sistema se divide na soma dos potenciais independentes:
+                </p>
+
+                <p>
+                    $$ V(\mathbf{r}_1, \mathbf{r}_2) = V_1(\mathbf{r}_1) + V_2(\mathbf{r}_2) $$
+                </p>
+
+                <p>
+                    Como resultado, o Hamiltoniano total perde a parcela de acoplamento e assume uma forma aditiva
+                    equivalente à soma dos dois Hamiltonianos singulares:
+                </p>
+
+                <p>
+                    $$ \hat{H}(\mathbf{r}_1, \mathbf{r}_2) = \left[ -\frac{\hbar^2}{2m_1}\nabla_1^2 + V_1(\mathbf{r}_1)
+                    \right] + \left[ -\frac{\hbar^2}{2m_2}\nabla_2^2 + V_2(\mathbf{r}_2) \right] =
+                    \hat{H}_1(\mathbf{r}_1) + \hat{H}_2(\mathbf{r}_2) $$
+                </p>
+
+                <p>
+                    Com isso, temos a possibilidade matemática de utilizar a técnica da separação de variáveis. Nossa
+                    hipótese é que a solução espacial estacionária total $\psi$ fatorará como o produto independente das
+                    correspondentes funções de onda de cada partícula livre:
+                </p>
+
+                <p>
+                    $$ \psi(\mathbf{r}_1, \mathbf{r}_2) = \psi_a(\mathbf{r}_1)\psi_b(\mathbf{r}_2) $$
+                </p>
+
+                <p>
+                    Substituindo essa função na Equação de Schrödinger para duas partículas e dividindo a equação global
+                    por $\psi_a(\mathbf{r}_1)\psi_b(\mathbf{r}_2)$, obtemos duas Equações de Schrödinger de uma
+                    partícula independentes:
+                </p>
+
+                <p>
+                    $$ \left[ -\frac{\hbar^2}{2m_1}\nabla_1^2 + V_1(\mathbf{r}_1) \right] \psi_a(\mathbf{r}_1) =
+                    E_a\psi_a(\mathbf{r}_1) $$
+                </p>
+                <p>
+                    $$ \left[ -\frac{\hbar^2}{2m_2}\nabla_2^2 + V_2(\mathbf{r}_2) \right] \psi_b(\mathbf{r}_2) =
+                    E_b\psi_b(\mathbf{r}_2) $$
+                </p>
+
+                <p>
+                    Isso mostra que a energia total do sistema é a soma simples da energia individual de cada estado
+                    estacionário em $E = E_a + E_b$. Neste cenário, a função de onda completa dependente do tempo para o
+                    sistema de duas partículas $\Psi(\mathbf{r}_1, \mathbf{r}_2, t)$ consolida-se como o produto das
+                    funções espaciais individuais multiplicadas pela evolução temporal conjunta:
+                </p>
+
+                <p>
+                    $$ \Psi(\mathbf{r}_1, \mathbf{r}_2, t) = \psi_a(\mathbf{r}_1)\psi_b(\mathbf{r}_2) e^{-i(E_a +
+                    E_b)t/\hbar} $$
+                </p>
+
+                <p>
+                    Onde $\psi_a(\mathbf{r}_1)$ é a solução particular correspondente ao estado $a$ da partícula 1, e
+                    $\psi_b(\mathbf{r}_2)$ é a solução particular correspondente ao estado $b$ da partícula 2.
+                </p>
+
+                <h3>2. Potenciais Centrais (Interagentes em Separação Relativa)</h3>
+
+                <p>
+                    O segundo caso abrange os sistemas onde a interação entre as partículas depende essencialmente da
+                    restrição vetorial de distância mútua, com $V(\mathbf{r}_1, \mathbf{r}_2) = V(|\mathbf{r}_1 -
+                    \mathbf{r}_2|)$. Esse é o caso do Átomo de Hidrogênio. Mudando o referencial para as coordenadas de
+                    <i>Centro de Massa</i> e utilizando a <i>Coordenada Relativa</i>, podemos separar o espaço em duas
+                    partes sem acoplamento mutuo; assim o movimento translacional global é isolado, restando analisar a
+                    resolução de uma única oscilação associada à <i>Massa Reduzida</i> atuando sob o vetor relativo.
+                </p>
+
+                <p>
+                    Para o andamento desta disciplina teórica, <b>nos conectaremos exclusivamente ao primeiro caso
+                        (partículas não-interagentes)</b>. Investigaremos as implicações para os casos onde estas
+                    partículas são idênticas.
+                </p>
+
+                <h2 id="bosons-e-fermions">Bósons e Férmions</h2>
+
+                <p>
+                    Seguindo a suposição de um sistema composto por partículas não-interagentes, vamos considerar o
+                    cenário em que a partícula localizada na posição $\mathbf{r}_1$ encontra-se num estado quântico
+                    $\psi_a(\mathbf{r}_1)$, e a partícula localizada na posição $\mathbf{r}_2$ encontra-se num estado
+                    $\psi_b(\mathbf{r}_2)$.
+                </p>
+
+                <p>
+                    Como vimos, em sistemas onde não há influências mútuas repulsivas ou atrativas, a função de onda
+                    espacial total do sistema, $\psi(\mathbf{r}_1, \mathbf{r}_2)$, é construída simplesmente fazendo o
+                    produto direto dos estados individuais ocupados por cada partícula:
+                </p>
+
+                <p>
+                    $$ \psi(\mathbf{r}_1, \mathbf{r}_2) = \psi_a(\mathbf{r}_1)\psi_b(\mathbf{r}_2) $$
+                </p>
+
+                <p>
+                    O que acabamos de descrever assume que podemos identificar cada partícula de forma independente,
+                    afirmando que "a partícula 1" está no estado $a$ e "a partícula 2" está no estado $b$. Na Mecânica
+                    Clássica, isso é possível: como os objetos macroscópicos possuem trajetórias contínuas e bem
+                    definidas, podemos acompanhar o movimento de cada um ao longo do tempo e distingui-los, mesmo que
+                    sejam fisicamente idênticos.
+                </p>
+
+                <p>
+                    No entanto, na Mecânica Quântica, as partículas não possuem trajetórias definidas. Devido ao
+                    Princípio da Incerteza, elas são descritas probabilisticamente por funções de onda. Quando as
+                    funções de onda de duas partículas idênticas se sobrepõem no espaço, torna-se impossível rastrear
+                    qual partícula é qual. A teoria quântica não permite que "etiquetemos" as partículas para
+                    acompanhá-las.
+                </p>
+
+                <p>
+                    Esse é o fenômeno da indistinguibilidade. Em um sistema com partículas idênticas (como dois elétrons
+                    em um átomo), podemos afirmar apenas que <i>uma</i> partícula ocupa o estado $a$ e <i>a outra</i>
+                    partícula ocupa o estado $b$. É fisicamente impossível determinar especificamente qual delas ocupa
+                    cada estado.
+                </p>
+
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="toc-container">
+                <h4>Nesta página</h4>
+                <ul>
+                    <li><a href="#sistema-de-duas-particulas">Sistema de Duas partículas</a></li>
+                    <li><a href="#bosons-e-fermions">Bósons e Férmions</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Search Modal Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-modal">
+            <div class="search-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search documentation..." autocomplete="off">
+            </div>
+            <div class="search-results" id="search-results"></div>
+            <div class="search-footer">
+                <div class="search-commands">
+                    <span class="cmd-key">↑</span>
+                    <span class="cmd-key">↓</span>
+                    <span class="cmd-label">navigate</span>
+                    <span class="cmd-key">↵</span>
+                    <span class="cmd-label">select</span>
+                </div>
+                <div class="search-commands">
+                    <span class="cmd-key">esc</span>
+                    <span class="cmd-label">close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../../../assets/js/class-lecture.js"></script>
+</body>
+
+</html>
