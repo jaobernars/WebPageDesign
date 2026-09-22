@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sólidos | Mecânica Quântica II | The Journal of a Physicist</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../../../assets/images/Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../../../assets/images/Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../../../assets/images/Favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="../../../../../../assets/images/Favicon/favicon.ico">
+    <link rel="stylesheet" href="../../../../../../assets/css/class-lecture.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                        <line x1="9" x2="9" y1="3" y2="21"></line>
+                    </svg>
+                </button>
+                <button id="theme-toggle" class="sidebar-toggle" aria-label="Toggle Theme">
+                    <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="breadcrumbs-header">
+                    <a href="../../../../../../Páginas Principais/Lectures.html" class="breadcrumb-link">← Lectures</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <a href="../../index.html" class="breadcrumb-link active">Mecânica Quântica II</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-current" class="breadcrumb-link active">Sólidos</span>
+                </div>
+            </div>
+            <nav class="top-nav">
+                <a href="../../../../../../Páginas Principais/Lectures.html">Lectures</a>
+                <a href="../../../../../../index.html">Home</a>
+            </nav>
+        </div>
+
+        <script>
+            MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']]
+                }
+            };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    </header>
+
+    <div class="main-layout">
+        <aside class="left-sidebar" id="left-sidebar">
+            <div class="sidebar-content">
+
+                <button class="search-trigger" id="search-trigger">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                    </svg>
+                    <span>Search docs...</span>
+                </button>
+
+                <div class="sidebar-group">
+                    <h3>Início</h3>
+                    <ul>
+                        <li><a href="../../index.html">Overview</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Capítulo 1</h3>
+                    <ul>
+                        <li><a href="../[0] - Capítulo 1/Tópico 1.html">Tópico 1</a></li>
+                        <li><a href="../[0] - Capítulo 1/Tópico 2.html">Tópico 2</a></li>
+                    </ul>
+
+                    <h3>Capítulo 2</h3>
+                    <ul>
+                        <li><a href="../[1] - Capítulo 2/Tópico 1.html">Tópico 1</a></li>
+                        <li><a href="../[1] - Capítulo 2/Tópico 2.html">Tópico 2</a></li>
+                    </ul>
+
+                    <h3>Partículas Idênticas</h3>
+                    <ul>
+                        <li><a href="Sistema de Duas partículas.html">Sistema de Duas partículas</a></li>
+                        <li><a href="Átomos.html">Átomos</a></li>
+                        <li><a href="Sólidos.html" class="active">Sólidos</a></li>
+                    </ul>
+
+                    <h3>Simetrias e Leis de Conservação</h3>
+                    <ul>
+                        <li><a href="../Simetrias e Leis de Conservação/Introdução.html">Introdução</a></li>
+                        <li><a href="../Simetrias e Leis de Conservação/O Operador de Translação.html">O Operador de
+                                Translação</a></li>
+                        <li><a href="../Simetrias e Leis de Conservação/Leis de Conservação.html">Leis de
+                                Conservação</a></li>
+                        <li><a href="../Simetrias e Leis de Conservação/Paridade.html">Paridade</a></li>
+                        <li><a href="../Simetrias e Leis de Conservação/Simetrias de Rotação.html">Simetrias de
+                                Rotação</a></li>
+                        <li><a href="../Simetrias e Leis de Conservação/Degenerescência.html">Degenerescência</a></li>
+                        <li><a href="../Simetrias e Leis de Conservação/Regras de Seleção Rotacionais.html">Regras de
+                                Seleção Rotacionais</a></li>
+                        <li><a href="../Simetrias e Leis de Conservação/Translações no Tempo.html">Translações no
+                                Tempo</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="prose">
+
+                <h1 id="solidos">Sólidos</h1>
+                <p class="lead" style="color: red;">O limite macroscópico do Princípio de Exclusão: de $10^{23}$ elétrons às bandas de
+                    energia.</p>
+
+                <p style="color: red;">
+                    Em um sólido cristalino, cada átomo da rede mantém firmemente presos seus elétrons de caroço — os
+                    que ocupam camadas internas fechadas. Os elétrons de valência, porém, ficam tão fracamente ligados
+                    que, ao serem colocados lado a lado com $10^{23}$ vizinhos, deixam de pertencer a qualquer átomo em
+                    particular e passam a percorrer o cristal inteiro. É este mar de elétrons deslocalizados que
+                    responde pela condução elétrica, pela condução térmica e, como veremos, pela própria rigidez da
+                    matéria.
+                </p>
+
+                <p style="color: red;">
+                    Trata-se do regime de sobreposição máxima que antecipamos ao discutir a simetrização: um número
+                    astronômico de férmions idênticos compartilhando exatamente o mesmo volume. Como não há qualquer
+                    esperança de resolver o problema exatamente, abordaremos os sólidos por meio de dois modelos
+                    extremos e complementares:
+                </p>
+
+                <ol>
+                    <li>
+                        O <strong>gás de elétrons livres</strong>, que despreza completamente o potencial da rede e
+                        trata o sólido como uma caixa vazia. Simples ao ponto do exagero, ele já captura a
+                        termodinâmica dos metais e o mecanismo que sustenta estrelas.
+                    </li>
+                    <li>
+                        O modelo de <strong>bandas</strong>, que restaura o potencial periódico dos íons da rede. É
+                        ele que revela por que alguns materiais conduzem eletricidade e outros não.
+                    </li>
+                </ol>
+
+                <h2 id="gas-eletrons-livres">O Gás de Elétrons Livres</h2>
+
+                <p style="color: red;">
+                    No modelo do gás de elétrons livres (ou modelo de Sommerfeld), levamos a simplificação ao limite:
+                    ignoramos tanto a atração dos íons quanto a repulsão mútua entre os elétrons, e representamos o
+                    sólido como um <strong>poço de potencial infinito tridimensional</strong>. O único ingrediente
+                    quântico preservado — e o único de que precisaremos — é o Princípio de Exclusão de Pauli.
+                </p>
+
+                <p style="color: red;">
+                    Seja então um bloco retangular de dimensões $l_x$, $l_y$ e $l_z$, com potencial nulo no interior e
+                    infinito nas paredes:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    V(x,y,z) =
+                    \begin{cases}
+                    0, & \text{se } 0 \lt x \lt l_x,\ 0 \lt y \lt l_y,\ 0 \lt z \lt l_z \\
+                    \infty, & \text{caso contrário}
+                    \end{cases}
+                    $$
+                </p>
+
+                <h3 id="poco-3d">Solução do Poço Tridimensional</h3>
+
+                <p style="color: red;">
+                    Dentro da caixa a Equação de Schrödinger independente do tempo se reduz a
+                    $-\frac{\hbar^2}{2m}\nabla^2\psi = E\psi$. Como o Laplaciano é uma soma de derivadas em eixos
+                    independentes, aplicamos separação de variáveis, $\psi(x,y,z) = X(x)Y(y)Z(z)$, obtendo três
+                    equações de oscilador desacopladas. A condição de anulamento nas paredes quantiza cada direção
+                    separadamente, e o resultado normalizado é:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \psi_{n_x n_y n_z} = \sqrt{\frac{8}{l_x l_y l_z}}\,
+                    \sin\!\left(\frac{n_x \pi}{l_x}x\right)
+                    \sin\!\left(\frac{n_y \pi}{l_y}y\right)
+                    \sin\!\left(\frac{n_z \pi}{l_z}z\right)
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    com $n_x, n_y, n_z = 1, 2, 3, \dots$ Introduzindo o <strong>vetor de onda</strong> $\mathbf{k}$,
+                    cujas componentes são $k_x = n_x\pi/l_x$, $k_y = n_y\pi/l_y$ e $k_z = n_z\pi/l_z$, a energia
+                    assume a forma compacta:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    E_{n_x n_y n_z} = \frac{\hbar^2 k^2}{2m}, \qquad
+                    k^2 = k_x^2 + k_y^2 + k_z^2
+                    \end{aligned}
+                    $$
+                </p>
+
+                <h3 id="espaco-k">O Espaço-$k$ e a Esfera de Fermi</h3>
+
+                <p style="color: red;">
+                    A construção torna-se transparente ao visualizarmos os estados como pontos de uma rede no
+                    <strong>espaço-$k$</strong>. Cada trinca $(n_x, n_y, n_z)$ define um ponto, e o espaçamento entre
+                    pontos vizinhos é $\pi/l_x$, $\pi/l_y$ e $\pi/l_z$ ao longo de cada eixo. Cada estado ocupa,
+                    portanto, um volume elementar de:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \frac{\pi^3}{l_x l_y l_z} = \frac{\pi^3}{V}
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    onde $V$ é o volume do sólido. Como os índices $n_i$ são inteiros positivos, apenas
+                    <strong>um octante</strong> do espaço-$k$ é fisicamente acessível.
+                </p>
+
+                <p style="color: red;">
+                    Suponhamos agora que o sólido contenha $N$ átomos, cada um cedendo $q$ elétrons livres, num total
+                    de $Nq$ elétrons. Em temperatura zero eles se acomodam nos estados de menor energia disponíveis —
+                    mas, sendo férmions, o Princípio de Exclusão limita cada estado espacial a <strong>dois</strong>
+                    elétrons (spin para cima e spin para baixo). Os elétrons preenchem então, de dentro para fora, um
+                    octante esférico cuja superfície externa recebe o nome de <strong>superfície de Fermi</strong>.
+                    Igualando o volume ocupado ao número de estados necessários:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \frac{1}{8}\left(\frac{4}{3}\pi k_F^3\right) = \frac{Nq}{2} \cdot \frac{\pi^3}{V}
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Isolando o <strong>raio de Fermi</strong> $k_F$ e definindo a densidade de elétrons livres $\rho
+                    \equiv Nq/V$, chegamos a um resultado que depende apenas da densidade — não do tamanho nem do
+                    formato do sólido:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    k_F = \left(3\rho\pi^2\right)^{1/3}
+                    \end{aligned}
+                    $$
+                </p>
+
+                <h3 id="energia-fermi">Energia de Fermi e Energia Total</h3>
+
+                <p style="color: red;">
+                    A energia correspondente ao último estado preenchido é a <strong>Energia de Fermi</strong>, isto é,
+                    o teto energético do mar de elétrons a temperatura zero:
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p style="color: red;">
+                        $$ E_F = \frac{\hbar^2 k_F^2}{2m} = \frac{\hbar^2}{2m}\left(3\rho\pi^2\right)^{2/3} $$
+                    </p>
+                </div>
+
+                <p style="color: red;">
+                    Para metais típicos, $E_F$ é da ordem de alguns elétron-volts. Convertida em temperatura pela
+                    relação $T_F = E_F/k_B$, isso corresponde a dezenas de milhares de kelvin — muito acima de
+                    qualquer temperatura ambiente. É por isso que tratar o gás de elétrons como estando essencialmente
+                    a $T = 0$ (o chamado <strong>gás degenerado</strong>) é uma aproximação excelente para metais em
+                    condições normais: a agitação térmica só consegue perturbar a fininha camada de elétrons próxima à
+                    superfície de Fermi.
+                </p>
+
+                <p style="color: red;">
+                    Para obter a energia total do gás, somamos as contribuições de todas as cascas esféricas
+                    infinitesimais até $k_F$. Uma casca de espessura $dk$ tem volume $\tfrac{1}{8}(4\pi k^2 dk)$ no
+                    octante, contendo portanto $\left[\tfrac{1}{8}(4\pi k^2 dk)\right]\big/\left(\pi^3/V\right)$
+                    estados; multiplicando por $2$ (spin) e pela energia $\hbar^2k^2/2m$ de cada elétron:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    dE = \frac{\hbar^2 k^2}{2m} \cdot \frac{V k^2}{\pi^2}\, dk
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Integrando de $0$ a $k_F$:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    E_{\text{tot}} = \frac{\hbar^2 V}{2\pi^2 m}\int_0^{k_F} k^4\, dk
+                    = \frac{\hbar^2 k_F^5 V}{10\pi^2 m}
+                    = \frac{\hbar^2 \left(3\pi^2 N q\right)^{5/3}}{10\pi^2 m}\, V^{-2/3}
+                    \end{aligned}
+                    $$
+                </p>
+
+                <h3 id="pressao-degenerescencia">A Pressão de Degenerescência</h3>
+
+                <p style="color: red;">
+                    O resultado acima guarda uma consequência física de enorme alcance. Note que $E_{\text{tot}}$
+                    depende do volume: comprimir o sólido (reduzir $V$) <i>aumenta</i> a energia do gás de elétrons.
+                    Diferenciando:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    dE_{\text{tot}} = -\frac{2}{3}\, \frac{E_{\text{tot}}}{V}\, dV
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Comparando com o trabalho mecânico $dW = -P\,dV$, identificamos imediatamente uma pressão:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    P = \frac{2}{3}\frac{E_{\text{tot}}}{V}
+                    = \frac{\hbar^2 k_F^5}{15\pi^2 m}
+                    = \frac{\left(3\pi^2\right)^{2/3}\hbar^2}{5m}\, \rho^{5/3}
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Esta é a <strong>pressão de degenerescência</strong>, e sua natureza merece ser enfatizada com
+                    cuidado. Ela não tem origem térmica — sobrevive intacta a $T = 0$. Tampouco tem origem
+                    eletrostática — nossa dedução ignorou explicitamente toda repulsão coulombiana. Ela é
+                    <strong>puramente um efeito da antissimetrização</strong>: é a Força de Troca repulsiva entre
+                    férmions, aquela mesma que calculamos em uma dimensão com dois elétrons, agora somada sobre
+                    $10^{23}$ partículas e manifestada como uma grandeza macroscópica mensurável.
+                </p>
+
+                <div class="definition-box">
+                    <p style="color: red;">
+                        É a pressão de degenerescência que impede a matéria comum de ser comprimida indefinidamente, e
+                        é ela que sustenta as <strong>anãs brancas</strong> contra o próprio colapso gravitacional
+                        depois que a fusão nuclear cessa. Em objetos ainda mais densos, onde elétrons e prótons se
+                        fundem em nêutrons, é a pressão de degenerescência dos nêutrons que estabiliza as
+                        <strong>estrelas de nêutrons</strong>. Quando nem ela basta, nada mais resta entre a estrela e
+                        o buraco negro.
+                    </p>
+                </div>
+
+                <h2 id="estrutura-de-bandas">Estrutura de Bandas</h2>
+
+                <p style="color: red;">
+                    O modelo do gás livre explica a rigidez e a termodinâmica dos metais, mas fracassa completamente
+                    numa questão elementar: por que o cobre conduz eletricidade e o diamante não? Ambos são sólidos
+                    cristalinos densos e, no modelo anterior, seriam indistinguíveis. A resposta exige que
+                    reintroduzamos o ingrediente que havíamos descartado — o <strong>potencial periódico</strong> dos
+                    íons da rede.
+                </p>
+
+                <p style="color: red;">
+                    Para isolar o efeito da periodicidade sem afogá-lo em complexidade, adotaremos o modelo
+                    unidimensional do <strong>pente de Dirac</strong>: uma fileira de $N$ poços delta igualmente
+                    espaçados por uma distância $a$, representando os caroços iônicos.
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    V(x) = \alpha \sum_{j=0}^{N-1} \delta(x - ja)
+                    \end{aligned}
+                    $$
+                </p>
+
+                <h3 id="teorema-de-bloch">O Teorema de Bloch</h3>
+
+                <p style="color: red;">
+                    Um cristal real tem bordas, mas elas são irrelevantes para o comportamento do interior. Para
+                    eliminá-las sem perder a periodicidade, usamos um artifício elegante: fechamos a cadeia em um anel,
+                    identificando o último átomo com o primeiro. Isso impõe a condição de contorno periódica
+                    $\psi(x + Na) = \psi(x)$.
+                </p>
+
+                <p style="color: red;">
+                    A ferramenta central para potenciais periódicos, $V(x + a) = V(x)$, é o Teorema de Bloch. Ele
+                    decorre de um argumento de simetria idêntico em espírito ao que usamos com o operador de
+                    permutação: se definirmos o operador de translação $\hat{D}f(x) = f(x+a)$, a periodicidade de $V$
+                    garante que $[\hat{D}, \hat{H}] = 0$, e podemos escolher autofunções simultâneas. Como a
+                    normalizabilidade exige que o autovalor de $\hat{D}$ tenha módulo unitário, ele deve ser uma fase
+                    pura:
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p style="color: red;">
+                        <strong>Teorema de Bloch:</strong> para um potencial periódico de período $a$, as soluções da
+                        Equação de Schrödinger podem sempre ser escolhidas de modo a satisfazer
+                    </p>
+                    <p style="color: red;">
+                        $$ \psi(x + a) = e^{iKa}\, \psi(x) $$
+                    </p>
+                    <p style="color: red;">
+                        para alguma constante real $K$.
+                    </p>
+                </div>
+
+                <p style="color: red;">
+                    A condição do anel restringe os valores de $K$: aplicando a relação de Bloch $N$ vezes obtemos
+                    $\psi(x + Na) = e^{iNKa}\psi(x)$, que só é compatível com a periodicidade se $e^{iNKa} = 1$. Logo:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    K = \frac{2\pi n}{Na}, \qquad n = 0, \pm 1, \pm 2, \dots
+                    \end{aligned}
+                    $$
+                </p>
+
+                <h3 id="equacao-bandas">A Equação das Bandas</h3>
+
+                <p style="color: red;">
+                    Resolvamos agora o pente de Dirac. Na célula $0 \lt x \lt a$ não há potencial algum (as deltas
+                    estão
+                    nas bordas), de modo que a solução é a de uma partícula livre:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \psi(x) = A\sin(kx) + B\cos(kx), \qquad k \equiv \frac{\sqrt{2mE}}{\hbar}
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    O Teorema de Bloch nos entrega de graça a solução na célula anterior, $-a \lt x \lt 0$, bastando
+                    transladar e multiplicar pela fase:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \psi(x) = e^{-iKa}\left[ A\sin\big(k(x+a)\big) + B\cos\big(k(x+a)\big) \right]
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Resta impor as condições de emenda na delta situada em $x = 0$. A continuidade de $\psi$ exige:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    B = e^{-iKa}\left[ A\sin(ka) + B\cos(ka) \right]
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Já a derivada, como sempre ocorre num potencial delta, sofre um salto proporcional ao valor da
+                    função no ponto:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \psi'(0^+) - \psi'(0^-) = \frac{2m\alpha}{\hbar^2}\psi(0)
+                    \ \Longrightarrow \
+                    kA - e^{-iKa}k\left[ A\cos(ka) - B\sin(ka) \right] = \frac{2m\alpha}{\hbar^2}B
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Eliminando as constantes $A$ e $B$ entre as duas relações e simplificando as exponenciais em
+                    termos de cossenos, todo o problema se condensa numa única equação transcendental:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \cos(Ka) = \cos(ka) + \frac{m\alpha}{\hbar^2 k}\sin(ka)
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Convém adimensionalizar. Definindo $z \equiv ka$ e o parâmetro de intensidade da rede $\beta
+                    \equiv m\alpha a/\hbar^2$, a equação se escreve como $\cos(Ka) = f(z)$, com:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    f(z) = \cos(z) + \beta\, \frac{\sin(z)}{z}
+                    \end{aligned}
+                    $$
+                </p>
+
+                <h3 id="bandas-e-gaps">Bandas Permitidas e Gaps Proibidos</h3>
+
+                <p style="color: red;">
+                    Aqui está o ponto decisivo de toda a discussão, e ele repousa sobre uma observação quase banal: o
+                    lado esquerdo da equação é um cosseno, e um cosseno jamais sai do intervalo $[-1, 1]$. A função
+                    $f(z)$, por outro lado, não tem esse pudor — ela oscila com amplitude crescente perto da origem e
+                    excursiona livremente para além de $\pm 1$.
+                </p>
+
+                <p style="color: red;">
+                    A consequência é inevitável:
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p style="color: red;">
+                        Somente os valores de $z$ (e portanto de $k$, e portanto de $E$) para os quais
+                        $-1 \leq f(z) \leq 1$ correspondem a soluções fisicamente aceitáveis.
+                    </p>
+                    <p style="color: red;">
+                        As faixas de energia que satisfazem essa condição são as <strong>bandas permitidas</strong>;
+                        as faixas em que $|f(z)| > 1$ são as <strong>bandas proibidas</strong>, ou
+                        <strong>gaps</strong>, nas quais simplesmente <i>não existe</i> estado eletrônico algum.
+                    </p>
+                </div>
+
+                <p style="color: red;">
+                    Este é um resultado impossível de antecipar a partir do modelo de elétron livre, onde o espectro
+                    era um contínuo sem interrupções. A mera periodicidade do potencial — independentemente de sua
+                    intensidade — fragmenta o espectro em faixas separadas por lacunas. Note ainda que quanto maior
+                    $\beta$ (potencial mais intenso), mais pronunciadas as excursões de $f(z)$ e, portanto, mais largos
+                    os gaps: bandas estreitas e gaps largos correspondem a elétrons fortemente ligados aos íons.
+                </p>
+
+                <h3 id="condutores-isolantes">Condutores, Isolantes e Semicondutores</h3>
+
+                <p style="color: red;">
+                    Falta o último passo — contar os estados e preenchê-los, exatamente como fizemos com os átomos.
+                    Vimos que $K = 2\pi n/Na$; percorrendo $n$ sobre $N$ valores consecutivos esgotamos todas as fases
+                    distintas, pois valores além disso apenas repetem $e^{iKa}$. Assim, <strong>cada banda contém
+                        exatamente $N$ estados</strong>, um por átomo da rede. Levando o spin em conta, cada banda
+                    acomoda $2N$ elétrons.
+                </p>
+
+                <p style="color: red;">
+                    Se cada átomo do cristal contribui com $q$ elétrons livres, o destino elétrico do material fica
+                    inteiramente decidido pela aritmética do preenchimento:
+                </p>
+
+                <table>
+                    <tr>
+                        <th>Preenchimento</th>
+                        <th>Situação</th>
+                        <th>Comportamento</th>
+                    </tr>
+                    <tr>
+                        <td>$q$ ímpar</td>
+                        <td>Banda mais alta parcialmente preenchida</td>
+                        <td><strong>Condutor</strong> (metal)</td>
+                    </tr>
+                    <tr>
+                        <td>$q$ par, gap largo</td>
+                        <td>Banda completa, próxima banda distante</td>
+                        <td><strong>Isolante</strong></td>
+                    </tr>
+                    <tr>
+                        <td>$q$ par, gap estreito</td>
+                        <td>Banda completa, próxima banda ao alcance térmico</td>
+                        <td><strong>Semicondutor</strong></td>
+                    </tr>
+                </table>
+
+                <p style="color: red;">
+                    A lógica por trás da tabela é direta. Conduzir corrente significa acelerar elétrons, isto é,
+                    promovê-los a estados de energia ligeiramente superior. Numa banda <strong>parcialmente
+                        preenchida</strong> — caso $q = 1$, em que os $N$ elétrons ocupam apenas metade dos $2N$
+                    lugares disponíveis —, há estados vazios imediatamente acima dos ocupados, e um campo elétrico
+                    infinitesimal já basta para pôr os elétrons em movimento. O material conduz.
+                </p>
+
+                <p style="color: red;">
+                    Numa banda <strong>completamente preenchida</strong>, ao contrário, o Princípio de Exclusão bloqueia
+                    qualquer redistribuição: não há para onde ir. O estado vago mais próximo está do outro lado do gap,
+                    e promovê-lo exige uma energia finita que o campo aplicado não fornece. O material não conduz — é um
+                    isolante.
+                </p>
+
+                <p style="color: red;">
+                    O caso intermediário é o mais tecnologicamente relevante. Se o gap for suficientemente estreito, a
+                    agitação térmica à temperatura ambiente consegue promover uma fração de elétrons através dele,
+                    deixando para trás <strong>lacunas</strong> na banda inferior. Tanto os elétrons promovidos quanto
+                    as lacunas participam da condução, e o resultado é um <strong>semicondutor</strong>: um material
+                    cuja condutividade aumenta com a temperatura — comportamento oposto ao dos metais — e que pode ser
+                    ajustado com precisão pela introdução controlada de impurezas, a <strong>dopagem</strong>. Sobre
+                    esse controle repousa toda a eletrônica moderna, do diodo ao transistor.
+                </p>
+
+                <h2 id="encerramento">Encerramento do Módulo</h2>
+
+                <p style="color: red;">
+                    Com isso fechamos o estudo de Partículas Idênticas. Vale recapitular o quanto foi extraído de uma
+                    única premissa — a de que partículas idênticas não podem ser rotuladas.
+                </p>
+
+                <p style="color: red;">
+                    Dessa premissa, e apenas dela, derivamos a exigência de simetrização e a divisão do mundo em
+                    bósons e férmions. Dela nasceu o Princípio de Exclusão de Pauli, e das Forças de Troca vieram as
+                    correções de distância que organizam o espectro atômico. Aplicada ao hélio, a simetrização fixou o
+                    estado de spin do estado fundamental e explicou a separação entre orto e parahélio. Estendida a
+                    todos os elementos, produziu a estrutura em camadas e a periodicidade química inteira. Levada ao
+                    limite macroscópico, gerou a pressão que sustenta estrelas mortas e a estrutura de bandas que
+                    decide quais materiais conduzem eletricidade.
+                </p>
+
+                <p style="color: red;">
+                    Um princípio de contabilidade sobre rótulos indistinguíveis acabou por determinar a estabilidade da
+                    matéria, a tabela periódica, a existência de estrelas compactas e o transistor. Poucas ideias em
+                    física rendem tanto a partir de tão pouco.
+                </p>
+
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="toc-container">
+                <h4>Nesta página</h4>
+                <ul>
+                    <li><a href="#solidos">Sólidos</a></li>
+                    <li>
+                        <a href="#gas-eletrons-livres">Gás de Elétrons Livres</a>
+                        <ul>
+                            <li><a href="#poco-3d">Poço Tridimensional</a></li>
+                            <li><a href="#espaco-k">Espaço-k e Esfera de Fermi</a></li>
+                            <li><a href="#energia-fermi">Energia de Fermi</a></li>
+                            <li><a href="#pressao-degenerescencia">Pressão de Degenerescência</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#estrutura-de-bandas">Estrutura de Bandas</a>
+                        <ul>
+                            <li><a href="#teorema-de-bloch">Teorema de Bloch</a></li>
+                            <li><a href="#equacao-bandas">A Equação das Bandas</a></li>
+                            <li><a href="#bandas-e-gaps">Bandas e Gaps</a></li>
+                            <li><a href="#condutores-isolantes">Condutores e Isolantes</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#encerramento">Encerramento do Módulo</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Search Modal Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-modal">
+            <div class="search-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search documentation..." autocomplete="off">
+            </div>
+            <div class="search-results" id="search-results"></div>
+            <div class="search-footer">
+                <div class="search-commands">
+                    <span class="cmd-key">↑</span>
+                    <span class="cmd-key">↓</span>
+                    <span class="cmd-label">navigate</span>
+                    <span class="cmd-key">↵</span>
+                    <span class="cmd-label">select</span>
+                </div>
+                <div class="search-commands">
+                    <span class="cmd-key">esc</span>
+                    <span class="cmd-label">close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../../../assets/js/class-lecture.js"></script>
+</body>
+
+</html>

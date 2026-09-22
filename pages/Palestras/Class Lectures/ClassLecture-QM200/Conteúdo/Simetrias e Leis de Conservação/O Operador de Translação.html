@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Operador de Translação | Simetrias e Leis de Conservação | Mecânica Quântica II | The Journal of a
+        Physicist</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../../../assets/images/Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../../../assets/images/Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../../../assets/images/Favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="../../../../../../assets/images/Favicon/favicon.ico">
+    <link rel="stylesheet" href="../../../../../../assets/css/class-lecture.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                        <line x1="9" x2="9" y1="3" y2="21"></line>
+                    </svg>
+                </button>
+                <button id="theme-toggle" class="sidebar-toggle" aria-label="Toggle Theme">
+                    <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="breadcrumbs-header">
+                    <a href="../../../../../../Páginas Principais/Lectures.html" class="breadcrumb-link">← Lectures</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <a href="../../index.html" class="breadcrumb-link active">Mecânica Quântica II</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-current" class="breadcrumb-link active">O Operador de Translação</span>
+                </div>
+            </div>
+            <nav class="top-nav">
+                <a href="../../../../../../Páginas Principais/Lectures.html">Lectures</a>
+                <a href="../../../../../../index.html">Home</a>
+            </nav>
+        </div>
+
+        <script>
+            MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']]
+                }
+            };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    </header>
+
+    <div class="main-layout">
+        <aside class="left-sidebar" id="left-sidebar">
+            <div class="sidebar-content">
+
+                <button class="search-trigger" id="search-trigger">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                    </svg>
+                    <span>Search docs...</span>
+                </button>
+
+                <div class="sidebar-group">
+                    <h3>Início</h3>
+                    <ul>
+                        <li><a href="../../index.html">Overview</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Capítulo 1</h3>
+                    <ul>
+                        <li><a href="../[0] - Capítulo 1/Tópico 1.html">Tópico 1</a></li>
+                        <li><a href="../[0] - Capítulo 1/Tópico 2.html">Tópico 2</a></li>
+                    </ul>
+
+                    <h3>Capítulo 2</h3>
+                    <ul>
+                        <li><a href="../[1] - Capítulo 2/Tópico 1.html">Tópico 1</a></li>
+                        <li><a href="../[1] - Capítulo 2/Tópico 2.html">Tópico 2</a></li>
+                    </ul>
+
+                    <h3>Partículas Idênticas</h3>
+                    <ul>
+                        <li><a href="../Partículas Idênticas/Sistema de Duas partículas.html">Sistema de Duas
+                                partículas</a></li>
+                        <li><a href="../Partículas Idênticas/Átomos.html">Átomos</a></li>
+                        <li><a href="../Partículas Idênticas/Sólidos.html">Sólidos</a></li>
+                    </ul>
+
+                    <h3>Simetrias e Leis de Conservação</h3>
+                    <ul>
+                        <li><a href="Introdução.html">Introdução</a></li>
+                        <li><a href="O Operador de Translação.html" class="active">O Operador de Translação</a></li>
+                        <li><a href="Leis de Conservação.html">Leis de Conservação</a></li>
+                        <li><a href="Paridade.html">Paridade</a></li>
+                        <li><a href="Simetrias de Rotação.html">Simetrias de Rotação</a></li>
+                        <li><a href="Degenerescência.html">Degenerescência</a></li>
+                        <li><a href="Regras de Seleção Rotacionais.html">Regras de Seleção Rotacionais</a></li>
+                        <li><a href="Translações no Tempo.html">Translações no Tempo</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="prose">
+
+                <h1 id="operador-de-translacao">O Operador de Translação</h1>
+                <p class="lead" style="color: red;">O momento linear revelado como gerador das translações espaciais.</p>
+
+                <p style="color: red;">
+                    Definimos no tópico anterior o operador $\hat{T}(a)\,f(x) = f(x-a)$, mas essa definição, embora
+                    correta, é operacionalmente pobre: ela nos diz o que o operador <i>faz</i>, não o que ele
+                    <i>é</i>. Queremos uma expressão de $\hat{T}(a)$ em termos dos operadores fundamentais que já
+                    conhecemos — posição e momento. A chave para obtê-la está na terceira propriedade que destacamos:
+                    a translação é uma simetria <strong>contínua</strong>, e portanto pode ser construída a partir de
+                    deslocamentos infinitesimais.
+                </p>
+
+                <h2 id="geradores">Translações Infinitesimais e o Gerador</h2>
+
+                <p style="color: red;">
+                    Consideremos uma translação por uma distância $\varepsilon$ tão pequena que possamos truncar a
+                    série de Taylor no primeiro termo:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \hat{T}(\varepsilon)\, \psi(x) = \psi(x - \varepsilon)
+                    = \psi(x) - \varepsilon \frac{d\psi}{dx} + \mathcal{O}(\varepsilon^2)
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Fatorando $\psi$ à direita, lemos diretamente a forma do operador:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \hat{T}(\varepsilon) = 1 - \varepsilon \frac{d}{dx}
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Neste ponto reconhecemos um velho conhecido. O operador momento em representação de posição é
+                    $\hat{p} = -i\hbar\, d/dx$, o que nos permite trocar a derivada por ele:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \frac{d}{dx} = \frac{i}{\hbar}\hat{p}
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Substituindo, obtemos a translação infinitesimal escrita inteiramente em termos de um observável
+                    físico:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \hat{T}(\varepsilon) = 1 - \frac{i}{\hbar}\varepsilon\, \hat{p}
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Para uma translação finita $a$, dividimos o deslocamento em $N$ etapas iguais de tamanho $a/N$ e
+                    aplicamos o operador infinitesimal $N$ vezes. No limite $N \to \infty$, reencontramos a definição
+                    de exponencial, $\lim_{N\to\infty}(1 + z/N)^N = e^z$:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \hat{T}(a) = \lim_{N \to \infty} \left( 1 - \frac{i}{\hbar}\frac{a}{N}\hat{p} \right)^{N}
+                    = e^{-i a \hat{p}/\hbar}
+                    \end{aligned}
+                    $$
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p style="color: red;">
+                        <strong>O momento linear é o gerador das translações espaciais:</strong>
+                    </p>
+                    <p style="color: red;">
+                        $$ \hat{T}(a) = e^{-i a \hat{p}/\hbar}
+                        \qquad\text{e, em três dimensões,}\qquad
+                        \hat{T}(\mathbf{a}) = e^{-i \mathbf{a}\cdot\hat{\mathbf{p}}/\hbar} $$
+                    </p>
+                </div>
+
+                <p style="color: red;">
+                    Duas observações fecham esta construção. Primeiro, a unitariedade que havíamos verificado por
+                    mudança de variável agora se lê de imediato na fórmula: como $\hat{p}$ é hermitiano, $\hat{p}^\dagger
+                    = \hat{p}$, segue que $\hat{T}^\dagger(a) = e^{+ia\hat{p}/\hbar} = \hat{T}(-a) =
+                    \hat{T}^{-1}(a)$. Em geral, <strong>todo gerador hermitiano produz uma transformação
+                        unitária</strong>.
+                </p>
+
+                <p style="color: red;">
+                    Segundo, note o que acabou de acontecer conceitualmente. O momento linear, que até aqui era
+                    apresentado como "aquilo que o operador $-i\hbar\,d/dx$ mede", ganha agora uma identidade muito
+                    mais fundamental: <i>momento é a grandeza responsável por deslocar coisas no espaço</i>. A
+                    conexão entre $\hat{p}$ e a derivada espacial deixa de ser uma definição arbitrária e passa a ser
+                    uma consequência do que significa transladar.
+                </p>
+
+                <h2 id="como-operadores-transformam">Como os Operadores se Transformam</h2>
+
+                <p style="color: red;">
+                    Até agora transladamos <i>estados</i>. Mas há uma segunda maneira, equivalente, de contabilizar a
+                    mesma transformação — e precisaremos dela para formular a condição de simetria.
+                </p>
+
+                <p style="color: red;">
+                    Suponha que transladamos o sistema, de modo que o estado passe de $|\psi\rangle$ para
+                    $|\psi'\rangle = \hat{T}(a)|\psi\rangle$. O valor esperado de um observável $\hat{Q}$ no estado
+                    novo é:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \langle Q \rangle' = \langle \psi' | \hat{Q} | \psi' \rangle
+                    = \langle \hat{T}\psi | \hat{Q} | \hat{T}\psi \rangle
+                    = \langle \psi | \hat{T}^\dagger \hat{Q} \hat{T} | \psi \rangle
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    A última igualdade admite uma releitura sugestiva: em vez de dizer que o <i>estado</i> mudou e o
+                    operador permaneceu, podemos dizer que o <i>estado</i> permaneceu e o operador mudou, passando a
+                    ser $\hat{Q}' \equiv \hat{T}^\dagger \hat{Q} \hat{T}$. As duas descrições produzem exatamente os
+                    mesmos números.
+                </p>
+
+                <h3 id="transformacao-de-x-e-p">A Transformação de $\hat{x}$ e $\hat{p}$</h3>
+
+                <p style="color: red;">
+                    Vejamos como isso opera no caso da posição. Fisicamente, esperamos que transladar o sistema por
+                    $a$ desloque a posição média em $a$ — testemos se o formalismo concorda. Usando a forma
+                    infinitesimal e retendo apenas termos de primeira ordem:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \hat{T}^\dagger(\varepsilon)\, \hat{x}\, \hat{T}(\varepsilon)
+                    &= \left( 1 + \frac{i}{\hbar}\varepsilon\hat{p} \right) \hat{x}
+                    \left( 1 - \frac{i}{\hbar}\varepsilon\hat{p} \right) \\
+                    &= \hat{x} + \frac{i}{\hbar}\varepsilon \left( \hat{p}\hat{x} - \hat{x}\hat{p} \right)
+                    + \mathcal{O}(\varepsilon^2) \\
+                    &= \hat{x} + \frac{i}{\hbar}\varepsilon\, [\hat{p}, \hat{x}]
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    A relação de comutação canônica nos dá $[\hat{x},\hat{p}] = i\hbar$, logo $[\hat{p},\hat{x}] =
+                    -i\hbar$. Substituindo:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \hat{T}^\dagger(\varepsilon)\, \hat{x}\, \hat{T}(\varepsilon)
+                    = \hat{x} + \frac{i}{\hbar}\varepsilon(-i\hbar) = \hat{x} + \varepsilon
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Exatamente o esperado. Compondo $N$ dessas transformações com $\varepsilon = a/N$, o resultado se
+                    estende sem alteração ao caso finito. Para o momento o cálculo é ainda mais rápido, pois
+                    $[\hat{p},\hat{p}] = 0$ anula a correção:
+                </p>
+
+                <div class="definition-box">
+                    <p style="color: red;">
+                        $$
+                        \hat{T}^\dagger(a)\, \hat{x}\, \hat{T}(a) = \hat{x} + a
+                        \qquad\qquad
+                        \hat{T}^\dagger(a)\, \hat{p}\, \hat{T}(a) = \hat{p}
+                        $$
+                    </p>
+                </div>
+
+                <p style="color: red;">
+                    O segundo resultado é fisicamente transparente: transportar um sistema para outro lugar do espaço
+                    não altera sua velocidade. E como qualquer observável é construído a partir de $\hat{x}$ e
+                    $\hat{p}$, a regra geral segue por composição:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \hat{T}^\dagger(a)\, \hat{Q}(\hat{x}, \hat{p})\, \hat{T}(a) = \hat{Q}(\hat{x} + a,\, \hat{p})
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Ou seja: transformar um operador sob translação equivale simplesmente a substituir $\hat{x} \to
+                    \hat{x} + a$ em sua expressão funcional.
+                </p>
+
+                <h2 id="simetria-translacional">Simetria Translacional</h2>
+
+                <p style="color: red;">
+                    Temos agora tudo o que é necessário para enunciar precisamente o que significa dizer que um
+                    sistema "tem simetria translacional". A ideia intuitiva é que o sistema não distingue um ponto do
+                    espaço de outro — deslocá-lo não muda sua física. Como toda a física está contida no
+                    Hamiltoniano, a condição é que $\hat{H}$ seja invariante sob a transformação:
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p style="color: red;">
+                        <strong>Simetria translacional:</strong> um sistema é invariante por translação de $a$ quando
+                    </p>
+                    <p style="color: red;">
+                        $$ \hat{T}^\dagger(a)\, \hat{H}\, \hat{T}(a) = \hat{H}
+                        \qquad \Longleftrightarrow \qquad
+                        \left[ \hat{H}, \hat{T}(a) \right] = 0 $$
+                    </p>
+                </div>
+
+                <p style="color: red;">
+                    A equivalência entre as duas formas decorre imediatamente da unitariedade: multiplicando a
+                    primeira igualdade por $\hat{T}(a)$ pela esquerda e usando $\hat{T}\hat{T}^\dagger = 1$, obtemos
+                    $\hat{H}\hat{T} = \hat{T}\hat{H}$.
+                </p>
+
+                <p style="color: red;">
+                    Apliquemos o critério a uma partícula única, com $\hat{H} = \hat{p}^2/2m + V(\hat{x})$. Já
+                    sabemos que o termo cinético é invariante, pois $\hat{p}$ não se altera. Resta o potencial, e a
+                    regra de substituição nos diz que $V(\hat{x}) \to V(\hat{x} + a)$. A condição de simetria se
+                    reduz, portanto, a uma exigência puramente sobre o potencial:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    V(x + a) = V(x)
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Essa condição admite duas realizações qualitativamente distintas, e ambas já apareceram no curso.
+                </p>
+
+                <h3 id="simetria-continua">Simetria Contínua: a Partícula Livre</h3>
+
+                <p style="color: red;">
+                    Se a igualdade valer para <i>todo</i> valor de $a$, o potencial é forçosamente constante, e
+                    podemos tomá-lo como zero. Trata-se da partícula livre — o único sistema com simetria
+                    translacional contínua plena.
+                </p>
+
+                <p style="color: red;">
+                    Nesse caso, como $\hat{T}(a) = e^{-ia\hat{p}/\hbar}$ comuta com $\hat{H}$ para qualquer $a$,
+                    expandindo a exponencial em primeira ordem concluímos que o próprio gerador comuta:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \left[ \hat{H}, \hat{T}(a) \right] = 0 \ \ \forall a
+                    \qquad \Longleftrightarrow \qquad
+                    \left[ \hat{H}, \hat{p} \right] = 0
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Esse é o embrião do resultado que formalizaremos no próximo tópico: quando o gerador de uma
+                    simetria comuta com o Hamiltoniano, a grandeza que ele representa é <strong>conservada</strong>.
+                    Simetria translacional contínua implica conservação do momento linear.
+                </p>
+
+                <h3 id="simetria-discreta">Simetria Discreta: o Cristal</h3>
+
+                <p style="color: red;">
+                    Se a igualdade valer apenas para múltiplos inteiros de uma distância fixa $a$ — como no caso de
+                    uma rede cristalina cujos íons se repetem periodicamente —, temos <strong>simetria translacional
+                        discreta</strong>. Aqui $[\hat{H}, \hat{T}(a)] = 0$ continua valendo, mas <i>não</i> podemos
+                    concluir que $[\hat{H},\hat{p}] = 0$: o argumento anterior exigia $a$ arbitrariamente pequeno, e
+                    agora $a$ está travado no parâmetro de rede.
+                </p>
+
+                <p style="color: red;">
+                    O que resta, ainda assim, é substancial. Como $\hat{H}$ e $\hat{T}(a)$ comutam, podemos escolher
+                    autofunções simultâneas dos dois. Sendo $\hat{T}(a)$ unitário, seus autovalores têm módulo $1$ e
+                    são portanto fases puras, $e^{iKa}$ — e um autoestado simultâneo satisfaz $\psi(x - a) =
+                    e^{iKa}\psi(x)$.
+                </p>
+
+                <p style="color: red;">
+                    Reconhecemos aí, agora derivado a partir de princípios de simetria e não de manipulação direta da
+                    equação diferencial, o <strong>Teorema de Bloch</strong> que usamos para obter a
+                    <a href="../Partículas Idênticas/Sólidos.html">estrutura de bandas dos sólidos</a>. É um bom
+                    exemplo do poder do método: aquilo que havia custado uma dedução dedicada surge aqui como
+                    corolário quase imediato de uma invariância.
+                </p>
+
+                <h3 id="sistemas-de-particulas">Sistemas de Muitas Partículas</h3>
+
+                <p style="color: red;">
+                    Uma última generalização, e ela resolve uma objeção natural. Poder-se-ia argumentar que sistemas
+                    reais — dois elétrons que se repelem, um átomo inteiro — jamais têm simetria translacional, pois
+                    seus potenciais internos claramente dependem da posição. O equívoco está em transladar apenas uma
+                    das partículas.
+                </p>
+
+                <p style="color: red;">
+                    A transformação fisicamente significativa desloca o sistema <strong>inteiro</strong>, todas as
+                    partículas simultaneamente pela mesma quantidade. Como os operadores de momento de partículas
+                    distintas comutam entre si, as exponenciais se combinam numa só:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \hat{T}(a) = e^{-ia\hat{p}_1/\hbar}\, e^{-ia\hat{p}_2/\hbar} \cdots
+                    = e^{-ia\hat{P}/\hbar},
+                    \qquad \hat{P} \equiv \sum_j \hat{p}_j
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    O gerador da translação global é o <strong>momento total</strong> do sistema. Considere agora
+                    duas partículas interagindo por um potencial que dependa apenas da separação, $V(x_1 - x_2)$ —
+                    o caso da repulsão coulombiana entre elétrons, por exemplo. Sob translação global,
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    V(x_1 - x_2) \ \longrightarrow \ V\big( (x_1 + a) - (x_2 + a) \big) = V(x_1 - x_2)
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    O potencial é invariante. Portanto, embora nenhum dos momentos individuais $\hat{p}_1$ ou
+                    $\hat{p}_2$ seja conservado — as partículas trocam momento continuamente entre si —, o
+                    <strong>momento total é rigorosamente conservado</strong>. Esta é a contrapartida quântica exata
+                    da terceira lei de Newton, agora reconhecida como aquilo que sempre foi: uma consequência da
+                    homogeneidade do espaço.
+                </p>
+
+                <p style="color: red;">
+                    Falta apenas demonstrar com rigor o elo que temos usado informalmente — que comutar com o
+                    Hamiltoniano de fato significa ser conservado. É o que faremos em
+                    <a href="Leis de Conservação.html">Leis de Conservação</a>.
+                </p>
+
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="toc-container">
+                <h4>Nesta página</h4>
+                <ul>
+                    <li><a href="#operador-de-translacao">O Operador de Translação</a></li>
+                    <li><a href="#geradores">Translações Infinitesimais</a></li>
+                    <li>
+                        <a href="#como-operadores-transformam">Como os Operadores se Transformam</a>
+                        <ul>
+                            <li><a href="#transformacao-de-x-e-p">Transformação de x e p</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#simetria-translacional">Simetria Translacional</a>
+                        <ul>
+                            <li><a href="#simetria-continua">Simetria Contínua</a></li>
+                            <li><a href="#simetria-discreta">Simetria Discreta</a></li>
+                            <li><a href="#sistemas-de-particulas">Muitas Partículas</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Search Modal Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-modal">
+            <div class="search-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search documentation..." autocomplete="off">
+            </div>
+            <div class="search-results" id="search-results"></div>
+            <div class="search-footer">
+                <div class="search-commands">
+                    <span class="cmd-key">↑</span>
+                    <span class="cmd-key">↓</span>
+                    <span class="cmd-label">navigate</span>
+                    <span class="cmd-key">↵</span>
+                    <span class="cmd-label">select</span>
+                </div>
+                <div class="search-commands">
+                    <span class="cmd-key">esc</span>
+                    <span class="cmd-label">close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../../../assets/js/class-lecture.js"></script>
+</body>
+
+</html>

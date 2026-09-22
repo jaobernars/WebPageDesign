@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simetrias de Rotação | Simetrias e Leis de Conservação | Mecânica Quântica II | The Journal of a
+        Physicist</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../../../assets/images/Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../../../assets/images/Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../../../assets/images/Favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="../../../../../../assets/images/Favicon/favicon.ico">
+    <link rel="stylesheet" href="../../../../../../assets/css/class-lecture.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                        <line x1="9" x2="9" y1="3" y2="21"></line>
+                    </svg>
+                </button>
+                <button id="theme-toggle" class="sidebar-toggle" aria-label="Toggle Theme">
+                    <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="breadcrumbs-header">
+                    <a href="../../../../../../Páginas Principais/Lectures.html" class="breadcrumb-link">← Lectures</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <a href="../../index.html" class="breadcrumb-link active">Mecânica Quântica II</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-current" class="breadcrumb-link active">Simetrias de Rotação</span>
+                </div>
+            </div>
+            <nav class="top-nav">
+                <a href="../../../../../../Páginas Principais/Lectures.html">Lectures</a>
+                <a href="../../../../../../index.html">Home</a>
+            </nav>
+        </div>
+
+        <script>
+            MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']]
+                }
+            };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    </header>
+
+    <div class="main-layout">
+        <aside class="left-sidebar" id="left-sidebar">
+            <div class="sidebar-content">
+
+                <button class="search-trigger" id="search-trigger">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                    </svg>
+                    <span>Search docs...</span>
+                </button>
+
+                <div class="sidebar-group">
+                    <h3>Início</h3>
+                    <ul>
+                        <li><a href="../../index.html">Overview</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Capítulo 1</h3>
+                    <ul>
+                        <li><a href="../[0] - Capítulo 1/Tópico 1.html">Tópico 1</a></li>
+                        <li><a href="../[0] - Capítulo 1/Tópico 2.html">Tópico 2</a></li>
+                    </ul>
+
+                    <h3>Capítulo 2</h3>
+                    <ul>
+                        <li><a href="../[1] - Capítulo 2/Tópico 1.html">Tópico 1</a></li>
+                        <li><a href="../[1] - Capítulo 2/Tópico 2.html">Tópico 2</a></li>
+                    </ul>
+
+                    <h3>Partículas Idênticas</h3>
+                    <ul>
+                        <li><a href="../Partículas Idênticas/Sistema de Duas partículas.html">Sistema de Duas
+                                partículas</a></li>
+                        <li><a href="../Partículas Idênticas/Átomos.html">Átomos</a></li>
+                        <li><a href="../Partículas Idênticas/Sólidos.html">Sólidos</a></li>
+                    </ul>
+
+                    <h3>Simetrias e Leis de Conservação</h3>
+                    <ul>
+                        <li><a href="Introdução.html">Introdução</a></li>
+                        <li><a href="O Operador de Translação.html">O Operador de Translação</a></li>
+                        <li><a href="Leis de Conservação.html">Leis de Conservação</a></li>
+                        <li><a href="Paridade.html">Paridade</a></li>
+                        <li><a href="Simetrias de Rotação.html" class="active">Simetrias de Rotação</a></li>
+                        <li><a href="Degenerescência.html">Degenerescência</a></li>
+                        <li><a href="Regras de Seleção Rotacionais.html">Regras de Seleção Rotacionais</a></li>
+                        <li><a href="Translações no Tempo.html">Translações no Tempo</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="prose">
+
+                <h1 id="simetrias-de-rotacao">Simetrias de Rotação</h1>
+                <p class="lead" style="color: red;">O momento angular revelado como gerador das rotações — e o primeiro grupo de simetria
+                    não-comutativo do curso.</p>
+
+                <p style="color: red;">
+                    Se o espaço é homogêneo — nenhum ponto é privilegiado —, disso extraímos a conservação do momento
+                    linear. Mas o espaço também é <strong>isotrópico</strong>: nenhuma direção é privilegiada. Essa
+                    segunda indiferença é a simetria de rotação, e a grandeza conservada que dela emerge é o momento
+                    angular.
+                </p>
+
+                <p style="color: red;">
+                    O roteiro será deliberadamente o mesmo do operador de translação: identificar a transformação,
+                    tomar seu limite infinitesimal, reconhecer o gerador e exponenciar. A novidade — e ela é
+                    fundamental — aparecerá quando passarmos de um único eixo para o espaço tridimensional completo.
+                </p>
+
+                <h2 id="rotacoes-z">Rotações em Torno do Eixo z</h2>
+
+                <p style="color: red;">
+                    Comecemos pelo caso mais simples: girar o sistema por um ângulo $\varphi$ em torno do eixo $z$.
+                    Em coordenadas esféricas, essa operação afeta apenas o ângulo azimutal, deixando $r$ e $\theta$
+                    intocados. Seguindo a mesma convenção ativa que adotamos para translações — o sistema gira, os
+                    eixos ficam parados —, a função nova avaliada em certo azimute deve reproduzir o que a antiga
+                    valia um ângulo $\varphi$ atrás:
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p style="color: red;">
+                        $$ \hat{R}_z(\varphi)\, \psi(r, \theta, \phi) = \psi(r, \theta, \phi - \varphi) $$
+                    </p>
+                </div>
+
+                <p style="color: red;">
+                    A analogia estrutural com $\hat{T}(a)f(x) = f(x-a)$ é exata, com $\phi$ no papel de $x$. Não
+                    surpreende, portanto, que o desenvolvimento seja idêntico. Para um ângulo infinitesimal
+                    $\varepsilon$, expandimos em série:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \hat{R}_z(\varepsilon)\, \psi = \psi(r,\theta,\phi - \varepsilon)
+                    = \psi - \varepsilon \frac{\partial \psi}{\partial \phi} + \mathcal{O}(\varepsilon^2)
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Aqui entra a peça que torna tudo interessante. Sabemos, do estudo do momento angular, que a
+                    componente $z$ em coordenadas esféricas tem a forma notavelmente simples $\hat{L}_z = -i\hbar\,
+                    \partial/\partial\phi$, de onde $\partial/\partial\phi = (i/\hbar)\hat{L}_z$. Substituindo e
+                    exponenciando pelo mesmo argumento de composição usado nas translações:
+                </p>
+
+                <div class="definition-box">
+                    <p style="color: red;">
+                        $$ \hat{R}_z(\varepsilon) = 1 - \frac{i}{\hbar}\varepsilon \hat{L}_z
+                        \qquad \Longrightarrow \qquad
+                        \hat{R}_z(\varphi) = e^{-i\varphi \hat{L}_z/\hbar} $$
+                    </p>
+                    <p style="color: red;">
+                        <strong>$\hat{L}_z$ é o gerador das rotações em torno do eixo $z$.</strong>
+                    </p>
+                </div>
+
+                <p style="color: red;">
+                    O paralelo com o momento linear é perfeito e vale ser explicitado: assim como $\hat{p}$ deixou de
+                    ser "o operador $-i\hbar\,d/dx$" para se tornar <i>aquilo que desloca coisas</i>, o momento
+                    angular deixa de ser "$\hat{\mathbf{r}} \times \hat{\mathbf{p}}$" para se tornar <i>aquilo que
+                        gira coisas</i>.
+                </p>
+
+                <h3 id="spin-rotacoes">A Inclusão do Spin</h3>
+
+                <p style="color: red;">
+                    A construção acima girou a função de onda espacial. Mas uma partícula com spin carrega também
+                    uma orientação interna, que não está codificada em $\psi(\mathbf{r})$ e que obviamente deve girar
+                    junto quando giramos o sistema inteiro.
+                </p>
+
+                <p style="color: red;">
+                    A correção necessária é natural: o gerador da rotação completa é o momento angular
+                    <strong>total</strong>, $\hat{J}_z = \hat{L}_z + \hat{S}_z$, de modo que:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \hat{R}_z(\varphi) = e^{-i\varphi \hat{J}_z/\hbar}
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Essa extensão traz consigo uma das consequências mais contraintuitivas de toda a Mecânica
+                    Quântica. Apliquemos uma rotação completa, $\varphi = 2\pi$, a uma partícula de spin
+                    $\tfrac{1}{2}$ no estado $|\uparrow\rangle$. Como $\hat{S}_z|\uparrow\rangle =
+                    (\hbar/2)|\uparrow\rangle$, o operador atua sobre o autovalor:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \hat{R}_z(2\pi)\, |\uparrow\rangle
+                    = e^{-i(2\pi)(\hbar/2)/\hbar}\, |\uparrow\rangle
+                    = e^{-i\pi}\, |\uparrow\rangle
+                    = -\, |\uparrow\rangle
+                    \end{aligned}
+                    $$
+                </p>
+
+                <div class="definition-box">
+                    <p style="color: red;">
+                        Girar um férmion de $360^\circ$ <strong>não</strong> o devolve ao estado inicial: ele retorna
+                        com o sinal invertido. São necessários $720^\circ$ para restaurar o estado original.
+                    </p>
+                    <p style="color: red;">
+                        Não há aqui contradição observável, pois uma fase global $-1$ não afeta $|\psi|^2$. Mas em
+                        experimentos de interferência, em que se gira apenas um dos braços do aparato, a diferença de
+                        fase é <i>relativa</i> — e foi medida. Esta é, em última instância, a raiz geométrica da
+                        distinção entre bósons e férmions que postulamos em
+                        <a href="../Partículas Idênticas/Sistema de Duas partículas.html">partículas idênticas</a>.
+                    </p>
+                </div>
+
+                <h3 id="simetria-axial">Simetria Axial</h3>
+
+                <p style="color: red;">
+                    A condição de simetria segue o padrão já conhecido. Um sistema é invariante por rotações em torno
+                    de $z$ quando:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \big[\hat{H}, \hat{R}_z(\varphi)\big] = 0 \ \ \forall \varphi
+                    \qquad \Longleftrightarrow \qquad
+                    \big[\hat{H}, \hat{J}_z\big] = 0
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    e pelo teorema de Noether, $J_z$ é então conservado. Fisicamente, isso ocorre sempre que o
+                    potencial tiver <strong>simetria axial</strong> — quando $V$ não depender de $\phi$. É o caso de
+                    um átomo imerso num campo magnético uniforme ao longo de $z$: o campo destrói a isotropia
+                    completa, mas preserva a simetria em torno de seu próprio eixo. Nesse sistema $J_z$ continua
+                    conservado, enquanto $J_x$ e $J_y$ deixam de ser.
+                </p>
+
+                <h2 id="rotacoes-3d">Rotações em Três Dimensões</h2>
+
+                <p style="color: red;">
+                    Nada há de especial no eixo $z$ — ele foi escolhido por conveniência de coordenadas. Uma rotação
+                    arbitrária é caracterizada por um eixo, dado por um versor $\hat{\mathbf{n}}$, e por um ângulo
+                    $\varphi$ em torno dele. Reunindo os dois num único vetor $\boldsymbol{\varphi} = \varphi\,
+                    \hat{\mathbf{n}}$, e repetindo o argumento para cada componente, obtemos:
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p style="color: red;">
+                        $$ \hat{R}(\boldsymbol{\varphi}) = e^{-i\, \boldsymbol{\varphi} \cdot \hat{\mathbf{J}}/\hbar} $$
+                    </p>
+                    <p style="color: red;">
+                        O vetor momento angular $\hat{\mathbf{J}} = (\hat{J}_x, \hat{J}_y, \hat{J}_z)$ é o gerador
+                        das rotações no espaço tridimensional.
+                    </p>
+                </div>
+
+                <h3 id="nao-comutatividade">O Grupo Não-Abeliano</h3>
+
+                <p style="color: red;">
+                    Aqui aparece a diferença essencial em relação às translações, e ela não é um detalhe técnico:
+                    <strong>rotações em torno de eixos diferentes não comutam</strong>.
+                </p>
+
+                <p style="color: red;">
+                    Isso pode ser verificado sem nenhuma matemática. Tome um livro sobre a mesa. Gire-o
+                    $90^\circ$ em torno do eixo vertical e depois $90^\circ$ em torno de um eixo horizontal; anote a
+                    orientação final. Agora recomece e execute as mesmas duas rotações na ordem inversa. O resultado
+                    é diferente. Translações não se comportam assim — andar três passos ao norte e dois a leste leva
+                    ao mesmo lugar que dois a leste e três ao norte.
+                </p>
+
+                <p style="color: red;">
+                    No formalismo, essa não-comutatividade está codificada nas relações de comutação do momento
+                    angular:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \big[\hat{J}_x, \hat{J}_y\big] = i\hbar \hat{J}_z, \qquad
+                    \big[\hat{J}_y, \hat{J}_z\big] = i\hbar \hat{J}_x, \qquad
+                    \big[\hat{J}_z, \hat{J}_x\big] = i\hbar \hat{J}_y
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Compare com $[\hat{p}_x, \hat{p}_y] = 0$. As translações formam um grupo
+                    <strong>abeliano</strong>; as rotações formam um grupo <strong>não-abeliano</strong>, conhecido
+                    como $SO(3)$. E é exatamente dessa estrutura algébrica que decorre toda a fenomenologia do
+                    momento angular que estudamos anteriormente: a impossibilidade de medir simultaneamente as três
+                    componentes, a necessidade de rotular estados por $\hat{J}^2$ e uma única componente, a existência
+                    dos operadores escada e a quantização de $j$ em passos de $\tfrac{1}{2}$.
+                </p>
+
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>Translações</th>
+                        <th>Rotações</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Gerador</strong></td>
+                        <td>$\hat{\mathbf{p}}$</td>
+                        <td>$\hat{\mathbf{J}}$</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Comutadores</strong></td>
+                        <td>$[\hat{p}_i, \hat{p}_j] = 0$</td>
+                        <td>$[\hat{J}_i, \hat{J}_j] = i\hbar\, \epsilon_{ijk}\hat{J}_k$</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Grupo</strong></td>
+                        <td>Abeliano</td>
+                        <td>Não-abeliano, $SO(3)$</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Observáveis simultâneos</strong></td>
+                        <td>$p_x$, $p_y$, $p_z$</td>
+                        <td>$J^2$ e uma componente</td>
+                    </tr>
+                </table>
+
+                <h3 id="potencial-central">Potenciais Centrais</h3>
+
+                <p style="color: red;">
+                    A simetria rotacional completa exige invariância sob rotações em torno de <i>qualquer</i> eixo, o
+                    que ocorre quando o potencial depende somente da distância à origem, $V(\mathbf{r}) = V(r)$ — um
+                    <strong>potencial central</strong>. Nesse caso, as três componentes comutam com o Hamiltoniano:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \big[\hat{H}, \hat{\mathbf{J}}\big] = 0
+                    \qquad \text{e, consequentemente,} \qquad
+                    \big[\hat{H}, \hat{J}^2\big] = 0
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Todas as componentes do momento angular são conservadas, além de seu módulo quadrado. Note,
+                    porém, uma assimetria importante em relação ao caso das translações: embora todas as componentes
+                    sejam conservadas, elas não comutam entre si, e portanto <strong>não podem ser especificadas
+                        simultaneamente</strong>. O melhor que se pode fazer é rotular os estados por $\hat{J}^2$ e
+                    uma componente, o que produz a familiar notação $|j, m\rangle$ e explica por que a base natural do
+                    átomo de hidrogênio é $\psi_{n\ell m}$.
+                </p>
+
+                <p style="color: red;">
+                    Vale registrar uma sutileza relevante para átomos reais. Quando não há acoplamento spin-órbita,
+                    $\hat{\mathbf{L}}$ e $\hat{\mathbf{S}}$ são conservados separadamente. Mas o termo de acoplamento
+                    $\propto \hat{\mathbf{L}} \cdot \hat{\mathbf{S}}$ quebra essa separação: ele não comuta com
+                    $\hat{\mathbf{L}}$ nem com $\hat{\mathbf{S}}$ isoladamente, apenas com a soma $\hat{\mathbf{J}} =
+                    \hat{\mathbf{L}} + \hat{\mathbf{S}}$. Reencontramos aqui, agora justificada por simetria, a razão
+                    pela qual a terceira das <a href="../Partículas Idênticas/Átomos.html">regras de Hund</a>
+                    classifica os estados atômicos por $J$, e não por $L$ e $S$ separadamente.
+                </p>
+
+                <h3 id="regras-rotacionais">Fechando a Regra de Seleção</h3>
+
+                <p style="color: red;">
+                    Podemos agora honrar a promessa deixada em aberto no tópico de
+                    <a href="Paridade.html">Paridade</a>. Lá concluímos que transições de dipolo elétrico exigem
+                    $\Delta\ell$ ímpar, o que ainda permitiria $\Delta\ell = \pm 3$, $\pm 5$, e assim por diante.
+                </p>
+
+                <p style="color: red;">
+                    O argumento que falta vem da simetria rotacional. O operador de dipolo é proporcional a
+                    $\hat{\mathbf{r}}$, que é um <strong>vetor</strong> — e um vetor carrega momento angular $1$ sob
+                    rotações. Ao conectar um estado de momento angular $\ell_1$ a outro de momento angular $\ell_2$,
+                    o elemento de matriz só pode ser não-nulo se as regras de composição de momento angular
+                    permitirem que $\ell_2$ resulte de acoplar $\ell_1$ com $1$. Isso restringe $\ell_2$ a
+                    $\ell_1 - 1$, $\ell_1$ ou $\ell_1 + 1$ — e a paridade já havia eliminado $\Delta\ell = 0$.
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p style="color: red;">
+                        <strong>Regras de seleção de dipolo elétrico:</strong>
+                    </p>
+                    <p style="color: red;">
+                        $$ \Delta\ell = \pm 1, \qquad \Delta m = 0,\, \pm 1 $$
+                    </p>
+                    <p style="color: red;">
+                        A primeira resulta da combinação entre paridade e momento angular; a segunda, da conservação
+                        da componente $z$ — o fóton carrega uma unidade de momento angular, cuja projeção vale $0$ ou
+                        $\pm 1$.
+                    </p>
+                </div>
+
+                <p style="color: red;">
+                    Duas simetrias, atuando em conjunto, determinaram completamente quais linhas espectrais existem —
+                    sem que nenhuma integral tenha sido calculada. Resta explorar a última consequência estrutural da
+                    simetria, talvez a mais visível de todas: a <a href="Degenerescência.html">degenerescência</a> dos
+                    níveis de energia.
+                </p>
+
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="toc-container">
+                <h4>Nesta página</h4>
+                <ul>
+                    <li><a href="#simetrias-de-rotacao">Simetrias de Rotação</a></li>
+                    <li>
+                        <a href="#rotacoes-z">Rotações em Torno do Eixo z</a>
+                        <ul>
+                            <li><a href="#spin-rotacoes">A Inclusão do Spin</a></li>
+                            <li><a href="#simetria-axial">Simetria Axial</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#rotacoes-3d">Rotações em Três Dimensões</a>
+                        <ul>
+                            <li><a href="#nao-comutatividade">O Grupo Não-Abeliano</a></li>
+                            <li><a href="#potencial-central">Potenciais Centrais</a></li>
+                            <li><a href="#regras-rotacionais">Fechando a Regra de Seleção</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Search Modal Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-modal">
+            <div class="search-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search documentation..." autocomplete="off">
+            </div>
+            <div class="search-results" id="search-results"></div>
+            <div class="search-footer">
+                <div class="search-commands">
+                    <span class="cmd-key">↑</span>
+                    <span class="cmd-key">↓</span>
+                    <span class="cmd-label">navigate</span>
+                    <span class="cmd-key">↵</span>
+                    <span class="cmd-label">select</span>
+                </div>
+                <div class="search-commands">
+                    <span class="cmd-key">esc</span>
+                    <span class="cmd-label">close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../../../assets/js/class-lecture.js"></script>
+</body>
+
+</html>

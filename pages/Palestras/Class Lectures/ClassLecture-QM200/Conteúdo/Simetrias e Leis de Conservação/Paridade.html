@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paridade | Simetrias e Leis de Conservação | Mecânica Quântica II | The Journal of a Physicist</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../../../assets/images/Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../../../assets/images/Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../../../assets/images/Favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="../../../../../../assets/images/Favicon/favicon.ico">
+    <link rel="stylesheet" href="../../../../../../assets/css/class-lecture.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                        <line x1="9" x2="9" y1="3" y2="21"></line>
+                    </svg>
+                </button>
+                <button id="theme-toggle" class="sidebar-toggle" aria-label="Toggle Theme">
+                    <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="breadcrumbs-header">
+                    <a href="../../../../../../Páginas Principais/Lectures.html" class="breadcrumb-link">← Lectures</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <a href="../../index.html" class="breadcrumb-link active">Mecânica Quântica II</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-current" class="breadcrumb-link active">Paridade</span>
+                </div>
+            </div>
+            <nav class="top-nav">
+                <a href="../../../../../../Páginas Principais/Lectures.html">Lectures</a>
+                <a href="../../../../../../index.html">Home</a>
+            </nav>
+        </div>
+
+        <script>
+            MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']]
+                }
+            };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    </header>
+
+    <div class="main-layout">
+        <aside class="left-sidebar" id="left-sidebar">
+            <div class="sidebar-content">
+
+                <button class="search-trigger" id="search-trigger">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                    </svg>
+                    <span>Search docs...</span>
+                </button>
+
+                <div class="sidebar-group">
+                    <h3>Início</h3>
+                    <ul>
+                        <li><a href="../../index.html">Overview</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Capítulo 1</h3>
+                    <ul>
+                        <li><a href="../[0] - Capítulo 1/Tópico 1.html">Tópico 1</a></li>
+                        <li><a href="../[0] - Capítulo 1/Tópico 2.html">Tópico 2</a></li>
+                    </ul>
+
+                    <h3>Capítulo 2</h3>
+                    <ul>
+                        <li><a href="../[1] - Capítulo 2/Tópico 1.html">Tópico 1</a></li>
+                        <li><a href="../[1] - Capítulo 2/Tópico 2.html">Tópico 2</a></li>
+                    </ul>
+
+                    <h3>Partículas Idênticas</h3>
+                    <ul>
+                        <li><a href="../Partículas Idênticas/Sistema de Duas partículas.html">Sistema de Duas
+                                partículas</a></li>
+                        <li><a href="../Partículas Idênticas/Átomos.html">Átomos</a></li>
+                        <li><a href="../Partículas Idênticas/Sólidos.html">Sólidos</a></li>
+                    </ul>
+
+                    <h3>Simetrias e Leis de Conservação</h3>
+                    <ul>
+                        <li><a href="Introdução.html">Introdução</a></li>
+                        <li><a href="O Operador de Translação.html">O Operador de Translação</a></li>
+                        <li><a href="Leis de Conservação.html">Leis de Conservação</a></li>
+                        <li><a href="Paridade.html" class="active">Paridade</a></li>
+                        <li><a href="Simetrias de Rotação.html">Simetrias de Rotação</a></li>
+                        <li><a href="Degenerescência.html">Degenerescência</a></li>
+                        <li><a href="Regras de Seleção Rotacionais.html">Regras de Seleção Rotacionais</a></li>
+                        <li><a href="Translações no Tempo.html">Translações no Tempo</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="prose">
+
+                <h1 id="paridade">Paridade</h1>
+                <p class="lead" style="color: red;">A simetria discreta da inversão espacial, e as regras de seleção que dela decorrem.</p>
+
+                <p style="color: red;">
+                    Saímos do tópico anterior com um teorema geral em mãos, mas aplicado até agora a uma única
+                    simetria contínua. Vamos exercitá-lo sobre um caso de natureza inteiramente distinta: a
+                    <strong>paridade</strong>, ou inversão espacial, que consiste em refletir o sistema através da
+                    origem, trocando cada ponto por seu antípoda.
+                </p>
+
+                <p style="color: red;">
+                    Trata-se de uma simetria <strong>discreta</strong>. Não há como inverter "um pouquinho" o espaço:
+                    ou se aplica a inversão inteira, ou não se aplica nada. Sem transformações infinitesimais, não há
+                    gerador, e o formalismo exponencial do operador de translação não tem análogo aqui. Veremos,
+                    contudo, que a paridade produz consequências físicas tão concretas quanto as da translação — e, no
+                    caso das regras de seleção espectroscópicas, consideravelmente mais visíveis.
+                </p>
+
+                <h2 id="paridade-1d">Paridade em Uma Dimensão</h2>
+
+                <p style="color: red;">
+                    Em uma dimensão, inverter o espaço significa simplesmente trocar $x$ por $-x$. Define-se o
+                    <strong>operador de paridade</strong> $\hat{\Pi}$ por:
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p style="color: red;">
+                        $$ \hat{\Pi}\, \psi(x) = \psi(-x) $$
+                    </p>
+                </div>
+
+                <p style="color: red;">
+                    A primeira propriedade a notar é que aplicar a inversão duas vezes devolve o sistema ao estado
+                    original: $\hat{\Pi}^2\psi(x) = \hat{\Pi}\psi(-x) = \psi(x)$. Logo:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \hat{\Pi}^2 = 1
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Este é exatamente o mesmo argumento que usamos com o operador de permutação ao estudar
+                    <a href="../Partículas Idênticas/Sistema de Duas partículas.html">partículas idênticas</a>, e a
+                    conclusão é a mesma: se $\lambda$ é autovalor de $\hat{\Pi}$, então $\lambda^2 = 1$, e portanto:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \lambda = \pm 1
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Os autoestados de paridade são, respectivamente, as funções <strong>pares</strong> ($\psi(-x) =
+                    +\psi(x)$, autovalor $+1$) e as funções <strong>ímpares</strong> ($\psi(-x) = -\psi(x)$, autovalor
+                    $-1$). Como qualquer função pode ser decomposta na soma de uma parte par e uma parte ímpar, esses
+                    autoestados formam um conjunto completo — o que confirma que $\hat{\Pi}$ é um observável legítimo.
+                </p>
+
+                <p style="color: red;">
+                    Uma peculiaridade de $\hat{\Pi}$ merece destaque: ele é simultaneamente
+                    <strong>hermitiano</strong> e <strong>unitário</strong>. Como $\hat{\Pi}^2 = 1$, temos
+                    $\hat{\Pi}^{-1} = \hat{\Pi}$; e como seus autovalores são reais, $\hat{\Pi}^\dagger = \hat{\Pi}$.
+                    Assim $\hat{\Pi}^\dagger = \hat{\Pi} = \hat{\Pi}^{-1}$, e as três operações coincidem. A
+                    hermiticidade garante que a paridade é um observável mensurável; a unitariedade garante que ela é
+                    uma simetria legítima, preservando probabilidades.
+                </p>
+
+                <h3 id="transformacao-operadores-1d">Como os Operadores se Transformam</h3>
+
+                <p style="color: red;">
+                    Apliquemos o procedimento do tópico anterior, $\hat{Q}' = \hat{\Pi}^\dagger \hat{Q}\hat{\Pi} =
+                    \hat{\Pi}\hat{Q}\hat{\Pi}$. Para a posição, acompanhemos passo a passo a ação sobre uma função
+                    arbitrária: primeiro $\hat{\Pi}$ produz $\psi(-x)$; multiplicar por $x$ dá $x\psi(-x)$; e a última
+                    aplicação de $\hat{\Pi}$ troca novamente o sinal do argumento, resultando em $(-x)\psi(x)$. Logo:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \hat{\Pi}\, \hat{x}\, \hat{\Pi} = -\hat{x}
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Para o momento, o cálculo envolve uma regra da cadeia. Derivando $\psi(-x)$ obtemos
+                    $-\psi'(-x)$, de modo que $\hat{p}\,\hat{\Pi}\psi = -i\hbar\,\frac{d}{dx}\psi(-x) =
+                    +i\hbar\,\psi'(-x)$; aplicando $\hat{\Pi}$ a este resultado, chega-se a $i\hbar\,\psi'(x) =
+                    -\hat{p}\psi(x)$. Portanto:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \hat{\Pi}\, \hat{p}\, \hat{\Pi} = -\hat{p}
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Ambos mudam de sinal, como esperaríamos de quantidades vetoriais sob uma inversão do espaço.
+                    Observe ainda uma consequência algébrica útil: $\hat{\Pi}\hat{x} = -\hat{x}\hat{\Pi}$, ou seja,
+                    paridade e posição <strong>anticomutam</strong> — e o mesmo vale para paridade e momento. Este
+                    fato reaparecerá quando discutirmos degenerescência.
+                </p>
+
+                <h3 id="simetria-paridade-1d">A Condição de Simetria</h3>
+
+                <p style="color: red;">
+                    Passemos ao Hamiltoniano $\hat{H} = \hat{p}^2/2m + V(\hat{x})$. O termo cinético é invariante,
+                    pois o sinal negativo de $\hat{p}$ é anulado pelo quadrado: $\hat{\Pi}\hat{p}^2\hat{\Pi} =
+                    (-\hat{p})(-\hat{p}) = \hat{p}^2$. Já o potencial se transforma em $V(-\hat{x})$. Assim:
+                </p>
+
+                <div class="definition-box">
+                    <p style="color: red;">
+                        $$ \big[\hat{H}, \hat{\Pi}\big] = 0
+                        \qquad \Longleftrightarrow \qquad
+                        V(-x) = V(x) $$
+                    </p>
+                    <p style="color: red;">
+                        Ou seja: um sistema tem simetria de paridade exatamente quando seu potencial é uma
+                        <strong>função par</strong>.
+                    </p>
+                </div>
+
+                <p style="color: red;">
+                    Pelo teorema demonstrado em <a href="Leis de Conservação.html">Leis de Conservação</a>, isso
+                    significa que a paridade é uma grandeza conservada: um estado que começa par permanece par para
+                    sempre, e um estado ímpar jamais se torna par.
+                </p>
+
+                <p style="color: red;">
+                    Há ainda um corolário de imenso valor prático. Se $\hat{H}$ e $\hat{\Pi}$ comutam, podemos
+                    escolher autofunções simultâneas. Mais do que isso: quando um nível de energia é
+                    <strong>não-degenerado</strong>, a escolha deixa de ser opcional e passa a ser obrigatória — o
+                    autoespaço tem dimensão $1$, de modo que $\hat{\Pi}\psi$ só pode ser um múltiplo de $\psi$. Logo:
+                </p>
+
+                <p style="color: red;">
+                    <i>Em um potencial par, todo estado estacionário não-degenerado é necessariamente par ou
+                        ímpar.</i>
+                </p>
+
+                <p style="color: red;">
+                    Isso explica, retroativamente, um padrão que já havíamos encontrado diversas vezes sem
+                    justificá-lo: a alternância par-ímpar-par-ímpar dos estados do poço quadrado infinito centrado na
+                    origem, do oscilador harmônico e do poço delta. Não era coincidência nem resultado de contas
+                    particulares — era paridade.
+                </p>
+
+                <h2 id="paridade-3d">Paridade em Três Dimensões</h2>
+
+                <p style="color: red;">
+                    A generalização natural inverte simultaneamente as três coordenadas:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \hat{\Pi}\, \psi(\mathbf{r}) = \psi(-\mathbf{r}),
+                    \qquad \text{isto é,} \qquad
+                    (x, y, z) \ \longrightarrow \ (-x, -y, -z)
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Aqui surge uma sutileza geométrica que não existia em uma dimensão, e que vale examinar com
+                    cuidado. Poder-se-ia imaginar que a inversão é apenas uma rotação disfarçada — e em
+                    <i>duas</i> dimensões isso seria verdade: inverter $(x,y) \to (-x,-y)$ é exatamente girar o plano
+                    por $180^\circ$. Em três dimensões, porém, isso é falso. A matriz da inversão é $-\mathbb{I}$,
+                    cujo determinante vale $(-1)^3 = -1$, ao passo que toda matriz de rotação tem determinante $+1$.
+                </p>
+
+                <p style="color: red;">
+                    A paridade é, portanto, uma transformação <strong>imprópria</strong>: ela não pode ser construída
+                    a partir de rotações, e troca a orientação do espaço — converte um sistema de coordenadas
+                    destro em canhoto. É essa a razão profunda pela qual a paridade não tem gerador: ela é
+                    desconectada da identidade.
+                </p>
+
+                <h3 id="paridade-harmonicos">Paridade dos Harmônicos Esféricos</h3>
+
+                <p style="color: red;">
+                    Como quase todo problema tridimensional relevante é resolvido em coordenadas esféricas, convém
+                    traduzir a inversão para essa linguagem. Geometricamente, tomar o antípoda de um ponto preserva
+                    sua distância à origem, reflete o ângulo polar em torno do equador e gira o azimute em meia volta:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    r \ \to \ r, \qquad \theta \ \to \ \pi - \theta, \qquad \phi \ \to \ \phi + \pi
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Apliquemos isso a $Y_\ell^m(\theta,\phi) \propto P_\ell^m(\cos\theta)\, e^{im\phi}$. A parte
+                    azimutal contribui com um fator $e^{im\pi} = (-1)^m$. Já a parte polar usa $\cos(\pi - \theta) =
+                    -\cos\theta$ junto com a propriedade de paridade dos polinômios associados de Legendre,
+                    $P_\ell^m(-u) = (-1)^{\ell+m}P_\ell^m(u)$. Multiplicando as duas contribuições, os fatores $m$ se
+                    cancelam:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    (-1)^{\ell + m} \cdot (-1)^{m} = (-1)^{\ell + 2m} = (-1)^{\ell}
+                    \end{aligned}
+                    $$
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p style="color: red;">
+                        $$ \hat{\Pi}\, Y_\ell^m(\theta, \phi) = (-1)^\ell\, Y_\ell^m(\theta, \phi) $$
+                    </p>
+                    <p style="color: red;">
+                        A paridade de um estado depende exclusivamente de $\ell$ — não de $m$, nem de $n$. Como a
+                        parte radial é função apenas de $r$, que não muda sob inversão, os estados do átomo de
+                        hidrogênio $\psi_{n\ell m}$ têm paridade $(-1)^\ell$.
+                    </p>
+                </div>
+
+                <table>
+                    <tr>
+                        <th>Orbital</th>
+                        <th>$\ell$</th>
+                        <th>Paridade $(-1)^\ell$</th>
+                    </tr>
+                    <tr>
+                        <td>s</td>
+                        <td>0</td>
+                        <td>$+1$ (par)</td>
+                    </tr>
+                    <tr>
+                        <td>p</td>
+                        <td>1</td>
+                        <td>$-1$ (ímpar)</td>
+                    </tr>
+                    <tr>
+                        <td>d</td>
+                        <td>2</td>
+                        <td>$+1$ (par)</td>
+                    </tr>
+                    <tr>
+                        <td>f</td>
+                        <td>3</td>
+                        <td>$-1$ (ímpar)</td>
+                    </tr>
+                </table>
+
+                <h3 id="vetores-pseudovetores">Vetores, Pseudovetores e Pseudoescalares</h3>
+
+                <p style="color: red;">
+                    A inversão espacial oferece um critério limpo para classificar grandezas físicas, e essa
+                    classificação é usada constantemente em física de partículas.
+                </p>
+
+                <p style="color: red;">
+                    Posição e momento mudam de sinal sob paridade: são <strong>vetores polares</strong>, ou
+                    simplesmente vetores. Mas considere o momento angular, $\hat{\mathbf{L}} = \hat{\mathbf{r}} \times
+                    \hat{\mathbf{p}}$. Cada fator troca de sinal, de modo que o produto vetorial <i>não</i> troca:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \hat{\Pi}\, \hat{\mathbf{L}}\, \hat{\Pi} = (-\hat{\mathbf{r}}) \times (-\hat{\mathbf{p}})
+                    = +\hat{\mathbf{L}}
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    O momento angular é um <strong>vetor axial</strong>, ou <strong>pseudovetor</strong>: comporta-se
+                    como vetor sob rotações, mas é par sob inversão. O spin $\hat{\mathbf{S}}$, sendo momento angular,
+                    compartilha essa propriedade. A distinção se estende aos escalares: $\hat{\mathbf{r}} \cdot
+                    \hat{\mathbf{p}}$ é um escalar verdadeiro (par), enquanto $\hat{\mathbf{S}} \cdot
+                    \hat{\mathbf{p}}$ — a <i>helicidade</i>, projeção do spin na direção do movimento — é um
+                    <strong>pseudoescalar</strong>, ímpar sob paridade.
+                </p>
+
+                <div class="definition-box">
+                    <p style="color: red;">
+                        Por muito tempo supôs-se que a paridade fosse uma simetria exata da natureza. Ela de fato é
+                        respeitada pelas interações forte e eletromagnética. Em 1956, porém, Tsung-Dao Lee e
+                        Chen-Ning Yang propuseram que a <strong>interação fraca</strong> poderia violá-la, e no ano
+                        seguinte o experimento conduzido por Chien-Shiung Wu, observando o decaimento beta do
+                        cobalto-60, confirmou a violação: os elétrons emitidos apresentavam uma direção preferencial
+                        em relação ao spin nuclear — uma helicidade não nula, impossível num mundo paritário. A
+                        natureza, no domínio das interações fracas, distingue a esquerda da direita.
+                    </p>
+                </div>
+
+                <h2 id="regras-de-selecao">Paridade e Regras de Seleção</h2>
+
+                <p style="color: red;">
+                    Chegamos à aplicação mais útil de toda a discussão. Regras de seleção são afirmações sobre quais
+                    transições entre níveis de energia são <i>proibidas</i>, e sua importância prática é enorme: elas
+                    explicam por que apenas algumas linhas aparecem num espectro, entre todas as combinações de
+                    níveis concebíveis.
+                </p>
+
+                <p style="color: red;">
+                    A taxa de uma transição é governada por elementos de matriz da forma $\langle \psi_2 | \hat{Q} |
+                    \psi_1 \rangle$, onde $\hat{Q}$ é o operador que acopla o sistema à perturbação externa. Se esse
+                    elemento se anular, a transição não ocorre. E a paridade, sozinha, é capaz de forçar esse
+                    anulamento.
+                </p>
+
+                <h3 id="teorema-selecao">O Teorema</h3>
+
+                <p style="color: red;">
+                    Suponha que os dois estados tenham paridade bem definida, $\hat{\Pi}\psi_1 = \pi_1\psi_1$ e
+                    $\hat{\Pi}\psi_2 = \pi_2\psi_2$, e que o operador $\hat{Q}$ também tenha paridade definida, no
+                    sentido de que $\hat{\Pi}\hat{Q}\hat{\Pi} = \pi_q \hat{Q}$. Inserindo o operador identidade na
+                    forma $\hat{\Pi}\hat{\Pi} = 1$ duas vezes, e usando que $\hat{\Pi}$ é hermitiano para
+                    transferi-lo ao <i>bra</i>:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \langle \psi_2 | \hat{Q} | \psi_1 \rangle
+                    &= \langle \psi_2 | \hat{\Pi}\hat{\Pi}\, \hat{Q}\, \hat{\Pi}\hat{\Pi} | \psi_1 \rangle \\
+                    &= \big\langle \hat{\Pi}\psi_2 \big| \left( \hat{\Pi}\hat{Q}\hat{\Pi} \right)
+                    \big| \hat{\Pi}\psi_1 \big\rangle \\
+                    &= \pi_2\, \pi_q\, \pi_1 \, \langle \psi_2 | \hat{Q} | \psi_1 \rangle
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Reorganizando, $\left( 1 - \pi_1\pi_2\pi_q \right)\langle \psi_2 | \hat{Q} | \psi_1 \rangle = 0$.
+                    Como cada $\pi$ vale $\pm 1$, o produto é $+1$ ou $-1$, e no segundo caso o fator entre
+                    parênteses vale $2$, forçando o elemento de matriz a zero:
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p style="color: red;">
+                        <strong>Regra de seleção por paridade:</strong> o elemento de matriz $\langle \psi_2 |
+                        \hat{Q} | \psi_1 \rangle$ se anula identicamente a menos que
+                    </p>
+                    <p style="color: red;">
+                        $$ \pi_1 \, \pi_2 \, \pi_q = +1 $$
+                    </p>
+                </div>
+
+                <p style="color: red;">
+                    Note a economia do argumento: chegamos a uma conclusão definitiva sobre uma integral sem sequer
+                    olhar para as funções envolvidas. Basta conhecer suas simetrias.
+                </p>
+
+                <h3 id="aplicacoes">Duas Aplicações</h3>
+
+                <p style="color: red;">
+                    <strong>Primeira: a posição média se anula.</strong> Tome $\psi_1 = \psi_2 = \psi$, um estado de
+                    paridade definida $\pi$, e $\hat{Q} = \hat{x}$, cuja paridade é $\pi_q = -1$. O produto vale
+                    $\pi \cdot \pi \cdot (-1) = -1$, já que $\pi^2 = 1$. A regra é violada, logo:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \langle x \rangle = 0
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Em qualquer estado estacionário de um potencial par, a posição média é rigorosamente nula. Isso
+                    vale para todos os níveis do oscilador harmônico e do poço infinito centrado, sem exceção e sem
+                    necessidade de cálculo.
+                </p>
+
+                <p style="color: red;">
+                    <strong>Segunda: transições de dipolo elétrico.</strong> Quando um átomo absorve ou emite luz
+                    visível, o mecanismo dominante é o acoplamento do campo elétrico ao momento de dipolo do átomo, e
+                    o operador relevante é $\hat{Q} \propto \hat{\mathbf{r}}$ — novamente ímpar, $\pi_q = -1$. A
+                    condição $\pi_1\pi_2(-1) = +1$ exige $\pi_1\pi_2 = -1$:
+                </p>
+
+                <div class="definition-box">
+                    <p style="color: red;">
+                        <strong>Regra de Laporte:</strong> transições de dipolo elétrico só ocorrem entre estados de
+                        <strong>paridades opostas</strong>. Um estado par só decai para um ímpar, e vice-versa.
+                    </p>
+                </div>
+
+                <p style="color: red;">
+                    Para o átomo de hidrogênio, onde a paridade vale $(-1)^\ell$, a condição se traduz em
+                    $(-1)^{\ell_1 + \ell_2} = -1$, isto é, $\ell_1 + \ell_2$ deve ser <strong>ímpar</strong>.
+                    Equivalentemente, $\Delta\ell$ é ímpar. Transições $s \to s$, $s \to d$ ou $p \to f$ estão
+                    terminantemente proibidas por dipolo elétrico; $s \to p$ e $p \to d$ são permitidas.
+                </p>
+
+                <p style="color: red;">
+                    A paridade, contudo, não esgota o assunto — ela permite $\Delta\ell = \pm 1$, mas também
+                    $\Delta\ell = \pm 3$, $\pm 5$ e assim por diante, que experimentalmente não se observam. O
+                    ingrediente que falta é a conservação do momento angular, que virá da simetria de rotação e
+                    estreitará a regra até sua forma final, $\Delta\ell = \pm 1$. É o que veremos em
+                    <a href="Simetrias de Rotação.html">Simetrias de Rotação</a>.
+                </p>
+
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="toc-container">
+                <h4>Nesta página</h4>
+                <ul>
+                    <li><a href="#paridade">Paridade</a></li>
+                    <li>
+                        <a href="#paridade-1d">Paridade em Uma Dimensão</a>
+                        <ul>
+                            <li><a href="#transformacao-operadores-1d">Transformação dos Operadores</a></li>
+                            <li><a href="#simetria-paridade-1d">Condição de Simetria</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#paridade-3d">Paridade em Três Dimensões</a>
+                        <ul>
+                            <li><a href="#paridade-harmonicos">Harmônicos Esféricos</a></li>
+                            <li><a href="#vetores-pseudovetores">Vetores e Pseudovetores</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#regras-de-selecao">Paridade e Regras de Seleção</a>
+                        <ul>
+                            <li><a href="#teorema-selecao">O Teorema</a></li>
+                            <li><a href="#aplicacoes">Duas Aplicações</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Search Modal Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-modal">
+            <div class="search-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search documentation..." autocomplete="off">
+            </div>
+            <div class="search-results" id="search-results"></div>
+            <div class="search-footer">
+                <div class="search-commands">
+                    <span class="cmd-key">↑</span>
+                    <span class="cmd-key">↓</span>
+                    <span class="cmd-label">navigate</span>
+                    <span class="cmd-key">↵</span>
+                    <span class="cmd-label">select</span>
+                </div>
+                <div class="search-commands">
+                    <span class="cmd-key">esc</span>
+                    <span class="cmd-label">close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../../../assets/js/class-lecture.js"></script>
+</body>
+
+</html>

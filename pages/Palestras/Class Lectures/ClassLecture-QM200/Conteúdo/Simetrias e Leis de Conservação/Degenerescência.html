@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Degenerescência | Simetrias e Leis de Conservação | Mecânica Quântica II | The Journal of a Physicist</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../../../assets/images/Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../../../assets/images/Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../../../assets/images/Favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="../../../../../../assets/images/Favicon/favicon.ico">
+    <link rel="stylesheet" href="../../../../../../assets/css/class-lecture.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                        <line x1="9" x2="9" y1="3" y2="21"></line>
+                    </svg>
+                </button>
+                <button id="theme-toggle" class="sidebar-toggle" aria-label="Toggle Theme">
+                    <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="breadcrumbs-header">
+                    <a href="../../../../../../Páginas Principais/Lectures.html" class="breadcrumb-link">← Lectures</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <a href="../../index.html" class="breadcrumb-link active">Mecânica Quântica II</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-current" class="breadcrumb-link active">Degenerescência</span>
+                </div>
+            </div>
+            <nav class="top-nav">
+                <a href="../../../../../../Páginas Principais/Lectures.html">Lectures</a>
+                <a href="../../../../../../index.html">Home</a>
+            </nav>
+        </div>
+
+        <script>
+            MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']]
+                }
+            };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    </header>
+
+    <div class="main-layout">
+        <aside class="left-sidebar" id="left-sidebar">
+            <div class="sidebar-content">
+
+                <button class="search-trigger" id="search-trigger">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                    </svg>
+                    <span>Search docs...</span>
+                </button>
+
+                <div class="sidebar-group">
+                    <h3>Início</h3>
+                    <ul>
+                        <li><a href="../../index.html">Overview</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Capítulo 1</h3>
+                    <ul>
+                        <li><a href="../[0] - Capítulo 1/Tópico 1.html">Tópico 1</a></li>
+                        <li><a href="../[0] - Capítulo 1/Tópico 2.html">Tópico 2</a></li>
+                    </ul>
+
+                    <h3>Capítulo 2</h3>
+                    <ul>
+                        <li><a href="../[1] - Capítulo 2/Tópico 1.html">Tópico 1</a></li>
+                        <li><a href="../[1] - Capítulo 2/Tópico 2.html">Tópico 2</a></li>
+                    </ul>
+
+                    <h3>Partículas Idênticas</h3>
+                    <ul>
+                        <li><a href="../Partículas Idênticas/Sistema de Duas partículas.html">Sistema de Duas
+                                partículas</a></li>
+                        <li><a href="../Partículas Idênticas/Átomos.html">Átomos</a></li>
+                        <li><a href="../Partículas Idênticas/Sólidos.html">Sólidos</a></li>
+                    </ul>
+
+                    <h3>Simetrias e Leis de Conservação</h3>
+                    <ul>
+                        <li><a href="Introdução.html">Introdução</a></li>
+                        <li><a href="O Operador de Translação.html">O Operador de Translação</a></li>
+                        <li><a href="Leis de Conservação.html">Leis de Conservação</a></li>
+                        <li><a href="Paridade.html">Paridade</a></li>
+                        <li><a href="Simetrias de Rotação.html">Simetrias de Rotação</a></li>
+                        <li><a href="Degenerescência.html" class="active">Degenerescência</a></li>
+                        <li><a href="Regras de Seleção Rotacionais.html">Regras de Seleção Rotacionais</a></li>
+                        <li><a href="Translações no Tempo.html">Translações no Tempo</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="prose">
+
+                <h1 id="degenerescencia">Degenerescência</h1>
+                <p class="lead" style="color: red;">Por que níveis de energia coincidem — e o que acontece quando a simetria que os mantém
+                    juntos é quebrada.</p>
+
+                <p style="color: red;">
+                    Ao longo do curso, encontramos degenerescências repetidamente e sempre as aceitamos como fatos
+                    brutos, resultados de contas. Os $2\ell+1$ estados de mesmo $\ell$ e diferentes $m$ têm a mesma
+                    energia; no hidrogênio, todos os $n^2$ estados de mesmo $n$ coincidem energeticamente,
+                    independentemente de $\ell$; a partícula livre tem, para cada energia, duas soluções distintas.
+                </p>
+
+                <p style="color: red;">
+                    Nenhuma dessas coincidências é acidental. Este tópico estabelece a terceira e última consequência
+                    estrutural da simetria — depois das leis de conservação e das regras de seleção —, e talvez a mais
+                    diretamente visível de todas, pois ela se manifesta na própria contagem de linhas de um espectro.
+                </p>
+
+                <h2 id="simetria-gera-degenerescencia">Simetria Gera Degenerescência</h2>
+
+                <p style="color: red;">
+                    O teorema fundamental é de uma brevidade quase decepcionante. Seja $\hat{Q}$ um operador que
+                    comuta com o Hamiltoniano, e seja $\psi$ um autoestado de energia:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \big[\hat{H}, \hat{Q}\big] = 0
+                    \qquad \text{e} \qquad
+                    \hat{H}\psi = E\psi
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Consideremos então o estado $\hat{Q}\psi$ e apliquemos-lhe o Hamiltoniano. Como os operadores
+                    comutam, podemos trocá-los de lugar impunemente:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \hat{H}\big(\hat{Q}\psi\big)
+                    = \hat{Q}\big(\hat{H}\psi\big)
+                    = \hat{Q}\big(E\psi\big)
+                    = E\big(\hat{Q}\psi\big)
+                    \end{aligned}
+                    $$
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p style="color: red;">
+                        Se $\hat{Q}$ comuta com $\hat{H}$ e $\psi$ é autoestado de energia $E$, então $\hat{Q}\psi$ é
+                        <strong>também</strong> autoestado de energia, com <strong>exatamente a mesma energia</strong>
+                        $E$.
+                    </p>
+                </div>
+
+                <p style="color: red;">
+                    A interpretação é intuitiva: uma operação de simetria transporta um estado do sistema para outro
+                    estado fisicamente equivalente. Girar um átomo produz outro átomo, igualmente válido e com a mesma
+                    energia — afinal, o espaço é isotrópico e o átomo não sabe para onde está apontando.
+                </p>
+
+                <p style="color: red;">
+                    Surge daí, porém, uma pergunta decisiva: $\hat{Q}\psi$ é um estado genuinamente <i>novo</i>? Duas
+                    alternativas se abrem.
+                </p>
+
+                <ul>
+                    <li>
+                        Se $\hat{Q}\psi$ for linearmente independente de $\psi$, temos dois estados distintos com a
+                        mesma energia — isto é, <strong>degenerescência</strong>.
+                    </li>
+                    <li>
+                        Se $\hat{Q}\psi$ for simplesmente um múltiplo de $\psi$ — ou seja, se $\psi$ também for
+                        autoestado de $\hat{Q}$ —, nada de novo foi produzido e a simetria não gera degenerescência
+                        alguma.
+                    </li>
+                </ul>
+
+                <p style="color: red;">
+                    A segunda possibilidade é real e comum. Um estado $s$ do hidrogênio ($\ell = 0$) é esfericamente
+                    simétrico: girá-lo não o altera, e nenhum parceiro degenerado é gerado. Portanto, simetria por si
+                    só <i>não garante</i> degenerescência — ela apenas fornece um candidato a parceiro degenerado.
+                    Precisamos de um critério mais afiado.
+                </p>
+
+                <h2 id="simetrias-incompativeis">Simetrias Incompatíveis</h2>
+
+                <p style="color: red;">
+                    O critério decisivo aparece quando o sistema possui <strong>duas</strong> simetrias que não são
+                    compatíveis entre si. Enunciemos e demonstremos:
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p style="color: red;">
+                        <strong>Teorema:</strong> se $[\hat{H}, \hat{A}] = 0$ e $[\hat{H}, \hat{B}] = 0$, mas
+                        $[\hat{A}, \hat{B}] \neq 0$, então os autoestados de $\hat{H}$ para os quais
+                        $[\hat{A},\hat{B}]\psi \neq 0$ são <strong>necessariamente degenerados</strong>.
+                    </p>
+                </div>
+
+                <p style="color: red;">
+                    A demonstração é por contradição. Suponha que $\psi$ seja um autoestado <i>não-degenerado</i> de
+                    $\hat{H}$, com energia $E$. Pelo teorema da seção anterior, tanto $\hat{A}\psi$ quanto
+                    $\hat{B}\psi$ são autoestados de energia $E$. Mas o autoespaço correspondente a $E$ tem dimensão
+                    $1$, por hipótese de não-degenerescência — logo, ambos têm de ser múltiplos de $\psi$:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \hat{A}\psi = a\psi
+                    \qquad\qquad
+                    \hat{B}\psi = b\psi
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Ou seja, $\psi$ é autoestado simultâneo de $\hat{A}$ e $\hat{B}$. Apliquemos então o comutador a
+                    esse estado:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \big[\hat{A}, \hat{B}\big]\psi
+                    = \hat{A}\hat{B}\psi - \hat{B}\hat{A}\psi
+                    = \hat{A}(b\psi) - \hat{B}(a\psi)
+                    = ab\psi - ba\psi = 0
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    O comutador aniquila $\psi$ — o que contradiz a hipótese $[\hat{A},\hat{B}]\psi \neq 0$. A
+                    suposição de não-degenerescência é, portanto, insustentável.
+                </p>
+
+                <p style="color: red;">
+                    O resultado é poderoso porque converte uma afirmação sobre <i>soluções</i> (quantos estados têm a
+                    mesma energia) numa afirmação sobre <i>álgebra de operadores</i> (quais comutadores se anulam).
+                    Podemos prever degenerescências sem resolver equação alguma.
+                </p>
+
+                <h2 id="exemplos">Quatro Exemplos</h2>
+
+                <h3 id="particula-livre">A Partícula Livre</h3>
+
+                <p style="color: red;">
+                    Para $\hat{H} = \hat{p}^2/2m$, o espaço é homogêneo e o potencial (nulo) é par, de modo que
+                    temos duas simetrias simultâneas: $[\hat{H}, \hat{p}] = 0$ e $[\hat{H}, \hat{\Pi}] = 0$. Mas
+                    vimos em <a href="Paridade.html">Paridade</a> que $\hat{\Pi}\hat{p}\hat{\Pi} = -\hat{p}$, isto é,
+                    paridade e momento <strong>anticomutam</strong> — e certamente não comutam.
+                </p>
+
+                <p style="color: red;">
+                    O teorema prevê degenerescência, e a verificação é imediata. Aplicando a paridade ao estado de
+                    momento definido:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \hat{\Pi}\, e^{ikx} = e^{-ikx}
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Um estado distinto, com o mesmo $E = \hbar^2k^2/2m$. Cada nível de energia da partícula livre é
+                    duplamente degenerado — uma onda indo para a direita e outra para a esquerda —, e a razão
+                    estrutural é a incompatibilidade entre as simetrias de translação e de reflexão.
+                </p>
+
+                <h3 id="potencial-central-deg">Potenciais Centrais</h3>
+
+                <p style="color: red;">
+                    Num potencial central $V(r)$, todas as componentes do momento angular são conservadas:
+                    $[\hat{H}, \hat{L}_x] = [\hat{H}, \hat{L}_y] = [\hat{H}, \hat{L}_z] = 0$. Mas elas não comutam
+                    entre si, pois $[\hat{L}_x, \hat{L}_z] = -i\hbar\hat{L}_y \neq 0$.
+                </p>
+
+                <p style="color: red;">
+                    A degenerescência está garantida, e podemos até contá-la. Os operadores escada $\hat{L}_\pm =
+                    \hat{L}_x \pm i\hat{L}_y$ também comutam com $\hat{H}$, e aplicá-los a um estado $|\ell, m\rangle$
+                    produz $|\ell, m \pm 1\rangle$ sem alterar a energia. Percorrendo toda a escada, de $m = -\ell$
+                    até $m = +\ell$, obtemos:
+                </p>
+
+                <div class="definition-box">
+                    <p style="color: red;">
+                        Todo nível de energia num potencial central é, no mínimo, $(2\ell+1)$ vezes degenerado. Esta é
+                        a chamada <strong>degenerescência essencial</strong> — ela decorre da simetria rotacional e
+                        está presente em <i>qualquer</i> potencial que dependa apenas de $r$.
+                    </p>
+                </div>
+
+                <h3 id="hidrogenio">O Hidrogênio e a Degenerescência Acidental</h3>
+
+                <p style="color: red;">
+                    O átomo de hidrogênio apresenta uma anomalia. Sua energia,
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    E_n = -\frac{13{,}6\ \text{eV}}{n^2}
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    depende <i>apenas</i> de $n$ — não de $\ell$. Somando sobre todos os valores permitidos,
+                    $\sum_{\ell=0}^{n-1}(2\ell+1) = n^2$, a degenerescência total é $n^2$ (ou $2n^2$ contando spin),
+                    bem acima dos $2\ell+1$ que a simetria rotacional exige. Os estados $2s$ e $2p$, por exemplo,
+                    coincidem em energia sem que nenhuma rotação relacione um ao outro.
+                </p>
+
+                <p style="color: red;">
+                    Essa degenerescência extra é historicamente chamada de <strong>acidental</strong>, mas o nome é
+                    enganoso — não há acidente algum. Ela denuncia a existência de uma <strong>simetria
+                        oculta</strong>, específica do potencial de Coulomb. A grandeza conservada correspondente é o
+                    <strong>vetor de Laplace-Runge-Lenz</strong>:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \hat{\mathbf{M}} = \frac{1}{2m}\left( \hat{\mathbf{p}} \times \hat{\mathbf{L}}
+                    - \hat{\mathbf{L}} \times \hat{\mathbf{p}} \right)
+                    - \frac{e^2}{4\pi\epsilon_0}\, \frac{\hat{\mathbf{r}}}{r}
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Este vetor comuta com $\hat{H}$ mas não com $\hat{\mathbf{L}}$, satisfazendo exatamente as
+                    condições do nosso teorema e gerando precisamente a degenerescência em $\ell$. Juntos,
+                    $\hat{\mathbf{L}}$ e $\hat{\mathbf{M}}$ ampliam o grupo de simetria de $SO(3)$ para $SO(4)$ — uma
+                    simetria rotacional em quatro dimensões, invisível no espaço físico.
+                </p>
+
+                <p style="color: red;">
+                    A contrapartida clássica é bem conhecida: o potencial $1/r$ é o único potencial atrativo cujas
+                    órbitas ligadas são elipses <strong>fechadas</strong>, que não precessionam. A conservação de
+                    $\mathbf{M}$ é precisamente o que fixa a orientação do eixo maior da elipse. A degenerescência
+                    quântica em $\ell$ e a ausência de precessão clássica são duas faces da mesma simetria.
+                </p>
+
+                <div class="definition-box">
+                    <p style="color: red;">
+                        Este ponto ilumina retrospectivamente algo que afirmamos em
+                        <a href="../Partículas Idênticas/Átomos.html">Átomos</a>. Lá observamos que, em átomos
+                        multieletrônicos, a energia passa a depender de $\ell$ — daí a ordem $E_{ns} \lt E_{np} \lt
+                        E_{nd}$ que organiza a Tabela Periódica. A razão agora fica clara: a blindagem eletrônica
+                        deforma o potencial efetivo, que deixa de ser exatamente $1/r$. A simetria oculta $SO(4)$ é
+                        destruída, e com ela a degenerescência em $\ell$. A simetria rotacional comum sobrevive, e por
+                        isso a degenerescência em $m$ permanece intacta.
+                    </p>
+                </div>
+
+                <h3 id="oscilador">O Oscilador Harmônico Isotrópico</h3>
+
+                <p style="color: red;">
+                    Um segundo caso de simetria oculta, digno de nota pela elegância. O oscilador tridimensional
+                    isotrópico tem energias $E_n = \hbar\omega\left(n + \tfrac{3}{2}\right)$ e degenerescência
+                    $(n+1)(n+2)/2$ — novamente maior do que a simetria rotacional prevê. A responsável é uma simetria
+                    $SU(3)$, associada à conservação de um tensor quadrupolar. Assim como no hidrogênio, o potencial
+                    harmônico é excepcional: junto com $1/r$, ele é o único cujas órbitas clássicas ligadas são
+                    fechadas.
+                </p>
+
+                <h2 id="quebra-de-simetria">Quebra de Simetria e o Levantamento da Degenerescência</h2>
+
+                <p style="color: red;">
+                    Se a degenerescência é sintoma de simetria, então destruir a simetria deve desfazer a
+                    degenerescência. Essa previsão é verificável com precisão espetacular, e constitui uma das
+                    ferramentas mais usadas da espectroscopia.
+                </p>
+
+                <p style="color: red;">
+                    Considere um átomo imerso num campo magnético uniforme $\mathbf{B}$ apontando ao longo de $z$. O
+                    campo estabelece uma direção privilegiada no espaço: a isotropia é destruída. Mas não
+                    completamente — rotações em torno do próprio eixo do campo continuam sendo simetrias. Em termos
+                    formais, o grupo de simetria é reduzido de $SO(3)$ ao subgrupo das rotações axiais, de modo que
+                    $\hat{J}_z$ segue comutando com $\hat{H}$, enquanto $\hat{J}_x$ e $\hat{J}_y$ deixam de comutar.
+                </p>
+
+                <p style="color: red;">
+                    Com isso, o argumento das simetrias incompatíveis perde sua premissa, e a degenerescência em $m$
+                    é <strong>levantada</strong>: o nível que antes era único se abre em $2\ell+1$ níveis
+                    distintos, um para cada valor de $m$. É o <strong>efeito Zeeman</strong>. De modo análogo, um
+                    campo elétrico produz o <strong>efeito Stark</strong>, com a diferença de que ele quebra também a
+                    paridade, por ser descrito por um vetor polar.
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p style="color: red;">
+                        O número de linhas em que um nível se desdobra é exatamente o seu grau de degenerescência.
+                    </p>
+                    <p style="color: red;">
+                        Isso converte a degenerescência de uma curiosidade teórica em uma quantidade
+                        <strong>diretamente mensurável</strong>: basta aplicar um campo e contar as linhas. A
+                        espectroscopia torna-se, assim, uma sonda experimental das simetrias de um sistema.
+                    </p>
+                </div>
+
+                <h2 id="balanco">As Três Consequências da Simetria</h2>
+
+                <p style="color: red;">
+                    Com a degenerescência estabelecida, vale fazer um balanço parcial, pois o fio condutor foi
+                    notavelmente econômico.
+                </p>
+
+                <p style="color: red;">
+                    Partimos de uma única pergunta — <i>o que este sistema não distingue?</i> — e a formalizamos
+                    exigindo que o Hamiltoniano comutasse com o operador da transformação. Dessa exigência
+                    brotaram, sem qualquer ingrediente adicional, três consequências independentes:
+                </p>
+
+                <table>
+                    <tr>
+                        <th>Consequência</th>
+                        <th>Mecanismo</th>
+                        <th>Manifestação</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Leis de conservação</strong></td>
+                        <td>Teorema de Ehrenfest aplicado ao gerador</td>
+                        <td>Momento, momento angular, energia, paridade</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Regras de seleção</strong></td>
+                        <td>Anulamento forçado de elementos de matriz</td>
+                        <td>$\Delta\ell = \pm 1$, $\Delta m = 0, \pm 1$</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Degenerescência</strong></td>
+                        <td>Simetrias mutuamente incompatíveis</td>
+                        <td>Multipletos $(2\ell+1)$, camadas $n^2$</td>
+                    </tr>
+                </table>
+
+                <p style="color: red;">
+                    Nenhuma dessas conclusões exigiu resolver a Equação de Schrödinger. Foi possível afirmar o que é
+                    conservado, prever quais transições são proibidas e contar quantos estados compartilham cada
+                    energia conhecendo apenas as invariâncias do Hamiltoniano.
+                </p>
+
+                <p style="color: red;">
+                    A segunda linha da tabela, contudo, ainda está incompleta. Obtivemos $\Delta\ell$ ímpar a partir
+                    da paridade e apenas esboçamos, por plausibilidade, o argumento rotacional que a estreita até
+                    $\Delta\ell = \pm 1$. É essa demonstração que faremos a seguir, em
+                    <a href="Regras de Seleção Rotacionais.html">Regras de Seleção Rotacionais</a>, antes de
+                    encerrarmos o módulo com a única transformação que ainda não examinamos: as
+                    <a href="Translações no Tempo.html">translações no tempo</a>.
+                </p>
+
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="toc-container">
+                <h4>Nesta página</h4>
+                <ul>
+                    <li><a href="#degenerescencia">Degenerescência</a></li>
+                    <li><a href="#simetria-gera-degenerescencia">Simetria Gera Degenerescência</a></li>
+                    <li><a href="#simetrias-incompativeis">Simetrias Incompatíveis</a></li>
+                    <li>
+                        <a href="#exemplos">Quatro Exemplos</a>
+                        <ul>
+                            <li><a href="#particula-livre">A Partícula Livre</a></li>
+                            <li><a href="#potencial-central-deg">Potenciais Centrais</a></li>
+                            <li><a href="#hidrogenio">Degenerescência Acidental</a></li>
+                            <li><a href="#oscilador">Oscilador Isotrópico</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#quebra-de-simetria">Quebra de Simetria</a></li>
+                    <li><a href="#balanco">As Três Consequências</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Search Modal Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-modal">
+            <div class="search-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search documentation..." autocomplete="off">
+            </div>
+            <div class="search-results" id="search-results"></div>
+            <div class="search-footer">
+                <div class="search-commands">
+                    <span class="cmd-key">↑</span>
+                    <span class="cmd-key">↓</span>
+                    <span class="cmd-label">navigate</span>
+                    <span class="cmd-key">↵</span>
+                    <span class="cmd-label">select</span>
+                </div>
+                <div class="search-commands">
+                    <span class="cmd-key">esc</span>
+                    <span class="cmd-label">close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../../../assets/js/class-lecture.js"></script>
+</body>
+
+</html>

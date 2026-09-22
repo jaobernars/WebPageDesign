@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translações no Tempo | Simetrias e Leis de Conservação | Mecânica Quântica II | The Journal of a
+        Physicist</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../../../assets/images/Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../../../assets/images/Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../../../assets/images/Favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="../../../../../../assets/images/Favicon/favicon.ico">
+    <link rel="stylesheet" href="../../../../../../assets/css/class-lecture.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                        <line x1="9" x2="9" y1="3" y2="21"></line>
+                    </svg>
+                </button>
+                <button id="theme-toggle" class="sidebar-toggle" aria-label="Toggle Theme">
+                    <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="breadcrumbs-header">
+                    <a href="../../../../../../Páginas Principais/Lectures.html" class="breadcrumb-link">← Lectures</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <a href="../../index.html" class="breadcrumb-link active">Mecânica Quântica II</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-current" class="breadcrumb-link active">Translações no Tempo</span>
+                </div>
+            </div>
+            <nav class="top-nav">
+                <a href="../../../../../../Páginas Principais/Lectures.html">Lectures</a>
+                <a href="../../../../../../index.html">Home</a>
+            </nav>
+        </div>
+
+        <script>
+            MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']]
+                }
+            };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    </header>
+
+    <div class="main-layout">
+        <aside class="left-sidebar" id="left-sidebar">
+            <div class="sidebar-content">
+
+                <button class="search-trigger" id="search-trigger">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                    </svg>
+                    <span>Search docs...</span>
+                </button>
+
+                <div class="sidebar-group">
+                    <h3>Início</h3>
+                    <ul>
+                        <li><a href="../../index.html">Overview</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Capítulo 1</h3>
+                    <ul>
+                        <li><a href="../[0] - Capítulo 1/Tópico 1.html">Tópico 1</a></li>
+                        <li><a href="../[0] - Capítulo 1/Tópico 2.html">Tópico 2</a></li>
+                    </ul>
+
+                    <h3>Capítulo 2</h3>
+                    <ul>
+                        <li><a href="../[1] - Capítulo 2/Tópico 1.html">Tópico 1</a></li>
+                        <li><a href="../[1] - Capítulo 2/Tópico 2.html">Tópico 2</a></li>
+                    </ul>
+
+                    <h3>Partículas Idênticas</h3>
+                    <ul>
+                        <li><a href="../Partículas Idênticas/Sistema de Duas partículas.html">Sistema de Duas
+                                partículas</a></li>
+                        <li><a href="../Partículas Idênticas/Átomos.html">Átomos</a></li>
+                        <li><a href="../Partículas Idênticas/Sólidos.html">Sólidos</a></li>
+                    </ul>
+
+                    <h3>Simetrias e Leis de Conservação</h3>
+                    <ul>
+                        <li><a href="Introdução.html">Introdução</a></li>
+                        <li><a href="O Operador de Translação.html">O Operador de Translação</a></li>
+                        <li><a href="Leis de Conservação.html">Leis de Conservação</a></li>
+                        <li><a href="Paridade.html">Paridade</a></li>
+                        <li><a href="Simetrias de Rotação.html">Simetrias de Rotação</a></li>
+                        <li><a href="Degenerescência.html">Degenerescência</a></li>
+                        <li><a href="Regras de Seleção Rotacionais.html">Regras de Seleção Rotacionais</a></li>
+                        <li><a href="Translações no Tempo.html" class="active">Translações no Tempo</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="prose">
+
+                <h1 id="translacoes-no-tempo">Translações no Tempo</h1>
+                <p class="lead" style="color: red;">A última transformação — e o Hamiltoniano revelado como gerador da evolução.</p>
+
+                <p style="color: red;">
+                    Transladamos no espaço, giramos, refletimos. Falta uma transformação, e ela é de natureza
+                    peculiar: deslocar o sistema no <strong>tempo</strong>.
+                </p>
+
+                <p style="color: red;">
+                    Convém, de saída, registrar a assimetria que torna este caso diferente de todos os anteriores. Na
+                    Mecânica Quântica não-relativística, a posição $x$ é um <strong>operador</strong>, um observável
+                    que se mede e a que corresponde uma distribuição de probabilidade. O tempo $t$, ao contrário, é um
+                    mero <strong>parâmetro</strong> — não existe "operador tempo", nem faz sentido perguntar pela
+                    probabilidade de que uma partícula esteja num certo instante. Espaço e tempo entram na teoria em
+                    pé de desigualdade, e só a Teoria Quântica de Campos os reconcilia, rebaixando ambos à condição de
+                    rótulos.
+                </p>
+
+                <p style="color: red;">
+                    Essa assimetria tem uma consequência prática: não transladamos um sistema no tempo à mão, como
+                    quem empurra um pacote de onda para a direita. O que fazemos é <i>deixá-lo evoluir</i> — e a
+                    evolução já nos é dada pela Equação de Schrödinger. A "translação temporal", portanto, não
+                    precisa ser inventada; ela precisa apenas ser reconhecida naquilo que já temos.
+                </p>
+
+                <h2 id="operador-evolucao">O Operador de Evolução Temporal</h2>
+
+                <p style="color: red;">
+                    Seja $\hat{H}$ independente do tempo. Consideremos um intervalo infinitesimal $\varepsilon$ e
+                    expandamos o estado em série, usando a Equação de Schrödinger para substituir a derivada:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    |\Psi(\varepsilon)\rangle
+                    = |\Psi(0)\rangle + \varepsilon \left. \frac{d|\Psi\rangle}{dt} \right|_{0}
+                    = \left( 1 - \frac{i}{\hbar}\varepsilon \hat{H} \right) |\Psi(0)\rangle
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    A estrutura é exatamente a mesma que encontramos em $\hat{T}(\varepsilon) = 1 -
+                    \frac{i}{\hbar}\varepsilon\hat{p}$ e em $\hat{R}_z(\varepsilon) = 1 -
+                    \frac{i}{\hbar}\varepsilon\hat{L}_z$. Compondo $N$ intervalos de duração $t/N$ e tomando o limite,
+                    obtemos o <strong>operador de evolução temporal</strong>:
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p style="color: red;">
+                        $$ \hat{U}(t) = e^{-i \hat{H} t/\hbar},
+                        \qquad\qquad
+                        |\Psi(t)\rangle = \hat{U}(t)\, |\Psi(0)\rangle $$
+                    </p>
+                    <p style="color: red;">
+                        <strong>O Hamiltoniano é o gerador das translações temporais.</strong>
+                    </p>
+                </div>
+
+                <p style="color: red;">
+                    Com isso, o quadro dos geradores se completa, e a simetria formal entre os três casos é perfeita:
+                </p>
+
+                <table>
+                    <tr>
+                        <th>Transformação</th>
+                        <th>Operador</th>
+                        <th>Gerador</th>
+                        <th>Grandeza conservada</th>
+                    </tr>
+                    <tr>
+                        <td>Translação no espaço</td>
+                        <td>$\hat{T}(a) = e^{-ia\hat{p}/\hbar}$</td>
+                        <td>$\hat{p}$</td>
+                        <td>Momento linear</td>
+                    </tr>
+                    <tr>
+                        <td>Rotação</td>
+                        <td>$\hat{R}(\varphi) = e^{-i\varphi \hat{J}_z/\hbar}$</td>
+                        <td>$\hat{J}_z$</td>
+                        <td>Momento angular</td>
+                    </tr>
+                    <tr>
+                        <td>Translação no tempo</td>
+                        <td>$\hat{U}(t) = e^{-i\hat{H}t/\hbar}$</td>
+                        <td>$\hat{H}$</td>
+                        <td>Energia</td>
+                    </tr>
+                </table>
+
+                <p style="color: red;">
+                    Como $\hat{H}$ é hermitiano, $\hat{U}$ é <strong>unitário</strong>: $\hat{U}^\dagger \hat{U} =
+                    e^{+i\hat{H}t/\hbar}e^{-i\hat{H}t/\hbar} = 1$. A norma do estado é preservada em toda a evolução,
+                    e a probabilidade total permanece igual a $1$ — o que, longe de ser um detalhe técnico, é a
+                    garantia de que a teoria é consistente.
+                </p>
+
+                <h3 id="estados-estacionarios">Por Que os Estados Estacionários São Estacionários</h3>
+
+                <p style="color: red;">
+                    Uma aplicação imediata esclarece uma nomenclatura que vínhamos usando sem justificar. Seja
+                    $|\psi_n\rangle$ um autoestado de energia, $\hat{H}|\psi_n\rangle = E_n|\psi_n\rangle$. Como
+                    $\hat{U}$ é uma função de $\hat{H}$, basta expandir a exponencial em série de potências para ver
+                    que cada $\hat{H}$ devolve um fator $E_n$:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \hat{U}(t)\, |\psi_n\rangle = e^{-i E_n t/\hbar}\, |\psi_n\rangle
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    A evolução produz apenas uma <strong>fase global</strong>. Como qualquer valor esperado envolve
+                    $|\Psi|^2$, e a fase se cancela contra sua conjugada, todas as grandezas observáveis permanecem
+                    rigorosamente constantes. Daí o nome: o estado evolui, mas nada nele se mexe de forma
+                    mensurável.
+                </p>
+
+                <h2 id="representacao-de-heisenberg">A Representação de Heisenberg</h2>
+
+                <p style="color: red;">
+                    Retomemos o mesmo truque que empregamos com translações e rotações — perguntar como os
+                    <i>operadores</i>, e não os estados, se transformam. O valor esperado de um observável no instante
+                    $t$ é:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \langle Q \rangle(t)
+                    = \langle \Psi(t) | \hat{Q} | \Psi(t) \rangle
+                    = \langle \Psi(0) | \hat{U}^\dagger(t)\, \hat{Q}\, \hat{U}(t) | \Psi(0) \rangle
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    A expressão admite duas leituras igualmente legítimas. Podemos dizer que o estado evoluiu e o
+                    operador ficou parado — é a leitura usual, que chamamos de
+                    <strong>representação de Schrödinger</strong>. Ou podemos dizer que o estado ficou congelado em
+                    $t = 0$ e que quem evoluiu foi o operador, agora definido como:
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p style="color: red;">
+                        $$ \hat{Q}_H(t) \equiv \hat{U}^\dagger(t)\, \hat{Q}\, \hat{U}(t) $$
+                    </p>
+                    <p style="color: red;">
+                        Esta é a <strong>representação de Heisenberg</strong>, em que
+                        $\langle Q \rangle(t) = \langle \Psi(0) | \hat{Q}_H(t) | \Psi(0) \rangle$.
+                    </p>
+                </div>
+
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>Schrödinger</th>
+                        <th>Heisenberg</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Estados</strong></td>
+                        <td>Evoluem: $|\Psi(t)\rangle$</td>
+                        <td>Congelados: $|\Psi(0)\rangle$</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Operadores</strong></td>
+                        <td>Fixos: $\hat{Q}$</td>
+                        <td>Evoluem: $\hat{Q}_H(t)$</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Equação dinâmica</strong></td>
+                        <td>Equação de Schrödinger</td>
+                        <td>Equação de Heisenberg</td>
+                    </tr>
+                </table>
+
+                <p style="color: red;">
+                    As duas representações coincidem em $t = 0$ e produzem previsões idênticas em qualquer instante —
+                    afinal, partimos de uma única expressão e apenas a agrupamos de dois modos distintos. Não se trata
+                    de duas teorias, mas de duas contabilidades da mesma teoria.
+                </p>
+
+                <h3 id="equacao-heisenberg">A Equação de Movimento de Heisenberg</h3>
+
+                <p style="color: red;">
+                    Se são os operadores que evoluem, precisamos de uma equação que dite essa evolução. Derivemos
+                    $\hat{Q}_H$ em relação ao tempo, usando $d\hat{U}/dt = -\frac{i}{\hbar}\hat{H}\hat{U}$ e seu
+                    conjugado $d\hat{U}^\dagger/dt = +\frac{i}{\hbar}\hat{U}^\dagger\hat{H}$:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \frac{d\hat{Q}_H}{dt}
+                    = \frac{i}{\hbar}\hat{U}^\dagger \hat{H}\hat{Q}\hat{U}
+                    - \frac{i}{\hbar}\hat{U}^\dagger \hat{Q}\hat{H}\hat{U}
+                    + \hat{U}^\dagger \frac{\partial \hat{Q}}{\partial t} \hat{U}
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Nos dois primeiros termos, inserimos $\hat{U}\hat{U}^\dagger = 1$ entre $\hat{H}$ e $\hat{Q}$ para
+                    formar operadores de Heisenberg completos. Resta notar que $\hat{U}^\dagger \hat{H}\hat{U} =
+                    \hat{H}$, pois $\hat{U}$ é função de $\hat{H}$ e portanto comuta com ele — o Hamiltoniano tem a
+                    mesma forma nas duas representações. Chegamos a:
+                </p>
+
+                <div class="definition-box">
+                    <p style="color: red;">
+                        <strong>Equação de Heisenberg:</strong>
+                    </p>
+                    <p style="color: red;">
+                        $$ \frac{d\hat{Q}_H}{dt} = \frac{i}{\hbar}\big[\hat{H}, \hat{Q}_H\big]
+                        + \left( \frac{\partial \hat{Q}}{\partial t} \right)_H $$
+                    </p>
+                </div>
+
+                <p style="color: red;">
+                    A semelhança com o <a href="Leis de Conservação.html">Teorema de Ehrenfest</a> não é acidental —
+                    é identidade. O teorema de Ehrenfest é exatamente esta equação tomada em valor esperado. A
+                    relação entre as duas é a mesma que existe entre uma lei e sua média: a equação de Heisenberg é a
+                    afirmação <i>operatorial</i>, mais forte; Ehrenfest é seu conteúdo estatístico.
+                </p>
+
+                <p style="color: red;">
+                    E note que a condição de conservação reaparece intacta: se $\hat{Q}$ comuta com $\hat{H}$ e não
+                    depende explicitamente do tempo, então $d\hat{Q}_H/dt = 0$ — o operador sequer evolui.
+                </p>
+
+                <h3 id="newton-operadorial">Newton como Identidade Operatorial</h3>
+
+                <p style="color: red;">
+                    Vale a pena ver a equação em ação. Tome o Hamiltoniano padrão $\hat{H} = \hat{p}^2/2m +
+                    V(\hat{x})$ e calcule a evolução de posição e momento. Para a posição, o potencial comuta com
+                    $\hat{x}$ e sobra apenas o termo cinético, com $[\hat{p}^2, \hat{x}] = -2i\hbar\hat{p}$:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \frac{d\hat{x}_H}{dt} = \frac{i}{\hbar}\big[\hat{H}, \hat{x}_H\big] = \frac{\hat{p}_H}{m}
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Para o momento, o termo cinético comuta consigo mesmo e resta o potencial, com $[V(\hat{x}),
+                    \hat{p}] = i\hbar\, V'(\hat{x})$:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \frac{d\hat{p}_H}{dt} = \frac{i}{\hbar}\big[\hat{H}, \hat{p}_H\big]
+                    = -\left( \frac{\partial V}{\partial x} \right)_H
+                    \end{aligned}
+                    $$
+                </p>
+
+                <div class="definition-box">
+                    <p style="color: red;">
+                        Estas são, literalmente, as equações de Newton — $\dot{x} = p/m$ e $\dot{p} = -\nabla V$ —
+                        agora válidas não como aproximações nem como médias, mas como
+                        <strong>identidades exatas entre operadores</strong>. A representação de Heisenberg torna a
+                        continuidade entre a mecânica clássica e a quântica visível a olho nu: a forma das equações é
+                        a mesma; o que mudou foi a natureza dos objetos que nelas aparecem, e o fato de que agora eles
+                        não comutam.
+                    </p>
+                </div>
+
+                <h2 id="invariancia-temporal">Invariância por Translação Temporal</h2>
+
+                <p style="color: red;">
+                    Resta aplicar ao tempo o mesmo critério que aplicamos a todas as outras transformações: quando
+                    dizemos que um sistema é invariante por translação temporal?
+                </p>
+
+                <p style="color: red;">
+                    Nos casos espaciais, a condição era que o Hamiltoniano não se alterasse sob a transformação.
+                    Aqui, a transformação é gerada pelo próprio Hamiltoniano, de modo que $[\hat{H}, \hat{U}(t)] = 0$
+                    é automaticamente verdadeiro e nada informa. A condição de simetria assume então sua forma mais
+                    simples possível:
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p style="color: red;">
+                        <strong>Invariância por translação temporal:</strong>
+                    </p>
+                    <p style="color: red;">
+                        $$ \frac{\partial \hat{H}}{\partial t} = 0 $$
+                    </p>
+                    <p style="color: red;">
+                        O sistema não distingue um instante de outro — as leis que o governam hoje são as mesmas de
+                        amanhã.
+                    </p>
+                </div>
+
+                <p style="color: red;">
+                    A consequência sobre a energia já foi obtida em
+                    <a href="Leis de Conservação.html">Leis de Conservação</a>: com $[\hat{H},\hat{H}] = 0$
+                    trivialmente satisfeito, o teorema de Ehrenfest deixa apenas o termo de dependência explícita, que
+                    agora se anula. <strong>A energia é conservada.</strong>
+                </p>
+
+                <h3 id="intervalo-vs-instante">Intervalo, Não Instante</h3>
+
+                <p style="color: red;">
+                    Há uma segunda leitura da condição, talvez mais reveladora. Observe que o operador que
+                    construímos, $\hat{U}(t) = e^{-i\hat{H}t/\hbar}$, depende de um único argumento: a
+                    <strong>duração</strong> da evolução. Evoluir de $t_1$ até $t_2$ é sempre $\hat{U}(t_2 - t_1)$,
+                    independentemente de quando $t_1$ ocorreu.
+                </p>
+
+                <p style="color: red;">
+                    Quando o Hamiltoniano depende do tempo, essa propriedade se perde. O operador de evolução passa a
+                    depender separadamente dos dois instantes, $\hat{U}(t_2, t_1)$, e sua construção exige um produto
+                    ordenado no tempo, pois Hamiltonianos avaliados em instantes distintos em geral não comutam:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \hat{U}(t_2, t_1) = \mathcal{T} \exp\left[ -\frac{i}{\hbar} \int_{t_1}^{t_2} \hat{H}(t')\, dt'
+                    \right]
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    A distinção não é técnica, e sim profundamente física: a invariância por translação temporal é o
+                    que garante a <strong>reprodutibilidade dos experimentos</strong>. Um experimento realizado hoje
+                    e o mesmo experimento realizado daqui a um século produzem resultados idênticos precisamente
+                    porque $\hat{U}$ depende apenas do intervalo decorrido. Toda a prática científica repousa,
+                    silenciosamente, sobre essa simetria.
+                </p>
+
+                <p style="color: red;">
+                    Reciprocamente, quebrá-la tem preço. Um átomo iluminado por um pulso de laser é descrito por um
+                    Hamiltoniano explicitamente dependente do tempo; a simetria temporal é destruída, e a energia do
+                    átomo deixa de ser conservada — ela é trocada com o campo externo, que não fazia parte do nosso
+                    $\hat{H}$. A energia "perdida" não desapareceu: apenas escapou das fronteiras do sistema que
+                    escolhemos modelar.
+                </p>
+
+                <div class="definition-box">
+                    <p style="color: red;">
+                        A assimetria entre espaço e tempo reaparece aqui de forma sutil. Para o momento, existe uma
+                        relação de incerteza $\sigma_x \sigma_p \geq \hbar/2$ entre <i>dois observáveis</i>. Já a
+                        relação $\Delta E\, \Delta t \geq \hbar/2$ tem outro estatuto: não havendo operador tempo,
+                        $\Delta t$ não é o desvio padrão de uma medida, e sim o intervalo característico em que o
+                        sistema muda apreciavelmente. É por isso que estados instáveis, de vida curta, apresentam
+                        linhas espectrais largas — quanto menos tempo o estado dura, pior definida é sua energia.
+                    </p>
+                </div>
+
+                <h2 id="encerramento">Encerramento do Módulo</h2>
+
+                <p style="color: red;">
+                    Chegamos ao fim de Simetrias e Leis de Conservação. Partimos de uma única pergunta — <i>o que
+                        este sistema não distingue?</i> —, traduzimo-la na exigência de que o Hamiltoniano comutasse
+                    com o operador da transformação, e disso extraímos tudo o que se segue.
+                </p>
+
+                <table>
+                    <tr>
+                        <th>Simetria</th>
+                        <th>Condição</th>
+                        <th>Consequência</th>
+                    </tr>
+                    <tr>
+                        <td>Translação espacial</td>
+                        <td>$V(x+a) = V(x)$</td>
+                        <td>Conservação do momento; Teorema de Bloch</td>
+                    </tr>
+                    <tr>
+                        <td>Paridade</td>
+                        <td>$V(-x) = V(x)$</td>
+                        <td>Estados pares/ímpares; regra de Laporte</td>
+                    </tr>
+                    <tr>
+                        <td>Rotação</td>
+                        <td>$V(\mathbf{r}) = V(r)$</td>
+                        <td>Momento angular; multipletos $(2\ell+1)$</td>
+                    </tr>
+                    <tr>
+                        <td>Rotação (operadores)</td>
+                        <td>Escalar / vetorial</td>
+                        <td>$\Delta\ell = \pm 1$, $\Delta m = 0, \pm 1$</td>
+                    </tr>
+                    <tr>
+                        <td>Translação temporal</td>
+                        <td>$\partial\hat{H}/\partial t = 0$</td>
+                        <td>Conservação da energia; reprodutibilidade</td>
+                    </tr>
+                </table>
+
+                <p style="color: red;">
+                    Nenhuma dessas conclusões exigiu resolver a Equação de Schrödinger. Foi possível afirmar o que é
+                    conservado, prever quais transições são proibidas e com que polarização a luz emerge, contar
+                    quantos estados compartilham cada energia e explicar por que experimentos são repetíveis —
+                    conhecendo apenas as invariâncias do Hamiltoniano.
+                </p>
+
+                <p style="color: red;">
+                    Vale, por fim, notar o quanto este módulo conversou com o anterior. A simetria de troca que
+                    postulamos em <a href="../Partículas Idênticas/Sistema de Duas partículas.html">partículas
+                        idênticas</a> revelou-se um caso particular de simetria discreta conservada; a blindagem que
+                    organiza a <a href="../Partículas Idênticas/Átomos.html">Tabela Periódica</a> apareceu como
+                    quebra da simetria oculta do potencial de Coulomb; e o Teorema de Bloch, obtido a duras penas
+                    para os <a href="../Partículas Idênticas/Sólidos.html">sólidos</a>, surgiu aqui como corolário
+                    quase imediato da periodicidade da rede.
+                </p>
+
+                <p style="color: red;">
+                    É por isso que, na física moderna, a pergunta sobre as simetrias de uma teoria costuma vir antes
+                    da pergunta sobre suas soluções — e, com frequência, é a mais informativa das duas.
+                </p>
+
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="toc-container">
+                <h4>Nesta página</h4>
+                <ul>
+                    <li><a href="#translacoes-no-tempo">Translações no Tempo</a></li>
+                    <li>
+                        <a href="#operador-evolucao">Operador de Evolução</a>
+                        <ul>
+                            <li><a href="#estados-estacionarios">Estados Estacionários</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#representacao-de-heisenberg">A Representação de Heisenberg</a>
+                        <ul>
+                            <li><a href="#equacao-heisenberg">Equação de Heisenberg</a></li>
+                            <li><a href="#newton-operadorial">Newton Operatorial</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#invariancia-temporal">Invariância Temporal</a>
+                        <ul>
+                            <li><a href="#intervalo-vs-instante">Intervalo, Não Instante</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#encerramento">Encerramento do Módulo</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Search Modal Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-modal">
+            <div class="search-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search documentation..." autocomplete="off">
+            </div>
+            <div class="search-results" id="search-results"></div>
+            <div class="search-footer">
+                <div class="search-commands">
+                    <span class="cmd-key">↑</span>
+                    <span class="cmd-key">↓</span>
+                    <span class="cmd-label">navigate</span>
+                    <span class="cmd-key">↵</span>
+                    <span class="cmd-label">select</span>
+                </div>
+                <div class="search-commands">
+                    <span class="cmd-key">esc</span>
+                    <span class="cmd-label">close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../../../assets/js/class-lecture.js"></script>
+</body>
+
+</html>

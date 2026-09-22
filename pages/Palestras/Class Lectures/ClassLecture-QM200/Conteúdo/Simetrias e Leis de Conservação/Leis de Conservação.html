@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leis de Conservação | Simetrias e Leis de Conservação | Mecânica Quântica II | The Journal of a
+        Physicist</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../../../assets/images/Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../../../assets/images/Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../../../assets/images/Favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="../../../../../../assets/images/Favicon/favicon.ico">
+    <link rel="stylesheet" href="../../../../../../assets/css/class-lecture.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                        <line x1="9" x2="9" y1="3" y2="21"></line>
+                    </svg>
+                </button>
+                <button id="theme-toggle" class="sidebar-toggle" aria-label="Toggle Theme">
+                    <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="breadcrumbs-header">
+                    <a href="../../../../../../Páginas Principais/Lectures.html" class="breadcrumb-link">← Lectures</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <a href="../../index.html" class="breadcrumb-link active">Mecânica Quântica II</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-current" class="breadcrumb-link active">Leis de Conservação</span>
+                </div>
+            </div>
+            <nav class="top-nav">
+                <a href="../../../../../../Páginas Principais/Lectures.html">Lectures</a>
+                <a href="../../../../../../index.html">Home</a>
+            </nav>
+        </div>
+
+        <script>
+            MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']]
+                }
+            };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    </header>
+
+    <div class="main-layout">
+        <aside class="left-sidebar" id="left-sidebar">
+            <div class="sidebar-content">
+
+                <button class="search-trigger" id="search-trigger">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                    </svg>
+                    <span>Search docs...</span>
+                </button>
+
+                <div class="sidebar-group">
+                    <h3>Início</h3>
+                    <ul>
+                        <li><a href="../../index.html">Overview</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Capítulo 1</h3>
+                    <ul>
+                        <li><a href="../[0] - Capítulo 1/Tópico 1.html">Tópico 1</a></li>
+                        <li><a href="../[0] - Capítulo 1/Tópico 2.html">Tópico 2</a></li>
+                    </ul>
+
+                    <h3>Capítulo 2</h3>
+                    <ul>
+                        <li><a href="../[1] - Capítulo 2/Tópico 1.html">Tópico 1</a></li>
+                        <li><a href="../[1] - Capítulo 2/Tópico 2.html">Tópico 2</a></li>
+                    </ul>
+
+                    <h3>Partículas Idênticas</h3>
+                    <ul>
+                        <li><a href="../Partículas Idênticas/Sistema de Duas partículas.html">Sistema de Duas
+                                partículas</a></li>
+                        <li><a href="../Partículas Idênticas/Átomos.html">Átomos</a></li>
+                        <li><a href="../Partículas Idênticas/Sólidos.html">Sólidos</a></li>
+                    </ul>
+
+                    <h3>Simetrias e Leis de Conservação</h3>
+                    <ul>
+                        <li><a href="Introdução.html">Introdução</a></li>
+                        <li><a href="O Operador de Translação.html">O Operador de Translação</a></li>
+                        <li><a href="Leis de Conservação.html" class="active">Leis de Conservação</a></li>
+                        <li><a href="Paridade.html">Paridade</a></li>
+                        <li><a href="Simetrias de Rotação.html">Simetrias de Rotação</a></li>
+                        <li><a href="Degenerescência.html">Degenerescência</a></li>
+                        <li><a href="Regras de Seleção Rotacionais.html">Regras de Seleção Rotacionais</a></li>
+                        <li><a href="Translações no Tempo.html">Translações no Tempo</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="prose">
+
+                <h1 id="leis-de-conservacao">Leis de Conservação</h1>
+                <p class="lead" style="color: red;">O teorema que converte toda simetria numa grandeza conservada.</p>
+
+                <p style="color: red;">
+                    Viemos usando, ao longo dos últimos tópicos, uma afirmação que ainda não demonstramos: a de que
+                    um operador que comuta com o Hamiltoniano corresponde a uma grandeza conservada. Apoiamo-nos nela
+                    para dizer que a simetria de troca é permanente, e novamente para antecipar a conservação do
+                    momento. Chegou o momento de estabelecê-la com rigor, e de reconhecer nela o teorema central de
+                    todo este módulo.
+                </p>
+
+                <h2 id="ehrenfest">O Teorema de Ehrenfest Generalizado</h2>
+
+                <p style="color: red;">
+                    Seja $\hat{Q}$ um observável qualquer e $|\Psi(t)\rangle$ um estado que evolui segundo a Equação
+                    de Schrödinger. Queremos saber como o valor esperado $\langle Q \rangle = \langle \Psi | \hat{Q} |
+                    \Psi \rangle$ varia no tempo. Derivando pela regra do produto, com três termos — o <i>bra</i>, o
+                    operador e o <i>ket</i>:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \frac{d}{dt}\langle Q \rangle
+                    = \left\langle \frac{\partial \Psi}{\partial t} \middle| \hat{Q} \middle| \Psi \right\rangle
+                    + \left\langle \Psi \middle| \frac{\partial \hat{Q}}{\partial t} \middle| \Psi \right\rangle
+                    + \left\langle \Psi \middle| \hat{Q} \middle| \frac{\partial \Psi}{\partial t} \right\rangle
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    A Equação de Schrödinger, $i\hbar\, \partial_t |\Psi\rangle = \hat{H}|\Psi\rangle$, fornece a
+                    derivada temporal do <i>ket</i>. Para o <i>bra</i>, tomamos o conjugado hermitiano, lembrando que
+                    $\hat{H}$ é hermitiano e que a conjugação inverte o sinal da unidade imaginária:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \left| \frac{\partial \Psi}{\partial t} \right\rangle = -\frac{i}{\hbar}\hat{H}|\Psi\rangle
+                    \qquad\qquad
+                    \left\langle \frac{\partial \Psi}{\partial t} \right| = +\frac{i}{\hbar}\langle \Psi | \hat{H}
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Substituindo os dois na expressão anterior, os termos com $\hat{H}$ se agrupam num comutador:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \frac{d}{dt}\langle Q \rangle
+                    &= \frac{i}{\hbar}\langle \Psi | \hat{H}\hat{Q} | \Psi \rangle
+                    - \frac{i}{\hbar}\langle \Psi | \hat{Q}\hat{H} | \Psi \rangle
+                    + \left\langle \frac{\partial \hat{Q}}{\partial t} \right\rangle
+                    \end{aligned}
+                    $$
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p style="color: red;">
+                        <strong>Teorema de Ehrenfest Generalizado:</strong>
+                    </p>
+                    <p style="color: red;">
+                        $$ \frac{d}{dt}\langle Q \rangle = \frac{i}{\hbar}\Big\langle \big[\hat{H}, \hat{Q}\big]
+                        \Big\rangle + \left\langle \frac{\partial \hat{Q}}{\partial t} \right\rangle $$
+                    </p>
+                </div>
+
+                <p style="color: red;">
+                    O último termo contabiliza apenas a eventual dependência temporal <i>explícita</i> do operador —
+                    aquela que aparece na sua própria definição, e não através do estado. A esmagadora maioria dos
+                    observáveis de interesse ($\hat{x}$, $\hat{p}$, $\hat{L}_z$, $\hat{\Pi}$) não tem dependência
+                    explícita alguma, e esse termo se anula identicamente.
+                </p>
+
+                <div class="definition-box">
+                    <p style="color: red;">
+                        <strong>Grandeza conservada:</strong> se $\hat{Q}$ não depende explicitamente do tempo e
+                        comuta com o Hamiltoniano,
+                    </p>
+                    <p style="color: red;">
+                        $$ \big[\hat{H}, \hat{Q}\big] = 0
+                        \qquad \Longrightarrow \qquad
+                        \frac{d\langle Q \rangle}{dt} = 0 $$
+                    </p>
+                    <p style="color: red;">
+                        e dizemos que $Q$ é uma <strong>constante de movimento</strong>.
+                    </p>
+                </div>
+
+                <h3 id="conservacao-forte">Uma Conservação Mais Forte do que a Média</h3>
+
+                <p style="color: red;">
+                    O enunciado acima parece, à primeira vista, mais fraco do que a conservação clássica: ele garante
+                    apenas que o <i>valor médio</i> não muda, deixando em aberto a possibilidade de que a distribuição
+                    de probabilidade se deforme mantendo a média fixa. Não é o caso — a conservação é bem mais
+                    rígida do que isso.
+                </p>
+
+                <p style="color: red;">
+                    O argumento é simples. Se $[\hat{H}, \hat{Q}] = 0$, então também $[\hat{H}, \hat{Q}^n] = 0$ para
+                    qualquer potência $n$, pois basta inserir $\hat{H}$ repetidamente entre os fatores. Logo, o
+                    teorema se aplica igualmente a $\hat{Q}^2$, $\hat{Q}^3$, e assim por diante:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \frac{d}{dt}\langle Q^n \rangle = 0 \qquad \text{para todo } n
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Como o conjunto de todos os momentos determina univocamente uma distribuição de probabilidade,
+                    segue que a distribuição inteira permanece congelada. Se medirmos $Q$ e obtivermos certo autovalor
+                    com probabilidade $P$, essa mesma probabilidade será obtida em qualquer instante futuro. Em
+                    particular, um estado que <i>é</i> autoestado de $\hat{Q}$ continuará sendo autoestado de
+                    $\hat{Q}$, com o mesmo autovalor, para sempre — exatamente o que havíamos concluído sobre a
+                    simetria de troca em
+                    <a href="../Partículas Idênticas/Sistema de Duas partículas.html">partículas idênticas</a>.
+                </p>
+
+                <h2 id="noether">A Versão Quântica do Teorema de Noether</h2>
+
+                <p style="color: red;">
+                    Falta agora costurar o teorema de Ehrenfest à discussão de simetrias. A ponte é curta, e vale a
+                    pena percorrê-la devagar.
+                </p>
+
+                <p style="color: red;">
+                    Uma simetria contínua qualquer é representada por um operador unitário construído a partir de um
+                    gerador hermitiano $\hat{G}$, exatamente como fizemos com a translação:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \hat{U}(\lambda) = e^{-i\lambda \hat{G}/\hbar}
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Dizer que o sistema possui essa simetria é dizer que $[\hat{H}, \hat{U}(\lambda)] = 0$ para todo
+                    $\lambda$. Expandindo a exponencial para $\lambda$ infinitesimal, $\hat{U} \approx 1 -
+                    (i/\hbar)\lambda\hat{G}$, e notando que a identidade comuta com tudo, a condição colapsa em:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \big[\hat{H}, \hat{U}(\lambda)\big] = 0 \ \ \forall \lambda
+                    \qquad \Longleftrightarrow \qquad
+                    \big[\hat{H}, \hat{G}\big] = 0
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Mas $\hat{G}$ é hermitiano e, salvo casos patológicos, não depende explicitamente do tempo. Pelo
+                    teorema de Ehrenfest, ele é uma constante de movimento. O ciclo se fecha:
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p style="color: red;">
+                        <strong>Teorema de Noether (versão quântica):</strong> a cada simetria contínua do
+                        Hamiltoniano corresponde uma grandeza física conservada — precisamente o gerador daquela
+                        simetria.
+                    </p>
+                    <p style="color: red;">
+                        $$ \text{Simetria} \ \longrightarrow \ \big[\hat{H}, \hat{G}\big] = 0 \ \longrightarrow \
+                        \text{Conservação de } G $$
+                    </p>
+                </div>
+
+                <p style="color: red;">
+                    Emmy Noether demonstrou o resultado clássico em 1918, no contexto do formalismo lagrangiano. A
+                    versão quântica, que acabamos de obter, é em certo sentido mais transparente: enquanto no caso
+                    clássico é preciso trabalhar com variações de ação, aqui tudo se reduz ao anulamento de um
+                    comutador. O dicionário entre simetrias e grandezas conservadas fica:
+                </p>
+
+                <table>
+                    <tr>
+                        <th>Simetria do Hamiltoniano</th>
+                        <th>Gerador</th>
+                        <th>Grandeza conservada</th>
+                    </tr>
+                    <tr>
+                        <td>Translação no espaço</td>
+                        <td>$\hat{\mathbf{p}}$</td>
+                        <td>Momento linear</td>
+                    </tr>
+                    <tr>
+                        <td>Rotação</td>
+                        <td>$\hat{\mathbf{J}}$</td>
+                        <td>Momento angular</td>
+                    </tr>
+                    <tr>
+                        <td>Translação no tempo</td>
+                        <td>$\hat{H}$</td>
+                        <td>Energia</td>
+                    </tr>
+                    <tr>
+                        <td>Paridade (discreta)</td>
+                        <td>—</td>
+                        <td>Paridade</td>
+                    </tr>
+                    <tr>
+                        <td>Troca de partículas idênticas (discreta)</td>
+                        <td>—</td>
+                        <td>Simetria de troca</td>
+                    </tr>
+                </table>
+
+                <h2 id="momento-linear">Conservação do Momento Linear</h2>
+
+                <p style="color: red;">
+                    A primeira linha da tabela já está inteiramente demonstrada. Vimos que um sistema com simetria
+                    translacional contínua satisfaz $[\hat{H}, \hat{p}] = 0$; pelo teorema de Ehrenfest, segue de
+                    imediato que $d\langle p \rangle/dt = 0$.
+                </p>
+
+                <p style="color: red;">
+                    É instrutivo confirmar isso pelo caminho direto, sem invocar simetria. Para $\hat{H} =
+                    \hat{p}^2/2m + V(\hat{x})$, o termo cinético comuta consigo mesmo e resta apenas:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \frac{d\langle p \rangle}{dt} = \frac{i}{\hbar}\big\langle [\hat{H}, \hat{p}] \big\rangle
+                    = \frac{i}{\hbar}\big\langle [V(\hat{x}), \hat{p}] \big\rangle
+                    = \left\langle -\frac{\partial V}{\partial x} \right\rangle
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    onde usamos $[V(\hat{x}), \hat{p}] = i\hbar\, \partial V/\partial x$. Reconhecemos aí a segunda
+                    lei de Newton em valores esperados: a taxa de variação do momento é a força média. E vemos
+                    explicitamente que o momento só é conservado quando $\partial V/\partial x = 0$, isto é, quando o
+                    potencial é <strong>homogêneo</strong> — exatamente a condição de simetria translacional. Os dois
+                    caminhos convergem, como deviam.
+                </p>
+
+                <p style="color: red;">
+                    O caso realmente interessante, contudo, é o de muitas partículas. Como mostramos no tópico
+                    anterior, um potencial de interação do tipo $V(x_1 - x_2)$ é invariante sob translação global,
+                    cujo gerador é o momento total $\hat{P} = \hat{p}_1 + \hat{p}_2$. Logo:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \frac{d\langle \hat{p}_1 \rangle}{dt} \neq 0,
+                    \qquad
+                    \frac{d\langle \hat{p}_2 \rangle}{dt} \neq 0,
+                    \qquad
+                    \text{mas} \qquad
+                    \frac{d\langle \hat{p}_1 + \hat{p}_2 \rangle}{dt} = 0
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    As partículas trocam momento livremente entre si — é isso que significa interagir —, mas a soma
+                    permanece rigidamente fixa. A conservação do momento total num espalhamento, que na mecânica
+                    elementar aprendemos como consequência da terceira lei de Newton, revela-se aqui como uma
+                    manifestação da homogeneidade do espaço.
+                </p>
+
+                <h2 id="energia">Conservação da Energia</h2>
+
+                <p style="color: red;">
+                    Tomemos agora $\hat{Q} = \hat{H}$. O comutador se anula trivialmente, $[\hat{H},\hat{H}] = 0$, e o
+                    teorema de Ehrenfest deixa apenas:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \frac{d\langle H \rangle}{dt} = \left\langle \frac{\partial \hat{H}}{\partial t} \right\rangle
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    A energia é conservada se, e somente se, o Hamiltoniano não depender explicitamente do tempo. A
+                    interpretação em termos de simetria é direta: um Hamiltoniano independente do tempo é aquele para
+                    o qual <strong>um instante é equivalente a qualquer outro</strong> — o sistema não distingue
+                    "agora" de "daqui a uma hora". Essa homogeneidade temporal é a simetria; a energia é sua grandeza
+                    conservada.
+                </p>
+
+                <p style="color: red;">
+                    Reciprocamente, quando um sistema é submetido a um campo externo variável — um átomo iluminado
+                    por um pulso de laser, digamos — o Hamiltoniano passa a depender do tempo, a simetria de
+                    translação temporal é quebrada, e a energia do sistema deixa de ser conservada. Ela é trocada com
+                    o agente externo, que não faz parte do nosso $\hat{H}$.
+                </p>
+
+                <h2 id="discretas">Simetrias Discretas</h2>
+
+                <p style="color: red;">
+                    Resta esclarecer um ponto que a tabela deixou em suspenso. Paridade e troca de partículas
+                    aparecem ali sem gerador algum — e com razão, pois são simetrias discretas: não existe
+                    "meia reflexão" nem "meia permutação", e sem transformações infinitesimais não há como definir um
+                    gerador.
+                </p>
+
+                <p style="color: red;">
+                    Isso poderia sugerir que o teorema de Noether não se aplica a elas. Mas note que o teorema de
+                    Ehrenfest nunca exigiu gerador nenhum: ele pede apenas um operador $\hat{Q}$ que comute com
+                    $\hat{H}$. Se a simetria discreta é representada por um operador $\hat{S}$ que seja hermitiano —
+                    como é o caso tanto da paridade $\hat{\Pi}$ quanto da permutação $\hat{P}$, ambos satisfazendo
+                    $\hat{S}^2 = 1$ e $\hat{S}^\dagger = \hat{S}$ —, então $[\hat{H}, \hat{S}] = 0$ produz uma lei de
+                    conservação legítima.
+                </p>
+
+                <p style="color: red;">
+                    A diferença é de natureza, não de validade. Uma grandeza associada a simetria contínua, como o
+                    momento, assume valores num contínuo e pode variar suavemente quando a simetria é apenas
+                    aproximada. Já a grandeza associada a uma simetria discreta assume valores num conjunto finito —
+                    $\pm 1$, no caso de paridade e troca — e a lei de conservação afirma que o sistema permanece
+                    travado num deles.
+                </p>
+
+                <p style="color: red;">
+                    Com o teorema geral estabelecido, podemos agora aplicá-lo a casos concretos. Começaremos por uma
+                    simetria discreta, a <a href="Paridade.html">paridade</a>, cujas consequências para o espectro
+                    atômico são imediatas e verificáveis.
+                </p>
+
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="toc-container">
+                <h4>Nesta página</h4>
+                <ul>
+                    <li><a href="#leis-de-conservacao">Leis de Conservação</a></li>
+                    <li>
+                        <a href="#ehrenfest">Teorema de Ehrenfest</a>
+                        <ul>
+                            <li><a href="#conservacao-forte">Conservação Forte</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#noether">Teorema de Noether</a></li>
+                    <li><a href="#momento-linear">Momento Linear</a></li>
+                    <li><a href="#energia">Energia</a></li>
+                    <li><a href="#discretas">Simetrias Discretas</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Search Modal Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-modal">
+            <div class="search-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search documentation..." autocomplete="off">
+            </div>
+            <div class="search-results" id="search-results"></div>
+            <div class="search-footer">
+                <div class="search-commands">
+                    <span class="cmd-key">↑</span>
+                    <span class="cmd-key">↓</span>
+                    <span class="cmd-label">navigate</span>
+                    <span class="cmd-key">↵</span>
+                    <span class="cmd-label">select</span>
+                </div>
+                <div class="search-commands">
+                    <span class="cmd-key">esc</span>
+                    <span class="cmd-label">close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../../../assets/js/class-lecture.js"></script>
+</body>
+
+</html>

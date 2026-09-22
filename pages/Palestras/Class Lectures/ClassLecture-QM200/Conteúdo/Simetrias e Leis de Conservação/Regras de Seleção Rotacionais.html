@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regras de Seleção Rotacionais | Simetrias e Leis de Conservação | Mecânica Quântica II | The Journal of a
+        Physicist</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../../../assets/images/Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../../../assets/images/Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../../../assets/images/Favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="../../../../../../assets/images/Favicon/favicon.ico">
+    <link rel="stylesheet" href="../../../../../../assets/css/class-lecture.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                        <line x1="9" x2="9" y1="3" y2="21"></line>
+                    </svg>
+                </button>
+                <button id="theme-toggle" class="sidebar-toggle" aria-label="Toggle Theme">
+                    <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="breadcrumbs-header">
+                    <a href="../../../../../../Páginas Principais/Lectures.html" class="breadcrumb-link">← Lectures</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <a href="../../index.html" class="breadcrumb-link active">Mecânica Quântica II</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-current" class="breadcrumb-link active">Regras de Seleção Rotacionais</span>
+                </div>
+            </div>
+            <nav class="top-nav">
+                <a href="../../../../../../Páginas Principais/Lectures.html">Lectures</a>
+                <a href="../../../../../../index.html">Home</a>
+            </nav>
+        </div>
+
+        <script>
+            MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']]
+                }
+            };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    </header>
+
+    <div class="main-layout">
+        <aside class="left-sidebar" id="left-sidebar">
+            <div class="sidebar-content">
+
+                <button class="search-trigger" id="search-trigger">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                    </svg>
+                    <span>Search docs...</span>
+                </button>
+
+                <div class="sidebar-group">
+                    <h3>Início</h3>
+                    <ul>
+                        <li><a href="../../index.html">Overview</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Capítulo 1</h3>
+                    <ul>
+                        <li><a href="../[0] - Capítulo 1/Tópico 1.html">Tópico 1</a></li>
+                        <li><a href="../[0] - Capítulo 1/Tópico 2.html">Tópico 2</a></li>
+                    </ul>
+
+                    <h3>Capítulo 2</h3>
+                    <ul>
+                        <li><a href="../[1] - Capítulo 2/Tópico 1.html">Tópico 1</a></li>
+                        <li><a href="../[1] - Capítulo 2/Tópico 2.html">Tópico 2</a></li>
+                    </ul>
+
+                    <h3>Partículas Idênticas</h3>
+                    <ul>
+                        <li><a href="../Partículas Idênticas/Sistema de Duas partículas.html">Sistema de Duas
+                                partículas</a></li>
+                        <li><a href="../Partículas Idênticas/Átomos.html">Átomos</a></li>
+                        <li><a href="../Partículas Idênticas/Sólidos.html">Sólidos</a></li>
+                    </ul>
+
+                    <h3>Simetrias e Leis de Conservação</h3>
+                    <ul>
+                        <li><a href="Introdução.html">Introdução</a></li>
+                        <li><a href="O Operador de Translação.html">O Operador de Translação</a></li>
+                        <li><a href="Leis de Conservação.html">Leis de Conservação</a></li>
+                        <li><a href="Paridade.html">Paridade</a></li>
+                        <li><a href="Simetrias de Rotação.html">Simetrias de Rotação</a></li>
+                        <li><a href="Degenerescência.html">Degenerescência</a></li>
+                        <li><a href="Regras de Seleção Rotacionais.html" class="active">Regras de Seleção
+                                Rotacionais</a></li>
+                        <li><a href="Translações no Tempo.html">Translações no Tempo</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="prose">
+
+                <h1 id="regras-rotacionais">Regras de Seleção Rotacionais</h1>
+                <p class="lead" style="color: red;">Do comutador com o momento angular às linhas que de fato aparecem num espectro.</p>
+
+                <p style="color: red;">
+                    Deixamos uma dívida pendente. Em <a href="Paridade.html">Paridade</a>, demonstramos com rigor que
+                    transições de dipolo elétrico exigem $\Delta\ell$ ímpar. Em
+                    <a href="Simetrias de Rotação.html">Simetrias de Rotação</a>, afirmamos — com um argumento de
+                    plausibilidade, não com uma demonstração — que a conservação do momento angular estreita essa
+                    condição até $\Delta\ell = \pm 1$. Chegou a hora de fazer a conta.
+                </p>
+
+                <p style="color: red;">
+                    O método é uma generalização direta do que usamos com a paridade. Lá, classificamos o operador
+                    $\hat{Q}$ segundo seu comportamento sob inversão espacial e disso extraímos o anulamento de
+                    elementos de matriz. Aqui, classificaremos os operadores segundo seu comportamento sob
+                    <strong>rotação</strong> — e a ferramenta que codifica esse comportamento é o comutador com
+                    $\hat{\mathbf{J}}$.
+                </p>
+
+                <p style="color: red;">
+                    Trabalharemos com a base $|n\,\ell\,m\rangle$, autoestados simultâneos de $\hat{L}^2$ e
+                    $\hat{L}_z$, onde $n$ representa coletivamente quaisquer outros rótulos necessários. Recordemos as
+                    duas equações de autovalor que usaremos exaustivamente:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \hat{L}^2 \,|n\,\ell\,m\rangle = \hbar^2 \ell(\ell+1)\, |n\,\ell\,m\rangle
+                    \qquad\qquad
+                    \hat{L}_z \,|n\,\ell\,m\rangle = \hbar m\, |n\,\ell\,m\rangle
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Toda a argumentação transcorre de modo idêntico se substituirmos $\hat{\mathbf{L}}$ pelo momento
+                    angular total $\hat{\mathbf{J}}$ e os rótulos $\ell, m$ por $j, m_j$ — o que será necessário
+                    sempre que houver spin em jogo.
+                </p>
+
+                <h2 id="operadores-escalares">Regras de Seleção para Operadores Escalares</h2>
+
+                <p style="color: red;">
+                    A classificação mais simples é a dos operadores que <strong>não se alteram sob rotação</strong>.
+                    Formalmente, exige-se que a transformação $\hat{R}^\dagger \hat{f} \hat{R} = \hat{f}$ valha para
+                    qualquer rotação; tomando o limite infinitesimal, como fizemos tantas vezes, isso equivale a uma
+                    condição sobre comutadores:
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p style="color: red;">
+                        <strong>Operador escalar:</strong> um operador $\hat{f}$ que comuta com todas as componentes
+                        do momento angular,
+                    </p>
+                    <p style="color: red;">
+                        $$ \big[\hat{J}_i, \hat{f}\big] = 0 \qquad (i = x,\, y,\, z) $$
+                    </p>
+                </div>
+
+                <p style="color: red;">
+                    São escalares, por exemplo, o Hamiltoniano de um potencial central, $r^2$, $\hat{p}^2$, o produto
+                    $\hat{\mathbf{L}}\cdot\hat{\mathbf{S}}$ do acoplamento spin-órbita e o próprio $\hat{J}^2$.
+                    Nenhum deles distingue direções no espaço.
+                </p>
+
+                <h3 id="escalar-m">A Restrição sobre $m$</h3>
+
+                <p style="color: red;">
+                    Tome o comutador com $\hat{L}_z$, que é nulo, e calcule seu elemento de matriz entre dois estados
+                    da base. Por um lado, o resultado tem de ser zero; por outro, podemos avaliá-lo deixando
+                    $\hat{L}_z$ atuar para a esquerda no primeiro termo e para a direita no segundo:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    0 = \big\langle n'\ell'm' \big| \big[\hat{L}_z, \hat{f}\,\big] \big| n\,\ell\,m \big\rangle
+                    = \hbar\,(m' - m)\, \big\langle n'\ell'm' \big| \hat{f} \big| n\,\ell\,m \big\rangle
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    O produto só se anula se um dos fatores for nulo. Portanto, ou $m' = m$, ou o elemento de matriz é
+                    identicamente zero.
+                </p>
+
+                <h3 id="escalar-l">A Restrição sobre $\ell$</h3>
+
+                <p style="color: red;">
+                    Como $\hat{f}$ comuta com cada componente de $\hat{\mathbf{L}}$, comuta também com
+                    $\hat{L}^2 = \hat{L}_x^2 + \hat{L}_y^2 + \hat{L}_z^2$. Repetindo exatamente o mesmo procedimento:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    0 = \big\langle n'\ell'm' \big| \big[\hat{L}^2, \hat{f}\,\big] \big| n\,\ell\,m \big\rangle
+                    = \hbar^2 \big[ \ell'(\ell'+1) - \ell(\ell+1) \big]
+                    \big\langle n'\ell'm' \big| \hat{f} \big| n\,\ell\,m \big\rangle
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    A função $\ell(\ell+1)$ é estritamente crescente para $\ell \geq 0$, de modo que a igualdade
+                    $\ell'(\ell'+1) = \ell(\ell+1)$ só pode ocorrer se $\ell' = \ell$. Reunindo os dois resultados:
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p style="color: red;">
+                        <strong>Regra de seleção para operadores escalares:</strong>
+                    </p>
+                    <p style="color: red;">
+                        $$ \big\langle n'\ell'm' \big| \hat{f} \big| n\,\ell\,m \big\rangle = 0
+                        \qquad \text{a menos que} \qquad \ell' = \ell \ \ \text{e} \ \ m' = m $$
+                    </p>
+                    <p style="color: red;">
+                        Operadores escalares são <strong>diagonais</strong> em $\ell$ e em $m$: eles jamais conectam
+                        estados de momento angular diferente.
+                    </p>
+                </div>
+
+                <h3 id="escalar-independencia">Independência em Relação a $m$</h3>
+
+                <p style="color: red;">
+                    Há um segundo resultado, menos evidente e mais poderoso: o valor dos elementos de matriz
+                    diagonais de um operador escalar <strong>não depende de $m$</strong>.
+                </p>
+
+                <p style="color: red;">
+                    A demonstração usa os operadores escada $\hat{L}_\pm = \hat{L}_x \pm i\hat{L}_y$, que também
+                    comutam com $\hat{f}$ por serem combinações lineares de componentes de $\hat{\mathbf{L}}$.
+                    Escrevendo o estado de projeção $m+1$ em termos do de projeção $m$,
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    |n\,\ell\,m{+}1\rangle = \frac{1}{\hbar A}\, \hat{L}_+ |n\,\ell\,m\rangle,
+                    \qquad A \equiv \sqrt{\ell(\ell+1) - m(m+1)}
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    e lembrando que $\hat{L}_+^\dagger = \hat{L}_-$ ao transpor a expressão para o <i>bra</i>,
+                    obtemos:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \big\langle n'\ell\,m{+}1 \big| \hat{f} \big| n\,\ell\,m{+}1 \big\rangle
+                    &= \frac{1}{\hbar^2 A^2} \big\langle n'\ell\,m \big| \hat{L}_- \hat{f} \hat{L}_+ \big| n\,\ell\,m
+                    \big\rangle \\
+                    &= \frac{1}{\hbar^2 A^2} \big\langle n'\ell\,m \big| \hat{f}\, \hat{L}_- \hat{L}_+ \big|
+                    n\,\ell\,m \big\rangle
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    onde na segunda linha usamos que $\hat{f}$ comuta com $\hat{L}_-$. Mas o produto
+                    $\hat{L}_-\hat{L}_+$ aplicado ao estado devolve justamente $\hbar^2 A^2$, cancelando o prefator:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \big\langle n'\ell\,m{+}1 \big| \hat{f} \big| n\,\ell\,m{+}1 \big\rangle
+                    = \big\langle n'\ell\,m \big| \hat{f} \big| n\,\ell\,m \big\rangle
+                    \end{aligned}
+                    $$
+                </p>
+
+                <div class="definition-box">
+                    <p style="color: red;">
+                        Esta identidade fecha um círculo aberto no tópico de
+                        <a href="Degenerescência.html">Degenerescência</a>. Como o Hamiltoniano de um potencial
+                        central <i>é</i> um operador escalar, suas energias $\langle n\ell m|\hat{H}|n\ell m\rangle =
+                        E_{n\ell}$ não podem depender de $m$ — e é exatamente isso que significa dizer que o nível é
+                        $(2\ell+1)$ vezes degenerado. Lá obtivemos a degenerescência pelo argumento das simetrias
+                        incompatíveis; aqui ela reaparece como consequência algébrica direta.
+                    </p>
+                </div>
+
+                <h2 id="operadores-vetoriais">Regras de Seleção para Operadores Vetoriais</h2>
+
+                <p style="color: red;">
+                    Passemos ao caso que nos interessa fisicamente. Um <strong>operador vetorial</strong> é aquele
+                    cujas três componentes se misturam entre si sob rotação, exatamente como fazem as componentes de
+                    um vetor comum. A tradução dessa exigência para comutadores é:
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p style="color: red;">
+                        <strong>Operador vetorial:</strong> um conjunto de três operadores $\hat{V}_x, \hat{V}_y,
+                        \hat{V}_z$ satisfazendo
+                    </p>
+                    <p style="color: red;">
+                        $$ \big[\hat{J}_i, \hat{V}_j\big] = i\hbar \sum_k \epsilon_{ijk}\, \hat{V}_k $$
+                    </p>
+                </div>
+
+                <p style="color: red;">
+                    São vetoriais $\hat{\mathbf{r}}$, $\hat{\mathbf{p}}$, $\hat{\mathbf{L}}$ e $\hat{\mathbf{S}}$ — e,
+                    crucialmente, o operador de dipolo elétrico, proporcional a $\hat{\mathbf{r}}$. Escrevendo
+                    explicitamente os três comutadores com $\hat{L}_z$:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \big[\hat{L}_z, \hat{V}_z\big] = 0,
+                    \qquad
+                    \big[\hat{L}_z, \hat{V}_x\big] = i\hbar \hat{V}_y,
+                    \qquad
+                    \big[\hat{L}_z, \hat{V}_y\big] = -i\hbar \hat{V}_x
+                    \end{aligned}
+                    $$
+                </p>
+
+                <h3 id="vetorial-m">A Restrição sobre $m$</h3>
+
+                <p style="color: red;">
+                    A componente $z$ é imediata: como $[\hat{L}_z, \hat{V}_z] = 0$, o mesmo cálculo do caso escalar
+                    fornece $\hbar(m'-m)\langle \hat{V}_z \rangle = 0$, exigindo $m' = m$.
+                </p>
+
+                <p style="color: red;">
+                    As componentes $x$ e $y$, isoladas, não têm comportamento simples — elas se convertem uma na
+                    outra. O truque, familiar da teoria do momento angular, é combiná-las em operadores de subida e
+                    descida. Definindo $\hat{V}_\pm \equiv \hat{V}_x \pm i\hat{V}_y$ e usando os dois comutadores
+                    acima:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \big[\hat{L}_z, \hat{V}_\pm\big]
+                    &= \big[\hat{L}_z, \hat{V}_x\big] \pm i \big[\hat{L}_z, \hat{V}_y\big] \\
+                    &= i\hbar \hat{V}_y \pm i\left(-i\hbar \hat{V}_x\right) \\
+                    &= \pm \hbar \left( \hat{V}_x \pm i \hat{V}_y \right)
+                    = \pm \hbar\, \hat{V}_\pm
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    O comutador já não se anula — mas reproduz o próprio operador, o que é igualmente útil. Tomando o
+                    elemento de matriz de ambos os lados:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \hbar\,(m' - m)\, \big\langle n'\ell'm' \big| \hat{V}_\pm \big| n\,\ell\,m \big\rangle
+                    = \pm \hbar \, \big\langle n'\ell'm' \big| \hat{V}_\pm \big| n\,\ell\,m \big\rangle
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Rearranjando, $\left[(m'-m) \mp 1\right]\langle \cdots \rangle = 0$: o elemento de matriz se
+                    anula a menos que $m' = m \pm 1$. Juntando às três possibilidades:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \Delta m = 0, \ \pm 1
+                    \end{aligned}
+                    $$
+                </p>
+
+                <h3 id="vetorial-l">A Restrição sobre $\ell$</h3>
+
+                <p style="color: red;">
+                    A restrição sobre $\ell$ exige mais trabalho algébrico, pois $[\hat{L}^2, \hat{V}_j]$ não tem
+                    forma simples. O caminho padrão passa por uma identidade de comutador duplo, cuja verificação é
+                    longa mas puramente mecânica:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \Big[\hat{L}^2, \big[\hat{L}^2, \hat{\mathbf{V}}\big]\Big]
+                    = 2\hbar^2 \left( \hat{L}^2 \hat{\mathbf{V}} + \hat{\mathbf{V}} \hat{L}^2 \right)
+                    - 4\hbar^2 \left( \hat{\mathbf{V}} \cdot \hat{\mathbf{L}} \right) \hat{\mathbf{L}}
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Avaliemos essa igualdade entre $\langle n'\ell'm'|$ e $|n\,\ell\,m\rangle$, abreviando
+                    $a \equiv \ell'(\ell'+1)$, $b \equiv \ell(\ell+1)$ e denotando por $M$ o elemento de matriz
+                    procurado. Cada aplicação de $\hat{L}^2$ pela esquerda ou pela direita contribui com $\hbar^2 a$
+                    ou $\hbar^2 b$, de modo que o lado esquerdo vale $\hbar^4 (a-b)^2 M$ e o primeiro termo do lado
+                    direito vale $2\hbar^4(a+b)M$.
+                </p>
+
+                <p style="color: red;">
+                    O último termo é o mais interessante. O produto escalar $\hat{\mathbf{V}}\cdot\hat{\mathbf{L}}$ é
+                    um <strong>operador escalar</strong> — e acabamos de demonstrar que operadores escalares só têm
+                    elementos de matriz não-nulos entre estados de mesmo $\ell$. Como o fator $\hat{\mathbf{L}}$ à
+                    direita também preserva $\ell$, o termo inteiro se anula sempre que $\ell' \neq \ell$. Nesse
+                    caso, restam apenas dois termos:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    (a - b)^2 = 2(a + b)
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Essa condição fatora de modo notável. Introduzindo $u \equiv \ell' + \ell + 1$ e $v \equiv \ell' -
+                    \ell$, verifica-se diretamente que $a - b = uv$ e que $2(a+b) = u^2 + v^2 - 1$. A equação se torna
+                    $u^2v^2 - u^2 - v^2 + 1 = 0$, ou seja:
+                </p>
+
+                <p style="color: red;">
+                    $$
+                    \begin{aligned}
+                    \left[ (\ell' + \ell + 1)^2 - 1 \right] \left[ (\ell' - \ell)^2 - 1 \right] = 0
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p style="color: red;">
+                    Um produto é nulo quando um dos fatores o é. O primeiro exige $\ell' + \ell = 0$, isto é,
+                    $\ell' = \ell = 0$ — o que contradiz a hipótese $\ell' \neq \ell$ sob a qual trabalhamos. Resta o
+                    segundo fator, que fornece $(\ell'-\ell)^2 = 1$. Concluímos:
+                </p>
+
+                <div class="definition-box">
+                    <p style="color: red;">
+                        Se $\ell' \neq \ell$, então necessariamente $\Delta\ell = \pm 1$. Saltos de duas ou mais
+                        unidades estão terminantemente proibidos para qualquer operador vetorial.
+                    </p>
+                </div>
+
+                <p style="color: red;">
+                    Note que o caso $\ell' = \ell$ ficou de fora da demonstração — e, de fato, ele é permitido em
+                    geral. O próprio $\hat{\mathbf{L}}$ é um operador vetorial cujos elementos de matriz são todos
+                    diagonais em $\ell$. A única exceção é a transição $0 \to 0$: entre dois estados esfericamente
+                    simétricos não há direção alguma disponível para que um vetor aponte, e o elemento de matriz
+                    necessariamente se anula.
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p style="color: red;">
+                        <strong>Regras de seleção para operadores vetoriais:</strong>
+                    </p>
+                    <p style="color: red;">
+                        $$ \Delta \ell = 0,\ \pm 1 \quad (\text{exceto } \ell = \ell' = 0),
+                        \qquad\qquad \Delta m = 0,\ \pm 1 $$
+                    </p>
+                </div>
+
+                <h3 id="dipolo-eletrico">Fechando o Caso do Dipolo Elétrico</h3>
+
+                <p style="color: red;">
+                    Agora a dívida pode ser quitada. O operador de dipolo elétrico é proporcional a
+                    $\hat{\mathbf{r}}$, que é um operador vetorial — mas também, como vimos em
+                    <a href="Paridade.html">Paridade</a>, um vetor <strong>ímpar</strong>. Cada simetria impõe sua
+                    restrição, e a intersecção das duas é o resultado físico:
+                </p>
+
+                <table>
+                    <tr>
+                        <th>Simetria</th>
+                        <th>Restrição imposta</th>
+                    </tr>
+                    <tr>
+                        <td>Rotacional ($\hat{\mathbf{r}}$ é vetorial)</td>
+                        <td>$\Delta\ell = 0, \pm 1$ &nbsp;e&nbsp; $\Delta m = 0, \pm 1$</td>
+                    </tr>
+                    <tr>
+                        <td>Paridade ($\hat{\mathbf{r}}$ é ímpar)</td>
+                        <td>$\Delta\ell$ ímpar — elimina $\Delta\ell = 0$</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Resultado combinado</strong></td>
+                        <td>$\Delta\ell = \pm 1$ &nbsp;e&nbsp; $\Delta m = 0, \pm 1$</td>
+                    </tr>
+                </table>
+
+                <p style="color: red;">
+                    Vale sublinhar o que a tabela mostra: <strong>nenhuma das duas simetrias, sozinha, produz a regra
+                        correta</strong>. A rotação admitiria $\Delta\ell = 0$; a paridade admitiria $\Delta\ell =
+                    \pm3$. Somente atuando em conjunto elas determinam o resultado observado — e determinam-no
+                    completamente.
+                </p>
+
+                <h3 id="polarizacao">A Assinatura na Polarização</h3>
+
+                <p style="color: red;">
+                    A regra sobre $\Delta m$ tem uma tradução experimental particularmente bonita. Como o fóton
+                    carrega uma unidade de momento angular, a variação de $m$ no átomo precisa ser compensada pela
+                    projeção do momento angular levado pela luz — e essa projeção é justamente o que percebemos como
+                    <strong>polarização</strong>:
+                </p>
+
+                <ul>
+                    <li>
+                        $\Delta m = 0$: o fóton não carrega projeção ao longo de $z$, e a radiação emitida é
+                        linearmente polarizada nessa direção (componente $\pi$).
+                    </li>
+                    <li>
+                        $\Delta m = \pm 1$: o fóton carrega projeção $\pm\hbar$, e a radiação é circularmente
+                        polarizada em sentidos opostos (componentes $\sigma^\pm$).
+                    </li>
+                </ul>
+
+                <p style="color: red;">
+                    É exatamente esse o padrão observado nas linhas do efeito Zeeman que discutimos em
+                    <a href="Degenerescência.html">Degenerescência</a>: ao aplicar um campo magnético, o nível se
+                    desdobra em $2\ell+1$ componentes, e cada linha resultante exibe a polarização prevista pela
+                    variação de $m$ que lhe corresponde. A simetria não apenas diz quais transições existem — diz
+                    também com que polarização a luz sai.
+                </p>
+
+                <div class="definition-box">
+                    <p style="color: red;">
+                        Escalares e vetores são apenas os dois primeiros casos de uma classificação mais ampla, a dos
+                        <strong>operadores tensoriais irredutíveis</strong> de posto $k$ (escalares têm $k = 0$,
+                        vetores $k = 1$, quadrupolos $k = 2$, e assim por diante). O
+                        <strong>Teorema de Wigner-Eckart</strong> generaliza tudo o que fizemos aqui, fornecendo de
+                        uma só vez as regras $|\ell - k| \leq \ell' \leq \ell + k$ e $\Delta m = 0, \pm 1, \dots, \pm
+                        k$, além de separar a dependência angular do elemento de matriz de um fator puramente radial.
+                        As transições de quadrupolo elétrico, muito mais fracas porém observáveis, obedecem às regras
+                        de $k = 2$ — e são justamente elas que permitem algumas linhas espectrais "proibidas"
+                        observadas em nebulosas.
+                    </p>
+                </div>
+
+                <p style="color: red;">
+                    Encerramos assim o tratamento das simetrias espaciais. Resta uma última transformação, de
+                    natureza distinta de todas as anteriores por envolver não o espaço, mas a variável que nele nada
+                    move: as <a href="Translações no Tempo.html">translações no tempo</a>.
+                </p>
+
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="toc-container">
+                <h4>Nesta página</h4>
+                <ul>
+                    <li><a href="#regras-rotacionais">Regras de Seleção Rotacionais</a></li>
+                    <li>
+                        <a href="#operadores-escalares">Operadores Escalares</a>
+                        <ul>
+                            <li><a href="#escalar-m">Restrição sobre m</a></li>
+                            <li><a href="#escalar-l">Restrição sobre l</a></li>
+                            <li><a href="#escalar-independencia">Independência em m</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#operadores-vetoriais">Operadores Vetoriais</a>
+                        <ul>
+                            <li><a href="#vetorial-m">Restrição sobre m</a></li>
+                            <li><a href="#vetorial-l">Restrição sobre l</a></li>
+                            <li><a href="#dipolo-eletrico">O Dipolo Elétrico</a></li>
+                            <li><a href="#polarizacao">Assinatura na Polarização</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Search Modal Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-modal">
+            <div class="search-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search documentation..." autocomplete="off">
+            </div>
+            <div class="search-results" id="search-results"></div>
+            <div class="search-footer">
+                <div class="search-commands">
+                    <span class="cmd-key">↑</span>
+                    <span class="cmd-key">↓</span>
+                    <span class="cmd-label">navigate</span>
+                    <span class="cmd-key">↵</span>
+                    <span class="cmd-label">select</span>
+                </div>
+                <div class="search-commands">
+                    <span class="cmd-key">esc</span>
+                    <span class="cmd-label">close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../../../assets/js/class-lecture.js"></script>
+</body>
+
+</html>
