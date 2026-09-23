@@ -136,427 +136,672 @@
             <div class="prose">
 
                 <h1 id="translacoes-no-tempo">Translações no Tempo</h1>
-                <p class="lead" style="color: red;">A última transformação — e o Hamiltoniano revelado como gerador da evolução.</p>
+                <p class="lead">O Hamiltoniano como gerador das translações temporais, a representação de Heisenberg, a
+                    conservação da energia e a inversão temporal (Griffiths, Seção 6.8 e Problemas 6.36–6.37).</p>
 
-                <p style="color: red;">
-                    Transladamos no espaço, giramos, refletimos. Falta uma transformação, e ela é de natureza
-                    peculiar: deslocar o sistema no <strong>tempo</strong>.
+                <p>
+                    Nesta seção estudamos a invariância por translação temporal. Considere uma solução $\Psi(x, t)$ da
+                    Equação de Schrödinger dependente do tempo,
                 </p>
 
-                <p style="color: red;">
-                    Convém, de saída, registrar a assimetria que torna este caso diferente de todos os anteriores. Na
-                    Mecânica Quântica não-relativística, a posição $x$ é um <strong>operador</strong>, um observável
-                    que se mede e a que corresponde uma distribuição de probabilidade. O tempo $t$, ao contrário, é um
-                    mero <strong>parâmetro</strong> — não existe "operador tempo", nem faz sentido perguntar pela
-                    probabilidade de que uma partícula esteja num certo instante. Espaço e tempo entram na teoria em
-                    pé de desigualdade, e só a Teoria Quântica de Campos os reconcilia, rebaixando ambos à condição de
-                    rótulos.
-                </p>
-
-                <p style="color: red;">
-                    Essa assimetria tem uma consequência prática: não transladamos um sistema no tempo à mão, como
-                    quem empurra um pacote de onda para a direita. O que fazemos é <i>deixá-lo evoluir</i> — e a
-                    evolução já nos é dada pela Equação de Schrödinger. A "translação temporal", portanto, não
-                    precisa ser inventada; ela precisa apenas ser reconhecida naquilo que já temos.
+                <p>
+                    $$ \hat{H}\,\Psi(x, t) = i\hbar\frac{\partial}{\partial t}\Psi(x, t). $$
                 </p>
 
                 <h2 id="operador-evolucao">O Operador de Evolução Temporal</h2>
 
-                <p style="color: red;">
-                    Seja $\hat{H}$ independente do tempo. Consideremos um intervalo infinitesimal $\varepsilon$ e
-                    expandamos o estado em série, usando a Equação de Schrödinger para substituir a derivada:
+                <p>
+                    Podemos definir o operador $\hat{U}(t)$ que propaga a função de onda para a frente no tempo:
                 </p>
 
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    |\Psi(\varepsilon)\rangle
-                    = |\Psi(0)\rangle + \varepsilon \left. \frac{d|\Psi\rangle}{dt} \right|_{0}
-                    = \left( 1 - \frac{i}{\hbar}\varepsilon \hat{H} \right) |\Psi(0)\rangle
-                    \end{aligned}
+                <p>
+                    $$ \hat{U}(t)\,\Psi(x, 0) = \Psi(x, t). \tag{6.67} $$
+                </p>
+
+                <p>
+                    $\hat{U}(t)$ pode ser expresso em termos do Hamiltoniano, e isso é simples se o próprio Hamiltoniano
+                    não for uma função do tempo. Nesse caso, expandindo o lado direito da Equação 6.67 em série de
+                    Taylor,<sup id="fnref:1"><a href="#fn:1" class="footnote-ref">1</a></sup>
+                </p>
+
+                <p>
+                    $$ \hat{U}(t)\,\Psi(x, 0) = \Psi(x, t) = \sum_{n=0}^{\infty} \frac{1}{n!}\left.\frac{\partial^n}{\partial
+                    t^n}\Psi(x, t)\right|_{t=0} t^n \tag{6.68} $$
+                </p>
+
+                <p>
+                    $$ = \sum_{n=0}^{\infty} \frac{1}{n!}\left( -\frac{i}{\hbar}\hat{H}t \right)^n \Psi(x, 0), \tag{6.69}
                     $$
                 </p>
 
-                <p style="color: red;">
-                    A estrutura é exatamente a mesma que encontramos em $\hat{T}(\varepsilon) = 1 -
-                    \frac{i}{\hbar}\varepsilon\hat{p}$ e em $\hat{R}_z(\varepsilon) = 1 -
-                    \frac{i}{\hbar}\varepsilon\hat{L}_z$. Compondo $N$ intervalos de duração $t/N$ e tomando o limite,
-                    obtemos o <strong>operador de evolução temporal</strong>:
+                <p>
+                    onde usamos a Equação de Schrödinger, $\partial\Psi/\partial t = -(i/\hbar)\hat{H}\Psi$, repetidas
+                    vezes. Portanto, no caso de um Hamiltoniano independente do tempo, o operador de evolução temporal
+                    é<sup id="fnref:2"><a href="#fn:2" class="footnote-ref">2</a></sup>
                 </p>
 
                 <div class="definition-box" style="border-left: 4px solid #45503B;">
-                    <p style="color: red;">
-                        $$ \hat{U}(t) = e^{-i \hat{H} t/\hbar},
-                        \qquad\qquad
-                        |\Psi(t)\rangle = \hat{U}(t)\, |\Psi(0)\rangle $$
+                    <p>
+                        $$ \hat{U}(t) = \exp\left[ -\frac{it}{\hbar}\hat{H} \right]. \tag{6.71} $$
                     </p>
-                    <p style="color: red;">
-                        <strong>O Hamiltoniano é o gerador das translações temporais.</strong>
+                    <p>
+                        Dizemos que o Hamiltoniano é o <strong>gerador das translações no tempo</strong>. Note que
+                        $\hat{U}(t)$ é um operador unitário (Problema 6.2 de Griffiths).
                     </p>
                 </div>
 
-                <p style="color: red;">
-                    Com isso, o quadro dos geradores se completa, e a simetria formal entre os três casos é perfeita:
+                <p>
+                    O operador de evolução temporal oferece uma forma compacta de enunciar o procedimento de solução da
+                    Equação de Schrödinger dependente do tempo. Para ver a correspondência, escreva a função de onda em
+                    $t = 0$ como uma superposição de estados estacionários ($\hat{H}\psi_n = E_n\psi_n$):
                 </p>
 
-                <table>
-                    <tr>
-                        <th>Transformação</th>
-                        <th>Operador</th>
-                        <th>Gerador</th>
-                        <th>Grandeza conservada</th>
-                    </tr>
-                    <tr>
-                        <td>Translação no espaço</td>
-                        <td>$\hat{T}(a) = e^{-ia\hat{p}/\hbar}$</td>
-                        <td>$\hat{p}$</td>
-                        <td>Momento linear</td>
-                    </tr>
-                    <tr>
-                        <td>Rotação</td>
-                        <td>$\hat{R}(\varphi) = e^{-i\varphi \hat{J}_z/\hbar}$</td>
-                        <td>$\hat{J}_z$</td>
-                        <td>Momento angular</td>
-                    </tr>
-                    <tr>
-                        <td>Translação no tempo</td>
-                        <td>$\hat{U}(t) = e^{-i\hat{H}t/\hbar}$</td>
-                        <td>$\hat{H}$</td>
-                        <td>Energia</td>
-                    </tr>
-                </table>
-
-                <p style="color: red;">
-                    Como $\hat{H}$ é hermitiano, $\hat{U}$ é <strong>unitário</strong>: $\hat{U}^\dagger \hat{U} =
-                    e^{+i\hat{H}t/\hbar}e^{-i\hat{H}t/\hbar} = 1$. A norma do estado é preservada em toda a evolução,
-                    e a probabilidade total permanece igual a $1$ — o que, longe de ser um detalhe técnico, é a
-                    garantia de que a teoria é consistente.
+                <p>
+                    $$ \Psi(x, 0) = \sum_n c_n\,\psi_n(x). $$
                 </p>
 
-                <h3 id="estados-estacionarios">Por Que os Estados Estacionários São Estacionários</h3>
-
-                <p style="color: red;">
-                    Uma aplicação imediata esclarece uma nomenclatura que vínhamos usando sem justificar. Seja
-                    $|\psi_n\rangle$ um autoestado de energia, $\hat{H}|\psi_n\rangle = E_n|\psi_n\rangle$. Como
-                    $\hat{U}$ é uma função de $\hat{H}$, basta expandir a exponencial em série de potências para ver
-                    que cada $\hat{H}$ devolve um fator $E_n$:
+                <p>
+                    Então
                 </p>
 
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    \hat{U}(t)\, |\psi_n\rangle = e^{-i E_n t/\hbar}\, |\psi_n\rangle
-                    \end{aligned}
-                    $$
+                <p>
+                    $$ \Psi(x, t) = \hat{U}(t)\,\Psi(x, 0) = \sum_n c_n\,\hat{U}(t)\,\psi_n(x) = \sum_n c_n\,
+                    e^{-i\hat{H}t/\hbar}\psi_n(x) = \sum_n c_n\, e^{-iE_n t/\hbar}\psi_n(x). $$
                 </p>
 
-                <p style="color: red;">
-                    A evolução produz apenas uma <strong>fase global</strong>. Como qualquer valor esperado envolve
-                    $|\Psi|^2$, e a fase se cancela contra sua conjugada, todas as grandezas observáveis permanecem
-                    rigorosamente constantes. Daí o nome: o estado evolui, mas nada nele se mexe de forma
-                    mensurável.
+                <p>
+                    Nesse sentido, a Equação 6.71 é uma abreviação para o processo de expandir a função de onda inicial
+                    em estados estacionários e depois acrescentar os "fatores de oscilação" $e^{-iE_n t/\hbar}$ para
+                    obter a função de onda num instante posterior (Seção 2.1 de Griffiths). Em particular, um estado
+                    estacionário apenas adquire um fator de fase global, e por isso nenhum valor esperado calculado nele
+                    muda com o tempo.
+                </p>
+
+                <p>
+                    O Problema 6.30 de Griffiths reescreve essa evolução na forma de uma integral,
+                </p>
+
+                <p>
+                    $$ \Psi(x, t) = \hat{U}(t)\,\Psi(x, 0) = \int K(x, x', t)\,\Psi(x', 0)\, dx', \qquad K(x, x', t) =
+                    \sum_n \psi_n^*(x')\, e^{-iE_n t/\hbar}\,\psi_n(x), \tag{6.79} $$
+                </p>
+
+                <p>
+                    onde $K(x, x', t)$ é o <strong>propagador</strong>: $|K(x, x', t)|^2$ é a probabilidade de uma
+                    partícula quântica ir da posição $x'$ até a posição $x$ no tempo $t$.
                 </p>
 
                 <h2 id="representacao-de-heisenberg">A Representação de Heisenberg</h2>
 
-                <p style="color: red;">
-                    Retomemos o mesmo truque que empregamos com translações e rotações — perguntar como os
-                    <i>operadores</i>, e não os estados, se transformam. O valor esperado de um observável no instante
-                    $t$ é:
+                <p>
+                    Assim como nas outras transformações estudadas neste módulo, podemos examinar o efeito da translação
+                    temporal sobre os <i>operadores</i>, e não apenas sobre as funções de onda. Os operadores
+                    transformados são chamados de operadores na <strong>representação de Heisenberg</strong>, e,
+                    seguindo a convenção, recebem um índice $H$ em vez de uma linha:
                 </p>
 
-                <p style="color: red;">
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p>
+                        $$ \hat{Q}_H(t) = \hat{U}^\dagger(t)\,\hat{Q}\,\hat{U}(t). \tag{6.72} $$
+                    </p>
+                </div>
+
+                <h3 id="exemplo-6-6">Exemplo: Translação Temporal Infinitesimal</h3>
+
+                <p>
+                    <strong>Exemplo 6.6.</strong> Uma partícula de massa $m$ se move em uma dimensão num potencial
+                    $V(x)$, $\hat{H} = \hat{p}^2/2m + V(x)$. Encontre o operador posição na representação de Heisenberg
+                    para uma translação temporal infinitesimal $\delta$.
+                </p>
+
+                <p>
+                    <i>Solução:</i> pela Equação 6.71, $\hat{U}(\delta) \approx 1 - i\frac{\delta}{\hbar}\hat{H}$.
+                    Aplicando a Equação 6.72,
+                </p>
+
+                <p>
                     $$
                     \begin{aligned}
-                    \langle Q \rangle(t)
-                    = \langle \Psi(t) | \hat{Q} | \Psi(t) \rangle
-                    = \langle \Psi(0) | \hat{U}^\dagger(t)\, \hat{Q}\, \hat{U}(t) | \Psi(0) \rangle
+                    \hat{x}_H(\delta) &\approx \left( 1 + i\frac{\delta}{\hbar}\hat{H}^\dagger \right)\hat{x}\left( 1 -
+                    i\frac{\delta}{\hbar}\hat{H} \right) \\
+                    &\approx \hat{x} - i\frac{\delta}{\hbar}\left[\hat{x}, \hat{H}\right] \approx \hat{x} -
+                    i\frac{\delta}{\hbar}\,i\hbar\frac{\hat{p}}{m},
                     \end{aligned}
                     $$
                 </p>
 
-                <p style="color: red;">
-                    A expressão admite duas leituras igualmente legítimas. Podemos dizer que o estado evoluiu e o
-                    operador ficou parado — é a leitura usual, que chamamos de
-                    <strong>representação de Schrödinger</strong>. Ou podemos dizer que o estado ficou congelado em
-                    $t = 0$ e que quem evoluiu foi o operador, agora definido como:
+                <p>
+                    e portanto
                 </p>
 
-                <div class="definition-box" style="border-left: 4px solid #45503B;">
-                    <p style="color: red;">
-                        $$ \hat{Q}_H(t) \equiv \hat{U}^\dagger(t)\, \hat{Q}\, \hat{U}(t) $$
-                    </p>
-                    <p style="color: red;">
-                        Esta é a <strong>representação de Heisenberg</strong>, em que
-                        $\langle Q \rangle(t) = \langle \Psi(0) | \hat{Q}_H(t) | \Psi(0) \rangle$.
+                <p>
+                    $$ \hat{x}_H(\delta) \approx \hat{x}_H(0) + \frac{1}{m}\,\hat{p}_H(0)\,\delta $$
+                </p>
+
+                <p>
+                    (usando o fato de que, no instante 0, os operadores de Heisenberg são simplesmente os operadores não
+                    transformados). Isso se parece exatamente com a mecânica clássica: $x(\delta) \approx x(0) +
+                    v(0)\,\delta$. A representação de Heisenberg ilumina a conexão entre a mecânica clássica e a quântica:
+                    <strong>os operadores quânticos obedecem às equações de movimento clássicas</strong>.
+                </p>
+
+                <h3 id="exemplo-6-7">Exemplo: o Oscilador Harmônico</h3>
+
+                <p>
+                    <strong>Exemplo 6.7.</strong> Uma partícula de massa $m$ se move em uma dimensão num potencial de
+                    oscilador harmônico, $\hat{H} = \hat{p}^2/2m + \frac{1}{2}m\omega^2x^2$. Encontre o operador posição
+                    na representação de Heisenberg no instante $t$.
+                </p>
+
+                <p>
+                    <i>Solução:</i> considere a ação de $\hat{x}_H$ sobre um estado estacionário $\psi_n$. (Introduzir
+                    $\psi_n$ permite substituir o <i>operador</i> $e^{-i\hat{H}t/\hbar}$ pelo <i>número</i>
+                    $e^{-iE_n t/\hbar}$, já que $e^{-i\hat{H}t/\hbar}\psi_n = e^{-iE_n t/\hbar}\psi_n$.) Escrevendo
+                    $\hat{x}$ em termos dos operadores de subida e descida, $\hat{x} = \sqrt{\hbar/2m\omega}\,(\hat{a}_+ +
+                    \hat{a}_-)$, e usando $\hat{a}_+\psi_n = \sqrt{n+1}\,\psi_{n+1}$, $\hat{a}_-\psi_n =
+                    \sqrt{n}\,\psi_{n-1}$ e $E_n = (n + \frac{1}{2})\hbar\omega$:
+                </p>
+
+                <p>
+                    $$
+                    \begin{aligned}
+                    \hat{x}_H(t)\,\psi_n(x) &= \hat{U}^\dagger(t)\,\hat{x}\,\hat{U}(t)\,\psi_n(x) \\
+                    &= e^{i\hat{H}t/\hbar}\sqrt{\frac{\hbar}{2m\omega}}\,\left(\hat{a}_+ + \hat{a}_-\right)
+                    e^{-i\hat{H}t/\hbar}\psi_n(x) \\
+                    &= \sqrt{\frac{\hbar}{2m\omega}}\,e^{-iE_n t/\hbar}\,e^{i\hat{H}t/\hbar}\left(\hat{a}_+ +
+                    \hat{a}_-\right)\psi_n(x) \\
+                    &= \sqrt{\frac{\hbar}{2m\omega}}\,e^{-iE_n t/\hbar}\,e^{i\hat{H}t/\hbar}\left[ \sqrt{n+1}\,
+                    \psi_{n+1}(x) + \sqrt{n}\,\psi_{n-1}(x) \right] \\
+                    &= \sqrt{\frac{\hbar}{2m\omega}}\,e^{-iE_n t/\hbar}\left[ \sqrt{n+1}\,e^{iE_{n+1}t/\hbar}\,
+                    \psi_{n+1}(x) + \sqrt{n}\,e^{iE_{n-1}t/\hbar}\,\psi_{n-1}(x) \right] \\
+                    &= \sqrt{\frac{\hbar}{2m\omega}}\left[ \sqrt{n+1}\,e^{i\omega t}\,\psi_{n+1}(x) + \sqrt{n}\,
+                    e^{-i\omega t}\,\psi_{n-1}(x) \right].
+                    \end{aligned}
+                    \tag{6.73}
+                    $$
+                </p>
+
+                <p>
+                    Assim,<sup id="fnref:3"><a href="#fn:3" class="footnote-ref">3</a></sup>
+                </p>
+
+                <p>
+                    $$ \hat{x}_H(t) = \sqrt{\frac{\hbar}{2m\omega}}\left[ e^{i\omega t}\,\hat{a}_+ + e^{-i\omega
+                    t}\,\hat{a}_- \right], $$
+                </p>
+
+                <p>
+                    ou, usando a Equação 2.48 de Griffiths para escrever $\hat{a}_\pm$ em termos de $\hat{x}$ e
+                    $\hat{p}$,
+                </p>
+
+                <div class="definition-box">
+                    <p>
+                        $$ \hat{x}_H(t) = \hat{x}_H(0)\cos(\omega t) + \frac{1}{m\omega}\,\hat{p}_H(0)\sin(\omega t).
+                        \tag{6.74} $$
                     </p>
                 </div>
+
+                <p>
+                    Como no Exemplo 6.6, o operador na representação de Heisenberg satisfaz a equação de movimento
+                    <i>clássica</i> de uma massa presa a uma mola.
+                </p>
+
+                <h3 id="schrodinger-vs-heisenberg">As Representações de Schrödinger e de Heisenberg</h3>
+
+                <p>
+                    Até aqui trabalhamos na <strong>representação de Schrödinger</strong>, assim chamada por Dirac por
+                    ser a imagem que o próprio Schrödinger tinha em mente. Nela, a função de onda evolui no tempo de
+                    acordo com a Equação de Schrödinger, enquanto os operadores $\hat{x} = x$ e $\hat{p} =
+                    -i\hbar\,\partial_x$ não têm dependência temporal própria; a dependência temporal dos valores
+                    esperados (ou, mais geralmente, dos elementos de matriz) vem da função de onda:<sup id="fnref:4"><a
+                            href="#fn:4" class="footnote-ref">4</a></sup>
+                </p>
+
+                <p>
+                    $$ \langle \hat{Q} \rangle = \langle \Psi(t) | \hat{Q} | \Psi(t) \rangle. $$
+                </p>
+
+                <p>
+                    Na representação de Heisenberg, a função de onda é constante no tempo, $\Psi_H(x) = \Psi(x, 0)$, e
+                    são os <i>operadores</i> que evoluem de acordo com a Equação 6.72. A dependência temporal dos valores
+                    esperados é carregada pelos <i>operadores</i>:
+                </p>
+
+                <p>
+                    $$ \langle \hat{Q} \rangle = \langle \Psi_H | \hat{Q}_H(t) | \Psi_H \rangle. $$
+                </p>
+
+                <p>
+                    Naturalmente, as duas representações são inteiramente equivalentes, já que
+                </p>
+
+                <p>
+                    $$ \langle \Psi(t) | \hat{Q} | \Psi(t) \rangle = \langle \Psi(0) | \hat{U}^\dagger\hat{Q}\hat{U} |
+                    \Psi(0) \rangle = \langle \Psi_H | \hat{Q}_H(t) | \Psi_H \rangle. $$
+                </p>
 
                 <table>
                     <tr>
                         <th></th>
-                        <th>Schrödinger</th>
-                        <th>Heisenberg</th>
+                        <th>Representação de Schrödinger</th>
+                        <th>Representação de Heisenberg</th>
                     </tr>
                     <tr>
                         <td><strong>Estados</strong></td>
-                        <td>Evoluem: $|\Psi(t)\rangle$</td>
-                        <td>Congelados: $|\Psi(0)\rangle$</td>
+                        <td>Evoluem: $|\Psi(t)\rangle = \hat{U}(t)|\Psi(0)\rangle$</td>
+                        <td>Constantes: $|\Psi_H\rangle = |\Psi(0)\rangle$</td>
                     </tr>
                     <tr>
                         <td><strong>Operadores</strong></td>
-                        <td>Fixos: $\hat{Q}$</td>
-                        <td>Evoluem: $\hat{Q}_H(t)$</td>
+                        <td>Sem dependência temporal própria: $\hat{Q}$</td>
+                        <td>Evoluem: $\hat{Q}_H(t) = \hat{U}^\dagger\hat{Q}\hat{U}$</td>
                     </tr>
                     <tr>
-                        <td><strong>Equação dinâmica</strong></td>
+                        <td><strong>Equação de movimento</strong></td>
                         <td>Equação de Schrödinger</td>
-                        <td>Equação de Heisenberg</td>
+                        <td>Equação de Heisenberg (6.78)</td>
                     </tr>
                 </table>
 
-                <p style="color: red;">
-                    As duas representações coincidem em $t = 0$ e produzem previsões idênticas em qualquer instante —
-                    afinal, partimos de uma única expressão e apenas a agrupamos de dois modos distintos. Não se trata
-                    de duas teorias, mas de duas contabilidades da mesma teoria.
+                <p>
+                    Uma boa analogia para as duas representações é a seguinte. Num relógio comum, os ponteiros giram no
+                    sentido horário enquanto os números ficam parados. Mas poderíamos igualmente construir um relógio em
+                    que os ponteiros ficassem parados e os números girassem no sentido anti-horário. A correspondência
+                    entre esses dois relógios é, grosso modo, a correspondência entre as representações de Schrödinger
+                    e de Heisenberg: os ponteiros representam a função de onda, e os números, o operador. Outras
+                    representações também poderiam ser introduzidas, nas quais tanto os ponteiros quanto os números
+                    giram a taxas intermediárias, de modo que o relógio ainda marque a hora certa.<sup id="fnref:5"><a
+                            href="#fn:5" class="footnote-ref">5</a></sup>
                 </p>
 
                 <h3 id="equacao-heisenberg">A Equação de Movimento de Heisenberg</h3>
 
-                <p style="color: red;">
-                    Se são os operadores que evoluem, precisamos de uma equação que dite essa evolução. Derivemos
-                    $\hat{Q}_H$ em relação ao tempo, usando $d\hat{U}/dt = -\frac{i}{\hbar}\hat{H}\hat{U}$ e seu
-                    conjugado $d\hat{U}^\dagger/dt = +\frac{i}{\hbar}\hat{U}^\dagger\hat{H}$:
+                <p>
+                    Derivando a Equação 6.72 em relação ao tempo (com $\hat{Q}$ e $\hat{H}$ independentes do tempo) e
+                    usando $d\hat{U}/dt = -\frac{i}{\hbar}\hat{H}\hat{U}$ e $d\hat{U}^\dagger/dt =
+                    \frac{i}{\hbar}\hat{U}^\dagger\hat{H}$,
                 </p>
 
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    \frac{d\hat{Q}_H}{dt}
-                    = \frac{i}{\hbar}\hat{U}^\dagger \hat{H}\hat{Q}\hat{U}
-                    - \frac{i}{\hbar}\hat{U}^\dagger \hat{Q}\hat{H}\hat{U}
-                    + \hat{U}^\dagger \frac{\partial \hat{Q}}{\partial t} \hat{U}
-                    \end{aligned}
+                <p>
+                    $$ \frac{d\hat{Q}_H}{dt} = \frac{i}{\hbar}\hat{U}^\dagger\hat{H}\hat{Q}\hat{U} -
+                    \frac{i}{\hbar}\hat{U}^\dagger\hat{Q}\hat{H}\hat{U} = \frac{i}{\hbar}\left[\hat{H}, \hat{Q}_H\right],
                     $$
                 </p>
 
-                <p style="color: red;">
-                    Nos dois primeiros termos, inserimos $\hat{U}\hat{U}^\dagger = 1$ entre $\hat{H}$ e $\hat{Q}$ para
-                    formar operadores de Heisenberg completos. Resta notar que $\hat{U}^\dagger \hat{H}\hat{U} =
-                    \hat{H}$, pois $\hat{U}$ é função de $\hat{H}$ e portanto comuta com ele — o Hamiltoniano tem a
-                    mesma forma nas duas representações. Chegamos a:
-                </p>
-
-                <div class="definition-box">
-                    <p style="color: red;">
-                        <strong>Equação de Heisenberg:</strong>
-                    </p>
-                    <p style="color: red;">
-                        $$ \frac{d\hat{Q}_H}{dt} = \frac{i}{\hbar}\big[\hat{H}, \hat{Q}_H\big]
-                        + \left( \frac{\partial \hat{Q}}{\partial t} \right)_H $$
-                    </p>
-                </div>
-
-                <p style="color: red;">
-                    A semelhança com o <a href="Leis de Conservação.html">Teorema de Ehrenfest</a> não é acidental —
-                    é identidade. O teorema de Ehrenfest é exatamente esta equação tomada em valor esperado. A
-                    relação entre as duas é a mesma que existe entre uma lei e sua média: a equação de Heisenberg é a
-                    afirmação <i>operatorial</i>, mais forte; Ehrenfest é seu conteúdo estatístico.
-                </p>
-
-                <p style="color: red;">
-                    E note que a condição de conservação reaparece intacta: se $\hat{Q}$ comuta com $\hat{H}$ e não
-                    depende explicitamente do tempo, então $d\hat{Q}_H/dt = 0$ — o operador sequer evolui.
-                </p>
-
-                <h3 id="newton-operadorial">Newton como Identidade Operatorial</h3>
-
-                <p style="color: red;">
-                    Vale a pena ver a equação em ação. Tome o Hamiltoniano padrão $\hat{H} = \hat{p}^2/2m +
-                    V(\hat{x})$ e calcule a evolução de posição e momento. Para a posição, o potencial comuta com
-                    $\hat{x}$ e sobra apenas o termo cinético, com $[\hat{p}^2, \hat{x}] = -2i\hbar\hat{p}$:
-                </p>
-
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    \frac{d\hat{x}_H}{dt} = \frac{i}{\hbar}\big[\hat{H}, \hat{x}_H\big] = \frac{\hat{p}_H}{m}
-                    \end{aligned}
-                    $$
-                </p>
-
-                <p style="color: red;">
-                    Para o momento, o termo cinético comuta consigo mesmo e resta o potencial, com $[V(\hat{x}),
-                    \hat{p}] = i\hbar\, V'(\hat{x})$:
-                </p>
-
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    \frac{d\hat{p}_H}{dt} = \frac{i}{\hbar}\big[\hat{H}, \hat{p}_H\big]
-                    = -\left( \frac{\partial V}{\partial x} \right)_H
-                    \end{aligned}
-                    $$
-                </p>
-
-                <div class="definition-box">
-                    <p style="color: red;">
-                        Estas são, literalmente, as equações de Newton — $\dot{x} = p/m$ e $\dot{p} = -\nabla V$ —
-                        agora válidas não como aproximações nem como médias, mas como
-                        <strong>identidades exatas entre operadores</strong>. A representação de Heisenberg torna a
-                        continuidade entre a mecânica clássica e a quântica visível a olho nu: a forma das equações é
-                        a mesma; o que mudou foi a natureza dos objetos que nelas aparecem, e o fato de que agora eles
-                        não comutam.
-                    </p>
-                </div>
-
-                <h2 id="invariancia-temporal">Invariância por Translação Temporal</h2>
-
-                <p style="color: red;">
-                    Resta aplicar ao tempo o mesmo critério que aplicamos a todas as outras transformações: quando
-                    dizemos que um sistema é invariante por translação temporal?
-                </p>
-
-                <p style="color: red;">
-                    Nos casos espaciais, a condição era que o Hamiltoniano não se alterasse sob a transformação.
-                    Aqui, a transformação é gerada pelo próprio Hamiltoniano, de modo que $[\hat{H}, \hat{U}(t)] = 0$
-                    é automaticamente verdadeiro e nada informa. A condição de simetria assume então sua forma mais
-                    simples possível:
+                <p>
+                    já que $\hat{U}$ comuta com $\hat{H}$. Obtemos as <strong>equações de movimento de
+                        Heisenberg</strong> (Problema 6.29 de Griffiths):<sup id="fnref:6"><a href="#fn:6"
+                            class="footnote-ref">6</a></sup>
                 </p>
 
                 <div class="definition-box" style="border-left: 4px solid #45503B;">
-                    <p style="color: red;">
-                        <strong>Invariância por translação temporal:</strong>
-                    </p>
-                    <p style="color: red;">
-                        $$ \frac{\partial \hat{H}}{\partial t} = 0 $$
-                    </p>
-                    <p style="color: red;">
-                        O sistema não distingue um instante de outro — as leis que o governam hoje são as mesmas de
-                        amanhã.
+                    <p>
+                        $$ i\hbar\frac{d}{dt}\hat{Q}_H(t) = \left[\hat{Q}_H(t), \hat{H}\right]. \tag{6.78} $$
                     </p>
                 </div>
 
-                <p style="color: red;">
-                    A consequência sobre a energia já foi obtida em
-                    <a href="Leis de Conservação.html">Leis de Conservação</a>: com $[\hat{H},\hat{H}] = 0$
-                    trivialmente satisfeito, o teorema de Ehrenfest deixa apenas o termo de dependência explícita, que
-                    agora se anula. <strong>A energia é conservada.</strong>
+                <p>
+                    Para uma partícula de massa $m$ num potencial $V(x)$, com $\hat{Q} = \hat{x}$ e $\hat{Q} = \hat{p}$,
+                    usando $[\hat{x}, \hat{p}^2] = 2i\hbar\hat{p}$ e $[\hat{p}, V(x)] = -i\hbar\,V'(x)$, as equações de
+                    Heisenberg ficam
                 </p>
 
-                <h3 id="intervalo-vs-instante">Intervalo, Não Instante</h3>
-
-                <p style="color: red;">
-                    Há uma segunda leitura da condição, talvez mais reveladora. Observe que o operador que
-                    construímos, $\hat{U}(t) = e^{-i\hat{H}t/\hbar}$, depende de um único argumento: a
-                    <strong>duração</strong> da evolução. Evoluir de $t_1$ até $t_2$ é sempre $\hat{U}(t_2 - t_1)$,
-                    independentemente de quando $t_1$ ocorreu.
+                <p>
+                    $$ \frac{d\hat{x}_H}{dt} = \frac{\hat{p}_H}{m}, \qquad \frac{d\hat{p}_H}{dt} = -V'(\hat{x}_H), $$
                 </p>
 
-                <p style="color: red;">
-                    Quando o Hamiltoniano depende do tempo, essa propriedade se perde. O operador de evolução passa a
-                    depender separadamente dos dois instantes, $\hat{U}(t_2, t_1)$, e sua construção exige um produto
-                    ordenado no tempo, pois Hamiltonianos avaliados em instantes distintos em geral não comutam:
+                <p>
+                    que têm exatamente a forma das equações de Newton. Para uma partícula livre, por exemplo, $\hat{x}_H(t)
+                    = \hat{x}_H(0) + \frac{1}{m}\hat{p}_H(0)\,t$ e $\hat{p}_H(t) = \hat{p}_H(0)$ (Problema 6.27 de
+                    Griffiths). Note também que, se $\hat{Q}$ comuta com $\hat{H}$, a Equação 6.78 dá $d\hat{Q}_H/dt =
+                    0$: o operador de Heisenberg de uma grandeza conservada não muda com o tempo. Tomando o valor esperado
+                    da Equação 6.78, recupera-se o teorema de Ehrenfest generalizado de
+                    <a href="Leis de Conservação.html#ehrenfest">Leis de Conservação</a>.
                 </p>
 
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    \hat{U}(t_2, t_1) = \mathcal{T} \exp\left[ -\frac{i}{\hbar} \int_{t_1}^{t_2} \hat{H}(t')\, dt'
-                    \right]
-                    \end{aligned}
-                    $$
+                <h2 id="invariancia-temporal">Invariância por Translação Temporal</h2>
+
+                <p>
+                    Se o Hamiltoniano <i>depende</i> do tempo, ainda podemos escrever a solução formal da Equação de
+                    Schrödinger em termos do operador de translação temporal $\hat{U}$:
                 </p>
 
-                <p style="color: red;">
-                    A distinção não é técnica, e sim profundamente física: a invariância por translação temporal é o
-                    que garante a <strong>reprodutibilidade dos experimentos</strong>. Um experimento realizado hoje
-                    e o mesmo experimento realizado daqui a um século produzem resultados idênticos precisamente
-                    porque $\hat{U}$ depende apenas do intervalo decorrido. Toda a prática científica repousa,
-                    silenciosamente, sobre essa simetria.
+                <p>
+                    $$ \Psi(x, t) = \hat{U}(t, t_0)\,\Psi(x, t_0), \tag{6.75} $$
                 </p>
 
-                <p style="color: red;">
-                    Reciprocamente, quebrá-la tem preço. Um átomo iluminado por um pulso de laser é descrito por um
-                    Hamiltoniano explicitamente dependente do tempo; a simetria temporal é destruída, e a energia do
-                    átomo deixa de ser conservada — ela é trocada com o campo externo, que não fazia parte do nosso
-                    $\hat{H}$. A energia "perdida" não desapareceu: apenas escapou das fronteiras do sistema que
-                    escolhemos modelar.
+                <p>
+                    mas $\hat{U}$ não tem mais a forma simples da Equação 6.71.<sup id="fnref:7"><a href="#fn:7"
+                            class="footnote-ref">7</a></sup> (O caso geral é tratado no Problema 11.23 de Griffiths.) Para
+                    um intervalo de tempo infinitesimal $\delta$ (Problema 6.28 de Griffiths),
                 </p>
 
-                <div class="definition-box">
-                    <p style="color: red;">
-                        A assimetria entre espaço e tempo reaparece aqui de forma sutil. Para o momento, existe uma
-                        relação de incerteza $\sigma_x \sigma_p \geq \hbar/2$ entre <i>dois observáveis</i>. Já a
-                        relação $\Delta E\, \Delta t \geq \hbar/2$ tem outro estatuto: não havendo operador tempo,
-                        $\Delta t$ não é o desvio padrão de uma medida, e sim o intervalo característico em que o
-                        sistema muda apreciavelmente. É por isso que estados instáveis, de vida curta, apresentam
-                        linhas espectrais largas — quanto menos tempo o estado dura, pior definida é sua energia.
+                <p>
+                    $$ \hat{U}(t_0 + \delta, t_0) \approx 1 - \frac{i}{\hbar}\hat{H}(t_0)\,\delta. \tag{6.76} $$
+                </p>
+
+                <p>
+                    A <strong>invariância por translação temporal</strong> significa que a evolução temporal não depende de
+                    qual intervalo de tempo estamos considerando. Em outras palavras,
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p>
+                        $$ \hat{U}(t_1 + \delta, t_1) = \hat{U}(t_2 + \delta, t_2) \tag{6.77} $$
+                    </p>
+                    <p>
+                        para qualquer escolha de $t_1$ e $t_2$.
+                    </p>
+                </div>
+
+                <p>
+                    Isso garante que, se o sistema começa no estado $|\alpha\rangle$ no instante $t_1$ e evolui durante um
+                    tempo $\delta$, ele termina no mesmo estado $|\beta\rangle$ que teria alcançado se tivesse começado no
+                    mesmo estado $|\alpha\rangle$ no instante $t_2$ e evoluído durante o mesmo tempo $\delta$ — isto é, o
+                    experimento transcorre na quinta-feira da mesma forma que na terça-feira, em condições idênticas.
+                </p>
+
+                <p>
+                    Substituindo a Equação 6.76 na Equação 6.77, vemos que a condição para isso é $\hat{H}(t_1) =
+                    \hat{H}(t_2)$; como isso precisa valer para todos $t_1$ e $t_2$, o Hamiltoniano tem de ser, afinal,
+                    independente do tempo (para que haja invariância por translação temporal):
+                </p>
+
+                <p>
+                    $$ \frac{\partial\hat{H}}{\partial t} = 0. $$
+                </p>
+
+                <p>
+                    Nesse caso, o teorema de Ehrenfest generalizado diz que
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p>
+                        $$ \frac{d}{dt}\langle \hat{H} \rangle = \frac{i}{\hbar}\left\langle \left[\hat{H}, \hat{H}\right]
+                        \right\rangle + \left\langle \frac{\partial\hat{H}}{\partial t} \right\rangle = 0. $$
+                    </p>
+                    <p>
+                        Portanto, a <strong>conservação da energia é uma consequência da invariância por translação
+                            temporal</strong>.
+                    </p>
+                </div>
+
+                <p>
+                    Recuperamos agora todas as leis de conservação clássicas: conservação do momento, da energia e do
+                    momento angular, e vimos que cada uma está relacionada a uma simetria contínua do Hamiltoniano
+                    (translação espacial, translação temporal e rotação, respectivamente). E, na mecânica quântica,
+                    simetrias discretas (como a paridade) também podem levar a leis de conservação.
+                </p>
+
+                <h2 id="inversao-temporal">Inversão Temporal</h2>
+
+                <p>
+                    Os Problemas 6.36 e 6.37 de Griffiths introduzem uma última simetria discreta. Uma bola lançada ao ar
+                    sai da mão na posição $\mathbf{r}_0$ com velocidade $\mathbf{v}_0$ e chega, um tempo $t$ depois, à
+                    posição $\mathbf{r}_1$ com velocidade $\mathbf{v}_1$. Suponha que pudéssemos inverter instantaneamente
+                    a velocidade da bola ao chegar em $\mathbf{r}_1$. Desprezando a resistência do ar, ela refaria o
+                    caminho de $\mathbf{r}_0$ a $\mathbf{r}_1$ e voltaria a $\mathbf{r}_0$ depois de mais um tempo $t$,
+                    com velocidade $-\mathbf{v}_0$. Esse é um exemplo de <strong>invariância por inversão
+                        temporal</strong>: invertendo o movimento de uma partícula em qualquer ponto da trajetória, ela
+                    refaz o caminho com velocidade igual e oposta em todas as posições.
+                </p>
+
+                <p>
+                    Por que isso se chama inversão <i>temporal</i>, se foi a velocidade, e não o tempo, que se inverteu?
+                    Se víssemos um filme da bola indo de $\mathbf{r}_1$ a $\mathbf{r}_0$, não haveria como saber se se
+                    trata de um filme da bola depois da inversão, passado para a frente, ou de um filme da bola antes da
+                    inversão, passado de trás para a frente. Num sistema invariante por inversão temporal, passar o filme
+                    de trás para a frente representa outro movimento possível.
+                </p>
+
+                <p>
+                    Um exemplo familiar de sistema que <i>não</i> tem simetria de inversão temporal é o de uma partícula
+                    carregada num campo magnético externo.<sup id="fnref:8"><a href="#fn:8"
+                            class="footnote-ref">8</a></sup> Nesse caso, ao inverter a velocidade da partícula, a força de
+                    Lorentz também troca de sinal, e a partícula não refaz o caminho: ela passa para uma nova órbita
+                    circular.
+                </p>
+
+                <h3 id="operador-inversao-temporal">O Operador de Inversão Temporal</h3>
+
+                <p>
+                    O <strong>operador de inversão temporal</strong> $\hat{\Theta}$ inverte o momento da partícula
+                    ($\mathbf{p} \to -\mathbf{p}$), deixando a posição inalterada. Um nome melhor seria, na verdade,
+                    operador de "inversão do sentido do movimento".<sup id="fnref:9"><a href="#fn:9"
+                            class="footnote-ref">9</a></sup> Para uma partícula sem spin, o operador de inversão temporal
+                    simplesmente toma o complexo conjugado da função de onda no espaço de posições:<sup
+                        id="fnref:10"><a href="#fn:10" class="footnote-ref">10</a></sup>
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p>
+                        $$ \hat{\Theta}\,\Psi(x, t) = \Psi^*(x, t). \tag{6.82} $$
+                    </p>
+                </div>
+
+                <p>
+                    Com isso, a posição e o momento se transformam como
+                </p>
+
+                <p>
+                    $$ \hat{x}' = \hat{\Theta}^{-1}\hat{x}\,\hat{\Theta} = \hat{x}, \qquad \hat{p}' =
+                    \hat{\Theta}^{-1}\hat{p}\,\hat{\Theta} = -\hat{p}. $$
+                </p>
+
+                <p>
+                    (Para o momento, isso vem de $\hat{p} = -i\hbar\,\partial_x$ trocar de sinal sob conjugação
+                    complexa.) A invariância por inversão temporal pode ser formulada assim: tomamos um sistema, deixamos
+                    que evolua por um tempo $t$, invertemos o momento e deixamos que evolua por mais um tempo $t$; se o
+                    sistema for invariante por inversão temporal, ele volta ao ponto de partida, com o momento invertido.
+                    Como afirmação sobre operadores,
+                </p>
+
+                <p>
+                    $$ \hat{U}(t)\,\hat{\Theta}\,\hat{U}(t) = \hat{\Theta}. $$
+                </p>
+
+                <p>
+                    Aplicando isso a um intervalo infinitesimal $\delta$, a invariância por inversão temporal exige
+                </p>
+
+                <p>
+                    $$ \left[\hat{\Theta}, \hat{H}\right] = 0. \tag{6.83} $$
+                </p>
+
+                <p>
+                    Uma consequência: para um Hamiltoniano invariante por inversão temporal, se $\psi_n(x)$ é um estado
+                    estacionário com energia $E_n$, então $\psi_n^*(x)$ também é um estado estacionário com a mesma
+                    energia. Se a energia for não degenerada, isso significa que o estado estacionário pode ser escolhido
+                    real.
+                </p>
+
+                <h3 id="kramers">Spin e a Degenerescência de Kramers</h3>
+
+                <p>
+                    Como momento angular, o spin de uma partícula precisa se inverter sob inversão temporal. A ação da
+                    inversão temporal sobre um spinor é
+                </p>
+
+                <p>
+                    $$ \hat{\Theta}\begin{pmatrix} a \\ b \end{pmatrix} = \begin{pmatrix} -b^* \\ a^* \end{pmatrix},
+                    \tag{6.84} $$
+                </p>
+
+                <p>
+                    de modo que, além da conjugação complexa, as componentes para cima e para baixo são trocadas.<sup
+                        id="fnref:11"><a href="#fn:11" class="footnote-ref">11</a></sup> Aplicando duas vezes,
+                    $\hat{\Theta}^2(a, b) = \hat{\Theta}(-b^*, a^*) = (-a, -b)$, isto é, $\hat{\Theta}^2 = -1$ para uma
+                    partícula de spin $1/2$.
+                </p>
+
+                <p>
+                    Considere agora um autoestado $|\psi_n\rangle$ de um Hamiltoniano invariante por inversão temporal
+                    (Equação 6.83), com energia $E_n$. Sabemos que $|\psi_n'\rangle = \hat{\Theta}|\psi_n\rangle$ também é
+                    autoestado de $\hat{H}$ com a mesma energia. Há duas possibilidades: ou $|\psi_n'\rangle$ e
+                    $|\psi_n\rangle$ são o <i>mesmo</i> estado ($|\psi_n'\rangle = c|\psi_n\rangle$ para alguma constante
+                    complexa $c$), ou são estados distintos. Para uma partícula de spin $1/2$, a primeira possibilidade
+                    leva a uma contradição: aplicando $\hat{\Theta}$ outra vez (e lembrando que $\hat{\Theta}$ conjuga as
+                    constantes), $\hat{\Theta}^2|\psi_n\rangle = c^*c\,|\psi_n\rangle = |c|^2|\psi_n\rangle$, que não pode
+                    ser igual a $-|\psi_n\rangle$. Logo, o nível de energia tem de ser (pelo menos) duplamente
+                    degenerado.
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p>
+                        <strong>Degenerescência de Kramers:</strong> para um número ímpar de partículas de spin $1/2$ (ou
+                        qualquer spin semi-inteiro), todo nível de energia de um Hamiltoniano invariante por inversão
+                        temporal é pelo menos duplamente degenerado, porque, para spin semi-inteiro, um estado e o seu
+                        estado invertido no tempo são necessariamente distintos.<sup id="fnref:12"><a href="#fn:12"
+                                class="footnote-ref">12</a></sup>
                     </p>
                 </div>
 
                 <h2 id="encerramento">Encerramento do Módulo</h2>
 
-                <p style="color: red;">
-                    Chegamos ao fim de Simetrias e Leis de Conservação. Partimos de uma única pergunta — <i>o que
-                        este sistema não distingue?</i> —, traduzimo-la na exigência de que o Hamiltoniano comutasse
-                    com o operador da transformação, e disso extraímos tudo o que se segue.
+                <p>
+                    Reunindo os resultados deste módulo:
                 </p>
 
                 <table>
                     <tr>
                         <th>Simetria</th>
-                        <th>Condição</th>
-                        <th>Consequência</th>
+                        <th>Condição sobre $\hat{H}$</th>
+                        <th>Consequências</th>
                     </tr>
                     <tr>
                         <td>Translação espacial</td>
-                        <td>$V(x+a) = V(x)$</td>
-                        <td>Conservação do momento; Teorema de Bloch</td>
+                        <td>$[\hat{H}, \hat{T}] = 0$; $V(x + a) = V(x)$</td>
+                        <td>Contínua: conservação do momento. Discreta: Teorema de Bloch.</td>
                     </tr>
                     <tr>
                         <td>Paridade</td>
-                        <td>$V(-x) = V(x)$</td>
-                        <td>Estados pares/ímpares; regra de Laporte</td>
+                        <td>$[\hat{H}, \hat{\Pi}] = 0$; $V(-\mathbf{r}) = V(\mathbf{r})$</td>
+                        <td>Conservação da paridade; estados pares ou ímpares; regra de Laporte.</td>
                     </tr>
                     <tr>
                         <td>Rotação</td>
-                        <td>$V(\mathbf{r}) = V(r)$</td>
-                        <td>Momento angular; multipletos $(2\ell+1)$</td>
-                    </tr>
-                    <tr>
-                        <td>Rotação (operadores)</td>
-                        <td>Escalar / vetorial</td>
-                        <td>$\Delta\ell = \pm 1$, $\Delta m = 0, \pm 1$</td>
+                        <td>$[\hat{H}, \hat{\mathbf{L}}] = \mathbf{0}$; $V(\mathbf{r}) = V(r)$</td>
+                        <td>Conservação do momento angular; degenerescência $2\ell + 1$; regras de seleção $\Delta\ell = 0,
+                            \pm 1$, $\Delta m = 0, \pm 1$ para operadores vetoriais.</td>
                     </tr>
                     <tr>
                         <td>Translação temporal</td>
                         <td>$\partial\hat{H}/\partial t = 0$</td>
-                        <td>Conservação da energia; reprodutibilidade</td>
+                        <td>Conservação da energia.</td>
+                    </tr>
+                    <tr>
+                        <td>Inversão temporal</td>
+                        <td>$[\hat{\Theta}, \hat{H}] = 0$</td>
+                        <td>Estados estacionários não degenerados podem ser escolhidos reais; degenerescência de Kramers
+                            para spin semi-inteiro.</td>
                     </tr>
                 </table>
 
-                <p style="color: red;">
-                    Nenhuma dessas conclusões exigiu resolver a Equação de Schrödinger. Foi possível afirmar o que é
-                    conservado, prever quais transições são proibidas e com que polarização a luz emerge, contar
-                    quantos estados compartilham cada energia e explicar por que experimentos são repetíveis —
-                    conhecendo apenas as invariâncias do Hamiltoniano.
-                </p>
+                <h3 id="problemas">Problemas Relacionados</h3>
 
-                <p style="color: red;">
-                    Vale, por fim, notar o quanto este módulo conversou com o anterior. A simetria de troca que
-                    postulamos em <a href="../Partículas Idênticas/Sistema de Duas partículas.html">partículas
-                        idênticas</a> revelou-se um caso particular de simetria discreta conservada; a blindagem que
-                    organiza a <a href="../Partículas Idênticas/Átomos.html">Tabela Periódica</a> apareceu como
-                    quebra da simetria oculta do potencial de Coulomb; e o Teorema de Bloch, obtido a duras penas
-                    para os <a href="../Partículas Idênticas/Sólidos.html">sólidos</a>, surgiu aqui como corolário
-                    quase imediato da periodicidade da rede.
-                </p>
+                <ul>
+                    <li><strong>6.26–6.27:</strong> $\hat{p}_H(t)$ para o oscilador harmônico; $\hat{x}_H(t)$ e
+                        $\hat{p}_H(t)$ para a partícula livre.</li>
+                    <li><strong>6.28–6.29:</strong> a evolução infinitesimal (6.75–6.76) e as equações de movimento de
+                        Heisenberg.</li>
+                    <li><strong>6.30:</strong> o propagador do oscilador harmônico e da partícula livre.</li>
+                    <li><strong>6.35:</strong> transformações de Galileu.</li>
+                    <li><strong>6.36–6.37:</strong> inversão temporal e degenerescência de Kramers.</li>
+                </ul>
 
-                <p style="color: red;">
-                    É por isso que, na física moderna, a pergunta sobre as simetrias de uma teoria costuma vir antes
-                    da pergunta sobre suas soluções — e, com frequência, é a mais informativa das duas.
-                </p>
+                <hr class="footnotes-sep">
+                <section class="footnotes">
+                    <ol>
+                        <li id="fn:1">
+                            <p>Por que essa análise se limita ao caso em que $\hat{H}$ é independente do tempo? Dependa
+                                $\hat{H}$ do tempo ou não, a Equação de Schrödinger diz que $i\hbar\dot{\Psi} =
+                                \hat{H}\Psi$. Porém, se $\hat{H}$ depende do tempo, a segunda derivada de $\Psi$ é
+                                $\frac{\partial^2}{\partial t^2}\Psi = \frac{\partial}{\partial t}\left(\frac{1}{i\hbar}\hat{H}\Psi\right)
+                                = \frac{1}{i\hbar}\frac{\partial\hat{H}}{\partial t}\Psi - \frac{1}{\hbar^2}\hat{H}^2\Psi$, e as
+                                derivadas de ordem superior são ainda mais complicadas. Assim, a Equação 6.69 só decorre da
+                                Equação 6.68 quando $\hat{H}$ não depende do tempo.<a href="#fnref:1"
+                                    class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:2">
+                            <p>Essa dedução supõe que a solução $\Psi(x, t)$ possa ser expandida em série de Taylor em $t$,
+                                e nada garante isso (B. R. Holstein e A. R. Swift, <i>Am. J. Phys.</i> <b>40</b>, 829,
+                                dão um exemplo aparentemente inocente em que tal expansão não existe). Mesmo assim, a
+                                Equação 6.71 continua valendo nesses casos, desde que a função exponencial seja definida
+                                pela sua decomposição espectral: $\hat{U}(t) \equiv \sum_n e^{-iE_n t/\hbar}|\psi_n\rangle\langle
+                                \psi_n|$ (Equação 6.70). Veja também M. Amaku <i>et al.</i>, <i>Am. J. Phys.</i>
+                                <b>85</b>, 692 (2017).<a href="#fnref:2" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:3">
+                            <p>Como a Equação 6.73 vale para <i>qualquer</i> estado estacionário $\psi_n$, e os $\psi_n$
+                                formam um conjunto completo de estados, os operadores têm de ser, de fato,
+                                idênticos.<a href="#fnref:3" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:4">
+                            <p>Supõe-se aqui que $\hat{Q}$, como $\hat{x}$ ou $\hat{p}$, não tem dependência temporal
+                                <i>explícita</i>.<a href="#fnref:4" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:5">
+                            <p>Dessas outras representações possíveis, a mais importante é a <strong>representação de
+                                    interação</strong> (ou representação de Dirac), muito usada na teoria de perturbação
+                                dependente do tempo.<a href="#fnref:5" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:6">
+                            <p>Para $\hat{Q}$ e $\hat{H}$ dependentes do tempo, a generalização é $i\hbar\frac{d}{dt}\hat{Q}_H(t)
+                                = \left[\hat{Q}_H(t), \hat{H}_H(t)\right] + \hat{U}^\dagger\frac{\partial\hat{Q}}{\partial
+                                t}\hat{U}$.<a href="#fnref:6" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:7">
+                            <p>E $\hat{U}$ passa a ser função <i>tanto</i> do instante inicial $t_0$ quanto do instante
+                                final $t$, e não apenas do intervalo de tempo durante o qual a função de onda evoluiu.<a
+                                    href="#fnref:7" class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:8">
+                            <p>Por campo magnético <i>externo</i> entende-se que invertemos apenas a velocidade da nossa
+                                carga $q$, e não as velocidades das cargas que produzem o campo. Se invertêssemos também
+                                essas velocidades, o campo magnético trocaria de sentido, a força de Lorentz sobre a carga
+                                $q$ não mudaria com a inversão, e o sistema seria, de fato, invariante por inversão
+                                temporal.<a href="#fnref:8" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:9">
+                            <p>Veja E. P. Wigner, <i>Group Theory and its Applications to Quantum Mechanics and Atomic
+                                    Spectra</i>, Academic Press (1959), p. 325.<a href="#fnref:9" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:10">
+                            <p>A inversão temporal é um <strong>operador antiunitário</strong>, que satisfaz $\langle
+                                \Theta f | \Theta g \rangle = \langle f | g \rangle^*$ e $\hat{\Theta}(a|\alpha\rangle +
+                                b|\beta\rangle) = a^*\hat{\Theta}|\alpha\rangle + b^*\hat{\Theta}|\beta\rangle$, enquanto um
+                                operador unitário satisfaz as mesmas duas equações sem as conjugações complexas. Para um
+                                operador antiunitário, usa-se $\hat{\Theta}^{-1}$ onde, para um operador unitário, se usaria
+                                indistintamente $\hat{U}^\dagger$ ou $\hat{U}^{-1}$.<a href="#fnref:10"
+                                    class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:11">
+                            <p>Para spin arbitrário, $\hat{\Theta} = e^{-i\pi\hat{S}_y/\hbar}\hat{K}$ (Equação 6.85), onde
+                                o primeiro fator é uma rotação de $\pi$ em torno do eixo $y$ e $\hat{K}$ é o operador que
+                                faz a conjugação complexa.<a href="#fnref:11" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:12">
+                            <p>E no caso de uma partícula de spin 0 — a simetria de inversão temporal diz algo
+                                interessante? Diz, sim. Por um lado, os estados estacionários podem ser escolhidos reais
+                                (Problema 2.2 de Griffiths), o que agora se vê como consequência da simetria de inversão
+                                temporal. Outro exemplo é a degenerescência dos níveis de energia num potencial periódico
+                                (<a href="../Partículas Idênticas/Sólidos.html#bandas-e-gaps">Sólidos</a> e Problema 6.6)
+                                para estados com momento cristalino $q$ e $-q$: ela pode ser atribuída à simetria de
+                                inversão se o potencial for simétrico, mas persiste mesmo sem simetria de inversão — é
+                                resultado da simetria de inversão temporal.<a href="#fnref:12"
+                                    class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                    </ol>
+                </section>
 
             </div>
         </main>
@@ -566,26 +811,30 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#translacoes-no-tempo">Translações no Tempo</a></li>
-                    <li>
-                        <a href="#operador-evolucao">Operador de Evolução</a>
-                        <ul>
-                            <li><a href="#estados-estacionarios">Estados Estacionários</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="#operador-evolucao">O Operador de Evolução Temporal</a></li>
                     <li>
                         <a href="#representacao-de-heisenberg">A Representação de Heisenberg</a>
                         <ul>
+                            <li><a href="#exemplo-6-6">Exemplo: δ infinitesimal</a></li>
+                            <li><a href="#exemplo-6-7">Exemplo: Oscilador Harmônico</a></li>
+                            <li><a href="#schrodinger-vs-heisenberg">Schrödinger e Heisenberg</a></li>
                             <li><a href="#equacao-heisenberg">Equação de Heisenberg</a></li>
-                            <li><a href="#newton-operadorial">Newton Operatorial</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#invariancia-temporal">Invariância Temporal</a></li>
+                    <li>
+                        <a href="#inversao-temporal">Inversão Temporal</a>
+                        <ul>
+                            <li><a href="#operador-inversao-temporal">O Operador Θ</a></li>
+                            <li><a href="#kramers">Degenerescência de Kramers</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#invariancia-temporal">Invariância Temporal</a>
+                        <a href="#encerramento">Encerramento do Módulo</a>
                         <ul>
-                            <li><a href="#intervalo-vs-instante">Intervalo, Não Instante</a></li>
+                            <li><a href="#problemas">Problemas Relacionados</a></li>
                         </ul>
                     </li>
-                    <li><a href="#encerramento">Encerramento do Módulo</a></li>
                 </ul>
             </div>
         </aside>

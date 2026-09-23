@@ -135,204 +135,238 @@
             <div class="prose">
 
                 <h1 id="introducao">Introdução</h1>
-                <p class="lead" style="color: red;">Simetria como princípio organizador: o que significa, formalmente, dizer que um sistema
-                    físico "não muda".</p>
+                <p class="lead">O que é uma simetria, e os operadores que implementam translações, inversões e
+                    rotações (Griffiths, Seção 6.1).</p>
 
-                <p style="color: red;">
-                    Até aqui, nossa estratégia diante de cada novo problema foi sempre a mesma: escrever o
-                    Hamiltoniano, impor as condições de contorno e resolver a Equação de Schrödinger. Foi assim com o
-                    poço infinito, com o oscilador harmônico, com o átomo de hidrogênio. Quando o problema resistia —
-                    como no hélio e em todos os átomos multieletrônicos —, recorremos a aproximações.
+                <p>
+                    As leis de conservação — da energia, do momento linear e do momento angular — são familiares desde
+                    o primeiro curso de mecânica <i>clássica</i>. Essas mesmas leis valem na mecânica quântica e, nos
+                    dois contextos, elas são consequência de <strong>simetrias</strong>. Neste módulo vamos explicar o
+                    que é uma simetria e o que significa, na mecânica quântica, dizer que uma grandeza é conservada — e
+                    mostrar como as duas coisas se relacionam. Pelo caminho, investigaremos duas propriedades
+                    relacionadas dos sistemas quânticos: a <strong>degenerescência</strong> dos níveis de energia e as
+                    <strong>regras de seleção</strong> que distinguem as transições permitidas das "proibidas".
                 </p>
 
-                <p style="color: red;">
-                    Existe, porém, uma segunda via de acesso à física de um sistema, e ela é em certo sentido mais
-                    profunda. Em vez de perguntar "qual é a solução?", pergunta-se "<strong>o que este sistema não
-                        distingue?</strong>". Um potencial esfericamente simétrico não distingue uma direção da outra;
-                    um cristal não distingue uma célula unitária da seguinte; o espaço vazio não distingue um ponto de
-                    outro. Cada uma dessas indiferenças é uma <strong>simetria</strong>, e o que descobriremos neste
-                    módulo é que toda simetria carrega consigo, de forma automática e inescapável, uma
-                    <strong>lei de conservação</strong> e um padrão de <strong>degenerescência</strong> no espectro.
+                <h2 id="o-que-e-simetria">O Que É uma Simetria?</h2>
+
+                <p>
+                    Uma simetria é uma transformação que deixa o sistema inalterado. Como exemplo, considere girar um
+                    pedaço de papel quadrado em torno de um eixo que passa pelo seu centro. Girando-o por $30^\circ$,
+                    ele fica numa orientação diferente da inicial; girando-o por $90^\circ$, ele retoma a orientação
+                    original — nem daria para saber que ele foi girado, a menos que (digamos) houvesse números escritos
+                    nos cantos, que então estariam permutados. O quadrado tem, portanto, uma simetria de rotação
+                    <strong>discreta</strong>: uma rotação por $n\pi/2$, com $n$ inteiro qualquer, o deixa
+                    inalterado.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref">1</a></sup> Repetindo o
+                    experimento com um pedaço de papel circular, uma rotação por <i>qualquer</i> ângulo o deixa
+                    inalterado: o círculo tem simetria de rotação <strong>contínua</strong>. Veremos que tanto as
+                    simetrias discretas quanto as contínuas são importantes na mecânica quântica.
                 </p>
 
-                <p style="color: red;">
-                    A vantagem dessa abordagem é que ela dispensa a solução. Podemos afirmar que o momento angular de
-                    um elétron num potencial central é conservado sem jamais calcular sua função de onda; podemos
-                    prever quais transições espectrais são proibidas sem avaliar uma única integral. A simetria
-                    entrega informação estrutural sobre o sistema antes — e independentemente — de qualquer cálculo.
-                </p>
+                <figure class="lecture-figure">
+                    <svg viewBox="0 0 640 230" role="img" aria-label="Um quadrado, com simetria de rotação discreta, e um círculo, com simetria de rotação contínua"><defs><marker id="arr-sq" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs><rect x="95.0" y="40.0" width="150" height="150" class="fig-shape"/><line x1="65.0" y1="115" x2="275.0" y2="115" class="fig-guide"/><line x1="170" y1="20.0" x2="170" y2="210.0" class="fig-guide"/><path d="M218,115 A48,48 0 0 0 173,68" class="fig-curve" marker-end="url(#arr-sq)"/><text x="208" y="75" class="fig-label fig-it">π/2</text><circle cx="470" cy="115" r="78" class="fig-shape"/><line x1="362" y1="115" x2="578" y2="115" class="fig-guide"/><line x1="423.05" y1="203.29" x2="516.95" y2="26.71" class="fig-guide"/><path d="M518,115 A48,48 0 0 0 494.53,73.62" class="fig-curve" marker-end="url(#arr-sq)"/><text x="520" y="87" class="fig-label fig-it">α</text></svg>
+                    <figcaption>Um quadrado tem simetria de rotação discreta: fica inalterado quando girado por $\pi/2$
+                        ou múltiplos disso. Um círculo tem simetria de rotação contínua: fica inalterado quando girado
+                        por qualquer ângulo $\alpha$ (Figura 6.1 de Griffiths).</figcaption>
+                </figure>
 
-                <p style="color: red;">
-                    Na verdade, essa forma de raciocinar já apareceu duas vezes no curso, ainda que sem ter recebido
-                    o nome próprio. Ao estudar
-                    <a href="../Partículas Idênticas/Sistema de Duas partículas.html">partículas idênticas</a>,
-                    descobrimos que a simetria de troca era conservada porque o operador de permutação comutava com o
-                    Hamiltoniano. Ao estudar
-                    <a href="../Partículas Idênticas/Sólidos.html">sólidos</a>, obtivemos o Teorema de Bloch a partir
-                    da observação de que transladar o cristal por uma célula não altera o potencial. Em ambos os
-                    casos, o argumento tinha a mesma forma: <i>uma transformação que deixa o Hamiltoniano invariante
-                        comuta com ele, e disso decorre uma consequência física</i>. O que faremos agora é elevar esse
-                    argumento ocasional à condição de método.
-                </p>
-
-                <h2 id="transformacoes-no-espaco">Transformações no Espaço</h2>
-
-                <p style="color: red;">
-                    Comecemos pelo caso mais concreto imaginável: deslocar alguma coisa de lugar. Seja $f(x)$ uma
-                    função qualquer, e suponhamos que desejemos representá-la deslocada de uma distância $a$ para a
-                    direita. A nova função $g$ deve valer, no ponto $x$, exatamente aquilo que a antiga valia no ponto
-                    $x - a$:
-                </p>
-
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    g(x) = f(x - a)
-                    \end{aligned}
-                    $$
-                </p>
-
-                <p style="color: red;">
-                    O sinal negativo costuma causar estranheza à primeira vista, mas é fácil se convencer de sua
-                    correção. Se $f$ tem um pico em $x = 0$, então $g$ tem um pico quando $x - a = 0$, isto é, em $x =
-                    a$. O pico de fato se moveu $a$ unidades para a direita, como queríamos.
+                <p>
+                    Agora imagine que as figuras acima representem não pedaços de papel, mas as fronteiras de um poço
+                    quadrado infinito bidimensional. Nesse caso, a energia potencial teria as mesmas simetrias de
+                    rotação do papel, e (como a energia cinética não se altera numa rotação) o Hamiltoniano também
+                    seria invariante. Na mecânica quântica, é isto que queremos dizer quando afirmamos que um sistema
+                    tem uma simetria:
                 </p>
 
                 <div class="definition-box" style="border-left: 4px solid #45503B;">
-                    <p style="color: red;">
-                        <strong>Operador de Translação:</strong> define-se $\hat{T}(a)$ como o operador que desloca uma
-                        função espacialmente de uma distância $a$:
-                    </p>
-                    <p style="color: red;">
-                        $$ \hat{T}(a)\, f(x) = f(x - a) $$
-                    </p>
-                    <p style="color: red;">
-                        Em três dimensões, a generalização é imediata:
-                        $\hat{T}(\mathbf{a})\, f(\mathbf{r}) = f(\mathbf{r} - \mathbf{a})$.
+                    <p>
+                        <strong>Simetria:</strong> um sistema tem uma simetria quando o seu <strong>Hamiltoniano não se
+                            altera</strong> sob alguma transformação, como uma rotação ou uma translação.
                     </p>
                 </div>
 
-                <h3 id="ativa-passiva">Transformações Ativas e Passivas</h3>
+                <h2 id="transformacoes-no-espaco">Transformações no Espaço</h2>
 
-                <p style="color: red;">
-                    Antes de prosseguir, é indispensável fixar uma convenção, pois há duas maneiras logicamente
-                    distintas — e facilmente confundíveis — de descrever uma translação:
+                <p>
+                    Vamos introduzir os operadores quânticos que implementam translações, inversões e rotações. Cada um
+                    deles é definido pela maneira como age sobre uma função arbitrária.
                 </p>
+
+                <h3 id="translacao">Translação</h3>
+
+                <p>
+                    O <strong>operador de translação</strong> pega uma função e a desloca de uma distância $a$. Ele é
+                    definido pela relação
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p>
+                        $$ \hat{T}(a)\,\psi(x) = \psi'(x) = \psi(x - a). \tag{6.1} $$
+                    </p>
+                </div>
+
+                <p>
+                    O sinal pode confundir à primeira vista. A equação diz que a função transladada $\psi'$, no ponto
+                    $x$, vale o mesmo que a função original $\psi$ no ponto $x - a$: a função foi deslocada para a
+                    <strong>direita</strong> de uma distância $a$. (Se $\psi$ tem um pico em $x_0$, então $\psi'$ tem um
+                    pico onde $x - a = x_0$, isto é, em $x = x_0 + a$.)
+                </p>
+
+                <figure class="lecture-figure">
+                    <svg viewBox="0 0 640 230" role="img" aria-label="Uma função e a mesma função transladada para a direita por uma distância a"><defs><marker id="arr-tr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs><line x1="20" y1="140" x2="620" y2="140" class="fig-axis"/><line x1="94.00" y1="20" x2="94.00" y2="210" class="fig-axis"/><path d="M-2.0,140.0 L-0.6,140.0 L0.9,140.0 L2.3,140.0 L3.8,140.0 L5.2,140.0 L6.6,140.0 L8.1,140.0 L9.5,140.0 L10.9,140.0 L12.4,140.0 L13.8,140.0 L15.3,140.1 L16.7,140.1 L18.1,140.1 L19.6,140.2 L21.0,140.2 L22.5,140.3 L23.9,140.4 L25.3,140.5 L26.8,140.7 L28.2,141.0 L29.7,141.3 L31.1,141.7 L32.5,142.1 L34.0,142.7 L35.4,143.5 L36.8,144.3 L38.3,145.4 L39.7,146.6 L41.2,148.0 L42.6,149.7 L44.0,151.6 L45.5,153.7 L46.9,156.1 L48.4,158.6 L49.8,161.4 L51.2,164.4 L52.7,167.5 L54.1,170.7 L55.6,173.9 L57.0,177.2 L58.4,180.4 L59.9,183.4 L61.3,186.2 L62.7,188.7 L64.2,190.8 L65.6,192.5 L67.1,193.8 L68.5,194.5 L69.9,194.7 L71.4,194.4 L72.8,193.4 L74.3,192.0 L75.7,190.0 L77.1,187.5 L78.6,184.6 L80.0,181.3 L81.5,177.6 L82.9,173.5 L84.3,169.2 L85.8,164.7 L87.2,160.0 L88.6,155.0 L90.1,149.9 L91.5,144.6 L93.0,139.2 L94.4,133.6 L95.8,127.9 L97.3,122.0 L98.7,116.1 L100.2,110.0 L101.6,103.9 L103.0,97.7 L104.5,91.7 L105.9,85.7 L107.4,80.0 L108.8,74.5 L110.2,69.5 L111.7,64.9 L113.1,60.9 L114.5,57.6 L116.0,55.0 L117.4,53.3 L118.9,52.3 L120.3,52.3 L121.7,53.0 L123.2,54.6 L124.6,57.0 L126.1,60.1 L127.5,63.8 L128.9,68.1 L130.4,72.7 L131.8,77.7 L133.3,82.8 L134.7,88.0 L136.1,93.2 L137.6,98.3 L139.0,103.2 L140.4,107.8 L141.9,112.1 L143.3,116.0 L144.8,119.6 L146.2,122.9 L147.6,125.7 L149.1,128.2 L150.5,130.3 L152.0,132.2 L153.4,133.7 L154.8,135.0 L156.3,136.1 L157.7,136.9 L159.2,137.6 L160.6,138.2 L162.0,138.6 L163.5,139.0 L164.9,139.2 L166.3,139.4 L167.8,139.6 L169.2,139.7 L170.7,139.8 L172.1,139.8 L173.5,139.9 L175.0,139.9 L176.4,139.9 L177.9,140.0 L179.3,140.0 L180.7,140.0 L182.2,140.0 L183.6,140.0 L185.1,140.0 L186.5,140.0 L187.9,140.0 L189.4,140.0 L190.8,140.0 L192.2,140.0 L193.7,140.0 L195.1,140.0 L196.6,140.0 L198.0,140.0" class="fig-curve fig-dashed"/><path d="M318.0,140.0 L319.4,140.0 L320.9,140.0 L322.3,140.0 L323.8,140.0 L325.2,140.0 L326.6,140.0 L328.1,140.0 L329.5,140.0 L330.9,140.0 L332.4,140.0 L333.8,140.0 L335.3,140.1 L336.7,140.1 L338.1,140.1 L339.6,140.2 L341.0,140.2 L342.5,140.3 L343.9,140.4 L345.3,140.5 L346.8,140.7 L348.2,141.0 L349.7,141.3 L351.1,141.7 L352.5,142.1 L354.0,142.7 L355.4,143.5 L356.8,144.3 L358.3,145.4 L359.7,146.6 L361.2,148.0 L362.6,149.7 L364.0,151.6 L365.5,153.7 L366.9,156.1 L368.4,158.6 L369.8,161.4 L371.2,164.4 L372.7,167.5 L374.1,170.7 L375.6,173.9 L377.0,177.2 L378.4,180.4 L379.9,183.4 L381.3,186.2 L382.7,188.7 L384.2,190.8 L385.6,192.5 L387.1,193.8 L388.5,194.5 L389.9,194.7 L391.4,194.4 L392.8,193.4 L394.3,192.0 L395.7,190.0 L397.1,187.5 L398.6,184.6 L400.0,181.3 L401.5,177.6 L402.9,173.5 L404.3,169.2 L405.8,164.7 L407.2,160.0 L408.6,155.0 L410.1,149.9 L411.5,144.6 L413.0,139.2 L414.4,133.6 L415.8,127.9 L417.3,122.0 L418.7,116.1 L420.2,110.0 L421.6,103.9 L423.0,97.7 L424.5,91.7 L425.9,85.7 L427.4,80.0 L428.8,74.5 L430.2,69.5 L431.7,64.9 L433.1,60.9 L434.5,57.6 L436.0,55.0 L437.4,53.3 L438.9,52.3 L440.3,52.3 L441.7,53.0 L443.2,54.6 L444.6,57.0 L446.1,60.1 L447.5,63.8 L448.9,68.1 L450.4,72.7 L451.8,77.7 L453.3,82.8 L454.7,88.0 L456.1,93.2 L457.6,98.3 L459.0,103.2 L460.4,107.8 L461.9,112.1 L463.3,116.0 L464.8,119.6 L466.2,122.9 L467.6,125.7 L469.1,128.2 L470.5,130.3 L472.0,132.2 L473.4,133.7 L474.8,135.0 L476.3,136.1 L477.7,136.9 L479.2,137.6 L480.6,138.2 L482.0,138.6 L483.5,139.0 L484.9,139.2 L486.3,139.4 L487.8,139.6 L489.2,139.7 L490.7,139.8 L492.1,139.8 L493.5,139.9 L495.0,139.9 L496.4,139.9 L497.9,140.0 L499.3,140.0 L500.7,140.0 L502.2,140.0 L503.6,140.0 L505.1,140.0 L506.5,140.0 L507.9,140.0 L509.4,140.0 L510.8,140.0 L512.2,140.0 L513.7,140.0 L515.1,140.0 L516.6,140.0 L518.0,140.0" class="fig-curve"/><line x1="119.60" y1="136" x2="119.60" y2="144" class="fig-axis"/><text x="119.60" y="160" text-anchor="middle" class="fig-label fig-it">x − a</text><line x1="439.60" y1="136" x2="439.60" y2="144" class="fig-axis"/><text x="439.60" y="160" text-anchor="middle" class="fig-label fig-it">x</text><line x1="206.00" y1="60" x2="326.00" y2="60" class="fig-curve" marker-end="url(#arr-tr)"/><text x="127.60" y="38" class="fig-label fig-it">ψ(x)</text><text x="447.60" y="38" class="fig-label fig-it">ψ′(x) = T̂(a)ψ(x)</text></svg>
+                    <figcaption>Uma função de onda $\psi(x)$ (tracejada) e a função transladada $\psi'(x) =
+                        \hat{T}(a)\psi(x)$ (contínua). O valor de $\psi'$ em $x$ é igual ao valor de $\psi$ em $x - a$
+                        (Figura 6.2 de Griffiths).</figcaption>
+                </figure>
+
+                <h3 id="inversao">Inversão Espacial (Paridade)</h3>
+
+                <p>
+                    O operador que reflete uma função através da origem — o <strong>operador de paridade</strong> em
+                    uma dimensão — é definido por
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p>
+                        $$ \hat{\Pi}\,\psi(x) = \psi'(x) = \psi(-x). $$
+                    </p>
+                </div>
+
+                <p>
+                    Em três dimensões, a paridade troca o sinal das três coordenadas: $\hat{\Pi}\,\psi(x, y, z) =
+                    \psi(-x, -y, -z)$.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref">2</a></sup>
+                </p>
+
+                <figure class="lecture-figure">
+                    <svg viewBox="0 0 640 230" role="img" aria-label="Uma função e sua imagem sob inversão espacial"><defs><marker id="arr-par" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs><line x1="20" y1="140" x2="620" y2="140" class="fig-axis"/><line x1="320.0" y1="20" x2="320.0" y2="210" class="fig-axis"/><path d="M432.0,140.0 L433.4,140.0 L434.9,140.0 L436.3,140.0 L437.8,140.0 L439.2,140.0 L440.6,140.0 L442.1,140.0 L443.5,140.0 L444.9,140.0 L446.4,140.0 L447.8,140.0 L449.3,140.1 L450.7,140.1 L452.1,140.1 L453.6,140.2 L455.0,140.2 L456.5,140.3 L457.9,140.4 L459.3,140.5 L460.8,140.7 L462.2,141.0 L463.7,141.3 L465.1,141.7 L466.5,142.1 L468.0,142.7 L469.4,143.5 L470.8,144.3 L472.3,145.4 L473.7,146.6 L475.2,148.0 L476.6,149.7 L478.0,151.6 L479.5,153.7 L480.9,156.1 L482.4,158.6 L483.8,161.4 L485.2,164.4 L486.7,167.5 L488.1,170.7 L489.6,173.9 L491.0,177.2 L492.4,180.4 L493.9,183.4 L495.3,186.2 L496.7,188.7 L498.2,190.8 L499.6,192.5 L501.1,193.8 L502.5,194.5 L503.9,194.7 L505.4,194.4 L506.8,193.4 L508.3,192.0 L509.7,190.0 L511.1,187.5 L512.6,184.6 L514.0,181.3 L515.5,177.6 L516.9,173.5 L518.3,169.2 L519.8,164.7 L521.2,160.0 L522.6,155.0 L524.1,149.9 L525.5,144.6 L527.0,139.2 L528.4,133.6 L529.8,127.9 L531.3,122.0 L532.7,116.1 L534.2,110.0 L535.6,103.9 L537.0,97.7 L538.5,91.7 L539.9,85.7 L541.4,80.0 L542.8,74.5 L544.2,69.5 L545.7,64.9 L547.1,60.9 L548.5,57.6 L550.0,55.0 L551.4,53.3 L552.9,52.3 L554.3,52.3 L555.7,53.0 L557.2,54.6 L558.6,57.0 L560.1,60.1 L561.5,63.8 L562.9,68.1 L564.4,72.7 L565.8,77.7 L567.3,82.8 L568.7,88.0 L570.1,93.2 L571.6,98.3 L573.0,103.2 L574.4,107.8 L575.9,112.1 L577.3,116.0 L578.8,119.6 L580.2,122.9 L581.6,125.7 L583.1,128.2 L584.5,130.3 L586.0,132.2 L587.4,133.7 L588.8,135.0 L590.3,136.1 L591.7,136.9 L593.2,137.6 L594.6,138.2 L596.0,138.6 L597.5,139.0 L598.9,139.2 L600.3,139.4 L601.8,139.6 L603.2,139.7 L604.7,139.8 L606.1,139.8 L607.5,139.9 L609.0,139.9 L610.4,139.9 L611.9,140.0 L613.3,140.0 L614.7,140.0 L616.2,140.0 L617.6,140.0 L619.1,140.0 L620.5,140.0 L621.9,140.0 L623.4,140.0 L624.8,140.0 L626.2,140.0 L627.7,140.0 L629.1,140.0 L630.6,140.0 L632.0,140.0" class="fig-curve fig-dashed"/><path d="M208.0,140.0 L206.6,140.0 L205.1,140.0 L203.7,140.0 L202.2,140.0 L200.8,140.0 L199.4,140.0 L197.9,140.0 L196.5,140.0 L195.1,140.0 L193.6,140.0 L192.2,140.0 L190.7,140.1 L189.3,140.1 L187.9,140.1 L186.4,140.2 L185.0,140.2 L183.5,140.3 L182.1,140.4 L180.7,140.5 L179.2,140.7 L177.8,141.0 L176.3,141.3 L174.9,141.7 L173.5,142.1 L172.0,142.7 L170.6,143.5 L169.2,144.3 L167.7,145.4 L166.3,146.6 L164.8,148.0 L163.4,149.7 L162.0,151.6 L160.5,153.7 L159.1,156.1 L157.6,158.6 L156.2,161.4 L154.8,164.4 L153.3,167.5 L151.9,170.7 L150.4,173.9 L149.0,177.2 L147.6,180.4 L146.1,183.4 L144.7,186.2 L143.3,188.7 L141.8,190.8 L140.4,192.5 L138.9,193.8 L137.5,194.5 L136.1,194.7 L134.6,194.4 L133.2,193.4 L131.7,192.0 L130.3,190.0 L128.9,187.5 L127.4,184.6 L126.0,181.3 L124.5,177.6 L123.1,173.5 L121.7,169.2 L120.2,164.7 L118.8,160.0 L117.4,155.0 L115.9,149.9 L114.5,144.6 L113.0,139.2 L111.6,133.6 L110.2,127.9 L108.7,122.0 L107.3,116.1 L105.8,110.0 L104.4,103.9 L103.0,97.7 L101.5,91.7 L100.1,85.7 L98.6,80.0 L97.2,74.5 L95.8,69.5 L94.3,64.9 L92.9,60.9 L91.5,57.6 L90.0,55.0 L88.6,53.3 L87.1,52.3 L85.7,52.3 L84.3,53.0 L82.8,54.6 L81.4,57.0 L79.9,60.1 L78.5,63.8 L77.1,68.1 L75.6,72.7 L74.2,77.7 L72.7,82.8 L71.3,88.0 L69.9,93.2 L68.4,98.3 L67.0,103.2 L65.6,107.8 L64.1,112.1 L62.7,116.0 L61.2,119.6 L59.8,122.9 L58.4,125.7 L56.9,128.2 L55.5,130.3 L54.0,132.2 L52.6,133.7 L51.2,135.0 L49.7,136.1 L48.3,136.9 L46.8,137.6 L45.4,138.2 L44.0,138.6 L42.5,139.0 L41.1,139.2 L39.7,139.4 L38.2,139.6 L36.8,139.7 L35.3,139.8 L33.9,139.8 L32.5,139.9 L31.0,139.9 L29.6,139.9 L28.1,140.0 L26.7,140.0 L25.3,140.0 L23.8,140.0 L22.4,140.0 L20.9,140.0 L19.5,140.0 L18.1,140.0 L16.6,140.0 L15.2,140.0 L13.8,140.0 L12.3,140.0 L10.9,140.0 L9.4,140.0 L8.0,140.0" class="fig-curve"/><line x1="553.60" y1="136" x2="553.60" y2="144" class="fig-axis"/><text x="553.60" y="160" text-anchor="middle" class="fig-label fig-it">x</text><line x1="86.40" y1="136" x2="86.40" y2="144" class="fig-axis"/><text x="86.40" y="160" text-anchor="middle" class="fig-label fig-it">−x</text><line x1="432.00" y1="60" x2="208.00" y2="60" class="fig-curve" marker-end="url(#arr-par)"/><text x="561.60" y="38" class="fig-label fig-it">ψ(x)</text><text x="78.40" y="38" text-anchor="end" class="fig-label fig-it">ψ′(x) = Π̂ψ(x)</text></svg>
+                    <figcaption>Uma função $\psi(x)$ (tracejada) e a função $\psi'(x) = \hat{\Pi}\psi(x) = \psi(-x)$
+                        (contínua) após uma inversão espacial. O valor de $\psi'$ em $x$ é igual ao valor de $\psi$ em
+                        $-x$ (Figura 6.3 de Griffiths).</figcaption>
+                </figure>
+
+                <p>
+                    O Problema 6.1 de Griffiths explora a paridade em três dimensões. Primeiro, a inversão
+                    $\hat{\Pi}\,\psi(\mathbf{r}) = \psi(-\mathbf{r})$ equivale a uma reflexão num espelho seguida de uma
+                    rotação. Segundo, em coordenadas esféricas, o ponto $-\mathbf{r}$ tem a mesma distância à origem,
+                    ângulo polar $\pi - \theta$ e ângulo azimutal $\phi + \pi$, de modo que
+                </p>
+
+                <p>
+                    $$ \hat{\Pi}\,\psi(r, \theta, \phi) = \psi(r, \pi - \theta, \phi + \pi). $$
+                </p>
+
+                <p>
+                    Terceiro, os orbitais hidrogenoides são autoestados da paridade, com autovalor $(-1)^\ell$:
+                </p>
+
+                <p>
+                    $$ \hat{\Pi}\,\psi_{n\ell m}(r, \theta, \phi) = (-1)^\ell\, \psi_{n\ell m}(r, \theta, \phi). $$
+                </p>
+
+                <p>
+                    Esse resultado vale, na verdade, para os estados estacionários de <i>qualquer</i> potencial central
+                    $V(\mathbf{r}) = V(r)$: nesse caso, os autoestados podem ser escritos na forma separável
+                    $R_{n\ell}(r)\,Y_\ell^m(\theta, \phi)$, e apenas a função radial $R_{n\ell}$ — que não tem papel
+                    algum na determinação da paridade — depende da forma específica de $V(r)$. Voltaremos a isso em
+                    <a href="Paridade.html">Paridade</a>.
+                </p>
+
+                <h3 id="rotacao">Rotação</h3>
+
+                <p>
+                    Por fim, o operador que gira uma função em torno do eixo $z$ por um ângulo $\varphi$ se expressa
+                    mais naturalmente em coordenadas esféricas:
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p>
+                        $$ \hat{R}_z(\varphi)\,\psi(r, \theta, \phi) = \psi'(r, \theta, \phi) = \psi(r, \theta, \phi -
+                        \varphi). \tag{6.2} $$
+                    </p>
+                </div>
+
+                <p>
+                    A estrutura é a mesma da translação, com o ângulo azimutal $\phi$ no papel de $x$: a função
+                    girada, no azimute $\phi$, vale o mesmo que a função original no azimute $\phi - \varphi$. O
+                    resultado é uma rotação da função no sentido anti-horário em torno do eixo vertical, por um ângulo
+                    $\varphi$ (Figura 6.4 de Griffiths). Rotações em torno de eixos arbitrários serão tratadas em
+                    <a href="Simetrias de Rotação.html">Simetrias de Rotação</a>.
+                </p>
+
+                <h2 id="roteiro">O Roteiro do Módulo</h2>
+
+                <p>
+                    Nos próximos tópicos, seguiremos a sequência do Capítulo 6 de Griffiths:
+                </p>
+
+                <table>
+                    <tr>
+                        <th>Tópico</th>
+                        <th>Conteúdo</th>
+                    </tr>
+                    <tr>
+                        <td><a href="O Operador de Translação.html">O Operador de Translação</a></td>
+                        <td>$\hat{T}(a)$ em termos do momento; como os operadores se transformam; simetria translacional;
+                            Teorema de Bloch; conservação do momento.</td>
+                    </tr>
+                    <tr>
+                        <td><a href="Leis de Conservação.html">Leis de Conservação</a></td>
+                        <td>O que significa uma grandeza ser conservada na mecânica quântica, e quando isso
+                            acontece.</td>
+                    </tr>
+                    <tr>
+                        <td><a href="Paridade.html">Paridade</a></td>
+                        <td>Paridade em uma e em três dimensões; vetores e pseudovetores; regra de Laporte.</td>
+                    </tr>
+                    <tr>
+                        <td><a href="Simetrias de Rotação.html">Simetrias de Rotação</a></td>
+                        <td>O momento angular como gerador das rotações; operadores escalares e vetoriais; conservação do
+                            momento angular.</td>
+                    </tr>
+                    <tr>
+                        <td><a href="Degenerescência.html">Degenerescência</a></td>
+                        <td>Por que a simetria produz degenerescência; a degenerescência "normal" $2\ell + 1$ e a extra do
+                            hidrogênio.</td>
+                    </tr>
+                    <tr>
+                        <td><a href="Regras de Seleção Rotacionais.html">Regras de Seleção Rotacionais</a></td>
+                        <td>Elementos de matriz de operadores escalares e vetoriais; elementos de matriz reduzidos;
+                            coeficientes de Clebsch–Gordan.</td>
+                    </tr>
+                    <tr>
+                        <td><a href="Translações no Tempo.html">Translações no Tempo</a></td>
+                        <td>O Hamiltoniano como gerador da evolução temporal; a representação de Heisenberg; conservação
+                            da energia; inversão temporal.</td>
+                    </tr>
+                </table>
+
+                <h3 id="problemas">Problemas Relacionados</h3>
 
                 <ul>
-                    <li>
-                        Na visão <strong>ativa</strong>, o sistema físico é de fato movido: pegamos a partícula, ou o
-                        pacote de onda, e o transportamos $a$ unidades para a direita, mantendo os eixos coordenados
-                        fixos no lugar.
-                    </li>
-                    <li>
-                        Na visão <strong>passiva</strong>, o sistema permanece imóvel e quem se desloca é o
-                        observador: movemos a origem do sistema de coordenadas $a$ unidades para a esquerda, o que
-                        produz exatamente a mesma descrição matemática.
-                    </li>
+                    <li><strong>6.1:</strong> o operador de paridade em três dimensões; paridade $(-1)^\ell$ dos orbitais
+                        hidrogenoides.</li>
                 </ul>
 
-                <p style="color: red;">
-                    As duas interpretações são equivalentes e levam às mesmas previsões físicas — a translação ativa
-                    por $+a$ corresponde à translação passiva por $-a$. Para evitar confusão de sinais,
-                    <strong>adotaremos sistematicamente a visão ativa</strong>: sempre que falarmos em transladar,
-                    girar ou refletir, estaremos movendo o sistema, nunca os eixos.
-                </p>
-
-                <h3 id="propriedades">Propriedades Estruturais</h3>
-
-                <p style="color: red;">
-                    Embora a definição de $\hat{T}(a)$ seja quase trivial, três propriedades suas merecem registro
-                    explícito, pois serão usadas repetidamente e reaparecerão em todas as outras simetrias que
-                    estudarmos.
-                </p>
-
-                <p style="color: red;">
-                    <strong>Primeira: translações preservam a norma.</strong> Uma simples mudança de variável na
-                    integral de normalização, $u = x - a$ (com $du = dx$, e os limites infinitos inalterados), mostra
-                    que:
-                </p>
-
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    \int_{-\infty}^{+\infty} \left| \hat{T}(a)\psi(x) \right|^2 dx
-                    = \int_{-\infty}^{+\infty} \left| \psi(x-a) \right|^2 dx
-                    = \int_{-\infty}^{+\infty} \left| \psi(u) \right|^2 du = 1
-                    \end{aligned}
-                    $$
-                </p>
-
-                <p style="color: red;">
-                    Transladar um estado normalizado produz outro estado normalizado — o que é fisicamente óbvio (a
-                    partícula não deixa de existir por ter sido deslocada), mas tecnicamente importante: significa que
-                    $\hat{T}(a)$ é um operador <strong>unitário</strong>, $\hat{T}^\dagger \hat{T} = 1$. Veremos que
-                    <i>toda</i> simetria em Mecânica Quântica é representada por um operador unitário, precisamente
-                    porque nenhuma simetria pode alterar probabilidades.
-                </p>
-
-                <p style="color: red;">
-                    <strong>Segunda: translações sucessivas se compõem por soma.</strong> Aplicando primeiro
-                    $\hat{T}(b)$ e em seguida $\hat{T}(a)$:
-                </p>
-
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    \hat{T}(a)\hat{T}(b)\, \psi(x) = \hat{T}(a)\, \psi(x - b) = \psi(x - a - b) = \hat{T}(a+b)\,
-                    \psi(x)
-                    \end{aligned}
-                    $$
-                </p>
-
-                <p style="color: red;">
-                    Juntando a isso o fato de que $\hat{T}(0) = 1$ (não deslocar nada é a identidade) e que
-                    $\hat{T}(a)^{-1} = \hat{T}(-a)$ (desfaz-se uma translação transladando de volta), concluímos que o
-                    conjunto de todas as translações forma um <strong>grupo</strong>. Como a soma de números reais é
-                    comutativa, $\hat{T}(a)\hat{T}(b) = \hat{T}(b)\hat{T}(a)$: o grupo das translações é
-                    <strong>abeliano</strong>. Guardemos essa observação — quando chegarmos às rotações,
-                    encontraremos um grupo que <i>não</i> tem essa propriedade, e a diferença terá consequências
-                    físicas profundas.
-                </p>
-
-                <p style="color: red;">
-                    <strong>Terceira: a translação é uma simetria contínua.</strong> O parâmetro $a$ varia
-                    continuamente, e podemos torná-lo tão pequeno quanto quisermos. Isso significa que qualquer
-                    translação finita pode ser construída acumulando um grande número de translações infinitesimais —
-                    e é justamente essa possibilidade que nos permitirá, no próximo tópico, identificar um operador
-                    responsável por "gerar" a transformação.
-                </p>
-
-                <div class="definition-box">
-                    <p style="color: red;">
-                        Nem toda simetria é contínua. A <strong>paridade</strong> (reflexão espacial) e a
-                        <strong>troca de partículas idênticas</strong> são simetrias
-                        <strong>discretas</strong>: ou se aplica a transformação inteira, ou não se aplica nada. Não
-                        existe "meia reflexão". Simetrias discretas não possuem gerador, mas, como veremos, ainda assim
-                        produzem leis de conservação perfeitamente válidas.
-                    </p>
-                </div>
-
-                <h3 id="roteiro">O Roteiro do Módulo</h3>
-
-                <p style="color: red;">
-                    Com a linguagem das transformações estabelecida, o caminho adiante se organiza naturalmente. No
-                    próximo tópico construiremos o
-                    <a href="O Operador de Translação.html">operador de translação</a> em sua forma exponencial,
-                    identificando o momento linear como seu gerador e descobrindo como os operadores — e não apenas os
-                    estados — se transformam. Em seguida, demonstraremos o teorema que conecta simetria a
-                    <a href="Leis de Conservação.html">leis de conservação</a>, a versão quântica do teorema de
-                    Noether.
-                </p>
-
-                <p style="color: red;">
-                    Aplicaremos então o método a duas simetrias concretas: a
-                    <a href="Paridade.html">paridade</a>, exemplo de simetria discreta que gera regras de seleção
-                    espectroscópicas, e as <a href="Simetrias de Rotação.html">simetrias de rotação</a>, das quais
-                    emerge a conservação do momento angular. Por fim, veremos como a simetria se manifesta diretamente
-                    na estrutura do espectro, produzindo <a href="Degenerescência.html">degenerescência</a> — e como
-                    quebrá-la desfaz esses níveis coincidentes.
-                </p>
+                <hr class="footnotes-sep">
+                <section class="footnotes">
+                    <ol>
+                        <li id="fn:1">
+                            <p>É claro que o quadrado também tem outras simetrias, como as reflexões em torno de eixos
+                                que passam por uma diagonal ou que cortam dois lados ao meio. O conjunto de todas as
+                                transformações que deixam o quadrado inalterado é chamado $D_4$, o "grupo diedral" de
+                                grau 4.<a href="#fnref:1" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:2">
+                            <p>Em três dimensões, a paridade pode ser realizada como uma reflexão num espelho seguida de
+                                uma rotação (Problema 6.1). Em duas dimensões, a transformação $\psi'(x, y) = \psi(-x,
+                                -y)$ não difere de uma rotação de $180^\circ$. O termo paridade é usado exclusivamente para
+                                a inversão espacial $\hat{\Pi}\,\psi(\mathbf{r}) = \psi(-\mathbf{r})$, em uma ou em três
+                                dimensões.<a href="#fnref:2" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                    </ol>
+                </section>
 
             </div>
         </main>
@@ -342,12 +376,19 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#introducao">Introdução</a></li>
+                    <li><a href="#o-que-e-simetria">O Que É uma Simetria?</a></li>
                     <li>
                         <a href="#transformacoes-no-espaco">Transformações no Espaço</a>
                         <ul>
-                            <li><a href="#ativa-passiva">Ativas e Passivas</a></li>
-                            <li><a href="#propriedades">Propriedades Estruturais</a></li>
-                            <li><a href="#roteiro">O Roteiro do Módulo</a></li>
+                            <li><a href="#translacao">Translação</a></li>
+                            <li><a href="#inversao">Inversão Espacial</a></li>
+                            <li><a href="#rotacao">Rotação</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#roteiro">O Roteiro do Módulo</a>
+                        <ul>
+                            <li><a href="#problemas">Problemas Relacionados</a></li>
                         </ul>
                     </li>
                 </ul>

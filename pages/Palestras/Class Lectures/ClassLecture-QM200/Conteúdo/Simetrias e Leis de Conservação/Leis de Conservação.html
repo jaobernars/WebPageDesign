@@ -136,343 +136,249 @@
             <div class="prose">
 
                 <h1 id="leis-de-conservacao">Leis de Conservação</h1>
-                <p class="lead" style="color: red;">O teorema que converte toda simetria numa grandeza conservada.</p>
+                <p class="lead">O que significa, na mecânica quântica, dizer que uma grandeza é conservada — e por que
+                    comutar com o Hamiltoniano é a condição para isso (Griffiths, Seção 6.3).</p>
 
-                <p style="color: red;">
-                    Viemos usando, ao longo dos últimos tópicos, uma afirmação que ainda não demonstramos: a de que
-                    um operador que comuta com o Hamiltoniano corresponde a uma grandeza conservada. Apoiamo-nos nela
-                    para dizer que a simetria de troca é permanente, e novamente para antecipar a conservação do
-                    momento. Chegou o momento de estabelecê-la com rigor, e de reconhecer nela o teorema central de
-                    todo este módulo.
+                <p>
+                    Na mecânica clássica, o significado de uma lei de conservação é simples: a grandeza em questão é a
+                    mesma antes e depois de algum evento. Solte uma pedra, e a energia potencial se converte em energia
+                    cinética, mas a energia <i>total</i> logo antes de ela atingir o chão é a mesma de quando foi
+                    solta; faça duas bolas de bilhar colidirem, e momento é transferido de uma para a outra, mas o total
+                    permanece inalterado.
                 </p>
 
-                <h2 id="ehrenfest">O Teorema de Ehrenfest Generalizado</h2>
-
-                <p style="color: red;">
-                    Seja $\hat{Q}$ um observável qualquer e $|\Psi(t)\rangle$ um estado que evolui segundo a Equação
-                    de Schrödinger. Queremos saber como o valor esperado $\langle Q \rangle = \langle \Psi | \hat{Q} |
-                    \Psi \rangle$ varia no tempo. Derivando pela regra do produto, com três termos — o <i>bra</i>, o
-                    operador e o <i>ket</i>:
-                </p>
-
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    \frac{d}{dt}\langle Q \rangle
-                    = \left\langle \frac{\partial \Psi}{\partial t} \middle| \hat{Q} \middle| \Psi \right\rangle
-                    + \left\langle \Psi \middle| \frac{\partial \hat{Q}}{\partial t} \middle| \Psi \right\rangle
-                    + \left\langle \Psi \middle| \hat{Q} \middle| \frac{\partial \Psi}{\partial t} \right\rangle
-                    \end{aligned}
-                    $$
-                </p>
-
-                <p style="color: red;">
-                    A Equação de Schrödinger, $i\hbar\, \partial_t |\Psi\rangle = \hat{H}|\Psi\rangle$, fornece a
-                    derivada temporal do <i>ket</i>. Para o <i>bra</i>, tomamos o conjugado hermitiano, lembrando que
-                    $\hat{H}$ é hermitiano e que a conjugação inverte o sinal da unidade imaginária:
-                </p>
-
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    \left| \frac{\partial \Psi}{\partial t} \right\rangle = -\frac{i}{\hbar}\hat{H}|\Psi\rangle
-                    \qquad\qquad
-                    \left\langle \frac{\partial \Psi}{\partial t} \right| = +\frac{i}{\hbar}\langle \Psi | \hat{H}
-                    \end{aligned}
-                    $$
-                </p>
-
-                <p style="color: red;">
-                    Substituindo os dois na expressão anterior, os termos com $\hat{H}$ se agrupam num comutador:
-                </p>
-
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    \frac{d}{dt}\langle Q \rangle
-                    &= \frac{i}{\hbar}\langle \Psi | \hat{H}\hat{Q} | \Psi \rangle
-                    - \frac{i}{\hbar}\langle \Psi | \hat{Q}\hat{H} | \Psi \rangle
-                    + \left\langle \frac{\partial \hat{Q}}{\partial t} \right\rangle
-                    \end{aligned}
-                    $$
+                <p>
+                    Na mecânica quântica, porém, um sistema em geral não <i>tem</i> uma energia (ou um momento) bem
+                    definida antes do processo começar (nem depois). O que <i>significa</i>, então, dizer que o
+                    observável $Q$ é (ou não é) conservado? Há duas possibilidades:
                 </p>
 
                 <div class="definition-box" style="border-left: 4px solid #45503B;">
-                    <p style="color: red;">
-                        <strong>Teorema de Ehrenfest Generalizado:</strong>
-                    </p>
-                    <p style="color: red;">
+                    <ul>
+                        <li><strong>Primeira definição:</strong> o <i>valor esperado</i> $\langle Q \rangle$ é
+                            independente do tempo.</li>
+                        <li><strong>Segunda definição:</strong> a probabilidade de obter qualquer valor particular numa
+                            medida é independente do tempo.</li>
+                    </ul>
+                </div>
+
+                <p>
+                    Em que condições vale cada uma dessas leis de conservação? Vamos supor que o observável em questão
+                    não dependa explicitamente do tempo: $\partial \hat{Q}/\partial t = 0$.
+                </p>
+
+                <h2 id="ehrenfest">Primeira Definição: o Teorema de Ehrenfest Generalizado</h2>
+
+                <p>
+                    Recordemos como o valor esperado de um observável evolui. Derivando $\langle Q \rangle = \langle
+                    \Psi | \hat{Q} | \Psi \rangle$ e usando a Equação de Schrödinger, $i\hbar\,\partial_t|\Psi\rangle =
+                    \hat{H}|\Psi\rangle$ (e sua conjugada, $-i\hbar\,\partial_t\langle\Psi| = \langle\Psi|\hat{H}$,
+                    válida porque $\hat{H}$ é hermitiano):
+                </p>
+
+                <p>
+                    $$
+                    \begin{aligned}
+                    \frac{d}{dt}\langle Q \rangle
+                    &= \left\langle \frac{\partial \Psi}{\partial t} \middle| \hat{Q}\Psi \right\rangle
+                    + \left\langle \Psi \middle| \frac{\partial \hat{Q}}{\partial t}\Psi \right\rangle
+                    + \left\langle \Psi \middle| \hat{Q}\frac{\partial \Psi}{\partial t} \right\rangle \\
+                    &= \frac{i}{\hbar}\langle \Psi | \hat{H}\hat{Q} | \Psi \rangle
+                    - \frac{i}{\hbar}\langle \Psi | \hat{Q}\hat{H} | \Psi \rangle
+                    + \left\langle \frac{\partial \hat{Q}}{\partial t} \right\rangle.
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p>
+                    Os dois primeiros termos se combinam num comutador, e obtemos o <strong>teorema de Ehrenfest
+                        generalizado</strong> (Equação 3.73 de Griffiths):
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p>
                         $$ \frac{d}{dt}\langle Q \rangle = \frac{i}{\hbar}\Big\langle \big[\hat{H}, \hat{Q}\big]
-                        \Big\rangle + \left\langle \frac{\partial \hat{Q}}{\partial t} \right\rangle $$
+                        \Big\rangle + \left\langle \frac{\partial \hat{Q}}{\partial t} \right\rangle. $$
                     </p>
                 </div>
 
-                <p style="color: red;">
-                    O último termo contabiliza apenas a eventual dependência temporal <i>explícita</i> do operador —
-                    aquela que aparece na sua própria definição, e não através do estado. A esmagadora maioria dos
-                    observáveis de interesse ($\hat{x}$, $\hat{p}$, $\hat{L}_z$, $\hat{\Pi}$) não tem dependência
-                    explícita alguma, e esse termo se anula identicamente.
+                <p>
+                    Com $\partial\hat{Q}/\partial t = 0$, vemos que o valor esperado de $Q$ é independente do tempo se
+                    <strong><i>o operador $\hat{Q}$ comuta com o Hamiltoniano</i></strong>.
+                </p>
+
+                <h2 id="segunda-definicao">Segunda Definição: Probabilidades Conservadas</h2>
+
+                <p>
+                    Acontece que o mesmo critério garante a conservação também no sentido da segunda definição. Para
+                    demonstrar isso, lembre que a probabilidade de obter o resultado $q_n$ numa medida de $Q$ no
+                    instante $t$ é (Equação 3.43 de Griffiths)
+                </p>
+
+                <p>
+                    $$ P(q_n) = \left| \langle f_n | \Psi(t) \rangle \right|^2, \tag{6.15} $$
+                </p>
+
+                <p>
+                    onde $f_n$ é o autovetor correspondente: $\hat{Q}|f_n\rangle = q_n|f_n\rangle$.<sup id="fnref:1"><a
+                            href="#fn:1" class="footnote-ref">1</a></sup> Sabemos também que a evolução temporal da
+                    função de onda é (Equação 2.17 de Griffiths)
+                </p>
+
+                <p>
+                    $$ |\Psi(t)\rangle = \sum_m e^{-iE_m t/\hbar}\, c_m\, |\psi_m\rangle, $$
+                </p>
+
+                <p>
+                    onde os $|\psi_m\rangle$ são os autoestados de $\hat{H}$. Portanto,
+                </p>
+
+                <p>
+                    $$ P(q_n) = \left| \sum_m e^{-iE_m t/\hbar}\, c_m\, \langle f_n | \psi_m \rangle \right|^2. $$
+                </p>
+
+                <p>
+                    Agora o ponto-chave: como $\hat{Q}$ e $\hat{H}$ comutam, podemos encontrar um conjunto completo de
+                    autoestados simultâneos dos dois (Seção A.5 de Griffiths); sem perda de generalidade, então,
+                    $|f_n\rangle = |\psi_n\rangle$. Usando a ortonormalidade dos $|\psi_n\rangle$,
+                </p>
+
+                <p>
+                    $$ P(q_n) = \left| \sum_m e^{-iE_m t/\hbar}\, c_m\, \langle \psi_n | \psi_m \rangle \right|^2 =
+                    \left| e^{-iE_n t/\hbar}\, c_n \right|^2 = |c_n|^2, $$
+                </p>
+
+                <p>
+                    que é claramente independente do tempo.
                 </p>
 
                 <div class="definition-box">
-                    <p style="color: red;">
-                        <strong>Grandeza conservada:</strong> se $\hat{Q}$ não depende explicitamente do tempo e
-                        comuta com o Hamiltoniano,
+                    <p>
+                        <strong>Resumo:</strong> se $\hat{Q}$ não depende explicitamente do tempo e comuta com o
+                        Hamiltoniano,
                     </p>
-                    <p style="color: red;">
-                        $$ \big[\hat{H}, \hat{Q}\big] = 0
-                        \qquad \Longrightarrow \qquad
-                        \frac{d\langle Q \rangle}{dt} = 0 $$
+                    <p>
+                        $$ \big[\hat{H}, \hat{Q}\big] = 0, $$
                     </p>
-                    <p style="color: red;">
-                        e dizemos que $Q$ é uma <strong>constante de movimento</strong>.
-                    </p>
-                </div>
-
-                <h3 id="conservacao-forte">Uma Conservação Mais Forte do que a Média</h3>
-
-                <p style="color: red;">
-                    O enunciado acima parece, à primeira vista, mais fraco do que a conservação clássica: ele garante
-                    apenas que o <i>valor médio</i> não muda, deixando em aberto a possibilidade de que a distribuição
-                    de probabilidade se deforme mantendo a média fixa. Não é o caso — a conservação é bem mais
-                    rígida do que isso.
-                </p>
-
-                <p style="color: red;">
-                    O argumento é simples. Se $[\hat{H}, \hat{Q}] = 0$, então também $[\hat{H}, \hat{Q}^n] = 0$ para
-                    qualquer potência $n$, pois basta inserir $\hat{H}$ repetidamente entre os fatores. Logo, o
-                    teorema se aplica igualmente a $\hat{Q}^2$, $\hat{Q}^3$, e assim por diante:
-                </p>
-
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    \frac{d}{dt}\langle Q^n \rangle = 0 \qquad \text{para todo } n
-                    \end{aligned}
-                    $$
-                </p>
-
-                <p style="color: red;">
-                    Como o conjunto de todos os momentos determina univocamente uma distribuição de probabilidade,
-                    segue que a distribuição inteira permanece congelada. Se medirmos $Q$ e obtivermos certo autovalor
-                    com probabilidade $P$, essa mesma probabilidade será obtida em qualquer instante futuro. Em
-                    particular, um estado que <i>é</i> autoestado de $\hat{Q}$ continuará sendo autoestado de
-                    $\hat{Q}$, com o mesmo autovalor, para sempre — exatamente o que havíamos concluído sobre a
-                    simetria de troca em
-                    <a href="../Partículas Idênticas/Sistema de Duas partículas.html">partículas idênticas</a>.
-                </p>
-
-                <h2 id="noether">A Versão Quântica do Teorema de Noether</h2>
-
-                <p style="color: red;">
-                    Falta agora costurar o teorema de Ehrenfest à discussão de simetrias. A ponte é curta, e vale a
-                    pena percorrê-la devagar.
-                </p>
-
-                <p style="color: red;">
-                    Uma simetria contínua qualquer é representada por um operador unitário construído a partir de um
-                    gerador hermitiano $\hat{G}$, exatamente como fizemos com a translação:
-                </p>
-
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    \hat{U}(\lambda) = e^{-i\lambda \hat{G}/\hbar}
-                    \end{aligned}
-                    $$
-                </p>
-
-                <p style="color: red;">
-                    Dizer que o sistema possui essa simetria é dizer que $[\hat{H}, \hat{U}(\lambda)] = 0$ para todo
-                    $\lambda$. Expandindo a exponencial para $\lambda$ infinitesimal, $\hat{U} \approx 1 -
-                    (i/\hbar)\lambda\hat{G}$, e notando que a identidade comuta com tudo, a condição colapsa em:
-                </p>
-
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    \big[\hat{H}, \hat{U}(\lambda)\big] = 0 \ \ \forall \lambda
-                    \qquad \Longleftrightarrow \qquad
-                    \big[\hat{H}, \hat{G}\big] = 0
-                    \end{aligned}
-                    $$
-                </p>
-
-                <p style="color: red;">
-                    Mas $\hat{G}$ é hermitiano e, salvo casos patológicos, não depende explicitamente do tempo. Pelo
-                    teorema de Ehrenfest, ele é uma constante de movimento. O ciclo se fecha:
-                </p>
-
-                <div class="definition-box" style="border-left: 4px solid #45503B;">
-                    <p style="color: red;">
-                        <strong>Teorema de Noether (versão quântica):</strong> a cada simetria contínua do
-                        Hamiltoniano corresponde uma grandeza física conservada — precisamente o gerador daquela
-                        simetria.
-                    </p>
-                    <p style="color: red;">
-                        $$ \text{Simetria} \ \longrightarrow \ \big[\hat{H}, \hat{G}\big] = 0 \ \longrightarrow \
-                        \text{Conservação de } G $$
+                    <p>
+                        então $Q$ é conservado nos <i>dois</i> sentidos: tanto o valor esperado $\langle Q \rangle$
+                        quanto a probabilidade de obter cada resultado possível numa medida de $Q$ são independentes do
+                        tempo. Em particular, um sistema que começa num autoestado de $\hat{Q}$ permanece nesse
+                        autoestado.
                     </p>
                 </div>
 
-                <p style="color: red;">
-                    Emmy Noether demonstrou o resultado clássico em 1918, no contexto do formalismo lagrangiano. A
-                    versão quântica, que acabamos de obter, é em certo sentido mais transparente: enquanto no caso
-                    clássico é preciso trabalhar com variações de ação, aqui tudo se reduz ao anulamento de um
-                    comutador. O dicionário entre simetrias e grandezas conservadas fica:
+                <p>
+                    Já usamos esse resultado sem demonstrá-lo: é por isso que um estado de partículas idênticas que
+                    começa simétrico (ou antissimétrico) permanece assim para sempre, já que o operador de troca comuta
+                    com o Hamiltoniano (<a href="../Partículas Idênticas/Sistema de Duas partículas.html#simetrizacao-generalizada">Equações
+                        5.31–5.32</a>).
+                </p>
+
+                <h2 id="simetria-e-conservacao">Simetrias e Grandezas Conservadas</h2>
+
+                <p>
+                    Juntando esse resultado com a discussão anterior, fica clara a ligação entre simetria e conservação.
+                    Uma simetria significa que o Hamiltoniano comuta com o operador da transformação. Quando a simetria é
+                    <strong>contínua</strong>, ela vale em particular para uma transformação infinitesimal, cujo
+                    operador é da forma $1 - (i\delta/\hbar)\hat{G}$; a condição de simetria se reduz então a
+                    $[\hat{H}, \hat{G}] = 0$, e o <strong>gerador</strong> $\hat{G}$ da transformação é uma grandeza
+                    conservada. Foi exatamente assim que obtivemos a conservação do momento em
+                    <a href="O Operador de Translação.html#conservacao-momento">O Operador de Translação</a>, e é assim
+                    que obteremos a conservação do momento angular e da energia.
+                </p>
+
+                <p>
+                    Uma simetria <strong>discreta</strong>, como a paridade, não tem transformação infinitesimal, mas o
+                    próprio operador da transformação pode comutar com o Hamiltoniano e ser conservado — como veremos em
+                    <a href="Paridade.html">Paridade</a>.
                 </p>
 
                 <table>
                     <tr>
                         <th>Simetria do Hamiltoniano</th>
-                        <th>Gerador</th>
+                        <th>Operador</th>
                         <th>Grandeza conservada</th>
+                        <th>Onde é discutida</th>
                     </tr>
                     <tr>
-                        <td>Translação no espaço</td>
-                        <td>$\hat{\mathbf{p}}$</td>
-                        <td>Momento linear</td>
+                        <td>Translação espacial (contínua)</td>
+                        <td>$\hat{T}(a) = e^{-ia\hat{p}/\hbar}$</td>
+                        <td>Momento</td>
+                        <td><a href="O Operador de Translação.html#conservacao-momento">Operador de Translação</a></td>
                     </tr>
                     <tr>
-                        <td>Rotação</td>
-                        <td>$\hat{\mathbf{J}}$</td>
+                        <td>Rotação (contínua)</td>
+                        <td>$\hat{R}_{\mathbf{n}}(\varphi) = e^{-i\varphi\, \mathbf{n}\cdot\hat{\mathbf{L}}/\hbar}$</td>
                         <td>Momento angular</td>
+                        <td><a href="Simetrias de Rotação.html#simetria-rotacional-continua">Simetrias de Rotação</a>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Translação no tempo</td>
-                        <td>$\hat{H}$</td>
+                        <td>Translação temporal (contínua)</td>
+                        <td>$\hat{U}(t) = e^{-it\hat{H}/\hbar}$</td>
                         <td>Energia</td>
+                        <td><a href="Translações no Tempo.html#invariancia-temporal">Translações no Tempo</a></td>
                     </tr>
                     <tr>
-                        <td>Paridade (discreta)</td>
-                        <td>—</td>
+                        <td>Inversão espacial (discreta)</td>
+                        <td>$\hat{\Pi}$</td>
                         <td>Paridade</td>
-                    </tr>
-                    <tr>
-                        <td>Troca de partículas idênticas (discreta)</td>
-                        <td>—</td>
-                        <td>Simetria de troca</td>
+                        <td><a href="Paridade.html#paridade-1d">Paridade</a></td>
                     </tr>
                 </table>
 
-                <h2 id="momento-linear">Conservação do Momento Linear</h2>
+                <h3 id="momento-linear">Um Exemplo: o Momento Linear</h3>
 
-                <p style="color: red;">
-                    A primeira linha da tabela já está inteiramente demonstrada. Vimos que um sistema com simetria
-                    translacional contínua satisfaz $[\hat{H}, \hat{p}] = 0$; pelo teorema de Ehrenfest, segue de
-                    imediato que $d\langle p \rangle/dt = 0$.
+                <p>
+                    Para uma partícula com $\hat{H} = \hat{p}^2/2m + V(x)$, o termo cinético comuta com $\hat{p}$, e o
+                    teorema de Ehrenfest generalizado dá
                 </p>
 
-                <p style="color: red;">
-                    É instrutivo confirmar isso pelo caminho direto, sem invocar simetria. Para $\hat{H} =
-                    \hat{p}^2/2m + V(\hat{x})$, o termo cinético comuta consigo mesmo e resta apenas:
+                <p>
+                    $$ \frac{d\langle p \rangle}{dt} = \frac{i}{\hbar}\left\langle \left[V(x), \hat{p}\right]
+                    \right\rangle = \left\langle -\frac{\partial V}{\partial x} \right\rangle, $$
                 </p>
 
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    \frac{d\langle p \rangle}{dt} = \frac{i}{\hbar}\big\langle [\hat{H}, \hat{p}] \big\rangle
-                    = \frac{i}{\hbar}\big\langle [V(\hat{x}), \hat{p}] \big\rangle
-                    = \left\langle -\frac{\partial V}{\partial x} \right\rangle
-                    \end{aligned}
-                    $$
+                <p>
+                    já que $[V(x), \hat{p}] = i\hbar\,\partial V/\partial x$. Esse é o teorema de Ehrenfest do Capítulo 1
+                    de Griffiths. Ele mostra explicitamente que o momento só é conservado quando $\partial V/\partial x
+                    = 0$, isto é, quando o potencial é constante — exatamente a condição de simetria translacional
+                    contínua. Para um sistema de partículas que interagem apenas entre si, o mesmo raciocínio aplicado
+                    ao momento total $\hat{P} = \hat{p}_1 + \hat{p}_2$ mostra que ele é conservado, embora os momentos
+                    individuais não sejam (Problema 6.7 de Griffiths).
                 </p>
 
-                <p style="color: red;">
-                    onde usamos $[V(\hat{x}), \hat{p}] = i\hbar\, \partial V/\partial x$. Reconhecemos aí a segunda
-                    lei de Newton em valores esperados: a taxa de variação do momento é a força média. E vemos
-                    explicitamente que o momento só é conservado quando $\partial V/\partial x = 0$, isto é, quando o
-                    potencial é <strong>homogêneo</strong> — exatamente a condição de simetria translacional. Os dois
-                    caminhos convergem, como deviam.
+                <h3 id="energia">Um Exemplo: a Energia</h3>
+
+                <p>
+                    Tomando $\hat{Q} = \hat{H}$, o comutador se anula trivialmente, e resta
                 </p>
 
-                <p style="color: red;">
-                    O caso realmente interessante, contudo, é o de muitas partículas. Como mostramos no tópico
-                    anterior, um potencial de interação do tipo $V(x_1 - x_2)$ é invariante sob translação global,
-                    cujo gerador é o momento total $\hat{P} = \hat{p}_1 + \hat{p}_2$. Logo:
-                </p>
-
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    \frac{d\langle \hat{p}_1 \rangle}{dt} \neq 0,
-                    \qquad
-                    \frac{d\langle \hat{p}_2 \rangle}{dt} \neq 0,
-                    \qquad
-                    \text{mas} \qquad
-                    \frac{d\langle \hat{p}_1 + \hat{p}_2 \rangle}{dt} = 0
-                    \end{aligned}
+                <p>
+                    $$ \frac{d\langle H \rangle}{dt} = \left\langle \frac{\partial \hat{H}}{\partial t} \right\rangle.
                     $$
                 </p>
 
-                <p style="color: red;">
-                    As partículas trocam momento livremente entre si — é isso que significa interagir —, mas a soma
-                    permanece rigidamente fixa. A conservação do momento total num espalhamento, que na mecânica
-                    elementar aprendemos como consequência da terceira lei de Newton, revela-se aqui como uma
-                    manifestação da homogeneidade do espaço.
+                <p>
+                    A energia é conservada quando o Hamiltoniano não depende explicitamente do tempo. Em
+                    <a href="Translações no Tempo.html">Translações no Tempo</a> veremos que essa é precisamente a
+                    condição de invariância sob translações temporais.
                 </p>
 
-                <h2 id="energia">Conservação da Energia</h2>
-
-                <p style="color: red;">
-                    Tomemos agora $\hat{Q} = \hat{H}$. O comutador se anula trivialmente, $[\hat{H},\hat{H}] = 0$, e o
-                    teorema de Ehrenfest deixa apenas:
-                </p>
-
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    \frac{d\langle H \rangle}{dt} = \left\langle \frac{\partial \hat{H}}{\partial t} \right\rangle
-                    \end{aligned}
-                    $$
-                </p>
-
-                <p style="color: red;">
-                    A energia é conservada se, e somente se, o Hamiltoniano não depender explicitamente do tempo. A
-                    interpretação em termos de simetria é direta: um Hamiltoniano independente do tempo é aquele para
-                    o qual <strong>um instante é equivalente a qualquer outro</strong> — o sistema não distingue
-                    "agora" de "daqui a uma hora". Essa homogeneidade temporal é a simetria; a energia é sua grandeza
-                    conservada.
-                </p>
-
-                <p style="color: red;">
-                    Reciprocamente, quando um sistema é submetido a um campo externo variável — um átomo iluminado
-                    por um pulso de laser, digamos — o Hamiltoniano passa a depender do tempo, a simetria de
-                    translação temporal é quebrada, e a energia do sistema deixa de ser conservada. Ela é trocada com
-                    o agente externo, que não faz parte do nosso $\hat{H}$.
-                </p>
-
-                <h2 id="discretas">Simetrias Discretas</h2>
-
-                <p style="color: red;">
-                    Resta esclarecer um ponto que a tabela deixou em suspenso. Paridade e troca de partículas
-                    aparecem ali sem gerador algum — e com razão, pois são simetrias discretas: não existe
-                    "meia reflexão" nem "meia permutação", e sem transformações infinitesimais não há como definir um
-                    gerador.
-                </p>
-
-                <p style="color: red;">
-                    Isso poderia sugerir que o teorema de Noether não se aplica a elas. Mas note que o teorema de
-                    Ehrenfest nunca exigiu gerador nenhum: ele pede apenas um operador $\hat{Q}$ que comute com
-                    $\hat{H}$. Se a simetria discreta é representada por um operador $\hat{S}$ que seja hermitiano —
-                    como é o caso tanto da paridade $\hat{\Pi}$ quanto da permutação $\hat{P}$, ambos satisfazendo
-                    $\hat{S}^2 = 1$ e $\hat{S}^\dagger = \hat{S}$ —, então $[\hat{H}, \hat{S}] = 0$ produz uma lei de
-                    conservação legítima.
-                </p>
-
-                <p style="color: red;">
-                    A diferença é de natureza, não de validade. Uma grandeza associada a simetria contínua, como o
-                    momento, assume valores num contínuo e pode variar suavemente quando a simetria é apenas
-                    aproximada. Já a grandeza associada a uma simetria discreta assume valores num conjunto finito —
-                    $\pm 1$, no caso de paridade e troca — e a lei de conservação afirma que o sistema permanece
-                    travado num deles.
-                </p>
-
-                <p style="color: red;">
-                    Com o teorema geral estabelecido, podemos agora aplicá-lo a casos concretos. Começaremos por uma
-                    simetria discreta, a <a href="Paridade.html">paridade</a>, cujas consequências para o espectro
-                    atômico são imediatas e verificáveis.
-                </p>
+                <hr class="footnotes-sep">
+                <section class="footnotes">
+                    <ol>
+                        <li id="fn:1">
+                            <p>Se o espectro de $\hat{Q}$ for degenerado (isto é, se houver autovetores distintos com o
+                                mesmo autovalor $q_n$: $\hat{Q}|f_n^{(i)}\rangle = q_n|f_n^{(i)}\rangle$ para $i = 1, 2,
+                                \dots$), é preciso somar sobre esses estados: $P(q_n) = \sum_i |\langle f_n^{(i)} |
+                                \Psi(t) \rangle|^2$. Exceto por essa soma sobre $i$, a demonstração segue
+                                inalterada.<a href="#fnref:1" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                    </ol>
+                </section>
 
             </div>
         </main>
@@ -482,16 +388,15 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#leis-de-conservacao">Leis de Conservação</a></li>
+                    <li><a href="#ehrenfest">Primeira Definição</a></li>
+                    <li><a href="#segunda-definicao">Segunda Definição</a></li>
                     <li>
-                        <a href="#ehrenfest">Teorema de Ehrenfest</a>
+                        <a href="#simetria-e-conservacao">Simetrias e Grandezas Conservadas</a>
                         <ul>
-                            <li><a href="#conservacao-forte">Conservação Forte</a></li>
+                            <li><a href="#momento-linear">Exemplo: Momento Linear</a></li>
+                            <li><a href="#energia">Exemplo: Energia</a></li>
                         </ul>
                     </li>
-                    <li><a href="#noether">Teorema de Noether</a></li>
-                    <li><a href="#momento-linear">Momento Linear</a></li>
-                    <li><a href="#energia">Energia</a></li>
-                    <li><a href="#discretas">Simetrias Discretas</a></li>
                 </ul>
             </div>
         </aside>

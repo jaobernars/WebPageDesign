@@ -135,365 +135,342 @@
             <div class="prose">
 
                 <h1 id="degenerescencia">Degenerescência</h1>
-                <p class="lead" style="color: red;">Por que níveis de energia coincidem — e o que acontece quando a simetria que os mantém
-                    juntos é quebrada.</p>
+                <p class="lead">Por que a simetria produz degenerescência, a degenerescência "normal" $2\ell + 1$ dos
+                    potenciais centrais e a degenerescência extra do hidrogênio (Griffiths, Seção 6.6).</p>
 
-                <p style="color: red;">
-                    Ao longo do curso, encontramos degenerescências repetidamente e sempre as aceitamos como fatos
-                    brutos, resultados de contas. Os $2\ell+1$ estados de mesmo $\ell$ e diferentes $m$ têm a mesma
-                    energia; no hidrogênio, todos os $n^2$ estados de mesmo $n$ coincidem energeticamente,
-                    independentemente de $\ell$; a partícula livre tem, para cada energia, duas soluções distintas.
+                <p>
+                    A simetria é a fonte da maior parte<sup id="fnref:1"><a href="#fn:1"
+                            class="footnote-ref">1</a></sup> da degenerescência na mecânica quântica. Vimos que uma
+                    simetria implica a existência de um operador $\hat{Q}$ que comuta com o Hamiltoniano:
                 </p>
 
-                <p style="color: red;">
-                    Nenhuma dessas coincidências é acidental. Este tópico estabelece a terceira e última consequência
-                    estrutural da simetria — depois das leis de conservação e das regras de seleção —, e talvez a mais
-                    diretamente visível de todas, pois ela se manifesta na própria contagem de linhas de um espectro.
+                <p>
+                    $$ \left[\hat{H}, \hat{Q}\right] = 0. \tag{6.39} $$
                 </p>
 
-                <h2 id="simetria-gera-degenerescencia">Simetria Gera Degenerescência</h2>
+                <h2 id="simetria-gera-degenerescencia">Por Que a Simetria Leva à Degenerescência</h2>
 
-                <p style="color: red;">
-                    O teorema fundamental é de uma brevidade quase decepcionante. Seja $\hat{Q}$ um operador que
-                    comuta com o Hamiltoniano, e seja $\psi$ um autoestado de energia:
+                <p>
+                    A ideia básica é esta: se $|\psi_n\rangle$ é um estado estacionário, então $|\psi_n'\rangle =
+                    \hat{Q}|\psi_n\rangle$ é um estado estacionário com a mesma energia. A demonstração é direta:
                 </p>
 
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    \big[\hat{H}, \hat{Q}\big] = 0
-                    \qquad \text{e} \qquad
-                    \hat{H}\psi = E\psi
-                    \end{aligned}
-                    $$
+                <p>
+                    $$ \hat{H}|\psi_n'\rangle = \hat{H}\left(\hat{Q}|\psi_n\rangle\right) = \hat{Q}\hat{H}|\psi_n\rangle
+                    = \hat{Q}E_n|\psi_n\rangle = E_n\left(\hat{Q}|\psi_n\rangle\right) = E_n|\psi_n'\rangle. $$
                 </p>
 
-                <p style="color: red;">
-                    Consideremos então o estado $\hat{Q}\psi$ e apliquemos-lhe o Hamiltoniano. Como os operadores
-                    comutam, podemos trocá-los de lugar impunemente:
+                <p>
+                    Por exemplo, se tivermos um autoestado de um Hamiltoniano com simetria esférica e o girarmos em torno
+                    de algum eixo, obteremos necessariamente outro estado com a mesma energia.
                 </p>
 
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    \hat{H}\big(\hat{Q}\psi\big)
-                    = \hat{Q}\big(\hat{H}\psi\big)
-                    = \hat{Q}\big(E\psi\big)
-                    = E\big(\hat{Q}\psi\big)
-                    \end{aligned}
-                    $$
+                <p>
+                    Poderíamos pensar que a simetria levaria <i>sempre</i> à degenerescência, e que simetrias contínuas
+                    levariam a degenerescências infinitas, mas não é o caso: os dois estados $|\psi_n\rangle$ e
+                    $|\psi_n'\rangle$ podem ser o mesmo.<sup id="fnref:2"><a href="#fn:2"
+                            class="footnote-ref">2</a></sup> Como exemplo, considere o Hamiltoniano do oscilador harmônico
+                    em uma dimensão, que comuta com a paridade. Todos os seus estados estacionários são pares ou
+                    ímpares, de modo que, ao agir sobre um deles com o operador de paridade, obtemos de volta o mesmo
+                    estado (talvez multiplicado por $-1$, mas isso, fisicamente, <i>é</i> o mesmo estado). Não há,
+                    portanto, degenerescência associada à simetria de inversão nesse caso.
+                </p>
+
+                <p>
+                    Na verdade, se houver um <i>único</i> operador de simetria $\hat{Q}$ (ou vários operadores de
+                    simetria que comutam entre si), <strong>não</strong> há degenerescência no espectro. O motivo é o
+                    mesmo teorema que já citamos várias vezes: como $\hat{Q}$ e $\hat{H}$ comutam, podemos encontrar
+                    autoestados simultâneos $|\psi_n\rangle$ de $\hat{Q}$ e $\hat{H}$, e esses estados se transformam em
+                    si mesmos sob a operação de simetria: $\hat{Q}|\psi_n\rangle = q_n|\psi_n\rangle$.
+                </p>
+
+                <h3 id="simetrias-incompativeis">Simetrias que Não Comutam</h3>
+
+                <p>
+                    E se houver <i>dois</i> operadores que comutam com o Hamiltoniano (chamemo-los $\hat{Q}$ e
+                    $\hat{\Lambda}$), mas <i>não</i> comutam entre si? Nesse caso, a degenerescência no espectro de
+                    energia é inevitável. Por quê?
+                </p>
+
+                <p>
+                    Considere primeiro um estado $|\psi\rangle$ que seja autoestado de $\hat{H}$ e de $\hat{Q}$, com
+                    autovalores $E_n$ e $q_m$, respectivamente. Como $\hat{H}$ e $\hat{\Lambda}$ comutam, o estado $|g\rangle
+                    = \hat{\Lambda}|\psi\rangle$ também é autoestado de $\hat{H}$, com autovalor $E_n$. Como $\hat{Q}$ e
+                    $\hat{\Lambda}$ <i>não</i> comutam, não pode existir um conjunto completo de autoestados simultâneos
+                    dos três operadores ($\hat{Q}$, $\hat{\Lambda}$ e $\hat{H}$). Portanto, tem de haver algum
+                    $|\psi\rangle$ para o qual $\hat{\Lambda}|\psi\rangle$ é distinto de $|\psi\rangle$ (especificamente,
+                    $|\psi\rangle$ não é autoestado de $\hat{\Lambda}$), o que significa que o nível de energia $E_n$ é
+                    pelo menos duplamente degenerado.
                 </p>
 
                 <div class="definition-box" style="border-left: 4px solid #45503B;">
-                    <p style="color: red;">
-                        Se $\hat{Q}$ comuta com $\hat{H}$ e $\psi$ é autoestado de energia $E$, então $\hat{Q}\psi$ é
-                        <strong>também</strong> autoestado de energia, com <strong>exatamente a mesma energia</strong>
-                        $E$.
+                    <p>
+                        <strong><i>A presença de vários operadores de simetria que não comutam entre si garante a
+                                degenerescência do espectro de energia.</i></strong>
                     </p>
                 </div>
 
-                <p style="color: red;">
-                    A interpretação é intuitiva: uma operação de simetria transporta um estado do sistema para outro
-                    estado fisicamente equivalente. Girar um átomo produz outro átomo, igualmente válido e com a mesma
-                    energia — afinal, o espaço é isotrópico e o átomo não sabe para onde está apontando.
+                <p>
+                    Essa é precisamente a situação dos potenciais centrais. Neles, o Hamiltoniano comuta com rotações em
+                    torno de qualquer eixo (ou, de forma equivalente, com os geradores $\hat{L}_x$, $\hat{L}_y$ e
+                    $\hat{L}_z$), mas essas rotações não comutam entre si. Sabemos, então, que haverá degenerescência no
+                    espectro de uma partícula num potencial central. O exemplo a seguir mostra exatamente quanta
+                    degenerescência é explicada pela invariância rotacional.
                 </p>
 
-                <p style="color: red;">
-                    Surge daí, porém, uma pergunta decisiva: $\hat{Q}\psi$ é um estado genuinamente <i>novo</i>? Duas
-                    alternativas se abrem.
+                <h2 id="potencial-central-deg">A Degenerescência $2\ell + 1$ dos Potenciais Centrais</h2>
+
+                <p>
+                    <strong>Exemplo 6.3.</strong> Considere um autoestado $\psi_{n\ell m}$ de um potencial central, com
+                    energia $E_n$. Como o Hamiltoniano de um potencial central comuta com qualquer componente de
+                    $\hat{\mathbf{L}}$, ele comuta também com os operadores escada $\hat{L}_+$ e $\hat{L}_-$. Mostre que
+                    $\psi_{n\ell m\pm 1}$ são necessariamente autoestados com a mesma energia de $\psi_{n\ell m}$.<sup
+                        id="fnref:3"><a href="#fn:3" class="footnote-ref">3</a></sup>
+                </p>
+
+                <p>
+                    <i>Solução:</i> como o Hamiltoniano comuta com $\hat{L}_\pm$,
+                </p>
+
+                <p>
+                    $$ \left(\hat{H}\hat{L}_\pm - \hat{L}_\pm\hat{H}\right)\psi_{n\ell m} = 0, $$
+                </p>
+
+                <p>
+                    de modo que
+                </p>
+
+                <p>
+                    $$ \hat{H}\hat{L}_\pm\psi_{n\ell m} = \hat{L}_\pm\hat{H}\psi_{n\ell m} = E_n\hat{L}_\pm\psi_{n\ell
+                    m}, $$
+                </p>
+
+                <p>
+                    ou seja,
+                </p>
+
+                <p>
+                    $$ \hat{H}\psi_{n\ell m\pm 1} = E_n\psi_{n\ell m\pm 1} $$
+                </p>
+
+                <p>
+                    (cancelamos a constante $\hbar\sqrt{\ell(\ell+1) - m(m\pm 1)}$ dos dois lados). O argumento pode
+                    evidentemente ser repetido para mostrar que $\psi_{n\ell m\pm 2}$ tem a mesma energia que
+                    $\psi_{n\ell m\pm 1}$, e assim por diante, até esgotar a escada de estados.
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p>
+                        <strong><i>A invariância rotacional explica por que estados que diferem apenas no número
+                                quântico $m$ têm a mesma energia</i></strong>; como há $2\ell + 1$ valores diferentes de
+                        $m$, $2\ell + 1$ é a degenerescência "normal" das energias num potencial central.
+                    </p>
+                </div>
+
+                <h2 id="hidrogenio">A Degenerescência Extra do Hidrogênio</h2>
+
+                <p>
+                    É claro que a degenerescência do hidrogênio (sem contar o spin) é $n^2$ ($= 1, 4, 9, \dots$), que é
+                    <i>maior</i> que $2\ell + 1$ ($= 1, 3, 5, \dots$).<sup id="fnref:4"><a href="#fn:4"
+                            class="footnote-ref">4</a></sup> Evidentemente, o hidrogênio tem mais degenerescência do que a
+                    invariância rotacional sozinha explica: os estados $2s$ e $2p$, por exemplo, têm a mesma energia sem
+                    que nenhuma rotação leve um no outro. A fonte dessa degenerescência extra é uma simetria adicional,
+                    exclusiva do potencial $1/r$.<sup id="fnref:5"><a href="#fn:5" class="footnote-ref">5</a></sup>
+                </p>
+
+                <h3 id="runge-lenz">O Vetor de Laplace–Runge–Lenz</h3>
+
+                <p>
+                    O potencial de Coulomb tem <i>mais simetria</i> do que a simples invariância rotacional (Problema
+                    6.34 de Griffiths). Essa simetria adicional se manifesta numa grandeza conservada adicional, o
+                    <strong>vetor de Laplace–Runge–Lenz</strong>:
+                </p>
+
+                <p>
+                    $$ \hat{\mathbf{M}} = \frac{\hat{\mathbf{p}} \times \hat{\mathbf{L}} - \hat{\mathbf{L}} \times
+                    \hat{\mathbf{p}}}{2m} + V(r)\,\mathbf{r}, \qquad V(r) = -\frac{e^2}{4\pi\epsilon_0 r}. $$
+                </p>
+
+                <p>
+                    O conjunto completo de comutadores das grandezas conservadas do átomo de hidrogênio é
+                </p>
+
+                <p>
+                    $$
+                    \begin{aligned}
+                    &\text{(i)} \quad \left[\hat{H}, \hat{M}_i\right] = 0, \qquad
+                    \text{(ii)} \quad \left[\hat{H}, \hat{L}_i\right] = 0, \qquad
+                    \text{(iii)} \quad \left[\hat{L}_i, \hat{L}_j\right] = i\hbar\,\epsilon_{ijk}\hat{L}_k, \\
+                    &\text{(iv)} \quad \left[\hat{L}_i, \hat{M}_j\right] = i\hbar\,\epsilon_{ijk}\hat{M}_k, \qquad
+                    \text{(v)} \quad \left[\hat{M}_i, \hat{M}_j\right] = \frac{\hbar}{i}\,\epsilon_{ijk}\hat{L}_k\,
+                    \frac{2}{m}\hat{H}.
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p>
+                    O conteúdo <i>físico</i> dessas equações é que (i) $\mathbf{M}$ é uma grandeza conservada, (ii)
+                    $\mathbf{L}$ é uma grandeza conservada, (iii) $\mathbf{L}$ é um vetor e (iv) $\mathbf{M}$ é um vetor
+                    ((v) não tem interpretação óbvia). Há ainda duas relações adicionais entre $\hat{\mathbf{L}}$,
+                    $\hat{\mathbf{M}}$ e $\hat{H}$:
+                </p>
+
+                <p>
+                    $$ \text{(vi)} \quad \hat{M}^2 = \left(\frac{e^2}{4\pi\epsilon_0}\right)^2 +
+                    \frac{2}{m}\hat{H}\left(\hat{L}^2 + \hbar^2\right), \qquad \text{(vii)} \quad
+                    \hat{\mathbf{M}}\cdot\hat{\mathbf{L}} = 0. $$
+                </p>
+
+                <p>
+                    Como $\hat{\mathbf{M}}$ é um vetor conservado, o seu operador de subida $\hat{M}_+ = \hat{M}_x +
+                    i\hat{M}_y$ leva $\psi_{n\ell\ell}$ num múltiplo de $\psi_{n(\ell+1)(\ell+1)}$, com a mesma energia
+                    (compare com o Problema 6.19, sobre operadores de subida vetoriais). O Problema 6.34 mostra que o
+                    coeficiente é não nulo a menos que $\ell = n - 1$. Assim, $\hat{\mathbf{M}}$ conecta estados de
+                    $\ell$ diferentes, enquanto $\hat{\mathbf{L}}$ conecta estados de $m$ diferentes — e juntos eles
+                    percorrem todo o nível $n$:
+                </p>
+
+                <figure class="lecture-figure">
+                    <svg viewBox="0 0 640 400" role="img" aria-label="Os nove estados degenerados n = 3 do hidrogênio e as operações de simetria que os conectam"><defs><marker id="arr-h" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs><line x1="55.0" y1="250" x2="165.0" y2="250" class="fig-curve"/><text x="110" y="242" text-anchor="middle" class="fig-label">300</text><line x1="245.0" y1="190" x2="355.0" y2="190" class="fig-curve"/><text x="300" y="182" text-anchor="middle" class="fig-label">311</text><line x1="245.0" y1="250" x2="355.0" y2="250" class="fig-curve"/><text x="300" y="242" text-anchor="middle" class="fig-label">310</text><line x1="245.0" y1="310" x2="355.0" y2="310" class="fig-curve"/><text x="300" y="302" text-anchor="middle" class="fig-label">31−1</text><line x1="435.0" y1="130" x2="545.0" y2="130" class="fig-curve"/><text x="490" y="122" text-anchor="middle" class="fig-label">322</text><line x1="435.0" y1="190" x2="545.0" y2="190" class="fig-curve"/><text x="490" y="182" text-anchor="middle" class="fig-label">321</text><line x1="435.0" y1="250" x2="545.0" y2="250" class="fig-curve"/><text x="490" y="242" text-anchor="middle" class="fig-label">320</text><line x1="435.0" y1="310" x2="545.0" y2="310" class="fig-curve"/><text x="490" y="302" text-anchor="middle" class="fig-label">32−1</text><line x1="435.0" y1="370" x2="545.0" y2="370" class="fig-curve"/><text x="490" y="362" text-anchor="middle" class="fig-label">32−2</text><line x1="300" y1="196" x2="300" y2="228" class="fig-curve" marker-end="url(#arr-h)"/><text x="308" y="218.0" class="fig-label fig-it">L̂₋</text><line x1="300" y1="256" x2="300" y2="288" class="fig-curve" marker-end="url(#arr-h)"/><text x="308" y="278.0" class="fig-label fig-it">L̂₋</text><line x1="490" y1="136" x2="490" y2="168" class="fig-curve" marker-end="url(#arr-h)"/><text x="498" y="158.0" class="fig-label fig-it">L̂₋</text><line x1="490" y1="196" x2="490" y2="228" class="fig-curve" marker-end="url(#arr-h)"/><text x="498" y="218.0" class="fig-label fig-it">L̂₋</text><line x1="490" y1="256" x2="490" y2="288" class="fig-curve" marker-end="url(#arr-h)"/><text x="498" y="278.0" class="fig-label fig-it">L̂₋</text><line x1="490" y1="316" x2="490" y2="348" class="fig-curve" marker-end="url(#arr-h)"/><text x="498" y="338.0" class="fig-label fig-it">L̂₋</text><line x1="170.0" y1="245" x2="240.0" y2="195" class="fig-curve" marker-end="url(#arr-h)"/><text x="200" y="205" class="fig-label fig-it">M̂₊</text><line x1="360.0" y1="185" x2="430.0" y2="135" class="fig-curve" marker-end="url(#arr-h)"/><text x="390" y="145" class="fig-label fig-it">M̂₊</text><line x1="550.0" y1="125" x2="605.0" y2="75" class="fig-curve" marker-end="url(#arr-h)"/><text x="575" y="88" class="fig-label fig-it">M̂₊</text><text x="613.0" y="68" class="fig-label">∅</text></svg>
+                    <figcaption>Os estados degenerados $n = 3$ do átomo de hidrogênio (rotulados $n\ell m$) e as operações
+                        de simetria que os conectam: $\hat{M}_+$ aumenta $\ell$ e $m$ de uma unidade (e aniquila o estado
+                        com $\ell = n - 1$), enquanto $\hat{L}_-$ diminui $m$ (Figura 6.9 de Griffiths).</figcaption>
+                </figure>
+
+                <p>
+                    A simetria completa do Hamiltoniano de Coulomb não é apenas a do grupo de rotações tridimensionais
+                    (conhecido pelos matemáticos como SO(3)), mas a do grupo de rotações em <i>quatro</i> dimensões,
+                    SO(4), que tem seis geradores ($\mathbf{L}$ e $\mathbf{M}$). Se os quatro eixos forem $w$, $x$, $y$ e
+                    $z$, os geradores correspondem às rotações nos seis planos ortogonais $wx$, $wy$, $wz$ (dados por
+                    $\mathbf{M}$) e $yz$, $zx$, $xy$ (dados por $\mathbf{L}$).
+                </p>
+
+                <h2 id="outros-exemplos">Outros Exemplos</h2>
+
+                <h3 id="particula-livre">A Partícula Livre</h3>
+
+                <p>
+                    O Hamiltoniano da partícula livre em uma dimensão, $\hat{H} = \hat{p}^2/2m$, tem simetria
+                    translacional <i>e</i> simetria de inversão, e translações e inversão não comutam (Problema 6.18 de
+                    Griffiths). As duas simetrias explicam a degenerescência dupla de cada nível:
                 </p>
 
                 <ul>
                     <li>
-                        Se $\hat{Q}\psi$ for linearmente independente de $\psi$, temos dois estados distintos com a
-                        mesma energia — isto é, <strong>degenerescência</strong>.
+                        Pela simetria translacional, os autoestados de $\hat{H}$ podem ser escolhidos como autoestados do
+                        momento, $f_p(x)$. O operador de paridade transforma $f_p(x)$ em $f_{-p}(x)$ — que, portanto,
+                        tem a mesma energia.
                     </li>
                     <li>
-                        Se $\hat{Q}\psi$ for simplesmente um múltiplo de $\psi$ — ou seja, se $\psi$ também for
-                        autoestado de $\hat{Q}$ —, nada de novo foi produzido e a simetria não gera degenerescência
-                        alguma.
+                        Alternativamente, pela simetria de inversão, os autoestados podem ser escolhidos como autoestados
+                        da paridade, $\frac{1}{\sqrt{\pi\hbar}}\cos(px/\hbar)$ e $\frac{1}{\sqrt{\pi\hbar}}\sin(px/\hbar)$. O
+                        operador de translação mistura esses dois estados, que por isso têm de ser degenerados.
                     </li>
                 </ul>
 
-                <p style="color: red;">
-                    A segunda possibilidade é real e comum. Um estado $s$ do hidrogênio ($\ell = 0$) é esfericamente
-                    simétrico: girá-lo não o altera, e nenhum parceiro degenerado é gerado. Portanto, simetria por si
-                    só <i>não garante</i> degenerescência — ela apenas fornece um candidato a parceiro degenerado.
-                    Precisamos de um critério mais afiado.
+                <p>
+                    Note que tanto a paridade <i>quanto</i> a invariância translacional são necessárias para explicar a
+                    degenerescência do espectro da partícula livre: sem a paridade, não haveria motivo (baseado nas
+                    simetrias discutidas até aqui) para $f_p(x)$ e $f_{-p}(x)$ terem a mesma energia.
                 </p>
 
-                <h2 id="simetrias-incompativeis">Simetrias Incompatíveis</h2>
+                <h3 id="simetria-discreta-quadrado">Simetria Rotacional Discreta: o Poço Quadrado</h3>
 
-                <p style="color: red;">
-                    O critério decisivo aparece quando o sistema possui <strong>duas</strong> simetrias que não são
-                    compatíveis entre si. Enunciemos e demonstremos:
+                <p>
+                    Nesta seção enfatizamos a simetria rotacional contínua, mas a simetria rotacional
+                    <i>discreta</i>, como a experimentada (por exemplo) por um elétron num cristal, também é
+                    interessante. O Problema 6.33 de Griffiths explora o poço quadrado
+                    infinito bidimensional de lado $L$, com a origem no centro. Os estados estacionários são
                 </p>
 
-                <div class="definition-box" style="border-left: 4px solid #45503B;">
-                    <p style="color: red;">
-                        <strong>Teorema:</strong> se $[\hat{H}, \hat{A}] = 0$ e $[\hat{H}, \hat{B}] = 0$, mas
-                        $[\hat{A}, \hat{B}] \neq 0$, então os autoestados de $\hat{H}$ para os quais
-                        $[\hat{A},\hat{B}]\psi \neq 0$ são <strong>necessariamente degenerados</strong>.
-                    </p>
-                </div>
-
-                <p style="color: red;">
-                    A demonstração é por contradição. Suponha que $\psi$ seja um autoestado <i>não-degenerado</i> de
-                    $\hat{H}$, com energia $E$. Pelo teorema da seção anterior, tanto $\hat{A}\psi$ quanto
-                    $\hat{B}\psi$ são autoestados de energia $E$. Mas o autoespaço correspondente a $E$ tem dimensão
-                    $1$, por hipótese de não-degenerescência — logo, ambos têm de ser múltiplos de $\psi$:
+                <p>
+                    $$ \psi_{n_x n_y}(x, y) = \frac{2}{L}\sin\left[ \frac{n_x\pi}{L}\left( x - \frac{L}{2} \right)
+                    \right]\sin\left[ \frac{n_y\pi}{L}\left( y - \frac{L}{2} \right) \right], \qquad E_{n_x n_y} =
+                    \frac{\pi^2\hbar^2}{2mL^2}\left( n_x^2 + n_y^2 \right). $$
                 </p>
 
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    \hat{A}\psi = a\psi
-                    \qquad\qquad
-                    \hat{B}\psi = b\psi
-                    \end{aligned}
-                    $$
+                <ul>
+                    <li>Os estados $\psi_{ab}$ e $\psi_{ba}$ ($a \neq b$) são claramente degenerados, e uma rotação de
+                        $90^\circ$ em torno do centro do quadrado leva um no outro: $\hat{R}\psi_{ab} \propto
+                        \psi_{ba}$.</li>
+                    <li>Se $a$ e $b$ forem ambos pares ou ambos ímpares, as combinações $\psi_\pm = (\psi_{ab} \pm
+                        \psi_{ba})/\sqrt{2}$ são autoestados do operador de rotação.</li>
+                    <li>Para $a = 5$ e $b = 7$, por exemplo, $\psi_-$ é autoestado de <i>todas</i> as operações de
+                        simetria do quadrado (rotações por múltiplos de $\pi/2$, reflexões através de uma diagonal ou de
+                        uma reta que corta dois lados ao meio). Como $\psi_+$ e $\psi_-$ não estão ligados por nenhuma
+                        simetria do quadrado, deve existir uma simetria <i>adicional</i> que explique a degenerescência
+                        desses dois estados.<sup id="fnref:6"><a href="#fn:6" class="footnote-ref">6</a></sup></li>
+                </ul>
+
+                <h3 id="kramers">A Degenerescência de Kramers</h3>
+
+                <p>
+                    Uma última fonte de degenerescência vem da simetria de inversão temporal. Para um número ímpar de
+                    partículas de spin $1/2$ (ou, mais geralmente, spin semi-inteiro), todo nível de energia de um
+                    Hamiltoniano invariante por inversão temporal é pelo menos duplamente degenerado — a
+                    <strong>degenerescência de Kramers</strong> (Problema 6.37 de Griffiths). Ela é discutida em
+                    <a href="Translações no Tempo.html#inversao-temporal">Translações no Tempo</a>.
                 </p>
 
-                <p style="color: red;">
-                    Ou seja, $\psi$ é autoestado simultâneo de $\hat{A}$ e $\hat{B}$. Apliquemos então o comutador a
-                    esse estado:
-                </p>
+                <h3 id="problemas">Problemas Relacionados</h3>
 
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    \big[\hat{A}, \hat{B}\big]\psi
-                    = \hat{A}\hat{B}\psi - \hat{B}\hat{A}\psi
-                    = \hat{A}(b\psi) - \hat{B}(a\psi)
-                    = ab\psi - ba\psi = 0
-                    \end{aligned}
-                    $$
-                </p>
+                <ul>
+                    <li><strong>6.18:</strong> a degenerescência da partícula livre (translação e paridade).</li>
+                    <li><strong>6.19:</strong> operadores de subida e descida vetoriais.</li>
+                    <li><strong>6.33:</strong> simetria rotacional discreta no poço quadrado bidimensional.</li>
+                    <li><strong>6.34:</strong> o vetor de Laplace–Runge–Lenz e a degenerescência do hidrogênio.</li>
+                    <li><strong>6.37:</strong> a degenerescência de Kramers.</li>
+                </ul>
 
-                <p style="color: red;">
-                    O comutador aniquila $\psi$ — o que contradiz a hipótese $[\hat{A},\hat{B}]\psi \neq 0$. A
-                    suposição de não-degenerescência é, portanto, insustentável.
-                </p>
-
-                <p style="color: red;">
-                    O resultado é poderoso porque converte uma afirmação sobre <i>soluções</i> (quantos estados têm a
-                    mesma energia) numa afirmação sobre <i>álgebra de operadores</i> (quais comutadores se anulam).
-                    Podemos prever degenerescências sem resolver equação alguma.
-                </p>
-
-                <h2 id="exemplos">Quatro Exemplos</h2>
-
-                <h3 id="particula-livre">A Partícula Livre</h3>
-
-                <p style="color: red;">
-                    Para $\hat{H} = \hat{p}^2/2m$, o espaço é homogêneo e o potencial (nulo) é par, de modo que
-                    temos duas simetrias simultâneas: $[\hat{H}, \hat{p}] = 0$ e $[\hat{H}, \hat{\Pi}] = 0$. Mas
-                    vimos em <a href="Paridade.html">Paridade</a> que $\hat{\Pi}\hat{p}\hat{\Pi} = -\hat{p}$, isto é,
-                    paridade e momento <strong>anticomutam</strong> — e certamente não comutam.
-                </p>
-
-                <p style="color: red;">
-                    O teorema prevê degenerescência, e a verificação é imediata. Aplicando a paridade ao estado de
-                    momento definido:
-                </p>
-
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    \hat{\Pi}\, e^{ikx} = e^{-ikx}
-                    \end{aligned}
-                    $$
-                </p>
-
-                <p style="color: red;">
-                    Um estado distinto, com o mesmo $E = \hbar^2k^2/2m$. Cada nível de energia da partícula livre é
-                    duplamente degenerado — uma onda indo para a direita e outra para a esquerda —, e a razão
-                    estrutural é a incompatibilidade entre as simetrias de translação e de reflexão.
-                </p>
-
-                <h3 id="potencial-central-deg">Potenciais Centrais</h3>
-
-                <p style="color: red;">
-                    Num potencial central $V(r)$, todas as componentes do momento angular são conservadas:
-                    $[\hat{H}, \hat{L}_x] = [\hat{H}, \hat{L}_y] = [\hat{H}, \hat{L}_z] = 0$. Mas elas não comutam
-                    entre si, pois $[\hat{L}_x, \hat{L}_z] = -i\hbar\hat{L}_y \neq 0$.
-                </p>
-
-                <p style="color: red;">
-                    A degenerescência está garantida, e podemos até contá-la. Os operadores escada $\hat{L}_\pm =
-                    \hat{L}_x \pm i\hat{L}_y$ também comutam com $\hat{H}$, e aplicá-los a um estado $|\ell, m\rangle$
-                    produz $|\ell, m \pm 1\rangle$ sem alterar a energia. Percorrendo toda a escada, de $m = -\ell$
-                    até $m = +\ell$, obtemos:
-                </p>
-
-                <div class="definition-box">
-                    <p style="color: red;">
-                        Todo nível de energia num potencial central é, no mínimo, $(2\ell+1)$ vezes degenerado. Esta é
-                        a chamada <strong>degenerescência essencial</strong> — ela decorre da simetria rotacional e
-                        está presente em <i>qualquer</i> potencial que dependa apenas de $r$.
-                    </p>
-                </div>
-
-                <h3 id="hidrogenio">O Hidrogênio e a Degenerescência Acidental</h3>
-
-                <p style="color: red;">
-                    O átomo de hidrogênio apresenta uma anomalia. Sua energia,
-                </p>
-
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    E_n = -\frac{13{,}6\ \text{eV}}{n^2}
-                    \end{aligned}
-                    $$
-                </p>
-
-                <p style="color: red;">
-                    depende <i>apenas</i> de $n$ — não de $\ell$. Somando sobre todos os valores permitidos,
-                    $\sum_{\ell=0}^{n-1}(2\ell+1) = n^2$, a degenerescência total é $n^2$ (ou $2n^2$ contando spin),
-                    bem acima dos $2\ell+1$ que a simetria rotacional exige. Os estados $2s$ e $2p$, por exemplo,
-                    coincidem em energia sem que nenhuma rotação relacione um ao outro.
-                </p>
-
-                <p style="color: red;">
-                    Essa degenerescência extra é historicamente chamada de <strong>acidental</strong>, mas o nome é
-                    enganoso — não há acidente algum. Ela denuncia a existência de uma <strong>simetria
-                        oculta</strong>, específica do potencial de Coulomb. A grandeza conservada correspondente é o
-                    <strong>vetor de Laplace-Runge-Lenz</strong>:
-                </p>
-
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    \hat{\mathbf{M}} = \frac{1}{2m}\left( \hat{\mathbf{p}} \times \hat{\mathbf{L}}
-                    - \hat{\mathbf{L}} \times \hat{\mathbf{p}} \right)
-                    - \frac{e^2}{4\pi\epsilon_0}\, \frac{\hat{\mathbf{r}}}{r}
-                    \end{aligned}
-                    $$
-                </p>
-
-                <p style="color: red;">
-                    Este vetor comuta com $\hat{H}$ mas não com $\hat{\mathbf{L}}$, satisfazendo exatamente as
-                    condições do nosso teorema e gerando precisamente a degenerescência em $\ell$. Juntos,
-                    $\hat{\mathbf{L}}$ e $\hat{\mathbf{M}}$ ampliam o grupo de simetria de $SO(3)$ para $SO(4)$ — uma
-                    simetria rotacional em quatro dimensões, invisível no espaço físico.
-                </p>
-
-                <p style="color: red;">
-                    A contrapartida clássica é bem conhecida: o potencial $1/r$ é o único potencial atrativo cujas
-                    órbitas ligadas são elipses <strong>fechadas</strong>, que não precessionam. A conservação de
-                    $\mathbf{M}$ é precisamente o que fixa a orientação do eixo maior da elipse. A degenerescência
-                    quântica em $\ell$ e a ausência de precessão clássica são duas faces da mesma simetria.
-                </p>
-
-                <div class="definition-box">
-                    <p style="color: red;">
-                        Este ponto ilumina retrospectivamente algo que afirmamos em
-                        <a href="../Partículas Idênticas/Átomos.html">Átomos</a>. Lá observamos que, em átomos
-                        multieletrônicos, a energia passa a depender de $\ell$ — daí a ordem $E_{ns} \lt E_{np} \lt
-                        E_{nd}$ que organiza a Tabela Periódica. A razão agora fica clara: a blindagem eletrônica
-                        deforma o potencial efetivo, que deixa de ser exatamente $1/r$. A simetria oculta $SO(4)$ é
-                        destruída, e com ela a degenerescência em $\ell$. A simetria rotacional comum sobrevive, e por
-                        isso a degenerescência em $m$ permanece intacta.
-                    </p>
-                </div>
-
-                <h3 id="oscilador">O Oscilador Harmônico Isotrópico</h3>
-
-                <p style="color: red;">
-                    Um segundo caso de simetria oculta, digno de nota pela elegância. O oscilador tridimensional
-                    isotrópico tem energias $E_n = \hbar\omega\left(n + \tfrac{3}{2}\right)$ e degenerescência
-                    $(n+1)(n+2)/2$ — novamente maior do que a simetria rotacional prevê. A responsável é uma simetria
-                    $SU(3)$, associada à conservação de um tensor quadrupolar. Assim como no hidrogênio, o potencial
-                    harmônico é excepcional: junto com $1/r$, ele é o único cujas órbitas clássicas ligadas são
-                    fechadas.
-                </p>
-
-                <h2 id="quebra-de-simetria">Quebra de Simetria e o Levantamento da Degenerescência</h2>
-
-                <p style="color: red;">
-                    Se a degenerescência é sintoma de simetria, então destruir a simetria deve desfazer a
-                    degenerescência. Essa previsão é verificável com precisão espetacular, e constitui uma das
-                    ferramentas mais usadas da espectroscopia.
-                </p>
-
-                <p style="color: red;">
-                    Considere um átomo imerso num campo magnético uniforme $\mathbf{B}$ apontando ao longo de $z$. O
-                    campo estabelece uma direção privilegiada no espaço: a isotropia é destruída. Mas não
-                    completamente — rotações em torno do próprio eixo do campo continuam sendo simetrias. Em termos
-                    formais, o grupo de simetria é reduzido de $SO(3)$ ao subgrupo das rotações axiais, de modo que
-                    $\hat{J}_z$ segue comutando com $\hat{H}$, enquanto $\hat{J}_x$ e $\hat{J}_y$ deixam de comutar.
-                </p>
-
-                <p style="color: red;">
-                    Com isso, o argumento das simetrias incompatíveis perde sua premissa, e a degenerescência em $m$
-                    é <strong>levantada</strong>: o nível que antes era único se abre em $2\ell+1$ níveis
-                    distintos, um para cada valor de $m$. É o <strong>efeito Zeeman</strong>. De modo análogo, um
-                    campo elétrico produz o <strong>efeito Stark</strong>, com a diferença de que ele quebra também a
-                    paridade, por ser descrito por um vetor polar.
-                </p>
-
-                <div class="definition-box" style="border-left: 4px solid #45503B;">
-                    <p style="color: red;">
-                        O número de linhas em que um nível se desdobra é exatamente o seu grau de degenerescência.
-                    </p>
-                    <p style="color: red;">
-                        Isso converte a degenerescência de uma curiosidade teórica em uma quantidade
-                        <strong>diretamente mensurável</strong>: basta aplicar um campo e contar as linhas. A
-                        espectroscopia torna-se, assim, uma sonda experimental das simetrias de um sistema.
-                    </p>
-                </div>
-
-                <h2 id="balanco">As Três Consequências da Simetria</h2>
-
-                <p style="color: red;">
-                    Com a degenerescência estabelecida, vale fazer um balanço parcial, pois o fio condutor foi
-                    notavelmente econômico.
-                </p>
-
-                <p style="color: red;">
-                    Partimos de uma única pergunta — <i>o que este sistema não distingue?</i> — e a formalizamos
-                    exigindo que o Hamiltoniano comutasse com o operador da transformação. Dessa exigência
-                    brotaram, sem qualquer ingrediente adicional, três consequências independentes:
-                </p>
-
-                <table>
-                    <tr>
-                        <th>Consequência</th>
-                        <th>Mecanismo</th>
-                        <th>Manifestação</th>
-                    </tr>
-                    <tr>
-                        <td><strong>Leis de conservação</strong></td>
-                        <td>Teorema de Ehrenfest aplicado ao gerador</td>
-                        <td>Momento, momento angular, energia, paridade</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Regras de seleção</strong></td>
-                        <td>Anulamento forçado de elementos de matriz</td>
-                        <td>$\Delta\ell = \pm 1$, $\Delta m = 0, \pm 1$</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Degenerescência</strong></td>
-                        <td>Simetrias mutuamente incompatíveis</td>
-                        <td>Multipletos $(2\ell+1)$, camadas $n^2$</td>
-                    </tr>
-                </table>
-
-                <p style="color: red;">
-                    Nenhuma dessas conclusões exigiu resolver a Equação de Schrödinger. Foi possível afirmar o que é
-                    conservado, prever quais transições são proibidas e contar quantos estados compartilham cada
-                    energia conhecendo apenas as invariâncias do Hamiltoniano.
-                </p>
-
-                <p style="color: red;">
-                    A segunda linha da tabela, contudo, ainda está incompleta. Obtivemos $\Delta\ell$ ímpar a partir
-                    da paridade e apenas esboçamos, por plausibilidade, o argumento rotacional que a estreita até
-                    $\Delta\ell = \pm 1$. É essa demonstração que faremos a seguir, em
-                    <a href="Regras de Seleção Rotacionais.html">Regras de Seleção Rotacionais</a>, antes de
-                    encerrarmos o módulo com a única transformação que ainda não examinamos: as
-                    <a href="Translações no Tempo.html">translações no tempo</a>.
-                </p>
+                <hr class="footnotes-sep">
+                <section class="footnotes">
+                    <ol>
+                        <li id="fn:1">
+                            <p>Quando não conseguimos identificar a simetria responsável por uma degenerescência, ela é
+                                chamada de <strong>degenerescência acidental</strong>. Na maioria desses casos, a
+                                degenerescência acaba não sendo acidente algum, mas se deve a uma simetria mais difícil de
+                                identificar do que, por exemplo, a invariância rotacional. O exemplo canônico é o grupo de
+                                simetria maior do átomo de hidrogênio (Problema 6.34).<a href="#fnref:1"
+                                    class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:2">
+                            <p>Isso é altamente não clássico. Na mecânica clássica, dada uma órbita kepleriana, sempre
+                                haverá algum eixo em torno do qual se pode girá-la para obter uma órbita kepleriana
+                                diferente (de mesma energia); na verdade, haverá um número infinito dessas órbitas, com
+                                orientações diferentes. Na mecânica quântica, girando o estado fundamental do hidrogênio,
+                                obtém-se exatamente o mesmo estado, qualquer que seja o eixo escolhido; e girando um dos
+                                estados com $n = 2$ e $\ell = 1$, obtém-se uma combinação linear dos três estados
+                                ortogonais com esses números quânticos.<a href="#fnref:2" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:3">
+                            <p>É claro que já sabemos que as energias são iguais, pois a equação radial (Equação 4.35 de
+                                Griffiths) não depende de $m$. O exemplo mostra que é a invariância rotacional que está por
+                                trás da degenerescência.<a href="#fnref:3" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:4">
+                            <p>Não queremos dizer que elas ocorram necessariamente nessa ordem. No poço esférico
+                                infinito (Figura 4.3 de Griffiths), a partir do estado fundamental as degenerescências são
+                                $1, 3, 5, 1, 7, 3, 9, 5, \dots$ — exatamente os graus de degenerescência esperados pela
+                                invariância rotacional ($2\ell + 1$ para $\ell$ inteiro), mas as considerações de simetria
+                                não dizem em que ponto do espectro cada degenerescência ocorre.<a href="#fnref:4"
+                                    class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:5">
+                            <p>Para o oscilador harmônico tridimensional, a degenerescência é $n(n+1)/2 = 1, 3, 6, 10,
+                                \dots$ (Problema 4.46 de Griffiths), que também é maior que $2\ell + 1$. Para uma discussão
+                                da simetria adicional do oscilador, veja D. M. Fradkin, <i>Am. J. Phys.</i> <b>33</b>, 207
+                                (1965).<a href="#fnref:5" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:6">
+                            <p>Veja F. Leyvraz <i>et al.</i>, <i>Am. J. Phys.</i> <b>65</b>, 1087 (1997), para uma
+                                discussão dessa degenerescência "acidental".<a href="#fnref:6" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                    </ol>
+                </section>
 
             </div>
         </main>
@@ -503,19 +480,28 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#degenerescencia">Degenerescência</a></li>
-                    <li><a href="#simetria-gera-degenerescencia">Simetria Gera Degenerescência</a></li>
-                    <li><a href="#simetrias-incompativeis">Simetrias Incompatíveis</a></li>
                     <li>
-                        <a href="#exemplos">Quatro Exemplos</a>
+                        <a href="#simetria-gera-degenerescencia">Simetria e Degenerescência</a>
                         <ul>
-                            <li><a href="#particula-livre">A Partícula Livre</a></li>
-                            <li><a href="#potencial-central-deg">Potenciais Centrais</a></li>
-                            <li><a href="#hidrogenio">Degenerescência Acidental</a></li>
-                            <li><a href="#oscilador">Oscilador Isotrópico</a></li>
+                            <li><a href="#simetrias-incompativeis">Simetrias que Não Comutam</a></li>
                         </ul>
                     </li>
-                    <li><a href="#quebra-de-simetria">Quebra de Simetria</a></li>
-                    <li><a href="#balanco">As Três Consequências</a></li>
+                    <li><a href="#potencial-central-deg">Degenerescência 2ℓ + 1</a></li>
+                    <li>
+                        <a href="#hidrogenio">A Degenerescência do Hidrogênio</a>
+                        <ul>
+                            <li><a href="#runge-lenz">Vetor de Laplace–Runge–Lenz</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#outros-exemplos">Outros Exemplos</a>
+                        <ul>
+                            <li><a href="#particula-livre">A Partícula Livre</a></li>
+                            <li><a href="#simetria-discreta-quadrado">O Poço Quadrado</a></li>
+                            <li><a href="#kramers">Degenerescência de Kramers</a></li>
+                            <li><a href="#problemas">Problemas Relacionados</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </aside>

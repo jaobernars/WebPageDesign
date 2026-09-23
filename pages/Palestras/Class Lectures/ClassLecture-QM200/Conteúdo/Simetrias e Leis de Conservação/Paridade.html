@@ -135,236 +135,296 @@
             <div class="prose">
 
                 <h1 id="paridade">Paridade</h1>
-                <p class="lead" style="color: red;">A simetria discreta da inversão espacial, e as regras de seleção que dela decorrem.</p>
+                <p class="lead">A inversão espacial: paridade em uma e em três dimensões, vetores e pseudovetores, e a
+                    regra de seleção de Laporte (Griffiths, Seção 6.4).</p>
 
-                <p style="color: red;">
-                    Saímos do tópico anterior com um teorema geral em mãos, mas aplicado até agora a uma única
-                    simetria contínua. Vamos exercitá-lo sobre um caso de natureza inteiramente distinta: a
-                    <strong>paridade</strong>, ou inversão espacial, que consiste em refletir o sistema através da
-                    origem, trocando cada ponto por seu antípoda.
-                </p>
-
-                <p style="color: red;">
-                    Trata-se de uma simetria <strong>discreta</strong>. Não há como inverter "um pouquinho" o espaço:
-                    ou se aplica a inversão inteira, ou não se aplica nada. Sem transformações infinitesimais, não há
-                    gerador, e o formalismo exponencial do operador de translação não tem análogo aqui. Veremos,
-                    contudo, que a paridade produz consequências físicas tão concretas quanto as da translação — e, no
-                    caso das regras de seleção espectroscópicas, consideravelmente mais visíveis.
+                <p>
+                    A paridade é o nosso exemplo de simetria <strong>discreta</strong>: a inversão espacial não pode ser
+                    feita "aos poucos", e não há uma inversão infinitesimal. Ainda assim, como veremos, ela produz uma
+                    lei de conservação e regras de seleção muito concretas.
                 </p>
 
                 <h2 id="paridade-1d">Paridade em Uma Dimensão</h2>
 
-                <p style="color: red;">
-                    Em uma dimensão, inverter o espaço significa simplesmente trocar $x$ por $-x$. Define-se o
-                    <strong>operador de paridade</strong> $\hat{\Pi}$ por:
+                <p>
+                    Uma inversão espacial é implementada pelo operador de paridade $\hat{\Pi}$; em uma dimensão,
                 </p>
 
                 <div class="definition-box" style="border-left: 4px solid #45503B;">
-                    <p style="color: red;">
-                        $$ \hat{\Pi}\, \psi(x) = \psi(-x) $$
+                    <p>
+                        $$ \hat{\Pi}\,\psi(x) = \psi'(x) = \psi(-x). $$
                     </p>
                 </div>
 
-                <p style="color: red;">
-                    A primeira propriedade a notar é que aplicar a inversão duas vezes devolve o sistema ao estado
-                    original: $\hat{\Pi}^2\psi(x) = \hat{\Pi}\psi(-x) = \psi(x)$. Logo:
+                <p>
+                    Evidentemente, o operador de paridade é o seu próprio inverso: $\hat{\Pi}^{-1} = \hat{\Pi}$, já que
+                    $\hat{\Pi}^2\psi(x) = \hat{\Pi}\psi(-x) = \psi(x)$. Ele também é hermitiano (Problema 6.8 de
+                    Griffiths): trocando a variável de integração $x \to -x$,
                 </p>
 
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    \hat{\Pi}^2 = 1
-                    \end{aligned}
-                    $$
+                <p>
+                    $$ \langle f | \hat{\Pi} g \rangle = \int_{-\infty}^{\infty} f(x)^*\, g(-x)\, dx =
+                    \int_{-\infty}^{\infty} f(-x)^*\, g(x)\, dx = \langle \hat{\Pi} f | g \rangle. $$
                 </p>
 
-                <p style="color: red;">
-                    Este é exatamente o mesmo argumento que usamos com o operador de permutação ao estudar
-                    <a href="../Partículas Idênticas/Sistema de Duas partículas.html">partículas idênticas</a>, e a
-                    conclusão é a mesma: se $\lambda$ é autovalor de $\hat{\Pi}$, então $\lambda^2 = 1$, e portanto:
+                <p>
+                    Juntando essas duas propriedades, o operador de paridade é também unitário:
                 </p>
 
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    \lambda = \pm 1
-                    \end{aligned}
-                    $$
+                <p>
+                    $$ \hat{\Pi}^{-1} = \hat{\Pi} = \hat{\Pi}^\dagger. \tag{6.16} $$
                 </p>
 
-                <p style="color: red;">
-                    Os autoestados de paridade são, respectivamente, as funções <strong>pares</strong> ($\psi(-x) =
-                    +\psi(x)$, autovalor $+1$) e as funções <strong>ímpares</strong> ($\psi(-x) = -\psi(x)$, autovalor
-                    $-1$). Como qualquer função pode ser decomposta na soma de uma parte par e uma parte ímpar, esses
-                    autoestados formam um conjunto completo — o que confirma que $\hat{\Pi}$ é um observável legítimo.
-                </p>
-
-                <p style="color: red;">
-                    Uma peculiaridade de $\hat{\Pi}$ merece destaque: ele é simultaneamente
-                    <strong>hermitiano</strong> e <strong>unitário</strong>. Como $\hat{\Pi}^2 = 1$, temos
-                    $\hat{\Pi}^{-1} = \hat{\Pi}$; e como seus autovalores são reais, $\hat{\Pi}^\dagger = \hat{\Pi}$.
-                    Assim $\hat{\Pi}^\dagger = \hat{\Pi} = \hat{\Pi}^{-1}$, e as três operações coincidem. A
-                    hermiticidade garante que a paridade é um observável mensurável; a unitariedade garante que ela é
-                    uma simetria legítima, preservando probabilidades.
+                <p>
+                    Seus autovalores estão restritos a $\pm 1$: se $\hat{\Pi}\psi = \lambda\psi$, então $\psi =
+                    \hat{\Pi}^2\psi = \lambda^2\psi$, e $\lambda^2 = 1$. Os autoestados com autovalor $+1$ são as
+                    funções <strong>pares</strong>, $\psi(-x) = \psi(x)$; os de autovalor $-1$ são as funções
+                    <strong>ímpares</strong>, $\psi(-x) = -\psi(x)$.
                 </p>
 
                 <h3 id="transformacao-operadores-1d">Como os Operadores se Transformam</h3>
 
-                <p style="color: red;">
-                    Apliquemos o procedimento do tópico anterior, $\hat{Q}' = \hat{\Pi}^\dagger \hat{Q}\hat{\Pi} =
-                    \hat{\Pi}\hat{Q}\hat{\Pi}$. Para a posição, acompanhemos passo a passo a ação sobre uma função
-                    arbitrária: primeiro $\hat{\Pi}$ produz $\psi(-x)$; multiplicar por $x$ dá $x\psi(-x)$; e a última
-                    aplicação de $\hat{\Pi}$ troca novamente o sinal do argumento, resultando em $(-x)\psi(x)$. Logo:
+                <p>
+                    Sob uma inversão espacial, os operadores se transformam como
                 </p>
 
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    \hat{\Pi}\, \hat{x}\, \hat{\Pi} = -\hat{x}
-                    \end{aligned}
-                    $$
+                <p>
+                    $$ \hat{Q}' = \hat{\Pi}^\dagger \hat{Q}\, \hat{\Pi}, \tag{6.17} $$
                 </p>
 
-                <p style="color: red;">
-                    Para o momento, o cálculo envolve uma regra da cadeia. Derivando $\psi(-x)$ obtemos
-                    $-\psi'(-x)$, de modo que $\hat{p}\,\hat{\Pi}\psi = -i\hbar\,\frac{d}{dx}\psi(-x) =
-                    +i\hbar\,\psi'(-x)$; aplicando $\hat{\Pi}$ a este resultado, chega-se a $i\hbar\,\psi'(x) =
-                    -\hat{p}\psi(x)$. Portanto:
+                <p>
+                    pelo mesmo argumento que levou à Equação 6.6 no caso das translações. Os operadores posição e
+                    momento são "ímpares sob paridade" (Problema 6.10 de Griffiths):
                 </p>
 
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    \hat{\Pi}\, \hat{p}\, \hat{\Pi} = -\hat{p}
-                    \end{aligned}
-                    $$
+                <p>
+                    $$ \hat{x}' = \hat{\Pi}^\dagger \hat{x}\, \hat{\Pi} = -\hat{x}, \tag{6.18} $$
                 </p>
 
-                <p style="color: red;">
-                    Ambos mudam de sinal, como esperaríamos de quantidades vetoriais sob uma inversão do espaço.
-                    Observe ainda uma consequência algébrica útil: $\hat{\Pi}\hat{x} = -\hat{x}\hat{\Pi}$, ou seja,
-                    paridade e posição <strong>anticomutam</strong> — e o mesmo vale para paridade e momento. Este
-                    fato reaparecerá quando discutirmos degenerescência.
+                <p>
+                    $$ \hat{p}' = \hat{\Pi}^\dagger \hat{p}\, \hat{\Pi} = -\hat{p}. \tag{6.19} $$
                 </p>
 
-                <h3 id="simetria-paridade-1d">A Condição de Simetria</h3>
-
-                <p style="color: red;">
-                    Passemos ao Hamiltoniano $\hat{H} = \hat{p}^2/2m + V(\hat{x})$. O termo cinético é invariante,
-                    pois o sinal negativo de $\hat{p}$ é anulado pelo quadrado: $\hat{\Pi}\hat{p}^2\hat{\Pi} =
-                    (-\hat{p})(-\hat{p}) = \hat{p}^2$. Já o potencial se transforma em $V(-\hat{x})$. Assim:
+                <p>
+                    Para verificar, basta acompanhar a ação sobre uma função de teste $f(x)$. Para a posição:
+                    $\hat{\Pi}f(x) = f(-x)$; multiplicando por $x$, obtém-se $x f(-x)$; aplicando $\hat{\Pi}$ de novo,
+                    $(-x)f(x)$. Para o momento: $\hat{p}\,\hat{\Pi}f = -i\hbar\,\frac{d}{dx}f(-x) = i\hbar\,f'(-x)$, e
+                    aplicando $\hat{\Pi}$, $i\hbar\,f'(x) = -\hat{p}f(x)$. Isso nos diz como <i>qualquer</i> operador se
+                    transforma (Problema 6.4):
                 </p>
 
-                <div class="definition-box">
-                    <p style="color: red;">
-                        $$ \big[\hat{H}, \hat{\Pi}\big] = 0
-                        \qquad \Longleftrightarrow \qquad
-                        V(-x) = V(x) $$
-                    </p>
-                    <p style="color: red;">
-                        Ou seja: um sistema tem simetria de paridade exatamente quando seu potencial é uma
-                        <strong>função par</strong>.
+                <p>
+                    $$ \hat{Q}'(\hat{x}, \hat{p}) = \hat{\Pi}^\dagger \hat{Q}(\hat{x}, \hat{p})\, \hat{\Pi} =
+                    \hat{Q}(-\hat{x}, -\hat{p}). $$
+                </p>
+
+                <h3 id="simetria-paridade-1d">Simetria de Inversão</h3>
+
+                <p>
+                    Um sistema tem <strong>simetria de inversão</strong> se o Hamiltoniano não se altera por uma
+                    transformação de paridade, $\hat{H}' = \hat{\Pi}^\dagger \hat{H}\, \hat{\Pi} = \hat{H}$, ou, usando a
+                    unitariedade do operador de paridade,
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p>
+                        $$ \left[\hat{H}, \hat{\Pi}\right] = 0. \tag{6.20} $$
                     </p>
                 </div>
 
-                <p style="color: red;">
-                    Pelo teorema demonstrado em <a href="Leis de Conservação.html">Leis de Conservação</a>, isso
-                    significa que a paridade é uma grandeza conservada: um estado que começa par permanece par para
-                    sempre, e um estado ímpar jamais se torna par.
+                <p>
+                    Se o Hamiltoniano descreve uma partícula de massa $m$ num potencial unidimensional $V(x)$, a
+                    simetria de inversão significa simplesmente que o potencial é uma função par da posição (o termo
+                    cinético é invariante, pois $(-\hat{p})^2 = \hat{p}^2$):
                 </p>
 
-                <p style="color: red;">
-                    Há ainda um corolário de imenso valor prático. Se $\hat{H}$ e $\hat{\Pi}$ comutam, podemos
-                    escolher autofunções simultâneas. Mais do que isso: quando um nível de energia é
-                    <strong>não-degenerado</strong>, a escolha deixa de ser opcional e passa a ser obrigatória — o
-                    autoespaço tem dimensão $1$, de modo que $\hat{\Pi}\psi$ só pode ser um múltiplo de $\psi$. Logo:
+                <p>
+                    $$ V(x) = V(-x). $$
                 </p>
 
-                <p style="color: red;">
-                    <i>Em um potencial par, todo estado estacionário não-degenerado é necessariamente par ou
-                        ímpar.</i>
+                <p>
+                    As implicações da simetria de inversão são duas.
                 </p>
 
-                <p style="color: red;">
-                    Isso explica, retroativamente, um padrão que já havíamos encontrado diversas vezes sem
-                    justificá-lo: a alternância par-ímpar-par-ímpar dos estados do poço quadrado infinito centrado na
-                    origem, do oscilador harmônico e do poço delta. Não era coincidência nem resultado de contas
-                    particulares — era paridade.
+                <p>
+                    <strong>Primeira:</strong> podemos encontrar um conjunto completo de autoestados simultâneos de
+                    $\hat{\Pi}$ e $\hat{H}$. Um tal autoestado $\psi_n$ satisfaz
+                </p>
+
+                <p>
+                    $$ \hat{\Pi}\,\psi_n(x) = \psi_n(-x) = \pm\,\psi_n(x), $$
+                </p>
+
+                <p>
+                    já que os autovalores da paridade são $\pm 1$. Assim, os estados estacionários de um potencial que é
+                    função par da posição são, eles próprios, funções pares ou ímpares (ou podem ser escolhidos assim,
+                    no caso de degenerescência).<sup id="fnref:1"><a href="#fn:1" class="footnote-ref">1</a></sup> Essa
+                    propriedade é familiar do oscilador harmônico simples, do poço quadrado infinito (com a origem no
+                    centro do poço) e do potencial delta de Dirac, e foi demonstrada em geral no Problema 2.1 de
+                    Griffiths.
+                </p>
+
+                <p>
+                    <strong>Segunda:</strong> pelo teorema de Ehrenfest, se o Hamiltoniano tem simetria de inversão,
+                </p>
+
+                <p>
+                    $$ \frac{d}{dt}\langle \Pi \rangle = \frac{i}{\hbar}\left\langle \left[\hat{H}, \hat{\Pi}\right]
+                    \right\rangle = 0, $$
+                </p>
+
+                <p>
+                    de modo que <strong><i>a paridade é conservada</i></strong> para uma partícula num potencial
+                    simétrico. E não apenas o valor esperado: a <i>probabilidade</i> de cada resultado possível numa
+                    medida também é conservada, de acordo com o teorema de
+                    <a href="Leis de Conservação.html#segunda-definicao">Leis de Conservação</a>. A conservação da
+                    paridade significa, por exemplo, que se a função de onda de uma partícula num oscilador harmônico é
+                    par em $t = 0$, ela continuará par em qualquer instante posterior.
+                </p>
+
+                <figure class="lecture-figure">
+                    <svg viewBox="0 0 640 330" role="img" aria-label="Seis instantes da evolução temporal de uma função de onda par no oscilador harmônico"><rect x="15" y="15" width="190" height="130" rx="8" class="fig-frame"/><line x1="21" y1="95.60" x2="199" y2="95.60" class="fig-axis"/><line x1="110.00" y1="21" x2="110.00" y2="139" class="fig-axis"/><path d="M15.0,95.4 L16.2,95.3 L17.4,95.3 L18.6,95.2 L19.8,95.2 L20.9,95.1 L22.1,95.0 L23.3,94.9 L24.5,94.8 L25.7,94.6 L26.9,94.5 L28.1,94.3 L29.2,94.1 L30.4,93.9 L31.6,93.6 L32.8,93.3 L34.0,93.0 L35.2,92.7 L36.4,92.3 L37.6,91.9 L38.8,91.4 L39.9,90.9 L41.1,90.3 L42.3,89.7 L43.5,89.1 L44.7,88.4 L45.9,87.6 L47.1,86.8 L48.3,85.9 L49.4,85.0 L50.6,84.1 L51.8,83.1 L53.0,82.0 L54.2,80.9 L55.4,79.8 L56.6,78.7 L57.7,77.5 L58.9,76.4 L60.1,75.2 L61.3,74.0 L62.5,72.9 L63.7,71.7 L64.9,70.7 L66.1,69.6 L67.2,68.7 L68.4,67.8 L69.6,67.0 L70.8,66.3 L72.0,65.7 L73.2,65.2 L74.4,64.9 L75.6,64.7 L76.8,64.7 L77.9,64.8 L79.1,65.1 L80.3,65.6 L81.5,66.2 L82.7,66.9 L83.9,67.8 L85.1,68.9 L86.2,70.1 L87.4,71.5 L88.6,72.9 L89.8,74.5 L91.0,76.1 L92.2,77.8 L93.4,79.5 L94.6,81.2 L95.8,83.0 L96.9,84.7 L98.1,86.3 L99.3,87.9 L100.5,89.4 L101.7,90.8 L102.9,92.0 L104.1,93.1 L105.2,94.0 L106.4,94.7 L107.6,95.2 L108.8,95.5 L110.0,95.6 L111.2,95.5 L112.4,95.2 L113.6,94.7 L114.8,94.0 L115.9,93.1 L117.1,92.0 L118.3,90.8 L119.5,89.4 L120.7,87.9 L121.9,86.3 L123.1,84.7 L124.3,83.0 L125.4,81.2 L126.6,79.5 L127.8,77.8 L129.0,76.1 L130.2,74.5 L131.4,72.9 L132.6,71.5 L133.8,70.1 L134.9,68.9 L136.1,67.8 L137.3,66.9 L138.5,66.2 L139.7,65.6 L140.9,65.1 L142.1,64.8 L143.2,64.7 L144.4,64.7 L145.6,64.9 L146.8,65.2 L148.0,65.7 L149.2,66.3 L150.4,67.0 L151.6,67.8 L152.8,68.7 L153.9,69.6 L155.1,70.7 L156.3,71.7 L157.5,72.9 L158.7,74.0 L159.9,75.2 L161.1,76.4 L162.2,77.5 L163.4,78.7 L164.6,79.8 L165.8,80.9 L167.0,82.0 L168.2,83.1 L169.4,84.1 L170.6,85.0 L171.8,85.9 L172.9,86.8 L174.1,87.6 L175.3,88.4 L176.5,89.1 L177.7,89.7 L178.9,90.3 L180.1,90.9 L181.2,91.4 L182.4,91.9 L183.6,92.3 L184.8,92.7 L186.0,93.0 L187.2,93.3 L188.4,93.6 L189.6,93.9 L190.8,94.1 L191.9,94.3 L193.1,94.5 L194.3,94.6 L195.5,94.8 L196.7,94.9 L197.9,95.0 L199.1,95.1 L200.3,95.2 L201.4,95.2 L202.6,95.3 L203.8,95.3 L205.0,95.4" class="fig-curve"/><path d="M15.0,95.6 L16.2,95.6 L17.4,95.6 L18.6,95.6 L19.8,95.6 L20.9,95.6 L22.1,95.6 L23.3,95.6 L24.5,95.6 L25.7,95.6 L26.9,95.6 L28.1,95.6 L29.2,95.6 L30.4,95.6 L31.6,95.6 L32.8,95.6 L34.0,95.6 L35.2,95.6 L36.4,95.6 L37.6,95.6 L38.8,95.6 L39.9,95.6 L41.1,95.6 L42.3,95.6 L43.5,95.6 L44.7,95.6 L45.9,95.6 L47.1,95.6 L48.3,95.6 L49.4,95.6 L50.6,95.6 L51.8,95.6 L53.0,95.6 L54.2,95.6 L55.4,95.6 L56.6,95.6 L57.7,95.6 L58.9,95.6 L60.1,95.6 L61.3,95.6 L62.5,95.6 L63.7,95.6 L64.9,95.6 L66.1,95.6 L67.2,95.6 L68.4,95.6 L69.6,95.6 L70.8,95.6 L72.0,95.6 L73.2,95.6 L74.4,95.6 L75.6,95.6 L76.8,95.6 L77.9,95.6 L79.1,95.6 L80.3,95.6 L81.5,95.6 L82.7,95.6 L83.9,95.6 L85.1,95.6 L86.2,95.6 L87.4,95.6 L88.6,95.6 L89.8,95.6 L91.0,95.6 L92.2,95.6 L93.4,95.6 L94.6,95.6 L95.8,95.6 L96.9,95.6 L98.1,95.6 L99.3,95.6 L100.5,95.6 L101.7,95.6 L102.9,95.6 L104.1,95.6 L105.2,95.6 L106.4,95.6 L107.6,95.6 L108.8,95.6 L110.0,95.6 L111.2,95.6 L112.4,95.6 L113.6,95.6 L114.8,95.6 L115.9,95.6 L117.1,95.6 L118.3,95.6 L119.5,95.6 L120.7,95.6 L121.9,95.6 L123.1,95.6 L124.3,95.6 L125.4,95.6 L126.6,95.6 L127.8,95.6 L129.0,95.6 L130.2,95.6 L131.4,95.6 L132.6,95.6 L133.8,95.6 L134.9,95.6 L136.1,95.6 L137.3,95.6 L138.5,95.6 L139.7,95.6 L140.9,95.6 L142.1,95.6 L143.2,95.6 L144.4,95.6 L145.6,95.6 L146.8,95.6 L148.0,95.6 L149.2,95.6 L150.4,95.6 L151.6,95.6 L152.8,95.6 L153.9,95.6 L155.1,95.6 L156.3,95.6 L157.5,95.6 L158.7,95.6 L159.9,95.6 L161.1,95.6 L162.2,95.6 L163.4,95.6 L164.6,95.6 L165.8,95.6 L167.0,95.6 L168.2,95.6 L169.4,95.6 L170.6,95.6 L171.8,95.6 L172.9,95.6 L174.1,95.6 L175.3,95.6 L176.5,95.6 L177.7,95.6 L178.9,95.6 L180.1,95.6 L181.2,95.6 L182.4,95.6 L183.6,95.6 L184.8,95.6 L186.0,95.6 L187.2,95.6 L188.4,95.6 L189.6,95.6 L190.8,95.6 L191.9,95.6 L193.1,95.6 L194.3,95.6 L195.5,95.6 L196.7,95.6 L197.9,95.6 L199.1,95.6 L200.3,95.6 L201.4,95.6 L202.6,95.6 L203.8,95.6 L205.0,95.6" class="fig-curve fig-dashed"/><text x="23" y="31" class="fig-label fig-small">1</text><rect x="225" y="15" width="190" height="130" rx="8" class="fig-frame"/><line x1="231" y1="95.60" x2="409" y2="95.60" class="fig-axis"/><line x1="320.00" y1="21" x2="320.00" y2="139" class="fig-axis"/><path d="M225.0,95.4 L226.2,95.4 L227.4,95.4 L228.6,95.3 L229.8,95.3 L230.9,95.2 L232.1,95.2 L233.3,95.1 L234.5,95.0 L235.7,94.9 L236.9,94.8 L238.1,94.7 L239.2,94.5 L240.4,94.4 L241.6,94.2 L242.8,94.0 L244.0,93.7 L245.2,93.5 L246.4,93.2 L247.6,92.9 L248.8,92.6 L249.9,92.2 L251.1,91.8 L252.3,91.3 L253.5,90.9 L254.7,90.3 L255.9,89.8 L257.1,89.2 L258.2,88.6 L259.4,87.9 L260.6,87.2 L261.8,86.4 L263.0,85.7 L264.2,84.9 L265.4,84.0 L266.6,83.2 L267.8,82.3 L268.9,81.4 L270.1,80.5 L271.3,79.6 L272.5,78.7 L273.7,77.9 L274.9,77.0 L276.1,76.2 L277.2,75.4 L278.4,74.7 L279.6,74.0 L280.8,73.4 L282.0,72.8 L283.2,72.4 L284.4,72.0 L285.6,71.7 L286.8,71.5 L287.9,71.5 L289.1,71.5 L290.3,71.7 L291.5,71.9 L292.7,72.3 L293.9,72.8 L295.1,73.3 L296.2,74.0 L297.4,74.8 L298.6,75.6 L299.8,76.5 L301.0,77.5 L302.2,78.5 L303.4,79.6 L304.6,80.7 L305.8,81.7 L306.9,82.8 L308.1,83.8 L309.3,84.8 L310.5,85.8 L311.7,86.6 L312.9,87.4 L314.1,88.1 L315.2,88.7 L316.4,89.1 L317.6,89.4 L318.8,89.6 L320.0,89.7 L321.2,89.6 L322.4,89.4 L323.6,89.1 L324.8,88.7 L325.9,88.1 L327.1,87.4 L328.3,86.6 L329.5,85.8 L330.7,84.8 L331.9,83.8 L333.1,82.8 L334.2,81.7 L335.4,80.7 L336.6,79.6 L337.8,78.5 L339.0,77.5 L340.2,76.5 L341.4,75.6 L342.6,74.8 L343.8,74.0 L344.9,73.3 L346.1,72.8 L347.3,72.3 L348.5,71.9 L349.7,71.7 L350.9,71.5 L352.1,71.5 L353.2,71.5 L354.4,71.7 L355.6,72.0 L356.8,72.4 L358.0,72.8 L359.2,73.4 L360.4,74.0 L361.6,74.7 L362.8,75.4 L363.9,76.2 L365.1,77.0 L366.3,77.9 L367.5,78.7 L368.7,79.6 L369.9,80.5 L371.1,81.4 L372.2,82.3 L373.4,83.2 L374.6,84.0 L375.8,84.9 L377.0,85.7 L378.2,86.4 L379.4,87.2 L380.6,87.9 L381.8,88.6 L382.9,89.2 L384.1,89.8 L385.3,90.3 L386.5,90.9 L387.7,91.3 L388.9,91.8 L390.1,92.2 L391.2,92.6 L392.4,92.9 L393.6,93.2 L394.8,93.5 L396.0,93.7 L397.2,94.0 L398.4,94.2 L399.6,94.4 L400.8,94.5 L401.9,94.7 L403.1,94.8 L404.3,94.9 L405.5,95.0 L406.7,95.1 L407.9,95.2 L409.1,95.2 L410.2,95.3 L411.4,95.3 L412.6,95.4 L413.8,95.4 L415.0,95.4" class="fig-curve"/><path d="M225.0,95.8 L226.2,95.8 L227.4,95.8 L228.6,95.9 L229.8,95.9 L230.9,96.0 L232.1,96.0 L233.3,96.1 L234.5,96.2 L235.7,96.3 L236.9,96.4 L238.1,96.5 L239.2,96.6 L240.4,96.8 L241.6,96.9 L242.8,97.1 L244.0,97.3 L245.2,97.6 L246.4,97.8 L247.6,98.1 L248.8,98.4 L249.9,98.8 L251.1,99.2 L252.3,99.6 L253.5,100.0 L254.7,100.5 L255.9,101.0 L257.1,101.5 L258.2,102.0 L259.4,102.6 L260.6,103.2 L261.8,103.9 L263.0,104.6 L264.2,105.2 L265.4,105.9 L266.6,106.6 L267.8,107.4 L268.9,108.1 L270.1,108.8 L271.3,109.5 L272.5,110.1 L273.7,110.7 L274.9,111.3 L276.1,111.9 L277.2,112.4 L278.4,112.8 L279.6,113.1 L280.8,113.4 L282.0,113.5 L283.2,113.6 L284.4,113.5 L285.6,113.4 L286.8,113.1 L287.9,112.7 L289.1,112.2 L290.3,111.6 L291.5,110.8 L292.7,109.9 L293.9,108.9 L295.1,107.8 L296.2,106.6 L297.4,105.3 L298.6,103.9 L299.8,102.5 L301.0,101.0 L302.2,99.5 L303.4,97.9 L304.6,96.4 L305.8,94.9 L306.9,93.4 L308.1,91.9 L309.3,90.6 L310.5,89.3 L311.7,88.1 L312.9,87.1 L314.1,86.2 L315.2,85.4 L316.4,84.8 L317.6,84.4 L318.8,84.1 L320.0,84.0 L321.2,84.1 L322.4,84.4 L323.6,84.8 L324.8,85.4 L325.9,86.2 L327.1,87.1 L328.3,88.1 L329.5,89.3 L330.7,90.6 L331.9,91.9 L333.1,93.4 L334.2,94.9 L335.4,96.4 L336.6,97.9 L337.8,99.5 L339.0,101.0 L340.2,102.5 L341.4,103.9 L342.6,105.3 L343.8,106.6 L344.9,107.8 L346.1,108.9 L347.3,109.9 L348.5,110.8 L349.7,111.6 L350.9,112.2 L352.1,112.7 L353.2,113.1 L354.4,113.4 L355.6,113.5 L356.8,113.6 L358.0,113.5 L359.2,113.4 L360.4,113.1 L361.6,112.8 L362.8,112.4 L363.9,111.9 L365.1,111.3 L366.3,110.7 L367.5,110.1 L368.7,109.5 L369.9,108.8 L371.1,108.1 L372.2,107.4 L373.4,106.6 L374.6,105.9 L375.8,105.2 L377.0,104.6 L378.2,103.9 L379.4,103.2 L380.6,102.6 L381.8,102.0 L382.9,101.5 L384.1,101.0 L385.3,100.5 L386.5,100.0 L387.7,99.6 L388.9,99.2 L390.1,98.8 L391.2,98.4 L392.4,98.1 L393.6,97.8 L394.8,97.6 L396.0,97.3 L397.2,97.1 L398.4,96.9 L399.6,96.8 L400.8,96.6 L401.9,96.5 L403.1,96.4 L404.3,96.3 L405.5,96.2 L406.7,96.1 L407.9,96.0 L409.1,96.0 L410.2,95.9 L411.4,95.9 L412.6,95.8 L413.8,95.8 L415.0,95.8" class="fig-curve fig-dashed"/><text x="233" y="31" class="fig-label fig-small">2</text><rect x="435" y="15" width="190" height="130" rx="8" class="fig-frame"/><line x1="441" y1="95.60" x2="619" y2="95.60" class="fig-axis"/><line x1="530.00" y1="21" x2="530.00" y2="139" class="fig-axis"/><path d="M435.0,95.6 L436.2,95.6 L437.4,95.6 L438.6,95.6 L439.8,95.6 L440.9,95.6 L442.1,95.6 L443.3,95.6 L444.5,95.6 L445.7,95.6 L446.9,95.6 L448.1,95.5 L449.2,95.5 L450.4,95.5 L451.6,95.5 L452.8,95.5 L454.0,95.5 L455.2,95.5 L456.4,95.4 L457.6,95.4 L458.8,95.4 L459.9,95.3 L461.1,95.3 L462.3,95.3 L463.5,95.2 L464.7,95.1 L465.9,95.1 L467.1,95.0 L468.2,94.9 L469.4,94.8 L470.6,94.7 L471.8,94.6 L473.0,94.5 L474.2,94.3 L475.4,94.2 L476.6,94.0 L477.8,93.8 L478.9,93.6 L480.1,93.4 L481.3,93.2 L482.5,92.9 L483.7,92.6 L484.9,92.3 L486.1,92.0 L487.2,91.6 L488.4,91.3 L489.6,90.9 L490.8,90.5 L492.0,90.0 L493.2,89.6 L494.4,89.1 L495.6,88.6 L496.8,88.1 L497.9,87.6 L499.1,87.0 L500.3,86.5 L501.5,85.9 L502.7,85.3 L503.9,84.7 L505.1,84.1 L506.2,83.5 L507.4,82.9 L508.6,82.3 L509.8,81.7 L511.0,81.1 L512.2,80.5 L513.4,80.0 L514.6,79.4 L515.8,78.9 L516.9,78.4 L518.1,78.0 L519.3,77.6 L520.5,77.2 L521.7,76.8 L522.9,76.5 L524.1,76.2 L525.2,76.0 L526.4,75.9 L527.6,75.7 L528.8,75.7 L530.0,75.6 L531.2,75.7 L532.4,75.7 L533.6,75.9 L534.8,76.0 L535.9,76.2 L537.1,76.5 L538.3,76.8 L539.5,77.2 L540.7,77.6 L541.9,78.0 L543.1,78.4 L544.2,78.9 L545.4,79.4 L546.6,80.0 L547.8,80.5 L549.0,81.1 L550.2,81.7 L551.4,82.3 L552.6,82.9 L553.8,83.5 L554.9,84.1 L556.1,84.7 L557.3,85.3 L558.5,85.9 L559.7,86.5 L560.9,87.0 L562.1,87.6 L563.2,88.1 L564.4,88.6 L565.6,89.1 L566.8,89.6 L568.0,90.0 L569.2,90.5 L570.4,90.9 L571.6,91.3 L572.8,91.6 L573.9,92.0 L575.1,92.3 L576.3,92.6 L577.5,92.9 L578.7,93.2 L579.9,93.4 L581.1,93.6 L582.2,93.8 L583.4,94.0 L584.6,94.2 L585.8,94.3 L587.0,94.5 L588.2,94.6 L589.4,94.7 L590.6,94.8 L591.8,94.9 L592.9,95.0 L594.1,95.1 L595.3,95.1 L596.5,95.2 L597.7,95.3 L598.9,95.3 L600.1,95.3 L601.2,95.4 L602.4,95.4 L603.6,95.4 L604.8,95.5 L606.0,95.5 L607.2,95.5 L608.4,95.5 L609.6,95.5 L610.8,95.5 L611.9,95.5 L613.1,95.6 L614.3,95.6 L615.5,95.6 L616.7,95.6 L617.9,95.6 L619.1,95.6 L620.2,95.6 L621.4,95.6 L622.6,95.6 L623.8,95.6 L625.0,95.6" class="fig-curve"/><path d="M435.0,95.8 L436.2,95.9 L437.4,95.9 L438.6,96.0 L439.8,96.0 L440.9,96.1 L442.1,96.2 L443.3,96.3 L444.5,96.4 L445.7,96.5 L446.9,96.7 L448.1,96.9 L449.2,97.1 L450.4,97.3 L451.6,97.5 L452.8,97.8 L454.0,98.1 L455.2,98.4 L456.4,98.8 L457.6,99.2 L458.8,99.6 L459.9,100.1 L461.1,100.7 L462.3,101.2 L463.5,101.8 L464.7,102.5 L465.9,103.2 L467.1,104.0 L468.2,104.8 L469.4,105.6 L470.6,106.5 L471.8,107.4 L473.0,108.4 L474.2,109.3 L475.4,110.3 L476.6,111.4 L477.8,112.4 L478.9,113.4 L480.1,114.4 L481.3,115.4 L482.5,116.4 L483.7,117.3 L484.9,118.2 L486.1,118.9 L487.2,119.7 L488.4,120.3 L489.6,120.8 L490.8,121.2 L492.0,121.5 L493.2,121.6 L494.4,121.6 L495.6,121.4 L496.8,121.0 L497.9,120.5 L499.1,119.9 L500.3,119.0 L501.5,118.0 L502.7,116.8 L503.9,115.4 L505.1,113.9 L506.2,112.3 L507.4,110.5 L508.6,108.6 L509.8,106.6 L511.0,104.6 L512.2,102.5 L513.4,100.4 L514.6,98.2 L515.8,96.1 L516.9,94.0 L518.1,92.1 L519.3,90.2 L520.5,88.4 L521.7,86.8 L522.9,85.3 L524.1,84.1 L525.2,83.0 L526.4,82.2 L527.6,81.6 L528.8,81.2 L530.0,81.1 L531.2,81.2 L532.4,81.6 L533.6,82.2 L534.8,83.0 L535.9,84.1 L537.1,85.3 L538.3,86.8 L539.5,88.4 L540.7,90.2 L541.9,92.1 L543.1,94.0 L544.2,96.1 L545.4,98.2 L546.6,100.4 L547.8,102.5 L549.0,104.6 L550.2,106.6 L551.4,108.6 L552.6,110.5 L553.8,112.3 L554.9,113.9 L556.1,115.4 L557.3,116.8 L558.5,118.0 L559.7,119.0 L560.9,119.9 L562.1,120.5 L563.2,121.0 L564.4,121.4 L565.6,121.6 L566.8,121.6 L568.0,121.5 L569.2,121.2 L570.4,120.8 L571.6,120.3 L572.8,119.7 L573.9,118.9 L575.1,118.2 L576.3,117.3 L577.5,116.4 L578.7,115.4 L579.9,114.4 L581.1,113.4 L582.2,112.4 L583.4,111.4 L584.6,110.3 L585.8,109.3 L587.0,108.4 L588.2,107.4 L589.4,106.5 L590.6,105.6 L591.8,104.8 L592.9,104.0 L594.1,103.2 L595.3,102.5 L596.5,101.8 L597.7,101.2 L598.9,100.7 L600.1,100.1 L601.2,99.6 L602.4,99.2 L603.6,98.8 L604.8,98.4 L606.0,98.1 L607.2,97.8 L608.4,97.5 L609.6,97.3 L610.8,97.1 L611.9,96.9 L613.1,96.7 L614.3,96.5 L615.5,96.4 L616.7,96.3 L617.9,96.2 L619.1,96.1 L620.2,96.0 L621.4,96.0 L622.6,95.9 L623.8,95.9 L625.0,95.8" class="fig-curve fig-dashed"/><text x="443" y="31" class="fig-label fig-small">3</text><rect x="15" y="170" width="190" height="130" rx="8" class="fig-frame"/><line x1="21" y1="250.60" x2="199" y2="250.60" class="fig-axis"/><line x1="110.00" y1="176" x2="110.00" y2="294" class="fig-axis"/><path d="M15.0,250.7 L16.2,250.8 L17.4,250.8 L18.6,250.8 L19.8,250.9 L20.9,250.9 L22.1,251.0 L23.3,251.1 L24.5,251.1 L25.7,251.2 L26.9,251.3 L28.1,251.4 L29.2,251.6 L30.4,251.7 L31.6,251.9 L32.8,252.0 L34.0,252.2 L35.2,252.4 L36.4,252.7 L37.6,252.9 L38.8,253.2 L39.9,253.5 L41.1,253.8 L42.3,254.2 L43.5,254.6 L44.7,255.0 L45.9,255.4 L47.1,255.8 L48.3,256.3 L49.4,256.8 L50.6,257.3 L51.8,257.8 L53.0,258.3 L54.2,258.8 L55.4,259.4 L56.6,259.9 L57.7,260.4 L58.9,260.9 L60.1,261.3 L61.3,261.8 L62.5,262.1 L63.7,262.5 L64.9,262.7 L66.1,262.9 L67.2,263.0 L68.4,263.0 L69.6,262.9 L70.8,262.7 L72.0,262.4 L73.2,262.0 L74.4,261.4 L75.6,260.7 L76.8,259.9 L77.9,258.9 L79.1,257.7 L80.3,256.5 L81.5,255.1 L82.7,253.6 L83.9,251.9 L85.1,250.1 L86.2,248.3 L87.4,246.3 L88.6,244.3 L89.8,242.2 L91.0,240.0 L92.2,237.9 L93.4,235.7 L94.6,233.6 L95.8,231.5 L96.9,229.5 L98.1,227.5 L99.3,225.7 L100.5,224.0 L101.7,222.5 L102.9,221.1 L104.1,219.9 L105.2,218.9 L106.4,218.1 L107.6,217.5 L108.8,217.2 L110.0,217.0 L111.2,217.2 L112.4,217.5 L113.6,218.1 L114.8,218.9 L115.9,219.9 L117.1,221.1 L118.3,222.5 L119.5,224.0 L120.7,225.7 L121.9,227.5 L123.1,229.5 L124.3,231.5 L125.4,233.6 L126.6,235.7 L127.8,237.9 L129.0,240.0 L130.2,242.2 L131.4,244.3 L132.6,246.3 L133.8,248.3 L134.9,250.1 L136.1,251.9 L137.3,253.6 L138.5,255.1 L139.7,256.5 L140.9,257.7 L142.1,258.9 L143.2,259.9 L144.4,260.7 L145.6,261.4 L146.8,262.0 L148.0,262.4 L149.2,262.7 L150.4,262.9 L151.6,263.0 L152.8,263.0 L153.9,262.9 L155.1,262.7 L156.3,262.5 L157.5,262.1 L158.7,261.8 L159.9,261.3 L161.1,260.9 L162.2,260.4 L163.4,259.9 L164.6,259.4 L165.8,258.8 L167.0,258.3 L168.2,257.8 L169.4,257.3 L170.6,256.8 L171.8,256.3 L172.9,255.8 L174.1,255.4 L175.3,255.0 L176.5,254.6 L177.7,254.2 L178.9,253.8 L180.1,253.5 L181.2,253.2 L182.4,252.9 L183.6,252.7 L184.8,252.4 L186.0,252.2 L187.2,252.0 L188.4,251.9 L189.6,251.7 L190.8,251.6 L191.9,251.4 L193.1,251.3 L194.3,251.2 L195.5,251.1 L196.7,251.1 L197.9,251.0 L199.1,250.9 L200.3,250.9 L201.4,250.8 L202.6,250.8 L203.8,250.8 L205.0,250.7" class="fig-curve"/><path d="M15.0,250.8 L16.2,250.8 L17.4,250.8 L18.6,250.9 L19.8,250.9 L20.9,251.0 L22.1,251.0 L23.3,251.1 L24.5,251.2 L25.7,251.3 L26.9,251.4 L28.1,251.5 L29.2,251.6 L30.4,251.8 L31.6,252.0 L32.8,252.2 L34.0,252.4 L35.2,252.6 L36.4,252.9 L37.6,253.2 L38.8,253.5 L39.9,253.9 L41.1,254.2 L42.3,254.7 L43.5,255.1 L44.7,255.6 L45.9,256.1 L47.1,256.7 L48.3,257.3 L49.4,257.9 L50.6,258.5 L51.8,259.2 L53.0,259.9 L54.2,260.6 L55.4,261.4 L56.6,262.1 L57.7,262.9 L58.9,263.7 L60.1,264.5 L61.3,265.2 L62.5,266.0 L63.7,266.7 L64.9,267.4 L66.1,268.0 L67.2,268.6 L68.4,269.1 L69.6,269.6 L70.8,270.0 L72.0,270.3 L73.2,270.5 L74.4,270.6 L75.6,270.6 L76.8,270.5 L77.9,270.2 L79.1,269.9 L80.3,269.4 L81.5,268.8 L82.7,268.1 L83.9,267.3 L85.1,266.4 L86.2,265.4 L87.4,264.3 L88.6,263.1 L89.8,261.8 L91.0,260.5 L92.2,259.2 L93.4,257.8 L94.6,256.5 L95.8,255.1 L96.9,253.8 L98.1,252.5 L99.3,251.2 L100.5,250.1 L101.7,249.0 L102.9,248.1 L104.1,247.2 L105.2,246.6 L106.4,246.0 L107.6,245.6 L108.8,245.4 L110.0,245.3 L111.2,245.4 L112.4,245.6 L113.6,246.0 L114.8,246.6 L115.9,247.2 L117.1,248.1 L118.3,249.0 L119.5,250.1 L120.7,251.2 L121.9,252.5 L123.1,253.8 L124.3,255.1 L125.4,256.5 L126.6,257.8 L127.8,259.2 L129.0,260.5 L130.2,261.8 L131.4,263.1 L132.6,264.3 L133.8,265.4 L134.9,266.4 L136.1,267.3 L137.3,268.1 L138.5,268.8 L139.7,269.4 L140.9,269.9 L142.1,270.2 L143.2,270.5 L144.4,270.6 L145.6,270.6 L146.8,270.5 L148.0,270.3 L149.2,270.0 L150.4,269.6 L151.6,269.1 L152.8,268.6 L153.9,268.0 L155.1,267.4 L156.3,266.7 L157.5,266.0 L158.7,265.2 L159.9,264.5 L161.1,263.7 L162.2,262.9 L163.4,262.1 L164.6,261.4 L165.8,260.6 L167.0,259.9 L168.2,259.2 L169.4,258.5 L170.6,257.9 L171.8,257.3 L172.9,256.7 L174.1,256.1 L175.3,255.6 L176.5,255.1 L177.7,254.7 L178.9,254.2 L180.1,253.9 L181.2,253.5 L182.4,253.2 L183.6,252.9 L184.8,252.6 L186.0,252.4 L187.2,252.2 L188.4,252.0 L189.6,251.8 L190.8,251.6 L191.9,251.5 L193.1,251.4 L194.3,251.3 L195.5,251.2 L196.7,251.1 L197.9,251.0 L199.1,251.0 L200.3,250.9 L201.4,250.9 L202.6,250.8 L203.8,250.8 L205.0,250.8" class="fig-curve fig-dashed"/><text x="23" y="186" class="fig-label fig-small">4</text><rect x="225" y="170" width="190" height="130" rx="8" class="fig-frame"/><line x1="231" y1="250.60" x2="409" y2="250.60" class="fig-axis"/><line x1="320.00" y1="176" x2="320.00" y2="294" class="fig-axis"/><path d="M225.0,250.8 L226.2,250.9 L227.4,250.9 L228.6,251.0 L229.8,251.0 L230.9,251.1 L232.1,251.2 L233.3,251.3 L234.5,251.4 L235.7,251.5 L236.9,251.6 L238.1,251.8 L239.2,252.0 L240.4,252.2 L241.6,252.4 L242.8,252.7 L244.0,252.9 L245.2,253.3 L246.4,253.6 L247.6,254.0 L248.8,254.4 L249.9,254.8 L251.1,255.3 L252.3,255.8 L253.5,256.4 L254.7,257.0 L255.9,257.6 L257.1,258.3 L258.2,259.0 L259.4,259.7 L260.6,260.5 L261.8,261.2 L263.0,262.0 L264.2,262.9 L265.4,263.7 L266.6,264.5 L267.8,265.3 L268.9,266.1 L270.1,266.8 L271.3,267.5 L272.5,268.2 L273.7,268.8 L274.9,269.3 L276.1,269.7 L277.2,270.0 L278.4,270.2 L279.6,270.3 L280.8,270.2 L282.0,269.9 L283.2,269.5 L284.4,268.9 L285.6,268.2 L286.8,267.2 L287.9,266.1 L289.1,264.8 L290.3,263.3 L291.5,261.5 L292.7,259.7 L293.9,257.6 L295.1,255.4 L296.2,253.0 L297.4,250.5 L298.6,248.0 L299.8,245.3 L301.0,242.5 L302.2,239.8 L303.4,237.0 L304.6,234.2 L305.8,231.5 L306.9,228.9 L308.1,226.3 L309.3,224.0 L310.5,221.7 L311.7,219.7 L312.9,217.9 L314.1,216.3 L315.2,215.0 L316.4,214.0 L317.6,213.2 L318.8,212.8 L320.0,212.6 L321.2,212.8 L322.4,213.2 L323.6,214.0 L324.8,215.0 L325.9,216.3 L327.1,217.9 L328.3,219.7 L329.5,221.7 L330.7,224.0 L331.9,226.3 L333.1,228.9 L334.2,231.5 L335.4,234.2 L336.6,237.0 L337.8,239.8 L339.0,242.5 L340.2,245.3 L341.4,248.0 L342.6,250.5 L343.8,253.0 L344.9,255.4 L346.1,257.6 L347.3,259.7 L348.5,261.5 L349.7,263.3 L350.9,264.8 L352.1,266.1 L353.2,267.2 L354.4,268.2 L355.6,268.9 L356.8,269.5 L358.0,269.9 L359.2,270.2 L360.4,270.3 L361.6,270.2 L362.8,270.0 L363.9,269.7 L365.1,269.3 L366.3,268.8 L367.5,268.2 L368.7,267.5 L369.9,266.8 L371.1,266.1 L372.2,265.3 L373.4,264.5 L374.6,263.7 L375.8,262.9 L377.0,262.0 L378.2,261.2 L379.4,260.5 L380.6,259.7 L381.8,259.0 L382.9,258.3 L384.1,257.6 L385.3,257.0 L386.5,256.4 L387.7,255.8 L388.9,255.3 L390.1,254.8 L391.2,254.4 L392.4,254.0 L393.6,253.6 L394.8,253.3 L396.0,252.9 L397.2,252.7 L398.4,252.4 L399.6,252.2 L400.8,252.0 L401.9,251.8 L403.1,251.6 L404.3,251.5 L405.5,251.4 L406.7,251.3 L407.9,251.2 L409.1,251.1 L410.2,251.0 L411.4,251.0 L412.6,250.9 L413.8,250.9 L415.0,250.8" class="fig-curve"/><path d="M225.0,250.6 L226.2,250.6 L227.4,250.6 L228.6,250.6 L229.8,250.6 L230.9,250.6 L232.1,250.6 L233.3,250.6 L234.5,250.6 L235.7,250.6 L236.9,250.6 L238.1,250.6 L239.2,250.6 L240.4,250.6 L241.6,250.7 L242.8,250.7 L244.0,250.7 L245.2,250.7 L246.4,250.7 L247.6,250.7 L248.8,250.7 L249.9,250.8 L251.1,250.8 L252.3,250.8 L253.5,250.8 L254.7,250.9 L255.9,250.9 L257.1,251.0 L258.2,251.0 L259.4,251.1 L260.6,251.1 L261.8,251.2 L263.0,251.3 L264.2,251.4 L265.4,251.5 L266.6,251.6 L267.8,251.7 L268.9,251.8 L270.1,252.0 L271.3,252.1 L272.5,252.3 L273.7,252.4 L274.9,252.6 L276.1,252.8 L277.2,253.0 L278.4,253.3 L279.6,253.5 L280.8,253.8 L282.0,254.0 L283.2,254.3 L284.4,254.6 L285.6,254.9 L286.8,255.2 L287.9,255.6 L289.1,255.9 L290.3,256.3 L291.5,256.6 L292.7,257.0 L293.9,257.3 L295.1,257.7 L296.2,258.1 L297.4,258.5 L298.6,258.8 L299.8,259.2 L301.0,259.6 L302.2,259.9 L303.4,260.3 L304.6,260.6 L305.8,260.9 L306.9,261.2 L308.1,261.5 L309.3,261.8 L310.5,262.0 L311.7,262.2 L312.9,262.4 L314.1,262.6 L315.2,262.7 L316.4,262.8 L317.6,262.9 L318.8,262.9 L320.0,262.9 L321.2,262.9 L322.4,262.9 L323.6,262.8 L324.8,262.7 L325.9,262.6 L327.1,262.4 L328.3,262.2 L329.5,262.0 L330.7,261.8 L331.9,261.5 L333.1,261.2 L334.2,260.9 L335.4,260.6 L336.6,260.3 L337.8,259.9 L339.0,259.6 L340.2,259.2 L341.4,258.8 L342.6,258.5 L343.8,258.1 L344.9,257.7 L346.1,257.3 L347.3,257.0 L348.5,256.6 L349.7,256.3 L350.9,255.9 L352.1,255.6 L353.2,255.2 L354.4,254.9 L355.6,254.6 L356.8,254.3 L358.0,254.0 L359.2,253.8 L360.4,253.5 L361.6,253.3 L362.8,253.0 L363.9,252.8 L365.1,252.6 L366.3,252.4 L367.5,252.3 L368.7,252.1 L369.9,252.0 L371.1,251.8 L372.2,251.7 L373.4,251.6 L374.6,251.5 L375.8,251.4 L377.0,251.3 L378.2,251.2 L379.4,251.1 L380.6,251.1 L381.8,251.0 L382.9,251.0 L384.1,250.9 L385.3,250.9 L386.5,250.8 L387.7,250.8 L388.9,250.8 L390.1,250.8 L391.2,250.7 L392.4,250.7 L393.6,250.7 L394.8,250.7 L396.0,250.7 L397.2,250.7 L398.4,250.7 L399.6,250.6 L400.8,250.6 L401.9,250.6 L403.1,250.6 L404.3,250.6 L405.5,250.6 L406.7,250.6 L407.9,250.6 L409.1,250.6 L410.2,250.6 L411.4,250.6 L412.6,250.6 L413.8,250.6 L415.0,250.6" class="fig-curve fig-dashed"/><text x="233" y="186" class="fig-label fig-small">5</text><rect x="435" y="170" width="190" height="130" rx="8" class="fig-frame"/><line x1="441" y1="250.60" x2="619" y2="250.60" class="fig-axis"/><line x1="530.00" y1="176" x2="530.00" y2="294" class="fig-axis"/><path d="M435.0,250.7 L436.2,250.8 L437.4,250.8 L438.6,250.8 L439.8,250.9 L440.9,250.9 L442.1,251.0 L443.3,251.1 L444.5,251.1 L445.7,251.2 L446.9,251.3 L448.1,251.4 L449.2,251.6 L450.4,251.7 L451.6,251.9 L452.8,252.0 L454.0,252.2 L455.2,252.5 L456.4,252.7 L457.6,253.0 L458.8,253.2 L459.9,253.5 L461.1,253.9 L462.3,254.2 L463.5,254.6 L464.7,255.0 L465.9,255.5 L467.1,255.9 L468.2,256.4 L469.4,256.9 L470.6,257.5 L471.8,258.0 L473.0,258.5 L474.2,259.1 L475.4,259.6 L476.6,260.2 L477.8,260.7 L478.9,261.3 L480.1,261.8 L481.3,262.2 L482.5,262.7 L483.7,263.0 L484.9,263.3 L486.1,263.6 L487.2,263.8 L488.4,263.8 L489.6,263.8 L490.8,263.7 L492.0,263.5 L493.2,263.1 L494.4,262.7 L495.6,262.0 L496.8,261.3 L497.9,260.4 L499.1,259.4 L500.3,258.2 L501.5,257.0 L502.7,255.5 L503.9,254.0 L505.1,252.4 L506.2,250.6 L507.4,248.8 L508.6,246.8 L509.8,244.9 L511.0,242.8 L512.2,240.8 L513.4,238.7 L514.6,236.7 L515.8,234.7 L516.9,232.8 L518.1,230.9 L519.3,229.2 L520.5,227.6 L521.7,226.1 L522.9,224.8 L524.1,223.6 L525.2,222.7 L526.4,221.9 L527.6,221.3 L528.8,221.0 L530.0,220.9 L531.2,221.0 L532.4,221.3 L533.6,221.9 L534.8,222.7 L535.9,223.6 L537.1,224.8 L538.3,226.1 L539.5,227.6 L540.7,229.2 L541.9,230.9 L543.1,232.8 L544.2,234.7 L545.4,236.7 L546.6,238.7 L547.8,240.8 L549.0,242.8 L550.2,244.9 L551.4,246.8 L552.6,248.8 L553.8,250.6 L554.9,252.4 L556.1,254.0 L557.3,255.5 L558.5,257.0 L559.7,258.2 L560.9,259.4 L562.1,260.4 L563.2,261.3 L564.4,262.0 L565.6,262.7 L566.8,263.1 L568.0,263.5 L569.2,263.7 L570.4,263.8 L571.6,263.8 L572.8,263.8 L573.9,263.6 L575.1,263.3 L576.3,263.0 L577.5,262.7 L578.7,262.2 L579.9,261.8 L581.1,261.3 L582.2,260.7 L583.4,260.2 L584.6,259.6 L585.8,259.1 L587.0,258.5 L588.2,258.0 L589.4,257.5 L590.6,256.9 L591.8,256.4 L592.9,255.9 L594.1,255.5 L595.3,255.0 L596.5,254.6 L597.7,254.2 L598.9,253.9 L600.1,253.5 L601.2,253.2 L602.4,253.0 L603.6,252.7 L604.8,252.5 L606.0,252.2 L607.2,252.0 L608.4,251.9 L609.6,251.7 L610.8,251.6 L611.9,251.4 L613.1,251.3 L614.3,251.2 L615.5,251.1 L616.7,251.1 L617.9,251.0 L619.1,250.9 L620.2,250.9 L621.4,250.8 L622.6,250.8 L623.8,250.8 L625.0,250.7" class="fig-curve"/><path d="M435.0,250.5 L436.2,250.4 L437.4,250.4 L438.6,250.4 L439.8,250.3 L440.9,250.3 L442.1,250.2 L443.3,250.1 L444.5,250.1 L445.7,250.0 L446.9,249.9 L448.1,249.8 L449.2,249.6 L450.4,249.5 L451.6,249.3 L452.8,249.2 L454.0,249.0 L455.2,248.7 L456.4,248.5 L457.6,248.2 L458.8,248.0 L459.9,247.7 L461.1,247.3 L462.3,247.0 L463.5,246.6 L464.7,246.2 L465.9,245.7 L467.1,245.3 L468.2,244.8 L469.4,244.3 L470.6,243.7 L471.8,243.2 L473.0,242.7 L474.2,242.1 L475.4,241.6 L476.6,241.0 L477.8,240.5 L478.9,239.9 L480.1,239.4 L481.3,239.0 L482.5,238.5 L483.7,238.2 L484.9,237.9 L486.1,237.6 L487.2,237.4 L488.4,237.4 L489.6,237.4 L490.8,237.5 L492.0,237.7 L493.2,238.1 L494.4,238.5 L495.6,239.2 L496.8,239.9 L497.9,240.8 L499.1,241.8 L500.3,243.0 L501.5,244.2 L502.7,245.7 L503.9,247.2 L505.1,248.8 L506.2,250.6 L507.4,252.4 L508.6,254.4 L509.8,256.3 L511.0,258.4 L512.2,260.4 L513.4,262.5 L514.6,264.5 L515.8,266.5 L516.9,268.4 L518.1,270.3 L519.3,272.0 L520.5,273.6 L521.7,275.1 L522.9,276.4 L524.1,277.6 L525.2,278.5 L526.4,279.3 L527.6,279.9 L528.8,280.2 L530.0,280.3 L531.2,280.2 L532.4,279.9 L533.6,279.3 L534.8,278.5 L535.9,277.6 L537.1,276.4 L538.3,275.1 L539.5,273.6 L540.7,272.0 L541.9,270.3 L543.1,268.4 L544.2,266.5 L545.4,264.5 L546.6,262.5 L547.8,260.4 L549.0,258.4 L550.2,256.3 L551.4,254.4 L552.6,252.4 L553.8,250.6 L554.9,248.8 L556.1,247.2 L557.3,245.7 L558.5,244.2 L559.7,243.0 L560.9,241.8 L562.1,240.8 L563.2,239.9 L564.4,239.2 L565.6,238.5 L566.8,238.1 L568.0,237.7 L569.2,237.5 L570.4,237.4 L571.6,237.4 L572.8,237.4 L573.9,237.6 L575.1,237.9 L576.3,238.2 L577.5,238.5 L578.7,239.0 L579.9,239.4 L581.1,239.9 L582.2,240.5 L583.4,241.0 L584.6,241.6 L585.8,242.1 L587.0,242.7 L588.2,243.2 L589.4,243.7 L590.6,244.3 L591.8,244.8 L592.9,245.3 L594.1,245.7 L595.3,246.2 L596.5,246.6 L597.7,247.0 L598.9,247.3 L600.1,247.7 L601.2,248.0 L602.4,248.2 L603.6,248.5 L604.8,248.7 L606.0,249.0 L607.2,249.2 L608.4,249.3 L609.6,249.5 L610.8,249.6 L611.9,249.8 L613.1,249.9 L614.3,250.0 L615.5,250.1 L616.7,250.1 L617.9,250.2 L619.1,250.3 L620.2,250.3 L621.4,250.4 L622.6,250.4 L623.8,250.4 L625.0,250.5" class="fig-curve fig-dashed"/><text x="443" y="186" class="fig-label fig-small">6</text></svg>
+                    <figcaption>Evolução temporal da função de onda $\Psi_0(\xi) = A\xi^2 e^{-\xi^2/2}$ de uma partícula no
+                        potencial do oscilador harmônico, em seis instantes igualmente espaçados, de $\omega t = 0$ (quadro
+                        1) a $\omega t = \pi/2$ (quadro 6). As curvas contínuas e tracejadas são as partes real e
+                        imaginária da função de onda. Como a paridade é conservada, uma função de onda inicialmente par
+                        (como esta) permanece par em todos os instantes (compare com a Figura 6.7 de
+                        Griffiths).</figcaption>
+                </figure>
+
+                <p>
+                    Neste exemplo, é fácil ver por que isso acontece: como $\xi^2 = \frac{1}{4}H_2(\xi) + \frac{1}{2}$,
+                    com $H_2(\xi) = 4\xi^2 - 2$, a função inicial é uma combinação dos estados estacionários $\psi_0$ e
+                    $\psi_2$ do oscilador, ambos pares. Cada um apenas adquire o seu fator de fase $e^{-iE_n t/\hbar}$, e
+                    a soma permanece par.
                 </p>
 
                 <h2 id="paridade-3d">Paridade em Três Dimensões</h2>
 
-                <p style="color: red;">
-                    A generalização natural inverte simultaneamente as três coordenadas:
+                <p>
+                    A inversão espacial gerada pelo operador de paridade em três dimensões é
                 </p>
 
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    \hat{\Pi}\, \psi(\mathbf{r}) = \psi(-\mathbf{r}),
-                    \qquad \text{isto é,} \qquad
-                    (x, y, z) \ \longrightarrow \ (-x, -y, -z)
-                    \end{aligned}
-                    $$
+                <p>
+                    $$ \hat{\Pi}\,\psi(\mathbf{r}) = \psi'(\mathbf{r}) = \psi(-\mathbf{r}). $$
                 </p>
 
-                <p style="color: red;">
-                    Aqui surge uma sutileza geométrica que não existia em uma dimensão, e que vale examinar com
-                    cuidado. Poder-se-ia imaginar que a inversão é apenas uma rotação disfarçada — e em
-                    <i>duas</i> dimensões isso seria verdade: inverter $(x,y) \to (-x,-y)$ é exatamente girar o plano
-                    por $180^\circ$. Em três dimensões, porém, isso é falso. A matriz da inversão é $-\mathbb{I}$,
-                    cujo determinante vale $(-1)^3 = -1$, ao passo que toda matriz de rotação tem determinante $+1$.
+                <p>
+                    Os operadores $\hat{\mathbf{r}}$ e $\hat{\mathbf{p}}$ se transformam como
                 </p>
 
-                <p style="color: red;">
-                    A paridade é, portanto, uma transformação <strong>imprópria</strong>: ela não pode ser construída
-                    a partir de rotações, e troca a orientação do espaço — converte um sistema de coordenadas
-                    destro em canhoto. É essa a razão profunda pela qual a paridade não tem gerador: ela é
-                    desconectada da identidade.
-                </p>
-
-                <h3 id="paridade-harmonicos">Paridade dos Harmônicos Esféricos</h3>
-
-                <p style="color: red;">
-                    Como quase todo problema tridimensional relevante é resolvido em coordenadas esféricas, convém
-                    traduzir a inversão para essa linguagem. Geometricamente, tomar o antípoda de um ponto preserva
-                    sua distância à origem, reflete o ângulo polar em torno do equador e gira o azimute em meia volta:
-                </p>
-
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    r \ \to \ r, \qquad \theta \ \to \ \pi - \theta, \qquad \phi \ \to \ \phi + \pi
-                    \end{aligned}
+                <p>
+                    $$ \hat{\mathbf{r}}' = \hat{\Pi}^\dagger \hat{\mathbf{r}}\, \hat{\Pi} = -\hat{\mathbf{r}}, \tag{6.21}
                     $$
                 </p>
 
-                <p style="color: red;">
-                    Apliquemos isso a $Y_\ell^m(\theta,\phi) \propto P_\ell^m(\cos\theta)\, e^{im\phi}$. A parte
-                    azimutal contribui com um fator $e^{im\pi} = (-1)^m$. Já a parte polar usa $\cos(\pi - \theta) =
-                    -\cos\theta$ junto com a propriedade de paridade dos polinômios associados de Legendre,
-                    $P_\ell^m(-u) = (-1)^{\ell+m}P_\ell^m(u)$. Multiplicando as duas contribuições, os fatores $m$ se
-                    cancelam:
+                <p>
+                    $$ \hat{\mathbf{p}}' = \hat{\Pi}^\dagger \hat{\mathbf{p}}\, \hat{\Pi} = -\hat{\mathbf{p}}, \tag{6.22}
+                    $$
                 </p>
 
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    (-1)^{\ell + m} \cdot (-1)^{m} = (-1)^{\ell + 2m} = (-1)^{\ell}
-                    \end{aligned}
-                    $$
+                <p>
+                    e qualquer outro operador se transforma como
+                </p>
+
+                <p>
+                    $$ \hat{Q}'(\hat{\mathbf{r}}, \hat{\mathbf{p}}) = \hat{\Pi}^\dagger \hat{Q}(\hat{\mathbf{r}},
+                    \hat{\mathbf{p}})\, \hat{\Pi} = \hat{Q}(-\hat{\mathbf{r}}, -\hat{\mathbf{p}}). \tag{6.23} $$
+                </p>
+
+                <h3 id="vetores-pseudovetores">Vetores, Pseudovetores e Pseudoescalares</h3>
+
+                <p>
+                    <strong>Exemplo 6.2.</strong> Qual é o operador momento angular transformado por paridade,
+                    $\hat{\mathbf{L}}' = \hat{\Pi}^\dagger \hat{\mathbf{L}}\, \hat{\Pi}$? Como $\mathbf{L} = \mathbf{r}
+                    \times \mathbf{p}$, a Equação 6.23 dá
+                </p>
+
+                <p>
+                    $$ \hat{\mathbf{L}}' = \hat{\Pi}^\dagger \hat{\mathbf{L}}\, \hat{\Pi} = \hat{\mathbf{r}}' \times
+                    \hat{\mathbf{p}}' = (-\hat{\mathbf{r}}) \times (-\hat{\mathbf{p}}) = \hat{\mathbf{r}} \times
+                    \hat{\mathbf{p}} = \hat{\mathbf{L}}. \tag{6.24} $$
+                </p>
+
+                <p>
+                    Vetores como $\hat{\mathbf{L}}$, que são <i>pares</i> sob paridade, recebem um nome especial:
+                    <strong>pseudovetores</strong>, pois não trocam de sinal sob paridade como os vetores "verdadeiros",
+                    tais como $\hat{\mathbf{r}}$ ou $\hat{\mathbf{p}}$. Do mesmo modo, escalares que são <i>ímpares</i>
+                    sob paridade são chamados <strong>pseudoescalares</strong>, pois não se comportam como os escalares
+                    "verdadeiros" (por exemplo, $\hat{\mathbf{r}} \cdot \hat{\mathbf{r}}$, que é par).
+                </p>
+
+                <p>
+                    Os rótulos "escalar" e "vetor" descrevem como os operadores se comportam sob <i>rotações</i>, e
+                    serão definidos com cuidado em <a href="Simetrias de Rotação.html">Simetrias de Rotação</a>. Vetores
+                    "verdadeiros" e pseudovetores se comportam da mesma forma sob uma rotação — ambos são vetores. Em
+                    termos de comutadores com $\hat{\Pi}$ (Problema 6.9 de Griffiths):
+                </p>
+
+                <table>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Sob paridade</th>
+                        <th>Relação com $\hat{\Pi}$</th>
+                        <th>Exemplos</th>
+                    </tr>
+                    <tr>
+                        <td>Escalar verdadeiro $\hat{f}$</td>
+                        <td>$\hat{\Pi}^\dagger \hat{f}\,\hat{\Pi} = \hat{f}$</td>
+                        <td>$[\hat{\Pi}, \hat{f}] = 0$</td>
+                        <td>$\hat{\mathbf{r}}\cdot\hat{\mathbf{r}}$</td>
+                    </tr>
+                    <tr>
+                        <td>Pseudoescalar $\hat{f}$</td>
+                        <td>$\hat{\Pi}^\dagger \hat{f}\,\hat{\Pi} = -\hat{f}$</td>
+                        <td>$\{\hat{\Pi}, \hat{f}\} = 0$</td>
+                        <td>$\hat{\mathbf{p}}\cdot\hat{\mathbf{S}}$</td>
+                    </tr>
+                    <tr>
+                        <td>Vetor verdadeiro $\hat{\mathbf{V}}$</td>
+                        <td>$\hat{\Pi}^\dagger \hat{\mathbf{V}}\,\hat{\Pi} = -\hat{\mathbf{V}}$</td>
+                        <td>$\{\hat{\Pi}, \hat{\mathbf{V}}\} = 0$</td>
+                        <td>$\hat{\mathbf{r}}$, $\hat{\mathbf{p}}$</td>
+                    </tr>
+                    <tr>
+                        <td>Pseudovetor $\hat{\mathbf{V}}$</td>
+                        <td>$\hat{\Pi}^\dagger \hat{\mathbf{V}}\,\hat{\Pi} = \hat{\mathbf{V}}$</td>
+                        <td>$[\hat{\Pi}, \hat{\mathbf{V}}] = 0$</td>
+                        <td>$\hat{\mathbf{L}}$, $\hat{\mathbf{S}}$</td>
+                    </tr>
+                </table>
+
+                <p>
+                    Aqui, $\{\hat{A}, \hat{B}\} \equiv \hat{A}\hat{B} + \hat{B}\hat{A}$ é o
+                    <strong>anticomutador</strong> de dois operadores. (A relação com $\hat{\Pi}$ segue multiplicando a
+                    lei de transformação por $\hat{\Pi}$ pela esquerda e usando $\hat{\Pi}\hat{\Pi}^\dagger = 1$.)
+                </p>
+
+                <h3 id="paridade-harmonicos">Potenciais Centrais e a Paridade $(-1)^\ell$</h3>
+
+                <p>
+                    Em três dimensões, o Hamiltoniano de uma partícula de massa $m$ num potencial $V(\mathbf{r})$ tem
+                    simetria de inversão se $V(-\mathbf{r}) = V(\mathbf{r})$. Importante: <strong>todo potencial central
+                        satisfaz essa condição</strong>. Como no caso unidimensional, a paridade é conservada nesses
+                    sistemas, e os autoestados do Hamiltoniano podem ser escolhidos como autoestados simultâneos da
+                    paridade.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref">2</a></sup> De fato, os autoestados
+                    de uma partícula num potencial central, $\psi_{n\ell m}(r, \theta, \phi) = R_{n\ell}(r)\,Y_\ell^m(\theta,
+                    \phi)$, são autoestados da paridade (Problema 6.1 de Griffiths):
                 </p>
 
                 <div class="definition-box" style="border-left: 4px solid #45503B;">
-                    <p style="color: red;">
-                        $$ \hat{\Pi}\, Y_\ell^m(\theta, \phi) = (-1)^\ell\, Y_\ell^m(\theta, \phi) $$
-                    </p>
-                    <p style="color: red;">
-                        A paridade de um estado depende exclusivamente de $\ell$ — não de $m$, nem de $n$. Como a
-                        parte radial é função apenas de $r$, que não muda sob inversão, os estados do átomo de
-                        hidrogênio $\psi_{n\ell m}$ têm paridade $(-1)^\ell$.
+                    <p>
+                        $$ \hat{\Pi}\,\psi_{n\ell m}(r, \theta, \phi) = (-1)^\ell\, \psi_{n\ell m}(r, \theta, \phi). $$
                     </p>
                 </div>
+
+                <p>
+                    Para ver isso, lembre que o ponto $-\mathbf{r}$ corresponde a $r \to r$, $\theta \to \pi - \theta$ e
+                    $\phi \to \phi + \pi$. A parte radial não muda. Nos harmônicos esféricos, $Y_\ell^m \propto
+                    P_\ell^m(\cos\theta)\,e^{im\phi}$, a parte azimutal fornece $e^{im\pi} = (-1)^m$, e a parte polar, com
+                    $\cos(\pi - \theta) = -\cos\theta$ e $P_\ell^m(-u) = (-1)^{\ell+m}P_\ell^m(u)$, fornece $(-1)^{\ell +
+                    m}$. O produto é $(-1)^{\ell + 2m} = (-1)^\ell$: a paridade depende apenas de $\ell$.
+                </p>
 
                 <table>
                     <tr>
@@ -372,180 +432,174 @@
                         <th>$\ell$</th>
                         <th>Paridade $(-1)^\ell$</th>
                     </tr>
-                    <tr>
-                        <td>s</td>
-                        <td>0</td>
-                        <td>$+1$ (par)</td>
-                    </tr>
-                    <tr>
-                        <td>p</td>
-                        <td>1</td>
-                        <td>$-1$ (ímpar)</td>
-                    </tr>
-                    <tr>
-                        <td>d</td>
-                        <td>2</td>
-                        <td>$+1$ (par)</td>
-                    </tr>
-                    <tr>
-                        <td>f</td>
-                        <td>3</td>
-                        <td>$-1$ (ímpar)</td>
-                    </tr>
+                    <tr><td>$s$</td><td>0</td><td>$+1$ (par)</td></tr>
+                    <tr><td>$p$</td><td>1</td><td>$-1$ (ímpar)</td></tr>
+                    <tr><td>$d$</td><td>2</td><td>$+1$ (par)</td></tr>
+                    <tr><td>$f$</td><td>3</td><td>$-1$ (ímpar)</td></tr>
                 </table>
 
-                <h3 id="vetores-pseudovetores">Vetores, Pseudovetores e Pseudoescalares</h3>
+                <h3 id="paridade-spin">Paridade e Spin</h3>
 
-                <p style="color: red;">
-                    A inversão espacial oferece um critério limpo para classificar grandezas físicas, e essa
-                    classificação é usada constantemente em física de partículas.
+                <p>
+                    O momento angular de spin $\hat{\mathbf{S}}$ é par sob paridade, assim como o momento angular
+                    orbital $\hat{\mathbf{L}}$ (Problema 6.12 de Griffiths):
                 </p>
 
-                <p style="color: red;">
-                    Posição e momento mudam de sinal sob paridade: são <strong>vetores polares</strong>, ou
-                    simplesmente vetores. Mas considere o momento angular, $\hat{\mathbf{L}} = \hat{\mathbf{r}} \times
-                    \hat{\mathbf{p}}$. Cada fator troca de sinal, de modo que o produto vetorial <i>não</i> troca:
+                <p>
+                    $$ \hat{\Pi}^\dagger \hat{\mathbf{S}}\, \hat{\Pi} = \hat{\mathbf{S}} \qquad \text{ou} \qquad
+                    \left[\hat{\Pi}, \hat{\mathbf{S}}\right] = 0. \tag{6.27} $$
                 </p>
 
-                <p style="color: red;">
+                <p>
+                    Agindo sobre um spinor escrito na base padrão, o operador de paridade é uma matriz $2 \times 2$, e a
+                    Equação 6.27 obriga essa matriz a ser um múltiplo da identidade. Por isso, a paridade de um spinor
+                    não é muito interessante: os dois estados de spin são autoestados da paridade com o mesmo autovalor.
+                    Podemos escolher arbitrariamente esse valor como $+1$, de modo que o operador de paridade não tem
+                    efeito sobre a parte de spin da função de onda.<sup id="fnref:3"><a href="#fn:3"
+                            class="footnote-ref">3</a></sup>
+                </p>
+
+                <h2 id="regras-de-selecao">Regras de Seleção de Paridade</h2>
+
+                <p>
+                    <strong>Regras de seleção</strong> dizem quando um elemento de matriz é nulo com base na simetria da
+                    situação. Lembre que um elemento de matriz é qualquer objeto da forma $\langle b | \hat{Q} | a
+                    \rangle$; um valor esperado é o caso particular $a = b = \psi$.
+                </p>
+
+                <p>
+                    Um operador cujas regras de seleção têm grande importância física é o operador momento de dipolo
+                    elétrico,
+                </p>
+
+                <p>
+                    $$ \hat{\mathbf{p}}_e = q\,\hat{\mathbf{r}}, $$
+                </p>
+
+                <p>
+                    que nada mais é que a carga da partícula vezes a sua posição. Suas regras de seleção determinam
+                    quais transições atômicas são permitidas e quais são proibidas (Capítulo 11 de Griffiths). Ele é
+                    ímpar sob paridade, já que o vetor posição $\hat{\mathbf{r}}$ é ímpar:
+                </p>
+
+                <p>
+                    $$ \hat{\Pi}^\dagger \hat{\mathbf{p}}_e\, \hat{\Pi} = -\hat{\mathbf{p}}_e. \tag{6.25} $$
+                </p>
+
+                <p>
+                    Considere agora os elementos de matriz do operador de dipolo elétrico entre dois estados
+                    $\psi_{n\ell m}$ e $\psi_{n'\ell'm'}$ (cujos kets escrevemos $|n\ell m\rangle$ e
+                    $|n'\ell'm'\rangle$). Usando a Equação 6.25 e o fato de que esses estados têm paridade $(-1)^\ell$
+                    e $(-1)^{\ell'}$:
+                </p>
+
+                <p>
                     $$
                     \begin{aligned}
-                    \hat{\Pi}\, \hat{\mathbf{L}}\, \hat{\Pi} = (-\hat{\mathbf{r}}) \times (-\hat{\mathbf{p}})
-                    = +\hat{\mathbf{L}}
+                    \langle n'\ell'm' | \hat{\mathbf{p}}_e | n\ell m \rangle
+                    &= -\langle n'\ell'm' | \hat{\Pi}^\dagger \hat{\mathbf{p}}_e\, \hat{\Pi} | n\ell m \rangle \\
+                    &= -\langle n'\ell'm' | (-1)^{\ell'}\, \hat{\mathbf{p}}_e\, (-1)^{\ell} | n\ell m \rangle \\
+                    &= (-1)^{\ell + \ell' + 1}\, \langle n'\ell'm' | \hat{\mathbf{p}}_e | n\ell m \rangle.
                     \end{aligned}
                     $$
                 </p>
 
-                <p style="color: red;">
-                    O momento angular é um <strong>vetor axial</strong>, ou <strong>pseudovetor</strong>: comporta-se
-                    como vetor sob rotações, mas é par sob inversão. O spin $\hat{\mathbf{S}}$, sendo momento angular,
-                    compartilha essa propriedade. A distinção se estende aos escalares: $\hat{\mathbf{r}} \cdot
-                    \hat{\mathbf{p}}$ é um escalar verdadeiro (par), enquanto $\hat{\mathbf{S}} \cdot
-                    \hat{\mathbf{p}}$ — a <i>helicidade</i>, projeção do spin na direção do movimento — é um
-                    <strong>pseudoescalar</strong>, ímpar sob paridade.
-                </p>
-
-                <div class="definition-box">
-                    <p style="color: red;">
-                        Por muito tempo supôs-se que a paridade fosse uma simetria exata da natureza. Ela de fato é
-                        respeitada pelas interações forte e eletromagnética. Em 1956, porém, Tsung-Dao Lee e
-                        Chen-Ning Yang propuseram que a <strong>interação fraca</strong> poderia violá-la, e no ano
-                        seguinte o experimento conduzido por Chien-Shiung Wu, observando o decaimento beta do
-                        cobalto-60, confirmou a violação: os elétrons emitidos apresentavam uma direção preferencial
-                        em relação ao spin nuclear — uma helicidade não nula, impossível num mundo paritário. A
-                        natureza, no domínio das interações fracas, distingue a esquerda da direita.
-                    </p>
-                </div>
-
-                <h2 id="regras-de-selecao">Paridade e Regras de Seleção</h2>
-
-                <p style="color: red;">
-                    Chegamos à aplicação mais útil de toda a discussão. Regras de seleção são afirmações sobre quais
-                    transições entre níveis de energia são <i>proibidas</i>, e sua importância prática é enorme: elas
-                    explicam por que apenas algumas linhas aparecem num espectro, entre todas as combinações de
-                    níveis concebíveis.
-                </p>
-
-                <p style="color: red;">
-                    A taxa de uma transição é governada por elementos de matriz da forma $\langle \psi_2 | \hat{Q} |
-                    \psi_1 \rangle$, onde $\hat{Q}$ é o operador que acopla o sistema à perturbação externa. Se esse
-                    elemento se anular, a transição não ocorre. E a paridade, sozinha, é capaz de forçar esse
-                    anulamento.
-                </p>
-
-                <h3 id="teorema-selecao">O Teorema</h3>
-
-                <p style="color: red;">
-                    Suponha que os dois estados tenham paridade bem definida, $\hat{\Pi}\psi_1 = \pi_1\psi_1$ e
-                    $\hat{\Pi}\psi_2 = \pi_2\psi_2$, e que o operador $\hat{Q}$ também tenha paridade definida, no
-                    sentido de que $\hat{\Pi}\hat{Q}\hat{\Pi} = \pi_q \hat{Q}$. Inserindo o operador identidade na
-                    forma $\hat{\Pi}\hat{\Pi} = 1$ duas vezes, e usando que $\hat{\Pi}$ é hermitiano para
-                    transferi-lo ao <i>bra</i>:
-                </p>
-
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    \langle \psi_2 | \hat{Q} | \psi_1 \rangle
-                    &= \langle \psi_2 | \hat{\Pi}\hat{\Pi}\, \hat{Q}\, \hat{\Pi}\hat{\Pi} | \psi_1 \rangle \\
-                    &= \big\langle \hat{\Pi}\psi_2 \big| \left( \hat{\Pi}\hat{Q}\hat{\Pi} \right)
-                    \big| \hat{\Pi}\psi_1 \big\rangle \\
-                    &= \pi_2\, \pi_q\, \pi_1 \, \langle \psi_2 | \hat{Q} | \psi_1 \rangle
-                    \end{aligned}
-                    $$
-                </p>
-
-                <p style="color: red;">
-                    Reorganizando, $\left( 1 - \pi_1\pi_2\pi_q \right)\langle \psi_2 | \hat{Q} | \psi_1 \rangle = 0$.
-                    Como cada $\pi$ vale $\pm 1$, o produto é $+1$ ou $-1$, e no segundo caso o fator entre
-                    parênteses vale $2$, forçando o elemento de matriz a zero:
+                <p>
+                    Daí vemos imediatamente que
                 </p>
 
                 <div class="definition-box" style="border-left: 4px solid #45503B;">
-                    <p style="color: red;">
-                        <strong>Regra de seleção por paridade:</strong> o elemento de matriz $\langle \psi_2 |
-                        \hat{Q} | \psi_1 \rangle$ se anula identicamente a menos que
+                    <p>
+                        $$ \langle n'\ell'm' | \hat{\mathbf{p}}_e | n\ell m \rangle = \mathbf{0} \quad \text{se }
+                        \ell + \ell' \text{ for par.} \tag{6.26} $$
                     </p>
-                    <p style="color: red;">
-                        $$ \pi_1 \, \pi_2 \, \pi_q = +1 $$
-                    </p>
-                </div>
-
-                <p style="color: red;">
-                    Note a economia do argumento: chegamos a uma conclusão definitiva sobre uma integral sem sequer
-                    olhar para as funções envolvidas. Basta conhecer suas simetrias.
-                </p>
-
-                <h3 id="aplicacoes">Duas Aplicações</h3>
-
-                <p style="color: red;">
-                    <strong>Primeira: a posição média se anula.</strong> Tome $\psi_1 = \psi_2 = \psi$, um estado de
-                    paridade definida $\pi$, e $\hat{Q} = \hat{x}$, cuja paridade é $\pi_q = -1$. O produto vale
-                    $\pi \cdot \pi \cdot (-1) = -1$, já que $\pi^2 = 1$. A regra é violada, logo:
-                </p>
-
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    \langle x \rangle = 0
-                    \end{aligned}
-                    $$
-                </p>
-
-                <p style="color: red;">
-                    Em qualquer estado estacionário de um potencial par, a posição média é rigorosamente nula. Isso
-                    vale para todos os níveis do oscilador harmônico e do poço infinito centrado, sem exceção e sem
-                    necessidade de cálculo.
-                </p>
-
-                <p style="color: red;">
-                    <strong>Segunda: transições de dipolo elétrico.</strong> Quando um átomo absorve ou emite luz
-                    visível, o mecanismo dominante é o acoplamento do campo elétrico ao momento de dipolo do átomo, e
-                    o operador relevante é $\hat{Q} \propto \hat{\mathbf{r}}$ — novamente ímpar, $\pi_q = -1$. A
-                    condição $\pi_1\pi_2(-1) = +1$ exige $\pi_1\pi_2 = -1$:
-                </p>
-
-                <div class="definition-box">
-                    <p style="color: red;">
-                        <strong>Regra de Laporte:</strong> transições de dipolo elétrico só ocorrem entre estados de
-                        <strong>paridades opostas</strong>. Um estado par só decai para um ímpar, e vice-versa.
+                    <p>
+                        Esta é a <strong>regra de Laporte</strong>: os elementos de matriz do operador momento de dipolo
+                        se anulam entre estados de <strong>mesma paridade</strong>.
                     </p>
                 </div>
 
-                <p style="color: red;">
-                    Para o átomo de hidrogênio, onde a paridade vale $(-1)^\ell$, a condição se traduz em
-                    $(-1)^{\ell_1 + \ell_2} = -1$, isto é, $\ell_1 + \ell_2$ deve ser <strong>ímpar</strong>.
-                    Equivalentemente, $\Delta\ell$ é ímpar. Transições $s \to s$, $s \to d$ ou $p \to f$ estão
-                    terminantemente proibidas por dipolo elétrico; $s \to p$ e $p \to d$ são permitidas.
+                <p>
+                    O raciocínio que levou à Equação 6.26 pode ser generalizado para obter regras de seleção de qualquer
+                    operador, desde que se saiba como ele se transforma sob paridade. Em particular, <i>a regra de
+                        Laporte vale para qualquer operador ímpar sob paridade</i>. De forma geral, se os estados têm
+                    paridades $\pi_1$ e $\pi_2$ e o operador satisfaz $\hat{\Pi}^\dagger\hat{Q}\hat{\Pi} = \pi_Q\hat{Q}$
+                    (com $\pi_Q = \pm 1$), o mesmo argumento dá
                 </p>
 
-                <p style="color: red;">
-                    A paridade, contudo, não esgota o assunto — ela permite $\Delta\ell = \pm 1$, mas também
-                    $\Delta\ell = \pm 3$, $\pm 5$ e assim por diante, que experimentalmente não se observam. O
-                    ingrediente que falta é a conservação do momento angular, que virá da simetria de rotação e
-                    estreitará a regra até sua forma final, $\Delta\ell = \pm 1$. É o que veremos em
-                    <a href="Simetrias de Rotação.html">Simetrias de Rotação</a>.
+                <p>
+                    $$ \langle \psi_2 | \hat{Q} | \psi_1 \rangle = \pi_1\pi_2\pi_Q\, \langle \psi_2 | \hat{Q} | \psi_1
+                    \rangle, $$
                 </p>
+
+                <p>
+                    e o elemento de matriz se anula a menos que $\pi_1\pi_2\pi_Q = +1$. Para um operador <i>par</i> sob
+                    paridade, como $\hat{\mathbf{L}}$ (ou qualquer pseudovetor, ou qualquer escalar verdadeiro), os
+                    elementos de matriz se anulam entre estados de <i>paridades opostas</i>, isto é, quando $\ell +
+                    \ell'$ é ímpar (Problema 6.11 de Griffiths).
+                </p>
+
+                <h3 id="aplicacoes">Consequências</h3>
+
+                <ul>
+                    <li>
+                        <strong>Valores esperados.</strong> Num estado de paridade definida, o valor esperado de qualquer
+                        operador ímpar é nulo (basta tomar $\psi_1 = \psi_2$, de modo que $\pi_1\pi_2 = 1$). Por
+                        exemplo, se o elétron do átomo de hidrogênio está no estado fundamental, necessariamente
+                        $\langle \mathbf{p}_e \rangle = \mathbf{0}$ — sem nenhum cálculo (Problema 6.13 de Griffiths).
+                    </li>
+                    <li>
+                        <strong>Estados de paridade indefinida.</strong> No nível $n = 2$ do hidrogênio, os estados $2s$
+                        (par) e $2p$ (ímpar) têm a mesma energia, e uma superposição deles não tem paridade definida.
+                        Para um tal estado, $\langle \mathbf{p}_e \rangle$ pode ser diferente de zero (Problema 6.13(b)).
+                    </li>
+                    <li>
+                        <strong>Transições de dipolo elétrico.</strong> Como a paridade dos estados hidrogenoides é
+                        $(-1)^\ell$, a regra de Laporte proíbe transições de dipolo elétrico com $\Delta\ell$ par (como
+                        $s \to s$ ou $s \to d$). A paridade sozinha ainda permitiria $\Delta\ell = \pm 3, \pm 5, \dots$;
+                        combinando-a com as regras de seleção rotacionais, que exigem $\Delta\ell = 0, \pm 1$, resulta
+                        $\Delta\ell = \pm 1$ (veja <a href="Regras de Seleção Rotacionais.html#dipolo-eletrico">Regras de
+                            Seleção Rotacionais</a>).
+                    </li>
+                </ul>
+
+                <h3 id="problemas">Problemas Relacionados</h3>
+
+                <ul>
+                    <li><strong>6.8:</strong> $\hat{\Pi}$ é hermitiano; seus autovalores são $\pm 1$.</li>
+                    <li><strong>6.9:</strong> escalares, pseudoescalares, vetores e pseudovetores em termos de comutadores
+                        e anticomutadores com $\hat{\Pi}$.</li>
+                    <li><strong>6.10:</strong> posição e momento são ímpares sob paridade.</li>
+                    <li><strong>6.11:</strong> regra de seleção de paridade para $\hat{\mathbf{L}}$.</li>
+                    <li><strong>6.12:</strong> paridade e spin.</li>
+                    <li><strong>6.13:</strong> momento de dipolo nos estados $n = 1$ e $n = 2$ do hidrogênio.</li>
+                </ul>
+
+                <hr class="footnotes-sep">
+                <section class="footnotes">
+                    <ol>
+                        <li id="fn:1">
+                            <p>Para estados ligados (normalizáveis) em uma dimensão, não há degenerescência, e todo estado
+                                ligado de um potencial simétrico é automaticamente um autoestado da paridade (veja,
+                                porém, o Problema 2.46 de Griffiths). Para estados de espalhamento, a degenerescência
+                                ocorre.<a href="#fnref:1" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:2">
+                            <p>A Equação 6.24 poderia ser escrita, de forma equivalente, como $[\hat{\Pi},
+                                \hat{\mathbf{L}}] = \mathbf{0}$. O fato de a paridade comutar com todas as componentes do
+                                momento angular (e, portanto, também com $\hat{L}^2$) é o que permite encontrar
+                                autoestados simultâneos de $\hat{L}^2$, $\hat{L}_z$ e $\hat{\Pi}$.<a href="#fnref:2"
+                                    class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:3">
+                            <p>Acontece, porém, que as <i>antipartículas</i> de spin $1/2$ têm paridade oposta. Assim, ao
+                                elétron se atribui, por convenção, paridade $+1$, e o pósitron tem então paridade
+                                $-1$.<a href="#fnref:3" class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a>
+                            </p>
+                        </li>
+                    </ol>
+                </section>
 
             </div>
         </main>
@@ -558,22 +612,23 @@
                     <li>
                         <a href="#paridade-1d">Paridade em Uma Dimensão</a>
                         <ul>
-                            <li><a href="#transformacao-operadores-1d">Transformação dos Operadores</a></li>
-                            <li><a href="#simetria-paridade-1d">Condição de Simetria</a></li>
+                            <li><a href="#transformacao-operadores-1d">Transformação de Operadores</a></li>
+                            <li><a href="#simetria-paridade-1d">Simetria de Inversão</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="#paridade-3d">Paridade em Três Dimensões</a>
                         <ul>
-                            <li><a href="#paridade-harmonicos">Harmônicos Esféricos</a></li>
                             <li><a href="#vetores-pseudovetores">Vetores e Pseudovetores</a></li>
+                            <li><a href="#paridade-harmonicos">Potenciais Centrais</a></li>
+                            <li><a href="#paridade-spin">Paridade e Spin</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#regras-de-selecao">Paridade e Regras de Seleção</a>
+                        <a href="#regras-de-selecao">Regras de Seleção de Paridade</a>
                         <ul>
-                            <li><a href="#teorema-selecao">O Teorema</a></li>
-                            <li><a href="#aplicacoes">Duas Aplicações</a></li>
+                            <li><a href="#aplicacoes">Consequências</a></li>
+                            <li><a href="#problemas">Problemas Relacionados</a></li>
                         </ul>
                     </li>
                 </ul>

@@ -136,316 +136,438 @@
             <div class="prose">
 
                 <h1 id="simetrias-de-rotacao">Simetrias de Rotação</h1>
-                <p class="lead" style="color: red;">O momento angular revelado como gerador das rotações — e o primeiro grupo de simetria
-                    não-comutativo do curso.</p>
+                <p class="lead">O momento angular como gerador das rotações, operadores escalares e vetoriais, e a
+                    conservação do momento angular em potenciais centrais (Griffiths, Seção 6.5).</p>
 
-                <p style="color: red;">
-                    Se o espaço é homogêneo — nenhum ponto é privilegiado —, disso extraímos a conservação do momento
-                    linear. Mas o espaço também é <strong>isotrópico</strong>: nenhuma direção é privilegiada. Essa
-                    segunda indiferença é a simetria de rotação, e a grandeza conservada que dela emerge é o momento
-                    angular.
+                <h2 id="rotacoes-z">Rotações em Torno do Eixo $z$</h2>
+
+                <p>
+                    O operador que gira uma função em torno do eixo $z$ por um ângulo $\varphi$ (Equação 6.2),
                 </p>
 
-                <p style="color: red;">
-                    O roteiro será deliberadamente o mesmo do operador de translação: identificar a transformação,
-                    tomar seu limite infinitesimal, reconhecer o gerador e exponenciar. A novidade — e ela é
-                    fundamental — aparecerá quando passarmos de um único eixo para o espaço tridimensional completo.
+                <p>
+                    $$ \hat{R}_z(\varphi)\,\psi(r, \theta, \phi) = \psi'(r, \theta, \phi) = \psi(r, \theta, \phi -
+                    \varphi), \tag{6.28} $$
                 </p>
 
-                <h2 id="rotacoes-z">Rotações em Torno do Eixo z</h2>
-
-                <p style="color: red;">
-                    Comecemos pelo caso mais simples: girar o sistema por um ângulo $\varphi$ em torno do eixo $z$.
-                    Em coordenadas esféricas, essa operação afeta apenas o ângulo azimutal, deixando $r$ e $\theta$
-                    intocados. Seguindo a mesma convenção ativa que adotamos para translações — o sistema gira, os
-                    eixos ficam parados —, a função nova avaliada em certo azimute deve reproduzir o que a antiga
-                    valia um ângulo $\varphi$ atrás:
+                <p>
+                    está intimamente relacionado com a componente $z$ do momento angular, $\hat{L}_z = -i\hbar\,
+                    \partial/\partial\phi$ (Equação 4.129 de Griffiths). A estrutura é idêntica à da translação, com o
+                    azimute $\phi$ no papel de $x$ e $\hat{L}_z$ no papel de $\hat{p}$. Pelo mesmo raciocínio que levou
+                    à Equação 6.3 (expandir em série de Taylor e reconhecer a exponencial),
                 </p>
 
                 <div class="definition-box" style="border-left: 4px solid #45503B;">
-                    <p style="color: red;">
-                        $$ \hat{R}_z(\varphi)\, \psi(r, \theta, \phi) = \psi(r, \theta, \phi - \varphi) $$
+                    <p>
+                        $$ \hat{R}_z(\varphi) = \exp\left[ -\frac{i\varphi}{\hbar}\hat{L}_z \right], \tag{6.29} $$
+                    </p>
+                    <p>
+                        e dizemos que $\hat{L}_z$ é o <strong>gerador das rotações</strong> em torno do eixo $z$
+                        (compare com a Equação 6.3).
                     </p>
                 </div>
 
-                <p style="color: red;">
-                    A analogia estrutural com $\hat{T}(a)f(x) = f(x-a)$ é exata, com $\phi$ no papel de $x$. Não
-                    surpreende, portanto, que o desenvolvimento seja idêntico. Para um ângulo infinitesimal
-                    $\varepsilon$, expandimos em série:
+                <h3 id="transformacao-r-p">Como $\hat{\mathbf{r}}$ e $\hat{\mathbf{p}}$ se Transformam</h3>
+
+                <p>
+                    Para saber como os operadores $\hat{\mathbf{r}}$ e $\hat{\mathbf{p}}$ se transformam sob rotações,
+                    usamos a forma infinitesimal do operador:
                 </p>
 
-                <p style="color: red;">
+                <p>
+                    $$ \hat{R}_z(\delta) \approx 1 - \frac{i\delta}{\hbar}\hat{L}_z. $$
+                </p>
+
+                <p>
+                    Então o operador $\hat{x}$ se transforma como
+                </p>
+
+                <p>
                     $$
                     \begin{aligned}
-                    \hat{R}_z(\varepsilon)\, \psi = \psi(r,\theta,\phi - \varepsilon)
-                    = \psi - \varepsilon \frac{\partial \psi}{\partial \phi} + \mathcal{O}(\varepsilon^2)
+                    \hat{x}' = \hat{R}^\dagger \hat{x}\, \hat{R} &\approx \left( 1 + \frac{i\delta}{\hbar}\hat{L}_z
+                    \right)\hat{x}\left( 1 - \frac{i\delta}{\hbar}\hat{L}_z \right) \\
+                    &\approx \hat{x} + \frac{i\delta}{\hbar}\left[\hat{L}_z, \hat{x}\right] \approx \hat{x} - \delta\hat{y},
                     \end{aligned}
                     $$
                 </p>
 
-                <p style="color: red;">
-                    Aqui entra a peça que torna tudo interessante. Sabemos, do estudo do momento angular, que a
-                    componente $z$ em coordenadas esféricas tem a forma notavelmente simples $\hat{L}_z = -i\hbar\,
-                    \partial/\partial\phi$, de onde $\partial/\partial\phi = (i/\hbar)\hat{L}_z$. Substituindo e
-                    exponenciando pelo mesmo argumento de composição usado nas translações:
+                <p>
+                    onde usamos o comutador $[\hat{L}_z, \hat{x}] = i\hbar\hat{y}$ (Equação 4.122 de Griffiths) e
+                    desprezamos termos de ordem $\delta^2$. Cálculos semelhantes mostram que $\hat{y}' = \hat{y} +
+                    \delta\hat{x}$ e $\hat{z}' = \hat{z}$. Podemos reunir esses resultados numa equação matricial:
                 </p>
 
-                <div class="definition-box">
-                    <p style="color: red;">
-                        $$ \hat{R}_z(\varepsilon) = 1 - \frac{i}{\hbar}\varepsilon \hat{L}_z
-                        \qquad \Longrightarrow \qquad
-                        \hat{R}_z(\varphi) = e^{-i\varphi \hat{L}_z/\hbar} $$
-                    </p>
-                    <p style="color: red;">
-                        <strong>$\hat{L}_z$ é o gerador das rotações em torno do eixo $z$.</strong>
-                    </p>
-                </div>
-
-                <p style="color: red;">
-                    O paralelo com o momento linear é perfeito e vale ser explicitado: assim como $\hat{p}$ deixou de
-                    ser "o operador $-i\hbar\,d/dx$" para se tornar <i>aquilo que desloca coisas</i>, o momento
-                    angular deixa de ser "$\hat{\mathbf{r}} \times \hat{\mathbf{p}}$" para se tornar <i>aquilo que
-                        gira coisas</i>.
-                </p>
-
-                <h3 id="spin-rotacoes">A Inclusão do Spin</h3>
-
-                <p style="color: red;">
-                    A construção acima girou a função de onda espacial. Mas uma partícula com spin carrega também
-                    uma orientação interna, que não está codificada em $\psi(\mathbf{r})$ e que obviamente deve girar
-                    junto quando giramos o sistema inteiro.
-                </p>
-
-                <p style="color: red;">
-                    A correção necessária é natural: o gerador da rotação completa é o momento angular
-                    <strong>total</strong>, $\hat{J}_z = \hat{L}_z + \hat{S}_z$, de modo que:
-                </p>
-
-                <p style="color: red;">
+                <p>
                     $$
-                    \begin{aligned}
-                    \hat{R}_z(\varphi) = e^{-i\varphi \hat{J}_z/\hbar}
-                    \end{aligned}
+                    \begin{pmatrix} \hat{x}' \\ \hat{y}' \\ \hat{z}' \end{pmatrix} =
+                    \begin{pmatrix} 1 & -\delta & 0 \\ \delta & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}
+                    \begin{pmatrix} \hat{x} \\ \hat{y} \\ \hat{z} \end{pmatrix}. \tag{6.30}
                     $$
                 </p>
 
-                <p style="color: red;">
-                    Essa extensão traz consigo uma das consequências mais contraintuitivas de toda a Mecânica
-                    Quântica. Apliquemos uma rotação completa, $\varphi = 2\pi$, a uma partícula de spin
-                    $\tfrac{1}{2}$ no estado $|\uparrow\rangle$. Como $\hat{S}_z|\uparrow\rangle =
-                    (\hbar/2)|\uparrow\rangle$, o operador atua sobre o autovalor:
+                <p>
+                    Isso não parece exatamente uma rotação. Não deveria ser
                 </p>
 
-                <p style="color: red;">
+                <p>
                     $$
-                    \begin{aligned}
-                    \hat{R}_z(2\pi)\, |\uparrow\rangle
-                    = e^{-i(2\pi)(\hbar/2)/\hbar}\, |\uparrow\rangle
-                    = e^{-i\pi}\, |\uparrow\rangle
-                    = -\, |\uparrow\rangle
-                    \end{aligned}
+                    \begin{pmatrix} \hat{x}' \\ \hat{y}' \\ \hat{z}' \end{pmatrix} =
+                    \begin{pmatrix} \cos\varphi & -\sin\varphi & 0 \\ \sin\varphi & \cos\varphi & 0 \\ 0 & 0 & 1
+                    \end{pmatrix}
+                    \begin{pmatrix} \hat{x} \\ \hat{y} \\ \hat{z} \end{pmatrix}\ ? \tag{6.31}
                     $$
                 </p>
 
-                <div class="definition-box">
-                    <p style="color: red;">
-                        Girar um férmion de $360^\circ$ <strong>não</strong> o devolve ao estado inicial: ele retorna
-                        com o sinal invertido. São necessários $720^\circ$ para restaurar o estado original.
-                    </p>
-                    <p style="color: red;">
-                        Não há aqui contradição observável, pois uma fase global $-1$ não afeta $|\psi|^2$. Mas em
-                        experimentos de interferência, em que se gira apenas um dos braços do aparato, a diferença de
-                        fase é <i>relativa</i> — e foi medida. Esta é, em última instância, a raiz geométrica da
-                        distinção entre bósons e férmions que postulamos em
-                        <a href="../Partículas Idênticas/Sistema de Duas partículas.html">partículas idênticas</a>.
-                    </p>
-                </div>
-
-                <h3 id="simetria-axial">Simetria Axial</h3>
-
-                <p style="color: red;">
-                    A condição de simetria segue o padrão já conhecido. Um sistema é invariante por rotações em torno
-                    de $z$ quando:
-                </p>
-
-                <p style="color: red;">
-                    $$
-                    \begin{aligned}
-                    \big[\hat{H}, \hat{R}_z(\varphi)\big] = 0 \ \ \forall \varphi
-                    \qquad \Longleftrightarrow \qquad
-                    \big[\hat{H}, \hat{J}_z\big] = 0
-                    \end{aligned}
-                    $$
-                </p>
-
-                <p style="color: red;">
-                    e pelo teorema de Noether, $J_z$ é então conservado. Fisicamente, isso ocorre sempre que o
-                    potencial tiver <strong>simetria axial</strong> — quando $V$ não depender de $\phi$. É o caso de
-                    um átomo imerso num campo magnético uniforme ao longo de $z$: o campo destrói a isotropia
-                    completa, mas preserva a simetria em torno de seu próprio eixo. Nesse sistema $J_z$ continua
-                    conservado, enquanto $J_x$ e $J_y$ deixam de ser.
+                <p>
+                    Sim — mas não esqueça que estamos supondo $\varphi \to \delta$ infinitesimal, de modo que
+                    (desprezando termos de ordem $\delta^2$ e superiores) $\cos\varphi \to 1$ e $\sin\varphi \to
+                    \delta$. O caminho inverso, do infinitesimal para o finito, é o assunto do Problema 6.14 de
+                    Griffiths: diagonalizando a matriz $\begin{pmatrix} 1 & -\varphi/N \\ \varphi/N & 1 \end{pmatrix}$ e
+                    tomando a $N$-ésima potência no limite $N \to \infty$, recupera-se a matriz da Equação 6.31.
                 </p>
 
                 <h2 id="rotacoes-3d">Rotações em Três Dimensões</h2>
 
-                <p style="color: red;">
-                    Nada há de especial no eixo $z$ — ele foi escolhido por conveniência de coordenadas. Uma rotação
-                    arbitrária é caracterizada por um eixo, dado por um versor $\hat{\mathbf{n}}$, e por um ângulo
-                    $\varphi$ em torno dele. Reunindo os dois num único vetor $\boldsymbol{\varphi} = \varphi\,
-                    \hat{\mathbf{n}}$, e repetindo o argumento para cada componente, obtemos:
+                <p>
+                    A Equação 6.29 se generaliza de modo óbvio para uma rotação em torno de um eixo ao longo do vetor
+                    unitário $\mathbf{n}$:
                 </p>
 
                 <div class="definition-box" style="border-left: 4px solid #45503B;">
-                    <p style="color: red;">
-                        $$ \hat{R}(\boldsymbol{\varphi}) = e^{-i\, \boldsymbol{\varphi} \cdot \hat{\mathbf{J}}/\hbar} $$
+                    <p>
+                        $$ \hat{R}_{\mathbf{n}}(\varphi) = \exp\left[ -\frac{i\varphi}{\hbar}\,\mathbf{n} \cdot
+                        \hat{\mathbf{L}} \right]. \tag{6.32} $$
                     </p>
-                    <p style="color: red;">
-                        O vetor momento angular $\hat{\mathbf{J}} = (\hat{J}_x, \hat{J}_y, \hat{J}_z)$ é o gerador
-                        das rotações no espaço tridimensional.
+                    <p>
+                        Assim como o momento linear é o gerador das translações, o <strong>momento angular é o gerador
+                            das rotações</strong>.
                     </p>
                 </div>
 
-                <h3 id="nao-comutatividade">O Grupo Não-Abeliano</h3>
+                <h3 id="operadores-vetoriais">Operadores Vetoriais e Escalares</h3>
 
-                <p style="color: red;">
-                    Aqui aparece a diferença essencial em relação às translações, e ela não é um detalhe técnico:
-                    <strong>rotações em torno de eixos diferentes não comutam</strong>.
+                <p>
+                    Qualquer operador (com três componentes) que se transforme sob rotações da mesma maneira que o
+                    operador posição é chamado de <strong>operador vetorial</strong>. Por "da mesma maneira" queremos
+                    dizer que $\hat{\mathbf{V}}' = \mathsf{D}\hat{\mathbf{V}}$, onde $\mathsf{D}$ é a mesma matriz que
+                    aparece em $\hat{\mathbf{r}}' = \mathsf{D}\hat{\mathbf{r}}$. Em particular, para uma rotação em torno
+                    do eixo $z$ teríamos (Equação 6.31)
                 </p>
 
-                <p style="color: red;">
-                    Isso pode ser verificado sem nenhuma matemática. Tome um livro sobre a mesa. Gire-o
-                    $90^\circ$ em torno do eixo vertical e depois $90^\circ$ em torno de um eixo horizontal; anote a
-                    orientação final. Agora recomece e execute as mesmas duas rotações na ordem inversa. O resultado
-                    é diferente. Translações não se comportam assim — andar três passos ao norte e dois a leste leva
-                    ao mesmo lugar que dois a leste e três ao norte.
-                </p>
-
-                <p style="color: red;">
-                    No formalismo, essa não-comutatividade está codificada nas relações de comutação do momento
-                    angular:
-                </p>
-
-                <p style="color: red;">
+                <p>
                     $$
-                    \begin{aligned}
-                    \big[\hat{J}_x, \hat{J}_y\big] = i\hbar \hat{J}_z, \qquad
-                    \big[\hat{J}_y, \hat{J}_z\big] = i\hbar \hat{J}_x, \qquad
-                    \big[\hat{J}_z, \hat{J}_x\big] = i\hbar \hat{J}_y
-                    \end{aligned}
+                    \begin{pmatrix} \hat{V}_x' \\ \hat{V}_y' \\ \hat{V}_z' \end{pmatrix} =
+                    \begin{pmatrix} \cos\varphi & -\sin\varphi & 0 \\ \sin\varphi & \cos\varphi & 0 \\ 0 & 0 & 1
+                    \end{pmatrix}
+                    \begin{pmatrix} \hat{V}_x \\ \hat{V}_y \\ \hat{V}_z \end{pmatrix}.
                     $$
                 </p>
 
-                <p style="color: red;">
-                    Compare com $[\hat{p}_x, \hat{p}_y] = 0$. As translações formam um grupo
-                    <strong>abeliano</strong>; as rotações formam um grupo <strong>não-abeliano</strong>, conhecido
-                    como $SO(3)$. E é exatamente dessa estrutura algébrica que decorre toda a fenomenologia do
-                    momento angular que estudamos anteriormente: a impossibilidade de medir simultaneamente as três
-                    componentes, a necessidade de rotular estados por $\hat{J}^2$ e uma única componente, a existência
-                    dos operadores escada e a quantização de $j$ em passos de $\tfrac{1}{2}$.
+                <p>
+                    Essa regra de transformação decorre das relações de comutação<sup id="fnref:1"><a href="#fn:1"
+                            class="footnote-ref">1</a></sup>
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p>
+                        $$ \left[\hat{L}_i, \hat{V}_j\right] = i\hbar\,\epsilon_{ijk}\,\hat{V}_k \tag{6.33} $$
+                    </p>
+                </div>
+
+                <p>
+                    (Problema 6.16 de Griffiths), e podemos tomar a Equação 6.33 como a <i>definição</i> de operador
+                    vetorial. Até aqui encontramos três desses operadores — $\hat{\mathbf{r}}$, $\hat{\mathbf{p}}$ e
+                    $\hat{\mathbf{L}}$:
+                </p>
+
+                <p>
+                    $$ \left[\hat{L}_i, \hat{r}_j\right] = i\hbar\,\epsilon_{ijk}\,\hat{r}_k, \qquad \left[\hat{L}_i,
+                    \hat{p}_j\right] = i\hbar\,\epsilon_{ijk}\,\hat{p}_k, \qquad \left[\hat{L}_i, \hat{L}_j\right] =
+                    i\hbar\,\epsilon_{ijk}\,\hat{L}_k $$
+                </p>
+
+                <p>
+                    (Equações 4.99 e 4.122 de Griffiths). Um <strong>operador escalar</strong> é uma única grandeza que
+                    não se altera por rotações; isso equivale a dizer que o operador comuta com $\hat{\mathbf{L}}$:
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p>
+                        $$ \left[\hat{L}_i, \hat{f}\right] = 0. \tag{6.34} $$
+                    </p>
+                </div>
+
+                <p>
+                    (De fato, se $\hat{f}$ comuta com $\hat{\mathbf{L}}$, comuta também com $\hat{R} =
+                    \exp[-i\varphi\,\mathbf{n}\cdot\hat{\mathbf{L}}/\hbar]$, e então $\hat{f}' = \hat{R}^\dagger \hat{f}
+                    \hat{R} = \hat{R}^\dagger\hat{R}\hat{f} = \hat{f}$ — Problema 6.15 de Griffiths.)
+                </p>
+
+                <p>
+                    Podemos agora classificar os operadores como escalares ou vetores, com base nas suas relações de
+                    comutação com $\hat{\mathbf{L}}$ (como se transformam sob uma rotação), e como grandezas
+                    "verdadeiras" ou "pseudo", com base nas suas relações com $\hat{\Pi}$ (como se transformam sob uma
+                    inversão espacial — veja <a href="Paridade.html#vetores-pseudovetores">Paridade</a>). O resultado é a
+                    Tabela 6.1 de Griffiths:<sup id="fnref:2"><a href="#fn:2" class="footnote-ref">2</a></sup>
                 </p>
 
                 <table>
                     <tr>
                         <th></th>
-                        <th>Translações</th>
+                        <th>Paridade</th>
                         <th>Rotações</th>
+                        <th>Exemplos</th>
                     </tr>
                     <tr>
-                        <td><strong>Gerador</strong></td>
-                        <td>$\hat{\mathbf{p}}$</td>
-                        <td>$\hat{\mathbf{J}}$</td>
+                        <td>Vetor verdadeiro $\hat{\mathbf{V}}$</td>
+                        <td>$\{\hat{\Pi}, \hat{V}_i\} = 0$</td>
+                        <td>$[\hat{L}_i, \hat{V}_j] = i\hbar\,\epsilon_{ijk}\hat{V}_k$</td>
+                        <td>$\hat{\mathbf{r}}$, $\hat{\mathbf{p}}$</td>
                     </tr>
                     <tr>
-                        <td><strong>Comutadores</strong></td>
-                        <td>$[\hat{p}_i, \hat{p}_j] = 0$</td>
-                        <td>$[\hat{J}_i, \hat{J}_j] = i\hbar\, \epsilon_{ijk}\hat{J}_k$</td>
+                        <td>Pseudovetor $\hat{\mathbf{V}}$</td>
+                        <td>$[\hat{\Pi}, \hat{V}_i] = 0$</td>
+                        <td>$[\hat{L}_i, \hat{V}_j] = i\hbar\,\epsilon_{ijk}\hat{V}_k$</td>
+                        <td>$\hat{\mathbf{L}}$</td>
                     </tr>
                     <tr>
-                        <td><strong>Grupo</strong></td>
-                        <td>Abeliano</td>
-                        <td>Não-abeliano, $SO(3)$</td>
+                        <td>Escalar verdadeiro $\hat{f}$</td>
+                        <td>$[\hat{\Pi}, \hat{f}] = 0$</td>
+                        <td>$[\hat{L}_i, \hat{f}] = 0$</td>
+                        <td>$\hat{\mathbf{r}}\cdot\hat{\mathbf{r}}$</td>
                     </tr>
                     <tr>
-                        <td><strong>Observáveis simultâneos</strong></td>
-                        <td>$p_x$, $p_y$, $p_z$</td>
-                        <td>$J^2$ e uma componente</td>
+                        <td>Pseudoescalar $\hat{f}$</td>
+                        <td>$\{\hat{\Pi}, \hat{f}\} = 0$</td>
+                        <td>$[\hat{L}_i, \hat{f}] = 0$</td>
+                        <td></td>
                     </tr>
                 </table>
 
-                <h3 id="potencial-central">Potenciais Centrais</h3>
-
-                <p style="color: red;">
-                    A simetria rotacional completa exige invariância sob rotações em torno de <i>qualquer</i> eixo, o
-                    que ocorre quando o potencial depende somente da distância à origem, $V(\mathbf{r}) = V(r)$ — um
-                    <strong>potencial central</strong>. Nesse caso, as três componentes comutam com o Hamiltoniano:
+                <p>
+                    As chaves na coluna da paridade denotam o anticomutador. Para incluir o spin $\hat{\mathbf{S}}$ nesta
+                    tabela, basta substituir $\hat{L}_i$, onde quer que apareça na coluna das rotações, por $\hat{J}_i =
+                    \hat{L}_i + \hat{S}_i$. O spin $\hat{\mathbf{S}}$, assim como $\hat{\mathbf{L}}$, é então um
+                    pseudovetor, e $\hat{\mathbf{p}}\cdot\hat{\mathbf{S}}$ é um pseudoescalar.
                 </p>
 
-                <p style="color: red;">
+                <h3 id="rotacao-estados">Rotação de Autoestados do Momento Angular</h3>
+
+                <p>
+                    O Problema 6.17 de Griffiths considera a ação de uma rotação infinitesimal em torno do eixo
+                    $\mathbf{n}$ sobre um autoestado do momento angular, $\psi_{n\ell m}$. O resultado tem a forma
+                </p>
+
+                <p>
+                    $$ \hat{R}_{\mathbf{n}}(\delta)\,\psi_{n\ell m} = \sum_{m'} D_{m'm}\,\psi_{n\ell m'}, $$
+                </p>
+
+                <p>
+                    com coeficientes $D_{m'm}$ que dependem de $\delta$, $\mathbf{n}$ e $\ell$, além de $m$ e $m'$. Isso
+                    faz sentido: uma rotação não altera o módulo do momento angular (especificado por $\ell$), mas altera
+                    a sua projeção ao longo do eixo $z$ (especificada por $m$).
+                </p>
+
+                <h3 id="rotacao-spin">Rotações de Spinores</h3>
+
+                <p>
+                    As rotações de estados de spin são dadas por uma expressão idêntica à Equação 6.32, com o spin no
+                    lugar do momento angular orbital (Problema 6.32 de Griffiths):
+                </p>
+
+                <p>
+                    $$ \mathsf{R}_{\mathbf{n}}(\varphi) = \exp\left[ -i\frac{\varphi}{\hbar}\,\mathbf{n}\cdot\mathsf{S}
+                    \right]. $$
+                </p>
+
+                <p>
+                    Para spin $1/2$, com $\mathsf{S} = (\hbar/2)\boldsymbol{\sigma}$ e usando a identidade
+                    $(\mathbf{a}\cdot\boldsymbol{\sigma})(\mathbf{b}\cdot\boldsymbol{\sigma}) = \mathbf{a}\cdot\mathbf{b} +
+                    i(\mathbf{a}\times\mathbf{b})\cdot\boldsymbol{\sigma}$ para as matrizes de Pauli, a exponencial se
+                    reduz a
+                </p>
+
+                <p>
+                    $$ \exp\left[ -i\frac{\varphi}{\hbar}\,\mathbf{n}\cdot\mathsf{S} \right] = \cos\left(
+                    \frac{\varphi}{2} \right) - i\sin\left( \frac{\varphi}{2} \right)\mathbf{n}\cdot\boldsymbol{\sigma},
                     $$
-                    \begin{aligned}
-                    \big[\hat{H}, \hat{\mathbf{J}}\big] = 0
-                    \qquad \text{e, consequentemente,} \qquad
-                    \big[\hat{H}, \hat{J}^2\big] = 0
-                    \end{aligned}
+                </p>
+
+                <p>
+                    que, na base padrão (spin para cima e para baixo ao longo de $z$), é a matriz
+                </p>
+
+                <p>
+                    $$ \mathsf{R}_{\mathbf{n}} = \cos\left( \frac{\varphi}{2} \right)\begin{pmatrix} 1 & 0 \\ 0 & 1
+                    \end{pmatrix} - i\sin\left( \frac{\varphi}{2} \right)\begin{pmatrix} \cos\theta & \sin\theta\,
+                    e^{-i\phi} \\ \sin\theta\, e^{i\phi} & -\cos\theta \end{pmatrix}, $$
+                </p>
+
+                <p>
+                    onde $\theta$ e $\phi$ são as coordenadas polares do vetor unitário $\mathbf{n}$ que define o eixo de
+                    rotação. Uma rotação de $\pi$ em torno do eixo $x$ transforma um spin para cima num spin para baixo.
+                    E há uma surpresa: para uma rotação completa, $\varphi = 2\pi$, os ângulos pela metade dão
+                    $\cos\pi = -1$ e $\sin\pi = 0$, de modo que
+                </p>
+
+                <p>
+                    $$ \mathsf{R}_{\mathbf{n}}(2\pi) = -\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}. $$
+                </p>
+
+                <p>
+                    Girar um spinor de $360^\circ$ <i>não</i> o devolve a ele mesmo, e sim a menos ele mesmo. Essa troca
+                    de sinal foi de fato medida experimentalmente.<sup id="fnref:3"><a href="#fn:3"
+                            class="footnote-ref">3</a></sup>
+                </p>
+
+                <h2 id="simetria-rotacional-continua">Simetria Rotacional Contínua</h2>
+
+                <p>
+                    Para uma partícula de massa $m$ num potencial $V(\mathbf{r})$, o Hamiltoniano
+                </p>
+
+                <p>
+                    $$ \hat{H} = \frac{\hat{p}^2}{2m} + V(\mathbf{r}) $$
+                </p>
+
+                <p>
+                    é rotacionalmente invariante se $V(\mathbf{r}) = V(r)$ — os potenciais centrais estudados na Seção
+                    4.1.1 de Griffiths. Nesse caso, o Hamiltoniano comuta com uma rotação por qualquer ângulo em torno
+                    de um eixo arbitrário:
+                </p>
+
+                <p>
+                    $$ \left[\hat{H}, \hat{R}_{\mathbf{n}}(\varphi)\right] = 0. \tag{6.35} $$
+                </p>
+
+                <p>
+                    Em particular, a Equação 6.35 precisa valer para uma rotação <i>infinitesimal</i>,
+                </p>
+
+                <p>
+                    $$ \hat{R}_{\mathbf{n}}(\delta) \approx 1 - i\frac{\delta}{\hbar}\,\mathbf{n}\cdot\hat{\mathbf{L}},
                     $$
                 </p>
 
-                <p style="color: red;">
-                    Todas as componentes do momento angular são conservadas, além de seu módulo quadrado. Note,
-                    porém, uma assimetria importante em relação ao caso das translações: embora todas as componentes
-                    sejam conservadas, elas não comutam entre si, e portanto <strong>não podem ser especificadas
-                        simultaneamente</strong>. O melhor que se pode fazer é rotular os estados por $\hat{J}^2$ e
-                    uma componente, o que produz a familiar notação $|j, m\rangle$ e explica por que a base natural do
-                    átomo de hidrogênio é $\psi_{n\ell m}$.
+                <p>
+                    o que significa que o Hamiltoniano comuta com as três componentes de $\hat{\mathbf{L}}$:
                 </p>
 
-                <p style="color: red;">
-                    Vale registrar uma sutileza relevante para átomos reais. Quando não há acoplamento spin-órbita,
-                    $\hat{\mathbf{L}}$ e $\hat{\mathbf{S}}$ são conservados separadamente. Mas o termo de acoplamento
-                    $\propto \hat{\mathbf{L}} \cdot \hat{\mathbf{S}}$ quebra essa separação: ele não comuta com
-                    $\hat{\mathbf{L}}$ nem com $\hat{\mathbf{S}}$ isoladamente, apenas com a soma $\hat{\mathbf{J}} =
-                    \hat{\mathbf{L}} + \hat{\mathbf{S}}$. Reencontramos aqui, agora justificada por simetria, a razão
-                    pela qual a terceira das <a href="../Partículas Idênticas/Átomos.html">regras de Hund</a>
-                    classifica os estados atômicos por $J$, e não por $L$ e $S$ separadamente.
+                <p>
+                    $$ \left[\hat{H}, \hat{\mathbf{L}}\right] = \mathbf{0}. \tag{6.36} $$
                 </p>
 
-                <h3 id="regras-rotacionais">Fechando a Regra de Seleção</h3>
-
-                <p style="color: red;">
-                    Podemos agora honrar a promessa deixada em aberto no tópico de
-                    <a href="Paridade.html">Paridade</a>. Lá concluímos que transições de dipolo elétrico exigem
-                    $\Delta\ell$ ímpar, o que ainda permitiria $\Delta\ell = \pm 3$, $\pm 5$, e assim por diante.
-                </p>
-
-                <p style="color: red;">
-                    O argumento que falta vem da simetria rotacional. O operador de dipolo é proporcional a
-                    $\hat{\mathbf{r}}$, que é um <strong>vetor</strong> — e um vetor carrega momento angular $1$ sob
-                    rotações. Ao conectar um estado de momento angular $\ell_1$ a outro de momento angular $\ell_2$,
-                    o elemento de matriz só pode ser não-nulo se as regras de composição de momento angular
-                    permitirem que $\ell_2$ resulte de acoplar $\ell_1$ com $1$. Isso restringe $\ell_2$ a
-                    $\ell_1 - 1$, $\ell_1$ ou $\ell_1 + 1$ — e a paridade já havia eliminado $\Delta\ell = 0$.
+                <p>
+                    Quais são, então, as consequências da invariância rotacional? Da Equação 6.36 e do teorema de
+                    Ehrenfest,
                 </p>
 
                 <div class="definition-box" style="border-left: 4px solid #45503B;">
-                    <p style="color: red;">
-                        <strong>Regras de seleção de dipolo elétrico:</strong>
+                    <p>
+                        $$ \frac{d}{dt}\langle \mathbf{L} \rangle = \frac{i}{\hbar}\left\langle \left[\hat{H},
+                        \hat{\mathbf{L}}\right] \right\rangle = \mathbf{0} \tag{6.37} $$
                     </p>
-                    <p style="color: red;">
-                        $$ \Delta\ell = \pm 1, \qquad \Delta m = 0,\, \pm 1 $$
-                    </p>
-                    <p style="color: red;">
-                        A primeira resulta da combinação entre paridade e momento angular; a segunda, da conservação
-                        da componente $z$ — o fóton carrega uma unidade de momento angular, cuja projeção vale $0$ ou
-                        $\pm 1$.
+                    <p>
+                        para um potencial central. Assim, <strong><i>a conservação do momento angular é uma consequência
+                                da invariância rotacional</i></strong>.
                     </p>
                 </div>
 
-                <p style="color: red;">
-                    Duas simetrias, atuando em conjunto, determinaram completamente quais linhas espectrais existem —
-                    sem que nenhuma integral tenha sido calculada. Resta explorar a última consequência estrutural da
-                    simetria, talvez a mais visível de todas: a <a href="Degenerescência.html">degenerescência</a> dos
-                    níveis de energia.
+                <p>
+                    E, além da afirmação 6.37, a conservação do momento angular significa que as distribuições de
+                    probabilidade (para cada componente do momento angular) também são independentes do tempo — veja
+                    <a href="Leis de Conservação.html#segunda-definicao">Leis de Conservação</a>.
                 </p>
+
+                <h3 id="observaveis-compativeis">Um Conjunto Completo de Observáveis Compatíveis</h3>
+
+                <p>
+                    Como o Hamiltoniano de um potencial central comuta com as três componentes do momento angular, ele
+                    comuta também com $\hat{L}^2$. Os operadores $\hat{H}$, $\hat{L}_z$ e $\hat{L}^2$ formam um
+                    <strong>conjunto completo de observáveis compatíveis</strong> para os estados ligados de um potencial
+                    central. "Compatíveis" significa que eles comutam dois a dois,
+                </p>
+
+                <p>
+                    $$
+                    \left[\hat{H}, \hat{L}^2\right] = 0, \qquad
+                    \left[\hat{H}, \hat{L}_z\right] = 0, \qquad
+                    \left[\hat{L}_z, \hat{L}^2\right] = 0, \tag{6.38}
+                    $$
+                </p>
+
+                <p>
+                    de modo que os autoestados de $\hat{H}$ podem ser escolhidos como autoestados simultâneos de
+                    $\hat{L}^2$ e $\hat{L}_z$:
+                </p>
+
+                <p>
+                    $$ \hat{H}\psi_{n\ell m} = E_n\psi_{n\ell m}, \qquad \hat{L}_z\psi_{n\ell m} = m\hbar\,\psi_{n\ell
+                    m}, \qquad \hat{L}^2\psi_{n\ell m} = \ell(\ell + 1)\hbar^2\,\psi_{n\ell m}. $$
+                </p>
+
+                <p>
+                    Dizer que eles são "completos" significa que os números quânticos $n$, $\ell$ e $m$ especificam de
+                    forma única um estado ligado do Hamiltoniano. Isso é familiar das soluções do átomo de hidrogênio,
+                    do poço esférico infinito e do oscilador harmônico tridimensional, mas vale para <i>qualquer</i>
+                    potencial central.<sup id="fnref:4"><a href="#fn:4" class="footnote-ref">4</a></sup>
+                </p>
+
+                <p>
+                    Note uma diferença importante em relação às translações. Duas translações sempre comutam
+                    ($\hat{T}(a)\hat{T}(b) = \hat{T}(a + b) = \hat{T}(b)\hat{T}(a)$), assim como as componentes do
+                    momento que as geram. Já as rotações em torno de eixos diferentes <i>não</i> comutam, pois as
+                    componentes do momento angular não comutam entre si: $[\hat{L}_x, \hat{L}_y] = i\hbar\hat{L}_z$. Por
+                    isso as três componentes de $\hat{\mathbf{L}}$ são conservadas num potencial central, mas não podem
+                    ser especificadas simultaneamente — e, como veremos em <a
+                        href="Degenerescência.html">Degenerescência</a>, é justamente essa não comutatividade que torna
+                    inevitável a degenerescência dos níveis de energia.
+                </p>
+
+                <h3 id="problemas">Problemas Relacionados</h3>
+
+                <ul>
+                    <li><strong>6.14:</strong> da rotação infinitesimal (6.30) à finita (6.31).</li>
+                    <li><strong>6.15–6.16:</strong> escalares não se alteram por rotações; a matriz $\mathsf{D}$ de uma
+                        rotação infinitesimal em torno do eixo $y$.</li>
+                    <li><strong>6.17:</strong> rotação infinitesimal de um autoestado $\psi_{n\ell m}$.</li>
+                    <li><strong>6.19:</strong> operadores de subida e descida $\hat{V}_\pm = \hat{V}_x \pm i\hat{V}_y$
+                        para qualquer operador vetorial.</li>
+                    <li><strong>6.32:</strong> rotações de estados de spin $1/2$.</li>
+                </ul>
+
+                <hr class="footnotes-sep">
+                <section class="footnotes">
+                    <ol>
+                        <li id="fn:1">
+                            <p>O símbolo de Levi-Civita $\epsilon_{ijk}$ é definido no Problema 4.29 de Griffiths (vale
+                                $+1$ para permutações pares de $xyz$, $-1$ para permutações ímpares e $0$ se algum índice
+                                se repete); a soma sobre o índice repetido $k$ está subentendida.<a href="#fnref:1"
+                                    class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:2">
+                            <p>É claro que nem todo operador se encaixa numa dessas categorias. Operadores escalares e
+                                vetoriais são apenas os dois primeiros casos de uma hierarquia de <strong>operadores
+                                    tensoriais</strong>. Em seguida vêm os tensores de segunda ordem (o tensor de inércia da
+                                mecânica clássica e o tensor de quadrupolo da eletrodinâmica são exemplos), os de terceira
+                                ordem, e assim por diante.<a href="#fnref:2" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:3">
+                            <p>Para uma discussão de como essa troca de sinal é de fato <i>medida</i>, veja S. A. Werner
+                                <i>et al.</i>, <i>Phys. Rev. Lett.</i> <b>35</b>, 1053 (1975).<a href="#fnref:3"
+                                    class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:4">
+                            <p>Isso decorre do fato de a equação radial (Equação 4.35 de Griffiths) ter no máximo uma
+                                solução normalizável: uma vez especificados $\ell$ e $m$, a energia determina o estado de
+                                forma única. O número quântico principal $n$ indexa as energias que levam a soluções
+                                normalizáveis.<a href="#fnref:4" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                    </ol>
+                </section>
 
             </div>
         </main>
@@ -456,18 +578,24 @@
                 <ul>
                     <li><a href="#simetrias-de-rotacao">Simetrias de Rotação</a></li>
                     <li>
-                        <a href="#rotacoes-z">Rotações em Torno do Eixo z</a>
+                        <a href="#rotacoes-z">Rotações em Torno de z</a>
                         <ul>
-                            <li><a href="#spin-rotacoes">A Inclusão do Spin</a></li>
-                            <li><a href="#simetria-axial">Simetria Axial</a></li>
+                            <li><a href="#transformacao-r-p">Transformação de r e p</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="#rotacoes-3d">Rotações em Três Dimensões</a>
                         <ul>
-                            <li><a href="#nao-comutatividade">O Grupo Não-Abeliano</a></li>
-                            <li><a href="#potencial-central">Potenciais Centrais</a></li>
-                            <li><a href="#regras-rotacionais">Fechando a Regra de Seleção</a></li>
+                            <li><a href="#operadores-vetoriais">Operadores Vetoriais e Escalares</a></li>
+                            <li><a href="#rotacao-estados">Rotação de Autoestados</a></li>
+                            <li><a href="#rotacao-spin">Rotações de Spinores</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#simetria-rotacional-continua">Simetria Rotacional Contínua</a>
+                        <ul>
+                            <li><a href="#observaveis-compativeis">Observáveis Compatíveis</a></li>
+                            <li><a href="#problemas">Problemas Relacionados</a></li>
                         </ul>
                     </li>
                 </ul>
