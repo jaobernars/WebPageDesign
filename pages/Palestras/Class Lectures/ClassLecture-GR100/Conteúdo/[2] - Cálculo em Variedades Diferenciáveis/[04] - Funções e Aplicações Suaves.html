@@ -151,7 +151,1118 @@
                 <h1 id="funcoes-e-aplicacoes-suaves">3.4 Funções e Aplicações Suaves</h1>
                 <p class="lead">Funções suaves em uma variedade, aplicações suaves entre variedades, difeomorfismos, funções bump e partições da unidade.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>
+                    Uma estrutura diferenciável existe para que a palavra "suave" faça sentido. No
+                    <a href="[03] - Variedades Diferenciáveis.html">tópico 3.3</a> exigimos que as mudanças de
+                    coordenadas fossem suaves, e a justificativa, antecipada na
+                    <a href="[03] - Variedades Diferenciáveis.html#atlas">seção sobre atlas</a>, foi que isso tornaria a
+                    suavidade de uma função independente da carta usada para testá-la. Este tópico tira a
+                    consequência: define funções suaves $f: M \to \mathbb{R}$, aplicações suaves
+                    $F: M \to N$ entre variedades e difeomorfismos, que são os isomorfismos da teoria.
+                </p>
+
+                <p>
+                    Na segunda metade, mostramos uma propriedade que distingue as funções suaves das funções
+                    analíticas e que será usada em todo o restante do capítulo: elas podem ser "ligadas e
+                    desligadas" à vontade. Existem funções suaves que valem $1$ perto de um ponto e se anulam fora
+                    de uma vizinhança dele, e delas se obtêm as <em>partições da unidade</em>. Uma partição da
+                    unidade é a ferramenta que permite passar do local ao global: construir, a partir de objetos
+                    definidos em cartas, um objeto definido na variedade inteira. Ela aparecerá na definição da
+                    integral (tópico 3.17) e na última etapa da demonstração do Teorema de Stokes (tópico 3.18).
+                </p>
+
+                <h2 id="funcoes-suaves">Funções suaves em uma variedade</h2>
+
+                <p>
+                    Seja $M$ uma variedade diferenciável de dimensão $n$. Dada uma função
+                    $f: M \to \mathbb{R}^k$ e uma carta $(U,\varphi)$, a função $f$ restrita a $U$ não tem, a
+                    princípio, nenhuma estrutura de cálculo; mas a composta
+                    $f\circ\varphi^{-1}: \varphi(U) \to \mathbb{R}^k$ é uma função em um aberto de
+                    $\mathbb{R}^n$, para a qual a palavra "suave" já tem sentido
+                    (<a href="[02] - Preliminares de Topologia e Cálculo.html#def-3-2-43">Definição 3.2.43</a>). Dizemos que $f$ é suave quando essa
+                    composta é suave.
+                </p>
+
+                <div class="definition-box" id="def-3-4-1" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.4.1 (Função suave).</strong> Seja $M$ uma variedade diferenciável. Uma
+                        função $f: M \to \mathbb{R}^k$ é <strong>suave</strong> se todo $p \in M$ está no domínio
+                        de uma carta $(U,\varphi)$ tal que $f\circ\varphi^{-1}: \varphi(U) \to \mathbb{R}^k$ é
+                        suave. O conjunto das funções suaves $f: M \to \mathbb{R}$ é denotado
+                        $C^\infty(M)$.</p>
+                </div>
+
+                <p>
+                    A definição pede a existência de <em>uma</em> carta em torno de cada ponto, o que é
+                    fácil de verificar. O resultado seguinte mostra que então vale para <em>todas</em> as cartas,
+                    o que é o que se usa nas contas, e é aqui que a compatibilidade das cartas é consumida.
+                </p>
+
+                <div class="definition-box" id="prop-3-4-2">
+                    <p><strong>Proposição 3.4.2 (A suavidade não depende da carta).</strong> Seja
+                        $f: M \to \mathbb{R}^k$ uma função suave. Então: (a) para toda carta $(V,\psi)$ de $M$, a
+                        função $f\circ\psi^{-1}: \psi(V) \to \mathbb{R}^k$ é suave; (b) $f$ é contínua.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Seja $y \in \psi(V)$ e $p = \psi^{-1}(y)$. Escolha uma carta
+                    $(U,\varphi)$ com $p \in U$ e $f\circ\varphi^{-1}$ suave. Em $\psi(U \cap V)$, que é um aberto
+                    de $\mathbb{R}^n$ contendo $y$, vale
+                </p>
+
+                <p>
+                    $$ f\circ\psi^{-1} = \big(f\circ\varphi^{-1}\big)\circ\big(\varphi\circ\psi^{-1}\big), $$
+                </p>
+
+                <p>
+                    em que $\varphi\circ\psi^{-1}: \psi(U\cap V) \to \varphi(U\cap V)$ é suave porque as cartas são
+                    suavemente compatíveis (<a href="[03] - Variedades Diferenciáveis.html#def-3-3-8">Definição 3.3.8</a>), e $f\circ\varphi^{-1}$ é suave em $\varphi(U)$. A
+                    composta de aplicações suaves é suave
+                    (<a href="[02] - Preliminares de Topologia e Cálculo.html#cor-3-2-47">Corolário 3.2.47</a>); logo $f\circ\psi^{-1}$ é suave em uma
+                    vizinhança de cada ponto de $\psi(V)$, e portanto em $\psi(V)$.
+                </p>
+
+                <p>
+                    (b) Com $(U,\varphi)$ como acima, $f\vert_U = (f\circ\varphi^{-1})\circ\varphi$ é a composta
+                    de duas aplicações contínuas (uma função suave é diferenciável, logo contínua:
+                    <a href="[02] - Preliminares de Topologia e Cálculo.html#prop-3-2-41">Proposição 3.2.41</a>). Assim $f$ é contínua em cada aberto $U$ de uma
+                    cobertura de $M$, e portanto contínua. $\blacksquare$
+                </p>
+
+                <p id="obs-3-4-3"><strong>Observação 3.4.3 (Representação em coordenadas).</strong> Dada uma carta
+                    $(U,\varphi)$, a função $\hat{f} = f\circ\varphi^{-1}: \varphi(U) \to \mathbb{R}$ é a
+                    <strong>representação de $f$ em coordenadas</strong>. Como $\varphi(p) = (x^1(p),\dots,x^n(p))$,
+                    vale $f(p) = \hat{f}(x^1(p),\dots,x^n(p))$, e é costume cometer o abuso de notação de escrever
+                    $f(x^1,\dots,x^n)$ no lugar de $\hat{f}(x^1,\dots,x^n)$, identificando o ponto $p$ com suas
+                    coordenadas (como em "o ponto $(x^1,\dots,x^n)$"). Com esse abuso, a Proposição 3.4.2 diz que
+                    $f(x^1,\dots,x^n)$ é uma função suave das coordenadas em <em>qualquer</em> sistema de
+                    coordenadas, e a regra de mudança de coordenadas é a composição
+                    $\hat{f}_\psi = \hat{f}_\varphi\circ(\varphi\circ\psi^{-1})$. O abuso é cômodo e seguro desde que
+                    se lembre de qual carta está em uso.</p>
+
+                <div class="definition-box" id="prop-3-4-4">
+                    <p><strong>Proposição 3.4.4 ($C^\infty(M)$ é uma álgebra).</strong> Se $f,g \in C^\infty(M)$ e
+                        $c \in \mathbb{R}$, então $f+g$, $cf$ e $fg$, definidas ponto a ponto, pertencem a
+                        $C^\infty(M)$, assim como as funções constantes. Com essas operações, $C^\infty(M)$ é uma
+                        álgebra comutativa com unidade (a função constante $1$) sobre $\mathbb{R}$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Seja $(U,\varphi)$ uma carta qualquer. Pela Proposição 3.4.2, $f\circ\varphi^{-1}$ e
+                    $g\circ\varphi^{-1}$ são suaves em $\varphi(U)$, e
+                    $(f+g)\circ\varphi^{-1} = f\circ\varphi^{-1} + g\circ\varphi^{-1}$,
+                    $(cf)\circ\varphi^{-1} = c\,(f\circ\varphi^{-1})$ e
+                    $(fg)\circ\varphi^{-1} = (f\circ\varphi^{-1})(g\circ\varphi^{-1})$ são suaves, pelas regras de
+                    derivação da soma e do produto
+                    (<a href="[02] - Preliminares de Topologia e Cálculo.html#def-3-2-43">Definição 3.2.43</a>). Uma constante $c$ tem representação constante,
+                    que é suave. Os axiomas de álgebra comutativa com unidade (associatividade, comutatividade,
+                    distributividade) valem ponto a ponto, porque valem em $\mathbb{R}$. $\blacksquare$
+                </p>
+
+                <p id="ex-3-4-5"><strong>Exemplo 3.4.5 (Funções coordenadas).</strong> Se $(U,\varphi)$ é uma carta,
+                    cada função coordenada $x^i = \pi^i\circ\varphi: U \to \mathbb{R}$ pertence a
+                    $C^\infty(U)$, em que $U$ é considerado como variedade aberta
+                    (<a href="[03] - Variedades Diferenciáveis.html#ex-3-3-18">Exemplo 3.3.18</a>). De fato, em relação à própria carta
+                    $(U,\varphi)$, a representação é $x^i\circ\varphi^{-1} = \pi^i$, uma função linear, logo
+                    suave. Ou seja, as coordenadas são, elas mesmas, funções suaves, e é isso que justifica
+                    chamá-las "coordenadas suaves".</p>
+
+                <p id="ex-3-4-6"><strong>Exemplo 3.4.6 (Restrições a $S^n$).</strong> Seja $G: \mathbb{R}^{n+1} \to \mathbb{R}^k$
+                    uma função suave no sentido do cálculo. Então a restrição $g = G\vert_{S^n}$ é suave.
+                    Para verificar, usamos o atlas estereográfico do
+                    <a href="[03] - Variedades Diferenciáveis.html#ex-3-3-23">Exemplo 3.3.23</a>: todo ponto de $S^n$ está em $U_N$ ou em
+                    $U_S$, e $g\circ\sigma_N^{-1} = G\circ\sigma_N^{-1}$ é a composta da aplicação suave
+                    $\sigma_N^{-1}: \mathbb{R}^n \to \mathbb{R}^{n+1}$ (racional, com denominador positivo, por (3.3.3))
+                    com $G$, logo suave. O mesmo vale para $\sigma_S^{-1}$. O caso mais simples é a
+                    <strong>função altura</strong> $G(x) = x^{n+1}$: sua representação na carta $\sigma_N$ é
+                    $\hat{g}(u) = (\lvert u\rvert^2 - 1)/(\lvert u\rvert^2+1)$, calculada no
+                    <a href="#exr-3-4-1">Exercício 3.4.1</a>. Funções como $x^1x^2$, $\lvert x - a\rvert^2$ ou
+                    $e^{x^3}$, restritas a $S^n$, são exemplos de elementos de $C^\infty(S^n)$.</p>
+
+                <h2 id="aplicacoes-suaves">Aplicações suaves entre variedades</h2>
+
+                <p>
+                    Para aplicações $F: M \to N$ entre variedades, usamos uma carta em cada lado: a
+                    representação em coordenadas de $F$ é a aplicação entre abertos de espaços euclidianos que
+                    se obtém descendo para $\mathbb{R}^n$ pela carta de $M$, aplicando $F$, e subindo para
+                    $\mathbb{R}^m$ pela carta de $N$.
+                </p>
+
+                <div class="definition-box" id="def-3-4-7" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.4.7 (Aplicação suave).</strong> Sejam $M$ e $N$ variedades diferenciáveis
+                        de dimensões $n$ e $m$. Uma aplicação $F: M \to N$ é <strong>suave</strong> se todo
+                        $p \in M$ está no domínio de uma carta $(U,\varphi)$ de $M$ e $F(p)$ no de uma carta
+                        $(V,\psi)$ de $N$ tais que $F(U) \subset V$ e a <strong>representação em coordenadas</strong></p>
+                    <p>$$ \hat{F} = \psi\circ F\circ\varphi^{-1}: \varphi(U) \longrightarrow \psi(V) $$</p>
+                    <p>é suave no sentido do cálculo em $\mathbb{R}^n$.</p>
+                </div>
+
+                <figure class="lecture-figure" id="fig-3-4-1">
+                    <svg viewBox="0 0 640 322" role="img" aria-label="Diagrama com quatro objetos. Em cima, à esquerda, a variedade M com um disco U que contém um ponto p; em cima, à direita, a variedade N com um disco V que contém o ponto F de p. Uma seta rotulada F vai de M a N, com a indicação de que F de U está contido em V. Embaixo, dois quadros: à esquerda R^n com o disco phi de U e o ponto phi de p; à direita R^m com o disco psi de V e o ponto psi de F de p. Duas setas verticais, rotuladas phi e psi, descem das variedades para os quadros, e uma seta horizontal embaixo, rotulada F chapéu igual a psi composta com F composta com phi inversa, liga os dois quadros.">
+<defs><marker id="arr-3-4-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<path d="M 40,92 C 36,40 84,16 136,20 C 190,18 226,52 226,96 C 228,140 186,166 130,164 C 76,168 44,140 40,92 Z" class="fig-frame"/>
+<path d="M 416,92 C 412,40 460,16 512,20 C 566,18 602,52 602,96 C 604,140 562,166 506,164 C 452,168 420,140 416,92 Z" class="fig-frame"/>
+<text x="54" y="44" class="fig-label fig-it">M</text>
+<text x="430" y="44" class="fig-label fig-it">N</text>
+<circle cx="112" cy="96" r="42" class="fig-shape"/>
+<circle cx="488" cy="96" r="50" class="fig-shape"/>
+<text x="84" y="70" class="fig-label fig-it">U</text>
+<text x="520" y="66" class="fig-label fig-it">V</text>
+<circle cx="112" cy="100" r="3.5" class="fig-arrowhead"/>
+<text x="104" y="120" class="fig-label fig-small fig-it">p</text>
+<circle cx="484" cy="104" r="3.5" class="fig-arrowhead"/>
+<text x="494" y="126" class="fig-label fig-small fig-it">F(p)</text>
+<line x1="236" y1="92" x2="408" y2="92" class="fig-curve" marker-end="url(#arr-3-4-1)"/>
+<text x="322" y="80" text-anchor="middle" class="fig-label fig-it">F</text>
+<text x="322" y="114" text-anchor="middle" class="fig-label fig-small fig-it">F(U) ⊂ V</text>
+<rect x="40" y="214" width="186" height="94" rx="4" class="fig-frame"/>
+<rect x="416" y="214" width="186" height="94" rx="4" class="fig-frame"/>
+<text x="216" y="234" text-anchor="end" class="fig-label fig-it">ℝⁿ</text>
+<text x="592" y="234" text-anchor="end" class="fig-label fig-it">ℝᵐ</text>
+<circle cx="122" cy="264" r="32" class="fig-shape"/>
+<circle cx="500" cy="264" r="38" class="fig-shape"/>
+<text x="122" y="246" text-anchor="middle" class="fig-label fig-small fig-it">φ(U)</text>
+<text x="500" y="244" text-anchor="middle" class="fig-label fig-small fig-it">ψ(V)</text>
+<circle cx="122" cy="270" r="3.5" class="fig-arrowhead"/>
+<text x="130" y="290" class="fig-label fig-small fig-it">φ(p)</text>
+<circle cx="496" cy="274" r="3.5" class="fig-arrowhead"/>
+<text x="506" y="296" class="fig-label fig-small fig-it">ψ(F(p))</text>
+<line x1="236" y1="262" x2="408" y2="262" class="fig-curve" marker-end="url(#arr-3-4-1)"/>
+<text x="322" y="250" text-anchor="middle" class="fig-label fig-it">F̂ = ψ∘F∘φ⁻¹</text>
+<line x1="112" y1="170" x2="112" y2="208" class="fig-curve" marker-end="url(#arr-3-4-1)"/>
+<text x="122" y="194" class="fig-label fig-it">φ</text>
+<line x1="488" y1="170" x2="488" y2="208" class="fig-curve" marker-end="url(#arr-3-4-1)"/>
+<text x="498" y="194" class="fig-label fig-it">ψ</text>
+</svg>
+                    <figcaption><strong>Figura 3.4.1.</strong> A representação em coordenadas
+                        $\hat{F} = \psi\circ F\circ\varphi^{-1}$ de uma aplicação $F: M \to N$. A exigência
+                        $F(U) \subset V$ garante que $\hat{F}$ esteja definida em todo o aberto $\varphi(U)$ e
+                        que o diagrama "comute": percorrer a linha de baixo equivale a descer pelas cartas,
+                        aplicar $F$ em cima e subir.</figcaption>
+                </figure>
+
+                <p id="obs-3-4-8"><strong>Observação 3.4.8 (Sobre a definição).</strong></p>
+
+                <ul>
+                    <li><strong>Por que $F(U)\subset V$.</strong> Sem essa condição, $\psi\circ F\circ\varphi^{-1}$ só
+                        estaria definida no conjunto de pontos $x \in \varphi(U)$ tais que $F(\varphi^{-1}(x)) \in V$,
+                        que pode não ser aberto se $F$ não for contínua, e "suave" não teria sentido em um
+                        conjunto que não é aberto. Exigindo $F(U) \subset V$, o domínio de $\hat{F}$ é o aberto
+                        $\varphi(U)$ por construção, e a continuidade de $F$ deixa de ser uma hipótese: é uma
+                        consequência (Proposição 3.4.9).</li>
+                    <li><strong>Funções são o caso $N = \mathbb{R}^k$.</strong> Se $N = \mathbb{R}^k$ com a carta
+                        identidade, $F(U) \subset V = \mathbb{R}^k$ é automático e $\hat{F} = F\circ\varphi^{-1}$.
+                        Portanto a Definição 3.4.7 contém a Definição 3.4.1 como caso particular.</li>
+                    <li><strong>Abertos do espaço euclidiano.</strong> Se $M \subset \mathbb{R}^n$ e
+                        $N \subset \mathbb{R}^m$ são abertos, com a estrutura usual, uma aplicação
+                        $F: M \to N$ é suave no sentido da Definição 3.4.7 se, e somente se, é suave no sentido do
+                        cálculo. De fato, se $F$ é suave no sentido do cálculo, as cartas identidade servem; a
+                        recíproca segue da Proposição 3.4.10 aplicada às cartas identidade.</li>
+                </ul>
+
+                <p>
+                    Como na Proposição 3.4.2, a definição pede a existência de cartas boas em torno de cada ponto,
+                    e o resultado seguinte permite usar quaisquer cartas. Primeiro, a continuidade.
+                </p>
+
+                <div class="definition-box" id="prop-3-4-9">
+                    <p><strong>Proposição 3.4.9 (Suave implica contínua).</strong> Toda aplicação suave
+                        $F: M \to N$ é contínua.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Dado $p \in M$, tome cartas $(U,\varphi)$ e $(V,\psi)$ como na
+                    Definição 3.4.7. Como $F(U) \subset V$, vale $F\vert_U = \psi^{-1}\circ\hat{F}\circ\varphi$,
+                    composta de aplicações contínuas ($\varphi$ e $\psi^{-1}$ são homeomorfismos e $\hat{F}$ é
+                    suave, logo contínua). Assim $F$ é contínua em cada aberto $U$ de uma cobertura de $M$ e,
+                    portanto, contínua. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="prop-3-4-10">
+                    <p><strong>Proposição 3.4.10 (A representação em quaisquer cartas é suave).</strong> Seja
+                        $F: M \to N$ suave e sejam $(U',\varphi')$ e $(V',\psi')$ cartas quaisquer de $M$ e de
+                        $N$. Então $O = U' \cap F^{-1}(V')$ é aberto, $\varphi'(O)$ é aberto em $\mathbb{R}^n$ e
+                        $\psi'\circ F\circ\varphi'^{-1}: \varphi'(O) \to \mathbb{R}^m$ é suave.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> O conjunto $O$ é aberto porque $F$ é contínua (Proposição 3.4.9), e
+                    $\varphi'(O)$ é aberto porque $\varphi'$ é um homeomorfismo sobre um aberto. Seja
+                    $x \in \varphi'(O)$ e $p = \varphi'^{-1}(x)$. Tome cartas $(U,\varphi)$ e $(V,\psi)$, como na
+                    Definição 3.4.7, com $p \in U$, $F(p) \in V$ e $F(U) \subset V$. Na vizinhança
+                    $\varphi'(O \cap U)$ de $x$, temos
+                </p>
+
+                <p>
+                    $$ \psi'\circ F\circ\varphi'^{-1} = \big(\psi'\circ\psi^{-1}\big)\circ\big(\psi\circ F\circ\varphi^{-1}\big)\circ\big(\varphi\circ\varphi'^{-1}\big). $$
+                </p>
+
+                <p>
+                    O primeiro e o terceiro fatores são aplicações de transição, suaves pela compatibilidade das
+                    cartas; o do meio é $\hat{F}$, suave por hipótese. Cada um está definido onde o seguinte
+                    toma valores, pois $\varphi\circ\varphi'^{-1}$ leva $\varphi'(O\cap U)$ em $\varphi(U)$ e
+                    $\hat{F}$ leva pontos de $\varphi(U)$ em $\psi(F(U)) \subset \psi(V\cap V')$ quando o ponto
+                    corresponde a um elemento de $O$. A composta de suaves é suave, e a suavidade é local.
+                    $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="prop-3-4-11">
+                    <p><strong>Proposição 3.4.11 (A suavidade é local).</strong> Uma aplicação $F: M \to N$ é suave
+                        se, e somente se, todo ponto de $M$ tem uma vizinhança aberta $W$ tal que a restrição
+                        $F\vert_W: W \to N$ é suave, em que $W$ é considerada com a estrutura de aberto de $M$
+                        (<a href="[03] - Variedades Diferenciáveis.html#ex-3-3-18">Exemplo 3.3.18</a>).</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> As cartas de $W$ são as cartas de $M$ com domínio contido em $W$
+                    (restrições de cartas, <a href="[03] - Variedades Diferenciáveis.html#obs-3-3-14">Observação 3.3.14</a>). ($\Rightarrow$) Dado $p$, tome $W = U$, o domínio
+                    de uma carta $(U,\varphi)$ como na Definição 3.4.7; a mesma carta e a mesma representação
+                    $\hat{F}$ servem para $F\vert_U$. ($\Leftarrow$) Dado $p$, seja $W$ como no enunciado.
+                    Como $F\vert_W$ é suave, há cartas $(U,\varphi)$ de $W$ e $(V,\psi)$ de $N$ com $p \in U$,
+                    $F(U) \subset V$ e $\hat{F}$ suave. Mas $(U,\varphi)$ também é uma carta de $M$, e as mesmas
+                    cartas verificam a Definição 3.4.7 para $F$ em $p$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="prop-3-4-12">
+                    <p><strong>Proposição 3.4.12 (Composição e aplicações básicas).</strong> (a) Se
+                        $F: M \to N$ e $G: N \to P$ são suaves, então $G\circ F: M \to P$ é suave. (b) A identidade
+                        $\mathrm{id}_M: M \to M$ e as aplicações constantes são suaves. (c) Se $W \subset M$ é
+                        aberto, a inclusão $\iota: W \hookrightarrow M$ é suave.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Seja $p \in M$. Tome cartas $(U,\varphi)$ e $(V,\psi)$ em torno de $p$
+                    e de $F(p)$ como na Definição 3.4.7 para $F$, e cartas $(V',\psi')$ e $(Z,\chi)$ em torno de
+                    $F(p)$ e de $G(F(p))$ como na definição para $G$, com $G(V') \subset Z$. O conjunto
+                    $U'' = U \cap F^{-1}(V')$ é um aberto que contém $p$, e $(U'',\varphi\vert_{U''})$ é uma carta
+                    com $(G\circ F)(U'') \subset Z$. Pela Proposição 3.4.10 aplicada a $F$ e às cartas $\varphi$ e
+                    $\psi'$, a aplicação $\psi'\circ F\circ\varphi^{-1}$ é suave em $\varphi(U'')$, e
+                </p>
+
+                <p>
+                    $$ \chi\circ(G\circ F)\circ\varphi^{-1} = \big(\chi\circ G\circ\psi'^{-1}\big)\circ\big(\psi'\circ F\circ\varphi^{-1}\big) $$
+                </p>
+
+                <p>
+                    é composta de suaves, logo suave. (b) Para a identidade, use a mesma carta nos dois lados: a
+                    representação é a identidade de $\varphi(U)$. Para uma constante $q$, tome $(V,\psi)$ em torno
+                    de $q$ e qualquer carta de $M$; a representação é constante. (c) Dado $p \in W$, a carta
+                    $(U,\varphi)$ de $M$ em torno de $p$ com $U \subset W$ também é uma carta de $W$, e a
+                    representação de $\iota$ nas cartas $(U,\varphi)$ e $(U,\varphi)$ é a identidade de
+                    $\varphi(U)$. $\blacksquare$
+                </p>
+
+                <p>
+                    Vejamos exemplos, que mostram como as cartas dos exemplos do tópico anterior são usadas na
+                    prática.
+                </p>
+
+                <p id="ex-3-4-13"><strong>Exemplo 3.4.13 (A inclusão $S^n \hookrightarrow \mathbb{R}^{n+1}$).</strong> A
+                    inclusão $\iota: S^n \to \mathbb{R}^{n+1}$ é suave: em $U_N$, com a carta identidade no
+                    contradomínio, a representação é $\iota\circ\sigma_N^{-1}(u) = \sigma_N^{-1}(u)$, dada por (3.3.3),
+                    que é racional com denominador $\lvert u\rvert^2+1 \gt 0$. Em $U_S$ é análogo, com
+                    $\sigma_S^{-1}(w) = \big(2w,\ 1-\lvert w\rvert^2\big)/(1+\lvert w\rvert^2)$, que se obtém de (3.3.3)
+                    trocando o sinal da última coordenada. Como $U_N \cup U_S = S^n$, a inclusão é suave.</p>
+
+                <p id="ex-3-4-14"><strong>Exemplo 3.4.14 (O quociente $\pi: S^n \to \mathbb{RP}^n$).</strong> Seja
+                    $p \in S^n$ e escolha $i$ com $p^i \ne 0$; seja $\varepsilon$ o sinal de $p^i$. Então
+                    $p \in U_i^\varepsilon$ (a carta-gráfico do
+                    <a href="[03] - Variedades Diferenciáveis.html#ex-3-3-22">Exemplo 3.3.22</a>) e $\pi(U_i^\varepsilon) \subset U_i$, o domínio da carta
+                    $\varphi_i$ de $\mathbb{RP}^n$. A representação é obtida pelo
+                    cálculo, para $u \in B$:
+                    $(\varphi_i^\varepsilon)^{-1}(u)$ tem $i$-ésima coordenada $\varepsilon\sqrt{1-\lvert u\rvert^2}$ e as outras
+                    coordenadas iguais às de $u$, de modo que</p>
+
+                <p>
+                    $$ \varphi_i\circ\pi\circ(\varphi_i^\varepsilon)^{-1}(u) = \frac{\big(u^1,\dots,u^n\big)}{\varepsilon\sqrt{1-\lvert u\rvert^2}}. $$
+                </p>
+
+                <p>
+                    Como $\sqrt{1-\lvert u\rvert^2} \gt 0$ em $B$, a representação é suave, e portanto $\pi$ é
+                    suave.</p>
+
+                <p id="ex-3-4-15"><strong>Exemplo 3.4.15 (Projeções e inclusões de fatias).</strong> Sejam $M$ e $N$
+                    variedades diferenciáveis. A projeção $\mathrm{pr}_1: M\times N \to M$ é suave: nas cartas
+                    $(U\times V,\varphi\times\psi)$ e $(U,\varphi)$, a representação é
+                    $\varphi\circ\mathrm{pr}_1\circ(\varphi\times\psi)^{-1}(x,y) = x$, uma projeção linear. O mesmo
+                    vale para $\mathrm{pr}_2$. Fixado $q \in N$, a inclusão de fatia
+                    $\iota_q: M \to M\times N$, $p \mapsto (p,q)$, é suave: com a carta $(V,\psi)$ de $N$ em torno
+                    de $q$, a representação nas cartas $(U,\varphi)$ e $(U\times V,\varphi\times\psi)$ é
+                    $x \mapsto (x,\psi(q))$, que é suave.</p>
+
+                <p id="ex-3-4-16"><strong>Exemplo 3.4.16 (A aplicação $\mathbb{R} \to S^1$).</strong> A aplicação
+                    $E: \mathbb{R} \to S^1$, $E(t) = (\cos t,\sin t)$, é suave. Dado $t_0$, seja
+                    $k \in \mathbb{Z}$ com $t_0 \in [2\pi k, 2\pi(k+1))$. Se $t_0 \ne 2\pi k$, use a carta
+                    $(U_1,\theta_1)$ de $S^1$ (do
+                    <a href="[03] - Variedades Diferenciáveis.html#ex-3-3-21">Exemplo 3.3.21</a>) e a carta identidade em $\mathbb{R}$, restrita a
+                    $(2\pi k,2\pi(k+1))$: nesse intervalo, $E$ toma valores em $U_1$ e
+                    $\theta_1\circ E(t) = t - 2\pi k$, suave. Se $t_0 = 2\pi k$, use a carta $(U_2,\theta_2)$ no
+                    intervalo $(2\pi k-\pi,2\pi k+\pi)$, no qual $\theta_2\circ E(t) = t-2\pi k$. A aplicação $E$
+                    não é injetiva, pois $E(t+2\pi) = E(t)$, e é "localmente inversível": a restrição a cada
+                    intervalo desses é a inversa de uma carta. O <a href="#exr-3-4-3">Exercício 3.4.3</a> formaliza
+                    isso.</p>
+
+                <div class="definition-box" id="def-3-4-17" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.4.17 (Curva suave).</strong> Uma <strong>curva suave</strong> em uma
+                        variedade $M$ é uma aplicação suave $\gamma: J \to M$, em que $J \subset \mathbb{R}$ é um
+                        intervalo aberto (com a estrutura usual de $\mathbb{R}$). Em uma carta $(U,\varphi)$, as
+                        funções $\gamma^i = x^i\circ\gamma$ são as <strong>coordenadas da curva</strong>, e a
+                        curva é suave quando $t \mapsto (\gamma^1(t),\dots,\gamma^n(t))$ é suave.</p>
+                </div>
+
+                <p>
+                    A curva $E$ do Exemplo 3.4.16 é uma curva suave em $S^1$. Curvas são importantes porque, no
+                    tópico 3.5, o vetor tangente a uma variedade em um ponto será descrito como a "velocidade"
+                    de uma curva que passa por ele.
+                </p>
+
+                <h2 id="difeomorfismos">Difeomorfismos</h2>
+
+                <div class="definition-box" id="def-3-4-18" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.4.18 (Difeomorfismo).</strong> Uma aplicação $F: M \to N$ entre
+                        variedades diferenciáveis é um <strong>difeomorfismo</strong> se é suave e bijetora e sua
+                        inversa $F^{-1}: N \to M$ também é suave. Duas variedades são <strong>difeomorfas</strong>
+                        se existe um difeomorfismo entre elas.</p>
+                </div>
+
+                <p>
+                    Esta é a extensão da <a href="[02] - Preliminares de Topologia e Cálculo.html#def-3-2-51">Definição 3.2.51</a> (difeomorfismo entre abertos de espaços euclidianos) a
+                    variedades, e, pela Observação 3.4.8, coincide com ela quando $M$ e $N$ são abertos de
+                    espaços euclidianos. Um difeomorfismo é, em particular, um homeomorfismo (Proposição 3.4.9).
+                </p>
+
+                <div class="definition-box" id="prop-3-4-19">
+                    <p><strong>Proposição 3.4.19 (Difeomorfismo é uma relação de equivalência).</strong> A relação
+                        "$M$ é difeomorfa a $N$" é reflexiva, simétrica e transitiva.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> A identidade é um difeomorfismo (Proposição 3.4.12(b)), o que dá a
+                    reflexividade. Se $F: M \to N$ é um difeomorfismo, $F^{-1}: N \to M$ é suave, bijetora e tem
+                    inversa $F$, que é suave; logo é um difeomorfismo, e vale a simetria. Se $F: M \to N$ e
+                    $G: N \to P$ são difeomorfismos, $G\circ F$ é suave (Proposição 3.4.12(a)), bijetora, e sua
+                    inversa $F^{-1}\circ G^{-1}$ é suave pelo mesmo motivo. $\blacksquare$
+                </p>
+
+                <p id="ex-3-4-20"><strong>Exemplo 3.4.20 (Bola e espaço euclidiano).</strong> A bola aberta unitária
+                    $B^n = \{x \in \mathbb{R}^n : \lvert x\rvert \lt 1\}$ é difeomorfa a $\mathbb{R}^n$. Defina</p>
+
+                <p>
+                    $$ h: B^n \to \mathbb{R}^n,\ h(x) = \frac{x}{\sqrt{1-\lvert x\rvert^2}}, \qquad g: \mathbb{R}^n \to B^n,\ g(y) = \frac{y}{\sqrt{1+\lvert y\rvert^2}}. $$
+                </p>
+
+                <p>
+                    Ambas são suaves no sentido do cálculo, porque são quocientes de funções suaves por raízes de
+                    funções suaves estritamente positivas ($1-\lvert x\rvert^2 \gt 0$ em $B^n$ e
+                    $1+\lvert y\rvert^2 \gt 0$ em $\mathbb{R}^n$); e $g$ toma valores em $B^n$, pois
+                    $\lvert g(y)\rvert^2 = \lvert y\rvert^2/(1+\lvert y\rvert^2) \lt 1$. Elas são inversas uma da
+                    outra: para $x \in B^n$ e $y = h(x)$, $1+\lvert y\rvert^2 = 1/(1-\lvert x\rvert^2)$, e portanto
+                    $g(h(x)) = h(x)/\sqrt{1+\lvert h(x)\rvert^2} = \dfrac{x}{\sqrt{1-\lvert x\rvert^2}}\sqrt{1-\lvert x\rvert^2} = x$. Reciprocamente, para
+                    $y \in \mathbb{R}^n$ e $x = g(y)$, $1-\lvert x\rvert^2 = 1/(1+\lvert y\rvert^2)$ e
+                    $h(g(y)) = x\sqrt{1+\lvert y\rvert^2} = y$. Logo $h$ é um difeomorfismo. Em particular, uma
+                    variedade pode ser difeomorfa a $\mathbb{R}^n$ sendo "limitada" no espaço onde está colocada: a
+                    noção de tamanho não é invariante por difeomorfismo.</p>
+
+                <p id="ex-3-4-21"><strong>Exemplo 3.4.21 (As duas estruturas diferenciáveis de $\mathbb{R}$).</strong>
+                    Retomemos o <a href="[03] - Variedades Diferenciáveis.html#ex-3-3-30">Exemplo 3.3.30</a>: $\mathbb{R}_1 = (\mathbb{R},\bar{\mathcal{A}}_1)$ é
+                    $\mathbb{R}$ com a estrutura usual, e $\mathbb{R}_2 = (\mathbb{R},\bar{\mathcal{A}}_2)$ é
+                    $\mathbb{R}$ com a estrutura gerada pela carta $\psi(x) = x^3$. Considere
+                    $F: \mathbb{R}_2 \to \mathbb{R}_1$, $F(x) = x^3$. Em torno de qualquer ponto, usamos a carta
+                    $\psi$ no domínio e a carta identidade no contradomínio, e a representação é</p>
+
+                <p>
+                    $$ \mathrm{id}\circ F\circ\psi^{-1}(y) = F\big(y^{1/3}\big) = \big(y^{1/3}\big)^3 = y, $$
+                </p>
+
+                <p>
+                    a identidade, que é suave. Logo $F$ é suave. Sua inversa $G(y) = y^{1/3}$, de $\mathbb{R}_1$
+                    em $\mathbb{R}_2$, tem, nas cartas identidade e $\psi$, a representação
+                    $\psi\circ G\circ\mathrm{id}(y) = (y^{1/3})^3 = y$, também a identidade. Portanto
+                    <strong>$F(x)=x^3$ é um difeomorfismo de $\mathbb{R}_2$ em $\mathbb{R}_1$</strong>, e as duas
+                    estruturas, embora diferentes como atlas maximais, fazem de $\mathbb{R}$ variedades difeomorfas.
+                    É um bom exemplo da diferença entre "estruturas diferentes" e "variedades diferentes".
+                    Note que a <em>identidade</em> $\mathbb{R}_1 \to \mathbb{R}_2$ é suave (sua representação é
+                    $x \mapsto x^3$) e bijetora, mas não é um difeomorfismo, pois a inversa, de $\mathbb{R}_2$ em
+                    $\mathbb{R}_1$, tem representação $y \mapsto y^{1/3}$, que não é diferenciável em $0$. O fato de
+                    $x \mapsto x^3$ ser uma bijeção suave sem ser difeomorfismo de $\mathbb{R}_1$ em $\mathbb{R}_1$ é
+                    o Exercício 3.4.4.</p>
+
+                <div class="definition-box" id="prop-3-4-22">
+                    <p><strong>Proposição 3.4.22 (Cartas são difeomorfismos).</strong> Se $(U,\varphi)$ é uma
+                        carta de $M$, então $\varphi: U \to \varphi(U)$ é um difeomorfismo, em que $U$ é aberto de
+                        $M$ e $\varphi(U)$ é aberto de $\mathbb{R}^n$, ambos com a estrutura usual.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> A aplicação $\varphi$ é bijetora. Em torno de cada ponto de $U$, use a
+                    carta $(U,\varphi)$ no domínio e a carta identidade de $\varphi(U)$ no contradomínio: a
+                    representação é $\mathrm{id}\circ\varphi\circ\varphi^{-1} = \mathrm{id}$, suave. Para a inversa
+                    $\varphi^{-1}: \varphi(U) \to U$, use a carta identidade no domínio e $(U,\varphi)$ no
+                    contradomínio: a representação é $\varphi\circ\varphi^{-1}\circ\mathrm{id} = \mathrm{id}$.
+                    $\blacksquare$
+                </p>
+
+                <p>
+                    Em palavras: <em>uma variedade é localmente difeomorfa a $\mathbb{R}^n$</em>, e não apenas
+                    homeomorfa, e isso é a justificativa de todo o formalismo de cartas.
+                </p>
+
+                <div class="definition-box" id="prop-3-4-23">
+                    <p><strong>Proposição 3.4.23 (Dimensão invariante por difeomorfismo).</strong> Se
+                        $F: M \to N$ é um difeomorfismo entre variedades não vazias de dimensões $m$ e $n$,
+                        então $m = n$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Seja $p \in M$ e tome cartas $(U,\varphi)$ e $(V,\psi)$ como na Definição
+                    3.4.7. Como $F$ é um homeomorfismo, $F(U)$ é aberto em $N$, e portanto $\psi(F(U))$ é aberto em
+                    $\mathbb{R}^n$. A representação $\hat{F}: \varphi(U) \to \psi(F(U))$ é suave e bijetora, e sua
+                    inversa é $\varphi\circ F^{-1}\circ\psi^{-1}: \psi(F(U)) \to \varphi(U)$, a representação de
+                    $F^{-1}$ nas cartas $\psi$ e $\varphi$, suave pela Proposição 3.4.10. Logo $\hat{F}$ é um
+                    difeomorfismo entre abertos não vazios de $\mathbb{R}^m$ e de $\mathbb{R}^n$, e a
+                    <a href="[02] - Preliminares de Topologia e Cálculo.html#prop-3-2-52">Proposição 3.2.52</a> dá $m = n$. $\blacksquare$
+                </p>
+
+                <p id="obs-3-4-24"><strong>Observação 3.4.24 (Difeomorfismo é "ser a mesma variedade").</strong> Do
+                    ponto de vista da teoria, duas variedades difeomorfas são indistinguíveis: o difeomorfismo
+                    transporta funções suaves, curvas suaves, e, nos próximos tópicos, vetores, campos, formas e
+                    integrais, de uma para a outra, preservando todas as relações entre eles. Por isso as
+                    construções do capítulo serão sempre <em>invariantes por difeomorfismo</em>, isto é, definidas
+                    sem depender de escolhas além da estrutura diferenciável. A preocupação com as cartas
+                    é apenas um modo de fazer contas; os objetos não dependem delas.</p>
+
+                <h2 id="funcoes-bump">Funções de corte e funções bump</h2>
+
+                <p>
+                    Uma função analítica, como um polinômio ou $\sin x$, é determinada em toda parte pelos seus
+                    valores em um intervalo, por pequeno que seja. Isso torna impossível, para funções analíticas,
+                    "ligar" uma função em uma região e "desligá-la" fora dela. As funções suaves não têm essa
+                    rigidez, e a razão é um exemplo famoso.
+                </p>
+
+                <div class="definition-box" id="lema-3-4-25">
+                    <p><strong>Lema 3.4.25 (Uma função suave que se anula à esquerda).</strong> A função
+                        $f: \mathbb{R} \to \mathbb{R}$ dada por $f(t) = e^{-1/t}$ para $t \gt 0$ e $f(t) = 0$ para
+                        $t \le 0$ é suave, é estritamente positiva para $t \gt 0$ e vale $0$ para $t \le 0$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> <strong>Passo 1: as derivadas para $t \gt 0$.</strong> Afirmamos que
+                    para todo $k \ge 0$ e $t \gt 0$,
+                </p>
+
+                <p>
+                    $$ f^{(k)}(t) = p_k(t)\,t^{-2k}e^{-1/t}, \qquad p_0 = 1,\quad p_{k+1}(t) = t^2p_k'(t) - 2k\,t\,p_k(t) + p_k(t), \tag{3.4.1} $$
+                </p>
+
+                <p>
+                    em que cada $p_k$ é um polinômio. Para $k=0$ é a definição. Se vale para $k$, a regra do
+                    produto dá
+                </p>
+
+                <p>
+                    $$ \frac{d}{dt}\Big(p_k\,t^{-2k}e^{-1/t}\Big) = p_k'\,t^{-2k}e^{-1/t} - 2k\,p_k\,t^{-2k-1}e^{-1/t} + p_k\,t^{-2k}\,t^{-2}e^{-1/t} = t^{-2(k+1)}e^{-1/t}\Big(t^2p_k' - 2k\,t\,p_k + p_k\Big), $$
+                </p>
+
+                <p>
+                    que é a fórmula para $k+1$. Por exemplo, $p_1 = 1$, $p_2 = 1-2t$ e $p_3 = 6t^2-6t+1$.
+                </p>
+
+                <p>
+                    <strong>Passo 2: um limite.</strong> Para todo inteiro $m \ge 0$,
+                    $\lim_{t\to0^+}t^{-m}e^{-1/t} = 0$. De fato, com $s = 1/t \to +\infty$, a expressão é
+                    $s^me^{-s}$. A série da exponencial tem todos os termos positivos para $s \gt 0$, de modo que
+                    $e^s \ge s^{m+1}/(m+1)!$, e então $0 \lt s^me^{-s} \le (m+1)!/s \to 0$. Como uma soma finita
+                    de termos do tipo $c\,t^{-j}e^{-1/t}$, com $j$ inteiro (possivelmente negativo), também tende
+                    a zero, vale
+                </p>
+
+                <p>
+                    $$ \lim_{t\to0^+}\,q(t)\,t^{-j}e^{-1/t} = 0 \quad\text{para todo polinômio } q \text{ e todo inteiro } j. \tag{3.4.2} $$
+                </p>
+
+                <p>
+                    <strong>Passo 3: em $t=0$.</strong> Provamos por indução em $k$ que $f^{(k)}$ existe em toda a
+                    reta, é igual a $0$ em $t \le 0$ e à fórmula (3.4.1) em $t \gt 0$, e é contínua. Para $k=0$:
+                    $f$ é contínua em $0$, pois $f(t) \to 0$ quando $t\to0^+$ (Passo 2 com $m=0$) e $f \equiv 0$
+                    à esquerda. Suponha o enunciado para $k$. Em $t=0$, o quociente de diferenças de $f^{(k)}$ é
+                    $0$ para $h \lt 0$, e para $h \gt 0$ é
+                </p>
+
+                <p>
+                    $$ \frac{f^{(k)}(h) - f^{(k)}(0)}{h} = p_k(h)\,h^{-2k-1}e^{-1/h} \xrightarrow[h\to0^+]{} 0 $$
+                </p>
+
+                <p>
+                    por (3.4.2). Logo $f^{(k+1)}(0)$ existe e vale $0$. Fora da origem, $f^{(k+1)}$ é dada pela
+                    fórmula (3.4.1) para $t \gt 0$ e por $0$ para $t \lt 0$, e é contínua em $0$ porque, por
+                    (3.4.2), $f^{(k+1)}(t) = p_{k+1}(t)t^{-2(k+1)}e^{-1/t} \to 0$ quando $t \to 0^+$. Assim $f$ tem
+                    derivadas contínuas de todas as ordens. $\blacksquare$
+                </p>
+
+                <p>
+                    O lema diz que $f$ é uma função que vale $0$ em $(-\infty,0]$, é positiva em $(0,\infty)$, e
+                    <em>todas as suas derivadas em $0$ são nulas</em>. A série de Taylor de $f$ em $0$ é nula, e
+                    não representa $f$: é o que impede $f$ de ser analítica. A partir de $f$ constrói-se, por
+                    uma operação algébrica simples, uma transição suave entre $0$ e $1$.
+                </p>
+
+                <div class="definition-box" id="lema-3-4-26">
+                    <p><strong>Lema 3.4.26 (Função de corte).</strong> Sejam $r_1 \lt r_2$ e $f$ como no Lema
+                        3.4.25. A função</p>
+                    <p>$$ h(t) = \frac{f(r_2 - t)}{f(r_2 - t) + f(t - r_1)} $$</p>
+                    <p>está bem definida, é suave, vale $1$ para $t \le r_1$, vale $0$ para $t \ge r_2$ e satisfaz
+                        $0 \lt h(t) \lt 1$ para $r_1 \lt t \lt r_2$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> O denominador nunca se anula: se $t \lt r_2$, então $f(r_2-t) \gt 0$; e
+                    se $t \ge r_2$, então $t-r_1 \ge r_2-r_1 \gt 0$ e $f(t-r_1) \gt 0$. Como ambos os termos são
+                    $\ge0$, o denominador é positivo e $h$ é um quociente de funções suaves por uma função suave
+                    positiva, logo suave. Se $t \le r_1$, então $f(t-r_1) = 0$ e $f(r_2-t) \gt 0$, de modo que
+                    $h(t) = 1$. Se $t \ge r_2$, então $f(r_2-t) = 0$ e $h(t) = 0$. Para $r_1 \lt t \lt r_2$,
+                    ambos os termos são positivos, e $h(t)$ é uma fração própria, estritamente entre $0$ e $1$.
+                    $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="lema-3-4-27">
+                    <p><strong>Lema 3.4.27 (Bump em $\mathbb{R}^n$).</strong> Sejam $0 \lt r_1 \lt r_2$ e $h$ como
+                        no Lema 3.4.26. A função $H: \mathbb{R}^n \to \mathbb{R}$, $H(x) = h(\lvert x\rvert)$, é
+                        suave, satisfaz $0 \le H \le 1$, vale $1$ na bola fechada $\bar{B}_{r_1}(0)$ e se anula fora
+                        de $\bar{B}_{r_2}(0)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> A função $x \mapsto \lvert x\rvert$ é suave em $\mathbb{R}^n\setminus\{0\}$,
+                    onde $H$ é suave como composta de suaves. Perto da origem, para $\lvert x\rvert \lt r_1$, tem-se
+                    $H(x) = h(\lvert x\rvert) = 1$, constante, e portanto suave. Os valores nos conjuntos indicados
+                    e a desigualdade $0 \le H \le 1$ vêm do Lema 3.4.26. $\blacksquare$
+                </p>
+
+                <figure class="lecture-figure" id="fig-3-4-2">
+                    <svg viewBox="0 0 640 322" role="img" aria-label="Três gráficos empilhados, com o mesmo eixo horizontal de menos 3 a 3. O primeiro mostra a função f de t igual a e elevado a menos 1 sobre t para t positivo e zero caso contrário: nula à esquerda da origem e crescente, muito achatada perto de zero, à direita. O segundo mostra a função de corte h, que vale 1 até t igual a 1, desce suavemente e vale 0 a partir de t igual a 2. O terceiro mostra o bump H de t igual a h do módulo de t: um platô de altura 1 entre menos 1 e 1, que desce suavemente a zero em menos 2 e em 2 e é nulo fora desse intervalo.">
+<defs><marker id="arr-3-4-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="60" y1="92" x2="614" y2="92" class="fig-axis" marker-end="url(#arr-3-4-2)"/>
+<line x1="335" y1="98" x2="335" y2="24" class="fig-axis" marker-end="url(#arr-3-4-2)"/>
+<path d="M70,92 L72.2,92 L74.4,92 L76.6,92 L78.8,92 L81,92 L83.2,92 L85.5,92 L87.7,92 L89.9,92 L92.1,92 L94.3,92 L96.5,92 L98.7,92 L100.9,92 L103.1,92 L105.3,92 L107.5,92 L109.8,92 L112,92 L114.2,92 L116.4,92 L118.6,92 L120.8,92 L123,92 L125.2,92 L127.4,92 L129.6,92 L131.8,92 L134,92 L136.2,92 L138.5,92 L140.7,92 L142.9,92 L145.1,92 L147.3,92 L149.5,92 L151.7,92 L153.9,92 L156.1,92 L158.3,92 L160.5,92 L162.8,92 L165,92 L167.2,92 L169.4,92 L171.6,92 L173.8,92 L176,92 L178.2,92 L180.4,92 L182.6,92 L184.8,92 L187,92 L189.2,92 L191.5,92 L193.7,92 L195.9,92 L198.1,92 L200.3,92 L202.5,92 L204.7,92 L206.9,92 L209.1,92 L211.3,92 L213.5,92 L215.7,92 L218,92 L220.2,92 L222.4,92 L224.6,92 L226.8,92 L229,92 L231.2,92 L233.4,92 L235.6,92 L237.8,92 L240,92 L242.2,92 L244.5,92 L246.7,92 L248.9,92 L251.1,92 L253.3,92 L255.5,92 L257.7,92 L259.9,92 L262.1,92 L264.3,92 L266.5,92 L268.8,92 L271,92 L273.2,92 L275.4,92 L277.6,92 L279.8,92 L282,92 L284.2,92 L286.4,92 L288.6,92 L290.8,92 L293,92 L295.2,92 L297.5,92 L299.7,92 L301.9,92 L304.1,92 L306.3,92 L308.5,92 L310.7,92 L312.9,92 L315.1,92 L317.3,92 L319.5,92 L321.8,92 L324,92 L326.2,92 L328.4,92 L330.6,92 L332.8,92 L335,92 L337.2,92 L339.4,92 L341.6,92 L343.8,92 L346,92 L348.2,91.9 L350.5,91.8 L352.7,91.6 L354.9,91.3 L357.1,90.9 L359.3,90.4 L361.5,89.8 L363.7,89.1 L365.9,88.4 L368.1,87.7 L370.3,86.9 L372.5,86.1 L374.8,85.3 L377,84.4 L379.2,83.6 L381.4,82.8 L383.6,81.9 L385.8,81.1 L388,80.3 L390.2,79.5 L392.4,78.7 L394.6,77.9 L396.8,77.1 L399,76.4 L401.2,75.7 L403.5,74.9 L405.7,74.2 L407.9,73.6 L410.1,72.9 L412.3,72.2 L414.5,71.6 L416.7,71 L418.9,70.4 L421.1,69.8 L423.3,69.2 L425.5,68.6 L427.7,68.1 L430,67.5 L432.2,67 L434.4,66.5 L436.6,66 L438.8,65.5 L441,65.1 L443.2,64.6 L445.4,64.1 L447.6,63.7 L449.8,63.3 L452,62.9 L454.2,62.4 L456.5,62 L458.7,61.6 L460.9,61.3 L463.1,60.9 L465.3,60.5 L467.5,60.2 L469.7,59.8 L471.9,59.5 L474.1,59.1 L476.3,58.8 L478.5,58.5 L480.8,58.2 L483,57.9 L485.2,57.6 L487.4,57.3 L489.6,57 L491.8,56.7 L494,56.4 L496.2,56.2 L498.4,55.9 L500.6,55.6 L502.8,55.4 L505,55.1 L507.3,54.9 L509.5,54.6 L511.7,54.4 L513.9,54.2 L516.1,53.9 L518.3,53.7 L520.5,53.5 L522.7,53.3 L524.9,53.1 L527.1,52.9 L529.3,52.6 L531.5,52.4 L533.8,52.2 L536,52.1 L538.2,51.9 L540.4,51.7 L542.6,51.5 L544.8,51.3 L547,51.1 L549.2,51 L551.4,50.8 L553.6,50.6 L555.8,50.4 L558,50.3 L560.2,50.1 L562.5,50 L564.7,49.8 L566.9,49.6 L569.1,49.5 L571.3,49.3 L573.5,49.2 L575.7,49 L577.9,48.9 L580.1,48.8 L582.3,48.6 L584.5,48.5 L586.8,48.3 L589,48.2 L591.2,48.1 L593.4,48 L595.6,47.8 L597.8,47.7 L600,47.6" class="fig-curve"/>
+<text x="614" y="107" text-anchor="end" class="fig-label fig-small fig-it">t</text>
+<text x="58" y="38" text-anchor="end" class="fig-label fig-small fig-it">f</text>
+<text x="70" y="20" class="fig-label fig-small">f(t) = e^(−1/t) para t &gt; 0; 0 para t ≤ 0</text>
+<line x1="60" y1="196" x2="614" y2="196" class="fig-axis" marker-end="url(#arr-3-4-2)"/>
+<line x1="335" y1="202" x2="335" y2="128" class="fig-axis" marker-end="url(#arr-3-4-2)"/>
+<line x1="423.3" y1="196" x2="423.3" y2="134" class="fig-guide"/>
+<text x="423.3" y="211" text-anchor="middle" class="fig-label fig-small">1</text>
+<line x1="511.7" y1="196" x2="511.7" y2="134" class="fig-guide"/>
+<text x="511.7" y="211" text-anchor="middle" class="fig-label fig-small">2</text>
+<path d="M70,134 L72.2,134 L74.4,134 L76.6,134 L78.8,134 L81,134 L83.2,134 L85.5,134 L87.7,134 L89.9,134 L92.1,134 L94.3,134 L96.5,134 L98.7,134 L100.9,134 L103.1,134 L105.3,134 L107.5,134 L109.8,134 L112,134 L114.2,134 L116.4,134 L118.6,134 L120.8,134 L123,134 L125.2,134 L127.4,134 L129.6,134 L131.8,134 L134,134 L136.2,134 L138.5,134 L140.7,134 L142.9,134 L145.1,134 L147.3,134 L149.5,134 L151.7,134 L153.9,134 L156.1,134 L158.3,134 L160.5,134 L162.8,134 L165,134 L167.2,134 L169.4,134 L171.6,134 L173.8,134 L176,134 L178.2,134 L180.4,134 L182.6,134 L184.8,134 L187,134 L189.2,134 L191.5,134 L193.7,134 L195.9,134 L198.1,134 L200.3,134 L202.5,134 L204.7,134 L206.9,134 L209.1,134 L211.3,134 L213.5,134 L215.7,134 L218,134 L220.2,134 L222.4,134 L224.6,134 L226.8,134 L229,134 L231.2,134 L233.4,134 L235.6,134 L237.8,134 L240,134 L242.2,134 L244.5,134 L246.7,134 L248.9,134 L251.1,134 L253.3,134 L255.5,134 L257.7,134 L259.9,134 L262.1,134 L264.3,134 L266.5,134 L268.8,134 L271,134 L273.2,134 L275.4,134 L277.6,134 L279.8,134 L282,134 L284.2,134 L286.4,134 L288.6,134 L290.8,134 L293,134 L295.2,134 L297.5,134 L299.7,134 L301.9,134 L304.1,134 L306.3,134 L308.5,134 L310.7,134 L312.9,134 L315.1,134 L317.3,134 L319.5,134 L321.8,134 L324,134 L326.2,134 L328.4,134 L330.6,134 L332.8,134 L335,134 L337.2,134 L339.4,134 L341.6,134 L343.8,134 L346,134 L348.2,134 L350.5,134 L352.7,134 L354.9,134 L357.1,134 L359.3,134 L361.5,134 L363.7,134 L365.9,134 L368.1,134 L370.3,134 L372.5,134 L374.8,134 L377,134 L379.2,134 L381.4,134 L383.6,134 L385.8,134 L388,134 L390.2,134 L392.4,134 L394.6,134 L396.8,134 L399,134 L401.2,134 L403.5,134 L405.7,134 L407.9,134 L410.1,134 L412.3,134 L414.5,134 L416.7,134 L418.9,134 L421.1,134 L423.3,134 L425.5,134 L427.7,134 L430,134 L432.2,134 L434.4,134.1 L436.6,134.3 L438.8,134.7 L441,135.4 L443.2,136.5 L445.4,138 L447.6,139.9 L449.8,142 L452,144.5 L454.2,147.1 L456.5,149.9 L458.7,152.8 L460.9,155.8 L463.1,158.8 L465.3,161.9 L467.5,165 L469.7,168.1 L471.9,171.2 L474.1,174.2 L476.3,177.2 L478.5,180.1 L480.8,182.9 L483,185.5 L485.2,188 L487.4,190.1 L489.6,192 L491.8,193.5 L494,194.6 L496.2,195.3 L498.4,195.7 L500.6,195.9 L502.8,196 L505,196 L507.3,196 L509.5,196 L511.7,196 L513.9,196 L516.1,196 L518.3,196 L520.5,196 L522.7,196 L524.9,196 L527.1,196 L529.3,196 L531.5,196 L533.8,196 L536,196 L538.2,196 L540.4,196 L542.6,196 L544.8,196 L547,196 L549.2,196 L551.4,196 L553.6,196 L555.8,196 L558,196 L560.2,196 L562.5,196 L564.7,196 L566.9,196 L569.1,196 L571.3,196 L573.5,196 L575.7,196 L577.9,196 L580.1,196 L582.3,196 L584.5,196 L586.8,196 L589,196 L591.2,196 L593.4,196 L595.6,196 L597.8,196 L600,196" class="fig-curve"/>
+<text x="614" y="211" text-anchor="end" class="fig-label fig-small fig-it">t</text>
+<text x="58" y="142" text-anchor="end" class="fig-label fig-small fig-it">h</text>
+<text x="70" y="124" class="fig-label fig-small">função de corte h, com r₁ = 1 e r₂ = 2</text>
+<line x1="60" y1="300" x2="614" y2="300" class="fig-axis" marker-end="url(#arr-3-4-2)"/>
+<line x1="335" y1="306" x2="335" y2="232" class="fig-axis" marker-end="url(#arr-3-4-2)"/>
+<line x1="158.3" y1="300" x2="158.3" y2="238" class="fig-guide"/>
+<text x="158.3" y="315" text-anchor="middle" class="fig-label fig-small">-2</text>
+<line x1="246.7" y1="300" x2="246.7" y2="238" class="fig-guide"/>
+<text x="246.7" y="315" text-anchor="middle" class="fig-label fig-small">-1</text>
+<line x1="423.3" y1="300" x2="423.3" y2="238" class="fig-guide"/>
+<text x="423.3" y="315" text-anchor="middle" class="fig-label fig-small">1</text>
+<line x1="511.7" y1="300" x2="511.7" y2="238" class="fig-guide"/>
+<text x="511.7" y="315" text-anchor="middle" class="fig-label fig-small">2</text>
+<path d="M70,300 L72.2,300 L74.4,300 L76.6,300 L78.8,300 L81,300 L83.2,300 L85.5,300 L87.7,300 L89.9,300 L92.1,300 L94.3,300 L96.5,300 L98.7,300 L100.9,300 L103.1,300 L105.3,300 L107.5,300 L109.8,300 L112,300 L114.2,300 L116.4,300 L118.6,300 L120.8,300 L123,300 L125.2,300 L127.4,300 L129.6,300 L131.8,300 L134,300 L136.2,300 L138.5,300 L140.7,300 L142.9,300 L145.1,300 L147.3,300 L149.5,300 L151.7,300 L153.9,300 L156.1,300 L158.3,300 L160.5,300 L162.8,300 L165,300 L167.2,300 L169.4,299.9 L171.6,299.7 L173.8,299.3 L176,298.6 L178.2,297.5 L180.4,296 L182.6,294.1 L184.8,292 L187,289.5 L189.2,286.9 L191.5,284.1 L193.7,281.2 L195.9,278.2 L198.1,275.2 L200.3,272.1 L202.5,269 L204.7,265.9 L206.9,262.8 L209.1,259.8 L211.3,256.8 L213.5,253.9 L215.7,251.1 L218,248.5 L220.2,246 L222.4,243.9 L224.6,242 L226.8,240.5 L229,239.4 L231.2,238.7 L233.4,238.3 L235.6,238.1 L237.8,238 L240,238 L242.2,238 L244.5,238 L246.7,238 L248.9,238 L251.1,238 L253.3,238 L255.5,238 L257.7,238 L259.9,238 L262.1,238 L264.3,238 L266.5,238 L268.8,238 L271,238 L273.2,238 L275.4,238 L277.6,238 L279.8,238 L282,238 L284.2,238 L286.4,238 L288.6,238 L290.8,238 L293,238 L295.2,238 L297.5,238 L299.7,238 L301.9,238 L304.1,238 L306.3,238 L308.5,238 L310.7,238 L312.9,238 L315.1,238 L317.3,238 L319.5,238 L321.8,238 L324,238 L326.2,238 L328.4,238 L330.6,238 L332.8,238 L335,238 L337.2,238 L339.4,238 L341.6,238 L343.8,238 L346,238 L348.2,238 L350.5,238 L352.7,238 L354.9,238 L357.1,238 L359.3,238 L361.5,238 L363.7,238 L365.9,238 L368.1,238 L370.3,238 L372.5,238 L374.8,238 L377,238 L379.2,238 L381.4,238 L383.6,238 L385.8,238 L388,238 L390.2,238 L392.4,238 L394.6,238 L396.8,238 L399,238 L401.2,238 L403.5,238 L405.7,238 L407.9,238 L410.1,238 L412.3,238 L414.5,238 L416.7,238 L418.9,238 L421.1,238 L423.3,238 L425.5,238 L427.7,238 L430,238 L432.2,238 L434.4,238.1 L436.6,238.3 L438.8,238.7 L441,239.4 L443.2,240.5 L445.4,242 L447.6,243.9 L449.8,246 L452,248.5 L454.2,251.1 L456.5,253.9 L458.7,256.8 L460.9,259.8 L463.1,262.8 L465.3,265.9 L467.5,269 L469.7,272.1 L471.9,275.2 L474.1,278.2 L476.3,281.2 L478.5,284.1 L480.8,286.9 L483,289.5 L485.2,292 L487.4,294.1 L489.6,296 L491.8,297.5 L494,298.6 L496.2,299.3 L498.4,299.7 L500.6,299.9 L502.8,300 L505,300 L507.3,300 L509.5,300 L511.7,300 L513.9,300 L516.1,300 L518.3,300 L520.5,300 L522.7,300 L524.9,300 L527.1,300 L529.3,300 L531.5,300 L533.8,300 L536,300 L538.2,300 L540.4,300 L542.6,300 L544.8,300 L547,300 L549.2,300 L551.4,300 L553.6,300 L555.8,300 L558,300 L560.2,300 L562.5,300 L564.7,300 L566.9,300 L569.1,300 L571.3,300 L573.5,300 L575.7,300 L577.9,300 L580.1,300 L582.3,300 L584.5,300 L586.8,300 L589,300 L591.2,300 L593.4,300 L595.6,300 L597.8,300 L600,300" class="fig-curve"/>
+<text x="614" y="315" text-anchor="end" class="fig-label fig-small fig-it">t</text>
+<text x="58" y="246" text-anchor="end" class="fig-label fig-small fig-it">H</text>
+<text x="70" y="228" class="fig-label fig-small">bump H(t) = h(|t|)</text>
+</svg>
+                    <figcaption><strong>Figura 3.4.2.</strong> De cima para baixo: a função
+                        $f(t) = e^{-1/t}$ do Lema 3.4.25, nula à esquerda e achatada em $0$ (todas as suas
+                        derivadas se anulam ali); a função de corte $h$ do Lema 3.4.26, com $r_1 = 1$ e $r_2 = 2$,
+                        que liga $1$ a $0$ suavemente; e o bump $H(t) = h(\lvert t\rvert)$ em uma variável,
+                        com um platô de altura $1$ em $[-1,1]$ e suporte em $[-2,2]$.</figcaption>
+                </figure>
+
+                <p>
+                    Para transportar essas funções para uma variedade, precisamos da noção de suporte.
+                </p>
+
+                <div class="definition-box" id="def-3-4-28" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.4.28 (Suporte).</strong> O <strong>suporte</strong> de uma função
+                        $f: M \to \mathbb{R}$ é o fecho do conjunto onde $f$ não se anula:
+                        $\operatorname{supp}f = \overline{\{p \in M : f(p) \neq 0\}}$.</p>
+                </div>
+
+                <p>
+                    Isto estende a
+                    <a href="[02] - Preliminares de Topologia e Cálculo.html#def-3-2-59">Definição 3.2.59</a>. Em particular, $f$ se anula fora de
+                    $\operatorname{supp}f$, que é fechado. O resultado a seguir é a ferramenta de localização do
+                    capítulo.
+                </p>
+
+                <div class="definition-box" id="prop-3-4-29">
+                    <p><strong>Proposição 3.4.29 (Bump em uma variedade).</strong> Sejam $M$ uma variedade
+                        diferenciável, $U \subset M$ aberto e $p \in U$. Existe $\rho \in C^\infty(M)$ com
+                        $0 \le \rho \le 1$, $\rho \equiv 1$ em uma vizinhança de $p$ e
+                        $\operatorname{supp}\rho \subset U$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Tome uma carta $(W,\varphi)$ centrada em $p$ com $W \subset U$
+                    (<a href="[03] - Variedades Diferenciáveis.html#obs-3-3-6">Observações 3.3.6</a> e <a href="[03] - Variedades Diferenciáveis.html#obs-3-3-14">3.3.14</a>). Como $\varphi(W)$ é aberto e contém $0$, existe $r \gt 0$ com
+                    $\bar{B}_{2r}(0) \subset \varphi(W)$. Seja $H$ o bump do Lema 3.4.27 com $r_1 = r$ e $r_2 = 2r$,
+                    e defina
+                </p>
+
+                <p>
+                    $$ \rho(q) = \begin{cases} H(\varphi(q)), & q \in W, \\ 0, & q \notin W. \end{cases} $$
+                </p>
+
+                <p>
+                    Seja $K = \varphi^{-1}\big(\bar{B}_{2r}(0)\big)$. Como $\bar{B}_{2r}(0)$ é compacto
+                    (Heine–Borel, <a href="[02] - Preliminares de Topologia e Cálculo.html#teo-3-2-28">Teorema 3.2.28</a>) e $\varphi^{-1}$ é contínua, $K$ é compacto
+                    (<a href="[02] - Preliminares de Topologia e Cálculo.html#prop-3-2-29">Proposição 3.2.29</a>). <strong>Aqui entra a condição de Hausdorff:</strong>
+                    como $M$ é de Hausdorff, o compacto $K$ é <em>fechado em $M$</em>
+                    (<a href="[02] - Preliminares de Topologia e Cálculo.html#prop-3-2-31">Proposição 3.2.31</a>). Logo $M\setminus K$ é aberto, e
+                    $M = W \cup (M\setminus K)$ é uma cobertura por dois abertos. Em $W$, $\rho\circ\varphi^{-1} = H$ é
+                    suave, de modo que $\rho\vert_W$ é suave. Em $M\setminus K$, $\rho \equiv 0$: se $q \notin W$ por
+                    definição, e se $q \in W\setminus K$ porque $\lvert\varphi(q)\rvert \gt 2r$ e $H = 0$ ali. Em particular,
+                    as duas descrições concordam na interseção. Como a suavidade é local
+                    (Proposição 3.4.11), $\rho$ é suave em $M$.
+                </p>
+
+                <p>
+                    Finalmente, $0 \le \rho \le 1$; $\rho \equiv 1$ na vizinhança aberta
+                    $\varphi^{-1}(B_r(0))$ de $p$; e $\rho$ se anula fora de $K$, que é fechado, de modo que
+                    $\operatorname{supp}\rho \subset K \subset W \subset U$. $\blacksquare$
+                </p>
+
+                <p>
+                    Sem a condição de Hausdorff o argumento falha, e com razão. Na reta com duas origens $L$
+                    do <a href="[02] - Preliminares de Topologia e Cálculo.html#ex-3-2-23">Exemplo 3.2.23</a>, o compacto $K = \pi([-1,1]\times\{0\})$ não é fechado
+                    (a outra origem está no seu fecho), e a extensão por zero de uma função bump em torno de uma
+                    das origens não é contínua na outra.
+                </p>
+
+                <div class="definition-box" id="lema-3-4-30">
+                    <p><strong>Lema 3.4.30 (Extensão de funções locais).</strong> Seja $U \subset M$ um aberto
+                        que contém $p$ e seja $f \in C^\infty(U)$. Existe $\tilde{f} \in C^\infty(M)$ que
+                        <em>coincide com $f$ em uma vizinhança de $p$</em>.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Seja $\rho$ um bump como na Proposição 3.4.29, com
+                    $\operatorname{supp}\rho \subset U$ e $\rho \equiv 1$ em uma vizinhança $W$ de $p$. Defina
+                    $\tilde{f} = \rho f$ em $U$ e $\tilde{f} = 0$ em $M\setminus\operatorname{supp}\rho$. Os dois
+                    abertos $U$ e $M\setminus\operatorname{supp}\rho$ cobrem $M$ (porque
+                    $\operatorname{supp}\rho \subset U$), e as definições concordam na interseção, onde
+                    $\rho = 0$. Em cada um dos dois abertos, $\tilde{f}$ é suave (produto de suaves, ou
+                    constante), e portanto $\tilde{f} \in C^\infty(M)$ pela Proposição 3.4.11. Em
+                    $W$, $\tilde{f} = f$. $\blacksquare$
+                </p>
+
+                <p>
+                    Note a ressalva: $\tilde{f}$ coincide com $f$ <em>perto de $p$</em>, não em todo $U$. Em
+                    geral não existe $\tilde{f}\in C^\infty(M)$ que coincida com $f$ em todo $U$ (por exemplo,
+                    $f(x) = 1/x$ em $U = (0,\infty) \subset \mathbb{R}$ não se estende a uma função contínua em
+                    $\mathbb{R}$). O lema serve para <em>localizar</em>: o que se faz com $f$ perto de $p$ pode
+                    ser feito com $\tilde{f}$ sobre toda a variedade.
+                </p>
+
+                <p id="obs-3-4-31"><strong>Observação 3.4.31 (Funções analíticas não admitem isso).</strong> Se $M$
+                    é uma variedade conexa e $f: M \to \mathbb{R}$ é analítica e se anula em um aberto não vazio,
+                    então $f \equiv 0$ (princípio da identidade). Portanto não existe função analítica que valha
+                    $1$ perto de um ponto e $0$ fora de uma vizinhança dele: a Proposição 3.4.29 é falsa para
+                    variedades analíticas. A diferença entre o suave e o analítico é de natureza, e não de grau:
+                    com funções suaves, os dados em um ponto não determinam os dados em outro, e é isso que
+                    permite construir objetos globais a partir de pedaços locais.</p>
+
+                <h2 id="particoes-da-unidade">Partições da unidade</h2>
+
+                <p>
+                    Um bump permite localizar: transformar um objeto definido perto de um ponto em um objeto
+                    definido na variedade toda. Uma partição da unidade faz o contrário e mais: dá uma maneira
+                    sistemática de <em>colar</em> objetos locais, definidos nos abertos de uma cobertura, em um
+                    objeto global. O objeto matemático é uma família de funções que somam $1$ e cada uma delas
+                    "pertence" a um aberto da cobertura. Para que a soma faça sentido, é preciso que apenas
+                    um número finito de termos seja não nulo em cada ponto.
+                </p>
+
+                <div class="definition-box" id="def-3-4-32" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.4.32 (Família localmente finita).</strong> Uma família
+                        $\{A_\alpha\}$ de subconjuntos de $M$ é <strong>localmente finita</strong> se todo ponto de
+                        $M$ tem uma vizinhança que intersecta $A_\alpha$ para apenas um número finito de
+                        índices $\alpha$.</p>
+                </div>
+
+                <div class="definition-box" id="def-3-4-33" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.4.33 (Partição da unidade).</strong> Seja $\{U_\alpha\}_{\alpha\in A}$ uma
+                        cobertura aberta de $M$. Uma <strong>partição da unidade subordinada</strong> a ela é uma
+                        família $\{\psi_\alpha\}_{\alpha\in A}$, com o mesmo conjunto de índices, de funções
+                        $\psi_\alpha \in C^\infty(M)$ tais que:</p>
+                    <p>(i) $0 \le \psi_\alpha \le 1$;</p>
+                    <p>(ii) $\operatorname{supp}\psi_\alpha \subset U_\alpha$;</p>
+                    <p>(iii) a família dos suportes $\{\operatorname{supp}\psi_\alpha\}$ é localmente finita;</p>
+                    <p>(iv) $\sum_{\alpha}\psi_\alpha(p) = 1$ para todo $p \in M$.</p>
+                </div>
+
+                <p>
+                    A soma em (iv) é finita em cada ponto, por (iii). Com os <em>mesmos índices</em> da cobertura,
+                    algumas das funções $\psi_\alpha$ podem ser identicamente nulas; isso é permitido e
+                    conveniente. A suavidade da soma de uma família localmente finita é o seguinte fato.
+                </p>
+
+                <div class="definition-box" id="lema-3-4-34">
+                    <p><strong>Lema 3.4.34 (Somas localmente finitas).</strong> Se $\{f_\alpha\}$ é uma família de
+                        funções suaves em $M$ cuja família de suportes é localmente finita, então
+                        $f = \sum_\alpha f_\alpha$ (soma finita em cada ponto) é suave.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Dado $p \in M$, seja $W$ uma vizinhança aberta de $p$ que intersecta
+                    $\operatorname{supp}f_\alpha$ para apenas um número finito de índices
+                    $\alpha_1,\dots,\alpha_k$. Para $\alpha$ fora dessa lista, $f_\alpha \equiv 0$ em $W$, de modo
+                    que $f\vert_W = f_{\alpha_1}+\dots+f_{\alpha_k}$, uma soma finita de funções suaves, suave
+                    pela Proposição 3.4.4. Como $p$ é arbitrário e a suavidade é local
+                    (Proposição 3.4.11), $f$ é suave. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="teo-3-4-35">
+                    <p><strong>Teorema 3.4.35 (Existência de partições da unidade).</strong> Toda cobertura aberta
+                        $\{U_\alpha\}_{\alpha\in A}$ de uma variedade diferenciável $M$ admite uma partição da
+                        unidade subordinada a ela.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração no caso em que $M$ é compacta.</em> Para cada $p \in M$, escolha
+                    $\alpha_p \in A$ com $p \in U_{\alpha_p}$ e, pela Proposição 3.4.29, um bump
+                    $\rho_p \in C^\infty(M)$ com $0 \le \rho_p \le 1$, $\rho_p \equiv 1$ perto de $p$ e
+                    $\operatorname{supp}\rho_p \subset U_{\alpha_p}$. Em particular $\rho_p(p) = 1 \gt 0$. Os
+                    conjuntos $\{\rho_p \gt 0\}$ são abertos (pela continuidade de $\rho_p$) e cobrem $M$; como $M$
+                    é compacta, existem $p_1,\dots,p_k$ tais que $M = \bigcup_{i=1}^k\{\rho_{p_i}\gt0\}$.
+                </p>
+
+                <p>
+                    Para cada $\alpha \in A$, defina
+                </p>
+
+                <p>
+                    $$ \sigma_\alpha = \sum_{i:\ \alpha_{p_i} = \alpha}\rho_{p_i} $$
+                </p>
+
+                <p>
+                    (uma soma finita, que vale $0$ se não houver nenhum $i$ com $\alpha_{p_i} = \alpha$). Cada
+                    $\sigma_\alpha$ é suave, $\sigma_\alpha \ge 0$, e
+                    $\operatorname{supp}\sigma_\alpha \subset \bigcup_{i:\,\alpha_{p_i}=\alpha}\operatorname{supp}\rho_{p_i}\subset U_\alpha$
+                    (o fecho de uma união finita é a união dos fechos). Apenas um número finito de índices
+                    $\alpha$ tem $\sigma_\alpha \not\equiv0$ (no máximo $k$), de modo que a família dos suportes
+                    é localmente finita. A função
+                </p>
+
+                <p>
+                    $$ \sigma = \sum_\alpha\sigma_\alpha = \sum_{i=1}^k\rho_{p_i} $$
+                </p>
+
+                <p>
+                    é suave e estritamente positiva: todo $x \in M$ pertence a algum $\{\rho_{p_i}\gt0\}$, e os
+                    outros termos são $\ge 0$. Defina $\psi_\alpha = \sigma_\alpha/\sigma$. Cada $\psi_\alpha$ é
+                    suave (quociente por uma função suave positiva), $0 \le \psi_\alpha \le 1$ (porque
+                    $0 \le \sigma_\alpha \le \sigma$), $\operatorname{supp}\psi_\alpha = \operatorname{supp}\sigma_\alpha \subset U_\alpha$,
+                    os suportes são localmente finitos e $\sum_\alpha\psi_\alpha = \sigma/\sigma = 1$. $\blacksquare$
+                </p>
+
+                <p>
+                    <em>Caso geral (não compacto).</em> A ideia é reduzir ao caso compacto por exaustão. Como $M$
+                    é segundo-contável e localmente euclidiana, existe uma sequência de compactos
+                    $K_1 \subset \operatorname{Int}K_2 \subset K_2 \subset \operatorname{Int}K_3 \subset\cdots$ com
+                    $\bigcup_jK_j = M$. Em cada "coroa" $K_{j+1}\setminus\operatorname{Int}K_j$, que é compacta,
+                    repete-se a construção acima com bumps cujos suportes ficam contidos tanto nos abertos $U_\alpha$
+                    como na região aberta $\operatorname{Int}K_{j+2}\setminus K_{j-1}$; a soma de todos os bumps
+                    de todas as coroas é uma função suave, estritamente positiva e localmente finita (cada
+                    ponto está em uma vizinhança que só encontra os bumps de algumas coroas), e o quociente é a
+                    partição procurada. A segunda-contabilidade é o que fornece a exaustão por compactos, e é
+                    por isso que ela aparece na definição de variedade
+                    (<a href="[02] - Preliminares de Topologia e Cálculo.html#obs-3-2-26">Observação 3.2.26</a>). Os detalhes (a existência da exaustão,
+                    em particular) são tratados em Lee, capítulo 2; não serão reproduzidos aqui.
+                </p>
+
+                <div class="definition-box" id="cor-3-4-36">
+                    <p><strong>Corolário 3.4.36 (Função de corte de um fechado).</strong> Sejam $A \subset M$ um
+                        subconjunto fechado e $U \subset M$ um aberto com $A \subset U$. Existe
+                        $\psi \in C^\infty(M)$ com $0 \le \psi \le 1$, $\psi \equiv 1$ em $A$ e
+                        $\operatorname{supp}\psi \subset U$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Os abertos $U_1 = U$ e $U_2 = M\setminus A$ cobrem $M$. Seja
+                    $\{\psi_1,\psi_2\}$ uma partição da unidade subordinada a essa cobertura (Teorema 3.4.35).
+                    Em $A$, $\psi_2 = 0$, porque $\operatorname{supp}\psi_2 \subset M\setminus A$; logo
+                    $\psi_1 = 1-\psi_2 = 1$ em $A$. Tome $\psi = \psi_1$: tem
+                    $\operatorname{supp}\psi \subset U$ e $0\le\psi\le1$. $\blacksquare$
+                </p>
+
+                <p id="ex-3-4-37"><strong>Exemplo 3.4.37 (Colar objetos locais por uma combinação convexa).</strong>
+                    Seja $\{U_\alpha\}$ uma cobertura aberta de $M$ e suponha que, em cada $U_\alpha$, esteja dada
+                    uma função suave $g_\alpha: U_\alpha \to \mathbb{R}$ <em>estritamente positiva</em>. Afirmamos
+                    que existe $f \in C^\infty(M)$, estritamente positiva em todo $M$, construída a partir dos
+                    $g_\alpha$. Seja $\{\psi_\alpha\}$ uma partição da unidade subordinada à cobertura, e defina</p>
+
+                <p>
+                    $$ f = \sum_\alpha\psi_\alpha g_\alpha, $$
+                </p>
+
+                <p>
+                    em que cada termo $\psi_\alpha g_\alpha$ é interpretado como $0$ fora de $U_\alpha$. Cada termo é
+                    suave em $M$: em $U_\alpha$ é produto de funções suaves, e em $M\setminus\operatorname{supp}\psi_\alpha$
+                    é nulo; os dois abertos cobrem $M$ e a suavidade é local. Os suportes dos termos são
+                    localmente finitos, e a soma é suave pelo Lema 3.4.34. Finalmente, em cada $p \in M$,
+                    $f(p) = \sum_\alpha\psi_\alpha(p)g_\alpha(p)$ é uma <em>combinação convexa</em> dos números
+                    positivos $g_\alpha(p)$ (os pesos $\psi_\alpha(p)\ge0$ somam $1$, e só entram os $\alpha$ com
+                    $\psi_\alpha(p)\gt0$, para os quais $p \in U_\alpha$). Logo $f(p) \gt 0$.</p>
+
+                <p>
+                    Este é o mecanismo de todas as aplicações: <strong>uma combinação convexa de objetos locais com
+                        uma propriedade convexa é um objeto global com a mesma propriedade</strong>. A propriedade
+                    "ser positiva" poderia ser trocada por "ser uma forma de volume positiva" (tópico 3.15, para
+                    construir a forma de orientação global), "apontar para fora do bordo" (tópico 3.16), ou
+                    "ser uma métrica", e o argumento é o mesmo.
+                </p>
+
+                <p>
+                    <strong>Para que servirá.</strong> As partições da unidade são usadas em quatro lugares:
+                </p>
+
+                <ul>
+                    <li>no <a href="[15] - Orientação.html">tópico 3.15</a>, para colar formas de orientação
+                        locais em uma forma de orientação global, quando a variedade é orientável;</li>
+                    <li>no <a href="[16] - Variedades com Bordo.html">tópico 3.16</a>, para obter um campo
+                        vetorial que aponta para fora ao longo do bordo;</li>
+                    <li>no <a href="[17] - Integração de Formas.html">tópico 3.17</a>, para definir a integral de uma
+                        forma que não está contida em uma única carta, somando as integrais das partes
+                        $\psi_\alpha\omega$, cada uma suportada em um domínio coordenado;</li>
+                    <li>no <a href="[18] - Teorema de Stokes Geral.html">tópico 3.18</a>, para reduzir a demonstração
+                        do Teorema de Stokes ao caso de uma forma suportada em uma única carta.</li>
+                </ul>
+
+                <h2 id="fisica">Ponte com a física</h2>
+
+                <p>
+                    <strong>Campos escalares.</strong> Um campo escalar, como a temperatura, a densidade ou o
+                    potencial de um campo de matéria, é um elemento de $C^\infty(M)$: uma função suave sobre o
+                    espaço-tempo (ou sobre o espaço), com um valor em cada ponto, independente do sistema de
+                    coordenadas em que o ponto é descrito. A Proposição 3.4.2 é a afirmação de que o campo é suave
+                    em um sistema de coordenadas se, e só se, é em todos, e a Observação 3.4.3 diz como a
+                    <em>expressão</em> do campo muda de uma carta para outra, $\hat{f}_\psi = \hat{f}_\varphi\circ(\varphi\circ\psi^{-1})$,
+                    mesmo que o campo seja o mesmo.
+                </p>
+
+                <p>
+                    <strong>Covariância geral.</strong> Quando Einstein exigiu que as leis da física tivessem a
+                    mesma forma em todo sistema de coordenadas, a formulação moderna dessa ideia é: as leis são
+                    escritas em termos de objetos definidos sem referência a cartas, e portanto invariantes
+                    por difeomorfismo (Observação 3.4.24). Uma consequência é que uma teoria assim não distingue
+                    duas variedades difeomorfas com os campos transportados entre elas. Os difeomorfismos
+                    passam a ser a simetria de "calibre" da Relatividade Geral: duas configurações relacionadas
+                    por um difeomorfismo descrevem a mesma situação física. Esse ponto será retomado quando as
+                    equações de campo forem escritas.
+                </p>
+
+                <p>
+                    <strong>Perturbações localizadas.</strong> As funções bump modelam uma perturbação que existe
+                    em uma região limitada e é nula fora dela: um pulso de matéria, uma fonte que é ligada por um
+                    intervalo de tempo, uma região onde o campo é alterado. O fato de existirem bumps suaves é o que
+                    permite falar de "uma perturbação infinitesimal localizada em um ponto" e estudar a teoria
+                    por linearização em torno de uma solução, sem que a perturbação force mudanças em toda a
+                    variedade. O princípio da identidade para funções analíticas (Observação 3.4.31) mostra que
+                    essa liberdade não está disponível se exigirmos analiticidade.
+                </p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p id="exr-3-4-1"><strong>Exercício 3.4.1.</strong> Mostre que a função $f(x,y,z) = z$, restrita a
+                    $S^2$, é suave, e escreva sua representação nas cartas estereográficas $\sigma_N$ e
+                    $\sigma_S$.</p>
+
+                <p>
+                    <em>Solução.</em> Pelo Exemplo 3.4.6, a restrição de uma função suave de $\mathbb{R}^3$ é
+                    suave. Explicitamente, por (3.3.3) com $n=2$, a terceira coordenada de $\sigma_N^{-1}(u,v)$ é
+                    $(\lvert u\rvert^2-1)/(\lvert u\rvert^2+1)$, de modo que
+                </p>
+
+                <p>
+                    $$ \hat{f}_N(u,v) = f\circ\sigma_N^{-1}(u,v) = \frac{u^2+v^2-1}{u^2+v^2+1}, $$
+                </p>
+
+                <p>
+                    e a terceira coordenada de $\sigma_S^{-1}(w)$ é $(1-\lvert w\rvert^2)/(1+\lvert w\rvert^2)$:
+                </p>
+
+                <p>
+                    $$ \hat{f}_S(w^1,w^2) = \frac{1-(w^1)^2-(w^2)^2}{1+(w^1)^2+(w^2)^2}. $$
+                </p>
+
+                <p>
+                    Ambas são racionais com denominador positivo, logo suaves em $\mathbb{R}^2$. Elas são
+                    compatíveis com a transição (3.3.4): se $w = u/\lvert u\rvert^2$, então
+                    $\lvert w\rvert^2 = 1/\lvert u\rvert^2$ e
+                    $\dfrac{1-\lvert w\rvert^2}{1+\lvert w\rvert^2} = \dfrac{\lvert u\rvert^2-1}{\lvert u\rvert^2+1}$,
+                    como deve ser. Note que $\hat{f}_N \to 1$ quando $\lvert u\rvert \to \infty$, que é o valor de
+                    $f$ no polo norte, o ponto que a carta $\sigma_N$ não cobre. $\blacksquare$
+                </p>
+
+                <p id="exr-3-4-2"><strong>Exercício 3.4.2.</strong> A <em>aplicação antípoda</em> $A: S^n \to S^n$,
+                    $A(x) = -x$, é um difeomorfismo.</p>
+
+                <p>
+                    <em>Solução.</em> $A$ é bijetora e $A\circ A = \mathrm{id}$, de modo que basta provar que $A$ é
+                    suave: então $A^{-1} = A$ também é. Como $A(N) = S$ e $A(S) = N$, e $A(U_N) = U_S$,
+                    $A(U_S) = U_N$, usamos $\sigma_N$ no domínio e $\sigma_S$ no contradomínio (e
+                    vice-versa). Para $x \in U_N$,
+                </p>
+
+                <p>
+                    $$ \sigma_S(A(x)) = \frac{-(x^1,\dots,x^n)}{1+(-x^{n+1})} = -\frac{(x^1,\dots,x^n)}{1-x^{n+1}} = -\sigma_N(x), $$
+                </p>
+
+                <p>
+                    ou seja, $\sigma_S\circ A\circ\sigma_N^{-1}(u) = -u$, suave em $\mathbb{R}^n$. Do mesmo modo,
+                    $\sigma_N\circ A\circ\sigma_S^{-1}(w) = -w$. Como $U_N$ e $U_S$ cobrem $S^n$ e $A(U_N)\subset U_S$,
+                    $A(U_S)\subset U_N$, $A$ é suave pela Definição 3.4.7. $\blacksquare$
+                </p>
+
+                <p id="exr-3-4-3"><strong>Exercício 3.4.3.</strong> Mostre que $E: \mathbb{R}\to S^1$,
+                    $E(t) = (\cos t,\sin t)$, é suave, não é injetiva e é um <em>difeomorfismo local</em>: todo
+                    ponto de $\mathbb{R}$ tem uma vizinhança aberta que $E$ leva difeomorficamente sobre um
+                    aberto de $S^1$.</p>
+
+                <p>
+                    <em>Solução.</em> A suavidade e a não injetividade, $E(t+2\pi)=E(t)$, foram vistas no
+                    Exemplo 3.4.16. Em $(0,2\pi)$, $E$ é a inversa da carta $\theta_1: U_1\to(0,2\pi)$, e em
+                    $(-\pi,\pi)$ é a inversa da carta $\theta_2: U_2\to(-\pi,\pi)$. Cartas são difeomorfismos
+                    (Proposição 3.4.22), e inversas de difeomorfismos são difeomorfismos (Proposição 3.4.19).
+                    Logo $E\vert_{(0,2\pi)}$ é um difeomorfismo sobre o aberto $U_1$ e $E\vert_{(-\pi,\pi)}$ é um
+                    difeomorfismo sobre o aberto $U_2$. Como $E(t+2\pi k)=E(t)$, as translações desses intervalos
+                    por múltiplos de $2\pi$ têm a mesma propriedade, e a família dos intervalos
+                    $(2\pi k,2\pi(k+1))$ e $(2\pi k-\pi,2\pi k+\pi)$ cobre $\mathbb{R}$. Mas $E$ não é um
+                    difeomorfismo global, por não ser injetiva. $\blacksquare$
+                </p>
+
+                <p id="exr-3-4-4"><strong>Exercício 3.4.4.</strong> A aplicação $F(x) = x^3$ é um homeomorfismo
+                    suave de $\mathbb{R}$ em $\mathbb{R}$ (com a estrutura usual nos dois lados) que não é um
+                    difeomorfismo.</p>
+
+                <p>
+                    <em>Solução.</em> $F$ é suave, bijetora, contínua e tem inversa $y\mapsto y^{1/3}$, contínua; logo é
+                    um homeomorfismo. Se a inversa $G$ fosse suave, a regra da cadeia aplicada a
+                    $G\circ F=\mathrm{id}$ em $x=0$ daria $G'(F(0))\,F'(0) = 1$. Mas $F'(0) = 3\cdot0^2 = 0$,
+                    contradição. (Diretamente: $y^{1/3}$ não é diferenciável em $0$.) Este é o caso de uma
+                    bijeção suave cujo diferencial é singular em um ponto, e vale em geral:
+                    se um difeomorfismo existe, seu diferencial é invertível em todo ponto, como na
+                    <a href="[02] - Preliminares de Topologia e Cálculo.html#prop-3-2-52">Proposição 3.2.52</a>. Compare com o Exemplo 3.4.21: ao trocar a estrutura
+                    do domínio, a mesma aplicação passa a ser um difeomorfismo. $\blacksquare$
+                </p>
+
+                <p id="exr-3-4-5"><strong>Exercício 3.4.5.</strong> Construa explicitamente uma função suave
+                    $\beta: \mathbb{R}\to[0,1]$ com $\beta \equiv 1$ em $[-1,1]$ e $\operatorname{supp}\beta \subset[-2,2]$.</p>
+
+                <p>
+                    <em>Solução.</em> Aplique o Lema 3.4.27 com $n=1$, $r_1 = 1$ e $r_2 = 2$. Com
+                    $f(t) = e^{-1/t}$ para $t\gt0$ e $f(t)=0$ para $t\le0$,
+                </p>
+
+                <p>
+                    $$ \beta(t) = h(\lvert t\rvert) = \frac{f(2-\lvert t\rvert)}{f(2-\lvert t\rvert) + f(\lvert t\rvert-1)}. $$
+                </p>
+
+                <p>
+                    Para $\lvert t\rvert\le1$, $f(\lvert t\rvert-1) = 0$ e $\beta = 1$. Para $\lvert t\rvert\ge2$,
+                    $f(2-\lvert t\rvert)=0$ e $\beta=0$, de modo que $\operatorname{supp}\beta\subset[-2,2]$. Em
+                    $1\lt\lvert t\rvert\lt2$, $\beta\in(0,1)$. Por exemplo, $\beta(3/2) = 1/2$, porque
+                    $f(1/2)/(f(1/2)+f(1/2)) = 1/2$; mais geralmente, $h(t)+h(3-t)=1$ por simetria. A função é
+                    suave por ser composta de funções suaves, e em $t=0$ é constante perto dele. Seu gráfico é o
+                    terceiro painel da Figura 3.4.2. $\blacksquare$
+                </p>
+
+                <p id="exr-3-4-6"><strong>Exercício 3.4.6.</strong> Construa uma partição da unidade em
+                    $\mathbb{R}$ subordinada à cobertura $\{U_1,U_2\} = \{(-\infty,1),(-1,\infty)\}$.</p>
+
+                <p>
+                    <em>Solução.</em> Seja $h$ a função de corte do Lema 3.4.26 com $r_1=-\tfrac12$ e
+                    $r_2=\tfrac12$, isto é,
+                </p>
+
+                <p>
+                    $$ \psi_1(t) = h(t) = \frac{f(\frac12-t)}{f(\frac12-t)+f(t+\frac12)}, \qquad \psi_2(t) = 1-\psi_1(t) = \frac{f(t+\frac12)}{f(\frac12-t)+f(t+\frac12)}. $$
+                </p>
+
+                <p>
+                    Ambas são suaves, com valores em $[0,1]$ e $\psi_1+\psi_2=1$. Como $\psi_1 = 1$ em
+                    $(-\infty,-\frac12]$ e $\psi_1=0$ em $[\frac12,\infty)$, o seu suporte é $(-\infty,\frac12]$,
+                    contido em $U_1=(-\infty,1)$. Do mesmo modo, $\psi_2$ tem suporte $[-\frac12,\infty)\subset U_2$.
+                    A família é localmente finita (só há dois termos), e a partição está completa. Note que
+                    foi necessário que os suportes ficassem estritamente dentro dos abertos: era por isso que
+                    as extremidades da transição, $\pm\tfrac12$, ficam longe das extremidades $\pm1$ de $U_1$
+                    e de $U_2$. $\blacksquare$
+                </p>
+
+                <p id="exr-3-4-7"><strong>Exercício 3.4.7.</strong> Seja $\rho$ um bump em torno de $p$ e
+                    $f\in C^\infty(M)$. Mostre que $\rho f$ coincide com $f$ perto de $p$ e se anula fora de
+                    $\operatorname{supp}\rho$. Use isso para provar que $C^\infty(M)$ separa pontos: dados
+                    $p\ne q$, existe $g\in C^\infty(M)$ com $g(p)\ne g(q)$.</p>
+
+                <p>
+                    <em>Solução.</em> $\rho f$ é suave (Proposição 3.4.4). Onde $\rho\equiv1$, isto é, em uma
+                    vizinhança de $p$, $\rho f = f$. Fora de $\operatorname{supp}\rho$, $\rho = 0$ e portanto
+                    $\rho f=0$. (Observe que $\rho f$ <em>não</em> é uma extensão de $f$ a um conjunto maior: é
+                    uma função global que coincide com $f$ perto de $p$.) Para separar pontos, sejam $p\ne q$.
+                    Como $M$ é de Hausdorff, $M\setminus\{q\}$ é um aberto que contém $p$ (pontos são fechados em
+                    um espaço de Hausdorff). Pela Proposição 3.4.29, existe um bump $\rho$ com $\rho(p)=1$ e
+                    $\operatorname{supp}\rho\subset M\setminus\{q\}$, de modo que $\rho(q)=0$. Então $g = \rho$
+                    satisfaz $g(p)=1\ne0=g(q)$. Para uma função $f$ dada, $g = \rho f$ separa $p$ de $q$ sempre que
+                    $f(p)\ne0$, mostrando que as funções suaves de $M$ têm tanto poder de localização quanto se
+                    poderia desejar. $\blacksquare$
+                </p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <p>
+                    Este tópico deu à estrutura diferenciável o seu primeiro uso. Passaram a existir:
+                </p>
+
+                <ul>
+                    <li>as <strong>funções suaves</strong> $C^\infty(M)$ (<a href="#def-3-4-1">Definição 3.4.1</a>),
+                        independentes da carta (<a href="#prop-3-4-2">Proposição 3.4.2</a>), formando uma álgebra
+                        comutativa (<a href="#prop-3-4-4">Proposição 3.4.4</a>);</li>
+                    <li>as <strong>aplicações suaves</strong> entre variedades
+                        (<a href="#def-3-4-7">Definição 3.4.7</a>), com representação em coordenadas
+                        em quaisquer cartas (<a href="#prop-3-4-10">Proposição 3.4.10</a>), composição
+                        (<a href="#prop-3-4-12">Proposição 3.4.12</a>) e curvas suaves
+                        (<a href="#def-3-4-17">Definição 3.4.17</a>);</li>
+                    <li>os <strong>difeomorfismos</strong> (<a href="#def-3-4-18">Definição 3.4.18</a>), a
+                        noção de "mesma variedade", com a prova de que cartas são difeomorfismos
+                        (<a href="#prop-3-4-22">Proposição 3.4.22</a>) e de que a dimensão se conserva
+                        (<a href="#prop-3-4-23">Proposição 3.4.23</a>);</li>
+                    <li>a função $e^{-1/t}$ (<a href="#lema-3-4-25">Lema 3.4.25</a>), as <strong>funções de
+                            corte</strong> e os <strong>bumps</strong> em $\mathbb{R}^n$ e em variedades
+                        (<a href="#prop-3-4-29">Proposição 3.4.29</a>), e o
+                        <strong>lema de extensão</strong> (<a href="#lema-3-4-30">Lema 3.4.30</a>);</li>
+                    <li>as <strong>partições da unidade</strong>
+                        (<a href="#def-3-4-33">Definição 3.4.33</a> e <a href="#teo-3-4-35">Teorema 3.4.35</a>) e a
+                        função de corte de um fechado (<a href="#cor-3-4-36">Corolário 3.4.36</a>).</li>
+                </ul>
+
+                <p>
+                    Ainda não temos nenhum objeto que seja um <em>vetor</em> em uma variedade, nem uma noção de
+                    derivada de uma função $f\in C^\infty(M)$ ao longo de uma direção: sabemos que $f$ é
+                    suave, mas não sabemos derivá-la de forma independente de coordenadas. Os bumps do Lema
+                    3.4.30 e o lema de Hadamard do
+                    <a href="[02] - Preliminares de Topologia e Cálculo.html#lema-3-2-49">tópico 3.2</a> são as duas ferramentas que o próximo tópico usará para
+                    mostrar que os vetores tangentes, definidos como derivações, são exatamente os vetores
+                    do cálculo.
+                </p>
+
+                <p>
+                    O próximo tópico,
+                    <a href="[05] - Vetores Tangentes.html">3.5 Vetores Tangentes</a>, define o espaço tangente
+                    $T_pM$ como o espaço das derivações em $p$, calcula sua dimensão e mostra como suas bases
+                    dependem da carta.
+                </p>
 
             </div>
         </main>
@@ -161,6 +1272,14 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#funcoes-e-aplicacoes-suaves">Funções e Aplicações Suaves</a></li>
+                    <li><a href="#funcoes-suaves">Funções suaves</a></li>
+                    <li><a href="#aplicacoes-suaves">Aplicações suaves</a></li>
+                    <li><a href="#difeomorfismos">Difeomorfismos</a></li>
+                    <li><a href="#funcoes-bump">Funções de corte e bumps</a></li>
+                    <li><a href="#particoes-da-unidade">Partições da unidade</a></li>
+                    <li><a href="#fisica">Ponte com a física</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
                 </ul>
             </div>
         </aside>

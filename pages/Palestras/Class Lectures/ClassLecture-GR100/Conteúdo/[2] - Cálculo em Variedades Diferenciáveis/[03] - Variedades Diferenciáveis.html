@@ -151,7 +151,1343 @@
                 <h1 id="variedades-diferenciaveis">3.3 Variedades Diferenciáveis</h1>
                 <p class="lead">Variedades topológicas, cartas, aplicações de transição, atlas e estrutura diferenciável, com os exemplos fundamentais.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>
+                    A Equação (3.1.6) fala de uma região $M$ e do seu bordo $\partial M$, e o
+                    <a href="[01] - Motivação e Roteiro.html">tópico 3.1</a> explicou por que $M$ não pode ser
+                    sempre um pedaço de $\mathbb{R}^n$: o espaço-tempo, a esfera, o espaço de configurações de um
+                    pêndulo são espaços que, de perto, se parecem com $\mathbb{R}^n$, sem que exista um
+                    $\mathbb{R}^n$ ao redor deles em que se possa apoiar. Este tópico transforma "de perto, se
+                    parece com $\mathbb{R}^n$" em uma definição.
+                </p>
+
+                <p>
+                    "Parecer-se" tem dois níveis. No primeiro, topológico, cada ponto tem uma vizinhança
+                    homeomorfa a um aberto de $\mathbb{R}^n$; é a noção de <em>variedade topológica</em>, que usa
+                    o vocabulário do <a href="[02] - Preliminares de Topologia e Cálculo.html">tópico 3.2</a>.
+                    Esse nível basta para falar de continuidade, mas não de derivadas: um homeomorfismo não
+                    preserva derivadas, e duas descrições locais de uma mesma região podem concordar em quais
+                    funções são contínuas e discordar em quais são deriváveis. No segundo nível, diferenciável,
+                    exigimos que as mudanças de coordenadas entre descrições locais sejam suaves, e é isso que
+                    permitirá derivar. Todo o cálculo do restante do capítulo, desde as funções suaves do 3.4
+                    até os campos e as formas, depende dessa única exigência.
+                </p>
+
+                <p>
+                    Ao final do tópico o leitor saberá verificar, com contas, que um espaço dado é uma variedade
+                    diferenciável: escolher cartas, mostrar que são homeomorfismos sobre abertos, calcular as
+                    mudanças de coordenadas e conferir que são suaves. As contas são feitas por completo para a
+                    esfera, o espaço projetivo e os produtos, que são os exemplos de que o capítulo precisa.
+                </p>
+
+                <h2 id="variedades-topologicas">Variedades topológicas</h2>
+
+                <div class="definition-box" id="def-3-3-1" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.3.1 (Variedade topológica).</strong> Seja $n \ge 0$ um inteiro. Uma
+                        <strong>variedade topológica de dimensão $n$</strong> é um espaço topológico $M$ tal que:</p>
+                    <p>(i) $M$ é de Hausdorff (<a href="[02] - Preliminares de Topologia e Cálculo.html#def-3-2-20">Definição 3.2.20</a>);</p>
+                    <p>(ii) $M$ é segundo-contável (<a href="[02] - Preliminares de Topologia e Cálculo.html#def-3-2-24">Definição 3.2.24</a>);</p>
+                    <p>(iii) $M$ é <strong>localmente euclidiano de dimensão $n$</strong>: todo ponto de $M$ tem uma
+                        vizinhança aberta homeomorfa a um aberto de $\mathbb{R}^n$.</p>
+                </div>
+
+                <p>
+                    Para $n = 0$, $\mathbb{R}^0$ é um ponto, e as variedades de dimensão $0$ são os espaços
+                    discretos enumeráveis. O caso interessante começa em $n = 1$. A condição (iii) é a ideia
+                    central; as condições (i) e (ii) são hipóteses técnicas que excluem espaços patológicos, e
+                    cada uma tem um papel que vale a pena ver pelo que acontece quando falta.
+                </p>
+
+                <p id="obs-3-3-2"><strong>Observação 3.3.2 (O papel de cada hipótese).</strong> Cada uma das três
+                    condições da Definição 3.3.1 é independente das outras duas.</p>
+
+                <ul>
+                    <li><strong>Sem a condição de Hausdorff.</strong> A reta com duas origens $L$ do
+                        <a href="[02] - Preliminares de Topologia e Cálculo.html#ex-3-2-23">Exemplo 3.2.23</a> é
+                        segundo-contável e localmente euclidiana de dimensão $1$: cada ponto tem uma vizinhança
+                        homeomorfa a um intervalo aberto de $\mathbb{R}$. Mas não é de Hausdorff, e o defeito é
+                        sentido na análise: a sequência $[1/k]$ converge ao mesmo tempo para as duas origens,
+                        porque toda vizinhança de $o_0$ e toda vizinhança de $o_1$ contém $[1/k]$ para $k$
+                        grande. Em um espaço assim o limite de uma sequência deixa de ser único, e com ele a
+                        unicidade das soluções de equações diferenciais (tópico 3.8).</li>
+                    <li><strong>Sem a condição de segundo-contável.</strong> Seja $A$ um conjunto não enumerável e
+                        $X = A \times \mathbb{R}$ com a topologia em que um conjunto é aberto se, e somente se,
+                        cada fatia $\{\alpha\} \times \mathbb{R}$ o intersecta em um aberto de $\mathbb{R}$
+                        (uma união disjunta de retas). Esse espaço é de Hausdorff e localmente euclidiano de
+                        dimensão $1$. Não é segundo-contável: cada fatia é aberta, e uma base $\mathcal{B}$ tem
+                        de conter, para cada $\alpha \in A$, um aberto não vazio contido na $\alpha$-ésima
+                        fatia; esses abertos são dois a dois disjuntos, logo distintos, e $\mathcal{B}$ é não
+                        enumerável.</li>
+                    <li><strong>Sem a condição localmente euclidiana.</strong> O exemplo a seguir.</li>
+                </ul>
+
+                <p id="ex-3-3-3"><strong>Exemplo 3.3.3 (A cruz).</strong> Seja
+                    $X = \{(x,y) \in \mathbb{R}^2 : xy = 0\}$, a união dos dois eixos coordenados, com a topologia
+                    de subespaço. Como subespaço de $\mathbb{R}^2$, $X$ é de Hausdorff e segundo-contável
+                    (<a href="[02] - Preliminares de Topologia e Cálculo.html#prop-3-2-22">Proposição 3.2.22</a> e
+                    <a href="[02] - Preliminares de Topologia e Cálculo.html#prop-3-2-25">Proposição 3.2.25</a>).
+                    Todo ponto diferente da origem $o = (0,0)$ tem uma vizinhança em $X$ que é um intervalo aberto
+                    de um dos eixos. Afirmamos que $o$ <em>não</em> tem vizinhança homeomorfa a um aberto de
+                    nenhum $\mathbb{R}^n$.</p>
+
+                <p>
+                    Suponha o contrário: existem um aberto $W \subset X$ com $o \in W$, um aberto
+                    $\hat{W} \subset \mathbb{R}^n$ e um homeomorfismo $h: W \to \hat{W}$. Seja $q = h(o)$. Como
+                    $\hat{W}$ é aberto, existe uma bola aberta $B = B_r(q) \subset \hat{W}$, e
+                    $N = h^{-1}(B \setminus \{q\})$ é um subconjunto de $X \setminus \{o\}$, homeomorfo a
+                    $B \setminus \{q\}$. Vamos contar componentes conexas dos dois lados.
+                </p>
+
+                <p>
+                    <strong>Do lado de $X$.</strong> O conjunto $X \setminus \{o\}$ é a união disjunta dos quatro
+                    semieixos abertos $A_{x}^{+} = \{(x,0) : x \gt 0\}$, $A_{x}^{-} = \{(x,0) : x \lt 0\}$,
+                    $A_{y}^{+} = \{(0,y) : y \gt 0\}$ e $A_{y}^{-} = \{(0,y) : y \lt 0\}$. Cada um é aberto em
+                    $X \setminus \{o\}$: por exemplo, $A_{x}^{+} = (X \setminus \{o\}) \cap \{x \gt 0\}$, porque
+                    um ponto de $X$ com $x \gt 0$ tem de ter $y = 0$. Logo todo subconjunto conexo de
+                    $X \setminus \{o\}$ está contido em um único semieixo. Por outro lado,
+                    $h^{-1}(B)$ é aberto em $W$, portanto aberto em $X$, e contém $o$; logo contém pontos de cada
+                    um dos quatro semieixos, arbitrariamente próximos de $o$. Assim $N$ encontra os quatro
+                    semieixos, e, como cada componente conexa de $N$ cabe em um semieixo, $N$ tem <strong>pelo
+                        menos quatro</strong> componentes conexas.
+                </p>
+
+                <p>
+                    <strong>Do lado de $\mathbb{R}^n$.</strong> Se $n \ge 2$, a bola furada $B \setminus \{q\}$ é
+                    conexa por caminhos: dados dois pontos, o segmento que os une não passa por $q$, ou passa e
+                    então se contorna $q$ por um terceiro ponto da bola fora da reta que contém o segmento, o que
+                    é possível porque $n \ge 2$. Logo tem <strong>uma</strong> componente. Se $n = 1$, a bola
+                    furada é a união de dois intervalos abertos disjuntos e tem <strong>duas</strong>
+                    componentes. Se $n = 0$, $\mathbb{R}^0$ é um ponto e $h$ levaria $W$ a um ponto, o que é
+                    impossível porque $W$ tem mais de um ponto. Em todos os casos temos no máximo duas
+                    componentes, contra pelo menos quatro. Como um homeomorfismo preserva o número de
+                    componentes conexas, chegamos a uma contradição. $\blacksquare$
+                </p>
+
+                <p>
+                    O contraste com os exemplos anteriores merece atenção: a cruz é um subconjunto do plano, é de
+                    Hausdorff, é segundo-contável, é até uma união de duas retas. O que a impede de ser uma
+                    variedade é o cruzamento, e é exatamente esse tipo de defeito que a condição (iii) detecta.
+                    O <a href="#exr-3-3-5">Exercício 3.3.5</a> repete o argumento para o cone duplo.
+                </p>
+
+                <p>
+                    Falta resolver uma questão de coerência: a dimensão $n$ faz parte da definição, mas nada
+                    garante, em princípio, que um mesmo ponto não possa ter uma vizinhança homeomorfa a um aberto
+                    de $\mathbb{R}^2$ e outra homeomorfa a um aberto de $\mathbb{R}^3$. Isso não acontece, e é
+                    consequência de um teorema de topologia.
+                </p>
+
+                <div class="definition-box" id="teo-3-3-4">
+                    <p><strong>Teorema 3.3.4 (Invariância topológica da dimensão).</strong> Sejam
+                        $U \subset \mathbb{R}^m$ e $V \subset \mathbb{R}^n$ abertos não vazios. Se $U$ e $V$ são
+                        homeomorfos, então $m = n$.</p>
+                </div>
+
+                <p>
+                    <em>Ideia da demonstração.</em> O resultado decorre do teorema de invariância do domínio de
+                    Brouwer, ou diretamente do fato de que a homologia local de
+                    $\mathbb{R}^m$ em um ponto, isto é, a homologia relativa de
+                    $(\mathbb{R}^m, \mathbb{R}^m \setminus \{p\})$, é não nula exatamente em grau $m$; um
+                    homeomorfismo preserva a homologia local, e portanto a dimensão. A demonstração pertence à
+                    topologia algébrica (Hatcher, <em>Algebraic Topology</em>, capítulo 2); o enunciado é
+                    discutido em Lee, capítulo 1.
+                </p>
+
+                <p>
+                    Se $p$ está em duas vizinhanças $W$ e $W'$ com homeomorfismos para abertos de $\mathbb{R}^m$ e
+                    de $\mathbb{R}^n$, a interseção $W \cap W'$ é uma vizinhança aberta de $p$ que, pelas duas
+                    restrições, é homeomorfa a abertos não vazios de $\mathbb{R}^m$ e de $\mathbb{R}^n$. O teorema
+                    dá $m = n$. Assim a dimensão de uma variedade topológica não vazia e conexa está bem
+                    definida. Para as variedades <em>diferenciáveis</em>, a versão correspondente já foi provada
+                    por completo no
+                    <a href="[02] - Preliminares de Topologia e Cálculo.html#prop-3-2-52">tópico 3.2</a>: um
+                    difeomorfismo entre abertos de $\mathbb{R}^m$ e $\mathbb{R}^n$ força $m = n$. O Teorema 3.3.4
+                    será usado apenas para dizer que a dimensão tem sentido; nenhuma demonstração do capítulo
+                    depende dele.
+                </p>
+
+                <h2 id="cartas">Cartas e coordenadas locais</h2>
+
+                <p>
+                    Uma variedade topológica de dimensão $n$ é, por definição, coberta por abertos homeomorfos a
+                    abertos de $\mathbb{R}^n$. Cada um desses homeomorfismos recebe um nome, porque será usado o
+                    tempo todo.
+                </p>
+
+                <div class="definition-box" id="def-3-3-5" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.3.5 (Carta).</strong> Seja $M$ uma variedade topológica de dimensão
+                        $n$. Uma <strong>carta</strong> de $M$ é um par $(U,\varphi)$ em que $U \subset M$ é
+                        aberto e $\varphi: U \to \hat{U}$ é um homeomorfismo de $U$ sobre um aberto
+                        $\hat{U} = \varphi(U)$ de $\mathbb{R}^n$.</p>
+                    <p>O aberto $U$ é o <strong>domínio coordenado</strong> da carta. As <strong>funções
+                            coordenadas</strong> são $x^i = \pi^i \circ \varphi: U \to \mathbb{R}$, em que
+                        $\pi^i: \mathbb{R}^n \to \mathbb{R}$ é a $i$-ésima projeção; assim
+                        $\varphi(p) = (x^1(p),\dots,x^n(p))$, e os números $x^i(p)$ são as
+                        <strong>coordenadas locais</strong> de $p$. A inversa
+                        $\varphi^{-1}: \hat{U} \to U$ é a <strong>parametrização local</strong>.</p>
+                </div>
+
+                <p>
+                    Uma carta é uma maneira de dar nome aos pontos de uma região de $M$ por $n$ números, e esses
+                    números variam continuamente com o ponto. Quando uma carta está fixada, escrevemos
+                    $p \leftrightarrow (x^1,\dots,x^n)$, ou simplesmente "o ponto $(x^1,\dots,x^n)$", com o
+                    entendimento de que a identificação vale só dentro de $U$. A condição (iii) da Definição 3.3.1
+                    diz exatamente que os domínios coordenados das cartas cobrem $M$. As observações a seguir, de
+                    verificação imediata, mostram que cartas podem ser modificadas.
+                </p>
+
+                <p id="obs-3-3-6"><strong>Observação 3.3.6 (Restrição e recomposição de cartas).</strong> Seja
+                    $(U,\varphi)$ uma carta de $M$.</p>
+
+                <ul>
+                    <li><strong>Restrição.</strong> Se $V \subset U$ é aberto, então $(V,\varphi\vert_V)$ é uma
+                        carta. De fato, $\varphi\vert_V$ é um homeomorfismo de $V$ sobre $\varphi(V)$, e
+                        $\varphi(V)$ é aberto em $\hat{U}$ (porque $\varphi$ é um homeomorfismo e $V$ é aberto em
+                        $U$), logo é aberto em $\mathbb{R}^n$ (porque $\hat{U}$ é aberto em $\mathbb{R}^n$).</li>
+                    <li><strong>Recomposição.</strong> Se $\theta: \hat{U} \to \tilde{U}$ é um homeomorfismo entre
+                        abertos de $\mathbb{R}^n$, então $(U,\theta\circ\varphi)$ é uma carta, pois a composta de
+                        homeomorfismos é um homeomorfismo
+                        (<a href="[02] - Preliminares de Topologia e Cálculo.html#prop-3-2-15">Proposição 3.2.15</a>).
+                        Em particular, a translação $\theta(x) = x - \varphi(p)$ produz uma carta
+                        <strong>centrada em $p$</strong>, isto é, com $\varphi(p) = 0$.</li>
+                    <li><strong>Imagem uma bola.</strong> Dado $p \in U$, escolha $r \gt 0$ com
+                        $B_r(\varphi(p)) \subset \hat{U}$. Restringindo $\varphi$ a $\varphi^{-1}(B_r(\varphi(p)))$
+                        e depois transladando, obtemos uma carta centrada em $p$ cuja imagem é a bola aberta
+                        $B_r(0)$.</li>
+                </ul>
+
+                <h2 id="atlas">Aplicações de transição, atlas e estrutura diferenciável</h2>
+
+                <p>
+                    Uma única carta raramente cobre uma variedade, e duas cartas que se sobrepõem descrevem os
+                    pontos da sobreposição de duas maneiras. A relação entre as duas descrições é o objeto
+                    central desta seção.
+                </p>
+
+                <div class="definition-box" id="def-3-3-7" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.3.7 (Aplicação de transição).</strong> Sejam $(U,\varphi)$ e
+                        $(V,\psi)$ cartas de $M$ com $U \cap V \neq \varnothing$. A <strong>aplicação de
+                            transição</strong> (ou <strong>mudança de coordenadas</strong>) de $\varphi$ para
+                        $\psi$ é a aplicação</p>
+                    <p>$$ \psi \circ \varphi^{-1}: \varphi(U \cap V) \longrightarrow \psi(U \cap V). $$</p>
+                </div>
+
+                <p>
+                    Em coordenadas, se $(x^1,\dots,x^n) = \varphi(p)$ e $(\tilde{x}^1,\dots,\tilde{x}^n) = \psi(p)$
+                    para $p \in U \cap V$, a aplicação de transição é a lista de $n$ funções de $n$ variáveis
+                    $\tilde{x}^j = \tilde{x}^j(x^1,\dots,x^n)$, que dá as novas coordenadas de um ponto em função
+                    das antigas. Os dois conjuntos de $\mathbb{R}^n$ envolvidos são abertos: $U \cap V$ é aberto
+                    em $U$, logo $\varphi(U \cap V)$ é aberto em $\hat{U}$, e portanto em $\mathbb{R}^n$; o mesmo
+                    vale para $\psi(U \cap V)$. Além disso, $\psi \circ \varphi^{-1}$ é um homeomorfismo entre
+                    esses dois abertos: é a composta de $\varphi^{-1}\vert_{\varphi(U\cap V)}$ com
+                    $\psi\vert_{U\cap V}$, ambos homeomorfismos, e sua inversa é a transição
+                    $\varphi \circ \psi^{-1}$ no sentido contrário. A Figura 3.3.1 mostra a situação.
+                </p>
+
+                <figure class="lecture-figure" id="fig-3-3-1">
+                    <svg viewBox="0 0 640 290" role="img" aria-label="À esquerda, uma região curva M com dois discos sobrepostos, U e V, e a interseção U∩V sombreada. À direita, dois quadros que representam o espaço R^n. Uma seta rotulada phi leva U ao disco phi(U) do quadro de cima, e uma seta rotulada psi leva V ao disco psi(V) do quadro de baixo. Em cada quadro, a imagem de U∩V aparece sombreada. Uma seta vertical entre os quadros, rotulada psi composta com phi inversa, leva phi(U∩V) a psi(U∩V).">
+<defs><marker id="arr-3-3-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<path d="M 26,150 C 22,88 70,46 128,50 C 190,46 236,84 238,150 C 240,214 196,254 132,252 C 70,256 30,212 26,150 Z" class="fig-frame"/>
+<text x="36" y="74" class="fig-label fig-it">M</text>
+<path d="M129,99.5 L124.7,102.5 L120.7,105.8 L116.9,109.4 L113.5,113.4 L110.4,117.6 L107.7,122 L105.4,126.7 L103.5,131.5 L102,136.5 L100.9,141.6 L100.2,146.8 L100,152 L100.2,157.2 L100.9,162.4 L102,167.5 L103.5,172.5 L105.4,177.3 L107.7,182 L110.4,186.4 L113.5,190.6 L116.9,194.6 L120.7,198.2 L124.7,201.5 L129,204.5 L129,204.5 L133.3,201.5 L137.3,198.2 L141.1,194.6 L144.5,190.6 L147.6,186.4 L150.3,182 L152.6,177.3 L154.5,172.5 L156,167.5 L157.1,162.4 L157.8,157.2 L158,152 L157.8,146.8 L157.1,141.6 L156,136.5 L154.5,131.5 L152.6,126.7 L150.3,122 L147.6,117.6 L144.5,113.4 L141.1,109.4 L137.3,105.8 L133.3,102.5 L129,99.5 Z" class="fig-band"/>
+<circle cx="96" cy="152" r="62" class="fig-shape"/>
+<circle cx="162" cy="152" r="62" class="fig-shape"/>
+<text x="56" y="122" text-anchor="middle" class="fig-label fig-it">U</text>
+<text x="202" y="122" text-anchor="middle" class="fig-label fig-it">V</text>
+<text x="129" y="157" text-anchor="middle" class="fig-label fig-small fig-it">U ∩ V</text>
+<rect x="410" y="22" width="206" height="108" rx="4" class="fig-frame"/>
+<rect x="410" y="170" width="206" height="108" rx="4" class="fig-frame"/>
+<text x="608" y="42" text-anchor="end" class="fig-label fig-it">ℝⁿ</text>
+<text x="608" y="190" text-anchor="end" class="fig-label fig-it">ℝⁿ</text>
+<circle cx="488" cy="84" r="42" class="fig-shape"/>
+<circle cx="538" cy="232" r="42" class="fig-shape"/>
+<path d="M519.6,56.3 L521.2,58.2 L522.7,60.3 L524,62.4 L525.3,64.6 L526.3,66.9 L527.3,69.2 L528.1,71.6 L528.8,74 L529.3,76.5 L529.7,79 L529.9,81.5 L530,84 L529.9,86.5 L529.7,89 L529.3,91.5 L528.8,94 L528.1,96.4 L527.3,98.8 L526.3,101.1 L525.3,103.4 L524,105.6 L522.7,107.7 L521.2,109.8 L519.6,111.7 Z" class="fig-band"/>
+<path d="M506.4,204.3 L504.8,206.2 L503.3,208.3 L502,210.4 L500.7,212.6 L499.7,214.9 L498.7,217.2 L497.9,219.6 L497.2,222 L496.7,224.5 L496.3,227 L496.1,229.5 L496,232 L496.1,234.5 L496.3,237 L496.7,239.5 L497.2,242 L497.9,244.4 L498.7,246.8 L499.7,249.1 L500.7,251.4 L502,253.6 L503.3,255.7 L504.8,257.8 L506.4,259.7 Z" class="fig-band"/>
+<text x="466" y="80" text-anchor="middle" class="fig-label fig-small fig-it">φ(U)</text>
+<text x="556" y="228" text-anchor="middle" class="fig-label fig-small fig-it">ψ(V)</text>
+<text x="518" y="89" class="fig-label fig-small fig-it">φ(U∩V)</text>
+<text x="480" y="237" text-anchor="end" class="fig-label fig-small fig-it">ψ(U∩V)</text>
+<line x1="126" y1="97" x2="404" y2="66" class="fig-curve" marker-end="url(#arr-3-3-1)"/>
+<text x="300" y="66" text-anchor="middle" class="fig-label fig-it">φ</text>
+<line x1="192" y1="207" x2="404" y2="234" class="fig-curve" marker-end="url(#arr-3-3-1)"/>
+<text x="300" y="246" text-anchor="middle" class="fig-label fig-it">ψ</text>
+<line x1="470" y1="134" x2="470" y2="166" class="fig-curve" marker-end="url(#arr-3-3-1)"/>
+<text x="480" y="154" class="fig-label fig-it">ψ∘φ⁻¹</text>
+</svg>
+                    <figcaption><strong>Figura 3.3.1.</strong> Duas cartas $(U,\varphi)$ e $(V,\psi)$ de $M$ que se
+                        sobrepõem. A interseção $U \cap V$ (sombreada) tem duas descrições, $\varphi(U \cap V)$ e
+                        $\psi(U \cap V)$, ambas abertos de $\mathbb{R}^n$; a aplicação de transição
+                        $\psi \circ \varphi^{-1}$ converte uma na outra. Um homeomorfismo entre abertos de
+                        $\mathbb{R}^n$ não precisa ser suave, e é a suavidade da transição que a próxima definição
+                        vai exigir.</figcaption>
+                </figure>
+
+                <p>
+                    Até aqui só há topologia. Para que as cartas permitam derivar, a transição precisa ser
+                    suave, no sentido do cálculo em $\mathbb{R}^n$
+                    (<a href="[02] - Preliminares de Topologia e Cálculo.html#def-3-2-43">Definição 3.2.43</a>).
+                </p>
+
+                <div class="definition-box" id="def-3-3-8" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.3.8 (Cartas suavemente compatíveis).</strong> Duas cartas $(U,\varphi)$
+                        e $(V,\psi)$ de $M$ são <strong>suavemente compatíveis</strong> se $U \cap V = \varnothing$
+                        ou se as duas aplicações de transição $\psi \circ \varphi^{-1}$ e
+                        $\varphi \circ \psi^{-1}$ são suaves.</p>
+                </div>
+
+                <p>
+                    Como as duas transições são inversas uma da outra, a definição pede que
+                    $\psi \circ \varphi^{-1}: \varphi(U\cap V) \to \psi(U\cap V)$ seja um
+                    <em>difeomorfismo</em>
+                    (<a href="[02] - Preliminares de Topologia e Cálculo.html#def-3-2-51">Definição 3.2.51</a>).
+                    Pedir apenas uma das duas não bastaria: a aplicação $x \mapsto x^3$ é uma bijeção suave de
+                    $\mathbb{R}$ em $\mathbb{R}$ cuja inversa não é suave
+                    (<a href="[02] - Preliminares de Topologia e Cálculo.html#ex-3-2-56">Exemplo 3.2.56</a>), e a
+                    Observação 3.3.30 mostra por que isso importa.
+                </p>
+
+                <p>
+                    A razão da exigência pode ser antecipada. No tópico 3.4 diremos que uma função
+                    $f: M \to \mathbb{R}$ é suave quando $f \circ \varphi^{-1}$ for suave para cada carta
+                    $(U,\varphi)$. Se $(V,\psi)$ é outra carta, em $\psi(U \cap V)$ vale
+                </p>
+
+                <p>
+                    $$ f \circ \psi^{-1} = \big(f \circ \varphi^{-1}\big) \circ \big(\varphi \circ \psi^{-1}\big), $$
+                </p>
+
+                <p>
+                    e, pela regra da cadeia
+                    (<a href="[02] - Preliminares de Topologia e Cálculo.html#teo-3-2-46">Teorema 3.2.46</a>), o
+                    lado direito é suave se $f \circ \varphi^{-1}$ e a transição $\varphi \circ \psi^{-1}$ o são.
+                    A compatibilidade das cartas é exatamente o que torna a suavidade de $f$ independente da
+                    carta escolhida. Sem ela, "$f$ é suave" dependeria do sistema de coordenadas, e não
+                    descreveria uma propriedade de $f$.
+                </p>
+
+                <div class="definition-box" id="def-3-3-9" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.3.9 (Atlas suave).</strong> Um <strong>atlas suave</strong> de uma
+                        variedade topológica $M$ é uma família $\mathcal{A} = \{(U_\alpha,\varphi_\alpha)\}$ de
+                        cartas de $M$ tal que (i) os domínios $U_\alpha$ cobrem $M$ e (ii) quaisquer duas cartas
+                        de $\mathcal{A}$ são suavemente compatíveis.</p>
+                </div>
+
+                <p>
+                    Um atlas não é único. Uma carta suavemente compatível com todas as de $\mathcal{A}$ pode
+                    sempre ser acrescentada sem estragar nada, e dois atlas muito diferentes podem descrever a
+                    mesma geometria. Para que a estrutura não dependa dessas escolhas, usamos o atlas que contém
+                    tudo o que cabe.
+                </p>
+
+                <div class="definition-box" id="def-3-3-10" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.3.10 (Atlas maximal; estrutura diferenciável).</strong> Um atlas suave
+                        $\mathcal{A}$ de $M$ é <strong>maximal</strong> se toda carta de $M$ que é suavemente
+                        compatível com todas as cartas de $\mathcal{A}$ pertence a $\mathcal{A}$. Uma
+                        <strong>estrutura diferenciável</strong> (ou <strong>suave</strong>) em $M$ é um atlas
+                        suave maximal.</p>
+                </div>
+
+                <div class="definition-box" id="prop-3-3-11">
+                    <p><strong>Proposição 3.3.11 (Todo atlas está contido em um único atlas maximal).</strong>
+                        Seja $\mathcal{A}$ um atlas suave de $M$. Existe um único atlas suave maximal
+                        $\bar{\mathcal{A}}$ de $M$ tal que $\mathcal{A} \subset \bar{\mathcal{A}}$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Seja $\bar{\mathcal{A}}$ o conjunto de todas as cartas de $M$ que são
+                    suavemente compatíveis com todas as cartas de $\mathcal{A}$. Pela definição de atlas suave,
+                    $\mathcal{A} \subset \bar{\mathcal{A}}$, e os domínios das cartas de $\mathcal{A}$ cobrem
+                    $M$; falta provar três coisas.
+                </p>
+
+                <p>
+                    <strong>Passo 1: duas cartas quaisquer de $\bar{\mathcal{A}}$ são suavemente compatíveis.</strong>
+                    Sejam $(U,\varphi)$ e $(V,\psi)$ em $\bar{\mathcal{A}}$ com $U \cap V \neq \varnothing$, e seja
+                    $x \in \varphi(U \cap V)$. Pondo $p = \varphi^{-1}(x)$, escolha uma carta $(W,\chi)$ de
+                    $\mathcal{A}$ com $p \in W$. Em $\varphi(U \cap V \cap W)$, que é um aberto de $\mathbb{R}^n$
+                    contendo $x$, vale
+                </p>
+
+                <p>
+                    $$ \psi \circ \varphi^{-1} = \big(\psi \circ \chi^{-1}\big) \circ \big(\chi \circ \varphi^{-1}\big). $$
+                </p>
+
+                <p>
+                    O fator $\chi \circ \varphi^{-1}$ é suave em $\varphi(U \cap W)$ porque $(U,\varphi)$ pertence
+                    a $\bar{\mathcal{A}}$ e $(W,\chi)$ a $\mathcal{A}$; sua imagem em
+                    $\varphi(U\cap V\cap W)$ está contida em $\chi(V \cap W)$, onde $\psi \circ \chi^{-1}$ é suave
+                    porque $(V,\psi)$ pertence a $\bar{\mathcal{A}}$. A composta de aplicações suaves é suave
+                    (<a href="[02] - Preliminares de Topologia e Cálculo.html#cor-3-2-47">Corolário 3.2.47</a>).
+                    Logo $\psi \circ \varphi^{-1}$ é suave em uma vizinhança de cada ponto de
+                    $\varphi(U \cap V)$, e portanto suave em $\varphi(U \cap V)$, pois a suavidade é uma
+                    propriedade local (as derivadas parciais em um ponto dependem só dos valores em torno dele).
+                    Trocando os papéis das cartas, $\varphi \circ \psi^{-1}$ também é suave.
+                </p>
+
+                <p>
+                    <strong>Passo 2: $\bar{\mathcal{A}}$ é maximal.</strong> Pelo Passo 1, $\bar{\mathcal{A}}$ é
+                    um atlas suave. Se uma carta é suavemente compatível com todas as de $\bar{\mathcal{A}}$, é em
+                    particular suavemente compatível com todas as de $\mathcal{A} \subset \bar{\mathcal{A}}$, logo
+                    pertence a $\bar{\mathcal{A}}$ por definição.
+                </p>
+
+                <p>
+                    <strong>Passo 3: unicidade.</strong> Seja $\mathcal{B}$ outro atlas suave maximal com
+                    $\mathcal{A} \subset \mathcal{B}$. Toda carta de $\mathcal{B}$ é suavemente compatível com
+                    todas as de $\mathcal{B}$, em particular com as de $\mathcal{A}$; logo
+                    $\mathcal{B} \subset \bar{\mathcal{A}}$. Reciprocamente, uma carta de $\bar{\mathcal{A}}$ é
+                    suavemente compatível com todas as cartas de $\mathcal{B} \subset \bar{\mathcal{A}}$, pelo
+                    Passo 1; como $\mathcal{B}$ é maximal, ela pertence a $\mathcal{B}$. Assim
+                    $\mathcal{B} = \bar{\mathcal{A}}$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="prop-3-3-12">
+                    <p><strong>Proposição 3.3.12 (Quando dois atlas dão a mesma estrutura).</strong> Dois atlas
+                        suaves $\mathcal{A}$ e $\mathcal{B}$ de $M$ determinam a mesma estrutura diferenciável,
+                        isto é, $\bar{\mathcal{A}} = \bar{\mathcal{B}}$, se, e somente se, $\mathcal{A} \cup \mathcal{B}$
+                        é um atlas suave.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> ($\Rightarrow$) Se $\bar{\mathcal{A}} = \bar{\mathcal{B}}$, então
+                    $\mathcal{A} \cup \mathcal{B} \subset \bar{\mathcal{A}}$, que é um atlas suave; um subconjunto
+                    de um atlas suave que ainda cobre $M$ é um atlas suave, porque a compatibilidade é uma
+                    condição sobre pares de cartas. ($\Leftarrow$) Se $\mathcal{A} \cup \mathcal{B}$ é um atlas
+                    suave, toda carta de $\mathcal{B}$ é suavemente compatível com todas as de $\mathcal{A}$, isto
+                    é, $\mathcal{B} \subset \bar{\mathcal{A}}$. Então $\bar{\mathcal{A}}$ é um atlas suave maximal
+                    que contém $\mathcal{B}$, e a unicidade da Proposição 3.3.11, aplicada a $\mathcal{B}$, dá
+                    $\bar{\mathcal{A}} = \bar{\mathcal{B}}$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="def-3-3-13" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.3.13 (Variedade diferenciável).</strong> Uma <strong>variedade
+                            diferenciável</strong> (ou <strong>variedade suave</strong>) de dimensão $n$ é uma
+                        variedade topológica $M$ de dimensão $n$ munida de uma estrutura diferenciável
+                        $\mathcal{A}_M$. As cartas de $\mathcal{A}_M$ são as <strong>cartas suaves</strong> de
+                        $M$.</p>
+                </div>
+
+                <p id="obs-3-3-14"><strong>Observação 3.3.14 (Na prática, basta um atlas).</strong> Pela
+                    Proposição 3.3.11, para definir uma variedade diferenciável é suficiente exibir <em>um</em>
+                    atlas suave de uma variedade topológica: a estrutura é o atlas maximal que o contém. Pela
+                    Proposição 3.3.12, dois atlas definem a mesma variedade se, e só se, sua união é um atlas
+                    suave. Daqui em diante, "carta" de uma variedade diferenciável significa carta suave, isto é,
+                    carta do atlas maximal. Duas consequências, ambas imediatas da maximalidade, serão usadas o
+                    tempo todo.</p>
+
+                <ul>
+                    <li>Se $(U,\varphi)$ é uma carta e $V \subset U$ é aberto, então $(V,\varphi\vert_V)$ é uma
+                        carta. De fato, ela é uma carta topológica pela Observação 3.3.6, e é suavemente
+                        compatível com qualquer carta $(W,\chi)$, porque suas transições são restrições das de
+                        $(U,\varphi)$ a abertos menores.</li>
+                    <li>Se $(U,\varphi)$ é uma carta e $\theta: \hat{U} \to \tilde{U}$ é um difeomorfismo entre
+                        abertos de $\mathbb{R}^n$, então $(U,\theta\circ\varphi)$ é uma carta. De fato, para uma
+                        carta $(W,\chi)$ as transições são
+                        $\chi \circ (\theta\circ\varphi)^{-1} = (\chi\circ\varphi^{-1}) \circ \theta^{-1}$ e
+                        $(\theta\circ\varphi)\circ\chi^{-1} = \theta \circ (\varphi \circ \chi^{-1})$, compostas
+                        de aplicações suaves. Em particular, é sempre possível escolher uma carta centrada em
+                        $p$ cuja imagem é uma bola aberta $B_r(0)$, o que será usado no tópico 3.5.</li>
+                </ul>
+
+                <p>
+                    O último resultado da seção diz como construir uma variedade a partir de cartas sem ter
+                    topologia previamente. Ele será usado três vezes, para dar uma estrutura de variedade ao
+                    fibrado tangente $TM$ (tópico 3.7), ao fibrado cotangente $T^*M$ (tópico 3.9) e ao fibrado
+                    $\Lambda^k T^*M$ das $k$-formas (tópico 3.12), que são conjuntos sobre os quais só
+                    conhecemos, de início, as cartas.
+                </p>
+
+                <div class="definition-box" id="lema-3-3-15">
+                    <p><strong>Lema 3.3.15 (Construção de variedades a partir de cartas).</strong> Seja $M$ um
+                        conjunto e suponha dada uma família de subconjuntos $U_\alpha \subset M$ e de bijeções
+                        $\varphi_\alpha: U_\alpha \to \varphi_\alpha(U_\alpha) \subset \mathbb{R}^n$ tais que:</p>
+                    <p>(i) cada $\varphi_\alpha(U_\alpha)$ é aberto em $\mathbb{R}^n$;</p>
+                    <p>(ii) para todos $\alpha,\beta$, os conjuntos $\varphi_\alpha(U_\alpha \cap U_\beta)$ e
+                        $\varphi_\beta(U_\alpha \cap U_\beta)$ são abertos em $\mathbb{R}^n$, e
+                        $\varphi_\beta \circ \varphi_\alpha^{-1}: \varphi_\alpha(U_\alpha \cap U_\beta) \to \varphi_\beta(U_\alpha \cap U_\beta)$
+                        é suave;</p>
+                    <p>(iii) uma quantidade enumerável dos conjuntos $U_\alpha$ cobre $M$;</p>
+                    <p>(iv) se $p \neq q$ são pontos de $M$, então ou existe um $U_\alpha$ que contém ambos, ou
+                        existem $U_\alpha \ni p$ e $U_\beta \ni q$ disjuntos.</p>
+                    <p>Então $M$ tem uma única topologia e uma única estrutura diferenciável para as quais cada
+                        $(U_\alpha,\varphi_\alpha)$ é uma carta suave, e com elas $M$ é uma variedade
+                        diferenciável de dimensão $n$.</p>
+                </div>
+
+                <p>
+                    <em>Ideia da demonstração.</em> A topologia é a gerada pelos conjuntos
+                    $\varphi_\alpha^{-1}(W)$, com $W \subset \varphi_\alpha(U_\alpha)$ aberto. A condição (ii) faz
+                    de cada $\varphi_\alpha$ um homeomorfismo para essa topologia; a condição (iii) dá uma base
+                    enumerável, e (iv) garante a propriedade de Hausdorff. As transições são suaves por (ii), de
+                    modo que as cartas formam um atlas suave, e a unicidade vem de que uma topologia que torna
+                    todas as $\varphi_\alpha$ homeomorfismos é determinada pelas cartas. Referência: Lee,
+                    capítulo 1.
+                </p>
+
+                <h2 id="exemplos">Exemplos</h2>
+
+                <p>
+                    Para cada exemplo seguimos o mesmo roteiro: (1) o espaço é de Hausdorff e segundo-contável;
+                    (2) as cartas são homeomorfismos sobre <em>abertos</em> de $\mathbb{R}^n$ cujos domínios
+                    cobrem o espaço; (3) as aplicações de transição são calculadas e são suaves, nos dois
+                    sentidos. Quando o espaço é um subconjunto de algum $\mathbb{R}^N$, o item (1) vem de graça
+                    (<a href="[02] - Preliminares de Topologia e Cálculo.html#prop-3-2-22">Proposição 3.2.22</a> e
+                    <a href="[02] - Preliminares de Topologia e Cálculo.html#prop-3-2-25">Proposição 3.2.25</a>).
+                </p>
+
+                <h3 id="ex-rn">O espaço euclidiano, espaços vetoriais e abertos</h3>
+
+                <p id="ex-3-3-16"><strong>Exemplo 3.3.16 ($\mathbb{R}^n$).</strong> O espaço $\mathbb{R}^n$ é de
+                    Hausdorff e segundo-contável
+                    (<a href="[02] - Preliminares de Topologia e Cálculo.html#ex-3-2-21">Exemplo 3.2.21</a> e
+                    <a href="[02] - Preliminares de Topologia e Cálculo.html#ex-3-2-5">Exemplo 3.2.5</a>), e a
+                    família com uma só carta, $\{(\mathbb{R}^n,\mathrm{id})\}$, é um atlas suave: a única transição
+                    é $\mathrm{id}\circ\mathrm{id}^{-1} = \mathrm{id}$. A estrutura diferenciável que ela
+                    determina é a <strong>estrutura usual</strong> de $\mathbb{R}^n$. Salvo menção em contrário,
+                    $\mathbb{R}^n$ é considerado com essa estrutura, e as coordenadas $x^1,\dots,x^n$ da carta
+                    identidade são as coordenadas cartesianas.</p>
+
+                <p id="ex-3-3-17"><strong>Exemplo 3.3.17 (Espaços vetoriais de dimensão finita).</strong> Seja
+                    $V$ um espaço vetorial real de dimensão $n$. Cada base $E = (E_1,\dots,E_n)$ de $V$ define a
+                    aplicação de coordenadas $\varepsilon_E: V \to \mathbb{R}^n$, $\sum_i x^i E_i \mapsto (x^1,\dots,x^n)$, que é uma bijeção
+                    linear. Se $\tilde{E}$ é outra base, existe uma matriz invertível $A$ tal que
+                    $\varepsilon_{\tilde{E}} \circ \varepsilon_E^{-1}(x) = Ax$ para todo $x \in \mathbb{R}^n$
+                    (a matriz de mudança de base). Esta transição é linear e invertível, portanto suave com
+                    inversa suave: $x \mapsto A^{-1}x$.</p>
+
+                <p>
+                    Isso permite definir a topologia de $V$ sem escolher uma norma: um conjunto $U \subset V$ é
+                    aberto se $\varepsilon_E(U)$ é aberto em $\mathbb{R}^n$. A condição não depende da base,
+                    porque $\varepsilon_{\tilde{E}}(U) = A\,\varepsilon_E(U)$ e $x \mapsto Ax$ é um homeomorfismo
+                    de $\mathbb{R}^n$. Com essa topologia, cada $\varepsilon_E$ é um homeomorfismo de $V$ sobre
+                    $\mathbb{R}^n$; logo $V$ é de Hausdorff e segundo-contável, e o atlas formado pelas cartas
+                    $(V,\varepsilon_E)$, uma para cada base, é um atlas suave. A estrutura diferenciável
+                    resultante é a <strong>estrutura usual</strong> de $V$, e <em>não depende da base</em>: as
+                    cartas de bases diferentes são suavemente compatíveis. É assim que o espaço das matrizes
+                    $M_n(\mathbb{R}) \cong \mathbb{R}^{n^2}$, o espaço das matrizes simétricas, ou o espaço
+                    tangente de uma variedade em um ponto (tópico 3.5) herdam uma estrutura de variedade.</p>
+
+                <p id="ex-3-3-18"><strong>Exemplo 3.3.18 (Abertos de uma variedade).</strong> Seja $M$ uma
+                    variedade diferenciável de dimensão $n$ e $W \subset M$ um aberto. Com a topologia de
+                    subespaço, $W$ é de Hausdorff e segundo-contável, e as restrições $(U \cap W, \varphi\vert_{U\cap W})$
+                    das cartas $(U,\varphi)$ de $M$ são cartas de $W$, pela Observação 3.3.14. As transições
+                    entre elas são restrições das transições de $M$ a abertos, logo suaves. Portanto todo aberto
+                    de uma variedade de dimensão $n$ é uma variedade diferenciável de dimensão $n$, a
+                    <strong>subvariedade aberta</strong> correspondente. Em particular, todo aberto de
+                    $\mathbb{R}^n$ é uma variedade de dimensão $n$.</p>
+
+                <p id="ex-3-3-19"><strong>Exemplo 3.3.19 (O grupo linear $GL(n,\mathbb{R})$).</strong> Seja
+                    $GL(n,\mathbb{R})$ o conjunto das matrizes reais $n\times n$ invertíveis. Como
+                    $\det: M_n(\mathbb{R}) \to \mathbb{R}$ é um polinômio nas $n^2$ entradas, é contínua, e
+                    $GL(n,\mathbb{R}) = \det^{-1}(\mathbb{R}\setminus\{0\})$ é a pré-imagem de um aberto, logo
+                    aberta em $M_n(\mathbb{R}) \cong \mathbb{R}^{n^2}$. Pelo Exemplo 3.3.18 é uma variedade
+                    diferenciável de dimensão $n^2$, com uma carta global (as entradas da matriz).</p>
+
+                <h3 id="ex-graficos">Gráficos de funções</h3>
+
+                <p id="ex-3-3-20"><strong>Exemplo 3.3.20 (Gráfico de uma função suave).</strong> Sejam
+                    $U \subset \mathbb{R}^n$ aberto, $f: U \to \mathbb{R}^k$ suave e
+                    $\Gamma_f = \{(x,f(x)) : x \in U\} \subset \mathbb{R}^{n+k}$, com a topologia de subespaço.
+                    Esse conjunto é de Hausdorff e segundo-contável por ser subespaço de $\mathbb{R}^{n+k}$.
+                    Seja $\varphi: \Gamma_f \to U$ a restrição da projeção $(x,y) \mapsto x$. Ela é contínua,
+                    bijetora, e sua inversa $x \mapsto (x,f(x))$ é contínua, porque as componentes são contínuas
+                    (uma função suave é diferenciável, logo contínua, pela
+                    <a href="[02] - Preliminares de Topologia e Cálculo.html#prop-3-2-41">Proposição 3.2.41</a>).
+                    Assim $(\Gamma_f,\varphi)$ é uma carta cujo domínio é todo $\Gamma_f$, e o atlas com essa
+                    única carta é suave (a única transição é a identidade). Logo $\Gamma_f$ é uma variedade
+                    diferenciável de dimensão $n$, com uma <strong>carta global</strong>.</p>
+
+                <p>
+                    A parábola $y = x^2$ e o parabolóide $z = x^2 + y^2$ são exemplos. Note que a suavidade de $f$
+                    não foi usada: com $f$ apenas contínua, a mesma conta mostra que $\Gamma_f$ é uma variedade
+                    topológica com uma carta global. O papel da suavidade de $f$ será outro: ela torna o gráfico
+                    uma "superfície lisa dentro de $\mathbb{R}^{n+k}$", que é a noção de subvariedade do tópico
+                    3.6, e que o atlas da carta global, por si só, não captura.
+                </p>
+
+                <h3 id="ex-s1">O círculo</h3>
+
+                <p id="ex-3-3-21"><strong>Exemplo 3.3.21 (O círculo $S^1$).</strong> Seja
+                    $S^1 = \{(x,y) \in \mathbb{R}^2 : x^2+y^2 = 1\}$, que é de Hausdorff e segundo-contável por ser
+                    subespaço de $\mathbb{R}^2$. Considere os abertos
+                    $U_1 = S^1 \setminus \{(1,0)\}$ e $U_2 = S^1 \setminus \{(-1,0)\}$ (complementares de um ponto,
+                    que é fechado), cuja união é $S^1$, e as aplicações "ângulo"</p>
+
+                <p>
+                    $$ \theta_1: U_1 \to (0,2\pi), \qquad \theta_2: U_2 \to (-\pi,\pi), $$
+                </p>
+
+                <p>
+                    que a cada ponto associam o ângulo, medido a partir do eixo $x$ positivo, no intervalo
+                    indicado. Explicitamente, com $\arccos: [-1,1] \to [0,\pi]$,
+                </p>
+
+                <p>
+                    $$ \theta_2(x,y) = \begin{cases} \arccos x, & y \ge 0, \\ -\arccos x, & y \le 0, \end{cases} \qquad
+                    \theta_1(x,y) = \begin{cases} \arccos x, & y \ge 0, \\ 2\pi - \arccos x, & y \le 0. \end{cases} $$
+                </p>
+
+                <p>
+                    <strong>As cartas são homeomorfismos.</strong> Cada $\theta_i$ é bem definida e contínua:
+                    ela é dada por duas fórmulas contínuas em dois subconjuntos fechados que cobrem o domínio
+                    ($y \ge 0$ e $y \le 0$), e as fórmulas coincidem na interseção. Para $\theta_2$ a interseção
+                    é $\{(1,0)\}$, onde $\arccos 1 = 0 = -\arccos 1$; para $\theta_1$ é $\{(-1,0)\}$, onde
+                    $\arccos(-1) = \pi = 2\pi - \pi$. Uma aplicação definida assim é contínua, porque a
+                    pré-imagem de um fechado é a união de duas pré-imagens fechadas. A inversa de cada $\theta_i$
+                    é $t \mapsto (\cos t, \sin t)$, contínua; e esta é de fato a inversa, pois
+                    $\cos(\theta_i(x,y)) = x$ e $\sin(\theta_i(x,y)) = y$ pelas fórmulas acima, já que
+                    $\sin(\arccos x) = \sqrt{1-x^2} = \lvert y\rvert$ e o sinal é escolhido de acordo com $y$.
+                    Os dois intervalos são abertos de $\mathbb{R}$.
+                </p>
+
+                <p>
+                    <strong>A transição.</strong> A interseção é
+                    $U_1 \cap U_2 = S^1 \setminus \{(1,0),(-1,0)\} = \{y \gt 0\} \cup \{y \lt 0\}$, com
+                    $\theta_1(U_1\cap U_2) = (0,\pi)\cup(\pi,2\pi)$ e $\theta_2(U_1\cap U_2) = (-\pi,0)\cup(0,\pi)$.
+                    Para $t \in (0,\pi)$, o ponto $(\cos t,\sin t)$ tem $y \gt 0$ e $\theta_2 = \arccos(\cos t) = t$.
+                    Para $t \in (\pi,2\pi)$, tem $y \lt 0$, $\arccos(\cos t) = 2\pi - t$ e
+                    $\theta_2 = -(2\pi - t) = t - 2\pi$. Portanto
+                </p>
+
+                <p>
+                    $$ \theta_2\circ\theta_1^{-1}(t) = \begin{cases} t, & t \in (0,\pi), \\ t - 2\pi, & t \in (\pi,2\pi). \end{cases} \tag{3.3.1} $$
+                </p>
+
+                <p>
+                    Em cada pedaço aberto a transição é uma translação, suave, e a inversa é $t \mapsto t$ ou
+                    $t \mapsto t + 2\pi$. Portanto $\{(U_1,\theta_1),(U_2,\theta_2)\}$ é um atlas suave, e $S^1$ é
+                    uma variedade diferenciável de dimensão $1$. O deslocamento de $2\pi$ em (3.3.1) é o preço de
+                    cobrir um círculo com uma coordenada angular: o ângulo de um ponto só está definido a menos
+                    de voltas inteiras, e dar a volta no círculo uma vez não é uma operação que um único
+                    intervalo aberto consiga descrever. Que são necessárias pelo menos duas cartas é a
+                    Observação 3.3.25.</p>
+
+                <h3 id="ex-esferas">As esferas</h3>
+
+                <p>
+                    A esfera $S^n = \{x \in \mathbb{R}^{n+1} : \lvert x\rvert = 1\}$, com $n \ge 1$, é de
+                    Hausdorff e segundo-contável por ser subespaço de $\mathbb{R}^{n+1}$. Damos a ela dois atlas
+                    diferentes, ambos úteis, e mostramos que definem a mesma estrutura.
+                </p>
+
+                <p id="ex-3-3-22"><strong>Exemplo 3.3.22 (Esfera: cartas-gráfico).</strong> Para
+                    $i = 1,\dots,n+1$ e sinal $\pm$, seja
+                    $U_i^\pm = \{x \in S^n : \pm x^i \gt 0\}$, o hemisfério aberto no qual a $i$-ésima coordenada
+                    tem sinal $\pm$ (aberto em $S^n$, pré-imagem de um aberto de $\mathbb{R}$ por uma função
+                    contínua). Seja $B = \{u \in \mathbb{R}^n : \lvert u\rvert \lt 1\}$ a bola aberta unitária e</p>
+
+                <p>
+                    $$ \varphi_i^\pm: U_i^\pm \to B, \qquad \varphi_i^\pm(x) = (x^1,\dots,\widehat{x^i},\dots,x^{n+1}), $$
+                </p>
+
+                <p>
+                    em que o chapéu indica que a coordenada $x^i$ é omitida. Se $x \in U_i^\pm$, então
+                    $\lvert\varphi_i^\pm(x)\rvert^2 = 1 - (x^i)^2 \lt 1$, de modo que a imagem está em $B$. A
+                    aplicação $\varphi_i^\pm$ é a restrição de uma projeção linear, logo contínua, e tem inversa</p>
+
+                <p>
+                    $$ (\varphi_i^\pm)^{-1}(u) = \big(u^1,\dots,u^{i-1},\ \pm\sqrt{1-\lvert u\rvert^2},\ u^i,\dots,u^n\big), $$
+                </p>
+
+                <p>
+                    contínua porque $1 - \lvert u\rvert^2 \gt 0$ em $B$. Logo $\varphi_i^\pm$ é um homeomorfismo
+                    sobre o aberto $B$. As $2(n+1)$ cartas $(U_i^\pm,\varphi_i^\pm)$ cobrem $S^n$: um ponto da
+                    esfera tem alguma coordenada não nula. Cada uma é a carta global do gráfico de
+                    $u \mapsto \pm\sqrt{1-\lvert u\rvert^2}$, como no Exemplo 3.3.20.</p>
+
+                <p>
+                    <strong>Transições.</strong> Considere $i \lt j$ e sinais $\varepsilon_i,\varepsilon_j$. Para
+                    $u \in \varphi_i^{\varepsilon_i}(U_i^{\varepsilon_i}\cap U_j^{\varepsilon_j})$, o ponto
+                    $x = (\varphi_i^{\varepsilon_i})^{-1}(u)$ tem $x^k = u^k$ para $k \lt i$,
+                    $x^i = \varepsilon_i\sqrt{1-\lvert u\rvert^2}$ e $x^k = u^{k-1}$ para $k \gt i$; em particular
+                    $x^j = u^{j-1}$. A condição $x \in U_j^{\varepsilon_j}$ é $\varepsilon_j u^{j-1} \gt 0$.
+                    Aplicando $\varphi_j^{\varepsilon_j}$, que omite $x^j$, obtemos
+                </p>
+
+                <p>
+                    $$ \varphi_j^{\varepsilon_j}\circ(\varphi_i^{\varepsilon_i})^{-1}(u) = \big(u^1,\dots,u^{i-1},\ \varepsilon_i\sqrt{1-\lvert u\rvert^2},\ u^i,\dots,\widehat{u^{j-1}},\dots,u^n\big), \qquad \varepsilon_j u^{j-1} \gt 0. \tag{3.3.2} $$
+                </p>
+
+                <p>
+                    O domínio é aberto, e todas as componentes são suaves nele: ou são coordenadas de $u$, ou
+                    são $\pm\sqrt{1-\lvert u\rvert^2}$, raiz de uma função suave que é estritamente positiva em
+                    $B$. A transição contrária, $\varphi_i^{\varepsilon_i}\circ(\varphi_j^{\varepsilon_j})^{-1}$,
+                    tem a mesma forma, com $x^i = v^i$ no lugar da raiz: para
+                    $v \in \varphi_j^{\varepsilon_j}(U_i^{\varepsilon_i}\cap U_j^{\varepsilon_j})$, isto é,
+                    $\varepsilon_i v^i \gt 0$, ela é</p>
+
+                <p>
+                    $$ \varphi_i^{\varepsilon_i}\circ(\varphi_j^{\varepsilon_j})^{-1}(v) = \big(v^1,\dots,\widehat{v^i},\dots,v^{j-1},\ \varepsilon_j\sqrt{1-\lvert v\rvert^2},\ v^j,\dots,v^n\big), $$
+                </p>
+
+                <p>
+                    também suave. Para $i = j$ e sinais opostos os domínios são disjuntos (não há o que
+                    verificar), e para $i = j$ e o mesmo sinal as cartas coincidem. Logo as cartas formam um atlas
+                    suave. Por exemplo, para $S^2$, com $U_3^+$ (o hemisfério $z \gt 0$) e $U_1^+$
+                    (o hemisfério $x \gt 0$), as coordenadas são $\varphi_3^+(x,y,z) = (x,y)$ e
+                    $\varphi_1^+(x,y,z) = (y,z)$, e</p>
+
+                <p>
+                    $$ \varphi_1^+ \circ (\varphi_3^+)^{-1}(u,v) = \big(v, \sqrt{1-u^2-v^2}\big), \quad u \gt 0; \qquad
+                    \varphi_3^+ \circ (\varphi_1^+)^{-1}(v,w) = \big(\sqrt{1-v^2-w^2},\, v\big), \quad w \gt 0. $$
+                </p>
+
+                <p id="ex-3-3-23"><strong>Exemplo 3.3.23 (Esfera: projeção estereográfica).</strong> Sejam
+                    $N = (0,\dots,0,1)$ e $S = (0,\dots,0,-1)$ os polos norte e sul, $U_N = S^n\setminus\{N\}$ e
+                    $U_S = S^n\setminus\{S\}$. A projeção estereográfica a partir de $N$ leva $x \in U_N$ ao
+                    ponto onde a reta que passa por $N$ e $x$ encontra o hiperplano $x^{n+1} = 0$, identificado
+                    com $\mathbb{R}^n$. Os pontos da reta são $N + t(x - N)$, e a última coordenada,
+                    $1 + t(x^{n+1}-1)$, se anula em $t = 1/(1-x^{n+1})$ (o denominador é positivo em $U_N$).
+                    Logo, e analogamente a partir de $S$,</p>
+
+                <p>
+                    $$ \sigma_N(x) = \frac{(x^1,\dots,x^n)}{1 - x^{n+1}}, \qquad \sigma_S(x) = \frac{(x^1,\dots,x^n)}{1 + x^{n+1}}. $$
+                </p>
+
+                <p>
+                    <strong>Inversa.</strong> Dado $u \in \mathbb{R}^n$, procuramos $x \in U_N$ com
+                    $\sigma_N(x) = u$. Escrevendo $s = x^{n+1}$, a condição é $(x^1,\dots,x^n) = (1-s)u$, e
+                    $\lvert x\rvert = 1$ vira $(1-s)^2\lvert u\rvert^2 + s^2 = 1$, isto é,
+                    $(1-s)^2\lvert u\rvert^2 = 1 - s^2 = (1-s)(1+s)$. Como $s \ne 1$, podemos dividir por
+                    $1-s$ e obter $(1-s)\lvert u\rvert^2 = 1 + s$, de onde
+                </p>
+
+                <p>
+                    $$ s = \frac{\lvert u\rvert^2 - 1}{\lvert u\rvert^2 + 1}, \qquad 1 - s = \frac{2}{\lvert u\rvert^2+1}, \qquad
+                    \sigma_N^{-1}(u) = \frac{\big(2u^1,\dots,2u^n,\ \lvert u\rvert^2 - 1\big)}{\lvert u\rvert^2 + 1}. \tag{3.3.3} $$
+                </p>
+
+                <p>
+                    Reciprocamente, a fórmula (3.3.3) define um ponto de $U_N$ (a norma é $1$ e a última
+                    coordenada é diferente de $1$), e $\sigma_N$ o devolve a $u$. Assim $\sigma_N$ é uma
+                    bijeção de $U_N$ sobre $\mathbb{R}^n$, contínua e com inversa contínua (ambas são
+                    quocientes de funções contínuas por denominadores positivos). A mesma conta, com
+                    $x^{n+1}$ trocado por $-x^{n+1}$, vale para $\sigma_S$. Logo $(U_N,\sigma_N)$ e
+                    $(U_S,\sigma_S)$ são cartas, e cobrem $S^n$.</p>
+
+                <p>
+                    <strong>Transição.</strong> A interseção é $U_N \cap U_S = S^n \setminus \{N,S\}$, e
+                    $\sigma_N(U_N\cap U_S) = \mathbb{R}^n\setminus\{0\}$ ($S$ é o único ponto levado em $0$, e foi
+                    retirado). Para $u \ne 0$, por (3.3.3) o ponto $x = \sigma_N^{-1}(u)$ tem
+                    $1 + x^{n+1} = \dfrac{2\lvert u\rvert^2}{\lvert u\rvert^2+1}$, e portanto
+                </p>
+
+                <p>
+                    $$ \sigma_S\circ\sigma_N^{-1}(u) = \frac{2u/(\lvert u\rvert^2+1)}{2\lvert u\rvert^2/(\lvert u\rvert^2+1)} = \frac{u}{\lvert u\rvert^2}, \qquad u \in \mathbb{R}^n\setminus\{0\}. \tag{3.3.4} $$
+                </p>
+
+                <p>
+                    Esta é a <strong>inversão</strong> em relação à esfera unitária de $\mathbb{R}^n$. É suave em
+                    $\mathbb{R}^n\setminus\{0\}$ (quociente de funções suaves por $\lvert u\rvert^2 \ne 0$) e é sua
+                    própria inversa: $\lvert u/\lvert u\rvert^2\rvert^2 = 1/\lvert u\rvert^2$, logo
+                    $\dfrac{u/\lvert u\rvert^2}{1/\lvert u\rvert^2} = u$. Portanto
+                    $\sigma_N\circ\sigma_S^{-1} = \sigma_S\circ\sigma_N^{-1}$ também é suave, e
+                    $\{(U_N,\sigma_N),(U_S,\sigma_S)\}$ é um atlas suave de $S^n$, com apenas duas cartas. A
+                    Figura 3.3.2 mostra a construção para $n=1$: se $\sigma_N(x) = u \ne 0$, então
+                    $\sigma_S(x) = 1/u$.</p>
+
+                <figure class="lecture-figure" id="fig-3-3-2">
+                    <svg viewBox="0 0 640 292" role="img" aria-label="Corte da projeção estereográfica. Um círculo centrado na origem, com o polo norte N no topo e o polo sul S na base, e uma reta horizontal que passa pelo centro, o hiperplano equatorial. Um ponto x do círculo, no primeiro quadrante. A reta que sai de N e passa por x, em traço cheio, encontra a reta horizontal à direita do círculo, no ponto sigma N de x. A reta que sai de S e passa por x, tracejada, encontra a reta horizontal dentro do círculo, no ponto sigma S de x, que está entre o centro e o círculo.">
+<defs><marker id="arr-3-3-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="64" y1="150" x2="566" y2="150" class="fig-axis" marker-end="url(#arr-3-3-2)"/>
+<text x="566" y="170" text-anchor="end" class="fig-label fig-small fig-it">xⁿ⁺¹ = 0</text>
+<circle cx="300" cy="150" r="100" class="fig-shape"/>
+<line x1="300" y1="28" x2="300" y2="272" class="fig-guide"/>
+<line x1="300" y1="50" x2="473.2" y2="150" class="fig-curve"/>
+<line x1="300" y1="250" x2="386.6" y2="100" class="fig-curve fig-dashed"/>
+<line x1="386.6" y1="100" x2="357.7" y2="150" class="fig-curve fig-dashed"/>
+<circle cx="300" cy="50" r="3.5" class="fig-arrowhead"/>
+<circle cx="300" cy="250" r="3.5" class="fig-arrowhead"/>
+<circle cx="386.6" cy="100" r="3.5" class="fig-arrowhead"/>
+<circle cx="473.2" cy="150" r="3.5" class="fig-arrowhead"/>
+<circle cx="357.7" cy="150" r="3.5" class="fig-arrowhead"/>
+<text x="290" y="42" text-anchor="end" class="fig-label fig-it">N</text>
+<text x="290" y="266" text-anchor="end" class="fig-label fig-it">S</text>
+<text x="395.6" y="93" class="fig-label fig-it">x</text>
+<text x="473.2" y="172" text-anchor="middle" class="fig-label fig-small fig-it">σ_N(x)</text>
+<text x="353.7" y="172" text-anchor="end" class="fig-label fig-small fig-it">σ_S(x)</text>
+<text x="292" y="142" text-anchor="end" class="fig-label fig-small fig-it">0</text>
+<text x="406" y="166" class="fig-label fig-small fig-it">1</text>
+<circle cx="400" cy="150" r="2.5" class="fig-arrowhead"/>
+<circle cx="300" cy="150" r="2.5" class="fig-arrowhead"/>
+<text x="106" y="86" class="fig-label fig-it">S¹</text>
+</svg>
+                    <figcaption><strong>Figura 3.3.2.</strong> Projeção estereográfica de $S^1$ (corte de $S^n$). A
+                        reta que sai de $N$ e passa por $x$ (cheia) encontra o eixo horizontal em $\sigma_N(x)$,
+                        fora do círculo; a reta que sai de $S$ e passa por $x$ (tracejada) o encontra em
+                        $\sigma_S(x)$, dentro do círculo. O ponto $x$ da figura está a $30^\circ$ do eixo, e vale
+                        $\sigma_N(x) = \sqrt{3} \approx 1{,}73$ e $\sigma_S(x) = 1/\sqrt{3} \approx 0{,}58$,
+                        conforme a Equação (3.3.4). Quando $x$ se aproxima de $N$, $\sigma_N(x)$ foge para o
+                        infinito: $N$ não tem imagem em $\sigma_N$, e é por isso que são necessárias duas
+                        cartas.</figcaption>
+                </figure>
+
+                <p id="ex-3-3-24"><strong>Exemplo 3.3.24 (Os dois atlas da esfera definem a mesma estrutura).</strong>
+                    Pela Proposição 3.3.12, basta mostrar que a união dos atlas dos Exemplos 3.3.22 e 3.3.23 é um
+                    atlas suave, isto é, que cada carta-gráfico é suavemente compatível com $\sigma_N$ e com
+                    $\sigma_S$. Tratamos $\sigma_N$; para $\sigma_S$ a conta é idêntica.</p>
+
+                <p>
+                    A aplicação $\sigma_N^{-1}: \mathbb{R}^n \to \mathbb{R}^{n+1}$ de (3.3.3) é suave, porque suas
+                    componentes são funções racionais com denominador $\lvert u\rvert^2+1 \gt 0$. A carta
+                    $\varphi_i^\pm$ é a restrição de uma projeção linear. Logo
+                    $\varphi_i^\pm\circ\sigma_N^{-1}$ é suave no aberto onde está definida, que é
+                    $\sigma_N(U_N \cap U_i^\pm)$. No outro sentido, $(\varphi_i^\pm)^{-1}: B \to \mathbb{R}^{n+1}$ é
+                    suave (a raiz de uma função suave positiva é suave), e $\sigma_N$ é a restrição à região
+                    $x^{n+1} \lt 1$ da função suave $x \mapsto (x^1,\dots,x^n)/(1-x^{n+1})$. Como
+                    $(\varphi_i^\pm)^{-1}$ leva $\varphi_i^\pm(U_N \cap U_i^\pm)$ em pontos com $x^{n+1} \ne 1$,
+                    a composta $\sigma_N\circ(\varphi_i^\pm)^{-1}$ é suave. O
+                    <a href="#exr-3-3-3">Exercício 3.3.3</a> calcula as duas transições explicitamente para
+                    $S^2$ e $i = 3$, $\pm = +$. Assim os dois atlas são compatíveis e determinam a mesma estrutura
+                    diferenciável em $S^n$. Daqui em diante, $S^n$ é a variedade diferenciável com essa estrutura.</p>
+
+                <p id="obs-3-3-25"><strong>Observação 3.3.25 (Nenhuma esfera tem uma carta global).</strong> Não
+                    existe um atlas de $S^n$, $n \ge 1$, com uma só carta, nem de nenhuma variedade compacta
+                    de dimensão $n \ge 1$. De fato, uma carta global seria um homeomorfismo de uma variedade
+                    compacta $M$ sobre um aberto $\hat{U} \subset \mathbb{R}^n$ não vazio. A imagem de um
+                    compacto por uma aplicação contínua é compacta
+                    (<a href="[02] - Preliminares de Topologia e Cálculo.html#prop-3-2-29">Proposição 3.2.29</a>);
+                    portanto $\hat{U}$ seria compacto, logo fechado
+                    (<a href="[02] - Preliminares de Topologia e Cálculo.html#prop-3-2-31">Proposição 3.2.31</a>) e
+                    limitado (Heine–Borel, <a href="[02] - Preliminares de Topologia e Cálculo.html#teo-3-2-28">Teorema 3.2.28</a>).
+                    Mas $\mathbb{R}^n$ é conexo
+                    (<a href="[02] - Preliminares de Topologia e Cálculo.html#ex-3-2-37">Exemplo 3.2.37</a>), e os únicos subconjuntos de $\mathbb{R}^n$ simultaneamente
+                    abertos e fechados são $\varnothing$ e $\mathbb{R}^n$, que não é limitado. Esta é a razão
+                    topológica de os atlas de esferas, tórus e espaços projetivos terem mais de uma carta, e
+                    explica por que sistemas de coordenadas globais, tão comuns em $\mathbb{R}^n$, não existem em
+                    geral: as contas que se faz em uma variedade têm de ser compatíveis com uma mudança de
+                    carta.</p>
+
+                <h3 id="ex-produtos">Produtos e o toro</h3>
+
+                <div class="definition-box" id="prop-3-3-26">
+                    <p><strong>Proposição 3.3.26 (Produto de variedades).</strong> Sejam $M$ e $N$ variedades
+                        diferenciáveis de dimensões $m$ e $n$. Então $M\times N$, com a topologia produto, é uma
+                        variedade topológica de dimensão $m+n$, e as cartas
+                        $(U\times V,\ \varphi\times\psi)$, com $(U,\varphi)$ carta de $M$ e $(V,\psi)$ carta de $N$,
+                        formam um atlas suave, em que</p>
+                    <p>$$ (\varphi\times\psi)(p,q) = (\varphi(p),\psi(q)) \in \mathbb{R}^m\times\mathbb{R}^n = \mathbb{R}^{m+n}. $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> <strong>Topologia.</strong> $M\times N$ é de Hausdorff
+                    (<a href="[02] - Preliminares de Topologia e Cálculo.html#prop-3-2-22">Proposição 3.2.22</a>) e
+                    segundo-contável
+                    (<a href="[02] - Preliminares de Topologia e Cálculo.html#prop-3-2-25">Proposição 3.2.25</a>).
+                    Se $(U,\varphi)$ e $(V,\psi)$ são cartas, $U\times V$ é aberto em $M\times N$, e
+                    $\varphi\times\psi$ é uma bijeção de $U\times V$ sobre $\hat{U}\times\hat{V}$, que é aberto em
+                    $\mathbb{R}^{m+n}$ (a topologia produto de $\mathbb{R}^m\times\mathbb{R}^n$ coincide com a de
+                    $\mathbb{R}^{m+n}$, <a href="[02] - Preliminares de Topologia e Cálculo.html#obs-3-2-9">Observação 3.2.9</a>).
+                    A aplicação $\varphi\times\psi$ é contínua porque suas duas componentes, $\varphi\circ\mathrm{pr}_1$
+                    e $\psi\circ\mathrm{pr}_2$, são contínuas, e a inversa $\varphi^{-1}\times\psi^{-1}$ é
+                    contínua pelo mesmo motivo. Os domínios $U\times V$ cobrem $M\times N$.
+                </p>
+
+                <p>
+                    <strong>Transições.</strong> Sejam $(U',\varphi')$ e $(V',\psi')$ outras cartas. Como
+                    $(U\times V)\cap(U'\times V') = (U\cap U')\times(V\cap V')$, a transição é definida em
+                    $\varphi(U\cap U')\times\psi(V\cap V')$ e dada por
+                </p>
+
+                <p>
+                    $$ (\varphi'\times\psi')\circ(\varphi\times\psi)^{-1}(x,y) = \big(\varphi'\circ\varphi^{-1}(x),\ \psi'\circ\psi^{-1}(y)\big). $$
+                </p>
+
+                <p>
+                    A primeira componente só depende de $x$ e é suave nele; a segunda só depende de $y$. Cada
+                    componente é, portanto, a composta de uma função suave com uma projeção linear, e é suave. O
+                    mesmo vale para a transição contrária. $\blacksquare$
+                </p>
+
+                <p id="ex-3-3-27"><strong>Exemplo 3.3.27 (O toro $\mathbb{T}^n$).</strong> O
+                    <strong>toro</strong> de dimensão $n$ é o produto $\mathbb{T}^n = S^1\times\dots\times S^1$ de
+                    $n$ cópias do círculo. Pela Proposição 3.3.26, é uma variedade diferenciável de dimensão
+                    $n$. Com o atlas $\{(U_1,\theta_1),(U_2,\theta_2)\}$ de $S^1$ (Exemplo 3.3.21), o toro tem
+                    $2^n$ cartas
+                    $(U_{a_1}\times\dots\times U_{a_n},\ \theta_{a_1}\times\dots\times\theta_{a_n})$, com
+                    $a_k\in\{1,2\}$, cujas imagens são produtos de intervalos abertos ("cubos" abertos). A
+                    transição entre as cartas $(1,\dots,1)$ e $(2,\dots,2)$ é
+                    $(t^1,\dots,t^n)\mapsto(\tau(t^1),\dots,\tau(t^n))$, com $\tau$ dada por (3.3.1). O
+                    <a href="#exr-3-3-6">Exercício 3.3.6</a> calcula uma delas para $\mathbb{T}^2$. O toro de
+                    dimensão $2$ é a superfície de uma rosquinha, mas o que a definição produz é bem mais geral e
+                    mais simples: não há uma rosquinha no espaço, só o produto de dois círculos.</p>
+
+                <h3 id="ex-projetivo">O espaço projetivo real</h3>
+
+                <p>
+                    Recordemos (<a href="[02] - Preliminares de Topologia e Cálculo.html#ex-3-2-12">Exemplo 3.2.12</a>)
+                    que $\mathbb{RP}^n = S^n/(x\sim -x)$, com a aplicação quociente $\pi: S^n\to\mathbb{RP}^n$; um
+                    ponto de $\mathbb{RP}^n$ é um par $\{x,-x\}$, e escrevemos $[x] = \pi(x)$. Um conjunto
+                    $O\subset\mathbb{RP}^n$ é aberto quando $\pi^{-1}(O)$ é aberto em $S^n$.
+                </p>
+
+                <p id="ex-3-3-28"><strong>Exemplo 3.3.28 (Cartas e transições de $\mathbb{RP}^n$).</strong> Para
+                    $i = 1,\dots,n+1$, seja $U_i = \{[x]\in\mathbb{RP}^n : x^i\ne0\}$; a condição não depende do
+                    representante, pois $x^i\neq0$ equivale a $-x^i\neq0$. Cada $U_i$ é aberto, porque
+                    $\pi^{-1}(U_i) = \{x\in S^n : x^i\ne0\}$ é aberto em $S^n$. Os $U_i$ cobrem
+                    $\mathbb{RP}^n$, pois todo $x$ tem alguma coordenada não nula. Defina</p>
+
+                <p>
+                    $$ \varphi_i: U_i\to\mathbb{R}^n, \qquad \varphi_i[x] = \Big(\frac{x^1}{x^i},\dots,\widehat{\frac{x^i}{x^i}},\dots,\frac{x^{n+1}}{x^i}\Big). $$
+                </p>
+
+                <p>
+                    <strong>Bem definida.</strong> Trocar $x$ por $-x$ não muda nenhum quociente
+                    $x^k/x^i$.
+                </p>
+
+                <p>
+                    <strong>Bijetora, com inversa explícita.</strong> Seja
+                    $g: \mathbb{R}^n\to S^n$, $g(u) = \dfrac{(u^1,\dots,u^{i-1},\,1,\,u^i,\dots,u^n)}{\sqrt{1+\lvert u\rvert^2}}$,
+                    contínua, com o $1$ na posição $i$. Então $\varphi_i[g(u)] = u$, e $\pi\circ g$ tem imagem em $U_i$.
+                    Reciprocamente, se $\varphi_i[x]=\varphi_i[y]$, então $x/x^i = y/y^i$ como vetores de
+                    $\mathbb{R}^{n+1}$ (a $i$-ésima componente de ambos é $1$), logo $y = (y^i/x^i)\,x$; como
+                    $\lvert x\rvert=\lvert y\rvert=1$, vale $y^i/x^i=\pm1$, e $[y]=[x]$. Assim $\varphi_i$ é uma
+                    bijeção de $U_i$ sobre $\mathbb{R}^n$, com inversa $u\mapsto[g(u)]$.
+                </p>
+
+                <p>
+                    <strong>Continuidade.</strong> A inversa $\pi\circ g$ é contínua, composta de contínuas. Para
+                    $\varphi_i$, seja $W\subset\mathbb{R}^n$ aberto. A aplicação
+                    $\varphi_i\circ\pi: \pi^{-1}(U_i)\to\mathbb{R}^n$ é dada por quocientes de coordenadas com
+                    denominador $x^i\neq0$, logo contínua; e $\pi^{-1}\big(\varphi_i^{-1}(W)\big) = (\varphi_i\circ\pi)^{-1}(W)$
+                    é aberto em $\pi^{-1}(U_i)$, que é aberto em $S^n$, portanto aberto em $S^n$. Pela
+                    definição da topologia quociente, $\varphi_i^{-1}(W)$ é aberto em $\mathbb{RP}^n$. Logo
+                    $(U_i,\varphi_i)$ é uma carta.
+                </p>
+
+                <p>
+                    <strong>Transições.</strong> Seja $i\lt j$. Para $u\in\varphi_i(U_i\cap U_j)$, o ponto
+                    $\varphi_i^{-1}(u)$ é a classe de $(u^1,\dots,u^{i-1},1,u^i,\dots,u^n)$ (qualquer múltiplo
+                    não nulo serve, pela boa definição); a componente de posição $j$ é $u^{j-1}$. Logo
+                    $U_i\cap U_j$ corresponde a $u^{j-1}\ne0$, um aberto de $\mathbb{R}^n$, e dividir por essa
+                    componente e omiti-la dá</p>
+
+                <p>
+                    $$ \varphi_j\circ\varphi_i^{-1}(u) = \Big(\frac{u^1}{u^{j-1}},\dots,\frac{u^{i-1}}{u^{j-1}},\ \frac{1}{u^{j-1}},\ \frac{u^i}{u^{j-1}},\dots,\widehat{\frac{u^{j-1}}{u^{j-1}}},\dots,\frac{u^n}{u^{j-1}}\Big), \qquad u^{j-1}\ne0. \tag{3.3.5} $$
+                </p>
+
+                <p>
+                    Todas as componentes são funções racionais de $u$ com denominador $u^{j-1}\ne0$, logo suaves.
+                    Para $i\gt j$ a conta é a mesma, trocando os papéis de $i$ e $j$ e lembrando que a transição
+                    $\varphi_j\circ\varphi_i^{-1}$ é a inversa de $\varphi_i\circ\varphi_j^{-1}$; ambas têm a
+                    forma (3.3.5) e são suaves. Logo $\{(U_i,\varphi_i)\}_{i=1}^{n+1}$ é um atlas suave, com
+                    $n+1$ cartas, de $\mathbb{RP}^n$, desde que $\mathbb{RP}^n$ seja uma variedade topológica,
+                    o que provamos a seguir. Para $n=2$, $i=1$ e $j=2$, (3.3.5) é
+                </p>
+
+                <p>
+                    $$ \varphi_2\circ\varphi_1^{-1}(u^1,u^2) = \Big(\frac{1}{u^1},\ \frac{u^2}{u^1}\Big), \qquad u^1\ne0, $$
+                </p>
+
+                <p>
+                    que, curiosamente, é igual à sua própria inversa (Exercício 3.3.4).
+                </p>
+
+                <div class="definition-box" id="prop-3-3-29">
+                    <p><strong>Proposição 3.3.29 ($\mathbb{RP}^n$ é de Hausdorff e segundo-contável).</strong> O
+                        espaço projetivo $\mathbb{RP}^n$ é de Hausdorff e segundo-contável. Com o Exemplo 3.3.28,
+                        é uma variedade diferenciável de dimensão $n$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> A aplicação quociente $\pi$ é aberta: se $A\subset S^n$ é aberto,
+                    $\pi^{-1}(\pi(A)) = A\cup(-A)$, e $-A$ é aberto porque $x\mapsto -x$ é um homeomorfismo de
+                    $S^n$; logo $\pi(A)$ é aberto. <strong>Segundo-contável.</strong> Seja $\mathcal{B}$ uma base
+                    enumerável de $S^n$ (<a href="[02] - Preliminares de Topologia e Cálculo.html#prop-3-2-25">Proposição 3.2.25</a>). Afirmamos que $\{\pi(B) : B\in\mathcal{B}\}$ é uma
+                    base de $\mathbb{RP}^n$, enumerável. São abertos, pois $\pi$ é aberta. Se $O$ é aberto e
+                    $p\in O$, escolha $x$ com $\pi(x)=p$; então $x\in\pi^{-1}(O)$, aberto, e existe $B\in\mathcal{B}$
+                    com $x\in B\subset\pi^{-1}(O)$; daí $p\in\pi(B)\subset O$.
+                </p>
+
+                <p>
+                    <strong>Hausdorff.</strong> Sejam $[x]\ne[y]$ em $\mathbb{RP}^n$, isto é, $x\ne y$ e
+                    $x\ne -y$. Então $\varepsilon = \min\{\lvert x-y\rvert,\ \lvert x+y\rvert\}\gt0$. Para
+                    $z\in S^n$, seja $B(z)=\{w\in S^n : \lvert w-z\rvert\lt\varepsilon/2\}$ e considere os
+                    abertos $V_x = B(x)\cup B(-x)$ e $V_y = B(y)\cup B(-y)$ de $S^n$. Cada um é invariante pela
+                    antipodal, de modo que $V_x = \pi^{-1}(\pi(V_x))$ e $V_y = \pi^{-1}(\pi(V_y))$, e
+                    $\pi(V_x)$, $\pi(V_y)$ são abertos (pois $\pi$ é aberta) que contêm $[x]$ e $[y]$. Eles são disjuntos: se um ponto de $\mathbb{RP}^n$
+                    estivesse em ambos, existiria $w\in V_x\cap V_y$ (pela invariância), isto é,
+                    $w\in B(\sigma x)\cap B(\tau y)$ para sinais $\sigma,\tau\in\{\pm1\}$, e então
+                    $\lvert\sigma x-\tau y\rvert\lt\varepsilon$. Mas $\lvert\sigma x-\tau y\rvert$ é igual a
+                    $\lvert x-y\rvert$ ou a $\lvert x+y\rvert$, ambos $\ge\varepsilon$, o que é absurdo.
+                    $\blacksquare$
+                </p>
+
+                <p>
+                    Assim $\mathbb{RP}^n$, o conjunto das retas de $\mathbb{R}^{n+1}$ que passam pela origem, é
+                    uma variedade diferenciável de dimensão $n$. Seu primeiro caso, $\mathbb{RP}^1$, é um círculo;
+                    $\mathbb{RP}^2$ já não pode ser desenhado no espaço sem se autointersectar, mas o atlas acima
+                    o descreve por três cartas planas e as transições racionais (3.3.5).
+                </p>
+
+                <h2 id="observacoes">Observações sobre estruturas diferenciáveis</h2>
+
+                <p>
+                    A estrutura diferenciável é uma escolha adicional sobre a variedade topológica, e a
+                    pergunta natural é quanta liberdade há nessa escolha. Em geral há alguma, e o primeiro
+                    exemplo é elementar.
+                </p>
+
+                <p id="ex-3-3-30"><strong>Exemplo 3.3.30 (Duas estruturas diferenciáveis em $\mathbb{R}$).</strong>
+                    Seja $\mathcal{A}_1 = \{(\mathbb{R},\mathrm{id})\}$ o atlas usual de $\mathbb{R}$ e
+                    $\mathcal{A}_2 = \{(\mathbb{R},\psi)\}$, com $\psi(x) = x^3$. A aplicação $\psi$ é uma
+                    bijeção contínua de $\mathbb{R}$ em $\mathbb{R}$ com inversa $y\mapsto y^{1/3}$, contínua;
+                    logo $(\mathbb{R},\psi)$ é uma carta, e $\mathcal{A}_2$, com uma só carta, é um atlas suave.
+                    As duas estruturas, porém, são diferentes. A transição de $\mathrm{id}$ para $\psi$ é
+                    $x\mapsto x^3$, suave; mas a transição contrária é $y\mapsto y^{1/3}$, que não é
+                    diferenciável em $0$: o quociente de Newton é
+                    $(h^{1/3}-0)/h = h^{-2/3}$, que tende a $+\infty$ quando $h\to0$. Assim as duas cartas não são
+                    suavemente compatíveis, a união $\mathcal{A}_1\cup\mathcal{A}_2$ não é um atlas suave, e pela
+                    Proposição 3.3.12 os atlas maximais $\bar{\mathcal{A}}_1$ e $\bar{\mathcal{A}}_2$ são
+                    distintos: $(\mathbb{R},\psi)$ pertence ao segundo e não ao primeiro.</p>
+
+                <p>
+                    Esse exemplo mostra que duas estruturas diferenciáveis sobre o mesmo espaço topológico podem
+                    diferir como conjuntos de cartas. Mas a diferença é superficial. No tópico 3.4, quando
+                    tivermos a noção de aplicação suave entre variedades, veremos que
+                    $F(x) = x^3$, de $(\mathbb{R},\bar{\mathcal{A}}_2)$ em $(\mathbb{R},\bar{\mathcal{A}}_1)$, é
+                    um difeomorfismo: nas cartas $\psi$ e $\mathrm{id}$ ela é representada pela identidade. As duas
+                    variedades são "a mesma", reescrita com outro rótulo de pontos. O mesmo exemplo
+                    explica a exigência de suavidade da transição <em>nos dois sentidos</em>: a bijeção suave
+                    $x\mapsto x^3$ não é um difeomorfismo, como já vimos no <a href="[02] - Preliminares de Topologia e Cálculo.html#ex-3-2-56">Exemplo 3.2.56</a>.</p>
+
+                <p id="obs-3-3-31"><strong>Observação 3.3.31 (Estruturas exóticas; outras classes de regularidade).</strong>
+                    Nem todas as estruturas sobre um mesmo espaço são difeomorfas. Existem esferas "exóticas":
+                    variedades homeomorfas a $S^7$ mas não difeomorfas a ela (Milnor, 1956; veja também Kervaire
+                    e Milnor), e há mais de uma estrutura diferenciável, não equivalente, em $\mathbb{R}^4$, o
+                    que não ocorre em nenhum outro $\mathbb{R}^n$ (resultados de Donaldson, Freedman e Taubes,
+                    anos 1980). Nenhum desses fatos é usado neste curso, e a variedade de que o espaço-tempo
+                    precisa é sempre dada com uma estrutura específica. Por outro lado, a definição poderia ter
+                    sido feita com $C^k$ no lugar de $C^\infty$: variedades de classe $C^k$ exigem transições de
+                    classe $C^k$. Para $k\ge1$ finito, toda variedade $C^k$ admite uma estrutura $C^\infty$
+                    compatível com a $C^k$ (Whitney; veja Hirsch, <em>Differential Topology</em>, capítulo 2),
+                    e escolhemos o caso suave para não perder derivadas ao longo do caminho. Referências: Lee,
+                    capítulo 1, e, sobre estruturas exóticas, Milnor, <em>On manifolds homeomorphic to the
+                    7-sphere</em>.</p>
+
+                <h2 id="fisica">Ponte com a física</h2>
+
+                <p>
+                    <strong>Espaços de configuração.</strong> O espaço de configuração de um sistema mecânico é o
+                    conjunto de todas as posições possíveis do sistema, e as coordenadas generalizadas são
+                    cartas dele. Um pêndulo plano de comprimento fixo $\ell$ tem a massa sobre o círculo de raio
+                    $\ell$ em torno do pivô: o espaço de configuração é $S^1$, não $\mathbb{R}$. A coordenada
+                    habitual $\theta$ é uma carta angular, e o deslocamento de $2\pi$ em (3.3.1) é a razão de
+                    se poder dizer $\theta = 0$ e $\theta = 2\pi$ para a mesma posição; qualquer análise global
+                    do pêndulo, em que a massa dá voltas completas, precisa de duas cartas. Um pêndulo duplo
+                    planar tem dois ângulos independentes, $(\theta_1,\theta_2)\in S^1\times S^1 = \mathbb{T}^2$,
+                    como no Exemplo 3.3.27. A posição de um corpo rígido em $\mathbb{R}^3$ é descrita pelo centro
+                    de massa e por uma rotação, e seu espaço de configuração é $\mathbb{R}^3\times SO(3)$, em que
+                    $SO(3)$ é uma variedade de dimensão $3$ (de fato, $\mathbb{RP}^3$); aqui ele só é
+                    mencionado.
+                </p>
+
+                <p>
+                    <strong>O espaço-tempo.</strong> A Relatividade Geral postula que o espaço-tempo é uma
+                    variedade diferenciável de dimensão $4$. Uma carta é um sistema de coordenadas local
+                    $(x^0,x^1,x^2,x^3)$ para eventos, a condição de Hausdorff exprime que dois eventos distintos
+                    podem ser separados por vizinhanças disjuntas, e o requisito de compatibilidade da Definição
+                    3.3.8 é o requisito físico de que a descrição de um mesmo evento por dois observadores seja
+                    relacionada por uma mudança de coordenadas suave e invertível. As transformações de Galileu
+                    do capítulo 1 e as de Lorentz do capítulo 2 são o caso mais simples: em $\mathbb{R}^4$,
+                    cartas globais correspondentes a referenciais inerciais diferentes são relacionadas por
+                    aplicações afins $x\mapsto Ax+b$ com $\det A\ne0$, que são difeomorfismos
+                    (<a href="[02] - Preliminares de Topologia e Cálculo.html#def-3-2-51">Definição 3.2.51</a>);
+                    são, em particular, aplicações de transição no sentido da Definição 3.3.7. A novidade da
+                    teoria geral é que, na presença de gravitação, não existe uma carta global
+                    onde a métrica seja a de Minkowski em toda parte, e é preciso trabalhar com o atlas inteiro.
+                    A observação do tópico 3.1 sobre a maré, em que a gravidade se anula em cada ponto mas não
+                    em uma região, é a mesma ideia: localmente uma carta basta, globalmente não.
+                </p>
+
+                <p>
+                    <strong>Singularidades de coordenadas.</strong> As coordenadas esféricas $(\theta,\phi)$ da
+                    esfera não cobrem os polos, onde $\phi$ é indefinido, nem a linha $\phi = 0$ onde o ângulo
+                    dá um salto de $2\pi$ (<a href="#exr-3-3-7">Exercício 3.3.7</a>). Isso é um defeito da carta,
+                    não da esfera: o Exemplo 3.3.23 cobre os polos com outras cartas, e nada de especial acontece
+                    com a esfera neles. A mesma distinção será essencial na solução de Schwarzschild: na carta
+                    habitual $(t,r,\theta,\phi)$ a métrica parece ser singular em $r = 2M$, e a singularidade
+                    desaparece quando se muda para cartas que cobrem a região vizinha, como as de
+                    Eddington–Finkelstein e Kruskal. Uma quantidade infinita em uma carta não quer dizer que algo
+                    é infinito na variedade, e é só uma quantidade bem definida em todas as cartas que tem
+                    significado físico.
+                </p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p id="exr-3-3-1"><strong>Exercício 3.3.1.</strong> Em $S^1$, calcule a aplicação de transição entre
+                    a carta angular $(U_2,\theta_2)$ do Exemplo 3.3.21 e a carta estereográfica $(U_N,\sigma_N)$
+                    do Exemplo 3.3.23 (com $n=1$), nos dois sentidos, e verifique que são suaves. (A transição
+                    entre as duas cartas angulares já foi calculada em (3.3.1).)</p>
+
+                <p>
+                    <em>Solução.</em> Para $n=1$, $N = (0,1)$ e $\sigma_N(x,y) = x/(1-y)$. A interseção é
+                    $U_2\cap U_N = S^1\setminus\{(-1,0),(0,1)\}$. Para $t\in(-\pi,\pi)$, o ponto
+                    $(\cos t,\sin t)$ está em $U_N$ se, e somente se, $t\ne\pi/2$, de modo que
+                    $\theta_2(U_2\cap U_N) = (-\pi,\pi)\setminus\{\pi/2\}$. Usando
+                    $1-\sin t = \big(\cos\tfrac t2-\sin\tfrac t2\big)^2$ e
+                    $\cos t = \big(\cos\tfrac t2-\sin\tfrac t2\big)\big(\cos\tfrac t2+\sin\tfrac t2\big)$,
+                </p>
+
+                <p>
+                    $$ \sigma_N\circ\theta_2^{-1}(t) = \frac{\cos t}{1-\sin t} = \frac{\cos\frac t2+\sin\frac t2}{\cos\frac t2-\sin\frac t2} = \frac{1+\tan\frac t2}{1-\tan\frac t2} = \tan\Big(\frac\pi4+\frac t2\Big), $$
+                </p>
+
+                <p>
+                    em que dividimos por $\cos\frac t2 \gt 0$ (pois $\frac t2\in(-\frac\pi2,\frac\pi2)$) e
+                    $1-\tan\frac t2\ne0$ equivale a $t\ne\pi/2$. A função $\tan(\frac\pi4+\frac t2)$ é suave
+                    nesse conjunto, porque $\frac\pi4+\frac t2\in(-\frac\pi4,\frac{3\pi}4)$ e a tangente só deixa
+                    de estar definida em $\frac\pi2$, isto é, em $t=\frac\pi2$.
+                </p>
+
+                <p>
+                    Para a inversa, note que $\sigma_N(U_2\cap U_N) = \mathbb{R}\setminus\{-1\}$, porque
+                    $\sigma_N(-1,0)=-1$. Se $t\in(-\pi,\frac\pi2)$, então $\frac\pi4+\frac t2\in(-\frac\pi4,\frac\pi2)$,
+                    onde a tangente é injetiva com valores em $(-1,\infty)$ e inversa $\arctan$; logo
+                    $t = 2\arctan u - \frac\pi2$ para $u\gt-1$. Se $t\in(\frac\pi2,\pi)$, então
+                    $\frac\pi4+\frac t2\in(\frac\pi2,\frac{3\pi}4)$, e a tangente toma valores em
+                    $(-\infty,-1)$; como $\tan(\alpha) = \tan(\alpha-\pi)$, $\arctan u = \frac\pi4+\frac t2-\pi$,
+                    ou seja, $t = 2\arctan u+\frac{3\pi}2$. Portanto
+                </p>
+
+                <p>
+                    $$ \theta_2\circ\sigma_N^{-1}(u) = \begin{cases} 2\arctan u - \dfrac\pi2, & u \gt -1, \\[6pt] 2\arctan u + \dfrac{3\pi}2, & u \lt -1, \end{cases} $$
+                </p>
+
+                <p>
+                    suave em cada pedaço. Conferência numérica: para $t=\pi/6$, $u=\sqrt3$ e
+                    $2\arctan\sqrt3-\frac\pi2 = \frac{2\pi}3-\frac\pi2=\frac\pi6$; para $t=3\pi/4$, $u=-1-\sqrt2$ e a
+                    segunda fórmula devolve $3\pi/4$. As duas cartas são suavemente compatíveis. $\blacksquare$
+                </p>
+
+                <p id="exr-3-3-2"><strong>Exercício 3.3.2.</strong> Em $S^2$, considere o ponto
+                    $x = (\tfrac23,\tfrac13,\tfrac23)$. Calcule $\sigma_N(x)$ e $\sigma_S(x)$, confirme a Equação
+                    (3.3.4) neste ponto e recupere $x$ por (3.3.3). Escreva a transição $\sigma_S\circ\sigma_N^{-1}$
+                    em coordenadas $(u,v)$.</p>
+
+                <p>
+                    <em>Solução.</em> Primeiro, $x\in S^2$: $\frac49+\frac19+\frac49=1$. Com $x^3=\frac23$,
+                </p>
+
+                <p>
+                    $$ \sigma_N(x) = \frac{(\frac23,\frac13)}{1-\frac23} = (2,1), \qquad \sigma_S(x) = \frac{(\frac23,\frac13)}{1+\frac23} = \Big(\frac25,\frac15\Big). $$
+                </p>
+
+                <p>
+                    Com $u=(2,1)$, $\lvert u\rvert^2=5$ e $u/\lvert u\rvert^2 = (\frac25,\frac15) = \sigma_S(x)$,
+                    como diz (3.3.4). Por (3.3.3),
+                    $\sigma_N^{-1}(2,1) = (4,2,4)/6 = (\frac23,\frac13,\frac23) = x$. Em coordenadas $(u,v)$, a
+                    transição para $n=2$ é
+                </p>
+
+                <p>
+                    $$ \sigma_S\circ\sigma_N^{-1}(u,v) = \Big(\frac{u}{u^2+v^2},\ \frac{v}{u^2+v^2}\Big), \qquad (u,v)\ne(0,0). \qquad \blacksquare $$
+                </p>
+
+                <p id="exr-3-3-3"><strong>Exercício 3.3.3.</strong> Mostre que a carta-gráfico $(U_3^+,\varphi_3^+)$
+                    de $S^2$ (hemisfério $z\gt0$) é suavemente compatível com $(U_N,\sigma_N)$: calcule as duas
+                    transições, com seus domínios, e verifique que são suaves e inversas uma da outra.</p>
+
+                <p>
+                    <em>Solução.</em> Em $U_N\cap U_3^+ = \{z\gt0\}\setminus\{N\}$, tem-se $z\gt0$ se, e somente
+                    se, $\dfrac{\lvert u\rvert^2-1}{\lvert u\rvert^2+1}\gt0$, isto é, $\lvert u\rvert\gt1$, pela
+                    terceira componente de (3.3.3). Logo $\sigma_N(U_N\cap U_3^+) = \{\lvert u\rvert\gt1\}$.
+                    Por outro lado, $\varphi_3^+(U_N\cap U_3^+)$ é o disco unitário aberto sem a origem, pois
+                    $N\mapsto(0,0)$ é retirado. A primeira transição é, por (3.3.3),
+                </p>
+
+                <p>
+                    $$ \varphi_3^+\circ\sigma_N^{-1}(u,v) = \Big(\frac{2u}{u^2+v^2+1},\ \frac{2v}{u^2+v^2+1}\Big), \qquad u^2+v^2\gt1, $$
+                </p>
+
+                <p>
+                    suave (racional, com denominador $\ge1$). Para a segunda, $(\varphi_3^+)^{-1}(p,q) = (p,q,s)$,
+                    com $s=\sqrt{1-p^2-q^2}$, e então
+                </p>
+
+                <p>
+                    $$ \sigma_N\circ(\varphi_3^+)^{-1}(p,q) = \Big(\frac{p}{1-s},\ \frac{q}{1-s}\Big), \qquad 0\lt p^2+q^2\lt1, $$
+                </p>
+
+                <p>
+                    suave, porque $s$ é suave e $1-s\gt0$ para $p^2+q^2\gt0$. Elas são inversas uma da outra: com
+                    $(u,v) = (p,q)/(1-s)$, tem-se
+                    $u^2+v^2 = \dfrac{p^2+q^2}{(1-s)^2} = \dfrac{1-s^2}{(1-s)^2} = \dfrac{1+s}{1-s}$, que é
+                    maior que $1$ (pois $s\gt0$) e satisfaz $u^2+v^2+1 = \dfrac2{1-s}$; portanto
+                    $\dfrac{2(u,v)}{u^2+v^2+1} = \dfrac{2(p,q)}{1-s}\cdot\dfrac{1-s}2 = (p,q)$. $\blacksquare$</p>
+
+                <p id="exr-3-3-4"><strong>Exercício 3.3.4.</strong> Em $\mathbb{RP}^2$, calcule
+                    $\varphi_2\circ\varphi_1^{-1}$ e seu domínio, e mostre que essa transição é igual à própria
+                    inversa. Calcule também $\varphi_3\circ\varphi_1^{-1}$.</p>
+
+                <p>
+                    <em>Solução.</em> Para $u=(u^1,u^2)\in\mathbb{R}^2$, $\varphi_1^{-1}(u) = [1,u^1,u^2]$.
+                    Esse ponto está em $U_2$ se, e somente se, a segunda coordenada é diferente de zero:
+                    $\varphi_1(U_1\cap U_2) = \{u^1\ne0\}$. Então
+                </p>
+
+                <p>
+                    $$ \varphi_2\circ\varphi_1^{-1}(u^1,u^2) = \varphi_2[1,u^1,u^2] = \Big(\frac{1}{u^1},\ \frac{u^2}{u^1}\Big), \qquad u^1\ne0. $$
+                </p>
+
+                <p>
+                    Chamando de $(w^1,w^2)=(1/u^1,u^2/u^1)$ o resultado, tem-se $u^1=1/w^1$ e
+                    $u^2 = w^2u^1=w^2/w^1$, de modo que $(u^1,u^2) = (1/w^1,\,w^2/w^1)$: a inversa tem a mesma
+                    fórmula, e a transição é uma involução. Analogamente,
+                    $\varphi_3[1,u^1,u^2] = (1/u^2,\ u^1/u^2)$ para $u^2\ne0$, que é também uma involução do
+                    mesmo tipo. Ambas são suaves nos seus domínios. $\blacksquare$</p>
+
+                <p id="exr-3-3-5"><strong>Exercício 3.3.5.</strong> O <em>cone duplo</em>
+                    $C = \{(x,y,z)\in\mathbb{R}^3 : z^2=x^2+y^2\}$ não é uma variedade topológica, mas o
+                    <em>semicone</em> $C^+\cup\{o\} = \{z=\sqrt{x^2+y^2}\}$ é.</p>
+
+                <p>
+                    <em>Solução.</em> Seja $o=(0,0,0)$ o vértice. O conjunto $C\setminus\{o\}$ é a união disjunta
+                    de $C^+ = \{z\gt0\}\cap C$ e $C^- = \{z\lt0\}\cap C$, ambos abertos em $C\setminus\{o\}$;
+                    cada um é o gráfico de $f(x,y)=\pm\sqrt{x^2+y^2}$ sobre $\mathbb{R}^2\setminus\{0\}$, com $f$
+                    suave nesse aberto. Pelo Exemplo 3.3.20, $C^\pm$ é uma variedade de dimensão $2$, com carta
+                    global $(x,y)$, e é conexo, por ser homeomorfo a $\mathbb{R}^2\setminus\{0\}$ (que é conexo
+                    por caminhos).
+                </p>
+
+                <p>
+                    Suponha que $o$ tenha uma vizinhança aberta $W$ em $C$ e um homeomorfismo $h:W\to\hat{W}$ sobre
+                    um aberto de $\mathbb{R}^n$. Como $W$ é uma vizinhança de $o$, contém pontos de $C^+$, e
+                    $W\cap C^+$ é um aberto não vazio de $C^+$: ele é homeomorfo a um aberto de $\mathbb{R}^2$
+                    (pela carta de $C^+$) e a um aberto de $\mathbb{R}^n$ (por $h$). Pelo Teorema 3.3.4, $n=2$.
+                    Seja $q=h(o)$ e $B\subset\hat{W}$ uma bola aberta em torno de $q$. O conjunto
+                    $N = h^{-1}(B\setminus\{q\})\subset C\setminus\{o\}$ tem uma única componente conexa, porque
+                    $B\setminus\{q\}$ é conexa para $n=2$. Mas $h^{-1}(B)$ é uma vizinhança aberta de $o$ em $C$ e
+                    portanto contém pontos de $C^+$ e de $C^-$, de modo que $N$ encontra os dois; sendo $C^\pm$
+                    abertos disjuntos de $C\setminus\{o\}$, $N$ é desconexo. Contradição: o cone duplo não é uma
+                    variedade topológica.
+                </p>
+
+                <p>
+                    Para o semicone, $K=\{(x,y,\sqrt{x^2+y^2}) : (x,y)\in\mathbb{R}^2\}$ é o gráfico de
+                    $f(x,y)=\sqrt{x^2+y^2}$, que é contínua em todo o plano (mas não diferenciável na origem).
+                    Como observado após o Exemplo 3.3.20, a projeção $(x,y,z)\mapsto(x,y)$ é uma carta global
+                    de $K$, que portanto é uma variedade topológica de dimensão $2$, e, com o atlas dessa única
+                    carta, uma variedade diferenciável. O vértice, apesar de ser um "bico" no espaço, não é
+                    um ponto especial da variedade abstrata $K$: o bico é uma propriedade da maneira como $K$
+                    está colocado em $\mathbb{R}^3$, e a distinção entre as duas coisas é o tema do tópico 3.6.
+                    $\blacksquare$</p>
+
+                <p id="exr-3-3-6"><strong>Exercício 3.3.6.</strong> Descreva o atlas de $\mathbb{T}^2$ obtido do atlas
+                    de $S^1$, diga quantas cartas tem e calcule duas aplicações de transição.</p>
+
+                <p>
+                    <em>Solução.</em> O atlas de $S^1$ tem duas cartas $(U_a,\theta_a)$, $a\in\{1,2\}$. O atlas
+                    produto de $\mathbb{T}^2 = S^1\times S^1$ tem $2\times2=4$ cartas
+                    $(U_a\times U_b,\ \theta_a\times\theta_b)$, com imagens quadrados abertos: por exemplo,
+                    $(0,2\pi)\times(0,2\pi)$ para $(a,b)=(1,1)$ e $(-\pi,\pi)\times(-\pi,\pi)$ para $(2,2)$.
+                    A transição de $(1,2)$ para $(2,2)$ é
+                    $(t,s)\mapsto(\tau(t),s)$ no domínio $\big((0,\pi)\cup(\pi,2\pi)\big)\times(-\pi,\pi)$, com
+                    $\tau=\theta_2\circ\theta_1^{-1}$ dada por (3.3.1). A transição de $(1,1)$ para $(2,2)$ é
+                    $(t,s)\mapsto(\tau(t),\tau(s))$, com domínio $\big((0,\pi)\cup(\pi,2\pi)\big)^2$, formado por
+                    quatro quadrados abertos; em cada um é uma translação, por exemplo
+                </p>
+
+                <p>
+                    $$ (t,s)\longmapsto (t,\ s-2\pi) \quad\text{em } (0,\pi)\times(\pi,2\pi), \qquad (t,s)\longmapsto(t-2\pi,\ s-2\pi)\quad\text{em } (\pi,2\pi)^2. \qquad \blacksquare $$
+                </p>
+
+                <p id="exr-3-3-7"><strong>Exercício 3.3.7.</strong> As coordenadas esféricas
+                    $\Phi(\theta,\phi)=(\sin\theta\cos\phi,\ \sin\theta\sin\phi,\ \cos\theta)$ definem uma carta
+                    de $S^2$ com parâmetros em $R=(0,\pi)\times(0,2\pi)$. Determine o domínio $U=\Phi(R)$, mostre
+                    que $\Phi^{-1}$ é uma carta suave e explique por que $U$ não contém os polos nem o meridiano
+                    $\phi=0$.</p>
+
+                <p>
+                    <em>Solução.</em> Os pontos da imagem têm $\sin\theta\gt0$, logo $(x,y)\ne(0,0)$, e
+                    $(x,y)/\sin\theta = (\cos\phi,\sin\phi)\ne(1,0)$ porque $\phi\in(0,2\pi)$. Reciprocamente,
+                    dado um ponto de $S^2$ fora do conjunto $K=\{(x,0,z)\in S^2 : x\ge0\}$ (o meridiano
+                    $\phi=0$, que contém os dois polos), tem-se $\theta=\arccos z\in(0,\pi)$, e
+                    $(x,y)/\sin\theta$ é um vetor unitário diferente de $(1,0)$, que determina um único
+                    $\phi\in(0,2\pi)$. Logo $\Phi$ é uma bijeção de $R$ sobre $U=S^2\setminus K$, e $K$ é
+                    fechado, de modo que $U$ é aberto.
+                </p>
+
+                <p>
+                    Para ver que é uma carta compatível com o atlas, calcule $\sigma_N\circ\Phi$:
+                    como $1-\cos\theta = 2\sin^2\frac\theta2$ e $\sin\theta = 2\sin\frac\theta2\cos\frac\theta2$,
+                </p>
+
+                <p>
+                    $$ \sigma_N\circ\Phi(\theta,\phi) = \frac{\sin\theta\,(\cos\phi,\sin\phi)}{1-\cos\theta} = \cot\frac\theta2\,(\cos\phi,\ \sin\phi) = G(\theta,\phi). $$
+                </p>
+
+                <p>
+                    Esta é a composta de $(\theta,\phi)\mapsto(\cot\frac\theta2,\phi)$, um difeomorfismo de $R$
+                    sobre $(0,\infty)\times(0,2\pi)$ (a derivada de $\cot\frac\theta2$ é
+                    $-1/(2\sin^2\frac\theta2)\ne0$, e a inversa é $2\operatorname{arccot}$), com a aplicação
+                    polar $(r,\phi)\mapsto(r\cos\phi,r\sin\phi)$, que é um difeomorfismo de
+                    $(0,\infty)\times(0,2\pi)$ sobre $\mathbb{R}^2\setminus\{(x,0):x\ge0\}$ (<a href="[02] - Preliminares de Topologia e Cálculo.html#ex-3-2-55">Exemplo 3.2.55</a>, com
+                    $\phi\in(0,2\pi)$ no lugar de $(-\pi,\pi)$). Logo $G$ é um difeomorfismo de $R$ sobre
+                    $\sigma_N(U)=\mathbb{R}^2\setminus\{(x,0):x\ge0\}$. Como $\sigma_N$ é um homeomorfismo,
+                    $\Phi^{-1} = G^{-1}\circ\sigma_N\vert_U$ é um homeomorfismo de $U$ sobre $R$: uma carta
+                    topológica, com transição $\Phi^{-1}\circ\sigma_N^{-1}=G^{-1}$ suave. Como os polos pertencem
+                    a $K$, $U\subset U_N\cap U_S$, e a transição com $\sigma_S$ é
+                    $\Phi^{-1}\circ\sigma_S^{-1} = G^{-1}\circ(\sigma_N\circ\sigma_S^{-1})$, suave por (3.3.4);
+                    as transições contrárias são as inversas. Logo $(U,\Phi^{-1})$ é compatível com o atlas
+                    estereográfico, portanto pertence ao atlas maximal de $S^2$.
+                </p>
+
+                <p>
+                    Por que os polos e o meridiano ficam de fora: nos polos, $\sin\theta=0$, e $\Phi(0,\phi)$ não
+                    depende de $\phi$, de modo que $\Phi$ deixa de ser injetiva e $\phi$ não é uma função dos
+                    pontos. Sobre o meridiano $\phi=0$, o ângulo tem de saltar de valores próximos de $2\pi$ para
+                    valores próximos de $0$ ao cruzá-lo, e nenhum aberto do plano $(\theta,\phi)$ pode
+                    descrever uma vizinhança de um ponto do meridiano de forma contínua; é o mesmo salto de
+                    $2\pi$ da Equação (3.3.1). Ambos os defeitos são da carta, não da esfera, como discutido na
+                    ponte com a física. $\blacksquare$</p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <p>
+                    Este tópico definiu o objeto em que todo o capítulo vive. A cadeia de definições foi:
+                </p>
+
+                <ul>
+                    <li><strong>variedade topológica</strong> (<a href="#def-3-3-1">Definição 3.3.1</a>): Hausdorff,
+                        segundo-contável e localmente euclidiana, com a dimensão bem definida
+                        (<a href="#teo-3-3-4">Teorema 3.3.4</a>);</li>
+                    <li><strong>carta</strong> (<a href="#def-3-3-5">Definição 3.3.5</a>) e
+                        <strong>aplicação de transição</strong> (<a href="#def-3-3-7">Definição 3.3.7</a>);</li>
+                    <li><strong>compatibilidade suave</strong> (<a href="#def-3-3-8">Definição 3.3.8</a>),
+                        <strong>atlas suave</strong> (<a href="#def-3-3-9">Definição 3.3.9</a>) e
+                        <strong>atlas maximal</strong> (<a href="#def-3-3-10">Definição 3.3.10</a>), com a prova de
+                        que todo atlas determina uma única estrutura
+                        (<a href="#prop-3-3-11">Proposição 3.3.11</a> e
+                        <a href="#prop-3-3-12">Proposição 3.3.12</a>);</li>
+                    <li><strong>variedade diferenciável</strong> (<a href="#def-3-3-13">Definição 3.3.13</a>) e o
+                        <strong>lema de construção</strong> (<a href="#lema-3-3-15">Lema 3.3.15</a>), que usaremos
+                        para $TM$, $T^*M$ e $\Lambda^kT^*M$;</li>
+                    <li>uma coleção de exemplos com todas as transições calculadas: $\mathbb{R}^n$, espaços
+                        vetoriais, abertos, $GL(n,\mathbb{R})$, gráficos, $S^1$, $S^n$ com dois atlas
+                        compatíveis (<a href="#ex-3-3-22">Exemplo 3.3.22</a>, <a href="#ex-3-3-23">Exemplo 3.3.23</a>
+                        e <a href="#ex-3-3-24">Exemplo 3.3.24</a>), produtos e toros
+                        (<a href="#prop-3-3-26">Proposição 3.3.26</a>) e $\mathbb{RP}^n$
+                        (<a href="#ex-3-3-28">Exemplo 3.3.28</a> e <a href="#prop-3-3-29">Proposição 3.3.29</a>).</li>
+                </ul>
+
+                <p>
+                    A palavra "suave" ainda só se aplica a aplicações entre abertos de $\mathbb{R}^n$. Não
+                    sabemos o que é uma função suave $f:M\to\mathbb{R}$, nem uma aplicação suave
+                    $F:M\to N$ entre variedades, nem o que é um difeomorfismo entre variedades, e sem isso a
+                    estrutura diferenciável ainda não serve para nada: a Equação (3.1.6) fala de formas
+                    diferenciais, que são objetos construídos sobre funções e vetores. O ingrediente que faltava
+                    foi justamente a compatibilidade das cartas, e a anotação feita na seção de atlas, de que
+                    ela torna a suavidade independente da carta, será a definição do próximo tópico.
+                </p>
+
+                <p>
+                    O próximo tópico,
+                    <a href="[04] - Funções e Aplicações Suaves.html">3.4 Funções e Aplicações Suaves</a>, define
+                    funções suaves e aplicações suaves por meio das cartas, mostra que coordenadas, produtos,
+                    inclusões e projeções são suaves, e prova que as duas estruturas de $\mathbb{R}$ do Exemplo
+                    3.3.30 são difeomorfas.
+                </p>
 
             </div>
         </main>
@@ -161,6 +1497,24 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#variedades-diferenciaveis">Variedades Diferenciáveis</a></li>
+                    <li><a href="#variedades-topologicas">Variedades topológicas</a></li>
+                    <li><a href="#cartas">Cartas e coordenadas locais</a></li>
+                    <li><a href="#atlas">Transição, atlas e estrutura diferenciável</a></li>
+                    <li>
+                        <a href="#exemplos">Exemplos</a>
+                        <ul>
+                            <li><a href="#ex-rn">Espaços euclidianos e abertos</a></li>
+                            <li><a href="#ex-graficos">Gráficos de funções</a></li>
+                            <li><a href="#ex-s1">O círculo</a></li>
+                            <li><a href="#ex-esferas">As esferas</a></li>
+                            <li><a href="#ex-produtos">Produtos e o toro</a></li>
+                            <li><a href="#ex-projetivo">O espaço projetivo real</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#observacoes">Estruturas diferenciáveis</a></li>
+                    <li><a href="#fisica">Ponte com a física</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
                 </ul>
             </div>
         </aside>
