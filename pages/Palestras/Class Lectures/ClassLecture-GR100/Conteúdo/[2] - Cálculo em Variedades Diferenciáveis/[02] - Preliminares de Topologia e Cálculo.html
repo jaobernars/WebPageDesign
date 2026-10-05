@@ -151,7 +151,2614 @@
                 <h1 id="preliminares">3.2 Preliminares de Topologia e Cálculo</h1>
                 <p class="lead">Espaços topológicos, continuidade e as propriedades topológicas usadas no capítulo; cálculo diferencial e integral em várias variáveis, o lema de Hadamard e os teoremas da função inversa e implícita.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>
+                    O tópico <a href="[01] - Motivação e Roteiro.html">3.1</a> terminou com uma lista de perguntas
+                    e nenhuma estrutura. A primeira estrutura, a de variedade diferenciável, é construída no tópico
+                    <a href="[03] - Variedades Diferenciáveis.html">3.3</a>, e sua definição tem duas camadas. Uma
+                    variedade é, antes de tudo, um espaço topológico: um conjunto em que faz sentido dizer que uma
+                    aplicação é contínua. Sobre ele se põe uma estrutura adicional, que permite dizer que uma
+                    aplicação é suave. E todo o cálculo em uma variedade é feito do mesmo modo: leva-se o problema
+                    para um aberto de $\mathbb{R}^n$ por meio de uma carta, faz-se a conta ali e mostra-se que o
+                    resultado não depende da carta escolhida.
+                </p>
+
+                <p>
+                    Daí as duas metades deste tópico. A primeira reúne o vocabulário de topologia geral: abertos,
+                    continuidade, homeomorfismos e as quatro propriedades topológicas que o capítulo usa
+                    (Hausdorff, segundo-contável, compacto, conexo). A segunda reúne o cálculo em
+                    $\mathbb{R}^n$: a derivada como aplicação linear, a regra da cadeia, o lema de Hadamard, os
+                    teoremas da função inversa e da função implícita e os três teoremas de integração de que a
+                    demonstração do Teorema de Stokes dependerá.
+                </p>
+
+                <p>
+                    O critério de inclusão é estrito: só entra o que será usado, e cada resultado diz em que
+                    tópico. Nada aqui depende de variedades, e a palavra só aparece para anunciar o uso futuro de
+                    um resultado. Quem já conhece o material pode ler apenas os enunciados e voltar quando um
+                    tópico posterior os citar. As demonstrações são completas, com exceção de alguns teoremas de
+                    análise (Heine–Borel, igualdade das derivadas mistas, função inversa, Fubini, mudança de
+                    variáveis, derivação sob o sinal de integral), que recebem enunciado preciso, a ideia da
+                    demonstração e a referência.
+                </p>
+
+                <h2 id="espacos-topologicos">Espaços topológicos</h2>
+
+                <p>
+                    Em $\mathbb{R}^n$, a continuidade é definida com distâncias: $f$ é contínua em $a$ se $f(x)$
+                    fica tão perto de $f(a)$ quanto se queira, desde que $x$ esteja suficientemente perto de $a$.
+                    Uma variedade não vem com uma distância. O que ela tem é menos do que isso: a informação de
+                    quais subconjuntos são <em>abertos</em>. Essa informação basta para falar de continuidade, e a
+                    definição a seguir isola as três propriedades dos abertos de $\mathbb{R}^n$ de que a teoria
+                    precisa.
+                </p>
+
+                <div class="definition-box" id="def-3-2-1" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.2.1 (Espaço topológico).</strong> Uma <strong>topologia</strong> em um
+                        conjunto $X$ é uma coleção $\mathcal{T}$ de subconjuntos de $X$, chamados
+                        <strong>abertos</strong>, tal que:</p>
+                    <p>(i) $\varnothing$ e $X$ são abertos;</p>
+                    <p>(ii) a união de qualquer família de abertos, finita ou infinita, é aberta;</p>
+                    <p>(iii) a interseção de um número finito de abertos é aberta.</p>
+                    <p>O par $(X,\mathcal{T})$ é um <strong>espaço topológico</strong>. Quando a topologia está
+                        subentendida, escrevemos apenas $X$.</p>
+                </div>
+
+                <p id="ex-3-2-2"><strong>Exemplo 3.2.2 (A topologia usual de $\mathbb{R}^n$).</strong> Para
+                    $x = (x^1,\dots,x^n) \in \mathbb{R}^n$, escrevemos
+                    $\lvert x\rvert = \sqrt{(x^1)^2 + \dots + (x^n)^2}$, e chamamos de <strong>bola aberta</strong>
+                    de centro $a$ e raio $r \gt 0$ o conjunto
+                    $B_r(a) = \{x \in \mathbb{R}^n : \lvert x - a\rvert \lt r\}$. Um conjunto
+                    $U \subset \mathbb{R}^n$ é aberto se, para todo $a \in U$, existe $r \gt 0$ tal que
+                    $B_r(a) \subset U$. Verificamos os três axiomas.</p>
+
+                <p>
+                    (i) A condição é vazia para $\varnothing$ e evidente para $\mathbb{R}^n$. (ii) Se
+                    $a \in \bigcup_\alpha U_\alpha$, então $a$ pertence a algum $U_\alpha$, e há uma bola
+                    $B_r(a) \subset U_\alpha \subset \bigcup_\alpha U_\alpha$. (iii) Se
+                    $a \in U_1 \cap \dots \cap U_k$, para cada $j$ existe $r_j \gt 0$ com $B_{r_j}(a) \subset U_j$.
+                    Com $r = \min\{r_1,\dots,r_k\}$, que é positivo por ser o mínimo de um número finito de
+                    números positivos, vale $B_r(a) \subset U_1 \cap \dots \cap U_k$.
+                </p>
+
+                <p>
+                    A finitude em (iii) foi usada na existência do mínimo, e não pode ser dispensada: uma
+                    interseção infinita de abertos pode não ser aberta. O
+                    <a href="#exr-3-2-1">Exercício 3.2.1</a> dá um exemplo e mostra também que toda bola aberta é
+                    um conjunto aberto, como o nome sugere. Salvo menção em contrário, $\mathbb{R}^n$ e seus
+                    subconjuntos têm sempre esta topologia.
+                </p>
+
+                <p id="ex-3-2-3"><strong>Exemplo 3.2.3 (Topologias discreta e trivial).</strong> Em qualquer
+                    conjunto $X$ há duas topologias extremas. Na <strong>topologia discreta</strong>, todo
+                    subconjunto de $X$ é aberto. Na <strong>topologia trivial</strong>, os únicos abertos são
+                    $\varnothing$ e $X$. Os axiomas valem de imediato nos dois casos. O exemplo mostra que um
+                    mesmo conjunto admite topologias diferentes: um espaço topológico é um conjunto <em>junto
+                        com</em> uma escolha de abertos.</p>
+
+                <p>
+                    O restante do vocabulário é definido a partir dos abertos. Seja $X$ um espaço topológico e
+                    $A \subset X$.
+                </p>
+
+                <ul>
+                    <li>$A$ é <strong>fechado</strong> se o complementar $X \setminus A$ é aberto. Passando aos
+                        complementares nos axiomas (i) a (iii): $\varnothing$ e $X$ são fechados, a interseção de
+                        qualquer família de fechados é fechada, e a união de um número finito de fechados é
+                        fechada. Fechado não é o contrário de aberto: em $\mathbb{R}$, o intervalo $[0,1)$ não é
+                        aberto nem fechado, e $\varnothing$ e $\mathbb{R}$ são as duas coisas.</li>
+                    <li>Uma <strong>vizinhança</strong> de um ponto $p \in X$ é um aberto que contém $p$. Um
+                        conjunto é aberto se, e somente se, cada um de seus pontos tem uma vizinhança contida
+                        nele: nesse caso ele é a união dessas vizinhanças, e uniões de abertos são abertas.</li>
+                    <li>O <strong>interior</strong> de $A$, denotado $\operatorname{Int}A$, é a união de todos os
+                        abertos contidos em $A$. É o maior aberto contido em $A$.</li>
+                    <li>O <strong>fecho</strong> de $A$, denotado $\bar{A}$, é a interseção de todos os fechados
+                        que contêm $A$. É o menor fechado que contém $A$. Um ponto $p$ pertence a $\bar{A}$ se, e
+                        somente se, toda vizinhança de $p$ intercepta $A$: de fato, $p \notin \bar{A}$ quer dizer
+                        que há um fechado $C \supset A$ com $p \notin C$, isto é, que o aberto $X \setminus C$ é
+                        uma vizinhança de $p$ que não intercepta $A$.</li>
+                    <li>A <strong>fronteira</strong> de $A$ é o conjunto $\bar{A} \setminus \operatorname{Int}A$.
+                        Para $A = [0,1) \subset \mathbb{R}$, o interior é $(0,1)$, o fecho é $[0,1]$ e a fronteira
+                        é $\{0,1\}$. Reservamos a palavra "fronteira" para esta noção topológica. O "bordo" de uma
+                        variedade, definido no tópico
+                        <a href="[16] - Variedades com Bordo.html">3.16</a>, é outra coisa, e os dois nem sempre
+                        coincidem.</li>
+                    <li>$A$ é <strong>denso</strong> em $X$ se $\bar{A} = X$, isto é, se todo aberto não vazio de
+                        $X$ intercepta $A$.</li>
+                </ul>
+
+                <p>
+                    Descrever uma topologia listando todos os abertos é quase sempre inviável. Basta dar uma
+                    coleção menor, a partir da qual os demais se obtêm por uniões.
+                </p>
+
+                <div class="definition-box" id="def-3-2-4" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.2.4 (Base).</strong> Uma <strong>base</strong> da topologia de $X$ é uma
+                        coleção $\mathcal{B}$ de abertos de $X$ tal que todo aberto de $X$ é união de elementos de
+                        $\mathcal{B}$. De modo equivalente: para todo aberto $U$ e todo $p \in U$, existe
+                        $B \in \mathcal{B}$ com $p \in B \subset U$.</p>
+                </div>
+
+                <p>
+                    As duas formulações dizem o mesmo. Se $U$ é união de elementos de $\mathcal{B}$, cada
+                    $p \in U$ está em um deles, que está contido em $U$. Reciprocamente, se para cada $p \in U$
+                    há $B_p \in \mathcal{B}$ com $p \in B_p \subset U$, então $U = \bigcup_{p \in U} B_p$. Em
+                    $\mathbb{R}^n$, as bolas abertas formam uma base, pela própria definição de aberto. O
+                    próximo exemplo mostra que uma parte muito menor delas já é suficiente.
+                </p>
+
+                <p id="ex-3-2-5"><strong>Exemplo 3.2.5 (Uma base enumerável de $\mathbb{R}^n$).</strong> Seja
+                    $\mathcal{B}_{\mathbb{Q}}$ a coleção das bolas $B_s(c)$ cujo centro $c$ tem todas as
+                    coordenadas racionais e cujo raio $s \gt 0$ é racional. Afirmamos que
+                    $\mathcal{B}_{\mathbb{Q}}$ é uma base de $\mathbb{R}^n$ e que é enumerável.</p>
+
+                <p>
+                    <em>É base.</em> Sejam $U$ aberto e $a \in U$, e tome $r \gt 0$ com $B_r(a) \subset U$.
+                    Escolha um racional $s$ com $0 \lt s \lt r/2$. Como todo número real é limite de racionais,
+                    para cada $i$ existe um racional $c^i$ com $\lvert a^i - c^i\rvert \lt s/\sqrt{n}$. O ponto
+                    $c = (c^1,\dots,c^n)$ satisfaz
+                </p>
+
+                <p>
+                    $$ \lvert a - c\rvert^2 = \sum_{i=1}^n (a^i - c^i)^2 \lt n\cdot\frac{s^2}{n} = s^2, $$
+                </p>
+
+                <p>
+                    logo $a \in B_s(c)$. Além disso, se $x \in B_s(c)$, a desigualdade triangular dá
+                    $\lvert x - a\rvert \le \lvert x - c\rvert + \lvert c - a\rvert \lt 2s \lt r$. Portanto
+                    $a \in B_s(c) \subset B_r(a) \subset U$, com $B_s(c) \in \mathcal{B}_{\mathbb{Q}}$.
+                </p>
+
+                <p>
+                    <em>É enumerável.</em> O conjunto $\mathbb{Q}$ é enumerável, e o produto cartesiano de um
+                    número finito de conjuntos enumeráveis é enumerável. Logo o conjunto dos pares $(c,s)$, com
+                    $c \in \mathbb{Q}^n$ e $s$ racional positivo, é enumerável, e a aplicação
+                    $(c,s) \mapsto B_s(c)$ o leva sobre $\mathcal{B}_{\mathbb{Q}}$.
+                </p>
+
+                <h3 id="subespaco-produto-quociente">Subespaço, produto e quociente</h3>
+
+                <p>
+                    Há três maneiras de fabricar espaços topológicos a partir de outros, e os exemplos de
+                    variedades do tópico <a href="[03] - Variedades Diferenciáveis.html">3.3</a> usam as três: a
+                    esfera é um subespaço de $\mathbb{R}^{n+1}$, o toro é um produto de círculos e o espaço
+                    projetivo é um quociente da esfera.
+                </p>
+
+                <div class="definition-box" id="def-3-2-6" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.2.6 (Topologia de subespaço).</strong> Sejam $X$ um espaço topológico e
+                        $A \subset X$. A <strong>topologia de subespaço</strong> em $A$ é a coleção dos conjuntos
+                        $U \cap A$, com $U$ aberto em $X$. Com ela, $A$ é um <strong>subespaço</strong> de $X$.</p>
+                </div>
+
+                <p>
+                    Os axiomas valem porque $\varnothing = \varnothing \cap A$, $A = X \cap A$,
+                    $\bigcup_\alpha (U_\alpha \cap A) = \big(\bigcup_\alpha U_\alpha\big) \cap A$ e
+                    $(U_1 \cap A) \cap (U_2 \cap A) = (U_1 \cap U_2) \cap A$. Sempre que um subconjunto de um
+                    espaço topológico for tratado como espaço, a topologia é esta. Os fechados de $A$ são os
+                    conjuntos $C \cap A$ com $C$ fechado em $X$, pois
+                    $A \setminus (U \cap A) = (X \setminus U) \cap A$.
+                </p>
+
+                <p>
+                    É preciso distinguir "aberto em $A$" de "aberto em $X$". O intervalo $[0,1)$ é aberto no
+                    subespaço $[0,2] \subset \mathbb{R}$, porque $[0,1) = (-1,1) \cap [0,2]$, mas não é aberto em
+                    $\mathbb{R}$. A distinção desaparece quando $A$ é aberto em $X$: nesse caso $U \cap A$ é
+                    interseção de dois abertos de $X$, e os abertos de $A$ são exatamente os abertos de $X$
+                    contidos em $A$.
+                </p>
+
+                <p id="ex-3-2-7"><strong>Exemplo 3.2.7 (A esfera).</strong> A <strong>esfera de dimensão
+                        $n$</strong> é o conjunto
+                    $S^n = \{x \in \mathbb{R}^{n+1} : \lvert x\rvert = 1\}$ com a topologia de subespaço. Seus
+                    abertos são as interseções de $S^n$ com abertos de $\mathbb{R}^{n+1}$. Por exemplo, o
+                    hemisfério norte aberto $\{x \in S^n : x^{n+1} \gt 0\}$ é aberto em $S^n$, por ser a
+                    interseção de $S^n$ com o semiespaço aberto $\{x^{n+1} \gt 0\}$; ele não é aberto em
+                    $\mathbb{R}^{n+1}$. Os casos de dimensão baixa são o círculo $S^1 \subset \mathbb{R}^2$ e o
+                    par de pontos $S^0 = \{-1, 1\} \subset \mathbb{R}$.</p>
+
+                <div class="definition-box" id="def-3-2-8" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.2.8 (Topologia produto).</strong> Sejam $X$ e $Y$ espaços topológicos. A
+                        <strong>topologia produto</strong> em $X \times Y$ é aquela em que um conjunto é aberto
+                        se, e somente se, é união de conjuntos da forma $U \times V$, com $U$ aberto em $X$ e $V$
+                        aberto em $Y$. Em outras palavras, os produtos de abertos formam uma base.</p>
+                </div>
+
+                <p>
+                    Os axiomas (i) e (ii) são imediatos. Para (iii), basta notar que
+                    $(U_1 \times V_1) \cap (U_2 \times V_2) = (U_1 \cap U_2) \times (V_1 \cap V_2)$ é de novo um
+                    produto de abertos; a interseção de duas uniões de produtos é então a união das interseções
+                    dois a dois, que são produtos. A definição se estende, do mesmo modo, a um produto de um
+                    número finito de espaços.
+                </p>
+
+                <p id="obs-3-2-9"><strong>Observação 3.2.9 (O produto $\mathbb{R}^n \times \mathbb{R}^m$).</strong>
+                    Há duas topologias naturais em $\mathbb{R}^n \times \mathbb{R}^m = \mathbb{R}^{n+m}$: a
+                    topologia produto e a topologia usual de $\mathbb{R}^{n+m}$. Elas coincidem. Para
+                    $(a,b) \in \mathbb{R}^n \times \mathbb{R}^m$ e $r \gt 0$, a identidade
+                    $\lvert (x,y) - (a,b)\rvert^2 = \lvert x - a\rvert^2 + \lvert y - b\rvert^2$ dá as inclusões</p>
+
+                <p>
+                    $$ B_r\big((a,b)\big) \subset B_r(a) \times B_r(b) \subset B_{r\sqrt{2}}\big((a,b)\big). \tag{3.2.1} $$
+                </p>
+
+                <p>
+                    Se $W$ é aberto na topologia usual e $(a,b) \in W$, há $\rho \gt 0$ com
+                    $B_\rho((a,b)) \subset W$, e a segunda inclusão, com $r = \rho/\sqrt{2}$, mostra que o produto
+                    de abertos $B_r(a) \times B_r(b)$ contém $(a,b)$ e está contido em $W$; logo $W$ é união de
+                    produtos de abertos. Reciprocamente, se $U \subset \mathbb{R}^n$ e $V \subset \mathbb{R}^m$
+                    são abertos e $(a,b) \in U \times V$, há $r \gt 0$ com $B_r(a) \subset U$ e
+                    $B_r(b) \subset V$, e a primeira inclusão dá $B_r((a,b)) \subset U \times V$; logo
+                    $U \times V$ é aberto na topologia usual, e o mesmo vale para uniões de tais produtos. Em
+                    particular, a topologia usual de $\mathbb{R}^n$ é a topologia produto de $n$ cópias de
+                    $\mathbb{R}$. Outro produto que usaremos é o <strong>toro</strong>
+                    $\mathbb{T}^n = S^1 \times \dots \times S^1$, com $n$ fatores.
+                </p>
+
+                <div class="definition-box" id="def-3-2-10" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.2.10 (Topologia quociente).</strong> Sejam $X$ um espaço topológico e
+                        $\sim$ uma relação de equivalência em $X$. Denotamos por $X/{\sim}$ o conjunto das classes
+                        de equivalência e por $\pi: X \to X/{\sim}$ a aplicação que leva cada ponto $x$ em sua
+                        classe $[x]$. A <strong>topologia quociente</strong> em $X/{\sim}$ é aquela em que
+                        $U \subset X/{\sim}$ é aberto se, e somente se, $\pi^{-1}(U)$ é aberto em $X$. A aplicação
+                        $\pi$ é a <strong>aplicação quociente</strong>.</p>
+                </div>
+
+                <p>
+                    Trata-se de uma topologia porque a pré-imagem respeita as operações de conjuntos:
+                    $\pi^{-1}(\varnothing) = \varnothing$, $\pi^{-1}(X/{\sim}) = X$,
+                    $\pi^{-1}\big(\bigcup_\alpha U_\alpha\big) = \bigcup_\alpha \pi^{-1}(U_\alpha)$ e
+                    $\pi^{-1}(U_1 \cap U_2) = \pi^{-1}(U_1) \cap \pi^{-1}(U_2)$. A imagem a ter em mente é a de
+                    colagem: pontos equivalentes são colados em um só. Um conjunto de classes é aberto quando a
+                    união dessas classes, vista como subconjunto de $X$, é aberta.
+                </p>
+
+                <p id="ex-3-2-11"><strong>Exemplo 3.2.11 (Colar as pontas de um intervalo).</strong> Em
+                    $X = [0,1]$, considere a relação que identifica $0$ com $1$ e nada mais: as classes são
+                    $\{t\}$, para $0 \lt t \lt 1$, e $\{0,1\}$. Escrevemos $[0,1]/(0 \sim 1)$ para o quociente.
+                    Seja $U$ um aberto do quociente que contém a classe $\{0,1\}$. Então $\pi^{-1}(U)$ é um
+                    aberto de $[0,1]$ que contém $0$ e $1$, e por isso contém $[0,\varepsilon)$ e
+                    $(1-\varepsilon,1]$ para algum $\varepsilon \gt 0$. Toda vizinhança do ponto colado contém,
+                    portanto, um pedaço de cada ponta do intervalo: as duas pontas foram unidas, e o resultado
+                    é um círculo. A afirmação precisa, a de que o quociente é homeomorfo a $S^1$, está no
+                    <a href="#ex-3-2-33">Exemplo 3.2.33</a>.</p>
+
+                <p id="ex-3-2-12"><strong>Exemplo 3.2.12 (O espaço projetivo real).</strong> Em $S^n$, considere
+                    a relação que identifica cada ponto com seu antípoda: $x \sim y$ se $y = x$ ou $y = -x$. O
+                    quociente</p>
+
+                <p>
+                    $$ \mathbb{RP}^n = S^n/(x \sim -x) $$
+                </p>
+
+                <p>
+                    é o <strong>espaço projetivo real</strong> de dimensão $n$. Um ponto de $\mathbb{RP}^n$ é um
+                    par $\{x,-x\}$ de pontos antípodas da esfera. Como cada reta de $\mathbb{R}^{n+1}$ que passa
+                    pela origem corta a esfera em exatamente um par de pontos antípodas, $\mathbb{RP}^n$ é também
+                    o conjunto das retas de $\mathbb{R}^{n+1}$ que passam pela origem. Um conjunto de tais pares
+                    é aberto em $\mathbb{RP}^n$ quando sua união é um aberto de $S^n$. No tópico
+                    <a href="[03] - Variedades Diferenciáveis.html">3.3</a> mostraremos que $\mathbb{RP}^n$ é uma
+                    variedade.
+                </p>
+
+                <h2 id="continuidade">Continuidade e homeomorfismos</h2>
+
+                <div class="definition-box" id="def-3-2-13" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.2.13 (Aplicação contínua).</strong> Sejam $X$ e $Y$ espaços topológicos.
+                        Uma aplicação $f: X \to Y$ é <strong>contínua</strong> se, para todo aberto $V$ de $Y$, a
+                        pré-imagem $f^{-1}(V) = \{x \in X : f(x) \in V\}$ é um aberto de $X$.</p>
+                </div>
+
+                <p>
+                    A definição fala de pré-imagens, não de imagens: uma aplicação contínua não precisa levar
+                    abertos em abertos (uma função constante de $\mathbb{R}$ em $\mathbb{R}$ leva tudo em um
+                    ponto). Como $f^{-1}(Y \setminus V) = X \setminus f^{-1}(V)$, a condição equivale a pedir que
+                    a pré-imagem de todo fechado seja fechada. E, como a pré-imagem de uma união é a união das
+                    pré-imagens, basta verificá-la para os abertos $V$ de uma base de $Y$. A primeira coisa a
+                    conferir é que a definição reproduz a noção conhecida do cálculo.
+                </p>
+
+                <div class="definition-box" id="prop-3-2-14">
+                    <p><strong>Proposição 3.2.14 (Critério $\varepsilon$–$\delta$).</strong> Sejam
+                        $A \subset \mathbb{R}^n$, com a topologia de subespaço, e $f: A \to \mathbb{R}^m$. Então
+                        $f$ é contínua se, e somente se, para todo $a \in A$ e todo $\varepsilon \gt 0$ existe
+                        $\delta \gt 0$ tal que</p>
+                    <p>$$ x \in A,\ \ \lvert x - a\rvert \lt \delta \quad\Longrightarrow\quad \lvert f(x) - f(a)\rvert \lt \varepsilon. \tag{3.2.2} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Suponha $f$ contínua, e sejam $a \in A$ e $\varepsilon \gt 0$. A bola
+                    $B_\varepsilon(f(a))$ é aberta em $\mathbb{R}^m$
+                    (<a href="#exr-3-2-1">Exercício 3.2.1</a>), logo sua pré-imagem é aberta em $A$: existe um
+                    aberto $W$ de $\mathbb{R}^n$ com $f^{-1}\big(B_\varepsilon(f(a))\big) = W \cap A$. Como
+                    $a \in W$, há $\delta \gt 0$ com $B_\delta(a) \subset W$. Se $x \in A$ e
+                    $\lvert x - a\rvert \lt \delta$, então $x \in W \cap A$, isto é,
+                    $f(x) \in B_\varepsilon(f(a))$. É a condição (3.2.2).
+                </p>
+
+                <p>
+                    Reciprocamente, suponha a condição (3.2.2) e seja $V$ um aberto de $\mathbb{R}^m$. Para cada
+                    $a \in f^{-1}(V)$, existe $\varepsilon \gt 0$ com $B_\varepsilon(f(a)) \subset V$, e a
+                    hipótese fornece $\delta_a \gt 0$ tal que $f\big(B_{\delta_a}(a) \cap A\big) \subset
+                    B_\varepsilon(f(a)) \subset V$. Seja $W = \bigcup_{a \in f^{-1}(V)} B_{\delta_a}(a)$, que é
+                    aberto em $\mathbb{R}^n$. Afirmamos que $f^{-1}(V) = W \cap A$. Cada $a \in f^{-1}(V)$ está
+                    em sua própria bola, logo em $W \cap A$. E, se $x \in W \cap A$, então
+                    $x \in B_{\delta_a}(a) \cap A$ para algum $a$, donde $f(x) \in V$. Portanto $f^{-1}(V)$ é
+                    aberto em $A$. $\blacksquare$
+                </p>
+
+                <p>
+                    Assim, todas as funções contínuas do cálculo são contínuas no sentido da
+                    <a href="#def-3-2-13">Definição 3.2.13</a>: polinômios, funções racionais onde o denominador
+                    não se anula, exponencial, seno, cosseno, e as somas, produtos e compostas delas. Usaremos
+                    isso sem comentário.
+                </p>
+
+                <div class="definition-box" id="prop-3-2-15">
+                    <p><strong>Proposição 3.2.15 (Operações com aplicações contínuas).</strong> Sejam $X$, $Y$ e
+                        $Z$ espaços topológicos.</p>
+                    <p>(a) Se $f: X \to Y$ e $g: Y \to Z$ são contínuas, então $g \circ f: X \to Z$ é
+                        contínua.</p>
+                    <p>(b) Se $f: X \to Y$ é contínua e $A \subset X$ é um subespaço, então a restrição
+                        $f\vert_A: A \to Y$ é contínua. Em particular, a inclusão $A \hookrightarrow X$ é
+                        contínua.</p>
+                    <p>(c) Se $B \subset Y$ é um subespaço e $f: X \to Y$ tem imagem contida em $B$, então $f$ é
+                        contínua como aplicação $X \to Y$ se, e somente se, é contínua como aplicação
+                        $X \to B$.</p>
+                    <p>(d) As projeções $X \times Y \to X$ e $X \times Y \to Y$ são contínuas, e uma aplicação
+                        $F = (f,g): Z \to X \times Y$ é contínua se, e somente se, $f$ e $g$ são contínuas.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Se $W$ é aberto em $Z$, então $g^{-1}(W)$ é aberto em $Y$ e
+                    $(g \circ f)^{-1}(W) = f^{-1}\big(g^{-1}(W)\big)$ é aberto em $X$.
+                </p>
+
+                <p>
+                    (b) Se $V$ é aberto em $Y$, então $(f\vert_A)^{-1}(V) = f^{-1}(V) \cap A$, que é aberto em
+                    $A$ pela definição da topologia de subespaço. A inclusão é a restrição da identidade de
+                    $X$, que é contínua.
+                </p>
+
+                <p>
+                    (c) Os abertos de $B$ são os conjuntos $V \cap B$ com $V$ aberto em $Y$, e
+                    $f^{-1}(V \cap B) = f^{-1}(V)$, porque a imagem de $f$ está em $B$. As duas condições de
+                    continuidade pedem, portanto, que os mesmos conjuntos sejam abertos.
+                </p>
+
+                <p>
+                    (d) A pré-imagem de um aberto $U \subset X$ pela primeira projeção é $U \times Y$, que é um
+                    produto de abertos; o mesmo vale para a segunda. Se $F$ é contínua, $f$ e $g$ são
+                    compostas de $F$ com as projeções, e são contínuas por (a). Se $f$ e $g$ são contínuas,
+                    então, para $U$ aberto em $X$ e $V$ aberto em $Y$,
+                    $F^{-1}(U \times V) = f^{-1}(U) \cap g^{-1}(V)$ é aberto em $Z$. Como os produtos
+                    $U \times V$ formam uma base de $X \times Y$, isso basta. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="def-3-2-16" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.2.16 (Homeomorfismo).</strong> Um <strong>homeomorfismo</strong> é uma
+                        bijeção contínua $f: X \to Y$ cuja inversa $f^{-1}: Y \to X$ também é contínua. Se existe
+                        um homeomorfismo entre $X$ e $Y$, os dois espaços são <strong>homeomorfos</strong>, e
+                        escrevemos $X \cong Y$.</p>
+                </div>
+
+                <p>
+                    Um homeomorfismo põe em correspondência os pontos de $X$ e de $Y$ e também os abertos: $U$ é
+                    aberto em $X$ se, e somente se, $f(U)$ é aberto em $Y$, porque $f(U)$ é a pré-imagem de $U$
+                    pela aplicação contínua $f^{-1}$. Do ponto de vista da topologia, espaços homeomorfos são o
+                    mesmo espaço com os pontos renomeados. Uma <strong>propriedade topológica</strong> é uma
+                    propriedade que, se vale para um espaço, vale para todos os homeomorfos a ele; as quatro da
+                    próxima seção são desse tipo, porque são enunciadas apenas em termos de abertos.
+                </p>
+
+                <p id="ex-3-2-17"><strong>Exemplo 3.2.17 (Um intervalo aberto é homeomorfo à reta).</strong> A
+                    função</p>
+
+                <p>
+                    $$ f: (-1,1) \to \mathbb{R}, \qquad f(x) = \frac{x}{1-x^2}, \tag{3.2.3} $$
+                </p>
+
+                <p>
+                    é um homeomorfismo. Ela é contínua, por ser racional com denominador que não se anula em
+                    $(-1,1)$, e sua inversa é a função contínua
+                    $g(y) = 2y\big/\big(1 + \sqrt{1+4y^2}\big)$. A verificação de que $g$ toma valores em
+                    $(-1,1)$ e é de fato a inversa de $f$ está no
+                    <a href="#exr-3-2-2">Exercício 3.2.2</a>. O exemplo mostra que comprimento e limitação não
+                    são propriedades topológicas: um intervalo de comprimento 2 e a reta inteira são o mesmo
+                    espaço topológico. É por isso que, no tópico
+                    <a href="[03] - Variedades Diferenciáveis.html">3.3</a>, tanto faz dizer que uma variedade é
+                    localmente como uma bola de $\mathbb{R}^n$ ou localmente como $\mathbb{R}^n$ inteiro.</p>
+
+                <p id="ex-3-2-18"><strong>Exemplo 3.2.18 (Bijeção contínua que não é homeomorfismo).</strong> A
+                    continuidade da inversa não é automática. Considere</p>
+
+                <p>
+                    $$ f: [0,2\pi) \to S^1, \qquad f(t) = (\cos t, \sin t). $$
+                </p>
+
+                <p>
+                    A aplicação $f$ é contínua, pelos itens (c) e (d) da
+                    <a href="#prop-3-2-15">Proposição 3.2.15</a>, e é bijetiva, porque cada ponto do círculo
+                    tem exatamente um ângulo em $[0,2\pi)$. Mas $f^{-1}$ não é contínua. O conjunto $[0,\pi)$ é
+                    aberto em $[0,2\pi)$, por ser igual a $(-1,\pi) \cap [0,2\pi)$. Se $f^{-1}$ fosse contínua,
+                    a pré-imagem de $[0,\pi)$ por $f^{-1}$, que é a imagem
+                </p>
+
+                <p>
+                    $$ f\big([0,\pi)\big) = \{(\cos t, \sin t) : 0 \le t \lt \pi\}, $$
+                </p>
+
+                <p>
+                    seria aberta em $S^1$: haveria um aberto $W$ de $\mathbb{R}^2$ com
+                    $f([0,\pi)) = W \cap S^1$. Como $(1,0) = f(0) \in W$, existiria $\delta \gt 0$ com
+                    $B_\delta((1,0)) \subset W$. Para $s \gt 0$ pequeno, o ponto $q_s = (\cos s, -\sin s)$ do
+                    círculo está a uma distância $2\sin(s/2) \lt \delta$ de $(1,0)$, e portanto pertence a
+                    $W \cap S^1 = f([0,\pi))$. Isso é impossível: a segunda coordenada de $q_s$ é negativa,
+                    enquanto os pontos de $f([0,\pi))$ têm segunda coordenada $\sin t \ge 0$.
+                </p>
+
+                <p>
+                    O que acontece é que $f$ enrola o intervalo no círculo e encosta a ponta que falta, perto de
+                    $2\pi$, no ponto $f(0)$. Pontos do círculo logo abaixo de $(1,0)$ estão perto de $(1,0)$,
+                    mas seus ângulos estão perto de $2\pi$, longe de $0$: a inversa rasga o círculo em $(1,0)$.
+                    O <a href="#lema-3-2-32">Lema 3.2.32</a> mostrará que o defeito está em $[0,2\pi)$ não ser
+                    compacto.
+                </p>
+
+                <p>
+                    O último resultado da seção diz como verificar a continuidade de uma aplicação definida em um
+                    quociente, que é a situação do espaço projetivo.
+                </p>
+
+                <div class="definition-box" id="prop-3-2-19">
+                    <p><strong>Proposição 3.2.19 (Propriedade característica da topologia quociente).</strong>
+                        Sejam $X$ um espaço topológico, $\sim$ uma relação de equivalência em $X$ e
+                        $\pi: X \to X/{\sim}$ a aplicação quociente.</p>
+                    <p>(a) A aplicação $\pi$ é contínua.</p>
+                    <p>(b) Uma aplicação $f: X/{\sim} \to Y$ é contínua se, e somente se, $f \circ \pi: X \to Y$
+                        é contínua.</p>
+                    <p>(c) Se $g: X \to Y$ é contínua e constante em cada classe de equivalência (isto é,
+                        $x \sim x'$ implica $g(x) = g(x')$), então existe uma única aplicação
+                        $\tilde{g}: X/{\sim} \to Y$ com $\tilde{g} \circ \pi = g$, e ela é contínua.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Se $U$ é aberto em $X/{\sim}$, então $\pi^{-1}(U)$ é aberto em
+                    $X$: é a definição da topologia quociente.
+                </p>
+
+                <p>
+                    (b) Se $f$ é contínua, $f \circ \pi$ é composta de contínuas. Reciprocamente, suponha
+                    $f \circ \pi$ contínua e seja $V$ aberto em $Y$. Então
+                    $\pi^{-1}\big(f^{-1}(V)\big) = (f \circ \pi)^{-1}(V)$ é aberto em $X$, e isso é exatamente
+                    o que a topologia quociente exige para que $f^{-1}(V)$ seja aberto em $X/{\sim}$.
+                </p>
+
+                <p>
+                    (c) A condição $\tilde{g} \circ \pi = g$ obriga a definir $\tilde{g}([x]) = g(x)$, o que dá a
+                    unicidade. A definição não depende do representante, porque $g$ é constante nas classes. A
+                    continuidade de $\tilde{g}$ segue de (b), pois $\tilde{g} \circ \pi = g$ é contínua.
+                    $\blacksquare$
+                </p>
+
+                <p>
+                    Dizemos, no item (c), que $g$ <strong>passa ao quociente</strong>. É assim que se definem
+                    aplicações contínuas em $\mathbb{RP}^n$: basta uma aplicação contínua em $S^n$ que tome o
+                    mesmo valor em $x$ e em $-x$. O tópico
+                    <a href="[03] - Variedades Diferenciáveis.html">3.3</a> usará isso para construir as cartas
+                    de $\mathbb{RP}^n$.
+                </p>
+
+                <h2 id="propriedades-topologicas">Propriedades topológicas</h2>
+
+                <p>
+                    A definição de variedade do tópico <a href="[03] - Variedades Diferenciáveis.html">3.3</a>
+                    pedirá três coisas de um espaço topológico: que ele seja localmente parecido com
+                    $\mathbb{R}^n$, que seja de Hausdorff e que seja segundo-contável. As duas últimas excluem
+                    espaços patológicos, e é preciso saber o que dizem e o que excluem. As outras duas
+                    propriedades desta seção, compacidade e conexidade, não fazem parte da definição: são
+                    propriedades que uma variedade pode ter ou não, e que entram como hipóteses de teoremas.
+                </p>
+
+                <h3 id="hausdorff">Espaços de Hausdorff</h3>
+
+                <div class="definition-box" id="def-3-2-20" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.2.20 (Espaço de Hausdorff).</strong> Um espaço topológico $X$ é
+                        <strong>de Hausdorff</strong> se, para quaisquer dois pontos distintos $p, q \in X$,
+                        existem abertos $U$ e $V$ com $p \in U$, $q \in V$ e $U \cap V = \varnothing$.</p>
+                </div>
+
+                <p id="ex-3-2-21"><strong>Exemplo 3.2.21 ($\mathbb{R}^n$ é de Hausdorff).</strong> Dados
+                    $p \neq q$ em $\mathbb{R}^n$, seja $r = \lvert p - q\rvert/2 \gt 0$. As bolas $B_r(p)$ e
+                    $B_r(q)$ são abertos disjuntos: se $x$ estivesse nas duas, a desigualdade triangular daria
+                    $\lvert p - q\rvert \le \lvert p - x\rvert + \lvert x - q\rvert \lt 2r = \lvert p - q\rvert$,
+                    o que é absurdo. Já um conjunto com mais de um ponto e a topologia trivial não é de
+                    Hausdorff, porque o único aberto que contém um ponto é o espaço inteiro.</p>
+
+                <p>
+                    Em um espaço de Hausdorff, cada ponto é um conjunto fechado: se $q \neq p$, há uma vizinhança
+                    de $q$ que não contém $p$, e portanto $X \setminus \{p\}$ é aberto.
+                </p>
+
+                <div class="definition-box" id="prop-3-2-22">
+                    <p><strong>Proposição 3.2.22 (Subespaços e produtos de espaços de Hausdorff).</strong> (a)
+                        Todo subespaço de um espaço de Hausdorff é de Hausdorff. (b) O produto de dois espaços de
+                        Hausdorff é de Hausdorff.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Sejam $X$ de Hausdorff, $A \subset X$ e $p \neq q$ em $A$. Há
+                    abertos disjuntos $U \ni p$ e $V \ni q$ em $X$, e então $U \cap A$ e $V \cap A$ são abertos
+                    disjuntos de $A$ que contêm $p$ e $q$.
+                </p>
+
+                <p>
+                    (b) Sejam $X$ e $Y$ de Hausdorff e $(x,y) \neq (x',y')$ em $X \times Y$. Então $x \neq x'$ ou
+                    $y \neq y'$. No primeiro caso, há abertos disjuntos $U \ni x$ e $U' \ni x'$ em $X$, e os
+                    conjuntos $U \times Y$ e $U' \times Y$ são abertos disjuntos de $X \times Y$ que contêm
+                    $(x,y)$ e $(x',y')$. O segundo caso é igual, com os papéis de $X$ e $Y$ trocados.
+                    $\blacksquare$
+                </p>
+
+                <p>
+                    Logo $S^n$ e $\mathbb{T}^n$ são de Hausdorff. Para quocientes não há resultado análogo: colar
+                    pontos pode destruir a propriedade, e o exemplo a seguir é o caso clássico. É por causa dele
+                    que a condição de Hausdorff precisa ser pedida na definição de variedade, e que no tópico
+                    <a href="[03] - Variedades Diferenciáveis.html">3.3</a> será preciso verificá-la à mão para
+                    $\mathbb{RP}^n$.
+                </p>
+
+                <p id="ex-3-2-23"><strong>Exemplo 3.2.23 (A reta com duas origens).</strong> Seja
+                    $X = \mathbb{R} \times \{0,1\} \subset \mathbb{R}^2$, que consiste em duas cópias paralelas
+                    da reta: os pontos $(x,0)$ e os pontos $(x,1)$. Colamos as duas cópias em todos os pontos,
+                    exceto nas origens: $(x,0) \sim (x,1)$ para todo $x \neq 0$. O quociente
+                    $L = X/{\sim}$ é a <strong>reta com duas origens</strong>. Seus pontos são as classes
+                    $[x] = \{(x,0),(x,1)\}$, uma para cada $x \neq 0$, e mais dois pontos, as origens
+                    $o_0 = \pi(0,0)$ e $o_1 = \pi(0,1)$, que não foram coladas.</p>
+
+                <p>
+                    Afirmamos que $o_0$ e $o_1$ não podem ser separadas por abertos. Sejam $U_0$ e $U_1$ abertos
+                    de $L$ com $o_0 \in U_0$ e $o_1 \in U_1$. O conjunto $\pi^{-1}(U_0)$ é um aberto de $X$ que
+                    contém $(0,0)$; ele é da forma $W \cap X$, com $W$ aberto em $\mathbb{R}^2$, e $W$ contém
+                    uma bola centrada em $(0,0)$. Portanto existe $\delta_0 \gt 0$ tal que
+                    $(x,0) \in \pi^{-1}(U_0)$ sempre que $\lvert x\rvert \lt \delta_0$. Do mesmo modo, existe
+                    $\delta_1 \gt 0$ tal que $(x,1) \in \pi^{-1}(U_1)$ sempre que $\lvert x\rvert \lt \delta_1$.
+                    Tome $x$ com $0 \lt x \lt \min\{\delta_0,\delta_1\}$. Então $[x] = \pi(x,0) \in U_0$ e
+                    $[x] = \pi(x,1) \in U_1$, de modo que $U_0 \cap U_1 \neq \varnothing$. Logo $L$ não é de
+                    Hausdorff.
+                </p>
+
+                <figure class="lecture-figure" id="fig-3-2-1">
+                    <svg viewBox="0 0 640 244" role="img" aria-label="Dois painéis. À esquerda, duas retas paralelas, cópias de R, ligadas por traços verticais em todos os pontos exceto na origem; as origens (0,0) e (0,1) estão marcadas e não são ligadas. À direita, o quociente: uma única reta interrompida na origem, onde há dois pontos, o0 e o1, um acima e outro abaixo; uma faixa em torno de o1 e outra em torno de o0 se sobrepõem ao longo da reta, e um ponto [x] próximo da origem pertence às duas.">
+<defs><marker id="arr-3-2-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<text x="24" y="34" class="fig-label">(a)</text>
+<line x1="70" y1="97" x2="70" y2="163" class="fig-guide"/>
+<line x1="95" y1="97" x2="95" y2="163" class="fig-guide"/>
+<line x1="120" y1="97" x2="120" y2="163" class="fig-guide"/>
+<line x1="143" y1="97" x2="143" y2="163" class="fig-guide"/>
+<line x1="187" y1="97" x2="187" y2="163" class="fig-guide"/>
+<line x1="210" y1="97" x2="210" y2="163" class="fig-guide"/>
+<line x1="235" y1="97" x2="235" y2="163" class="fig-guide"/>
+<line x1="260" y1="97" x2="260" y2="163" class="fig-guide"/>
+<line x1="42" y1="92" x2="288" y2="92" class="fig-curve" marker-start="url(#arr-3-2-1)" marker-end="url(#arr-3-2-1)"/>
+<line x1="42" y1="168" x2="288" y2="168" class="fig-curve" marker-start="url(#arr-3-2-1)" marker-end="url(#arr-3-2-1)"/>
+<circle cx="165" cy="92" r="4.5" class="fig-arrowhead"/>
+<circle cx="165" cy="168" r="4.5" class="fig-arrowhead"/>
+<text x="165" y="79" text-anchor="middle" class="fig-label fig-small">(0, 1)</text>
+<text x="165" y="191" text-anchor="middle" class="fig-label fig-small">(0, 0)</text>
+<text x="42" y="79" class="fig-label fig-small">ℝ × {1}</text>
+<text x="42" y="191" class="fig-label fig-small">ℝ × {0}</text>
+<text x="165" y="226" text-anchor="middle" class="fig-label fig-small">(x, 0) ~ (x, 1) para x ≠ 0</text>
+<text x="338" y="34" class="fig-label">(b)</text>
+<rect x="380" y="96" width="200" height="42" rx="10" class="fig-band"/>
+<rect x="414" y="122" width="132" height="42" rx="10" class="fig-band"/>
+<line x1="468" y1="130" x2="352" y2="130" class="fig-curve" marker-end="url(#arr-3-2-1)"/>
+<line x1="492" y1="130" x2="608" y2="130" class="fig-curve" marker-end="url(#arr-3-2-1)"/>
+<circle cx="480" cy="110" r="4.5" class="fig-arrowhead"/>
+<circle cx="480" cy="150" r="4.5" class="fig-arrowhead"/>
+<text x="469" y="114" text-anchor="end" class="fig-label fig-it">o₁</text>
+<text x="469" y="156" text-anchor="end" class="fig-label fig-it">o₀</text>
+<circle cx="522" cy="130" r="3.5" class="fig-arrowhead"/>
+<text x="522" y="119" text-anchor="middle" class="fig-label fig-small">[x]</text>
+<text x="480" y="86" text-anchor="middle" class="fig-label fig-small">vizinhança de o₁</text>
+<text x="480" y="182" text-anchor="middle" class="fig-label fig-small">vizinhança de o₀</text>
+<text x="606" y="118" text-anchor="end" class="fig-label fig-it">L</text>
+<text x="480" y="226" text-anchor="middle" class="fig-label fig-small">as duas vizinhanças contêm [x]</text>
+</svg>
+                    <figcaption><strong>Figura 3.2.1.</strong> A reta com duas origens. (a) Duas cópias de
+                        $\mathbb{R}$, coladas ponto a ponto exceto em $x = 0$. (b) O quociente $L$: fora da
+                        origem há uma única reta; na origem há dois pontos, $o_0$ e $o_1$. Uma vizinhança de
+                        $o_0$ contém todos os pontos $[x]$ com $0 \lt \lvert x\rvert \lt \delta_0$, e uma
+                        vizinhança de $o_1$ contém todos os pontos $[x]$ com
+                        $0 \lt \lvert x\rvert \lt \delta_1$: as duas sempre se interceptam.</figcaption>
+                </figure>
+
+                <p>
+                    Fora isso, $L$ se comporta bem. Cada um de seus pontos, inclusive cada origem, tem uma
+                    vizinhança homeomorfa a $\mathbb{R}$, e $L$ é segundo-contável
+                    (<a href="#exr-3-2-3">Exercício 3.2.3</a>). O que falha é só a separação: os pontos
+                    $[1/k]$, com $k = 1, 2, 3, \dots$, entram em toda vizinhança de $o_0$ e em toda vizinhança de
+                    $o_1$ para $k$ grande, de modo que a sequência se aproxima de dois pontos diferentes ao mesmo
+                    tempo. Em um espaço de Hausdorff isso não acontece, porque dois pontos distintos têm
+                    vizinhanças disjuntas e a sequência não pode acabar dentro das duas.
+                </p>
+
+                <h3 id="segundo-contavel">Espaços segundo-contáveis</h3>
+
+                <div class="definition-box" id="def-3-2-24" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.2.24 (Espaço segundo-contável).</strong> Um espaço topológico é
+                        <strong>segundo-contável</strong> se sua topologia tem uma base enumerável, isto é, finita
+                        ou em correspondência bijetiva com os números naturais.</p>
+                </div>
+
+                <div class="definition-box" id="prop-3-2-25">
+                    <p><strong>Proposição 3.2.25.</strong> (a) $\mathbb{R}^n$ é segundo-contável. (b) Todo
+                        subespaço de um espaço segundo-contável é segundo-contável. (c) O produto de dois espaços
+                        segundo-contáveis é segundo-contável.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) É o <a href="#ex-3-2-5">Exemplo 3.2.5</a>.
+                </p>
+
+                <p>
+                    (b) Sejam $\mathcal{B}$ uma base enumerável de $X$ e $A \subset X$. A coleção
+                    $\mathcal{B}_A = \{B \cap A : B \in \mathcal{B}\}$ é enumerável e formada por abertos de $A$.
+                    Um aberto de $A$ é da forma $U \cap A$ com $U$ aberto em $X$; escrevendo
+                    $U = \bigcup_\alpha B_\alpha$ com $B_\alpha \in \mathcal{B}$, obtemos
+                    $U \cap A = \bigcup_\alpha (B_\alpha \cap A)$. Logo $\mathcal{B}_A$ é uma base de $A$.
+                </p>
+
+                <p>
+                    (c) Sejam $\mathcal{B}_X$ e $\mathcal{B}_Y$ bases enumeráveis de $X$ e de $Y$. A coleção dos
+                    produtos $B \times B'$, com $B \in \mathcal{B}_X$ e $B' \in \mathcal{B}_Y$, é enumerável. Se
+                    $W$ é aberto em $X \times Y$ e $(x,y) \in W$, a definição da topologia produto dá abertos
+                    $U \ni x$ e $V \ni y$ com $U \times V \subset W$; escolhendo $B \in \mathcal{B}_X$ com
+                    $x \in B \subset U$ e $B' \in \mathcal{B}_Y$ com $y \in B' \subset V$, temos
+                    $(x,y) \in B \times B' \subset W$. Logo os produtos $B \times B'$ formam uma base.
+                    $\blacksquare$
+                </p>
+
+                <p id="obs-3-2-26"><strong>Observação 3.2.26 (O que a condição exclui e para que serve).</strong>
+                    Nem todo espaço é segundo-contável. Em $\mathbb{R}$ com a topologia discreta, cada conjunto
+                    $\{x\}$ é aberto, e um aberto com um único ponto só pode ser união de elementos de uma base
+                    se ele próprio pertencer à base. Toda base contém, então, um elemento para cada número real,
+                    e não pode ser enumerável. Esse espaço é localmente o mais simples possível, mas é "grande
+                    demais": é uma coleção não enumerável de pontos isolados. A condição de ser
+                    segundo-contável limita o tamanho do espaço, e seu papel no capítulo é um só: ela garante a
+                    existência de partições da unidade (tópico
+                    <a href="[04] - Funções e Aplicações Suaves.html">3.4</a>), a ferramenta que permite montar
+                    um objeto global a partir de pedaços definidos em cartas. A integral do tópico
+                    <a href="[17] - Integração de Formas.html">3.17</a> é definida assim.</p>
+
+                <h3 id="compacidade">Compacidade</h3>
+
+                <p>
+                    A compacidade é o substituto topológico de "fechado e limitado". Ela serve para trocar o
+                    infinito pelo finito: uma família qualquer de abertos por um número finito deles.
+                </p>
+
+                <div class="definition-box" id="def-3-2-27" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.2.27 (Espaço compacto).</strong> Uma <strong>cobertura aberta</strong> de
+                        um espaço topológico $X$ é uma família $\{U_\alpha\}$ de abertos de $X$ cuja união é $X$.
+                        O espaço $X$ é <strong>compacto</strong> se toda cobertura aberta de $X$ tem uma
+                        <strong>subcobertura finita</strong>: existem índices $\alpha_1,\dots,\alpha_k$ tais que
+                        $X = U_{\alpha_1} \cup \dots \cup U_{\alpha_k}$. Um subconjunto $K \subset X$ é compacto se
+                        é compacto com a topologia de subespaço.</p>
+                </div>
+
+                <p>
+                    Como os abertos de $K$ são os conjuntos $U \cap K$, um subconjunto $K \subset X$ é compacto
+                    se, e somente se, toda família de abertos de $X$ cuja união contém $K$ tem uma subfamília
+                    finita cuja união ainda contém $K$. É nessa forma que a definição será usada. A reta
+                    $\mathbb{R}$ não é compacta: os intervalos $(-k,k)$, com $k = 1,2,3,\dots$, cobrem
+                    $\mathbb{R}$, mas a união de um número finito deles é o maior deles. O intervalo $(0,1)$
+                    também não é: os intervalos $(1/k,1)$ o cobrem, e a união de um número finito deles deixa de
+                    fora os pontos próximos de $0$.
+                </p>
+
+                <div class="definition-box" id="teo-3-2-28">
+                    <p><strong>Teorema 3.2.28 (Heine–Borel).</strong> Um subconjunto $K \subset \mathbb{R}^n$ é
+                        compacto se, e somente se, é fechado e limitado, isto é, fechado e contido em alguma bola
+                        $B_R(0)$.</p>
+                </div>
+
+                <p>
+                    <em>Ideia da demonstração.</em> Que um compacto de $\mathbb{R}^n$ é fechado segue da
+                    <a href="#prop-3-2-31">Proposição 3.2.31</a>, e que é limitado segue de as bolas $B_k(0)$,
+                    com $k = 1,2,3,\dots$, cobrirem $\mathbb{R}^n$: um número finito delas cobre $K$, e a maior
+                    contém todas. A parte substancial é a recíproca. Mostra-se primeiro que um intervalo $[a,b]$
+                    é compacto: dada uma cobertura aberta, considera-se o conjunto dos $t \in [a,b]$ tais que
+                    $[a,t]$ é coberto por um número finito de seus elementos, e usa-se a existência do supremo
+                    para mostrar que $b$ pertence a esse conjunto. Em seguida mostra-se que o produto de dois
+                    compactos é compacto, de modo que todo retângulo fechado
+                    $[a^1,b^1] \times \dots \times [a^n,b^n]$ é compacto. Por fim, um conjunto fechado e
+                    limitado é um subconjunto fechado de um retângulo desses, e a
+                    <a href="#prop-3-2-30">Proposição 3.2.30</a> conclui. Os detalhes estão em Spivak,
+                    <i>Calculus on Manifolds</i>, capítulo 1, e em Lee, <i>Introduction to Smooth Manifolds</i>,
+                    apêndice A.
+                </p>
+
+                <p>
+                    Com o teorema, reconhecer compactos de $\mathbb{R}^n$ é imediato. Bolas fechadas e retângulos
+                    fechados são compactos. A esfera $S^n$ é compacta: é limitada, e é fechada por ser a
+                    pré-imagem do fechado $\{1\}$ pela função contínua $x \mapsto \lvert x\rvert$.
+                </p>
+
+                <div class="definition-box" id="prop-3-2-29">
+                    <p><strong>Proposição 3.2.29 (A imagem contínua de um compacto é compacta).</strong> Se
+                        $f: X \to Y$ é contínua e $X$ é compacto, então $f(X)$ é um subconjunto compacto de
+                        $Y$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Seja $\{V_\alpha\}$ uma família de abertos de $Y$ cuja união contém
+                    $f(X)$. Os conjuntos $f^{-1}(V_\alpha)$ são abertos, porque $f$ é contínua, e cobrem $X$,
+                    porque todo $x$ tem $f(x)$ em algum $V_\alpha$. Como $X$ é compacto, há
+                    $\alpha_1,\dots,\alpha_k$ com
+                    $X = f^{-1}(V_{\alpha_1}) \cup \dots \cup f^{-1}(V_{\alpha_k})$. Então
+                    $V_{\alpha_1},\dots,V_{\alpha_k}$ cobrem $f(X)$: se $y = f(x)$ e
+                    $x \in f^{-1}(V_{\alpha_j})$, então $y \in V_{\alpha_j}$. $\blacksquare$
+                </p>
+
+                <p>
+                    Duas consequências. A compacidade é uma propriedade topológica. E uma função contínua
+                    $f: X \to \mathbb{R}$ em um espaço compacto não vazio é limitada e atinge máximo e mínimo:
+                    $f(X)$ é um compacto de $\mathbb{R}$, portanto fechado e limitado, e um subconjunto fechado,
+                    limitado e não vazio de $\mathbb{R}$ contém seu supremo e seu ínfimo.
+                </p>
+
+                <div class="definition-box" id="prop-3-2-30">
+                    <p><strong>Proposição 3.2.30 (Fechado em compacto é compacto).</strong> Se $X$ é compacto e
+                        $C \subset X$ é fechado, então $C$ é compacto.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Seja $\{U_\alpha\}$ uma família de abertos de $X$ cuja união contém
+                    $C$. Acrescentando o aberto $X \setminus C$, obtemos uma cobertura aberta de $X$, que tem
+                    uma subcobertura finita. Retirando dela $X \setminus C$, caso esteja presente, sobra um
+                    número finito de conjuntos $U_\alpha$, e eles cobrem $C$, porque $X \setminus C$ não contém
+                    nenhum ponto de $C$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="prop-3-2-31">
+                    <p><strong>Proposição 3.2.31 (Compacto em Hausdorff é fechado).</strong> Se $X$ é de
+                        Hausdorff e $K \subset X$ é compacto, então $K$ é fechado em $X$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Mostramos que $X \setminus K$ é aberto, exibindo, para cada
+                    $p \in X \setminus K$, uma vizinhança de $p$ que não intercepta $K$. Fixe $p$. Para cada
+                    $q \in K$, temos $q \neq p$, e a condição de Hausdorff dá abertos disjuntos $U_q \ni p$ e
+                    $V_q \ni q$. Os abertos $V_q$, com $q \in K$, cobrem $K$; como $K$ é compacto, há
+                    $q_1,\dots,q_k$ com $K \subset V_{q_1} \cup \dots \cup V_{q_k}$. Seja
+                    $U = U_{q_1} \cap \dots \cap U_{q_k}$. É uma interseção finita de abertos, logo é um aberto,
+                    e contém $p$. Como $U \subset U_{q_j}$ e $U_{q_j} \cap V_{q_j} = \varnothing$ para cada $j$,
+                    o aberto $U$ não intercepta nenhum $V_{q_j}$, e portanto não intercepta $K$. $\blacksquare$
+                </p>
+
+                <p>
+                    A demonstração mostra o uso típico da compacidade: havia um aberto $U_q$ para cada ponto de
+                    $K$, e a interseção de infinitos abertos poderia não ser aberta; a subcobertura finita
+                    reduziu a interseção a um número finito de termos. As três proposições se combinam no
+                    resultado seguinte, que é a forma em que a compacidade será mais usada.
+                </p>
+
+                <div class="definition-box" id="lema-3-2-32">
+                    <p><strong>Lema 3.2.32 (Lema da aplicação fechada).</strong> Sejam $X$ um espaço compacto, $Y$
+                        um espaço de Hausdorff e $F: X \to Y$ uma aplicação contínua.</p>
+                    <p>(a) $F$ leva fechados de $X$ em fechados de $Y$.</p>
+                    <p>(b) Se $F$ é bijetiva, então $F$ é um homeomorfismo.</p>
+                    <p>(c) Se $F$ é injetiva, então $F$ é um homeomorfismo de $X$ sobre a imagem $F(X)$, com a
+                        topologia de subespaço.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Seja $C \subset X$ fechado. Então $C$ é compacto
+                    (<a href="#prop-3-2-30">Proposição 3.2.30</a>), logo $F(C)$ é compacto
+                    (<a href="#prop-3-2-29">Proposição 3.2.29</a>, aplicada à restrição $F\vert_C$), logo
+                    $F(C)$ é fechado em $Y$ (<a href="#prop-3-2-31">Proposição 3.2.31</a>).
+                </p>
+
+                <p>
+                    (b) Falta mostrar que $F^{-1}: Y \to X$ é contínua, e para isso basta que a pré-imagem de
+                    cada fechado $C \subset X$ por $F^{-1}$ seja fechada. Essa pré-imagem é $F(C)$, que é fechado
+                    por (a).
+                </p>
+
+                <p>
+                    (c) O subespaço $F(X)$ é de Hausdorff
+                    (<a href="#prop-3-2-22">Proposição 3.2.22</a>), e $F$, vista como aplicação $X \to F(X)$, é
+                    contínua (<a href="#prop-3-2-15">Proposição 3.2.15</a>, item (c)) e bijetiva. O item (b) se
+                    aplica. $\blacksquare$
+                </p>
+
+                <p>
+                    O item (c) será usado no tópico <a href="[06] - Subvariedades.html">3.6</a>, para mostrar que
+                    uma imersão injetiva com domínio compacto é um mergulho. O item (b) explica o
+                    <a href="#ex-3-2-18">Exemplo 3.2.18</a> e resolve a pendência do
+                    <a href="#ex-3-2-11">Exemplo 3.2.11</a>.
+                </p>
+
+                <p id="ex-3-2-33"><strong>Exemplo 3.2.33 (O intervalo com as pontas coladas é um
+                        círculo).</strong> A aplicação $g: [0,1] \to S^1$, $g(t) = (\cos 2\pi t, \sin 2\pi t)$, é
+                    contínua e satisfaz $g(0) = g(1) = (1,0)$. Ela é constante nas classes da relação $0 \sim 1$
+                    e passa ao quociente (<a href="#prop-3-2-19">Proposição 3.2.19</a>): existe
+                    $\tilde{g}: [0,1]/(0 \sim 1) \to S^1$ contínua com $\tilde{g} \circ \pi = g$. A aplicação
+                    $\tilde{g}$ é bijetiva, porque $g$ é sobrejetiva e $g(t) = g(t')$ com $t \neq t'$ só ocorre
+                    para $\{t,t'\} = \{0,1\}$. O quociente é compacto, por ser a imagem do compacto $[0,1]$ pela
+                    aplicação contínua $\pi$, e $S^1$ é de Hausdorff. Pelo
+                    <a href="#lema-3-2-32">Lema 3.2.32</a>, $\tilde{g}$ é um homeomorfismo:</p>
+
+                <p>
+                    $$ [0,1]/(0 \sim 1) \;\cong\; S^1. $$
+                </p>
+
+                <p>
+                    Compare com o <a href="#ex-3-2-18">Exemplo 3.2.18</a>: a fórmula é a mesma, mas lá o domínio
+                    $[0,2\pi)$ não é compacto, e a conclusão falha. Pelo mesmo argumento do quociente,
+                    $\mathbb{RP}^n = \pi(S^n)$ é compacto.
+                </p>
+
+                <h3 id="conexidade">Conexidade</h3>
+
+                <div class="definition-box" id="def-3-2-34" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.2.34 (Espaço conexo; espaço conexo por caminhos).</strong> Um espaço
+                        topológico $X$ é <strong>conexo</strong> se não é união de dois abertos disjuntos e não
+                        vazios. Um <strong>caminho</strong> em $X$ de $p$ a $q$ é uma aplicação contínua
+                        $\gamma: [0,1] \to X$ com $\gamma(0) = p$ e $\gamma(1) = q$. O espaço $X$ é
+                        <strong>conexo por caminhos</strong> se, para quaisquer $p, q \in X$, existe um caminho de
+                        $p$ a $q$.</p>
+                </div>
+
+                <p>
+                    Se $X = U \cup V$ com $U$ e $V$ abertos disjuntos, cada um é o complementar do outro, e
+                    portanto os dois são também fechados. Assim, $X$ é conexo se, e somente se, os únicos
+                    subconjuntos de $X$ que são ao mesmo tempo abertos e fechados são $\varnothing$ e $X$. A
+                    segunda noção é mais intuitiva e mais fácil de verificar; a primeira é a que entra nas
+                    demonstrações. A ponte entre as duas é a conexidade do intervalo.
+                </p>
+
+                <div class="definition-box" id="lema-3-2-35">
+                    <p><strong>Lema 3.2.35.</strong> O intervalo $[0,1]$ é conexo.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Suponha, por absurdo, que $[0,1] = A \cup B$, com $A$ e $B$ abertos em
+                    $[0,1]$, disjuntos e não vazios. Trocando os nomes se preciso, $0 \in A$. Seja
+                </p>
+
+                <p>
+                    $$ s = \sup\,\{t \in [0,1] : [0,t] \subset A\}. $$
+                </p>
+
+                <p>
+                    O conjunto à direita contém $0$ e é limitado por $1$, de modo que o supremo existe e
+                    $0 \le s \le 1$.
+                </p>
+
+                <p>
+                    <strong>Passo 1: $[0,s] \subset A$.</strong> Se $t \lt s$, a definição de supremo dá
+                    $t' \gt t$ com $[0,t'] \subset A$, e então $t \in A$. Logo $[0,s) \subset A$. Se $s = 0$,
+                    nada mais há a provar, pois $0 \in A$. Se $s \gt 0$ e $s$ pertencesse a $B$, que é aberto em
+                    $[0,1]$, haveria $\varepsilon \gt 0$ com $(s-\varepsilon,s] \subset B$, e os pontos de
+                    $(s-\varepsilon,s)$ estariam em $A$ e em $B$. Portanto $s \in A$.
+                </p>
+
+                <p>
+                    <strong>Passo 2: $s = 1$.</strong> Se fosse $s \lt 1$, como $s \in A$ e $A$ é aberto em
+                    $[0,1]$, haveria $\varepsilon \gt 0$ com $s + \varepsilon \le 1$ e
+                    $[s,s+\varepsilon) \subset A$. Junto com o passo 1, isso daria
+                    $[0,s+\varepsilon/2] \subset A$, contrariando a definição de $s$.
+                </p>
+
+                <p>
+                    Pelos dois passos, $[0,1] \subset A$, donde $B = \varnothing$: absurdo. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="prop-3-2-36">
+                    <p><strong>Proposição 3.2.36.</strong> Todo espaço conexo por caminhos é conexo.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Suponha que $X$ é conexo por caminhos e que $X = U \cup V$, com $U$ e
+                    $V$ abertos disjuntos e não vazios. Escolha $p \in U$, $q \in V$ e um caminho $\gamma$ de $p$
+                    a $q$. Os conjuntos $\gamma^{-1}(U)$ e $\gamma^{-1}(V)$ são abertos em $[0,1]$, porque
+                    $\gamma$ é contínua; são disjuntos e sua união é $[0,1]$, porque $U$ e $V$ são disjuntos e
+                    sua união é $X$; e são não vazios, porque o primeiro contém $0$ e o segundo contém $1$. Isso
+                    contradiz o <a href="#lema-3-2-35">Lema 3.2.35</a>. $\blacksquare$
+                </p>
+
+                <p id="ex-3-2-37"><strong>Exemplo 3.2.37 (Conjuntos estrelados, esferas e um
+                        contraexemplo).</strong> (a) Um conjunto $A \subset \mathbb{R}^n$ é
+                    <strong>estrelado</strong> em relação a um ponto $a \in A$ se, para todo $x \in A$, o
+                    segmento $\{a + t(x - a) : 0 \le t \le 1\}$ está contido em $A$. Bolas, retângulos e o
+                    próprio $\mathbb{R}^n$ são convexos, e portanto estrelados em relação a qualquer um de seus
+                    pontos. Um conjunto estrelado é conexo por caminhos: para ir de $p$ a $q$, vai-se de $p$ a
+                    $a$ e de $a$ a $q$ pelos segmentos,</p>
+
+                <p>
+                    $$ \gamma(t) = \begin{cases} p + 2t\,(a - p), & 0 \le t \le \tfrac12, \\[2pt] a + (2t-1)(q - a), & \tfrac12 \le t \le 1, \end{cases} $$
+                </p>
+
+                <p>
+                    e $\gamma$ é contínua porque as duas expressões são contínuas e coincidem em $t = \tfrac12$.
+                </p>
+
+                <p>
+                    (b) Para $n \ge 1$, a esfera $S^n$ é conexa por caminhos. Se $q \neq -p$, o caminho
+                </p>
+
+                <p>
+                    $$ \gamma(t) = \frac{(1-t)\,p + t\,q}{\lvert (1-t)\,p + t\,q\rvert} $$
+                </p>
+
+                <p>
+                    liga $p$ a $q$ dentro de $S^n$. O denominador não se anula: $(1-t)\,p = -t\,q$ daria, tomando
+                    normas, $1 - t = t$, isto é, $t = \tfrac12$ e $p = -q$. Se $q = -p$, escolha um ponto
+                    $m \in S^n$ ortogonal a $p$, que existe porque $n + 1 \ge 2$; nenhum dos pares $(p,m)$ e
+                    $(m,-p)$ é formado por antípodas, e basta emendar os dois caminhos como em (a).
+                </p>
+
+                <p>
+                    (c) O conjunto $\mathbb{R} \setminus \{0\} = (-\infty,0) \cup (0,\infty)$ não é conexo, e o
+                    mesmo vale para $S^0 = \{-1,1\}$. Retirar um ponto desconecta a reta, mas não desconecta o
+                    plano.
+                </p>
+
+                <p>
+                    O que mais usaremos da conexidade é o resultado a seguir.
+                </p>
+
+                <div class="definition-box" id="prop-3-2-38">
+                    <p><strong>Proposição 3.2.38 (Funções localmente constantes).</strong> Sejam $X$ um espaço
+                        conexo e $f: X \to S$ uma aplicação com valores em um conjunto $S$ qualquer. Se $f$ é
+                        <strong>localmente constante</strong>, isto é, se cada ponto de $X$ tem uma vizinhança na
+                        qual $f$ é constante, então $f$ é constante.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Se $X$ é vazio, não há o que provar. Caso contrário, fixe
+                    $p_0 \in X$, ponha $c = f(p_0)$ e considere $A = \{p \in X : f(p) = c\}$. O conjunto $A$ é
+                    aberto: se $p \in A$, há uma vizinhança de $p$ na qual $f$ é constante, com valor
+                    $f(p) = c$, e essa vizinhança está contida em $A$. O complementar $X \setminus A$ também é
+                    aberto: se $f(p) \neq c$, há uma vizinhança de $p$ na qual $f$ vale $f(p) \neq c$, contida
+                    em $X \setminus A$. Como $X$ é conexo e $A$ contém $p_0$, só resta
+                    $X \setminus A = \varnothing$. Logo $f = c$ em todo o $X$. $\blacksquare$
+                </p>
+
+                <p>
+                    Este é o mecanismo pelo qual uma informação local vira uma conclusão global. No tópico
+                    <a href="[09] - Covetores e 1-Formas.html">3.9</a> ele dará que uma função com diferencial
+                    nula em uma variedade conexa é constante, e no tópico
+                    <a href="[15] - Orientação.html">3.15</a>, que uma variedade conexa e orientável tem
+                    exatamente duas orientações. Ele também dá uma recíproca parcial da
+                    <a href="#prop-3-2-36">Proposição 3.2.36</a>, que em geral é falsa.
+                </p>
+
+                <div class="definition-box" id="prop-3-2-39">
+                    <p><strong>Proposição 3.2.39.</strong> Seja $X$ um espaço conexo no qual todo ponto tem uma
+                        vizinhança conexa por caminhos. Então $X$ é conexo por caminhos.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> <strong>Passo 1: caminhos podem ser invertidos e emendados.</strong>
+                    Se $\gamma$ é um caminho de $p$ a $q$, então $t \mapsto \gamma(1-t)$ é um caminho de $q$ a
+                    $p$. Se, além disso, $\sigma$ é um caminho de $q$ a $r$, a aplicação
+                </p>
+
+                <p>
+                    $$ (\gamma * \sigma)(t) = \begin{cases} \gamma(2t), & 0 \le t \le \tfrac12, \\[2pt] \sigma(2t-1), & \tfrac12 \le t \le 1, \end{cases} $$
+                </p>
+
+                <p>
+                    está bem definida, porque $\gamma(1) = q = \sigma(0)$, e vai de $p$ a $r$. Ela é contínua
+                    pelo seguinte fato geral: se um espaço é união de dois fechados $C_1$ e $C_2$ e as
+                    restrições de $f$ a $C_1$ e a $C_2$ são contínuas, então $f$ é contínua. De fato, se $D$ é
+                    fechado no contradomínio, então
+                    $f^{-1}(D) = (f\vert_{C_1})^{-1}(D) \cup (f\vert_{C_2})^{-1}(D)$; cada parcela é fechada em
+                    $C_i$, e portanto fechada no espaço todo, por ser a interseção de $C_i$ com um fechado; e a
+                    união de dois fechados é fechada. Aqui, $C_1 = [0,\tfrac12]$ e $C_2 = [\tfrac12,1]$.
+                </p>
+
+                <p>
+                    <strong>Passo 2.</strong> Se $X$ é vazio, não há o que provar. Caso contrário, fixe
+                    $p_0 \in X$ e defina $f: X \to \{0,1\}$ por $f(p) = 1$ se existe um caminho de $p_0$ a $p$,
+                    e $f(p) = 0$ caso contrário. Afirmamos que $f$ é localmente constante. Dado $p$, seja $U$
+                    uma vizinhança de $p$ conexa por caminhos. Se $f(p) = 1$, então todo $q \in U$ tem
+                    $f(q) = 1$: emenda-se um caminho de $p_0$ a $p$ com um caminho de $p$ a $q$ dentro de $U$.
+                    Se $f(p) = 0$, então todo $q \in U$ tem $f(q) = 0$: um caminho de $p_0$ a $q$, emendado com
+                    um caminho de $q$ a $p$ dentro de $U$, daria $f(p) = 1$. Pela
+                    <a href="#prop-3-2-38">Proposição 3.2.38</a>, $f$ é constante, e $f(p_0) = 1$ por causa do
+                    caminho constante. Logo todo ponto se liga a $p_0$ por um caminho, e dois pontos quaisquer
+                    $p$ e $q$ se ligam emendando o caminho de $p$ a $p_0$ com o de $p_0$ a $q$. $\blacksquare$
+                </p>
+
+                <p>
+                    A hipótese local vale em todo espaço localmente parecido com $\mathbb{R}^n$, porque bolas
+                    são conexas por caminhos. Assim, para variedades, "conexa" e "conexa por caminhos" serão
+                    sinônimos; o tópico <a href="[09] - Covetores e 1-Formas.html">3.9</a> usa isso para
+                    construir potenciais por integração ao longo de caminhos.
+                </p>
+
+                <h2 id="calculo-rn">Cálculo diferencial em $\mathbb{R}^n$</h2>
+
+                <p>
+                    Passamos à segunda metade. Nesta seção, $U$ é sempre um aberto de $\mathbb{R}^n$, e uma
+                    aplicação $F: U \to \mathbb{R}^m$ tem funções componentes $F = (F^1,\dots,F^m)$. Os índices
+                    das coordenadas e das componentes ficam em cima, como em todo o capítulo; as somas são
+                    escritas por extenso até o tópico <a href="[05] - Vetores Tangentes.html">3.5</a>, onde entra
+                    a convenção de Einstein. Os vetores da base canônica de $\mathbb{R}^n$ são
+                    $e_1,\dots,e_n$. Uma aplicação linear $L: \mathbb{R}^n \to \mathbb{R}^m$ é identificada com
+                    sua matriz $(L^j_i)$, de $m$ linhas e $n$ colunas, de modo que
+                    $(Lh)^j = \sum_i L^j_i h^i$. Usaremos várias vezes a estimativa
+                </p>
+
+                <p>
+                    $$ \lvert Lh\rvert \le \lVert L\rVert\,\lvert h\rvert, \qquad \lVert L\rVert = \Big(\sum_{j=1}^m\sum_{i=1}^n (L^j_i)^2\Big)^{1/2}, \tag{3.2.4} $$
+                </p>
+
+                <p>
+                    que vem da desigualdade de Cauchy–Schwarz aplicada a cada linha da matriz:
+                    $\big(\sum_i L^j_i h^i\big)^2 \le \big(\sum_i (L^j_i)^2\big)\big(\sum_i (h^i)^2\big)$;
+                    somando em $j$, obtém-se $\lvert Lh\rvert^2 \le \lVert L\rVert^2\lvert h\rvert^2$. Em
+                    particular, aplicações lineares são contínuas.
+                </p>
+
+                <div class="definition-box" id="def-3-2-40" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.2.40 (Derivada total).</strong> Sejam $U \subset \mathbb{R}^n$ aberto,
+                        $F: U \to \mathbb{R}^m$ e $a \in U$. A aplicação $F$ é <strong>diferenciável em
+                            $a$</strong> se existe uma aplicação linear $L: \mathbb{R}^n \to \mathbb{R}^m$ tal
+                        que</p>
+                    <p>$$ \lim_{h \to 0} \frac{\lvert F(a+h) - F(a) - Lh\rvert}{\lvert h\rvert} = 0. \tag{3.2.5} $$</p>
+                    <p>Nesse caso, $L$ é a <strong>derivada</strong> (ou derivada total) de $F$ em $a$, denotada
+                        $DF(a)$.</p>
+                </div>
+
+                <p>
+                    A condição (3.2.5) diz que $F$ é bem aproximada, perto de $a$, por uma aplicação afim:
+                </p>
+
+                <p>
+                    $$ \begin{gathered} F(a+h) = F(a) + DF(a)\,h + R(h), \\[2pt] \lim_{h \to 0} \frac{\lvert R(h)\rvert}{\lvert h\rvert} = 0. \end{gathered} \tag{3.2.6} $$
+                </p>
+
+                <p>
+                    O erro $R(h)$ vai a zero mais depressa do que $h$. A derivada não é um número nem uma lista de
+                    números: é uma aplicação linear, a melhor aproximação linear de $F$ em $a$. Para
+                    $n = m = 1$, ela é a multiplicação pelo número $F'(a)$. Se $F$ é afim, $F(x) = Ax + b$, então
+                    $F(a+h) - F(a) = Ah$ exatamente, e $DF(a) = A$ em todo ponto. Em particular, a derivada da
+                    identidade de $\mathbb{R}^n$ é a identidade, e a derivada de uma aplicação linear é ela
+                    mesma.
+                </p>
+
+                <div class="definition-box" id="prop-3-2-41">
+                    <p><strong>Proposição 3.2.41.</strong> (a) Se $F$ é diferenciável em $a$, a aplicação linear
+                        $L$ da Equação (3.2.5) é única. (b) Se $F$ é diferenciável em $a$, então $F$ é contínua em
+                        $a$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Suponha que $L$ e $L'$ satisfazem (3.2.5). Fixe $v \neq 0$ em
+                    $\mathbb{R}^n$ e tome $h = tv$, com $t \neq 0$ real. Somando e subtraindo
+                    $F(a+tv) - F(a)$ e usando a desigualdade triangular,
+                </p>
+
+                <p>
+                    $$ \begin{aligned} \frac{\lvert (L - L')v\rvert}{\lvert v\rvert} &= \frac{\lvert L(tv) - L'(tv)\rvert}{\lvert tv\rvert} \\[4pt]
+                    &\le \frac{\lvert F(a+tv) - F(a) - L(tv)\rvert}{\lvert tv\rvert} \\[4pt]
+                    &\quad + \frac{\lvert F(a+tv) - F(a) - L'(tv)\rvert}{\lvert tv\rvert}. \end{aligned} $$
+                </p>
+
+                <p>
+                    O lado direito tende a zero quando $t \to 0$, e o lado esquerdo não depende de $t$. Logo
+                    $(L - L')v = 0$ para todo $v$, isto é, $L = L'$.
+                </p>
+
+                <p>
+                    (b) Pela Equação (3.2.6) e pela estimativa (3.2.4),
+                    $\lvert F(a+h) - F(a)\rvert \le \lVert L\rVert\,\lvert h\rvert + \lvert R(h)\rvert$. A primeira
+                    parcela tende a zero com $h$, e a segunda também, pois
+                    $\lvert R(h)\rvert = \lvert h\rvert\cdot\big(\lvert R(h)\rvert/\lvert h\rvert\big)$ é produto
+                    de dois fatores que tendem a zero. $\blacksquare$
+                </p>
+
+                <p>
+                    Para calcular a derivada, usam-se as derivadas parciais. A <strong>derivada parcial</strong>
+                    de $F^j$ em relação a $x^i$, no ponto $a$, é o limite
+                </p>
+
+                <p>
+                    $$ \frac{\partial F^j}{\partial x^i}(a) = \lim_{t \to 0} \frac{F^j(a + te_i) - F^j(a)}{t}, $$
+                </p>
+
+                <p>
+                    quando existe: é a derivada ordinária de $F^j$ como função da $i$-ésima variável, com as
+                    demais fixas. Abreviamos $\partial f/\partial x^i$ por $\partial_i f$.
+                </p>
+
+                <div class="definition-box" id="prop-3-2-42">
+                    <p><strong>Proposição 3.2.42 (Matriz jacobiana).</strong> Se $F: U \to \mathbb{R}^m$ é
+                        diferenciável em $a$, então todas as derivadas parciais $\partial F^j/\partial x^i(a)$
+                        existem, e a matriz de $DF(a)$ é a <strong>matriz jacobiana</strong></p>
+                    <p>$$ DF(a) = \begin{pmatrix} \dfrac{\partial F^1}{\partial x^1}(a) & \cdots & \dfrac{\partial F^1}{\partial x^n}(a) \\ \vdots & & \vdots \\ \dfrac{\partial F^m}{\partial x^1}(a) & \cdots & \dfrac{\partial F^m}{\partial x^n}(a) \end{pmatrix}. \tag{3.2.7} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Seja $L = DF(a)$. Tomando $h = te_i$ na Equação (3.2.5), com
+                    $t \neq 0$, e usando $\lvert te_i\rvert = \lvert t\rvert$ e $L(te_i) = tLe_i$,
+                </p>
+
+                <p>
+                    $$ \lim_{t \to 0} \left\lvert \frac{F(a+te_i) - F(a)}{t} - Le_i \right\rvert = 0. $$
+                </p>
+
+                <p>
+                    Logo $\big(F(a+te_i) - F(a)\big)/t$ tende ao vetor $Le_i$. Como o módulo de cada componente de
+                    um vetor é no máximo a norma do vetor, a componente $j$ também converge:
+                    $\partial F^j/\partial x^i(a)$ existe e vale $(Le_i)^j = L^j_i$, que é a entrada da linha
+                    $j$ e da coluna $i$ da matriz de $L$. $\blacksquare$
+                </p>
+
+                <p>
+                    A recíproca é falsa: as derivadas parciais podem existir sem que a função seja
+                    diferenciável. A função $f(x,y) = xy/(x^2+y^2)$, com $f(0,0) = 0$, anula-se sobre os dois
+                    eixos, e por isso tem as duas derivadas parciais iguais a zero na origem; mas
+                    $f(t,t) = \tfrac12$ para todo $t \neq 0$, de modo que $f$ nem sequer é contínua na origem.
+                    O defeito desaparece quando as derivadas parciais são contínuas, e esta é a hipótese com
+                    que trabalharemos.
+                </p>
+
+                <div class="definition-box" id="def-3-2-43" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.2.43 (Classes $C^k$ e aplicações suaves).</strong> Sejam
+                        $U \subset \mathbb{R}^n$ aberto e $F: U \to \mathbb{R}^m$. Dizemos que $F$ é de
+                        <strong>classe $C^0$</strong> se é contínua, e de <strong>classe $C^k$</strong>, para
+                        $k \ge 1$, se todas as derivadas parciais de ordem até $k$ das componentes $F^j$ existem
+                        e são contínuas em $U$. A aplicação $F$ é <strong>suave</strong>, ou de classe
+                        $C^\infty$, se é de classe $C^k$ para todo $k$. O conjunto das funções suaves
+                        $f: U \to \mathbb{R}$ é denotado $C^\infty(U)$.</p>
+                </div>
+
+                <p>
+                    Somas e produtos de funções de classe $C^k$ são de classe $C^k$, pelas regras de derivação da
+                    soma e do produto, e o mesmo vale para quocientes onde o denominador não se anula.
+                    Polinômios, a exponencial, o seno e o cosseno são suaves. Em particular, $C^\infty(U)$ é
+                    fechado por somas, produtos e multiplicação por constantes. Em todo o capítulo, "suave"
+                    quer dizer $C^\infty$.
+                </p>
+
+                <div class="definition-box" id="prop-3-2-44">
+                    <p><strong>Proposição 3.2.44 (Classe $C^1$ implica diferenciável).</strong> Se
+                        $F: U \to \mathbb{R}^m$ é de classe $C^1$, então $F$ é diferenciável em todo ponto de
+                        $U$, e sua derivada é dada pela matriz jacobiana (3.2.7).</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> <strong>Passo 1: basta o caso $m = 1$.</strong> Se $L$ é a aplicação
+                    linear cuja matriz é a jacobiana em $a$, a componente $j$ do vetor $F(a+h) - F(a) - Lh$ é
+                    $F^j(a+h) - F^j(a) - \sum_i \partial_iF^j(a)\,h^i$, e a norma de um vetor é no máximo a soma
+                    dos módulos de suas componentes. Se cada componente, dividida por $\lvert h\rvert$, tende a
+                    zero, o mesmo acontece com o vetor.
+                </p>
+
+                <p>
+                    <strong>Passo 2: o caso $m = 1$.</strong> Sejam $f: U \to \mathbb{R}$ de classe $C^1$,
+                    $a \in U$ e $r \gt 0$ com $B_r(a) \subset U$. Para $\lvert h\rvert \lt r$, vamos de $a$ a
+                    $a + h$ mudando uma coordenada de cada vez: sejam $a_0 = a$ e
+                    $a_k = a + h^1e_1 + \dots + h^ke_k$, de modo que $a_n = a + h$. Todos esses pontos, e os
+                    segmentos entre pontos consecutivos, estão em $B_r(a)$, pois distam de $a$ no máximo
+                    $\lvert h\rvert$. Então
+                </p>
+
+                <p>
+                    $$ f(a+h) - f(a) = \sum_{k=1}^n \big[ f(a_k) - f(a_{k-1}) \big]. $$
+                </p>
+
+                <p>
+                    Em cada parcela só varia a coordenada $k$: a função de uma variável
+                    $s \mapsto f(a_{k-1} + se_k)$ tem derivada $\partial_kf(a_{k-1} + se_k)$, e o teorema do
+                    valor médio dá um ponto $c_k$ do segmento de $a_{k-1}$ a $a_k$ com
+                    $f(a_k) - f(a_{k-1}) = h^k\,\partial_kf(c_k)$. (Se $h^k = 0$, a parcela é nula e qualquer
+                    $c_k$ serve.) Portanto
+                </p>
+
+                <p>
+                    $$ \begin{aligned} \Big\lvert f(a+h) - f(a) - \sum_{k=1}^n \partial_kf(a)\,h^k \Big\rvert
+                    &= \Big\lvert \sum_{k=1}^n h^k\,\big[ \partial_kf(c_k) - \partial_kf(a) \big] \Big\rvert \\[4pt]
+                    &\le \lvert h\rvert \sum_{k=1}^n \big\lvert \partial_kf(c_k) - \partial_kf(a) \big\rvert, \end{aligned} $$
+                </p>
+
+                <p>
+                    onde usamos $\lvert h^k\rvert \le \lvert h\rvert$. Quando $h \to 0$, cada $c_k$ tende a $a$,
+                    porque $\lvert c_k - a\rvert \le \lvert h\rvert$, e a continuidade das derivadas parciais faz
+                    a última soma tender a zero. Dividindo por $\lvert h\rvert$, obtemos a Equação (3.2.5) com
+                    $Lh = \sum_k \partial_kf(a)\,h^k$. $\blacksquare$
+                </p>
+
+                <p>
+                    Para aplicações de classe $C^1$, e em particular para as suaves, não há então diferença
+                    entre "ter derivada" e "ter derivadas parciais": a derivada existe e sua matriz é a
+                    jacobiana. Para as de classe $C^2$, vale ainda um fato sobre as derivadas segundas.
+                </p>
+
+                <div class="definition-box" id="teo-3-2-45">
+                    <p><strong>Teorema 3.2.45 (Igualdade das derivadas mistas).</strong> Se $f: U \to \mathbb{R}$
+                        é de classe $C^2$, então, para quaisquer $i$ e $j$ e em todo ponto de $U$,</p>
+                    <p>$$ \frac{\partial^2 f}{\partial x^i\,\partial x^j} = \frac{\partial^2 f}{\partial x^j\,\partial x^i}. \tag{3.2.8} $$</p>
+                </div>
+
+                <p>
+                    <em>Ideia da demonstração.</em> Fixado $a \in U$, considera-se, para $s$ e $t$ pequenos e não
+                    nulos, a diferença segunda
+                    $\Delta(s,t) = f(a + se_i + te_j) - f(a + se_i) - f(a + te_j) + f(a)$. Aplicando o teorema
+                    do valor médio primeiro na variável $s$ e depois na variável $t$, obtém-se
+                    $\Delta(s,t) = st\,\partial_j\partial_if(c)$ para algum ponto $c$ do retângulo de vértices
+                    $a$, $a + se_i$, $a + te_j$ e $a + se_i + te_j$. Na ordem inversa, obtém-se
+                    $\Delta(s,t) = st\,\partial_i\partial_jf(c')$, com $c'$ no mesmo retângulo. Dividindo por
+                    $st$ e fazendo $s, t \to 0$, a continuidade das derivadas segundas dá a igualdade em $a$. A
+                    demonstração completa está em Lee, apêndice C.
+                </p>
+
+                <p>
+                    Consequência: para uma função suave, derivadas parciais de qualquer ordem podem ser tomadas
+                    em qualquer ordem. O teorema parece um detalhe técnico, mas dois fatos centrais do capítulo
+                    são essa simetria em outra roupa. No tópico
+                    <a href="[07] - Fibrado Tangente e Campos Vetoriais.html">3.7</a>, é ela que cancela os
+                    termos de segunda ordem no colchete de dois campos vetoriais; no tópico
+                    <a href="[13] - Derivada Exterior.html">3.13</a>, é ela que dá $d \circ d = 0$.
+                </p>
+
+                <h3 id="regra-da-cadeia">A regra da cadeia</h3>
+
+                <p>
+                    A regra da cadeia é o resultado mais usado do capítulo. Toda lei de transformação sob
+                    mudança de coordenadas, de vetores a formas diferenciais, é uma aplicação dela.
+                </p>
+
+                <div class="definition-box" id="teo-3-2-46">
+                    <p><strong>Teorema 3.2.46 (Regra da cadeia).</strong> Sejam $U \subset \mathbb{R}^n$ e
+                        $V \subset \mathbb{R}^m$ abertos, $F: U \to V$ e $G: V \to \mathbb{R}^p$. Se $F$ é
+                        diferenciável em $a \in U$ e $G$ é diferenciável em $F(a)$, então $G \circ F$ é
+                        diferenciável em $a$ e</p>
+                    <p>$$ D(G \circ F)(a) = DG\big(F(a)\big) \circ DF(a). \tag{3.2.9} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Sejam $b = F(a)$, $L = DF(a)$ e $K = DG(b)$. Pela Equação (3.2.6),
+                    aplicada a $F$ em $a$ e a $G$ em $b$,
+                </p>
+
+                <p>
+                    $$ \begin{aligned} F(a+h) &= F(a) + Lh + R(h), \\[2pt] G(b+k) &= G(b) + Kk + S(k), \end{aligned} $$
+                </p>
+
+                <p>
+                    com $\lvert R(h)\rvert/\lvert h\rvert \to 0$ quando $h \to 0$ e
+                    $\lvert S(k)\rvert/\lvert k\rvert \to 0$ quando $k \to 0$. Para $h$ pequeno, ponha
+                    $k(h) = F(a+h) - F(a) = Lh + R(h)$. Então $F(a+h) = b + k(h)$ e
+                </p>
+
+                <p>
+                    $$ \begin{aligned} G\big(F(a+h)\big) - G\big(F(a)\big) - KLh &= K\big(Lh + R(h)\big) + S\big(k(h)\big) - KLh \\[2pt]
+                    &= K\,R(h) + S\big(k(h)\big). \end{aligned} $$
+                </p>
+
+                <p>
+                    Precisamos mostrar que cada uma das duas parcelas à direita, dividida por
+                    $\lvert h\rvert$, tende a zero quando $h \to 0$.
+                </p>
+
+                <p>
+                    <strong>Primeira parcela.</strong> Pela estimativa (3.2.4),
+                    $\lvert K\,R(h)\rvert/\lvert h\rvert \le \lVert K\rVert\,\lvert R(h)\rvert/\lvert h\rvert \to 0$.
+                </p>
+
+                <p>
+                    <strong>Segunda parcela.</strong> Seja $\varepsilon \gt 0$. Como
+                    $\lvert R(h)\rvert/\lvert h\rvert \to 0$, existe $\delta_1 \gt 0$ tal que
+                    $\lvert R(h)\rvert \le \lvert h\rvert$ para $\lvert h\rvert \lt \delta_1$, e então
+                </p>
+
+                <p>
+                    $$ \lvert k(h)\rvert \le \lVert L\rVert\,\lvert h\rvert + \lvert R(h)\rvert \le \big(\lVert L\rVert + 1\big)\,\lvert h\rvert. $$
+                </p>
+
+                <p>
+                    Como $\lvert S(k)\rvert/\lvert k\rvert \to 0$, existe $\eta \gt 0$ tal que
+                    $\lvert S(k)\rvert \le \varepsilon\,\lvert k\rvert$ para $\lvert k\rvert \lt \eta$ (para
+                    $k = 0$ a desigualdade vale porque $S(0) = 0$). Seja
+                    $\delta = \min\{\delta_1,\ \eta/(\lVert L\rVert + 1)\}$. Se $0 \lt \lvert h\rvert \lt \delta$,
+                    então $\lvert k(h)\rvert \lt \eta$ e
+                </p>
+
+                <p>
+                    $$ \frac{\big\lvert S\big(k(h)\big)\big\rvert}{\lvert h\rvert} \le \frac{\varepsilon\,\lvert k(h)\rvert}{\lvert h\rvert} \le \varepsilon\,\big(\lVert L\rVert + 1\big). $$
+                </p>
+
+                <p>
+                    Como $\varepsilon$ é arbitrário, a segunda parcela dividida por $\lvert h\rvert$ tende a
+                    zero. Logo $G \circ F$ satisfaz a Equação (3.2.5) em $a$ com a aplicação linear
+                    $K \circ L$. $\blacksquare$
+                </p>
+
+                <p>
+                    A composta de aplicações lineares corresponde ao produto de matrizes. Escrevendo
+                    $(x^i)$ para as coordenadas de $\mathbb{R}^n$ e $(y^j)$ para as de $\mathbb{R}^m$, a
+                    Equação (3.2.9) fica, pela <a href="#prop-3-2-42">Proposição 3.2.42</a>,
+                </p>
+
+                <p>
+                    $$ \frac{\partial (G^k \circ F)}{\partial x^i}(a) = \sum_{j=1}^m \frac{\partial G^k}{\partial y^j}\big(F(a)\big)\,\frac{\partial F^j}{\partial x^i}(a). \tag{3.2.10} $$
+                </p>
+
+                <div class="definition-box" id="cor-3-2-47">
+                    <p><strong>Corolário 3.2.47.</strong> A composta de aplicações de classe $C^k$, com
+                        $k \ge 1$, é de classe $C^k$. Em particular, a composta de aplicações suaves é suave.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Por indução em $k$. Sejam $F$ e $G$ de classe $C^1$. Pela
+                    <a href="#prop-3-2-44">Proposição 3.2.44</a> elas são diferenciáveis, e a Equação (3.2.10)
+                    vale em todo ponto: as derivadas parciais de $G \circ F$ são somas de produtos das funções
+                    $(\partial G^k/\partial y^j) \circ F$ e $\partial F^j/\partial x^i$, que são contínuas. Logo
+                    $G \circ F$ é de classe $C^1$. Suponha agora o resultado para $k - 1 \ge 1$, e sejam $F$ e
+                    $G$ de classe $C^k$. As funções $\partial G^k/\partial y^j$ e $F$ são de classe $C^{k-1}$,
+                    e pela hipótese de indução a composta $(\partial G^k/\partial y^j) \circ F$ também é. As
+                    funções $\partial F^j/\partial x^i$ são de classe $C^{k-1}$. Pela Equação (3.2.10), as
+                    derivadas parciais de primeira ordem de $G \circ F$ são somas de produtos de funções de
+                    classe $C^{k-1}$, logo são de classe $C^{k-1}$, e $G \circ F$ é de classe $C^k$.
+                    $\blacksquare$
+                </p>
+
+                <p>
+                    O caso mais simples da regra da cadeia, em que a primeira aplicação é uma curva, merece
+                    enunciado próprio.
+                </p>
+
+                <div class="definition-box" id="prop-3-2-48">
+                    <p><strong>Proposição 3.2.48 (Derivada ao longo de uma curva; derivada direcional).</strong>
+                        Sejam $f: U \to \mathbb{R}$ de classe $C^1$, $a \in U$ e
+                        $\gamma: (-\varepsilon,\varepsilon) \to U$ uma curva diferenciável em $t = 0$, com
+                        $\gamma(0) = a$ e $\gamma'(0) = v = (v^1,\dots,v^n)$. Então</p>
+                    <p>$$ \frac{d}{dt}\bigg\vert_{t=0} f\big(\gamma(t)\big) = Df(a)\,v = \sum_{i=1}^n v^i\,\frac{\partial f}{\partial x^i}(a). \tag{3.2.11} $$</p>
+                    <p>Em particular, para a reta $\gamma(t) = a + tv$, obtém-se a <strong>derivada
+                            direcional</strong> de $f$ em $a$ na direção de $v$:</p>
+                    <p>$$ D_v\vert_a f = \frac{d}{dt}\bigg\vert_{t=0} f(a + tv) = \sum_{i=1}^n v^i\,\frac{\partial f}{\partial x^i}(a). \tag{3.2.12} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> A derivada de $\gamma$ em $0$ é a aplicação linear
+                    $\mathbb{R} \to \mathbb{R}^n$, $t \mapsto t\,\gamma'(0)$, cuja matriz é a coluna de entradas
+                    $v^1,\dots,v^n$. A derivada de $f$ em $a$ tem por matriz a linha de entradas
+                    $\partial_1f(a),\dots,\partial_nf(a)$. Pela regra da cadeia,
+                    $D(f \circ \gamma)(0) = Df(a) \circ D\gamma(0)$ é a matriz $1 \times 1$ cuja entrada é o
+                    produto da linha pela coluna, $\sum_i \partial_if(a)\,v^i$. Para a reta,
+                    $\gamma'(0) = v$. $\blacksquare$
+                </p>
+
+                <p>
+                    O conteúdo da Equação (3.2.11) é que a taxa de variação de $f$ ao longo de uma curva que
+                    passa por $a$ só depende da curva por meio do vetor velocidade $v$: duas curvas com a mesma
+                    velocidade em $a$ derivam todas as funções do mesmo modo. No tópico
+                    <a href="[05] - Vetores Tangentes.html">3.5</a>, essa observação vira definição: um vetor
+                    tangente em $a$ será identificado com a operação $f \mapsto D_v\vert_a f$ que ele realiza
+                    sobre as funções.
+                </p>
+
+                <h3 id="hadamard">O lema de Hadamard</h3>
+
+                <p>
+                    Para uma função de uma variável, o teorema fundamental do cálculo permite escrever
+                    $f(x) - f(a)$ como $(x - a)$ vezes uma função suave. O lema de Hadamard é a versão em
+                    várias variáveis. O domínio precisa ser estrelado em relação a $a$, no sentido do
+                    <a href="#ex-3-2-37">Exemplo 3.2.37</a>, porque a demonstração integra ao longo do segmento
+                    de $a$ a $x$.
+                </p>
+
+                <div class="definition-box" id="lema-3-2-49">
+                    <p><strong>Lema 3.2.49 (Lema de Hadamard).</strong> Sejam $U \subset \mathbb{R}^n$ um aberto
+                        estrelado em relação a um ponto $a \in U$ e $f \in C^\infty(U)$. Então existem funções
+                        $g_1,\dots,g_n \in C^\infty(U)$ tais que, para todo $x \in U$,</p>
+                    <p>$$ \begin{gathered} f(x) = f(a) + \sum_{i=1}^n (x^i - a^i)\,g_i(x), \\[2pt] g_i(a) = \frac{\partial f}{\partial x^i}(a). \end{gathered} \tag{3.2.13} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> <strong>Passo 1: a fórmula.</strong> Fixe $x \in U$. Como $U$ é
+                    estrelado em relação a $a$, o ponto $a + t(x-a)$ pertence a $U$ para todo $t \in [0,1]$; e,
+                    como $U$ é aberto, o mesmo vale para $t$ em um intervalo aberto que contém $[0,1]$. Nesse
+                    intervalo está definida a função $\phi(t) = f\big(a + t(x-a)\big)$, que é a composta de $f$
+                    com a curva $t \mapsto a + t(x-a)$, de velocidade constante $x - a$. Pela Equação (3.2.11),
+                    aplicada em cada instante $t$,
+                </p>
+
+                <p>
+                    $$ \phi'(t) = \sum_{i=1}^n (x^i - a^i)\,\frac{\partial f}{\partial x^i}\big(a + t(x-a)\big), $$
+                </p>
+
+                <p>
+                    que é uma função contínua de $t$. Pelo teorema fundamental do cálculo,
+                </p>
+
+                <p>
+                    $$ \begin{aligned} f(x) - f(a) &= \phi(1) - \phi(0) = \int_0^1 \phi'(t)\,dt \\[4pt] &= \sum_{i=1}^n (x^i - a^i) \int_0^1 \frac{\partial f}{\partial x^i}\big(a + t(x-a)\big)\,dt. \end{aligned} $$
+                </p>
+
+                <p>
+                    Definimos, então,
+                </p>
+
+                <p>
+                    $$ g_i(x) = \int_0^1 \frac{\partial f}{\partial x^i}\big(a + t(x-a)\big)\,dt, \qquad x \in U. \tag{3.2.14} $$
+                </p>
+
+                <p>
+                    <strong>Passo 2: o valor em $a$.</strong> Para $x = a$, o integrando é a constante
+                    $\partial_if(a)$, e $g_i(a) = \partial_if(a)$.
+                </p>
+
+                <p>
+                    <strong>Passo 3: as funções $g_i$ são suaves.</strong> O integrando de (3.2.14) é a função
+                    $\Phi(x,t) = \partial_if\big(a + t(x-a)\big)$, definida e contínua em $U \times [0,1]$. Pela
+                    regra da cadeia, sua derivada parcial em relação a $x^j$ é
+                    $t\,\partial_j\partial_if\big(a + t(x-a)\big)$, e, repetindo o cálculo, toda derivada
+                    parcial de ordem $k$ de $\Phi$ nas variáveis $x$ é $t^k$ vezes uma derivada parcial de
+                    ordem $k$ de $\partial_if$, calculada em $a + t(x-a)$. Todas elas são contínuas em
+                    $U \times [0,1]$, porque $f$ é suave. O
+                    <a href="#teo-3-2-66">Teorema 3.2.66</a> (derivação sob o sinal de integral), aplicado
+                    sucessivamente, mostra que $g_i$ tem derivadas parciais contínuas de todas as ordens,
+                    obtidas derivando sob a integral. Logo $g_i \in C^\infty(U)$. $\blacksquare$
+                </p>
+
+                <p id="ex-3-2-50"><strong>Exemplo 3.2.50 (A função $\sin x/x$).</strong> Para
+                    $f(x) = \sin x$ em $U = \mathbb{R}$ e $a = 0$, a Equação (3.2.14) dá</p>
+
+                <p>
+                    $$ g(x) = \int_0^1 \cos(tx)\,dt = \begin{cases} \dfrac{\sin x}{x}, & x \neq 0, \\[6pt] 1, & x = 0. \end{cases} $$
+                </p>
+
+                <p>
+                    De fato $\sin x = x\,g(x)$ e $g(0) = 1 = \cos 0$. O lema diz mais do que a
+                    fórmula: diz que $g$ é suave em toda a reta, inclusive em $x = 0$, onde a expressão
+                    $\sin x/x$ não está definida. É a representação integral que mostra isso.
+                </p>
+
+                <p>
+                    As funções $g_i$ não são únicas quando $n \ge 2$ (o
+                    <a href="#exr-3-2-5">Exercício 3.2.5</a> mostra por quê), mas seus valores em $a$ são: são
+                    as derivadas parciais de $f$. O lema de Hadamard será usado uma única vez, e em um ponto
+                    decisivo: no tópico <a href="[05] - Vetores Tangentes.html">3.5</a>, é ele que mostra que
+                    toda derivação em um ponto de $\mathbb{R}^n$ é uma derivada direcional, isto é, que toda
+                    derivação é um vetor. Lá ele será aplicado em uma bola, que é estrelada em relação ao
+                    centro.
+                </p>
+
+                <h2 id="difeomorfismos-rn">Difeomorfismos e os teoremas da função inversa e implícita</h2>
+
+                <p>
+                    Os homeomorfismos identificam espaços do ponto de vista da continuidade. Para o cálculo, a
+                    noção correspondente é mais exigente: a aplicação e sua inversa precisam ser suaves. Uma
+                    mudança de coordenadas, no sentido do tópico
+                    <a href="[01] - Motivação e Roteiro.html#sem-coordenadas-privilegiadas">3.1</a>, é
+                    exatamente isso.
+                </p>
+
+                <div class="definition-box" id="def-3-2-51" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.2.51 (Difeomorfismo).</strong> Sejam $U \subset \mathbb{R}^n$ e
+                        $V \subset \mathbb{R}^m$ abertos. Um <strong>difeomorfismo</strong> de $U$ em $V$ é uma
+                        aplicação suave e bijetiva $F: U \to V$ cuja inversa $F^{-1}: V \to U$ também é suave.</p>
+                </div>
+
+                <p>
+                    Todo difeomorfismo é um homeomorfismo, e, pelo
+                    <a href="#cor-3-2-47">Corolário 3.2.47</a>, compostas e inversas de difeomorfismos são
+                    difeomorfismos. As aplicações afins invertíveis $x \mapsto Ax + b$, com $\det A \neq 0$, são
+                    difeomorfismos de $\mathbb{R}^n$ em si mesmo; entre elas estão as rotações, as translações e
+                    as transformações de Galileu e de Lorentz dos capítulos 1 e 2. A primeira consequência da
+                    definição é que um difeomorfismo não muda a dimensão.
+                </p>
+
+                <div class="definition-box" id="prop-3-2-52">
+                    <p><strong>Proposição 3.2.52 (Invariância da dimensão por difeomorfismos).</strong> Sejam
+                        $U \subset \mathbb{R}^n$ e $V \subset \mathbb{R}^m$ abertos não vazios e $F: U \to V$ um
+                        difeomorfismo. Então, para todo $a \in U$, a derivada $DF(a)$ é invertível, com</p>
+                    <p>$$ DF(a)^{-1} = D(F^{-1})\big(F(a)\big), \tag{3.2.15} $$</p>
+                    <p>e, em particular, $n = m$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Aplicamos a regra da cadeia às identidades
+                    $F^{-1} \circ F = \mathrm{id}_U$ e $F \circ F^{-1} = \mathrm{id}_V$. A derivada da identidade
+                    é a identidade, de modo que, com $b = F(a)$,
+                </p>
+
+                <p>
+                    $$ D(F^{-1})(b) \circ DF(a) = I_n, \qquad DF(a) \circ D(F^{-1})(b) = I_m. $$
+                </p>
+
+                <p>
+                    Logo $DF(a): \mathbb{R}^n \to \mathbb{R}^m$ é uma aplicação linear com inversa
+                    $D(F^{-1})(b)$. Uma aplicação linear invertível entre $\mathbb{R}^n$ e $\mathbb{R}^m$ só
+                    existe quando $n = m$. $\blacksquare$
+                </p>
+
+                <p>
+                    A afirmação análoga para homeomorfismos (abertos não vazios de $\mathbb{R}^n$ e de
+                    $\mathbb{R}^m$ só são homeomorfos se $n = m$) também é verdadeira, mas é um teorema difícil
+                    de topologia, que o tópico <a href="[03] - Variedades Diferenciáveis.html">3.3</a> apenas
+                    citará. Com suavidade, a dimensão é detectada pela álgebra linear da derivada.
+                </p>
+
+                <h3 id="funcao-inversa">O teorema da função inversa</h3>
+
+                <p>
+                    A <a href="#prop-3-2-52">Proposição 3.2.52</a> diz que um difeomorfismo tem derivada
+                    invertível em todo ponto. O teorema da função inversa é a recíproca local: se a melhor
+                    aproximação linear de $F$ em $a$ é invertível, então a própria $F$ é invertível perto de
+                    $a$.
+                </p>
+
+                <div class="definition-box" id="teo-3-2-53">
+                    <p><strong>Teorema 3.2.53 (Teorema da função inversa).</strong> Sejam $U \subset \mathbb{R}^n$
+                        aberto, $F: U \to \mathbb{R}^n$ suave e $a \in U$. Se $DF(a)$ é invertível, então existem
+                        uma vizinhança $U_0 \subset U$ de $a$ e uma vizinhança $V_0$ de $F(a)$ tais que
+                        $F\vert_{U_0}: U_0 \to V_0$ é um difeomorfismo.</p>
+                </div>
+
+                <p>
+                    <em>Ideia da demonstração.</em> Compondo $F$ com translações e com a aplicação linear
+                    $DF(a)^{-1}$, reduz-se ao caso $a = 0$, $F(0) = 0$ e $DF(0) = I$. Nesse caso
+                    $H(x) = x - F(x)$ tem derivada nula na origem, e a continuidade das derivadas parciais dá
+                    uma bola fechada em torno de $0$ na qual
+                    $\lvert H(x) - H(x')\rvert \le \tfrac12\lvert x - x'\rvert$. Resolver $F(x) = y$ é o mesmo
+                    que achar um ponto fixo da aplicação $x \mapsto y + H(x)$, que, para $y$ pequeno, é uma
+                    contração dessa bola nela mesma. O teorema do ponto fixo de Banach dá existência e
+                    unicidade da solução, e portanto a inversa local. A mesma estimativa mostra que a inversa é
+                    contínua; uma conta direta mostra que ela é diferenciável, com
+                    $D(F^{-1})(y) = DF\big(F^{-1}(y)\big)^{-1}$; e essa fórmula mostra, por indução, que
+                    $F^{-1}$ é suave, porque as entradas da inversa de uma matriz são funções suaves das
+                    entradas da matriz (regra de Cramer). Os detalhes estão em Lee, apêndice C, e em Spivak,
+                    capítulo 2.
+                </p>
+
+                <p>
+                    Uma aplicação suave $F: U \to \mathbb{R}^n$ é um <strong>difeomorfismo local</strong> se todo
+                    ponto de $U$ tem uma vizinhança $U_0$ tal que $F(U_0)$ é aberto e
+                    $F\vert_{U_0}: U_0 \to F(U_0)$ é um difeomorfismo. Juntando o teorema com a
+                    <a href="#prop-3-2-52">Proposição 3.2.52</a>: $F$ é um difeomorfismo local se, e somente
+                    se, o <strong>determinante jacobiano</strong> $\det DF(a)$ é diferente de zero em todo
+                    $a \in U$. Um difeomorfismo local não precisa ser injetivo. Quando é, é um difeomorfismo
+                    sobre a imagem.
+                </p>
+
+                <div class="definition-box" id="cor-3-2-54">
+                    <p><strong>Corolário 3.2.54.</strong> Sejam $U \subset \mathbb{R}^n$ aberto e
+                        $F: U \to \mathbb{R}^n$ suave e injetiva, com $\det DF(a) \neq 0$ para todo $a \in U$.
+                        Então $F(U)$ é aberto e $F: U \to F(U)$ é um difeomorfismo.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Para cada $a \in U$, o teorema da função inversa dá abertos
+                    $U_a \ni a$ e $V_a \ni F(a)$ tais que $F\vert_{U_a}: U_a \to V_a$ é um difeomorfismo. O
+                    conjunto $F(U) = \bigcup_a V_a$ é aberto, e $F: U \to F(U)$ é bijetiva. Em cada $V_a$, a
+                    inversa $F^{-1}$ coincide com $(F\vert_{U_a})^{-1}$: como $F$ é injetiva, a única pré-imagem
+                    de um ponto de $V_a$ é a que está em $U_a$. Logo $F^{-1}$ é suave em cada $V_a$. Ser suave
+                    é uma propriedade local, porque as derivadas parciais em um ponto só dependem dos valores
+                    da função perto do ponto; como os abertos $V_a$ cobrem $F(U)$, a inversa é suave.
+                    $\blacksquare$
+                </p>
+
+                <p id="ex-3-2-55"><strong>Exemplo 3.2.55 (Coordenadas polares).</strong> Considere a aplicação
+                    suave</p>
+
+                <p>
+                    $$ P: (0,\infty) \times \mathbb{R} \to \mathbb{R}^2, \qquad P(r,\theta) = (r\cos\theta,\ r\sin\theta). $$
+                </p>
+
+                <p>
+                    Sua matriz jacobiana e seu determinante são
+                </p>
+
+                <p>
+                    $$ \begin{aligned} DP(r,\theta) &= \begin{pmatrix} \cos\theta & -r\sin\theta \\ \sin\theta & r\cos\theta \end{pmatrix}, \\[4pt] \det DP(r,\theta) &= r\cos^2\theta + r\sin^2\theta = r. \end{aligned} \tag{3.2.16} $$
+                </p>
+
+                <p>
+                    Como $r \gt 0$ no domínio, $P$ é um difeomorfismo local. Não é um difeomorfismo, porque não
+                    é injetiva: $P(r,\theta + 2\pi) = P(r,\theta)$. Restrinja agora $P$ à faixa
+                    $(0,\infty) \times (-\pi,\pi)$. Se $(x,y) = P(r,\theta)$, então $r = \sqrt{x^2+y^2}$ e
+                    $(\cos\theta,\sin\theta) = (x/r,\,y/r)$; cada ponto do círculo unitário diferente de
+                    $(-1,0)$ corresponde a exatamente um $\theta \in (-\pi,\pi)$. Logo a restrição é injetiva, e
+                    sua imagem é o plano sem o semieixo
+                    $\{(x,0) : x \le 0\}$. Pelo <a href="#cor-3-2-54">Corolário 3.2.54</a>,
+                </p>
+
+                <p>
+                    $$ P: (0,\infty) \times (-\pi,\pi) \;\to\; \mathbb{R}^2 \setminus \{(x,0) : x \le 0\} $$
+                </p>
+
+                <p>
+                    é um difeomorfismo. A inversa pode ser escrita explicitamente:
+                    $r = \sqrt{x^2+y^2}$ e $\theta = 2\arctan\!\big(y/(x + \sqrt{x^2+y^2})\big)$, pela identidade
+                    $\tan(\theta/2) = \sin\theta/(1+\cos\theta)$. A
+                    <a href="#fig-3-2-2">Figura 3.2.2</a> mostra o que $P$ faz com um retângulo.
+                </p>
+
+                <figure class="lecture-figure" id="fig-3-2-2">
+                    <svg viewBox="0 0 640 272" role="img" aria-label="Dois painéis ligados por uma seta rotulada P. À esquerda, o plano de coordenadas r e teta com um retângulo de lados r1, r2, teta1 e teta2; os lados horizontais estão em traço cheio e os verticais tracejados. À direita, o plano x y com a imagem do retângulo: um setor de coroa circular entre os raios de ângulos teta1 e teta2, em traço cheio, e os arcos de raios r1 e r2, tracejados.">
+<defs><marker id="arr-3-2-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="46" y1="238" x2="282" y2="238" class="fig-axis" marker-end="url(#arr-3-2-2)"/>
+<line x1="58" y1="250" x2="58" y2="44" class="fig-axis" marker-end="url(#arr-3-2-2)"/>
+<text x="286" y="243" class="fig-label fig-it">r</text>
+<text x="53" y="36" text-anchor="end" class="fig-label fig-it">θ</text>
+<path d="M140,196 L222,196 L222,91 L140,91 Z" class="fig-band"/>
+<line x1="140" y1="238" x2="140" y2="196" class="fig-guide"/>
+<line x1="222" y1="238" x2="222" y2="196" class="fig-guide"/>
+<line x1="58" y1="196" x2="140" y2="196" class="fig-guide"/>
+<line x1="58" y1="91" x2="140" y2="91" class="fig-guide"/>
+<line x1="140" y1="196" x2="222" y2="196" class="fig-curve"/>
+<line x1="140" y1="91" x2="222" y2="91" class="fig-curve"/>
+<line x1="140" y1="196" x2="140" y2="91" class="fig-curve fig-dashed"/>
+<line x1="222" y1="196" x2="222" y2="91" class="fig-curve fig-dashed"/>
+<text x="140" y="256" text-anchor="middle" class="fig-label fig-small fig-it">r₁</text>
+<text x="222" y="256" text-anchor="middle" class="fig-label fig-small fig-it">r₂</text>
+<text x="50" y="200" text-anchor="end" class="fig-label fig-small fig-it">θ₁</text>
+<text x="50" y="95" text-anchor="end" class="fig-label fig-small fig-it">θ₂</text>
+<line x1="298" y1="132" x2="366" y2="132" class="fig-curve" marker-end="url(#arr-3-2-2)"/>
+<text x="332" y="122" text-anchor="middle" class="fig-label fig-it">P</text>
+<line x1="396" y1="238" x2="626" y2="238" class="fig-axis" marker-end="url(#arr-3-2-2)"/>
+<line x1="408" y1="250" x2="408" y2="30" class="fig-axis" marker-end="url(#arr-3-2-2)"/>
+<text x="628" y="256" text-anchor="end" class="fig-label fig-it">x</text>
+<text x="402" y="36" text-anchor="end" class="fig-label fig-it">y</text>
+<path d="M500.1,204.5 L498.8,201.2 L497.4,197.9 L495.9,194.7 L494.3,191.5 L492.5,188.4 L490.7,185.3 L488.7,182.4 L486.6,179.5 L484.4,176.7 L482.1,173.9 L479.8,171.3 L477.3,168.7 L474.7,166.2 L472.1,163.9 L469.3,161.6 L466.5,159.4 L463.6,157.3 L460.7,155.3 L457.6,153.5 L454.5,151.7 L451.3,150.1 L448.1,148.6 L444.8,147.2 L441.5,145.9 L475,53.8 L481.7,56.4 L488.2,59.2 L494.7,62.2 L501,65.5 L507.2,69 L513.3,72.7 L519.3,76.6 L525,80.8 L530.7,85.1 L536.2,89.7 L541.5,94.5 L546.6,99.4 L551.5,104.5 L556.3,109.8 L560.9,115.3 L565.2,121 L569.4,126.7 L573.3,132.7 L577,138.8 L580.5,145 L583.8,151.3 L586.8,157.8 L589.6,164.3 L592.2,171 Z" class="fig-band"/>
+<line x1="408" y1="238" x2="500.1" y2="204.5" class="fig-guide"/>
+<line x1="408" y1="238" x2="441.5" y2="145.9" class="fig-guide"/>
+<line x1="500.1" y1="204.5" x2="592.2" y2="171" class="fig-curve"/>
+<line x1="441.5" y1="145.9" x2="475" y2="53.8" class="fig-curve"/>
+<path d="M500.1,204.5 L498.8,201.2 L497.4,197.9 L495.9,194.7 L494.3,191.5 L492.5,188.4 L490.7,185.3 L488.7,182.4 L486.6,179.5 L484.4,176.7 L482.1,173.9 L479.8,171.3 L477.3,168.7 L474.7,166.2 L472.1,163.9 L469.3,161.6 L466.5,159.4 L463.6,157.3 L460.7,155.3 L457.6,153.5 L454.5,151.7 L451.3,150.1 L448.1,148.6 L444.8,147.2 L441.5,145.9" class="fig-curve fig-dashed"/>
+<path d="M592.2,171 L589.6,164.3 L586.8,157.8 L583.8,151.3 L580.5,145 L577,138.8 L573.3,132.7 L569.4,126.7 L565.2,121 L560.9,115.3 L556.3,109.8 L551.5,104.5 L546.6,99.4 L541.5,94.5 L536.2,89.7 L530.7,85.1 L525,80.8 L519.3,76.6 L513.3,72.7 L507.2,69 L501,65.5 L494.7,62.2 L488.2,59.2 L481.7,56.4 L475,53.8" class="fig-curve fig-dashed"/>
+<text x="600.2" y="176" class="fig-label fig-small fig-it">θ = θ₁</text>
+<text x="483" y="55.8" class="fig-label fig-small fig-it">θ = θ₂</text>
+<text x="468.3" y="180.7" text-anchor="end" class="fig-label fig-small fig-it">r = r₁</text>
+<text x="555.6" y="94.4" class="fig-label fig-small fig-it">r = r₂</text>
+</svg>
+                    <figcaption><strong>Figura 3.2.2.</strong> As coordenadas polares como difeomorfismo local. A
+                        aplicação $P(r,\theta) = (r\cos\theta, r\sin\theta)$ leva o retângulo
+                        $[r_1,r_2] \times [\theta_1,\theta_2]$ do plano $(r,\theta)$ no setor de coroa circular do
+                        plano $(x,y)$. Segmentos horizontais ($\theta$ constante) viram pedaços de raios, e
+                        segmentos verticais ($r$ constante) viram arcos de círculo. O setor fica mais largo
+                        quando $r$ cresce: a área é multiplicada pelo determinante jacobiano $r$.</figcaption>
+                </figure>
+
+                <p>
+                    O exemplo já tem a forma do que virá no tópico
+                    <a href="[03] - Variedades Diferenciáveis.html">3.3</a>. As coordenadas polares não são
+                    coordenadas no plano: são coordenadas em um aberto do plano, e para cobrir o que falta é
+                    preciso outro sistema (por exemplo, com $\theta \in (0,2\pi)$), que se relaciona com o
+                    primeiro por um difeomorfismo onde os dois estão definidos.
+                </p>
+
+                <p id="ex-3-2-56"><strong>Exemplo 3.2.56 (Bijeção suave que não é difeomorfismo).</strong> A
+                    função $F(x) = x^3$ é uma bijeção suave de $\mathbb{R}$ em $\mathbb{R}$, e é um
+                    homeomorfismo, porque a inversa $F^{-1}(y) = y^{1/3}$ é contínua. Mas $F^{-1}$ não é
+                    diferenciável em $0$: o quociente
+                    $\big(F^{-1}(h) - F^{-1}(0)\big)/h = h^{-2/3}$ não tem limite quando $h \to 0$. Isso está
+                    de acordo com a <a href="#prop-3-2-52">Proposição 3.2.52</a>, pois $F'(0) = 0$ não é
+                    invertível. Um homeomorfismo suave não é necessariamente um difeomorfismo, e a hipótese
+                    sobre o determinante no <a href="#cor-3-2-54">Corolário 3.2.54</a> não pode ser
+                    retirada.</p>
+
+                <h3 id="funcao-implicita">O teorema da função implícita</h3>
+
+                <p>
+                    Um sistema de $k$ equações em $n + k$ incógnitas deveria, em geral, permitir escrever $k$
+                    das incógnitas em função das outras $n$. Para um sistema linear $Ax + By = c$, com
+                    $x \in \mathbb{R}^n$ e $y \in \mathbb{R}^k$, isso é possível exatamente quando a matriz
+                    $B$, de ordem $k$, é invertível: $y = B^{-1}(c - Ax)$. O teorema da função implícita diz que
+                    o mesmo vale, localmente, para um sistema não linear, com $B$ substituída pela matriz das
+                    derivadas parciais em relação a $y$.
+                </p>
+
+                <p>
+                    Escrevemos os pontos de $\mathbb{R}^n \times \mathbb{R}^k$ como
+                    $(x,y) = (x^1,\dots,x^n,y^1,\dots,y^k)$. Para uma aplicação suave $\Phi$ com valores em
+                    $\mathbb{R}^k$, a matriz jacobiana se divide em dois blocos,
+                </p>
+
+                <p>
+                    $$ D\Phi = \begin{pmatrix} \dfrac{\partial\Phi}{\partial x} & \dfrac{\partial\Phi}{\partial y} \end{pmatrix}, \qquad \frac{\partial\Phi}{\partial x} = \left( \frac{\partial\Phi^i}{\partial x^j} \right), \quad \frac{\partial\Phi}{\partial y} = \left( \frac{\partial\Phi^i}{\partial y^j} \right), $$
+                </p>
+
+                <p>
+                    o primeiro com $k$ linhas e $n$ colunas, o segundo quadrado de ordem $k$.
+                </p>
+
+                <div class="definition-box" id="teo-3-2-57">
+                    <p><strong>Teorema 3.2.57 (Teorema da função implícita).</strong> Sejam
+                        $W \subset \mathbb{R}^n \times \mathbb{R}^k$ aberto, $\Phi: W \to \mathbb{R}^k$ suave,
+                        $(a,b) \in W$ e $c = \Phi(a,b)$. Suponha que a matriz
+                        $\dfrac{\partial\Phi}{\partial y}(a,b)$ é invertível. Então existem vizinhanças
+                        $A \subset \mathbb{R}^n$ de $a$ e $B \subset \mathbb{R}^k$ de $b$, com
+                        $A \times B \subset W$, e uma aplicação suave $g: A \to B$ tais que, para todo
+                        $(x,y) \in A \times B$,</p>
+                    <p>$$ \Phi(x,y) = c \quad\Longleftrightarrow\quad y = g(x). \tag{3.2.17} $$</p>
+                    <p>Além disso, para todo $x \in A$, a matriz $\dfrac{\partial\Phi}{\partial y}(x,g(x))$ é
+                        invertível e</p>
+                    <p>$$ Dg(x) = -\left[ \frac{\partial\Phi}{\partial y}\big(x,g(x)\big) \right]^{-1} \frac{\partial\Phi}{\partial x}\big(x,g(x)\big). \tag{3.2.18} $$</p>
+                </div>
+
+                <p>
+                    Em palavras: dentro de $A \times B$, o conjunto de nível $\Phi^{-1}(c)$ é o gráfico de $g$.
+                </p>
+
+                <p>
+                    <em>Demonstração.</em> <strong>Passo 1: uma aplicação auxiliar.</strong> Defina
+                    $\Psi: W \to \mathbb{R}^n \times \mathbb{R}^k$ por $\Psi(x,y) = \big(x,\Phi(x,y)\big)$. Ela
+                    é suave, e sua matriz jacobiana, em blocos, é
+                </p>
+
+                <p>
+                    $$ D\Psi = \begin{pmatrix} I_n & 0 \\[4pt] \dfrac{\partial\Phi}{\partial x} & \dfrac{\partial\Phi}{\partial y} \end{pmatrix}, \qquad \det D\Psi = \det\frac{\partial\Phi}{\partial y}, \tag{3.2.19} $$
+                </p>
+
+                <p>
+                    porque o determinante de uma matriz triangular em blocos é o produto dos determinantes dos
+                    blocos diagonais. Por hipótese, $\det D\Psi(a,b) \neq 0$. Pelo
+                    <a href="#teo-3-2-53">Teorema 3.2.53</a>, existem um aberto $W_0 \subset W$ que contém
+                    $(a,b)$ e um aberto $Y_0$ que contém $\Psi(a,b) = (a,c)$ tais que
+                    $\Psi\vert_{W_0}: W_0 \to Y_0$ é um difeomorfismo.
+                </p>
+
+                <p>
+                    <strong>Passo 2: a forma da inversa.</strong> A aplicação $\Psi$ não altera a primeira
+                    componente. Logo, se $(x,z) \in Y_0$ e $\Psi^{-1}(x,z) = (x',y')$, então
+                    $(x,z) = \Psi(x',y') = \big(x',\Phi(x',y')\big)$ obriga $x' = x$. Assim, a inversa
+                    $\Psi^{-1}: Y_0 \to W_0$ tem a forma
+                </p>
+
+                <p>
+                    $$ \Psi^{-1}(x,z) = \big(x,\ H(x,z)\big), $$
+                </p>
+
+                <p>
+                    com $H: Y_0 \to \mathbb{R}^k$ suave, por ser formada por componentes de $\Psi^{-1}$.
+                </p>
+
+                <p>
+                    <strong>Passo 3: escolha de $A$, de $B$ e de $g$.</strong> Como $W_0$ é aberto, há bolas
+                    abertas $A_1 \ni a$ e $B \ni b$ com $A_1 \times B \subset W_0$
+                    (<a href="#obs-3-2-9">Observação 3.2.9</a>). O conjunto $\Psi(A_1 \times B)$ é aberto,
+                    porque $\Psi\vert_{W_0}$ é um homeomorfismo sobre o aberto $Y_0$, e contém
+                    $(a,c)$. Defina
+                </p>
+
+                <p>
+                    $$ \begin{gathered} A = \{x \in A_1 : (x,c) \in \Psi(A_1 \times B)\}, \\[2pt] g(x) = H(x,c) \ \text{ para } x \in A. \end{gathered} $$
+                </p>
+
+                <p>
+                    O conjunto $A$ é aberto, por ser a pré-imagem de um aberto pela aplicação contínua
+                    $x \mapsto (x,c)$ definida em $A_1$, e contém $a$. A aplicação $g$ é suave, por ser
+                    composta de aplicações suaves. Falta ver que $g(x) \in B$. Se $x \in A$, existe
+                    $(x',y') \in A_1 \times B$ com $\Psi(x',y') = (x,c)$; pelo passo 2, $x' = x$ e
+                    $(x,y') = \Psi^{-1}(x,c) = \big(x,H(x,c)\big)$. Portanto $g(x) = y' \in B$. Temos
+                    $A \times B \subset A_1 \times B \subset W_0 \subset W$.
+                </p>
+
+                <p>
+                    <strong>Passo 4: a equivalência (3.2.17).</strong> Seja $(x,y) \in A \times B$. Se
+                    $y = g(x) = H(x,c)$, então $(x,y) = \Psi^{-1}(x,c)$; aplicando $\Psi$,
+                    $\big(x,\Phi(x,y)\big) = (x,c)$, isto é, $\Phi(x,y) = c$. Reciprocamente, se
+                    $\Phi(x,y) = c$, então $\Psi(x,y) = (x,c)$, com $(x,y) \in W_0$; aplicando $\Psi^{-1}$,
+                    $(x,y) = \big(x,H(x,c)\big)$, isto é, $y = g(x)$.
+                </p>
+
+                <p>
+                    <strong>Passo 5: a derivada.</strong> Pelo passo 4, $\Phi\big(x,g(x)\big) = c$ para todo
+                    $x \in A$. O lado esquerdo é a composta de $\Phi$ com a aplicação
+                    $x \mapsto \big(x,g(x)\big)$, cuja matriz jacobiana tem o bloco $I_n$ em cima e o bloco
+                    $Dg(x)$ embaixo. Derivando pela regra da cadeia,
+                </p>
+
+                <p>
+                    $$ \frac{\partial\Phi}{\partial x}\big(x,g(x)\big) + \frac{\partial\Phi}{\partial y}\big(x,g(x)\big)\,Dg(x) = 0. $$
+                </p>
+
+                <p>
+                    O ponto $\big(x,g(x)\big)$ está em $W_0$, onde $\Psi$ é um difeomorfismo; pela
+                    <a href="#prop-3-2-52">Proposição 3.2.52</a> e pela Equação (3.2.19), a matriz
+                    $\dfrac{\partial\Phi}{\partial y}\big(x,g(x)\big)$ é invertível. Multiplicando a igualdade
+                    acima por sua inversa, obtém-se a Equação (3.2.18). $\blacksquare$
+                </p>
+
+                <p>
+                    Três comentários. Primeiro, não há nada de especial nas últimas $k$ variáveis: se algum
+                    conjunto de $k$ colunas de $D\Phi(p)$ forma uma matriz invertível, reordenam-se as
+                    coordenadas e resolvem-se essas $k$ variáveis em função das outras. Isso é possível sempre
+                    que $D\Phi(p)$ tem posto $k$. Segundo, o teorema é local e não fornece uma fórmula para
+                    $g$; mas fornece suas derivadas, pela Equação (3.2.18), que é a derivação implícita do
+                    cálculo. Terceiro, a conclusão é geométrica: perto de um ponto onde $D\Phi$ tem posto $k$,
+                    o conjunto de nível $\Phi^{-1}(c)$ é o gráfico de uma função suave de $n$ variáveis, e
+                    portanto é descrito por $n$ parâmetros livres. No tópico
+                    <a href="[06] - Subvariedades.html">3.6</a>, esse fato dará que conjuntos de nível
+                    regulares são subvariedades.
+                </p>
+
+                <p id="ex-3-2-58"><strong>Exemplo 3.2.58 (O círculo).</strong> Sejam
+                    $\Phi(x,y) = x^2 + y^2$ em $\mathbb{R} \times \mathbb{R}$ e $c = 1$, de modo que
+                    $\Phi^{-1}(1) = S^1$. Aqui $\partial\Phi/\partial y = 2y$. Em um ponto $(a,b)$ do círculo com
+                    $b \gt 0$, o teorema se aplica, e de fato $A = (-1,1)$, $B = (0,\infty)$ e
+                    $g(x) = \sqrt{1-x^2}$ servem; a Equação (3.2.18) dá $g'(x) = -(2x)/(2y) = -x/g(x)$, que é a
+                    derivada de $\sqrt{1-x^2}$. Para $b \lt 0$, vale o mesmo com $g(x) = -\sqrt{1-x^2}$. Nos
+                    pontos $(\pm 1,0)$, a hipótese falha, e a conclusão também: perto de $(1,0)$, cada
+                    $x \lt 1$ tem dois valores de $y$ no círculo, e cada $x \gt 1$ não tem nenhum. Mas
+                    nesses pontos $\partial\Phi/\partial x = 2x \neq 0$, e pode-se resolver $x$ em função de
+                    $y$: $x = \pm\sqrt{1-y^2}$. Os quatro gráficos cobrem o círculo inteiro.</p>
+
+                <h2 id="integracao-rn">Integração em $\mathbb{R}^n$: o que será usado</h2>
+
+                <p>
+                    A integral que o capítulo usa é a integral de Riemann em $\mathbb{R}^n$. A integral de uma
+                    forma diferencial em uma variedade, no tópico
+                    <a href="[17] - Integração de Formas.html">3.17</a>, será definida a partir dela, por meio de
+                    cartas. Esta seção fixa as definições e enuncia os teoremas de que os tópicos seguintes
+                    dependem. São todos resultados clássicos de análise, que citamos sem demonstrar.
+                </p>
+
+                <div class="definition-box" id="def-3-2-59" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.2.59 (Suporte).</strong> Sejam $X$ um espaço topológico e
+                        $f: X \to \mathbb{R}$. O <strong>suporte</strong> de $f$ é o fecho, em $X$, do conjunto
+                        dos pontos onde $f$ não se anula:</p>
+                    <p>$$ \operatorname{supp}f = \overline{\{x \in X : f(x) \neq 0\}}. $$</p>
+                    <p>A função $f$ tem <strong>suporte compacto</strong> se $\operatorname{supp}f$ é
+                        compacto.</p>
+                </div>
+
+                <p>
+                    Pela caracterização do fecho, um ponto está fora do suporte exatamente quando $f$ se anula em
+                    toda uma vizinhança dele. O fecho é tomado em $X$, e isso importa: a função constante igual
+                    a 1 no intervalo $U = (0,1)$ tem suporte $(0,1)$, que não é compacto. Para um aberto
+                    $U \subset \mathbb{R}^n$, uma função de suporte compacto em $U$ é uma função que se anula
+                    perto da "beira" de $U$. Daí a propriedade que torna essas funções úteis: <em>se
+                        $f: U \to \mathbb{R}$ é contínua (ou suave) e tem suporte compacto, a função que vale $f$
+                        em $U$ e zero fora de $U$ é contínua (ou suave) em todo o $\mathbb{R}^n$.</em> De fato,
+                    $K = \operatorname{supp}f$ é fechado em $\mathbb{R}^n$
+                    (<a href="#prop-3-2-31">Proposição 3.2.31</a>), e $\mathbb{R}^n$ é a união dos abertos $U$
+                    e $\mathbb{R}^n \setminus K$; a função estendida coincide com $f$ no primeiro e é nula no
+                    segundo, e tanto a continuidade quanto a suavidade se verificam em uma vizinhança de cada
+                    ponto. Funções suaves de suporte compacto serão construídas no tópico
+                    <a href="[04] - Funções e Aplicações Suaves.html">3.4</a>.
+                </p>
+
+                <p>
+                    <strong>A integral de Riemann.</strong> Um <strong>retângulo fechado</strong> de
+                    $\mathbb{R}^n$ é um produto $R = [a^1,b^1] \times \dots \times [a^n,b^n]$, e seu volume é
+                    $\operatorname{vol}(R) = (b^1-a^1)\cdots(b^n-a^n)$. Uma partição $\mathcal{P}$ de $R$ é
+                    obtida dividindo cada intervalo $[a^i,b^i]$ em um número finito de subintervalos; os
+                    produtos desses subintervalos são os sub-retângulos $R_\alpha$ da partição. Para uma função
+                    limitada $f: R \to \mathbb{R}$, definem-se as somas inferior e superior
+                </p>
+
+                <p>
+                    $$ \begin{aligned} L(f,\mathcal{P}) &= \sum_\alpha \Big(\inf_{R_\alpha} f\Big)\operatorname{vol}(R_\alpha), \\[4pt]
+                    U(f,\mathcal{P}) &= \sum_\alpha \Big(\sup_{R_\alpha} f\Big)\operatorname{vol}(R_\alpha). \end{aligned} $$
+                </p>
+
+                <p>
+                    Toda soma inferior é menor ou igual a toda soma superior. A função $f$ é
+                    <strong>integrável</strong> em $R$ se o supremo das somas inferiores é igual ao ínfimo das
+                    somas superiores, e esse número comum é a integral de $f$ em $R$, denotada
+                </p>
+
+                <p>
+                    $$ \int_R f, \qquad \int_R f\,dV \qquad\text{ou}\qquad \int_R f(x)\,dx^1\cdots dx^n. $$
+                </p>
+
+                <div class="definition-box" id="def-3-2-60" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.2.60 (Medida nula; domínio de integração).</strong> Um conjunto
+                        $A \subset \mathbb{R}^n$ tem <strong>medida nula</strong> se, para todo
+                        $\varepsilon \gt 0$, existe uma família enumerável de retângulos fechados que cobre $A$ e
+                        cuja soma dos volumes é menor que $\varepsilon$. Um <strong>domínio de
+                            integração</strong> é um conjunto limitado $D \subset \mathbb{R}^n$ cuja fronteira
+                        tem medida nula.</p>
+                </div>
+
+                <p>
+                    Dois fatos sobre medida nula serão usados. Primeiro, <em>uma união enumerável de conjuntos de
+                        medida nula tem medida nula</em>: cobre-se o $k$-ésimo conjunto por retângulos de volume
+                    total menor que $\varepsilon/2^k$, e a família de todos esses retângulos é enumerável e tem
+                    volume total menor que $\varepsilon$. Segundo, <em>o hiperplano
+                        $\mathbb{R}^{n-1} \times \{0\}$ tem medida nula em $\mathbb{R}^n$</em>: ele é coberto
+                    pelos retângulos
+                    $Q_k = [-k,k]^{n-1} \times [-\varepsilon_k,\varepsilon_k]$, com $k = 1,2,3,\dots$, e basta
+                    escolher $\varepsilon_k$ de modo que
+                    $\operatorname{vol}(Q_k) = (2k)^{n-1}\cdot 2\varepsilon_k = \varepsilon/2^{k+1}$, o que dá
+                    volume total $\varepsilon/2$. O mesmo vale para qualquer subconjunto do hiperplano. Esse
+                    segundo fato é o motivo pelo qual, no tópico
+                    <a href="[17] - Integração de Formas.html">3.17</a>, o bordo do semiespaço não contribui
+                    para integrais de volume. Bolas, retângulos e, de modo geral, regiões limitadas por um
+                    número finito de gráficos de funções contínuas são domínios de integração.
+                </p>
+
+                <p>
+                    Se $D$ é um domínio de integração e $f: D \to \mathbb{R}$ é limitada, escolhe-se um retângulo
+                    $R \supset D$, estende-se $f$ por zero a $R \setminus D$ e define-se $\int_D f$ como a
+                    integral em $R$ da função estendida, quando ela existe. O volume de $D$ é
+                    $\operatorname{vol}(D) = \int_D 1$.
+                </p>
+
+                <div class="definition-box" id="teo-3-2-61">
+                    <p><strong>Teorema 3.2.61 (Integrabilidade e propriedades da integral).</strong> Seja
+                        $D \subset \mathbb{R}^n$ um domínio de integração.</p>
+                    <p>(a) Toda função contínua e limitada $f: D \to \mathbb{R}$ é integrável em $D$, e o valor
+                        de $\int_D f$ não depende do retângulo $R \supset D$ usado na definição.</p>
+                    <p>(b) A integral é linear em $f$; se $f \le g$, então $\int_D f \le \int_D g$; e
+                        $\big\lvert \int_D f \big\rvert \le \int_D \lvert f\rvert \le \big(\sup_D \lvert f\rvert\big)\operatorname{vol}(D)$.</p>
+                    <p>(c) Conjuntos de medida nula não contribuem: se $D_1$ e $D_2$ são domínios de integração
+                        cuja interseção tem medida nula e $f$ é contínua e limitada em $D_1 \cup D_2$, então
+                        $\int_{D_1 \cup D_2} f = \int_{D_1} f + \int_{D_2} f$. Em particular, $\int_D f = 0$ se
+                        $D$ tem medida nula, e a integral de uma função contínua e limitada em $\bar{D}$ é a
+                        mesma em $D$, em $\operatorname{Int}D$ e em $\bar{D}$.</p>
+                </div>
+
+                <p>
+                    <em>Ideia da demonstração.</em> Tudo decorre do critério de Lebesgue: uma função limitada em
+                    um retângulo é integrável se, e somente se, o conjunto de seus pontos de descontinuidade tem
+                    medida nula. A extensão por zero de uma função contínua em $D$ só pode ser descontínua em
+                    pontos da fronteira de $D$, que tem medida nula por hipótese. As demonstrações estão em
+                    Spivak, capítulo 3, e em Lee, apêndice C.
+                </p>
+
+                <p>
+                    O caso que mais interessa ao capítulo dispensa hipóteses sobre o domínio. Se
+                    $U \subset \mathbb{R}^n$ é um aberto qualquer e $f: U \to \mathbb{R}$ é contínua de suporte
+                    compacto, a extensão de $f$ por zero é contínua em $\mathbb{R}^n$, e define-se
+                    $\int_U f = \int_R f$ para qualquer retângulo fechado $R$ que contenha
+                    $\operatorname{supp}f$; pelo item (c), o valor não depende de $R$. É esta a integral que
+                    aparecerá na definição do tópico <a href="[17] - Integração de Formas.html">3.17</a>.
+                </p>
+
+                <div class="definition-box" id="teo-3-2-62">
+                    <p><strong>Teorema 3.2.62 (Fubini).</strong> Sejam $A \subset \mathbb{R}^n$ e
+                        $B \subset \mathbb{R}^m$ retângulos fechados e $f: A \times B \to \mathbb{R}$ contínua.
+                        Então</p>
+                    <p>$$ \begin{aligned} \int_{A \times B} f &= \int_A \left( \int_B f(x,y)\,dy \right) dx \\[4pt] &= \int_B \left( \int_A f(x,y)\,dx \right) dy. \end{aligned} \tag{3.2.20} $$</p>
+                    <p>Em particular, a integral de uma função contínua em um retângulo
+                        $[a^1,b^1] \times \dots \times [a^n,b^n]$ pode ser calculada por $n$ integrais sucessivas
+                        em uma variável, tomadas em qualquer ordem.</p>
+                </div>
+
+                <p>
+                    <em>Ideia da demonstração.</em> Para uma partição de $A \times B$ formada por produtos de
+                    sub-retângulos de $A$ e de $B$, o ínfimo de $f$ em um produto $A_\alpha \times B_\beta$ é
+                    menor ou igual ao ínfimo de $f(x,\cdot)$ em $B_\beta$, para cada $x \in A_\alpha$. Somando
+                    em $\beta$ e depois em $\alpha$, vê-se que a soma inferior de $f$ é menor ou igual à soma
+                    inferior da função $x \mapsto \int_B f(x,y)\,dy$; o mesmo raciocínio, com supremos, vale
+                    para as somas superiores. A integral iterada fica presa entre as somas inferiores e
+                    superiores de $f$, e portanto é igual à integral de $f$. Os detalhes estão em Spivak,
+                    capítulo 3, e em Lee, apêndice C.
+                </p>
+
+                <p id="ex-3-2-63"><strong>Exemplo 3.2.63 (A integral de uma derivada parcial de suporte
+                        compacto).</strong> Seja $f: \mathbb{R}^n \to \mathbb{R}$ suave de suporte compacto, e
+                    escolha $\rho \gt 0$ tal que o suporte de $f$ esteja contido no interior do cubo
+                    $R = [-\rho,\rho]^n$. Então $f$ se anula nas faces do cubo. Pelo teorema de Fubini, podemos
+                    calcular $\int_R \partial_if$ integrando primeiro na variável $x^i$, e o teorema fundamental
+                    do cálculo dá, com as outras variáveis fixas,</p>
+
+                <p>
+                    $$ \int_{-\rho}^{\rho} \frac{\partial f}{\partial x^i}\,dx^i = f\big\vert_{x^i = \rho} - f\big\vert_{x^i = -\rho} = 0. $$
+                </p>
+
+                <p>
+                    Logo $\int_{\mathbb{R}^n} \partial_if = 0$ para toda função suave de suporte compacto. Esta
+                    conta de duas linhas é o núcleo da demonstração do Teorema de Stokes, no tópico
+                    <a href="[18] - Teorema de Stokes Geral.html">3.18</a>. Lá ela será feita no semiespaço em
+                    vez de $\mathbb{R}^n$; uma das parcelas do teorema fundamental deixará de se anular, e é
+                    dela que virá a integral sobre o bordo.
+                </p>
+
+                <div class="definition-box" id="teo-3-2-64">
+                    <p><strong>Teorema 3.2.64 (Mudança de variáveis).</strong> (a) Sejam $U$ e $V$ abertos de
+                        $\mathbb{R}^n$, $G: U \to V$ um difeomorfismo e $f: V \to \mathbb{R}$ contínua de suporte
+                        compacto. Então $(f \circ G)\,\lvert\det DG\rvert$ é contínua de suporte compacto em $U$
+                        e</p>
+                    <p>$$ \int_V f = \int_U (f \circ G)\,\lvert\det DG\rvert. \tag{3.2.21} $$</p>
+                    <p>(b) Sejam $D$ e $E$ domínios de integração abertos de $\mathbb{R}^n$ e
+                        $G: \bar{D} \to \bar{E}$ uma aplicação que se estende a uma aplicação suave em um aberto
+                        que contém $\bar{D}$ e cuja restrição $G\vert_D: D \to E$ é um difeomorfismo. Então, para
+                        toda função contínua $f: \bar{E} \to \mathbb{R}$,
+                        $\ \int_E f = \int_D (f \circ G)\,\lvert\det DG\rvert$.</p>
+                </div>
+
+                <p>
+                    <em>Ideia da demonstração.</em> Para uma aplicação linear $x \mapsto Ax$, o número
+                    $\lvert\det A\rvert$ é o fator pelo qual ela multiplica volumes: verifica-se isso para as
+                    matrizes elementares, que alongam um eixo, trocam dois eixos ou inclinam o retângulo sem
+                    mudar seu volume, e usa-se que toda matriz invertível é produto delas e que o determinante
+                    é multiplicativo. No caso geral, divide-se o domínio em cubos pequenos; em cada um, $G$ é
+                    aproximada por sua derivada, de modo que a imagem do cubo tem volume aproximadamente
+                    $\lvert\det DG\rvert$ vezes o volume do cubo; soma-se e controla-se o erro. Os detalhes
+                    estão em Spivak, capítulo 3, e em Lee, apêndice C.
+                </p>
+
+                <p>
+                    O módulo no determinante merece atenção. Em uma variável, a fórmula de substituição
+                    $\int_{g(a)}^{g(b)} f = \int_a^b (f \circ g)\,g'$ não tem módulo, porque usa integrais
+                    <em>orientadas</em>: se $g$ é decrescente, os limites do lado esquerdo ficam trocados, e
+                    $\int_{g(a)}^{g(b)} = -\int_{g(b)}^{g(a)}$. A Equação (3.2.21) integra sobre
+                    <em>conjuntos</em>, que não têm sentido de percurso, e o sinal de $g'$ precisa ser
+                    absorvido pelo módulo. No tópico <a href="[12] - Formas Diferenciais.html">3.12</a>, a lei
+                    de transformação de uma forma de grau máximo produzirá $\det DG$, sem módulo. As duas
+                    fórmulas coincidem quando $\det DG \gt 0$ e diferem por um sinal quando $\det DG \lt 0$.
+                    Esse sinal é a orientação (tópico <a href="[15] - Orientação.html">3.15</a>), e
+                    acertá-lo é o que tornará a integral de formas independente de coordenadas (tópico
+                    <a href="[17] - Integração de Formas.html">3.17</a>).
+                </p>
+
+                <p id="ex-3-2-65"><strong>Exemplo 3.2.65 (Polares, mais uma vez).</strong> Sejam
+                    $D = (0,\rho) \times (-\pi,\pi)$ e $E$ o disco aberto de raio $\rho$ sem o segmento
+                    $\{(x,0) : -\rho \lt x \le 0\}$. Pelo <a href="#ex-3-2-55">Exemplo 3.2.55</a>, a aplicação
+                    $P(r,\theta) = (r\cos\theta, r\sin\theta)$ é um difeomorfismo de $D$ em $E$, com
+                    $\lvert\det DP\rvert = r$, e $P$ é suave em todo o $\mathbb{R}^2$. O item (b) do
+                    <a href="#teo-3-2-64">Teorema 3.2.64</a> e o teorema de Fubini dão, para $f$ contínua no
+                    disco fechado,</p>
+
+                <p>
+                    $$ \int_E f\,dx\,dy = \int_{-\pi}^{\pi}\!\!\int_0^{\rho} f(r\cos\theta, r\sin\theta)\,r\,dr\,d\theta. $$
+                </p>
+
+                <p>
+                    O segmento retirado tem medida nula, de modo que o lado esquerdo é a integral de $f$ no
+                    disco inteiro. É a fórmula $\iint f\,dx\,dy = \iint f\,r\,dr\,d\theta$ do tópico
+                    <a href="[01] - Motivação e Roteiro.html#derivar-e-integrar">3.1</a>, agora com a origem do
+                    fator $r$ identificada: é o módulo do determinante jacobiano (3.2.16). Com $f = 1$,
+                    obtém-se a área do disco, $2\pi\cdot\rho^2/2 = \pi\rho^2$.
+                </p>
+
+                <div class="definition-box" id="teo-3-2-66">
+                    <p><strong>Teorema 3.2.66 (Derivação sob o sinal de integral).</strong> Sejam
+                        $U \subset \mathbb{R}^n$ aberto e $\Phi: U \times [c,d] \to \mathbb{R}$ uma função
+                        contínua cuja derivada parcial $\partial\Phi/\partial x^i$ existe e é contínua em
+                        $U \times [c,d]$. Então a função $G(x) = \int_c^d \Phi(x,t)\,dt$ é contínua em $U$, tem
+                        derivada parcial em relação a $x^i$, e</p>
+                    <p>$$ \frac{\partial G}{\partial x^i}(x) = \int_c^d \frac{\partial\Phi}{\partial x^i}(x,t)\,dt, \tag{3.2.22} $$</p>
+                    <p>que é uma função contínua de $x$.</p>
+                </div>
+
+                <p>
+                    <em>Ideia da demonstração.</em> O quociente de Newton de $G$ é a integral do quociente de
+                    Newton de $\Phi$ na variável $x^i$, e este, pelo teorema do valor médio, é igual a
+                    $\partial\Phi/\partial x^i$ calculada em um ponto intermediário. Em um compacto da forma
+                    $K \times [c,d]$, com $K$ uma bola fechada pequena centrada em $x$, a função
+                    $\partial\Phi/\partial x^i$ é uniformemente contínua; por isso o integrando converge
+                    uniformemente em $t$, e o limite pode ser passado para dentro da integral. Os detalhes estão
+                    em Lee, apêndice C.
+                </p>
+
+                <p>
+                    O teorema já foi usado na demonstração do <a href="#lema-3-2-49">Lema 3.2.49</a>, e voltará
+                    sempre que uma função for definida por uma integral que depende de parâmetros.
+                </p>
+
+                <h2 id="fisica">Ponte com a física</h2>
+
+                <p>
+                    Nada neste tópico é física, mas quase tudo nele tem uma leitura física, e vale registrá-la
+                    antes de seguir.
+                </p>
+
+                <p>
+                    <strong>Eventos distintos podem ser separados.</strong> Para um espaço-tempo, a condição de
+                    Hausdorff diz que dois eventos diferentes têm vizinhanças disjuntas: há uma região em torno
+                    de cada um que não contém o outro. A reta com duas origens mostra o que se perde sem ela.
+                    Pense nessa reta como uma linha do tempo: uma história que vem de $x \lt 0$ chega a
+                    $x = 0$ sem que nada, em seu passado, decida por qual das duas origens ela passa. O passado
+                    não determina o presente. Pedir que o espaço-tempo seja de Hausdorff é excluir esse tipo de
+                    bifurcação.
+                </p>
+
+                <p>
+                    <strong>Linhas de mundo e mudanças de descrição.</strong> A linha de mundo de uma partícula é
+                    uma aplicação contínua (na prática, suave) de um intervalo no espaço-tempo; a continuidade
+                    diz que a partícula não salta. Um homeomorfismo, ou um difeomorfismo, é o mesmo espaço
+                    descrito de outra forma. As transformações de Galileu e de Lorentz são difeomorfismos de
+                    $\mathbb{R}^4$ de um tipo muito particular, afins; a Relatividade Geral admite como mudança
+                    de coordenadas qualquer difeomorfismo entre abertos de $\mathbb{R}^4$. A
+                    <a href="#prop-3-2-52">Proposição 3.2.52</a> garante que pelo menos um número sobrevive a
+                    todas elas: a quantidade de coordenadas. "O espaço-tempo tem quatro dimensões" é uma
+                    afirmação que não depende do sistema de coordenadas.
+                </p>
+
+                <p>
+                    <strong>Regiões limitadas com sua superfície.</strong> O volume $V$ da lei de Gauss, uma
+                    região limitada do espaço considerada junto com a superfície que a envolve, é um compacto,
+                    pelo teorema de Heine–Borel. É a compacidade que garante que um campo contínuo em $V$ é
+                    limitado e que suas integrais são finitas. Quando a região não é compacta, a física costuma
+                    pedir que os campos "decaiam suficientemente rápido no infinito", para que os termos de
+                    superfície se anulem. A versão matemática limpa dessa hipótese é o suporte compacto, e o
+                    <a href="#ex-3-2-63">Exemplo 3.2.63</a> é o protótipo: a integral de uma derivada é zero
+                    porque não sobra nada na fronteira. É o mesmo argumento com que se descartam termos de
+                    superfície ao integrar por partes em um princípio variacional.
+                </p>
+
+                <p>
+                    <strong>Potenciais e vínculos.</strong> Uma função de gradiente nulo é constante em cada
+                    pedaço conexo de seu domínio (provaremos isso no tópico
+                    <a href="[09] - Covetores e 1-Formas.html">3.9</a>, com a
+                    <a href="#prop-3-2-38">Proposição 3.2.38</a>): é por isso que um potencial fica definido a
+                    menos de uma constante, uma para cada componente conexa. E o teorema da função implícita é
+                    a matemática dos vínculos. Um pêndulo plano de comprimento $\ell$ tem posição $(x,y)$
+                    sujeita a $x^2 + y^2 = \ell^2$; perto de cada configuração, uma única coordenada basta para
+                    descrevê-lo (<a href="#ex-3-2-58">Exemplo 3.2.58</a>), mas nenhuma coordenada serve para
+                    todas as configurações de uma vez. O espaço de configurações é um círculo, e as
+                    coordenadas generalizadas da mecânica analítica são coordenadas locais nele. É o primeiro
+                    exemplo de variedade que a física encontra, muito antes da relatividade.
+                </p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p>
+                    Os três primeiros exercícios são de topologia e completam verificações deixadas no texto. Os
+                    quatro últimos são de cálculo: uma matriz jacobiana, o lema de Hadamard em um caso concreto
+                    e os teoremas da função inversa e da função implícita em ação.
+                </p>
+
+                <p id="exr-3-2-1"><strong>Exercício 3.2.1.</strong> (a) Mostre que toda bola aberta
+                    $B_r(a) \subset \mathbb{R}^n$ é um conjunto aberto. (b) Dê um exemplo de uma família infinita
+                    de abertos de $\mathbb{R}$ cuja interseção não é aberta, e diga em que ponto a verificação
+                    do axioma (iii) no <a href="#ex-3-2-2">Exemplo 3.2.2</a> deixa de funcionar.</p>
+
+                <p>
+                    <em>Solução.</em> (a) Seja $x \in B_r(a)$ e ponha $\rho = r - \lvert x - a\rvert$, que é
+                    positivo. Se $y \in B_\rho(x)$, a desigualdade triangular dá
+                </p>
+
+                <p>
+                    $$ \lvert y - a\rvert \le \lvert y - x\rvert + \lvert x - a\rvert \lt \rho + \lvert x - a\rvert = r. $$
+                </p>
+
+                <p>
+                    Logo $B_\rho(x) \subset B_r(a)$: todo ponto de $B_r(a)$ é centro de uma bola contida em
+                    $B_r(a)$.
+                </p>
+
+                <p>
+                    (b) Para cada inteiro $k \ge 1$, seja $U_k = (-1/k, 1/k)$. Cada $U_k$ é uma bola aberta de
+                    $\mathbb{R}$, portanto um aberto. O ponto $0$ está em todos. Se $x \neq 0$, basta tomar
+                    $k \gt 1/\lvert x\rvert$ para ter $x \notin U_k$. Logo
+                </p>
+
+                <p>
+                    $$ \bigcap_{k=1}^{\infty} \Big( -\frac1k, \frac1k \Big) = \{0\}, $$
+                </p>
+
+                <p>
+                    que não é aberto, porque nenhum intervalo $(-r,r)$ está contido em $\{0\}$. Na verificação
+                    do axioma (iii), o raio da bola contida na interseção era o mínimo dos raios $r_j$. Aqui os
+                    raios são $1/k$, e uma família infinita de números positivos pode ter ínfimo zero.
+                </p>
+
+                <p id="exr-3-2-2"><strong>Exercício 3.2.2.</strong> Mostre que a função $f(x) = x/(1-x^2)$ da
+                    Equação (3.2.3) é um homeomorfismo de $(-1,1)$ em $\mathbb{R}$, com inversa
+                    $g(y) = 2y\big/\big(1 + \sqrt{1+4y^2}\big)$.</p>
+
+                <p>
+                    <em>Solução.</em> As funções $f$ e $g$ são contínuas, pois são quocientes e compostas de
+                    funções contínuas com denominadores que não se anulam. Falta mostrar que $g$ toma valores
+                    em $(-1,1)$ e que as duas compostas são identidades.
+                </p>
+
+                <p>
+                    <strong>Passo 1: $\lvert g(y)\rvert \lt 1$.</strong> Como
+                    $\sqrt{1+4y^2} \gt \sqrt{4y^2} = 2\lvert y\rvert$,
+                </p>
+
+                <p>
+                    $$ \lvert g(y)\rvert = \frac{2\lvert y\rvert}{1 + \sqrt{1+4y^2}} \lt \frac{2\lvert y\rvert}{1 + 2\lvert y\rvert} \lt 1. $$
+                </p>
+
+                <p>
+                    <strong>Passo 2: $f(g(y)) = y$.</strong> Escreva $w = \sqrt{1+4y^2}$, de modo que
+                    $4y^2 = w^2 - 1 = (w-1)(w+1)$ e $g(y) = 2y/(1+w)$. Então
+                </p>
+
+                <p>
+                    $$ \begin{aligned} 1 - g(y)^2 &= \frac{(1+w)^2 - 4y^2}{(1+w)^2} = \frac{(1+w)^2 - (w-1)(w+1)}{(1+w)^2} \\[4pt] &= \frac{(1+w)\cdot 2}{(1+w)^2} = \frac{2}{1+w}, \end{aligned} $$
+                </p>
+
+                <p>
+                    e portanto
+                </p>
+
+                <p>
+                    $$ f\big(g(y)\big) = \frac{g(y)}{1 - g(y)^2} = \frac{2y}{1+w}\cdot\frac{1+w}{2} = y. $$
+                </p>
+
+                <p>
+                    <strong>Passo 3: $g(f(x)) = x$.</strong> Para $x \in (-1,1)$ e $y = x/(1-x^2)$,
+                </p>
+
+                <p>
+                    $$ \begin{aligned} 1 + 4y^2 &= \frac{(1-x^2)^2 + 4x^2}{(1-x^2)^2} = \frac{(1+x^2)^2}{(1-x^2)^2}, \\[4pt] \sqrt{1+4y^2} &= \frac{1+x^2}{1-x^2}, \end{aligned} $$
+                </p>
+
+                <p>
+                    onde a raiz é a positiva porque $1 - x^2 \gt 0$. Então
+                    $1 + \sqrt{1+4y^2} = 2/(1-x^2)$ e
+                </p>
+
+                <p>
+                    $$ g\big(f(x)\big) = 2y\cdot\frac{1-x^2}{2} = \frac{x}{1-x^2}\,(1-x^2) = x. $$
+                </p>
+
+                <p>
+                    Assim, $f$ é uma bijeção contínua com inversa contínua. As duas funções são, além disso,
+                    suaves (o radicando $1 + 4y^2$ nunca se anula), de modo que $f$ é também um difeomorfismo
+                    de $(-1,1)$ em $\mathbb{R}$.
+                </p>
+
+                <p id="exr-3-2-3"><strong>Exercício 3.2.3.</strong> Seja $L$ a reta com duas origens do
+                    <a href="#ex-3-2-23">Exemplo 3.2.23</a>, com origens $o_0$ e $o_1$. (a) Mostre que
+                    $U_0 = L \setminus \{o_1\}$ e $U_1 = L \setminus \{o_0\}$ são abertos de $L$ e que cada um é
+                    homeomorfo a $\mathbb{R}$. (b) Conclua que todo ponto de $L$ tem uma vizinhança homeomorfa a
+                    $\mathbb{R}$, embora $L$ não seja de Hausdorff. (c) Mostre que $L$ é segundo-contável.</p>
+
+                <p>
+                    <em>Solução.</em> (a) Defina $j_0: \mathbb{R} \to L$ por $j_0(x) = \pi(x,0)$. Ela é
+                    contínua, por ser a composta de $x \mapsto (x,0)$ com $\pi$. É injetiva, porque dois pontos
+                    distintos da mesma cópia, $(x,0)$ e $(x',0)$, nunca são equivalentes. Sua imagem contém
+                    $o_0 = \pi(0,0)$ e todas as classes $[x] = \pi(x,0)$ com $x \neq 0$, e não contém $o_1$:
+                    é o conjunto $U_0$.
+                </p>
+
+                <p>
+                    Afirmamos que $j_0$ leva abertos de $\mathbb{R}$ em abertos de $L$. Seja
+                    $W \subset \mathbb{R}$ aberto. Pela definição da topologia quociente, $j_0(W)$ é aberto em
+                    $L$ se $\pi^{-1}(j_0(W))$ é aberto em $X = \mathbb{R} \times \{0,1\}$. Um ponto $(x,0)$
+                    está nessa pré-imagem quando $x \in W$. Um ponto $(x,1)$ com $x \neq 0$ é equivalente a
+                    $(x,0)$, e está na pré-imagem quando $x \in W$. O ponto $(0,1)$ não está, porque
+                    $o_1 \notin U_0$. Portanto
+                </p>
+
+                <p>
+                    $$ \pi^{-1}\big(j_0(W)\big) = \big(W \times \{0\}\big) \cup \big((W \setminus \{0\}) \times \{1\}\big), $$
+                </p>
+
+                <p>
+                    que é a interseção de $X$ com o aberto
+                    $\big(W \times (-\tfrac12,\tfrac12)\big) \cup \big((W \setminus \{0\}) \times (\tfrac12,\tfrac32)\big)$
+                    de $\mathbb{R}^2$. Logo $j_0(W)$ é aberto em $L$. Com $W = \mathbb{R}$, vemos que $U_0$ é
+                    aberto. E $j_0: \mathbb{R} \to U_0$ é uma bijeção contínua cuja inversa também é contínua,
+                    pois a pré-imagem de um aberto $W$ por $j_0^{-1}$ é $j_0(W)$. Assim, $j_0$ é um
+                    homeomorfismo de $\mathbb{R}$ sobre $U_0$. O mesmo argumento, com $j_1(x) = \pi(x,1)$,
+                    trata $U_1$.
+                </p>
+
+                <p>
+                    (b) Todo ponto de $L$ está em $U_0$ ou em $U_1$: a origem $o_0$ está em $U_0$, a origem
+                    $o_1$ está em $U_1$, e os demais pontos estão nos dois. Cada um desses conjuntos é uma
+                    vizinhança homeomorfa a $\mathbb{R}$. Pelo
+                    <a href="#ex-3-2-23">Exemplo 3.2.23</a>, $L$ não é de Hausdorff. A conclusão é que ser de
+                    Hausdorff não é uma propriedade local: um espaço pode ser, perto de cada ponto, idêntico à
+                    reta, e ainda assim ter pontos inseparáveis.
+                </p>
+
+                <p>
+                    (c) Seja $\mathcal{B}$ a coleção dos conjuntos $j_0(I)$ e $j_1(I)$, em que $I$ percorre os
+                    intervalos abertos de extremos racionais. É uma coleção enumerável de abertos de $L$, pelo
+                    item (a). Se $O \subset L$ é aberto, então $O = (O \cap U_0) \cup (O \cap U_1)$, e
+                    $O \cap U_i = j_i\big(j_i^{-1}(O)\big)$. O conjunto $j_i^{-1}(O)$ é aberto em $\mathbb{R}$,
+                    porque $j_i$ é contínua, e portanto é união de intervalos de extremos racionais
+                    (<a href="#ex-3-2-5">Exemplo 3.2.5</a>, com $n = 1$). Logo $O$ é união de elementos de
+                    $\mathcal{B}$, e $\mathcal{B}$ é uma base enumerável. O espaço $L$ cumpre, assim, duas das
+                    três exigências da definição de variedade do tópico
+                    <a href="[03] - Variedades Diferenciáveis.html">3.3</a>, e falha apenas na de Hausdorff.
+                </p>
+
+                <p id="exr-3-2-4"><strong>Exercício 3.2.4.</strong> As coordenadas esféricas são dadas pela
+                    aplicação</p>
+
+                <p>
+                    $$ \begin{gathered} \Sigma(r,\theta,\phi) = (r\sin\theta\cos\phi,\ r\sin\theta\sin\phi,\ r\cos\theta), \\[2pt] r \gt 0,\qquad 0 \lt \theta \lt \pi,\qquad \phi \in \mathbb{R}. \end{gathered} $$
+                </p>
+
+                <p>
+                    (a) Calcule a matriz jacobiana de $\Sigma$ e seu determinante. (b) Conclua que $\Sigma$ é um
+                    difeomorfismo local e encontre um aberto no qual ela é um difeomorfismo sobre a imagem. (c)
+                    Use o resultado para calcular o volume da bola de raio $\rho$.
+                </p>
+
+                <p>
+                    <em>Solução.</em> (a) Derivando cada componente em relação a $r$, $\theta$ e $\phi$,
+                </p>
+
+                <p>
+                    $$ D\Sigma = \begin{pmatrix} \sin\theta\cos\phi & r\cos\theta\cos\phi & -r\sin\theta\sin\phi \\ \sin\theta\sin\phi & r\cos\theta\sin\phi & r\sin\theta\cos\phi \\ \cos\theta & -r\sin\theta & 0 \end{pmatrix}. $$
+                </p>
+
+                <p>
+                    Desenvolvemos o determinante pela terceira linha. O menor da entrada $\cos\theta$ é
+                </p>
+
+                <p>
+                    $$ \begin{vmatrix} r\cos\theta\cos\phi & -r\sin\theta\sin\phi \\ r\cos\theta\sin\phi & r\sin\theta\cos\phi \end{vmatrix} = r^2\sin\theta\cos\theta\,(\cos^2\phi + \sin^2\phi) = r^2\sin\theta\cos\theta, $$
+                </p>
+
+                <p>
+                    e o menor da entrada $-r\sin\theta$ é
+                </p>
+
+                <p>
+                    $$ \begin{vmatrix} \sin\theta\cos\phi & -r\sin\theta\sin\phi \\ \sin\theta\sin\phi & r\sin\theta\cos\phi \end{vmatrix} = r\sin^2\theta\,(\cos^2\phi + \sin^2\phi) = r\sin^2\theta. $$
+                </p>
+
+                <p>
+                    Com os sinais dos cofatores ($+$ para a primeira entrada da linha, $-$ para a segunda),
+                </p>
+
+                <p>
+                    $$ \begin{aligned} \det D\Sigma &= \cos\theta\cdot r^2\sin\theta\cos\theta \;-\; (-r\sin\theta)\cdot r\sin^2\theta \\[2pt] &= r^2\sin\theta\,(\cos^2\theta + \sin^2\theta) = r^2\sin\theta. \end{aligned} $$
+                </p>
+
+                <p>
+                    (b) No domínio, $r \gt 0$ e $\sin\theta \gt 0$, logo $\det D\Sigma \gt 0$ e $\Sigma$ é um
+                    difeomorfismo local, pelo teorema da função inversa. Ela não é injetiva, porque tem período
+                    $2\pi$ em $\phi$. Restrita a $(0,\infty) \times (0,\pi) \times (-\pi,\pi)$, é injetiva: de
+                    $(x,y,z) = \Sigma(r,\theta,\phi)$ recuperam-se $r = \sqrt{x^2+y^2+z^2}$, depois
+                    $\theta \in (0,\pi)$ por $\cos\theta = z/r$, e depois $\phi \in (-\pi,\pi)$ por
+                    $(\cos\phi,\sin\phi) = (x,y)/(r\sin\theta)$. A imagem é $\mathbb{R}^3$ sem o semiplano
+                    $\{(x,0,z) : x \le 0\}$, que contém o eixo $z$. Pelo
+                    <a href="#cor-3-2-54">Corolário 3.2.54</a>, a restrição é um difeomorfismo sobre esse
+                    aberto.
+                </p>
+
+                <p>
+                    (c) O semiplano retirado tem medida nula. Pelo
+                    <a href="#teo-3-2-64">Teorema 3.2.64</a> e pelo teorema de Fubini, com
+                    $\lvert\det D\Sigma\rvert = r^2\sin\theta$,
+                </p>
+
+                <p>
+                    $$ \operatorname{vol}\big(B_\rho(0)\big) = \int_{-\pi}^{\pi}\!\!\int_0^{\pi}\!\!\int_0^{\rho} r^2\sin\theta\,dr\,d\theta\,d\phi = 2\pi\cdot 2\cdot\frac{\rho^3}{3} = \frac{4}{3}\pi\rho^3. $$
+                </p>
+
+                <p>
+                    O fator $r^2\sin\theta$ é o que aparecia no elemento de área e de volume dos exercícios do
+                    tópico <a href="[01] - Motivação e Roteiro.html#exercicios">3.1</a>.
+                </p>
+
+                <p id="exr-3-2-5"><strong>Exercício 3.2.5.</strong> Seja $f(x,y) = e^x\cos y$ em
+                    $\mathbb{R}^2$, e tome $a = (0,0)$. (a) Calcule as funções $g_1$ e $g_2$ do lema de
+                    Hadamard pela fórmula integral (3.2.14). (b) Verifique diretamente a Equação (3.2.13). (c)
+                    Mostre que as funções $g_i$ da Equação (3.2.13) não são únicas, mas que seus valores em $a$
+                    são.</p>
+
+                <p>
+                    <em>Solução.</em> (a) As derivadas parciais são $\partial_xf = e^x\cos y$ e
+                    $\partial_yf = -e^x\sin y$, e o segmento de $a$ a $(x,y)$ é $t \mapsto (tx,ty)$. Portanto
+                </p>
+
+                <p>
+                    $$ g_1(x,y) = \int_0^1 e^{tx}\cos(ty)\,dt, \qquad g_2(x,y) = -\int_0^1 e^{tx}\sin(ty)\,dt. $$
+                </p>
+
+                <p>
+                    Para $(x,y) \neq (0,0)$, as primitivas em $t$ são
+                </p>
+
+                <p>
+                    $$ \begin{aligned} \frac{d}{dt}\left[ \frac{e^{tx}\big(x\cos(ty) + y\sin(ty)\big)}{x^2+y^2} \right] &= e^{tx}\cos(ty), \\[4pt]
+                    \frac{d}{dt}\left[ \frac{e^{tx}\big(x\sin(ty) - y\cos(ty)\big)}{x^2+y^2} \right] &= e^{tx}\sin(ty), \end{aligned} $$
+                </p>
+
+                <p>
+                    como se confere derivando: em cada caso os termos cruzados em $xy$ se cancelam e sobra
+                    $(x^2+y^2)$ no numerador. Calculando entre $t = 0$ e $t = 1$,
+                </p>
+
+                <p>
+                    $$ \begin{aligned} g_1(x,y) &= \frac{e^x(x\cos y + y\sin y) - x}{x^2+y^2}, \\[4pt] g_2(x,y) &= \frac{e^x(y\cos y - x\sin y) - y}{x^2+y^2}. \end{aligned} $$
+                </p>
+
+                <p>
+                    Na origem, as integrais dão diretamente $g_1(0,0) = \int_0^1 1\,dt = 1$ e
+                    $g_2(0,0) = 0$, que são os valores de $\partial_xf$ e de $\partial_yf$ em $(0,0)$. As
+                    expressões fechadas não estão definidas na origem, mas o lema garante que $g_1$ e $g_2$
+                    são suaves em todo o plano.
+                </p>
+
+                <p>
+                    (b) Para $(x,y) \neq (0,0)$,
+                </p>
+
+                <p>
+                    $$ \begin{aligned} x\,g_1 + y\,g_2 &= \frac{e^x\big(x^2\cos y + xy\sin y + y^2\cos y - xy\sin y\big) - x^2 - y^2}{x^2+y^2} \\[4pt] &= e^x\cos y - 1 = f(x,y) - f(0,0), \end{aligned} $$
+                </p>
+
+                <p>
+                    e na origem os dois lados se anulam.
+                </p>
+
+                <p>
+                    (c) Se $h$ é uma função suave qualquer em $\mathbb{R}^2$, as funções
+                    $\tilde{g}_1 = g_1 + y\,h$ e $\tilde{g}_2 = g_2 - x\,h$ também satisfazem a Equação
+                    (3.2.13), porque $x\,(y\,h) + y\,(-x\,h) = 0$. Logo a decomposição não é única. Os valores
+                    em $a$, porém, são forçados. Em geral, derivando
+                    $f(x) = f(a) + \sum_j (x^j - a^j)\,g_j(x)$ em relação a $x^i$ pela regra do produto,
+                </p>
+
+                <p>
+                    $$ \frac{\partial f}{\partial x^i}(x) = g_i(x) + \sum_j (x^j - a^j)\,\frac{\partial g_j}{\partial x^i}(x), $$
+                </p>
+
+                <p>
+                    e em $x = a$ a soma desaparece: $g_i(a) = \partial_if(a)$, quaisquer que sejam as $g_j$. No
+                    exemplo, $\tilde{g}_1(0,0) = g_1(0,0)$ e $\tilde{g}_2(0,0) = g_2(0,0)$, pois as parcelas
+                    acrescentadas se anulam na origem.
+                </p>
+
+                <p id="exr-3-2-6"><strong>Exercício 3.2.6.</strong> Seja $F: \mathbb{R}^2 \to \mathbb{R}^2$,
+                    $F(x,y) = (x^2 - y^2,\ 2xy)$. (a) Em que pontos $F$ é um difeomorfismo local? (b) Mostre que
+                    $F$ não é injetiva em $\mathbb{R}^2 \setminus \{(0,0)\}$. (c) Descreva $F$ em coordenadas
+                    polares e mostre que sua restrição ao semiplano $\{x \gt 0\}$ é um difeomorfismo sobre a
+                    imagem.</p>
+
+                <p>
+                    <em>Solução.</em> (a) A matriz jacobiana e o determinante são
+                </p>
+
+                <p>
+                    $$ \begin{aligned} DF(x,y) &= \begin{pmatrix} 2x & -2y \\ 2y & 2x \end{pmatrix}, \\[4pt] \det DF(x,y) &= 4x^2 + 4y^2 = 4\,(x^2+y^2). \end{aligned} $$
+                </p>
+
+                <p>
+                    O determinante só se anula na origem. Pelo teorema da função inversa, $F$ é um
+                    difeomorfismo local em $\mathbb{R}^2 \setminus \{(0,0)\}$. Em nenhuma vizinhança da origem
+                    $F$ é um difeomorfismo sobre a imagem, porque $DF(0,0) = 0$ não é invertível
+                    (<a href="#prop-3-2-52">Proposição 3.2.52</a>).
+                </p>
+
+                <p>
+                    (b) Para todo $(x,y)$, $F(-x,-y) = F(x,y)$. Por exemplo, $F(1,0) = F(-1,0) = (1,0)$.
+                </p>
+
+                <p>
+                    (c) Com $x = r\cos\theta$ e $y = r\sin\theta$,
+                </p>
+
+                <p>
+                    $$ \begin{aligned} x^2 - y^2 &= r^2(\cos^2\theta - \sin^2\theta) = r^2\cos 2\theta, \\[2pt] 2xy &= 2r^2\sin\theta\cos\theta = r^2\sin 2\theta. \end{aligned} $$
+                </p>
+
+                <p>
+                    Isto é, $F\big(P(r,\theta)\big) = P(r^2, 2\theta)$, em que $P$ é a aplicação do
+                    <a href="#ex-3-2-55">Exemplo 3.2.55</a>: $F$ eleva o raio ao quadrado e dobra o ângulo. (Em
+                    notação complexa, $F$ é $z \mapsto z^2$.) O semiplano $\{x \gt 0\}$ é a imagem por $P$ da
+                    faixa $(0,\infty) \times (-\tfrac{\pi}{2},\tfrac{\pi}{2})$, e a aplicação
+                    $m(r,\theta) = (r^2,2\theta)$ é um difeomorfismo dessa faixa sobre
+                    $(0,\infty) \times (-\pi,\pi)$, com inversa $(r,\theta) \mapsto (\sqrt{r},\theta/2)$. Como
+                    $P$ é um difeomorfismo de $(0,\infty) \times (-\pi,\pi)$ sobre o plano sem o semieixo
+                    $\{(u,0) : u \le 0\}$, a restrição de $F$ ao semiplano é a composta de três
+                    difeomorfismos,
+                </p>
+
+                <p>
+                    $$ F\big\vert_{\{x \gt 0\}} = P \circ m \circ \big(P\big\vert_{(0,\infty) \times (-\pi/2,\,\pi/2)}\big)^{-1}, $$
+                </p>
+
+                <p>
+                    e é um difeomorfismo do semiplano $\{x \gt 0\}$ sobre o plano sem o semieixo real não
+                    positivo. A moral do exercício: ser invertível perto de cada ponto não garante ser
+                    invertível globalmente. O teorema da função inversa é um teorema local.
+                </p>
+
+                <p id="exr-3-2-7"><strong>Exercício 3.2.7.</strong> Considere a esfera
+                    $S^2 = \{x^2 + y^2 + z^2 = 1\}$ perto do polo norte $(0,0,1)$. (a) Verifique a hipótese do
+                    teorema da função implícita para resolver $z$ em função de $(x,y)$ e exiba $A$, $B$ e $g$.
+                    (b) Calcule as derivadas parciais de $g$ pela Equação (3.2.18) e compare com a derivação
+                    direta. (c) Em que pontos da esfera o teorema não permite resolver $z$? O que ele permite
+                    nesses pontos?</p>
+
+                <p>
+                    <em>Solução.</em> (a) Aqui $n = 2$, $k = 1$, as variáveis livres são $(x,y)$, a variável a
+                    resolver é $z$, e $\Phi(x,y,z) = x^2 + y^2 + z^2$, com $c = 1$. A matriz
+                    $\partial\Phi/\partial z$ é o número $2z$, que vale $2 \neq 0$ no polo norte. O teorema
+                    garante a existência de $A$, $B$ e $g$. Neste caso eles podem ser exibidos: $A$ é o disco
+                    aberto $\{x^2 + y^2 \lt 1\}$, $B = (0,\infty)$ e
+                </p>
+
+                <p>
+                    $$ g(x,y) = \sqrt{1 - x^2 - y^2}, $$
+                </p>
+
+                <p>
+                    pois, para $(x,y) \in A$ e $z \gt 0$, a equação $x^2 + y^2 + z^2 = 1$ equivale a
+                    $z = \sqrt{1 - x^2 - y^2}$.
+                </p>
+
+                <p>
+                    (b) Temos $\partial\Phi/\partial(x,y) = \begin{pmatrix} 2x & 2y \end{pmatrix}$ e
+                    $\partial\Phi/\partial z = 2z$. A Equação (3.2.18), com $z = g(x,y)$, dá
+                </p>
+
+                <p>
+                    $$ Dg(x,y) = -\frac{1}{2z}\begin{pmatrix} 2x & 2y \end{pmatrix} = \begin{pmatrix} -\dfrac{x}{z} & -\dfrac{y}{z} \end{pmatrix}, $$
+                </p>
+
+                <p>
+                    isto é,
+                </p>
+
+                <p>
+                    $$ \frac{\partial g}{\partial x} = -\frac{x}{\sqrt{1-x^2-y^2}}, \qquad \frac{\partial g}{\partial y} = -\frac{y}{\sqrt{1-x^2-y^2}}. $$
+                </p>
+
+                <p>
+                    Derivando diretamente a fórmula de $g$:
+                    $\partial_x\sqrt{1-x^2-y^2} = -2x\big/\big(2\sqrt{1-x^2-y^2}\big)$, e o análogo para $y$. Os
+                    resultados coincidem.
+                </p>
+
+                <p>
+                    (c) A hipótese falha onde $2z = 0$, isto é, no equador. Ali a conclusão também falha: perto
+                    de um ponto do equador há pontos $(x,y)$ sobre os quais a esfera tem dois pontos, um com
+                    $z \gt 0$ e outro com $z \lt 0$. Mas a matriz jacobiana completa,
+                    $D\Phi = \begin{pmatrix} 2x & 2y & 2z \end{pmatrix}$, nunca se anula sobre a esfera. Em um
+                    ponto do equador, $x \neq 0$ ou $y \neq 0$, e o teorema, com as variáveis reordenadas,
+                    permite resolver $x$ ou $y$ em função das outras duas. Todo ponto da esfera tem, portanto,
+                    uma vizinhança na qual a esfera é o gráfico de uma função suave de duas das três
+                    coordenadas. Os seis hemisférios abertos $\{\pm x \gt 0\}$, $\{\pm y \gt 0\}$ e
+                    $\{\pm z \gt 0\}$ cobrem $S^2$, e no tópico
+                    <a href="[03] - Variedades Diferenciáveis.html">3.3</a> eles serão os domínios das primeiras
+                    cartas da esfera.
+                </p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <p>
+                    Este tópico não construiu nenhum objeto novo do capítulo. Ele deixou pronta a caixa de
+                    ferramentas:
+                </p>
+
+                <ul>
+                    <li><strong>o vocabulário topológico</strong>: espaço topológico, base, subespaço, produto e
+                        quociente; continuidade e homeomorfismo; a propriedade característica do quociente
+                        (<a href="#prop-3-2-19">Proposição 3.2.19</a>);</li>
+                    <li><strong>quatro propriedades topológicas</strong>: Hausdorff e segundo-contável, que
+                        entrarão na definição de variedade; compacidade, com o lema da aplicação fechada
+                        (<a href="#lema-3-2-32">Lema 3.2.32</a>); e conexidade, com o resultado sobre funções
+                        localmente constantes (<a href="#prop-3-2-38">Proposição 3.2.38</a>);</li>
+                    <li><strong>o cálculo diferencial em $\mathbb{R}^n$</strong>: a derivada como aplicação
+                        linear, a regra da cadeia (<a href="#teo-3-2-46">Teorema 3.2.46</a>), a igualdade das
+                        derivadas mistas e a derivada ao longo de uma curva
+                        (<a href="#prop-3-2-48">Proposição 3.2.48</a>);</li>
+                    <li><strong>o lema de Hadamard</strong> (<a href="#lema-3-2-49">Lema 3.2.49</a>), que fará de
+                        toda derivação um vetor;</li>
+                    <li><strong>difeomorfismos</strong>, a invariância da dimensão
+                        (<a href="#prop-3-2-52">Proposição 3.2.52</a>) e os teoremas da função inversa
+                        (<a href="#teo-3-2-53">Teorema 3.2.53</a>) e da função implícita
+                        (<a href="#teo-3-2-57">Teorema 3.2.57</a>);</li>
+                    <li><strong>três teoremas de integração</strong>: Fubini
+                        (<a href="#teo-3-2-62">Teorema 3.2.62</a>), mudança de variáveis
+                        (<a href="#teo-3-2-64">Teorema 3.2.64</a>) e derivação sob o sinal de integral
+                        (<a href="#teo-3-2-66">Teorema 3.2.66</a>).</li>
+                </ul>
+
+                <p>
+                    Para chegar ao Teorema de Stokes ainda falta tudo o que a Equação (3.1.6) menciona: o espaço
+                    $M$, os objetos $\omega$, a derivada $d$, o bordo $\partial M$ e a integral. Mas duas peças
+                    da demonstração já estão sobre a mesa. A conta do
+                    <a href="#ex-3-2-63">Exemplo 3.2.63</a>, feita com Fubini e com o teorema fundamental do
+                    cálculo, é o seu núcleo; e o módulo do determinante na mudança de variáveis é o motivo pelo
+                    qual a integração em variedades precisará de uma orientação.
+                </p>
+
+                <p>
+                    O próximo tópico,
+                    <a href="[03] - Variedades Diferenciáveis.html">3.3 Variedades Diferenciáveis</a>, usa a
+                    primeira metade desta caixa para definir o espaço em que todo o resto acontece: um espaço
+                    topológico de Hausdorff e segundo-contável, coberto por cartas que se relacionam por
+                    difeomorfismos entre abertos de $\mathbb{R}^n$.
+                </p>
 
             </div>
         </main>
@@ -161,6 +2768,40 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#preliminares">Preliminares de Topologia e Cálculo</a></li>
+                    <li>
+                        <a href="#espacos-topologicos">Espaços topológicos</a>
+                        <ul>
+                            <li><a href="#subespaco-produto-quociente">Subespaço, produto e quociente</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#continuidade">Continuidade e homeomorfismos</a></li>
+                    <li>
+                        <a href="#propriedades-topologicas">Propriedades topológicas</a>
+                        <ul>
+                            <li><a href="#hausdorff">Hausdorff</a></li>
+                            <li><a href="#segundo-contavel">Segundo-contável</a></li>
+                            <li><a href="#compacidade">Compacidade</a></li>
+                            <li><a href="#conexidade">Conexidade</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#calculo-rn">Cálculo diferencial em $\mathbb{R}^n$</a>
+                        <ul>
+                            <li><a href="#regra-da-cadeia">Regra da cadeia</a></li>
+                            <li><a href="#hadamard">Lema de Hadamard</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#difeomorfismos-rn">Difeomorfismos, função inversa e implícita</a>
+                        <ul>
+                            <li><a href="#funcao-inversa">Função inversa</a></li>
+                            <li><a href="#funcao-implicita">Função implícita</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#integracao-rn">Integração em $\mathbb{R}^n$</a></li>
+                    <li><a href="#fisica">Ponte com a física</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
                 </ul>
             </div>
         </aside>
