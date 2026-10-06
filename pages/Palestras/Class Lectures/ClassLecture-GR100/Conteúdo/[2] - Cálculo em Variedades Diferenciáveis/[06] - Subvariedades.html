@@ -151,7 +151,964 @@
                 <h1 id="subvariedades">3.6 Subvariedades: Imersões, Submersões e Mergulhos</h1>
                 <p class="lead">Posto de uma aplicação suave, imersões, submersões e mergulhos, subvariedades mergulhadas, o teorema do valor regular e o espaço tangente a uma subvariedade.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>
+                    A diferencial $dF_p$ é a melhor aproximação linear de $F$ em $p$
+                    (<a href="[05] - Vetores Tangentes.html#prop-3-5-17">Proposição 3.5.17</a>: em coordenadas, é a jacobiana). Este tópico mostra
+                    quanto do comportamento <em>local</em> de $F$ a álgebra linear de $dF_p$ determina. O
+                    resultado é que, quando $dF_p$ tem o maior posto possível, a aplicação $F$ é, em cartas
+                    convenientes, uma simples inclusão de $\mathbb{R}^n$ em $\mathbb{R}^m$ ou uma simples projeção.
+                </p>
+
+                <p>
+                    A consequência que mais nos interessa é uma noção precisa de "variedade dentro de outra
+                    variedade": a esfera dentro de $\mathbb{R}^3$, uma curva dentro de uma superfície, o bordo de
+                    uma região. Essa noção permitirá, adiante, restringir uma forma diferencial a uma curva ou
+                    a uma superfície (o <em>pullback</em> $\iota^*\omega$ por uma inclusão $\iota$), tratar
+                    o bordo $\partial M$ como uma variedade, e reconhecer conjuntos de nível, como as esferas
+                    e os hiperboloides da física, como variedades sem construir um atlas à mão: basta que o
+                    valor seja regular. O tópico responde também a uma pergunta deixada em aberto no
+                    <a href="[05] - Vetores Tangentes.html#ex-3-5-26">Exemplo 3.5.26</a>: em que sentido $T_pS$ é um subespaço de $T_pM$.
+                </p>
+
+                <h2 id="posto">Posto, imersões e submersões</h2>
+
+                <div class="definition-box" id="def-3-6-1" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.6.1 (Posto).</strong> Seja $F: M\to N$ uma aplicação suave. O
+                        <strong>posto</strong> de $F$ em $p\in M$ é o posto da aplicação linear
+                        $dF_p: T_pM\to T_{F(p)}N$, isto é, a dimensão de sua imagem.</p>
+                </div>
+
+                <p>
+                    O posto não depende de escolhas: o posto de uma aplicação linear é o posto de sua matriz em
+                    quaisquer bases, e, pela
+                    <a href="[05] - Vetores Tangentes.html#prop-3-5-17">Proposição 3.5.17</a>, a matriz de $dF_p$ nas bases coordenadas de
+                    quaisquer cartas é a jacobiana de $\hat{F}$ em $\hat{p}$. Logo
+                    $\operatorname{posto}_pF = \operatorname{posto}D\hat{F}(\hat{p})$, em quaisquer cartas, e o posto
+                    é no máximo $\min\{n,m\}$, em que $n=\dim M$ e $m=\dim N$.
+                </p>
+
+                <div class="definition-box" id="def-3-6-2" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.6.2 (Imersão e submersão).</strong> Uma aplicação suave
+                        $F: M\to N$ é uma <strong>imersão</strong> se $dF_p$ é injetiva para todo $p\in M$ (posto
+                        $n$ em todo ponto), e é uma <strong>submersão</strong> se $dF_p$ é sobrejetiva para todo
+                        $p\in M$ (posto $m$ em todo ponto).</p>
+                </div>
+
+                <p>
+                    Uma imersão exige $n\le m$ e uma submersão exige $n\ge m$. O posto máximo é uma condição
+                    aberta, o que será importante porque permite passar de "em um ponto" a "em uma vizinhança".
+                </p>
+
+                <div class="definition-box" id="prop-3-6-3">
+                    <p><strong>Proposição 3.6.3 (Posto máximo é condição aberta).</strong> Seja $F: M\to N$ suave
+                        e $r\ge0$. O conjunto dos pontos $p\in M$ em que $\operatorname{posto}_pF\ge r$ é aberto.
+                        Em particular, se $dF_p$ é injetiva (ou sobrejetiva), o mesmo vale em uma vizinhança de $p$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Seja $p$ com $\operatorname{posto}_pF\ge r$. Tome cartas $(U,\varphi)$ e
+                    $(V,\psi)$ em torno de $p$ e de $F(p)$ com $F(U)\subset V$. Como a matriz $D\hat{F}(\hat{p})$ tem
+                    posto $\ge r$, alguma submatriz $r\times r$ dela tem determinante diferente de zero. Esse
+                    determinante é uma função contínua de $x\in\varphi(U)$ (suas entradas são derivadas parciais
+                    contínuas de $\hat{F}$), e portanto não se anula em uma vizinhança aberta $\hat{W}$ de $\hat{p}$.
+                    Em todo $x\in\hat{W}$ o posto de $D\hat{F}(x)$ é $\ge r$, e então
+                    $\operatorname{posto}_qF\ge r$ para todo $q$ na vizinhança aberta $\varphi^{-1}(\hat{W})$ de $p$.
+                    Se $dF_p$ é injetiva, o posto é $n=\dim M$ em $p$, e é $\ge n$, portanto $n$, perto de $p$; o caso
+                    sobrejetivo é análogo, com $r=m$. $\blacksquare$
+                </p>
+
+                <p id="ex-3-6-4"><strong>Exemplo 3.6.4 (Imersões, submersões e um caso que falha).</strong></p>
+
+                <ul>
+                    <li><strong>Curvas regulares.</strong> Uma curva suave $\gamma: J\to M$ é uma imersão se, e
+                        somente se, $\gamma'(t)\ne0$ para todo $t$: $d\gamma_t$ é a aplicação linear de
+                        $T_t\mathbb{R}$ que leva $d/dt$ em $\gamma'(t)$, injetiva exatamente quando $\gamma'(t)\neq0$.</li>
+                    <li><strong>Inclusão e projeção lineares.</strong> A inclusão
+                        $\mathbb{R}^k\hookrightarrow\mathbb{R}^n$, $x\mapsto(x,0)$, tem jacobiana
+                        $\binom{I_k}{0}$, injetiva: é uma imersão. A projeção $\mathbb{R}^n\to\mathbb{R}^k$ sobre as
+                        primeiras $k$ coordenadas tem jacobiana $(I_k\ 0)$, sobrejetiva: é uma submersão.</li>
+                    <li><strong>A esfera.</strong> A inclusão $\iota: S^n\hookrightarrow\mathbb{R}^{n+1}$ é uma
+                        imersão. Na carta $\sigma_N$, $\iota\circ\sigma_N^{-1}=G$ é dada por (3.3.3). A aplicação
+                        $s(x) = (x^1,\dots,x^n)/(1-x^{n+1})$, suave em $\{x^{n+1}\lt1\}$, é uma inversa à esquerda:
+                        $s\circ G=\mathrm{id}_{\mathbb{R}^n}$. Pela regra da cadeia,
+                        $Ds\cdot DG=I_n$, o que obriga $DG$ a ser injetiva. O mesmo vale em $\sigma_S$.</li>
+                    <li><strong>Um caso que falha.</strong> A curva $\beta(t)=(t^2,t^3)$ não é uma imersão em $t=0$:
+                        $\beta'(0)=(0,0)$. É injetiva e um homeomorfismo sobre a imagem
+                        (<a href="#exr-3-6-2">Exercício 3.6.2</a>), e portanto o defeito aqui está na
+                        derivada, e não na topologia; veja a Figura 3.6.1(b).</li>
+                </ul>
+
+                <p>
+                    Vamos agora ao primeiro resultado profundo. Se $dF_p$ é um isomorfismo, $F$ é, perto de $p$,
+                    um difeomorfismo: é o teorema da função inversa
+                    (<a href="[02] - Preliminares de Topologia e Cálculo.html#teo-3-2-53">Teorema 3.2.53</a>), agora em variedades.
+                </p>
+
+                <div class="definition-box" id="teo-3-6-5">
+                    <p><strong>Teorema 3.6.5 (Função inversa em variedades).</strong> Sejam $M$ e $N$ variedades
+                        de mesma dimensão $n$, $F: M\to N$ suave e $p\in M$. Se $dF_p$ é um isomorfismo, existem
+                        vizinhanças abertas $U_0$ de $p$ e $V_0$ de $F(p)$ tais que
+                        $F\vert_{U_0}: U_0\to V_0$ é um difeomorfismo.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Tome cartas $(U,\varphi)$ e $(V,\psi)$ em torno de $p$ e de $F(p)$ com
+                    $F(U)\subset V$. Pela <a href="[05] - Vetores Tangentes.html#prop-3-5-17">Proposição 3.5.17</a>, $D\hat{F}(\hat{p})$ é invertível, pois é a matriz do
+                    isomorfismo $dF_p$. O teorema da função inversa em $\mathbb{R}^n$ dá abertos
+                    $\hat{U}_0\subset\varphi(U)$ contendo $\hat{p}$ e $\hat{V}_0\subset\psi(V)$ contendo
+                    $\hat{F}(\hat{p})$ tais que $\hat{F}\vert_{\hat{U}_0}: \hat{U}_0\to\hat{V}_0$ é um
+                    difeomorfismo. Ponha $U_0=\varphi^{-1}(\hat{U}_0)$ e $V_0=\psi^{-1}(\hat{V}_0)$, abertos de $M$ e de
+                    $N$. Nesses abertos,
+                </p>
+
+                <p>
+                    $$ F\vert_{U_0} = \psi^{-1}\circ\hat{F}\vert_{\hat{U}_0}\circ\varphi\vert_{U_0}: U_0\longrightarrow V_0 $$
+                </p>
+
+                <p>
+                    é uma composta de difeomorfismos (cartas são difeomorfismos,
+                    <a href="[04] - Funções e Aplicações Suaves.html#prop-3-4-22">Proposição 3.4.22</a>), logo um difeomorfismo. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="def-3-6-6" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.6.6 (Difeomorfismo local).</strong> Uma aplicação suave $F: M\to N$ é um
+                        <strong>difeomorfismo local</strong> se todo $p\in M$ tem uma vizinhança aberta $U_0$ tal
+                        que $F(U_0)$ é aberto em $N$ e $F\vert_{U_0}: U_0\to F(U_0)$ é um difeomorfismo.</p>
+                </div>
+
+                <p>
+                    Pelo Teorema 3.6.5, uma aplicação suave entre variedades de mesma dimensão cuja diferencial
+                    é um isomorfismo em todo ponto é um difeomorfismo local. Reciprocamente, um difeomorfismo
+                    local tem diferencial invertível em todo ponto (<a href="[05] - Vetores Tangentes.html#prop-3-5-11">Proposição 3.5.11</a>(c) em cada $U_0$). Um
+                    difeomorfismo local não precisa ser injetivo, nem sobrejetivo.
+                </p>
+
+                <p id="ex-3-6-7"><strong>Exemplo 3.6.7 (Dois difeomorfismos locais).</strong> A aplicação
+                    $E:\mathbb{R}\to S^1$ já foi vista no
+                    <a href="[04] - Funções e Aplicações Suaves.html#exr-3-4-3">Exercício 3.4.3</a>: é um difeomorfismo local, não injetivo. O
+                    quociente $\pi: S^n\to\mathbb{RP}^n$ também é. No
+                    <a href="[04] - Funções e Aplicações Suaves.html#ex-3-4-14">Exemplo 3.4.14</a>, a representação de $\pi$ nas cartas $\varphi_i^\varepsilon$ de $S^n$ e
+                    $\varphi_i$ de $\mathbb{RP}^n$ é $u\mapsto u/(\varepsilon\sqrt{1-\lvert u\rvert^2})$, de $B$ em
+                    $\mathbb{R}^n$. Ela tem inversa $v\mapsto\varepsilon v/\sqrt{1+\lvert v\rvert^2}$, também suave
+                    (a verificação é a mesma do
+                    <a href="[04] - Funções e Aplicações Suaves.html#ex-3-4-20">Exemplo 3.4.20</a>), de modo que é um difeomorfismo de $B$ sobre
+                    $\mathbb{R}^n$. Portanto $\pi$ leva o aberto $U_i^\varepsilon$ difeomorficamente sobre o aberto $U_i$,
+                    para todos $i$ e $\varepsilon$, que cobrem $S^n$: $\pi$ é um difeomorfismo local, e é
+                    2-para-1.</p>
+
+                <p>
+                    O resultado central da seção descreve o que acontece quando o posto é constante, mas
+                    não necessariamente máximo. Seu enunciado é o mesmo da forma local de uma aplicação linear de
+                    posto $r$: em bases convenientes, uma matriz $\begin{pmatrix}I_r&0\\0&0\end{pmatrix}$.
+                </p>
+
+                <div class="definition-box" id="teo-3-6-8">
+                    <p><strong>Teorema 3.6.8 (Teorema do posto constante).</strong> Sejam $M$ e $N$ variedades
+                        de dimensões $n$ e $m$ e $F: M\to N$ suave com posto constante igual a $r$ em um aberto
+                        $W\ni p$. Então existem cartas $(U,\varphi)$ de $M$, centrada em $p$, com $U\subset W$, e
+                        $(V,\psi)$ de $N$, centrada em $F(p)$, com $F(U)\subset V$, tais que</p>
+                    <p>$$ \hat{F}(x^1,\dots,x^n) = \psi\circ F\circ\varphi^{-1}(x^1,\dots,x^n) = (x^1,\dots,x^r,0,\dots,0). \tag{3.6.1} $$</p>
+                </div>
+
+                <p>
+                    <em>Ideia da demonstração.</em> Em cartas centradas quaisquer, as primeiras $r$ componentes de
+                    $\hat{F}$ podem ser tomadas, depois de reordenar as coordenadas, com
+                    $\partial(\hat{F}^1,\dots,\hat{F}^r)/\partial(x^1,\dots,x^r)$ invertível em $0$. O teorema
+                    da função inversa em $\mathbb{R}^n$ (<a href="[02] - Preliminares de Topologia e Cálculo.html#teo-3-2-53">Teorema 3.2.53</a>), aplicado a
+                    $x\mapsto(\hat{F}^1(x),\dots,\hat{F}^r(x),x^{r+1},\dots,x^n)$, faz de $(\hat{F}^1,\dots,\hat{F}^r)$
+                    as $r$ primeiras coordenadas de uma nova carta de $M$. Nessa carta, $\hat{F}=(x^1,\dots,x^r,G)$
+                    com $G$ a valores em $\mathbb{R}^{m-r}$, e o posto constante $r$ obriga $\partial G/\partial x^j=0$
+                    para $j\gt r$: $G$ só depende das $r$ primeiras coordenadas. Um segundo difeomorfismo, na
+                    chegada, $y\mapsto(y^1,\dots,y^r,\,y^{r+1}-G(y^1,\dots,y^r),\dots)$, anula as últimas $m-r$
+                    componentes. Referência: Lee, capítulo 4.
+                </p>
+
+                <div class="definition-box" id="cor-3-6-9">
+                    <p><strong>Corolário 3.6.9 (Forma local de imersões e submersões).</strong> Seja
+                        $F: M\to N$ suave, com $\dim M=n$ e $\dim N=m$, e $p\in M$.</p>
+                    <p>(a) Se $dF_p$ é injetiva, existem cartas centradas em $p$ e em $F(p)$, com
+                        $F(U)\subset V$, nas quais $\hat{F}(x^1,\dots,x^n)=(x^1,\dots,x^n,0,\dots,0)$.</p>
+                    <p>(b) Se $dF_p$ é sobrejetiva, existem cartas centradas em $p$ e em $F(p)$, com
+                        $F(U)\subset V$, nas quais $\hat{F}(x^1,\dots,x^n)=(x^1,\dots,x^m)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Pela Proposição 3.6.3, $\operatorname{posto}F\ge n$ em uma vizinhança
+                    aberta $W$ de $p$; como o posto é no máximo $n=\dim M$, ele é igual a $n$ em $W$, e o Teorema 3.6.8
+                    com $r=n$ dá (3.6.1) na forma pedida. (b) Do mesmo modo, o posto é $m$ em uma vizinhança de $p$,
+                    e o Teorema 3.6.8 com $r=m$ dá $(x^1,\dots,x^m,\text{nada})$. $\blacksquare$
+                </p>
+
+                <p>
+                    Em palavras: <strong>uma imersão é localmente a inclusão</strong>
+                    $\mathbb{R}^n\hookrightarrow\mathbb{R}^m$ e <strong>uma submersão é localmente a projeção</strong>
+                    $\mathbb{R}^n\to\mathbb{R}^m$, em escolhas adequadas de coordenadas. Esse é o resultado que
+                    será usado nas seções seguintes: conjuntos de nível aparecerão como $\{x^1=\dots=x^m=0\}$ e
+                    imagens de imersões como $\{x^{n+1}=\dots=x^m=0\}$.
+                </p>
+
+                <h2 id="mergulhos">Mergulhos</h2>
+
+                <p>
+                    Uma imersão é uma noção local: a imagem pode se sobrepor ou se acumular sobre si mesma
+                    em escala global. Para que a imagem seja de fato "uma variedade dentro de $M$", com a
+                    topologia que ela herda de $M$, é preciso mais.
+                </p>
+
+                <div class="definition-box" id="def-3-6-10" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.6.10 (Mergulho).</strong> Um <strong>mergulho</strong> é uma imersão
+                        $F: N\to M$ que é um homeomorfismo sobre a imagem $F(N)$, considerada com a topologia de
+                        subespaço de $M$.</p>
+                </div>
+
+                <p>
+                    Ser injetiva não basta, e os dois exemplos a seguir mostram duas maneiras diferentes de
+                    uma imersão injetiva falhar (Figura 3.6.1).
+                </p>
+
+                <p id="ex-3-6-11"><strong>Exemplo 3.6.11 (Imersões injetivas que não são mergulhos).</strong></p>
+
+                <ul>
+                    <li><strong>A figura-oito.</strong> Seja $\beta:(-\pi,\pi)\to\mathbb{R}^2$,
+                        $\beta(t)=(\sin2t,\sin t)$. Sua derivada é $\beta'(t)=(2\cos2t,\cos t)$, e as duas
+                        componentes não se anulam ao mesmo tempo: $\cos t=0$ só ocorre em $t=\pm\pi/2$, e ali
+                        $\cos2t=\cos(\pm\pi)=-1\ne0$. Logo $\beta$ é uma imersão. É injetiva: se
+                        $\beta(t)=\beta(t')$, então $\sin t=\sin t'$; se esse valor é não nulo, $\sin2t=\sin2t'$
+                        dá $\cos t=\cos t'$, e o par $(\cos,\sin)$ determina $t\in(-\pi,\pi)$, de modo que
+                        $t=t'$; se é nulo, $t=t'=0$, o único zero de $\sin$ em $(-\pi,\pi)$. Mas
+                        $\beta$ <em>não é um mergulho</em>: sua imagem é o conjunto compacto
+                        $\beta([-\pi,\pi])$ (pois $\beta(\pm\pi)=(0,0)=\beta(0)$), e um homeomorfismo leva
+                        compactos em compactos, enquanto o domínio $(-\pi,\pi)$ não é compacto. Intuitivamente,
+                        $t\to\pm\pi$ aproxima $\beta(t)$ da origem sem aproximar $t$ de $0$, que é onde
+                        $\beta$ passa pela origem: a inversa $\beta^{-1}$ não é contínua em $(0,0)$.</li>
+                    <li><strong>Uma curva densa no toro.</strong> Seja $\alpha$ irracional e
+                        $\gamma:\mathbb{R}\to\mathbb{T}^2=S^1\times S^1$,
+                        $\gamma(t)=(e^{2\pi it},e^{2\pi i\alpha t})$ (com $e^{i\theta}=(\cos\theta,\sin\theta)$).
+                        Em coordenadas angulares, $\gamma'(t)=2\pi\,\partial_s+2\pi\alpha\,\partial_t\neq0$ (veja o
+                        <a href="[05] - Vetores Tangentes.html#exr-3-5-7">Exercício 3.5.7</a>): é uma imersão. É
+                        injetiva: se $\gamma(t)=\gamma(t')$, então $t-t'=k\in\mathbb{Z}$ e
+                        $\alpha k\in\mathbb{Z}$; como $\alpha$ é irracional, $k=0$. Mas não é um mergulho. Pelo
+                        teorema de Kronecker, o conjunto $\{e^{2\pi i\alpha n}:n\in\mathbb{Z}\}$ é denso em $S^1$.
+                        Em particular, existem inteiros $n_k$ com $\lvert n_k\rvert\to\infty$ e
+                        $e^{2\pi i\alpha n_k}\to1$ (uma vizinhança de $1$ contém infinitos desses pontos, que são
+                        todos distintos), isto é, $\gamma(n_k)=(1,e^{2\pi i\alpha n_k})\to(1,1)=\gamma(0)$ no toro.
+                        Se $\gamma$ fosse um homeomorfismo sobre a imagem, $\gamma^{-1}$ seria contínua em $\gamma(0)$,
+                        e $n_k=\gamma^{-1}(\gamma(n_k))$ convergiria a $0$, o que contradiz $\lvert n_k\rvert\to\infty$.
+                        A imagem de $\gamma$ é, de fato, densa no toro, e "se enrola" sobre si mesma sem nunca se
+                        repetir.</li>
+                </ul>
+
+                <figure class="lecture-figure" id="fig-3-6-1">
+                    <svg viewBox="0 0 640 300" role="img" aria-label="Dois painéis. À esquerda, a figura-oito, curva em forma de oito deitado na vertical, que passa duas vezes pela origem: no instante zero e nos extremos do intervalo, quando t tende a menos pi e a pi. À direita, a cúspide, curva que sai de cima, chega à origem com a tangente horizontal e volta a subir, em forma de bico, descrita por t ao quadrado e t ao cubo.">
+<defs><marker id="arr-3-6-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<text x="24" y="30" class="fig-label">(a)</text>
+<path d="M163.3,151.5 L166.5,153 L169.8,154.5 L173,156 L176.3,157.5 L179.5,159 L182.7,160.5 L185.9,162 L189,163.5 L192.1,165 L195.2,166.5 L198.3,168 L201.3,169.5 L204.3,170.9 L207.2,172.4 L210.1,173.9 L212.9,175.3 L215.7,176.8 L218.5,178.2 L221.1,179.7 L223.7,181.1 L226.3,182.5 L228.8,183.9 L231.2,185.3 L233.5,186.7 L235.8,188.1 L238,189.5 L240.1,190.9 L242.2,192.2 L244.1,193.6 L246,194.9 L247.8,196.2 L249.5,197.6 L251.1,198.9 L252.7,200.2 L254.1,201.4 L255.4,202.7 L256.7,204 L257.9,205.2 L258.9,206.4 L259.9,207.6 L260.7,208.8 L261.5,210 L262.2,211.2 L262.7,212.3 L263.2,213.5 L263.5,214.6 L263.8,215.7 L263.9,216.8 L264,217.9 L263.9,218.9 L263.8,220 L263.5,221 L263.2,222 L262.7,223 L262.2,224 L261.5,224.9 L260.7,225.9 L259.9,226.8 L258.9,227.7 L257.9,228.5 L256.7,229.4 L255.4,230.2 L254.1,231.1 L252.7,231.9 L251.1,232.6 L249.5,233.4 L247.8,234.1 L246,234.8 L244.1,235.5 L242.2,236.2 L240.1,236.9 L238,237.5 L235.8,238.1 L233.5,238.7 L231.2,239.3 L228.8,239.8 L226.3,240.3 L223.7,240.8 L221.1,241.3 L218.5,241.8 L215.7,242.2 L212.9,242.6 L210.1,243 L207.2,243.3 L204.3,243.7 L201.3,244 L198.3,244.3 L195.2,244.6 L192.1,244.8 L189,245 L185.9,245.2 L182.7,245.4 L179.5,245.6 L176.3,245.7 L173,245.8 L169.8,245.9 L166.5,246 L163.3,246 L160,246 L156.7,246 L153.5,246 L150.2,245.9 L147,245.8 L143.7,245.7 L140.5,245.6 L137.3,245.4 L134.1,245.2 L131,245 L127.9,244.8 L124.8,244.6 L121.7,244.3 L118.7,244 L115.7,243.7 L112.8,243.3 L109.9,243 L107.1,242.6 L104.3,242.2 L101.5,241.8 L98.9,241.3 L96.3,240.8 L93.7,240.3 L91.2,239.8 L88.8,239.3 L86.5,238.7 L84.2,238.1 L82,237.5 L79.9,236.9 L77.8,236.2 L75.9,235.5 L74,234.8 L72.2,234.1 L70.5,233.4 L68.9,232.6 L67.3,231.9 L65.9,231.1 L64.6,230.2 L63.3,229.4 L62.1,228.5 L61.1,227.7 L60.1,226.8 L59.3,225.9 L58.5,224.9 L57.8,224 L57.3,223 L56.8,222 L56.5,221 L56.2,220 L56.1,218.9 L56,217.9 L56.1,216.8 L56.2,215.7 L56.5,214.6 L56.8,213.5 L57.3,212.3 L57.8,211.2 L58.5,210 L59.3,208.8 L60.1,207.6 L61.1,206.4 L62.1,205.2 L63.3,204 L64.6,202.7 L65.9,201.4 L67.3,200.2 L68.9,198.9 L70.5,197.6 L72.2,196.2 L74,194.9 L75.9,193.6 L77.8,192.2 L79.9,190.9 L82,189.5 L84.2,188.1 L86.5,186.7 L88.8,185.3 L91.2,183.9 L93.7,182.5 L96.3,181.1 L98.9,179.7 L101.5,178.2 L104.3,176.8 L107.1,175.3 L109.9,173.9 L112.8,172.4 L115.7,170.9 L118.7,169.5 L121.7,168 L124.8,166.5 L127.9,165 L131,163.5 L134.1,162 L137.3,160.5 L140.5,159 L143.7,157.5 L147,156 L150.2,154.5 L153.5,153 L156.7,151.5 L160,150 L163.3,148.5 L166.5,147 L169.8,145.5 L173,144 L176.3,142.5 L179.5,141 L182.7,139.5 L185.9,138 L189,136.5 L192.1,135 L195.2,133.5 L198.3,132 L201.3,130.5 L204.3,129.1 L207.2,127.6 L210.1,126.1 L212.9,124.7 L215.7,123.2 L218.5,121.8 L221.1,120.3 L223.7,118.9 L226.3,117.5 L228.8,116.1 L231.2,114.7 L233.5,113.3 L235.8,111.9 L238,110.5 L240.1,109.1 L242.2,107.8 L244.1,106.4 L246,105.1 L247.8,103.8 L249.5,102.4 L251.1,101.1 L252.7,99.8 L254.1,98.6 L255.4,97.3 L256.7,96 L257.9,94.8 L258.9,93.6 L259.9,92.4 L260.7,91.2 L261.5,90 L262.2,88.8 L262.7,87.7 L263.2,86.5 L263.5,85.4 L263.8,84.3 L263.9,83.2 L264,82.1 L263.9,81.1 L263.8,80 L263.5,79 L263.2,78 L262.7,77 L262.2,76 L261.5,75.1 L260.7,74.1 L259.9,73.2 L258.9,72.3 L257.9,71.5 L256.7,70.6 L255.4,69.8 L254.1,68.9 L252.7,68.1 L251.1,67.4 L249.5,66.6 L247.8,65.9 L246,65.2 L244.1,64.5 L242.2,63.8 L240.1,63.1 L238,62.5 L235.8,61.9 L233.5,61.3 L231.2,60.7 L228.8,60.2 L226.3,59.7 L223.7,59.2 L221.1,58.7 L218.5,58.2 L215.7,57.8 L212.9,57.4 L210.1,57 L207.2,56.7 L204.3,56.3 L201.3,56 L198.3,55.7 L195.2,55.4 L192.1,55.2 L189,55 L185.9,54.8 L182.7,54.6 L179.5,54.4 L176.3,54.3 L173,54.2 L169.8,54.1 L166.5,54 L163.3,54 L160,54 L156.7,54 L153.5,54 L150.2,54.1 L147,54.2 L143.7,54.3 L140.5,54.4 L137.3,54.6 L134.1,54.8 L131,55 L127.9,55.2 L124.8,55.4 L121.7,55.7 L118.7,56 L115.7,56.3 L112.8,56.7 L109.9,57 L107.1,57.4 L104.3,57.8 L101.5,58.2 L98.9,58.7 L96.3,59.2 L93.7,59.7 L91.2,60.2 L88.8,60.7 L86.5,61.3 L84.2,61.9 L82,62.5 L79.9,63.1 L77.8,63.8 L75.9,64.5 L74,65.2 L72.2,65.9 L70.5,66.6 L68.9,67.4 L67.3,68.1 L65.9,68.9 L64.6,69.8 L63.3,70.6 L62.1,71.5 L61.1,72.3 L60.1,73.2 L59.3,74.1 L58.5,75.1 L57.8,76 L57.3,77 L56.8,78 L56.5,79 L56.2,80 L56.1,81.1 L56,82.1 L56.1,83.2 L56.2,84.3 L56.5,85.4 L56.8,86.5 L57.3,87.7 L57.8,88.8 L58.5,90 L59.3,91.2 L60.1,92.4 L61.1,93.6 L62.1,94.8 L63.3,96 L64.6,97.3 L65.9,98.6 L67.3,99.8 L68.9,101.1 L70.5,102.4 L72.2,103.8 L74,105.1 L75.9,106.4 L77.8,107.8 L79.9,109.1 L82,110.5 L84.2,111.9 L86.5,113.3 L88.8,114.7 L91.2,116.1 L93.7,117.5 L96.3,118.9 L98.9,120.3 L101.5,121.8 L104.3,123.2 L107.1,124.7 L109.9,126.1 L112.8,127.6 L115.7,129.1 L118.7,130.5 L121.7,132 L124.8,133.5 L127.9,135 L131,136.5 L134.1,138 L137.3,139.5 L140.5,141 L143.7,142.5 L147,144 L150.2,145.5 L153.5,147 L156.7,148.5" class="fig-curve"/>
+<circle cx="160" cy="150" r="3.5" class="fig-arrowhead"/>
+<text x="172" y="154" class="fig-label fig-small fig-it">β(0) = β(±π)</text>
+<text x="170" y="56" class="fig-label fig-small fig-it">t = π/2</text>
+<text x="356" y="30" class="fig-label">(b)</text>
+<path d="M549.1,343.8 L544.1,334.2 L539.3,325 L534.5,316.1 L529.8,307.5 L525.3,299.3 L520.7,291.3 L516.3,283.6 L512,276.1 L507.7,269 L503.5,262.1 L499.4,255.5 L495.4,249.2 L491.5,243.1 L487.6,237.3 L483.8,231.7 L480.2,226.4 L476.6,221.3 L473,216.5 L469.6,211.8 L466.2,207.4 L463,203.2 L459.8,199.2 L456.7,195.4 L453.7,191.9 L450.7,188.5 L447.9,185.3 L445.1,182.2 L442.4,179.4 L439.8,176.7 L437.3,174.2 L434.8,171.9 L432.5,169.7 L430.2,167.7 L428,165.8 L425.9,164 L423.8,162.4 L421.9,160.9 L420,159.6 L418.3,158.3 L416.6,157.2 L414.9,156.2 L413.4,155.2 L412,154.4 L410.6,153.7 L409.3,153 L408.1,152.5 L407,152 L406,151.6 L405,151.2 L404.1,150.9 L403.4,150.7 L402.6,150.5 L402,150.3 L401.5,150.2 L401,150.1 L400.7,150.1 L400.4,150 L400.2,150 L400,150 L400,150 L400,150 L400.2,150 L400.4,150 L400.7,149.9 L401,149.9 L401.5,149.8 L402,149.7 L402.6,149.5 L403.4,149.3 L404.1,149.1 L405,148.8 L406,148.4 L407,148 L408.1,147.5 L409.3,147 L410.6,146.3 L412,145.6 L413.4,144.8 L414.9,143.8 L416.6,142.8 L418.3,141.7 L420,140.4 L421.9,139.1 L423.8,137.6 L425.9,136 L428,134.2 L430.2,132.3 L432.5,130.3 L434.8,128.1 L437.3,125.8 L439.8,123.3 L442.4,120.6 L445.1,117.8 L447.9,114.7 L450.7,111.5 L453.7,108.1 L456.7,104.6 L459.8,100.8 L463,96.8 L466.2,92.6 L469.6,88.2 L473,83.5 L476.6,78.7 L480.2,73.6 L483.8,68.3 L487.6,62.7 L491.5,56.9 L495.4,50.8 L499.4,44.5 L503.5,37.9 L507.7,31 L512,23.9 L516.3,16.4 L520.7,8.7 L525.3,0.7 L529.8,-7.5 L534.5,-16.1 L539.3,-25 L544.1,-34.2 L549.1,-43.8" class="fig-curve"/>
+<circle cx="400" cy="150" r="3.5" class="fig-arrowhead"/>
+<text x="390" y="170" text-anchor="end" class="fig-label fig-small fig-it">t = 0</text>
+<line x1="376" y1="150" x2="590" y2="150" class="fig-guide"/>
+<text x="596" y="166" text-anchor="end" class="fig-label fig-small fig-it">(t², t³)</text>
+</svg>
+                    <figcaption><strong>Figura 3.6.1.</strong> (a) A figura-oito $\beta(t)=(\sin2t,\sin t)$,
+                        $t\in(-\pi,\pi)$: uma imersão injetiva que não é um mergulho, porque os dois extremos do
+                        intervalo se acumulam na origem, por onde $\beta$ também passa em $t=0$. (b) A cúspide
+                        $(t^2,t^3)$: injetiva e homeomorfismo sobre a imagem, mas não é imersão em $t=0$, onde a
+                        velocidade se anula. Os dois exemplos falham por motivos diferentes, um topológico e
+                        outro diferencial.</figcaption>
+                </figure>
+
+                <p>
+                    Há, porém, uma situação em que a injetividade basta.
+                </p>
+
+                <div class="definition-box" id="prop-3-6-12">
+                    <p><strong>Proposição 3.6.12 (Imersão injetiva de compacto).</strong> Se $N$ é compacta e
+                        $F: N\to M$ é uma imersão injetiva, então $F$ é um mergulho.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> $F$ é contínua e injetiva, $N$ é compacta e $M$ é de Hausdorff. Pelo
+                    lema da aplicação fechada
+                    (<a href="[02] - Preliminares de Topologia e Cálculo.html#lema-3-2-32">Lema 3.2.32</a>(c)), $F$ é um homeomorfismo sobre $F(N)$ com a topologia de
+                    subespaço. Como $F$ é uma imersão, é um mergulho. $\blacksquare$
+                </p>
+
+                <h2 id="subvariedades-mergulhadas">Subvariedades mergulhadas</h2>
+
+                <p>
+                    A definição seguinte diz como é uma subvariedade em coordenadas: um pedaço de $\mathbb{R}^k$
+                    dentro de $\mathbb{R}^n$, "retificado". Para $0\le k\le n$, identificamos
+                    $\mathbb{R}^k$ com $\mathbb{R}^k\times\{0\}\subset\mathbb{R}^n$.
+                </p>
+
+                <div class="definition-box" id="def-3-6-13" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.6.13 (Subvariedade mergulhada).</strong> Seja $M$ uma variedade de
+                        dimensão $n$. Um subconjunto $S\subset M$ é uma <strong>subvariedade mergulhada</strong>
+                        de dimensão $k$ se todo $p\in S$ está no domínio de uma carta $(U,\varphi)$ de $M$ tal que</p>
+                    <p>$$ \varphi(S\cap U) = \varphi(U)\cap\big(\mathbb{R}^k\times\{0\}\big) = \{x\in\varphi(U): x^{k+1}=\dots=x^n=0\}. \tag{3.6.2} $$</p>
+                    <p>Uma tal carta é uma <strong>carta adaptada</strong> a $S$ (ou carta de fatia), e $S\cap U$ é uma
+                        <strong>fatia</strong>. O número $n-k$ é a <strong>codimensão</strong> de $S$ em $M$.</p>
+                </div>
+
+                <figure class="lecture-figure" id="fig-3-6-2">
+                    <svg viewBox="0 0 640 290" role="img" aria-label="À esquerda, uma região M em forma de mancha com uma curva S que a atravessa e um disco sombreado U que corta a curva. À direita, um quadro que representa R^n com um retângulo sombreado, a imagem phi de U, atravessado por uma reta horizontal, R^k vezes zero. Uma seta rotulada phi liga os dois. O pedaço da curva que está dentro de U vira, pela carta, um segmento da reta horizontal dentro do retângulo: a curva foi retificada.">
+<defs><marker id="arr-3-6-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<path d="M 30,150 C 24,84 76,38 140,42 C 208,38 262,84 262,150 C 264,216 210,258 140,256 C 70,260 34,214 30,150 Z" class="fig-frame"/>
+<text x="44" y="66" class="fig-label fig-it">M</text>
+<path d="M36,168 L40.8,165.2 L45.6,162.4 L50.4,159.4 L55.2,156.1 L60,152.6 L64.8,148.8 L69.6,144.7 L74.4,140.1 L79.2,135.3 L84,130.2 L88.8,124.9 L93.6,119.4 L98.4,113.9 L103.2,108.4 L108,103.1 L112.8,98.2 L117.6,93.6 L122.4,89.6 L127.2,86.2 L132,83.6 L136.8,81.8 L141.6,80.9 L146.4,81 L151.2,82 L156,84 L160.8,87 L165.6,90.8 L170.4,95.4 L175.2,100.7 L180,106.7 L184.8,113.1 L189.6,119.9 L194.4,126.8 L199.2,133.9 L204,140.9 L208.8,147.8 L213.6,154.4 L218.4,160.6 L223.2,166.4 L228,171.8 L232.8,176.6 L237.6,181 L242.4,184.8 L247.2,188.3 L252,191.3 L256.8,194" class="fig-curve"/>
+<text x="236" y="112" class="fig-label fig-it">S</text>
+<circle cx="148" cy="124" r="62" class="fig-band"/>
+<circle cx="148" cy="124" r="62" class="fig-shape"/>
+<path d="M88.8,124.9 L93.6,119.4 L98.4,113.9 L103.2,108.4 L108,103.1 L112.8,98.2 L117.6,93.6 L122.4,89.6 L127.2,86.2 L132,83.6 L136.8,81.8 L141.6,80.9 L146.4,81 L151.2,82 L156,84 L160.8,87 L165.6,90.8 L170.4,95.4 L175.2,100.7 L180,106.7 L184.8,113.1 L189.6,119.9 L194.4,126.8 L199.2,133.9 L204,140.9" class="fig-curve"/>
+<text x="92" y="86" class="fig-label fig-it">U</text>
+<rect x="372" y="66" width="250" height="188" rx="4" class="fig-frame"/>
+<text x="614" y="86" text-anchor="end" class="fig-label fig-it">ℝⁿ</text>
+<rect x="424" y="102" width="146" height="118" rx="2" class="fig-band"/>
+<rect x="424" y="102" width="146" height="118" rx="2" class="fig-shape"/>
+<line x1="380" y1="160" x2="614" y2="160" class="fig-guide"/>
+<line x1="424" y1="160" x2="570" y2="160" class="fig-curve"/>
+<text x="438" y="120" class="fig-label fig-small fig-it">φ(U)</text>
+<text x="386" y="152" class="fig-label fig-small fig-it">ℝᵏ × {0}</text>
+<text x="502" y="180" class="fig-label fig-small fig-it">φ(S ∩ U)</text>
+<line x1="214" y1="124" x2="362" y2="150" class="fig-curve" marker-end="url(#arr-3-6-2)"/>
+<text x="292" y="126" text-anchor="middle" class="fig-label fig-it">φ</text>
+</svg>
+                    <figcaption><strong>Figura 3.6.2.</strong> Uma carta adaptada $(U,\varphi)$ a uma curva $S$
+                        em $M$. Em $U$ (sombreado), a curva $S\cap U$ é levada por $\varphi$ em um pedaço do eixo
+                        $\mathbb{R}^k\times\{0\}$ (aqui, $k=1$): a carta "retifica" $S$. Fora de $U$, nada se
+                        exige.</figcaption>
+                </figure>
+
+                <p>
+                    A condição (3.6.2) exige que, perto de cada ponto, $S$ seja <em>exatamente</em> a imagem
+                    inversa de um subespaço coordenado. Observe que $S\cap U$ é um subconjunto de $M$ com a topologia
+                    de subespaço: a definição só fala da topologia herdada de $M$.
+                </p>
+
+                <div class="definition-box" id="teo-3-6-14">
+                    <p><strong>Teorema 3.6.14 (Estrutura de uma subvariedade mergulhada).</strong> Seja
+                        $S\subset M$ uma subvariedade mergulhada de dimensão $k$, com a topologia de subespaço. Então
+                        $S$ é uma variedade topológica de dimensão $k$ e tem uma estrutura diferenciável, para a qual
+                        as cartas</p>
+                    <p>$$ \varphi_S = \pi\circ\varphi\vert_{S\cap U}: S\cap U\longrightarrow\mathbb{R}^k, $$</p>
+                    <p>com $(U,\varphi)$ carta adaptada e $\pi:\mathbb{R}^n\to\mathbb{R}^k$ a projeção sobre as primeiras $k$
+                        coordenadas, formam um atlas suave, e a inclusão $\iota: S\hookrightarrow M$ é um
+                        mergulho. Essa é a única estrutura diferenciável em $S$ para a qual $\iota$ é um mergulho.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> <strong>Topologia.</strong> $S$ é de Hausdorff e segundo-contável por ser
+                    subespaço de $M$ (<a href="[02] - Preliminares de Topologia e Cálculo.html#prop-3-2-22">Proposição 3.2.22</a> e
+                    <a href="[02] - Preliminares de Topologia e Cálculo.html#prop-3-2-25">Proposição 3.2.25</a>).
+                </p>
+
+                <p>
+                    <strong>As cartas.</strong> Seja $(U,\varphi)$ adaptada. O conjunto $S\cap U$ é aberto em
+                    $S$, e, por (3.6.2), $\varphi$ leva $S\cap U$ homeomorficamente sobre
+                    $\varphi(U)\cap(\mathbb{R}^k\times\{0\})$. A projeção $\pi$ restrita a $\mathbb{R}^k\times\{0\}$ é um
+                    homeomorfismo sobre $\mathbb{R}^k$, e leva essa interseção sobre
+                    $\hat{U}_S=\{x\in\mathbb{R}^k:(x,0)\in\varphi(U)\}$, que é aberto em $\mathbb{R}^k$ (pré-imagem do
+                    aberto $\varphi(U)$ pela aplicação contínua $x\mapsto(x,0)$). Portanto $\varphi_S$ é um
+                    homeomorfismo de $S\cap U$ sobre o aberto $\hat{U}_S$: uma carta de $S$. Os domínios
+                    $S\cap U$ cobrem $S$.
+                </p>
+
+                <p>
+                    <strong>Transições.</strong> Sejam $(U,\varphi)$ e $(V,\psi)$ adaptadas. Em
+                    $\varphi_S(S\cap U\cap V)$,
+                </p>
+
+                <p>
+                    $$ \psi_S\circ\varphi_S^{-1}(x) = \pi\circ\psi\circ\varphi^{-1}(x,0), $$
+                </p>
+
+                <p>
+                    composta de $x\mapsto(x,0)$ (linear), da transição $\psi\circ\varphi^{-1}$ (suave) e de $\pi$
+                    (linear): suave. Assim as cartas formam um atlas suave, e $S$ é uma variedade diferenciável
+                    de dimensão $k$.
+                </p>
+
+                <p>
+                    <strong>A inclusão.</strong> Em cartas $\varphi_S$ e $\varphi$, a representação de $\iota$ é
+                    $\varphi\circ\iota\circ\varphi_S^{-1}(x)=(x,0)$, suave com jacobiana injetiva: $\iota$ é uma
+                    imersão. É um homeomorfismo sobre a imagem $S$, pois a topologia de $S$ é a de subespaço. Logo
+                    $\iota$ é um mergulho. A unicidade da estrutura é demonstrada em Lee, capítulo 5, e não será
+                    usada neste curso além do que segue. $\blacksquare$
+                </p>
+
+                <p>
+                    Daqui em diante, toda subvariedade mergulhada é considerada com essa estrutura. Quando se diz
+                    que $S\subset M$ é uma "subvariedade", sem outro adjetivo, entende-se que é mergulhada.
+                </p>
+
+                <div class="definition-box" id="teo-3-6-15">
+                    <p><strong>Teorema 3.6.15 (A imagem de um mergulho é uma subvariedade).</strong> Seja
+                        $F: N\to M$ um mergulho, com $\dim N=k$ e $\dim M=n$. Então $S=F(N)$ é uma subvariedade
+                        mergulhada de $M$ de dimensão $k$, e $F: N\to S$ é um difeomorfismo, com a estrutura de
+                        $S$ dada pelo Teorema 3.6.14.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Seja $p=F(q)\in S$. Como $F$ é uma imersão, o Corolário 3.6.9(a) dá cartas
+                    $(U_0,\varphi)$ de $N$, centrada em $q$, e $(V,\psi)$ de $M$, centrada em $p$, com
+                    $F(U_0)\subset V$ e $\hat{F}(x)=(x,0)$ em $\hat{U}_0=\varphi(U_0)$. Como $F$ é um homeomorfismo
+                    sobre $S$ com a topologia de subespaço, o aberto $F(U_0)$ de $S$ é da forma
+                    $F(U_0)=S\cap W$ com $W$ aberto em $M$. Defina o aberto
+                </p>
+
+                <p>
+                    $$ V_1 = V\cap W\cap\psi^{-1}\big(\hat{U}_0\times\mathbb{R}^{n-k}\big) $$
+                </p>
+
+                <p>
+                    de $M$, que contém $p$ (pois $\psi(p)=(0,0)$ e $0\in\hat{U}_0$), e considere a carta
+                    $(V_1,\psi\vert_{V_1})$. Afirmamos que
+                    $\psi(S\cap V_1)=\psi(V_1)\cap(\mathbb{R}^k\times\{0\})$. Se $y\in S\cap V_1$, então
+                    $y\in S\cap W=F(U_0)$, digamos $y=F(q')$ com $q'\in U_0$, e $\psi(y)=\hat{F}(\varphi(q'))=(\varphi(q'),0)$,
+                    que está em $\mathbb{R}^k\times\{0\}$. Reciprocamente, seja $z=(x,0)\in\psi(V_1)$. Como
+                    $\psi(V_1)\subset\hat{U}_0\times\mathbb{R}^{n-k}$, vale $x\in\hat{U}_0$, e $x=\varphi(q')$ para algum
+                    $q'\in U_0$; então $F(q')=\psi^{-1}(\hat{F}(x))=\psi^{-1}(x,0)=\psi^{-1}(z)\in S\cap V_1$, e
+                    $z\in\psi(S\cap V_1)$. Logo $(V_1,\psi\vert_{V_1})$ é uma carta adaptada, e $S$ é uma subvariedade
+                    mergulhada.
+                </p>
+
+                <p>
+                    Finalmente, $F: N\to S$ é bijetora, e é um homeomorfismo. Nas cartas $\varphi$ de $N$ e
+                    $\psi_S=\pi\circ\psi$ de $S$, a representação é $\psi_S\circ F\circ\varphi^{-1}(x)=\pi(x,0)=x$,
+                    a identidade; portanto $F$ e sua inversa são suaves, e $F$ é um difeomorfismo. $\blacksquare$
+                </p>
+
+                <p id="ex-3-6-16"><strong>Exemplo 3.6.16 (Abertos e gráficos).</strong> Um aberto $W\subset M$ é uma
+                    subvariedade mergulhada de codimensão $0$: toda carta de $M$ restrita a $W$ é adaptada, com
+                    $k=n$ e (3.6.2) trivial, e a estrutura do Teorema 3.6.14 é a do
+                    <a href="[03] - Variedades Diferenciáveis.html#ex-3-3-18">Exemplo 3.3.18</a>. O gráfico $\Gamma_f=\{(x,f(x)):x\in U\}$ de uma função suave
+                    $f: U\to\mathbb{R}^k$, $U\subset\mathbb{R}^n$ aberto, é uma subvariedade mergulhada de dimensão $n$
+                    de $\mathbb{R}^{n+k}$: a aplicação
+                </p>
+
+                <p>
+                    $$ \varphi: U\times\mathbb{R}^k\to U\times\mathbb{R}^k, \qquad \varphi(x,y)=(x,\ y-f(x)) $$
+                </p>
+
+                <p>
+                    é um difeomorfismo entre abertos de $\mathbb{R}^{n+k}$, com inversa $(x,z)\mapsto(x,z+f(x))$, e
+                    portanto uma carta de $\mathbb{R}^{n+k}$ (<a href="[03] - Variedades Diferenciáveis.html#obs-3-3-14">Observação 3.3.14</a>); e
+                    $\varphi(\Gamma_f)=\{(x,0):x\in U\}=\varphi(U\times\mathbb{R}^k)\cap(\mathbb{R}^n\times\{0\})$.
+                    A carta é adaptada, e a estrutura de $\Gamma_f$ é a do
+                    <a href="[03] - Variedades Diferenciáveis.html#ex-3-3-20">Exemplo 3.3.20</a>: a projeção $(x,y)\mapsto x$ é a carta global. O
+                    <a href="[03] - Variedades Diferenciáveis.html#exr-3-3-5">Exercício 3.3.5</a> fica agora esclarecido: o semicone é o
+                    gráfico de uma função contínua, mas não suave, de modo que o argumento acima não se aplica a
+                    ele. A carta global $(x,y)$ do semicone é uma carta da variedade abstrata, e não é uma
+                    carta de $\mathbb{R}^3$: o "bico" no vértice é uma propriedade da maneira como o semicone está
+                    colocado em $\mathbb{R}^3$, e a distinção entre "ser uma variedade" e "ser uma subvariedade
+                    mergulhada" é a que este tópico formaliza.</p>
+
+                <h2 id="conjuntos-de-nivel">Conjuntos de nível</h2>
+
+                <p>
+                    Na prática, quase nenhuma subvariedade é dada por uma carta adaptada: é dada por uma equação
+                    $\Phi(x)=c$. A questão é saber quando uma equação define uma subvariedade, e a resposta
+                    é um critério sobre a diferencial de $\Phi$.
+                </p>
+
+                <div class="definition-box" id="def-3-6-17" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.6.17 (Ponto regular, valor regular).</strong> Seja $\Phi: M\to N$
+                        suave. Um ponto $p\in M$ é <strong>regular</strong> se $d\Phi_p$ é sobrejetiva, e
+                        <strong>crítico</strong> caso contrário. Um ponto $c\in N$ é um <strong>valor regular</strong>
+                        se todo ponto de $\Phi^{-1}(c)$ é regular, e um <strong>valor crítico</strong> caso contrário.</p>
+                </div>
+
+                <p>
+                    Um valor $c$ que não pertence à imagem de $\Phi$ é, por vacuidade, um valor regular. Um ponto de $M$
+                    e um ponto de $N$ têm papéis diferentes: "regular" aplica-se a pontos do domínio, "valor
+                    regular" a pontos do contradomínio, e um valor é regular quando <em>todos</em> os pontos
+                    sobre ele o são.
+                </p>
+
+                <div class="definition-box" id="teo-3-6-18">
+                    <p><strong>Teorema 3.6.18 (Teorema do valor regular).</strong> Sejam $M$ e $N$ variedades
+                        de dimensões $n$ e $m$, $\Phi: M\to N$ suave e $c\in N$ um valor regular. Então
+                        $S=\Phi^{-1}(c)$ é uma subvariedade mergulhada de $M$ de dimensão $n-m$, fechada em $M$
+                        (possivelmente vazia).</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Seja $p\in S$. Como $d\Phi_p$ é sobrejetiva, o Corolário 3.6.9(b) dá cartas
+                    $(U,\varphi)$ de $M$, centrada em $p$, e $(V,\psi)$ de $N$, centrada em $c=\Phi(p)$, com
+                    $\Phi(U)\subset V$ e
+                </p>
+
+                <p>
+                    $$ \hat{\Phi}(x^1,\dots,x^n)=(x^1,\dots,x^m). $$
+                </p>
+
+                <p>
+                    Como $\psi$ é injetiva e $\psi(c)=0$, um ponto $q\in U$ está em $S$ se, e somente se,
+                    $\psi(\Phi(q))=0$, isto é, $\hat{\Phi}(\varphi(q))=0$, isto é,
+                    $x^1(q)=\dots=x^m(q)=0$. Assim
+                </p>
+
+                <p>
+                    $$ \varphi(S\cap U) = \{x\in\varphi(U): x^1=\dots=x^m=0\}. $$
+                </p>
+
+                <p>
+                    Isto é (3.6.2), a menos da <em>ordem</em> das coordenadas: as coordenadas que se anulam são as
+                    $m$ primeiras, e não as últimas. Compondo $\varphi$ com a aplicação linear
+                    invertível $(x^1,\dots,x^n)\mapsto(x^{m+1},\dots,x^n,x^1,\dots,x^m)$, que é um difeomorfismo de
+                    $\mathbb{R}^n$ (e dá, portanto, uma nova carta, pela <a href="[03] - Variedades Diferenciáveis.html#obs-3-3-14">Observação 3.3.14</a>), obtemos uma carta adaptada, com
+                    $S\cap U$ dado pelo anulamento das últimas $m$ coordenadas. Como $p\in S$ é arbitrário, $S$ é uma
+                    subvariedade mergulhada de dimensão $n-m$. Finalmente, $S=\Phi^{-1}(\{c\})$ é fechado, pois
+                    $\Phi$ é contínua e $\{c\}$ é fechado em $N$ (que é de Hausdorff). $\blacksquare$
+                </p>
+
+                <p>
+                    A ordem em que as coordenadas se anulam é irrelevante: a Definição 3.6.13 poderia ter sido
+                    escrita com quaisquer $n-k$ das coordenadas, pois uma permutação das coordenadas é uma
+                    mudança de carta suave.
+                </p>
+
+                <p id="ex-3-6-19"><strong>Exemplo 3.6.19 (As esferas).</strong> Seja
+                    $\Phi:\mathbb{R}^{n+1}\to\mathbb{R}$, $\Phi(x)=\lvert x\rvert^2$. Sua diferencial em $x$ é o
+                    covetor "linha" $(2x^1,\dots,2x^{n+1})$, que é sobrejetivo, isto é, não nulo, se, e somente se,
+                    $x\ne0$. O único ponto crítico é a origem, e todo $c\gt0$ é valor regular. Pelo Teorema
+                    3.6.18, a esfera $S^n=\Phi^{-1}(1)$ é uma subvariedade mergulhada de $\mathbb{R}^{n+1}$ de
+                    dimensão $n$, sem construir atlas. A estrutura que ela recebe do Teorema 3.6.14 é a mesma
+                    do atlas estereográfico do
+                    <a href="[03] - Variedades Diferenciáveis.html#ex-3-3-23">Exemplo 3.3.23</a>: para a estrutura estereográfica, a inclusão é
+                    uma imersão (Exemplo 3.6.4) e um homeomorfismo sobre a imagem, porque a topologia de $S^n$
+                    é a de subespaço; logo é um mergulho, e a unicidade do Teorema 3.6.14 identifica as duas
+                    estruturas.</p>
+
+                <p id="ex-3-6-20"><strong>Exemplo 3.6.20 (Hiperboloides: a camada de massa).</strong> Em
+                    $\mathbb{R}^4$ com coordenadas $p=(p^0,p^1,p^2,p^3)$, seja
+                </p>
+
+                <p>
+                    $$ \Phi(p) = -(p^0)^2 + (p^1)^2 + (p^2)^2 + (p^3)^2. $$
+                </p>
+
+                <p>
+                    (Aqui $\Phi$ é apenas uma forma quadrática; não usamos nenhuma métrica.) Sua diferencial é
+                    $(-2p^0,2p^1,2p^2,2p^3)$, que se anula somente em $p=0$; e $\Phi(0)=0$. Portanto
+                    <strong>todo $c\ne0$ é valor regular</strong>, e o único valor crítico é $0$. Os níveis são:
+                </p>
+
+                <ul>
+                    <li><strong>$c=-m^2\lt0$: duas folhas.</strong> $\Phi=-m^2$ equivale a
+                        $p^0=\pm\sqrt{m^2+\lvert\vec{p}\rvert^2}$, em que $\vec{p}=(p^1,p^2,p^3)$. São dois gráficos
+                        de uma função suave de $\vec{p}\in\mathbb{R}^3$, disjuntos, e cada um é difeomorfo a
+                        $\mathbb{R}^3$ (<a href="[03] - Variedades Diferenciáveis.html#ex-3-3-20">Exemplo 3.3.20</a>). A folha com $p^0\gt0$ é a <strong>camada de massa</strong>: o
+                        conjunto dos quadrimomentos de uma partícula de massa $m$ (com $c=1$), com energia
+                        $p^0=\sqrt{m^2+\lvert\vec{p}\rvert^2}$.</li>
+                    <li><strong>$c=a^2\gt0$: uma folha.</strong> A aplicação
+                        $\mathbb{R}\times S^2\to\Phi^{-1}(a^2)$, $(s,\omega)\mapsto(s,\sqrt{a^2+s^2}\,\omega)$ é uma bijeção
+                        suave, com inversa suave $p\mapsto(p^0,\vec{p}/\lvert\vec{p}\rvert)$ (note que
+                        $\lvert\vec{p}\rvert\ge a\gt0$ no nível): o nível é difeomorfo a $\mathbb{R}\times S^2$,
+                        conexo.</li>
+                    <li><strong>$c=0$: o cone de luz.</strong> O valor $0$ é crítico, e o cone
+                        $\Phi^{-1}(0)=\{(p^0)^2=\lvert\vec{p}\rvert^2\}$ não é uma subvariedade: o argumento do
+                        <a href="[03] - Variedades Diferenciáveis.html#exr-3-3-5">Exercício 3.3.5</a> se adapta. Fora da origem, o cone é a união
+                        de duas partes, $p^0\gt0$ e $p^0\lt0$, cada uma o gráfico de $\pm\lvert\vec{p}\rvert$ sobre
+                        $\mathbb{R}^3\setminus\{0\}$ (portanto de dimensão $3$ e conexa). Se a origem tivesse uma
+                        vizinhança homeomorfa a um aberto de $\mathbb{R}^n$, o <a href="[03] - Variedades Diferenciáveis.html#teo-3-3-4">Teorema 3.3.4</a> daria $n=3$; a imagem inversa de uma
+                        bola furada em torno da origem seria então conexa (porque $3\ge2$), e, no entanto, encontra as duas
+                        partes, que são abertos disjuntos do cone menos a origem.</li>
+                </ul>
+
+                <figure class="lecture-figure" id="fig-3-6-3" style="overflow-x: auto;">
+                    <svg viewBox="0 0 640 300" role="img" style="min-width: 560px;" aria-label="Três painéis com eixos p um na horizontal e p zero na vertical, e as duas retas a quarenta e cinco graus pontilhadas em cada um. No primeiro, o nível zero da forma quadrática menos p zero ao quadrado mais p um ao quadrado: as duas retas, que se cruzam na origem, formando o cone de luz. No segundo, o nível negativo: duas curvas em forma de hipérbole, uma acima e outra abaixo da origem, as folhas de p zero positivo e de p zero negativo. No terceiro, o nível positivo: duas hipérboles, uma à direita e outra à esquerda, que formam a folha única do hiperboloide e não tocam as retas.">
+<defs><marker id="arr-3-6-3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="20" y1="160" x2="200" y2="160" class="fig-axis" marker-end="url(#arr-3-6-3)"/>
+<line x1="108" y1="248" x2="108" y2="60" class="fig-axis" marker-end="url(#arr-3-6-3)"/>
+<text x="202" y="176" text-anchor="end" class="fig-label fig-small fig-it">p¹</text>
+<text x="100" y="68" text-anchor="end" class="fig-label fig-small fig-it">p⁰</text>
+<text x="108" y="34" text-anchor="middle" class="fig-label">(a)</text>
+<text x="108" y="52" text-anchor="middle" class="fig-label fig-small">Φ = 0</text>
+<line x1="20.6" y1="247.4" x2="195.4" y2="72.6" class="fig-guide fig-dashed"/>
+<line x1="20.6" y1="72.6" x2="195.4" y2="247.4" class="fig-guide fig-dashed"/>
+<line x1="20.6" y1="247.4" x2="195.4" y2="72.6" class="fig-curve"/>
+<line x1="20.6" y1="72.6" x2="195.4" y2="247.4" class="fig-curve"/>
+<circle cx="108" cy="160" r="3.5" class="fig-arrowhead"/>
+<line x1="232" y1="160" x2="412" y2="160" class="fig-axis" marker-end="url(#arr-3-6-3)"/>
+<line x1="320" y1="248" x2="320" y2="60" class="fig-axis" marker-end="url(#arr-3-6-3)"/>
+<text x="414" y="176" text-anchor="end" class="fig-label fig-small fig-it">p¹</text>
+<text x="312" y="68" text-anchor="end" class="fig-label fig-small fig-it">p⁰</text>
+<text x="320" y="34" text-anchor="middle" class="fig-label">(b)</text>
+<text x="320" y="52" text-anchor="middle" class="fig-label fig-small">Φ = −m² &lt; 0</text>
+<line x1="232.6" y1="247.4" x2="407.4" y2="72.6" class="fig-guide fig-dashed"/>
+<line x1="232.6" y1="72.6" x2="407.4" y2="247.4" class="fig-guide fig-dashed"/>
+<path d="M232.6,65.2 L234.8,67.2 L237,69.2 L239.2,71.2 L241.3,73.2 L243.5,75.1 L245.7,77.1 L247.9,79 L250.1,81 L252.3,82.9 L254.4,84.8 L256.6,86.7 L258.8,88.6 L261,90.5 L263.2,92.3 L265.4,94.1 L267.6,95.9 L269.7,97.7 L271.9,99.5 L274.1,101.2 L276.3,102.9 L278.5,104.5 L280.7,106.1 L282.9,107.7 L285,109.2 L287.2,110.7 L289.4,112.1 L291.6,113.5 L293.8,114.8 L296,116 L298.1,117.2 L300.3,118.3 L302.5,119.3 L304.7,120.1 L306.9,120.9 L309.1,121.6 L311.3,122.2 L313.4,122.6 L315.6,122.9 L317.8,123.1 L320,123.2 L322.2,123.1 L324.4,122.9 L326.6,122.6 L328.7,122.2 L330.9,121.6 L333.1,120.9 L335.3,120.1 L337.5,119.3 L339.7,118.3 L341.9,117.2 L344,116 L346.2,114.8 L348.4,113.5 L350.6,112.1 L352.8,110.7 L355,109.2 L357.1,107.7 L359.3,106.1 L361.5,104.5 L363.7,102.9 L365.9,101.2 L368.1,99.5 L370.3,97.7 L372.4,95.9 L374.6,94.1 L376.8,92.3 L379,90.5 L381.2,88.6 L383.4,86.7 L385.6,84.8 L387.7,82.9 L389.9,81 L392.1,79 L394.3,77.1 L396.5,75.1 L398.7,73.2 L400.8,71.2 L403,69.2 L405.2,67.2 L407.4,65.2" class="fig-curve"/>
+<path d="M232.6,254.8 L234.8,252.8 L237,250.8 L239.2,248.8 L241.3,246.8 L243.5,244.9 L245.7,242.9 L247.9,241 L250.1,239 L252.3,237.1 L254.4,235.2 L256.6,233.3 L258.8,231.4 L261,229.5 L263.2,227.7 L265.4,225.9 L267.6,224.1 L269.7,222.3 L271.9,220.5 L274.1,218.8 L276.3,217.1 L278.5,215.5 L280.7,213.9 L282.9,212.3 L285,210.8 L287.2,209.3 L289.4,207.9 L291.6,206.5 L293.8,205.2 L296,204 L298.1,202.8 L300.3,201.7 L302.5,200.7 L304.7,199.9 L306.9,199.1 L309.1,198.4 L311.3,197.8 L313.4,197.4 L315.6,197.1 L317.8,196.9 L320,196.8 L322.2,196.9 L324.4,197.1 L326.6,197.4 L328.7,197.8 L330.9,198.4 L333.1,199.1 L335.3,199.9 L337.5,200.7 L339.7,201.7 L341.9,202.8 L344,204 L346.2,205.2 L348.4,206.5 L350.6,207.9 L352.8,209.3 L355,210.8 L357.1,212.3 L359.3,213.9 L361.5,215.5 L363.7,217.1 L365.9,218.8 L368.1,220.5 L370.3,222.3 L372.4,224.1 L374.6,225.9 L376.8,227.7 L379,229.5 L381.2,231.4 L383.4,233.3 L385.6,235.2 L387.7,237.1 L389.9,239 L392.1,241 L394.3,242.9 L396.5,244.9 L398.7,246.8 L400.8,248.8 L403,250.8 L405.2,252.8 L407.4,254.8" class="fig-curve"/>
+<text x="364" y="102" class="fig-label fig-small fig-it">p⁰ &gt; 0</text>
+<text x="364" y="230" class="fig-label fig-small fig-it">p⁰ &lt; 0</text>
+<line x1="444" y1="160" x2="624" y2="160" class="fig-axis" marker-end="url(#arr-3-6-3)"/>
+<line x1="532" y1="248" x2="532" y2="60" class="fig-axis" marker-end="url(#arr-3-6-3)"/>
+<text x="626" y="176" text-anchor="end" class="fig-label fig-small fig-it">p¹</text>
+<text x="524" y="68" text-anchor="end" class="fig-label fig-small fig-it">p⁰</text>
+<text x="532" y="34" text-anchor="middle" class="fig-label">(c)</text>
+<text x="532" y="52" text-anchor="middle" class="fig-label fig-small">Φ = a² &gt; 0</text>
+<line x1="444.6" y1="247.4" x2="619.4" y2="72.6" class="fig-guide fig-dashed"/>
+<line x1="444.6" y1="72.6" x2="619.4" y2="247.4" class="fig-guide fig-dashed"/>
+<path d="M626.8,247.4 L624.8,245.2 L622.8,243 L620.8,240.8 L618.8,238.7 L616.9,236.5 L614.9,234.3 L613,232.1 L611,229.9 L609.1,227.7 L607.2,225.6 L605.3,223.4 L603.4,221.2 L601.5,219 L599.7,216.8 L597.9,214.6 L596.1,212.4 L594.3,210.3 L592.5,208.1 L590.8,205.9 L589.1,203.7 L587.5,201.5 L585.9,199.3 L584.3,197.1 L582.8,195 L581.3,192.8 L579.9,190.6 L578.5,188.4 L577.2,186.2 L576,184 L574.8,181.8 L573.7,179.7 L572.7,177.5 L571.9,175.3 L571.1,173.1 L570.4,170.9 L569.8,168.7 L569.4,166.6 L569.1,164.4 L568.9,162.2 L568.8,160 L568.9,157.8 L569.1,155.6 L569.4,153.4 L569.8,151.3 L570.4,149.1 L571.1,146.9 L571.9,144.7 L572.7,142.5 L573.7,140.3 L574.8,138.2 L576,136 L577.2,133.8 L578.5,131.6 L579.9,129.4 L581.3,127.2 L582.8,125 L584.3,122.9 L585.9,120.7 L587.5,118.5 L589.1,116.3 L590.8,114.1 L592.5,111.9 L594.3,109.7 L596.1,107.6 L597.9,105.4 L599.7,103.2 L601.5,101 L603.4,98.8 L605.3,96.6 L607.2,94.5 L609.1,92.3 L611,90.1 L613,87.9 L614.9,85.7 L616.9,83.5 L618.8,81.3 L620.8,79.2 L622.8,77 L624.8,74.8 L626.8,72.6" class="fig-curve"/>
+<path d="M437.2,247.4 L439.2,245.2 L441.2,243 L443.2,240.8 L445.2,238.7 L447.1,236.5 L449.1,234.3 L451,232.1 L453,229.9 L454.9,227.7 L456.8,225.6 L458.7,223.4 L460.6,221.2 L462.5,219 L464.3,216.8 L466.1,214.6 L467.9,212.4 L469.7,210.3 L471.5,208.1 L473.2,205.9 L474.9,203.7 L476.5,201.5 L478.1,199.3 L479.7,197.1 L481.2,195 L482.7,192.8 L484.1,190.6 L485.5,188.4 L486.8,186.2 L488,184 L489.2,181.8 L490.3,179.7 L491.3,177.5 L492.1,175.3 L492.9,173.1 L493.6,170.9 L494.2,168.7 L494.6,166.6 L494.9,164.4 L495.1,162.2 L495.2,160 L495.1,157.8 L494.9,155.6 L494.6,153.4 L494.2,151.3 L493.6,149.1 L492.9,146.9 L492.1,144.7 L491.3,142.5 L490.3,140.3 L489.2,138.2 L488,136 L486.8,133.8 L485.5,131.6 L484.1,129.4 L482.7,127.2 L481.2,125 L479.7,122.9 L478.1,120.7 L476.5,118.5 L474.9,116.3 L473.2,114.1 L471.5,111.9 L469.7,109.7 L467.9,107.6 L466.1,105.4 L464.3,103.2 L462.5,101 L460.6,98.8 L458.7,96.6 L456.8,94.5 L454.9,92.3 L453,90.1 L451,87.9 L449.1,85.7 L447.1,83.5 L445.2,81.3 L443.2,79.2 L441.2,77 L439.2,74.8 L437.2,72.6" class="fig-curve"/>
+</svg>
+                    <figcaption><strong>Figura 3.6.3.</strong> Corte do plano $(p^1,p^0)$ pelos níveis de
+                        $\Phi=-(p^0)^2+\lvert\vec{p}\rvert^2$. (a) O nível $0$, o cone de luz, é um par de retas
+                        que se cruzam na origem, o único ponto crítico. (b) $\Phi=-m^2$: duas folhas, a de
+                        $p^0\gt0$ (camada de massa) e a de $p^0\lt0$. (c) $\Phi=a^2\gt0$: uma folha, que
+                        em corte são duas curvas, uma de cada lado, ligadas em três dimensões pela rotação em
+                        torno do eixo $p^0$. As retas pontilhadas são o cone de luz, como referência.</figcaption>
+                </figure>
+
+                <p id="ex-3-6-21"><strong>Exemplo 3.6.21 (O grupo ortogonal).</strong> Seja $\mathrm{Sym}_n$ o espaço
+                    vetorial das matrizes simétricas reais $n\times n$ (dimensão $n(n+1)/2$) e
+                    $\Phi: M_n(\mathbb{R})\to\mathrm{Sym}_n$, $\Phi(A)=A^{\mathsf{T}}A$, em que
+                    $M_n(\mathbb{R})\cong\mathbb{R}^{n^2}$. O conjunto $\Phi^{-1}(I)=O(n)$ é o grupo das matrizes
+                    ortogonais. Como $\Phi$ é polinomial,
+                    $d\Phi_A(B)=\frac{d}{ds}\big\vert_{s=0}(A+sB)^{\mathsf{T}}(A+sB)=A^{\mathsf{T}}B+B^{\mathsf{T}}A$,
+                    com os espaços tangentes identificados com os próprios espaços vetoriais
+                    (<a href="[05] - Vetores Tangentes.html#prop-3-5-27">Proposição 3.5.27</a>). Em $A\in O(n)$, $d\Phi_A$ é sobrejetiva: dada $C\in\mathrm{Sym}_n$,
+                    tome $B=AC/2$; então
+                    $A^{\mathsf{T}}B+B^{\mathsf{T}}A=\tfrac12A^{\mathsf{T}}AC+\tfrac12C^{\mathsf{T}}A^{\mathsf{T}}A=\tfrac12C+\tfrac12C^{\mathsf{T}}=C$,
+                    pois $A^{\mathsf{T}}A=I$ e $C^{\mathsf{T}}=C$. Portanto $I$ é um valor regular, e
+                    $O(n)$ é uma subvariedade mergulhada de $M_n(\mathbb{R})$ de dimensão
+                    $n^2-\tfrac{n(n+1)}2=\tfrac{n(n-1)}2$. É também compacto: fechado e limitado, já que as colunas
+                    têm norma $1$ (Heine–Borel).</p>
+
+                <p id="ex-3-6-22"><strong>Exemplo 3.6.22 (A hipótese é suficiente, mas não necessária).</strong> Seja
+                    $\Phi(x,y)=x^2-y^2$. A origem é um ponto crítico, e $0$ é valor crítico; o nível $\Phi^{-1}(0)$
+                    é a cruz $\{y=\pm x\}$, que não é uma variedade (<a href="[03] - Variedades Diferenciáveis.html#ex-3-3-3">Exemplo 3.3.3</a>, após uma rotação). Já para
+                    $\Phi(x,y)=x^2$, todo ponto do nível $0$ é crítico ($d\Phi=(2x,0)=0$ em $x=0$) e, no entanto,
+                    $\Phi^{-1}(0)=\{x=0\}$ é uma reta, que é uma subvariedade (a própria carta identidade é adaptada).
+                    O teorema do valor regular dá uma condição suficiente.</p>
+
+                <h2 id="espaco-tangente-subvariedade">O espaço tangente a uma subvariedade</h2>
+
+                <p>
+                    Se $S\subset M$ é uma subvariedade mergulhada, a inclusão $\iota: S\hookrightarrow M$ é uma
+                    imersão (Teorema 3.6.14), e $d\iota_p: T_pS\to T_pM$ é injetiva. Isso responde à pergunta do
+                    <a href="[05] - Vetores Tangentes.html#ex-3-5-26">Exemplo 3.5.26</a>.
+                </p>
+
+                <div class="definition-box" id="prop-3-6-23">
+                    <p><strong>Proposição 3.6.23 ($T_pS$ é um subespaço de $T_pM$).</strong> Se $S\subset M$ é
+                        uma subvariedade mergulhada e $p\in S$, a aplicação $d\iota_p: T_pS\to T_pM$ é injetiva.
+                        Identificamos $T_pS$ com sua imagem, um subespaço de $T_pM$ de dimensão $k=\dim S$. Com essa
+                        identificação, $v\in T_pS$ age em $f\in C^\infty(M)$ por $v(f)=v(f\vert_S)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> $\iota$ é uma imersão, isto é, $d\iota_p$ é injetiva por definição. A fórmula
+                    é a definição da diferencial: $(d\iota_pv)(f)=v(f\circ\iota)=v(f\vert_S)$. $\blacksquare$
+                </p>
+
+                <p>
+                    Quais vetores de $T_pM$ pertencem ao subespaço $T_pS$? Um critério intrínseco: os que
+                    "não enxergam" as funções que se anulam em $S$.
+                </p>
+
+                <div class="definition-box" id="prop-3-6-24">
+                    <p><strong>Proposição 3.6.24 (Caracterização de $T_pS$).</strong> Seja $S\subset M$ uma
+                        subvariedade mergulhada e $p\in S$. Um vetor $v\in T_pM$ pertence a $T_pS$ se, e somente se,
+                        $v(f)=0$ para toda $f\in C^\infty(M)$ com $f\vert_S=0$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> ($\Rightarrow$) Se $v\in T_pS$, então $v(f)=v(f\vert_S)=v(0)=0$.
+                </p>
+
+                <p>
+                    ($\Leftarrow$) Seja $v\in T_pM$ com a propriedade. Tome uma carta adaptada $(U,\varphi)$ em
+                    torno de $p$, com $S\cap U=\{x^{k+1}=\dots=x^n=0\}$, e um bump $\rho$ com $\rho\equiv1$ perto de $p$ e
+                    $\operatorname{supp}\rho\subset U$ (<a href="[04] - Funções e Aplicações Suaves.html#prop-3-4-29">Proposição 3.4.29</a>).
+                    Para $j\gt k$, seja $f_j=\rho\,x^j$ em $U$ e $0$ fora de $U$; é suave, pela localidade da
+                    suavidade, e $f_j\vert_S=0$: em $S\cap U$ porque $x^j=0$ ali, e em $S\setminus U$ porque $\rho=0$.
+                    Por hipótese, $v(f_j)=0$; e, como $f_j=x^j$ perto de $p$, a localidade
+                    (<a href="[05] - Vetores Tangentes.html#prop-3-5-8">Proposição 3.5.8</a>) dá $v(x^j)=v(f_j)=0$. Logo as componentes $v^j$ de $v$ na carta
+                    se anulam para $j\gt k$, e $v=\sum_{i\le k}v^i\,\partial_i\vert_p$. Resta ver que cada
+                    $\partial_i\vert_p$, $i\le k$, está na imagem de $d\iota_p$. Em cartas $\varphi_S$ e $\varphi$,
+                    a representação de $\iota$ é $x\mapsto(x,0)$, e a <a href="[05] - Vetores Tangentes.html#prop-3-5-17">Proposição 3.5.17</a> dá
+                    $d\iota_p(\partial/\partial x^i\vert^S_p)=\partial_i\vert_p$ para $i\le k$, pois as colunas da
+                    jacobiana $\binom{I_k}{0}$ são $e_1,\dots,e_k$. Portanto $v\in d\iota_p(T_pS)$. $\blacksquare$
+                </p>
+
+                <p>
+                    Para conjuntos de nível, há uma descrição ainda mais direta, como núcleo de uma
+                    aplicação linear.
+                </p>
+
+                <div class="definition-box" id="prop-3-6-25">
+                    <p><strong>Proposição 3.6.25 ($T_pS=\ker d\Phi_p$).</strong> Seja $\Phi: M\to N$ suave,
+                        $c$ um valor regular e $S=\Phi^{-1}(c)$. Então, para todo $p\in S$,
+                        $T_pS=\ker d\Phi_p\subset T_pM$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> A aplicação $\Phi\circ\iota: S\to N$ é constante, de valor $c$, e a
+                    diferencial de uma constante é nula (<a href="[05] - Vetores Tangentes.html#lema-3-5-7">Lema 3.5.7</a>: $u(\text{constante})=0$). Pela regra da cadeia,
+                    $d\Phi_p\circ d\iota_p=d(\Phi\circ\iota)_p=0$, de modo que $d\iota_p(T_pS)\subset\ker d\Phi_p$.
+                    Como $d\Phi_p: T_pM\to T_cN$ é sobrejetiva, o teorema do núcleo e da imagem dá
+                    $\dim\ker d\Phi_p=n-m=\dim S=\dim T_pS$. Um subespaço contido em outro de mesma dimensão
+                    finita é igual a ele. $\blacksquare$
+                </p>
+
+                <p id="ex-3-6-26"><strong>Exemplo 3.6.26 (Espaços tangentes de alguns níveis).</strong></p>
+
+                <ul>
+                    <li><strong>A esfera.</strong> Em $\Phi(x)=\lvert x\rvert^2$ e $p\in S^n$,
+                        $d\Phi_p(v)=2\,p\cdot v$, de modo que
+                        $T_pS^n=\ker d\Phi_p=\{v\in\mathbb{R}^{n+1}: p\cdot v=0\}=p^\perp$, agora com
+                        rigor, e $\dim T_pS^n=n$.</li>
+                    <li><strong>A camada de massa.</strong> No nível $\Phi=-m^2$ do Exemplo 3.6.20,
+                        $d\Phi_p(v)=2\big(-p^0v^0+\vec{p}\cdot\vec{v}\big)$, e portanto
+                        $T_pS=\{v\in\mathbb{R}^4:-p^0v^0+\vec{p}\cdot\vec{v}=0\}$: os vetores "ortogonais a $p$ em
+                        relação à forma de Minkowski" $-p^0v^0+\vec{p}\cdot\vec{v}$. Essa forma bilinear aparece
+                        aqui só como uma fórmula; seu significado como tensor será visto no
+                        <a href="[10] - Álgebra Multilinear e Tensores.html">tópico 3.10</a>.</li>
+                    <li><strong>O grupo ortogonal.</strong> No Exemplo 3.6.21, em $A=I$,
+                        $d\Phi_I(B)=B+B^{\mathsf{T}}$, e portanto $T_IO(n)=\{B: B+B^{\mathsf{T}}=0\}$, o espaço das matrizes
+                        antissimétricas, de dimensão $n(n-1)/2$, em acordo com $\dim O(n)$.</li>
+                </ul>
+
+                <h2 id="restricao">Restringindo aplicações a subvariedades</h2>
+
+                <div class="definition-box" id="prop-3-6-27">
+                    <p><strong>Proposição 3.6.27 (Restrição ao domínio).</strong> Se $F: M\to N$ é suave e
+                        $S\subset M$ é uma subvariedade mergulhada, então $F\vert_S=F\circ\iota: S\to N$ é suave.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> $\iota: S\to M$ é suave (Teorema 3.6.14) e a composta de aplicações
+                    suaves é suave
+                    (<a href="[04] - Funções e Aplicações Suaves.html#prop-3-4-12">Proposição 3.4.12</a>). $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="prop-3-6-28">
+                    <p><strong>Proposição 3.6.28 (Restrição ao contradomínio).</strong> Se $F: M\to N$ é suave,
+                        $S\subset N$ é uma subvariedade mergulhada e $F(M)\subset S$, então $F: M\to S$ é suave.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> <strong>$F: M\to S$ é contínua:</strong> um aberto de $S$ é da forma
+                    $S\cap O$ com $O$ aberto em $N$, e sua pré-imagem é $F^{-1}(O)$, aberta. Seja $p\in M$ e $q=F(p)$.
+                    Tome uma carta adaptada $(V,\psi)$ de $N$ em torno de $q$, com
+                    $\psi(S\cap V)=\psi(V)\cap(\mathbb{R}^k\times\{0\})$, e uma carta $(U,\varphi)$ de $M$ em torno
+                    de $p$ com $F(U)\subset V$ (restrinja $U$ a $U\cap F^{-1}(V)$). Como $F(U)\subset S\cap V$, estas são as
+                    cartas $(U,\varphi)$ e $(S\cap V,\psi_S)$, com $\psi_S=\pi\circ\psi\vert_{S\cap V}$, e
+                </p>
+
+                <p>
+                    $$ \psi_S\circ F\circ\varphi^{-1}=\pi\circ\big(\psi\circ F\circ\varphi^{-1}\big) $$
+                </p>
+
+                <p>
+                    é a composta da representação de $F: M\to N$, suave por hipótese, com a projeção linear $\pi$.
+                    Logo é suave, e $F: M\to S$ é suave. $\blacksquare$
+                </p>
+
+                <p id="obs-3-6-29"><strong>Observação 3.6.29 (Subvariedades imersas).</strong> Uma <strong>subvariedade
+                        imersa</strong> de $M$ é a imagem $S=F(N)$ de uma imersão injetiva $F: N\to M$, com a topologia
+                    e a estrutura diferenciável que tornam $F: N\to S$ um difeomorfismo. Toda subvariedade
+                    mergulhada é imersa (Teorema 3.6.15), mas a recíproca falha, e <em>a Proposição 3.6.28 também
+                        pode falhar para subvariedades imersas</em>. Seja $S$ a figura-oito do Exemplo 3.6.11, com a
+                    estrutura que a faz difeomorfa a $(-\pi,\pi)$. A curva $F:\mathbb{R}\to\mathbb{R}^2$,
+                    $F(s)=(\sin2s,\sin s)$ é suave em $\mathbb{R}^2$, tem imagem em $S$ e passa pela origem em $s=0$ e em
+                    $s=\pi$; mas, como aplicação em $S$, ela "salta" de um lado ao outro em $s=\pi$ (de $t$ perto
+                    de $\pi$ para $t$ perto de $-\pi$), e não é contínua. Por isso a distinção entre
+                    mergulhada e imersa importa, e é a primeira que usaremos.</p>
+
+                <h2 id="fisica">Ponte com a física</h2>
+
+                <p>
+                    <strong>Vínculos holonômicos.</strong> Um sistema mecânico com $N$ coordenadas cartesianas e um
+                    vínculo $g(x)=0$ tem espaço de configurações $\{g=0\}\subset\mathbb{R}^N$. O pêndulo esférico,
+                    com vínculo $\lvert x\rvert=\ell$, tem como espaço de configurações a esfera de raio $\ell$
+                    (Exemplo 3.6.19). Se $g=(g_1,\dots,g_k)$ e $0$ é valor regular, o Teorema 3.6.18 garante que
+                    o espaço de configurações é uma subvariedade de dimensão $N-k$: o número de graus de
+                    liberdade. Os deslocamentos virtuais da mecânica de Lagrange são os vetores
+                    de $T_pS=\ker dg_p$ (Proposição 3.6.25): os que satisfazem a linearização do vínculo. A condição
+                    de valor regular exprime a <em>independência</em> dos vínculos.
+                </p>
+
+                <p>
+                    <strong>A camada de massa.</strong> O espaço dos quadrimomentos de uma partícula livre de massa
+                    $m$ é a folha $p^0\gt0$ de $\Phi=-m^2$ no Exemplo 3.6.20: uma subvariedade de dimensão $3$ de
+                    $\mathbb{R}^4$, difeomorfa a $\mathbb{R}^3$ (o espaço dos momentos $\vec{p}$, com $p^0$ determinado). Seu
+                    espaço tangente em $p$ é o conjunto das variações $v$ de $p$ que preservam a condição de massa,
+                    $-p^0v^0+\vec{p}\cdot\vec{v}=0$. O cone de luz $\Phi=0$, correspondente à massa nula, não é uma
+                    subvariedade na origem, e o tratamento de partículas sem massa exige cuidado com esse ponto.
+                </p>
+
+                <p>
+                    <strong>Hipersuperfícies.</strong> Uma hipersuperfície de tempo constante $\{t=t_0\}$ no
+                    espaço-tempo é o nível de uma função coordenada $t$ com $dt\ne0$; todo valor é regular, e o
+                    nível é uma subvariedade de codimensão $1$. É nessas hipersuperfícies que se formulam os dados
+                    iniciais. O <strong>espaço de de Sitter</strong> é o hiperboloide de uma folha
+                    $-(X^0)^2+(X^1)^2+\dots+(X^4)^2=\ell^2$ no espaço de Minkowski de dimensão $5$: pelo Teorema 3.6.18
+                    (como no Exemplo 3.6.20), é uma subvariedade de dimensão $4$, difeomorfa a $\mathbb{R}\times S^3$,
+                    e um modelo de universo em expansão. Que a geometria desse espaço-tempo seja herdada do
+                    espaço ambiente, e como, será o tema de capítulos posteriores.
+                </p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p id="exr-3-6-1"><strong>Exercício 3.6.1.</strong> A parametrização do toro
+                    $F(u,v)=\big((2+\cos v)\cos u,\ (2+\cos v)\sin u,\ \sin v\big)$ é uma imersão
+                    $\mathbb{R}^2\to\mathbb{R}^3$.</p>
+
+                <p>
+                    <em>Solução.</em> As colunas da jacobiana são
+                    $F_u=\big(-(2+\cos v)\sin u,\ (2+\cos v)\cos u,\ 0\big)$ e
+                    $F_v=\big(-\sin v\cos u,\ -\sin v\sin u,\ \cos v\big)$. O produto vetorial é
+                </p>
+
+                <p>
+                    $$ F_u\times F_v = (2+\cos v)\,\big(\cos u\cos v,\ \sin u\cos v,\ \sin v\big), \qquad \lvert F_u\times F_v\rvert = 2+\cos v\ge1\gt0, $$
+                </p>
+
+                <p>
+                    de modo que $F_u$ e $F_v$ são linearmente independentes em todo ponto, e o posto é $2$:
+                    $F$ é uma imersão. (Ela é periódica em $u$ e em $v$, e portanto não é injetiva em $\mathbb{R}^2$.)
+                    $\blacksquare$
+                </p>
+
+                <p id="exr-3-6-2"><strong>Exercício 3.6.2.</strong> A curva $\beta(t)=(t^2,t^3)$ é injetiva e um
+                    homeomorfismo sobre a imagem, mas não é uma imersão (e portanto não é um mergulho).</p>
+
+                <p>
+                    <em>Solução.</em> Se $t^3=s^3$, então $t=s$ (a função $t\mapsto t^3$ é injetiva em
+                    $\mathbb{R}$), logo $\beta$ é injetiva. Sua inversa sobre a imagem $\{(x,y):y^2=x^3\}$ é
+                    $(x,y)\mapsto y^{1/3}$, contínua, de modo que $\beta$ é um homeomorfismo sobre a imagem.
+                    Mas $\beta'(t)=(2t,3t^2)$ se anula em $t=0$: $d\beta_0=0$ não é injetiva, e $\beta$ não é uma
+                    imersão. O mergulho exige as <em>duas</em> condições, a diferencial injetiva e o
+                    homeomorfismo sobre a imagem, que falham em exemplos distintos (Figura 3.6.1).
+                    $\blacksquare$
+                </p>
+
+                <p id="exr-3-6-3"><strong>Exercício 3.6.3.</strong> Determine os valores regulares de
+                    $\Phi(x,y,z)=x^2+y^2-z^2$ e descreva cada nível.</p>
+
+                <p>
+                    <em>Solução.</em> $d\Phi=(2x,2y,-2z)$ só se anula em $(0,0,0)$, onde $\Phi=0$. Logo todo
+                    $c\ne0$ é valor regular, e $0$ é o único valor crítico. Para $c\gt0$, o nível
+                    $x^2+y^2=z^2+c$ é o hiperboloide de uma folha, difeomorfo a $\mathbb{R}\times S^1$ (a aplicação
+                    $(z,\theta)\mapsto(\sqrt{z^2+c}\cos\theta,\sqrt{z^2+c}\sin\theta,z)$). Para $c\lt0$, o nível
+                    $z^2=x^2+y^2+\lvert c\rvert$ é o hiperboloide de duas folhas $z=\pm\sqrt{x^2+y^2+\lvert c\rvert}$,
+                    cada uma um gráfico, difeomorfa a $\mathbb{R}^2$. Para $c=0$, o cone duplo, que não é
+                    uma subvariedade na origem, pelo <a href="[03] - Variedades Diferenciáveis.html#exr-3-3-5">Exercício 3.3.5</a>. $\blacksquare$
+                </p>
+
+                <p id="exr-3-6-4"><strong>Exercício 3.6.4.</strong> Dê o plano tangente ao elipsoide
+                    $x^2/a^2+y^2/b^2+z^2/c^2=1$ em um ponto $p=(x_0,y_0,z_0)$ do elipsoide, via $\ker d\Phi_p$.</p>
+
+                <p>
+                    <em>Solução.</em> Com $\Phi=x^2/a^2+y^2/b^2+z^2/c^2$, tem-se
+                    $d\Phi=(2x/a^2,\,2y/b^2,\,2z/c^2)$, que só se anula na origem; logo $1$ é valor regular e o
+                    elipsoide é uma subvariedade de dimensão $2$. Pela Proposição 3.6.25,
+                </p>
+
+                <p>
+                    $$ T_pS=\ker d\Phi_p=\Big\{(v^1,v^2,v^3):\ \frac{x_0}{a^2}v^1+\frac{y_0}{b^2}v^2+\frac{z_0}{c^2}v^3=0\Big\}, $$
+                </p>
+
+                <p>
+                    o plano perpendicular ao gradiente. Para $a=b=c=1$ recupera-se $p^\perp$.
+                    $\blacksquare$
+                </p>
+
+                <p id="exr-3-6-5"><strong>Exercício 3.6.5.</strong> O gráfico de $f:\mathbb{R}^2\to\mathbb{R}$ suave
+                    é uma subvariedade mergulhada de $\mathbb{R}^3$; calcule seu espaço tangente em um ponto.</p>
+
+                <p>
+                    <em>Solução.</em> O gráfico é o nível $0$ de $\Phi(x,y,z)=z-f(x,y)$, e
+                    $d\Phi=(-f_x,-f_y,1)\ne0$ em todo ponto: $0$ é valor regular, e o gráfico é uma subvariedade de
+                    dimensão $2$ (também pela carta adaptada do Exemplo 3.6.16). Em $p=(x_0,y_0,f(x_0,y_0))$,
+                    $T_pS=\ker d\Phi_p=\{v: v^3=f_x\,v^1+f_y\,v^2\}$, que é o espaço gerado por
+                    $(1,0,f_x)$ e $(0,1,f_y)$, com as derivadas em $(x_0,y_0)$: o plano tangente
+                    conhecido do cálculo. $\blacksquare$
+                </p>
+
+                <p id="exr-3-6-6"><strong>Exercício 3.6.6.</strong> Para $\Phi(x,y,z)=(x^2+y^2+z^2,\ z)$, mostre
+                    que $(1,\tfrac12)$ é valor regular e descreva o nível.</p>
+
+                <p>
+                    <em>Solução.</em> A jacobiana é $\begin{pmatrix}2x&2y&2z\\0&0&1\end{pmatrix}$, cujos menores
+                    $2\times2$ são $0$, $2x$ e $2y$: o posto é $2$ (sobrejetiva) a menos que $x=y=0$. Os pontos do nível
+                    $\Phi=(1,\tfrac12)$ satisfazem $z=\tfrac12$ e $x^2+y^2=\tfrac34$, portanto
+                    $(x,y)\ne(0,0)$ e todos são regulares. Logo $(1,\tfrac12)$ é valor regular, e o nível é uma
+                    subvariedade de dimensão $3-2=1$: o círculo de raio $\sqrt3/2$ no plano $z=\tfrac12$. Já os
+                    valores $(s^2,s)$, em que $x=y=0$ e $z=s$, são críticos. $\blacksquare$
+                </p>
+
+                <p id="exr-3-6-7"><strong>Exercício 3.6.7.</strong> $O(2)$ é uma subvariedade de dimensão $1$ de
+                    $M_2(\mathbb{R})\cong\mathbb{R}^4$; calcule $T_IO(2)$.</p>
+
+                <p>
+                    <em>Solução.</em> Pelo Exemplo 3.6.21 com $n=2$, $O(2)$ é subvariedade de dimensão
+                    $2^2-\tfrac{2\cdot3}2=1$. Em $A=I$, $T_IO(2)=\{B: B+B^{\mathsf{T}}=0\}$. Escrevendo
+                    $B=\begin{pmatrix}b_{11}&b_{12}\\b_{21}&b_{22}\end{pmatrix}$, a condição dá $b_{11}=b_{22}=0$ e
+                    $b_{21}=-b_{12}$, de modo que
+                </p>
+
+                <p>
+                    $$ T_IO(2)=\Big\{\begin{pmatrix}0&-a\\a&0\end{pmatrix}: a\in\mathbb{R}\Big\}, $$
+                </p>
+
+                <p>
+                    um espaço de dimensão $1$, gerado pelo gerador infinitesimal das rotações: a curva
+                    $t\mapsto\begin{pmatrix}\cos t&-\sin t\\\sin t&\cos t\end{pmatrix}$ está em $O(2)$ e tem
+                    velocidade $\begin{pmatrix}0&-1\\1&0\end{pmatrix}$ em $t=0$ (<a href="[05] - Vetores Tangentes.html#prop-3-5-24">Proposição 3.5.24</a>). $\blacksquare$
+                </p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <p>
+                    Este tópico deu sentido preciso a "uma variedade dentro de outra":
+                </p>
+
+                <ul>
+                    <li>o <strong>posto</strong>, as <strong>imersões</strong> e <strong>submersões</strong>
+                        (<a href="#def-3-6-1">Definição 3.6.1</a>, <a href="#def-3-6-2">Definição 3.6.2</a>) e a
+                        abertura da condição de posto máximo
+                        (<a href="#prop-3-6-3">Proposição 3.6.3</a>);</li>
+                    <li>o <strong>teorema da função inversa em variedades</strong>
+                        (<a href="#teo-3-6-5">Teorema 3.6.5</a>), os difeomorfismos locais e a
+                        <strong>forma local de imersões e submersões</strong>, a partir do teorema do posto
+                        constante (<a href="#teo-3-6-8">Teorema 3.6.8</a> e <a href="#cor-3-6-9">Corolário 3.6.9</a>);</li>
+                    <li>os <strong>mergulhos</strong> (<a href="#def-3-6-10">Definição 3.6.10</a>), com os dois modos de
+                        uma imersão injetiva falhar (<a href="#ex-3-6-11">Exemplo 3.6.11</a>);</li>
+                    <li>as <strong>subvariedades mergulhadas</strong>, as cartas adaptadas
+                        (<a href="#def-3-6-13">Definição 3.6.13</a>), sua estrutura diferenciável
+                        (<a href="#teo-3-6-14">Teorema 3.6.14</a>) e a imagem de um mergulho
+                        (<a href="#teo-3-6-15">Teorema 3.6.15</a>);</li>
+                    <li>o <strong>teorema do valor regular</strong>
+                        (<a href="#teo-3-6-18">Teorema 3.6.18</a>), com as esferas, os hiperboloides e $O(n)$ como
+                        exemplos;</li>
+                    <li>$T_pS$ como subespaço de $T_pM$ (<a href="#prop-3-6-23">Proposição 3.6.23</a>) e
+                        <strong>$T_pS=\ker d\Phi_p$</strong> (<a href="#prop-3-6-25">Proposição 3.6.25</a>), e a
+                        suavidade das restrições a subvariedades
+                        (<a href="#prop-3-6-27">Proposição 3.6.27</a> e <a href="#prop-3-6-28">Proposição 3.6.28</a>).</li>
+                </ul>
+
+                <p>
+                    Com isso, a inclusão $\iota: S\hookrightarrow M$ de uma curva, de uma superfície ou, adiante,
+                    do bordo $\partial M$ é uma aplicação suave com diferencial injetiva, e poderemos fazer
+                    $\iota^*\omega$. Ainda falta organizar os espaços tangentes de todos os pontos em um só objeto,
+                    para falar de campos de vetores e de sua suavidade.
+                </p>
+
+                <p>
+                    O próximo tópico,
+                    <a href="[07] - Fibrado Tangente e Campos Vetoriais.html">3.7 Fibrado Tangente e Campos Vetoriais</a>,
+                    constrói $TM$ como uma variedade de dimensão $2n$ (usando o lema de construção de variedades
+                    a partir de cartas) e define campos vetoriais suaves, o colchete de Lie e a derivada
+                    direcional de funções ao longo de campos.
+                </p>
 
             </div>
         </main>
@@ -161,6 +1118,15 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#subvariedades">Subvariedades: Imersões, Submersões e Mergulhos</a></li>
+                    <li><a href="#posto">Posto, imersões e submersões</a></li>
+                    <li><a href="#mergulhos">Mergulhos</a></li>
+                    <li><a href="#subvariedades-mergulhadas">Subvariedades mergulhadas</a></li>
+                    <li><a href="#conjuntos-de-nivel">Conjuntos de nível</a></li>
+                    <li><a href="#espaco-tangente-subvariedade">Espaço tangente de uma subvariedade</a></li>
+                    <li><a href="#restricao">Restrição de aplicações</a></li>
+                    <li><a href="#fisica">Ponte com a física</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
                 </ul>
             </div>
         </aside>

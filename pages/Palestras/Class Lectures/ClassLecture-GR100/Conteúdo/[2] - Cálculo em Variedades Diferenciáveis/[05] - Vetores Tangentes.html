@@ -151,7 +151,999 @@
                 <h1 id="vetores-tangentes">3.5 Vetores Tangentes e o Espaço Tangente</h1>
                 <p class="lead">Vetores tangentes como derivações, o espaço tangente, a diferencial de uma aplicação suave, bases coordenadas e a equivalência com velocidades de curvas e com a lei de transformação.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>
+                    No <a href="[01] - Motivação e Roteiro.html#posicao-nao-e-vetor">tópico 3.1</a> vimos que, na esfera, não há setas
+                    que liguem pontos, e que o objeto que faz o papel de "vetor em $p$" tem de ser outro. Há três
+                    intuições sobre o que ele deveria ser: (i) a <em>velocidade</em> de uma curva que passa por
+                    $p$; (ii) uma <em>derivada direcional</em>, isto é, uma regra que, dada uma função, devolve a
+                    taxa de variação dela na direção do vetor; (iii) uma lista de $n$ números, as componentes,
+                    que se transforma de uma certa maneira quando se troca de coordenadas, que é o que os físicos
+                    chamam de vetor contravariante.
+                </p>
+
+                <p>
+                    Adotamos a segunda como definição, porque é a única que não menciona cartas nem curvas:
+                    um vetor tangente em $p$ é uma aplicação linear $v: C^\infty(M)\to\mathbb{R}$ que satisfaz a
+                    regra do produto em $p$. O trabalho do tópico é mostrar que essa definição, que parece
+                    abstrata, descreve exatamente os objetos esperados: em $\mathbb{R}^n$ são os vetores de
+                    sempre; em uma variedade, o conjunto deles é um espaço vetorial de dimensão $n$ com uma
+                    base associada a cada carta; e as outras duas intuições são teoremas, isto é, (i) e (iii)
+                    descrevem o mesmo espaço (Teoremas 3.5.19 e 3.5.25). Também construímos a diferencial
+                    $dF_p$ de uma aplicação suave, que será usada em todo o restante do capítulo, e usamos de
+                    modo essencial dois resultados anteriores: o lema de Hadamard
+                    (<a href="[02] - Preliminares de Topologia e Cálculo.html#lema-3-2-49">Lema 3.2.49</a>) e as funções bump
+                    (<a href="[04] - Funções e Aplicações Suaves.html#prop-3-4-29">Proposição 3.4.29</a>).
+                </p>
+
+                <h2 id="derivacoes-rn">Vetores em $\mathbb{R}^n$ como derivações</h2>
+
+                <p>
+                    Começamos por $\mathbb{R}^n$, onde sabemos o que é um vetor, e mostramos que a definição
+                    por derivações o reproduz. Em um ponto $a\in\mathbb{R}^n$, o <em>espaço tangente geométrico</em>
+                    é $\mathbb{R}^n_a = \{a\}\times\mathbb{R}^n$: os vetores $v\in\mathbb{R}^n$ com o ponto de
+                    aplicação $a$ lembrado. Um vetor $v$ em $a$ age sobre funções suaves derivando-as na sua
+                    direção.
+                </p>
+
+                <div class="definition-box" id="def-3-5-1" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.5.1 (Derivada direcional).</strong> Seja $a\in\mathbb{R}^n$ e
+                        $v\in\mathbb{R}^n$. A <strong>derivada direcional</strong> em $a$ na direção $v$ é a
+                        aplicação $D_v\vert_a: C^\infty(\mathbb{R}^n)\to\mathbb{R}$,</p>
+                    <p>$$ D_v\vert_a f = \frac{d}{dt}\Big\vert_{t=0} f(a+tv) = \sum_{i=1}^n v^i\,\frac{\partial f}{\partial x^i}(a). $$</p>
+                </div>
+
+                <p>
+                    A igualdade das duas expressões é a
+                    <a href="[02] - Preliminares de Topologia e Cálculo.html#prop-3-2-48">Proposição 3.2.48</a>
+                    (regra da cadeia). A aplicação $D_v\vert_a$ é linear em $f$, porque a derivada ordinária é
+                    linear, e satisfaz a <strong>regra do produto</strong>
+                </p>
+
+                <p>
+                    $$ D_v\vert_a(fg) = f(a)\,D_v\vert_a g + g(a)\,D_v\vert_a f, $$
+                </p>
+
+                <p>
+                    porque $\frac{d}{dt}\big\vert_{t=0}\big[f(a+tv)\,g(a+tv)\big]$ é dada pela regra do produto para
+                    funções de uma variável, calculada em $t=0$. Esta propriedade é o que se abstrai na definição
+                    seguinte.
+                </p>
+
+                <div class="definition-box" id="def-3-5-2" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.5.2 (Derivação em um ponto).</strong> Seja $a\in\mathbb{R}^n$. Uma
+                        <strong>derivação em $a$</strong> é uma aplicação linear
+                        $w: C^\infty(\mathbb{R}^n)\to\mathbb{R}$ tal que</p>
+                    <p>$$ w(fg) = f(a)\,w(g) + g(a)\,w(f) \quad\text{para todas } f,g\in C^\infty(\mathbb{R}^n). \tag{3.5.1} $$</p>
+                    <p>O conjunto das derivações em $a$, com a soma e o produto por escalar definidos ponto a ponto
+                        ($(w_1+w_2)(f) = w_1(f)+w_2(f)$, $(cw)(f) = c\,w(f)$), é um espaço vetorial real,
+                        denotado $T_a\mathbb{R}^n$.</p>
+                </div>
+
+                <p>
+                    A soma de duas derivações em $a$ e um múltiplo escalar de uma derivação em $a$ são ainda
+                    derivações em $a$, como se verifica em (3.5.1) por linearidade, de modo que $T_a\mathbb{R}^n$
+                    é, de fato, um subespaço do espaço de todas as aplicações lineares de $C^\infty(\mathbb{R}^n)$ em
+                    $\mathbb{R}$. Duas propriedades elementares serão usadas o tempo todo.
+                </p>
+
+                <div class="definition-box" id="lema-3-5-3">
+                    <p><strong>Lema 3.5.3.</strong> Seja $w$ uma derivação em $a$. Então: (a) $w(c) = 0$ se $c$ é
+                        a função constante de valor $c\in\mathbb{R}$; (b) se $f(a) = g(a) = 0$, então
+                        $w(fg) = 0$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Para a função constante $1$, a regra (3.5.1) dá
+                    $w(1) = w(1\cdot1) = 1\cdot w(1) + 1\cdot w(1) = 2\,w(1)$, logo $w(1)=0$. Para uma constante
+                    $c$, a linearidade dá $w(c) = c\,w(1) = 0$. (b) Por (3.5.1),
+                    $w(fg) = f(a)\,w(g) + g(a)\,w(f) = 0 + 0 = 0$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="teo-3-5-4">
+                    <p><strong>Teorema 3.5.4 (Vetores de $\mathbb{R}^n$ são derivações).</strong> Para todo
+                        $a\in\mathbb{R}^n$, a aplicação $v\mapsto D_v\vert_a$ é um isomorfismo linear de
+                        $\mathbb{R}^n_a\cong\mathbb{R}^n$ sobre $T_a\mathbb{R}^n$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> <strong>Está bem definida e é linear.</strong> Já vimos que
+                    $D_v\vert_a$ é uma derivação em $a$. A linearidade em $v$ vem da fórmula
+                    $D_v\vert_a f = \sum_iv^i\partial_if(a)$.
+                </p>
+
+                <p>
+                    <strong>É injetiva.</strong> Aplicando $D_v\vert_a$ à $j$-ésima função coordenada
+                    $x^j\in C^\infty(\mathbb{R}^n)$, obtemos
+                    $D_v\vert_a(x^j) = \sum_iv^i\,\partial_ix^j(a) = v^j$. Se $D_v\vert_a = 0$, então todas as
+                    componentes $v^j$ se anulam, e $v=0$.
+                </p>
+
+                <p>
+                    <strong>É sobrejetiva.</strong> Seja $w\in T_a\mathbb{R}^n$ e ponha $v^i = w(x^i)$. Mostramos
+                    que $w = D_v\vert_a$. Seja $f\in C^\infty(\mathbb{R}^n)$. Como $\mathbb{R}^n$ é estrelado em
+                    relação a $a$, o lema de Hadamard
+                    (<a href="[02] - Preliminares de Topologia e Cálculo.html#lema-3-2-49">Lema 3.2.49</a>) dá funções
+                    $g_1,\dots,g_n\in C^\infty(\mathbb{R}^n)$ com $g_i(a) = \partial_if(a)$ e
+                </p>
+
+                <p>
+                    $$ f(x) = f(a) + \sum_{i=1}^n (x^i - a^i)\,g_i(x). $$
+                </p>
+
+                <p>
+                    Aplicamos $w$ a ambos os lados. O primeiro termo é a constante $f(a)$, que $w$ anula, pelo
+                    Lema 3.5.3(a). Para cada $i$, o segundo termo é o produto da função $x^i-a^i$, que vale $0$
+                    em $a$, por $g_i$; pela regra (3.5.1),
+                </p>
+
+                <p>
+                    $$ w\big((x^i-a^i)\,g_i\big) = (a^i-a^i)\,w(g_i) + g_i(a)\,w(x^i - a^i) = g_i(a)\,\big(w(x^i) - w(a^i)\big) = g_i(a)\,w(x^i), $$
+                </p>
+
+                <p>
+                    em que usamos de novo o Lema 3.5.3(a) para a constante $a^i$. Logo
+                </p>
+
+                <p>
+                    $$ w(f) = \sum_i w(x^i)\,g_i(a) = \sum_i v^i\,\frac{\partial f}{\partial x^i}(a) = D_v\vert_a f. \qquad\blacksquare $$
+                </p>
+
+                <p>
+                    O lema de Hadamard é a razão de a definição por derivações dar o espaço certo: sem ele, uma
+                    derivação poderia, em princípio, ser algo mais exótico do que uma combinação de derivadas
+                    parciais. É também aqui que a suavidade ($C^\infty$) é indispensável: para funções
+                    apenas $C^k$, o argumento falha, porque o lema de Hadamard perde uma derivada em cada
+                    aplicação e $g_i$ deixa de ter a mesma regularidade de $f$.
+                </p>
+
+                <div class="definition-box" id="cor-3-5-5">
+                    <p><strong>Corolário 3.5.5.</strong> Os operadores
+                        $\left.\dfrac{\partial}{\partial x^i}\right\vert_a$, $i=1,\dots,n$, que a cada $f$ associam
+                        $\dfrac{\partial f}{\partial x^i}(a)$, formam uma base de $T_a\mathbb{R}^n$, e
+                        $\dim T_a\mathbb{R}^n = n$. Toda derivação $w$ em $a$ se escreve de modo único como</p>
+                    <p>$$ w = \sum_i w(x^i)\,\frac{\partial}{\partial x^i}\Big\vert_a. $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> $\left.\partial/\partial x^i\right\vert_a = D_{e_i}\vert_a$, em que $e_i$
+                    é o $i$-ésimo vetor da base canônica, é a imagem de $e_i$ pelo isomorfismo do Teorema 3.5.4, que
+                    leva a base canônica de $\mathbb{R}^n$ em uma base de $T_a\mathbb{R}^n$. A expressão de $w$ é
+                    o que provamos na sobrejetividade. $\blacksquare$
+                </p>
+
+                <h2 id="espaco-tangente">O espaço tangente a uma variedade</h2>
+
+                <p>
+                    A definição por derivações usa só a álgebra $C^\infty$ e portanto se transporta, sem mudar
+                    uma palavra, a uma variedade. Esta é a vantagem do ponto de vista: o espaço tangente é
+                    definido sem cartas.
+                </p>
+
+                <div class="definition-box" id="def-3-5-6" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.5.6 (Espaço tangente).</strong> Sejam $M$ uma variedade diferenciável
+                        e $p\in M$. Uma <strong>derivação em $p$</strong> é uma aplicação linear
+                        $v: C^\infty(M)\to\mathbb{R}$ tal que</p>
+                    <p>$$ v(fg) = f(p)\,v(g) + g(p)\,v(f) \quad\text{para todas } f,g\in C^\infty(M). $$</p>
+                    <p>O espaço vetorial das derivações em $p$ é o <strong>espaço tangente</strong> a $M$ em $p$,
+                        denotado $T_pM$, e seus elementos são os <strong>vetores tangentes</strong> a $M$ em $p$.</p>
+                </div>
+
+                <p id="lema-3-5-7"><strong>Lema 3.5.7.</strong> Se $v\in T_pM$, então $v(c)=0$ para toda função
+                    constante $c$, e $v(fg)=0$ se $f(p)=g(p)=0$. Em particular, $v(f+c)=v(f)$.</p>
+
+                <p>
+                    <em>Demonstração.</em> É a do Lema 3.5.3, palavra por palavra, com $M$ no lugar de
+                    $\mathbb{R}^n$. $\blacksquare$
+                </p>
+
+                <p>
+                    Uma derivação em $p$ é definida a partir de funções definidas em <em>toda</em> a variedade,
+                    mas um vetor tangente deveria depender apenas do que a função faz perto de $p$. Isso vale, e
+                    é aqui que os bumps entram.
+                </p>
+
+                <div class="definition-box" id="prop-3-5-8">
+                    <p><strong>Proposição 3.5.8 (Localidade).</strong> Seja $v\in T_pM$. Se $f,g\in C^\infty(M)$
+                        coincidem em uma vizinhança aberta de $p$, então $v(f)=v(g)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Seja $h=f-g$, que se anula em uma vizinhança aberta $W$ de $p$. Pela
+                    <a href="[04] - Funções e Aplicações Suaves.html#prop-3-4-29">Proposição 3.4.29</a>, existe
+                    $\rho\in C^\infty(M)$ com $\rho\equiv1$ perto de $p$ e
+                    $\operatorname{supp}\rho\subset W$. Então $\rho h\equiv0$ em toda a variedade: em $W$ porque
+                    $h=0$ ali, e fora de $W$ porque $\rho=0$ ali. Logo
+                    $0 = v(\rho h) = \rho(p)\,v(h) + h(p)\,v(\rho) = v(h)$, em que $\rho(p)=1$ e $h(p)=0$. Assim
+                    $v(f)-v(g)=v(h)=0$. $\blacksquare$
+                </p>
+
+                <p id="obs-3-5-9"><strong>Observação 3.5.9 (Vetores agem em funções locais).</strong> Seja $W$ uma
+                    vizinhança aberta de $p$ e $f\in C^\infty(W)$ uma função definida só em $W$. Pelo
+                    <a href="[04] - Funções e Aplicações Suaves.html#lema-3-4-30">Lema 3.4.30</a>, existe $\tilde{f}\in C^\infty(M)$ que coincide
+                    com $f$ perto de $p$; e, pela Proposição 3.5.8, o número $v(\tilde{f})$ não depende da escolha
+                    de $\tilde{f}$. Definimos $v(f) = v(\tilde{f})$. Com essa convenção, todas as propriedades de
+                    uma derivação (linearidade, regra do produto, Lema 3.5.7) valem para funções definidas apenas
+                    perto de $p$, e, por localidade, $v(f)$ depende só do germe de $f$ em $p$. Em particular, o
+                    vetor $v$ pode ser aplicado às funções coordenadas $x^i$ de uma carta, definidas só em $U$.
+                    (O <a href="[04] - Funções e Aplicações Suaves.html#lema-3-4-30">Lema 3.4.30</a> diz que $\tilde{f}$ coincide com $f$ <em>perto de $p$</em>, e é só isso que se
+                    usa; não se afirma que $\tilde{f}$ seja uma extensão de $f$ a todo $W$.)</p>
+
+                <h2 id="diferencial">A diferencial de uma aplicação suave</h2>
+
+                <p>
+                    Uma aplicação suave $F: M\to N$ transporta funções de $N$ para $M$ (por composição,
+                    $f\mapsto f\circ F$), e portanto transporta, em sentido contrário, derivações de $M$ para
+                    $N$.
+                </p>
+
+                <div class="definition-box" id="def-3-5-10" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.5.10 (Diferencial).</strong> Seja $F: M\to N$ uma aplicação suave e
+                        $p\in M$. A <strong>diferencial</strong> de $F$ em $p$ é a aplicação
+                        $dF_p: T_pM\to T_{F(p)}N$ dada por</p>
+                    <p>$$ (dF_p\,v)(f) = v(f\circ F), \qquad v\in T_pM,\ f\in C^\infty(N). $$</p>
+                </div>
+
+                <p>
+                    A definição faz sentido: $f\circ F\in C^\infty(M)$ pela
+                    <a href="[04] - Funções e Aplicações Suaves.html#prop-3-4-12">Proposição 3.4.12</a>. A aplicação $dF_pv$ é linear em $f$, porque
+                    $f\mapsto f\circ F$ e $v$ o são, e é uma derivação em $F(p)$:
+                </p>
+
+                <p>
+                    $$ (dF_p\,v)(fg) = v\big((f\circ F)(g\circ F)\big) = f(F(p))\,v(g\circ F) + g(F(p))\,v(f\circ F) = f(F(p))\,(dF_pv)(g) + g(F(p))\,(dF_pv)(f). $$
+                </p>
+
+                <p>
+                    A aplicação $v\mapsto dF_pv$ é linear, pela linearidade de $v\mapsto v(f\circ F)$. Por
+                    localidade (Observação 3.5.9), a fórmula $(dF_pv)(f) = v(f\circ F)$ também vale para $f$
+                    definida apenas perto de $F(p)$, com $f\circ F$ definida perto de $p$ (pois $F$ é contínua).
+                </p>
+
+                <div class="definition-box" id="prop-3-5-11">
+                    <p><strong>Proposição 3.5.11 (Regra da cadeia e funtorialidade).</strong> (a) Se
+                        $F: M\to N$ e $G: N\to P$ são suaves, então
+                        $d(G\circ F)_p = dG_{F(p)}\circ dF_p$. (b) $d(\mathrm{id}_M)_p = \mathrm{id}_{T_pM}$.
+                        (c) Se $F$ é um difeomorfismo, então $dF_p$ é um isomorfismo, com inversa
+                        $d(F^{-1})_{F(p)}$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Para $v\in T_pM$ e $f\in C^\infty(P)$,
+                    $\big(d(G\circ F)_pv\big)(f) = v\big(f\circ G\circ F\big)$ e
+                    $\big(dG_{F(p)}(dF_pv)\big)(f) = (dF_pv)(f\circ G) = v(f\circ G\circ F)$; as duas expressões
+                    são iguais. (b) $(d(\mathrm{id})_pv)(f) = v(f\circ\mathrm{id}) = v(f)$. (c) Por (a) e (b),
+                    $d(F^{-1})_{F(p)}\circ dF_p = d(F^{-1}\circ F)_p = d(\mathrm{id}_M)_p = \mathrm{id}$ e, do
+                    mesmo modo, $dF_p\circ d(F^{-1})_{F(p)} = \mathrm{id}$. $\blacksquare$
+                </p>
+
+                <p>
+                    O resultado seguinte permite identificar o espaço tangente de um aberto com o da variedade, e
+                    é o que justifica trabalhar em cartas.
+                </p>
+
+                <div class="definition-box" id="prop-3-5-12">
+                    <p><strong>Proposição 3.5.12 (O espaço tangente é local).</strong> Seja $U\subset M$ um
+                        aberto, $\iota: U\hookrightarrow M$ a inclusão e $p\in U$. Então
+                        $d\iota_p: T_pU\to T_pM$ é um isomorfismo.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Observe que $(d\iota_pv)(f) = v(f\vert_U)$ para $f\in C^\infty(M)$.
+                </p>
+
+                <p>
+                    <strong>Injetiva.</strong> Seja $v\in T_pU$ com $d\iota_pv=0$, e seja $g\in C^\infty(U)$. Pelo
+                    <a href="[04] - Funções e Aplicações Suaves.html#lema-3-4-30">Lema 3.4.30</a>, existe $\tilde{g}\in C^\infty(M)$ que coincide com $g$ em uma vizinhança de $p$
+                    contida em $U$; então $\tilde{g}\vert_U$ e $g$ coincidem perto de $p$ e, pela localidade em
+                    $U$ (Proposição 3.5.8), $v(g) = v(\tilde{g}\vert_U) = (d\iota_pv)(\tilde{g}) = 0$. Logo $v=0$.
+                </p>
+
+                <p>
+                    <strong>Sobrejetiva.</strong> Seja $w\in T_pM$. Definimos $v: C^\infty(U)\to\mathbb{R}$ por
+                    $v(g) = w(\tilde{g})$, com $\tilde{g}$ como acima, que é o que a Observação 3.5.9 chama de
+                    $w(g)$. Está bem definida (por localidade), é linear e satisfaz a regra do produto em $p$:
+                    se $\tilde{g}$ e $\tilde{k}$ coincidem com $g$ e $k$ perto de $p$, então $\tilde{g}\tilde{k}$
+                    coincide com $gk$ perto de $p$ e
+                    $v(gk) = w(\tilde{g}\tilde{k}) = g(p)\,w(\tilde{k}) + k(p)\,w(\tilde{g}) = g(p)\,v(k)+k(p)\,v(g)$.
+                    Logo $v\in T_pU$. Finalmente, para $f\in C^\infty(M)$, $(d\iota_pv)(f) = v(f\vert_U) = w(f)$,
+                    porque $f$ é uma extensão de $f\vert_U$ que coincide com ela perto de $p$. Assim
+                    $d\iota_pv=w$. $\blacksquare$
+                </p>
+
+                <p>
+                    Daqui em diante, <strong>identificamos $T_pU$ com $T_pM$</strong> por $d\iota_p$, para todo
+                    aberto $U\ni p$, e escrevemos simplesmente $T_pM$. Isso é consistente com a Observação 3.5.9: um
+                    vetor de $T_pM$ age sobre funções definidas perto de $p$.
+                </p>
+
+                <div class="definition-box" id="teo-3-5-13">
+                    <p><strong>Teorema 3.5.13 (Dimensão do espaço tangente).</strong> Se $M$ é uma variedade
+                        diferenciável de dimensão $n$, então $\dim T_pM = n$ para todo $p\in M$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Seja $(U,\varphi)$ uma carta com $p\in U$ e $\hat{p}=\varphi(p)$. Uma
+                    carta é um difeomorfismo de $U$ sobre o aberto $\hat{U}\subset\mathbb{R}^n$
+                    (<a href="[04] - Funções e Aplicações Suaves.html#prop-3-4-22">Proposição 3.4.22</a>), logo
+                    $d\varphi_p: T_pU\to T_{\hat{p}}\hat{U}$ é um isomorfismo (Proposição 3.5.11(c)). Pela
+                    Proposição 3.5.12, $T_pM\cong T_pU$ e $T_{\hat{p}}\hat{U}\cong T_{\hat{p}}\mathbb{R}^n$, e pelo
+                    Corolário 3.5.5, $\dim T_{\hat{p}}\mathbb{R}^n = n$. Portanto
+                </p>
+
+                <p>
+                    $$ T_pM \cong T_pU \cong T_{\hat{p}}\hat{U} \cong T_{\hat{p}}\mathbb{R}^n \cong \mathbb{R}^n. \qquad\blacksquare $$
+                </p>
+
+                <h2 id="coordenadas">Vetores em coordenadas</h2>
+
+                <p>
+                    Uma carta $(U,\varphi)$ com coordenadas $x^1,\dots,x^n$ dá uma base natural de cada $T_pM$,
+                    $p\in U$: a imagem, pelo difeomorfismo $\varphi^{-1}$, da base canônica de $T_{\hat{p}}\mathbb{R}^n$
+                    do Corolário 3.5.5. Seja $\hat{p}=\varphi(p)$.
+                </p>
+
+                <div class="definition-box" id="def-3-5-14" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.5.14 (Base coordenada).</strong> Sejam $(U,\varphi)$ uma carta de $M$ e
+                        $p\in U$. Para $i=1,\dots,n$, o <strong>vetor coordenado</strong>
+                        $\left.\dfrac{\partial}{\partial x^i}\right\vert_p\in T_pM$ é</p>
+                    <p>$$ \frac{\partial}{\partial x^i}\Big\vert_p = d\big(\varphi^{-1}\big)_{\hat{p}}\Big(\frac{\partial}{\partial x^i}\Big\vert_{\hat{p}}\Big), $$</p>
+                    <p>em que $d(\varphi^{-1})_{\hat{p}}: T_{\hat{p}}\hat{U}\to T_pU = T_pM$ e
+                        $\left.\partial/\partial x^i\right\vert_{\hat{p}}\in T_{\hat{p}}\hat{U} = T_{\hat{p}}\mathbb{R}^n$
+                        (identificações da Proposição 3.5.12). Usamos também a abreviação
+                        $\partial_i\vert_p$.</p>
+                </div>
+
+                <p>
+                    Como age sobre uma função $f$ definida perto de $p$? Pela definição da diferencial,
+                </p>
+
+                <p>
+                    $$ \frac{\partial}{\partial x^i}\Big\vert_p f = \frac{\partial}{\partial x^i}\Big\vert_{\hat{p}}\big(f\circ\varphi^{-1}\big) = \frac{\partial\hat{f}}{\partial x^i}(\hat{p}), \qquad \hat{f} = f\circ\varphi^{-1}. \tag{3.5.2} $$
+                </p>
+
+                <p>
+                    Isto é, $\partial_i\vert_p$ é a derivada parcial, em relação à $i$-ésima coordenada, da
+                    representação de $f$ em coordenadas: a derivada parcial da <a href="[04] - Funções e Aplicações Suaves.html#obs-3-4-3">Observação 3.4.3</a>, agora com
+                    significado preciso. Em particular, $\partial_i\vert_p(x^j) = \delta^j_i$, o delta de Kronecker.
+                    O vetor $\partial_i\vert_p$ depende da carta <em>inteira</em>, e não só da função
+                    coordenada $x^i$ (veja o Exemplo 3.5.21).
+                </p>
+
+                <div class="definition-box" id="def-3-5-15" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.5.15 (Convenção de soma de Einstein).</strong> Em uma expressão em que um
+                        índice aparece duas vezes, uma vez em cima e uma vez embaixo, subentende-se a soma sobre
+                        todos os valores desse índice. Assim,
+                        $v^i\partial_i\vert_p = \sum_{i=1}^nv^i\,\partial_i\vert_p$ e
+                        $\dfrac{\partial\tilde{x}^j}{\partial x^i}\,v^i = \sum_i\dfrac{\partial\tilde{x}^j}{\partial x^i}\,v^i$.
+                        O índice do denominador de uma derivada parcial conta como índice embaixo. Índices
+                        repetidos que não estão em posições opostas não são somados.</p>
+                </div>
+
+                <p>
+                    Usaremos esta convenção em todo o restante do capítulo. Ela é cômoda e informativa: um índice
+                    livre (que aparece só uma vez) indica uma grandeza com componentes, e um índice somado, que
+                    tem de aparecer em cima e embaixo, é "mudo" e pode ser renomeado.
+                </p>
+
+                <div class="definition-box" id="prop-3-5-16">
+                    <p><strong>Proposição 3.5.16 (Base e componentes).</strong> Se $(U,\varphi)$ é uma carta e
+                        $p\in U$, os vetores $\partial_1\vert_p,\dots,\partial_n\vert_p$ formam uma base de
+                        $T_pM$. Todo $v\in T_pM$ se escreve de modo único como</p>
+                    <p>$$ v = v^i\,\frac{\partial}{\partial x^i}\Big\vert_p, \qquad v^i = v(x^i). $$</p>
+                    <p>Os números $v^i$ são as <strong>componentes</strong> de $v$ na carta.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> A aplicação $d(\varphi^{-1})_{\hat{p}}: T_{\hat{p}}\mathbb{R}^n\to T_pM$ é
+                    um isomorfismo (Proposição 3.5.11(c), com as identificações da Proposição 3.5.12) e leva a base
+                    canônica do Corolário 3.5.5 nos vetores $\partial_i\vert_p$, que formam, portanto, uma base de
+                    $T_pM$. Se $v = v^j\partial_j\vert_p$, então, por (3.5.2),
+                    $v(x^i) = v^j\,\partial_j\vert_p(x^i) = v^j\,\dfrac{\partial(x^i\circ\varphi^{-1})}{\partial x^j}(\hat{p}) = v^j\delta^i_j = v^i$,
+                    pois $x^i\circ\varphi^{-1}$ é a $i$-ésima função coordenada de $\mathbb{R}^n$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="prop-3-5-17">
+                    <p><strong>Proposição 3.5.17 (A diferencial em coordenadas).</strong> Seja $F: M\to N$ suave,
+                        $p\in M$, e sejam $(U,\varphi)$ e $(V,\psi)$ cartas em torno de $p$ e de $F(p)$ com
+                        $F(U)\subset V$, de coordenadas $x^i$ e $y^j$. Escrevendo
+                        $\hat{F} = \psi\circ F\circ\varphi^{-1} = (\hat{F}^1,\dots,\hat{F}^m)$,</p>
+                    <p>$$ dF_p\Big(\frac{\partial}{\partial x^i}\Big\vert_p\Big) = \frac{\partial\hat{F}^j}{\partial x^i}(\hat{p})\ \frac{\partial}{\partial y^j}\Big\vert_{F(p)}. \tag{3.5.3} $$</p>
+                    <p>Ou seja, a matriz de $dF_p$ nas bases coordenadas é a matriz jacobiana de $\hat{F}$ em
+                        $\hat{p}$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela Proposição 3.5.16, as componentes do vetor
+                    $w = dF_p(\partial_i\vert_p)$ na base $\{\partial/\partial y^j\vert_{F(p)}\}$ são
+                    $w(y^j)$. Pela definição da diferencial (válida para funções locais) e por (3.5.2),
+                </p>
+
+                <p>
+                    $$ w(y^j) = \partial_i\vert_p\big(y^j\circ F\big) = \frac{\partial\big(y^j\circ F\circ\varphi^{-1}\big)}{\partial x^i}(\hat{p}) = \frac{\partial\hat{F}^j}{\partial x^i}(\hat{p}),
+                    $$
+                </p>
+
+                <p>
+                    em que $y^j\circ F\circ\varphi^{-1}=\hat{F}^j$ é a $j$-ésima componente de $\hat{F}$. $\blacksquare$
+                </p>
+
+                <p>
+                    A Proposição 3.5.17 diz que a diferencial é a "derivada" da teoria: em coordenadas ela é a
+                    jacobiana, e em particular a regra da cadeia (Proposição 3.5.11(a)) é a regra da cadeia do
+                    cálculo.
+                </p>
+
+                <h3 id="mudanca-de-coordenadas">Mudança de coordenadas</h3>
+
+                <p>
+                    Sejam $(U,\varphi)$ e $(\tilde{U},\tilde{\varphi})$ duas cartas em torno de $p$, de
+                    coordenadas $x^i$ e $\tilde{x}^j$. A aplicação de transição
+                    $\tilde{\varphi}\circ\varphi^{-1}$ escreve as novas coordenadas em função das antigas:
+                    $\tilde{x}^j = \tilde{x}^j(x^1,\dots,x^n)$.
+                </p>
+
+                <div class="definition-box" id="prop-3-5-18">
+                    <p><strong>Proposição 3.5.18 (Lei de transformação).</strong> Nas condições acima, com todas as
+                        derivadas calculadas em $\hat{p}=\varphi(p)$,</p>
+                    <p>$$ \frac{\partial}{\partial x^i}\Big\vert_p = \frac{\partial\tilde{x}^j}{\partial x^i}(\hat{p})\ \frac{\partial}{\partial\tilde{x}^j}\Big\vert_p, \qquad
+                        \tilde{v}^j = \frac{\partial\tilde{x}^j}{\partial x^i}(\hat{p})\,v^i, \tag{3.5.4} $$</p>
+                    <p>em que $v^i$ e $\tilde{v}^j$ são as componentes de um vetor $v\in T_pM$ nas duas cartas. A
+                        matriz $J^j{}_i = \partial\tilde{x}^j/\partial x^i(\hat{p})$ é invertível, com inversa
+                        $\partial x^i/\partial\tilde{x}^j(\tilde{p})$, em que $\tilde{p}=\tilde{\varphi}(p)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Aplique a Proposição 3.5.17 a $F=\mathrm{id}_M$, restrita ao aberto
+                    $U\cap\tilde{U}$, com a carta $\varphi$ no domínio e $\tilde{\varphi}$ no contradomínio. Então
+                    $\hat{F} = \tilde{\varphi}\circ\varphi^{-1}$, $\hat{F}^j=\tilde{x}^j$ e
+                    $d(\mathrm{id})_p=\mathrm{id}$, de modo que (3.5.3) é a primeira igualdade de (3.5.4). Para as
+                    componentes, escreva
+                    $v = v^i\partial_i\vert_p = v^i\,\dfrac{\partial\tilde{x}^j}{\partial x^i}\,\tilde{\partial}_j\vert_p$
+                    e use a unicidade das componentes na base $\{\tilde{\partial}_j\vert_p\}$
+                    (Proposição 3.5.16). Finalmente, a transição é um difeomorfismo, e a regra da cadeia
+                    aplicada a $\varphi\circ\tilde{\varphi}^{-1}\circ(\tilde{\varphi}\circ\varphi^{-1}) = \mathrm{id}$
+                    mostra que as jacobianas das duas transições são inversas uma da outra. $\blacksquare$
+                </p>
+
+                <p>
+                    A Equação (3.5.4) é a <strong>lei contravariante</strong>: as componentes do vetor se
+                    transformam com a jacobiana "novas por velhas", $\partial\tilde{x}^j/\partial x^i$. A mesma matriz
+                    $J^j{}_i$ aparece nas duas igualdades de (3.5.4), mas em papéis opostos: o vetor da base
+                    antiga é combinação dos da nova, $\partial_i = J^j{}_i\tilde{\partial}_j$, e a componente
+                    nova é combinação das antigas, $\tilde{v}^j=J^j{}_iv^i$. É essa oposição que faz de
+                    $v = v^i\partial_i = \tilde{v}^j\tilde{\partial}_j$ um objeto que não depende da carta.
+                    No tópico 3.9, os covetores terão a lei inversa.
+                </p>
+
+                <p>
+                    A lei (3.5.4) é a definição de vetor que a Física costuma adotar: "um vetor é uma lista de
+                    $n$ números em cada sistema de coordenadas, que se transformam por (3.5.4)". O teorema a
+                    seguir mostra que essa definição e a que adotamos descrevem o mesmo espaço.
+                </p>
+
+                <div class="definition-box" id="teo-3-5-19">
+                    <p><strong>Teorema 3.5.19 (Equivalência com a definição dos físicos).</strong> Seja
+                        $\mathcal{V}_p$ o conjunto das regras $\mathbf{v}$ que associam a cada carta
+                        $(U,\varphi)$ com $p\in U$ uma $n$-upla $\mathbf{v}_\varphi = (v^1,\dots,v^n)\in\mathbb{R}^n$
+                        de modo que, para quaisquer duas cartas $(U,\varphi)$ e $(\tilde{U},\tilde{\varphi})$,</p>
+                    <p>$$ \tilde{v}^j = \frac{\partial\tilde{x}^j}{\partial x^i}(\varphi(p))\ v^i. $$</p>
+                    <p>Com a soma e o produto por escalar feitos componente a componente, $\mathcal{V}_p$ é um
+                        espaço vetorial, e a aplicação $v\mapsto\big(\varphi\mapsto(v(x^1),\dots,v(x^n))\big)$ é um
+                        isomorfismo linear $T_pM\to\mathcal{V}_p$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> $\mathcal{V}_p$ é espaço vetorial porque a condição é linear nas
+                    componentes. Seja $\Theta(v)$ a regra que associa a cada carta as componentes de $v$ nela
+                    (Proposição 3.5.16). <strong>Está bem definida:</strong> $\Theta(v)\in\mathcal{V}_p$ pela
+                    Proposição 3.5.18. <strong>É linear:</strong> $(v+cw)(x^i)=v(x^i)+c\,w(x^i)$.
+                    <strong>É injetiva:</strong> se $\Theta(v)=0$, as componentes de $v$ em uma carta se anulam, e
+                    $v=0$ pela Proposição 3.5.16. <strong>É sobrejetiva:</strong> seja $\mathbf{v}\in\mathcal{V}_p$.
+                    Fixe uma carta $(U_0,\varphi_0)$ em torno de $p$ e defina
+                    $v = v_0^i\,\partial/\partial x_0^i\vert_p$, com $(v_0^i) = \mathbf{v}_{\varphi_0}$. Para outra
+                    carta $\tilde{\varphi}$, as componentes de $v$ nela são, por (3.5.4),
+                    $\tilde{v}^j = \dfrac{\partial\tilde{x}^j}{\partial x_0^i}(\varphi_0(p))\,v_0^i$, e, como
+                    $\mathbf{v}$ satisfaz a mesma lei entre $\varphi_0$ e $\tilde{\varphi}$, essa expressão é
+                    $\mathbf{v}_{\tilde{\varphi}}$. Logo $\Theta(v)=\mathbf{v}$. $\blacksquare$
+                </p>
+
+                <p id="ex-3-5-20"><strong>Exemplo 3.5.20 (Coordenadas polares).</strong> Em $\mathbb{R}^2$, seja
+                    $(U,P^{-1})$ a carta polar, com $U = \mathbb{R}^2\setminus\{(x,0):x\le0\}$,
+                    obtida da aplicação $P(r,\theta) = (r\cos\theta,r\sin\theta)$ restrita a
+                    $(0,\infty)\times(-\pi,\pi)$, que é um difeomorfismo sobre $U$
+                    (<a href="[02] - Preliminares de Topologia e Cálculo.html#ex-3-2-55">Exemplo 3.2.55</a>).
+                    Tomando as coordenadas polares $(r,\theta)$ como "antigas" e as cartesianas $(x,y)$ como
+                    "novas", com $x = r\cos\theta$ e $y=r\sin\theta$, a primeira igualdade de (3.5.4) dá</p>
+
+                <p>
+                    $$ \frac{\partial}{\partial r} = \cos\theta\,\frac{\partial}{\partial x} + \sin\theta\,\frac{\partial}{\partial y}, \qquad
+                    \frac{\partial}{\partial\theta} = -r\sin\theta\,\frac{\partial}{\partial x} + r\cos\theta\,\frac{\partial}{\partial y}. \tag{3.5.5} $$
+                </p>
+
+                <p>
+                    O primeiro é o vetor unitário radial, que "anda" ao longo de uma semirreta $\theta=$ const.;
+                    o segundo é tangente ao círculo $r=$ const. e, medido com o produto escalar usual de
+                    $\mathbb{R}^2$, tem comprimento $r$: não é unitário, e seu comprimento cresce
+                    linearmente com $r$ (Figura 3.5.1). Isso é natural: variar $\theta$ de uma unidade desloca
+                    mais um ponto distante da origem do que um ponto próximo dela. O fato de o vetor coordenado
+                    não ser unitário é uma característica geral das coordenadas curvilíneas, e a razão pela qual,
+                    mais adiante, componentes de vetores em bases coordenadas não são medidas diretas de
+                    comprimento sem uma métrica.</p>
+
+                <figure class="lecture-figure" id="fig-3-5-1">
+                    <svg viewBox="0 0 640 292" role="img" aria-label="Plano com eixos x e y. Uma semirreta que sai da origem com ângulo fixo de trinta e dois graus e três círculos tracejados de raios 1, 2 e 3. Em cada ponto em que a semirreta cruza um círculo há duas setas: partial r, de mesmo comprimento nos três pontos e apontando ao longo da semirreta, e partial teta, perpendicular a ela e tangente ao círculo, cujo comprimento é proporcional ao raio e portanto cresce de um ponto para o seguinte.">
+<defs><marker id="arr-3-5-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="56" y1="262" x2="600" y2="262" class="fig-axis" marker-end="url(#arr-3-5-2)"/>
+<line x1="70" y1="276" x2="70" y2="24" class="fig-axis" marker-end="url(#arr-3-5-2)"/>
+<text x="604" y="280" text-anchor="end" class="fig-label fig-it">x</text>
+<text x="62" y="30" text-anchor="end" class="fig-label fig-it">y</text>
+<circle cx="70" cy="262" r="2.5" class="fig-arrowhead"/>
+<line x1="70" y1="262" x2="305.3" y2="114.9" class="fig-guide"/>
+<path d="M143.3,251.7 L142.9,249.2 L142.4,246.6 L141.8,244.1 L141.1,241.6 L140.4,239.1 L139.5,236.7 L138.6,234.3 L137.6,231.9 L136.5,229.6 L135.3,227.3 L134.1,225 L132.8,222.8 L131.3,220.6 L129.9,218.5 L128.3,216.4 L126.7,214.4 L125,212.5 L123.2,210.6 L121.4,208.8 L119.5,207 L117.6,205.3 L115.6,203.7 L113.5,202.1 L111.4,200.7 L109.2,199.2 L107,197.9 L104.7,196.7 L102.4,195.5 L100.1,194.4 L97.7,193.4 L95.3,192.5 L92.9,191.6 L90.4,190.9 L87.9,190.2 L85.4,189.6 L82.8,189.1" class="fig-guide fig-dashed"/>
+<circle cx="132.8" cy="222.8" r="3.5" class="fig-arrowhead"/>
+<line x1="132.8" y1="222.8" x2="156.5" y2="207.9" class="fig-axis" marker-end="url(#arr-3-5-2)"/>
+<line x1="132.8" y1="222.8" x2="117.9" y2="199" class="fig-curve" marker-end="url(#arr-3-5-2)"/>
+<text x="162.5" y="223.9" class="fig-label fig-small fig-it">∂ᵣ</text>
+<text x="113.9" y="193" text-anchor="end" class="fig-label fig-small fig-it">∂_θ</text>
+<text x="88.8" y="187.1" class="fig-label fig-small fig-it">r = 1</text>
+<path d="M216.6,241.4 L215.8,236.3 L214.8,231.2 L213.6,226.2 L212.3,221.2 L210.8,216.3 L209.1,211.4 L207.2,206.6 L205.2,201.8 L203,197.1 L200.7,192.5 L198.2,188 L195.5,183.6 L192.7,179.2 L189.7,175 L186.6,170.9 L183.4,166.9 L180,163 L176.5,159.2 L172.8,155.5 L169,152 L165.1,148.6 L161.1,145.4 L157,142.3 L152.8,139.3 L148.4,136.5 L144,133.8 L139.5,131.3 L134.9,129 L130.2,126.8 L125.4,124.8 L120.6,122.9 L115.7,121.2 L110.8,119.7 L105.8,118.4 L100.8,117.2 L95.7,116.2" class="fig-guide fig-dashed"/>
+<circle cx="195.5" cy="183.6" r="3.5" class="fig-arrowhead"/>
+<line x1="195.5" y1="183.6" x2="219.3" y2="168.7" class="fig-axis" marker-end="url(#arr-3-5-2)"/>
+<line x1="195.5" y1="183.6" x2="165.8" y2="136.1" class="fig-curve" marker-end="url(#arr-3-5-2)"/>
+<text x="225.3" y="184.7" class="fig-label fig-small fig-it">∂ᵣ</text>
+<text x="161.8" y="130.1" text-anchor="end" class="fig-label fig-small fig-it">∂_θ</text>
+<text x="101.7" y="114.2" class="fig-label fig-small fig-it">r = 2</text>
+<path d="M289.8,231.1 L288.6,223.5 L287.1,215.8 L285.4,208.3 L283.4,200.8 L281.1,193.4 L278.6,186.1 L275.8,178.8 L272.8,171.7 L269.5,164.7 L266,157.8 L262.3,151 L258.3,144.4 L254,137.9 L249.6,131.5 L244.9,125.3 L240.1,119.3 L235,113.5 L229.7,107.8 L224.2,102.3 L218.5,97 L212.7,91.9 L206.7,87.1 L200.5,82.4 L194.1,78 L187.6,73.7 L181,69.7 L174.2,66 L167.3,62.5 L160.3,59.2 L153.2,56.2 L145.9,53.4 L138.6,50.9 L131.2,48.6 L123.7,46.6 L116.2,44.9 L108.5,43.4" class="fig-guide fig-dashed"/>
+<circle cx="258.3" cy="144.4" r="3.5" class="fig-arrowhead"/>
+<line x1="258.3" y1="144.4" x2="282" y2="129.5" class="fig-axis" marker-end="url(#arr-3-5-2)"/>
+<line x1="258.3" y1="144.4" x2="213.8" y2="73.1" class="fig-curve" marker-end="url(#arr-3-5-2)"/>
+<text x="288" y="145.5" class="fig-label fig-small fig-it">∂ᵣ</text>
+<text x="209.8" y="67.1" text-anchor="end" class="fig-label fig-small fig-it">∂_θ</text>
+<text x="114.5" y="41.4" class="fig-label fig-small fig-it">r = 3</text>
+</svg>
+                    <figcaption><strong>Figura 3.5.1.</strong> A base coordenada polar de $\mathbb{R}^2$ em três
+                        pontos de uma semirreta $\theta=$ const. O vetor $\partial/\partial r$ tem sempre o mesmo
+                        comprimento; $\partial/\partial\theta$, tangente ao círculo, cresce com $r$, como em
+                        (3.5.5). Os comprimentos são medidos com o produto escalar usual do plano, que ainda não
+                        faz parte da estrutura de variedade.</figcaption>
+                </figure>
+
+                <p id="ex-3-5-21"><strong>Exemplo 3.5.21 (Uma armadilha clássica).</strong> Considere em $\mathbb{R}^2$
+                    as duas cartas $(x,y)$ e $(\tilde{x},\tilde{y}) = (x,\,x+y)$, a mesma transição do
+                    <a href="[01] - Motivação e Roteiro.html#derivar-e-integrar">tópico 3.1</a>. A primeira coordenada é a
+                    mesma função nos dois sistemas: $\tilde{x}=x$. Mas os vetores coordenados <em>não</em> são
+                    os mesmos. Invertendo, $x=\tilde{x}$ e $y=\tilde{y}-\tilde{x}$, e a primeira igualdade
+                    de (3.5.4), com as coordenadas $\tilde{x},\tilde{y}$ no papel de "antigas", dá</p>
+
+                <p>
+                    $$ \frac{\partial}{\partial\tilde{x}} = \frac{\partial x}{\partial\tilde{x}}\,\frac{\partial}{\partial x} + \frac{\partial y}{\partial\tilde{x}}\,\frac{\partial}{\partial y} = \frac{\partial}{\partial x} - \frac{\partial}{\partial y}, \qquad
+                    \frac{\partial}{\partial\tilde{y}} = \frac{\partial}{\partial y}. $$
+                </p>
+
+                <p>
+                    Logo $\partial/\partial\tilde{x}\neq\partial/\partial x$, embora $\tilde{x}=x$. Aplicando os dois à
+                    função $f=y$, tem-se $\partial_xy=0$ e $(\partial_x-\partial_y)y = -1$, que é o mesmo que
+                    derivar $f=\tilde{y}-\tilde{x}$ em relação a $\tilde{x}$. O vetor $\partial/\partial x^i$ é
+                    "a variação da $i$-ésima coordenada <em>mantendo todas as outras fixas</em>", e quais são "as
+                    outras" depende do sistema inteiro de coordenadas, e não só de $x^i$. Por isso a notação
+                    $\partial f/\partial x$ é ambígua quando não se diz qual é a outra coordenada.</p>
+
+                <h2 id="curvas">Vetores como velocidades de curvas</h2>
+
+                <p>
+                    A primeira intuição, a de que um vetor tangente é uma velocidade, é também um teorema. Uma
+                    curva suave $\gamma: J\to M$ (<a href="[04] - Funções e Aplicações Suaves.html#def-3-4-17">Definição 3.4.17</a>) tem em cada
+                    instante uma velocidade, definida pela diferencial.
+                </p>
+
+                <div class="definition-box" id="def-3-5-22" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.5.22 (Velocidade de uma curva).</strong> Seja $\gamma: J\to M$ uma
+                        curva suave e $t_0\in J$. A <strong>velocidade</strong> de $\gamma$ em $t_0$ é o vetor</p>
+                    <p>$$ \gamma'(t_0) = d\gamma_{t_0}\Big(\frac{d}{dt}\Big\vert_{t_0}\Big)\in T_{\gamma(t_0)}M, $$</p>
+                    <p>em que $\left.d/dt\right\vert_{t_0}\in T_{t_0}\mathbb{R}$ é o vetor coordenado da carta
+                        identidade de $\mathbb{R}$.</p>
+                </div>
+
+                <p>
+                    Pela definição da diferencial, $\gamma'(t_0)f = \frac{d}{dt}\big\vert_{t_0}(f\circ\gamma) = (f\circ\gamma)'(t_0)$
+                    para toda $f$ suave perto de $\gamma(t_0)$: a velocidade é a taxa de variação de $f$ ao longo
+                    da curva. Em uma carta $(U,\varphi)$, as componentes são
+                    $\gamma'(t)(x^i) = (x^i\circ\gamma)'(t) = \dot\gamma^i(t)$, de modo que
+                </p>
+
+                <p>
+                    $$ \gamma'(t) = \dot\gamma^i(t)\,\frac{\partial}{\partial x^i}\Big\vert_{\gamma(t)}, \tag{3.5.6} $$
+                </p>
+
+                <p>
+                    em que $\dot\gamma^i = d(x^i\circ\gamma)/dt$: as componentes da velocidade são as velocidades
+                    das coordenadas, como na física elementar.
+                </p>
+
+                <div class="definition-box" id="prop-3-5-23">
+                    <p><strong>Proposição 3.5.23 (Todo vetor é uma velocidade).</strong> Seja $v\in T_pM$. Existe
+                        uma curva suave $\gamma: (-\varepsilon,\varepsilon)\to M$ com $\gamma(0)=p$ e
+                        $\gamma'(0)=v$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Seja $(U,\varphi)$ uma carta em torno de $p$ e
+                    $(v^1,\dots,v^n)$ as componentes de $v$. Como $\hat{U}$ é aberto, existe $\varepsilon\gt0$ com
+                    $\hat{p}+t(v^1,\dots,v^n)\in\hat{U}$ para $\lvert t\rvert\lt\varepsilon$. Defina
+                </p>
+
+                <p>
+                    $$ \gamma(t) = \varphi^{-1}\big(\hat{p}+t\,(v^1,\dots,v^n)\big). $$
+                </p>
+
+                <p>
+                    É uma curva suave (composta de uma aplicação afim com $\varphi^{-1}$), com $\gamma(0)=p$, e
+                    suas coordenadas $x^i\circ\gamma(t) = \hat{p}^i+tv^i$ têm velocidades $\dot\gamma^i = v^i$.
+                    Por (3.5.6), $\gamma'(0)=v^i\partial_i\vert_p=v$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="prop-3-5-24">
+                    <p><strong>Proposição 3.5.24 (A diferencial por curvas).</strong> Seja $F: M\to N$ suave e
+                        $\gamma$ uma curva suave em $M$ com $\gamma(0)=p$. Então
+                        $dF_p\big(\gamma'(0)\big) = (F\circ\gamma)'(0)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela regra da cadeia (Proposição 3.5.11(a)),
+                    $dF_p(\gamma'(0)) = dF_p\big(d\gamma_0(d/dt\vert_0)\big) = d(F\circ\gamma)_0(d/dt\vert_0)
+                    = (F\circ\gamma)'(0)$. $\blacksquare$
+                </p>
+
+                <p>
+                    A Proposição 3.5.24 é o modo prático de calcular uma diferencial: escolhe-se uma curva
+                    com a velocidade desejada e deriva-se a imagem dela (<a href="#exr-3-5-3">Exercício 3.5.3</a>).
+                    Resta mostrar que as curvas descrevem <em>exatamente</em> $T_pM$, sem excesso.
+                </p>
+
+                <div class="definition-box" id="teo-3-5-25">
+                    <p><strong>Teorema 3.5.25 (Equivalência com classes de curvas).</strong> Seja $\mathcal{C}_p$ o
+                        conjunto das curvas suaves $\gamma: J\to M$, com $J\ni0$ intervalo aberto e
+                        $\gamma(0)=p$. Defina $\gamma_1\sim\gamma_2$ se
+                        $(f\circ\gamma_1)'(0) = (f\circ\gamma_2)'(0)$ para toda função $f$ suave definida em uma
+                        vizinhança de $p$. Então $\sim$ é uma relação de equivalência e
+                        $[\gamma]\mapsto\gamma'(0)$ é uma bijeção de $\mathcal{C}_p/{\sim}$ sobre $T_pM$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> A relação $\sim$ é de equivalência porque é definida por igualdade de
+                    números. <strong>Bem definida:</strong> se $\gamma_1\sim\gamma_2$, então
+                    $\gamma_1'(0)f = (f\circ\gamma_1)'(0) = (f\circ\gamma_2)'(0)=\gamma_2'(0)f$ para toda
+                    $f$, logo $\gamma_1'(0)=\gamma_2'(0)$. <strong>Injetiva:</strong> se
+                    $\gamma_1'(0)=\gamma_2'(0)$, então, para toda $f$ suave perto de $p$,
+                    $(f\circ\gamma_1)'(0)=\gamma_1'(0)f=\gamma_2'(0)f=(f\circ\gamma_2)'(0)$, isto é,
+                    $\gamma_1\sim\gamma_2$. <strong>Sobrejetiva:</strong> é a Proposição 3.5.23. $\blacksquare$
+                </p>
+
+                <p>
+                    Assim, as três descrições de $T_pM$ coincidem: (ii) as derivações (a definição), (iii) as
+                    $n$-uplas de componentes com a lei contravariante (Teorema 3.5.19) e (i) as classes de
+                    curvas que passam por $p$ com a mesma velocidade (Teorema 3.5.25). Dois fatos devem ser
+                    mantidos separados: curvas diferentes podem ter o mesmo vetor velocidade (o
+                    <a href="#exr-3-5-6">Exercício 3.5.6</a>), e é por isso que o vetor é a classe, e não a curva.
+                </p>
+
+                <p id="ex-3-5-26"><strong>Exemplo 3.5.26 (O plano tangente à esfera).</strong> Seja $p\in S^2$ e
+                    $\gamma$ uma curva suave em $S^2$ com $\gamma(0)=p$. Considerando $S^2\subset\mathbb{R}^3$, a
+                    curva $\iota\circ\gamma$ em $\mathbb{R}^3$ satisfaz $\lvert\iota\circ\gamma(t)\rvert^2=1$ para
+                    todo $t$; derivando em $t=0$, $2\,p\cdot(\iota\circ\gamma)'(0)=0$. Pela Proposição 3.5.24,
+                    $(\iota\circ\gamma)'(0)=d\iota_p(\gamma'(0))$, o vetor de $\mathbb{R}^3$ associado a
+                    $\gamma'(0)$ pelo Teorema 3.5.4. Logo $d\iota_p(\gamma'(0))\perp p$: toda velocidade de uma
+                    curva da esfera é ortogonal a $p$. Reciprocamente, dado $w\in\mathbb{R}^3$ com
+                    $w\perp p$ e $w\ne0$, o grande círculo
+                    $\gamma(t) = \cos(\lvert w\rvert t)\,p + \sin(\lvert w\rvert t)\,w/\lvert w\rvert$ está em
+                    $S^2$, passa por $p$ em $t=0$ e tem velocidade $w$. Portanto a imagem de $d\iota_p$ é o
+                    plano $p^\perp=\{w\in\mathbb{R}^3: w\cdot p=0\}$, que é o "plano tangente" geométrico
+                    (Figura 3.5.2). Como $\dim T_pS^2=2=\dim p^\perp$, $d\iota_p$ é injetiva e $T_pS^2$ se
+                    identifica com $p^\perp$. A formulação geral desta identificação, para qualquer subvariedade
+                    de $\mathbb{R}^N$, é o assunto do tópico 3.6.</p>
+
+                <figure class="lecture-figure" id="fig-3-5-2">
+                    <svg viewBox="0 0 640 300" role="img" aria-label="Uma esfera desenhada como um círculo, com o equador em perspectiva. Em um ponto p da região visível, um paralelogramo representa o plano tangente. Uma curva gama sobre a esfera passa por p; uma seta que sai de p, dentro do plano tangente e tangente à curva, representa a velocidade gama linha de zero.">
+<defs><marker id="arr-3-5-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<circle cx="250" cy="150" r="118" class="fig-shape"/>
+<path d="M368,150 L367.6,152.7 L366.5,155.3 L364.7,157.9 L362.2,160.5 L359,163 L355.1,165.4 L350.6,167.8 L345.5,170 L339.7,172.1 L333.4,174 L326.6,175.9 L319.4,177.5 L311.7,179 L303.6,180.3 L295.2,181.4 L286.5,182.3 L277.5,183.1 L268.5,183.6 L259.3,183.9 L250,184 L240.7,183.9 L231.5,183.6 L222.5,183.1 L213.5,182.3 L204.8,181.4 L196.4,180.3 L188.3,179 L180.6,177.5 L173.4,175.9 L166.6,174 L160.3,172.1 L154.5,170 L149.4,167.8 L144.9,165.4 L141,163 L137.8,160.5 L135.3,157.9 L133.5,155.3 L132.4,152.7 L132,150" class="fig-guide"/>
+<path d="M368,150 L367.6,147.3 L366.5,144.7 L364.7,142.1 L362.2,139.5 L359,137 L355.1,134.6 L350.6,132.2 L345.5,130 L339.7,127.9 L333.4,126 L326.6,124.1 L319.4,122.5 L311.7,121 L303.6,119.7 L295.2,118.6 L286.5,117.7 L277.5,116.9 L268.5,116.4 L259.3,116.1 L250,116 L240.7,116.1 L231.5,116.4 L222.5,116.9 L213.5,117.7 L204.8,118.6 L196.4,119.7 L188.3,121 L180.6,122.5 L173.4,124.1 L166.6,126 L160.3,127.9 L154.5,130 L149.4,132.2 L144.9,134.6 L141,137 L137.8,139.5 L135.3,142.1 L133.5,144.7 L132.4,147.3 L132,150" class="fig-guide fig-dashed"/>
+<path d="M380,20 L448,124 L256,176 L188,72 Z" class="fig-band"/>
+<path d="M380,20 L448,124 L256,176 L188,72 Z" class="fig-curve"/>
+<path d="M250.3,164.6 L255.2,158.1 L260,151.8 L264.8,145.8 L269.7,140.1 L274.5,134.6 L279.3,129.5 L284.2,124.6 L289,120 L293.8,115.6 L298.7,111.5 L303.5,107.7 L308.3,104.2 L313.2,101 L318,98 L322.8,95.3 L327.7,92.9 L332.5,90.7 L337.3,88.9 L342.2,87.3 L347,86 L351.8,84.9 L356.7,84.1 L361.5,83.6 L366.3,83.4 L371.2,83.5 L376,83.8 L380.8,84.4 L385.7,85.3" class="fig-curve"/>
+<circle cx="318" cy="98" r="3.5" class="fig-arrowhead"/>
+<line x1="318" y1="98" x2="376" y2="64" class="fig-axis" marker-end="url(#arr-3-5-1)"/>
+<text x="304" y="118" text-anchor="end" class="fig-label fig-it">p</text>
+<text x="384" y="62" class="fig-label fig-it">γ′(0)</text>
+<text x="388" y="34" class="fig-label fig-it">T_pM</text>
+<text x="180" y="228" class="fig-label fig-it">M</text>
+<text x="244.3" y="182.6" text-anchor="end" class="fig-label fig-it">γ</text>
+</svg>
+                    <figcaption><strong>Figura 3.5.2.</strong> O espaço tangente em $p\in S^2$, desenhado como o
+                        plano $p^\perp$ tangente à esfera. Uma curva $\gamma$ sobre a esfera passa por $p$, e sua
+                        velocidade $\gamma'(0)$ é um vetor desse plano. Todo vetor do plano é a
+                        velocidade de alguma curva da esfera (por exemplo, de um grande círculo), como no
+                        Exemplo 3.5.26.</figcaption>
+                </figure>
+
+                <h2 id="casos-especiais">Identificações canônicas</h2>
+
+                <p>
+                    Duas situações em que o espaço tangente tem uma descrição natural, sem uso de cartas.
+                </p>
+
+                <div class="definition-box" id="prop-3-5-27">
+                    <p><strong>Proposição 3.5.27 (Espaços vetoriais).</strong> Seja $V$ um espaço vetorial real de
+                        dimensão finita, com a estrutura diferenciável usual
+                        (<a href="[03] - Variedades Diferenciáveis.html#ex-3-3-17">Exemplo 3.3.17</a>), e $a\in V$. A aplicação
+                        $V\to T_aV$, $v\mapsto D_v\vert_a$, em que
+                        $D_v\vert_af = \frac{d}{dt}\big\vert_{t=0}f(a+tv)$, é um isomorfismo linear, que não
+                        depende da escolha de base.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> A definição de $D_v\vert_a$ não usa base: $t\mapsto a+tv$ é uma curva
+                    suave em $V$, e $D_v\vert_a$ é a velocidade dessa curva em $t=0$, um vetor de $T_aV$
+                    (Definição 3.5.22). Seja $E=(E_1,\dots,E_n)$ uma base de $V$, com carta linear
+                    $\varepsilon: V\to\mathbb{R}^n$, e $f\in C^\infty(V)$, $\hat{f}=f\circ\varepsilon^{-1}$. Como
+                    $\varepsilon$ é linear, $f(a+tv) = \hat{f}(\varepsilon(a)+t\,\varepsilon(v))$, e a
+                    <a href="[02] - Preliminares de Topologia e Cálculo.html#prop-3-2-48">Proposição 3.2.48</a> dá
+                    $D_v\vert_af = \partial_i\hat{f}(\varepsilon(a))\,v^i = v^i\,\partial_i\vert_af$, em que
+                    $v^i$ são as componentes de $v$ na base $E$. Assim $D_v\vert_a = v^i\partial_i\vert_a$ tem, na
+                    base coordenada da carta $\varepsilon$, as mesmas componentes que $v$ tem na base $E$. A
+                    aplicação $v\mapsto D_v\vert_a$ é, portanto, um isomorfismo. $\blacksquare$
+                </p>
+
+                <p>
+                    Em particular, para $V=\mathbb{R}^n$ recuperamos o Teorema 3.5.4. A identificação $T_aV\cong V$
+                    é "canônica": está definida sem escolher base, e é por ela que, por exemplo, o vetor
+                    velocidade de uma curva em $\mathbb{R}^3$ é, no sentido usual, um vetor de $\mathbb{R}^3$.
+                </p>
+
+                <div class="definition-box" id="prop-3-5-28">
+                    <p><strong>Proposição 3.5.28 (Espaço tangente de um produto).</strong> Sejam $M$ e $N$
+                        variedades diferenciáveis, $p\in M$, $q\in N$ e $\pi_M$, $\pi_N$ as projeções de
+                        $M\times N$. A aplicação</p>
+                    <p>$$ \Phi: T_{(p,q)}(M\times N)\longrightarrow T_pM\oplus T_qN, \qquad \Phi(v) = \big(d(\pi_M)_{(p,q)}v,\ d(\pi_N)_{(p,q)}v\big) $$</p>
+                    <p>é um isomorfismo, cuja inversa é
+                        $(a,b)\mapsto d(\iota^q)_pa + d(\iota_p)_qb$, em que
+                        $\iota^q: M\to M\times N$, $x\mapsto(x,q)$ e $\iota_p: N\to M\times N$, $y\mapsto(p,y)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> As projeções e as inclusões de fatia são suaves
+                    (<a href="[04] - Funções e Aplicações Suaves.html#ex-3-4-15">Exemplo 3.4.15</a>). Seja
+                    $\Psi(a,b) = d(\iota^q)_pa + d(\iota_p)_qb$. Calculemos $\Phi\circ\Psi$. Como
+                    $\pi_M\circ\iota^q=\mathrm{id}_M$ e $\pi_M\circ\iota_p$ é a aplicação constante de valor $p$,
+                    a regra da cadeia dá $d(\pi_M)\circ d(\iota^q)_p=\mathrm{id}$ e
+                    $d(\pi_M)\circ d(\iota_p)_q=0$; a diferencial de uma constante é nula, pois
+                    $(dc\,u)(f) = u(f\circ c) = u(\text{constante}) = 0$ (Lema 3.5.7). Do mesmo modo,
+                    $d(\pi_N)\circ d(\iota^q)_p=0$ e $d(\pi_N)\circ d(\iota_p)_q=\mathrm{id}$. Portanto
+                    $\Phi(\Psi(a,b)) = (a,b)$, e $\Phi$ é sobrejetiva. Pelo Teorema 3.5.13 e pela
+                    <a href="[03] - Variedades Diferenciáveis.html#prop-3-3-26">Proposição 3.3.26</a>, $\dim T_{(p,q)}(M\times N)=m+n=\dim(T_pM\oplus T_qN)$.
+                    Uma aplicação linear sobrejetiva entre espaços da mesma dimensão finita é um isomorfismo, de
+                    modo que $\Phi$ é bijetiva e $\Psi=\Phi^{-1}$. $\blacksquare$
+                </p>
+
+                <p>
+                    Em palavras: um vetor tangente a $M\times N$ em $(p,q)$ é um par, formado por um vetor de $M$
+                    em $p$ e um de $N$ em $q$. Para $\mathbb{R}^m\times\mathbb{R}^n=\mathbb{R}^{m+n}$ isso é a
+                    decomposição usual $\mathbb{R}^{m+n}=\mathbb{R}^m\oplus\mathbb{R}^n$, e o
+                    <a href="#exr-3-5-7">Exercício 3.5.7</a> a faz para o toro.
+                </p>
+
+                <h2 id="fisica">Ponte com a física</h2>
+
+                <p>
+                    <strong>Linhas de mundo e quadrivelocidade.</strong> Uma partícula em um espaço-tempo $M$ traça
+                    uma curva suave $\gamma(\tau)$, a linha de mundo, parametrizada pelo tempo próprio $\tau$. A
+                    velocidade $u = \gamma'(\tau)\in T_{\gamma(\tau)}M$ é um vetor tangente, e, por (3.5.6), suas
+                    componentes em uma carta são $u^\mu = dx^\mu/d\tau$: as velocidades das coordenadas. Se
+                    $x^\mu$ e $\tilde{x}^\mu$ estão relacionadas pelas transformações de Galileu ou de Lorentz dos
+                    capítulos 1 e 2, a jacobiana $\partial\tilde{x}^\mu/\partial x^\nu = \Lambda^\mu{}_\nu$ é uma
+                    matriz constante, e a lei contravariante (3.5.4) fica $\tilde{u}^\mu = \Lambda^\mu{}_\nu u^\nu$,
+                    a regra de transformação do quadrivetor velocidade nesses capítulos. Para uma transformação
+                    geral de coordenadas a jacobiana depende do ponto, e a lei (3.5.4) é a sua generalização.
+                    O que a teoria acrescenta é a afirmação de que $u$ é um <em>objeto</em> (um elemento de
+                    $T_pM$), e as componentes $u^\mu$ são apenas a sua representação em uma carta.
+                </p>
+
+                <p>
+                    <strong>Vetores em pontos diferentes vivem em espaços diferentes.</strong> Em $\mathbb{R}^n$
+                    pode-se subtrair $u(\tau+\delta)$ de $u(\tau)$, porque todos os vetores moram no mesmo espaço
+                    (Proposição 3.5.27). Em uma variedade, $u(\tau)\in T_{\gamma(\tau)}M$ e
+                    $u(\tau+\delta)\in T_{\gamma(\tau+\delta)}M$ são elementos de espaços vetoriais diferentes,
+                    e a diferença não tem significado. Segue que a <em>aceleração</em>, a derivada da velocidade
+                    ao longo da curva, não está definida apenas com a estrutura diferenciável: para definir a
+                    derivada de um campo vetorial ao longo de uma curva é preciso uma estrutura adicional, a
+                    <em>conexão</em>, que é o objeto central da Relatividade Geral e será introduzida em um
+                    capítulo posterior. No tópico 3.8 veremos uma comparação entre espaços tangentes de pontos
+                    diferentes que <em>não</em> exige estrutura extra, mas que exige um campo vetorial dado: a
+                    derivada de Lie.
+                </p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p id="exr-3-5-1"><strong>Exercício 3.5.1.</strong> Prove diretamente da definição que uma derivação
+                    em $p$ anula as funções constantes, e que a avaliação $f\mapsto f(p)$ <em>não</em> é uma
+                    derivação.</p>
+
+                <p>
+                    <em>Solução.</em> Seja $v\in T_pM$ e $1$ a função constante de valor $1$. Pela regra do produto,
+                    $v(1) = v(1\cdot1) = 1\cdot v(1) + 1\cdot v(1) = 2\,v(1)$, logo $v(1)=0$. Para $c\in\mathbb{R}$,
+                    $v(c) = v(c\cdot1)=c\,v(1)=0$ pela linearidade. Quanto à avaliação $\mathrm{ev}(f)=f(p)$, ela é
+                    linear, mas $\mathrm{ev}(fg) = f(p)g(p)$, enquanto o lado direito da regra do produto é
+                    $f(p)\,\mathrm{ev}(g) + g(p)\,\mathrm{ev}(f) = 2f(p)g(p)$: as duas expressões diferem sempre
+                    que $f(p)g(p)\ne0$. Em particular $\mathrm{ev}(1)=1\neq0$, o que também contradiz a primeira
+                    parte. $\blacksquare$
+                </p>
+
+                <p id="exr-3-5-2"><strong>Exercício 3.5.2.</strong> Em $\mathbb{R}^2$, o vetor
+                    $v = 2\,\partial_x - \partial_y$ em $p=(1,1)$ tem quais componentes na carta polar
+                    $(r,\theta)$?</p>
+
+                <p>
+                    <em>Solução.</em> Em $p$, $r=\sqrt{2}$ e $\theta=\pi/4$. Pelas componentes em coordenadas
+                    $\tilde{v}^j = v(\tilde{x}^j)$ (Proposição 3.5.16), com $r=\sqrt{x^2+y^2}$ e
+                    $\theta = \operatorname{atan2}(y,x)$,
+                </p>
+
+                <p>
+                    $$ v^r = 2\,\frac{\partial r}{\partial x} - \frac{\partial r}{\partial y} = \frac{2x-y}{r}\bigg\vert_{(1,1)} = \frac{1}{\sqrt{2}}, \qquad
+                    v^\theta = 2\,\frac{\partial\theta}{\partial x} - \frac{\partial\theta}{\partial y} = \frac{-2y-x}{r^2}\bigg\vert_{(1,1)} = -\frac32. $$
+                </p>
+
+                <p>
+                    Portanto $v = \frac1{\sqrt2}\,\partial_r - \frac32\,\partial_\theta$. Conferência com (3.5.5):
+                    em $p$, $\partial_r = (\cos\frac\pi4,\sin\frac\pi4) = (\frac1{\sqrt2},\frac1{\sqrt2})$ e
+                    $\partial_\theta = (-r\sin\frac\pi4,r\cos\frac\pi4) = (-1,1)$, de modo que
+                    $\frac1{\sqrt2}\partial_r - \frac32\partial_\theta = (\frac12+\frac32,\ \frac12-\frac32) = (2,-1)$,
+                    como deve ser. $\blacksquare$
+                </p>
+
+                <p id="exr-3-5-3"><strong>Exercício 3.5.3.</strong> Seja $F:\mathbb{R}^2\to\mathbb{R}^3$,
+                    $F(u,v) = (u,v,u^2-v^2)$. Calcule $dF_{(1,1)}(\partial_u+\partial_v)$ pela jacobiana e por
+                    uma curva.</p>
+
+                <p>
+                    <em>Solução.</em> A jacobiana de $F$ é
+                    $\begin{pmatrix}1&0\\0&1\\2u&-2v\end{pmatrix}$, que em $(1,1)$ aplica
+                    $(1,1)^T$ em $(1,1,0)^T$. Por (3.5.3),
+                    $dF_{(1,1)}(\partial_u+\partial_v) = \partial_x+\partial_y$ (nenhuma componente em
+                    $\partial_z$). Por uma curva: $\gamma(t)=(1+t,1+t)$ tem $\gamma(0)=(1,1)$ e
+                    $\gamma'(0)=\partial_u+\partial_v$; então
+                    $F\circ\gamma(t) = (1+t,\,1+t,\,0)$, cuja velocidade em $t=0$ é $(1,1,0)$, o mesmo vetor, pela
+                    Proposição 3.5.24. É também tangente ao gráfico, $z=u^2-v^2$, cujo plano tangente em $(1,1,0)$
+                    é $dz = 2\,du-2\,dv$: $dz=0$ para $du=dv$. $\blacksquare$
+                </p>
+
+                <p id="exr-3-5-4"><strong>Exercício 3.5.4.</strong> Verifique a armadilha do Exemplo 3.5.21,
+                    aplicando $\partial/\partial x$ e $\partial/\partial\tilde{x}$ à função $f=y$, com
+                    $(\tilde{x},\tilde{y})=(x,x+y)$.</p>
+
+                <p>
+                    <em>Solução.</em> Na carta $(x,y)$, $f=y$ e $\partial f/\partial x=0$. Na carta
+                    $(\tilde{x},\tilde{y})$, $f = \tilde{y}-\tilde{x}$ (pois $y=\tilde{y}-x=\tilde{y}-\tilde{x}$) e
+                    $\partial f/\partial\tilde{x} = -1$, por (3.5.2). Como $0\ne-1$, os vetores
+                    $\partial/\partial x$ e $\partial/\partial\tilde{x}$ são diferentes, embora $\tilde{x}=x$.
+                    Pela Equação (3.5.3), $\partial/\partial\tilde{x} = \partial_x-\partial_y$, e de fato
+                    $(\partial_x-\partial_y)y=-1$. $\blacksquare$
+                </p>
+
+                <p id="exr-3-5-5"><strong>Exercício 3.5.5.</strong> Na carta estereográfica $\sigma_N$ de $S^2$,
+                    expresse $\partial/\partial u^1$ no polo sul $S$ como vetor de $\mathbb{R}^3$.</p>
+
+                <p>
+                    <em>Solução.</em> O polo sul tem coordenadas $u=(0,0)$. Pela Proposição 3.5.24, o vetor de
+                    $\mathbb{R}^3$ associado a $\partial/\partial u^1\vert_S$ é a velocidade em $t=0$ de
+                    $t\mapsto\sigma_N^{-1}(t,0)$, isto é, a derivada de
+                    $\sigma_N^{-1}(u^1,u^2) = \dfrac{(2u^1,\,2u^2,\,\lvert u\rvert^2-1)}{\lvert u\rvert^2+1}$ em relação a $u^1$ em
+                    $u=0$. As duas primeiras componentes dão $2/(\lvert u\rvert^2+1) - 4(u^1)^2/(\lvert u\rvert^2+1)^2=2$ e
+                    $-4u^1u^2/(\lvert u\rvert^2+1)^2=0$, e a terceira dá
+                    $4u^1/(\lvert u\rvert^2+1)^2=0$, todas em $u=0$. Logo
+                </p>
+
+                <p>
+                    $$ \frac{\partial}{\partial u^1}\Big\vert_S = (2,0,0), $$
+                </p>
+
+                <p>
+                    que é ortogonal a $S=(0,0,-1)$, como deve ser para um vetor tangente (Exemplo 3.5.26). Do mesmo
+                    modo $\partial/\partial u^2\vert_S=(0,2,0)$. O fator $2$ mostra que a carta estereográfica
+                    "alonga" as distâncias por um fator $2$ no polo sul, e esse fator é a razão de os vetores
+                    coordenados de uma carta em geral não terem comprimento $1$. $\blacksquare$
+                </p>
+
+                <p id="exr-3-5-6"><strong>Exercício 3.5.6.</strong> As curvas $\gamma_1(t)=(t,t^2)$ e
+                    $\gamma_2(t)=(\sin t,0)$ de $\mathbb{R}^2$ definem o mesmo vetor em $0$.</p>
+
+                <p>
+                    <em>Solução.</em> As duas passam pela origem em $t=0$. Para toda $f$ suave perto de $0$,
+                    pela regra da cadeia,
+                    $(f\circ\gamma_1)'(0) = \partial_xf(0)\cdot1+\partial_yf(0)\cdot0 = \partial_xf(0)$ e
+                    $(f\circ\gamma_2)'(0)=\partial_xf(0)\cos0+\partial_yf(0)\cdot0=\partial_xf(0)$. Logo
+                    $\gamma_1\sim\gamma_2$, e ambas definem o vetor $\partial_x\vert_0$, embora uma seja uma
+                    parábola e a outra um segmento do eixo $x$. O vetor é a classe de equivalência, e não a
+                    curva (Teorema 3.5.25). $\blacksquare$
+                </p>
+
+                <p id="exr-3-5-7"><strong>Exercício 3.5.7.</strong> No toro $\mathbb{T}^2=S^1\times S^1$, escreva a
+                    decomposição $T_{(p,q)}\mathbb{T}^2 = T_pS^1\oplus T_qS^1$ em coordenadas angulares.</p>
+
+                <p>
+                    <em>Solução.</em> Em uma carta produto $\theta_a\times\theta_b$, com coordenadas $(s,t)$, e
+                    cartas angulares $\theta_a$ de $S^1$ em torno de $p$ e $\theta_b$ em torno de $q$, a
+                    projeção $\pi_1(s,t)=s$ tem jacobiana $(1\ 0)$, e $\pi_2(s,t)=t$ tem jacobiana $(0\ 1)$.
+                    Por (3.5.3),
+                </p>
+
+                <p>
+                    $$ \Phi\Big(\frac{\partial}{\partial s}\Big) = \Big(\frac{\partial}{\partial\theta}\Big\vert_p,\ 0\Big), \qquad
+                    \Phi\Big(\frac{\partial}{\partial t}\Big) = \Big(0,\ \frac{\partial}{\partial\theta}\Big\vert_q\Big), $$
+                </p>
+
+                <p>
+                    e então $a\,\partial_s+b\,\partial_t\mapsto\big(a\,\partial_\theta\vert_p,\ b\,\partial_\theta\vert_q\big)$. Por
+                    exemplo, a curva $\gamma(\tau) = \big(E(\omega\tau+s_0),\,E(\omega'\tau+t_0)\big)$, com
+                    $E(t)=(\cos t,\sin t)$, tem velocidade $\gamma'(0)=\omega\,\partial_s+\omega'\,\partial_t$,
+                    que corresponde ao par $(\omega\,\partial_\theta\vert_p,\ \omega'\,\partial_\theta\vert_q)$: cada fator do
+                    toro é percorrido com sua própria velocidade angular. $\blacksquare$
+                </p>
+
+                <p id="exr-3-5-8"><strong>Exercício 3.5.8.</strong> Seja $R(t)$ a rotação de ângulo $t$ em torno do
+                    eixo $z$ e $p=(a,b,c)\in S^2$. Calcule a velocidade da curva $t\mapsto R(t)p$ em $t=0$ e
+                    verifique que é ortogonal a $p$.</p>
+
+                <p>
+                    <em>Solução.</em> $R(t)p = (a\cos t-b\sin t,\ a\sin t+b\cos t,\ c)$, que está em $S^2$ porque
+                    $R(t)$ é ortogonal. A derivada em $t=0$ é $(-b,\ a,\ 0)$, e
+                    $(-b,a,0)\cdot(a,b,c) = -ab+ab+0=0$. Logo a velocidade é ortogonal a $p$, em acordo com o
+                    Exemplo 3.5.26; ela se anula nos polos ($a=b=0$), onde a rotação deixa $p$ fixo.
+                    $\blacksquare$
+                </p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <p>
+                    Este tópico construiu a primeira estrutura linear do capítulo:
+                </p>
+
+                <ul>
+                    <li>o <strong>espaço tangente</strong> $T_pM$ como espaço das derivações
+                        (<a href="#def-3-5-6">Definição 3.5.6</a>), de dimensão $n$
+                        (<a href="#teo-3-5-13">Teorema 3.5.13</a>), com a localidade
+                        (<a href="#prop-3-5-8">Proposição 3.5.8</a>) e a identificação $T_pU=T_pM$
+                        (<a href="#prop-3-5-12">Proposição 3.5.12</a>);</li>
+                    <li>a <strong>diferencial</strong> $dF_p$ (<a href="#def-3-5-10">Definição 3.5.10</a>), com a
+                        regra da cadeia (<a href="#prop-3-5-11">Proposição 3.5.11</a>);</li>
+                    <li>as <strong>bases coordenadas</strong> $\partial_i\vert_p$ e a convenção de soma
+                        (<a href="#def-3-5-14">Definição 3.5.14</a> e <a href="#def-3-5-15">Definição 3.5.15</a>), a
+                        diferencial em coordenadas (<a href="#prop-3-5-17">Proposição 3.5.17</a>) e a lei de
+                        mudança de coordenadas (<a href="#prop-3-5-18">Proposição 3.5.18</a>);</li>
+                    <li>as <strong>três descrições equivalentes</strong> de vetor tangente: derivações,
+                        regras com a lei contravariante (<a href="#teo-3-5-19">Teorema 3.5.19</a>) e classes de
+                        curvas (<a href="#teo-3-5-25">Teorema 3.5.25</a>), esta última com a diferencial por
+                        curvas (<a href="#prop-3-5-24">Proposição 3.5.24</a>);</li>
+                    <li>as identificações $T_aV\cong V$ e
+                        $T_{(p,q)}(M\times N)\cong T_pM\oplus T_qN$
+                        (<a href="#prop-3-5-27">Proposição 3.5.27</a> e <a href="#prop-3-5-28">Proposição 3.5.28</a>).</li>
+                </ul>
+
+                <p>
+                    Um vetor tangente vive em um ponto. Ainda não sabemos o que é uma escolha de vetor em cada ponto,
+                    nem o que significa que essa escolha varie suavemente: isso exigirá organizar todos os espaços
+                    tangentes em uma única variedade, o fibrado tangente $TM$, e é o assunto do
+                    <a href="[07] - Fibrado Tangente e Campos Vetoriais.html">tópico 3.7</a>. Antes, o
+                    <a href="[06] - Subvariedades.html">tópico 3.6</a> trata de variedades que vivem dentro de
+                    outras, onde a diferencial de uma inclusão permitirá identificar $T_pS$ com um subespaço de
+                    $T_pM$, como fizemos informalmente para a esfera no Exemplo 3.5.26.
+                </p>
+
+                <p>
+                    O próximo tópico,
+                    <a href="[06] - Subvariedades.html">3.6 Subvariedades</a>, estuda imersões, submersões e
+                    mergulhos, o teorema do posto constante e os valores regulares.
+                </p>
 
             </div>
         </main>
@@ -161,6 +1153,20 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#vetores-tangentes">Vetores Tangentes e o Espaço Tangente</a></li>
+                    <li><a href="#derivacoes-rn">Vetores em ℝⁿ como derivações</a></li>
+                    <li><a href="#espaco-tangente">O espaço tangente</a></li>
+                    <li><a href="#diferencial">A diferencial</a></li>
+                    <li>
+                        <a href="#coordenadas">Vetores em coordenadas</a>
+                        <ul>
+                            <li><a href="#mudanca-de-coordenadas">Mudança de coordenadas</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#curvas">Vetores como velocidades</a></li>
+                    <li><a href="#casos-especiais">Identificações canônicas</a></li>
+                    <li><a href="#fisica">Ponte com a física</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
                 </ul>
             </div>
         </aside>

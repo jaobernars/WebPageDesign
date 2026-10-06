@@ -151,7 +151,1086 @@
                 <h1 id="campos-vetoriais">3.7 Fibrado Tangente e Campos Vetoriais</h1>
                 <p class="lead">O fibrado tangente como variedade, campos vetoriais suaves, campos como derivações, referenciais locais e o colchete de Lie.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>
+                    Um vetor tangente responde à pergunta "em que direção, neste ponto?". Um <em>campo</em>
+                    vetorial responde a essa pergunta em todos os pontos ao mesmo tempo: a velocidade de um
+                    fluido, a direção de uma translação, o gerador de uma rotação. A pergunta nova é o que
+                    significa a resposta variar <em>suavemente</em> de ponto a ponto. Como cada vetor mora em um
+                    espaço diferente, $T_pM$, essa pergunta não pode ser respondida comparando valores: é
+                    preciso, primeiro, reunir todos os espaços tangentes em um único espaço que seja uma
+                    variedade, o <em>fibrado tangente</em> $TM$. Um campo suave será, então, uma aplicação
+                    suave $M\to TM$ que escolhe um vetor em cada ponto.
+                </p>
+
+                <p>
+                    O tópico tem quatro partes. Primeiro, construímos $TM$ pelo lema de construção de variedades
+                    (<a href="[03] - Variedades Diferenciáveis.html#lema-3-3-15">Lema 3.3.15</a>) e mostramos que a diferencial $dF$ é uma aplicação
+                    suave. Segundo, definimos campos suaves e provamos quatro critérios equivalentes de
+                    suavidade, o que mostra que um campo é o mesmo que uma derivação do anel $C^\infty(M)$ de
+                    funções. Terceiro, definimos o <em>colchete de Lie</em> de dois campos, a operação que
+                    mede o quanto duas direções deixam de comutar e que será o coração das simetrias e da
+                    derivada de Lie (tópico 3.8). Quarto, estudamos como campos se transportam por aplicações.
+                    Fluxos e curvas integrais ficam para o próximo tópico.
+                </p>
+
+                <h2 id="fibrado-tangente">O fibrado tangente</h2>
+
+                <div class="definition-box" id="def-3-7-1" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.7.1 (Fibrado tangente).</strong> Seja $M$ uma variedade diferenciável. O
+                        <strong>fibrado tangente</strong> de $M$ é a união disjunta de todos os espaços tangentes,</p>
+                    <p>$$ TM = \bigsqcup_{p\in M}T_pM = \{(p,v): p\in M,\ v\in T_pM\}. $$</p>
+                    <p>A <strong>projeção</strong> $\pi: TM\to M$ é $\pi(p,v)=p$, e a <strong>fibra</strong> sobre $p$ é
+                        $\pi^{-1}(p)=T_pM$. Escrevemos apenas $v$ no lugar de $(p,v)$, com $p=\pi(v)$ subentendido.</p>
+                </div>
+
+                <p>
+                    Até aqui, $TM$ é só um conjunto. Cada carta $(U,\varphi)$ de $M$ dá uma maneira de descrever os
+                    pontos de $\pi^{-1}(U)$ por $2n$ números: as coordenadas do ponto-base e as componentes do
+                    vetor na base coordenada (<a href="[05] - Vetores Tangentes.html#prop-3-5-16">Proposição 3.5.16</a>). Essas são as
+                    <strong>coordenadas naturais</strong>:
+                </p>
+
+                <p>
+                    $$ \Phi_\varphi: \pi^{-1}(U)\longrightarrow\varphi(U)\times\mathbb{R}^n, \qquad
+                    \Phi_\varphi\Big(v^i\,\frac{\partial}{\partial x^i}\Big\vert_p\Big) = \big(x^1(p),\dots,x^n(p),\,v^1,\dots,v^n\big). \tag{3.7.1} $$
+                </p>
+
+                <div class="definition-box" id="teo-3-7-2">
+                    <p><strong>Teorema 3.7.2 ($TM$ é uma variedade).</strong> Existem uma topologia e uma
+                        estrutura diferenciável em $TM$, únicas com a propriedade de que, para toda carta $(U,\varphi)$
+                        de $M$, o par $\big(\pi^{-1}(U),\Phi_\varphi\big)$ é uma carta suave. Com elas, $TM$ é uma
+                        variedade diferenciável de dimensão $2n$, e $\pi: TM\to M$ é suave.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Aplicamos o lema de construção de variedades
+                    (<a href="[03] - Variedades Diferenciáveis.html#lema-3-3-15">Lema 3.3.15</a>) a uma família enumerável de cartas naturais, e verificamos as
+                    suas quatro hipóteses.
+                </p>
+
+                <p>
+                    <strong>Passo 1: uma família enumerável de cartas.</strong> Seja $\mathfrak{B}$ uma base
+                    enumerável de $M$ e $\mathfrak{B}'\subset\mathfrak{B}$ o conjunto dos $B$ contidos no domínio
+                    de alguma carta. $\mathfrak{B}'$ ainda é base: se $p\in W$ aberto, tome uma carta $(U,\varphi)$ em
+                    torno de $p$ e $B\in\mathfrak{B}$ com $p\in B\subset W\cap U$; então $B\in\mathfrak{B}'$.
+                    Para cada $B\in\mathfrak{B}'$, fixe uma carta $(B,\varphi_B)$ (a restrição de uma carta, pela
+                    <a href="[03] - Variedades Diferenciáveis.html#obs-3-3-14">Observação 3.3.14</a>) e a carta natural $\Phi_B=\Phi_{\varphi_B}$ de (3.7.1), que é uma bijeção de
+                    $\pi^{-1}(B)$ sobre $\varphi_B(B)\times\mathbb{R}^n$: é bijetora porque cada vetor tem
+                    componentes únicas.
+                </p>
+
+                <p>
+                    <strong>Passo 2: as hipóteses do lema.</strong> (i) A imagem
+                    $\varphi_B(B)\times\mathbb{R}^n$ é aberta em $\mathbb{R}^{2n}$. (ii) Para $B,B'\in\mathfrak{B}'$,
+                    $\Phi_B(\pi^{-1}(B\cap B'))=\varphi_B(B\cap B')\times\mathbb{R}^n$ é aberto, e, com coordenadas
+                    $x^i$ de $\varphi_B$ e $y^j$ de $\varphi_{B'}$, a transição é, pela lei de transformação
+                    (<a href="[05] - Vetores Tangentes.html#prop-3-5-18">Proposição 3.5.18</a>),
+                </p>
+
+                <p>
+                    $$ \Phi_{B'}\circ\Phi_B^{-1}(x,v) = \Big(\varphi_{B'}\circ\varphi_B^{-1}(x),\ \frac{\partial y^j}{\partial x^i}(x)\,v^i\Big), \tag{3.7.2} $$
+                </p>
+
+                <p>
+                    em que $\partial y^j/\partial x^i$ é a jacobiana da transição $\varphi_{B'}\circ\varphi_B^{-1}$,
+                    avaliada em $x$. A primeira componente é suave em $x$, e as outras $n$ são somas de
+                    produtos de funções suaves de $x$ (as entradas da jacobiana) por $v^i$: suaves em $(x,v)$.
+                    (iii) Os $B\in\mathfrak{B}'$ são enumeráveis e cobrem $M$, e portanto os $\pi^{-1}(B)$ cobrem
+                    $TM$. (iv) Se dois pontos de $TM$ estão sobre o mesmo ponto $p\in M$, ambos pertencem a
+                    $\pi^{-1}(B)$ para algum $B\ni p$. Se estão sobre pontos $p\ne q$, o fato de $M$ ser de Hausdorff dá
+                    abertos disjuntos $W_p\ni p$ e $W_q\ni q$, e, como $\mathfrak{B}'$ é base, existem
+                    $B_p,B_q\in\mathfrak{B}'$ com $p\in B_p\subset W_p$ e $q\in B_q\subset W_q$, disjuntos; então
+                    $\pi^{-1}(B_p)$ e $\pi^{-1}(B_q)$ são disjuntos.
+                </p>
+
+                <p>
+                    <strong>Passo 3: conclusão.</strong> O lema dá uma topologia e uma estrutura diferenciável em
+                    $TM$, de dimensão $2n$, de Hausdorff e segundo-contável, para as quais as cartas
+                    $(\pi^{-1}(B),\Phi_B)$ são suaves. Para uma carta qualquer $(U,\varphi)$ de $M$, a transição entre
+                    $\Phi_\varphi$ e $\Phi_B$ é dada por (3.7.2) e é suave nos dois sentidos, pelo mesmo
+                    cálculo. Logo $\Phi_\varphi$ é compatível com todas as cartas do atlas, e pertence ao atlas maximal: isso mostra
+                    que a estrutura não depende das escolhas do Passo 1 e que todas as cartas
+                    naturais são suaves. A unicidade vem do próprio lema (<a href="[03] - Variedades Diferenciáveis.html#prop-3-3-12">Proposição 3.3.12</a> aplicada
+                    a duas famílias de cartas naturais).
+                </p>
+
+                <p>
+                    <strong>Passo 4: $\pi$ é suave.</strong> Nas cartas $(\pi^{-1}(U),\Phi_\varphi)$ e $(U,\varphi)$,
+                    a representação de $\pi$ é $(x,v)\mapsto x$, uma projeção linear. $\blacksquare$
+                </p>
+
+                <p>
+                    As cartas naturais mostram o aspecto local de $TM$: sobre cada domínio coordenado,
+                    $TM$ "é" $U\times\mathbb{R}^n$, mas as transições (3.7.2) mexem as fibras linearmente, com a
+                    jacobiana. Globalmente, $TM$ pode não ser um produto.
+                </p>
+
+                <p id="ex-3-7-3"><strong>Exemplo 3.7.3 (Alguns fibrados tangentes).</strong></p>
+
+                <ul>
+                    <li><strong>$T\mathbb{R}^n$.</strong> A carta identidade dá uma carta natural global
+                        $\Phi: T\mathbb{R}^n\to\mathbb{R}^n\times\mathbb{R}^n$, $\sum v^i\partial_i\vert_a\mapsto(a,v)$, um
+                        difeomorfismo. Então $T\mathbb{R}^n\cong\mathbb{R}^n\times\mathbb{R}^n$, o que é o <a href="[05] - Vetores Tangentes.html#teo-3-5-4">Teorema 3.5.4</a> com o ponto de aplicação lembrado.</li>
+                    <li><strong>$TS^1$.</strong> Nas duas cartas angulares do
+                        <a href="[03] - Variedades Diferenciáveis.html#ex-3-3-21">Exemplo 3.3.21</a>, os vetores coordenados coincidem: pela primeira
+                        igualdade de (3.5.4), $\partial/\partial\theta_1=\dfrac{\partial\theta_2}{\partial\theta_1}\,\partial/\partial\theta_2$,
+                        e a derivada da transição (3.3.1) é $1$ em cada pedaço. Assim há um campo de vetores global,
+                        $\Theta$, com $\Theta_p=\partial_\theta\vert_p$ em qualquer carta angular. A aplicação
+                        $\Psi: TS^1\to S^1\times\mathbb{R}$, $c\,\Theta_p\mapsto(p,c)$ é uma bijeção, e, nas cartas
+                        $\Phi_{\theta_1}$ de $TS^1$ e $\theta_1\times\mathrm{id}$ de $S^1\times\mathbb{R}$, sua representação é a
+                        identidade $(t,c)\mapsto(t,c)$; o mesmo vale com $\theta_2$. Logo $\Psi$ é um difeomorfismo:
+                        $TS^1\cong S^1\times\mathbb{R}$, um cilindro (Figura 3.7.1).</li>
+                    <li><strong>$TS^2$.</strong> Ao contrário do caso anterior, $TS^2$ <em>não</em> é um produto
+                        $S^2\times\mathbb{R}^2$ (de maneira compatível com a estrutura linear das fibras). Se fosse, o
+                        campo "constante" daria um campo suave sem zeros em $S^2$, e tal campo não existe: é o
+                        teorema da bola cabeluda, citado aqui sem prova (veja o Exemplo 3.7.16).</li>
+                </ul>
+
+                <figure class="lecture-figure" id="fig-3-7-1">
+                    <svg viewBox="0 0 640 300" role="img" aria-label="Um cilindro vertical que representa o fibrado tangente do círculo. Retas verticais, as fibras, descem ao longo do cilindro, uma sobre cada ponto do círculo. A circunferência do meio do cilindro é a seção nula. Uma curva ondulada em traço mais grosso corta cada fibra uma única vez: é um campo vetorial X. Uma fibra destacada, T p S 1, mostra o ponto zero e o vetor X p. Embaixo, um círculo é a base, e uma seta vertical rotulada pi liga o cilindro à base.">
+<defs><marker id="arr-3-7-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="190" y1="36" x2="190" y2="208" class="fig-guide"/>
+<line x1="450" y1="36" x2="450" y2="208" class="fig-guide"/>
+<path d="M450,36 L449.8,37.6 L449.3,39.1 L448.4,40.7 L447.2,42.2 L445.6,43.8 L443.6,45.3 L441.4,46.8 L438.8,48.2 L435.8,49.6 L432.6,51 L429,52.3 L425.2,53.6 L421,54.9 L416.6,56.1 L411.9,57.2 L407,58.3 L401.8,59.3 L396.4,60.3 L390.8,61.2 L385,62 L379,62.7 L372.9,63.4 L366.6,64 L360.2,64.5 L353.6,65 L347,65.3 L340.3,65.6 L333.6,65.8 L326.8,66 L320,66 L313.2,66 L306.4,65.8 L299.7,65.6 L293,65.3 L286.4,65 L279.8,64.5 L273.4,64 L267.1,63.4 L261,62.7 L255,62 L249.2,61.2 L243.6,60.3 L238.2,59.3 L233,58.3 L228.1,57.2 L223.4,56.1 L219,54.9 L214.8,53.6 L211,52.3 L207.4,51 L204.2,49.6 L201.2,48.2 L198.6,46.8 L196.4,45.3 L194.4,43.8 L192.8,42.2 L191.6,40.7 L190.7,39.1 L190.2,37.6 L190,36" class="fig-guide"/>
+<path d="M190,36 L190.2,34.4 L190.7,32.9 L191.6,31.3 L192.8,29.8 L194.4,28.2 L196.4,26.7 L198.6,25.2 L201.2,23.8 L204.2,22.4 L207.4,21 L211,19.7 L214.8,18.4 L219,17.1 L223.4,15.9 L228.1,14.8 L233,13.7 L238.2,12.7 L243.6,11.7 L249.2,10.8 L255,10 L261,9.3 L267.1,8.6 L273.4,8 L279.8,7.5 L286.4,7 L293,6.7 L299.7,6.4 L306.4,6.2 L313.2,6 L320,6 L326.8,6 L333.6,6.2 L340.3,6.4 L347,6.7 L353.6,7 L360.2,7.5 L366.6,8 L372.9,8.6 L379,9.3 L385,10 L390.8,10.8 L396.4,11.7 L401.8,12.7 L407,13.7 L411.9,14.8 L416.6,15.9 L421,17.1 L425.2,18.4 L429,19.7 L432.6,21 L435.8,22.4 L438.8,23.8 L441.4,25.2 L443.6,26.7 L445.6,28.2 L447.2,29.8 L448.4,31.3 L449.3,32.9 L449.8,34.4 L450,36" class="fig-guide fig-dashed"/>
+<path d="M450,208 L449.8,209.6 L449.3,211.1 L448.4,212.7 L447.2,214.2 L445.6,215.8 L443.6,217.3 L441.4,218.8 L438.8,220.2 L435.8,221.6 L432.6,223 L429,224.3 L425.2,225.6 L421,226.9 L416.6,228.1 L411.9,229.2 L407,230.3 L401.8,231.3 L396.4,232.3 L390.8,233.2 L385,234 L379,234.7 L372.9,235.4 L366.6,236 L360.2,236.5 L353.6,237 L347,237.3 L340.3,237.6 L333.6,237.8 L326.8,238 L320,238 L313.2,238 L306.4,237.8 L299.7,237.6 L293,237.3 L286.4,237 L279.8,236.5 L273.4,236 L267.1,235.4 L261,234.7 L255,234 L249.2,233.2 L243.6,232.3 L238.2,231.3 L233,230.3 L228.1,229.2 L223.4,228.1 L219,226.9 L214.8,225.6 L211,224.3 L207.4,223 L204.2,221.6 L201.2,220.2 L198.6,218.8 L196.4,217.3 L194.4,215.8 L192.8,214.2 L191.6,212.7 L190.7,211.1 L190.2,209.6 L190,208" class="fig-guide"/>
+<path d="M190,208 L190.2,206.4 L190.7,204.9 L191.6,203.3 L192.8,201.8 L194.4,200.2 L196.4,198.7 L198.6,197.2 L201.2,195.8 L204.2,194.4 L207.4,193 L211,191.7 L214.8,190.4 L219,189.1 L223.4,187.9 L228.1,186.8 L233,185.7 L238.2,184.7 L243.6,183.7 L249.2,182.8 L255,182 L261,181.3 L267.1,180.6 L273.4,180 L279.8,179.5 L286.4,179 L293,178.7 L299.7,178.4 L306.4,178.2 L313.2,178 L320,178 L326.8,178 L333.6,178.2 L340.3,178.4 L347,178.7 L353.6,179 L360.2,179.5 L366.6,180 L372.9,180.6 L379,181.3 L385,182 L390.8,182.8 L396.4,183.7 L401.8,184.7 L407,185.7 L411.9,186.8 L416.6,187.9 L421,189.1 L425.2,190.4 L429,191.7 L432.6,193 L435.8,194.4 L438.8,195.8 L441.4,197.2 L443.6,198.7 L445.6,200.2 L447.2,201.8 L448.4,203.3 L449.3,204.9 L449.8,206.4 L450,208" class="fig-guide fig-dashed"/>
+<line x1="445.6" y1="43.7" x2="445.6" y2="215.7" class="fig-guide"/>
+<line x1="412.1" y1="57.2" x2="412.1" y2="229.2" class="fig-guide"/>
+<line x1="353.9" y1="65" x2="353.9" y2="237" class="fig-guide"/>
+<line x1="286.6" y1="65" x2="286.6" y2="237" class="fig-guide"/>
+<line x1="228.2" y1="57.3" x2="228.2" y2="229.3" class="fig-guide"/>
+<line x1="194.5" y1="43.8" x2="194.5" y2="215.8" class="fig-guide"/>
+<line x1="194.4" y1="28.3" x2="194.4" y2="200.3" class="fig-guide fig-dashed"/>
+<line x1="227.9" y1="14.8" x2="227.9" y2="186.8" class="fig-guide fig-dashed"/>
+<line x1="286.1" y1="7" x2="286.1" y2="179" class="fig-guide fig-dashed"/>
+<line x1="353.4" y1="7" x2="353.4" y2="179" class="fig-guide fig-dashed"/>
+<line x1="411.8" y1="14.7" x2="411.8" y2="186.7" class="fig-guide fig-dashed"/>
+<line x1="445.5" y1="28.2" x2="445.5" y2="200.2" class="fig-guide fig-dashed"/>
+<path d="M450,122 L449.8,123.6 L449.3,125.1 L448.4,126.7 L447.2,128.2 L445.6,129.8 L443.6,131.3 L441.4,132.8 L438.8,134.2 L435.8,135.6 L432.6,137 L429,138.3 L425.2,139.6 L421,140.9 L416.6,142.1 L411.9,143.2 L407,144.3 L401.8,145.3 L396.4,146.3 L390.8,147.2 L385,148 L379,148.7 L372.9,149.4 L366.6,150 L360.2,150.5 L353.6,151 L347,151.3 L340.3,151.6 L333.6,151.8 L326.8,152 L320,152 L313.2,152 L306.4,151.8 L299.7,151.6 L293,151.3 L286.4,151 L279.8,150.5 L273.4,150 L267.1,149.4 L261,148.7 L255,148 L249.2,147.2 L243.6,146.3 L238.2,145.3 L233,144.3 L228.1,143.2 L223.4,142.1 L219,140.9 L214.8,139.6 L211,138.3 L207.4,137 L204.2,135.6 L201.2,134.2 L198.6,132.8 L196.4,131.3 L194.4,129.8 L192.8,128.2 L191.6,126.7 L190.7,125.1 L190.2,123.6 L190,122" class="fig-curve"/>
+<path d="M190,122 L190.2,120.4 L190.7,118.9 L191.6,117.3 L192.8,115.8 L194.4,114.2 L196.4,112.7 L198.6,111.2 L201.2,109.8 L204.2,108.4 L207.4,107 L211,105.7 L214.8,104.4 L219,103.1 L223.4,101.9 L228.1,100.8 L233,99.7 L238.2,98.7 L243.6,97.7 L249.2,96.8 L255,96 L261,95.3 L267.1,94.6 L273.4,94 L279.8,93.5 L286.4,93 L293,92.7 L299.7,92.4 L306.4,92.2 L313.2,92 L320,92 L326.8,92 L333.6,92.2 L340.3,92.4 L347,92.7 L353.6,93 L360.2,93.5 L366.6,94 L372.9,94.6 L379,95.3 L385,96 L390.8,96.8 L396.4,97.7 L401.8,98.7 L407,99.7 L411.9,100.8 L416.6,101.9 L421,103.1 L425.2,104.4 L429,105.7 L432.6,107 L435.8,108.4 L438.8,109.8 L441.4,111.2 L443.6,112.7 L445.6,114.2 L447.2,115.8 L448.4,117.3 L449.3,118.9 L449.8,120.4 L450,122" class="fig-curve fig-dashed"/>
+<path d="M450,79.6 L449.9,79.5 L449.6,79.7 L449.1,80.1 L448.4,80.9 L447.5,81.9 L446.4,83.1 L445.1,84.7 L443.6,86.5 L442,88.5 L440.1,90.9 L438.1,93.4 L435.8,96.2 L433.4,99.2 L430.8,102.5 L428.1,105.9 L425.2,109.5 L422.1,113.3 L418.9,117.2 L415.5,121.2 L411.9,125.3 L408.2,129.5 L404.4,133.7 L400.5,138 L396.4,142.3 L392.2,146.6 L387.9,150.9 L383.5,155 L379,159.1 L374.4,163.1 L369.7,167 L365,170.7 L360.2,174.3 L355.3,177.6 L350.3,180.8 L345.4,183.7 L340.3,186.4 L335.3,188.8 L330.2,191 L325.1,192.8 L320,194.4 L314.9,195.6 L309.8,196.6 L304.7,197.2 L299.7,197.5 L294.6,197.4 L289.7,197.1 L284.7,196.4 L279.8,195.3 L275,194 L270.3,192.3 L265.6,190.4 L261,188.1 L256.5,185.6 L252.1,182.8 L247.8,179.7 L243.6,176.4 L239.5,172.9 L235.6,169.1 L231.8,165.2 L228.1,161.1 L224.5,156.9 L221.1,152.5 L217.9,148.1 L214.8,143.6 L211.9,139 L209.2,134.4 L206.6,129.8 L204.2,125.2 L201.9,120.7 L199.9,116.2 L198,111.8 L196.4,107.5 L194.9,103.4 L193.6,99.4 L192.5,95.6 L191.6,91.9 L190.9,88.5 L190.4,85.3 L190.1,82.3 L190,79.6" class="fig-curve" style="stroke-width: 3;"/>
+<path d="M190,79.6 L190.1,77.2 L190.4,75 L190.9,73.1 L191.6,71.5 L192.5,70.1 L193.6,69.1 L194.9,68.4 L196.4,67.9 L198,67.8 L199.9,67.9 L201.9,68.3 L204.2,69 L206.6,69.9 L209.2,71.1 L211.9,72.6 L214.8,74.2 L217.9,76.1 L221.1,78.2 L224.5,80.5 L228.1,82.9 L231.8,85.4 L235.6,88.1 L239.5,90.9 L243.6,93.8 L247.8,96.7 L252.1,99.7 L256.5,102.7 L261,105.7 L265.6,108.7 L270.3,111.6 L275,114.4 L279.8,117.2 L284.7,119.9 L289.7,122.4 L294.6,124.9 L299.7,127.1 L304.7,129.2 L309.8,131.1 L314.9,132.9 L320,134.4 L325.1,135.7 L330.2,136.7 L335.3,137.6 L340.3,138.2 L345.4,138.6 L350.3,138.7 L355.3,138.6 L360.2,138.3 L365,137.7 L369.7,136.9 L374.4,135.9 L379,134.7 L383.5,133.2 L387.9,131.6 L392.2,129.8 L396.4,127.9 L400.5,125.7 L404.4,123.5 L408.2,121.2 L411.9,118.7 L415.5,116.2 L418.9,113.6 L422.1,111 L425.2,108.3 L428.1,105.7 L430.8,103.1 L433.4,100.5 L435.8,98 L438.1,95.5 L440.1,93.2 L442,91 L443.6,89 L445.1,87.1 L446.4,85.4 L447.5,83.9 L448.4,82.5 L449.1,81.5 L449.6,80.6 L449.9,80 L450,79.6" class="fig-curve fig-dashed" style="stroke-width: 3;"/>
+<line x1="379" y1="62.7" x2="379" y2="234.7" class="fig-axis"/>
+<circle cx="379" cy="148.7" r="3.5" class="fig-arrowhead"/>
+<circle cx="379" cy="159.2" r="3.5" class="fig-arrowhead"/>
+<text x="387" y="232.7" class="fig-label fig-it">T_pS¹</text>
+<text x="387" y="163.2" class="fig-label fig-small fig-it">X_p</text>
+<text x="387" y="162.7" class="fig-label fig-small fig-it">0_p</text>
+<text x="182" y="116" text-anchor="end" class="fig-label fig-small fig-it">seção nula</text>
+<text x="458" y="50" class="fig-label fig-it">TS¹</text>
+<text x="458" y="60.9" class="fig-label fig-it">X</text>
+<path d="M450,268 L449.8,269.2 L449.3,270.3 L448.4,271.4 L447.2,272.6 L445.6,273.7 L443.6,274.8 L441.4,275.9 L438.8,276.9 L435.8,278 L432.6,279 L429,280 L425.2,280.9 L421,281.8 L416.6,282.7 L411.9,283.6 L407,284.3 L401.8,285.1 L396.4,285.8 L390.8,286.5 L385,287.1 L379,287.6 L372.9,288.1 L366.6,288.5 L360.2,288.9 L353.6,289.3 L347,289.5 L340.3,289.7 L333.6,289.9 L326.8,290 L320,290 L313.2,290 L306.4,289.9 L299.7,289.7 L293,289.5 L286.4,289.3 L279.8,288.9 L273.4,288.5 L267.1,288.1 L261,287.6 L255,287.1 L249.2,286.5 L243.6,285.8 L238.2,285.1 L233,284.3 L228.1,283.6 L223.4,282.7 L219,281.8 L214.8,280.9 L211,280 L207.4,279 L204.2,278 L201.2,276.9 L198.6,275.9 L196.4,274.8 L194.4,273.7 L192.8,272.6 L191.6,271.4 L190.7,270.3 L190.2,269.2 L190,268" class="fig-curve"/>
+<path d="M190,268 L190.2,266.8 L190.7,265.7 L191.6,264.6 L192.8,263.4 L194.4,262.3 L196.4,261.2 L198.6,260.1 L201.2,259.1 L204.2,258 L207.4,257 L211,256 L214.8,255.1 L219,254.2 L223.4,253.3 L228.1,252.4 L233,251.7 L238.2,250.9 L243.6,250.2 L249.2,249.5 L255,248.9 L261,248.4 L267.1,247.9 L273.4,247.5 L279.8,247.1 L286.4,246.7 L293,246.5 L299.7,246.3 L306.4,246.1 L313.2,246 L320,246 L326.8,246 L333.6,246.1 L340.3,246.3 L347,246.5 L353.6,246.7 L360.2,247.1 L366.6,247.5 L372.9,247.9 L379,248.4 L385,248.9 L390.8,249.5 L396.4,250.2 L401.8,250.9 L407,251.7 L411.9,252.4 L416.6,253.3 L421,254.2 L425.2,255.1 L429,256 L432.6,257 L435.8,258 L438.8,259.1 L441.4,260.1 L443.6,261.2 L445.6,262.3 L447.2,263.4 L448.4,264.6 L449.3,265.7 L449.8,266.8 L450,268" class="fig-curve fig-dashed"/>
+<line x1="496" y1="198" x2="496" y2="262" class="fig-curve" marker-end="url(#arr-3-7-1)"/>
+<text x="506" y="234" class="fig-label fig-it">π</text>
+<text x="182" y="272" text-anchor="end" class="fig-label fig-it">S¹</text>
+<circle cx="379" cy="287.6" r="3.5" class="fig-arrowhead"/>
+<text x="387" y="303.6" class="fig-label fig-small fig-it">p</text>
+</svg>
+                    <figcaption><strong>Figura 3.7.1.</strong> O fibrado tangente do círculo, desenhado como um
+                        cilindro: $TS^1\cong S^1\times\mathbb{R}$. As fibras $T_pS^1$ são as retas verticais, o
+                        círculo do meio é a seção nula (o campo $0$) e uma curva que corta cada fibra exatamente
+                        uma vez é um campo vetorial $X$. A projeção $\pi$ esquece a altura. Em $S^2$ nenhum desenho
+                        análogo é possível: $TS^2$ não é um produto.</figcaption>
+                </figure>
+
+                <p>
+                    A diferencial, que já tínhamos em cada ponto, passa a ser uma aplicação entre fibrados.
+                    Dada $F: M\to N$ suave, defina $dF: TM\to TN$ por $dF(v)=dF_{\pi(v)}(v)$, isto é,
+                    $dF(p,v)=\big(F(p),dF_pv\big)$.
+                </p>
+
+                <div class="definition-box" id="prop-3-7-4">
+                    <p><strong>Proposição 3.7.4 (A diferencial global é suave).</strong> Se $F: M\to N$ é suave,
+                        $dF: TM\to TN$ é suave e $\pi_N\circ dF=F\circ\pi_M$. Além disso,
+                        $d(G\circ F)=dG\circ dF$ e $d(\mathrm{id}_M)=\mathrm{id}_{TM}$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> A relação $\pi_N\circ dF=F\circ\pi_M$ é a definição. Dado $p\in M$,
+                    tome cartas $(U,\varphi)$ em torno de $p$ e $(V,\psi)$ em torno de $F(p)$ com $F(U)\subset V$.
+                    Então $dF(\pi_M^{-1}(U))\subset\pi_N^{-1}(V)$, e, em coordenadas naturais, pela
+                    <a href="[05] - Vetores Tangentes.html#prop-3-5-17">Proposição 3.5.17</a>,
+                </p>
+
+                <p>
+                    $$ \Phi_\psi\circ dF\circ\Phi_\varphi^{-1}(x,v) = \Big(\hat{F}(x),\ \frac{\partial\hat{F}^j}{\partial x^i}(x)\,v^i\Big), \tag{3.7.3} $$
+                </p>
+
+                <p>
+                    que é suave: as componentes são $\hat{F}$ e as somas de produtos de derivadas parciais de $\hat{F}$
+                    por $v^i$. A regra da cadeia $d(G\circ F)=dG\circ dF$ e $d(\mathrm{id})=\mathrm{id}$ valem em
+                    cada fibra, pela <a href="[05] - Vetores Tangentes.html#prop-3-5-11">Proposição 3.5.11</a>. $\blacksquare$
+                </p>
+
+                <h3 id="fibrados-vetoriais">Fibrados vetoriais: a noção geral</h3>
+
+                <p>
+                    Os próximos tópicos construirão outros objetos do mesmo tipo: o espaço cotangente de todos os
+                    pontos (3.9), os espaços de tensores (3.10) e de $k$-formas (3.12). Todos têm uma
+                    estrutura comum, que vale a pena nomear agora, uma vez só.
+                </p>
+
+                <div class="definition-box" id="def-3-7-5" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.7.5 (Fibrado vetorial).</strong> Um <strong>fibrado vetorial</strong>
+                        real de posto $k$ sobre $M$ é uma variedade $E$ com uma aplicação suave sobrejetiva
+                        $\pi: E\to M$ tal que:</p>
+                    <p>(i) cada fibra $E_p=\pi^{-1}(p)$ tem estrutura de espaço vetorial real de dimensão $k$;</p>
+                    <p>(ii) todo $p\in M$ tem uma vizinhança aberta $U$ e um difeomorfismo
+                        $\tau: \pi^{-1}(U)\to U\times\mathbb{R}^k$ (uma <strong>trivialização local</strong>) que leva a
+                        fibra $E_q$ em $\{q\}\times\mathbb{R}^k$ por um isomorfismo linear, para cada $q\in U$.</p>
+                </div>
+
+                <div class="definition-box" id="def-3-7-6" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.7.6 (Seção).</strong> Uma <strong>seção</strong> de um fibrado
+                        vetorial $\pi: E\to M$ é uma aplicação $s: M\to E$ com $\pi\circ s=\mathrm{id}_M$, isto é, que
+                        escolhe um elemento $s(p)\in E_p$ em cada ponto. É uma <strong>seção suave</strong> se $s$ é suave.
+                        Seções definidas apenas em um aberto $U$ são as <strong>seções locais</strong>.</p>
+                </div>
+
+                <p>
+                    O fibrado tangente é um fibrado vetorial de posto $n$: as fibras $T_pM$ são espaços
+                    vetoriais, e a trivialização local sobre $U$ é
+                    $\tau=(\varphi^{-1}\times\mathrm{id})\circ\Phi_\varphi: v\mapsto(\pi(v),v^1,\dots,v^n)$, um
+                    difeomorfismo que é linear em cada fibra. Ele é o primeiro exemplo; o espaço cotangente
+                    $T^*M$ (tópico 3.9), os fibrados tensoriais (3.10) e $\Lambda^kT^*M$ (3.12) serão construídos
+                    exatamente da mesma maneira: com cartas naturais e o <a href="[03] - Variedades Diferenciáveis.html#lema-3-3-15">Lema 3.3.15</a>. As seções suaves do
+                    fibrado tangente são os campos vetoriais, que passamos a estudar.
+                </p>
+
+                <h2 id="campos">Campos vetoriais</h2>
+
+                <div class="definition-box" id="def-3-7-7" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.7.7 (Campo vetorial).</strong> Um <strong>campo vetorial</strong> em $M$ é
+                        uma aplicação $X: M\to TM$ com $\pi\circ X=\mathrm{id}_M$, isto é, uma seção de $TM$: uma
+                        escolha de um vetor $X_p\in T_pM$ para cada $p\in M$. Em uma carta $(U,\varphi)$, as
+                        <strong>componentes</strong> de $X$ são as funções $X^i: U\to\mathbb{R}$ dadas por
+                        $X_p=X^i(p)\,\partial_i\vert_p$, isto é, $X^i=X(x^i)$, e escrevemos
+                        $X=X^i\partial_i$. O conjunto dos campos vetoriais <em>suaves</em> é denotado
+                        $\mathfrak{X}(M)$.</p>
+                </div>
+
+                <p>
+                    Daqui em diante, "campo vetorial" ou "campo" significa campo vetorial <em>suave</em>, salvo
+                    menção em contrário. A definição de campo não exige nenhuma regularidade; o próximo resultado
+                    mostra que ela se testa de quatro maneiras equivalentes.
+                </p>
+
+                <div class="definition-box" id="prop-3-7-8">
+                    <p><strong>Proposição 3.7.8 (Critérios de suavidade).</strong> Seja $X$ um campo vetorial em
+                        $M$. São equivalentes:</p>
+                    <p>(a) $X: M\to TM$ é suave;</p>
+                    <p>(b) as componentes $X^i$ são suaves em toda carta de um atlas de $M$;</p>
+                    <p>(c) $Xf\in C^\infty(M)$ para toda $f\in C^\infty(M)$, em que $(Xf)(p)=X_pf$;</p>
+                    <p>(d) para todo aberto $U\subset M$ e toda $f\in C^\infty(U)$, a função $Xf$ é suave em $U$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> <strong>(a)$\Leftrightarrow$(b).</strong> Seja $(U,\varphi)$ uma carta.
+                    Em coordenadas naturais, a representação de $X$ é
+                </p>
+
+                <p>
+                    $$ \Phi_\varphi\circ X\circ\varphi^{-1}(x) = \big(x,\ X^1(\varphi^{-1}x),\dots,X^n(\varphi^{-1}x)\big), $$
+                </p>
+
+                <p>
+                    que é suave se, e somente se, as componentes $X^i\circ\varphi^{-1}$ são suaves. Se $X$ é suave,
+                    isso vale para toda carta; reciprocamente, se vale para as cartas de um atlas, $X$ é suave em
+                    uma vizinhança de cada ponto, e, portanto, suave (a suavidade é local,
+                    <a href="[04] - Funções e Aplicações Suaves.html#prop-3-4-11">Proposição 3.4.11</a>).
+                </p>
+
+                <p>
+                    <strong>(b)$\Rightarrow$(d).</strong> Seja $f\in C^\infty(U)$ e $p\in U$. Tome uma carta
+                    $(V,\varphi)$ com $p\in V\subset U$. Por (3.5.2), em $V$,
+                    $Xf=X^i\,\partial_if$, em que $\partial_if=\partial(f\circ\varphi^{-1})/\partial x^i\circ\varphi$ é suave. Como
+                    $X^i$ e $\partial_if$ são suaves, $Xf$ é suave em $V$, e portanto em uma vizinhança de cada
+                    ponto de $U$.
+                </p>
+
+                <p>
+                    <strong>(d)$\Rightarrow$(c).</strong> Tome $U=M$.
+                </p>
+
+                <p>
+                    <strong>(c)$\Rightarrow$(b).</strong> Seja $(U,\varphi)$ uma carta e $p\in U$. As funções
+                    coordenadas $x^i$ só estão definidas em $U$, e é aqui que o lema de extensão é indispensável:
+                    pelo <a href="[04] - Funções e Aplicações Suaves.html#lema-3-4-30">Lema 3.4.30</a>, existe $\tilde{x}^i\in C^\infty(M)$ que coincide com $x^i$
+                    em uma vizinhança $W$ de $p$. Para $q\in W$, a localidade
+                    (<a href="[05] - Vetores Tangentes.html#prop-3-5-8">Proposição 3.5.8</a>) dá
+                    $X^i(q)=X_q(x^i)=X_q(\tilde{x}^i)=(X\tilde{x}^i)(q)$. Logo $X^i=X\tilde{x}^i$ em $W$, que é suave por
+                    (c). Como $p$ é arbitrário, $X^i$ é suave em $U$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="prop-3-7-9">
+                    <p><strong>Proposição 3.7.9 ($\mathfrak{X}(M)$ é um módulo).</strong> Se $X,Y\in\mathfrak{X}(M)$ e
+                        $f\in C^\infty(M)$, os campos $X+Y$ e $fX$, definidos ponto a ponto por
+                        $(X+Y)_p=X_p+Y_p$ e $(fX)_p=f(p)X_p$, são suaves. Assim $\mathfrak{X}(M)$ é um espaço vetorial real
+                        e um módulo sobre o anel $C^\infty(M)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Em qualquer carta, as componentes de $X+Y$ e de $fX$ são $X^i+Y^i$ e
+                    $fX^i$, suaves pela <a href="[04] - Funções e Aplicações Suaves.html#prop-3-4-4">Proposição 3.4.4</a>; basta aplicar o critério (b). Os axiomas de módulo valem
+                    ponto a ponto. $\blacksquare$
+                </p>
+
+                <p id="ex-3-7-10"><strong>Exemplo 3.7.10 (Alguns campos).</strong></p>
+
+                <ul>
+                    <li><strong>Campos coordenados.</strong> Se $(U,\varphi)$ é uma carta, os campos
+                        $\partial_i: p\mapsto\partial_i\vert_p$ são suaves em $U$ (componentes constantes $\delta^j_i$).</li>
+                    <li><strong>O campo de Euler.</strong> Em $\mathbb{R}^n$, $\mathcal{E}=x^i\partial_i$ é suave
+                        (componentes $x^i$). Em cada ponto aponta radialmente, para longe da origem, e tem módulo
+                        proporcional à distância.</li>
+                    <li><strong>O campo de rotação.</strong> Em $\mathbb{R}^2$, $R=x\,\partial_y-y\,\partial_x$ é suave
+                        (componentes $-y$ e $x$) e é tangente aos círculos centrados na origem (Figura 3.7.2). Em coordenadas
+                        polares, $\mathcal{E}=r\,\partial_r$ e $R=\partial_\theta$ (<a href="#exr-3-7-1">Exercício 3.7.1</a>).</li>
+                    <li><strong>Em $S^2$.</strong> O campo $\partial_\phi$ das coordenadas esféricas só está definido
+                        fora dos polos e do meridiano de corte; mas ele é a restrição a $S^2$ do campo suave
+                        $x\partial_y-y\partial_x$ de $\mathbb{R}^3$, que é tangente a $S^2$ e portanto define um campo suave global em
+                        $S^2$ (Proposição 3.7.33). Esse campo global se anula exatamente nos polos, onde
+                        $x=y=0$: não é possível evitar zeros, como o teorema da bola cabeluda afirma.</li>
+                </ul>
+
+                <figure class="lecture-figure" id="fig-3-7-2">
+                    <svg viewBox="0 0 640 300" role="img" aria-label="Uma grade de pontos no plano com eixos x e y. Em cada ponto há uma seta tangente ao círculo centrado na origem que passa por ele e orientada no sentido anti-horário; as setas ficam mais compridas quanto mais longe da origem estão, e na origem o campo é nulo.">
+<defs><marker id="arr-3-7-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="8" y1="150" x2="632" y2="150" class="fig-axis" marker-end="url(#arr-3-7-2)"/>
+<line x1="320" y1="300" x2="320" y2="0" class="fig-axis" marker-end="url(#arr-3-7-2)"/>
+<text x="636" y="166" text-anchor="end" class="fig-label fig-it">x</text>
+<text x="312" y="6" text-anchor="end" class="fig-label fig-it">y</text>
+<path d="M380,150 L379.9,145.8 L379.4,141.6 L378.7,137.5 L377.7,133.5 L376.4,129.5 L374.8,125.6 L373,121.8 L370.9,118.2 L368.5,114.7 L366,111.4 L363.2,108.3 L360.1,105.4 L356.9,102.7 L353.6,100.3 L350,98 L346.3,96.1 L342.5,94.4 L338.5,92.9 L334.5,91.8 L330.4,90.9 L326.3,90.3 L322.1,90 L317.9,90 L313.7,90.3 L309.6,90.9 L305.5,91.8 L301.5,92.9 L297.5,94.4 L293.7,96.1 L290,98 L286.4,100.3 L283.1,102.7 L279.9,105.4 L276.8,108.3 L274,111.4 L271.5,114.7 L269.1,118.2 L267,121.8 L265.2,125.6 L263.6,129.5 L262.3,133.5 L261.3,137.5 L260.6,141.6 L260.1,145.8 L260,150 L260.1,154.2 L260.6,158.4 L261.3,162.5 L262.3,166.5 L263.6,170.5 L265.2,174.4 L267,178.2 L269.1,181.8 L271.5,185.3 L274,188.6 L276.8,191.7 L279.9,194.6 L283.1,197.3 L286.4,199.7 L290,202 L293.7,203.9 L297.5,205.6 L301.5,207.1 L305.5,208.2 L309.6,209.1 L313.7,209.7 L317.9,210 L322.1,210 L326.3,209.7 L330.4,209.1 L334.5,208.2 L338.5,207.1 L342.5,205.6 L346.3,203.9 L350,202 L353.6,199.7 L356.9,197.3 L360.1,194.6 L363.2,191.7 L366,188.6 L368.5,185.3 L370.9,181.8 L373,178.2 L374.8,174.4 L376.4,170.5 L377.7,166.5 L378.7,162.5 L379.4,158.4 L379.9,154.2 L380,150" class="fig-guide fig-dashed"/>
+<path d="M440,150 L439.7,141.6 L438.8,133.3 L437.4,125.1 L435.4,116.9 L432.8,109 L429.6,101.2 L426,93.7 L421.8,86.4 L417.1,79.5 L411.9,72.9 L406.3,66.6 L400.3,60.8 L393.9,55.4 L387.1,50.5 L380,46.1 L372.6,42.1 L365,38.7 L357.1,35.9 L349,33.6 L340.8,31.8 L332.5,30.7 L324.2,30.1 L315.8,30.1 L307.5,30.7 L299.2,31.8 L291,33.6 L282.9,35.9 L275,38.7 L267.4,42.1 L260,46.1 L252.9,50.5 L246.1,55.4 L239.7,60.8 L233.7,66.6 L228.1,72.9 L222.9,79.5 L218.2,86.4 L214,93.7 L210.4,101.2 L207.2,109 L204.6,116.9 L202.6,125.1 L201.2,133.3 L200.3,141.6 L200,150 L200.3,158.4 L201.2,166.7 L202.6,174.9 L204.6,183.1 L207.2,191 L210.4,198.8 L214,206.3 L218.2,213.6 L222.9,220.5 L228.1,227.1 L233.7,233.4 L239.7,239.2 L246.1,244.6 L252.9,249.5 L260,253.9 L267.4,257.9 L275,261.3 L282.9,264.1 L291,266.4 L299.2,268.2 L307.5,269.3 L315.8,269.9 L324.2,269.9 L332.5,269.3 L340.8,268.2 L349,266.4 L357.1,264.1 L365,261.3 L372.6,257.9 L380,253.9 L387.1,249.5 L393.9,244.6 L400.3,239.2 L406.3,233.4 L411.9,227.1 L417.1,220.5 L421.8,213.6 L426,206.3 L429.6,198.8 L432.8,191 L435.4,183.1 L437.4,174.9 L438.8,166.7 L439.7,158.4 L440,150" class="fig-guide fig-dashed"/>
+<circle cx="104" cy="258" r="1.8" class="fig-arrowhead"/>
+<line x1="104" y1="258" x2="140.7" y2="331.4" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="104" cy="204" r="1.8" class="fig-arrowhead"/>
+<line x1="104" y1="204" x2="122.4" y2="277.4" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="104" cy="150" r="1.8" class="fig-arrowhead"/>
+<line x1="104" y1="150" x2="104" y2="223.4" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="104" cy="96" r="1.8" class="fig-arrowhead"/>
+<line x1="104" y1="96" x2="85.6" y2="169.4" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="104" cy="42" r="1.8" class="fig-arrowhead"/>
+<line x1="104" y1="42" x2="67.3" y2="115.4" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="158" cy="258" r="1.8" class="fig-arrowhead"/>
+<line x1="158" y1="258" x2="194.7" y2="313.1" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="158" cy="204" r="1.8" class="fig-arrowhead"/>
+<line x1="158" y1="204" x2="176.4" y2="259.1" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="158" cy="150" r="1.8" class="fig-arrowhead"/>
+<line x1="158" y1="150" x2="158" y2="205.1" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="158" cy="96" r="1.8" class="fig-arrowhead"/>
+<line x1="158" y1="96" x2="139.6" y2="151.1" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="158" cy="42" r="1.8" class="fig-arrowhead"/>
+<line x1="158" y1="42" x2="121.3" y2="97.1" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="212" cy="258" r="1.8" class="fig-arrowhead"/>
+<line x1="212" y1="258" x2="248.7" y2="294.7" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="212" cy="204" r="1.8" class="fig-arrowhead"/>
+<line x1="212" y1="204" x2="230.4" y2="240.7" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="212" cy="150" r="1.8" class="fig-arrowhead"/>
+<line x1="212" y1="150" x2="212" y2="186.7" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="212" cy="96" r="1.8" class="fig-arrowhead"/>
+<line x1="212" y1="96" x2="193.6" y2="132.7" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="212" cy="42" r="1.8" class="fig-arrowhead"/>
+<line x1="212" y1="42" x2="175.3" y2="78.7" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="266" cy="258" r="1.8" class="fig-arrowhead"/>
+<line x1="266" y1="258" x2="302.7" y2="276.4" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="266" cy="204" r="1.8" class="fig-arrowhead"/>
+<line x1="266" y1="204" x2="284.4" y2="222.4" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="266" cy="150" r="1.8" class="fig-arrowhead"/>
+<line x1="266" y1="150" x2="266" y2="168.4" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="266" cy="96" r="1.8" class="fig-arrowhead"/>
+<line x1="266" y1="96" x2="247.6" y2="114.4" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="266" cy="42" r="1.8" class="fig-arrowhead"/>
+<line x1="266" y1="42" x2="229.3" y2="60.4" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="320" cy="258" r="1.8" class="fig-arrowhead"/>
+<line x1="320" y1="258" x2="356.7" y2="258" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="320" cy="204" r="1.8" class="fig-arrowhead"/>
+<line x1="320" y1="204" x2="338.4" y2="204" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="320" cy="96" r="1.8" class="fig-arrowhead"/>
+<line x1="320" y1="96" x2="301.6" y2="96" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="320" cy="42" r="1.8" class="fig-arrowhead"/>
+<line x1="320" y1="42" x2="283.3" y2="42" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="374" cy="258" r="1.8" class="fig-arrowhead"/>
+<line x1="374" y1="258" x2="410.7" y2="239.6" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="374" cy="204" r="1.8" class="fig-arrowhead"/>
+<line x1="374" y1="204" x2="392.4" y2="185.6" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="374" cy="150" r="1.8" class="fig-arrowhead"/>
+<line x1="374" y1="150" x2="374" y2="131.6" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="374" cy="96" r="1.8" class="fig-arrowhead"/>
+<line x1="374" y1="96" x2="355.6" y2="77.6" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="374" cy="42" r="1.8" class="fig-arrowhead"/>
+<line x1="374" y1="42" x2="337.3" y2="23.6" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="428" cy="258" r="1.8" class="fig-arrowhead"/>
+<line x1="428" y1="258" x2="464.7" y2="221.3" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="428" cy="204" r="1.8" class="fig-arrowhead"/>
+<line x1="428" y1="204" x2="446.4" y2="167.3" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="428" cy="150" r="1.8" class="fig-arrowhead"/>
+<line x1="428" y1="150" x2="428" y2="113.3" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="428" cy="96" r="1.8" class="fig-arrowhead"/>
+<line x1="428" y1="96" x2="409.6" y2="59.3" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="428" cy="42" r="1.8" class="fig-arrowhead"/>
+<line x1="428" y1="42" x2="391.3" y2="5.3" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="482" cy="258" r="1.8" class="fig-arrowhead"/>
+<line x1="482" y1="258" x2="518.7" y2="202.9" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="482" cy="204" r="1.8" class="fig-arrowhead"/>
+<line x1="482" y1="204" x2="500.4" y2="148.9" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="482" cy="150" r="1.8" class="fig-arrowhead"/>
+<line x1="482" y1="150" x2="482" y2="94.9" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="482" cy="96" r="1.8" class="fig-arrowhead"/>
+<line x1="482" y1="96" x2="463.6" y2="40.9" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="482" cy="42" r="1.8" class="fig-arrowhead"/>
+<line x1="482" y1="42" x2="445.3" y2="-13.1" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="536" cy="258" r="1.8" class="fig-arrowhead"/>
+<line x1="536" y1="258" x2="572.7" y2="184.6" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="536" cy="204" r="1.8" class="fig-arrowhead"/>
+<line x1="536" y1="204" x2="554.4" y2="130.6" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="536" cy="150" r="1.8" class="fig-arrowhead"/>
+<line x1="536" y1="150" x2="536" y2="76.6" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="536" cy="96" r="1.8" class="fig-arrowhead"/>
+<line x1="536" y1="96" x2="517.6" y2="22.6" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="536" cy="42" r="1.8" class="fig-arrowhead"/>
+<line x1="536" y1="42" x2="499.3" y2="-31.4" class="fig-curve" marker-end="url(#arr-3-7-2)"/>
+<circle cx="320" cy="150" r="3" class="fig-arrowhead"/>
+<text x="328" y="166" class="fig-label fig-small fig-it">X = 0</text>
+</svg>
+                    <figcaption><strong>Figura 3.7.2.</strong> O campo de rotação $X=x\,\partial_y-y\,\partial_x$ no
+                        plano. Em cada ponto da grade, a seta é o vetor $X_p=(-y,x)$, tangente ao círculo que passa por
+                        $p$, no sentido anti-horário; seu comprimento é proporcional à distância à origem, onde
+                        $X$ se anula. Os círculos tracejados têm raios $1$ e $2$.</figcaption>
+                </figure>
+
+                <div class="definition-box" id="lema-3-7-11">
+                    <p><strong>Lema 3.7.11 (Extensão de vetores a campos).</strong> Para todo $v\in T_pM$ existe
+                        um campo suave $X\in\mathfrak{X}(M)$ com $X_p=v$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Tome uma carta $(U,\varphi)$ em torno de $p$ e escreva
+                    $v=v^i\partial_i\vert_p$. O campo $Y=v^i\partial_i$ em $U$, com componentes constantes, é suave.
+                    Seja $\rho\in C^\infty(M)$ um bump com $\rho\equiv1$ perto de $p$ e
+                    $\operatorname{supp}\rho\subset U$
+                    (<a href="[04] - Funções e Aplicações Suaves.html#prop-3-4-29">Proposição 3.4.29</a>). Defina $X=\rho Y$ em $U$ e $X=0$ fora de $U$. Em $U$, $X$ é
+                    suave (componentes $\rho v^i$), e em $M\setminus\operatorname{supp}\rho$ é nulo; os dois abertos
+                    cobrem $M$ e a suavidade é local. Como $\rho(p)=1$, $X_p=Y_p=v$. $\blacksquare$
+                </p>
+
+                <h2 id="campos-como-derivacoes">Campos como derivações</h2>
+
+                <div class="definition-box" id="prop-3-7-12">
+                    <p><strong>Proposição 3.7.12 (Campos agem em funções).</strong> Um campo
+                        $X\in\mathfrak{X}(M)$ define uma aplicação $X: C^\infty(M)\to C^\infty(M)$ por
+                        $(Xf)(p)=X_pf$, linear sobre $\mathbb{R}$, e</p>
+                    <p>$$ X(fg)=f\,Xg+g\,Xf, \qquad (fX)g=f\,(Xg), \qquad (X+Y)f=Xf+Yf. \tag{3.7.4} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pelo critério (c) da Proposição 3.7.8, $Xf$ é suave. A linearidade e a regra
+                    de Leibniz valem ponto a ponto, porque cada $X_p$ é uma derivação em $p$:
+                    $(X(fg))(p)=X_p(fg)=f(p)X_pg+g(p)X_pf$. As outras duas igualdades são as definições de $fX$ e de $X+Y$.
+                    $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="def-3-7-13" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.7.13 (Derivação de $C^\infty(M)$).</strong> Uma
+                        <strong>derivação</strong> de $C^\infty(M)$ é uma aplicação linear
+                        $D: C^\infty(M)\to C^\infty(M)$ tal que $D(fg)=f\,Dg+g\,Df$ para todas
+                        $f,g\in C^\infty(M)$.</p>
+                </div>
+
+                <p>
+                    Cada campo é uma derivação, por (3.7.4). A recíproca é o resultado a seguir, que mostra que
+                    campos vetoriais e derivações do anel de funções são, na prática, o mesmo objeto.
+                </p>
+
+                <div class="definition-box" id="teo-3-7-14">
+                    <p><strong>Teorema 3.7.14 (Campos são derivações).</strong> Uma aplicação
+                        $D: C^\infty(M)\to C^\infty(M)$ é uma derivação se, e somente se, $D=X$ para um único campo
+                        $X\in\mathfrak{X}(M)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> ($\Leftarrow$) é (3.7.4). ($\Rightarrow$) Seja $D$ uma derivação. Para
+                    cada $p\in M$, defina $X_p: C^\infty(M)\to\mathbb{R}$ por $X_pf=(Df)(p)$. Ela é linear, e
+                </p>
+
+                <p>
+                    $$ X_p(fg) = D(fg)(p) = f(p)\,(Dg)(p) + g(p)\,(Df)(p) = f(p)\,X_pg + g(p)\,X_pf, $$
+                </p>
+
+                <p>
+                    de modo que $X_p\in T_pM$. A regra $p\mapsto X_p$ é um campo vetorial, e, por construção,
+                    $Xf=Df\in C^\infty(M)$ para toda $f$: pelo critério (c) da Proposição 3.7.8, $X$ é suave, e
+                    $X=D$. <strong>Unicidade:</strong> se dois campos $X,X'$ agem do mesmo modo em $C^\infty(M)$,
+                    então $X_pf=X'_pf$ para toda $f$, isto é, $X_p=X'_p$ para todo $p$ (um vetor é determinado por
+                    sua ação), logo $X=X'$. $\blacksquare$
+                </p>
+
+                <p>
+                    Esta é a razão de o colchete de Lie, na seção seguinte, poder ser definido de maneira simples:
+                    para mostrar que uma operação sobre campos produz um campo, basta mostrar que produz uma
+                    derivação.
+                </p>
+
+                <h2 id="referenciais">Referenciais locais</h2>
+
+                <div class="definition-box" id="def-3-7-15" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.7.15 (Referencial local).</strong> Um <strong>referencial local</strong> em
+                        um aberto $U\subset M$ é uma lista $(E_1,\dots,E_n)$ de campos suaves em $U$ tal que
+                        $(E_1\vert_p,\dots,E_n\vert_p)$ é uma base de $T_pM$ para todo $p\in U$. Se $E_i=\partial_i$ para
+                        uma carta $(U,\varphi)$, é um <strong>referencial coordenado</strong>. Se $U=M$, é um
+                        <strong>referencial global</strong>, e uma variedade que tem um referencial global é
+                        <strong>paralelizável</strong>.</p>
+                </div>
+
+                <p>
+                    Todo campo suave em $U$ se escreve de modo único como $X=X^iE_i$, com $X^i\in C^\infty(U)$. De fato,
+                    em uma carta, $E_i=A^j{}_i\,\partial_j$ com $A$ uma matriz de funções suaves, invertível em todo
+                    ponto, e $X^i=(A^{-1})^i{}_jX^j_{\mathrm{coord}}$, em que a matriz inversa tem entradas suaves (regra
+                    de Cramer: quocientes de polinômios nas entradas de $A$ por $\det A\neq0$). Os referenciais
+                    não coordenados são importantes na física: são as <em>tétradas</em> da Relatividade Geral.
+                </p>
+
+                <p id="ex-3-7-16"><strong>Exemplo 3.7.16 (Variedades paralelizáveis).</strong></p>
+
+                <ul>
+                    <li>$\mathbb{R}^n$ é paralelizável: $(\partial_1,\dots,\partial_n)$ é um referencial global.</li>
+                    <li>$S^1$ é paralelizável: o campo $\Theta$ do Exemplo 3.7.3 é um referencial global
+                        (de um só campo).</li>
+                    <li>$\mathbb{T}^2=S^1\times S^1$ é paralelizável: nas cartas produto, os campos $\partial_s$ e
+                        $\partial_t$ não dependem da carta (as transições são translações, com jacobiana
+                        identidade), e formam um referencial global.</li>
+                    <li>$S^2$ <em>não</em> é paralelizável. Um referencial global $(E_1,E_2)$ daria um campo
+                        $E_1$ sem zeros, o que é impossível pelo <strong>teorema da bola cabeluda</strong>
+                        ("não se pode pentear uma esfera"), que é citado aqui sem demonstração
+                        (a demonstração usa o grau de aplicações; veja Milnor,
+                        <em>Topology from the Differentiable Viewpoint</em>). O campo do Exemplo 3.7.10, que se
+                        anula só nos polos, é o melhor que se pode fazer.</li>
+                </ul>
+
+                <p id="ex-3-7-17"><strong>Exemplo 3.7.17 (O referencial ortonormal polar).</strong> Em
+                    $U=\mathbb{R}^2\setminus\{(x,0):x\le0\}$, com coordenadas polares $(r,\theta)$, os campos
+                </p>
+
+                <p>
+                    $$ E_r=\frac{\partial}{\partial r}, \qquad E_\theta=\frac1r\,\frac{\partial}{\partial\theta} $$
+                </p>
+
+                <p>
+                    formam um referencial local (as componentes $1$ e $1/r$ são suaves, pois $r\gt0$). Em coordenadas
+                    cartesianas, $E_r=(\cos\theta,\sin\theta)$ e $E_\theta=(-\sin\theta,\cos\theta)$, que são ortonormais para o produto
+                    escalar usual de $\mathbb{R}^2$ (o plano ainda não tem métrica; aqui o produto escalar é apenas
+                    usado como régua). Este referencial <em>não é coordenado</em>: o
+                    Exemplo 3.7.24 mostra que $[E_r,E_\theta]\neq0$, enquanto os campos de um referencial coordenado comutam.</p>
+
+                <h2 id="colchete-de-lie">O colchete de Lie</h2>
+
+                <p id="obs-3-7-18"><strong>Observação 3.7.18 (A composição não é uma derivação).</strong>
+                    Dois campos $X$ e $Y$ agem em funções, e é natural tentar compor as ações:
+                    $f\mapsto X(Yf)$. O resultado, porém, <em>não</em> é uma derivação. Pela regra de Leibniz
+                    (3.7.4), aplicada duas vezes,
+                </p>
+
+                <p>
+                    $$ XY(fg) = X\big(f\,Yg+g\,Yf\big) = Xf\,Yg + f\,XYg + Xg\,Yf + g\,XYf, $$
+                </p>
+
+                <p>
+                    e aparecem os <em>termos cruzados</em> $Xf\,Yg+Xg\,Yf$, que a regra de Leibniz não
+                    permite. Em coordenadas, eles são o reflexo de derivadas segundas:
+                    $X^iY^j\partial_i\partial_jf$ não é uma derivada primeira de $f$. Mas os termos cruzados
+                    são <em>simétricos</em> em $X$ e $Y$, e, portanto, desaparecem na diferença
+                    $XY-YX$. Essa diferença é o colchete.
+                </p>
+
+                <div class="definition-box" id="def-3-7-19" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.7.19 (Colchete de Lie).</strong> Sejam $X,Y\in\mathfrak{X}(M)$. O
+                        <strong>colchete de Lie</strong> de $X$ e $Y$ é a aplicação
+                        $[X,Y]: C^\infty(M)\to C^\infty(M)$ dada por</p>
+                    <p>$$ [X,Y]f = X(Yf) - Y(Xf). $$</p>
+                </div>
+
+                <div class="definition-box" id="prop-3-7-20">
+                    <p><strong>Proposição 3.7.20.</strong> O colchete $[X,Y]$ é uma derivação de $C^\infty(M)$ e,
+                        portanto, um campo vetorial suave (Teorema 3.7.14).</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> A linearidade sobre $\mathbb{R}$ e o fato de $[X,Y]f$ ser suave são
+                    imediatos (pela Proposição 3.7.12). Para a regra de Leibniz, a expressão da Observação 3.7.18 e
+                    a análoga com $X$ e $Y$ trocados dão
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    [X,Y](fg) &= \big(Xf\,Yg + f\,XYg + Xg\,Yf + g\,XYf\big) - \big(Yf\,Xg + f\,YXg + Yg\,Xf + g\,YXf\big) \\
+                    &= f\,(XYg-YXg) + g\,(XYf-YXf) = f\,[X,Y]g + g\,[X,Y]f,
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    pois os termos cruzados $Xf\,Yg+Xg\,Yf$ cancelam-se. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="prop-3-7-21">
+                    <p><strong>Proposição 3.7.21 (O colchete em coordenadas).</strong> Em uma carta $(U,\varphi)$,
+                        se $X=X^i\partial_i$ e $Y=Y^i\partial_i$,</p>
+                    <p>$$ [X,Y] = \Big(X^i\,\frac{\partial Y^j}{\partial x^i} - Y^i\,\frac{\partial X^j}{\partial x^i}\Big)\,\frac{\partial}{\partial x^j}. \tag{3.7.5} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> O colchete é local: os campos agem em funções definidas perto de
+                    cada ponto (<a href="[05] - Vetores Tangentes.html#obs-3-5-9">Observação 3.5.9</a>), de modo que $[X,Y]\vert_U=[X\vert_U,Y\vert_U]$.
+                    As componentes de $[X,Y]$ na carta são $[X,Y](x^j)$ (<a href="[05] - Vetores Tangentes.html#prop-3-5-16">Proposição 3.5.16</a>), e
+                    $[X,Y](x^j)=X(Y(x^j))-Y(X(x^j))=X(Y^j)-Y(X^j)$, pois $Y(x^j)=Y^j$ e $X(x^j)=X^j$.
+                    Por (3.5.2), $X(Y^j)=X^i\,\partial Y^j/\partial x^i$, e analogamente para $Y(X^j)$. $\blacksquare$
+                </p>
+
+                <p>
+                    A fórmula (3.7.5) mostra de novo que as derivadas segundas se cancelam. Aplicando diretamente
+                    $[X,Y]$ a $f$ em coordenadas, aparecem os termos $X^iY^j\,\partial_i\partial_jf-Y^iX^j\,\partial_i\partial_jf$,
+                    que se anulam porque as derivadas mistas de $f$ comutam (<a href="[02] - Preliminares de Topologia e Cálculo.html#teo-3-2-45">Teorema 3.2.45</a>):
+                    é a única razão de o colchete ser de ordem um.
+                </p>
+
+                <div class="definition-box" id="prop-3-7-22">
+                    <p><strong>Proposição 3.7.22 (Propriedades do colchete).</strong> Para $X,Y,Z\in\mathfrak{X}(M)$,
+                        $a,b\in\mathbb{R}$ e $f,g\in C^\infty(M)$:</p>
+                    <p>(a) $[aX+bY,Z]=a[X,Z]+b[Y,Z]$ e $[X,aY+bZ]=a[X,Y]+b[X,Z]$ (bilinearidade sobre $\mathbb{R}$);</p>
+                    <p>(b) $[X,Y]=-[Y,X]$ (antissimetria);</p>
+                    <p>(c) $[X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0$ (identidade de Jacobi);</p>
+                    <p>(d) $[fX,gY]=fg\,[X,Y]+f\,(Xg)\,Y-g\,(Yf)\,X$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Como um campo é determinado por sua ação sobre funções
+                    (Teorema 3.7.14), basta aplicar cada lado a uma função $h\in C^\infty(M)$. (a) e (b) seguem
+                    da linearidade das ações e da definição $[X,Y]h=XYh-YXh$, com $XYh=X(Y(h))$. (c)
+                    Expandindo,
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    [X,[Y,Z]]h &= XYZh - XZYh - YZXh + ZYXh,\\
+                    [Y,[Z,X]]h &= YZXh - YXZh - ZXYh + XZYh,\\
+                    [Z,[X,Y]]h &= ZXYh - ZYXh - XYZh + YXZh.
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    Somando, cada um dos seis termos cíclicos $XYZh$, $XZYh$, $YZXh$, $YXZh$, $ZXYh$, $ZYXh$ aparece
+                    uma vez com cada sinal, e a soma é $0$. (d) Pela regra de Leibniz,
+                </p>
+
+                <p>
+                    $$ [fX,gY]h = fX\big(g\,Yh\big) - gY\big(f\,Xh\big) = f\,(Xg)\,Yh + fg\,XYh - g\,(Yf)\,Xh - gf\,YXh, $$
+                </p>
+
+                <p>
+                    que é $\big(fg\,[X,Y] + f\,(Xg)\,Y - g\,(Yf)\,X\big)h$. $\blacksquare$
+                </p>
+
+                <p id="obs-3-7-23"><strong>Observação 3.7.23 (O colchete não é $C^\infty(M)$-linear).</strong> Por
+                    (d), $[X,fY]=f[X,Y]+(Xf)\,Y$, e o termo $(Xf)Y$ mostra que o colchete <em>não</em> é linear
+                    sobre o anel $C^\infty(M)$: o valor de $[X,Y]$ em $p$ depende de $X$ e de $Y$ em uma
+                    vizinhança de $p$ (de suas derivadas), e não só de $X_p$ e $Y_p$. Ao contrário das operações
+                    ponto a ponto, o colchete não é, portanto, um tensor; essa distinção será precisa no
+                    <a href="[10] - Álgebra Multilinear e Tensores.html">tópico 3.10</a>.</p>
+
+                <p id="ex-3-7-24"><strong>Exemplo 3.7.24 (Referenciais coordenados e o referencial polar).</strong> Em
+                    uma carta, os campos coordenados têm componentes constantes, e (3.7.5) dá
+                    $[\partial_i,\partial_j]=0$: <em>os campos de um referencial coordenado comutam.</em> Em
+                    $U=\mathbb{R}^2\setminus\{(x,0):x\le0\}$, com coordenadas polares, $E_r=\partial_r$ e
+                    $E_\theta=\frac1r\partial_\theta$ (Exemplo 3.7.17) têm componentes $(1,0)$ e $(0,1/r)$, e
+                    (3.7.5) dá</p>
+
+                <p>
+                    $$ [E_r,E_\theta] = \frac{\partial(1/r)}{\partial r}\,\partial_\theta = -\frac{1}{r^2}\,\partial_\theta = -\frac1r\,E_\theta\ \neq\ 0. $$
+                </p>
+
+                <p>
+                    Como os campos de um referencial coordenado comutam, o referencial ortonormal polar
+                    <em>não é coordenado</em>: não existem coordenadas $(u,w)$ em que $E_r=\partial_u$ e
+                    $E_\theta=\partial_w$. O recíproco (campos que comutam são, localmente, campos coordenados)
+                    será provado no tópico 3.8.</p>
+
+                <p id="ex-3-7-25"><strong>Exemplo 3.7.25 (Geradores de rotação).</strong> Em $\mathbb{R}^3$, sejam</p>
+
+                <p>
+                    $$ L_x = y\,\partial_z - z\,\partial_y, \qquad L_y = z\,\partial_x - x\,\partial_z, \qquad L_z = x\,\partial_y - y\,\partial_x, $$
+                </p>
+
+                <p>
+                    cujas componentes são $(0,-z,y)$, $(z,0,-x)$ e $(-y,x,0)$. Calculamos $[L_x,L_y]$ por
+                    (3.7.5). A componente $x$ é
+                    $L_x^i\partial_iL_y^x-L_y^i\partial_iL_x^x=(-z)\cdot0+y\cdot1-0=y$ (pois $L_y^x=z$ e $L_x^x=0$);
+                    a componente $y$ é $0-L_y^i\partial_iL_x^y=-(z\cdot0+(-x)(-1))=-x$ (pois $L_x^y=-z$);
+                    a componente $z$ é $L_x^i\partial_iL_y^z-L_y^i\partial_iL_x^z=0-0=0$. Portanto
+                    $[L_x,L_y]=y\,\partial_x-x\,\partial_y=-L_z$. Os outros dois são obtidos por permutação
+                    cíclica de $(x,y,z)$, que leva $L_x\to L_y\to L_z\to L_x$:</p>
+
+                <p>
+                    $$ [L_x,L_y]=-L_z, \qquad [L_y,L_z]=-L_x, \qquad [L_z,L_x]=-L_y. \tag{3.7.6} $$
+                </p>
+
+                <p>
+                    (Os sinais foram conferidos por cálculo simbólico, e dependem das definições dos
+                    $L_i$ acima, não de convenção de colchete.) Esses três campos geram as rotações em torno
+                    dos eixos coordenados (veremos isso no tópico 3.8), e (3.7.6) é a álgebra de Lie
+                    $\mathfrak{so}(3)$ do grupo das rotações. Na mecânica quântica, os operadores de momento
+                    angular são $\mathcal{L}_i=-i\hbar\,L_i$ (de $\mathbf{L}=\mathbf{r}\times\mathbf{p}$ com
+                    $\mathbf{p}=-i\hbar\nabla$), e (3.7.6) dá a relação familiar
+                    $[\mathcal{L}_x,\mathcal{L}_y]=(-i\hbar)^2[L_x,L_y]=\hbar^2L_z=i\hbar\,\mathcal{L}_z$: a álgebra dos operadores é a
+                    álgebra dos campos, multiplicada por $-i\hbar$.</p>
+
+                <p id="ex-3-7-26"><strong>Exemplo 3.7.26 (Os geradores do grupo de Galileu).</strong> Em
+                    $\mathbb{R}^4$ com coordenadas $(t,x,y,z)$, considere
+                    $H=\partial_t$, $P_i=\partial_i$ ($i=x,y,z$) e $K_i=t\,\partial_i$. Os campos $P_i$ geram as
+                    translações espaciais, $H$ a translação no tempo, e $K_i$ os <em>boosts</em> de Galileu
+                    $x^i\mapsto x^i+vt$. Por (3.7.5),
+                </p>
+
+                <p>
+                    $$ [P_i,P_j]=0, \qquad [K_i,P_j]=0, \qquad [K_i,K_j]=0, \qquad [H,P_i]=0, \qquad [H,K_i]=P_i. $$
+                </p>
+
+                <p>
+                    A única relação não trivial é $[H,K_i]=\partial_t(t)\,\partial_i=P_i$: um boost, deixado evoluir no
+                    tempo, gera uma translação. Estas relações formam a parte, sem as rotações, da álgebra de
+                    Lie do grupo de Galileu, nos geradores do capítulo 1: ao compará-las, lembre que os sinais e os fatores de $i$ dependem da convenção usada
+                    para definir os geradores, e que aqui $H,P_i,K_i$ são exatamente os campos acima, sem
+                    fatores.</p>
+
+                <h2 id="campos-relacionados">Campos $F$-relacionados e pushforward</h2>
+
+                <p>
+                    A diferencial $dF$ leva <em>vetores</em> em vetores, mas, em geral, <em>não</em> leva campos
+                    em campos. Se $F: M\to N$ não é injetiva, dois pontos de $M$ com o mesmo valor $F(p)=F(p')$ podem ter
+                    campos $X_p$ e $X_{p'}$ com imagens $dF_p(X_p)\neq dF_{p'}(X_{p'})$ em $T_{F(p)}N$: duas ordens
+                    para o mesmo ponto. Se $F$ não é sobrejetiva, sobram pontos de $N$ sem ordem alguma. A noção correta,
+                    que não exige nada de $F$, é a de campos que "se correspondem".
+                </p>
+
+                <div class="definition-box" id="def-3-7-27" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.7.27 (Campos $F$-relacionados).</strong> Seja $F: M\to N$ suave. Os campos
+                        $X\in\mathfrak{X}(M)$ e $Y\in\mathfrak{X}(N)$ são <strong>$F$-relacionados</strong> se</p>
+                    <p>$$ dF_p(X_p)=Y_{F(p)} \quad\text{para todo } p\in M. $$</p>
+                </div>
+
+                <figure class="lecture-figure" id="fig-3-7-3">
+                    <svg viewBox="0 0 640 280" role="img" aria-label="À esquerda, uma variedade M com dois pontos, cada um com um vetor, o campo X. À direita, uma variedade N com os pontos imagem pela aplicação F, cada um com um vetor, o campo Y. Uma seta rotulada F liga M a N, com a indicação de que a diferencial de F em p leva X p em Y de F de p. Os dois campos são F-relacionados.">
+<defs><marker id="arr-3-7-3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<path d="M 40,146 C 36,80 92,36 154,40 C 218,36 270,80 270,146 C 272,212 214,252 150,250 C 86,254 44,210 40,146 Z" class="fig-frame"/>
+<path d="M 392,146 C 388,86 440,40 502,44 C 566,40 612,86 610,146 C 612,208 560,248 500,246 C 438,250 396,206 392,146 Z" class="fig-frame"/>
+<text x="56" y="66" class="fig-label fig-it">M</text>
+<text x="408" y="70" class="fig-label fig-it">N</text>
+<circle cx="112" cy="190" r="3.5" class="fig-arrowhead"/>
+<line x1="112" y1="190" x2="142" y2="164" class="fig-axis" marker-end="url(#arr-3-7-3)"/>
+<circle cx="456" cy="172" r="3.5" class="fig-arrowhead"/>
+<line x1="456" y1="172" x2="502" y2="138" class="fig-axis" marker-end="url(#arr-3-7-3)"/>
+<circle cx="200" cy="110" r="3.5" class="fig-arrowhead"/>
+<line x1="200" y1="110" x2="228" y2="130" class="fig-axis" marker-end="url(#arr-3-7-3)"/>
+<circle cx="548" cy="112" r="3.5" class="fig-arrowhead"/>
+<line x1="548" y1="112" x2="592" y2="144" class="fig-axis" marker-end="url(#arr-3-7-3)"/>
+<text x="100" y="214" class="fig-label fig-small fig-it">p</text>
+<text x="150" y="160" class="fig-label fig-small fig-it">X_p</text>
+<text x="440" y="196" class="fig-label fig-small fig-it">F(p)</text>
+<text x="506" y="152" class="fig-label fig-small fig-it">Y_{F(p)}</text>
+<line x1="284" y1="130" x2="380" y2="130" class="fig-curve" marker-end="url(#arr-3-7-3)"/>
+<text x="332" y="118" text-anchor="middle" class="fig-label fig-it">F</text>
+<text x="332" y="156" text-anchor="middle" class="fig-label fig-small fig-it">dF_p(X_p) = Y_{F(p)}</text>
+</svg>
+                    <figcaption><strong>Figura 3.7.3.</strong> Campos $F$-relacionados: em cada ponto $p$ de $M$,
+                        a diferencial $dF_p$ leva o vetor $X_p$ no vetor $Y_{F(p)}$ do campo $Y$ de $N$. Se
+                        $F$ não for injetiva, $X$ em dois pontos de uma mesma fibra de $F$ tem de ter a mesma imagem;
+                        e se $F$ não for sobrejetiva, $Y$ é livre fora de $F(M)$.</figcaption>
+                </figure>
+
+                <div class="definition-box" id="prop-3-7-28">
+                    <p><strong>Proposição 3.7.28 (Critério por funções).</strong> $X\in\mathfrak{X}(M)$ e
+                        $Y\in\mathfrak{X}(N)$ são $F$-relacionados se, e somente se,</p>
+                    <p>$$ X\big(f\circ F\big)=\big(Yf\big)\circ F \quad\text{para toda } f\in C^\infty(N). $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Para $p\in M$ e $f\in C^\infty(N)$, pela definição da diferencial,
+                    $(dF_pX_p)f=X_p(f\circ F)=\big(X(f\circ F)\big)(p)$, e $Y_{F(p)}f=\big((Yf)\circ F\big)(p)$.
+                    Logo $dF_pX_p=Y_{F(p)}$ para todo $p$ (isto é, as duas derivações em $F(p)$ coincidem em
+                    toda $f$) se, e somente se, as funções $X(f\circ F)$ e $(Yf)\circ F$ coincidem para toda $f$.
+                    $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="prop-3-7-29">
+                    <p><strong>Proposição 3.7.29 (Pushforward por difeomorfismo).</strong> Se $F: M\to N$ é um
+                        difeomorfismo e $X\in\mathfrak{X}(M)$, existe um único campo $F_*X\in\mathfrak{X}(N)$
+                        $F$-relacionado a $X$, dado por</p>
+                    <p>$$ (F_*X)_q=dF_{F^{-1}(q)}\big(X_{F^{-1}(q)}\big), \qquad\text{isto é,}\qquad F_*X=dF\circ X\circ F^{-1}. $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Se $Y$ é $F$-relacionado a $X$, então $Y_{F(p)}=dF_pX_p$ para todo $p$,
+                    e como $F$ é bijetora isso determina $Y$ em todo ponto de $N$: a fórmula dá a unicidade e a
+                    existência de um campo (de vetores). É suave porque é a composta
+                    $N\xrightarrow{F^{-1}}M\xrightarrow{X}TM\xrightarrow{dF}TN$ de aplicações suaves
+                    (Proposição 3.7.4), e $\pi_N\circ F_*X=\mathrm{id}_N$ pois $\pi_N\circ dF=F\circ\pi_M$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="teo-3-7-30">
+                    <p><strong>Teorema 3.7.30 (Naturalidade do colchete).</strong> Seja $F: M\to N$ suave. Se
+                        $X_1,X_2\in\mathfrak{X}(M)$ são $F$-relacionados a $Y_1,Y_2\in\mathfrak{X}(N)$,
+                        respectivamente, então $[X_1,X_2]$ é $F$-relacionado a $[Y_1,Y_2]$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Seja $f\in C^\infty(N)$. Pela Proposição 3.7.28 aplicada a $(X_2,Y_2)$,
+                    $X_2(f\circ F)=(Y_2f)\circ F$; e, aplicada a $(X_1,Y_1)$ com a função $Y_2f$ no lugar de $f$,
+                    $X_1\big((Y_2f)\circ F\big)=\big(Y_1(Y_2f)\big)\circ F$. Então
+                </p>
+
+                <p>
+                    $$ X_1\big(X_2(f\circ F)\big)=X_1\big((Y_2f)\circ F\big)=\big(Y_1Y_2f\big)\circ F, $$
+                </p>
+
+                <p>
+                    e, trocando os papéis, $X_2\big(X_1(f\circ F)\big)=(Y_2Y_1f)\circ F$. Subtraindo,
+                    $[X_1,X_2](f\circ F)=\big([Y_1,Y_2]f\big)\circ F$, que, pela Proposição 3.7.28, diz que
+                    $[X_1,X_2]$ e $[Y_1,Y_2]$ são $F$-relacionados. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="cor-3-7-31">
+                    <p><strong>Corolário 3.7.31.</strong> Se $F: M\to N$ é um difeomorfismo, então
+                        $F_*[X,Y]=[F_*X,F_*Y]$ para todos $X,Y\in\mathfrak{X}(M)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> $X$ e $F_*X$ são $F$-relacionados, e $Y$ e $F_*Y$ também. Pelo Teorema 3.7.30,
+                    $[X,Y]$ e $[F_*X,F_*Y]$ são $F$-relacionados; pela unicidade da Proposição 3.7.29,
+                    $[F_*X,F_*Y]=F_*[X,Y]$. $\blacksquare$
+                </p>
+
+                <p>
+                    Uma aplicação importante é a restrição de campos a subvariedades. Dizemos que
+                    $X\in\mathfrak{X}(M)$ é <strong>tangente</strong> a uma subvariedade mergulhada $S\subset M$ se
+                    $X_p\in T_pS$ (no sentido da <a href="[06] - Subvariedades.html#prop-3-6-23">Proposição 3.6.23</a>) para todo $p\in S$.
+                </p>
+
+                <div class="definition-box" id="def-3-7-32" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.7.32 (Campo tangente; restrição).</strong> Se $X\in\mathfrak{X}(M)$ é
+                        tangente a $S$, a <strong>restrição</strong> $X\vert_S$ é o campo (a priori não necessariamente
+                        suave) em $S$ com $d\iota_p\big((X\vert_S)_p\big)=X_p$.</p>
+                </div>
+
+                <div class="definition-box" id="prop-3-7-33">
+                    <p><strong>Proposição 3.7.33 (A restrição é suave).</strong> Se $X\in\mathfrak{X}(M)$ é tangente
+                        à subvariedade mergulhada $S$, então $X\vert_S\in\mathfrak{X}(S)$, e $X\vert_S$ e $X$ são
+                        $\iota$-relacionados.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> A relação com $\iota$ é a definição. Para a suavidade, seja $p\in S$ e
+                    $(U,\varphi)$ uma carta adaptada, com
+                    $S\cap U=\{x^{k+1}=\dots=x^n=0\}$. Em $U$, $X=X^i\partial_i$ com $X^i$ suaves. Em
+                    $q\in S\cap U$, $X_q\in T_qS$, isto é, $X_q=d\iota_q(w)$ com $w=w^i\partial^S_i\vert_q$, em que
+                    $\partial^S_i$ são os campos coordenados da carta $\varphi_S$ de $S$. A representação de $\iota$
+                    nas cartas $\varphi_S$ e $\varphi$ é $x\mapsto(x,0)$, e pela
+                    <a href="[05] - Vetores Tangentes.html#prop-3-5-17">Proposição 3.5.17</a>, $d\iota_q(\partial^S_i\vert_q)=\partial_i\vert_q$ para $i\le k$. Logo
+                    $X_q=\sum_{i\le k}w^i\partial_i\vert_q$: as componentes $X^j(q)$ com $j\gt k$ são nulas, e
+                    $X^i(q)=w^i$ para $i\le k$. Portanto
+                    $(X\vert_S)_q=\sum_{i\le k}X^i(q)\,\partial^S_i\vert_q$. Assim as componentes de $X\vert_S$ na carta
+                    $\varphi_S$ são as restrições $X^i\vert_{S\cap U}$ ($i\le k$), suaves (restrições de funções
+                    suaves a uma subvariedade, composição com $\iota$). Pelo critério (b) da
+                    Proposição 3.7.8, $X\vert_S$ é suave. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="cor-3-7-34">
+                    <p><strong>Corolário 3.7.34.</strong> Se $X,Y\in\mathfrak{X}(M)$ são tangentes a uma subvariedade
+                        mergulhada $S$, então $[X,Y]$ também é tangente a $S$, e
+                        $[X,Y]\vert_S=[X\vert_S,Y\vert_S]$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela Proposição 3.7.33, $X\vert_S$ e $X$, e $Y\vert_S$ e $Y$, são
+                    $\iota$-relacionados. Pelo Teorema 3.7.30, $[X\vert_S,Y\vert_S]$ e $[X,Y]$ são
+                    $\iota$-relacionados: $d\iota_p\big([X\vert_S,Y\vert_S]_p\big)=[X,Y]_p$. Logo $[X,Y]_p\in d\iota_p(T_pS)=T_pS$,
+                    e $[X,Y]\vert_S=[X\vert_S,Y\vert_S]$. $\blacksquare$
+                </p>
+
+                <h2 id="fisica">Ponte com a física</h2>
+
+                <p>
+                    <strong>Campos como geradores infinitesimais.</strong> Um campo vetorial codifica uma
+                    transformação infinitesimal: $\partial_x$ é a translação em $x$, $x\partial_y-y\partial_x$ é a
+                    rotação em torno da origem, $t\,\partial_x$ é um boost de Galileu. O colchete (3.7.5) mede o quanto duas
+                    transformações infinitesimais deixam de comutar, e as relações (3.7.6) e as do Exemplo 3.7.26 são
+                    as álgebras de Lie dos grupos de rotações e de Galileu. É a ponte direta com os
+                    capítulos 1 e 2: as simetrias estudadas ali são grupos de transformações, e seus geradores são
+                    campos vetoriais, de modo que a estrutura do grupo está codificada, infinitesimalmente, no
+                    colchete. No tópico 3.8 isso será feito de modo preciso, com fluxos.
+                </p>
+
+                <p>
+                    <strong>Campos de velocidades.</strong> A velocidade de um fluido é um campo $v(x,t)$ em
+                    cada instante, e a família de 4-velocidades de uma congruência de observadores é um campo
+                    vetorial $u$ em $M$: $u_p$ é a velocidade do observador que passa por $p$. A condição de ser
+                    suave é a de que os observadores formam uma "família contínua".
+                </p>
+
+                <p>
+                    <strong>Referenciais.</strong> Um referencial local ortonormal $(E_0,E_1,E_2,E_3)$ de campos que
+                    representam um observador e três direções espaciais (as <em>tétradas</em>) é a ferramenta
+                    de cálculo preferida na Relatividade Geral. Como o referencial polar do Exemplo 3.7.24, tétradas
+                    em geral não são coordenadas: seus colchetes não se anulam, e os coeficientes
+                    $[E_a,E_b]=c^{\,c}{}_{ab}E_c$ são grandezas físicas que descrevem a geometria.
+                </p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p id="exr-3-7-1"><strong>Exercício 3.7.1.</strong> Escreva o campo de Euler $\mathcal{E}=x\partial_x+y\partial_y$ e o campo
+                    de rotação $R=x\partial_y-y\partial_x$ em coordenadas polares.</p>
+
+                <p>
+                    <em>Solução.</em> As componentes em polares de um campo $X$ são $X(r)$ e $X(\theta)$
+                    (<a href="[05] - Vetores Tangentes.html#prop-3-5-16">Proposição 3.5.16</a>), com $r=\sqrt{x^2+y^2}$ e $\theta=\operatorname{atan2}(y,x)$. Para
+                    $\mathcal{E}$: $\mathcal{E}(r)=(x^2+y^2)/r=r$ e
+                    $\mathcal{E}(\theta)=x(-y/r^2)+y(x/r^2)=0$, de modo que $\mathcal{E}=r\,\partial_r$. Para $R$:
+                    $R(r)=(xy-yx)/r=0$ e $R(\theta)=-y\cdot(-y/r^2)+x\cdot x/r^2=1$, de modo que $R=\partial_\theta$.
+                    O campo de rotação é, portanto, o campo coordenado $\partial_\theta$, e o campo de Euler tem o
+                    mesmo comprimento $r$ em todo círculo. $\blacksquare$
+                </p>
+
+                <p id="exr-3-7-2"><strong>Exercício 3.7.2.</strong> Calcule $[x\partial_y,\ y\partial_x]$.</p>
+
+                <p>
+                    <em>Solução.</em> Aplicando a uma função $f$,
+                    $x\partial_y(y\,\partial_xf)-y\partial_x(x\,\partial_yf)=x\,\partial_xf+xy\,\partial_y\partial_xf-y\,\partial_yf-xy\,\partial_x\partial_yf
+                    =x\,\partial_xf-y\,\partial_yf$,
+                    em que as derivadas mistas se cancelam. Portanto $[x\partial_y,y\partial_x]=x\partial_x-y\partial_y$, em
+                    acordo com (3.7.5). $\blacksquare$
+                </p>
+
+                <p id="exr-3-7-3"><strong>Exercício 3.7.3.</strong> Verifique a identidade de Jacobi para
+                    $L_x$, $L_y$, $L_z$.</p>
+
+                <p>
+                    <em>Solução.</em> Por (3.7.6), $[L_y,L_z]=-L_x$, $[L_z,L_x]=-L_y$ e $[L_x,L_y]=-L_z$. Então
+                    $[L_x,[L_y,L_z]]=[L_x,-L_x]=0$, $[L_y,[L_z,L_x]]=[L_y,-L_y]=0$ e
+                    $[L_z,[L_x,L_y]]=[L_z,-L_z]=0$, e a soma é $0$. $\blacksquare$
+                </p>
+
+                <p id="exr-3-7-4"><strong>Exercício 3.7.4.</strong> Verifique a fórmula (d) da Proposição 3.7.22 com
+                    $X=\partial_x$, $Y=\partial_y$, $f=y$ e $g=x$.</p>
+
+                <p>
+                    <em>Solução.</em> Diretamente, $[y\partial_x,x\partial_y]$ tem componentes (3.7.5): em $x$,
+                    $y\,\partial_x(0)-x\,\partial_y(y)=-x$; em $y$, $y\,\partial_x(x)-x\,\partial_y(0)=y$; logo
+                    $[y\partial_x,x\partial_y]=-x\partial_x+y\partial_y$. Pela fórmula (d), com $[X,Y]=[\partial_x,\partial_y]=0$,
+                    $Xg=\partial_x(x)=1$ e $Yf=\partial_y(y)=1$,
+                    $fg\cdot0+f(Xg)Y-g(Yf)X=y\,\partial_y-x\,\partial_x$. Os dois lados coincidem. $\blacksquare$
+                </p>
+
+                <p id="exr-3-7-5"><strong>Exercício 3.7.5.</strong> Mostre que $L_x,L_y,L_z$ são tangentes a $S^2$ e
+                    escreva cada um em coordenadas $(\theta,\phi)$.</p>
+
+                <p>
+                    <em>Solução.</em> Seja $\Phi=x^2+y^2+z^2$. Para cada $L$, $L(\Phi)=0$: por exemplo,
+                    $L_z\Phi=x\cdot2y-y\cdot2x=0$, e analogamente para $L_x$ e $L_y$. Pela <a href="[06] - Subvariedades.html#prop-3-6-25">Proposição 3.6.25</a>,
+                    $T_pS^2=\ker d\Phi_p$, de modo que $(L_i)_p\in T_pS^2$: os campos são tangentes, e suas
+                    restrições são campos suaves em $S^2$ (Proposição 3.7.33). Suas componentes em $(\theta,\phi)$ são
+                    $L(\theta)$ e $L(\phi)$, com $\theta=\arccos z$ e $\phi=\operatorname{atan2}(y,x)$:
+                    $L_x(\theta)=y\cdot\frac{-1}{\sqrt{1-z^2}}=-\sin\phi$, $L_x(\phi)=-z\cdot\frac{x}{x^2+y^2}=-\cot\theta\cos\phi$;
+                    e do mesmo modo
+                </p>
+
+                <p>
+                    $$ L_x=-\sin\phi\,\partial_\theta-\cot\theta\cos\phi\,\partial_\phi, \quad L_y=\cos\phi\,\partial_\theta-\cot\theta\sin\phi\,\partial_\phi, \quad L_z=\partial_\phi. $$
+                </p>
+
+                <p>
+                    Os coeficientes com $\cot\theta$ têm singularidades nos polos ($\theta=0,\pi$), que são defeitos da
+                    carta: como campos em $S^2$, $L_x$ e $L_y$ são suaves, e nos polos $(0,0,\pm1)$ valem
+                    $L_x=\mp\partial_y$ e $L_y=\pm\partial_x$ (vistos em $T\mathbb{R}^3$): uma rotação em torno do
+                    eixo $x$ ou $y$ move os polos. Só $L_z$ se anula neles. $\blacksquare$
+                </p>
+
+                <p id="exr-3-7-6"><strong>Exercício 3.7.6.</strong> Seja $F(x)=e^x$, de $\mathbb{R}$ em $(0,\infty)$.
+                    Calcule $F_*\partial_x$.</p>
+
+                <p>
+                    <em>Solução.</em> $F$ é um difeomorfismo de $\mathbb{R}$ sobre $(0,\infty)$. Em $q=F(x)=e^x$,
+                    por (3.5.3), $dF_x(\partial_x)=F'(x)\,\partial_y\vert_q=e^x\partial_y\vert_q=q\,\partial_y\vert_q$.
+                    Logo $F_*\partial_x=y\,\partial_y$ em $(0,\infty)$, em que $y$ é a coordenada do contradomínio.
+                    $\blacksquare$
+                </p>
+
+                <p id="exr-3-7-7"><strong>Exercício 3.7.7.</strong> Em $\mathbb{R}^3$, sejam $X=\partial_x$ e
+                    $Y=\partial_y+x\,\partial_z$. Calcule $[X,Y]$ e conclua que não existem coordenadas em que $X$
+                    e $Y$ sejam ambos campos coordenados.</p>
+
+                <p>
+                    <em>Solução.</em> Por (3.7.5), $X=(1,0,0)$ e $Y=(0,1,x)$, e
+                    $[X,Y]^j=X^i\partial_iY^j-Y^i\partial_iX^j=\partial_xY^j$, que dá $(0,0,1)$: $[X,Y]=\partial_z\ne0$.
+                    Se existisse uma carta com $X=\partial/\partial u^1$ e $Y=\partial/\partial u^2$, os dois comutariam
+                    (Exemplo 3.7.24), e $[X,Y]=0$, contradição. Observe que $X$ e $Y$ são linearmente
+                    independentes em todo ponto: a obstrução é só o fato de o colchete não se anular. $\blacksquare$
+                </p>
+
+                <p id="exr-3-7-8"><strong>Exercício 3.7.8.</strong> Descreva explicitamente um difeomorfismo
+                    $TS^1\to S^1\times\mathbb{R}$ e verifique sua suavidade.</p>
+
+                <p>
+                    <em>Solução.</em> Pelo Exemplo 3.7.3, o campo $\Theta=\partial_\theta$ é global. Em
+                    $\mathbb{R}^2$, a inclusão leva $\Theta_p$, com $p=(\cos t,\sin t)$, no vetor
+                    $(-\sin t,\cos t)=(-y,x)$ (pela <a href="[05] - Vetores Tangentes.html#prop-3-5-24">Proposição 3.5.24</a>, a velocidade de $t\mapsto(\cos t,\sin t)$). Logo
+                    $\Theta=x\partial_y-y\partial_x\vert_{S^1}$, e o difeomorfismo $\Psi: TS^1\to S^1\times\mathbb{R}$ é
+                    $\Psi(p,w)=(p,\,xw^2-yw^1)$, com inversa $(p,c)\mapsto(p,\,c\,\Theta_p)$, em que $w\in T_pS^1\subset T_p\mathbb{R}^2$.
+                    De fato, se $w=c\,(-y,x)$, então $xw^2-yw^1=c(x^2+y^2)=c$. Na carta natural $\Phi_{\theta_1}$ de
+                    $TS^1$, o vetor $v^1\partial_{\theta}$ tem coordenadas $(t,v^1)$ e vai em $(\theta_1^{-1}(t),v^1)$, que
+                    na carta $\theta_1\times\mathrm{id}$ de $S^1\times\mathbb{R}$ é a identidade $(t,v^1)\mapsto(t,v^1)$.
+                    Assim $\Psi$ e $\Psi^{-1}$ são suaves. $\blacksquare$
+                </p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <p>
+                    Este tópico passou dos vetores aos campos:
+                </p>
+
+                <ul>
+                    <li>o <strong>fibrado tangente</strong> $TM$ como variedade de dimensão $2n$
+                        (<a href="#teo-3-7-2">Teorema 3.7.2</a>), a diferencial global $dF$
+                        (<a href="#prop-3-7-4">Proposição 3.7.4</a>) e a noção de <strong>fibrado vetorial</strong> e de
+                        seção (<a href="#def-3-7-5">Definição 3.7.5</a>, <a href="#def-3-7-6">Definição 3.7.6</a>);</li>
+                    <li>os <strong>campos vetoriais suaves</strong> $\mathfrak{X}(M)$ e seus quatro critérios de suavidade
+                        (<a href="#prop-3-7-8">Proposição 3.7.8</a>), com o lema de extensão
+                        (<a href="#lema-3-7-11">Lema 3.7.11</a>);</li>
+                    <li>campos como <strong>derivações</strong> de $C^\infty(M)$
+                        (<a href="#teo-3-7-14">Teorema 3.7.14</a>) e <strong>referenciais</strong>
+                        (<a href="#def-3-7-15">Definição 3.7.15</a>);</li>
+                    <li>o <strong>colchete de Lie</strong> (<a href="#def-3-7-19">Definição 3.7.19</a>), sua fórmula em
+                        coordenadas (<a href="#prop-3-7-21">Proposição 3.7.21</a>) e suas propriedades:
+                        antissimetria, Jacobi e $[fX,gY]$ (<a href="#prop-3-7-22">Proposição 3.7.22</a>);</li>
+                    <li>campos <strong>$F$-relacionados</strong>, o <strong>pushforward</strong> por difeomorfismos e a
+                        <strong>naturalidade do colchete</strong>
+                        (<a href="#def-3-7-27">Definição 3.7.27</a>, <a href="#prop-3-7-29">Proposição 3.7.29</a>,
+                        <a href="#teo-3-7-30">Teorema 3.7.30</a>), e a restrição de campos tangentes a
+                        subvariedades (<a href="#prop-3-7-33">Proposição 3.7.33</a>).</li>
+                </ul>
+
+                <p>
+                    O colchete $[X,Y]$ foi definido por uma fórmula, e ainda não sabemos o que ele significa
+                    geometricamente: por que dois campos que comutam são, localmente, campos coordenados, e o que o
+                    colchete mede em termos de percorrer, alternadamente, os caminhos que os dois campos indicam.
+                    Responder exige integrar campos, isto é, achar curvas cuja velocidade em cada instante é dada pelo
+                    campo.
+                </p>
+
+                <p>
+                    O próximo tópico,
+                    <a href="[08] - Fluxos e Derivada de Lie.html">3.8 Fluxos e Derivada de Lie</a>, estuda as
+                    curvas integrais e os fluxos de um campo, define a derivada de Lie e prova que
+                    $\mathcal{L}_XY=[X,Y]$.
+                </p>
 
             </div>
         </main>
@@ -161,6 +1240,20 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#campos-vetoriais">Fibrado Tangente e Campos Vetoriais</a></li>
+                    <li>
+                        <a href="#fibrado-tangente">O fibrado tangente</a>
+                        <ul>
+                            <li><a href="#fibrados-vetoriais">Fibrados vetoriais</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#campos">Campos vetoriais</a></li>
+                    <li><a href="#campos-como-derivacoes">Campos como derivações</a></li>
+                    <li><a href="#referenciais">Referenciais locais</a></li>
+                    <li><a href="#colchete-de-lie">O colchete de Lie</a></li>
+                    <li><a href="#campos-relacionados">Campos relacionados</a></li>
+                    <li><a href="#fisica">Ponte com a física</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
                 </ul>
             </div>
         </aside>

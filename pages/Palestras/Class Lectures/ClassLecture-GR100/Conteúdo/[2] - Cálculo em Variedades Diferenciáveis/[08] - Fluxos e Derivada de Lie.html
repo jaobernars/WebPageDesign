@@ -151,7 +151,972 @@
                 <h1 id="fluxos-e-derivada-de-lie">3.8 Curvas Integrais, Fluxos e a Derivada de Lie</h1>
                 <p class="lead">Curvas integrais, fluxos, campos completos, a derivada de Lie de funções e de campos vetoriais e o significado geométrico do colchete de Lie.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>
+                    Um campo vetorial dá uma velocidade em cada ponto. Seguir essas velocidades, isto é, achar
+                    curvas cuja velocidade em cada instante é a prescrita pelo campo, é resolver uma equação
+                    diferencial. Este tópico faz essa tradução entre campos e movimentos: cada campo gera um
+                    <em>fluxo</em>, e cada fluxo vem de um campo.
+                </p>
+
+                <p>
+                    O fluxo resolve também um problema que o <a href="[05] - Vetores Tangentes.html">tópico 3.5</a>
+                    deixou em aberto: como comparar vetores em pontos diferentes, já que moram em espaços
+                    tangentes diferentes. Dado um campo $X$, o seu fluxo $\theta_t$ leva um ponto $p$ em $\theta_t(p)$
+                    e, pela diferencial, leva vetores em $T_pM$ em vetores em $T_{\theta_t(p)}M$. Com isso é possível
+                    "trazer de volta" um vetor de $\theta_t(p)$ até $p$ e subtraí-lo. A estrutura extra que permite a
+                    comparação é o próprio campo $X$, e a derivada resultante, a <em>derivada de Lie</em>,
+                    coincide com o colchete de Lie do tópico anterior. É isso que dá ao colchete o seu significado
+                    geométrico: mede o quanto os fluxos de dois campos deixam de comutar.
+                </p>
+
+                <p>
+                    Este tópico não é necessário para o Teorema de Stokes, mas será usado na fórmula de Cartan
+                    (tópico 3.14), e, na Relatividade Geral, nos campos de Killing, que exprimem simetrias do
+                    espaço-tempo.
+                </p>
+
+                <h2 id="curvas-integrais">Curvas integrais</h2>
+
+                <div class="definition-box" id="def-3-8-1" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.8.1 (Curva integral).</strong> Seja $X\in\mathfrak{X}(M)$. Uma
+                        <strong>curva integral</strong> de $X$ é uma curva suave $\gamma: J\to M$, com $J\subset\mathbb{R}$
+                        um intervalo aberto, tal que</p>
+                    <p>$$ \gamma'(t) = X_{\gamma(t)} \quad\text{para todo } t\in J. $$</p>
+                    <p>O ponto $\gamma(0)$, se $0\in J$, é o <strong>ponto inicial</strong> de $\gamma$.</p>
+                </div>
+
+                <p>
+                    Em uma carta $(U,\varphi)$, com $\gamma^i=x^i\circ\gamma$, a Equação (3.5.6) mostra que
+                    $\gamma'(t)=\dot\gamma^i(t)\,\partial_i$, e a condição vira o sistema de equações diferenciais
+                    ordinárias autônomo
+                </p>
+
+                <p>
+                    $$ \dot\gamma^i(t) = X^i\big(\gamma^1(t),\dots,\gamma^n(t)\big), \qquad i=1,\dots,n, \tag{3.8.1} $$
+                </p>
+
+                <p>
+                    em que $X^i$ são as componentes de $X$ na carta (vistas como funções em $\varphi(U)$).
+                    Uma curva integral é, portanto, localmente uma solução de um sistema de EDOs de primeira ordem.
+                </p>
+
+                <p id="ex-3-8-2"><strong>Exemplo 3.8.2 (Curvas integrais explícitas).</strong> Em cada caso, o ponto
+                    inicial é $p=(a,b)$ ou $x_0$.</p>
+
+                <ul>
+                    <li><strong>$X=\partial_x$ em $\mathbb{R}^2$.</strong> O sistema (3.8.1) é $\dot x=1$, $\dot y=0$, de modo que
+                        $\gamma(t)=(a+t,b)$: retas horizontais, percorridas com velocidade constante.</li>
+                    <li><strong>$X=x\partial_y-y\partial_x$ em $\mathbb{R}^2$.</strong> O sistema é $\dot x=-y$, $\dot y=x$.
+                        A curva $\gamma(t)=(a\cos t-b\sin t,\ a\sin t+b\cos t)$ tem $\gamma(0)=(a,b)$ e velocidade
+                        $(-a\sin t-b\cos t,\ a\cos t-b\sin t)=(-\gamma^2,\gamma^1)$: é uma curva integral. São os
+                        círculos centrados na origem, percorridos no sentido anti-horário com velocidade angular $1$.</li>
+                    <li><strong>$X=x\partial_x+y\partial_y$ (Euler).</strong> O sistema é $\dot\gamma=\gamma$, com
+                        solução $\gamma(t)=e^tp$: semirretas saindo da origem.</li>
+                    <li><strong>$X=x^2\partial_x$ em $\mathbb{R}$.</strong> O sistema é $\dot x=x^2$. A curva
+                        $\gamma(t)=x_0/(1-x_0t)$ tem $\gamma(0)=x_0$ e $\gamma'(t)=x_0^2/(1-x_0t)^2=\gamma(t)^2$, como
+                        queríamos. Para $x_0\gt0$ ela só existe para $t\lt1/x_0$ e <em>explode</em> quando $t\to1/x_0$: a
+                        curva integral não pode ser prolongada a todo $\mathbb{R}$. Para $x_0\lt0$, vale para $t\gt1/x_0$.
+                        Para $x_0=0$, $\gamma\equiv0$.</li>
+                </ul>
+
+                <p>
+                    O último exemplo mostra que as curvas integrais não precisam estar definidas para todo
+                    $t$, mesmo em $\mathbb{R}$ e com um campo suave. A teoria geral é a das equações diferenciais ordinárias.
+                </p>
+
+                <div class="definition-box" id="teo-3-8-3">
+                    <p><strong>Teorema 3.8.3 (Existência, unicidade e dependência suave).</strong> Seja
+                        $X\in\mathfrak{X}(M)$.</p>
+                    <p>(a) <strong>Existência e dependência suave.</strong> Para todo $p\in M$ existem $\varepsilon\gt0$,
+                        uma vizinhança aberta $U$ de $p$ e uma aplicação suave
+                        $\theta:(-\varepsilon,\varepsilon)\times U\to M$ tal que, para cada $q\in U$,
+                        $t\mapsto\theta(t,q)$ é uma curva integral de $X$ com $\theta(0,q)=q$.</p>
+                    <p>(b) <strong>Unicidade.</strong> Se $\gamma_1: J_1\to M$ e $\gamma_2: J_2\to M$ são curvas
+                        integrais de $X$ e $\gamma_1(t_0)=\gamma_2(t_0)$ para algum $t_0\in J_1\cap J_2$, então
+                        $\gamma_1=\gamma_2$ em $J_1\cap J_2$.</p>
+                </div>
+
+                <p>
+                    <em>Ideia da demonstração.</em> Em uma carta, o problema é o sistema (3.8.1), cujo lado direito é
+                    suave e portanto localmente lipschitziano. O teorema de Picard–Lindelöf dá existência e unicidade
+                    locais, por iteração de contração na equação integral
+                    $\gamma(t)=q+\int_0^tX(\gamma(s))\,ds$, e a dependência diferenciável de $q$ (e a suavidade) vem da
+                    dependência diferenciável de ponto fixo de contrações em relação a parâmetros. Isto dá (a) e a
+                    unicidade local. A unicidade global (b) segue dela: o conjunto dos $t\in J_1\cap J_2$ em que
+                    $\gamma_1(t)=\gamma_2(t)$ é não vazio, é aberto (pela unicidade local) e é fechado (porque
+                    $M$ é de Hausdorff: duas curvas contínuas coincidem em um conjunto fechado); como
+                    $J_1\cap J_2$ é conexo, é todo ele. Referência: Lee, capítulo 9 e o apêndice sobre EDOs.
+                </p>
+
+                <div class="definition-box" id="lema-3-8-4">
+                    <p><strong>Lema 3.8.4 (Reescala e translação).</strong> Seja $\gamma: J\to M$ uma curva
+                        integral de $X$. (a) Para $a\neq0$, a curva $t\mapsto\gamma(at)$, em $J/a$, é uma curva integral
+                        do campo $aX$. (b) Para $b\in\mathbb{R}$, a curva $t\mapsto\gamma(t+b)$, em $J-b$, é uma curva
+                        integral de $X$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Seja $\tilde{\gamma}=\gamma\circ m$, com $m(t)=at$. Pela regra da
+                    cadeia (<a href="[05] - Vetores Tangentes.html#prop-3-5-24">Proposição 3.5.24</a>), $\tilde{\gamma}'(t)=a\,\gamma'(at)=a\,X_{\gamma(at)}=(aX)_{\tilde{\gamma}(t)}$.
+                    (b) Com $m(t)=t+b$, a mesma conta dá $\tilde{\gamma}'(t)=\gamma'(t+b)=X_{\tilde{\gamma}(t)}$. $\blacksquare$
+                </p>
+
+                <p>
+                    A parte (b) do Lema 3.8.4 diz que o campo não depende do tempo: um movimento que começa mais
+                    tarde segue o mesmo caminho. É o que caracteriza equações autônomas.
+                </p>
+
+                <div class="definition-box" id="prop-3-8-5">
+                    <p><strong>Proposição 3.8.5 (Curva integral maximal).</strong> Para todo $p\in M$ existe uma
+                        única curva integral $\theta^{(p)}: J_p\to M$ com $\theta^{(p)}(0)=p$ e definida em um intervalo aberto
+                        $J_p\ni0$ <strong>maximal</strong>: toda curva integral com ponto inicial $p$ é a restrição de
+                        $\theta^{(p)}$ a um subintervalo.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Seja $\mathcal{S}$ o conjunto de todas as curvas integrais $\gamma: J\to M$ com
+                    $0\in J$ e $\gamma(0)=p$; não é vazio, pelo Teorema 3.8.3(a). Pela unicidade (Teorema 3.8.3(b)), duas
+                    delas coincidem na interseção dos domínios. Seja $J_p$ a união dos domínios, que é um
+                    intervalo aberto contendo $0$ (união de intervalos que contêm $0$), e defina
+                    $\theta^{(p)}(t)=\gamma(t)$ para qualquer $\gamma\in\mathcal{S}$ com $t$ em seu domínio: está bem
+                    definida, é suave (pois coincide localmente com curvas suaves) e é uma curva integral. É
+                    maximal por construção, e única. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="prop-3-8-6">
+                    <p><strong>Proposição 3.8.6 (Naturalidade).</strong> Se $F: M\to N$ é suave, e
+                        $X\in\mathfrak{X}(M)$ e $Y\in\mathfrak{X}(N)$ são $F$-relacionados, então, para toda curva
+                        integral $\gamma$ de $X$, a curva $F\circ\gamma$ é uma curva integral de $Y$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela
+                    <a href="[05] - Vetores Tangentes.html#prop-3-5-24">Proposição 3.5.24</a> e pela definição de campos $F$-relacionados,
+                    $(F\circ\gamma)'(t)=dF_{\gamma(t)}\big(\gamma'(t)\big)=dF\big(X_{\gamma(t)}\big)=Y_{F(\gamma(t))}$.
+                    $\blacksquare$
+                </p>
+
+                <h2 id="fluxos">Fluxos</h2>
+
+                <p>
+                    Se todas as curvas integrais de $X$ são definidas para todo $t$, podemos reuni-las em uma única
+                    aplicação $\theta(t,p)=\theta^{(p)}(t)$: o ponto para o qual o movimento leva $p$ após o tempo
+                    $t$.
+                </p>
+
+                <div class="definition-box" id="def-3-8-7" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.8.7 (Fluxo global).</strong> Um <strong>fluxo global</strong> em $M$ é uma
+                        aplicação suave $\theta:\mathbb{R}\times M\to M$, escrita $\theta_t(p)=\theta(t,p)$, tal que</p>
+                    <p>$$ \theta_0=\mathrm{id}_M, \qquad \theta_t\circ\theta_s=\theta_{t+s} \quad\text{para todos } s,t\in\mathbb{R}. $$</p>
+                </div>
+
+                <p>
+                    Cada $\theta_t$ é um difeomorfismo de $M$, com inversa $\theta_{-t}$, pois
+                    $\theta_t\circ\theta_{-t}=\theta_0=\mathrm{id}=\theta_{-t}\circ\theta_t$: um fluxo é um
+                    <em>grupo a um parâmetro</em> de difeomorfismos. É a noção matemática de uma simetria contínua.
+                </p>
+
+                <div class="definition-box" id="prop-3-8-8">
+                    <p><strong>Proposição 3.8.8 (O gerador infinitesimal).</strong> Seja $\theta$ um fluxo global em $M$.
+                        A regra
+                        $X_p=\dfrac{d}{dt}\Big\vert_{t=0}\theta_t(p)$ define um campo $X\in\mathfrak{X}(M)$, e, para
+                        todo $p$, a curva $t\mapsto\theta_t(p)$ é uma curva integral de $X$. Chamamos $X$ de
+                        <strong>gerador infinitesimal</strong> de $\theta$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Para cada $p$, $t\mapsto\theta_t(p)$ é uma curva suave, e $X_p$ é sua velocidade
+                    em $t=0$, um vetor de $T_pM$. O campo é suave pelo critério (c) da
+                    <a href="[07] - Fibrado Tangente e Campos Vetoriais.html#prop-3-7-8">Proposição 3.7.8</a>: para $f\in C^\infty(M)$, $(Xf)(p)=\partial_t\big\vert_{t=0}f(\theta(t,p))$ é a
+                    derivada parcial em $t$ de uma função suave $f\circ\theta$ em $\mathbb{R}\times M$, calculada em $t=0$,
+                    e portanto é uma função suave de $p$. Se $t_1\in\mathbb{R}$, a curva
+                    $c(s)=\theta_{t_1+s}(p)=\theta_s(\theta_{t_1}(p))$ tem
+                    $c'(0)=X_{\theta_{t_1}(p)}$, que diz que $\frac{d}{dt}\theta_t(p)\vert_{t=t_1}=X_{\theta_{t_1}(p)}$.
+                    $\blacksquare$
+                </p>
+
+                <p>
+                    Reciprocamente, todo campo gera um fluxo, a menos de problemas de completude. Para enunciar o
+                    resultado com precisão, usamos as curvas integrais maximais da Proposição 3.8.5.
+                </p>
+
+                <div class="definition-box" id="def-3-8-9" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.8.9 (Domínio do fluxo).</strong> Seja $X\in\mathfrak{X}(M)$. O
+                        <strong>domínio do fluxo</strong> de $X$ é
+                        $\mathcal{D}=\{(t,p)\in\mathbb{R}\times M:\ t\in J_p\}$, e o <strong>fluxo maximal</strong> de $X$ é
+                        $\theta:\mathcal{D}\to M$, $\theta(t,p)=\theta^{(p)}(t)$. Escrevemos $\theta_t(p)=\theta(t,p)$ e
+                        $M_t=\{p\in M:(t,p)\in\mathcal{D}\}$.</p>
+                </div>
+
+                <div class="definition-box" id="lema-3-8-10">
+                    <p><strong>Lema 3.8.10 (Deslocamento do domínio).</strong> Se $t\in J_p$, então
+                        $J_{\theta_t(p)}=J_p-t$ e $\theta_s(\theta_t(p))=\theta_{s+t}(p)$ para todo $s\in J_p-t$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Seja $q=\theta_t(p)$. A curva $c(s)=\theta^{(p)}(t+s)$, definida em $J_p-t$, é
+                    uma curva integral (Lema 3.8.4(b)) com $c(0)=q$. Pela maximalidade, $J_p-t\subset J_q$ e
+                    $c=\theta^{(q)}$ em $J_p-t$, o que é a segunda afirmação. Em particular, como $-t\in J_p-t$,
+                    $\theta^{(q)}(-t)=c(-t)=\theta^{(p)}(0)=p$. Agora, a curva $e(s)=\theta^{(q)}(s-t)$, definida em
+                    $J_q+t$, é uma curva integral com $e(0)=\theta^{(q)}(-t)=p$; pela maximalidade de $J_p$,
+                    $J_q+t\subset J_p$, isto é, $J_q\subset J_p-t$. Juntando as duas inclusões, $J_q=J_p-t$.
+                    $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="teo-3-8-11">
+                    <p><strong>Teorema 3.8.11 (Teorema fundamental dos fluxos).</strong> Todo $X\in\mathfrak{X}(M)$ tem
+                        um único fluxo maximal $\theta:\mathcal{D}\to M$, com as seguintes propriedades.</p>
+                    <p>(a) $\mathcal{D}$ é aberto em $\mathbb{R}\times M$, contém $\{0\}\times M$, e $\theta$ é suave.</p>
+                    <p>(b) $\theta_0=\mathrm{id}_M$ e, para cada $p$, $t\mapsto\theta_t(p)$ é a curva integral maximal por $p$.</p>
+                    <p>(c) (<strong>Lei de grupo</strong>) Se $(s,p)\in\mathcal{D}$, então
+                        $(t,\theta_s(p))\in\mathcal{D}$ se, e somente se, $(t+s,p)\in\mathcal{D}$, e nesse caso
+                        $\theta_t(\theta_s(p))=\theta_{t+s}(p)$.</p>
+                    <p>(d) Para cada $t$, $M_t$ é aberto, e $\theta_t: M_t\to M_{-t}$ é um difeomorfismo com inversa $\theta_{-t}$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (b) é a definição. A abertura de $\mathcal{D}$ e a suavidade de
+                    $\theta$ em (a) são o conteúdo profundo do teorema de dependência suave
+                    (Teorema 3.8.3(a), estendido do tempo pequeno ao domínio maximal, por colagem de fluxos locais) e
+                    são <em>citadas</em> (Lee, capítulo 9). Que $\mathcal{D}\supset\{0\}\times M$ é óbvio, pois
+                    $0\in J_p$.
+                </p>
+
+                <p>
+                    <strong>(c).</strong> Seja $(s,p)\in\mathcal{D}$, isto é, $s\in J_p$. Pelo Lema 3.8.10,
+                    $J_{\theta_s(p)}=J_p-s$, de modo que $t\in J_{\theta_s(p)}$ se, e somente se, $t+s\in J_p$,
+                    isto é, $(t,\theta_s(p))\in\mathcal{D}$ se, e somente se, $(t+s,p)\in\mathcal{D}$. E, nesse caso, o
+                    mesmo lema dá $\theta_t(\theta_s(p))=\theta_{t+s}(p)$. As duas curvas
+                    $t\mapsto\theta_{t+s}(p)$ e $t\mapsto\theta_t(\theta_s(p))$ são integrais com o mesmo ponto
+                    inicial $\theta_s(p)$: é a unicidade em ação.
+                </p>
+
+                <p>
+                    <strong>(d).</strong> $M_t$ é a pré-imagem do aberto $\mathcal{D}$ pela aplicação contínua
+                    $p\mapsto(t,p)$, logo aberto. Se $p\in M_t$, então $t\in J_p$ e, pelo Lema 3.8.10,
+                    $-t\in J_p-t=J_{\theta_t(p)}$, de modo que $\theta_t(p)\in M_{-t}$, e
+                    $\theta_{-t}(\theta_t(p))=\theta_0(p)=p$. Trocando $t$ por $-t$, $\theta_{-t}$ leva $M_{-t}$ em $M_t$ com
+                    $\theta_t\circ\theta_{-t}=\mathrm{id}$. Portanto $\theta_t: M_t\to M_{-t}$ é uma bijeção, suave
+                    por (a), com inversa suave $\theta_{-t}$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="def-3-8-12" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.8.12 (Campo completo).</strong> Um campo $X\in\mathfrak{X}(M)$ é
+                        <strong>completo</strong> se $\mathcal{D}=\mathbb{R}\times M$, isto é, se toda curva integral
+                        maximal está definida em todo $\mathbb{R}$. Nesse caso o fluxo maximal é um fluxo global.</p>
+                </div>
+
+                <p>
+                    O campo $x^2\partial_x$ do Exemplo 3.8.2 não é completo. Dois critérios práticos de completude
+                    seguem do resultado seguinte.
+                </p>
+
+                <div class="definition-box" id="lema-3-8-13">
+                    <p><strong>Lema 3.8.13 (Tempo uniforme).</strong> Se existe $\varepsilon\gt0$ tal que
+                        $(-\varepsilon,\varepsilon)\subset J_p$ para todo $p\in M$, então $X$ é completo.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Suponha, por absurdo, que $b=\sup J_p\lt\infty$ para algum $p$. Escolha
+                    $t_0\in J_p$ com $t_0\gt b-\varepsilon$ e ponha $q=\theta_{t_0}(p)$. Pelo Lema 3.8.10,
+                    $J_p=J_q+t_0\supset(t_0-\varepsilon,t_0+\varepsilon)$, que contém pontos maiores que $b$ (porque
+                    $t_0+\varepsilon\gt b$): contradição. Assim $\sup J_p=+\infty$ para todo $p$, e, analogamente,
+                    $\inf J_p=-\infty$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="teo-3-8-14">
+                    <p><strong>Teorema 3.8.14 (Suporte compacto implica completo).</strong> Se
+                        $X\in\mathfrak{X}(M)$ tem suporte compacto, isto é, se
+                        $\operatorname{supp}X=\overline{\{p:X_p\neq0\}}$ é compacto, então $X$ é completo. Em
+                        particular, toda variedade compacta tem todos os seus campos completos.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Seja $K=\operatorname{supp}X$. Se $q\notin K$, então $X_q=0$, e a curva
+                    constante $t\mapsto q$ é uma curva integral definida em $\mathbb{R}$ (sua velocidade é $0=X_q$); pela
+                    unicidade, $J_q=\mathbb{R}$. Para $p\in K$, o Teorema 3.8.3(a) dá $\varepsilon_p\gt0$ e uma
+                    vizinhança $U_p$ de $p$ tais que $(-\varepsilon_p,\varepsilon_p)\subset J_q$ para todo $q\in U_p$.
+                    Como $K$ é compacto, finitos desses abertos, $U_{p_1},\dots,U_{p_k}$, o cobrem; seja
+                    $\varepsilon=\min_i\varepsilon_{p_i}$. Então $(-\varepsilon,\varepsilon)\subset J_q$ para todo
+                    $q\in K$, e para $q\notin K$ também (pois $J_q=\mathbb{R}$). O Lema 3.8.13 conclui. Se $M$ é
+                    compacta, $\operatorname{supp}X$ é fechado em um compacto, logo compacto. $\blacksquare$
+                </p>
+
+                <p id="ex-3-8-15"><strong>Exemplo 3.8.15 (Fluxos explícitos).</strong> Os campos do
+                    Exemplo 3.8.2 têm os fluxos (verificados por $\partial_t\theta=X\circ\theta$ e
+                    $\theta_0=\mathrm{id}$):</p>
+
+                <ul>
+                    <li><strong>Translação</strong> de $X=\partial_x$: $\theta_t(x,y)=(x+t,y)$.</li>
+                    <li><strong>Rotação</strong> de $X=x\partial_y-y\partial_x$:
+                        $\theta_t(x,y)=(x\cos t-y\sin t,\ x\sin t+y\cos t)$, a rotação $R(t)$ de ângulo $t$. A lei de
+                        grupo $\theta_t\circ\theta_s=\theta_{t+s}$ é a soma de ângulos.</li>
+                    <li><strong>Dilatação</strong> de $X=x\partial_x+y\partial_y$: $\theta_t(p)=e^tp$. A lei de
+                        grupo é $e^te^s=e^{t+s}$.</li>
+                    <li><strong>Um fluxo incompleto:</strong> $X=x^2\partial_x$ em $\mathbb{R}$ tem
+                        $\theta_t(x_0)=x_0/(1-x_0t)$ e domínio $\mathcal{D}=\{(t,x_0):x_0t\lt1\}$, aberto (o
+                        complementar do conjunto fechado $\{x_0t\ge1\}$). A lei de grupo vale onde está definida:
+                        $\theta_t(\theta_s(x_0))=\dfrac{x_0/(1-x_0s)}{1-t\,x_0/(1-x_0s)}=\dfrac{x_0}{1-x_0(s+t)}$.</li>
+                </ul>
+
+                <p>
+                    A Figura 3.8.1 mostra as linhas de fluxo dos campos de rotação e do campo $y\partial_x+x\partial_y$
+                    do <a href="#exr-3-8-1">Exercício 3.8.1</a>.
+                </p>
+
+                <figure class="lecture-figure" id="fig-3-8-1" style="overflow-x: auto;">
+                    <svg viewBox="0 0 640 320" role="img" style="min-width: 560px;" aria-label="Dois painéis com eixos x e y. À esquerda, as linhas de fluxo do campo de rotação: círculos concêntricos centrados na origem, percorridos no sentido anti-horário, com a origem como ponto fixo. À direita, as linhas de fluxo do campo y ∂x mais x ∂y: hipérboles com as retas y igual a x e y igual a menos x como assíntotas, em quatro ramos, e a origem como ponto fixo; as curvas se afastam da origem ao longo de uma diagonal e se aproximam ao longo da outra.">
+<defs><marker id="arr-3-8-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="31.6" y1="160" x2="304.4" y2="160" class="fig-axis" marker-end="url(#arr-3-8-1)"/>
+<line x1="168" y1="277.8" x2="168" y2="42.2" class="fig-axis" marker-end="url(#arr-3-8-1)"/>
+<text x="304.4" y="176" text-anchor="end" class="fig-label fig-small fig-it">x</text>
+<text x="162" y="50.2" text-anchor="end" class="fig-label fig-small fig-it">y</text>
+<text x="168" y="28" text-anchor="middle" class="fig-label">(a) x∂_y − y∂_x</text>
+<path d="M199,160 L199,158.4 L198.8,156.8 L198.6,155.2 L198.3,153.6 L197.9,152 L197.5,150.4 L196.9,148.9 L196.3,147.4 L195.6,145.9 L194.8,144.5 L194,143.1 L193.1,141.8 L192.1,140.5 L191,139.3 L189.9,138.1 L188.7,137 L187.5,135.9 L186.2,134.9 L184.9,134 L183.5,133.2 L182.1,132.4 L180.6,131.7 L179.1,131.1 L177.6,130.5 L176,130.1 L174.4,129.7 L172.8,129.4 L171.2,129.2 L169.6,129 L168,129 L166.4,129 L164.8,129.2 L163.2,129.4 L161.6,129.7 L160,130.1 L158.4,130.5 L156.9,131.1 L155.4,131.7 L153.9,132.4 L152.5,133.2 L151.1,134 L149.8,134.9 L148.5,135.9 L147.3,137 L146.1,138.1 L145,139.3 L143.9,140.5 L142.9,141.8 L142,143.1 L141.2,144.5 L140.4,145.9 L139.7,147.4 L139.1,148.9 L138.5,150.4 L138.1,152 L137.7,153.6 L137.4,155.2 L137.2,156.8 L137,158.4 L137,160 L137,161.6 L137.2,163.2 L137.4,164.8 L137.7,166.4 L138.1,168 L138.5,169.6 L139.1,171.1 L139.7,172.6 L140.4,174.1 L141.2,175.5 L142,176.9 L142.9,178.2 L143.9,179.5 L145,180.7 L146.1,181.9 L147.3,183 L148.5,184.1 L149.8,185.1 L151.1,186 L152.5,186.8 L153.9,187.6 L155.4,188.3 L156.9,188.9 L158.4,189.5 L160,189.9 L161.6,190.3 L163.2,190.6 L164.8,190.8 L166.4,191 L168,191 L169.6,191 L171.2,190.8 L172.8,190.6 L174.4,190.3 L176,189.9 L177.6,189.5 L179.1,188.9 L180.6,188.3 L182.1,187.6 L183.5,186.8 L184.9,186 L186.2,185.1 L187.5,184.1 L188.7,183 L189.9,181.9 L191,180.7 L192.1,179.5 L193.1,178.2 L194,176.9 L194.8,175.5 L195.6,174.1 L196.3,172.6 L196.9,171.1 L197.5,169.6 L197.9,168 L198.3,166.4 L198.6,164.8 L198.8,163.2 L199,161.6 L199,160" class="fig-curve"/>
+<line x1="183.5" y1="133.2" x2="180.6" y2="131.7" class="fig-curve" marker-end="url(#arr-3-8-1)"/>
+<path d="M230,160 L229.9,156.8 L229.7,153.5 L229.2,150.3 L228.6,147.1 L227.9,144 L227,140.8 L225.9,137.8 L224.6,134.8 L223.2,131.9 L221.7,129 L220,126.2 L218.2,123.6 L216.2,121 L214.1,118.5 L211.8,116.2 L209.5,113.9 L207,111.8 L204.4,109.8 L201.8,108 L199,106.3 L196.1,104.8 L193.2,103.4 L190.2,102.1 L187.2,101 L184,100.1 L180.9,99.4 L177.7,98.8 L174.5,98.3 L171.2,98.1 L168,98 L164.8,98.1 L161.5,98.3 L158.3,98.8 L155.1,99.4 L152,100.1 L148.8,101 L145.8,102.1 L142.8,103.4 L139.9,104.8 L137,106.3 L134.2,108 L131.6,109.8 L129,111.8 L126.5,113.9 L124.2,116.2 L121.9,118.5 L119.8,121 L117.8,123.6 L116,126.2 L114.3,129 L112.8,131.9 L111.4,134.8 L110.1,137.8 L109,140.8 L108.1,144 L107.4,147.1 L106.8,150.3 L106.3,153.5 L106.1,156.8 L106,160 L106.1,163.2 L106.3,166.5 L106.8,169.7 L107.4,172.9 L108.1,176 L109,179.2 L110.1,182.2 L111.4,185.2 L112.8,188.1 L114.3,191 L116,193.8 L117.8,196.4 L119.8,199 L121.9,201.5 L124.2,203.8 L126.5,206.1 L129,208.2 L131.6,210.2 L134.2,212 L137,213.7 L139.9,215.2 L142.8,216.6 L145.8,217.9 L148.8,219 L152,219.9 L155.1,220.6 L158.3,221.2 L161.5,221.7 L164.8,221.9 L168,222 L171.2,221.9 L174.5,221.7 L177.7,221.2 L180.9,220.6 L184,219.9 L187.2,219 L190.2,217.9 L193.2,216.6 L196.1,215.2 L199,213.7 L201.8,212 L204.4,210.2 L207,208.2 L209.5,206.1 L211.8,203.8 L214.1,201.5 L216.2,199 L218.2,196.4 L220,193.8 L221.7,191 L223.2,188.1 L224.6,185.2 L225.9,182.2 L227,179.2 L227.9,176 L228.6,172.9 L229.2,169.7 L229.7,166.5 L229.9,163.2 L230,160" class="fig-curve"/>
+<line x1="199" y1="106.3" x2="193.2" y2="103.4" class="fig-curve" marker-end="url(#arr-3-8-1)"/>
+<path d="M261,160 L260.9,155.1 L260.5,150.3 L259.9,145.5 L259,140.7 L257.8,135.9 L256.4,131.3 L254.8,126.7 L253,122.2 L250.9,117.8 L248.5,113.5 L246,109.3 L243.2,105.3 L240.3,101.5 L237.1,97.8 L233.8,94.2 L230.2,90.9 L226.5,87.7 L222.7,84.8 L218.7,82 L214.5,79.5 L210.2,77.1 L205.8,75 L201.3,73.2 L196.7,71.6 L192.1,70.2 L187.3,69 L182.5,68.1 L177.7,67.5 L172.9,67.1 L168,67 L163.1,67.1 L158.3,67.5 L153.5,68.1 L148.7,69 L143.9,70.2 L139.3,71.6 L134.7,73.2 L130.2,75 L125.8,77.1 L121.5,79.5 L117.3,82 L113.3,84.8 L109.5,87.7 L105.8,90.9 L102.2,94.2 L98.9,97.8 L95.7,101.5 L92.8,105.3 L90,109.3 L87.5,113.5 L85.1,117.8 L83,122.2 L81.2,126.7 L79.6,131.3 L78.2,135.9 L77,140.7 L76.1,145.5 L75.5,150.3 L75.1,155.1 L75,160 L75.1,164.9 L75.5,169.7 L76.1,174.5 L77,179.3 L78.2,184.1 L79.6,188.7 L81.2,193.3 L83,197.8 L85.1,202.2 L87.5,206.5 L90,210.7 L92.8,214.7 L95.7,218.5 L98.9,222.2 L102.2,225.8 L105.8,229.1 L109.5,232.3 L113.3,235.2 L117.3,238 L121.5,240.5 L125.8,242.9 L130.2,245 L134.7,246.8 L139.3,248.4 L143.9,249.8 L148.7,251 L153.5,251.9 L158.3,252.5 L163.1,252.9 L168,253 L172.9,252.9 L177.7,252.5 L182.5,251.9 L187.3,251 L192.1,249.8 L196.7,248.4 L201.3,246.8 L205.8,245 L210.2,242.9 L214.5,240.5 L218.7,238 L222.7,235.2 L226.5,232.3 L230.2,229.1 L233.8,225.8 L237.1,222.2 L240.3,218.5 L243.2,214.7 L246,210.7 L248.5,206.5 L250.9,202.2 L253,197.8 L254.8,193.3 L256.4,188.7 L257.8,184.1 L259,179.3 L259.9,174.5 L260.5,169.7 L260.9,164.9 L261,160" class="fig-curve"/>
+<line x1="214.5" y1="79.5" x2="205.8" y2="75" class="fig-curve" marker-end="url(#arr-3-8-1)"/>
+<circle cx="168" cy="160" r="3" class="fig-arrowhead"/>
+<line x1="343.6" y1="160" x2="616.4" y2="160" class="fig-axis" marker-end="url(#arr-3-8-1)"/>
+<line x1="480" y1="277.8" x2="480" y2="42.2" class="fig-axis" marker-end="url(#arr-3-8-1)"/>
+<text x="616.4" y="176" text-anchor="end" class="fig-label fig-small fig-it">x</text>
+<text x="474" y="50.2" text-anchor="end" class="fig-label fig-small fig-it">y</text>
+<text x="480" y="28" text-anchor="middle" class="fig-label">(b) y∂_x + x∂_y</text>
+<line x1="368.4" y1="271.6" x2="591.6" y2="48.4" class="fig-guide fig-dashed"/>
+<line x1="368.4" y1="48.4" x2="591.6" y2="271.6" class="fig-guide fig-dashed"/>
+<path d="M557.3,226.6 L555.9,224.9 L554.5,223.3 L553.1,221.7 L551.8,220.1 L550.5,218.6 L549.3,217.1 L548,215.6 L546.8,214.1 L545.7,212.7 L544.6,211.3 L543.5,209.9 L542.4,208.5 L541.4,207.2 L540.4,205.9 L539.4,204.6 L538.4,203.3 L537.5,202.1 L536.6,200.8 L535.7,199.6 L534.9,198.4 L534.1,197.2 L533.3,196.1 L532.5,194.9 L531.8,193.8 L531,192.7 L530.3,191.6 L529.7,190.5 L529,189.4 L528.4,188.4 L527.8,187.3 L527.2,186.3 L526.7,185.3 L526.1,184.3 L525.6,183.3 L525.1,182.3 L524.6,181.3 L524.2,180.4 L523.8,179.4 L523.3,178.5 L523,177.5 L522.6,176.6 L522.2,175.7 L521.9,174.8 L521.6,173.9 L521.3,173 L521,172.1 L520.8,171.2 L520.5,170.3 L520.3,169.4 L520.1,168.6 L520,167.7 L519.8,166.8 L519.7,166 L519.5,165.1 L519.4,164.3 L519.4,163.4 L519.3,162.6 L519.2,161.7 L519.2,160.8 L519.2,160 L519.2,159.2 L519.2,158.3 L519.3,157.4 L519.4,156.6 L519.4,155.7 L519.5,154.9 L519.7,154 L519.8,153.2 L520,152.3 L520.1,151.4 L520.3,150.6 L520.5,149.7 L520.8,148.8 L521,147.9 L521.3,147 L521.6,146.1 L521.9,145.2 L522.2,144.3 L522.6,143.4 L523,142.5 L523.3,141.5 L523.8,140.6 L524.2,139.6 L524.6,138.7 L525.1,137.7 L525.6,136.7 L526.1,135.7 L526.7,134.7 L527.2,133.7 L527.8,132.7 L528.4,131.6 L529,130.6 L529.7,129.5 L530.3,128.4 L531,127.3 L531.8,126.2 L532.5,125.1 L533.3,123.9 L534.1,122.8 L534.9,121.6 L535.7,120.4 L536.6,119.2 L537.5,117.9 L538.4,116.7 L539.4,115.4 L540.4,114.1 L541.4,112.8 L542.4,111.5 L543.5,110.1 L544.6,108.7 L545.7,107.3 L546.8,105.9 L548,104.4 L549.3,102.9 L550.5,101.4 L551.8,99.9 L553.1,98.3 L554.5,96.7 L555.9,95.1 L557.3,93.4" class="fig-curve"/>
+<line x1="524.2" y1="139.6" x2="526" y2="136" class="fig-curve" marker-end="url(#arr-3-8-1)"/>
+<path d="M402.7,93.4 L404.1,95.1 L405.5,96.7 L406.9,98.3 L408.2,99.9 L409.5,101.4 L410.7,102.9 L412,104.4 L413.2,105.9 L414.3,107.3 L415.4,108.7 L416.5,110.1 L417.6,111.5 L418.6,112.8 L419.6,114.1 L420.6,115.4 L421.6,116.7 L422.5,117.9 L423.4,119.2 L424.3,120.4 L425.1,121.6 L425.9,122.8 L426.7,123.9 L427.5,125.1 L428.2,126.2 L429,127.3 L429.7,128.4 L430.3,129.5 L431,130.6 L431.6,131.6 L432.2,132.7 L432.8,133.7 L433.3,134.7 L433.9,135.7 L434.4,136.7 L434.9,137.7 L435.4,138.7 L435.8,139.6 L436.2,140.6 L436.7,141.5 L437,142.5 L437.4,143.4 L437.8,144.3 L438.1,145.2 L438.4,146.1 L438.7,147 L439,147.9 L439.2,148.8 L439.5,149.7 L439.7,150.6 L439.9,151.4 L440,152.3 L440.2,153.2 L440.3,154 L440.5,154.9 L440.6,155.7 L440.6,156.6 L440.7,157.4 L440.8,158.3 L440.8,159.2 L440.8,160 L440.8,160.8 L440.8,161.7 L440.7,162.6 L440.6,163.4 L440.6,164.3 L440.5,165.1 L440.3,166 L440.2,166.8 L440,167.7 L439.9,168.6 L439.7,169.4 L439.5,170.3 L439.2,171.2 L439,172.1 L438.7,173 L438.4,173.9 L438.1,174.8 L437.8,175.7 L437.4,176.6 L437,177.5 L436.7,178.5 L436.2,179.4 L435.8,180.4 L435.4,181.3 L434.9,182.3 L434.4,183.3 L433.9,184.3 L433.3,185.3 L432.8,186.3 L432.2,187.3 L431.6,188.4 L431,189.4 L430.3,190.5 L429.7,191.6 L429,192.7 L428.2,193.8 L427.5,194.9 L426.7,196.1 L425.9,197.2 L425.1,198.4 L424.3,199.6 L423.4,200.8 L422.5,202.1 L421.6,203.3 L420.6,204.6 L419.6,205.9 L418.6,207.2 L417.6,208.5 L416.5,209.9 L415.4,211.3 L414.3,212.7 L413.2,214.1 L412,215.6 L410.7,217.1 L409.5,218.6 L408.2,220.1 L406.9,221.7 L405.5,223.3 L404.1,224.9 L402.7,226.6" class="fig-curve"/>
+<line x1="435.8" y1="180.4" x2="434" y2="184" class="fig-curve" marker-end="url(#arr-3-8-1)"/>
+<path d="M413.4,82.7 L415.1,84.1 L416.7,85.5 L418.3,86.9 L419.9,88.2 L421.4,89.5 L422.9,90.7 L424.4,92 L425.9,93.2 L427.3,94.3 L428.7,95.4 L430.1,96.5 L431.5,97.6 L432.8,98.6 L434.1,99.6 L435.4,100.6 L436.7,101.6 L437.9,102.5 L439.2,103.4 L440.4,104.3 L441.6,105.1 L442.8,105.9 L443.9,106.7 L445.1,107.5 L446.2,108.2 L447.3,109 L448.4,109.7 L449.5,110.3 L450.6,111 L451.6,111.6 L452.7,112.2 L453.7,112.8 L454.7,113.3 L455.7,113.9 L456.7,114.4 L457.7,114.9 L458.7,115.4 L459.6,115.8 L460.6,116.2 L461.5,116.7 L462.5,117 L463.4,117.4 L464.3,117.8 L465.2,118.1 L466.1,118.4 L467,118.7 L467.9,119 L468.8,119.2 L469.7,119.5 L470.6,119.7 L471.4,119.9 L472.3,120 L473.2,120.2 L474,120.3 L474.9,120.5 L475.7,120.6 L476.6,120.6 L477.4,120.7 L478.3,120.8 L479.2,120.8 L480,120.8 L480.8,120.8 L481.7,120.8 L482.6,120.7 L483.4,120.6 L484.3,120.6 L485.1,120.5 L486,120.3 L486.8,120.2 L487.7,120 L488.6,119.9 L489.4,119.7 L490.3,119.5 L491.2,119.2 L492.1,119 L493,118.7 L493.9,118.4 L494.8,118.1 L495.7,117.8 L496.6,117.4 L497.5,117 L498.5,116.7 L499.4,116.2 L500.4,115.8 L501.3,115.4 L502.3,114.9 L503.3,114.4 L504.3,113.9 L505.3,113.3 L506.3,112.8 L507.3,112.2 L508.4,111.6 L509.4,111 L510.5,110.3 L511.6,109.7 L512.7,109 L513.8,108.2 L514.9,107.5 L516.1,106.7 L517.2,105.9 L518.4,105.1 L519.6,104.3 L520.8,103.4 L522.1,102.5 L523.3,101.6 L524.6,100.6 L525.9,99.6 L527.2,98.6 L528.5,97.6 L529.9,96.5 L531.3,95.4 L532.7,94.3 L534.1,93.2 L535.6,92 L537.1,90.7 L538.6,89.5 L540.1,88.2 L541.7,86.9 L543.3,85.5 L544.9,84.1 L546.6,82.7" class="fig-curve"/>
+<line x1="500.4" y1="115.8" x2="504" y2="114" class="fig-curve" marker-end="url(#arr-3-8-1)"/>
+<path d="M546.6,237.3 L544.9,235.9 L543.3,234.5 L541.7,233.1 L540.1,231.8 L538.6,230.5 L537.1,229.3 L535.6,228 L534.1,226.8 L532.7,225.7 L531.3,224.6 L529.9,223.5 L528.5,222.4 L527.2,221.4 L525.9,220.4 L524.6,219.4 L523.3,218.4 L522.1,217.5 L520.8,216.6 L519.6,215.7 L518.4,214.9 L517.2,214.1 L516.1,213.3 L514.9,212.5 L513.8,211.8 L512.7,211 L511.6,210.3 L510.5,209.7 L509.4,209 L508.4,208.4 L507.3,207.8 L506.3,207.2 L505.3,206.7 L504.3,206.1 L503.3,205.6 L502.3,205.1 L501.3,204.6 L500.4,204.2 L499.4,203.8 L498.5,203.3 L497.5,203 L496.6,202.6 L495.7,202.2 L494.8,201.9 L493.9,201.6 L493,201.3 L492.1,201 L491.2,200.8 L490.3,200.5 L489.4,200.3 L488.6,200.1 L487.7,200 L486.8,199.8 L486,199.7 L485.1,199.5 L484.3,199.4 L483.4,199.4 L482.6,199.3 L481.7,199.2 L480.8,199.2 L480,199.2 L479.2,199.2 L478.3,199.2 L477.4,199.3 L476.6,199.4 L475.7,199.4 L474.9,199.5 L474,199.7 L473.2,199.8 L472.3,200 L471.4,200.1 L470.6,200.3 L469.7,200.5 L468.8,200.8 L467.9,201 L467,201.3 L466.1,201.6 L465.2,201.9 L464.3,202.2 L463.4,202.6 L462.5,203 L461.5,203.3 L460.6,203.8 L459.6,204.2 L458.7,204.6 L457.7,205.1 L456.7,205.6 L455.7,206.1 L454.7,206.7 L453.7,207.2 L452.7,207.8 L451.6,208.4 L450.6,209 L449.5,209.7 L448.4,210.3 L447.3,211 L446.2,211.8 L445.1,212.5 L443.9,213.3 L442.8,214.1 L441.6,214.9 L440.4,215.7 L439.2,216.6 L437.9,217.5 L436.7,218.4 L435.4,219.4 L434.1,220.4 L432.8,221.4 L431.5,222.4 L430.1,223.5 L428.7,224.6 L427.3,225.7 L425.9,226.8 L424.4,228 L422.9,229.3 L421.4,230.5 L419.9,231.8 L418.3,233.1 L416.7,234.5 L415.1,235.9 L413.4,237.3" class="fig-curve"/>
+<line x1="459.6" y1="204.2" x2="456" y2="206" class="fig-curve" marker-end="url(#arr-3-8-1)"/>
+<path d="M602.2,265.3 L599.9,262.7 L597.7,260.1 L595.6,257.6 L593.5,255.1 L591.5,252.7 L589.5,250.3 L587.6,247.9 L585.7,245.6 L583.9,243.3 L582.1,241.1 L580.3,238.9 L578.7,236.7 L577,234.6 L575.4,232.5 L573.9,230.5 L572.4,228.5 L570.9,226.5 L569.5,224.5 L568.1,222.6 L566.8,220.7 L565.5,218.9 L564.2,217 L563,215.2 L561.8,213.4 L560.7,211.7 L559.6,209.9 L558.5,208.2 L557.5,206.5 L556.5,204.8 L555.6,203.2 L554.6,201.6 L553.8,200 L552.9,198.4 L552.1,196.8 L551.3,195.2 L550.6,193.7 L549.9,192.2 L549.2,190.7 L548.5,189.2 L547.9,187.7 L547.3,186.3 L546.8,184.8 L546.3,183.4 L545.8,181.9 L545.3,180.5 L544.9,179.1 L544.5,177.7 L544.1,176.3 L543.8,174.9 L543.5,173.5 L543.2,172.2 L542.9,170.8 L542.7,169.4 L542.5,168.1 L542.4,166.7 L542.2,165.4 L542.1,164 L542.1,162.7 L542,161.3 L542,160 L542,158.7 L542.1,157.3 L542.1,156 L542.2,154.6 L542.4,153.3 L542.5,151.9 L542.7,150.6 L542.9,149.2 L543.2,147.8 L543.5,146.5 L543.8,145.1 L544.1,143.7 L544.5,142.3 L544.9,140.9 L545.3,139.5 L545.8,138.1 L546.3,136.6 L546.8,135.2 L547.3,133.7 L547.9,132.3 L548.5,130.8 L549.2,129.3 L549.9,127.8 L550.6,126.3 L551.3,124.8 L552.1,123.2 L552.9,121.6 L553.8,120 L554.6,118.4 L555.6,116.8 L556.5,115.2 L557.5,113.5 L558.5,111.8 L559.6,110.1 L560.7,108.3 L561.8,106.6 L563,104.8 L564.2,103 L565.5,101.1 L566.8,99.3 L568.1,97.4 L569.5,95.5 L570.9,93.5 L572.4,91.5 L573.9,89.5 L575.4,87.5 L577,85.4 L578.7,83.3 L580.3,81.1 L582.1,78.9 L583.9,76.7 L585.7,74.4 L587.6,72.1 L589.5,69.7 L591.5,67.3 L593.5,64.9 L595.6,62.4 L597.7,59.9 L599.9,57.3 L602.2,54.7" class="fig-curve"/>
+<line x1="549.9" y1="127.7" x2="552.7" y2="122" class="fig-curve" marker-end="url(#arr-3-8-1)"/>
+<path d="M357.8,54.7 L360.1,57.3 L362.3,59.9 L364.4,62.4 L366.5,64.9 L368.5,67.3 L370.5,69.7 L372.4,72.1 L374.3,74.4 L376.1,76.7 L377.9,78.9 L379.7,81.1 L381.3,83.3 L383,85.4 L384.6,87.5 L386.1,89.5 L387.6,91.5 L389.1,93.5 L390.5,95.5 L391.9,97.4 L393.2,99.3 L394.5,101.1 L395.8,103 L397,104.8 L398.2,106.6 L399.3,108.3 L400.4,110.1 L401.5,111.8 L402.5,113.5 L403.5,115.2 L404.4,116.8 L405.4,118.4 L406.2,120 L407.1,121.6 L407.9,123.2 L408.7,124.8 L409.4,126.3 L410.1,127.8 L410.8,129.3 L411.5,130.8 L412.1,132.3 L412.7,133.7 L413.2,135.2 L413.7,136.6 L414.2,138.1 L414.7,139.5 L415.1,140.9 L415.5,142.3 L415.9,143.7 L416.2,145.1 L416.5,146.5 L416.8,147.8 L417.1,149.2 L417.3,150.6 L417.5,151.9 L417.6,153.3 L417.8,154.6 L417.9,156 L417.9,157.3 L418,158.7 L418,160 L418,161.3 L417.9,162.7 L417.9,164 L417.8,165.4 L417.6,166.7 L417.5,168.1 L417.3,169.4 L417.1,170.8 L416.8,172.2 L416.5,173.5 L416.2,174.9 L415.9,176.3 L415.5,177.7 L415.1,179.1 L414.7,180.5 L414.2,181.9 L413.7,183.4 L413.2,184.8 L412.7,186.3 L412.1,187.7 L411.5,189.2 L410.8,190.7 L410.1,192.2 L409.4,193.7 L408.7,195.2 L407.9,196.8 L407.1,198.4 L406.2,200 L405.4,201.6 L404.4,203.2 L403.5,204.8 L402.5,206.5 L401.5,208.2 L400.4,209.9 L399.3,211.7 L398.2,213.4 L397,215.2 L395.8,217 L394.5,218.9 L393.2,220.7 L391.9,222.6 L390.5,224.5 L389.1,226.5 L387.6,228.5 L386.1,230.5 L384.6,232.5 L383,234.6 L381.3,236.7 L379.7,238.9 L377.9,241.1 L376.1,243.3 L374.3,245.6 L372.4,247.9 L370.5,250.3 L368.5,252.7 L366.5,255.1 L364.4,257.6 L362.3,260.1 L360.1,262.7 L357.8,265.3" class="fig-curve"/>
+<line x1="410.1" y1="192.3" x2="407.3" y2="198" class="fig-curve" marker-end="url(#arr-3-8-1)"/>
+<path d="M387.3,48.5 L389.7,50.5 L392.1,52.4 L394.4,54.3 L396.7,56.1 L398.9,57.9 L401.1,59.7 L403.3,61.3 L405.4,63 L407.5,64.6 L409.5,66.1 L411.5,67.6 L413.5,69.1 L415.5,70.5 L417.4,71.9 L419.3,73.2 L421.1,74.5 L423,75.8 L424.8,77 L426.6,78.2 L428.3,79.3 L430.1,80.4 L431.8,81.5 L433.5,82.5 L435.2,83.5 L436.8,84.4 L438.4,85.4 L440,86.2 L441.6,87.1 L443.2,87.9 L444.8,88.7 L446.3,89.4 L447.8,90.1 L449.3,90.8 L450.8,91.5 L452.3,92.1 L453.7,92.7 L455.2,93.2 L456.6,93.7 L458.1,94.2 L459.5,94.7 L460.9,95.1 L462.3,95.5 L463.7,95.9 L465.1,96.2 L466.5,96.5 L467.8,96.8 L469.2,97.1 L470.6,97.3 L471.9,97.5 L473.3,97.6 L474.6,97.8 L476,97.9 L477.3,97.9 L478.7,98 L480,98 L481.3,98 L482.7,97.9 L484,97.9 L485.4,97.8 L486.7,97.6 L488.1,97.5 L489.4,97.3 L490.8,97.1 L492.2,96.8 L493.5,96.5 L494.9,96.2 L496.3,95.9 L497.7,95.5 L499.1,95.1 L500.5,94.7 L501.9,94.2 L503.4,93.7 L504.8,93.2 L506.3,92.7 L507.7,92.1 L509.2,91.5 L510.7,90.8 L512.2,90.1 L513.7,89.4 L515.2,88.7 L516.8,87.9 L518.4,87.1 L520,86.2 L521.6,85.4 L523.2,84.4 L524.8,83.5 L526.5,82.5 L528.2,81.5 L529.9,80.4 L531.7,79.3 L533.4,78.2 L535.2,77 L537,75.8 L538.9,74.5 L540.7,73.2 L542.6,71.9 L544.5,70.5 L546.5,69.1 L548.5,67.6 L550.5,66.1 L552.5,64.6 L554.6,63 L556.7,61.3 L558.9,59.7 L561.1,57.9 L563.3,56.1 L565.6,54.3 L567.9,52.4 L570.3,50.5 L572.7,48.5" class="fig-curve"/>
+<line x1="512.3" y1="90.1" x2="518" y2="87.3" class="fig-curve" marker-end="url(#arr-3-8-1)"/>
+<path d="M572.7,271.5 L570.3,269.5 L567.9,267.6 L565.6,265.7 L563.3,263.9 L561.1,262.1 L558.9,260.3 L556.7,258.7 L554.6,257 L552.5,255.4 L550.5,253.9 L548.5,252.4 L546.5,250.9 L544.5,249.5 L542.6,248.1 L540.7,246.8 L538.9,245.5 L537,244.2 L535.2,243 L533.4,241.8 L531.7,240.7 L529.9,239.6 L528.2,238.5 L526.5,237.5 L524.8,236.5 L523.2,235.6 L521.6,234.6 L520,233.8 L518.4,232.9 L516.8,232.1 L515.2,231.3 L513.7,230.6 L512.2,229.9 L510.7,229.2 L509.2,228.5 L507.7,227.9 L506.3,227.3 L504.8,226.8 L503.4,226.3 L501.9,225.8 L500.5,225.3 L499.1,224.9 L497.7,224.5 L496.3,224.1 L494.9,223.8 L493.5,223.5 L492.2,223.2 L490.8,222.9 L489.4,222.7 L488.1,222.5 L486.7,222.4 L485.4,222.2 L484,222.1 L482.7,222.1 L481.3,222 L480,222 L478.7,222 L477.3,222.1 L476,222.1 L474.6,222.2 L473.3,222.4 L471.9,222.5 L470.6,222.7 L469.2,222.9 L467.8,223.2 L466.5,223.5 L465.1,223.8 L463.7,224.1 L462.3,224.5 L460.9,224.9 L459.5,225.3 L458.1,225.8 L456.6,226.3 L455.2,226.8 L453.7,227.3 L452.3,227.9 L450.8,228.5 L449.3,229.2 L447.8,229.9 L446.3,230.6 L444.8,231.3 L443.2,232.1 L441.6,232.9 L440,233.8 L438.4,234.6 L436.8,235.6 L435.2,236.5 L433.5,237.5 L431.8,238.5 L430.1,239.6 L428.3,240.7 L426.6,241.8 L424.8,243 L423,244.2 L421.1,245.5 L419.3,246.8 L417.4,248.1 L415.5,249.5 L413.5,250.9 L411.5,252.4 L409.5,253.9 L407.5,255.4 L405.4,257 L403.3,258.7 L401.1,260.3 L398.9,262.1 L396.7,263.9 L394.4,265.7 L392.1,267.6 L389.7,269.5 L387.3,271.5" class="fig-curve"/>
+<line x1="447.7" y1="229.9" x2="442" y2="232.7" class="fig-curve" marker-end="url(#arr-3-8-1)"/>
+<path d="M608.6,260.1 L606.5,257.3 L604.4,254.6 L602.4,251.9 L600.4,249.3 L598.5,246.7 L596.7,244.1 L594.9,241.6 L593.1,239.2 L591.5,236.7 L589.8,234.3 L588.2,232 L586.7,229.6 L585.2,227.3 L583.8,225.1 L582.4,222.9 L581.1,220.6 L579.8,218.5 L578.5,216.3 L577.3,214.2 L576.2,212.1 L575.1,210 L574,208 L573,206 L572,204 L571.1,202 L570.2,200 L569.4,198.1 L568.5,196.1 L567.8,194.2 L567.1,192.3 L566.4,190.5 L565.7,188.6 L565.1,186.7 L564.6,184.9 L564.1,183.1 L563.6,181.3 L563.1,179.4 L562.7,177.7 L562.4,175.9 L562.1,174.1 L561.8,172.3 L561.5,170.5 L561.3,168.8 L561.1,167 L561,165.3 L560.9,163.5 L560.9,161.8 L560.8,160 L560.9,158.2 L560.9,156.5 L561,154.7 L561.1,153 L561.3,151.2 L561.5,149.5 L561.8,147.7 L562.1,145.9 L562.4,144.1 L562.7,142.3 L563.1,140.6 L563.6,138.7 L564.1,136.9 L564.6,135.1 L565.1,133.3 L565.7,131.4 L566.4,129.5 L567.1,127.7 L567.8,125.8 L568.5,123.9 L569.4,121.9 L570.2,120 L571.1,118 L572,116 L573,114 L574,112 L575.1,110 L576.2,107.9 L577.3,105.8 L578.5,103.7 L579.8,101.5 L581.1,99.4 L582.4,97.1 L583.8,94.9 L585.2,92.7 L586.7,90.4 L588.2,88 L589.8,85.7 L591.5,83.3 L593.1,80.8 L594.9,78.4 L596.7,75.9 L598.5,73.3 L600.4,70.7 L602.4,68.1 L604.4,65.4 L606.5,62.7 L608.6,59.9" class="fig-curve"/>
+<line x1="571.2" y1="117.9" x2="574.8" y2="110.4" class="fig-curve" marker-end="url(#arr-3-8-1)"/>
+<path d="M351.4,59.9 L353.5,62.7 L355.6,65.4 L357.6,68.1 L359.6,70.7 L361.5,73.3 L363.3,75.9 L365.1,78.4 L366.9,80.8 L368.5,83.3 L370.2,85.7 L371.8,88 L373.3,90.4 L374.8,92.7 L376.2,94.9 L377.6,97.1 L378.9,99.4 L380.2,101.5 L381.5,103.7 L382.7,105.8 L383.8,107.9 L384.9,110 L386,112 L387,114 L388,116 L388.9,118 L389.8,120 L390.6,121.9 L391.5,123.9 L392.2,125.8 L392.9,127.7 L393.6,129.5 L394.3,131.4 L394.9,133.3 L395.4,135.1 L395.9,136.9 L396.4,138.7 L396.9,140.6 L397.3,142.3 L397.6,144.1 L397.9,145.9 L398.2,147.7 L398.5,149.5 L398.7,151.2 L398.9,153 L399,154.7 L399.1,156.5 L399.1,158.2 L399.2,160 L399.1,161.8 L399.1,163.5 L399,165.3 L398.9,167 L398.7,168.8 L398.5,170.5 L398.2,172.3 L397.9,174.1 L397.6,175.9 L397.3,177.7 L396.9,179.4 L396.4,181.3 L395.9,183.1 L395.4,184.9 L394.9,186.7 L394.3,188.6 L393.6,190.5 L392.9,192.3 L392.2,194.2 L391.5,196.1 L390.6,198.1 L389.8,200 L388.9,202 L388,204 L387,206 L386,208 L384.9,210 L383.8,212.1 L382.7,214.2 L381.5,216.3 L380.2,218.5 L378.9,220.6 L377.6,222.9 L376.2,225.1 L374.8,227.3 L373.3,229.6 L371.8,232 L370.2,234.3 L368.5,236.7 L366.9,239.2 L365.1,241.6 L363.3,244.1 L361.5,246.7 L359.6,249.3 L357.6,251.9 L355.6,254.6 L353.5,257.3 L351.4,260.1" class="fig-curve"/>
+<line x1="388.8" y1="202.1" x2="385.2" y2="209.6" class="fig-curve" marker-end="url(#arr-3-8-1)"/>
+<path d="M403.3,48.5 L405.7,50.2 L408,51.8 L410.4,53.3 L412.7,54.8 L414.9,56.2 L417.1,57.6 L419.4,58.9 L421.5,60.2 L423.7,61.5 L425.8,62.7 L427.9,63.8 L430,64.9 L432,66 L434,67 L436,68 L438,68.9 L440,69.8 L441.9,70.6 L443.9,71.5 L445.8,72.2 L447.7,72.9 L449.5,73.6 L451.4,74.3 L453.3,74.9 L455.1,75.4 L456.9,75.9 L458.7,76.4 L460.6,76.9 L462.3,77.3 L464.1,77.6 L465.9,77.9 L467.7,78.2 L469.5,78.5 L471.2,78.7 L473,78.9 L474.7,79 L476.5,79.1 L478.2,79.1 L480,79.2 L481.8,79.1 L483.5,79.1 L485.3,79 L487,78.9 L488.8,78.7 L490.5,78.5 L492.3,78.2 L494.1,77.9 L495.9,77.6 L497.7,77.3 L499.4,76.9 L501.3,76.4 L503.1,75.9 L504.9,75.4 L506.7,74.9 L508.6,74.3 L510.5,73.6 L512.3,72.9 L514.2,72.2 L516.1,71.5 L518.1,70.6 L520,69.8 L522,68.9 L524,68 L526,67 L528,66 L530,64.9 L532.1,63.8 L534.2,62.7 L536.3,61.5 L538.5,60.2 L540.6,58.9 L542.9,57.6 L545.1,56.2 L547.3,54.8 L549.6,53.3 L552,51.8 L554.3,50.2 L556.7,48.5" class="fig-curve"/>
+<line x1="522.1" y1="68.8" x2="529.6" y2="65.2" class="fig-curve" marker-end="url(#arr-3-8-1)"/>
+<path d="M556.7,271.5 L554.3,269.8 L552,268.2 L549.6,266.7 L547.3,265.2 L545.1,263.8 L542.9,262.4 L540.6,261.1 L538.5,259.8 L536.3,258.5 L534.2,257.3 L532.1,256.2 L530,255.1 L528,254 L526,253 L524,252 L522,251.1 L520,250.2 L518.1,249.4 L516.1,248.5 L514.2,247.8 L512.3,247.1 L510.5,246.4 L508.6,245.7 L506.7,245.1 L504.9,244.6 L503.1,244.1 L501.3,243.6 L499.4,243.1 L497.7,242.7 L495.9,242.4 L494.1,242.1 L492.3,241.8 L490.5,241.5 L488.8,241.3 L487,241.1 L485.3,241 L483.5,240.9 L481.8,240.9 L480,240.8 L478.2,240.9 L476.5,240.9 L474.7,241 L473,241.1 L471.2,241.3 L469.5,241.5 L467.7,241.8 L465.9,242.1 L464.1,242.4 L462.3,242.7 L460.6,243.1 L458.7,243.6 L456.9,244.1 L455.1,244.6 L453.3,245.1 L451.4,245.7 L449.5,246.4 L447.7,247.1 L445.8,247.8 L443.9,248.5 L441.9,249.4 L440,250.2 L438,251.1 L436,252 L434,253 L432,254 L430,255.1 L427.9,256.2 L425.8,257.3 L423.7,258.5 L421.5,259.8 L419.4,261.1 L417.1,262.4 L414.9,263.8 L412.7,265.2 L410.4,266.7 L408,268.2 L405.7,269.8 L403.3,271.5" class="fig-curve"/>
+<line x1="437.9" y1="251.2" x2="430.4" y2="254.8" class="fig-curve" marker-end="url(#arr-3-8-1)"/>
+<circle cx="480" cy="160" r="3" class="fig-arrowhead"/>
+</svg>
+                    <figcaption><strong>Figura 3.8.1.</strong> Linhas de fluxo (curvas integrais) de dois campos
+                        lineares em $\mathbb{R}^2$. (a) O campo de rotação $x\partial_y-y\partial_x$: círculos
+                        percorridos no sentido anti-horário, com ponto fixo na origem. (b) O campo
+                        $y\partial_x+x\partial_y$, cujo fluxo é um boost (Exercício 3.8.1): hipérboles
+                        $x^2-y^2=c$ e $y^2-x^2=c$, cujas assíntotas, as retas $y=\pm x$, são também linhas de
+                        fluxo. Em ambos, a origem é um ponto fixo, onde o campo se anula.</figcaption>
+                </figure>
+
+                <h2 id="derivada-de-lie-funcoes">Derivada de Lie de funções</h2>
+
+                <p>
+                    O fluxo $\theta$ de $X$ permite derivar qualquer objeto "transportado" pelo fluxo. O
+                    caso mais simples é o de uma função $f$: comparamos $f(\theta_t(p))$, o valor de $f$ no ponto
+                    para onde o movimento leva $p$, com $f(p)$.
+                </p>
+
+                <div class="definition-box" id="prop-3-8-16">
+                    <p><strong>Proposição 3.8.16 (Derivada de Lie de uma função).</strong> Para
+                        $f\in C^\infty(M)$ e $p\in M$, a <strong>derivada de Lie</strong> de $f$ na direção de $X$ é</p>
+                    <p>$$ (\mathcal{L}_Xf)(p) = \frac{d}{dt}\Big\vert_{t=0}f\big(\theta_t(p)\big). $$</p>
+                    <p>Vale $\mathcal{L}_Xf=Xf$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> A curva $t\mapsto\theta_t(p)$ é uma curva integral de $X$ por $p$, de modo
+                    que sua velocidade em $t=0$ é $X_p$, e, pela definição da velocidade,
+                    $\frac{d}{dt}\big\vert_{t=0}f(\theta_t(p))=X_pf$. $\blacksquare$
+                </p>
+
+                <p>
+                    Nada de novo, então, para funções: a derivada de Lie de uma função é a derivada direcional que já
+                    conhecíamos. O interesse está em campos, para os quais não havia definição.
+                </p>
+
+                <h2 id="derivada-de-lie-campos">Derivada de Lie de campos vetoriais</h2>
+
+                <p>
+                    Quer-se medir como um campo $Y$ varia ao longo do movimento gerado por $X$. A ideia ingênua,
+                    subtrair $Y_p$ de $Y_{\theta_t(p)}$ e dividir por $t$, não faz sentido: os dois vetores moram em
+                    $T_pM$ e em $T_{\theta_t(p)}M$, espaços diferentes. O fluxo resolve o problema. O difeomorfismo
+                    $\theta_{-t}$ leva $\theta_t(p)$ de volta a $p$, e sua diferencial
+                    $d(\theta_{-t})_{\theta_t(p)}: T_{\theta_t(p)}M\to T_pM$ traz o vetor $Y_{\theta_t(p)}$ de
+                    volta para o espaço $T_pM$, onde pode ser comparado a $Y_p$ (Figura 3.8.2).
+                </p>
+
+                <figure class="lecture-figure" id="fig-3-8-2">
+                    <svg viewBox="0 0 640 290" role="img" aria-label="Uma região M com um ponto p à esquerda e o ponto theta t de p à direita, ligados por uma curva integral do campo X. Em theta t de p há um vetor Y. Em p há dois vetores: Y em p, em traço cheio, e, em traço pontilhado, o vetor que a diferencial de theta menos t traz de volta de theta t de p até p. A diferença entre os dois, dividida por t, tende à derivada de Lie de Y na direção de X.">
+<defs><marker id="arr-3-8-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<path d="M 30,150 C 24,70 120,26 250,34 C 390,24 520,50 600,120 C 640,176 560,250 420,262 C 280,276 120,262 56,222 C 36,206 32,180 30,150 Z" class="fig-frame"/>
+<text x="48" y="62" class="fig-label fig-it">M</text>
+<path d="M120,196 L128.8,188.7 L137.5,181.5 L146.2,174.3 L155,167.2 L163.8,160.2 L172.5,153.4 L181.2,146.8 L190,140.4 L198.8,134.2 L207.5,128.3 L216.2,122.7 L225,117.4 L233.8,112.4 L242.5,107.8 L251.2,103.5 L260,99.6 L268.8,96.1 L277.5,93 L286.2,90.3 L295,88 L303.8,86.1 L312.5,84.6 L321.2,83.5 L330,82.8 L338.8,82.5 L347.5,82.6 L356.2,83 L365,83.8 L373.8,84.9 L382.5,86.3 L391.2,88 L400,90 L408.8,92.2 L417.5,94.6 L426.2,97.2 L435,100 L443.8,102.9 L452.5,105.9 L461.2,108.9 L470,112" class="fig-curve"/>
+<line x1="356.2" y1="83" x2="365" y2="83.8" class="fig-curve" marker-end="url(#arr-3-8-2)"/>
+<text x="300" y="110" text-anchor="middle" class="fig-label fig-small fig-it">curva integral de X</text>
+<circle cx="120" cy="196" r="3.5" class="fig-arrowhead"/>
+<circle cx="470" cy="112" r="3.5" class="fig-arrowhead"/>
+<text x="108" y="216" text-anchor="end" class="fig-label fig-it">p</text>
+<text x="480" y="130" class="fig-label fig-it">θₜ(p)</text>
+<line x1="470" y1="112" x2="532" y2="54" class="fig-axis" marker-end="url(#arr-3-8-2)"/>
+<text x="538" y="58" class="fig-label fig-small fig-it">Y_{θₜ(p)}</text>
+<line x1="120" y1="196" x2="190" y2="178" class="fig-axis" marker-end="url(#arr-3-8-2)"/>
+<text x="196" y="178" class="fig-label fig-small fig-it">Y_p</text>
+<line x1="120" y1="196" x2="182" y2="150" class="fig-curve fig-dashed" marker-end="url(#arr-3-8-2)"/>
+<text x="188" y="146" class="fig-label fig-small fig-it">d(θ₋ₜ)(Y_{θₜ(p)})</text>
+<line x1="190" y1="178" x2="182" y2="150" class="fig-guide" stroke-dasharray="2,2"/>
+<text x="140" y="236" class="fig-label fig-small fig-it">diferença ÷ t → (L_X Y)_p</text>
+</svg>
+                    <figcaption><strong>Figura 3.8.2.</strong> A derivada de Lie $\mathcal{L}_XY$ em $p$. O fluxo de
+                        $X$ leva $p$ a $\theta_t(p)$. O vetor $Y_{\theta_t(p)}$ é trazido de volta a $T_pM$ pela
+                        diferencial de $\theta_{-t}$ (vetor tracejado) e comparado com $Y_p$. A diferença dividida por
+                        $t$, quando $t\to0$, é $(\mathcal{L}_XY)_p$.</figcaption>
+                </figure>
+
+                <p>
+                    Para que o limite faça sentido, $t\mapsto d(\theta_{-t})_{\theta_t(p)}(Y_{\theta_t(p)})$ tem de ser
+                    uma curva suave no espaço vetorial $T_pM$. Seja $(U,\varphi)$ uma carta em torno de $p$; para $\lvert t\rvert$
+                    pequeno, $\theta_t(p)\in U$ (continuidade), e, nessa carta, a aplicação
+                    $F(t,x)=\varphi\circ\theta(-t,\varphi^{-1}(x))$ é suave em uma vizinhança de
+                    $(t,\varphi(\theta_t(p)))$. Pela <a href="[05] - Vetores Tangentes.html#prop-3-5-17">Proposição 3.5.17</a>, as componentes do vetor em $T_pM$, na
+                    base coordenada, são
+                </p>
+
+                <p>
+                    $$ V^j(t) = \frac{\partial F^j}{\partial x^k}\big(t,\varphi(\theta_t(p))\big)\ Y^k\big(\theta_t(p)\big), $$
+                </p>
+
+                <p>
+                    que são funções suaves de $t$: composta de funções suaves de $(t,x)$ com a curva suave
+                    $t\mapsto(t,\varphi(\theta_t(p)))$.
+                </p>
+
+                <div class="definition-box" id="def-3-8-17" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.8.17 (Derivada de Lie de um campo).</strong> Sejam $X,Y\in\mathfrak{X}(M)$,
+                        com fluxo $\theta$ de $X$. A <strong>derivada de Lie</strong> de $Y$ ao longo de $X$ é o campo
+                        $\mathcal{L}_XY$ dado por</p>
+                    <p>$$ (\mathcal{L}_XY)_p = \frac{d}{dt}\Big\vert_{t=0}\,d(\theta_{-t})_{\theta_t(p)}\big(Y_{\theta_t(p)}\big) = \lim_{t\to0}\frac{d(\theta_{-t})_{\theta_t(p)}\big(Y_{\theta_t(p)}\big)-Y_p}{t}. $$</p>
+                </div>
+
+                <p>
+                    (O limite é uma derivada de uma curva em $T_pM$ em $t=0$, em que o valor é $Y_p$.) Que $\mathcal{L}_XY$ é
+                    um campo suave, e não apenas um vetor em cada ponto, será consequência do teorema
+                    seguinte, que o identifica com o colchete. Precisamos de um lema auxiliar.
+                </p>
+
+                <div class="definition-box" id="lema-3-8-18">
+                    <p><strong>Lema 3.8.18.</strong> Sejam $f\in C^\infty(M)$ e
+                        $\theta:(-\varepsilon,\varepsilon)\times U\to M$ como no Teorema 3.8.3(a). A função
+                        $g(t,q)=\int_0^1(Xf)\big(\theta(st,q)\big)\,ds$ é suave em $(-\varepsilon,\varepsilon)\times U$,
+                        $g(0,q)=(Xf)(q)$, e</p>
+                    <p>$$ f\big(\theta_t(q)\big) = f(q) + t\,g(t,q). \tag{3.8.2} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Para $\lvert t\rvert\lt\varepsilon$ e $s\in[0,1]$, o ponto $\theta(st,q)$
+                    está definido. A função $(s,t,q)\mapsto(Xf)(\theta(st,q))$ é suave, e a diferenciação sob o sinal de
+                    integral
+                    (<a href="[02] - Preliminares de Topologia e Cálculo.html#teo-3-2-66">Teorema 3.2.66</a>) mostra que $g$ é suave. Para $t=0$,
+                    $\theta(0,q)=q$ e $g(0,q)=\int_0^1(Xf)(q)\,ds=(Xf)(q)$. Finalmente, $s\mapsto\theta(st,q)$ é a
+                    curva integral de $X$ reescalada por $t$, de velocidade $t\,X_{\theta(st,q)}$ (Lema 3.8.4(a)), e então
+                    $\frac{d}{ds}f(\theta(st,q))=t\,(Xf)(\theta(st,q))$. Integrando em $s$ de $0$ a $1$,
+                    $f(\theta_t(q))-f(q)=t\int_0^1(Xf)(\theta(st,q))\,ds=t\,g(t,q)$. $\blacksquare$
+                </p>
+
+                <p>
+                    A Equação (3.8.2) é uma versão com parâmetro do lema de Hadamard
+                    (<a href="[02] - Preliminares de Topologia e Cálculo.html#lema-3-2-49">Lema 3.2.49</a>): escreve a variação de $f$ ao longo do fluxo como $t$ vezes uma função
+                    suave.
+                </p>
+
+                <div class="definition-box" id="teo-3-8-19">
+                    <p><strong>Teorema 3.8.19 ($\mathcal{L}_XY=[X,Y]$).</strong> Para todos $X,Y\in\mathfrak{X}(M)$,
+                        $\mathcal{L}_XY=[X,Y]$. Em particular, $\mathcal{L}_XY$ é um campo suave.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Fixe $p\in M$ e $f\in C^\infty(M)$. Tome $\varepsilon$, $U$ e $\theta$ como no Teorema
+                    3.8.3(a), com $p\in U$, e $g$ como no Lema 3.8.18. Por continuidade, $\theta_t(p)\in U$ para
+                    $\lvert t\rvert$ pequeno. Para tais $t$, o Lema 3.8.18, aplicado com $-t$ no lugar de $t$, dá, em
+                    $U$,
+                </p>
+
+                <p>
+                    $$ f\circ\theta_{-t} = f - t\,g_{-t}, \qquad g_{-t}=g(-t,\cdot)\in C^\infty(U). $$
+                </p>
+
+                <p>
+                    (Atenção: $f\circ\theta_{-t}$ só está definida perto de $\theta_t(p)$, mas isso basta, porque
+                    vetores agem em funções definidas perto do ponto: <a href="[05] - Vetores Tangentes.html#obs-3-5-9">Observação 3.5.9</a>.) Pela definição
+                    da diferencial,
+                </p>
+
+                <p>
+                    $$ \Big(d(\theta_{-t})_{\theta_t(p)}\big(Y_{\theta_t(p)}\big)\Big)f = Y_{\theta_t(p)}\big(f\circ\theta_{-t}\big) = (Yf)\big(\theta_t(p)\big) - t\,\big(Y g_{-t}\big)\big(\theta_t(p)\big). $$
+                </p>
+
+                <p>
+                    Subtraindo $Y_pf=(Yf)(p)$ e dividindo por $t$,
+                </p>
+
+                <p>
+                    $$ \frac{1}{t}\Big[\Big(d(\theta_{-t})\big(Y_{\theta_t(p)}\big)-Y_p\Big)f\Big] = \frac{(Yf)(\theta_t(p))-(Yf)(p)}{t} - \big(Yg_{-t}\big)\big(\theta_t(p)\big). $$
+                </p>
+
+                <p>
+                    Quando $t\to0$, o primeiro termo tende a $\frac{d}{dt}\big\vert_{t=0}(Yf)(\theta_t(p))=X_p(Yf)$, pela
+                    Proposição 3.8.16 aplicada a $Yf$. No segundo, $(Yg_{-t})(q)=Y^k(q)\,\partial_kg(-t,q)$ em uma carta, que
+                    é uma função suave de $(t,q)$; como $(t,\theta_t(p))\to(0,p)$,
+                    $(Yg_{-t})(\theta_t(p))\to(Yg_0)(p)=Y_p(Xf)$, pois $g_0=g(0,\cdot)=Xf$. Logo o limite vale
+                    $X_p(Yf)-Y_p(Xf)=[X,Y]_pf$. O lado esquerdo é $\big(\frac{V(t)-V(0)}{t}\big)f$ com
+                    $V(t)=d(\theta_{-t})(Y_{\theta_t(p)})$ uma curva em $T_pM$, e, como $v\mapsto vf$ é linear em
+                    $T_pM$, o limite do lado esquerdo é $(\mathcal{L}_XY)_pf$. Portanto
+                    $(\mathcal{L}_XY)_pf=[X,Y]_pf$ para toda $f$, isto é, $(\mathcal{L}_XY)_p=[X,Y]_p$. $\blacksquare$
+                </p>
+
+                <p>
+                    O teorema dá ao colchete o seu significado: <strong>$[X,Y]$ é a taxa de variação de $Y$ ao longo do
+                        fluxo de $X$</strong>, medida em um único espaço tangente. Em coordenadas, pela fórmula (3.7.5),
+                </p>
+
+                <p>
+                    $$ (\mathcal{L}_XY)^j = X^i\,\frac{\partial Y^j}{\partial x^i} - Y^i\,\frac{\partial X^j}{\partial x^i}. \tag{3.8.3} $$
+                </p>
+
+                <p>
+                    O primeiro termo é a derivada direcional das componentes de $Y$ ao longo de $X$ (a variação "ingênua" que
+                    se vê em coordenadas); o segundo corrige o <em>arrasto</em> causado pelo fluxo, que deforma os vetores
+                    (a diferencial de $\theta_{-t}$ não é a identidade das componentes).
+                </p>
+
+                <div class="definition-box" id="cor-3-8-20">
+                    <p><strong>Corolário 3.8.20 (Propriedades da derivada de Lie).</strong> Para
+                        $X,Y,Z\in\mathfrak{X}(M)$, $f\in C^\infty(M)$ e $F: M\to N$ difeomorfismo:</p>
+                    <p>(a) $\mathcal{L}_XY=-\mathcal{L}_YX$;</p>
+                    <p>(b) $\mathcal{L}_X[Y,Z]=[\mathcal{L}_XY,Z]+[Y,\mathcal{L}_XZ]$;</p>
+                    <p>(c) $\mathcal{L}_X(fY)=(Xf)\,Y+f\,\mathcal{L}_XY$;</p>
+                    <p>(d) $\mathcal{L}_{[X,Y]}Z=\mathcal{L}_X\mathcal{L}_YZ-\mathcal{L}_Y\mathcal{L}_XZ$;</p>
+                    <p>(e) $F_*(\mathcal{L}_XY)=\mathcal{L}_{F_*X}F_*Y$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Como $\mathcal{L}_XY=[X,Y]$ (Teorema 3.8.19), cada item é uma propriedade do
+                    colchete (<a href="[07] - Fibrado Tangente e Campos Vetoriais.html#prop-3-7-22">Proposição 3.7.22</a>). (a) é a antissimetria. (b) é a identidade de
+                    Jacobi: $[X,[Y,Z]]=[Y,[X,Z]]+[[X,Y],Z]$ (que se obtém de $[X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0$
+                    pela antissimetria). (c) é a fórmula (d) da <a href="[07] - Fibrado Tangente e Campos Vetoriais.html#prop-3-7-22">Proposição 3.7.22</a> com $f=1$:
+                    $[X,fY]=f[X,Y]+(Xf)Y$. (d) é a mesma identidade de Jacobi, lida de outro modo:
+                    $[[X,Y],Z]=[X,[Y,Z]]-[Y,[X,Z]]$. (e) é o
+                    <a href="[07] - Fibrado Tangente e Campos Vetoriais.html#cor-3-7-31">Corolário 3.7.31</a>. $\blacksquare$
+                </p>
+
+                <p id="obs-3-8-21"><strong>Observação 3.8.21 (A derivada de Lie não é uma derivada direcional).</strong> Em
+                    (3.8.3) aparecem as derivadas $\partial_iX^j$ de $X$: o valor de $(\mathcal{L}_XY)_p$ depende de $X$ em uma
+                    vizinhança de $p$, e não só de $X_p$. Isso é essencial: $X_p=0$ não implica
+                    $(\mathcal{L}_XY)_p=0$. Por exemplo, para $X=x\partial_x$ e $Y=\partial_x$ em $\mathbb{R}$,
+                    $X_0=0$ e, no entanto, $[X,Y]=-\partial_x\ne0$ em $0$: o fluxo $\theta_t(x)=e^tx$ fixa a origem,
+                    mas a dilata ao redor dela, e a diferencial de $\theta_{-t}$ encolhe os vetores. Uma derivada que
+                    dependa apenas de $X_p$, como a derivada direcional ao longo de uma direção, exige uma
+                    estrutura adicional, a <em>conexão</em>, de um capítulo posterior.</p>
+
+                <h2 id="fluxos-que-comutam">Campos que comutam</h2>
+
+                <p>
+                    Se $[X,Y]=\mathcal{L}_XY$ mede a variação de $Y$ ao longo de $X$, a condição $[X,Y]=0$ deve significar
+                    que $Y$ não varia ao longo do fluxo de $X$, isto é, que o fluxo de $X$ preserva $Y$. Para tornar
+                    isso preciso, calculamos a derivada de $t\mapsto d(\theta_{-t})(Y_{\theta_t(p)})$ em todo
+                    instante, e não só em $t=0$.
+                </p>
+
+                <div class="definition-box" id="prop-3-8-22">
+                    <p><strong>Proposição 3.8.22 (A derivada em um instante qualquer).</strong> Sejam $p\in M$ e
+                        $V(t)=d(\theta_{-t})_{\theta_t(p)}\big(Y_{\theta_t(p)}\big)\in T_pM$, para $t\in J_p$. Então $V$ é
+                        uma curva suave em $T_pM$, e, para todo $t_0\in J_p$, com $q=\theta_{t_0}(p)$,</p>
+                    <p>$$ V'(t_0)=d(\theta_{-t_0})_q\Big((\mathcal{L}_XY)_q\Big). $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Seja $t_0\in J_p$ e $q=\theta_{t_0}(p)$. Para $s$ pequeno, o Lema 3.8.10 dá
+                    $\theta_{t_0+s}(p)=\theta_s(q)$ e $\theta_{-(t_0+s)}=\theta_{-t_0}\circ\theta_{-s}$ perto de
+                    $\theta_s(q)$ (pela lei de grupo). Pela regra da cadeia
+                    (<a href="[05] - Vetores Tangentes.html#prop-3-5-11">Proposição 3.5.11</a>), sendo $\theta_{-s}(\theta_s(q))=q$,
+                </p>
+
+                <p>
+                    $$ V(t_0+s)=d(\theta_{-t_0})_q\Big(d(\theta_{-s})_{\theta_s(q)}\big(Y_{\theta_s(q)}\big)\Big)=d(\theta_{-t_0})_q\big(V_q(s)\big), $$
+                </p>
+
+                <p>
+                    em que $V_q(s)=d(\theta_{-s})_{\theta_s(q)}(Y_{\theta_s(q)})$ é a curva em $T_qM$ da
+                    Definição 3.8.17, suave em $s$ e com $V_q'(0)=(\mathcal{L}_XY)_q$. Como $d(\theta_{-t_0})_q$ é linear, $V$ é suave
+                    perto de $t_0$ e $V'(t_0)=d(\theta_{-t_0})_q(V_q'(0))$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="def-3-8-23" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.8.23 (Campo invariante pelo fluxo).</strong> Um campo $Y$ é
+                        <strong>invariante pelo fluxo</strong> $\theta$ de $X$ se
+                        $d(\theta_t)_p(Y_p)=Y_{\theta_t(p)}$ para todo $(t,p)\in\mathcal{D}$.</p>
+                </div>
+
+                <div class="definition-box" id="teo-3-8-24">
+                    <p><strong>Teorema 3.8.24 (Campos que comutam).</strong> Sejam $X,Y\in\mathfrak{X}(M)$, com fluxos
+                        $\theta$ e $\psi$. As afirmações (a), (b) e (c) são equivalentes:</p>
+                    <p>(a) $[X,Y]=0$;</p>
+                    <p>(b) $Y$ é invariante pelo fluxo de $X$;</p>
+                    <p>(c) $X$ é invariante pelo fluxo de $Y$.</p>
+                    <p>Além disso, se (d) os fluxos comutam, $\theta_t\circ\psi_s=\psi_s\circ\theta_t$, onde ambos os lados
+                        estão definidos, então vale (b); e, se $X$ e $Y$ são completos, (b) implica (d).</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> <strong>(a)$\Rightarrow$(b).</strong> Fixe $p$ e $t\in J_p$. Por (a),
+                    $\mathcal{L}_XY=[X,Y]=0$, e pela Proposição 3.8.22 a curva $V(t)=d(\theta_{-t})(Y_{\theta_t(p)})$ tem
+                    $V'\equiv0$ em $J_p$, que é um intervalo. Logo $V$ é constante, igual a $V(0)=Y_p$. Aplicando
+                    $d(\theta_t)_p$, que é inversa de $d(\theta_{-t})_{\theta_t(p)}$ (pois $\theta_t: M_t\to M_{-t}$ é um
+                    difeomorfismo, Teorema 3.8.11(d)), obtemos
+                    $d(\theta_t)_p(Y_p)=Y_{\theta_t(p)}$.
+                </p>
+
+                <p>
+                    <strong>(b)$\Rightarrow$(a).</strong> Se vale (b), então
+                    $V(t)=d(\theta_{-t})\big(d(\theta_t)_pY_p\big)=Y_p$ para todo $t$, e $V'(0)=0$; mas
+                    $V'(0)=(\mathcal{L}_XY)_p=[X,Y]_p$. Como $p$ é arbitrário, $[X,Y]=0$.
+                </p>
+
+                <p>
+                    <strong>(a)$\Leftrightarrow$(c).</strong> $[X,Y]=0$ equivale a $[Y,X]=0$, pela antissimetria, e então
+                    (a)$\Leftrightarrow$(c) é (a)$\Leftrightarrow$(b) com os papéis trocados.
+                </p>
+
+                <p>
+                    <strong>(d)$\Rightarrow$(b).</strong> Fixe $(t,p)\in\mathcal{D}$. A curva $s\mapsto\theta_t(\psi_s(p))$ tem,
+                    pela regra da cadeia (<a href="[05] - Vetores Tangentes.html#prop-3-5-24">Proposição 3.5.24</a>), velocidade $d(\theta_t)_p(Y_p)$ em
+                    $s=0$. Por (d), essa curva é $s\mapsto\psi_s(\theta_t(p))$, cuja velocidade em $s=0$ é
+                    $Y_{\theta_t(p)}$. Logo $d(\theta_t)_p(Y_p)=Y_{\theta_t(p)}$.
+                </p>
+
+                <p>
+                    <strong>(b)$\Rightarrow$(d), para campos completos.</strong> Fixe $t$ e $p$, e seja
+                    $c(s)=\theta_t(\psi_s(p))$. Por (b), aplicada ao ponto $\psi_s(p)$,
+                    $c'(s)=d(\theta_t)_{\psi_s(p)}\big(Y_{\psi_s(p)}\big)=Y_{\theta_t(\psi_s(p))}=Y_{c(s)}$: $c$ é uma curva
+                    integral de $Y$ com $c(0)=\theta_t(p)$. Pela unicidade (Teorema 3.8.3(b)),
+                    $c(s)=\psi_s(\theta_t(p))$ para todo $s$. (No caso geral, a mesma prova vale onde as expressões
+                    estão definidas, com o cuidado dos domínios; Lee, capítulo 9.) $\blacksquare$
+                </p>
+
+                <h3 id="paralelogramo">O paralelogramo que não fecha</h3>
+
+                <p>
+                    O significado geométrico do colchete pode ser visto diretamente nos fluxos: andar ao longo de $X$ por um
+                    tempo $t$, depois ao longo de $Y$ por $t$, depois ao longo de $X$ por $-t$ e de $Y$ por
+                    $-t$ leva, em geral, a um ponto diferente do ponto de partida (Figura 3.8.3). Se $[X,Y]=0$, o
+                    Teorema 3.8.24 mostra que o quadrilátero fecha; em geral, o resultado é o seguinte.
+                </p>
+
+                <p>
+                    <strong>Fato (citado, e não usado no restante do capítulo).</strong> Para
+                    $c(t)=\psi_{-t}\circ\theta_{-t}\circ\psi_t\circ\theta_t(p)$ (definida para $\lvert t\rvert$ pequeno),
+                    $c(0)=p$, $c'(0)=0$ e, em coordenadas,
+                    $c(t)=p+t^2\,[X,Y]_p+O(t^3)$. A razão é que, em uma função $f$, o fluxo age como a exponencial $e^{tX}f$,
+                    e $f\circ c=e^{tX}e^{tY}e^{-tX}e^{-tY}f=f+t^2[X,Y]f+O(t^3)$.
+                </p>
+
+                <figure class="lecture-figure" id="fig-3-8-3">
+                    <svg viewBox="0 0 640 280" role="img" aria-label="Quatro segmentos formam um quadrilátero que não fecha. A partir de p, anda-se ao longo do fluxo de X por um tempo t, depois ao longo do fluxo de Y por t, depois ao longo do fluxo de X por menos t e por fim ao longo do de Y por menos t. O último ponto, c de t, não coincide com p: a lacuna, tracejada, vale, em segunda ordem, t ao quadrado vezes o colchete de X e Y em p.">
+<defs><marker id="arr-3-8-3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="150" y1="232" x2="324" y2="232" class="fig-curve" marker-end="url(#arr-3-8-3)"/>
+<line x1="330" y1="232" x2="344" y2="86" class="fig-curve" marker-end="url(#arr-3-8-3)"/>
+<line x1="344" y1="78" x2="176" y2="70" class="fig-curve" marker-end="url(#arr-3-8-3)"/>
+<line x1="168" y1="70" x2="150" y2="182" class="fig-curve" marker-end="url(#arr-3-8-3)"/>
+<circle cx="150" cy="232" r="3.5" class="fig-arrowhead"/>
+<circle cx="330" cy="232" r="3.5" class="fig-arrowhead"/>
+<circle cx="344" cy="78" r="3.5" class="fig-arrowhead"/>
+<circle cx="168" cy="70" r="3.5" class="fig-arrowhead"/>
+<circle cx="150" cy="190" r="3.5" class="fig-arrowhead"/>
+<text x="138" y="254" text-anchor="end" class="fig-label fig-it">p</text>
+<text x="342" y="238" class="fig-label fig-it">θₜ(p)</text>
+<text x="356" y="82" class="fig-label fig-it">ψₜ θₜ(p)</text>
+<text x="156" y="74" text-anchor="end" class="fig-label fig-it">θ₋ₜ ψₜ θₜ(p)</text>
+<text x="138" y="186" text-anchor="end" class="fig-label fig-it">c(t)</text>
+<text x="240" y="252" text-anchor="middle" class="fig-label fig-small fig-it">θₜ</text>
+<text x="342" y="155" class="fig-label fig-small fig-it">ψₜ</text>
+<text x="256" y="68" text-anchor="middle" class="fig-label fig-small fig-it">θ₋ₜ</text>
+<text x="180" y="130" class="fig-label fig-small fig-it">ψ₋ₜ</text>
+<line x1="150" y1="194" x2="150" y2="226" class="fig-curve fig-dashed" marker-end="url(#arr-3-8-3)"/>
+<text x="164" y="215" class="fig-label fig-small fig-it">t² [X, Y]_p</text>
+</svg>
+                    <figcaption><strong>Figura 3.8.3.</strong> O paralelogramo dos fluxos. A partir de $p$, segue-se o
+                        fluxo de $X$ por $t$, o de $Y$ por $t$, o de $X$ por $-t$ e o de $Y$ por $-t$. O ponto final
+                        $c(t)$ não coincide com $p$, e a lacuna é, em segunda ordem, $t^2[X,Y]_p$. Os dois
+                        fluxos comutam exatamente quando a lacuna se anula.</figcaption>
+                </figure>
+
+                <p id="ex-3-8-25"><strong>Exemplo 3.8.25 (O paralelogramo, exatamente).</strong> Em $\mathbb{R}^3$, sejam
+                    $X=\partial_x$ e $Y=\partial_y+x\,\partial_z$, com $[X,Y]=\partial_z$ (<a href="[07] - Fibrado Tangente e Campos Vetoriais.html#exr-3-7-7">Exercício 3.7.7</a>). Seus fluxos são</p>
+
+                <p>
+                    $$ \theta_t(x,y,z)=(x+t,\ y,\ z), \qquad \psi_t(x,y,z)=(x,\ y+t,\ z+tx). $$
+                </p>
+
+                <p>
+                    Seguindo os quatro passos a partir de $p=(x,y,z)$: $\theta_t(p)=(x+t,y,z)$;
+                    $\psi_t$ leva isso em $(x+t,\ y+t,\ z+t(x+t))$; $\theta_{-t}$ leva em
+                    $(x,\ y+t,\ z+tx+t^2)$; e $\psi_{-t}$ leva em $(x,\ y,\ z+tx+t^2-tx)$. Portanto
+                </p>
+
+                <p>
+                    $$ c(t)=\psi_{-t}\theta_{-t}\psi_t\theta_t(p)=(x,\ y,\ z+t^2)=p+t^2\,\partial_z, $$
+                </p>
+
+                <p>
+                    exatamente (sem termos de ordem superior), em acordo com $c(t)=p+t^2[X,Y]_p$.</p>
+
+                <h3 id="retificacao">Retificação</h3>
+
+                <p>
+                    O fluxo permite também responder à pergunta: dado um único campo $X$ que não se anula, existem
+                    coordenadas em que $X$ é um campo coordenado? A resposta é sim, e a construção é feita com o fluxo.
+                </p>
+
+                <div class="definition-box" id="teo-3-8-26">
+                    <p><strong>Teorema 3.8.26 (Retificação do fluxo).</strong> Se $X\in\mathfrak{X}(M)$ e $X_p\neq0$, existe uma
+                        carta $(V,s)$ em torno de $p$, de coordenadas $(s^1,\dots,s^n)$, tal que
+                        $X=\partial/\partial s^1$ em $V$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Seja $(U,\varphi_0)$ uma carta centrada em $p$ e $c^i$ as componentes de $X_p$,
+                    não todas nulas. Existe $A\in GL(n,\mathbb{R})$ com $A\,c=e_1$, e $\varphi=A\circ\varphi_0$ é uma
+                    carta centrada em $p$, na qual, pela lei de transformação (3.5.4), $X_p=\partial_1\vert_p$.
+                    Defina, em um aberto de $\mathbb{R}^n$ em torno de $0$,
+                </p>
+
+                <p>
+                    $$ \Psi(t,a^2,\dots,a^n)=\theta_t\big(\varphi^{-1}(0,a^2,\dots,a^n)\big). $$
+                </p>
+
+                <p>
+                    O domínio, formado pelos $(t,a)$ com $(0,a)\in\varphi(U)$ e $(t,\varphi^{-1}(0,a))\in\mathcal{D}$, é aberto
+                    (porque $\mathcal{D}$ o é) e contém $0$, e $\Psi$ é suave pelo Teorema 3.8.11(a). Sua
+                    diferencial em $0$ leva $\partial/\partial t$ em
+                    $\frac{d}{dt}\vert_{t=0}\theta_t(p)=X_p=\partial_1\vert_p$, e leva $\partial/\partial a^j$ ($j\ge2$) em
+                    $\partial_j\vert_p$, pois $\theta_0=\mathrm{id}$. Em coordenadas, $d\Psi_0$ tem matriz identidade; em
+                    particular é invertível. Pelo teorema da função inversa em variedades
+                    (<a href="[06] - Subvariedades.html#teo-3-6-5">Teorema 3.6.5</a>), $\Psi$ é um difeomorfismo de um aberto $W\ni0$ de $\mathbb{R}^n$
+                    sobre um aberto $V\ni p$ de $M$, e $s=\Psi^{-1}: V\to W$ é uma carta (composta de $\varphi$ com um
+                    difeomorfismo entre abertos de $\mathbb{R}^n$, <a href="[03] - Variedades Diferenciáveis.html#obs-3-3-14">Observação 3.3.14</a>). Nessa carta, o vetor coordenado
+                    $\partial/\partial s^1$ em $\Psi(t,a)$ é $d\Psi(\partial/\partial t)=\frac{d}{dt}\Psi(t,a)$, que é a velocidade
+                    da curva $t\mapsto\theta_t(\varphi^{-1}(0,a))$, uma curva integral de $X$: vale $X_{\Psi(t,a)}$. Logo
+                    $X=\partial/\partial s^1$ em $V$. $\blacksquare$
+                </p>
+
+                <p>
+                    Em palavras: perto de um ponto onde não se anula, qualquer campo é, em coordenadas convenientes,
+                    um campo constante $\partial/\partial s^1$, e as curvas integrais são as retas $s^2,\dots,s^n=$ const.
+                    Para vários campos ao mesmo tempo, o análogo é o seguinte resultado, que fecha a pergunta do
+                    <a href="[07] - Fibrado Tangente e Campos Vetoriais.html#ex-3-7-24">Exemplo 3.7.24</a>.
+                </p>
+
+                <div class="definition-box" id="teo-3-8-27">
+                    <p><strong>Teorema 3.8.27 (Referenciais coordenados; citado).</strong> Um referencial local
+                        $(E_1,\dots,E_n)$ é coordenado, isto é, existem coordenadas $(s^i)$ com $E_i=\partial/\partial s^i$, se, e
+                        somente se, $[E_i,E_j]=0$ para todos $i,j$.</p>
+                </div>
+
+                <p>
+                    <em>Ideia da demonstração.</em> A ida é o <a href="[07] - Fibrado Tangente e Campos Vetoriais.html#ex-3-7-24">Exemplo 3.7.24</a>. Para a volta, sejam $\theta^i$ os fluxos dos
+                    $E_i$, que comutam pelo Teorema 3.8.24; a aplicação
+                    $\Psi(t^1,\dots,t^n)=\theta^1_{t^1}\circ\dots\circ\theta^n_{t^n}(p)$ tem $\partial\Psi/\partial t^i=E_i$ (porque os
+                    fluxos comutam, pode-se colocar qualquer um deles por último) e $d\Psi_0$ invertível, de modo que $\Psi^{-1}$ é
+                    a carta procurada. Referência: Lee, capítulo 9. Em particular, o referencial ortonormal polar
+                    do <a href="[07] - Fibrado Tangente e Campos Vetoriais.html#ex-3-7-17">Exemplo 3.7.17</a>, com $[E_r,E_\theta]\ne0$, não é coordenado, e dois campos independentes
+                    com $[X,Y]\neq0$, como no <a href="[07] - Fibrado Tangente e Campos Vetoriais.html#exr-3-7-7">Exercício 3.7.7</a>, não são coordenados juntos.
+                </p>
+
+                <h2 id="fisica">Ponte com a física</h2>
+
+                <p>
+                    <strong>Simetrias contínuas.</strong> Uma simetria contínua de um sistema é um grupo a um parâmetro de
+                    difeomorfismos, isto é, o fluxo de um campo completo. Os geradores dos capítulos 1 e 2 são
+                    campos vetoriais, e o grupo é o fluxo: o campo $x\partial_y-y\partial_x$ gera as rotações (Exemplo
+                    3.8.15), os campos $L_x,L_y,L_z$ do <a href="[07] - Fibrado Tangente e Campos Vetoriais.html#ex-3-7-25">Exemplo 3.7.25</a> geram as rotações em torno de cada eixo, e
+                    $\partial_t$, $\partial_i$ e $t\partial_i$ geram as translações no tempo e no espaço e os boosts de
+                    Galileu. As relações de comutação (3.7.6) dizem que as rotações em torno de eixos diferentes não
+                    comutam, e o Teorema 3.8.24 diz que dois fluxos completos comutam exatamente quando o
+                    colchete dos geradores se anula. O <a href="#exr-3-8-1">Exercício 3.8.1</a> mostra que o fluxo de
+                    $x\partial_t+t\partial_x$ no plano $(t,x)$ é o boost de Lorentz de rapidez $s$: a simetria
+                    relativística é, também, o fluxo de um campo.
+                </p>
+
+                <p>
+                    <strong>Dinâmica.</strong> As equações de movimento de um sistema hamiltoniano são as equações das curvas
+                    integrais de um campo, o campo hamiltoniano, no espaço de fase: o fluxo é a evolução temporal. A
+                    teoria de EDOs que se usou aqui é a da mecânica clássica.
+                </p>
+
+                <p>
+                    <strong>Observadores e campos de Killing.</strong> Uma congruência de observadores é uma família de
+                    curvas integrais de um campo de 4-velocidades $u$. Na Relatividade Geral, um campo $K$ é um
+                    <em>campo de Killing</em> quando o seu fluxo preserva a métrica, $\mathcal{L}_Kg=0$; ele gera uma
+                    simetria do espaço-tempo e, por isso, uma quantidade conservada. Para dar sentido a essa equação falta a
+                    derivada de Lie de tensores, que será definida no tópico 3.14, a partir da mesma ideia desta seção:
+                    derivar o transporte pelo fluxo.
+                </p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p id="exr-3-8-1"><strong>Exercício 3.8.1.</strong> Ache as curvas integrais e o fluxo de
+                    $X=y\partial_x+x\partial_y$ em $\mathbb{R}^2$ e relacione-o a um boost de Lorentz.</p>
+
+                <p>
+                    <em>Solução.</em> O sistema é $\dot x=y$, $\dot y=x$, que dá $\ddot x=x$, com solução
+                    $x(t)=x_0\cosh t+y_0\sinh t$, e $y(t)=\dot x(t)=x_0\sinh t+y_0\cosh t$. Portanto
+                </p>
+
+                <p>
+                    $$ \theta_t(x,y)=\big(x\cosh t+y\sinh t,\ x\sinh t+y\cosh t\big), $$
+                </p>
+
+                <p>
+                    com $\theta_0=\mathrm{id}$ e lei de grupo pelas fórmulas de soma de $\cosh$ e $\sinh$. O campo
+                    é completo. As curvas integrais preservam $x^2-y^2$ (a derivada ao longo da curva é
+                    $2x\dot x-2y\dot y=2xy-2yx=0$): são as hipérboles da Figura 3.8.1(b). Identificando $y$ com a coordenada de tempo
+                    $t$ (e $c=1$), $X=x\partial_t+t\partial_x$, e o fluxo é a transformação de Lorentz de velocidade
+                    $v=\tanh s$: $t'=t\cosh s+x\sinh s$, $x'=t\sinh s+x\cosh s$.
+                    A "rapidez" $s$ é, portanto, o parâmetro do fluxo, e a composição de boosts é a soma de
+                    rapidezes: $\theta_s\circ\theta_{s'}=\theta_{s+s'}$. $\blacksquare$
+                </p>
+
+                <p id="exr-3-8-2"><strong>Exercício 3.8.2.</strong> Ache o fluxo de $X=x\partial_x-y\partial_y$ e
+                    verifique a lei de grupo.</p>
+
+                <p>
+                    <em>Solução.</em> O sistema $\dot x=x$, $\dot y=-y$ dá $\theta_t(x,y)=(e^tx,\ e^{-t}y)$. Então
+                    $\theta_t(\theta_s(x,y))=(e^te^sx,\ e^{-t}e^{-s}y)=\theta_{t+s}(x,y)$. Como
+                    $(e^tx)(e^{-t}y)=xy$, as curvas integrais estão nas hipérboles $xy=c$ (e nos eixos, para
+                    $c=0$). O campo é completo. $\blacksquare$
+                </p>
+
+                <p id="exr-3-8-3"><strong>Exercício 3.8.3.</strong> Para $X=(1+x^2)\partial_x$ em $\mathbb{R}$, ache as curvas
+                    integrais e mostre que $X$ não é completo.</p>
+
+                <p>
+                    <em>Solução.</em> $\dot x=1+x^2$ separa: $\arctan x=t+c$, isto é, $x(t)=\tan(t+c)$, com
+                    $c=\arctan x_0$. Para o ponto inicial $x_0$, a curva é definida para
+                    $t+\arctan x_0\in(-\tfrac\pi2,\tfrac\pi2)$, isto é, em $J_{x_0}=(-\tfrac\pi2-\arctan x_0,\ \tfrac\pi2-\arctan x_0)$,
+                    um intervalo limitado; $x(t)\to\pm\infty$ nos extremos. Logo $X$ não é completo, embora seja
+                    suave e tenha crescimento só quadrático. $\blacksquare$
+                </p>
+
+                <p id="exr-3-8-4"><strong>Exercício 3.8.4.</strong> Calcule $\mathcal{L}_XY$ pela definição, com o fluxo, para
+                    $X=x\partial_y-y\partial_x$ e $Y=\partial_x$, e compare com $[X,Y]$.</p>
+
+                <p>
+                    <em>Solução.</em> O fluxo de $X$ é a rotação $\theta_t=R(t)$ (Exemplo 3.8.15). Sua diferencial é
+                    a própria matriz $R(t)$, constante em $p$, e $Y_{\theta_t(p)}=(1,0)$ para todo ponto. Então
+                    $d(\theta_{-t})(Y_{\theta_t(p)})=R(-t)\binom10=\binom{\cos t}{-\sin t}$, e
+                </p>
+
+                <p>
+                    $$ (\mathcal{L}_XY)_p=\frac{d}{dt}\Big\vert_{t=0}\binom{\cos t}{-\sin t}=\binom{0}{-1},\qquad\text{isto é,}\quad\mathcal{L}_XY=-\partial_y. $$
+                </p>
+
+                <p>
+                    Pelo colchete, (3.7.5) com $X=(-y,x)$ e $Y=(1,0)$ dá
+                    $[X,Y]^j=X^i\partial_iY^j-Y^i\partial_iX^j=-\partial_xX^j$, isto é, $-(0,1)=(0,-1)$: $[X,Y]=-\partial_y$,
+                    em acordo com o Teorema 3.8.19. Geometricamente, o campo constante $\partial_x$, visto de um referencial
+                    que gira, parece girar no sentido oposto. $\blacksquare$
+                </p>
+
+                <p id="exr-3-8-5"><strong>Exercício 3.8.5.</strong> Calcule $\theta_t\circ\psi_s$ e $\psi_s\circ\theta_t$ para os
+                    fluxos de $X=\partial_x$ e $Y=\partial_y+x\partial_z$, e conclua que não comutam.</p>
+
+                <p>
+                    <em>Solução.</em> Com $\theta_t(x,y,z)=(x+t,y,z)$ e $\psi_s(x,y,z)=(x,y+s,z+sx)$ (Exemplo 3.8.25),
+                    $\theta_t(\psi_s(p))=(x+t,\ y+s,\ z+sx)$ e
+                    $\psi_s(\theta_t(p))=(x+t,\ y+s,\ z+s(x+t))$. Diferem por $(0,0,st)$: os fluxos não comutam, e a diferença é
+                    $st\,\partial_z=st\,[X,Y]$, proporcional ao colchete, em acordo com o Teorema 3.8.24 (a
+                    contrapositiva de (d)$\Rightarrow$(b): $[X,Y]\ne0$). $\blacksquare$
+                </p>
+
+                <p id="exr-3-8-6"><strong>Exercício 3.8.6.</strong> Retifique $X=x\partial_y-y\partial_x$ perto de $(1,0)$.</p>
+
+                <p>
+                    <em>Solução.</em> Seguimos a demonstração do Teorema 3.8.26. Em $p=(1,0)$, $X_p=\partial_y$; tome a
+                    carta $\varphi(x,y)=(y,x-1)$, centrada em $p$, em que $X_p=\partial_1$ (a primeira coordenada é $y$).
+                    Então $\Psi(t,a)=\theta_t(\varphi^{-1}(0,a))=R(t)(1+a,0)=\big((1+a)\cos t,\ (1+a)\sin t\big)$, com
+                    $d\Psi_0=\begin{pmatrix}0&1\\1&0\end{pmatrix}$ invertível. Isto é, $\Psi$ é a parametrização polar com
+                    $r=1+a$ e $\theta=t$: as coordenadas procuradas são $(s^1,s^2)=(\theta,\,r-1)$, e
+                    $X=\partial/\partial s^1=\partial_\theta$. $\blacksquare$
+                </p>
+
+                <p id="exr-3-8-7"><strong>Exercício 3.8.7.</strong> O campo de rotação em $S^2$ é completo; ache seus pontos
+                    fixos e suas curvas integrais.</p>
+
+                <p>
+                    <em>Solução.</em> O campo $L_z\vert_{S^2}$ (<a href="[07] - Fibrado Tangente e Campos Vetoriais.html#ex-3-7-10">Exemplo 3.7.10</a>) é um campo suave em uma variedade compacta, e,
+                    portanto, completo (Teorema 3.8.14). Seu fluxo é a restrição da rotação $R_z(t)$ de $\mathbb{R}^3$,
+                    que preserva $S^2$: $\theta_t(x,y,z)=(x\cos t-y\sin t,\ x\sin t+y\cos t,\ z)$. Os pontos fixos são os
+                    zeros do campo, $x=y=0$: os dois polos $(0,0,\pm1)$. As demais curvas integrais são os
+                    paralelos (círculos de latitude constante $z=z_0$), percorridos com período $2\pi$. $\blacksquare$
+                </p>
+
+                <p id="exr-3-8-8"><strong>Exercício 3.8.8.</strong> Verifique $\mathcal{L}_X(fY)=(Xf)Y+f\,\mathcal{L}_XY$ com
+                    $X=\partial_x$, $Y=x\partial_y$ e $f=xy$.</p>
+
+                <p>
+                    <em>Solução.</em> $fY=x^2y\,\partial_y$, e, por (3.8.3), $\mathcal{L}_X(fY)=\partial_x(x^2y)\,\partial_y=2xy\,\partial_y$
+                    (o termo $Y^i\partial_iX^j$ é nulo, pois $X$ tem componentes constantes). No lado direito,
+                    $Xf=y$, de modo que $(Xf)Y=xy\,\partial_y$; e $\mathcal{L}_XY=[\partial_x,x\partial_y]=\partial_y$, de modo que
+                    $f\mathcal{L}_XY=xy\,\partial_y$. A soma é $2xy\,\partial_y$, igual ao lado esquerdo. $\blacksquare$
+                </p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <p>
+                    Este tópico mostrou que um campo vetorial é um movimento:
+                </p>
+
+                <ul>
+                    <li>as <strong>curvas integrais</strong> (<a href="#def-3-8-1">Definição 3.8.1</a>), o teorema de
+                        existência, unicidade e dependência suave (<a href="#teo-3-8-3">Teorema 3.8.3</a>, citado) e as
+                        curvas maximais (<a href="#prop-3-8-5">Proposição 3.8.5</a>);</li>
+                    <li>os <strong>fluxos</strong> (<a href="#def-3-8-7">Definição 3.8.7</a>), o teorema fundamental dos fluxos com a
+                        lei de grupo (<a href="#teo-3-8-11">Teorema 3.8.11</a>) e a <strong>completude</strong> de campos de
+                        suporte compacto (<a href="#teo-3-8-14">Teorema 3.8.14</a>);</li>
+                    <li>a <strong>derivada de Lie</strong> de funções e de campos
+                        (<a href="#prop-3-8-16">Proposição 3.8.16</a>, <a href="#def-3-8-17">Definição 3.8.17</a>) e o
+                        resultado central <strong>$\mathcal{L}_XY=[X,Y]$</strong>
+                        (<a href="#teo-3-8-19">Teorema 3.8.19</a>);</li>
+                    <li>a caracterização dos <strong>campos que comutam</strong> (<a href="#teo-3-8-24">Teorema 3.8.24</a>), o
+                        paralelogramo dos fluxos e a <strong>retificação</strong> de um campo
+                        (<a href="#teo-3-8-26">Teorema 3.8.26</a>).</li>
+                </ul>
+
+                <p>
+                    Aqui termina a parte do capítulo dedicada a vetores. Os objetos construídos até agora, como
+                    funções, vetores, campos, fluxos, são o "lado covariante" do cálculo. Ainda falta o lado dual:
+                    o que se pode <em>medir</em> com um vetor. Um covetor é uma maneira de atribuir um número a cada vetor
+                    tangente, linearmente, e é o primeiro objeto que se integra: é para isso que as formas diferenciais
+                    existem. Esse é o assunto do restante do capítulo, e levará ao Teorema de Stokes.
+                </p>
+
+                <p>
+                    O próximo tópico,
+                    <a href="[09] - Covetores e 1-Formas.html">3.9 Covetores e 1-Formas</a>, define o espaço
+                    cotangente $T_p^*M$, o fibrado $T^*M$, as $1$-formas, a diferencial $df$ de uma função e o
+                    <em>pullback</em>.
+                </p>
 
             </div>
         </main>
@@ -161,6 +1126,20 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#fluxos-e-derivada-de-lie">Curvas Integrais, Fluxos e a Derivada de Lie</a></li>
+                    <li><a href="#curvas-integrais">Curvas integrais</a></li>
+                    <li><a href="#fluxos">Fluxos</a></li>
+                    <li><a href="#derivada-de-lie-funcoes">Derivada de Lie de funções</a></li>
+                    <li><a href="#derivada-de-lie-campos">Derivada de Lie de campos</a></li>
+                    <li>
+                        <a href="#fluxos-que-comutam">Campos que comutam</a>
+                        <ul>
+                            <li><a href="#paralelogramo">O paralelogramo que não fecha</a></li>
+                            <li><a href="#retificacao">Retificação</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#fisica">Ponte com a física</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
                 </ul>
             </div>
         </aside>
