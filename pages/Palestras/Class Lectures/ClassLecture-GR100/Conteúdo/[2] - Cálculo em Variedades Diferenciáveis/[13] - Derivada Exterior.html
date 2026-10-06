@@ -149,9 +149,516 @@
             <div class="prose">
 
                 <h1 id="derivada-exterior">3.13 A Derivada Exterior</h1>
-                <p class="lead">A derivada exterior no espaço euclidiano e em variedades, sua unicidade e naturalidade, a fórmula invariante e as formas fechadas e exatas.</p>
+                <p class="lead">O operador $d$ em abertos de $\mathbb{R}^n$ e em variedades, existência e unicidade, naturalidade, a fórmula invariante, as componentes, o cálculo vetorial como $d$, formas fechadas e exatas.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>
+                    Já temos $d$ em funções: a diferencial $df$ do <a href="[09] - Covetores e 1-Formas.html">tópico 3.9</a>. Naquele tópico apareceu também a condição de fechamento
+                    $\partial_i\omega_j-\partial_j\omega_i=0$ de uma $1$-forma, que claramente quer ser "a derivada de $\omega$ é zero", e, no <a href="[10] - Álgebra Multilinear e Tensores.html">tópico 3.10</a>,
+                    o tensor $\Delta_\omega(X,Y)=X(\omega(Y))-Y(\omega(X))-\omega([X,Y])$, cujas componentes são justamente esses $\partial_i\omega_j-\partial_j\omega_i$. Por outro lado, o cálculo vetorial tem três derivadas, o gradiente, o rotacional e o divergente,
+                    ligadas por duas identidades, $\operatorname{rot}\operatorname{grad}=0$ e $\operatorname{div}\operatorname{rot}=0$. Este tópico mostra que tudo isso é um único operador, a <em>derivada exterior</em> $d:\Omega^k(M)\to\Omega^{k+1}(M)$, que não usa nenhuma estrutura além da de variedade suave,
+                    e que a identidade única $d\circ d=0$ contém as duas anteriores.
+                </p>
+
+                <p>
+                    O percurso tem quatro etapas. Primeiro, a definição de $d$ em abertos de $\mathbb{R}^n$ e as quatro propriedades: linearidade, regra do produto, $d\circ d=0$ e comutação com o pullback. Segundo, a passagem às variedades: $d$ existe e é <em>único</em> com essas
+                    propriedades, e é natural. Terceiro, a <em>fórmula invariante</em>, que escreve $d\omega(X,Y)$ em termos de campos e do colchete de Lie, as componentes de $d\omega$ e o dicionário do cálculo vetorial. Quarto, formas fechadas e exatas.
+                </p>
+
+                <p>
+                    Por que isto é necessário para chegar ao Teorema de Stokes? Porque $d$ é o operador do enunciado, $\int_Md\omega=\int_{\partial M}\omega$. As propriedades provadas aqui são exatamente as que a demonstração vai usar: a comutação com o pullback, $F^*d\omega=dF^*\omega$, permitirá
+                    calcular a integral de $d\omega$ em coordenadas, parametrização por parametrização (tópicos 3.17 e 3.18); a regra do produto fará o papel de integração por partes; e $d\circ d=0$ é a versão algébrica de "o bordo de um bordo é vazio".
+                </p>
+
+                <h2 id="d-em-rn">A derivada exterior em $\mathbb{R}^n$</h2>
+
+                <div class="definition-box" id="def-3-13-1" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.13.1 (Derivada exterior em um aberto de $\mathbb{R}^n$).</strong> Seja $U\subset\mathbb{R}^n$ aberto. Para $\omega=\sideset{}{'}\sum_I\omega_I\,dx^I\in\Omega^k(U)$, a
+                        <strong>derivada exterior</strong> de $\omega$ é a $(k+1)$-forma</p>
+                    <p>$$ d\omega=\sideset{}{'}\sum_Id\omega_I\wedge dx^I=\sideset{}{'}\sum_I\sum_{i=1}^n\frac{\partial\omega_I}{\partial x^i}\,dx^i\wedge dx^I. \tag{3.13.1} $$</p>
+                    <p>Para $k=0$, $d f=\frac{\partial f}{\partial x^i}\,dx^i$ é a diferencial do tópico 3.9 (<a href="[09] - Covetores e 1-Formas.html#prop-3-9-12">Proposição 3.9.12</a>).</p>
+                </div>
+
+                <p>
+                    A forma $d\omega$ é suave (seus coeficientes são derivadas de funções suaves) e é, de fato, uma $(k+1)$-forma: cada $dx^i\wedge dx^I$ é um produto exterior, que se reordena na base crescente. A mesma fórmula define $d$ em abertos de $\mathbb{H}^n$ (as cartas de bordo do tópico 3.16);
+                    nada do que segue muda.
+                </p>
+
+                <div class="definition-box" id="lema-3-13-2">
+                    <p><strong>Lema 3.13.2.</strong> Para toda função suave $f$ e todo multi-índice $I$, crescente ou não, $d(f\,dx^I)=df\wedge dx^I$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Se $I$ tem índice repetido, $dx^I=0$ (<a href="[11] - Produto Exterior.html#lema-3-11-12">Lema 3.11.12</a>(a)), e os dois lados são $0$. Se $I=J_\sigma$ com $J$ crescente e $\sigma\in S_k$, então $dx^I=(\operatorname{sgn}\sigma)\,dx^J$ (<a href="[11] - Produto Exterior.html#lema-3-11-12">Lema 3.11.12</a>(b)) e,
+                    por linearidade e pela definição (3.13.1), $d(f\,dx^I)=(\operatorname{sgn}\sigma)\,df\wedge dx^J=df\wedge dx^I$. $\blacksquare$
+                </p>
+
+                <p id="ex-3-13-3"><strong>Exemplo 3.13.3 (Dimensões $2$ e $3$).</strong> Em $\mathbb{R}^2$, para $\omega=P\,dx+Q\,dy$,
+                    $$ \begin{aligned}d\omega&=dP\wedge dx+dQ\wedge dy\\
+                    &=\partial_yP\,dy\wedge dx+\partial_xQ\,dx\wedge dy\\
+                    &=(\partial_xQ-\partial_yP)\,dx\wedge dy.\end{aligned} $$
+                    Em $\mathbb{R}^3$, com o dicionário do <a href="[12] - Formas Diferenciais.html#def-3-12-8">Definição 3.12.8</a> (campos $\mathbf{F}=(P,Q,R)$ e $\mathbf{G}=(A,B,C)$), as três derivadas do cálculo vetorial são $d$:</p>
+                <ul>
+                    <li><strong>Gradiente.</strong> $df=\partial_xf\,dx+\partial_yf\,dy+\partial_zf\,dz=\omega_{\operatorname{grad}f}$.</li>
+                    <li><strong>Rotacional.</strong> $$ \begin{aligned}d\omega_{\mathbf{F}}&=(\partial_yR-\partial_zQ)\,dy\wedge dz+(\partial_zP-\partial_xR)\,dz\wedge dx\\
+                        &\quad+(\partial_xQ-\partial_yP)\,dx\wedge dy=\Phi_{\operatorname{rot}\mathbf{F}},\end{aligned} $$ pois os coeficientes são as componentes de $\operatorname{rot}\mathbf{F}$ (o termo $dz\wedge dx$ vem de $\partial_zP\,dz\wedge dx$ e de $\partial_xR\,dx\wedge dz=-\partial_xR\,dz\wedge dx$).</li>
+                    <li><strong>Divergente.</strong> $$ \begin{aligned}d\Phi_{\mathbf{G}}&=\partial_xA\,dx\wedge dy\wedge dz+\partial_yB\,dy\wedge dz\wedge dx+\partial_zC\,dz\wedge dx\wedge dy\\
+                        &=(\operatorname{div}\mathbf{G})\,dx\wedge dy\wedge dz,\end{aligned} $$ porque
+                        $dy\wedge dz\wedge dx$ e $dz\wedge dx\wedge dy$ são permutações pares de $dx\wedge dy\wedge dz$, e as demais parcelas têm índice repetido.</li>
+                </ul>
+
+                <div class="definition-box" id="teo-3-13-4">
+                    <p><strong>Teorema 3.13.4 (Propriedades de $d$ em $\mathbb{R}^n$).</strong> Sejam $U\subset\mathbb{R}^n$ e $V\subset\mathbb{R}^m$ abertos.</p>
+                    <p>(a) $d:\Omega^k(U)\to\Omega^{k+1}(U)$ é linear sobre $\mathbb{R}$;</p>
+                    <p>(b) $d(\omega\wedge\eta)=d\omega\wedge\eta+(-1)^k\,\omega\wedge d\eta$ para $\omega\in\Omega^k(U)$;</p>
+                    <p>(c) $d\circ d=0$;</p>
+                    <p>(d) $F^*(d\omega)=d(F^*\omega)$ para toda $F: U\to V$ suave e $\omega\in\Omega^k(V)$ (com $n$ e $m$ possivelmente diferentes).</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) É imediato da (3.13.1). (b) Por (a) e bilinearidade de $\wedge$, basta $\omega=f\,dx^I$ e $\eta=g\,dx^J$, com multi-índices quaisquer (o Lema 3.13.2 permite). Então $\omega\wedge\eta=fg\,dx^{IJ}$, e, pelo Lema 3.13.2,
+                    $$ d(\omega\wedge\eta)=d(fg)\wedge dx^I\wedge dx^J=(g\,df+f\,dg)\wedge dx^I\wedge dx^J. $$
+                    O primeiro termo é $d\omega\wedge\eta=(df\wedge dx^I)\wedge g\,dx^J$. No segundo, $\omega\wedge d\eta=f\,dx^I\wedge dg\wedge dx^J$, e passar $dg$ por cima dos $k$ fatores de $dx^I$ custa $(-1)^k$ (<a href="[11] - Produto Exterior.html#teo-3-11-20">Teorema 3.11.20</a>(c)):
+                    $f\,dg\wedge dx^I\wedge dx^J=(-1)^k\,\omega\wedge d\eta$. (c) <em>Em funções:</em> $d(df)=d\big(\partial_jf\,dx^j\big)=\sum_{i,j}\partial_i\partial_jf\,dx^i\wedge dx^j=0$, porque $\partial_i\partial_jf$ é simétrico em $(i,j)$ (<a href="[02] - Preliminares de Topologia e Cálculo.html#teo-3-2-45">Teorema 3.2.45</a>) e $dx^i\wedge dx^j$ é
+                    antissimétrico. <em>Em coordenadas:</em> $d(dx^i)=d(d x^i)=0$ pelo caso das funções, e, por (b) e indução, $d(dx^I)=0$ para todo $I$. <em>Em geral:</em> para $\omega=f\,dx^I$, por (b) com $k=1$,
+                    $d(d\omega)=d(df\wedge dx^I)=d(df)\wedge dx^I-df\wedge d(dx^I)=0$. (d) <em>Em funções</em> é $F^*du=d(u\circ F)$ (<a href="[09] - Covetores e 1-Formas.html#prop-3-9-26">Proposição 3.9.26</a>(c)). <em>Em geral,</em> para $\omega=u\,dy^I$, a fórmula (3.12.4) dá
+                    $F^*\omega=(u\circ F)\,dF^{i_1}\wedge\dots\wedge dF^{i_k}$ com $dF^j=d(y^j\circ F)$, e, por (b) e (c) (que anula $d(dF^{i_1}\wedge\dots\wedge dF^{i_k})$),
+                    $$ \begin{aligned}d(F^*\omega)&=d(u\circ F)\wedge dF^{i_1}\wedge\dots\wedge dF^{i_k}\\
+                    &=F^*du\wedge F^*dy^I=F^*(du\wedge dy^I)=F^*(d\omega).\qquad\blacksquare\end{aligned} $$
+                </p>
+
+                <h2 id="d-em-variedades">A derivada exterior em variedades</h2>
+
+                <div class="definition-box" id="teo-3-13-5">
+                    <p><strong>Teorema 3.13.5 (Existência e unicidade de $d$).</strong> Em toda variedade suave $M$ existem operadores únicos $d:\Omega^k(M)\to\Omega^{k+1}(M)$, $k\ge0$, tais que:</p>
+                    <p>(i) $d$ é linear sobre $\mathbb{R}$;</p>
+                    <p>(ii) $d(\omega\wedge\eta)=d\omega\wedge\eta+(-1)^k\,\omega\wedge d\eta$ para $\omega\in\Omega^k(M)$;</p>
+                    <p>(iii) $d\circ d=0$;</p>
+                    <p>(iv) para $f\in\Omega^0(M)=C^\infty(M)$, $df$ é a diferencial do tópico 3.9 (<a href="[09] - Covetores e 1-Formas.html#def-3-9-9">Definição 3.9.9</a>).</p>
+                    <p>Em toda carta, $d$ é dado pela fórmula (3.13.1): $d\big(\sideset{}{'}\sum\omega_I\,dx^I\big)=\sideset{}{'}\sum d\omega_I\wedge dx^I$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> <strong>Existência.</strong> Seja $(U,\varphi)$ uma carta e $\omega\in\Omega^k(M)$. Como $\varphi: U\to\varphi(U)$ é um difeomorfismo, $\hat{\omega}=(\varphi^{-1})^*(\omega\vert_U)\in\Omega^k(\varphi(U))$ e podemos definir
+                    $$ d_\varphi\omega=\varphi^*\big(d\hat{\omega}\big)\in\Omega^{k+1}(U), $$
+                    com o $d$ do aberto $\varphi(U)\subset\mathbb{R}^n$ (Definição 3.13.1). <em>Independência da carta.</em> Seja $(V,\psi)$ outra carta e $\tau=\psi\circ\varphi^{-1}:\varphi(U\cap V)\to\psi(U\cap V)$ a transição, um difeomorfismo entre abertos de $\mathbb{R}^n$. Em $U\cap V$,
+                    $\psi=\tau\circ\varphi$ e $\psi^{-1}\circ\tau=\varphi^{-1}$. Pelo <a href="[12] - Formas Diferenciais.html#teo-3-12-12">Teorema 3.12.12</a>(d) e pelo Teorema 3.13.4(d),
+                    $$ \begin{aligned}d_\psi\omega&=\psi^*d\big((\psi^{-1})^*\omega\big)=\varphi^*\tau^*d\big((\psi^{-1})^*\omega\big)\\
+                    &=\varphi^*d\big(\tau^*(\psi^{-1})^*\omega\big)=\varphi^*d\big((\varphi^{-1})^*\omega\big)=d_\varphi\omega.\end{aligned} $$
+                    Assim as $d_\varphi\omega$ coincidem nas interseções e definem $d\omega\in\Omega^{k+1}(M)$, suave porque o é em cada carta. <em>Propriedades.</em> $\varphi^*$ e $(\varphi^{-1})^*$ são lineares, inversos um do outro e preservam $\wedge$ (<a href="[12] - Formas Diferenciais.html#teo-3-12-12">Teorema 3.12.12</a>); logo
+                    (i), (ii) e (iii) em $M$ vêm das de $\mathbb{R}^n$ (Teorema 3.13.4): por exemplo, $d_\varphi(d_\varphi\omega)=\varphi^*d\big((\varphi^{-1})^*\varphi^*d\hat{\omega}\big)=\varphi^*d(d\hat{\omega})=0$. Para (iv), $d_\varphi f=\varphi^*d(f\circ\varphi^{-1})=d\big((f\circ\varphi^{-1})\circ\varphi\big)=df$
+                    pela <a href="[09] - Covetores e 1-Formas.html#prop-3-9-26">Proposição 3.9.26</a>(c). A fórmula local: $\hat{\omega}=\sideset{}{'}\sum(\omega_I\circ\varphi^{-1})\,dx^I$, e $\varphi^*dx^i=dx^i$ (a coordenada $x^i$ da carta), de modo que $d_\varphi\omega=\sideset{}{'}\sum d\omega_I\wedge dx^I$.
+                </p>
+
+                <p>
+                    <strong>Unicidade.</strong> Seja $\tilde{d}$ um operador com (i)--(iv). <em>Passo 1 (localidade).</em> Se $\omega\equiv0$ em um aberto $U$, então $\tilde{d}\omega\equiv0$ em $U$. De fato, dado $p\in U$, tome um bump $\rho$ com $\rho\equiv1$ perto de $p$ e
+                    $\operatorname{supp}\rho\subset U$ (<a href="[04] - Funções e Aplicações Suaves.html#prop-3-4-29">Proposição 3.4.29</a>). Então $\rho\,\omega\equiv0$ em $M$ (em $U$, porque $\omega=0$; fora, porque $\rho=0$), e, por (i), (ii) e (iv),
+                    $$ 0=\tilde{d}(\rho\,\omega)=d\rho\wedge\omega+\rho\,\tilde{d}\omega. $$
+                    Em $p$, $\omega_p=0$ e $\rho(p)=1$, de modo que $(\tilde{d}\omega)_p=0$. <em>Passo 2 (a fórmula local).</em> Sejam $p\in M$, $\omega\in\Omega^k(M)$ e $(U,\varphi)$ uma carta em torno de $p$ com coordenadas $x^i$. Tome $\rho$ com $\rho\equiv1$ em uma vizinhança $W$ de $p$ e
+                    $\operatorname{supp}\rho\subset U$, e estenda as funções por zero: $\tilde{\omega}_I=\rho\,\omega_I$ e $\tilde{x}^i=\rho\,x^i$ são funções suaves em $M$. A forma global $\eta=\sideset{}{'}\sum\tilde{\omega}_I\,d\tilde{x}^{i_1}\wedge\dots\wedge d\tilde{x}^{i_k}$ coincide com $\omega$ em $W$, e, pelo Passo 1,
+                    $\tilde{d}\omega=\tilde{d}\eta$ em $W$. Por (ii), (iii) e (iv), $\tilde{d}(d\tilde{x}^i)=\tilde{d}(\tilde{d}\tilde{x}^i)=0$ e, por indução, $\tilde{d}(d\tilde{x}^{i_1}\wedge\dots\wedge d\tilde{x}^{i_k})=0$. Logo, por (i) e (ii),
+                    $$ \tilde{d}\eta=\sideset{}{'}\sum d\tilde{\omega}_I\wedge d\tilde{x}^{i_1}\wedge\dots\wedge d\tilde{x}^{i_k}, $$
+                    e, em $p$, as funções $\tilde{\omega}_I$ e $\tilde{x}^i$ coincidem com $\omega_I$ e $x^i$ perto de $p$, de modo que $(\tilde{d}\omega)_p=\big(\sideset{}{'}\sum d\omega_I\wedge dx^I\big)_p=(d\omega)_p$. Como $p$ é arbitrário, $\tilde{d}=d$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="cor-3-13-6">
+                    <p><strong>Corolário 3.13.6 ($d$ é um operador local).</strong> Se $U\subset M$ é aberto e $\omega\in\Omega^k(M)$, então $(d\omega)\vert_U=d(\omega\vert_U)$, em que o segundo $d$ é o da variedade $U$. Em particular, se $\omega\equiv0$ em $U$, então $d\omega\equiv0$ em $U$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> As cartas de $U$ são restrições de cartas de $M$, e nas duas variedades $d$ é dado pela mesma fórmula local (Teorema 3.13.5). $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="teo-3-13-7">
+                    <p><strong>Teorema 3.13.7 (Naturalidade de $d$).</strong> Para toda aplicação suave $F: M\to N$ e toda $\omega\in\Omega^k(N)$,
+                        $F^*(d\omega)=d(F^*\omega)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> A igualdade é local (Corolário 3.13.6). Dado $p\in M$, tome cartas $(U,\varphi)$ em torno de $p$ e $(V,\psi)$ em torno de $F(p)$ com $F(U)\subset V$, e seja $\hat{F}=\psi\circ F\circ\varphi^{-1}:\varphi(U)\to\psi(V)$, uma aplicação suave entre abertos de espaços euclidianos. Em $U$,
+                    $F=\psi^{-1}\circ\hat{F}\circ\varphi$, de modo que $F^*=\varphi^*\hat{F}^*(\psi^{-1})^*$ (<a href="[12] - Formas Diferenciais.html#teo-3-12-12">Teorema 3.12.12</a>(d)). Pela definição de $d$ em cartas, $(\psi^{-1})^*d\omega=d\big((\psi^{-1})^*\omega\big)$ em $\psi(V)$, e, pelo Teorema 3.13.4(d) para $\hat{F}$,
+                    $$ \begin{aligned}F^*(d\omega)&=\varphi^*\hat{F}^*d\big((\psi^{-1})^*\omega\big)\\
+                    &=\varphi^*d\big(\hat{F}^*(\psi^{-1})^*\omega\big)\\
+                    &=\varphi^*d\big((\varphi^{-1})^*F^*\omega\big)=d(F^*\omega),\end{aligned} $$
+                    em que a penúltima igualdade usa $\hat{F}^*(\psi^{-1})^*=(\varphi^{-1})^*F^*$ e a última, a definição de $d$ na carta $\varphi$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="cor-3-13-8">
+                    <p><strong>Corolário 3.13.8 (Restrição a subvariedades).</strong> Se $S\subset M$ é uma subvariedade mergulhada com inclusão $\iota$, então $d(\omega\vert_S)=(d\omega)\vert_S$, isto é, $d(\iota^*\omega)=\iota^*(d\omega)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> É o Teorema 3.13.7 com $F=\iota$. $\blacksquare$
+                </p>
+
+                <p id="obs-3-13-9"><strong>Observação 3.13.9 ($d$ não usa nada além da estrutura suave).</strong> A definição não envolveu métrica, conexão, orientação nem coordenadas preferidas: só a estrutura de variedade suave, por meio do pullback e do produto exterior.
+                    O Teorema 3.13.5 diz mais: $d$ é a <em>única</em> operação com essas propriedades, de modo que, se quisermos derivar formas "sem estrutura adicional", é isto ou nada. A naturalidade (Teorema 3.13.7) é a versão global de "$d$ não depende das coordenadas": os difeomorfismos
+                    são simetrias de $d$.</p>
+
+                <h2 id="formula-invariante">A fórmula invariante</h2>
+
+                <p>
+                    Em coordenadas, $d\omega$ foi definida por derivadas das componentes. Para $1$-formas há uma expressão que usa apenas campos vetoriais e o colchete de Lie, sem coordenadas, e que é a que, no tópico 3.10, apareceu como um tensor surpreendente.
+                </p>
+
+                <div class="definition-box" id="teo-3-13-10">
+                    <p><strong>Teorema 3.13.10 (Fórmula invariante para $1$-formas).</strong> Para $\omega\in\Omega^1(M)$ e $X,Y\in\mathfrak{X}(M)$,</p>
+                    <p>$$ d\omega(X,Y)=X\big(\omega(Y)\big)-Y\big(\omega(X)\big)-\omega\big([X,Y]\big). \tag{3.13.2} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> O lado direito é o tensor $\Delta_\omega(X,Y)$ do <a href="[10] - Álgebra Multilinear e Tensores.html#ex-3-10-33">Exemplo 3.10.33</a>, que é $C^\infty(M)$-bilinear e antissimétrico, e cujas componentes em uma carta são $(\Delta_\omega)_{ij}=\partial_i\omega_j-\partial_j\omega_i$. Por outro lado, em uma carta, com $\omega=\omega_j\,dx^j$,
+                    $d\omega=d\omega_j\wedge dx^j=\partial_i\omega_j\,dx^i\wedge dx^j$, e, como $(dx^k\wedge dx^l)(\partial_i,\partial_j)=\delta^k_i\delta^l_j-\delta^k_j\delta^l_i$ (<a href="[11] - Produto Exterior.html#teo-3-11-20">Teorema 3.11.20</a>(e)), as componentes de $d\omega$ são
+                    $d\omega(\partial_i,\partial_j)=\partial_i\omega_j-\partial_j\omega_i$. Os dois $2$-tensores covariantes suaves $d\omega$ e $\Delta_\omega$ têm as mesmas componentes em todas as cartas, e portanto são iguais: $d\omega(X,Y)=\Delta_\omega(X,Y)$ para todos $X,Y$. $\blacksquare$
+                </p>
+
+                <p>
+                    Uma verificação direta, que não usa o tópico 3.10: os dois lados de (3.13.2) são locais e $\mathbb{R}$-lineares em $\omega$, e toda $1$-forma é localmente uma soma de formas $u\,dv$. Para $\omega=u\,dv$, o lado esquerdo é
+                    $(du\wedge dv)(X,Y)=Xu\,Yv-Xv\,Yu$, e o direito, usando $\omega(Y)=u\,Yv$ e $\omega([X,Y])=u\,[X,Y]v=u\,(XYv-YXv)$, é
+                    $$ \begin{aligned}&X(u\,Yv)-Y(u\,Xv)-u\,(XYv-YXv)\\
+                    &\quad=Xu\,Yv+u\,XYv-Yu\,Xv-u\,YXv-u\,XYv+u\,YXv\\
+                    &\quad=Xu\,Yv-Yu\,Xv.\end{aligned} $$
+                </p>
+
+                <p id="obs-3-13-11"><strong>Observação 3.13.11 (A fórmula geral).</strong> Para $\omega\in\Omega^k(M)$ e $X_0,\dots,X_k\in\mathfrak{X}(M)$, vale, com a convenção do determinante,
+                    $$ \begin{aligned}&d\omega(X_0,\dots,X_k)\\
+                    &\quad=\sum_{i=0}^k(-1)^i\,X_i\Big(\omega\big(X_0,\dots,\widehat{X_i},\dots,X_k\big)\Big)\\
+                    &\qquad+\sum_{i\lt j}(-1)^{i+j}\,\omega\big([X_i,X_j],\dots,\widehat{X_i},\dots,\widehat{X_j},\dots\big),\end{aligned} \tag{3.13.3} $$
+                    em que o chapéu indica o argumento omitido. Para $k=0$ é $d\omega(X_0)=X_0\omega$ e, para $k=1$, é (3.13.2). A demonstração geral é o <a href="[14] - Fórmula de Cartan.html#teo-3-14-18">Teorema 3.14.18</a>, que sai da fórmula de Cartan (<a href="[14] - Fórmula de Cartan.html#teo-3-14-15">Teorema 3.14.15</a>); conferimos (3.13.3) para $k=2$ com sympy.</p>
+
+                <div class="definition-box" id="prop-3-13-12">
+                    <p><strong>Proposição 3.13.12 (Equações de estrutura).</strong> Seja $(E_1,\dots,E_n)$ um referencial local, com $[E_j,E_k]=c^i{}_{jk}\,E_i$ (as funções $c^i{}_{jk}$ são as <em>constantes de estrutura</em>, antissimétricas em $j,k$), e seja $(\varepsilon^1,\dots,\varepsilon^n)$ o correferencial dual (<a href="[09] - Covetores e 1-Formas.html#def-3-9-20">Definição 3.9.20</a>). Então</p>
+                    <p>$$ d\varepsilon^i=-\tfrac12\,c^i{}_{jk}\,\varepsilon^j\wedge\varepsilon^k. \tag{3.13.4} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Em cada ponto, uma $2$-forma é determinada por seus valores nos pares $(E_j,E_k)$. Por (3.13.2) (aplicada no aberto onde o referencial está definido, pelo Corolário 3.13.6), como $\varepsilon^i(E_k)$ é constante,
+                    $$ d\varepsilon^i(E_j,E_k)=E_j\big(\varepsilon^i(E_k)\big)-E_k\big(\varepsilon^i(E_j)\big)-\varepsilon^i([E_j,E_k])=0-0-c^i{}_{jk}. $$
+                    O lado direito de (3.13.4), pela fórmula do determinante (<a href="[11] - Produto Exterior.html#teo-3-11-20">Teorema 3.11.20</a>(e)), vale $-\tfrac12c^i{}_{lm}\big(\delta^l_j\delta^m_k-\delta^l_k\delta^m_j\big)=-\tfrac12\big(c^i{}_{jk}-c^i{}_{kj}\big)=-c^i{}_{jk}$. $\blacksquare$
+                </p>
+
+                <p id="ex-3-13-13"><strong>Exemplo 3.13.13 (O correferencial polar ortonormal).</strong> Em $\mathbb{R}^2$ menos uma semirreta, o referencial ortonormal polar é $E_1=E_r=\partial_r$ e $E_2=E_\theta=\frac1r\partial_\theta$ (<a href="[07] - Fibrado Tangente e Campos Vetoriais.html#ex-3-7-17">Exemplo 3.7.17</a>), com $[E_r,E_\theta]=-\frac1rE_\theta$ (<a href="[07] - Fibrado Tangente e Campos Vetoriais.html#ex-3-7-24">Exemplo 3.7.24</a>), isto é,
+                    $c^2{}_{12}=-\frac1r$ e as demais constantes de estrutura nulas. O correferencial dual é $\varepsilon^1=dr$ e $\varepsilon^2=r\,d\theta$. As equações de estrutura dão $d\varepsilon^1=0$ e
+                    $$ d\varepsilon^2=-\tfrac12\big(c^2{}_{12}\,\varepsilon^1\wedge\varepsilon^2+c^2{}_{21}\,\varepsilon^2\wedge\varepsilon^1\big)=-c^2{}_{12}\,\varepsilon^1\wedge\varepsilon^2=\frac1r\,\varepsilon^1\wedge\varepsilon^2. $$
+                    Conferência direta: $d(r\,d\theta)=dr\wedge d\theta=\frac1r\,dr\wedge(r\,d\theta)=\frac1r\,\varepsilon^1\wedge\varepsilon^2$. A "não comutatividade" do referencial, medida por $c^i{}_{jk}$, é a derivada exterior do correferencial: é o ponto de partida do
+                    <em>método das tétradas</em> de Cartan, usado na Relatividade Geral para calcular conexões e curvaturas sem coordenadas.</p>
+
+                <h2 id="componentes">Componentes e antissimetrização</h2>
+
+                <p>
+                    Nos livros de física, $d\omega$ aparece como uma antissimetrização de $\partial\omega$. Vejamos que é a mesma coisa. Para $T_{\mu_1\dots\mu_m}$ qualquer, denotamos a <em>antissimetrização</em> (com o fator $\tfrac1{m!}$, como na <a href="[11] - Produto Exterior.html#def-3-11-8">Definição 3.11.8</a>) por
+                    $$ T_{[\mu_1\dots\mu_m]}=\frac1{m!}\sum_{\sigma\in S_m}(\operatorname{sgn}\sigma)\,T_{\mu_{\sigma(1)}\dots\mu_{\sigma(m)}}. $$
+                </p>
+
+                <div class="definition-box" id="prop-3-13-14">
+                    <p><strong>Proposição 3.13.14 (Componentes de $d\omega$).</strong> Seja $\omega=\frac1{k!}\,\omega_{\mu_1\dots\mu_k}\,dx^{\mu_1}\wedge\dots\wedge dx^{\mu_k}$ (<a href="[12] - Formas Diferenciais.html#prop-3-12-6">Proposição 3.12.6</a>), com $\omega_{\mu_1\dots\mu_k}$ totalmente antissimétrico. Então
+                        $d\omega=\frac1{(k+1)!}(d\omega)_{\mu_0\dots\mu_k}\,dx^{\mu_0}\wedge\dots\wedge dx^{\mu_k}$, com</p>
+                    <p>$$ (d\omega)_{\mu_0\mu_1\dots\mu_k}=(k+1)\,\partial_{[\mu_0}\omega_{\mu_1\dots\mu_k]}. \tag{3.13.5} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pelo Lema 3.13.2 e pela linearidade, aplicados a cada parcela de (3.12.3),
+                    $d\omega=\frac1{k!}\,\partial_\mu\omega_{\nu_1\dots\nu_k}\,dx^\mu\wedge dx^{\nu_1}\wedge\dots\wedge dx^{\nu_k}$. Escreva $T_{\mu\nu_1\dots\nu_k}=\partial_\mu\omega_{\nu_1\dots\nu_k}$. Como $dx^\mu\wedge dx^{\nu_1}\wedge\dots\wedge dx^{\nu_k}$ é antissimétrico nos
+                    $k+1$ índices, só a parte antissimétrica de $T$ contribui (<a href="[11] - Produto Exterior.html#lema-3-11-12">Lema 3.11.12</a>(b)), e
+                    $$ \begin{aligned}d\omega&=\frac1{k!}\,T_{[\mu\nu_1\dots\nu_k]}\,dx^\mu\wedge dx^{\nu_1}\wedge\dots\wedge dx^{\nu_k}\\
+                    &=\frac1{(k+1)!}\,\big((k+1)\,T_{[\mu\nu_1\dots\nu_k]}\big)\,dx^\mu\wedge dx^{\nu_1}\wedge\dots\wedge dx^{\nu_k}.\end{aligned} $$
+                    Se uma $m$-forma se escreve como $\frac1{m!}A_{\mu_1\dots\mu_m}\,dx^{\mu_1}\wedge\dots\wedge dx^{\mu_m}$ com $A$ totalmente antissimétrico, então $A_{\mu_1\dots\mu_m}$ são as suas componentes: pela fórmula do determinante, $(dx^{\nu_1}\wedge\dots\wedge dx^{\nu_m})(\partial_{\mu_1},\dots,\partial_{\mu_m})=\det\big(\delta^{\nu_a}_{\mu_b}\big)=\sum_\sigma(\operatorname{sgn}\sigma)\prod_a\delta^{\nu_a}_{\mu_{\sigma(a)}}$,
+                    e $\frac1{m!}\sum_\sigma(\operatorname{sgn}\sigma)\,A_{\mu_{\sigma(1)}\dots\mu_{\sigma(m)}}=A_{\mu_1\dots\mu_m}$ pela antissimetria. Com $m=k+1$ e $A=(k+1)\,T_{[\dots]}$, isto é (3.13.5). $\blacksquare$
+                </p>
+
+                <p>
+                    <strong>Conferências.</strong> Para $k=1$, $(d\omega)_{\mu\nu}=2\,\partial_{[\mu}\omega_{\nu]}=\partial_\mu\omega_\nu-\partial_\nu\omega_\mu$, que são as componentes de $\Delta_\omega$ do <a href="[10] - Álgebra Multilinear e Tensores.html#ex-3-10-33">Exemplo 3.10.33</a> e de (3.13.2). Para $k=2$, como $\omega_{\nu\rho}$ é antissimétrico,
+                    $$ (d\omega)_{\mu\nu\rho}=3\,\partial_{[\mu}\omega_{\nu\rho]}=\partial_\mu\omega_{\nu\rho}+\partial_\nu\omega_{\rho\mu}+\partial_\rho\omega_{\mu\nu}, $$
+                    a soma cíclica, que é a forma da equação $\partial_{[\mu}F_{\nu\rho]}=0$ dos livros de física (<a href="#prop-3-13-14">Proposição 3.13.14</a> com $\omega=F$).
+                </p>
+
+                <div class="definition-box" id="prop-3-13-15">
+                    <p><strong>Proposição 3.13.15 (Por que a antissimetrização é necessária).</strong> Sejam $x^\mu$ e $\tilde{x}^\mu$ duas cartas e $\omega$ uma $1$-forma. Então</p>
+                    <p>$$ \tilde{\partial}_\mu\tilde{\omega}_\nu=\frac{\partial x^\alpha}{\partial\tilde{x}^\mu}\frac{\partial x^\beta}{\partial\tilde{x}^\nu}\,\partial_\alpha\omega_\beta+\frac{\partial^2x^\alpha}{\partial\tilde{x}^\mu\partial\tilde{x}^\nu}\,\omega_\alpha, \tag{3.13.6} $$</p>
+                    <p>e o último termo é simétrico em $(\mu,\nu)$. Logo $\partial_\mu\omega_\nu$ <em>não</em> é tensorial, mas $\partial_\mu\omega_\nu-\partial_\nu\omega_\mu$ é: $\tilde{\partial}_\mu\tilde{\omega}_\nu-\tilde{\partial}_\nu\tilde{\omega}_\mu=\frac{\partial x^\alpha}{\partial\tilde{x}^\mu}\frac{\partial x^\beta}{\partial\tilde{x}^\nu}\big(\partial_\alpha\omega_\beta-\partial_\beta\omega_\alpha\big)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Por (3.9.2), $\tilde{\omega}_\nu=\frac{\partial x^\beta}{\partial\tilde{x}^\nu}\,\omega_\beta$. Derivando em $\tilde{x}^\mu$ com a regra do produto e a regra da cadeia ($\tilde{\partial}_\mu=\frac{\partial x^\alpha}{\partial\tilde{x}^\mu}\partial_\alpha$ sobre $\omega_\beta$),
+                    $$ \tilde{\partial}_\mu\tilde{\omega}_\nu=\frac{\partial^2x^\beta}{\partial\tilde{x}^\mu\partial\tilde{x}^\nu}\,\omega_\beta+\frac{\partial x^\beta}{\partial\tilde{x}^\nu}\frac{\partial x^\alpha}{\partial\tilde{x}^\mu}\,\partial_\alpha\omega_\beta, $$
+                    que é (3.13.6) (renomeando índices). A derivada segunda é simétrica em $(\mu,\nu)$ (<a href="[02] - Preliminares de Topologia e Cálculo.html#teo-3-2-45">Teorema 3.2.45</a>), e, na diferença $\tilde{\partial}_\mu\tilde{\omega}_\nu-\tilde{\partial}_\nu\tilde{\omega}_\mu$, esse termo se cancela. $\blacksquare$
+                </p>
+
+                <p id="obs-3-13-16"><strong>Observação 3.13.16 (A única derivada de primeira ordem sem estrutura extra).</strong> A Proposição 3.13.15 é o mesmo fenômeno da <a href="[10] - Álgebra Multilinear e Tensores.html#obs-3-10-34">Observação 3.10.34</a>: derivar componentes não é uma operação tensorial, porque a lei de transformação introduz a derivada da jacobiana. A antissimetrização elimina exatamente esse termo
+                    em formas, e é por isso que $d$ existe sem conexão. Para derivar tensores gerais é preciso uma conexão (capítulo posterior); para derivar ao longo de um campo, a derivada de Lie (<a href="[14] - Fórmula de Cartan.html#def-3-14-1">Definição 3.14.1</a>), que, em formas, é expressa por $d$ e $i_X$ (<a href="[14] - Fórmula de Cartan.html#teo-3-14-15">Teorema 3.14.15</a>).</p>
+
+                <h2 id="calculo-vetorial">Gradiente, rotacional e divergente como $d$</h2>
+
+                <p>
+                    O Exemplo 3.13.3 mostrou que, pelo dicionário do <a href="[12] - Formas Diferenciais.html#def-3-12-8">Definição 3.12.8</a>, o gradiente, o rotacional e o divergente são $d$ em graus $0$, $1$ e $2$. Isto é o diagrama da Figura 3.13.1, em que as setas verticais são as identificações do dicionário (isomorfismos de
+                    $C^\infty(\mathbb{R}^3)$-módulos, <a href="[12] - Formas Diferenciais.html#prop-3-12-9">Proposição 3.12.9</a>(a)) e cada quadrado comuta, pelas três identidades do exemplo.
+                </p>
+
+                <figure class="lecture-figure" id="fig-3-13-1" style="overflow-x: auto; overflow-y: hidden;">
+                    <svg viewBox="0 0 640 300" role="img" style="min-width: 560px;" aria-label="Um diagrama com duas fileiras de quatro caixas. Na fileira de cima: formas de grau zero, um, dois e três em R3, ligadas da esquerda para a direita por três setas rotuladas d. Na fileira de baixo: funções, campos, campos e funções, ligadas por setas rotuladas gradiente, rotacional e divergente. Setas verticais, de baixo para cima, ligam cada caixa de baixo à de cima e representam o dicionário: f vai em f, o campo F vai na forma de trabalho, o campo G vai na forma de fluxo e a função h vai em h dV. A legenda diz que d composto com d é zero equivale a rotacional do gradiente zero e divergente do rotacional zero.">
+<defs><marker id="arr-3-13-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<rect x="14" y="16" width="612" height="272" rx="3" class="fig-frame"/>
+<rect x="18" y="70" width="112" height="46" rx="6" class="fig-shape"/>
+<text x="74" y="98" text-anchor="middle" class="fig-label">Ω⁰(ℝ³)</text>
+<rect x="18" y="214" width="112" height="46" rx="6" class="fig-shape"/>
+<text x="74" y="242" text-anchor="middle" class="fig-label">funções</text>
+<line x1="74" y1="212" x2="74" y2="122" class="fig-axis" marker-end="url(#arr-3-13-1)"/>
+<text x="65" y="169" text-anchor="end" class="fig-label fig-small fig-it">f ↦ f</text>
+<rect x="182" y="70" width="112" height="46" rx="6" class="fig-shape"/>
+<text x="238" y="98" text-anchor="middle" class="fig-label">Ω¹(ℝ³)</text>
+<rect x="182" y="214" width="112" height="46" rx="6" class="fig-shape"/>
+<text x="238" y="242" text-anchor="middle" class="fig-label">campos</text>
+<line x1="238" y1="212" x2="238" y2="122" class="fig-axis" marker-end="url(#arr-3-13-1)"/>
+<text x="229" y="169" text-anchor="end" class="fig-label fig-small fig-it">F ↦ ω_F</text>
+<rect x="346" y="70" width="112" height="46" rx="6" class="fig-shape"/>
+<text x="402" y="98" text-anchor="middle" class="fig-label">Ω²(ℝ³)</text>
+<rect x="346" y="214" width="112" height="46" rx="6" class="fig-shape"/>
+<text x="402" y="242" text-anchor="middle" class="fig-label">campos</text>
+<line x1="402" y1="212" x2="402" y2="122" class="fig-axis" marker-end="url(#arr-3-13-1)"/>
+<text x="393" y="169" text-anchor="end" class="fig-label fig-small fig-it">G ↦ Φ_G</text>
+<rect x="510" y="70" width="112" height="46" rx="6" class="fig-shape"/>
+<text x="566" y="98" text-anchor="middle" class="fig-label">Ω³(ℝ³)</text>
+<rect x="510" y="214" width="112" height="46" rx="6" class="fig-shape"/>
+<text x="566" y="242" text-anchor="middle" class="fig-label">funções</text>
+<line x1="566" y1="212" x2="566" y2="122" class="fig-axis" marker-end="url(#arr-3-13-1)"/>
+<text x="557" y="169" text-anchor="end" class="fig-label fig-small fig-it">h ↦ h dV</text>
+<line x1="133" y1="93" x2="175" y2="93" class="fig-axis" marker-end="url(#arr-3-13-1)"/>
+<text x="154" y="83" text-anchor="middle" class="fig-label fig-it">d</text>
+<line x1="133" y1="237" x2="175" y2="237" class="fig-axis" marker-end="url(#arr-3-13-1)"/>
+<text x="154" y="227" text-anchor="middle" class="fig-label fig-it">grad</text>
+<line x1="297" y1="93" x2="339" y2="93" class="fig-axis" marker-end="url(#arr-3-13-1)"/>
+<text x="318" y="83" text-anchor="middle" class="fig-label fig-it">d</text>
+<line x1="297" y1="237" x2="339" y2="237" class="fig-axis" marker-end="url(#arr-3-13-1)"/>
+<text x="318" y="227" text-anchor="middle" class="fig-label fig-it">rot</text>
+<line x1="461" y1="93" x2="503" y2="93" class="fig-axis" marker-end="url(#arr-3-13-1)"/>
+<text x="482" y="83" text-anchor="middle" class="fig-label fig-it">d</text>
+<line x1="461" y1="237" x2="503" y2="237" class="fig-axis" marker-end="url(#arr-3-13-1)"/>
+<text x="482" y="227" text-anchor="middle" class="fig-label fig-it">div</text>
+<text x="320" y="276" text-anchor="middle" class="fig-label fig-small">d ∘ d = 0  ⇔  rot grad = 0 e div rot = 0</text>
+</svg>
+                    <figcaption><strong>Figura 3.13.1.</strong> O diagrama comutativo de $\mathbb{R}^3$. Em cima, a derivada exterior $d:\Omega^0\to\Omega^1\to\Omega^2\to\Omega^3$; embaixo, o gradiente, o rotacional e o divergente; as setas verticais são o dicionário
+                        $f\mapsto f$, $\mathbf{F}\mapsto\omega_{\mathbf{F}}$, $\mathbf{G}\mapsto\Phi_{\mathbf{G}}$, $h\mapsto h\,dV$. A identidade $d\circ d=0$ de cima é, vista embaixo, $\operatorname{rot}\operatorname{grad}=0$ e $\operatorname{div}\operatorname{rot}=0$.</figcaption>
+                </figure>
+
+                <div class="definition-box" id="cor-3-13-17">
+                    <p><strong>Corolário 3.13.17 (Identidades do cálculo vetorial).</strong> Para $f$ e $\mathbf{F}$ suaves em $\mathbb{R}^3$, $\operatorname{rot}\operatorname{grad}f=0$ e $\operatorname{div}\operatorname{rot}\mathbf{F}=0$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pelo Exemplo 3.13.3, $df=\omega_{\operatorname{grad}f}$ e $d\omega_{\mathbf{F}}=\Phi_{\operatorname{rot}\mathbf{F}}$, de modo que $0=d(df)=d\omega_{\operatorname{grad}f}=\Phi_{\operatorname{rot}\operatorname{grad}f}$, e $\mathbf{G}\mapsto\Phi_{\mathbf{G}}$ é injetiva:
+                    $\operatorname{rot}\operatorname{grad}f=0$. Do mesmo modo, $0=d(d\omega_{\mathbf{F}})=d\Phi_{\operatorname{rot}\mathbf{F}}=(\operatorname{div}\operatorname{rot}\mathbf{F})\,dx\wedge dy\wedge dz$ dá $\operatorname{div}\operatorname{rot}\mathbf{F}=0$. $\blacksquare$
+                </p>
+
+                <p id="obs-3-13-18"><strong>Observação 3.13.18 (Em outras dimensões).</strong> Em $\mathbb{R}^2$ há só dois quadrados: $f\mapsto\omega_{\operatorname{grad}f}$ e $\omega_{(P,Q)}\mapsto(\partial_xQ-\partial_yP)\,dx\wedge dy$, o "rotacional escalar". Em dimensão $n$ qualquer, a derivada de uma $1$-forma é uma $2$-forma, com $\binom n2$ componentes; ela só tem
+                    $n$ componentes, isto é, só pode ser escrita como um campo, se $\binom n2=n$, ou seja, $n=3$ (<a href="[11] - Produto Exterior.html#obs-3-11-31">Observação 3.11.31</a>). O "rotacional como campo" é um acidente da dimensão $3$; $d$ é a noção geral. Do mesmo modo, o divergente generaliza-se como $d$ de uma $(n-1)$-forma, que tem $n$ componentes em qualquer dimensão.</p>
+
+                <h2 id="fechadas-exatas">Formas fechadas e exatas</h2>
+
+                <div class="definition-box" id="def-3-13-19" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.13.19 (Fechada e exata).</strong> Uma forma $\omega\in\Omega^k(M)$ é <strong>fechada</strong> se $d\omega=0$, e <strong>exata</strong> se $\omega=d\eta$ para alguma $\eta\in\Omega^{k-1}(M)$ (um <strong>potencial</strong> de $\omega$). Para $k=0$, "exata" não tem sentido, e uma $0$-forma é fechada se, e só se, é localmente constante.</p>
+                </div>
+
+                <div class="definition-box" id="prop-3-13-20">
+                    <p><strong>Proposição 3.13.20 (Propriedades).</strong> (a) Toda forma exata é fechada. (b) Para $k=1$, as noções de fechada e de exata coincidem com as das <a href="[09] - Covetores e 1-Formas.html#def-3-9-40">Definição 3.9.40</a> e <a href="[09] - Covetores e 1-Formas.html#def-3-9-36">Definição 3.9.36</a>. (c) Toda $n$-forma em uma variedade de dimensão $n$ é fechada. (d) Se $F: M\to N$ é suave e
+                        $\omega\in\Omega^k(N)$ é fechada (resp. exata), então $F^*\omega$ é fechada (resp. exata). (e) Se $\omega$ é fechada e $\eta$ é exata, então $\omega\wedge\eta$ é exata.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) $d(d\eta)=0$. (b) Para $\omega=\omega_i\,dx^i$, $d\omega=\sum_{i\lt j}(\partial_i\omega_j-\partial_j\omega_i)\,dx^i\wedge dx^j$, que é nula se, e só se, vale a (3.9.6); a exatidão é a mesma nos dois tópicos, pois $d$ em $0$-formas é a diferencial.
+                    (c) $d\omega$ seria uma $(n+1)$-forma, e $\Omega^{n+1}(M)=0$. (d) Pelo Teorema 3.13.7, $d(F^*\omega)=F^*d\omega=0$, e $F^*(d\eta)=d(F^*\eta)$. (e) Se $\omega\in\Omega^k(M)$ é fechada e $\eta=d\zeta$, então
+                    $d(\omega\wedge\zeta)=d\omega\wedge\zeta+(-1)^k\omega\wedge d\zeta=(-1)^k\,\omega\wedge\eta$, de modo que $\omega\wedge\eta=d\big((-1)^k\omega\wedge\zeta\big)$. $\blacksquare$
+                </p>
+
+                <p id="ex-3-13-21"><strong>Exemplo 3.13.21 (Fechadas que não são exatas).</strong></p>
+                <ul>
+                    <li>Em $\mathbb{R}^2\setminus\{0\}$, $\omega=\dfrac{x\,dy-y\,dx}{x^2+y^2}=d\theta$ é fechada, pelo cálculo do <a href="[09] - Covetores e 1-Formas.html#ex-3-9-42">Exemplo 3.9.42</a>: $\partial_x\omega_y=\partial_y\omega_x$. E não é exata, porque $\int_\gamma\omega=2\pi\neq0$ ao longo do círculo (<a href="[09] - Covetores e 1-Formas.html#teo-3-9-39">Teorema 3.9.39</a>). A Figura 3.13.2 mostra a ideia:
+                        a integral depende de o laço envolver ou não a origem.</li>
+                    <li>Em $\mathbb{R}^3\setminus\{0\}$, com $\rho=\sqrt{x^2+y^2+z^2}$, a $2$-forma
+                        $$ \omega=\frac{x\,dy\wedge dz+y\,dz\wedge dx+z\,dx\wedge dy}{\rho^3}=\Phi_{\mathbf{G}},\qquad\mathbf{G}=\frac{(x,y,z)}{\rho^3}, $$
+                        é fechada: pelo Exemplo 3.13.3, $d\omega=(\operatorname{div}\mathbf{G})\,dx\wedge dy\wedge dz$, e $\partial_x\big(x/\rho^3\big)=\frac1{\rho^3}-\frac{3x^2}{\rho^5}$ e as análogas em $y$ e $z$ somam $\frac3{\rho^3}-\frac{3\rho^2}{\rho^5}=0$. Que não é exata será provado no tópico 3.18, com o Teorema
+                        de Stokes: restrita à esfera unitária, $\omega$ é a forma de área $\sin\theta\,d\theta\wedge d\phi$ (<a href="[12] - Formas Diferenciais.html#ex-3-12-19">Exemplo 3.12.19</a>), de integral $4\pi\neq0$, enquanto a integral de uma forma exata sobre uma superfície fechada é $0$. É o campo coulombiano, $\mathbf{G}=\hat{\mathbf{r}}/\rho^2$.</li>
+                </ul>
+
+                <figure class="lecture-figure" id="fig-3-13-2" style="overflow-x: auto; overflow-y: hidden;">
+                    <svg viewBox="0 0 640 300" role="img" style="min-width: 560px;" aria-label="O plano menos a origem, com muitas semirretas saindo da origem em ângulos de quinze graus, que são os níveis do ângulo teta. Dois laços orientados no sentido anti-horário: um círculo em torno da origem, rotulado gama, e um laço pequeno que não envolve a origem, rotulado sigma. Ao longo de gama a integral de d teta é dois pi, e ao longo de sigma é zero. O texto ao lado diz que d teta é fechada mas não exata, pois se fosse a diferencial de uma função a integral ao longo de gama seria zero.">
+<defs><marker id="arr-3-13-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<rect x="14" y="16" width="612" height="272" rx="3" class="fig-frame"/>
+<line x1="216.2" y1="152" x2="324.7" y2="152" class="fig-guide"/>
+<line x1="215.7" y1="147.8" x2="320.5" y2="119.7" class="fig-guide"/>
+<line x1="214.1" y1="143.9" x2="308" y2="89.7" class="fig-guide"/>
+<line x1="211.5" y1="140.5" x2="288.2" y2="63.8" class="fig-guide"/>
+<line x1="208.1" y1="137.9" x2="262.4" y2="44" class="fig-guide"/>
+<line x1="204.2" y1="136.3" x2="232.3" y2="31.5" class="fig-guide"/>
+<line x1="200" y1="135.8" x2="200" y2="27.3" class="fig-guide"/>
+<line x1="195.8" y1="136.3" x2="167.7" y2="31.5" class="fig-guide"/>
+<line x1="191.9" y1="137.9" x2="137.7" y2="44" class="fig-guide"/>
+<line x1="188.5" y1="140.5" x2="111.8" y2="63.8" class="fig-guide"/>
+<line x1="185.9" y1="143.9" x2="92" y2="89.7" class="fig-guide"/>
+<line x1="184.3" y1="147.8" x2="79.5" y2="119.7" class="fig-guide"/>
+<line x1="183.8" y1="152" x2="75.3" y2="152" class="fig-guide"/>
+<line x1="184.3" y1="156.2" x2="79.5" y2="184.3" class="fig-guide"/>
+<line x1="185.9" y1="160.1" x2="92" y2="214.4" class="fig-guide"/>
+<line x1="188.5" y1="163.5" x2="111.8" y2="240.2" class="fig-guide"/>
+<line x1="191.9" y1="166.1" x2="137.6" y2="260" class="fig-guide"/>
+<line x1="195.8" y1="167.7" x2="167.7" y2="272.5" class="fig-guide"/>
+<line x1="200" y1="168.2" x2="200" y2="276.7" class="fig-guide"/>
+<line x1="204.2" y1="167.7" x2="232.3" y2="272.5" class="fig-guide"/>
+<line x1="208.1" y1="166.1" x2="262.4" y2="260" class="fig-guide"/>
+<line x1="211.5" y1="163.5" x2="288.2" y2="240.2" class="fig-guide"/>
+<line x1="214.1" y1="160.1" x2="308" y2="214.4" class="fig-guide"/>
+<line x1="215.7" y1="156.2" x2="320.5" y2="184.3" class="fig-guide"/>
+<circle cx="200" cy="152" r="3" class="fig-arrowhead"/>
+<text x="330.7" y="156" class="fig-label fig-small fig-it">θ = const.</text>
+<path d="M258,152 L257.8,147.4 L257.3,142.9 L256.4,138.5 L255.2,134.1 L253.6,129.8 L251.7,125.7 L249.5,121.7 L246.9,117.9 L244.1,114.3 L241,111 L237.7,107.9 L234.1,105.1 L230.3,102.5 L226.3,100.3 L222.2,98.4 L217.9,96.8 L213.5,95.6 L209.1,94.7 L204.6,94.2 L200,94 L195.4,94.2 L190.9,94.7 L186.5,95.6 L182.1,96.8 L177.8,98.4 L173.7,100.3 L169.7,102.5 L165.9,105.1 L162.3,107.9 L159,111 L155.9,114.3 L153.1,117.9 L150.5,121.7 L148.3,125.7 L146.4,129.8 L144.8,134.1 L143.6,138.5 L142.7,142.9 L142.2,147.4 L142,152 L142.2,156.6 L142.7,161.1 L143.6,165.5 L144.8,169.9 L146.4,174.2 L148.3,178.3 L150.5,182.3 L153.1,186.1 L155.9,189.7 L159,193 L162.3,196.1 L165.9,198.9 L169.7,201.5 L173.7,203.7 L177.8,205.6 L182.1,207.2 L186.5,208.4 L190.9,209.3 L195.4,209.8 L200,210 L204.6,209.8 L209.1,209.3 L213.5,208.4 L217.9,207.2 L222.2,205.6 L226.3,203.7 L230.3,201.5 L234.1,198.9 L237.7,196.1 L241,193 L244.1,189.7 L246.9,186.1 L249.5,182.3 L251.7,178.3 L253.6,174.2 L255.2,169.9 L256.4,165.5 L257.3,161.1 L257.8,156.6 L258,152" class="fig-curve" style="stroke-width: 2.5;"/>
+<line x1="198.6" y1="94" x2="189.9" y2="94.9" class="fig-curve" marker-end="url(#arr-3-13-2)"/>
+<path d="M311.9,96.9 L311.9,95.2 L311.7,93.5 L311.3,91.8 L310.9,90.1 L310.3,88.5 L309.5,86.9 L308.7,85.4 L307.7,83.9 L306.7,82.6 L305.5,81.3 L304.2,80.1 L302.9,79.1 L301.4,78.1 L299.9,77.3 L298.3,76.5 L296.7,75.9 L295,75.5 L293.3,75.1 L291.6,74.9 L289.9,74.9 L288.2,74.9 L286.5,75.1 L284.8,75.5 L283.1,75.9 L281.5,76.5 L279.9,77.3 L278.4,78.1 L276.9,79.1 L275.6,80.1 L274.3,81.3 L273.1,82.6 L272.1,83.9 L271.1,85.4 L270.3,86.9 L269.5,88.5 L268.9,90.1 L268.5,91.8 L268.1,93.5 L267.9,95.2 L267.9,96.9 L267.9,98.6 L268.1,100.3 L268.5,102 L268.9,103.7 L269.5,105.3 L270.3,106.9 L271.1,108.4 L272.1,109.9 L273.1,111.2 L274.3,112.5 L275.6,113.7 L276.9,114.7 L278.4,115.7 L279.9,116.5 L281.5,117.3 L283.1,117.9 L284.8,118.3 L286.5,118.7 L288.2,118.9 L289.9,118.9 L291.6,118.9 L293.3,118.7 L295,118.3 L296.7,117.9 L298.3,117.3 L299.9,116.5 L301.4,115.7 L302.9,114.7 L304.2,113.7 L305.5,112.5 L306.7,111.2 L307.7,109.9 L308.7,108.4 L309.5,106.9 L310.3,105.3 L310.9,103.7 L311.3,102 L311.7,100.3 L311.9,98.6 L311.9,96.9" class="fig-curve" style="stroke-width: 2.5;"/>
+<line x1="289.4" y1="74.9" x2="286.1" y2="75.2" class="fig-curve" marker-end="url(#arr-3-13-2)"/>
+<text x="139.1" y="89.4" text-anchor="end" class="fig-label fig-it">γ</text>
+<text x="316" y="76.6" class="fig-label fig-it">σ</text>
+<text x="420" y="70" class="fig-label fig-small">dθ é fechada: d(dθ) = 0.</text>
+<text x="420" y="108" class="fig-label fig-small">Ao longo de γ (que dá uma volta</text>
+<text x="420" y="126" class="fig-label fig-small">em torno da origem):</text>
+<text x="420" y="150" class="fig-label fig-it">∫ dθ = 2π ≠ 0.</text>
+<text x="420" y="188" class="fig-label fig-small">Ao longo de σ (que não envolve</text>
+<text x="420" y="206" class="fig-label fig-small">a origem): ∫ dθ = 0.</text>
+<text x="420" y="244" class="fig-label fig-small">Se dθ fosse exata, df, a integral</text>
+<text x="420" y="262" class="fig-label fig-small">em γ seria 0. Logo, não é exata.</text>
+</svg>
+                    <figcaption><strong>Figura 3.13.2.</strong> A $1$-forma $d\theta$ em $\mathbb{R}^2\setminus\{0\}$, desenhada pelos seus níveis, as semirretas $\theta=\text{const}$. Ao longo do laço $\gamma$, que envolve a origem, $\int_\gamma d\theta=2\pi$; ao longo de $\sigma$, que não a envolve,
+                        $\int_\sigma d\theta=0$. Uma forma exata $df$ teria integral $0$ em todo laço (<a href="[09] - Covetores e 1-Formas.html#teo-3-9-34">Teorema 3.9.34</a>): $d\theta$ é fechada, mas não exata.</figcaption>
+                </figure>
+
+                <div class="definition-box" id="teo-3-13-22">
+                    <p><strong>Teorema 3.13.22 (Lema de Poincaré; enunciado, sem prova).</strong> Em um aberto estrelado de $\mathbb{R}^n$, toda forma fechada de grau $k\ge1$ é exata. Em consequência, em toda variedade, toda forma fechada é <em>localmente</em> exata.</p>
+                </div>
+
+                <p>
+                    O caso $k=1$ foi provado na <a href="[09] - Covetores e 1-Formas.html#prop-3-9-43">Proposição 3.9.43</a> e no <a href="[09] - Covetores e 1-Formas.html#cor-3-9-44">Corolário 3.9.44</a>, com o potencial (3.9.7); o caso geral usa a mesma ideia, uma integral ao longo dos raios por $0$, mas fica fora do escopo deste capítulo (referências: Lee, <em>Introduction to Smooth Manifolds</em>, capítulo 17; Spivak, <em>Calculus on Manifolds</em>, capítulo 4). Nada no restante do capítulo, incluindo a demonstração de Stokes, depende deste lema.
+                </p>
+
+                <p id="obs-3-13-23"><strong>Observação 3.13.23 (Cohomologia de de Rham).</strong> O espaço quociente $H^k_{\mathrm{dR}}(M)=\{\text{fechadas de grau }k\}/\{\text{exatas}\}$ mede a diferença entre fechada e exata, e detecta "buracos" da variedade: $H^1_{\mathrm{dR}}(\mathbb{R}^2\setminus\{0\})\neq0$ (por causa de $d\theta$), e $H^2_{\mathrm{dR}}(\mathbb{R}^3\setminus\{0\})\neq0$
+                    (por causa da forma do monopolo). Está fora do escopo deste capítulo (Lee, capítulo 17).</p>
+
+                <h2 id="fisica">Ponte com a física</h2>
+
+                <p>
+                    <strong>Potenciais em $\mathbb{R}^3$.</strong> Se $\mathbf{B}=\operatorname{rot}\mathbf{A}$, então $\operatorname{div}\mathbf{B}=0$, pelo Corolário 3.13.17: $\Phi_{\mathbf{B}}=d\omega_{\mathbf{A}}$ é exata, logo fechada. Se $\mathbf{E}=-\operatorname{grad}\phi$ (caso estático), então $\operatorname{rot}\mathbf{E}=0$:
+                    $\omega_{\mathbf{E}}=-d\phi$ é exata, logo fechada. As duas implicações são o mesmo fato, $d\circ d=0$, e a recíproca local de cada uma é o lema de Poincaré (<a href="#teo-3-13-22">Teorema 3.13.22</a>).
+                </p>
+
+                <p>
+                    <strong>As equações de Maxwell homogêneas são uma só.</strong> No espaço-tempo com coordenadas $(t,x,y,z)$, assinatura $(-,+,+,+)$ e $c=1$, seja $A=-\phi\,dt+A_x\,dx+A_y\,dy+A_z\,dz$ o potencial. Então $F=dA$ é a $2$-forma de Faraday do tópico 3.12,
+                    $$ \begin{aligned}F&=E_x\,dx\wedge dt+E_y\,dy\wedge dt+E_z\,dz\wedge dt\\
+                    &\quad+B_x\,dy\wedge dz+B_y\,dz\wedge dx+B_z\,dx\wedge dy,\end{aligned} $$
+                    com $\mathbf{E}=-\nabla\phi-\partial_t\mathbf{A}$ e $\mathbf{B}=\nabla\times\mathbf{A}$ (os sinais, $F_{0i}=-E_i$ e $F_{ij}=\epsilon_{ijk}B_k$, foram conferidos com sympy), e $dF=d(dA)=0$ automaticamente. Para expandir $dF=0$, calculamos $d$ de cada parcela. Por exemplo,
+                    $$ \begin{aligned}d(E_x\,dx\wedge dt)&=\big(\partial_yE_x\,dy+\partial_zE_x\,dz\big)\wedge dx\wedge dt\\
+                    &=-\partial_yE_x\,dt\wedge dx\wedge dy+\partial_zE_x\,dt\wedge dz\wedge dx,\end{aligned} $$
+                    porque $dt\wedge dx\wedge dt=0$, $dy\wedge dx\wedge dt=-dt\wedge dx\wedge dy$ e $dz\wedge dx\wedge dt=dt\wedge dz\wedge dx$ (a primeira é uma transposição; a segunda, uma permutação cíclica). Do mesmo modo para $E_y$ e $E_z$, e
+                    $d(B_x\,dy\wedge dz)=\partial_tB_x\,dt\wedge dy\wedge dz+\partial_xB_x\,dx\wedge dy\wedge dz$, e análogas para $B_y,B_z$. Reunindo os termos,
+                    $$ dF=(\operatorname{div}\mathbf{B})\,dx\wedge dy\wedge dz+dt\wedge\Phi_{\operatorname{rot}\mathbf{E}+\partial_t\mathbf{B}}, $$
+                    isto é, o coeficiente de $dx\wedge dy\wedge dz$ é $\operatorname{div}\mathbf{B}$ e os de $dt\wedge dy\wedge dz$, $dt\wedge dz\wedge dx$ e $dt\wedge dx\wedge dy$ são as componentes $x$, $y$ e $z$ de $\operatorname{rot}\mathbf{E}+\partial_t\mathbf{B}$. Logo
+                    $$ dF=0\quad\Longleftrightarrow\quad\operatorname{div}\mathbf{B}=0\quad\text{e}\quad\operatorname{rot}\mathbf{E}+\partial_t\mathbf{B}=0, $$
+                    as duas equações de Maxwell homogêneas (a lei de Gauss magnética e a lei de Faraday) são uma única equação, $dF=0$ (conferida por extenso com sympy, incluindo os sinais). Em notação de índices, é $\partial_{[\mu}F_{\nu\rho]}=0$ (Proposição 3.13.14).
+                </p>
+
+                <p>
+                    <strong>Invariância de calibre.</strong> Se $A\mapsto A+d\lambda$ para uma função $\lambda$, então $F\mapsto F+d(d\lambda)=F$: o campo não muda, porque $d\circ d=0$. O potencial $A$ é definido só a menos de uma $1$-forma exata, que é a liberdade de calibre.
+                </p>
+
+                <p>
+                    <strong>Carga pontual.</strong> A $2$-forma fechada e não exata de $\mathbb{R}^3\setminus\{0\}$ do Exemplo 3.13.21 é a forma de fluxo do campo coulombiano $\hat{\mathbf{r}}/\rho^2$ (para o campo magnético, de um monopolo). Que é fechada é a lei de Gauss fora da carga, $\operatorname{div}\mathbf{E}=0$;
+                    que não é exata é o fato de que o fluxo através de uma esfera em torno da carga é $\neq0$. Não existe $\mathbf{A}$ com $\mathbf{B}=\operatorname{rot}\mathbf{A}$ em toda a região exterior a um monopolo.
+                </p>
+
+                <p>
+                    <strong>Termodinâmica.</strong> Sendo $U(S,V)$ a energia interna, $dU=T\,dS-P\,dV$, com $T=\partial U/\partial S$ e $P=-\partial U/\partial V$. De $d(dU)=0$ segue $dT\wedge dS-dP\wedge dV=0$, isto é, $dT\wedge dS=dP\wedge dV$. Em coordenadas $(S,V)$,
+                    $dT\wedge dS=\big(\tfrac{\partial T}{\partial V}\big)_S\,dV\wedge dS$ e $dP\wedge dV=\big(\tfrac{\partial P}{\partial S}\big)_V\,dS\wedge dV=-\big(\tfrac{\partial P}{\partial S}\big)_V\,dV\wedge dS$, o que dá a relação de Maxwell
+                    $\big(\tfrac{\partial T}{\partial V}\big)_S=-\big(\tfrac{\partial P}{\partial S}\big)_V$ (Exercício 3.13.8).
+                </p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p id="exr-3-13-1"><strong>Exercício 3.13.1.</strong> Calcule $d\omega$ para $\omega=x^2y\,dx+xz\,dy+yz^2\,dz$.</p>
+
+                <p>
+                    <em>Solução.</em> Com $P=x^2y$, $Q=xz$ e $R=yz^2$, pelo Exemplo 3.13.3 os coeficientes de $dy\wedge dz$, $dz\wedge dx$ e $dx\wedge dy$ são $\partial_yR-\partial_zQ=z^2-x$, $\partial_zP-\partial_xR=0-0=0$ e $\partial_xQ-\partial_yP=z-x^2$. Logo
+                    $d\omega=(z^2-x)\,dy\wedge dz+(z-x^2)\,dx\wedge dy$. $\blacksquare$
+                </p>
+
+                <p id="exr-3-13-2"><strong>Exercício 3.13.2.</strong> Verifique $d(df)=0$ para $f=e^{xy}\sin z$.</p>
+
+                <p>
+                    <em>Solução.</em> $df=y\,e^{xy}\sin z\,dx+x\,e^{xy}\sin z\,dy+e^{xy}\cos z\,dz$. Os três coeficientes de $d(df)$ são
+                    $\partial_x(x\,e^{xy}\sin z)-\partial_y(y\,e^{xy}\sin z)=(1+xy)e^{xy}\sin z-(1+xy)e^{xy}\sin z=0$, $\ \partial_y(e^{xy}\cos z)-\partial_z(x\,e^{xy}\sin z)=x\,e^{xy}\cos z-x\,e^{xy}\cos z=0$ e
+                    $\partial_z(y\,e^{xy}\sin z)-\partial_x(e^{xy}\cos z)=y\,e^{xy}\cos z-y\,e^{xy}\cos z=0$. $\blacksquare$
+                </p>
+
+                <p id="exr-3-13-3"><strong>Exercício 3.13.3.</strong> Verifique a regra do produto com $\omega=x\,dy$ e $\eta=z\,dx+y\,dz$.</p>
+
+                <p>
+                    <em>Solução.</em> $\omega\wedge\eta=x\,dy\wedge(z\,dx+y\,dz)=-xz\,dx\wedge dy+xy\,dy\wedge dz$, e
+                    $$ d(\omega\wedge\eta)=-x\,dz\wedge dx\wedge dy+y\,dx\wedge dy\wedge dz=(y-x)\,dx\wedge dy\wedge dz, $$
+                    pois $dz\wedge dx\wedge dy=dx\wedge dy\wedge dz$. Pelo lado direito, com $k=1$: $d\omega=dx\wedge dy$, $d\eta=dz\wedge dx+dy\wedge dz$, $d\omega\wedge\eta=y\,dx\wedge dy\wedge dz$ e $\omega\wedge d\eta=x\,dy\wedge dz\wedge dx=x\,dx\wedge dy\wedge dz$, de modo que
+                    $d\omega\wedge\eta-\omega\wedge d\eta=(y-x)\,dx\wedge dy\wedge dz$. $\blacksquare$
+                </p>
+
+                <p id="exr-3-13-4"><strong>Exercício 3.13.4.</strong> Verifique $F^*(d\omega)=d(F^*\omega)$ para $F(r,\theta)=(r\cos\theta,r\sin\theta)$ e $\omega=x\,dy$.</p>
+
+                <p>
+                    <em>Solução.</em> $d\omega=dx\wedge dy$ e $F^*(dx\wedge dy)=r\,dr\wedge d\theta$ (<a href="[12] - Formas Diferenciais.html#ex-3-12-16">Exemplo 3.12.16</a>). Por outro lado, $F^*\omega=r\cos\theta\,(\sin\theta\,dr+r\cos\theta\,d\theta)$, e
+                    $$ \begin{aligned}d(F^*\omega)&=d(r\sin\theta\cos\theta)\wedge dr+d(r^2\cos^2\theta)\wedge d\theta\\
+                    &=r\cos2\theta\,d\theta\wedge dr+2r\cos^2\theta\,dr\wedge d\theta\\
+                    &=\big(2r\cos^2\theta-r(\cos^2\theta-\sin^2\theta)\big)\,dr\wedge d\theta=r\,dr\wedge d\theta.\end{aligned} $$
+                    Os dois lados coincidem. $\blacksquare$
+                </p>
+
+                <p id="exr-3-13-5"><strong>Exercício 3.13.5.</strong> Mostre que a $2$-forma $\omega=\rho^{-3}\big(x\,dy\wedge dz+y\,dz\wedge dx+z\,dx\wedge dy\big)$, $\rho^2=x^2+y^2+z^2$, é fechada em $\mathbb{R}^3\setminus\{0\}$.</p>
+
+                <p>
+                    <em>Solução.</em> $\omega=\Phi_{\mathbf{G}}$ com $\mathbf{G}=\rho^{-3}(x,y,z)$, e $d\omega=(\operatorname{div}\mathbf{G})\,dV$. Como $\partial_x\rho=x/\rho$, $\partial_x\big(x\rho^{-3}\big)=\rho^{-3}-3x^2\rho^{-5}$, e as análogas em $y$ e $z$ dão
+                    $\operatorname{div}\mathbf{G}=3\rho^{-3}-3(x^2+y^2+z^2)\rho^{-5}=0$. $\blacksquare$
+                </p>
+
+                <p id="exr-3-13-6"><strong>Exercício 3.13.6.</strong> Calcule os dois lados de (3.13.2) para $X=x\partial_y-y\partial_x$, $Y=\partial_x$ e $\omega=x\,dy$.</p>
+
+                <p>
+                    <em>Solução.</em> $d\omega=dx\wedge dy$, e $(dx\wedge dy)(X,Y)=dx(X)\,dy(Y)-dx(Y)\,dy(X)=(-y)\cdot0-1\cdot x=-x$. Pelo lado direito: $\omega(Y)=0$, de modo que $X(\omega(Y))=0$; $\omega(X)=x\cdot x=x^2$, de modo que $Y(\omega(X))=2x$; e
+                    $[X,Y]f=X(f_x)-Y(xf_y-yf_x)=xf_{xy}-yf_{xx}-f_y-xf_{xy}+yf_{xx}=-f_y$, isto é, $[X,Y]=-\partial_y$ e $\omega([X,Y])=-x$. Logo o lado direito é $0-2x-(-x)=-x$, igual ao esquerdo. $\blacksquare$
+                </p>
+
+                <p id="exr-3-13-7"><strong>Exercício 3.13.7.</strong> Em $\mathbb{R}^3$, considere o referencial $E_1=\partial_x$, $E_2=\partial_y+x\partial_z$, $E_3=\partial_z$ (os campos $\partial_x$ e $\partial_y+x\partial_z$ já apareceram no <a href="[07] - Fibrado Tangente e Campos Vetoriais.html#exr-3-7-7">Exercício 3.7.7</a> e no <a href="[08] - Fluxos e Derivada de Lie.html#ex-3-8-25">Exemplo 3.8.25</a>). Ache o correferencial e verifique as equações de estrutura.</p>
+
+                <p>
+                    <em>Solução.</em> Os campos têm $[E_1,E_2]=E_3$ e $[E_1,E_3]=[E_2,E_3]=0$, de modo que a única constante de estrutura não nula (a menos de antissimetria) é $c^3{}_{12}=1$. O correferencial dual é $\varepsilon^1=dx$, $\varepsilon^2=dy$ e $\varepsilon^3=dz-x\,dy$: de fato,
+                    $\varepsilon^3(E_2)=x-x=0$, $\varepsilon^3(E_3)=1$ e $\varepsilon^3(E_1)=0$. Por (3.13.4), $d\varepsilon^1=d\varepsilon^2=0$ e $d\varepsilon^3=-c^3{}_{12}\,\varepsilon^1\wedge\varepsilon^2=-dx\wedge dy$. Direto:
+                    $d(dz-x\,dy)=-dx\wedge dy$. $\blacksquare$
+                </p>
+
+                <p id="exr-3-13-8"><strong>Exercício 3.13.8.</strong> Deduza $\big(\partial T/\partial V\big)_S=-\big(\partial P/\partial S\big)_V$ de $dT\wedge dS=dP\wedge dV$.</p>
+
+                <p>
+                    <em>Solução.</em> Com $(S,V)$ como coordenadas e $T=T(S,V)$, $P=P(S,V)$, tem-se $dT=T_S\,dS+T_V\,dV$ e $dP=P_S\,dS+P_V\,dV$, de modo que
+                    $dT\wedge dS=T_V\,dV\wedge dS$ e $dP\wedge dV=P_S\,dS\wedge dV=-P_S\,dV\wedge dS$. A igualdade dá $T_V=-P_S$, isto é, $\big(\partial T/\partial V\big)_S=-\big(\partial P/\partial S\big)_V$. Como $T=U_S$ e $P=-U_V$, é, também, a igualdade das
+                    derivadas mistas $U_{SV}=U_{VS}$ (Schwarz). $\blacksquare$
+                </p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <p>
+                    Este tópico construiu o operador $d$ do enunciado de Stokes:
+                </p>
+
+                <ul>
+                    <li>a <strong>derivada exterior em $\mathbb{R}^n$</strong>, com suas quatro propriedades (<a href="#def-3-13-1">Definição 3.13.1</a>, <a href="#teo-3-13-4">Teorema 3.13.4</a>): linearidade, regra do produto graduada, $d\circ d=0$ e comutação com o pullback;</li>
+                    <li>a <strong>existência e a unicidade</strong> de $d$ em toda variedade (<a href="#teo-3-13-5">Teorema 3.13.5</a>), sua <strong>localidade</strong> (<a href="#cor-3-13-6">Corolário 3.13.6</a>) e sua <strong>naturalidade</strong> (<a href="#teo-3-13-7">Teorema 3.13.7</a>, <a href="#cor-3-13-8">Corolário 3.13.8</a>), sem métrica nem conexão (<a href="#obs-3-13-9">Observação 3.13.9</a>);</li>
+                    <li>a <strong>fórmula invariante</strong> para $1$-formas (<a href="#teo-3-13-10">Teorema 3.13.10</a>), as <strong>equações de estrutura</strong> (<a href="#prop-3-13-12">Proposição 3.13.12</a>) e as <strong>componentes</strong> $(d\omega)_{\mu_0\dots\mu_k}=(k+1)\,\partial_{[\mu_0}\omega_{\mu_1\dots\mu_k]}$ (<a href="#prop-3-13-14">Proposição 3.13.14</a>);</li>
+                    <li>o <strong>cálculo vetorial como $d$</strong>: $\operatorname{grad}$, $\operatorname{rot}$ e $\operatorname{div}$ são $d$ em graus $0$, $1$ e $2$, e $\operatorname{rot}\operatorname{grad}=0$ e $\operatorname{div}\operatorname{rot}=0$ são $d\circ d=0$ (<a href="#ex-3-13-3">Exemplo 3.13.3</a>, <a href="#cor-3-13-17">Corolário 3.13.17</a>);</li>
+                    <li>formas <strong>fechadas e exatas</strong> (<a href="#def-3-13-19">Definição 3.13.19</a>, <a href="#prop-3-13-20">Proposição 3.13.20</a>), os exemplos $d\theta$ e a forma do monopolo (<a href="#ex-3-13-21">Exemplo 3.13.21</a>), e o lema de Poincaré, enunciado (<a href="#teo-3-13-22">Teorema 3.13.22</a>).</li>
+                </ul>
+
+                <p>
+                    Do enunciado de Stokes, $\int_Md\omega=\int_{\partial M}\omega$, já temos agora $\omega$ e $d\omega$. Faltam o domínio de integração, a variedade com bordo (tópico 3.16), a orientação (tópico 3.15), a integral de uma forma (tópico 3.17) e, por fim, o teorema (tópico 3.18). Antes, o próximo tópico,
+                    <a href="[14] - Fórmula de Cartan.html">3.14 Fórmula de Cartan</a>, relaciona $d$ ao produto interior e à derivada de Lie, $\mathcal{L}_X=d\,i_X+i_X\,d$, e prova a fórmula geral (3.13.3), que aqui foi só enunciada.
+                </p>
 
             </div>
         </main>
@@ -161,6 +668,15 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#derivada-exterior">A Derivada Exterior</a></li>
+                    <li><a href="#d-em-rn">A derivada exterior em ℝⁿ</a></li>
+                    <li><a href="#d-em-variedades">Em variedades</a></li>
+                    <li><a href="#formula-invariante">A fórmula invariante</a></li>
+                    <li><a href="#componentes">Componentes</a></li>
+                    <li><a href="#calculo-vetorial">Grad, rot e div como d</a></li>
+                    <li><a href="#fechadas-exatas">Fechadas e exatas</a></li>
+                    <li><a href="#fisica">Ponte com a física</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
                 </ul>
             </div>
         </aside>

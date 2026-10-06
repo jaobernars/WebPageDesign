@@ -149,9 +149,523 @@
             <div class="prose">
 
                 <h1 id="formas-diferenciais">3.12 Formas Diferenciais</h1>
-                <p class="lead">k-formas em uma variedade, o dicionário com o cálculo vetorial, o pullback de formas e a fórmula das formas de grau máximo.</p>
+                <p class="lead">O fibrado das $k$-formas, a expressão local e as duas convenções de componentes, o dicionário do cálculo vetorial em $\mathbb{R}^3$, o pullback de formas, a fórmula do grau máximo e a restrição a subvariedades.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>
+                    Uma <em>$k$-forma diferencial</em> é uma escolha suave, em cada ponto de uma variedade, de um $k$-covetor: uma máquina que mede
+                    paralelepípedos $k$-dimensionais infinitesimais, com sinal. As $0$-formas são as funções; as $1$-formas são as do
+                    <a href="[09] - Covetores e 1-Formas.html">tópico 3.9</a>; e, em geral, uma $k$-forma é exatamente um campo tensorial covariante
+                    de ordem $k$ (<a href="[10] - Álgebra Multilinear e Tensores.html">tópico 3.10</a>) que, em cada ponto, é alternado
+                    (<a href="[11] - Produto Exterior.html">tópico 3.11</a>).
+                </p>
+
+                <p>
+                    Este tópico leva a álgebra exterior do 3.11, que é pontual, para as variedades, em quatro passos. Primeiro, o fibrado
+                    $\Lambda^kT^*M$ e a expressão local $\omega=\sideset{}{'}\sum_I\omega_I\,dx^I$. Segundo, o <em>dicionário</em> de $\mathbb{R}^3$, que mostra
+                    que formas de grau $1$, $2$ e $3$ são, respectivamente, campos de trabalho, de fluxo e densidades do cálculo vetorial. Terceiro, o
+                    pullback $F^*\omega$ por aplicações suaves e, em grau máximo, a fórmula $F^*(u\,dy^1\wedge\dots\wedge dy^n)=(u\circ F)\det DF\,dx^1\wedge\dots\wedge dx^n$, que é a fórmula de mudança de
+                    variáveis das integrais já embutida na álgebra. Quarto, a restrição de uma forma a uma subvariedade.
+                </p>
+
+                <p>
+                    Por que isto é necessário para chegar ao Teorema de Stokes? Porque a forma $\omega$ do enunciado de Stokes, $\int_Md\omega=\int_{\partial M}\omega$, é uma
+                    $(n-1)$-forma, e o que se integra é uma $n$-forma. O pullback por parametrizações é como se definirá a integral (tópico 3.17); a presença de $\det$, e não $\lvert\det\rvert$, na fórmula do grau máximo é
+                    o que força a falar de orientação (tópico 3.15); e a restrição $\omega\vert_{\partial M}=\iota^*\omega$ é o que aparece do lado direito de Stokes. Falta ainda derivar formas (tópico 3.13).
+                </p>
+
+                <h2 id="k-formas">Formas diferenciais em uma variedade</h2>
+
+                <p>
+                    Como nos tópicos 3.7, 3.9 e 3.10, aplicamos a álgebra linear ponto a ponto, agora ao espaço $\Lambda^k(T_p^*M)$ dos $k$-covetores em $T_pM$. Em uma carta $(U,\varphi)$ com coordenadas $x^i$,
+                    $(dx^1\vert_p,\dots,dx^n\vert_p)$ é a base dual de $(\partial_i\vert_p)$ (<a href="[09] - Covetores e 1-Formas.html#prop-3-9-11">Proposição 3.9.11</a>), e, pelo <a href="[11] - Produto Exterior.html#teo-3-11-13">Teorema 3.11.13</a>, os produtos
+                    $dx^I=dx^{i_1}\wedge\dots\wedge dx^{i_k}$ com $I$ crescente formam uma base de $\Lambda^k(T_p^*M)$ (pelo <a href="[11] - Produto Exterior.html#teo-3-11-20">Teorema 3.11.20</a>(d), $dx^I$ é o covetor elementar $\varepsilon^I$ dessa base).
+                </p>
+
+                <div class="definition-box" id="def-3-12-1" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.12.1 (O fibrado $\Lambda^kT^*M$).</strong> O <strong>fibrado das $k$-formas</strong> de $M$ é
+                        $\Lambda^kT^*M=\bigsqcup_{p\in M}\Lambda^k(T_p^*M)$, com a projeção $\pi$ que leva $\Lambda^k(T_p^*M)$ em $p$. Para uma carta $(U,\varphi)$, a
+                        <strong>carta natural</strong> é</p>
+                    <p>$$ \begin{aligned}&\Phi^{\wedge k}_\varphi:\pi^{-1}(U)\to\varphi(U)\times\mathbb{R}^{\binom nk},\\
+                        &\Phi^{\wedge k}_\varphi\Big(\sideset{}{'}\sum_I\omega_I\,dx^I\vert_p\Big)=\big(x^1(p),\dots,x^n(p),\ (\omega_I)_{I\text{ crescente}}\big).\end{aligned} $$</p>
+                    <p>Para $k=0$, $\Lambda^0T^*M=M\times\mathbb{R}$; para $k=1$, $\Lambda^1T^*M=T^*M$ (com $\Phi^{\wedge1}_\varphi=\Psi_\varphi$).</p>
+                </div>
+
+                <div class="definition-box" id="prop-3-12-2">
+                    <p><strong>Proposição 3.12.2 (Mudança de coordenadas nos elementos de base).</strong> Sejam $x^i$ e $\tilde{x}^j$
+                        coordenadas de duas cartas em torno de $p$. Para todo $J=(j_1,\dots,j_k)$,</p>
+                    <p>$$ d\tilde{x}^J=\sideset{}{'}\sum_I\det\Big(\frac{\partial\tilde{x}^{j_a}}{\partial x^{i_b}}\Big)_{a,b=1}^k\,dx^I, \tag{3.12.1} $$</p>
+                    <p>com as derivadas calculadas em $\varphi(p)$. Em particular, as componentes $\omega_I$ de uma $k$-forma se transformam como as de um tensor
+                        covariante antissimétrico (<a href="[10] - Álgebra Multilinear e Tensores.html#prop-3-10-21">Proposição 3.10.21</a>): $\tilde{\omega}_J=\sideset{}{'}\sum_I\omega_I\det\big(\partial x^{i_a}/\partial\tilde{x}^{j_b}\big)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela expansão (3.11.1) na base $(\partial_i\vert_p)$, o coeficiente de $dx^I$ em $d\tilde{x}^J$ é
+                    $d\tilde{x}^J(\partial_{i_1},\dots,\partial_{i_k})$. Pela fórmula do determinante (3.11.4) e por $d\tilde{x}^j(\partial_i)=\partial\tilde{x}^j/\partial x^i$ (<a href="[09] - Covetores e 1-Formas.html#prop-3-9-14">Proposição 3.9.14</a>),
+                    $$ d\tilde{x}^J(\partial_{i_1},\dots,\partial_{i_k})=\det\big(d\tilde{x}^{j_a}(\partial_{i_b})\big)=\det\Big(\frac{\partial\tilde{x}^{j_a}}{\partial x^{i_b}}\Big). $$
+                    A segunda afirmação é a mesma conta com os papéis das cartas trocados: $\tilde{\omega}_J=\omega(\tilde{\partial}_{j_1},\dots,\tilde{\partial}_{j_k})=\sideset{}{'}\sum_I\omega_I\,dx^I(\tilde{\partial}_{j_1},\dots,\tilde{\partial}_{j_k})$, e
+                    $dx^I(\tilde{\partial}_{j_1},\dots,\tilde{\partial}_{j_k})=\det\big(dx^{i_a}(\tilde{\partial}_{j_b})\big)=\det\big(\partial x^{i_a}/\partial\tilde{x}^{j_b}\big)$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="teo-3-12-3">
+                    <p><strong>Teorema 3.12.3 ($\Lambda^kT^*M$ é um fibrado vetorial).</strong> $\Lambda^kT^*M$ tem uma topologia e uma estrutura diferenciável únicas para as quais todas as
+                        $\big(\pi^{-1}(U),\Phi^{\wedge k}_\varphi\big)$ são cartas suaves. Com elas, é uma variedade de dimensão $n+\binom nk$ e
+                        $\pi:\Lambda^kT^*M\to M$ é um fibrado vetorial de posto $\binom nk$ (<a href="[07] - Fibrado Tangente e Campos Vetoriais.html#def-3-7-5">Definição 3.7.5</a>), que é um subfibrado de $T^{(0,k)}TM$ (<a href="[10] - Álgebra Multilinear e Tensores.html#teo-3-10-22">Teorema 3.10.22</a>).</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> É a prova dos <a href="[07] - Fibrado Tangente e Campos Vetoriais.html#teo-3-7-2">Teorema 3.7.2</a>, <a href="[09] - Covetores e 1-Formas.html#teo-3-9-17">Teorema 3.9.17</a> e <a href="[10] - Álgebra Multilinear e Tensores.html#teo-3-10-22">Teorema 3.10.22</a>. Toma-se uma base enumerável de $M$ formada por domínios de cartas e as cartas naturais correspondentes, que são bijeções de $\pi^{-1}(B)$
+                    sobre $\varphi_B(B)\times\mathbb{R}^{\binom nk}$ com imagens abertas. Para duas cartas, com $\tau=\tilde{\varphi}\circ\varphi^{-1}$, a Proposição 3.12.2 dá
+                    $\Phi^{\wedge k}_{\tilde{\varphi}}\circ(\Phi^{\wedge k}_\varphi)^{-1}(x,a)=\big(\tau(x),\Lambda(x)\,a\big)$, em que $\Lambda(x)$ é a matriz $\binom nk\times\binom nk$ cujas entradas são determinantes $k\times k$ de blocos de $D\tau(x)^{-1}$:
+                    são suaves em $x$ e a expressão é linear em $a$. O <a href="[03] - Variedades Diferenciáveis.html#lema-3-3-15">Lema 3.3.15</a> dá a variedade (as hipóteses (iii) e (iv) vêm da base enumerável e de $M$ ser Hausdorff), $\pi$ é suave e as trivializações locais
+                    $(\varphi^{-1}\times\mathrm{id})\circ\Phi^{\wedge k}_\varphi$ são difeomorfismos lineares nas fibras. Por fim, em cartas naturais a inclusão em $T^{(0,k)}TM$ é $(x,(\omega_I))\mapsto(x,(\omega_{j_1\dots j_k}))$, com
+                    $\omega_{j_1\dots j_k}=\pm\omega_I$ ou $0$ (<a href="[11] - Produto Exterior.html#lema-3-11-12">Lema 3.11.12</a>): é suave, linear e injetiva em cada fibra, ou seja, um subfibrado. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="def-3-12-4" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.12.4 ($k$-forma diferencial).</strong> Uma <strong>$k$-forma diferencial</strong> em $M$ é uma
+                        seção suave $\omega: M\to\Lambda^kT^*M$ (<a href="[07] - Fibrado Tangente e Campos Vetoriais.html#def-3-7-6">Definição 3.7.6</a>): a escolha, em cada $p$, de um $k$-covetor $\omega_p\in\Lambda^k(T_p^*M)$, de modo suave. O conjunto das $k$-formas é
+                        $\Omega^k(M)$, um módulo sobre $C^\infty(M)$. Valem $\Omega^0(M)=C^\infty(M)$, $\Omega^1(M)$ é o conjunto das $1$-formas do <a href="[09] - Covetores e 1-Formas.html#def-3-9-18">Definição 3.9.18</a>, e
+                        $\Omega^k(M)=0$ se $k\gt n$, porque $\Lambda^k(T_p^*M)=0$ (<a href="[11] - Produto Exterior.html#teo-3-11-13">Teorema 3.11.13</a>).</p>
+                </div>
+
+                <div class="definition-box" id="prop-3-12-5">
+                    <p><strong>Proposição 3.12.5 (Expressão local e suavidade).</strong> Em uma carta, toda $k$-forma se escreve como</p>
+                    <p>$$ \omega=\sideset{}{'}\sum_I\omega_I\,dx^I, \qquad \omega_I=\omega(\partial_{i_1},\dots,\partial_{i_k}), \tag{3.12.2} $$</p>
+                    <p>e, para um campo $\omega$ de $k$-covetores, são equivalentes: (a) $\omega$ é suave; (b) as $\omega_I$ são suaves nas cartas de um atlas; (c) $\omega(X_1,\dots,X_k)\in C^\infty(M)$ para todos
+                        $X_1,\dots,X_k\in\mathfrak{X}(M)$; (d) $\omega$ é suave como campo tensorial covariante, isto é, $\omega\in\mathcal{T}^k(M)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (3.12.2) é (3.11.1) aplicada a $\omega_p$ na base $(\partial_i\vert_p)$. (a)$\Leftrightarrow$(b): em coordenadas naturais, a representação de $\omega$ é $x\mapsto\big(x,(\omega_I(\varphi^{-1}x))\big)$, suave se, e só se,
+                    as $\omega_I$ o são. (b)$\Leftrightarrow$(d): as componentes tensoriais $\omega_{j_1\dots j_k}$ valem $\pm\omega_I$ ou $0$ (<a href="[11] - Produto Exterior.html#lema-3-11-12">Lema 3.11.12</a>), e valem os critérios da <a href="[10] - Álgebra Multilinear e Tensores.html#prop-3-10-24">Proposição 3.10.24</a>. (d)$\Leftrightarrow$(c) é o item (c) da mesma proposição. $\blacksquare$
+                </p>
+
+                <p>
+                    Em palavras: $\Omega^k(M)$ é o conjunto dos campos tensoriais covariantes suaves de ordem $k$ que são alternados em cada ponto. Tudo o que foi provado no tópico 3.10 vale para formas.
+                </p>
+
+                <div class="definition-box" id="prop-3-12-6">
+                    <p><strong>Proposição 3.12.6 (A outra convenção de componentes).</strong> Para $\omega\in\Omega^k(M)$ e $\omega_{i_1\dots i_k}=\omega(\partial_{i_1},\dots,\partial_{i_k})$, definido para <em>todos</em> os índices
+                        (e totalmente antissimétrico),</p>
+                    <p>$$ \omega=\frac{1}{k!}\,\omega_{i_1\dots i_k}\,dx^{i_1}\wedge\dots\wedge dx^{i_k}, \tag{3.12.3} $$</p>
+                    <p>com soma de Einstein sobre todos os índices, e esta é a mesma forma que (3.12.2).</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Agrupe as $n^k$ parcelas da soma pelo multi-índice crescente $I$ que reordena $(i_1,\dots,i_k)$. Se há índice repetido, $dx^{i_1}\wedge\dots\wedge dx^{i_k}=0$ (<a href="[11] - Produto Exterior.html#lema-3-11-12">Lema 3.11.12</a>(a)) e a parcela some. Se $(i_1,\dots,i_k)=I_\sigma$, então
+                    $dx^{I_\sigma}=(\operatorname{sgn}\sigma)\,dx^I$ e $\omega_{I_\sigma}=(\operatorname{sgn}\sigma)\,\omega_I$ (alternância), de modo que a parcela vale $\omega_I\,dx^I$. Cada $I$ aparece $k!$ vezes (uma por $\sigma\in S_k$), e a soma é
+                    $k!\sideset{}{'}\sum_I\omega_I\,dx^I$, que o fator $\tfrac1{k!}$ reduz a (3.12.2). $\blacksquare$
+                </p>
+
+                <p>
+                    A forma (3.12.3) é a notação dos livros de física, com $\omega_{\mu_1\dots\mu_k}$ antissimétrico; a (3.12.2), a dos de matemática. Elas diferem justamente pelo $\tfrac1{k!}$ da convenção do determinante
+                    (<a href="[11] - Produto Exterior.html#obs-3-11-18">Observação 3.11.18</a>). Em $\mathbb{R}^2$, por exemplo, $\omega=\tfrac12\omega_{ij}\,dx^i\wedge dx^j=\omega_{12}\,dx\wedge dy$, porque as parcelas $(1,2)$ e $(2,1)$ são iguais.
+                </p>
+
+                <div class="definition-box" id="prop-3-12-7">
+                    <p><strong>Proposição 3.12.7 (A álgebra das formas).</strong> Para $\omega\in\Omega^k(M)$, $\eta\in\Omega^l(M)$, $f\in C^\infty(M)$ e $X\in\mathfrak{X}(M)$, as definições ponto a ponto
+                        $(\omega\wedge\eta)_p=\omega_p\wedge\eta_p$ e $(i_X\omega)_p=i_{X_p}\omega_p$ dão $\omega\wedge\eta\in\Omega^{k+l}(M)$ e $i_X\omega\in\Omega^{k-1}(M)$, com $f\wedge\omega=f\omega$. Valem:
+                        $\wedge$ é bilinear sobre $C^\infty(M)$, associativo e $\omega\wedge\eta=(-1)^{kl}\eta\wedge\omega$; $i_X\omega$ é $C^\infty(M)$-linear em $X$ e em $\omega$, $i_X\circ i_X=0$, e
+                        $i_X(\omega\wedge\eta)=(i_X\omega)\wedge\eta+(-1)^k\omega\wedge(i_X\eta)$. Assim, $\Omega^*(M)=\bigoplus_{k=0}^n\Omega^k(M)$ é uma álgebra graduada anticomutativa sobre $C^\infty(M)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> As propriedades algébricas valem em cada ponto, pelo <a href="[11] - Produto Exterior.html#teo-3-11-20">Teorema 3.11.20</a> e pela <a href="[11] - Produto Exterior.html#prop-3-11-26">Proposição 3.11.26</a>. A suavidade: em uma carta, os coeficientes de $\omega\wedge\eta$ são somas, com sinais, de produtos
+                    $\omega_J\eta_K$ (pela fórmula $dx^J\wedge dx^K=dx^{JK}$ do <a href="[11] - Produto Exterior.html#lema-3-11-19">Lema 3.11.19</a>), e os de $i_X\omega$ são $(i_X\omega)_J=\omega(X,\partial_{j_1},\dots,\partial_{j_{k-1}})=X^i\omega_{ij_1\dots j_{k-1}}$, também suaves;
+                    vale a Proposição 3.12.5(b). $\blacksquare$
+                </p>
+
+                <h2 id="exemplos-r3">Formas em $\mathbb{R}^3$: o dicionário do cálculo vetorial</h2>
+
+                <p>
+                    Em $\mathbb{R}^3$ há quatro espaços de formas, $\Omega^0,\dots,\Omega^3$, de dimensões (sobre $C^\infty$) $1,3,3,1$. Cada um corresponde a um objeto do cálculo vetorial. Para escrever o dicionário
+                    usamos as coordenadas $(x,y,z)$ e a abreviação $dV=dx\wedge dy\wedge dz$.
+                </p>
+
+                <div class="definition-box" id="def-3-12-8" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.12.8 (Formas de trabalho, de fluxo e densidades).</strong> Em $\mathbb{R}^3$, a um campo $\mathbf{F}=(P,Q,R)$ associam-se</p>
+                    <p>$$ \begin{aligned}\omega_{\mathbf{F}}&=P\,dx+Q\,dy+R\,dz &&\text{(forma de trabalho)},\\
+\Phi_{\mathbf{F}}&=P\,dy\wedge dz+Q\,dz\wedge dx+R\,dx\wedge dy &&\text{(forma de fluxo)},\end{aligned} $$</p>
+                    <p>e a uma função $h$, a <strong>$3$-forma de densidade</strong> $h\,dV$. As formas de trabalho e de fluxo são $1$-formas e $2$-formas, respectivamente.</p>
+                </div>
+
+                <div class="definition-box" id="prop-3-12-9">
+                    <p><strong>Proposição 3.12.9 (O dicionário).</strong> Sejam $\mathbf{F},\mathbf{G}$ campos suaves e $X=X^i\partial_i$ um campo vetorial em $\mathbb{R}^3$.</p>
+                    <p>(a) $\mathbf{F}\mapsto\omega_{\mathbf{F}}$ é uma bijeção de campos em $\Omega^1(\mathbb{R}^3)$; $\mathbf{G}\mapsto\Phi_{\mathbf{G}}$, de campos em $\Omega^2(\mathbb{R}^3)$; $h\mapsto h\,dV$, de funções em $\Omega^3(\mathbb{R}^3)$;</p>
+                    <p>(b) $\Phi_{\mathbf{G}}=i_{\mathbf{G}}\,dV$, em que $\mathbf{G}$ é visto como o campo vetorial $G^i\partial_i$;</p>
+                    <p>(c) $\omega_{\mathbf{F}}\wedge\omega_{\mathbf{G}}=\Phi_{\mathbf{F}\times\mathbf{G}}$ e $\omega_{\mathbf{F}}\wedge\Phi_{\mathbf{G}}=(\mathbf{F}\cdot\mathbf{G})\,dV$;</p>
+                    <p>(d) $i_X\,\omega_{\mathbf{F}}=\mathbf{F}\cdot X$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Pelo <a href="[11] - Produto Exterior.html#teo-3-11-13">Teorema 3.11.13</a>, com $n=3$, $\{dx,dy,dz\}$, $\{dy\wedge dz,\,dx\wedge dz,\,dx\wedge dy\}$ e $\{dV\}$ são bases de $\Lambda^1,\Lambda^2,\Lambda^3$ em cada ponto, e $dz\wedge dx=-dx\wedge dz$: cada forma de
+                    cada grau é, de modo único, uma combinação com coeficientes em $C^\infty$, e os coeficientes são as componentes de $\mathbf{F}$, de $\mathbf{G}$ ou a função $h$ (<a href="#prop-3-12-5">Proposição 3.12.5</a>). (b) Por (3.11.5) com $\omega^1=dx$, $\omega^2=dy$, $\omega^3=dz$,
+                    $$ \begin{aligned}i_{\mathbf{G}}(dx\wedge dy\wedge dz)&=G^1\,dy\wedge dz-G^2\,dx\wedge dz+G^3\,dx\wedge dy\\
+                    &=G^1\,dy\wedge dz+G^2\,dz\wedge dx+G^3\,dx\wedge dy=\Phi_{\mathbf{G}}.\end{aligned} $$
+                    (c) A primeira igualdade é a (3.11.6) com $\varepsilon^i$ trocado por $dx^i$ (a prova é a mesma, pois só usa $\wedge$): $\omega_{\mathbf{F}}\wedge\omega_{\mathbf{G}}=\sum_{i\lt j}(F_iG_j-F_jG_i)\,dx^i\wedge dx^j$, e os coeficientes
+                    são $(\mathbf{F}\times\mathbf{G})_1$, $(\mathbf{F}\times\mathbf{G})_2$ e $(\mathbf{F}\times\mathbf{G})_3$ diante de $dy\wedge dz$, $dz\wedge dx$ e $dx\wedge dy$. Para a segunda, os termos com índice repetido se anulam e
+                    $$ \begin{aligned}\omega_{\mathbf{F}}\wedge\Phi_{\mathbf{G}}&=F_1G_1\,dx\wedge dy\wedge dz+F_2G_2\,dy\wedge dz\wedge dx\\
+                    &\quad+F_3G_3\,dz\wedge dx\wedge dy=(\mathbf{F}\cdot\mathbf{G})\,dV,\end{aligned} $$
+                    pois $dy\wedge dz\wedge dx$ e $dz\wedge dx\wedge dy$ são permutações pares de $dx\wedge dy\wedge dz$. (d) $i_X$ de uma $1$-forma é a avaliação: $i_X\omega_{\mathbf{F}}=F_iX^i$. $\blacksquare$
+                </p>
+
+                <p>
+                    Uma observação sobre a notação: $dz\wedge dx$, e não $dx\wedge dz$, aparece na forma de fluxo. É essa ordem que faz as três componentes de $\Phi_{\mathbf{G}}$ serem as de $\mathbf{G}$ e o produto exterior $\omega_{\mathbf{F}}\wedge\omega_{\mathbf{G}}$ ser o produto vetorial.
+                </p>
+
+                <div style="overflow-x: auto;">
+                <table>
+                    <tr><th>Grau</th><th>Forma em $\mathbb{R}^3$</th><th>Objeto do cálculo vetorial</th><th>O que mede</th></tr>
+                    <tr><td>$0$</td><td>$f$</td><td>função (campo escalar)</td><td>um valor em cada ponto</td></tr>
+                    <tr><td>$1$</td><td>$\omega_{\mathbf{F}}=P\,dx+Q\,dy+R\,dz$</td><td>campo $\mathbf{F}=(P,Q,R)$</td><td>trabalho ao longo de curvas (<a href="[09] - Covetores e 1-Formas.html#def-3-9-31">Definição 3.9.31</a>)</td></tr>
+                    <tr><td>$2$</td><td>$\Phi_{\mathbf{G}}=A\,dy\wedge dz+B\,dz\wedge dx+C\,dx\wedge dy$</td><td>campo $\mathbf{G}=(A,B,C)$</td><td>fluxo através de superfícies</td></tr>
+                    <tr><td>$3$</td><td>$h\,dV$</td><td>função $h$ (densidade)</td><td>quantidade em volumes</td></tr>
+                </table>
+                </div>
+
+                <p>
+                    A coluna "o que mede" para os graus $2$ e $3$ será justificada quando se definir a integral de formas (tópico 3.17) e se reencontrarem os teoremas do cálculo vetorial como casos de Stokes (tópico 3.19). Para o grau $1$ já é o
+                    <a href="[09] - Covetores e 1-Formas.html#teo-3-9-34">Teorema 3.9.34</a> e a integral de linha do tópico 3.9. A Figura 3.12.1 mostra o que a $2$-forma de fluxo faz em um ponto: ela mede quanto do campo atravessa um pequeno paralelogramo tangente, com sinal.
+                </p>
+
+                <figure class="lecture-figure" id="fig-3-12-1" style="overflow-x: auto; overflow-y: hidden;">
+                    <svg viewBox="0 0 640 300" role="img" style="min-width: 560px;" aria-label="Uma superfície ondulada, sombreada e com malha, vista em perspectiva oblíqua, atravessada de baixo para cima por várias linhas de um campo G, desenhadas como setas. Em um ponto p da superfície há um pequeno paralelogramo tangente, gerado por dois vetores v e w que saem de p. O texto à direita explica que a 2-forma de fluxo de G, aplicada a v e w, mede o fluxo de G através do paralelogramo, com sinal, e é igual ao produto misto de G, v e w.">
+<defs><marker id="arr-3-12-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<rect x="14" y="16" width="612" height="272" rx="3" class="fig-frame"/>
+<path d="M56,262 L66.4,257.9 L76.8,254 L87.2,250.4 L97.6,247.2 L108,244.4 L118.4,242.3 L128.8,240.9 L139.2,240.2 L149.6,240.3 L160,241.1 L170.4,242.7 L180.8,244.9 L191.2,247.7 L201.6,251 L212,254.7 L222.4,258.6 L232.8,262.7 L243.2,266.7 L253.6,270.6 L264,274.2 L274.4,277.3 L284.8,280 L295.2,282 L305.6,283.3 L308.6,280.9 L311.6,278.6 L314.6,276.2 L317.6,273.9 L320.6,271.6 L323.6,269.2 L326.6,266.9 L329.6,264.6 L332.6,262.2 L335.6,259.9 L338.6,257.6 L341.6,255.2 L344.6,252.9 L347.6,250.6 L350.6,248.2 L353.6,245.9 L356.6,243.6 L359.6,241.2 L362.6,238.9 L365.6,236.5 L368.6,234.2 L371.6,231.9 L374.6,229.5 L377.6,227.2 L367.2,225.9 L356.8,223.9 L346.4,221.3 L336,218.1 L325.6,214.6 L315.2,210.7 L304.8,206.6 L294.4,202.6 L284,198.6 L273.6,194.9 L263.2,191.6 L252.8,188.8 L242.4,186.6 L232,185.1 L221.6,184.2 L211.2,184.2 L200.8,184.9 L190.4,186.3 L180,188.4 L169.6,191.1 L159.2,194.3 L148.8,198 L138.4,201.9 L128,205.9 L125,208.3 L122,210.6 L119,213 L116,215.3 L113,217.6 L110,220 L107,222.3 L104,224.6 L101,227 L98,229.3 L95,231.6 L92,234 L89,236.3 L86,238.6 L83,241 L80,243.3 L77,245.7 L74,248 L71,250.3 L68,252.7 L65,255 L62,257.3 L59,259.7 Z" class="fig-band"/>
+<path d="M74,248 L84.4,243.9 L94.8,240 L105.2,236.4 L115.6,233.2 L126,230.4 L136.4,228.3 L146.8,226.9 L157.2,226.2 L167.6,226.3 L178,227.1 L188.4,228.6 L198.8,230.9 L209.2,233.7 L219.6,237 L230,240.7 L240.4,244.6 L250.8,248.7 L261.2,252.7 L271.6,256.6 L282,260.2 L292.4,263.3 L302.8,265.9 L313.2,267.9 L323.6,269.2" class="fig-guide"/>
+<path d="M92,234 L102.4,229.9 L112.8,226 L123.2,222.4 L133.6,219.1 L144,216.4 L154.4,214.3 L164.8,212.9 L175.2,212.2 L185.6,212.3 L196,213.1 L206.4,214.6 L216.8,216.8 L227.2,219.7 L237.6,223 L248,226.7 L258.4,230.6 L268.8,234.7 L279.2,238.7 L289.6,242.6 L300,246.2 L310.4,249.3 L320.8,251.9 L331.2,253.9 L341.6,255.2" class="fig-guide"/>
+<path d="M110,220 L120.4,215.9 L130.8,212 L141.2,208.4 L151.6,205.1 L162,202.4 L172.4,200.3 L182.8,198.9 L193.2,198.2 L203.6,198.3 L214,199.1 L224.4,200.6 L234.8,202.8 L245.2,205.6 L255.6,209 L266,212.6 L276.4,216.6 L286.8,220.7 L297.2,224.7 L307.6,228.6 L318,232.1 L328.4,235.3 L338.8,237.9 L349.2,239.9 L359.6,241.2" class="fig-guide"/>
+<path d="M97.6,247.2 L100.6,244.8 L103.6,242.5 L106.6,240.2 L109.6,237.8 L112.6,235.5 L115.6,233.2 L118.6,230.8 L121.6,228.5 L124.6,226.1 L127.6,223.8 L130.6,221.5 L133.6,219.1 L136.6,216.8 L139.6,214.5 L142.6,212.1 L145.6,209.8 L148.6,207.5 L151.6,205.1 L154.6,202.8 L157.6,200.5 L160.6,198.1 L163.6,195.8 L166.6,193.5 L169.6,191.1" class="fig-guide"/>
+<path d="M139.2,240.2 L142.2,237.9 L145.2,235.6 L148.2,233.2 L151.2,230.9 L154.2,228.5 L157.2,226.2 L160.2,223.9 L163.2,221.5 L166.2,219.2 L169.2,216.9 L172.2,214.5 L175.2,212.2 L178.2,209.9 L181.2,207.5 L184.2,205.2 L187.2,202.9 L190.2,200.5 L193.2,198.2 L196.2,195.9 L199.2,193.5 L202.2,191.2 L205.2,188.8 L208.2,186.5 L211.2,184.2" class="fig-guide"/>
+<path d="M180.8,244.9 L183.8,242.5 L186.8,240.2 L189.8,237.9 L192.8,235.5 L195.8,233.2 L198.8,230.9 L201.8,228.5 L204.8,226.2 L207.8,223.9 L210.8,221.5 L213.8,219.2 L216.8,216.8 L219.8,214.5 L222.8,212.2 L225.8,209.8 L228.8,207.5 L231.8,205.2 L234.8,202.8 L237.8,200.5 L240.8,198.2 L243.8,195.8 L246.8,193.5 L249.8,191.2 L252.8,188.8" class="fig-guide"/>
+<path d="M222.4,258.6 L225.4,256.3 L228.4,254 L231.4,251.6 L234.4,249.3 L237.4,247 L240.4,244.6 L243.4,242.3 L246.4,239.9 L249.4,237.6 L252.4,235.3 L255.4,232.9 L258.4,230.6 L261.4,228.3 L264.4,225.9 L267.4,223.6 L270.4,221.3 L273.4,218.9 L276.4,216.6 L279.4,214.3 L282.4,211.9 L285.4,209.6 L288.4,207.3 L291.4,204.9 L294.4,202.6" class="fig-guide"/>
+<path d="M264,274.2 L267,271.8 L270,269.5 L273,267.2 L276,264.8 L279,262.5 L282,260.2 L285,257.8 L288,255.5 L291,253.2 L294,250.8 L297,248.5 L300,246.2 L303,243.8 L306,241.5 L309,239.2 L312,236.8 L315,234.5 L318,232.1 L321,229.8 L324,227.5 L327,225.1 L330,222.8 L333,220.5 L336,218.1" class="fig-guide"/>
+<path d="M56,262 L66.4,257.9 L76.8,254 L87.2,250.4 L97.6,247.2 L108,244.4 L118.4,242.3 L128.8,240.9 L139.2,240.2 L149.6,240.3 L160,241.1 L170.4,242.7 L180.8,244.9 L191.2,247.7 L201.6,251 L212,254.7 L222.4,258.6 L232.8,262.7 L243.2,266.7 L253.6,270.6 L264,274.2 L274.4,277.3 L284.8,280 L295.2,282 L305.6,283.3 L308.6,280.9 L311.6,278.6 L314.6,276.2 L317.6,273.9 L320.6,271.6 L323.6,269.2 L326.6,266.9 L329.6,264.6 L332.6,262.2 L335.6,259.9 L338.6,257.6 L341.6,255.2 L344.6,252.9 L347.6,250.6 L350.6,248.2 L353.6,245.9 L356.6,243.6 L359.6,241.2 L362.6,238.9 L365.6,236.5 L368.6,234.2 L371.6,231.9 L374.6,229.5 L377.6,227.2 L367.2,225.9 L356.8,223.9 L346.4,221.3 L336,218.1 L325.6,214.6 L315.2,210.7 L304.8,206.6 L294.4,202.6 L284,198.6 L273.6,194.9 L263.2,191.6 L252.8,188.8 L242.4,186.6 L232,185.1 L221.6,184.2 L211.2,184.2 L200.8,184.9 L190.4,186.3 L180,188.4 L169.6,191.1 L159.2,194.3 L148.8,198 L138.4,201.9 L128,205.9 L125,208.3 L122,210.6 L119,213 L116,215.3 L113,217.6 L110,220 L107,222.3 L104,224.6 L101,227 L98,229.3 L95,231.6 L92,234 L89,236.3 L86,238.6 L83,241 L80,243.3 L77,245.7 L74,248 L71,250.3 L68,252.7 L65,255 L62,257.3 L59,259.7 Z" class="fig-shape"/>
+<line x1="96.6" y1="284.4" x2="119.6" y2="177.3" class="fig-axis" marker-end="url(#arr-3-12-1)"/>
+<line x1="160.9" y1="275.8" x2="183.9" y2="168.7" class="fig-axis" marker-end="url(#arr-3-12-1)"/>
+<line x1="256.4" y1="303.2" x2="279.4" y2="196" class="fig-axis" marker-end="url(#arr-3-12-1)"/>
+<line x1="157.7" y1="244.9" x2="180.7" y2="137.8" class="fig-axis" marker-end="url(#arr-3-12-1)"/>
+<line x1="276.6" y1="260.3" x2="299.6" y2="153.1" class="fig-axis" marker-end="url(#arr-3-12-1)"/>
+<line x1="314" y1="288.3" x2="337" y2="181.2" class="fig-axis" marker-end="url(#arr-3-12-1)"/>
+<path d="M207.1,216.6 L261.7,227.4 L282.5,211.2 L227.9,200.4 Z" class="fig-band"/>
+<path d="M207.1,216.6 L261.7,227.4 L282.5,211.2 L227.9,200.4 Z" class="fig-curve"/>
+<line x1="207.1" y1="216.6" x2="261.7" y2="227.4" class="fig-curve" marker-end="url(#arr-3-12-1)"/>
+<line x1="207.1" y1="216.6" x2="227.9" y2="200.4" class="fig-curve" marker-end="url(#arr-3-12-1)"/>
+<circle cx="207.1" cy="216.6" r="3" class="fig-arrowhead"/>
+<text x="269.7" y="243.4" class="fig-label fig-it">v</text>
+<text x="223.9" y="192.4" text-anchor="end" class="fig-label fig-it">w</text>
+<text x="199.1" y="234.6" text-anchor="end" class="fig-label fig-it">p</text>
+<text x="430" y="60" class="fig-label fig-small">Linhas do campo G atravessam a</text>
+<text x="430" y="78" class="fig-label fig-small">superfície; o paralelogramo (v, w)</text>
+<text x="430" y="96" class="fig-label fig-small">é tangente a ela em p.</text>
+<text x="430" y="132" class="fig-label fig-small">A forma de fluxo de G, Φ,</text>
+<text x="430" y="150" class="fig-label fig-small">mede o fluxo de G através</text>
+<text x="430" y="168" class="fig-label fig-small">do paralelogramo, com sinal:</text>
+<text x="430" y="200" class="fig-label fig-it">Φ(v, w) = G · (v × w)</text>
+</svg>
+                    <figcaption><strong>Figura 3.12.1.</strong> Uma superfície atravessada por linhas de um campo $\mathbf{G}$. Em um ponto $p$, o paralelogramo tangente gerado por $v$ e $w$ tem o fluxo de $\mathbf{G}$ medido pela $2$-forma
+                        $\Phi_{\mathbf{G}}(v,w)=\mathbf{G}\cdot(v\times w)$, que é positivo se $\mathbf{G}$ atravessa o paralelogramo no sentido de $v\times w$ e negativo no sentido oposto.</figcaption>
+                </figure>
+
+                <p id="obs-3-12-10"><strong>Observação 3.12.10 (O dicionário usa a estrutura euclidiana).</strong> A Proposição 3.12.9 só existe em $\mathbb{R}^3$, e depende de dados que <em>não</em> são parte de uma variedade: o produto escalar (para identificar um campo
+                    $\mathbf{F}$ com a $1$-forma $\omega_{\mathbf{F}}$, de componentes $F_i=F^i$, ou seja, para "baixar o índice"), a orientação e o elemento de volume $dV$ (para identificar $\mathbf{G}$ com a $2$-forma $i_{\mathbf{G}}\,dV$), e a coincidência
+                    $\binom32=3$ (<a href="[11] - Produto Exterior.html#obs-3-11-31">Observação 3.11.31</a>). Em uma variedade qualquer, sem métrica nem orientação dadas, existem as formas e não existe o dicionário: o "gradiente", o "rotacional" e o "divergente" precisam de estrutura extra. É a razão de o capítulo
+                    trabalhar com formas, que existem em qualquer variedade, e só no tópico 3.19 voltar aos campos de $\mathbb{R}^3$.</p>
+
+                <h2 id="pullback">Pullback de formas diferenciais</h2>
+
+                <p>
+                    O pullback de formas é o do tópico 3.10, restrito às formas, e, em cada ponto, é o pullback linear $A^*$ do <a href="[11] - Produto Exterior.html#def-3-11-27">Definição 3.11.27</a> com $A=dF_p$.
+                </p>
+
+                <div class="definition-box" id="def-3-12-11" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.12.11 (Pullback de formas).</strong> Sejam $F: M\to N$ suave e $\omega\in\Omega^k(N)$. O
+                        <strong>pullback</strong> (ou <strong>retrocesso</strong>) $F^*\omega$ é dado por</p>
+                    <p>$$ (F^*\omega)_p(v_1,\dots,v_k)=\omega_{F(p)}\big(dF_pv_1,\dots,dF_pv_k\big), \qquad v_i\in T_pM, $$</p>
+                    <p>isto é, $(F^*\omega)_p=(dF_p)^*\big(\omega_{F(p)}\big)$. Para $k=0$, $F^*f=f\circ F$.</p>
+                </div>
+
+                <p>
+                    $F^*\omega$ é um covetor alternado em cada ponto (<a href="[11] - Produto Exterior.html#def-3-11-27">Definição 3.11.27</a>); a suavidade é parte do teorema a seguir. Como $F^*$ é o pullback de tensores covariantes (<a href="[10] - Álgebra Multilinear e Tensores.html#def-3-10-35">Definição 3.10.35</a>) aplicado a formas, vale
+                    tudo o que foi provado lá; o que há de novo é a compatibilidade com o produto exterior.
+                </p>
+
+                <div class="definition-box" id="teo-3-12-12">
+                    <p><strong>Teorema 3.12.12 (Propriedades do pullback de formas).</strong> Sejam $F: M\to N$ e $G: N\to P$ suaves.</p>
+                    <p>(a) $F^*:\Omega^k(N)\to\Omega^k(M)$ é linear, e $F^*(u\,\omega)=(u\circ F)\,F^*\omega$ para $u\in C^\infty(N)$;</p>
+                    <p>(b) $F^*(\omega\wedge\eta)=F^*\omega\wedge F^*\eta$;</p>
+                    <p>(c) em coordenadas $y^j$ de $N$, com $F^j=y^j\circ F$,</p>
+                    <p>$$ \begin{aligned}&F^*\Big(\sideset{}{'}\sum_I\omega_I\,dy^{i_1}\wedge\dots\wedge dy^{i_k}\Big)\\
+&\qquad=\sideset{}{'}\sum_I(\omega_I\circ F)\ dF^{i_1}\wedge\dots\wedge dF^{i_k},\\
+&\text{com}\quad dF^j=\frac{\partial F^j}{\partial x^i}\,dx^i;\end{aligned} \tag{3.12.4} $$</p>
+                    <p>(d) $(G\circ F)^*=F^*\circ G^*$ e $\mathrm{Id}^*=\mathrm{Id}$;</p>
+                    <p>(e) $F^*\omega$ é suave.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) $(dF_p)^*$ é linear (<a href="[11] - Produto Exterior.html#prop-3-11-28">Proposição 3.11.28</a>(a)) e $(F^*(u\omega))_p=u(F(p))\,(dF_p)^*\omega_{F(p)}$. (b) Em cada ponto, é a <a href="[11] - Produto Exterior.html#prop-3-11-28">Proposição 3.11.28</a>(b) com $A=dF_p$:
+                    $(dF_p)^*(\omega_{F(p)}\wedge\eta_{F(p)})=(dF_p)^*\omega_{F(p)}\wedge(dF_p)^*\eta_{F(p)}$. (c) Por (b), repetida, $F^*(dy^{i_1}\wedge\dots\wedge dy^{i_k})=F^*dy^{i_1}\wedge\dots\wedge F^*dy^{i_k}$, e $F^*dy^j=d(y^j\circ F)=dF^j$
+                    pela <a href="[09] - Covetores e 1-Formas.html#prop-3-9-26">Proposição 3.9.26</a>(c); a fórmula segue com (a). A expressão de $dF^j$ é (3.9.1). (d) $d(G\circ F)_p=dG_{F(p)}\circ dF_p$ (<a href="[05] - Vetores Tangentes.html#prop-3-5-11">Proposição 3.5.11</a>) e a <a href="[11] - Produto Exterior.html#prop-3-11-28">Proposição 3.11.28</a>(c) dão
+                    $\big((G\circ F)^*\zeta\big)_p=(dF_p)^*(dG_{F(p)})^*\zeta_{GF(p)}=\big(F^*(G^*\zeta)\big)_p$; e $d(\mathrm{id})_p=\mathrm{id}$. (e) Em coordenadas, por (3.12.4) e pela fórmula do determinante (3.11.4),
+                    o coeficiente de $dx^K$ em $dF^{i_1}\wedge\dots\wedge dF^{i_k}$ é $\det\big(\partial F^{i_a}/\partial x^{k_b}\big)$, de modo que
+                    $$ (F^*\omega)_K=\sideset{}{'}\sum_I(\omega_I\circ F)\,\det\Big(\frac{\partial F^{i_a}}{\partial x^{k_b}}\Big), $$
+                    uma soma de produtos de funções suaves. Pela <a href="#prop-3-12-5">Proposição 3.12.5</a>(b), $F^*\omega$ é suave. $\blacksquare$
+                </p>
+
+                <p>
+                    A Equação (3.12.4) dá a <strong>receita</strong> do pullback de uma forma: <em>substitua</em> $y=F(x)$ nos coeficientes, <em>troque</em> cada $dy^j$ por $dF^j=\frac{\partial F^j}{\partial x^i}\,dx^i$ e
+                    <em>expanda</em> usando a antissimetria ($dx^i\wedge dx^i=0$ e $dx^j\wedge dx^i=-dx^i\wedge dx^j$).
+                </p>
+
+                <p id="ex-3-12-13"><strong>Exemplo 3.12.13 (O gráfico de $u^2+v^2$).</strong> Seja $F(u,v)=(u,v,u^2+v^2)$, de $\mathbb{R}^2$ em $\mathbb{R}^3$, de modo que
+                    $F^*dx=du$, $F^*dy=dv$ e $F^*dz=2u\,du+2v\,dv$. Então
+                    $$ \begin{aligned}F^*(dx\wedge dy)&=du\wedge dv,\\
+                    F^*(dy\wedge dz)&=dv\wedge(2u\,du+2v\,dv)=2u\,dv\wedge du=-2u\,du\wedge dv,\\
+                    F^*(dz\wedge dx)&=(2u\,du+2v\,dv)\wedge du=2v\,dv\wedge du=-2v\,du\wedge dv.\end{aligned} $$
+                    Em termos da forma de fluxo, $F^*\Phi_{\mathbf{G}}=(-2u\,G_1-2v\,G_2+G_3)\,du\wedge dv$ calculado em $F(u,v)$: o coeficiente é o produto de $\mathbf{G}$ pelo vetor $(-2u,-2v,1)$, que é normal ao gráfico.</p>
+
+                <h2 id="forma-de-grau-maximo">Pullback de formas de grau máximo</h2>
+
+                <p>
+                    Em grau máximo, $\Lambda^n$ tem dimensão $1$ e o pullback é a multiplicação por um número, o determinante da jacobiana. É a fórmula de mudança de variáveis das integrais, antes de qualquer integral.
+                </p>
+
+                <div class="definition-box" id="teo-3-12-14">
+                    <p><strong>Teorema 3.12.14 (Pullback de uma $n$-forma).</strong> Sejam $M$ e $N$ de dimensão $n$, $F: M\to N$ suave, $(U,\varphi)$ uma carta de $M$ com coordenadas $x^i$ e $(V,\psi)$ uma carta de $N$ com
+                        coordenadas $y^j$. Em $U\cap F^{-1}(V)$, para $u\in C^\infty(V)$,</p>
+                    <p>$$ \begin{aligned}&F^*\big(u\,dy^1\wedge\dots\wedge dy^n\big)\\
+&\qquad=(u\circ F)\,(\det DF)\,dx^1\wedge\dots\wedge dx^n,\end{aligned} \tag{3.12.5} $$</p>
+                    <p>em que $DF=\big(\partial F^j/\partial x^i\big)$ é a matriz jacobiana de $F$ nessas coordenadas, com $F^j=y^j\circ F$, linhas $j$ e colunas $i$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Os dois lados são $n$-formas em $U\cap F^{-1}(V)$, e $\dim\Lambda^n(T_p^*M)=1$, de modo que basta compará-los em $(\partial_1,\dots,\partial_n)$. Por (3.12.4), o lado esquerdo é $(u\circ F)\,dF^1\wedge\dots\wedge dF^n$, e, pela fórmula
+                    do determinante (3.11.4),
+                    $$ \begin{aligned}&(dF^1\wedge\dots\wedge dF^n)(\partial_1,\dots,\partial_n)=\det\big(dF^j(\partial_i)\big)\\
+                    &\quad=\det\Big(\frac{\partial F^j}{\partial x^i}\Big)=\det DF.\end{aligned} $$
+                    O lado direito vale $(u\circ F)\,\det DF\,(dx^1\wedge\dots\wedge dx^n)(\partial_1,\dots,\partial_n)=(u\circ F)\det DF$, porque $\det(dx^j(\partial_i))=\det(\delta^j_i)=1$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="cor-3-12-15">
+                    <p><strong>Corolário 3.12.15 (Mudança de coordenadas).</strong> Se $(x^i)$ e $(\tilde{x}^j)$ são coordenadas em um aberto de uma variedade de dimensão $n$, então</p>
+                    <p>$$ d\tilde{x}^1\wedge\dots\wedge d\tilde{x}^n=\det\Big(\frac{\partial\tilde{x}^j}{\partial x^i}\Big)\,dx^1\wedge\dots\wedge dx^n. $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> É o Teorema 3.12.14 com $M=N$, $F=\mathrm{id}$ e $u=1$, tomando as coordenadas $x^i$ na origem e $\tilde{x}^j$ no destino: $\mathrm{id}^*=\mathrm{id}$ e $F^j=\tilde{x}^j$. (É também o caso $k=n$ da Proposição 3.12.2.) $\blacksquare$
+                </p>
+
+                <p id="ex-3-12-16"><strong>Exemplo 3.12.16 (Elementos de área e de volume).</strong> Em polares, $F(r,\theta)=(r\cos\theta,r\sin\theta)$ tem
+                    $DF=\begin{pmatrix}\cos\theta&-r\sin\theta\\\sin\theta&r\cos\theta\end{pmatrix}$ e $\det DF=r\cos^2\theta+r\sin^2\theta=r$, de modo que</p>
+                <p>$$ dx\wedge dy=r\,dr\wedge d\theta. $$</p>
+                <p>Em esféricas, $F(r,\theta,\phi)=(r\sin\theta\cos\phi,\,r\sin\theta\sin\phi,\,r\cos\theta)$ tem
+                    $$ DF=\begin{pmatrix}\sin\theta\cos\phi&r\cos\theta\cos\phi&-r\sin\theta\sin\phi\\\sin\theta\sin\phi&r\cos\theta\sin\phi&r\sin\theta\cos\phi\\\cos\theta&-r\sin\theta&0\end{pmatrix}. $$
+                    Desenvolvendo o determinante pela terceira linha,
+                    $$ \begin{aligned}\det DF&=\cos\theta\cdot r^2\sin\theta\cos\theta+(-r\sin\theta)\cdot(-r\sin^2\theta)\\
+                    &=r^2\sin\theta\,(\cos^2\theta+\sin^2\theta)=r^2\sin\theta,\end{aligned} $$
+                    pois os menores são $r^2\sin\theta\cos\theta\,(\cos^2\phi+\sin^2\phi)$ e $r\sin^2\theta\,(\cos^2\phi+\sin^2\phi)$. Logo</p>
+                <p>$$ dx\wedge dy\wedge dz=r^2\sin\theta\,dr\wedge d\theta\wedge d\phi. $$</p>
+                <p>A Figura 3.12.2 mostra o primeiro caso: o fator $r$ é o que a aplicação $F$ faz com a área da célula $dr\,d\theta$, que, no plano $(x,y)$, é um setor de lados $dr$ e $r\,d\theta$.</p>
+
+                <figure class="lecture-figure" id="fig-3-12-2" style="overflow-x: auto; overflow-y: hidden;">
+                    <svg viewBox="0 0 640 300" role="img" style="min-width: 560px;" aria-label="Dois painéis. À esquerda, o plano com eixos r, na horizontal, e teta, na vertical, com uma malha retangular e uma célula sombreada de lados dr e d teta, de área dr vezes d teta. À direita, o plano x y com a malha polar, arcos de circunferência e raios, em um quarto de plano, e a imagem da célula como um pequeno setor anular sombreado, de lados dr e r d teta, de área r dr d teta. Uma seta F liga os painéis. A legenda diz que dx wedge dy é igual a r dr wedge d teta.">
+<defs><marker id="arr-3-12-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<rect x="14" y="16" width="280" height="272" rx="3" class="fig-frame"/>
+<text x="24" y="36" class="fig-label">(a) plano (r, θ)</text>
+<line x1="52" y1="250" x2="276" y2="250" class="fig-axis" marker-end="url(#arr-3-12-2)"/>
+<line x1="52" y1="250" x2="52" y2="54" class="fig-axis" marker-end="url(#arr-3-12-2)"/>
+<text x="276" y="268" text-anchor="end" class="fig-label fig-small fig-it">r</text>
+<text x="60" y="62" class="fig-label fig-small fig-it">θ</text>
+<line x1="112" y1="250" x2="112" y2="62" class="fig-guide"/>
+<line x1="172" y1="250" x2="172" y2="62" class="fig-guide"/>
+<line x1="232" y1="250" x2="232" y2="62" class="fig-guide"/>
+<line x1="292" y1="250" x2="292" y2="62" class="fig-guide"/>
+<line x1="52" y1="190" x2="270" y2="190" class="fig-guide"/>
+<line x1="52" y1="130" x2="270" y2="130" class="fig-guide"/>
+<line x1="52" y1="70" x2="270" y2="70" class="fig-guide"/>
+<path d="M172,190 L226,190 L226,148 L172,148 Z" class="fig-band"/>
+<path d="M172,190 L226,190 L226,148 L172,148 Z" class="fig-curve"/>
+<text x="199" y="208" text-anchor="middle" class="fig-label fig-it">dr</text>
+<text x="234" y="174" class="fig-label fig-it">dθ</text>
+<text x="24" y="278" class="fig-label fig-small">área dr dθ</text>
+<rect x="314" y="16" width="312" height="272" rx="3" class="fig-frame"/>
+<text x="324" y="36" class="fig-label">(b) plano (x, y)</text>
+<path d="M398,258 L398,256.6 L397.9,255.3 L397.8,253.9 L397.7,252.6 L397.6,251.2 L397.4,249.9 L397.1,248.5 L396.9,247.2 L396.6,245.9 L396.2,244.5 L395.9,243.2 L395.5,241.9 L395,240.6 L394.5,239.4 L394,238.1 L393.5,236.8 L392.9,235.6 L392.3,234.4 L391.7,233.2 L391,232 L390.3,230.8 L389.6,229.7 L388.9,228.5 L388.1,227.4 L387.3,226.3 L386.4,225.3 L385.5,224.2 L384.6,223.2 L383.7,222.2 L382.8,221.2 L381.8,220.3 L380.8,219.4 L379.8,218.5 L378.7,217.6 L377.7,216.7 L376.6,215.9 L375.5,215.1 L374.3,214.4 L373.2,213.7 L372,213 L370.8,212.3 L369.6,211.7 L368.4,211.1 L367.2,210.5 L365.9,210 L364.6,209.5 L363.4,209 L362.1,208.5 L360.8,208.1 L359.5,207.8 L358.1,207.4 L356.8,207.1 L355.5,206.9 L354.1,206.6 L352.8,206.4 L351.4,206.3 L350.1,206.2 L348.7,206.1 L347.4,206 L346,206" class="fig-guide"/>
+<path d="M450,258 L450,255.3 L449.9,252.6 L449.7,249.8 L449.4,247.1 L449.1,244.4 L448.7,241.7 L448.3,239 L447.7,236.4 L447.1,233.7 L446.5,231.1 L445.7,228.5 L444.9,225.9 L444,223.3 L443.1,220.7 L442.1,218.2 L441,215.7 L439.9,213.2 L438.7,210.8 L437.4,208.4 L436.1,206 L434.7,203.7 L433.2,201.4 L431.7,199.1 L430.1,196.9 L428.5,194.7 L426.8,192.6 L425.1,190.5 L423.3,188.4 L421.4,186.4 L419.5,184.5 L417.6,182.6 L415.6,180.7 L413.5,178.9 L411.4,177.2 L409.3,175.5 L407.1,173.9 L404.9,172.3 L402.6,170.8 L400.3,169.3 L398,167.9 L395.6,166.6 L393.2,165.3 L390.8,164.1 L388.3,163 L385.8,161.9 L383.3,160.9 L380.7,160 L378.1,159.1 L375.5,158.3 L372.9,157.5 L370.3,156.9 L367.6,156.3 L365,155.7 L362.3,155.3 L359.6,154.9 L356.9,154.6 L354.2,154.3 L351.4,154.1 L348.7,154 L346,154" class="fig-guide"/>
+<path d="M502,258 L501.9,253.9 L501.8,249.8 L501.5,245.8 L501.1,241.7 L500.7,237.6 L500.1,233.6 L499.4,229.6 L498.6,225.6 L497.7,221.6 L496.7,217.6 L495.6,213.7 L494.4,209.8 L493.1,205.9 L491.6,202.1 L490.1,198.3 L488.5,194.5 L486.8,190.8 L485,187.2 L483.1,183.6 L481.1,180 L479,176.5 L476.8,173 L474.6,169.6 L472.2,166.3 L469.8,163 L467.2,159.8 L464.6,156.7 L461.9,153.6 L459.2,150.6 L456.3,147.7 L453.4,144.8 L450.4,142.1 L447.3,139.4 L444.2,136.8 L441,134.2 L437.7,131.8 L434.4,129.4 L431,127.2 L427.5,125 L424,122.9 L420.4,120.9 L416.8,119 L413.2,117.2 L409.5,115.5 L405.7,113.9 L401.9,112.4 L398.1,110.9 L394.2,109.6 L390.3,108.4 L386.4,107.3 L382.4,106.3 L378.4,105.4 L374.4,104.6 L370.4,103.9 L366.4,103.3 L362.3,102.9 L358.2,102.5 L354.2,102.2 L350.1,102.1 L346,102" class="fig-guide"/>
+<path d="M554,258 L553.9,252.6 L553.7,247.1 L553.4,241.7 L552.9,236.3 L552.2,230.9 L551.4,225.5 L550.5,220.1 L549.5,214.8 L548.3,209.4 L546.9,204.2 L545.4,198.9 L543.8,193.7 L542.1,188.6 L540.2,183.5 L538.2,178.4 L536,173.4 L533.7,168.5 L531.3,163.6 L528.8,158.8 L526.1,154 L523.3,149.3 L520.4,144.7 L517.4,140.2 L514.3,135.7 L511,131.4 L507.6,127.1 L504.2,122.9 L500.6,118.8 L496.9,114.8 L493.1,110.9 L489.2,107.1 L485.2,103.4 L481.1,99.8 L476.9,96.4 L472.6,93 L468.3,89.7 L463.8,86.6 L459.3,83.6 L454.7,80.7 L450,77.9 L445.2,75.2 L440.4,72.7 L435.5,70.3 L430.6,68 L425.6,65.8 L420.5,63.8 L415.4,61.9 L410.3,60.2 L405.1,58.6 L399.8,57.1 L394.6,55.7 L389.2,54.5 L383.9,53.5 L378.5,52.6 L373.1,51.8 L367.7,51.1 L362.3,50.6 L356.9,50.3 L351.4,50.1 L346,50" class="fig-guide"/>
+<line x1="346" y1="258" x2="561.8" y2="258" class="fig-axis"/>
+<line x1="346" y1="258" x2="554.4" y2="202.1" class="fig-guide"/>
+<line x1="346" y1="258" x2="532.9" y2="150.1" class="fig-guide"/>
+<line x1="346" y1="258" x2="498.6" y2="105.4" class="fig-guide"/>
+<line x1="346" y1="258" x2="453.9" y2="71.1" class="fig-guide"/>
+<line x1="346" y1="258" x2="401.9" y2="49.6" class="fig-guide"/>
+<line x1="346" y1="258" x2="346" y2="42.2" class="fig-axis"/>
+<path d="M439.1,191.5 L438,190 L436.9,188.6 L435.8,187.1 L434.7,185.7 L433.5,184.3 L432.3,182.9 L431.1,181.5 L429.9,180.2 L428.6,178.9 L427.3,177.5 L426,176.3 L424.7,175 L423.4,173.7 L422,172.5 L420.6,171.3 L419.2,170.1 L417.8,169 L416.4,167.8 L414.9,166.7 L413.5,165.6 L441.1,127.8 L443.1,129.4 L445.2,130.9 L447.2,132.5 L449.2,134.2 L451.2,135.8 L453.1,137.5 L455,139.3 L456.9,141 L458.8,142.8 L460.6,144.6 L462.4,146.5 L464.2,148.4 L465.9,150.3 L467.6,152.2 L469.3,154.2 L470.9,156.1 L472.6,158.1 L474.1,160.2 L475.7,162.3 L477.2,164.3 Z" class="fig-band"/>
+<path d="M439.1,191.5 L438,190 L436.9,188.6 L435.8,187.1 L434.7,185.7 L433.5,184.3 L432.3,182.9 L431.1,181.5 L429.9,180.2 L428.6,178.9 L427.3,177.5 L426,176.3 L424.7,175 L423.4,173.7 L422,172.5 L420.6,171.3 L419.2,170.1 L417.8,169 L416.4,167.8 L414.9,166.7 L413.5,165.6 L441.1,127.8 L443.1,129.4 L445.2,130.9 L447.2,132.5 L449.2,134.2 L451.2,135.8 L453.1,137.5 L455,139.3 L456.9,141 L458.8,142.8 L460.6,144.6 L462.4,146.5 L464.2,148.4 L465.9,150.3 L467.6,152.2 L469.3,154.2 L470.9,156.1 L472.6,158.1 L474.1,160.2 L475.7,162.3 L477.2,164.3 Z" class="fig-curve"/>
+<text x="484" y="139.1" class="fig-label fig-it">r dθ</text>
+<text x="489.2" y="174.3" class="fig-label fig-it">dr</text>
+<circle cx="346" cy="258" r="3" class="fig-arrowhead"/>
+<text x="324" y="278" class="fig-label fig-small">área r dr dθ: dx∧dy = r dr∧dθ</text>
+<line x1="296" y1="140" x2="312" y2="140" class="fig-axis" marker-end="url(#arr-3-12-2)"/>
+<text x="303" y="130" text-anchor="middle" class="fig-label fig-small fig-it">F</text>
+</svg>
+                    <figcaption><strong>Figura 3.12.2.</strong> O elemento de área em polares. (a) A célula $[r,r+dr]\times[\theta,\theta+d\theta]$ no plano $(r,\theta)$ tem área $dr\,d\theta$. (b) Sua imagem
+                        por $F(r,\theta)=(r\cos\theta,r\sin\theta)$ é um setor anular de lados $dr$ e $r\,d\theta$, de área $r\,dr\,d\theta$. A razão entre as áreas é $\det DF=r$, e isso é a igualdade
+                        $dx\wedge dy=r\,dr\wedge d\theta$.</figcaption>
+                </figure>
+
+                <p id="obs-3-12-17"><strong>Observação 3.12.17 (O determinante, não o seu módulo).</strong> Compare (3.12.5) com a fórmula de mudança de variáveis em integrais múltiplas do tópico 3.2 (<a href="[02] - Preliminares de Topologia e Cálculo.html#teo-3-2-64">Teorema 3.2.64</a>), que tem $\lvert\det DF\rvert$, o fator de área
+                    sem sinal. Aqui aparece $\det DF$, com sinal. Em consequência, a integral de uma $n$-forma, definida por pullback, será invariante por mudanças de coordenadas de determinante positivo e trocará de sinal nas outras. Por isso é
+                    preciso <em>orientar</em> a variedade (tópico 3.15) antes de integrar formas (tópico 3.17): a orientação diz quais coordenadas têm $\det>0$ uma em relação à outra. Já em dimensão $1$, $\int_a^b$ troca de sinal quando se inverte o
+                    sentido de percurso, que é este fenômeno (<a href="[09] - Covetores e 1-Formas.html#prop-3-9-30">Proposição 3.9.30</a>).</p>
+
+                <h2 id="restricao">Restrição a subvariedades</h2>
+
+                <div class="definition-box" id="def-3-12-18" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.12.18 (Restrição de uma forma).</strong> Sejam $S\subset M$ uma subvariedade mergulhada, $\iota: S\hookrightarrow M$ a inclusão (<a href="[06] - Subvariedades.html#teo-3-6-14">Teorema 3.6.14</a>) e $\omega\in\Omega^k(M)$. A
+                        <strong>restrição</strong> de $\omega$ a $S$ é $\omega\vert_S=\iota^*\omega\in\Omega^k(S)$, isto é,
+                        $(\iota^*\omega)_p(v_1,\dots,v_k)=\omega_p(v_1,\dots,v_k)$ para $v_i\in T_pS\subset T_pM$.</p>
+                </div>
+
+                <p>
+                    Se $k\gt\dim S$, então $\Omega^k(S)=0$ e, portanto, $\omega\vert_S=0$: não há $k$ vetores linearmente independentes em um espaço tangente de dimensão menor que $k$ (<a href="[11] - Produto Exterior.html#lema-3-11-6">Lema 3.11.6</a>(d)). Para calcular $\iota^*\omega$ em coordenadas, usa-se uma
+                    parametrização local $\sigma$ de $S$, inversa de uma carta de $S$: $\sigma^*(\iota^*\omega)=(\iota\circ\sigma)^*\omega$, pelo Teorema 3.12.12(d), e a receita do pullback dá as componentes de $\iota^*\omega$ na carta.
+                </p>
+
+                <p id="ex-3-12-19"><strong>Exemplo 3.12.19 (A forma de área de $S^2$).</strong> Em $\mathbb{R}^3$, seja
+                    $$ \begin{aligned}\omega&=x\,dy\wedge dz+y\,dz\wedge dx+z\,dx\wedge dy\\
+                    &=\Phi_{\mathbf{R}}=i_{\mathbf{R}}(dx\wedge dy\wedge dz),\qquad\mathbf{R}=x\partial_x+y\partial_y+z\partial_z,\end{aligned} $$
+                    pela Proposição 3.12.9(b). Com a parametrização $\sigma(\theta,\phi)=(\sin\theta\cos\phi,\sin\theta\sin\phi,\cos\theta)$ de $S^2$, as receitas dão
+                    $\sigma^*dx=\cos\theta\cos\phi\,d\theta-\sin\theta\sin\phi\,d\phi$, $\sigma^*dy=\cos\theta\sin\phi\,d\theta+\sin\theta\cos\phi\,d\phi$ e $\sigma^*dz=-\sin\theta\,d\theta$, e
+                    $$ \begin{aligned}\sigma^*(dy\wedge dz)&=\sin^2\theta\cos\phi\,d\theta\wedge d\phi,\\
+                    \sigma^*(dz\wedge dx)&=\sin^2\theta\sin\phi\,d\theta\wedge d\phi,\\
+                    \sigma^*(dx\wedge dy)&=\sin\theta\cos\theta\,d\theta\wedge d\phi.\end{aligned} $$
+                    Multiplicando por $x=\sin\theta\cos\phi$, $y=\sin\theta\sin\phi$ e $z=\cos\theta$ e somando,
+                    $$ \iota^*\omega=\big(\sin^3\theta\cos^2\phi+\sin^3\theta\sin^2\phi+\sin\theta\cos^2\theta\big)\,d\theta\wedge d\phi=\sin\theta\,d\theta\wedge d\phi. $$
+                    Esta forma <em>não se anula em ponto algum</em> de $S^2$. Sem coordenadas (que degeneram nos polos): em $p\in S^2$, como $\mathbf{R}_p=p$, tem-se, para $v,w\in T_pS^2$, $(\iota^*\omega)_p(v,w)=(dx\wedge dy\wedge dz)(p,v,w)=\det[p\ v\ w]$.
+                    Se $(v,w)$ é uma base de $T_pS^2=p^\perp$ (<a href="[05] - Vetores Tangentes.html#ex-3-5-26">Exemplo 3.5.26</a>), os vetores $p,v,w$ são linearmente independentes, e o determinante é não nulo (<a href="[11] - Produto Exterior.html#cor-3-11-15">Corolário 3.11.15</a>). Esta é uma <em>forma de orientação</em> de $S^2$, ideia que o tópico 3.15 desenvolve.</p>
+
+                <p id="ex-3-12-20"><strong>Exemplo 3.12.20 (A circunferência e um gráfico).</strong></p>
+                <ul>
+                    <li>Em $S^1\subset\mathbb{R}^2$, com $\sigma(\theta)=(\cos\theta,\sin\theta)$, $\sigma^*(x\,dy-y\,dx)=\cos\theta\,d(\sin\theta)-\sin\theta\,d(\cos\theta)=(\cos^2\theta+\sin^2\theta)\,d\theta=d\theta$. Logo $\iota^*(x\,dy-y\,dx)=d\theta$, como no
+                        <a href="[09] - Covetores e 1-Formas.html#ex-3-9-33">Exemplo 3.9.33</a> e no <a href="[09] - Covetores e 1-Formas.html#ex-3-9-42">Exemplo 3.9.42</a>.</li>
+                    <li>No gráfico $\Gamma_f=\{(x,y,f(x,y))\}$ de uma função suave $f$, com a carta $(x,y)$ e a parametrização $\sigma(x,y)=(x,y,f(x,y))$ (<a href="[06] - Subvariedades.html#ex-3-6-16">Exemplo 3.6.16</a>), $\sigma^*(dx\wedge dy)=dx\wedge dy$, e, pela receita,
+                        $\sigma^*dz=f_x\,dx+f_y\,dy$, $\sigma^*(dy\wedge dz)=-f_x\,dx\wedge dy$ e $\sigma^*(dz\wedge dx)=-f_y\,dx\wedge dy$. Portanto, para a forma de fluxo,
+                        $$ \iota^*\Phi_{\mathbf{G}}=\big(-G_1f_x-G_2f_y+G_3\big)\,dx\wedge dy, $$
+                        com $\mathbf{G}$ calculado em $(x,y,f(x,y))$: o produto de $\mathbf{G}$ pelo vetor normal não unitário $(-f_x,-f_y,1)$. É a fórmula clássica do fluxo através de um gráfico, e será usada no tópico 3.19.</li>
+                </ul>
+
+                <h2 id="fisica">Ponte com a física</h2>
+
+                <p>
+                    <strong>A $2$-forma de Faraday.</strong> No espaço-tempo de Minkowski, com coordenadas $(t,x,y,z)$, assinatura $(-,+,+,+)$ e $c=1$, o tensor do campo eletromagnético é
+                    $F=\tfrac12F_{\mu\nu}\,dx^\mu\wedge dx^\nu$. Na soma irrestrita cada par aparece duas vezes (uma com cada ordem), e o fator $\tfrac12$ compensa:
+                    $F=\sum_{\mu\lt\nu}F_{\mu\nu}\,dx^\mu\wedge dx^\nu$ (Proposição 3.12.6). Com $F_{0i}=-E_i$ e $F_{ij}=\epsilon_{ijk}B_k$,
+                    $$ \begin{aligned}F&=E_x\,dx\wedge dt+E_y\,dy\wedge dt+E_z\,dz\wedge dt\\
+                    &\quad+B_x\,dy\wedge dz+B_y\,dz\wedge dx+B_z\,dx\wedge dy,\end{aligned} $$
+                    pois $-E_i\,dt\wedge dx^i=E_i\,dx^i\wedge dt$. Os sinais correspondem a $F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu$ com $A_\mu=(-\phi,\mathbf{A})$, que dá $\mathbf{E}=-\nabla\phi-\partial_t\mathbf{A}$ e $\mathbf{B}=\nabla\times\mathbf{A}$ (conferido com sympy).
+                    O que importa aqui é apenas a apresentação: as seis componentes de um $2$-covetor em dimensão $4$ (tópico 3.11) são os campos $\mathbf{E}$ e $\mathbf{B}$, e a parte "espacial" $B_x\,dy\wedge dz+B_y\,dz\wedge dx+B_z\,dx\wedge dy=\Phi_{\mathbf{B}}$ é a forma de fluxo de $\mathbf{B}$.
+                    As equações de Maxwell, em forma de formas, virão depois de definida a derivada exterior.
+                </p>
+
+                <p>
+                    <strong>A forma simplética.</strong> No espaço de fase $T^*Q$, com coordenadas $(q^i,p_i)$, a $2$-forma $\omega=dq^i\wedge dp_i$ é a forma simplética canônica (alguns textos escrevem $dp_i\wedge dq^i$, com o sinal oposto);
+                    em $\mathbb{R}^4$ é a $\omega=dx^1\wedge dx^2+dx^3\wedge dx^4$ do <a href="[11] - Produto Exterior.html#ex-3-11-22">Exemplo 3.11.22</a>.
+                </p>
+
+                <p>
+                    <strong>O que se integra.</strong> Uma força é uma $1$-forma, e seu trabalho é integrado ao longo de uma curva. O fluxo de uma corrente através de uma superfície é a integral de uma $2$-forma sobre ela, e a carga em um volume é a integral de uma
+                    $3$-forma: correntes e densidades são formas, e é por isso que as leis de conservação se escrevem bem com elas.
+                </p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p id="exr-3-12-1"><strong>Exercício 3.12.1.</strong> Mostre que $(x\,dx+y\,dy)\wedge(-y\,dx+x\,dy)=(x^2+y^2)\,dx\wedge dy$.</p>
+
+                <p>
+                    <em>Solução.</em> Por bilinearidade, $dx\wedge dx=dy\wedge dy=0$ e $dy\wedge dx=-dx\wedge dy$,
+                    $$ \begin{aligned}(x\,dx+y\,dy)\wedge(-y\,dx+x\,dy)&=x^2\,dx\wedge dy-y^2\,dy\wedge dx\\
+                    &=(x^2+y^2)\,dx\wedge dy.\end{aligned} $$
+                    (Em termos do dicionário, é $\omega_{\mathbf{F}}\wedge\omega_{\mathbf{G}}$ para $\mathbf{F}=(x,y,0)$ e $\mathbf{G}=(-y,x,0)$, e $\mathbf{F}\times\mathbf{G}=(0,0,x^2+y^2)$.) $\blacksquare$
+                </p>
+
+                <p id="exr-3-12-2"><strong>Exercício 3.12.2.</strong> Em $\mathbb{R}^3$, escreva na base crescente a forma $\omega=\tfrac12\omega_{ij}\,dx^i\wedge dx^j$ com $(\omega_{ij})=\begin{pmatrix}0&2&-1\\-2&0&3\\1&-3&0\end{pmatrix}$.</p>
+
+                <p>
+                    <em>Solução.</em> A matriz é antissimétrica, e, pela Proposição 3.12.6, 
+                    $$ \begin{aligned}\omega&=\sum_{i\lt j}\omega_{ij}\,dx^i\wedge dx^j\\
+                    &=\omega_{12}\,dx\wedge dy+\omega_{13}\,dx\wedge dz+\omega_{23}\,dy\wedge dz\\
+                    &=2\,dx\wedge dy-dx\wedge dz+3\,dy\wedge dz.\end{aligned} $$
+                    Na ordem do dicionário,
+                    $\omega=3\,dy\wedge dz+dz\wedge dx+2\,dx\wedge dy=\Phi_{\mathbf{G}}$ com $\mathbf{G}=(3,1,2)$. $\blacksquare$
+                </p>
+
+                <p id="exr-3-12-3"><strong>Exercício 3.12.3.</strong> Calcule o pullback de $dx\wedge dy\wedge dz$ pelas coordenadas cilíndricas $F(r,\theta,z)=(r\cos\theta,r\sin\theta,z)$.</p>
+
+                <p>
+                    <em>Solução.</em> $DF=\begin{pmatrix}\cos\theta&-r\sin\theta&0\\\sin\theta&r\cos\theta&0\\0&0&1\end{pmatrix}$, de modo que $\det DF=r$ e, por (3.12.5), $F^*(dx\wedge dy\wedge dz)=r\,dr\wedge d\theta\wedge dz$. $\blacksquare$
+                </p>
+
+                <p id="exr-3-12-4"><strong>Exercício 3.12.4.</strong> Para $F(x,y)=(x^2-y^2,\,2xy)$, calcule $F^*(du\wedge dv)$.</p>
+
+                <p>
+                    <em>Solução.</em> $DF=\begin{pmatrix}2x&-2y\\2y&2x\end{pmatrix}$, e $\det DF=4x^2+4y^2$. Por (3.12.5), $F^*(du\wedge dv)=4(x^2+y^2)\,dx\wedge dy$. (Em notação complexa, $F(z)=z^2$, e o fator $4\lvert z\rvert^2=\lvert2z\rvert^2$ é o quadrado
+                    do módulo da derivada.) $\blacksquare$
+                </p>
+
+                <p id="exr-3-12-5"><strong>Exercício 3.12.5.</strong> Mostre que $\iota^*(z\,dx\wedge dy)=\cos^2\theta\sin\theta\,d\theta\wedge d\phi$ em $S^2$, em coordenadas esféricas.</p>
+
+                <p>
+                    <em>Solução.</em> Com $\sigma(\theta,\phi)=(\sin\theta\cos\phi,\sin\theta\sin\phi,\cos\theta)$, o Exemplo 3.12.19 deu $\sigma^*(dx\wedge dy)=\sin\theta\cos\theta\,d\theta\wedge d\phi$; de fato,
+                    $\det\begin{pmatrix}\cos\theta\cos\phi&-\sin\theta\sin\phi\\\cos\theta\sin\phi&\sin\theta\cos\phi\end{pmatrix}=\sin\theta\cos\theta$. Como $z\circ\sigma=\cos\theta$, $\sigma^*(z\,dx\wedge dy)=\cos\theta\cdot\sin\theta\cos\theta\,d\theta\wedge d\phi=\cos^2\theta\sin\theta\,d\theta\wedge d\phi$. $\blacksquare$
+                </p>
+
+                <p id="exr-3-12-6"><strong>Exercício 3.12.6.</strong> Mostre que toda $2$-forma em $\mathbb{R}^3$ é $\Phi_{\mathbf{G}}$ para um único $\mathbf{G}$, e que $i_X\omega_{\mathbf{F}}=\mathbf{F}\cdot X$.</p>
+
+                <p>
+                    <em>Solução.</em> Pelo <a href="[11] - Produto Exterior.html#teo-3-11-13">Teorema 3.11.13</a>, uma $2$-forma é $\omega=a\,dy\wedge dz+b\,dx\wedge dz+c\,dx\wedge dy$, com $a,b,c$ únicas. Como $dx\wedge dz=-dz\wedge dx$, $\omega=a\,dy\wedge dz+(-b)\,dz\wedge dx+c\,dx\wedge dy=\Phi_{\mathbf{G}}$ com
+                    $\mathbf{G}=(a,-b,c)$, e a unicidade de $(a,b,c)$ dá a de $\mathbf{G}$. Para a segunda afirmação, $i_X$ de uma $1$-forma é a avaliação (<a href="[11] - Produto Exterior.html#def-3-11-25">Definição 3.11.25</a>): $i_X\omega_{\mathbf{F}}=\omega_{\mathbf{F}}(X)=F_1X^1+F_2X^2+F_3X^3=\mathbf{F}\cdot X$. $\blacksquare$
+                </p>
+
+                <p id="exr-3-12-7"><strong>Exercício 3.12.7.</strong> Deduza $\det D(G\circ F)=(\det DG\circ F)\,\det DF$ aplicando $(G\circ F)^*=F^*\circ G^*$ a uma forma de grau máximo.</p>
+
+                <p>
+                    <em>Solução.</em> Sejam $F:\mathbb{R}^n\to\mathbb{R}^n$ e $G:\mathbb{R}^n\to\mathbb{R}^n$ suaves, e $\mu=dz^1\wedge\dots\wedge dz^n$ no contradomínio de $G$. Por (3.12.5), $G^*\mu=(\det DG)\,dy^1\wedge\dots\wedge dy^n$ e
+                    $$ F^*(G^*\mu)=\big(\det DG\circ F\big)\,(\det DF)\,dx^1\wedge\dots\wedge dx^n, $$
+                    enquanto $(G\circ F)^*\mu=\det D(G\circ F)\,dx^1\wedge\dots\wedge dx^n$. Pelo Teorema 3.12.12(d), as duas expressões são iguais, e o coeficiente dá a regra do produto de jacobianas, que é a regra da cadeia para $\det$. $\blacksquare$
+                </p>
+
+                <p id="exr-3-12-8"><strong>Exercício 3.12.8.</strong> Em $\mathbb{T}^2\subset\mathbb{R}^3$, parametrizado por $F(u,v)=\big((2+\cos v)\cos u,\ (2+\cos v)\sin u,\ \sin v\big)$ (<a href="[06] - Subvariedades.html#exr-3-6-1">Exercício 3.6.1</a>), calcule $F^*(dx\wedge dy)$.</p>
+
+                <p>
+                    <em>Solução.</em> Com $x\circ F=(2+\cos v)\cos u$ e $y\circ F=(2+\cos v)\sin u$, a matriz jacobiana de $(x,y)$ em relação a $(u,v)$ é
+                    $\begin{pmatrix}-(2+\cos v)\sin u&-\sin v\cos u\\(2+\cos v)\cos u&-\sin v\sin u\end{pmatrix}$, cujo determinante é $(2+\cos v)\sin v\,(\sin^2u+\cos^2u)=(2+\cos v)\sin v$. Logo
+                    $F^*(dx\wedge dy)=(2+\cos v)\sin v\,du\wedge dv$. O coeficiente se anula em $v=0$ e $v=\pi$, onde o plano tangente ao toro é vertical e a projeção sobre o plano $xy$ degenera (a forma $dx\wedge dy$ restrita ao toro é nula
+                    nesses pontos). $\blacksquare$
+                </p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <p>
+                    Este tópico levou a álgebra do 3.11 às variedades:
+                </p>
+
+                <ul>
+                    <li>o <strong>fibrado</strong> $\Lambda^kT^*M$ e as <strong>$k$-formas</strong> $\Omega^k(M)$ (<a href="#def-3-12-1">Definição 3.12.1</a>, <a href="#teo-3-12-3">Teorema 3.12.3</a>, <a href="#def-3-12-4">Definição 3.12.4</a>), com a expressão local $\sideset{}{'}\sum_I\omega_I\,dx^I$ e a convenção de componentes de
+                        física (<a href="#prop-3-12-5">Proposição 3.12.5</a>, <a href="#prop-3-12-6">Proposição 3.12.6</a>), a mudança de coordenadas (<a href="#prop-3-12-2">Proposição 3.12.2</a>) e a álgebra $\Omega^*(M)$ (<a href="#prop-3-12-7">Proposição 3.12.7</a>);</li>
+                    <li>o <strong>dicionário de $\mathbb{R}^3$</strong>: formas de trabalho, de fluxo e densidades (<a href="#def-3-12-8">Definição 3.12.8</a>, <a href="#prop-3-12-9">Proposição 3.12.9</a>), com a advertência de que ele usa a estrutura euclidiana (<a href="#obs-3-12-10">Observação 3.12.10</a>);</li>
+                    <li>o <strong>pullback</strong> de formas e suas propriedades (<a href="#def-3-12-11">Definição 3.12.11</a>, <a href="#teo-3-12-12">Teorema 3.12.12</a>), que comuta com $\wedge$;</li>
+                    <li>a <strong>fórmula do grau máximo</strong> (<a href="#teo-3-12-14">Teorema 3.12.14</a>, <a href="#cor-3-12-15">Corolário 3.12.15</a>): $F^*(u\,dy^1\wedge\dots\wedge dy^n)=(u\circ F)\det DF\,dx^1\wedge\dots\wedge dx^n$, com $\det$ e não $\lvert\det\rvert$ (<a href="#obs-3-12-17">Observação 3.12.17</a>);</li>
+                    <li>a <strong>restrição</strong> a subvariedades, a forma de área de $S^2$, que não se anula (<a href="#def-3-12-18">Definição 3.12.18</a>, <a href="#ex-3-12-19">Exemplo 3.12.19</a>), e a fórmula do fluxo por um gráfico (<a href="#ex-3-12-20">Exemplo 3.12.20</a>).</li>
+                </ul>
+
+                <p>
+                    Falta derivar formas: nenhuma das construções acima usou $d$ em grau positivo. O próximo tópico,
+                    <a href="[13] - Derivada Exterior.html">3.13 Derivada Exterior</a>, define $d:\Omega^k(M)\to\Omega^{k+1}(M)$, prova $d\circ d=0$, a regra de Leibniz $d(\omega\wedge\eta)=d\omega\wedge\eta+(-1)^k\omega\wedge d\eta$ e a comutação
+                    com o pullback, $F^*d=dF^*$, e mostra que $d\omega$ é o tensor $\Delta_\omega$ do <a href="[10] - Álgebra Multilinear e Tensores.html#ex-3-10-33">Exemplo 3.10.33</a>.
+                </p>
 
             </div>
         </main>
@@ -161,6 +675,14 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#formas-diferenciais">Formas Diferenciais</a></li>
+                    <li><a href="#k-formas">Formas em uma variedade</a></li>
+                    <li><a href="#exemplos-r3">O dicionário de ℝ³</a></li>
+                    <li><a href="#pullback">Pullback de formas</a></li>
+                    <li><a href="#forma-de-grau-maximo">Pullback em grau máximo</a></li>
+                    <li><a href="#restricao">Restrição a subvariedades</a></li>
+                    <li><a href="#fisica">Ponte com a física</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
                 </ul>
             </div>
         </aside>

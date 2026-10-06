@@ -149,9 +149,673 @@
             <div class="prose">
 
                 <h1 id="formula-de-cartan">3.14 Derivada de Lie de Formas e a Fórmula de Cartan</h1>
-                <p class="lead">A derivada de Lie de campos tensoriais e de formas, o produto interior, a fórmula de Cartan e a divergência relativa a uma forma de volume.</p>
+                <p class="lead">A derivada de Lie de campos tensoriais e de formas, o produto interior, a fórmula de Cartan, a fórmula invariante de $d$ em todo grau e a divergência relativa a uma forma de volume.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>
+                    Agora há três operações sobre formas. A derivada exterior $d$ (<a href="[13] - Derivada Exterior.html">tópico 3.13</a>) <em>sobe</em> o grau, de $k$ para $k+1$. O produto interior $i_X$ (tópicos <a href="[11] - Produto Exterior.html">3.11</a> e <a href="[12] - Formas Diferenciais.html">3.12</a>)
+                    <em>desce</em> o grau, de $k$ para $k-1$. A derivada de Lie $\mathcal{L}_X$, que vamos definir neste tópico para campos tensoriais covariantes e formas, <em>mantém</em> o grau: ela mede como uma forma varia ao longo do fluxo de $X$, do mesmo modo que $\mathcal{L}_XY=[X,Y]$
+                    (<a href="[08] - Fluxos e Derivada de Lie.html">tópico 3.8</a>) mediu como um campo varia. A <em>fórmula de Cartan</em>,
+                    $\mathcal{L}_X=i_X\,d+d\,i_X$, diz que a terceira é o anticomutador das duas primeiras.
+                </p>
+
+                <p>
+                    O que usamos: o fluxo $\theta$ e a igualdade $\mathcal{L}_XY=[X,Y]$ (tópico 3.8), o pullback de campos tensoriais covariantes (<a href="[10] - Álgebra Multilinear e Tensores.html">tópico 3.10</a>), o produto interior de formas e a álgebra $\Omega^*(M)$ (tópicos 3.11 e 3.12) e $d$, com sua
+                    naturalidade e $d\circ d=0$ (tópico 3.13). O que obtemos: (i) $\mathcal{L}_X$ em tensores covariantes e em formas, com as fórmulas em coordenadas e com colchetes; (ii) a fórmula de Cartan, com demonstração completa; (iii) a <em>fórmula invariante de $d$ em todo grau</em>,
+                    prometida no tópico 3.13; (iv) a divergência $\operatorname{div}_\mu X$ de um campo relativa a uma forma de volume $\mu$, e o teorema de que o fluxo de $X$ preserva $\mu$ se, e só se, ela é nula.
+                </p>
+
+                <p>
+                    Uma observação sobre o lugar deste tópico no caminho até Stokes. A demonstração do Teorema de Stokes (tópicos 3.17 e 3.18) <em>não usa</em> nada daqui. O tópico está no capítulo por três razões: ele cumpre a pendência do 3.13 (a fórmula invariante geral de $d\omega$);
+                    a divergência de (iv), $(\operatorname{div}_\mu X)\,\mu=d(i_X\mu)$, é o que o tópico 3.19 vai combinar com Stokes para obter o teorema da divergência em variedades; e $\mathcal{L}_X$ é a ferramenta da Relatividade Geral para simetrias (campos de Killing) e para a
+                    covariância geral (difeomorfismos infinitesimais).
+                </p>
+
+                <h2 id="lie-tensores">A derivada de Lie de campos tensoriais covariantes</h2>
+
+                <p>
+                    Seja $X\in\mathfrak{X}(M)$, com fluxo maximal $\theta:\mathcal{D}\to M$ (<a href="[08] - Fluxos e Derivada de Lie.html#def-3-8-9">Definição 3.8.9</a>). Para cada $t$, $\theta_t:M_t\to M_{-t}$ é um difeomorfismo entre abertos de $M$ (<a href="[08] - Fluxos e Derivada de Lie.html#teo-3-8-11">Teorema 3.8.11</a>(d)). Para um campo tensorial covariante $A\in\mathcal{T}^k(M)$, o pullback (ou retrocesso)
+                    $\theta_t^*A$ é definido pela <a href="[10] - Álgebra Multilinear e Tensores.html#def-3-10-35">Definição 3.10.35</a> (com $F=\theta_t:M_t\to M$): em $p\in M_t$,
+                    $$ (\theta_t^*A)_p(v_1,\dots,v_k)=A_{\theta_t(p)}\big(d(\theta_t)_pv_1,\dots,d(\theta_t)_pv_k\big),\qquad v_a\in T_pM. $$
+                    Fixado $p$, $t\mapsto(\theta_t^*A)_p$ é uma curva no espaço vetorial de dimensão finita $T^k(T_p^*M)$, definida para $t\in J_p$ (o intervalo maximal da curva integral por $p$), com $(\theta_0^*A)_p=A_p$. A derivada de Lie é a velocidade dessa curva em $t=0$:
+                    é a taxa com que o tensor em $\theta_t(p)$, <em>trazido de volta a $p$</em> pelo fluxo, difere do tensor em $p$.
+                </p>
+
+                <div class="definition-box" id="def-3-14-1" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.14.1 (Derivada de Lie de um campo tensorial covariante).</strong> Sejam $X\in\mathfrak{X}(M)$, com fluxo $\theta$, e $A\in\mathcal{T}^k(M)$. A <strong>derivada de Lie</strong> de $A$ ao longo de $X$ é o campo de tensores covariantes $\mathcal{L}_XA$ dado por</p>
+                    <p>$$ \begin{aligned}&(\mathcal{L}_XA)_p=\frac{d}{dt}\Big\vert_{t=0}(\theta_t^*A)_p\\
+                    &\quad=\lim_{t\to0}\frac{d(\theta_t)_p^*\big(A_{\theta_t(p)}\big)-A_p}{t}.\end{aligned} \tag{3.14.1} $$</p>
+                    <p>Este é um elemento de $T^k(T_p^*M)$, o limite de uma curva nesse espaço de dimensão finita. Para $k=0$, $\theta_t^*f=f\circ\theta_t$, e esta é a derivada de Lie de funções, $\mathcal{L}_Xf=Xf$ (<a href="[08] - Fluxos e Derivada de Lie.html#prop-3-8-16">Proposição 3.8.16</a>).</p>
+                </div>
+
+                <p>
+                    Falta mostrar que (3.14.1) faz sentido (que a curva é derivável em $t=0$) e que $\mathcal{L}_XA$ é um campo tensorial <em>suave</em>. Isso sai das componentes.
+                </p>
+
+                <div class="definition-box" id="lema-3-14-2">
+                    <p><strong>Lema 3.14.2 (Componentes do pullback pelo fluxo).</strong> Sejam $A\in\mathcal{T}^k(M)$, $(U,\varphi)$ uma carta e $p\in U$. Existem um aberto $V$ com $p\in V\subset U$ e $\varepsilon\gt0$ tais que $(-\varepsilon,\varepsilon)\times V\subset\mathcal{D}$ e
+                        $\theta\big((-\varepsilon,\varepsilon)\times V\big)\subset U$. Escrevendo $\theta^j=x^j\circ\theta$ nesse conjunto, as funções $\theta^j(t,x)$ são suaves e, para $\lvert t\rvert\lt\varepsilon$ e $q\in V$,</p>
+                    <p>$$ \begin{aligned}&(\theta_t^*A)_{i_1\dots i_k}(q)\\
+                    &\quad=A_{j_1\dots j_k}\big(\theta(t,q)\big)\ \partial_{i_1}\theta^{j_1}(t,q)\cdots\partial_{i_k}\theta^{j_k}(t,q),\end{aligned} \tag{3.14.2} $$</p>
+                    <p>em que $\partial_i\theta^j=\partial\theta^j/\partial x^i$ é a derivada na variável $q$, com soma nos índices repetidos. Em particular, as componentes de $\theta_t^*A$ são funções suaves de $(t,q)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> O domínio do fluxo $\mathcal{D}$ é aberto em $\mathbb{R}\times M$ e contém $(0,p)$ (<a href="[08] - Fluxos e Derivada de Lie.html#teo-3-8-11">Teorema 3.8.11</a>(a)), e $\theta$ é suave, com $\theta(0,p)=p\in U$. Logo $\theta^{-1}(U)$ é um aberto de $\mathbb{R}\times M$ que contém $(0,p)$, e, pela topologia produto, contém um conjunto $(-\varepsilon,\varepsilon)\times V$
+                    com $V\subset U$ aberto e $p\in V$. As $\theta^j$ são suaves porque $\theta$ o é. Para $\lvert t\rvert\lt\varepsilon$, $\theta_t$ leva $V$ em $U$, e (3.14.2) é a fórmula do pullback (3.10.5) da <a href="[10] - Álgebra Multilinear e Tensores.html#prop-3-10-36">Proposição 3.10.36</a>(e), aplicada a $F=\theta_t\vert_V:V\to U$, cuja representação em coordenadas é $x\mapsto\theta(t,x)$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="teo-3-14-3">
+                    <p><strong>Teorema 3.14.3 (A derivada de Lie é um campo tensorial suave).</strong> Para $A\in\mathcal{T}^k(M)$ e $X\in\mathfrak{X}(M)$, a derivada (3.14.1) existe em todo $p$, e $\mathcal{L}_XA\in\mathcal{T}^k(M)$. Em uma carta, com $X=X^m\partial_m$,</p>
+                    <p>$$ \begin{aligned}&(\mathcal{L}_XA)_{i_1\dots i_k}\\
+                    &\quad=X^m\,\partial_mA_{i_1\dots i_k}+\sum_{a=1}^kA_{i_1\dots\,j\,\dots i_k}\ \partial_{i_a}X^j,\end{aligned} \tag{3.14.3} $$</p>
+                    <p>em que, na $a$-ésima parcela, o índice $j$ ocupa a $a$-ésima posição, e há soma em $m$ e em $j$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Fixe $p$ e tome $V$, $\varepsilon$ como no Lema 3.14.2. Em $(-\varepsilon,\varepsilon)\times V$, o lado direito de (3.14.2) é uma função suave $G_{i_1\dots i_k}(t,q)$. A componente em $T^k(T_p^*M)$ é uma função linear do tensor, de modo que a curva $t\mapsto(\theta_t^*A)_p$ é derivável em $t=0$, e
+                    $(\mathcal{L}_XA)_{i_1\dots i_k}=\partial_tG_{i_1\dots i_k}(0,\cdot)$, que é suave em $q$ (derivada parcial de uma função suave de $(t,q)$, restrita a $t=0$). Pelo critério (b) da <a href="[10] - Álgebra Multilinear e Tensores.html#prop-3-10-24">Proposição 3.10.24</a>, $\mathcal{L}_XA$ é suave. Resta calcular a derivada. Em $t=0$:
+                    $\theta^j(0,q)=x^j(q)$, de modo que $\partial\theta^j/\partial x^i=\delta^j_i$. Como $t\mapsto\theta(t,q)$ é uma curva integral de $X$, $\partial_t\theta^j(t,q)=X^j\big(\theta(t,q)\big)$ para todo $t$, e, derivando em $x^i$ (regra da cadeia),
+                    $\partial_i\partial_t\theta^j(t,q)=(\partial_mX^j)\big(\theta(t,q)\big)\,\partial_i\theta^m(t,q)$; em $t=0$ vale $\partial_iX^j(q)$. Pela igualdade das derivadas mistas (<a href="[02] - Preliminares de Topologia e Cálculo.html#teo-3-2-45">Teorema 3.2.45</a>), $\partial_t\big(\partial\theta^j/\partial x^i\big)(0,q)=\partial_iX^j(q)$.
+                    Pela regra do produto em (3.14.2), com $\partial_t\big[A_{j_1\dots j_k}(\theta(t,q))\big]_{t=0}=X^m\partial_mA_{j_1\dots j_k}(q)$ (regra da cadeia e $\partial_t\theta^m(0,q)=X^m(q)$),
+                    $$ (\mathcal{L}_XA)_{i_1\dots i_k}=X^m\partial_mA_{i_1\dots i_k}+\sum_{a=1}^kA_{j_1\dots j_k}\,\delta^{j_1}_{i_1}\cdots\,\partial_{i_a}X^{j_a}\cdots\delta^{j_k}_{i_k}, $$
+                    que é (3.14.3). $\blacksquare$
+                </p>
+
+                <p>
+                    Para $k=1$, (3.14.3) é $(\mathcal{L}_X\omega)_i=X^j\partial_j\omega_i+\omega_j\,\partial_iX^j$: a derivada ordinária das componentes, mais um termo que corrige o fato de o fluxo deformar as coordenadas. Comparando com a derivada de Lie de um campo, $(\mathcal{L}_XY)^i=X^j\partial_jY^i-Y^j\partial_jX^i$ (<a href="[08] - Fluxos e Derivada de Lie.html#teo-3-8-19">Teorema 3.8.19</a>),
+                    os termos de correção têm <em>sinal oposto</em>: índices de baixo se transformam com a jacobiana, índices de cima com a sua inversa (<a href="[10] - Álgebra Multilinear e Tensores.html#prop-3-10-21">Proposição 3.10.21</a>).
+                </p>
+
+                <p id="obs-3-14-4"><strong>Observação 3.14.4 (Coerência com o tópico 3.8).</strong> Nos dois casos traz-se o objeto de $\theta_t(p)$ de volta a $p$ pelo fluxo, e deriva-se em $t=0$. Vetores voltam por $d(\theta_{-t})_{\theta_t(p)}$ (<a href="[08] - Fluxos e Derivada de Lie.html#def-3-8-17">Definição 3.8.17</a>), covetores e tensores covariantes por pullback, que é a transposta de $d(\theta_t)_p$. As duas operações são
+                    compatíveis com a contração entre um vetor e um covetor: se $\omega$ é uma $1$-forma e $Y$ um campo, $\omega_{\theta_t(p)}(Y_{\theta_t(p)})=(\theta_t^*\omega)_p\big(d(\theta_{-t})Y_{\theta_t(p)}\big)$, e derivar em $t=0$ dá a regra do produto da Proposição 3.14.5(d). A Figura 3.14.1 mostra o pullback de uma $1$-forma pelo fluxo de um cisalhamento: o covetor $\omega_q$ em $q=\theta_t(p)$
+                    tem, em $p$, os níveis inclinados de $\theta_t^*\omega$, e a diferença entre esses níveis e os de $\omega_p$ é, à primeira ordem em $t$, a derivada de Lie.</p>
+
+                <figure class="lecture-figure" id="fig-3-14-1" style="overflow-x: auto; overflow-y: hidden;">
+                    <svg viewBox="0 0 640 300" role="img" style="min-width: 560px;" aria-label="Duas partes. Na parte (a), o plano com as linhas do fluxo de cisalhamento X igual a y vezes d dx, setas horizontais mais compridas em cima. Um ponto p e o ponto q, imagem de p pelo fluxo no tempo t, à direita de p na mesma altura. Um quadrado em p é levado pela diferencial do fluxo a um paralelogramo inclinado em q. Na parte (b), no espaço tangente em p, as linhas de nível do covetor omega em p, que são verticais e contínuas, e as linhas de nível do pullback do covetor de q por theta t, que são inclinadas e tracejadas. A diferença entre os dois covetores é t vezes dy, a derivada de Lie de dx ao longo de X é dy.">
+<defs><marker id="arr-3-14-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<rect x="14" y="16" width="612" height="272" rx="3" class="fig-frame"/>
+<text x="34" y="40" class="fig-label fig-small">(a) o fluxo e o transporte de vetores</text>
+<line x1="46" y1="258" x2="247.3" y2="258" class="fig-axis" marker-end="url(#arr-3-14-1)"/>
+<line x1="46" y1="258" x2="46" y2="60" class="fig-axis" marker-end="url(#arr-3-14-1)"/>
+<text x="251.3" y="262" class="fig-label fig-small fig-it">x</text>
+<text x="52" y="64" class="fig-label fig-small fig-it">y</text>
+<line x1="55.9" y1="225" x2="74.1" y2="225" class="fig-guide" marker-end="url(#arr-3-14-1)"/>
+<line x1="55.9" y1="159" x2="110.4" y2="159" class="fig-guide" marker-end="url(#arr-3-14-1)"/>
+<line x1="55.9" y1="126" x2="128.5" y2="126" class="fig-guide" marker-end="url(#arr-3-14-1)"/>
+<line x1="55.9" y1="93" x2="146.6" y2="93" class="fig-guide" marker-end="url(#arr-3-14-1)"/>
+<path d="M75.7,192 L112,192 L112,155.7 L75.7,155.7 Z" class="fig-shape"/>
+<path d="M141.7,192 L178,192 L214.3,155.7 L178,155.7 Z" class="fig-shape"/>
+<line x1="81" y1="201.2" x2="136.4" y2="201.2" class="fig-curve" marker-end="url(#arr-3-14-1)"/>
+<circle cx="75.7" cy="192" r="3.5" class="fig-arrowhead"/>
+<circle cx="141.7" cy="192" r="3.5" class="fig-arrowhead"/>
+<text x="69.7" y="210" text-anchor="end" class="fig-label fig-it">p</text>
+<text x="147.7" y="210" class="fig-label fig-it">q = θ_t(p)</text>
+<text x="161.5" y="234.2" text-anchor="middle" class="fig-label fig-small fig-it">dθ_t: quadrado → paralelogramo</text>
+<text x="161.5" y="97" class="fig-label fig-small fig-it">X = y ∂x</text>
+<text x="330" y="40" class="fig-label fig-small">(b) em p: os níveis de ω_p e de (θ_t^*ω)_p</text>
+<rect x="395.2" y="50.8" width="173.6" height="162.4" class="fig-frame"/>
+<line x1="398" y1="213.2" x2="398" y2="50.8" class="fig-guide"/>
+<line x1="426" y1="213.2" x2="426" y2="50.8" class="fig-guide"/>
+<line x1="454" y1="213.2" x2="454" y2="50.8" class="fig-guide"/>
+<line x1="482" y1="213.2" x2="482" y2="50.8" class="fig-axis"/>
+<line x1="510" y1="213.2" x2="510" y2="50.8" class="fig-guide"/>
+<line x1="538" y1="213.2" x2="538" y2="50.8" class="fig-guide"/>
+<line x1="566" y1="213.2" x2="566" y2="50.8" class="fig-guide"/>
+<line x1="395.2" y1="129.2" x2="479.2" y2="213.2" class="fig-guide fig-dashed"/>
+<line x1="395.2" y1="101.2" x2="507.2" y2="213.2" class="fig-guide fig-dashed"/>
+<line x1="395.2" y1="73.2" x2="535.2" y2="213.2" class="fig-guide fig-dashed"/>
+<line x1="400.8" y1="50.8" x2="563.2" y2="213.2" class="fig-guide fig-dashed"/>
+<line x1="428.8" y1="50.8" x2="568.8" y2="190.8" class="fig-guide fig-dashed"/>
+<line x1="456.8" y1="50.8" x2="568.8" y2="162.8" class="fig-guide fig-dashed"/>
+<line x1="484.8" y1="50.8" x2="568.8" y2="134.8" class="fig-guide fig-dashed"/>
+<circle cx="482" cy="132" r="3.5" class="fig-arrowhead"/>
+<text x="489" y="125" class="fig-label fig-it">p</text>
+<text x="330" y="230.2" class="fig-label fig-small">contínuas: ω_p = dx  (v_x = c)</text>
+<text x="330" y="245.2" class="fig-label fig-small">tracejadas: (θ_t^*ω)_p  (v_x + t v_y = c)</text>
+<text x="330" y="260.2" class="fig-label fig-small">diferença: t dy,  logo (L_X ω)_p = dy</text>
+</svg>
+                    <figcaption><strong>Figura 3.14.1.</strong> O cisalhamento $X=y\,\partial_x$, de fluxo $\theta_t(x,y)=(x+ty,y)$, e a $1$-forma $\omega=dx$. (a) O fluxo leva $p$ a $q=\theta_t(p)$, e $d\theta_t$ leva o quadrado em $p$ ao paralelogramo em $q$. (b) Em $p$, os níveis de $\omega_p=dx$ (contínuos, $v_x=c$) e os de $(\theta_t^*\omega)_p$, que é
+                        $v\mapsto\omega_q(d\theta_t\,v)=v_x+t\,v_y$ (tracejados): $\theta_t^*dx=dx+t\,dy$, e então $\mathcal{L}_X\,dx=dy$.</figcaption>
+                </figure>
+
+                <div class="definition-box" id="prop-3-14-5">
+                    <p><strong>Proposição 3.14.5 (Propriedades da derivada de Lie de tensores).</strong> Sejam $X,Y_1,\dots,Y_k\in\mathfrak{X}(M)$, $f\in C^\infty(M)$, $A,B\in\mathcal{T}^k(M)$ e $C\in\mathcal{T}^l(M)$.</p>
+                    <p>(a) $\mathcal{L}_Xf=Xf$;</p>
+                    <p>(b) $\mathcal{L}_X$ é linear sobre $\mathbb{R}$ e $\mathcal{L}_X(fA)=(Xf)\,A+f\,\mathcal{L}_XA$;</p>
+                    <p>(c) $\mathcal{L}_X(A\otimes C)=\mathcal{L}_XA\otimes C+A\otimes\mathcal{L}_XC$;</p>
+                    <p>(d) $$ \begin{aligned}&X\big(A(Y_1,\dots,Y_k)\big)=(\mathcal{L}_XA)(Y_1,\dots,Y_k)\\
+                    &\qquad+\sum_{a=1}^kA(Y_1,\dots,\mathcal{L}_XY_a,\dots,Y_k).\end{aligned} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) é a <a href="[08] - Fluxos e Derivada de Lie.html#prop-3-8-16">Proposição 3.8.16</a>. (b) A linearidade vem da de $\theta_t^*$ e da derivada. Pela <a href="[10] - Álgebra Multilinear e Tensores.html#prop-3-10-36">Proposição 3.10.36</a>(a), $(\theta_t^*(fA))_p=f(\theta_t(p))\,(\theta_t^*A)_p$, produto de uma função real de $t$ por uma curva em um espaço vetorial; derivando em $t=0$ pela regra do produto, com $\frac{d}{dt}\big\vert_0f(\theta_t(p))=(Xf)(p)$,
+                    obtém-se (b). (c) Pela <a href="[10] - Álgebra Multilinear e Tensores.html#prop-3-10-36">Proposição 3.10.36</a>(b), $(\theta_t^*(A\otimes C))_p=(\theta_t^*A)_p\otimes(\theta_t^*C)_p$, e o produto tensorial $T^k\times T^l\to T^{k+l}$ é bilinear, de modo que vale a regra do produto. (d) Fixe $p$ e, para $t\in J_p$, seja
+                    $V_a(t)=d(\theta_{-t})_{\theta_t(p)}\big(Y_a\vert_{\theta_t(p)}\big)\in T_pM$. Pela <a href="[08] - Fluxos e Derivada de Lie.html#prop-3-8-22">Proposição 3.8.22</a>, $V_a$ é uma curva suave em $T_pM$, com $V_a(0)=Y_a\vert_p$ e, pela <a href="[08] - Fluxos e Derivada de Lie.html#def-3-8-17">Definição 3.8.17</a>, $V_a'(0)=(\mathcal{L}_XY_a)_p$. Como $\theta_t\circ\theta_{-t}=\mathrm{id}$ perto de $\theta_t(p)$ (<a href="[08] - Fluxos e Derivada de Lie.html#teo-3-8-11">Teorema 3.8.11</a>(d)),
+                    $d(\theta_t)_p\,V_a(t)=Y_a\vert_{\theta_t(p)}$, e portanto, pela definição do pullback,
+                    $$ \begin{aligned}h(t)&:=\big(A(Y_1,\dots,Y_k)\big)\big(\theta_t(p)\big)\\
+                    &=A_{\theta_t(p)}\big(Y_1\vert_{\theta_t(p)},\dots,Y_k\vert_{\theta_t(p)}\big)\\
+                    &=(\theta_t^*A)_p\big(V_1(t),\dots,V_k(t)\big).\end{aligned} $$
+                    A função $A(Y_1,\dots,Y_k)$ é suave (<a href="[10] - Álgebra Multilinear e Tensores.html#prop-3-10-24">Proposição 3.10.24</a>(c)), de modo que, pela (a), $h'(0)=\big(X(A(Y_1,\dots,Y_k))\big)(p)$. Por outro lado, a avaliação $E(T,v_1,\dots,v_k)=T(v_1,\dots,v_k)$ é uma aplicação multilinear entre espaços de dimensão finita, e $h(t)=E\big((\theta_t^*A)_p,V_1(t),\dots,V_k(t)\big)$
+                    com todas as curvas deriváveis; a regra do produto dá
+                    $$ \begin{aligned}h'(0)&=(\mathcal{L}_XA)_p\big(Y_1\vert_p,\dots,Y_k\vert_p\big)\\
+                    &\quad+\sum_{a=1}^kA_p\big(Y_1\vert_p,\dots,(\mathcal{L}_XY_a)_p,\dots,Y_k\vert_p\big).\qquad\blacksquare\end{aligned} $$
+                </p>
+
+                <div class="definition-box" id="cor-3-14-6">
+                    <p><strong>Corolário 3.14.6 (Fórmula explícita).</strong> Para $A\in\mathcal{T}^k(M)$ e $X,Y_1,\dots,Y_k\in\mathfrak{X}(M)$,</p>
+                    <p>$$ \begin{aligned}&(\mathcal{L}_XA)(Y_1,\dots,Y_k)=X\big(A(Y_1,\dots,Y_k)\big)\\
+                    &\qquad-\sum_{a=1}^kA(Y_1,\dots,[X,Y_a],\dots,Y_k).\end{aligned} \tag{3.14.4} $$</p>
+                    <p>Para uma $1$-forma, $(\mathcal{L}_X\omega)(Y)=X\big(\omega(Y)\big)-\omega([X,Y])$. Como um campo tensorial é determinado pelos valores $A(Y_1,\dots,Y_k)$ sobre campos (<a href="[10] - Álgebra Multilinear e Tensores.html#teo-3-10-28">Teorema 3.10.28</a>), (3.14.4) <em>caracteriza</em> $\mathcal{L}_XA$ sem usar o fluxo.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> É a Proposição 3.14.5(d), com $\mathcal{L}_XY_a=[X,Y_a]$ (<a href="[08] - Fluxos e Derivada de Lie.html#teo-3-8-19">Teorema 3.8.19</a>). $\blacksquare$
+                </p>
+
+                <p id="obs-3-14-7"><strong>Observação 3.14.7 (As duas fórmulas em coordenadas coincidem).</strong> Aplique (3.14.4) a $Y_a=\partial_{i_a}$. Como $A(\partial_{i_1},\dots,\partial_{i_k})=A_{i_1\dots i_k}$ e $[X,\partial_i]^j=X^m\partial_m(\delta^j_i)-\delta^m_i\partial_mX^j=-\partial_iX^j$, isto é, $[X,\partial_i]=-(\partial_iX^j)\,\partial_j$,
+                    obtém-se $(\mathcal{L}_XA)_{i_1\dots i_k}=X^m\partial_mA_{i_1\dots i_k}+\sum_aA_{i_1\dots j\dots i_k}\,\partial_{i_a}X^j$, a mesma (3.14.3), agora sem usar o fluxo explicitamente. As duas deduções são independentes, e o acordo é uma boa conferência dos sinais (confirmada também com sympy, em fluxos explícitos).
+                    Outra leitura de (3.14.4): o lado direito é, <em>a priori</em>, só $\mathbb{R}$-linear nos $Y_a$, porque $[X,fY]=f[X,Y]+(Xf)Y$; mas para uma $1$-forma,
+                    $$ \begin{aligned}&X\big(\omega(fY)\big)-\omega([X,fY])\\
+                    &\quad=(Xf)\,\omega(Y)+f\,X\big(\omega(Y)\big)-f\,\omega([X,Y])-(Xf)\,\omega(Y)\\
+                    &\quad=f\Big(X\big(\omega(Y)\big)-\omega([X,Y])\Big):\end{aligned} $$
+                    os termos com $Xf$ se cancelam, e o lado direito é $C^\infty(M)$-linear em $Y$, como deve ser a avaliação de um tensor (<a href="[10] - Álgebra Multilinear e Tensores.html#prop-3-10-27">Proposição 3.10.27</a>). É o mesmo mecanismo do <a href="[10] - Álgebra Multilinear e Tensores.html#ex-3-10-33">Exemplo 3.10.33</a>.</p>
+
+                <div class="definition-box" id="prop-3-14-8">
+                    <p><strong>Proposição 3.14.8 (Localidade).</strong> Se $U\subset M$ é aberto, então $(\mathcal{L}_XA)\vert_U=\mathcal{L}_{X\vert_U}\big(A\vert_U\big)$, em que o segundo membro é a derivada de Lie na variedade $U$. Em particular, se $A\equiv0$ em $U$, então $\mathcal{L}_XA\equiv0$ em $U$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Seja $p\in U$. Como no Lema 3.14.2 (com $U$ no lugar da carta), existem $V\subset U$ aberto com $p\in V$ e $\varepsilon\gt0$ tais que $\theta(t,q)\in U$ para $\lvert t\rvert\lt\varepsilon$ e $q\in V$. Para cada $q\in V$, a curva $t\mapsto\theta(t,q)$, $\lvert t\rvert\lt\varepsilon$, é uma curva integral de $X\vert_U$ por $q$, e, pela unicidade
+                    (<a href="[08] - Fluxos e Derivada de Lie.html#teo-3-8-3">Teorema 3.8.3</a>), coincide com a curva integral de $X\vert_U$: o fluxo $\theta^U$ de $X\vert_U$ satisfaz $\theta^U=\theta$ em $(-\varepsilon,\varepsilon)\times V$. Logo $d(\theta^U_t)_p=d(\theta_t)_p$ e $\big(\theta_t^{U*}(A\vert_U)\big)_p=(\theta_t^*A)_p$ para $\lvert t\rvert\lt\varepsilon$, e as derivadas em $t=0$ coincidem. $\blacksquare$
+                </p>
+
+                <p id="ex-3-14-9"><strong>Exemplo 3.14.9 (A métrica euclidiana de $\mathbb{R}^2$).</strong> Seja $\bar{g}=dx\otimes dx+dy\otimes dy$, de componentes $\bar{g}_{ij}=\delta_{ij}$, constantes. Por (3.14.3), $(\mathcal{L}_X\bar{g})_{ij}=\bar{g}_{kj}\partial_iX^k+\bar{g}_{ik}\partial_jX^k=\partial_iX^j+\partial_jX^i$.
+                    Para a rotação $X=x\partial_y-y\partial_x$, $X^x=-y$ e $X^y=x$, de modo que $\partial_xX^x=\partial_yX^y=0$ e $\partial_xX^y+\partial_yX^x=1-1=0$: $\mathcal{L}_X\bar{g}=0$. Para a dilatação $X=x\partial_x+y\partial_y$, $\partial_iX^j=\delta^j_i$ e $(\mathcal{L}_X\bar{g})_{ij}=2\delta_{ij}$: $\mathcal{L}_X\bar{g}=2\bar{g}$.
+                    Isto concorda com os fluxos: a rotação $R_t$ preserva o produto escalar, $R_t^*\bar{g}=\bar{g}$, e a dilatação $\theta_t(x,y)=(e^tx,e^ty)$ tem $\theta_t^*\bar{g}=e^{2t}\bar{g}$, cuja derivada em $t=0$ é $2\bar{g}$.</p>
+
+                <div class="definition-box" id="def-3-14-10" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.14.10 (Campo de Killing; prévia).</strong> Seja $g$ uma métrica (<a href="[10] - Álgebra Multilinear e Tensores.html#def-3-10-38">Definição 3.10.38</a>) em $M$. Um campo $X\in\mathfrak{X}(M)$ é um <strong>campo de Killing</strong> de $g$ se $\mathcal{L}_Xg=0$.</p>
+                </div>
+
+                <p>
+                    O Exemplo 3.14.9 diz que $x\partial_y-y\partial_x$ é um campo de Killing da métrica euclidiana, e que a dilatação não é. O <a href="#cor-3-14-24">Corolário 3.14.24</a> mostrará que "Killing" quer dizer: <em>o fluxo é feito de isometrias</em>. Os exemplos da Relatividade Geral estão na seção "Ponte com a física".
+                </p>
+
+                <p id="obs-3-14-11"><strong>Observação 3.14.11 (Índices contravariantes).</strong> Para um campo de tipo $(r,s)$, a derivada de Lie traz o objeto de volta usando $\theta_t^*$ nos índices de baixo e $d(\theta_{-t})$ nos de cima (<a href="[10] - Álgebra Multilinear e Tensores.html#obs-3-10-37">Observação 3.10.37</a>). A fórmula (3.14.3) ganha, para cada índice de cima, um termo com sinal oposto:
+                    $$ \begin{aligned}&(\mathcal{L}_XA)^{i_1\dots i_r}{}_{j_1\dots j_s}=X^m\partial_mA^{i_1\dots i_r}{}_{j_1\dots j_s}\\
+                    &\quad-\sum_{a=1}^rA^{i_1\dots m\dots i_r}{}_{j_1\dots j_s}\,\partial_mX^{i_a}+\sum_{b=1}^sA^{i_1\dots i_r}{}_{j_1\dots m\dots j_s}\,\partial_{j_b}X^m.\end{aligned} $$
+                    Para $r=1$ e $s=0$, é $(\mathcal{L}_XY)^i=X^m\partial_mY^i-Y^m\partial_mX^i$, o colchete.
+                    Neste capítulo só usamos tensores covariantes, e campos vetoriais pelo tópico 3.8.</p>
+
+                <h2 id="lie-formas">A derivada de Lie de formas diferenciais</h2>
+
+                <p>
+                    O pullback preserva a alternância (<a href="[12] - Formas Diferenciais.html#teo-3-12-12">Teorema 3.12.12</a>), de modo que $(\theta_t^*\omega)_p\in\Lambda^k(T_p^*M)$ para toda $k$-forma $\omega$. Como $\Lambda^k(T_p^*M)$ é um subespaço de $T^k(T_p^*M)$, a velocidade em $t=0$ de uma curva dentro dele ainda está nele: $\mathcal{L}_X\omega$ é um tensor alternado em cada ponto.
+                </p>
+
+                <div class="definition-box" id="prop-3-14-12">
+                    <p><strong>Proposição 3.14.12 (A derivada de Lie de formas).</strong> Sejam $X\in\mathfrak{X}(M)$, $\omega\in\Omega^k(M)$, $\eta\in\Omega^l(M)$ e $f\in C^\infty(M)$.</p>
+                    <p>(a) $\mathcal{L}_X\omega\in\Omega^k(M)$;</p>
+                    <p>(b) $\mathcal{L}_X(\omega\wedge\eta)=\mathcal{L}_X\omega\wedge\eta+\omega\wedge\mathcal{L}_X\eta$ (uma derivação de grau $0$);</p>
+                    <p>(c) $\mathcal{L}_X(d\omega)=d(\mathcal{L}_X\omega)$;</p>
+                    <p>(d) $\mathcal{L}_X(df)=d(Xf)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) $\mathcal{L}_X\omega\in\mathcal{T}^k(M)$ pelo Teorema 3.14.3, é alternado em cada ponto pelo que acabamos de dizer, e portanto é uma $k$-forma (<a href="[12] - Formas Diferenciais.html#prop-3-12-5">Proposição 3.12.5</a>(d)). (b) Pelo <a href="[12] - Formas Diferenciais.html#teo-3-12-12">Teorema 3.12.12</a>(b), $(\theta_t^*(\omega\wedge\eta))_p=(\theta_t^*\omega)_p\wedge(\theta_t^*\eta)_p$, e
+                    $\wedge:\Lambda^k(T_p^*M)\times\Lambda^l(T_p^*M)\to\Lambda^{k+l}(T_p^*M)$ é bilinear (<a href="[11] - Produto Exterior.html#teo-3-11-20">Teorema 3.11.20</a>(a)); vale a regra do produto em $t=0$.
+                </p>
+                <p>
+                    (c) A ideia é derivar em $t$ a igualdade $d(\theta_t^*\omega)=\theta_t^*(d\omega)$ (naturalidade, <a href="[13] - Derivada Exterior.html#teo-3-13-7">Teorema 3.13.7</a>) e trocar $\frac{\partial}{\partial t}$ com $d$, o que se justifica em coordenadas. Fixe $p$ e tome $V$, $\varepsilon$ como no Lema 3.14.2, para uma carta $(U,\varphi)$ em torno de $p$. Pelo Lema 3.14.2, as componentes
+                    $G_I(t,x)=(\theta_t^*\omega)_I(x)$, para $I$ crescente, são funções suaves em $(-\varepsilon,\varepsilon)\times V$. Em $V$, pela definição de $d$ em uma carta (<a href="[13] - Derivada Exterior.html#teo-3-13-5">Teorema 3.13.5</a>),
+                    $$ d(\theta_t^*\omega)=\sideset{}{'}\sum_I\sum_i\frac{\partial G_I}{\partial x^i}(t,x)\ dx^i\wedge dx^I. $$
+                    Derive os coeficientes em relação a $t$, em $t=0$. À esquerda, $d(\theta_t^*\omega)=\theta_t^*(d\omega)$, cuja derivada em $t=0$ é $\mathcal{L}_X(d\omega)$ (a base $dx^i\wedge dx^I$ não depende de $t$). À direita, pela igualdade das derivadas mistas (<a href="[02] - Preliminares de Topologia e Cálculo.html#teo-3-2-45">Teorema 3.2.45</a>),
+                    $\partial_t\partial_iG_I(0,x)=\partial_i\big(\partial_tG_I(0,x)\big)=\partial_i\big((\mathcal{L}_X\omega)_I\big)(x)$. Logo $\mathcal{L}_X(d\omega)=\sideset{}{'}\sum_I\sum_i\partial_i\big((\mathcal{L}_X\omega)_I\big)\,dx^i\wedge dx^I=d(\mathcal{L}_X\omega)$ em $V$, e $p$ é arbitrário.
+                    (d) Pela (c) com $\omega=f$ e pelo item (a) da Proposição 3.14.5, $\mathcal{L}_X(df)=d(\mathcal{L}_Xf)=d(Xf)$. $\blacksquare$
+                </p>
+
+                <p>
+                    Para $k=0$, (b) é a regra de Leibniz $\mathcal{L}_X(fg)=(Xf)g+f(Xg)$, e a (b) da Proposição 3.14.5 fica $\mathcal{L}_X(f\omega)=(Xf)\,\omega+f\,\mathcal{L}_X\omega$. O item (d) é a versão de formas da propriedade "$d$ comuta com o fluxo infinitesimal": como $df$ não depende da métrica nem de coordenadas, sua derivada de Lie
+                    também não, e é a diferencial de $\mathcal{L}_Xf=Xf$.
+                </p>
+
+                <h2 id="produto-interior">O produto interior de campos e formas</h2>
+
+                <p>
+                    O produto interior $i_X\omega$ de um campo $X$ com uma forma $\omega$ foi definido ponto a ponto, $(i_X\omega)_p=i_{X_p}\omega_p$ (<a href="[11] - Produto Exterior.html#def-3-11-25">Definição 3.11.25</a>), e a <a href="[12] - Formas Diferenciais.html#prop-3-12-7">Proposição 3.12.7</a> provou o que precisamos: $i_X\omega\in\Omega^{k-1}(M)$; $i_X\omega$ é $C^\infty(M)$-linear em $X$ e em $\omega$;
+                    $i_X\circ i_X=0$; e $i_X$ é uma antiderivação, $i_X(\omega\wedge\eta)=i_X\omega\wedge\eta+(-1)^k\,\omega\wedge i_X\eta$. Acrescentamos duas fórmulas.
+                </p>
+
+                <div class="definition-box" id="prop-3-14-13">
+                    <p><strong>Proposição 3.14.13 (Mais duas propriedades de $i_X$).</strong> (a) Para $f\in C^\infty(M)$, $i_Xf=0$ e $i_X(df)=Xf$. (b) Em uma carta, para $\omega=\sideset{}{'}\sum_I\omega_I\,dx^{i_1}\wedge\dots\wedge dx^{i_k}$ e com as componentes totalmente antissimétricas $\omega_{j_1\dots j_k}$ da (3.12.3),</p>
+                    <p>$$ \begin{aligned}&i_X\omega=\sideset{}{'}\sum_I\omega_I\sum_{a=1}^k(-1)^{a-1}X^{i_a}\\
+                    &\qquad\times\,dx^{i_1}\wedge\dots\wedge\widehat{dx^{i_a}}\wedge\dots\wedge dx^{i_k},\\
+                    &(i_X\omega)_{j_1\dots j_{k-1}}=X^i\,\omega_{i\,j_1\dots j_{k-1}}.\end{aligned} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) $i_X$ anula $\Lambda^0$ por definição, e $i_X(df)=df(X)=Xf$ pela definição da diferencial (<a href="[09] - Covetores e 1-Formas.html#def-3-9-9">Definição 3.9.9</a>). (b) A primeira fórmula é a (3.11.5), com $\omega^a=dx^{i_a}$ e $dx^{i_a}(X)=X^{i_a}$, e a linearidade. A segunda é a definição,
+                    $(i_X\omega)(\partial_{j_1},\dots,\partial_{j_{k-1}})=\omega(X,\partial_{j_1},\dots,\partial_{j_{k-1}})=X^i\omega_{ij_1\dots j_{k-1}}$. $\blacksquare$
+                </p>
+
+                <p id="ex-3-14-14"><strong>Exemplo 3.14.14 (O produto interior em $\mathbb{R}^3$).</strong> Com o dicionário da <a href="[12] - Formas Diferenciais.html#prop-3-12-9">Proposição 3.12.9</a>: $i_X\,dV=\Phi_X$ (o fluxo de $X$), e $i_X\omega_{\mathbf{F}}=\mathbf{F}\cdot X$ (o trabalho de $\mathbf{F}$ sobre $X$). Para uma $2$-forma de fluxo,
+                    $$ i_X\Phi_{\mathbf{G}}=\omega_{\mathbf{G}\times X}, $$
+                    pois $\Phi_{\mathbf{G}}=i_{\mathbf{G}}\,dV$ (<a href="[12] - Formas Diferenciais.html#prop-3-12-9">Proposição 3.12.9</a>(b)) dá $(i_X\Phi_{\mathbf{G}})(Y)=\Phi_{\mathbf{G}}(X,Y)=dV(\mathbf{G},X,Y)=\mathbf{G}\cdot(X\times Y)=(\mathbf{G}\times X)\cdot Y$, em que $dV(\mathbf{a},\mathbf{b},\mathbf{c})=\det[\mathbf{a}\ \mathbf{b}\ \mathbf{c}]=\mathbf{a}\cdot(\mathbf{b}\times\mathbf{c})$
+                    e o produto misto é cíclico. É a "força de Lorentz" em forma de $1$-forma, como veremos na física.</p>
+
+                <h2 id="a-formula-de-cartan">A fórmula de Cartan</h2>
+
+                <div class="definition-box" id="teo-3-14-15" style="border-left: 4px solid #45503B;">
+                    <p><strong>Teorema 3.14.15 (Fórmula de Cartan).</strong> Para todo $X\in\mathfrak{X}(M)$ e toda $\omega\in\Omega^k(M)$,</p>
+                    <p>$$ \mathcal{L}_X\omega=i_X(d\omega)+d(i_X\omega). \tag{3.14.5} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Seja $P_X=i_X\circ d+d\circ i_X:\Omega^k(M)\to\Omega^k(M)$. Mostramos que $P_X$ e $\mathcal{L}_X$ são operadores que coincidem em funções e em diferenciais de funções e que satisfazem as mesmas regras de derivação.
+                </p>
+
+                <p>
+                    <strong>Passo 1: $P_X$ é uma derivação de grau zero,</strong> $P_X(\omega\wedge\eta)=P_X\omega\wedge\eta+\omega\wedge P_X\eta$, para $\omega\in\Omega^k(M)$ e $\eta\in\Omega^l(M)$. Pela regra do produto de $d$ (<a href="[13] - Derivada Exterior.html#teo-3-13-5">Teorema 3.13.5</a>(ii)) e pela antiderivação de $i_X$ (<a href="[12] - Formas Diferenciais.html#prop-3-12-7">Proposição 3.12.7</a>), com $d\omega\in\Omega^{k+1}(M)$,
+                    $$ \begin{aligned}&i_Xd(\omega\wedge\eta)=i_X\big(d\omega\wedge\eta\big)+(-1)^k\,i_X\big(\omega\wedge d\eta\big)\\
+                    &\quad=i_Xd\omega\wedge\eta+(-1)^{k+1}\,d\omega\wedge i_X\eta\\
+                    &\qquad+(-1)^k\,i_X\omega\wedge d\eta+\omega\wedge i_Xd\eta,\end{aligned} $$
+                    usando $(-1)^k(-1)^k=1$ no último termo. Do mesmo modo, com $i_X\omega\in\Omega^{k-1}(M)$,
+                    $$ \begin{aligned}&d\,i_X(\omega\wedge\eta)=d\big(i_X\omega\wedge\eta\big)+(-1)^k\,d\big(\omega\wedge i_X\eta\big)\\
+                    &\quad=d\,i_X\omega\wedge\eta+(-1)^{k-1}\,i_X\omega\wedge d\eta\\
+                    &\qquad+(-1)^k\,d\omega\wedge i_X\eta+\omega\wedge d\,i_X\eta.\end{aligned} $$
+                    Somando os oito termos, os quatro "cruzados" são $\big[(-1)^{k+1}+(-1)^k\big]\,d\omega\wedge i_X\eta=0$ e $\big[(-1)^k+(-1)^{k-1}\big]\,i_X\omega\wedge d\eta=0$, e os outros quatro são $(i_Xd\omega+d\,i_X\omega)\wedge\eta+\omega\wedge(i_Xd\eta+d\,i_X\eta)=P_X\omega\wedge\eta+\omega\wedge P_X\eta$.
+                    (Para $k=0$ ou $l=0$, os termos com $i_X\omega$ ou $i_X\eta$ são zero e a conta é a mesma.)
+                </p>
+
+                <p>
+                    <strong>Passo 2: $P_X$ comuta com $d$.</strong> Como $d\circ d=0$ (<a href="[13] - Derivada Exterior.html#teo-3-13-5">Teorema 3.13.5</a>(iii)), $P_X(d\omega)=i_Xd(d\omega)+d\,i_Xd\omega=d\,i_Xd\omega$ e $d(P_X\omega)=d\,i_Xd\omega+d\,d\,i_X\omega=d\,i_Xd\omega$.
+                </p>
+
+                <p>
+                    <strong>Passo 3: $P_X$ e $\mathcal{L}_X$ coincidem em funções.</strong> Para $f\in C^\infty(M)$, $i_Xf=0$, de modo que $P_Xf=i_X(df)=Xf=\mathcal{L}_Xf$ (<a href="#prop-3-14-13">Proposição 3.14.13</a>(a) e <a href="#prop-3-14-5">Proposição 3.14.5</a>(a)).
+                </p>
+
+                <p>
+                    <strong>Passo 4: $\mathcal{L}_X$ é uma derivação de grau zero que comuta com $d$.</strong> É a Proposição 3.14.12(b) e (c). Segue, com o Passo 3, que $\mathcal{L}_X(df)=d(Xf)=d(P_Xf)=P_X(df)$: os dois operadores coincidem também nas diferenciais de funções.
+                </p>
+
+                <p>
+                    <strong>Passo 5: conclusão, em uma carta.</strong> Sejam $p\in M$ e $(U,\varphi)$ uma carta em torno de $p$, de coordenadas $x^i$, que são funções suaves em $U$, mas não em $M$. Pela Proposição 3.14.8, $(\mathcal{L}_X\omega)\vert_U=\mathcal{L}_{X\vert_U}(\omega\vert_U)$; pelo <a href="[13] - Derivada Exterior.html#cor-3-13-6">Corolário 3.13.6</a>, $d$ é local; e $i_X$ é pontual. Assim $(P_X\omega)\vert_U=P_{X\vert_U}(\omega\vert_U)$, e os Passos 1 a 4 valem na variedade $U$, com o campo $X\vert_U$.
+                    Em $U$, $\omega=\sideset{}{'}\sum_I\omega_I\,dx^{i_1}\wedge\dots\wedge dx^{i_k}$. Seja $Q$ um dos dois operadores ($\mathcal{L}_{X\vert_U}$ ou $P_{X\vert_U}$). Por serem derivações de grau zero, a regra do produto, repetida, dá
+                    $$ \begin{aligned}&Q\big(\omega_I\,dx^{i_1}\wedge\dots\wedge dx^{i_k}\big)=(Q\omega_I)\,dx^{i_1}\wedge\dots\wedge dx^{i_k}\\
+                    &\qquad+\omega_I\sum_{a=1}^kdx^{i_1}\wedge\dots\wedge Q(dx^{i_a})\wedge\dots\wedge dx^{i_k}.\end{aligned} $$
+                    Pelos Passos 2, 3 e 4, os dois operadores comutam com $d$ e valem $Xf$ em funções: $Q\omega_I=X\omega_I$ e $Q(dx^i)=d(Qx^i)=d(Xx^i)$. Logo $\mathcal{L}_{X\vert_U}(\omega\vert_U)=P_{X\vert_U}(\omega\vert_U)$, isto é, $\mathcal{L}_X\omega=P_X\omega$ em $U\ni p$. Como $p$ é arbitrário, vale (3.14.5). $\blacksquare$
+                </p>
+
+                <p id="obs-3-14-16"><strong>Observação 3.14.16 (O que a fórmula diz).</strong> A derivada de Lie é o <em>anticomutador graduado</em> $[d,i_X]=d\,i_X+i_X\,d$ das operações de grau $+1$ e $-1$. Duas consequências imediatas: se $d\omega=0$ (forma fechada), $\mathcal{L}_X\omega=d(i_X\omega)$, uma forma exata;
+                    e, se $\omega$ é uma $n$-forma em uma variedade de dimensão $n$, $d\omega=0$ e $\mathcal{L}_X\omega=d(i_X\omega)$. A segunda é a que usaremos para a divergência. O mais importante é que o lado direito de (3.14.5) <em>não envolve o fluxo</em>, só $d$ e $i_X$ (que são algébricas, ponto a ponto, ou derivadas
+                    ordinárias): calcular $\mathcal{L}_X\omega$ passa a ser uma conta com $d$.</p>
+
+                <p id="ex-3-14-17"><strong>Exemplo 3.14.17 (Cartan em $\mathbb{R}^3$ e as identidades do cálculo vetorial).</strong> Para $\omega_{\mathbf{F}}$ e um campo $X$, o <a href="[13] - Derivada Exterior.html#ex-3-13-3">Exemplo 3.13.3</a> dá $d\omega_{\mathbf{F}}=\Phi_{\operatorname{rot}\mathbf{F}}$, e o Exemplo 3.14.14 dá $i_X\Phi_{\operatorname{rot}\mathbf{F}}=\omega_{(\operatorname{rot}\mathbf{F})\times X}$ e $i_X\omega_{\mathbf{F}}=\mathbf{F}\cdot X$. Então
+                    $$ \mathcal{L}_X\,\omega_{\mathbf{F}}=\omega_{(\operatorname{rot}\mathbf{F})\times X+\nabla(\mathbf{F}\cdot X)}. $$
+                    Por (3.14.3), as componentes do lado esquerdo são $X^m\partial_mF_i+F_m\partial_iX^m$. As duas expressões são iguais: da identidade $\sum_j\varepsilon_{ijk}\,\varepsilon_{jlm}=\delta_{kl}\delta_{im}-\delta_{km}\delta_{il}$, a componente $i$ de $(\operatorname{rot}\mathbf{F})\times X$ é $X_k\partial_kF_i-X_k\partial_iF_k$,
+                    e $\partial_i(F_kX_k)=X_k\partial_iF_k+F_k\partial_iX_k$; somando, resta $X_k\partial_kF_i+F_k\partial_iX_k$. Aplicando a mesma identidade com $\mathbf{F}$ e $X$ trocados, a igualdade das duas expressões equivale à identidade clássica $\nabla(\mathbf{F}\cdot X)=(X\cdot\nabla)\mathbf{F}+(\mathbf{F}\cdot\nabla)X+X\times\operatorname{rot}\mathbf{F}+\mathbf{F}\times\operatorname{rot}X$: a fórmula de Cartan, lida em $\mathbb{R}^3$, é essa identidade.</p>
+
+                <h2 id="consequencias">Consequências</h2>
+
+                <p>
+                    Começamos pela dívida do tópico 3.13: a fórmula invariante de $d\omega$ para formas de qualquer grau, que lá só foi provada para $1$-formas (<a href="[13] - Derivada Exterior.html#teo-3-13-10">Teorema 3.13.10</a>) e enunciada em geral (<a href="[13] - Derivada Exterior.html#obs-3-13-11">Observação 3.13.11</a>).
+                </p>
+
+                <div class="definition-box" id="teo-3-14-18" style="border-left: 4px solid #45503B;">
+                    <p><strong>Teorema 3.14.18 (Fórmula invariante de $d$, grau geral).</strong> Para $\omega\in\Omega^k(M)$ e $X_0,\dots,X_k\in\mathfrak{X}(M)$,</p>
+                    <p>$$ \begin{aligned}&d\omega(X_0,\dots,X_k)\\
+                    &\quad=\sum_{i=0}^k(-1)^i\,X_i\Big(\omega\big(\dots,\widehat{X_i},\dots\big)\Big)\\
+                    &\qquad+\sum_{i\lt j}(-1)^{i+j}\\
+                    &\qquad\qquad\times\,\omega\big([X_i,X_j],\dots,\widehat{X_i},\dots,\widehat{X_j},\dots\big),\end{aligned} \tag{3.14.6} $$</p>
+                    <p>em que o chapéu indica o argumento omitido, e as reticências representam os campos $X_0,\dots,X_k$ restantes, na ordem original. Em cada termo da segunda soma, $[X_i,X_j]$ é o primeiro argumento de $\omega$. É a (3.13.3) do tópico 3.13.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Indução em $k$, para todas as formas e campos ao mesmo tempo. <strong>Base: $k=0$.</strong> $d\omega(X_0)=X_0\omega$ (a definição da diferencial), e o lado direito de (3.14.6) é $X_0\omega$, porque a segunda soma é vazia.
+                </p>
+
+                <p>
+                    <strong>Passo de indução.</strong> Seja $k\ge1$, e suponha (3.14.6) para formas de grau $k-1$. Pela definição do produto interior, $d\omega(X_0,X_1,\dots,X_k)=(i_{X_0}d\omega)(X_1,\dots,X_k)$, e, pela fórmula de Cartan (3.14.5), $i_{X_0}d\omega=\mathcal{L}_{X_0}\omega-d(i_{X_0}\omega)$. Logo
+                    $$ d\omega(X_0,\dots,X_k)=(\mathcal{L}_{X_0}\omega)(X_1,\dots,X_k)-d(i_{X_0}\omega)(X_1,\dots,X_k). $$
+                    <em>Primeiro termo.</em> Pela fórmula explícita (3.14.4),
+                    $$ \begin{aligned}&(\mathcal{L}_{X_0}\omega)(X_1,\dots,X_k)=X_0\big(\omega(X_1,\dots,X_k)\big)\\
+                    &\qquad-\sum_{j=1}^k\omega\big(X_1,\dots,[X_0,X_j],\dots,X_k\big).\end{aligned} $$
+                    Em cada parcela da soma, $[X_0,X_j]$ está na posição $j$ da lista $(X_1,\dots,X_k)$; passá-lo para a frente atravessa $j-1$ argumentos, o que custa $(-1)^{j-1}$ (alternância de $\omega$). Então
+                    $$ \begin{aligned}&(\mathcal{L}_{X_0}\omega)(X_1,\dots,X_k)=X_0\big(\omega(X_1,\dots,X_k)\big)\\
+                    &\qquad+\sum_{j=1}^k(-1)^{j}\,\omega\big([X_0,X_j],X_1,\dots,\widehat{X_j},\dots,X_k\big).\end{aligned} $$
+                    <em>Segundo termo.</em> $i_{X_0}\omega$ é uma $(k-1)$-forma, e a hipótese de indução, aplicada aos $k$ campos $Y_a=X_{a+1}$ ($a=0,\dots,k-1$), dá, com $i=a+1$ e $j=b+1$,
+                    $$ \begin{aligned}&d(i_{X_0}\omega)(X_1,\dots,X_k)\\
+                    &\quad=\sum_{i=1}^k(-1)^{i-1}\,X_i\Big(\omega\big(X_0,X_1,\dots,\widehat{X_i},\dots,X_k\big)\Big)\\
+                    &\qquad+\sum_{1\le i\lt j\le k}(-1)^{i+j}\,(i_{X_0}\omega)\big([X_i,X_j],\dots,\widehat{X_i},\dots,\widehat{X_j},\dots\big),\end{aligned} $$
+                    em que $(i_{X_0}\omega)\big([X_i,X_j],\dots\big)=\omega\big(X_0,[X_i,X_j],\dots\big)=-\,\omega\big([X_i,X_j],X_0,\dots\big)$ (troca das duas primeiras entradas), e o sinal $(-1)^{a+b}=(-1)^{i+j}$ porque $a+b=i+j-2$.
+                    Portanto
+                    $$ \begin{aligned}&-\,d(i_{X_0}\omega)(X_1,\dots,X_k)\\
+                    &\quad=\sum_{i=1}^k(-1)^{i}\,X_i\Big(\omega\big(X_0,\dots,\widehat{X_i},\dots,X_k\big)\Big)\\
+                    &\qquad+\sum_{1\le i\lt j\le k}(-1)^{i+j}\,\omega\big([X_i,X_j],X_0,\dots,\widehat{X_i},\dots,\widehat{X_j},\dots\big).\end{aligned} $$
+                    <em>Soma.</em> No primeiro termo, $X_0\big(\omega(X_1,\dots,X_k)\big)$ é a parcela $i=0$ da primeira soma de (3.14.6), e as parcelas $\sum_{j\ge1}(-1)^j\,\omega([X_0,X_j],X_1,\dots,\widehat{X_j},\dots)$ são as parcelas $(i,j)=(0,j)$ da segunda soma, porque $(-1)^{0+j}=(-1)^j$. As parcelas do segundo termo são as demais:
+                    $i\ge1$ na primeira soma e $1\le i\lt j$ na segunda. Juntas, são todas as parcelas de (3.14.6). $\blacksquare$
+                </p>
+
+                <p id="ex-3-14-19"><strong>Exemplo 3.14.19 (A fórmula para $k=1$ e $k=2$).</strong> Para $k=1$, o teorema é a (3.13.2): $d\omega(X,Y)=X(\omega(Y))-Y(\omega(X))-\omega([X,Y])$ (agora provada duas vezes, a segunda sem usar o tensor $\Delta_\omega$). Para $k=2$, com $(X_0,X_1,X_2)=(X,Y,Z)$, as três parcelas $i=0,1,2$ da primeira soma e as três parcelas $(i,j)=(0,1),(0,2),(1,2)$ da segunda,
+                    com sinais $(-1)^{i+j}=-1,+1,-1$, dão
+                    $$ \begin{aligned}d\omega(X,Y,Z)&=X\big(\omega(Y,Z)\big)-Y\big(\omega(X,Z)\big)+Z\big(\omega(X,Y)\big)\\
+                    &\quad-\omega([X,Y],Z)+\omega([X,Z],Y)-\omega([Y,Z],X).\end{aligned} $$
+                    Foi conferida com sympy contra a definição em coordenadas, $d\omega=\sum'\sum_i\partial_i\omega_I\,dx^i\wedge dx^I$, em formas e campos polinomiais aleatórios em $\mathbb{R}^3$ e $\mathbb{R}^4$, para $k$ até $3$.</p>
+
+                <div class="definition-box" id="prop-3-14-20">
+                    <p><strong>Proposição 3.14.20 (Comutadores e dependência em $X$).</strong> Para $X,Y\in\mathfrak{X}(M)$, $f\in C^\infty(M)$ e $\omega\in\Omega^k(M)$:</p>
+                    <p>(a) $\mathcal{L}_X(i_Y\omega)-i_Y(\mathcal{L}_X\omega)=i_{[X,Y]}\,\omega$;</p>
+                    <p>(b) $\mathcal{L}_X(\mathcal{L}_Y\omega)-\mathcal{L}_Y(\mathcal{L}_X\omega)=\mathcal{L}_{[X,Y]}\,\omega$;</p>
+                    <p>(c) $\mathcal{L}_{fX}\,\omega=f\,\mathcal{L}_X\omega+df\wedge i_X\omega$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Para $k=0$ os dois lados são $0$. Para $k\ge1$ e $Y_2,\dots,Y_k\in\mathfrak{X}(M)$, a fórmula explícita (3.14.4), aplicada à $(k-1)$-forma $i_Y\omega$ e depois à $k$-forma $\omega$, dá
+                    $$ \begin{aligned}&\big(\mathcal{L}_X(i_Y\omega)\big)(Y_2,\dots,Y_k)=X\big(\omega(Y,Y_2,\dots,Y_k)\big)\\
+                    &\qquad-\sum_{a=2}^k\omega\big(Y,Y_2,\dots,[X,Y_a],\dots,Y_k\big),\\
+                    &\big(i_Y\mathcal{L}_X\omega\big)(Y_2,\dots,Y_k)=(\mathcal{L}_X\omega)(Y,Y_2,\dots,Y_k)\\
+                    &\qquad=X\big(\omega(Y,Y_2,\dots,Y_k)\big)-\omega\big([X,Y],Y_2,\dots,Y_k\big)\\
+                    &\qquad\quad-\sum_{a=2}^k\omega\big(Y,Y_2,\dots,[X,Y_a],\dots,Y_k\big).\end{aligned} $$
+                    A diferença é $\omega([X,Y],Y_2,\dots,Y_k)=(i_{[X,Y]}\omega)(Y_2,\dots,Y_k)$. Como uma forma é determinada por seus valores sobre campos (<a href="[10] - Álgebra Multilinear e Tensores.html#teo-3-10-28">Teorema 3.10.28</a>), vale (a).
+                </p>
+                <p>
+                    (b) Pela fórmula de Cartan, pela comutação $\mathcal{L}_X\,d=d\,\mathcal{L}_X$ (Proposição 3.14.12(c)) e por (a),
+                    $$ \begin{aligned}\mathcal{L}_X\mathcal{L}_Y&=\mathcal{L}_X(d\,i_Y+i_Y\,d)=d\,\mathcal{L}_Xi_Y+(\mathcal{L}_Xi_Y)\,d\\
+                    &=d\,(i_Y\mathcal{L}_X+i_{[X,Y]})+(i_Y\mathcal{L}_X+i_{[X,Y]})\,d\\
+                    &=d\,i_Y\mathcal{L}_X+i_Y\,d\,\mathcal{L}_X+\big(d\,i_{[X,Y]}+i_{[X,Y]}\,d\big),\end{aligned} $$
+                    em que usamos $\mathcal{L}_Xd=d\mathcal{L}_X$ para escrever $i_Y\mathcal{L}_X\,d=i_Y\,d\,\mathcal{L}_X$. Os dois primeiros termos somam $(d\,i_Y+i_Y\,d)\mathcal{L}_X=\mathcal{L}_Y\mathcal{L}_X$, e o parêntese é $\mathcal{L}_{[X,Y]}$ (Cartan de novo). Logo $\mathcal{L}_X\mathcal{L}_Y-\mathcal{L}_Y\mathcal{L}_X=\mathcal{L}_{[X,Y]}$.
+                    (c) $i_{fX}=f\,i_X$ ($C^\infty$-linearidade em $X$), e $d(f\,i_X\omega)=df\wedge i_X\omega+f\,d\,i_X\omega$. Pela fórmula de Cartan,
+                    $\mathcal{L}_{fX}\omega=f\,i_Xd\omega+df\wedge i_X\omega+f\,d\,i_X\omega=f\,\mathcal{L}_X\omega+df\wedge i_X\omega$. $\blacksquare$
+                </p>
+
+                <p id="obs-3-14-21"><strong>Observação 3.14.21 ($\mathcal{L}_X$ depende de $X$ em uma vizinhança).</strong> O produto interior é $C^\infty(M)$-linear em $X$ ($i_{fX}=f\,i_X$): depende só do valor $X_p$ em cada ponto. A derivada de Lie <em>não</em>: pela (c), $\mathcal{L}_{fX}\omega=f\,\mathcal{L}_X\omega+df\wedge i_X\omega$,
+                    e o termo $df\wedge i_X\omega$ só se anula se $df=0$ ou $i_X\omega=0$. Em coordenadas, (3.14.3) envolve $\partial_iX^j$. É o que dissemos na <a href="[08] - Fluxos e Derivada de Lie.html#obs-3-8-21">Observação 3.8.21</a>: $\mathcal{L}_XY$ depende de $X$ em uma vizinhança, e não só de $X_p$; para ter uma derivada que dependa só de $X_p$ é preciso uma
+                    <em>conexão</em> (capítulo posterior). Para funções ($k=0$), $\mathcal{L}_{fX}g=f\,Xg$, e não há termo extra porque $i_Xg=0$.</p>
+
+                <div class="definition-box" id="prop-3-14-22">
+                    <p><strong>Proposição 3.14.22 (A derivada em um instante qualquer).</strong> Sejam $A\in\mathcal{T}^k(M)$, $p\in M$ e $c(t)=(\theta_t^*A)_p\in T^k(T_p^*M)$, para $t\in J_p$. Então $c$ é uma curva suave e, para todo $t_0\in J_p$,</p>
+                    <p>$$ \begin{aligned}&c'(t_0)=\big(\theta_{t_0}^*(\mathcal{L}_XA)\big)_p\\
+                    &\quad=\big(d(\theta_{t_0})_p\big)^*\Big((\mathcal{L}_XA)_{\theta_{t_0}(p)}\Big).\end{aligned} \tag{3.14.7} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Sejam $t_0\in J_p$ e $q=\theta_{t_0}(p)$. Pelo <a href="[08] - Fluxos e Derivada de Lie.html#lema-3-8-10">Lema 3.8.10</a>, $J_q=J_p-t_0$. Pelo <a href="[08] - Fluxos e Derivada de Lie.html#teo-3-8-11">Teorema 3.8.11</a>(c) e (d), $M_{t_0}$ é um aberto que contém $p$, e existem um aberto $W\subset M_{t_0}$ com $p\in W$ e $\varepsilon\gt0$ tais que, para $\lvert s\rvert\lt\varepsilon$ e $w\in W$, $(s,\theta_{t_0}(w))\in\mathcal{D}$ e
+                    $\theta_{t_0+s}(w)=\theta_s\big(\theta_{t_0}(w)\big)$, isto é, $\theta_{t_0+s}=\theta_s\circ\theta_{t_0}$ em $W$. Pela <a href="[10] - Álgebra Multilinear e Tensores.html#prop-3-10-36">Proposição 3.10.36</a>(d), $(\theta_{t_0+s}^*A)_p=\big(\theta_{t_0}^*(\theta_s^*A)\big)_p$, ou seja,
+                    $$ c(t_0+s)=L\Big((\theta_s^*A)_q\Big),\qquad L=\big(d(\theta_{t_0})_p\big)^*:T^k(T_q^*M)\to T^k(T_p^*M). $$
+                    $L$ é linear entre espaços de dimensão finita, e $s\mapsto(\theta_s^*A)_q$ é derivável em $s=0$, com derivada $(\mathcal{L}_XA)_q$ (Teorema 3.14.3). Logo $c$ é derivável em $t_0$, com $c'(t_0)=L\big((\mathcal{L}_XA)_q\big)$. A suavidade vem de que a mesma conta vale em todo $t_0$, com $s\mapsto(\theta_s^*A)_q$ suave perto de $0$ (Lema 3.14.2). $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="cor-3-14-23">
+                    <p><strong>Corolário 3.14.23 (Invariância pelo fluxo).</strong> Para $A\in\mathcal{T}^k(M)$ e $X\in\mathfrak{X}(M)$, são equivalentes:</p>
+                    <p>(i) $\theta_t^*A=A$ em $M_t$, para todo $t$ (isto é, $(\theta_t^*A)_p=A_p$ para todo $(t,p)\in\mathcal{D}$);</p>
+                    <p>(ii) $\mathcal{L}_XA=0$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (i)$\Rightarrow$(ii): derive a curva constante $t\mapsto(\theta_t^*A)_p$ em $t=0$. (ii)$\Rightarrow$(i): fixe $p$. Pela (3.14.7), $c'(t)=L_t\big((\mathcal{L}_XA)_{\theta_t(p)}\big)=0$ para todo $t\in J_p$, e $J_p$ é um intervalo (<a href="[08] - Fluxos e Derivada de Lie.html#prop-3-8-5">Proposição 3.8.5</a>); logo $c$ é constante, $c(t)=c(0)=A_p$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="cor-3-14-24">
+                    <p><strong>Corolário 3.14.24 (Killing e isometrias).</strong> Seja $g$ uma métrica em $M$. Então $X$ é um campo de Killing de $g$ se, e só se, cada $\theta_t:M_t\to M_{-t}$ é uma <em>isometria</em>, isto é, $g_{\theta_t(p)}\big(d(\theta_t)_pv,d(\theta_t)_pw\big)=g_p(v,w)$ para todos $p\in M_t$ e $v,w\in T_pM$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> A condição de isometria é $\theta_t^*g=g$ em $M_t$, e o Corolário 3.14.23 (com $A=g$, $k=2$) a torna equivalente a $\mathcal{L}_Xg=0$. $\blacksquare$
+                </p>
+
+                <p>
+                    Para um campo $Y$, o resultado análogo é o <a href="[08] - Fluxos e Derivada de Lie.html#teo-3-8-24">Teorema 3.8.24</a>: $\mathcal{L}_XY=[X,Y]=0$ se, e só se, $Y$ é invariante pelo fluxo de $X$. O Corolário 3.14.23 é a versão para tensores covariantes, e vale para qualquer campo tensorial $A$ (por exemplo, uma $k$-forma).
+                </p>
+
+                <h2 id="divergencia">Divergência relativa a uma forma de volume</h2>
+
+                <p>
+                    Seja $M$ uma variedade de dimensão $n$. Em cada ponto, $\Lambda^n(T_p^*M)$ tem dimensão $\binom nn=1$ (<a href="[11] - Produto Exterior.html#teo-3-11-13">Teorema 3.11.13</a>). Se uma $n$-forma $\mu$ não se anula em $p$, ela é uma base desse espaço, e toda $n$-forma em $p$ é um múltiplo dela. A derivada de Lie $\mathcal{L}_X\mu$ é uma $n$-forma (Proposição 3.14.12(a)),
+                    de modo que $\mathcal{L}_X\mu=(\text{função})\cdot\mu$: a função mede a taxa de variação do "volume" $\mu$ ao longo do fluxo, por unidade de volume. Esta função é a divergência.
+                </p>
+
+                <div class="definition-box" id="def-3-14-25" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.14.25 (Divergência relativa a $\mu$).</strong> Sejam $U\subset M$ aberto e $\mu\in\Omega^n(M)$ com $\mu_p\neq0$ para todo $p\in U$. Para $X\in\mathfrak{X}(M)$, a <strong>divergência</strong> de $X$ <strong>relativa a $\mu$</strong> é a função $\operatorname{div}_\mu X:U\to\mathbb{R}$ tal que</p>
+                    <p>$$ \mathcal{L}_X\mu=(\operatorname{div}_\mu X)\,\mu\quad\text{em }U. $$</p>
+                    <p>Está bem definida e é suave: em uma carta, $\mu=\rho\,dx^1\wedge\dots\wedge dx^n$ com $\rho$ suave e sem zeros, $\mathcal{L}_X\mu=\sigma\,dx^1\wedge\dots\wedge dx^n$ com $\sigma$ suave (Teorema 3.14.3), e $\operatorname{div}_\mu X=\sigma/\rho$.</p>
+                </div>
+
+                <p>
+                    A divergência depende de $\mu$ (Observação 3.14.28): não se deve escrever "a divergência de $X$" sem dizer em relação a que forma. Neste tópico, $\mu$ é só "uma $n$-forma que não se anula"; no tópico 3.15 ela será chamada <em>forma de volume</em>, e fixará uma orientação.
+                </p>
+
+                <div class="definition-box" id="prop-3-14-26">
+                    <p><strong>Proposição 3.14.26 ($\mathcal{L}_X\mu$ e a fórmula em coordenadas).</strong> Para $\mu\in\Omega^n(M)$ e $X\in\mathfrak{X}(M)$, $\mathcal{L}_X\mu=d(i_X\mu)$. Em uma carta, com $\mu=\rho\,dx^1\wedge\dots\wedge dx^n$ e $\rho$ sem zeros,</p>
+                    <p>$$ \operatorname{div}_\mu X=\frac1\rho\,\frac{\partial}{\partial x^i}\big(\rho\,X^i\big). \tag{3.14.8} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Como $d\mu$ é uma $(n+1)$-forma, $d\mu=0$, e a fórmula de Cartan dá $\mathcal{L}_X\mu=d(i_X\mu)$. Pela Proposição 3.14.13(b), com $\omega_{1\dots n}=\rho$,
+                    $$ i_X\mu=\sum_{i=1}^n(-1)^{i-1}\,\rho\,X^i\ dx^1\wedge\dots\wedge\widehat{dx^i}\wedge\dots\wedge dx^n. $$
+                    Aplicando $d$ a cada parcela, só a derivada em $x^i$ sobrevive (nas outras, $dx^j\wedge dx^1\wedge\dots\widehat{dx^i}\dots$ tem $dx^j$ repetido): $d\big(\rho X^i\,dx^1\wedge\dots\widehat{dx^i}\dots\wedge dx^n\big)=\partial_i(\rho X^i)\,dx^i\wedge dx^1\wedge\dots\widehat{dx^i}\dots\wedge dx^n$. Passar $dx^i$ por cima de $i-1$ fatores custa
+                    $(-1)^{i-1}$, de modo que $dx^i\wedge dx^1\wedge\dots\widehat{dx^i}\dots\wedge dx^n=(-1)^{i-1}\,dx^1\wedge\dots\wedge dx^n$, e os dois sinais se cancelam: $d(i_X\mu)=\partial_i(\rho X^i)\,dx^1\wedge\dots\wedge dx^n$. Dividindo por $\mu=\rho\,dx^1\wedge\dots\wedge dx^n$ obtém-se (3.14.8). $\blacksquare$
+                </p>
+
+                <p id="ex-3-14-27"><strong>Exemplo 3.14.27 (Divergência em $\mathbb{R}^n$, em polares e em esféricas).</strong></p>
+                <ul>
+                    <li>$\mathbb{R}^n$ com $\mu=dx^1\wedge\dots\wedge dx^n$ ($\rho=1$): $\operatorname{div}_\mu X=\partial_iX^i$, o divergente usual.</li>
+                    <li>$\mathbb{R}^2$ em coordenadas polares, $\mu=r\,dr\wedge d\theta$ (que é $dx\wedge dy$, <a href="[12] - Formas Diferenciais.html#ex-3-12-16">Exemplo 3.12.16</a>): $\operatorname{div}_\mu X=\frac1r\,\partial_r(rX^r)+\partial_\theta X^\theta$, com $X=X^r\partial_r+X^\theta\partial_\theta$.</li>
+                    <li>$\mathbb{R}^3$ em coordenadas esféricas, $\mu=r^2\sin\theta\,dr\wedge d\theta\wedge d\phi$ (<a href="[12] - Formas Diferenciais.html#ex-3-12-16">Exemplo 3.12.16</a>): por (3.14.8),
+                        $$ \operatorname{div}_\mu X=\frac1{r^2}\,\partial_r\big(r^2X^r\big)+\frac1{\sin\theta}\,\partial_\theta\big(\sin\theta\,X^\theta\big)+\partial_\phi X^\phi. $$
+                        Com as componentes <em>físicas</em> (ortonormais) $F_r=X^r$, $F_{\hat\theta}=r\,X^\theta$ e $F_{\hat\phi}=r\sin\theta\,X^\phi$ (a base $\hat{\mathbf{r}},\hat{\boldsymbol\theta},\hat{\boldsymbol\phi}$ tem $\partial_\theta=r\hat{\boldsymbol\theta}$ e $\partial_\phi=r\sin\theta\,\hat{\boldsymbol\phi}$), a divergência é
+                        $\frac1{r^2}\partial_r(r^2F_r)+\frac1{r\sin\theta}\partial_\theta(\sin\theta\,F_{\hat\theta})+\frac1{r\sin\theta}\partial_\phi F_{\hat\phi}$, a fórmula dos livros.</li>
+                </ul>
+
+                <p id="obs-3-14-28"><strong>Observação 3.14.28 (A divergência depende de $\mu$).</strong> Se $h$ é uma função sem zeros, $h\mu$ é outra forma que não se anula, e, pela Proposição 3.14.5(b),
+                    $\mathcal{L}_X(h\mu)=(Xh)\,\mu+h\,\mathcal{L}_X\mu=\big(\frac{Xh}{h}+\operatorname{div}_\mu X\big)\,h\mu$. Logo
+                    $$ \operatorname{div}_{h\mu}X=\operatorname{div}_\mu X+X(\ln\lvert h\rvert). $$
+                    Em particular, só campos com $Xh=0$ têm a mesma divergência para $\mu$ e $h\mu$. Em geometria riemanniana, a forma de volume canônica tem $\rho=\sqrt{\lvert\det g\rvert}$ em coordenadas (capítulo posterior), e $\operatorname{div}X=\frac1{\sqrt{\lvert g\rvert}}\partial_i\big(\sqrt{\lvert g\rvert}\,X^i\big)$.
+                    No tópico 3.19 aparecerá o teorema da divergência para $\mu$ qualquer.</p>
+
+                <div class="definition-box" id="cor-3-14-29">
+                    <p><strong>Corolário 3.14.29 (O fluxo preserva $\mu$ se, e só se, $\operatorname{div}_\mu X=0$).</strong> Seja $\mu\in\Omega^n(M)$ sem zeros em $M$. Então $\theta_t^*\mu=\mu$ em $M_t$, para todo $t$, se, e só se, $\operatorname{div}_\mu X=0$ em $M$. Em geral, $\frac{d}{dt}\theta_t^*\mu=\big((\operatorname{div}_\mu X)\circ\theta_t\big)\,\theta_t^*\mu$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela Definição 3.14.25, $\mathcal{L}_X\mu=0$ se, e só se, $\operatorname{div}_\mu X=0$, e o Corolário 3.14.23 (com $A=\mu$) liga isso a $\theta_t^*\mu=\mu$. Para a fórmula geral, a Proposição 3.14.22 dá $\frac{d}{dt}(\theta_t^*\mu)_p=\theta_t^*\big((\operatorname{div}_\mu X)\mu\big)_p=\big((\operatorname{div}_\mu X)(\theta_t(p))\big)\,(\theta_t^*\mu)_p$
+                    (<a href="[12] - Formas Diferenciais.html#teo-3-12-12">Teorema 3.12.12</a>(a)). $\blacksquare$
+                </p>
+
+                <figure class="lecture-figure" id="fig-3-14-2" style="overflow-x: auto; overflow-y: hidden;">
+                    <svg viewBox="0 0 640 300" role="img" style="min-width: 560px;" aria-label="Dois painéis. No painel (a), um campo de rotação em torno da origem, desenhado como pequenas setas tangentes a círculos, e um quadrado tracejado com a sua imagem girada, de mesma área, em traço contínuo; o divergente do campo é zero. No painel (b), um campo de dilatação, desenhado como pequenas setas que saem da origem, e um quadrado tracejado com a sua imagem ampliada, de área maior, em traço contínuo; o divergente é dois e a área é multiplicada por e elevado a dois t.">
+<defs><marker id="arr-3-14-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<rect x="14" y="16" width="612" height="272" rx="3" class="fig-frame"/>
+<text x="22" y="40" class="fig-label fig-small">(a) rotação  X = −y ∂x + x ∂y</text>
+<line x1="138.8" y1="230" x2="292.8" y2="230" class="fig-axis" marker-end="url(#arr-3-14-2)"/>
+<line x1="150" y1="241.2" x2="150" y2="92.8" class="fig-axis" marker-end="url(#arr-3-14-2)"/>
+<text x="296.8" y="234" class="fig-label fig-small fig-it">x</text>
+<text x="156" y="96.8" class="fig-label fig-small fig-it">y</text>
+<line x1="178" y1="202" x2="170.1" y2="194.1" class="fig-guide" marker-end="url(#arr-3-14-2)"/>
+<line x1="178" y1="174" x2="168" y2="169" class="fig-guide" marker-end="url(#arr-3-14-2)"/>
+<line x1="178" y1="146" x2="167.4" y2="142.5" class="fig-guide" marker-end="url(#arr-3-14-2)"/>
+<line x1="178" y1="118" x2="167.1" y2="115.3" class="fig-guide" marker-end="url(#arr-3-14-2)"/>
+<line x1="206" y1="202" x2="201" y2="192" class="fig-guide" marker-end="url(#arr-3-14-2)"/>
+<line x1="206" y1="174" x2="198.1" y2="166.1" class="fig-guide" marker-end="url(#arr-3-14-2)"/>
+<line x1="206" y1="146" x2="196.7" y2="139.8" class="fig-guide" marker-end="url(#arr-3-14-2)"/>
+<line x1="206" y1="118" x2="196" y2="113" class="fig-guide" marker-end="url(#arr-3-14-2)"/>
+<line x1="234" y1="202" x2="230.5" y2="191.4" class="fig-guide" marker-end="url(#arr-3-14-2)"/>
+<line x1="234" y1="174" x2="227.8" y2="164.7" class="fig-guide" marker-end="url(#arr-3-14-2)"/>
+<line x1="234" y1="146" x2="226.1" y2="138.1" class="fig-guide" marker-end="url(#arr-3-14-2)"/>
+<line x1="234" y1="118" x2="225" y2="111.3" class="fig-guide" marker-end="url(#arr-3-14-2)"/>
+<line x1="262" y1="202" x2="259.3" y2="191.1" class="fig-guide" marker-end="url(#arr-3-14-2)"/>
+<line x1="262" y1="174" x2="257" y2="164" class="fig-guide" marker-end="url(#arr-3-14-2)"/>
+<line x1="262" y1="146" x2="255.3" y2="137" class="fig-guide" marker-end="url(#arr-3-14-2)"/>
+<line x1="262" y1="118" x2="254.1" y2="110.1" class="fig-guide" marker-end="url(#arr-3-14-2)"/>
+<path d="M178,210.4 L234,210.4 L234,154.4 L178,154.4 Z" class="fig-shape" style="stroke-dasharray: 5 4;"/>
+<path d="M158.8,197 L201.6,160.9 L165.5,118.1 L122.7,154.1 Z" class="fig-curve"/>
+<text x="24" y="262" class="fig-label fig-small">div X = 0: a área do quadrado</text>
+<text x="24" y="278" class="fig-label fig-small">não muda (θ_t^*(dx∧dy) = dx∧dy).</text>
+<text x="342" y="40" class="fig-label fig-small">(b) dilatação  X = x ∂x + y ∂y</text>
+<line x1="458.8" y1="230" x2="612.8" y2="230" class="fig-axis" marker-end="url(#arr-3-14-2)"/>
+<line x1="470" y1="241.2" x2="470" y2="92.8" class="fig-axis" marker-end="url(#arr-3-14-2)"/>
+<text x="616.8" y="234" class="fig-label fig-small fig-it">x</text>
+<text x="476" y="96.8" class="fig-label fig-small fig-it">y</text>
+<line x1="498" y1="202" x2="505.9" y2="194.1" class="fig-guide" marker-end="url(#arr-3-14-2)"/>
+<line x1="498" y1="174" x2="503" y2="164" class="fig-guide" marker-end="url(#arr-3-14-2)"/>
+<line x1="498" y1="146" x2="501.5" y2="135.4" class="fig-guide" marker-end="url(#arr-3-14-2)"/>
+<line x1="498" y1="118" x2="500.7" y2="107.1" class="fig-guide" marker-end="url(#arr-3-14-2)"/>
+<line x1="526" y1="202" x2="536" y2="197" class="fig-guide" marker-end="url(#arr-3-14-2)"/>
+<line x1="526" y1="174" x2="533.9" y2="166.1" class="fig-guide" marker-end="url(#arr-3-14-2)"/>
+<line x1="526" y1="146" x2="532.2" y2="136.7" class="fig-guide" marker-end="url(#arr-3-14-2)"/>
+<line x1="526" y1="118" x2="531" y2="108" class="fig-guide" marker-end="url(#arr-3-14-2)"/>
+<line x1="554" y1="202" x2="564.6" y2="198.5" class="fig-guide" marker-end="url(#arr-3-14-2)"/>
+<line x1="554" y1="174" x2="563.3" y2="167.8" class="fig-guide" marker-end="url(#arr-3-14-2)"/>
+<line x1="554" y1="146" x2="561.9" y2="138.1" class="fig-guide" marker-end="url(#arr-3-14-2)"/>
+<line x1="554" y1="118" x2="560.7" y2="109" class="fig-guide" marker-end="url(#arr-3-14-2)"/>
+<line x1="582" y1="202" x2="592.9" y2="199.3" class="fig-guide" marker-end="url(#arr-3-14-2)"/>
+<line x1="582" y1="174" x2="592" y2="169" class="fig-guide" marker-end="url(#arr-3-14-2)"/>
+<line x1="582" y1="146" x2="591" y2="139.3" class="fig-guide" marker-end="url(#arr-3-14-2)"/>
+<line x1="582" y1="118" x2="589.9" y2="110.1" class="fig-guide" marker-end="url(#arr-3-14-2)"/>
+<path d="M498,210.4 L554,210.4 L554,154.4 L498,154.4 Z" class="fig-shape" style="stroke-dasharray: 5 4;"/>
+<path d="M511.8,200.8 L595.3,200.8 L595.3,117.2 L511.8,117.2 Z" class="fig-curve"/>
+<text x="344" y="262" class="fig-label fig-small">div X = 2: a área é multiplicada por</text>
+<text x="344" y="278" class="fig-label fig-small">e^(2t):  θ_t^*(dx∧dy) = e^(2t) dx∧dy.</text>
+</svg>
+                    <figcaption><strong>Figura 3.14.2.</strong> Dois fluxos no plano, com $\mu=dx\wedge dy$. (a) A rotação $X=-y\,\partial_x+x\,\partial_y$ tem $\operatorname{div}_\mu X=0$: o quadrado gira e a sua área não muda. (b) A dilatação $X=x\,\partial_x+y\,\partial_y$ tem $\operatorname{div}_\mu X=2$: a área do quadrado é multiplicada por
+                        $e^{2t}$, e $\frac{d}{dt}\big\vert_{t=0}\theta_t^*(dx\wedge dy)=2\,dx\wedge dy$.</figcaption>
+                </figure>
+
+                <p id="ex-3-14-30"><strong>Exemplo 3.14.30 (Teorema de Liouville em um grau de liberdade).</strong> No espaço de fase $\mathbb{R}^2$ com coordenadas $(q,p)$ e uma hamiltoniana $H(q,p)$, o campo hamiltoniano é $X_H=\frac{\partial H}{\partial p}\,\partial_q-\frac{\partial H}{\partial q}\,\partial_p$ (as equações $\dot{q}=\partial_pH$, $\dot{p}=-\partial_qH$). Em relação a $\mu=dq\wedge dp$,
+                    $$ \operatorname{div}_\mu X_H=\partial_q\Big(\frac{\partial H}{\partial p}\Big)+\partial_p\Big(-\frac{\partial H}{\partial q}\Big)=0, $$
+                    pela igualdade das derivadas mistas. Pelo Corolário 3.14.29, o fluxo hamiltoniano preserva a área $dq\wedge dp$ do espaço de fase: é o teorema de Liouville. Sem coordenadas: $i_{X_H}(dq\wedge dp)=dq(X_H)\,dp-dp(X_H)\,dq=\partial_pH\,dp+\partial_qH\,dq=dH$, e, por Cartan,
+                    $\mathcal{L}_{X_H}(dq\wedge dp)=d\big(i_{X_H}(dq\wedge dp)\big)=d(dH)=0$. Para $H=\tfrac12(p^2+q^2)$, o fluxo é a rotação $\theta_t(q,p)=(q\cos t+p\sin t,\,-q\sin t+p\cos t)$, de determinante $1$.</p>
+
+                <h2 id="fisica">Ponte com a física</h2>
+
+                <p>
+                    <strong>Simetria é invariância pelo fluxo.</strong> Pelo Corolário 3.14.23, um campo tensorial $A$ é invariante pelo fluxo de $X$ se, e só se, $\mathcal{L}_XA=0$. Na física, "$X$ gera uma simetria de $A$" quer dizer exatamente isso: uma distribuição de carga com simetria axial é invariante pelas rotações em torno do eixo, uma configuração estática é
+                    invariante pelas translações no tempo, e assim por diante. O fluxo de $X$ é então um grupo a um parâmetro de simetrias, e a condição infinitesimal $\mathcal{L}_XA=0$ é um sistema de equações diferenciais <em>lineares</em> em $X$, que se resolve sem integrar o fluxo.
+                </p>
+
+                <div class="definition-box" id="prop-3-14-31">
+                    <p><strong>Proposição 3.14.31 (A equação de Killing em coordenadas).</strong> Sejam $g$ uma métrica e $K=K^\lambda\partial_\lambda$ um campo vetorial. Então</p>
+                    <p>$$ (\mathcal{L}_Kg)_{\mu\nu}=K^\lambda\,\partial_\lambda g_{\mu\nu}+g_{\lambda\nu}\,\partial_\mu K^\lambda+g_{\mu\lambda}\,\partial_\nu K^\lambda, \tag{3.14.9} $$</p>
+                    <p>e $K$ é um campo de Killing se, e só se, isto é nulo. Em particular, se os $g_{\mu\nu}$ não dependem da coordenada $x^\alpha$, então $\partial_\alpha$ é um campo de Killing.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (3.14.9) é (3.14.3) com $k=2$. Se $K=\partial_\alpha$, $K^\lambda=\delta^\lambda_\alpha$ são constantes, os termos com $\partial K^\lambda$ se anulam, e (3.14.9) se reduz a $\partial_\alpha g_{\mu\nu}=0$. $\blacksquare$
+                </p>
+
+                <p>
+                    Assim, as translações $\partial_\mu$ da métrica de Minkowski $\eta_{\mu\nu}$ (constante) são Killing, e, na métrica euclidiana em polares $dr^2+r^2d\theta^2$ (<a href="[10] - Álgebra Multilinear e Tensores.html#ex-3-10-39">Exemplo 3.10.39</a>), $\partial_\theta$ é Killing, de fluxo as rotações. O Exercício 3.14.3 mostra que o <em>boost</em> $K=x\,\partial_t+t\,\partial_x$ é Killing de Minkowski, e <em>não</em> da métrica euclidiana: as
+                    simetrias dependem da métrica, e é por isso que as simetrias da relatividade especial (o grupo de Poincaré) são as de $\eta$, diferentes das do espaço euclidiano. No capítulo seguinte, a cada campo de Killing será associada uma quantidade conservada ao longo das geodésicas (por exemplo, as simetrias $\partial_t$ e $\partial_\phi$ da métrica de Schwarzschild).
+                </p>
+
+                <p id="obs-3-14-32"><strong>Observação 3.14.32 (Covariância geral: o calibre da gravitação).</strong> Em Relatividade Geral, as leis físicas são <em>covariantes</em>: se $F:M\to M$ é um difeomorfismo, o par $(M,g)$ e o par $(M,F^*g)$ descrevem a mesma física. Tomando $F=\theta_\varepsilon$, o fluxo de um campo $\xi$ por um tempo pequeno, a Definição 3.14.1 dá
+                    $$ \begin{aligned}&\theta_\varepsilon^*g=g+\varepsilon\,\mathcal{L}_\xi g+O(\varepsilon^2),\\
+                    &\delta g_{\mu\nu}=(\mathcal{L}_\xi g)_{\mu\nu}\\
+                    &\quad=\xi^\lambda\partial_\lambda g_{\mu\nu}+g_{\lambda\nu}\partial_\mu\xi^\lambda+g_{\mu\lambda}\partial_\nu\xi^\lambda.\end{aligned} $$
+                    Os campos $\xi^\mu(x)$ são arbitrários, e a mudança $\delta g_{\mu\nu}=\mathcal{L}_\xi g_{\mu\nu}$ não tem significado físico: é a <em>transformação de calibre</em> da gravitação, como $A\mapsto A+d\lambda$ é a do eletromagnetismo (tópico 3.13). Veremos que $\mathcal{L}_\xi g_{\mu\nu}=\nabla_\mu\xi_\nu+\nabla_\nu\xi_\mu$ com a conexão de Levi-Civita,
+                    e que $\xi$ é um campo de Killing se, e só se, este calibre não muda a métrica.</p>
+
+                <p>
+                    <strong>Fluidos e o espaço de fase.</strong> Um fluido com campo de velocidades $\mathbf{v}$ estacionário é <em>incompressível</em> se o fluxo preserva volumes, e, pelo Corolário 3.14.29 com $\mu=dV$, isto vale se, e só se, $\operatorname{div}\mathbf{v}=0$. Na mecânica hamiltoniana com $n$ graus de liberdade, a forma simplética é $\omega=\sum_i dq^i\wedge dp_i$, e o campo hamiltoniano
+                    é definido por $i_{X_H}\omega=dH$. Por Cartan, $\mathcal{L}_{X_H}\omega=d(i_{X_H}\omega)=d(dH)=0$, e, como $\mathcal{L}_{X_H}$ é uma derivação (Proposição 3.14.12(b)), $\mathcal{L}_{X_H}(\omega\wedge\dots\wedge\omega)=0$. Como o produto de $n$ fatores $\omega$ é um múltiplo não nulo de $dq^1\wedge dp_1\wedge\dots\wedge dq^n\wedge dp_n$, o fluxo preserva o volume do espaço de fase. Esse é o <em>teorema de Liouville</em>, que o Exemplo 3.14.30 provou para $n=1$.
+                    Além disso, $\mathcal{L}_{X_H}H=X_HH=\sum_i\big(\partial_{p_i}H\,\partial_{q^i}H-\partial_{q^i}H\,\partial_{p_i}H\big)=0$: a energia é conservada.
+                </p>
+
+                <p>
+                    <strong>A força de Lorentz como produto interior.</strong> No Exemplo 3.14.14, $i_X\Phi_{\mathbf{G}}=\omega_{\mathbf{G}\times X}$. Com $\mathbf{G}=\mathbf{B}$ e $X=\mathbf{v}$, $i_{\mathbf{v}}\Phi_{\mathbf{B}}=\omega_{\mathbf{B}\times\mathbf{v}}=-\omega_{\mathbf{v}\times\mathbf{B}}$, de modo que a parte magnética da força de Lorentz, $q\,\mathbf{v}\times\mathbf{B}$, é, a menos do sinal, o produto interior da velocidade com a $2$-forma magnética.
+                    Em quatro dimensões, o mesmo fato se escreve $f_\mu=q\,F_{\mu\nu}u^\nu=-q\,(i_uF)_\mu$, porque $(i_uF)_\mu=F(u,\partial_\mu)=u^\nu F_{\nu\mu}$ (com os sinais da convenção do tópico 3.12, em que $F_{i0}=E_i$ e $F_{ij}=\epsilon_{ijk}B_k$).
+                </p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p id="exr-3-14-1"><strong>Exercício 3.14.1.</strong> Para $X=x\partial_y-y\partial_x$ em $\mathbb{R}^2$, calcule $\mathcal{L}_X(x\,dx+y\,dy)$ e $\mathcal{L}_X(dx)$.</p>
+
+                <p>
+                    <em>Solução.</em> Com $X^x=-y$ e $X^y=x$, a (3.14.3) para $1$-formas é $(\mathcal{L}_X\omega)_i=X^j\partial_j\omega_i+\omega_j\,\partial_iX^j$. Para $\omega=x\,dx+y\,dy$, de componentes $(\omega_x,\omega_y)=(x,y)$: em $i=x$, $X^x\partial_x\omega_x+X^y\partial_y\omega_x=-y\cdot1+x\cdot0=-y$ e
+                    $\omega_x\partial_xX^x+\omega_y\partial_xX^y=x\cdot0+y\cdot1=y$, somando $0$; em $i=y$, $X^x\partial_x\omega_y+X^y\partial_y\omega_y=0+x\cdot1=x$ e $\omega_x\partial_yX^x+\omega_y\partial_yX^y=x\cdot(-1)+0=-x$, somando $0$. Logo $\mathcal{L}_X(x\,dx+y\,dy)=0$.
+                    (Outro caminho: $\omega=\tfrac12d(x^2+y^2)$ e, como $\mathcal{L}_X$ comuta com $d$ (Proposição 3.14.12(c)) e $\mathcal{L}_Xf=Xf$, $\mathcal{L}_X\omega=\tfrac12d\big(X(x^2+y^2)\big)=\tfrac12d(-2xy+2xy)=0$: a rotação preserva $x^2+y^2$.) Para $dx$, de componentes $(1,0)$ constantes,
+                    $(\mathcal{L}_Xdx)_i=\partial_iX^x$, isto é, $\partial_x(-y)=0$ e $\partial_y(-y)=-1$: $\mathcal{L}_Xdx=-dy$, de acordo com $\mathcal{L}_X(dx)=d(Xx)=d(-y)=-dy$ (Proposição 3.14.12(d)). $\blacksquare$
+                </p>
+
+                <p id="exr-3-14-2"><strong>Exercício 3.14.2.</strong> Verifique a fórmula de Cartan para $X=x\partial_x+y\partial_y$ e $\omega=x\,dy-y\,dx$.</p>
+
+                <p>
+                    <em>Solução.</em> Pelo lado esquerdo, com (3.14.3) e $(\omega_x,\omega_y)=(-y,x)$: $(\mathcal{L}_X\omega)_i=X^j\partial_j\omega_i+\omega_j\,\partial_iX^j=x\partial_x\omega_i+y\partial_y\omega_i+\omega_i$ (porque $\partial_iX^j=\delta^j_i$). Para $i=x$: $x\cdot0+y\cdot(-1)+(-y)=-2y$; para $i=y$: $x\cdot1+y\cdot0+x=2x$.
+                    Logo $\mathcal{L}_X\omega=-2y\,dx+2x\,dy=2\omega$. Pelo lado direito: $d\omega=2\,dx\wedge dy$, $i_Xd\omega=2\big(dx(X)\,dy-dy(X)\,dx\big)=2(x\,dy-y\,dx)=2\omega$, e $i_X\omega=\omega(X)=-y\cdot x+x\cdot y=0$, de modo que $d(i_X\omega)=0$. Soma: $2\omega$. As duas coincidem. $\blacksquare$
+                </p>
+
+                <p id="exr-3-14-3"><strong>Exercício 3.14.3.</strong> Em $\mathbb{R}^2$ com coordenadas $(t,x)$, seja $K=x\partial_t+t\partial_x$. Calcule $\mathcal{L}_K\eta$ para $\eta=-dt^2+dx^2$ e $\mathcal{L}_Kg_E$ para $g_E=dt^2+dx^2$.</p>
+
+                <p>
+                    <em>Solução.</em> As componentes de $\eta$ e $g_E$ são constantes, de modo que (3.14.9) se reduz a $(\mathcal{L}_Kg)_{\mu\nu}=g_{\lambda\nu}\partial_\mu K^\lambda+g_{\mu\lambda}\partial_\nu K^\lambda$, com $K^t=x$ e $K^x=t$: $\partial_tK^t=0$, $\partial_xK^t=1$, $\partial_tK^x=1$, $\partial_xK^x=0$. Para $\eta=\operatorname{diag}(-1,1)$:
+                    $(tt)$: $2\eta_{tt}\partial_tK^t=0$; $(xx)$: $2\eta_{xx}\partial_xK^x=0$; $(tx)$: $\eta_{xx}\partial_tK^x+\eta_{tt}\partial_xK^t=1-1=0$. Logo $\mathcal{L}_K\eta=0$: o boost é Killing de Minkowski. Para $g_E=\operatorname{diag}(1,1)$, as componentes $(tt)$ e $(xx)$ são as mesmas, nulas, mas $(tx)$ vale
+                    $1+1=2$, de modo que $\mathcal{L}_Kg_E=2(dt\otimes dx+dx\otimes dt)\neq0$. O fluxo do boost é $\theta_s(t,x)=(t\cosh s+x\sinh s,\ t\sinh s+x\cosh s)$, e mantém as hipérboles $-t^2+x^2=\text{const}$, mas não as circunferências $t^2+x^2=\text{const}$. $\blacksquare$
+                </p>
+
+                <p id="exr-3-14-4"><strong>Exercício 3.14.4.</strong> Deduza a divergência em coordenadas esféricas a partir de $\mu=r^2\sin\theta\,dr\wedge d\theta\wedge d\phi$, e aplique-a a $X=r\,\partial_r$ e ao campo coulombiano $F_r=1/r^2$.</p>
+
+                <p>
+                    <em>Solução.</em> Com $\rho=r^2\sin\theta$ e (3.14.8), $\operatorname{div}_\mu X=\frac1\rho\big[\partial_r(\rho X^r)+\partial_\theta(\rho X^\theta)+\partial_\phi(\rho X^\phi)\big]$. Como $\rho=r^2\sin\theta$ não depende de $\phi$, $\partial_r(\rho X^r)=\sin\theta\,\partial_r(r^2X^r)$,
+                    $\partial_\theta(\rho X^\theta)=r^2\partial_\theta(\sin\theta\,X^\theta)$ e $\partial_\phi(\rho X^\phi)=\rho\,\partial_\phi X^\phi$; dividindo por $\rho$,
+                    $\operatorname{div}_\mu X=\frac1{r^2}\partial_r(r^2X^r)+\frac1{\sin\theta}\partial_\theta(\sin\theta\,X^\theta)+\partial_\phi X^\phi$. (Pelo cálculo direto com $i_X\mu=\rho\big(X^r\,d\theta\wedge d\phi-X^\theta\,dr\wedge d\phi+X^\phi\,dr\wedge d\theta\big)$, que tem a mesma conclusão.)
+                    Para $X=r\partial_r$: $X^r=r$, $\operatorname{div}_\mu X=\frac1{r^2}\partial_r(r^3)=3$, o mesmo que a dilatação $x\partial_x+y\partial_y+z\partial_z=r\partial_r$ em coordenadas cartesianas ($\partial_xx+\partial_yy+\partial_zz=3$). Para o campo coulombiano, $X^r=1/r^2$ e as outras componentes nulas:
+                    $\operatorname{div}_\mu X=\frac1{r^2}\partial_r(1)=0$ para $r\gt0$. $\blacksquare$
+                </p>
+
+                <p id="exr-3-14-5"><strong>Exercício 3.14.5.</strong> Verifique $\mathcal{L}_{fX}\omega=f\,\mathcal{L}_X\omega+df\wedge i_X\omega$ para $X=\partial_x$, $f=y$ e $\omega=y\,dx+x^2\,dy$.</p>
+
+                <p>
+                    <em>Solução.</em> $fX=y\,\partial_x$. Por Cartan, $\mathcal{L}_{fX}\omega=i_{fX}d\omega+d\big(i_{fX}\omega\big)$, com $d\omega=(2x-1)\,dx\wedge dy$, $i_{fX}d\omega=y(2x-1)\,i_{\partial_x}(dx\wedge dy)=(2x-1)\,y\,dy$, e $i_{fX}\omega=y\cdot y=y^2$, $d(y^2)=2y\,dy$. Logo
+                    $\mathcal{L}_{fX}\omega=(2x+1)\,y\,dy$. Pelo lado direito: $\mathcal{L}_X\omega$ para $X=\partial_x$ tem componentes $\partial_x\omega_i=(0,2x)$, isto é, $\mathcal{L}_X\omega=2x\,dy$; $f\mathcal{L}_X\omega=2xy\,dy$. E $i_X\omega=\omega(\partial_x)=y$, $df\wedge i_X\omega=dy\wedge y=y\,dy$. A soma é $(2x+1)\,y\,dy$, igual ao lado esquerdo.
+                    (Com $\omega=x\,dy$, o termo extra seria nulo, porque $i_{\partial_x}\omega=0$; escolhemos uma forma em que ele aparece.) $\blacksquare$
+                </p>
+
+                <p id="exr-3-14-6"><strong>Exercício 3.14.6.</strong> Prove diretamente, em $1$-formas, que $\mathcal{L}_X(i_Y\omega)-i_Y(\mathcal{L}_X\omega)=i_{[X,Y]}\omega$.</p>
+
+                <p>
+                    <em>Solução.</em> Para $k=1$, $i_Y\omega=\omega(Y)$ é uma função, e $\mathcal{L}_X\big(\omega(Y)\big)=X\big(\omega(Y)\big)$ (Proposição 3.14.5(a)). Por outro lado, $i_Y(\mathcal{L}_X\omega)=(\mathcal{L}_X\omega)(Y)=X\big(\omega(Y)\big)-\omega([X,Y])$ pela (3.14.4). A diferença é $\omega([X,Y])=i_{[X,Y]}\omega$. $\blacksquare$
+                </p>
+
+                <p id="exr-3-14-7"><strong>Exercício 3.14.7.</strong> O fluxo hamiltoniano de $H=\tfrac12(p^2+q^2)$ preserva $dq\wedge dp$: verifique com o fluxo explícito.</p>
+
+                <p>
+                    <em>Solução.</em> $X_H=p\,\partial_q-q\,\partial_p$, e o fluxo é $\theta_t(q,p)=(q\cos t+p\sin t,\ -q\sin t+p\cos t)$ (derivando, $\dot{q}=-q\sin t+p\cos t=p(t)$ e $\dot{p}=-q\cos t-p\sin t=-q(t)$). Pela fórmula do grau máximo (<a href="[12] - Formas Diferenciais.html#teo-3-12-14">Teorema 3.12.14</a>),
+                    $$ \begin{aligned}\theta_t^*(dq\wedge dp)&=\det\begin{pmatrix}\cos t&\sin t\\-\sin t&\cos t\end{pmatrix}dq\wedge dp\\
+                    &=(\cos^2t+\sin^2t)\,dq\wedge dp=dq\wedge dp.\end{aligned} $$
+                    Diretamente, $d\theta^q\wedge d\theta^p=(\cos t\,dq+\sin t\,dp)\wedge(-\sin t\,dq+\cos t\,dp)$ é
+                    $$ \begin{aligned}&\cos^2t\,dq\wedge dp-\sin^2t\,dp\wedge dq\\
+                    &\quad=(\cos^2t+\sin^2t)\,dq\wedge dp=dq\wedge dp.\qquad\blacksquare\end{aligned} $$
+                </p>
+
+                <p id="exr-3-14-8"><strong>Exercício 3.14.8.</strong> Calcule $d\omega(X,Y,Z)$ pela fórmula (3.14.6) para $\omega=x\,dy\wedge dz$ e (a) os campos coordenados $\partial_x,\partial_y,\partial_z$; (b) $X=x\partial_y-y\partial_x$, $Y=\partial_x$, $Z=\partial_z$. Compare com a definição.</p>
+
+                <p>
+                    <em>Solução.</em> $d\omega=dx\wedge dy\wedge dz$. (a) Todos os colchetes são nulos, e a (3.14.6) para $k=2$ (Exemplo 3.14.19) dá $\partial_x\big(\omega(\partial_y,\partial_z)\big)-\partial_y\big(\omega(\partial_x,\partial_z)\big)+\partial_z\big(\omega(\partial_x,\partial_y)\big)=\partial_x(x)-0+0=1$, que é $(dx\wedge dy\wedge dz)(\partial_x,\partial_y,\partial_z)=1$.
+                    (b) Os valores: $\omega(Y,Z)=x\,(dy\wedge dz)(\partial_x,\partial_z)=0$; $\omega(X,Z)=x\big(dy(X)\,dz(Z)-dy(Z)\,dz(X)\big)=x\cdot x\cdot1=x^2$; $\omega(X,Y)=x\big(dy(X)\,dz(Y)-dy(Y)\,dz(X)\big)=0$. Os colchetes: $[X,Y]=-\partial_y$ (<a href="[13] - Derivada Exterior.html#exr-3-13-6">Exercício 3.13.6</a>), $[X,Z]=0$ e $[Y,Z]=0$, de modo que
+                    $\omega([X,Y],Z)=\omega(-\partial_y,\partial_z)=-x$ e as outras duas parcelas dos colchetes são nulas. A (3.14.6) dá
+                    $$ X(0)-Y(x^2)+Z(0)-\omega([X,Y],Z)+0-0=-2x+x=-x. $$
+                    Pela definição, $(dx\wedge dy\wedge dz)(X,Y,Z)=\det\begin{pmatrix}-y&x&0\\1&0&0\\0&0&1\end{pmatrix}=-x$. Os dois resultados coincidem. $\blacksquare$
+                </p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <p>
+                    Este tópico completou a álgebra das formas diferenciais sobre uma variedade com a terceira operação:
+                </p>
+
+                <ul>
+                    <li>a <strong>derivada de Lie de campos tensoriais covariantes</strong> $\mathcal{L}_XA=\frac{d}{dt}\big\vert_0\theta_t^*A$ (<a href="#def-3-14-1">Definição 3.14.1</a>), sua suavidade e a fórmula em coordenadas (<a href="#teo-3-14-3">Teorema 3.14.3</a>), as propriedades de Leibniz (<a href="#prop-3-14-5">Proposição 3.14.5</a>), a <strong>fórmula explícita com colchetes</strong> (<a href="#cor-3-14-6">Corolário 3.14.6</a>) e a localidade (<a href="#prop-3-14-8">Proposição 3.14.8</a>);</li>
+                    <li>a derivada de Lie de <strong>formas</strong>: ela é uma derivação e comuta com $d$ (<a href="#prop-3-14-12">Proposição 3.14.12</a>), e o produto interior (<a href="#prop-3-14-13">Proposição 3.14.13</a>);</li>
+                    <li>a <strong>fórmula de Cartan</strong> $\mathcal{L}_X=i_X\,d+d\,i_X$ (<a href="#teo-3-14-15">Teorema 3.14.15</a>), com demonstração completa;</li>
+                    <li>a <strong>fórmula invariante de $d$ em todo grau</strong> (<a href="#teo-3-14-18">Teorema 3.14.18</a>), que cumpre a pendência do tópico 3.13, e os comutadores $[\mathcal{L}_X,i_Y]=i_{[X,Y]}$, $[\mathcal{L}_X,\mathcal{L}_Y]=\mathcal{L}_{[X,Y]}$ e $\mathcal{L}_{fX}\omega=f\mathcal{L}_X\omega+df\wedge i_X\omega$ (<a href="#prop-3-14-20">Proposição 3.14.20</a>);</li>
+                    <li>a <strong>derivada em um instante qualquer</strong> (<a href="#prop-3-14-22">Proposição 3.14.22</a>), a <strong>invariância pelo fluxo</strong> (<a href="#cor-3-14-23">Corolário 3.14.23</a>) e os campos de Killing como isometrias (<a href="#cor-3-14-24">Corolário 3.14.24</a>);</li>
+                    <li>a <strong>divergência relativa a uma forma de volume</strong>, $\mathcal{L}_X\mu=(\operatorname{div}_\mu X)\mu=d(i_X\mu)$, com a fórmula (3.14.8) em coordenadas e o critério de preservação do volume (<a href="#def-3-14-25">Definição 3.14.25</a>, <a href="#prop-3-14-26">Proposição 3.14.26</a>, <a href="#cor-3-14-29">Corolário 3.14.29</a>).</li>
+                </ul>
+
+                <p>
+                    Isto encerra a parte algébrica e diferencial do capítulo: já temos $M$, $\omega$ e $d\omega$ (e uma interpretação das variações de $\omega$ por $\mathcal{L}_X$). Para escrever $\int_Md\omega=\int_{\partial M}\omega$ faltam o domínio e a medida: a <strong>orientação</strong>, para dizer o que é o sinal de uma integral (tópico 3.15), as variedades com <strong>bordo</strong> (3.16),
+                    e a integral de uma forma (3.17). O próximo tópico é <a href="[15] - Orientação.html">3.15 Orientação</a>, que usa a forma de volume sem zeros desta seção como o dado que escolhe uma orientação.
+                </p>
 
             </div>
         </main>
@@ -160,7 +824,16 @@
             <div class="toc-container">
                 <h4>Nesta página</h4>
                 <ul>
-                    <li><a href="#formula-de-cartan">Derivada de Lie de Formas e a Fórmula de Cartan</a></li>
+                    <li><a href="#formula-de-cartan">Derivada de Lie e a Fórmula de Cartan</a></li>
+                    <li><a href="#lie-tensores">Derivada de Lie de tensores</a></li>
+                    <li><a href="#lie-formas">Derivada de Lie de formas</a></li>
+                    <li><a href="#produto-interior">Produto interior</a></li>
+                    <li><a href="#a-formula-de-cartan">A fórmula de Cartan</a></li>
+                    <li><a href="#consequencias">Consequências</a></li>
+                    <li><a href="#divergencia">Divergência</a></li>
+                    <li><a href="#fisica">Ponte com a física</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
                 </ul>
             </div>
         </aside>

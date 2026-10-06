@@ -149,9 +149,694 @@
             <div class="prose">
 
                 <h1 id="produto-exterior">3.11 Tensores Alternados e o Produto Exterior</h1>
-                <p class="lead">Permutações, tensores alternados, a base dos k-covetores, o produto exterior e o produto interior.</p>
+                <p class="lead">Permutações e o sinal, tensores alternados e a antissimetrização, a base de $\Lambda^k(V^*)$, o produto exterior na convenção do determinante, o produto interior e o pullback por aplicações lineares.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>
+                    Entre os tensores covariantes do <a href="[10] - Álgebra Multilinear e Tensores.html">tópico 3.10</a>, os que trocam de
+                    sinal quando se trocam dois argumentos são os que medem <em>volumes orientados</em>. O protótipo é o determinante:
+                    $\det(v_1,\dots,v_n)$ é multilinear nas colunas e muda de sinal se duas colunas são trocadas. Em dimensão $2$ ele
+                    mede a área orientada do paralelogramo gerado por $v_1$ e $v_2$; em dimensão $3$, o volume orientado do
+                    paralelepípedo. São esses os tensores que se integram: a integral de uma $k$-forma sobre uma região de dimensão
+                    $k$ soma volumes orientados infinitesimais.
+                </p>
+
+                <p>
+                    Este tópico é inteiramente <em>pontual</em>: trabalhamos em um espaço vetorial real fixo $V$ de dimensão $n$, e as
+                    variedades só voltam no tópico 3.12. Construímos o espaço $\Lambda^k(V^*)$ dos tensores alternados, uma base dele, e o
+                    <em>produto exterior</em> $\wedge$, que multiplica tensores alternados e dá um tensor alternado. Também definimos o
+                    produto interior $i_v$ e o pullback por aplicações lineares. Este tópico fixa a convenção de fatoriais do produto
+                    exterior usada no capítulo todo: a convenção do determinante.
+                </p>
+
+                <p>
+                    Por que isto é necessário para chegar ao Teorema de Stokes? Porque as formas diferenciais são campos de tensores
+                    alternados, e a integral, a derivada exterior $d$ e a fórmula de Cartan são todas escritas com $\wedge$ e $i_v$. O
+                    fato de que $\Lambda^n(V^*)$ tem dimensão $1$ e de que uma aplicação linear age nele pelo determinante
+                    (Proposição 3.11.14) é a álgebra por trás da fórmula de mudança de variáveis em integrais múltiplas, que é o que torna
+                    a integral de uma $n$-forma independente de coordenadas.
+                </p>
+
+                <h2 id="permutacoes">Permutações e o sinal</h2>
+
+                <div class="definition-box" id="def-3-11-1" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.11.1 (Grupo simétrico e transposição).</strong> O <strong>grupo simétrico</strong> $S_k$ é o
+                        conjunto das bijeções de $\{1,\dots,k\}$ em si mesmo, com o produto dado pela composição,
+                        $(\tau\sigma)(i)=\tau(\sigma(i))$. Uma <strong>transposição</strong> é uma permutação que troca dois
+                        elementos $a\neq b$ e fixa os demais; denota-se $(a\ b)$.</p>
+                </div>
+
+                <div class="definition-box" id="prop-3-11-2">
+                    <p><strong>Proposição 3.11.2 (Transposições geram $S_k$).</strong> Toda permutação é um produto de transposições
+                        (a identidade é o produto vazio).</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Por indução em $k$. Para $k=1$ não há o que provar. Seja $\sigma\in S_k$. Se $\sigma(k)=k$,
+                    $\sigma$ é, na prática, uma permutação de $\{1,\dots,k-1\}$, e vale a hipótese de indução. Caso contrário, seja
+                    $j=\sigma(k)\neq k$. Então $\tau=(j\ k)\,\sigma$ leva $k$ em $(j\ k)(j)=k$, de modo que fixa $k$ e, por indução, é um produto
+                    de transposições. Como $(j\ k)^2=\mathrm{id}$, vale $\sigma=(j\ k)\,\tau$, também um produto de transposições. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="def-3-11-3" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.11.3 (Sinal de uma permutação).</strong> O <strong>sinal</strong> de $\sigma\in S_k$ é o número
+                        racional</p>
+                    <p>$$ \operatorname{sgn}\sigma=\prod_{1\le i\lt j\le k}\frac{\sigma(j)-\sigma(i)}{j-i}. $$</p>
+                </div>
+
+                <div class="definition-box" id="prop-3-11-4">
+                    <p><strong>Proposição 3.11.4 (Propriedades do sinal).</strong> Para $\sigma,\tau\in S_k$: (a)
+                        $\operatorname{sgn}\sigma=\pm1$, e é $(-1)^{N}$, em que $N$ é o número de <em>inversões</em> de $\sigma$ (pares
+                        $i\lt j$ com $\sigma(i)\gt\sigma(j)$); (b) $\operatorname{sgn}(\sigma\tau)=\operatorname{sgn}\sigma\,\operatorname{sgn}\tau$;
+                        (c) toda transposição tem sinal $-1$; (d) $\operatorname{sgn}(\sigma^{-1})=\operatorname{sgn}\sigma$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Seja $\mathcal{P}$ o conjunto dos subconjuntos de dois elementos de $\{1,\dots,k\}$.
+                    (a) Como $\sigma$ é bijetora, $\{i,j\}\mapsto\{\sigma(i),\sigma(j)\}$ é uma bijeção de $\mathcal{P}$ em si mesmo, e então
+                    $\prod_{i\lt j}\lvert\sigma(j)-\sigma(i)\rvert=\prod_{\{a,b\}\in\mathcal{P}}\lvert b-a\rvert=\prod_{i\lt j}\lvert j-i\rvert$. Logo
+                    $\lvert\operatorname{sgn}\sigma\rvert=1$, e, sendo $\operatorname{sgn}\sigma$ racional, vale $\pm1$. Cada fator
+                    $\frac{\sigma(j)-\sigma(i)}{j-i}$ é negativo se, e só se, o par $(i,j)$ é uma inversão, o que dá $(-1)^N$.
+                    (b) Escreva
+                    $$ \operatorname{sgn}(\sigma\tau)=\prod_{i\lt j}\frac{\sigma(\tau(j))-\sigma(\tau(i))}{\tau(j)-\tau(i)}\cdot\prod_{i\lt j}\frac{\tau(j)-\tau(i)}{j-i}. $$
+                    O segundo produto é $\operatorname{sgn}\tau$. No primeiro, o fator $g(a,b)=\frac{\sigma(b)-\sigma(a)}{b-a}$ é simétrico em
+                    $(a,b)$, e $\{i,j\}\mapsto\{\tau(i),\tau(j)\}$ é uma bijeção de $\mathcal{P}$; portanto o primeiro produto é
+                    $\prod_{\{a,b\}\in\mathcal{P}}g(a,b)=\operatorname{sgn}\sigma$. (c) Seja $t=(a\ b)$, com $a\lt b$. Os pares invertidos de $t$ são
+                    $(a,b)$, os pares $(a,c)$ com $a\lt c\lt b$ e os pares $(c,b)$ com $a\lt c\lt b$: no total, $1+2(b-a-1)=2(b-a)-1$, que é ímpar. Logo
+                    $\operatorname{sgn}t=-1$. (d) Por (b), $\operatorname{sgn}\sigma\,\operatorname{sgn}\sigma^{-1}=\operatorname{sgn}(\mathrm{id})=1$, e os dois sinais
+                    são $\pm1$. $\blacksquare$
+                </p>
+
+                <p>
+                    Em consequência, o sinal de uma permutação é $(-1)^m$, em que $m$ é o número de transposições de qualquer decomposição dela
+                    (Proposições 3.11.2 e 3.11.4): as <em>pares</em> têm sinal $+1$, e as <em>ímpares</em>, $-1$. Em $S_3$, a identidade e os dois
+                    $3$-ciclos $(1\,2\,3)$ e $(1\,3\,2)$ têm sinal $+1$, e as três transposições, $-1$.
+                </p>
+
+                <p>
+                    <strong>A ação em tensores.</strong> Recordemos, do <a href="[10] - Álgebra Multilinear e Tensores.html#def-3-10-16">tópico 3.10</a>,
+                    que $\sigma\in S_k$ age em $T\in T^k(V^*)$ por
+                    $$ (\sigma T)(v_1,\dots,v_k)=T(v_{\sigma(1)},\dots,v_{\sigma(k)}), \qquad \tau(\sigma T)=(\tau\sigma)T $$
+                    (<a href="[10] - Álgebra Multilinear e Tensores.html#prop-3-10-17">Proposição 3.10.17</a>(a)). A ordem na segunda igualdade merece atenção: com $w_i=v_{\tau(i)}$,
+$$ \begin{aligned}(\tau(\sigma T))(v_1,\dots,v_k)&=(\sigma T)(w_1,\dots,w_k)=T(w_{\sigma(1)},\dots,w_{\sigma(k)})\\
+&=T(v_{\tau\sigma(1)},\dots,v_{\tau\sigma(k)}),\end{aligned} $$
+isto é, a ação é <em>à esquerda</em> para o produto $(\tau\sigma)(i)=\tau(\sigma(i))$.
+                </p>
+
+                <h2 id="tensores-alternados">Tensores alternados</h2>
+
+                <div class="definition-box" id="def-3-11-5" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.11.5 (Tensor alternado, $k$-covetor).</strong> Um tensor $\omega\in T^k(V^*)$ é
+                        <strong>alternado</strong> se $\sigma\omega=(\operatorname{sgn}\sigma)\,\omega$ para toda $\sigma\in S_k$. Também
+                        se diz um <strong>$k$-covetor</strong>. O conjunto dos $k$-covetores é um subespaço vetorial, denotado
+                        $\Lambda^k(V^*)\subset T^k(V^*)$.</p>
+                </div>
+
+                <div class="definition-box" id="lema-3-11-6">
+                    <p><strong>Lema 3.11.6 (Quatro maneiras de ser alternado).</strong> Para $\omega\in T^k(V^*)$, são equivalentes:</p>
+                    <p>(a) $\omega$ é alternado;</p>
+                    <p>(b) trocar dois argumentos troca o sinal de $\omega$;</p>
+                    <p>(c) $\omega(v_1,\dots,v_k)=0$ sempre que dois argumentos são iguais;</p>
+                    <p>(d) $\omega(v_1,\dots,v_k)=0$ sempre que $v_1,\dots,v_k$ são linearmente dependentes.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> <strong>(a)$\Rightarrow$(b).</strong> Trocar os argumentos $i$ e $j$ é aplicar a transposição
+                    $(i\ j)$, de sinal $-1$. <strong>(b)$\Rightarrow$(a).</strong> Uma permutação $\sigma$ é um produto de $m$ transposições
+                    (Proposição 3.11.2), e, como a ação é à esquerda, $\sigma\omega$ é obtida de $\omega$ por $m$ trocas de dois argumentos, cada
+                    uma multiplicando por $-1$: $\sigma\omega=(-1)^m\omega=(\operatorname{sgn}\sigma)\,\omega$, pela Proposição 3.11.4.
+                    <strong>(b)$\Rightarrow$(c).</strong> Se $v_i=v_j$ com $i\neq j$, trocar os dois argumentos não muda o valor e o multiplica por $-1$:
+                    $\omega(\dots)=-\omega(\dots)$, logo $\omega(\dots)=0$. <strong>(c)$\Rightarrow$(b).</strong> Fixe todos os argumentos, menos os de posições
+                    $i$ e $j$, e escreva $\omega(v,w)$ para o valor com $v$ na posição $i$ e $w$ na $j$. Por (c) e pela bilinearidade,
+$$ \begin{aligned}0&=\omega(v+w,v+w)\\
+&=\omega(v,v)+\omega(v,w)+\omega(w,v)+\omega(w,w)=\omega(v,w)+\omega(w,v).\end{aligned} $$
+                    <strong>(c)$\Rightarrow$(d).</strong> Se os $v_i$ são dependentes, algum $v_m$ é combinação dos outros, $v_m=\sum_{i\neq m}c_iv_i$, e pela multilinearidade
+                    $\omega(\dots,v_m,\dots)=\sum_{i\neq m}c_i\,\omega(\dots,v_i,\dots)$, em que cada parcela tem $v_i$ repetido e se anula por (c).
+                    <strong>(d)$\Rightarrow$(c).</strong> Dois argumentos iguais são linearmente dependentes. $\blacksquare$
+                </p>
+
+                <p>
+                    Como $S_0$ é trivial, $\Lambda^0(V^*)=T^0(V^*)=\mathbb{R}$; e $\Lambda^1(V^*)=T^1(V^*)=V^*$, pois $S_1$ é trivial.
+                </p>
+
+                <p id="ex-3-11-7"><strong>Exemplo 3.11.7 (O determinante e a terceira componente do produto vetorial).</strong></p>
+                <ul>
+                    <li>O determinante $\det(v_1,\dots,v_n)$ da matriz de colunas $v_1,\dots,v_n\in\mathbb{R}^n$ é multilinear e muda de sinal
+                        quando duas colunas são trocadas; pelo Lema 3.11.6, $\det\in\Lambda^n((\mathbb{R}^n)^*)$.</li>
+                    <li>Em $\mathbb{R}^3$, a aplicação $(v,w)\mapsto v^1w^2-v^2w^1=(v\times w)_3$ é bilinear e antissimétrica:
+                        pertence a $\Lambda^2((\mathbb{R}^3)^*)$. Em termos da base dual, é $\varepsilon^1\otimes\varepsilon^2-\varepsilon^2\otimes\varepsilon^1$.</li>
+                </ul>
+
+                <div class="definition-box" id="def-3-11-8" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.11.8 (Antissimetrização).</strong> Para $T\in T^k(V^*)$, a
+                        <strong>antissimetrização</strong> de $T$ é</p>
+                    <p>$$ \operatorname{Alt}T=\frac{1}{k!}\sum_{\sigma\in S_k}(\operatorname{sgn}\sigma)\,(\sigma T). $$</p>
+                </div>
+
+                <div class="definition-box" id="prop-3-11-9">
+                    <p><strong>Proposição 3.11.9 (Propriedades de $\operatorname{Alt}$).</strong> (a) $\operatorname{Alt}T$ é alternado. (b)
+                        $\operatorname{Alt}\omega=\omega$ se, e só se, $\omega$ é alternado. (c)
+                        $\operatorname{Alt}\circ\operatorname{Alt}=\operatorname{Alt}$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Para $\tau\in S_k$, a ação é linear e $\tau(\sigma T)=(\tau\sigma)T$, de modo que
+                    $$ \tau(\operatorname{Alt}T)=\frac1{k!}\sum_\sigma(\operatorname{sgn}\sigma)\,(\tau\sigma)T=\frac1{k!}\sum_{\rho}\operatorname{sgn}(\tau^{-1}\rho)\,\rho T=(\operatorname{sgn}\tau)\operatorname{Alt}T, $$
+                    em que $\rho=\tau\sigma$ percorre $S_k$ quando $\sigma$ o percorre, e $\operatorname{sgn}(\tau^{-1}\rho)=\operatorname{sgn}\tau\,\operatorname{sgn}\rho$
+                    (Proposição 3.11.4(b) e (d)). (b) Se $\omega$ é alternado, $\rho\omega=(\operatorname{sgn}\rho)\,\omega$ e
+                    $\operatorname{Alt}\omega=\frac1{k!}\sum_\rho(\operatorname{sgn}\rho)^2\,\omega=\omega$. Reciprocamente, se $\operatorname{Alt}\omega=\omega$,
+                    então $\omega$ é alternado por (a). (c) $\operatorname{Alt}T$ é alternado por (a), e vale (b). $\blacksquare$
+                </p>
+
+                <p id="ex-3-11-10"><strong>Exemplo 3.11.10 ($\operatorname{Alt}$ por extenso).</strong> Para $k=2$,
+                    $$ (\operatorname{Alt}T)(v,w)=\tfrac12\big(T(v,w)-T(w,v)\big), $$
+                    e, por exemplo, $\operatorname{Alt}(\varepsilon^1\otimes\varepsilon^2)=\tfrac12\big(\varepsilon^1\otimes\varepsilon^2-\varepsilon^2\otimes\varepsilon^1\big)$. Para $k=3$, com a ação
+                    $(\sigma T)(v_1,v_2,v_3)=T(v_{\sigma(1)},v_{\sigma(2)},v_{\sigma(3)})$, as três ordenações cíclicas $(1,2,3)$, $(2,3,1)$ e $(3,1,2)$ são pares, e as três com dois argumentos trocados são ímpares:
+                    $$ \begin{aligned}(\operatorname{Alt}T)(v_1,v_2,v_3)=\tfrac16\big[&T(v_1,v_2,v_3)+T(v_2,v_3,v_1)+T(v_3,v_1,v_2)\\
+                    &-T(v_2,v_1,v_3)-T(v_1,v_3,v_2)-T(v_3,v_2,v_1)\big].\end{aligned} $$
+                    O Exercício 3.11.2 calcula $\operatorname{Alt}(\varepsilon^1\otimes\varepsilon^2\otimes\varepsilon^3)$.</p>
+
+                <h2 id="base-e-dimensao">Covetores elementares, base e dimensão</h2>
+
+                <p>
+                    Fixe uma base $(E_1,\dots,E_n)$ de $V$, com base dual $(\varepsilon^1,\dots,\varepsilon^n)$. Os tensores $\varepsilon^{i_1}\otimes\dots\otimes\varepsilon^{i_k}$ formam
+                    uma base de $T^k(V^*)$ (<a href="[10] - Álgebra Multilinear e Tensores.html#teo-3-10-6">Teorema 3.10.6</a>), mas não são alternados. Os análogos alternados são os determinantes abaixo.
+                </p>
+
+                <div class="definition-box" id="def-3-11-11" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.11.11 (Multi-índice e covetor elementar).</strong> Um <strong>multi-índice</strong> de
+                        comprimento $k$ é uma lista $I=(i_1,\dots,i_k)$ com $1\le i_a\le n$. Ele é <strong>crescente</strong> se
+                        $i_1\lt\dots\lt i_k$. Para $\sigma\in S_k$, escrevemos $I_\sigma=(i_{\sigma(1)},\dots,i_{\sigma(k)})$, e, para duas listas,
+                        $IJ$ é a concatenação. O <strong>covetor elementar</strong> $\varepsilon^I\in T^k(V^*)$ é</p>
+                    <p>$$ \varepsilon^I(v_1,\dots,v_k)=\det\big(\varepsilon^{i_a}(v_b)\big)_{a,b=1}^k. $$</p>
+                </div>
+
+                <p>
+                    A coluna $b$ da matriz depende linearmente de $v_b$ e só dele, e o determinante é multilinear e alternado nas colunas;
+                    logo $\varepsilon^I$ é multilinear e alternado, isto é, $\varepsilon^I\in\Lambda^k(V^*)$ (Lema 3.11.6). Para $k=1$, $\varepsilon^{(i)}=\varepsilon^i$.
+                    Escrevemos também $\varepsilon^{i_1\dots i_k}$ para $\varepsilon^I$, e $\sideset{}{'}\sum_I$ para a soma sobre os multi-índices
+                    <em>crescentes</em> de comprimento $k$.
+                </p>
+
+                <div class="definition-box" id="lema-3-11-12">
+                    <p><strong>Lema 3.11.12 (Propriedades dos covetores elementares).</strong> Para multi-índices $I,J$ de comprimento $k$:</p>
+                    <p>(a) $\varepsilon^I=0$ se $I$ tem um índice repetido;</p>
+                    <p>(b) $\varepsilon^{I_\sigma}=(\operatorname{sgn}\sigma)\,\varepsilon^I$ para toda $\sigma\in S_k$;</p>
+                    <p>(c) $\varepsilon^I(E_{j_1},\dots,E_{j_k})=\delta^I_J$, em que $\delta^I_J=\operatorname{sgn}\sigma$ se $I$ e $J$ não têm
+                        repetições e $J=I_\sigma$, e $\delta^I_J=0$ em qualquer outro caso.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Se $i_a=i_{a'}$ com $a\neq a'$, a matriz $\big(\varepsilon^{i_a}(v_b)\big)$ tem duas linhas iguais, e o determinante é $0$.
+                    (b) Trocar $I$ por $I_\sigma$ permuta as linhas da matriz por $\sigma$, o que multiplica o determinante por $\operatorname{sgn}\sigma$.
+                    (c) A matriz tem entradas $\varepsilon^{i_a}(E_{j_b})=\delta^{i_a}_{j_b}$. Se $I$ tem repetição, tem duas linhas iguais; se $J$ tem repetição, duas colunas iguais;
+                    em ambos os casos o determinante é $0$. Suponha que nenhum dos dois tem repetição. Se o conjunto $\{i_a\}$ é diferente de $\{j_b\}$, existe um $i_a$ que não aparece
+                    em $J$, e a linha $a$ é nula: determinante $0$. Se os conjuntos coincidem, existe uma única $\sigma\in S_k$ com $j_b=i_{\sigma(b)}$, isto é, $J=I_\sigma$. A entrada
+                    $(a,b)$ vale $1$ se, e só se, $a=\sigma(b)$, de modo que a matriz tem um único $1$ em cada linha e coluna, na posição $(\sigma(b),b)$. Pela fórmula de Leibniz,
+                    $\det=\sum_\rho\operatorname{sgn}\rho\prod_bM_{\rho(b),b}$, e só $\rho=\sigma$ contribui: o determinante é $\operatorname{sgn}\sigma$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="teo-3-11-13">
+                    <p><strong>Teorema 3.11.13 (Base de $\Lambda^k(V^*)$).</strong> Os covetores $\varepsilon^I$, com $I$ crescente de
+                        comprimento $k$, formam uma base de $\Lambda^k(V^*)$. Em particular,
+                        $\dim\Lambda^k(V^*)=\binom{n}{k}$, e $\Lambda^k(V^*)=0$ se $k\gt n$. Todo $\omega\in\Lambda^k(V^*)$ se escreve de modo único como</p>
+                    <p>$$ \omega=\sideset{}{'}\sum_I\omega_I\,\varepsilon^I, \qquad \omega_I=\omega(E_{i_1},\dots,E_{i_k}). \tag{3.11.1} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> <strong>Geram.</strong> Dado $\omega\in\Lambda^k(V^*)$, ponha $\omega_I=\omega(E_{i_1},\dots,E_{i_k})$ e
+                    $\eta=\sideset{}{'}\sum_I\omega_I\,\varepsilon^I\in\Lambda^k(V^*)$. Pelo <a href="[10] - Álgebra Multilinear e Tensores.html#teo-3-10-6">Teorema 3.10.6</a>, dois $k$-tensores são iguais se, e só se, coincidem em
+                    todas as listas $(E_{j_1},\dots,E_{j_k})$. Se $J$ tem repetição, $\omega(E_J)=0=\eta(E_J)$, pelo Lema 3.11.6(c). Caso contrário,
+                    $J=I_\sigma$ para um único $I$ crescente e uma única $\sigma$, e $\omega(E_J)=(\operatorname{sgn}\sigma)\,\omega_I$. Por outro lado,
+                    pelo Lema 3.11.12(c), $\varepsilon^{I'}(E_J)=0$ para todo crescente $I'\neq I$ (os conjuntos de índices diferem), e $\varepsilon^I(E_J)=\operatorname{sgn}\sigma$;
+                    logo $\eta(E_J)=\omega_I\operatorname{sgn}\sigma=\omega(E_J)$. Assim $\eta=\omega$.
+                    <strong>Independentes.</strong> Se $\sideset{}{'}\sum_Ic_I\,\varepsilon^I=0$, avaliar em $E_J$, com $J$ crescente, dá $c_J=0$, pelo Lema 3.11.12(c).
+                    <strong>Dimensão.</strong> Os multi-índices crescentes de comprimento $k$ correspondem aos subconjuntos de $k$ elementos de $\{1,\dots,n\}$, e há
+                    $\binom nk$ deles; se $k\gt n$, não há nenhum, de modo que $\Lambda^k(V^*)=0$ (de acordo com o Lema 3.11.6(d): mais de $n$ vetores são sempre dependentes).
+                    A unicidade em (3.11.1) vem da independência. $\blacksquare$
+                </p>
+
+                <p>
+                    Para $n=3$: $\dim\Lambda^0=1$, $\dim\Lambda^1=3$ (base $\varepsilon^1,\varepsilon^2,\varepsilon^3$), $\dim\Lambda^2=3$ (base $\varepsilon^{12},\varepsilon^{13},\varepsilon^{23}$),
+                    $\dim\Lambda^3=1$ (base $\varepsilon^{123}$), e $\Lambda^k=0$ para $k\ge4$. Em geral, $\Lambda^n(V^*)$ tem dimensão $1$, gerado por $\varepsilon^{1\dots n}$: o determinante das
+                    componentes. É por esta reta que uma aplicação linear age em $\Lambda^n$.
+                </p>
+
+                <div class="definition-box" id="prop-3-11-14">
+                    <p><strong>Proposição 3.11.14 (Aplicações lineares agem em $\Lambda^n$ pelo determinante).</strong> Se
+                        $\omega\in\Lambda^n(V^*)$ e $T: V\to V$ é linear, então</p>
+                    <p>$$ \begin{aligned}&\omega(Tv_1,\dots,Tv_n)=(\det T)\,\omega(v_1,\dots,v_n)\\
+                    &\quad\text{para todos }v_1,\dots,v_n\in V.\end{aligned} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> A aplicação $\omega_T(v_1,\dots,v_n)=\omega(Tv_1,\dots,Tv_n)$ é multilinear e alternada (se $v_i=v_j$, então $Tv_i=Tv_j$), de modo que
+                    $\omega_T\in\Lambda^n(V^*)$. Como $\dim\Lambda^n(V^*)=1$, com base $\varepsilon^{1\dots n}$, temos $\omega=c\,\varepsilon^{1\dots n}$, com
+                    $c=\omega(E_1,\dots,E_n)$ por (3.11.1), e $\omega_T=c'\,\varepsilon^{1\dots n}$, com
+                    $$ \begin{aligned}c'&=\omega_T(E_1,\dots,E_n)=\omega(TE_1,\dots,TE_n)\\
+                    &=c\,\varepsilon^{1\dots n}(TE_1,\dots,TE_n)=c\,\det\big(\varepsilon^i(TE_j)\big)=c\,\det T,\end{aligned} $$
+                    porque $\varepsilon^i(TE_j)=T^i{}_j$ é a matriz de $T$. Logo $\omega_T=(\det T)\,\omega$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="cor-3-11-15">
+                    <p><strong>Corolário 3.11.15.</strong> (a) $\det(ST)=\det S\,\det T$ para $S,T: V\to V$ lineares. (b) Se
+                        $0\neq\omega\in\Lambda^n(V^*)$, então $v_1,\dots,v_n$ são linearmente independentes se, e só se,
+                        $\omega(v_1,\dots,v_n)\neq0$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Seja $\omega=\varepsilon^{1\dots n}$, com $\omega(E_1,\dots,E_n)=1$. A Proposição 3.11.14, aplicada a $S$ e aos vetores $TE_i$, e depois a $T$, dá
+                    $\omega(STE_1,\dots,STE_n)=\det S\,\omega(TE_1,\dots,TE_n)=\det S\,\det T$. Aplicada a $ST$, o mesmo valor é $\det(ST)$. (b) Se os $v_i$ são dependentes,
+                    $\omega(v_1,\dots,v_n)=0$ pelo Lema 3.11.6(d). Se são independentes, formam uma base, e a aplicação linear $T$ com $TE_i=v_i$ é invertível, de modo que $\det T\neq0$;
+                    com $\omega=c\,\varepsilon^{1\dots n}$, $c\neq0$, a Proposição 3.11.14 dá $\omega(v_1,\dots,v_n)=\det T\,\omega(E_1,\dots,E_n)=c\det T\neq0$. $\blacksquare$
+                </p>
+
+                <p id="obs-3-11-16"><strong>Observação 3.11.16 (Área e volume orientados).</strong> Em $\mathbb{R}^2$, $\varepsilon^{12}(v,w)=v^1w^2-v^2w^1$ é a <em>área orientada</em> do
+                    paralelogramo gerado por $v$ e $w$: seu valor absoluto é a área, e o sinal é $+$ se a rotação de $v$ para $w$ (pelo menor ângulo) é anti-horária, e $-$ se é horária. Trocar a ordem
+                    troca o sinal (Figura 3.11.1). Em $\mathbb{R}^n$, $\varepsilon^{1\dots n}(v_1,\dots,v_n)=\det[v_1\ \cdots\ v_n]$ é o <em>volume orientado</em> do paralelepípedo gerado por eles.
+                    A Proposição 3.11.14 diz que uma aplicação linear multiplica volumes orientados por $\det T$: o fator de dilatação, com sinal, que reaparece como o jacobiano na fórmula de mudança de variáveis
+                    (<a href="[02] - Preliminares de Topologia e Cálculo.html#teo-3-2-64">Teorema 3.2.64</a>) e que, no tópico 3.15, decidirá se uma transformação preserva ou inverte a orientação.</p>
+
+                <figure class="lecture-figure" id="fig-3-11-1" style="overflow-x: auto; overflow-y: hidden;">
+                    <svg viewBox="0 0 640 300" role="img" style="min-width: 560px;" aria-label="Dois painéis com o mesmo paralelogramo sombreado, gerado pelos vetores v, de componentes 2 e 0,4, e w, de componentes 0,6 e 1,4, saindo da origem. No painel da esquerda, os vetores são tomados na ordem v, w, e um arco com seta vai de v para w no sentido anti-horário: o valor de epsilon 1 2 em v, w é mais 2,56. No painel da direita, a ordem é w, v, o arco vai de w para v no sentido horário, e o valor de epsilon 1 2 em w, v é menos 2,56.">
+<defs><marker id="arr-3-11-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<rect x="20" y="16" width="300" height="272" rx="3" class="fig-frame"/>
+<text x="30" y="36" class="fig-label">(a)</text>
+<path d="M96,232 L246,202 L291,97 L141,127 Z" class="fig-band"/>
+<path d="M96,232 L246,202 L291,97 L141,127 Z" class="fig-guide"/>
+<line x1="96" y1="232" x2="246" y2="202" class="fig-axis" marker-end="url(#arr-3-11-1)"/>
+<line x1="96" y1="232" x2="141" y2="127" class="fig-axis" marker-end="url(#arr-3-11-1)"/>
+<circle cx="96" cy="232" r="3" class="fig-arrowhead"/>
+<text x="254" y="216" class="fig-label fig-it">v</text>
+<text x="133" y="121" text-anchor="end" class="fig-label fig-it">w</text>
+<path d="M135.2,224.2 L135,223.2 L134.8,222.3 L134.6,221.3 L134.3,220.4 L134,219.5 L133.7,218.6 L133.3,217.7 L133,216.8 L132.6,215.9 L132.2,215 L131.8,214.1 L131.3,213.2 L130.9,212.4 L130.4,211.6 L129.9,210.7 L129.4,209.9 L128.8,209.1 L128.2,208.3 L127.7,207.6 L127.1,206.8 L126.4,206.1 L125.8,205.3 L125.2,204.6 L124.5,203.9 L123.8,203.2 L123.1,202.6 L122.4,201.9 L121.6,201.3 L120.9,200.7 L120.1,200.1 L119.3,199.5 L118.5,199 L117.7,198.4 L116.9,197.9 L116.1,197.4 L115.2,196.9 L114.4,196.5 L113.5,196 L112.6,195.6 L111.8,195.2" class="fig-curve" marker-end="url(#arr-3-11-1)"/>
+<text x="44" y="262" class="fig-label fig-small fig-it">ε¹²(v, w) = +2,56</text>
+<text x="44" y="280" class="fig-label fig-small"></text>
+<rect x="340" y="16" width="292" height="272" rx="3" class="fig-frame"/>
+<text x="350" y="36" class="fig-label">(b)</text>
+<path d="M416,232 L461,127 L611,97 L566,202 Z" class="fig-band"/>
+<path d="M416,232 L461,127 L611,97 L566,202 Z" class="fig-guide"/>
+<line x1="416" y1="232" x2="461" y2="127" class="fig-axis" marker-end="url(#arr-3-11-1)"/>
+<line x1="416" y1="232" x2="566" y2="202" class="fig-axis" marker-end="url(#arr-3-11-1)"/>
+<circle cx="416" cy="232" r="3" class="fig-arrowhead"/>
+<text x="469" y="141" class="fig-label fig-it">w</text>
+<text x="558" y="196" text-anchor="end" class="fig-label fig-it">v</text>
+<path d="M431.8,195.2 L432.6,195.6 L433.5,196 L434.4,196.5 L435.2,196.9 L436.1,197.4 L436.9,197.9 L437.7,198.4 L438.5,199 L439.3,199.5 L440.1,200.1 L440.9,200.7 L441.6,201.3 L442.4,201.9 L443.1,202.6 L443.8,203.2 L444.5,203.9 L445.2,204.6 L445.8,205.3 L446.4,206.1 L447.1,206.8 L447.7,207.6 L448.2,208.3 L448.8,209.1 L449.4,209.9 L449.9,210.7 L450.4,211.6 L450.9,212.4 L451.3,213.2 L451.8,214.1 L452.2,215 L452.6,215.9 L453,216.8 L453.3,217.7 L453.7,218.6 L454,219.5 L454.3,220.4 L454.6,221.3 L454.8,222.3 L455,223.2 L455.2,224.2" class="fig-curve" marker-end="url(#arr-3-11-1)"/>
+<text x="364" y="262" class="fig-label fig-small fig-it">ε¹²(w, v) = −2,56</text>
+<text x="364" y="280" class="fig-label fig-small"></text>
+<text x="54" y="52" class="fig-label fig-small">1º v, 2º w: de v para w, anti-horário</text>
+<text x="374" y="52" class="fig-label fig-small">1º w, 2º v: de w para v, horário</text>
+</svg>
+                    <figcaption><strong>Figura 3.11.1.</strong> O paralelogramo gerado por $v=(2;\,0{,}4)$ e $w=(0{,}6;\,1{,}4)$. (a) Na ordem $(v,w)$, a rotação de $v$ para $w$ é anti-horária
+                        e $\varepsilon^{12}(v,w)=2\cdot1{,}4-0{,}4\cdot0{,}6=2{,}56\gt0$. (b) Na ordem $(w,v)$, a rotação é horária e $\varepsilon^{12}(w,v)=-2{,}56$. A área é a mesma;
+                        o que muda é a orientação, e é isso que o sinal registra.</figcaption>
+                </figure>
+
+                <h2 id="o-produto-exterior">O produto exterior</h2>
+
+                <p>
+                    O produto tensorial $\omega\otimes\eta$ de dois tensores alternados não é alternado. Para obter um tensor alternado, antissimetrizamos, e, para que o resultado
+                    tenha os valores mais naturais nos covetores elementares, corrigimos por um fator de fatoriais.
+                </p>
+
+                <div class="definition-box" id="def-3-11-17" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.11.17 (Produto exterior).</strong> Para $\omega\in\Lambda^k(V^*)$ e $\eta\in\Lambda^l(V^*)$, o
+                        <strong>produto exterior</strong> $\omega\wedge\eta\in\Lambda^{k+l}(V^*)$ é</p>
+                    <p>$$ \omega\wedge\eta=\frac{(k+l)!}{k!\,l!}\,\operatorname{Alt}(\omega\otimes\eta). \tag{3.11.2} $$</p>
+                </div>
+
+                <p>
+                    Pela Proposição 3.11.9(a), $\operatorname{Alt}(\omega\otimes\eta)$ é alternado, de modo que $\wedge:\Lambda^k(V^*)\times\Lambda^l(V^*)\to\Lambda^{k+l}(V^*)$. Para $k=0$, $\omega=c$ é uma constante e
+                    $c\wedge\eta=c\,\eta$.
+                </p>
+
+                <p id="obs-3-11-18"><strong>Observação 3.11.18 (A convenção do determinante).</strong> A Definição 3.11.17 é a <strong>convenção do determinante</strong>, usada neste capítulo todo e por,
+                    entre outros, Lee, Tu e Spivak (com a mesma fórmula escrita com índices por Wald e Carroll). Seu efeito mais imediato é, para covetores,
+                    $$ \begin{aligned}&(\omega\wedge\eta)(v,w)=\omega(v)\,\eta(w)-\omega(w)\,\eta(v),\\
+                    &\text{em particular}\quad\varepsilon^1\wedge\varepsilon^2=\varepsilon^1\otimes\varepsilon^2-\varepsilon^2\otimes\varepsilon^1,\end{aligned} $$
+                    sem o fator $\tfrac12$, e, mais geralmente, $(\omega^1\wedge\dots\wedge\omega^k)(v_1,\dots,v_k)=\det\big(\omega^j(v_i)\big)$ (Teorema 3.11.20(e)). A outra convenção em uso, que omite a razão de fatoriais e define
+                    $\omega\wedge\eta=\operatorname{Alt}(\omega\otimes\eta)$, daria $\varepsilon^1\wedge\varepsilon^2=\tfrac12(\varepsilon^1\otimes\varepsilon^2-\varepsilon^2\otimes\varepsilon^1)$. As duas diferem por fatoriais em todas as fórmulas
+                    (por exemplo, em $\omega=\frac1{k!}\omega_{i_1\dots i_k}\,\varepsilon^{i_1}\wedge\dots\wedge\varepsilon^{i_k}$, que aparecerá no tópico 3.12). O Exercício 3.11.8 confere o valor $1$ de $(\varepsilon^1\wedge\varepsilon^2)(E_1,E_2)$.</p>
+
+                <div class="definition-box" id="lema-3-11-19">
+                    <p><strong>Lema 3.11.19 (O lema-chave).</strong> Para quaisquer multi-índices $I$ (de comprimento $k$) e $J$ (de comprimento $l$),</p>
+                    <p>$$ \varepsilon^I\wedge\varepsilon^J=\varepsilon^{IJ}, \tag{3.11.3} $$</p>
+                    <p>em que $IJ$ é a concatenação.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Seja $m=k+l$. Pelo <a href="[10] - Álgebra Multilinear e Tensores.html#teo-3-10-6">Teorema 3.10.6</a>, basta comparar os dois lados em $(E_{p_1},\dots,E_{p_m})$, para toda lista $P=(p_1,\dots,p_m)$. Pela (3.11.2) e pela definição de $\operatorname{Alt}$,
+                    $$ \begin{aligned}&(\varepsilon^I\wedge\varepsilon^J)(E_P)=\frac1{k!\,l!}\sum_{\sigma\in S_m}(\operatorname{sgn}\sigma)\\
+                    &\qquad\times\varepsilon^I\big(E_{p_{\sigma(1)}},\dots,E_{p_{\sigma(k)}}\big)\,\varepsilon^J\big(E_{p_{\sigma(k+1)}},\dots,E_{p_{\sigma(m)}}\big),\end{aligned} $$
+                    porque $\frac{m!}{k!\,l!}\cdot\frac1{m!}=\frac1{k!\,l!}$. Os dois lados são alternados em $P$. Distinguimos os casos.
+                </p>
+
+                <p>
+                    <strong>Caso 1: $IJ$ tem um índice repetido.</strong> O lado direito $\varepsilon^{IJ}$ é nulo (Lema 3.11.12(a)). No lado esquerdo, se $P$ tem repetição, o valor é nulo por ser alternado. Se $P$ não tem repetição,
+                    um termo da soma acima só é não nulo se $\varepsilon^I$ e $\varepsilon^J$ são não nulos nas listas correspondentes, e pelo Lema 3.11.12(a) e (c) isso exige que $I$ e $J$ não tenham repetição, e que o conjunto de índices de $I$
+                    seja o das primeiras $k$ entradas da lista e o de $J$ seja o das $l$ últimas. Como $P$ não tem repetição, esses dois conjuntos são disjuntos, e então $IJ$ não teria repetição: contradição. Todos os termos se anulam.
+                </p>
+
+                <p>
+                    <strong>Caso 2: $IJ$ não tem repetição.</strong> Se $P$ tem repetição, os dois lados são nulos (o direito, pelo Lema 3.11.12(c)). Se $P$ não tem repetição mas seu conjunto de índices difere do de $IJ$, o lado direito
+                    é nulo (Lema 3.11.12(c)), e o esquerdo também, porque um termo não nulo da soma acima exigiria que o conjunto de $P$ fosse a união dos conjuntos de $I$ e de $J$. O caso que sobra é $P=(IJ)_\rho$, uma reordenação de
+                    $IJ$. Como os dois lados são alternados, eles se multiplicam por $\operatorname{sgn}\rho$ sob essa reordenação, e basta tratar $P=IJ$. O lado direito vale $\varepsilon^{IJ}(E_{IJ})=1$ (Lema 3.11.12(c) com $\sigma=\mathrm{id}$).
+                    No esquerdo, um termo da soma acima é não nulo apenas se $\sigma$ leva $\{1,\dots,k\}$ em si mesmo, e então também $\{k+1,\dots,m\}$; ou seja, $\sigma=\sigma_1\times\sigma_2$ com $\sigma_1\in S_k$ e $\sigma_2\in S_l$,
+                    e $\operatorname{sgn}\sigma=\operatorname{sgn}\sigma_1\operatorname{sgn}\sigma_2$. O termo vale
+                    $\operatorname{sgn}\sigma_1\operatorname{sgn}\sigma_2\cdot\varepsilon^I(E_{I_{\sigma_1}})\,\varepsilon^J(E_{J_{\sigma_2}})=(\operatorname{sgn}\sigma_1)^2(\operatorname{sgn}\sigma_2)^2=1$, pelo Lema 3.11.12(c). Há $k!\,l!$ tais $\sigma$, de modo que o lado esquerdo vale
+                    $\frac1{k!\,l!}\cdot k!\,l!=1$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="teo-3-11-20">
+                    <p><strong>Teorema 3.11.20 (Propriedades do produto exterior).</strong> Sejam $\omega\in\Lambda^k(V^*)$, $\eta\in\Lambda^l(V^*)$ e $\theta\in\Lambda^p(V^*)$.</p>
+                    <p>(a) $\wedge$ é bilinear;</p>
+                    <p>(b) $\wedge$ é associativo: $(\omega\wedge\eta)\wedge\theta=\omega\wedge(\eta\wedge\theta)$;</p>
+                    <p>(c) $\wedge$ é anticomutativo no sentido graduado: $\omega\wedge\eta=(-1)^{kl}\,\eta\wedge\omega$;</p>
+                    <p>(d) $\varepsilon^{i_1}\wedge\dots\wedge\varepsilon^{i_k}=\varepsilon^I$ para $I=(i_1,\dots,i_k)$;</p>
+                    <p>(e) para covetores $\omega^1,\dots,\omega^k\in V^*$ e vetores $v_1,\dots,v_k\in V$,</p>
+                    <p>$$ (\omega^1\wedge\dots\wedge\omega^k)(v_1,\dots,v_k)=\det\big(\omega^j(v_i)\big)_{i,j=1}^k. \tag{3.11.4} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Vem da bilinearidade de $\otimes$ e da linearidade de $\operatorname{Alt}$. Pelo Teorema 3.11.13, todo elemento de $\Lambda^k(V^*)$ é combinação linear de covetores elementares $\varepsilon^I$; por (a), as
+                    propriedades (b) e (c) bastam ser verificadas para $\omega=\varepsilon^I$, $\eta=\varepsilon^J$ e $\theta=\varepsilon^K$, e o Lema 3.11.19 vale para multi-índices quaisquer.
+                    (b) $(\varepsilon^I\wedge\varepsilon^J)\wedge\varepsilon^K=\varepsilon^{IJ}\wedge\varepsilon^K=\varepsilon^{IJK}=\varepsilon^I\wedge\varepsilon^{JK}=\varepsilon^I\wedge(\varepsilon^J\wedge\varepsilon^K)$.
+                    (c) $\varepsilon^I\wedge\varepsilon^J=\varepsilon^{IJ}$ e $\varepsilon^J\wedge\varepsilon^I=\varepsilon^{JI}$. A lista $JI$ é uma reordenação $(IJ)_\rho$ de $IJ$, em que $\rho$ move cada um dos $l$ índices de $J$ por cima dos $k$
+                    índices de $I$: são $kl$ transposições de entradas vizinhas, e $\operatorname{sgn}\rho=(-1)^{kl}$. Pelo Lema 3.11.12(b), $\varepsilon^{JI}=(-1)^{kl}\varepsilon^{IJ}$.
+                    (d) Por indução em $k$, usando (b) e o Lema 3.11.19:
+                    $\varepsilon^{i_1}\wedge\dots\wedge\varepsilon^{i_k}=\big(\varepsilon^{i_1}\wedge\dots\wedge\varepsilon^{i_{k-1}}\big)\wedge\varepsilon^{i_k}=\varepsilon^{(i_1,\dots,i_{k-1})}\wedge\varepsilon^{(i_k)}=\varepsilon^{I}$.
+                    (e) Os dois lados de (3.11.4) são multilineares em $(\omega^1,\dots,\omega^k)$: o esquerdo, pela bilinearidade de $\wedge$; o direito, porque a linha $j$ da matriz depende linearmente de $\omega^j$. Basta, então, tomar
+                    $\omega^j=\varepsilon^{i_j}$, e, por (d) e pela definição de $\varepsilon^I$, o lado esquerdo é $\varepsilon^I(v_1,\dots,v_k)=\det\big(\varepsilon^{i_a}(v_b)\big)$, igual ao direito (o determinante de uma matriz
+                    e o de sua transposta coincidem). $\blacksquare$
+                </p>
+
+                <p>
+                    Por (b), escrevemos $\omega_1\wedge\dots\wedge\omega_m$ sem parênteses. Por (c), covetores de grau $1$ <em>anticomutam</em>: $\omega\wedge\eta=-\eta\wedge\omega$ e, em particular, $\omega\wedge\omega=0$ para $\omega\in V^*$;
+                    formas de grau par, ao contrário, <em>comutam</em> com qualquer forma.
+                </p>
+
+                <div class="definition-box" id="cor-3-11-21">
+                    <p><strong>Corolário 3.11.21.</strong> Se $\omega\in\Lambda^k(V^*)$ com $k$ ímpar, então $\omega\wedge\omega=0$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Por (c) com $\eta=\omega$, $\omega\wedge\omega=(-1)^{k^2}\,\omega\wedge\omega=-\omega\wedge\omega$, pois $k^2$ é ímpar. $\blacksquare$
+                </p>
+
+                <p id="ex-3-11-22"><strong>Exemplo 3.11.22 (Grau par: $\omega\wedge\omega$ pode ser não nulo).</strong> Em $\mathbb{R}^4$, seja $\omega=\varepsilon^{12}+\varepsilon^{34}$. Então
+                    $$ \begin{aligned}\omega\wedge\omega&=\varepsilon^{12}\wedge\varepsilon^{12}+\varepsilon^{12}\wedge\varepsilon^{34}+\varepsilon^{34}\wedge\varepsilon^{12}+\varepsilon^{34}\wedge\varepsilon^{34}\\
+                    &=0+\varepsilon^{1234}+\varepsilon^{3412}+0=2\,\varepsilon^{1234}\neq0,\end{aligned} $$
+                    porque $\varepsilon^{12}\wedge\varepsilon^{12}=\varepsilon^{1212}=0$ (índice repetido), e $\varepsilon^{3412}=\varepsilon^{1234}$ (a reordenação tem $kl=4$ transposições, de sinal $+$). A forma $\omega$ é a forma simplética canônica
+                    de $\mathbb{R}^4=T^*\mathbb{R}^2$ na ordem de coordenadas $(q^1,p_1,q^2,p_2)$; o fato de que $\omega\wedge\omega\neq0$ diz que ela é não degenerada.</p>
+
+                <div class="definition-box" id="prop-3-11-23">
+                    <p><strong>Proposição 3.11.23 (Dependência e produto exterior).</strong> Covetores $\omega^1,\dots,\omega^k\in V^*$ são linearmente dependentes se, e só se, $\omega^1\wedge\dots\wedge\omega^k=0$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Se são dependentes, a matriz $\big(\omega^j(v_i)\big)$ tem colunas dependentes (a coluna $j$ depende só de $\omega^j$, e uma delas é combinação das outras), e o determinante em (3.11.4) é nulo para todos os $v_i$; logo o produto exterior é zero.
+                    Se são independentes, complete-os a uma base $(\omega^1,\dots,\omega^n)$ de $V^*$. Pela <a href="[09] - Covetores e 1-Formas.html#prop-3-9-5">Proposição 3.9.5</a>, existe uma base $(F_1,\dots,F_n)$ de $V$ da qual ela é a base dual, isto é, $\omega^j(F_i)=\delta^j_i$. Por (3.11.4),
+                    $(\omega^1\wedge\dots\wedge\omega^k)(F_1,\dots,F_k)=\det(\delta^j_i)=1\neq0$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="def-3-11-24" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.11.24 (Álgebra exterior).</strong> A <strong>álgebra exterior</strong> de $V^*$ é a soma direta
+                        $\Lambda(V^*)=\bigoplus_{k=0}^n\Lambda^k(V^*)$, com o produto $\wedge$ estendido bilinearmente. Ela tem dimensão
+                        $\sum_{k=0}^n\binom nk=2^n$, e é associativa, com unidade $1\in\Lambda^0(V^*)$, e graduada-anticomutativa (Teorema 3.11.20).</p>
+                </div>
+
+                <h2 id="produto-interior">Produto interior</h2>
+
+                <p>
+                    Um vetor $v$ pode ser "inserido" na primeira entrada de um covetor alternado, o que diminui o grau em uma unidade. Esta operação, o produto interior, será, no tópico 3.14, metade da fórmula de Cartan.
+                </p>
+
+                <div class="definition-box" id="def-3-11-25" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.11.25 (Produto interior).</strong> Para $v\in V$, o <strong>produto interior</strong> por $v$ é a aplicação
+                        $i_v:\Lambda^k(V^*)\to\Lambda^{k-1}(V^*)$,</p>
+                    <p>$$ (i_v\omega)(w_1,\dots,w_{k-1})=\omega(v,w_1,\dots,w_{k-1}), $$</p>
+                    <p>para $k\ge1$, e $i_v=0$ em $\Lambda^0(V^*)$. Também se escreve $v\,\lrcorner\,\omega$.</p>
+                </div>
+
+                <p>
+                    $i_v\omega$ é multilinear e, como $\omega$ é alternado, alternado nos $w_i$, de modo que está em $\Lambda^{k-1}(V^*)$. Para $k=1$, $i_v\omega=\omega(v)$ é o número obtido pela avaliação.
+                    A inserção é sempre na <em>primeira</em> entrada: é a convenção adotada no capítulo todo.
+                </p>
+
+                <div class="definition-box" id="prop-3-11-26">
+                    <p><strong>Proposição 3.11.26 (Propriedades do produto interior).</strong> Sejam $v,w\in V$.</p>
+                    <p>(a) $i_v\circ i_v=0$ e $i_v\circ i_w=-i_w\circ i_v$;</p>
+                    <p>(b) para covetores $\omega^1,\dots,\omega^k\in V^*$,</p>
+                    <p>$$ \begin{aligned}&i_v(\omega^1\wedge\dots\wedge\omega^k)\\
+&\qquad=\sum_{i=1}^k(-1)^{i-1}\,\omega^i(v)\ \omega^1\wedge\dots\wedge\widehat{\omega^i}\wedge\dots\wedge\omega^k,\end{aligned} \tag{3.11.5} $$</p>
+                    <p>em que o chapéu indica o fator omitido;</p>
+                    <p>(c) $i_v$ é uma <strong>antiderivação</strong>: para $\omega\in\Lambda^k(V^*)$ e $\eta\in\Lambda^l(V^*)$,
+                        $i_v(\omega\wedge\eta)=(i_v\omega)\wedge\eta+(-1)^k\,\omega\wedge(i_v\eta)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) $(i_vi_w\omega)(u_1,\dots)=\omega(w,v,u_1,\dots)$, e a troca das duas primeiras entradas, que é uma transposição, dá $i_vi_w\omega=-i_wi_v\omega$. Com $w=v$, $\omega(v,v,\dots)=0$ pelo Lema 3.11.6(c).
+                    (b) Pela fórmula (3.11.4), $(\omega^1\wedge\dots\wedge\omega^k)(v,w_1,\dots,w_{k-1})$ é o determinante da matriz $k\times k$ cuja coluna $1$ é $\big(\omega^j(v)\big)_j$ e cujas colunas $2$ a $k$ são $\big(\omega^j(w_m)\big)_j$.
+                    Expandindo pela primeira coluna,
+                    $$ \begin{aligned}\det&=\sum_{i=1}^k(-1)^{i+1}\,\omega^i(v)\,\det\big(\omega^j(w_m)\big)_{j\neq i}\\
+                    &=\sum_{i=1}^k(-1)^{i-1}\,\omega^i(v)\,\big(\omega^1\wedge\dots\wedge\widehat{\omega^i}\wedge\dots\wedge\omega^k\big)(w_1,\dots,w_{k-1}),\end{aligned} $$
+                    que é (3.11.5), de novo por (3.11.4). (c) Os dois lados são bilineares em $(\omega,\eta)$, e, pelos Teoremas 3.11.13 e 3.11.20(d), $\Lambda^k(V^*)$ é gerado pelos produtos $\omega^1\wedge\dots\wedge\omega^k$ de covetores
+                    (para $k=0$, pela constante $1$). Se $k=0$ ou $l=0$, a fórmula é trivial, porque $i_v$ anula as constantes. Para $\omega=\omega^1\wedge\dots\wedge\omega^k$ e $\eta=\eta^1\wedge\dots\wedge\eta^l$, o produto
+                    $\omega\wedge\eta=\omega^1\wedge\dots\wedge\omega^k\wedge\eta^1\wedge\dots\wedge\eta^l$ tem $k+l$ fatores, e (3.11.5) dá duas famílias de termos: as dos $\omega^i$, que somam $(i_v\omega)\wedge\eta$, e as dos
+                    $\eta^m$, nas posições $k+m$, com sinal $(-1)^{k+m-1}=(-1)^k(-1)^{m-1}$, que somam $(-1)^k\,\omega\wedge(i_v\eta)$. $\blacksquare$
+                </p>
+
+                <h2 id="pullback-linear">Pullback por aplicações lineares</h2>
+
+                <div class="definition-box" id="def-3-11-27" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.11.27 (Pullback linear).</strong> Sejam $V,W$ espaços vetoriais e $A: V\to W$ linear. O
+                        <strong>pullback</strong> $A^*:\Lambda^k(W^*)\to\Lambda^k(V^*)$ é</p>
+                    <p>$$ (A^*\omega)(v_1,\dots,v_k)=\omega(Av_1,\dots,Av_k). $$</p>
+                </div>
+
+                <p>
+                    $A^*\omega$ é multilinear e alternado (se $v_i=v_j$, então $Av_i=Av_j$), de modo que $A^*\omega\in\Lambda^k(V^*)$. Para $k=1$, $A^*\omega=\omega\circ A$ é a aplicação dual da <a href="[09] - Covetores e 1-Formas.html#prop-3-9-4">Proposição 3.9.4</a>, e, para $k=0$, $A^*$ é a identidade de $\mathbb{R}$.
+                    A mesma fórmula define $A^*:T^k(W^*)\to T^k(V^*)$ em todos os tensores covariantes.
+                </p>
+
+                <div class="definition-box" id="prop-3-11-28">
+                    <p><strong>Proposição 3.11.28 (O pullback preserva o produto exterior).</strong> Para $A: V\to W$ e $B: W\to U$ lineares: (a) $A^*$ é linear; (b)
+                        $A^*(\omega\wedge\eta)=A^*\omega\wedge A^*\eta$; (c) $(B\circ A)^*=A^*\circ B^*$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) é imediato. (b) Para tensores $T,S$, $A^*(T\otimes S)=A^*T\otimes A^*S$, direto da definição, e
+                    $$ \begin{aligned}\big(A^*(\sigma T)\big)(v_1,\dots,v_k)&=(\sigma T)(Av_1,\dots,Av_k)\\
+                    &=T(Av_{\sigma(1)},\dots,Av_{\sigma(k)})\\
+                    &=\big(\sigma(A^*T)\big)(v_1,\dots,v_k),\end{aligned} $$
+                    isto é, $A^*$ comuta com a ação de $S_k$ e, portanto, com $\operatorname{Alt}$. Segue que
+                    $A^*(\omega\wedge\eta)=\frac{(k+l)!}{k!\,l!}\operatorname{Alt}(A^*\omega\otimes A^*\eta)=A^*\omega\wedge A^*\eta$. (c) $\big((B\circ A)^*\omega\big)(v)=\omega(BAv_1,\dots)=(B^*\omega)(Av_1,\dots)=\big(A^*(B^*\omega)\big)(v)$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="cor-3-11-29">
+                    <p><strong>Corolário 3.11.29.</strong> Se $V=W$ e $\omega\in\Lambda^n(V^*)$, então $A^*\omega=(\det A)\,\omega$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> É a Proposição 3.11.14, escrita com a notação de pullback. $\blacksquare$
+                </p>
+
+                <h2 id="r3">O caso de $\mathbb{R}^3$: produto vetorial e produto misto</h2>
+
+                <p>
+                    Em $\mathbb{R}^3$, $\dim\Lambda^0=\dim\Lambda^3=1$ e $\dim\Lambda^1=\dim\Lambda^2=\binom32=3$. A coincidência $\dim\Lambda^1=\dim\Lambda^2$ é o que permite, em dimensão $3$, representar uma $2$-forma por um vetor,
+                    e é a origem do produto vetorial. Identificamos, só neste parágrafo, o vetor $a=(a^1,a^2,a^3)$ com o covetor $a=a_i\varepsilon^i$, de $a_i=a^i$ (uma identificação que depende da métrica euclidiana).
+                </p>
+
+                <div class="definition-box" id="prop-3-11-30">
+                    <p><strong>Proposição 3.11.30 (Produto vetorial e produto misto).</strong> Para $a=a_i\varepsilon^i$, $b=b_i\varepsilon^i$ e $c=c_i\varepsilon^i$ em $(\mathbb{R}^3)^*$,</p>
+                    <p>$$ \begin{aligned}a\wedge b&=(a\times b)_1\,\varepsilon^{23}+(a\times b)_2\,\varepsilon^{31}\\
+&\qquad+(a\times b)_3\,\varepsilon^{12},\end{aligned} \tag{3.11.6} $$</p>
+                    <p>e $a\wedge b\wedge c=\big(a\cdot(b\times c)\big)\,\varepsilon^{123}$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Por bilinearidade e pelo Teorema 3.11.20(c), $a\wedge b=a_ib_j\,\varepsilon^i\wedge\varepsilon^j=\sum_{i\lt j}(a_ib_j-a_jb_i)\,\varepsilon^{ij}$. Os coeficientes são
+                    $a_2b_3-a_3b_2=(a\times b)_1$ para $\varepsilon^{23}$; $a_1b_3-a_3b_1=-(a\times b)_2$ para $\varepsilon^{13}$, e $-(a\times b)_2\,\varepsilon^{13}=(a\times b)_2\,\varepsilon^{31}$ pelo Lema 3.11.12(b);
+                    e $a_1b_2-a_2b_1=(a\times b)_3$ para $\varepsilon^{12}$. Isto é (3.11.6). Para o produto triplo, $\varepsilon^{23}\wedge\varepsilon^1=\varepsilon^{231}=\varepsilon^{123}$ e
+                    $\varepsilon^{31}\wedge\varepsilon^2=\varepsilon^{312}=\varepsilon^{123}$ (dois pares de índices trocados, sinal $+$), e $\varepsilon^{12}\wedge\varepsilon^3=\varepsilon^{123}$. Logo
+$$ \begin{aligned}(a\wedge b)\wedge c&=\big((a\times b)_1c_1+(a\times b)_2c_2+(a\times b)_3c_3\big)\,\varepsilon^{123}\\
+&=\big((a\times b)\cdot c\big)\,\varepsilon^{123},\end{aligned} $$
+e $(a\times b)\cdot c=a\cdot(b\times c)$. $\blacksquare$
+                </p>
+
+                <p>
+                    Assim, o produto triplo $a\cdot(b\times c)$ é o volume orientado do paralelepípedo gerado por $a$, $b$ e $c$ (Figura 3.11.2), e o produto vetorial $a\times b$ é a $2$-forma $a\wedge b$ escrita como um vetor.
+                </p>
+
+                <figure class="lecture-figure" id="fig-3-11-2" style="overflow-x: auto; overflow-y: hidden;">
+                    <svg viewBox="0 0 640 300" role="img" style="min-width: 560px;" aria-label="Um paralelepípedo desenhado em projeção oblíqua, com faces sombreadas, gerado por três vetores a, b e c que saem da origem: a horizontal para a direita, b apontando para o fundo e para cima à direita, e c para cima. O texto ao lado diz que o volume orientado, epsilon 1 2 3 em a, b, c, é igual ao produto misto a ponto b vetorial c e vale 4,8, positivo porque a, b, c, nessa ordem, formam uma base positiva; trocar duas entradas troca o sinal e vetores coplanares dão volume zero.">
+<defs><marker id="arr-3-11-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<rect x="14" y="16" width="612" height="272" rx="3" class="fig-frame"/>
+<path d="M96,250 L260,250 L348.4,215.2 L184.4,215.2 Z" class="fig-band"/>
+<path d="M96,250 L260,250 L291.6,122.7 L127.6,122.7 Z" class="fig-band"/>
+<path d="M96,250 L184.4,215.2 L216,87.9 L127.6,122.7 Z" class="fig-band"/>
+<path d="M260,250 L348.4,215.2 L380,87.9 L291.6,122.7 Z" class="fig-band"/>
+<path d="M184.4,215.2 L348.4,215.2 L380,87.9 L216,87.9 Z" class="fig-band"/>
+<path d="M127.6,122.7 L291.6,122.7 L380,87.9 L216,87.9 Z" class="fig-band"/>
+<line x1="260" y1="250" x2="348.4" y2="215.2" class="fig-shape"/>
+<line x1="260" y1="250" x2="291.6" y2="122.7" class="fig-shape"/>
+<line x1="184.4" y1="215.2" x2="348.4" y2="215.2" class="fig-shape"/>
+<line x1="184.4" y1="215.2" x2="216" y2="87.9" class="fig-shape"/>
+<line x1="127.6" y1="122.7" x2="291.6" y2="122.7" class="fig-shape"/>
+<line x1="127.6" y1="122.7" x2="216" y2="87.9" class="fig-shape"/>
+<line x1="348.4" y1="215.2" x2="380" y2="87.9" class="fig-shape"/>
+<line x1="291.6" y1="122.7" x2="380" y2="87.9" class="fig-shape"/>
+<line x1="216" y1="87.9" x2="380" y2="87.9" class="fig-shape"/>
+<line x1="96" y1="250" x2="260" y2="250" class="fig-axis" marker-end="url(#arr-3-11-2)"/>
+<text x="268" y="266" class="fig-label fig-it">a</text>
+<line x1="96" y1="250" x2="184.4" y2="215.2" class="fig-axis" marker-end="url(#arr-3-11-2)"/>
+<text x="192.4" y="211.2" class="fig-label fig-it">b</text>
+<line x1="96" y1="250" x2="127.6" y2="122.7" class="fig-axis" marker-end="url(#arr-3-11-2)"/>
+<text x="119.6" y="114.7" class="fig-label fig-it">c</text>
+<circle cx="96" cy="250" r="3" class="fig-arrowhead"/>
+<text x="86" y="268" text-anchor="end" class="fig-label fig-small fig-it">0</text>
+<text x="428" y="74" class="fig-label">volume orientado</text>
+<text x="428" y="100" class="fig-label fig-small fig-it">ε¹²³(a, b, c) = a · (b × c)</text>
+<text x="428" y="118" class="fig-label fig-small fig-it">= 4,8</text>
+<text x="428" y="152" class="fig-label fig-small">(a, b, c) é uma base positiva</text>
+<text x="428" y="170" class="fig-label fig-small">(mão direita): o sinal é +.</text>
+<text x="428" y="204" class="fig-label fig-small">Trocar duas entradas troca</text>
+<text x="428" y="222" class="fig-label fig-small">o sinal. Se a, b, c são</text>
+<text x="428" y="240" class="fig-label fig-small">coplanares, o volume é 0.</text>
+</svg>
+                    <figcaption><strong>Figura 3.11.2.</strong> O paralelepípedo gerado por $a=(2,0,0)$, $b=(0{,}4;\,1{,}6;\,0)$ e $c=(0{,}3;\,0{,}2;\,1{,}5)$, em projeção oblíqua. O volume orientado
+                        $\varepsilon^{123}(a,b,c)=a\cdot(b\times c)=\det[a\ b\ c]=2\cdot1{,}6\cdot1{,}5=4{,}8$ é positivo porque $(a,b,c)$ é uma base positiva. Se $a,b,c$ são coplanares, o paralelepípedo é achatado e o volume é $0$
+                        (Corolário 3.11.15).</figcaption>
+                </figure>
+
+                <p id="obs-3-11-31"><strong>Observação 3.11.31 (Por que o produto vetorial só existe em dimensão $3$).</strong> Para identificar $\Lambda^2$ com $\Lambda^1$ é preciso $\binom n2=n$, isto é, $n-1=2$, o que só ocorre
+                    em $n=3$. Em dimensão $4$, um $2$-covetor tem $\binom42=6$ componentes: é nesse espaço que moram, juntos, o campo elétrico e o magnético (veja a seção seguinte). O
+                    "vetor" $a\times b$ é um <em>pseudovetor</em> (vetor axial): sob uma reflexão $x\mapsto-x$, os vetores $a$ e $b$ mudam de sinal, mas $a\wedge b$ não muda, e o "vetor" $a\times b$ também não, ao contrário de um vetor
+                    comum. A definição como $2$-covetor torna isso automático.</p>
+
+                <h2 id="fisica">Ponte com a física</h2>
+
+                <p>
+                    Objetos antissimétricos aparecem na física sempre que há <em>áreas</em>, <em>fluxos</em> e <em>rotações</em>. A razão é a da Observação 3.11.16: um elemento de área, uma circulação ou um fluxo
+                    têm um sentido, e inverter o sentido (trocar a ordem dos dois vetores que geram o elemento) troca o sinal. Alguns exemplos conhecidos são, na verdade, $2$-covetores.
+                </p>
+
+                <p>
+                    <strong>O tensor do campo eletromagnético.</strong> Em $\mathbb{R}^4$ com coordenadas $(t,x,y,z)$, o tensor $F_{\mu\nu}$ é antissimétrico, isto é, um elemento de $\Lambda^2\big((\mathbb{R}^4)^*\big)$, e
+                    $F=\tfrac12F_{\mu\nu}\,dx^\mu\wedge dx^\nu$. Por (3.11.1), tem $\binom42=6$ componentes independentes, e são elas que contêm os seis campos: três de $\mathbf{E}$ (em $F_{0i}$, a menos de sinal) e
+                    três de $\mathbf{B}$ (em $F_{ij}=\epsilon_{ijk}B^k$). Em $\mathbb{R}^3$, as $3$ componentes de um $2$-covetor podem ser lidas como um vetor (Observação 3.11.31), e é por isso que $\mathbf{E}$ e $\mathbf{B}$ parecem dois vetores;
+                    em dimensão $4$ elas não cabem em dois vetores comuns do espaço-tempo, e os dois campos se misturam em uma transformação de Lorentz porque são partes de um único $2$-covetor.
+                </p>
+
+                <p>
+                    <strong>Momento angular.</strong> $L_{ij}=x_ip_j-x_jp_i$ é a $2$-forma $x\wedge p$, pelo valor $(\omega\wedge\eta)(v,w)=\omega(v)\eta(w)-\omega(w)\eta(v)$ da Observação 3.11.18. Em $\mathbb{R}^3$, $L_{ij}=\epsilon_{ijk}L_k$,
+                    com $\mathbf{L}=\mathbf{x}\times\mathbf{p}$: é o pseudovetor de sempre, mas a descrição natural é a antissimétrica $L_{ij}$, que vale em qualquer dimensão: em $\mathbb{R}^n$ há $\binom n2$ componentes, e,
+                    no espaço-tempo, as seis componentes de $L_{\mu\nu}=x_\mu p_\nu-x_\nu p_\mu$ reúnem o momento angular e o "momento de boost" $x^0p^i-x^ip^0$.
+                </p>
+
+                <p>
+                    <strong>O elemento de volume.</strong> $\Lambda^4$ do espaço-tempo tem dimensão $1$, gerado por $dt\wedge dx\wedge dy\wedge dz$. As componentes desse $4$-covetor, em uma base ortonormal positiva, são o símbolo de Levi-Civita
+                    $\epsilon_{\mu\nu\rho\sigma}$, com $\epsilon_{0123}=1$ e as demais obtidas por antissimetria, que se usa para definir o volume invariante e o dual de uma $2$-forma. A Proposição 3.11.14 explica por que ele é
+                    invariante sob transformações de Lorentz com $\det\Lambda=1$: o determinante é a ação delas em $\Lambda^4$.
+                </p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p id="exr-3-11-1"><strong>Exercício 3.11.1.</strong> Liste as permutações de $S_3$ com seus sinais e verifique $\operatorname{sgn}(\sigma\tau)=\operatorname{sgn}\sigma\,\operatorname{sgn}\tau$ em um caso.</p>
+
+                <p>
+                    <em>Solução.</em> Escrevendo cada $\sigma$ como a lista $(\sigma(1),\sigma(2),\sigma(3))$ e contando inversões (Proposição 3.11.4(a)):
+                    $(1,2,3)$ tem $0$ inversões, sinal $+$; $(1,3,2)$, $1$, sinal $-$; $(2,1,3)$, $1$, sinal $-$; $(2,3,1)$, $2$, sinal $+$; $(3,1,2)$, $2$, sinal $+$; $(3,2,1)$, $3$, sinal $-$. Tome $\sigma=(2,3,1)$ e $\tau=(2,1,3)$, de sinais $+$ e $-$.
+                    O produto $\sigma\tau$, com $(\sigma\tau)(i)=\sigma(\tau(i))$, é $(\sigma\tau)(1)=\sigma(2)=3$, $(\sigma\tau)(2)=\sigma(1)=2$ e $(\sigma\tau)(3)=\sigma(3)=1$, isto é, $(3,2,1)$, de sinal $-=(+)(-)$. $\blacksquare$
+                </p>
+
+                <p id="exr-3-11-2"><strong>Exercício 3.11.2.</strong> Calcule $\operatorname{Alt}(\varepsilon^1\otimes\varepsilon^2\otimes\varepsilon^3)$ por extenso e compare com $\tfrac16\varepsilon^{123}$.</p>
+
+                <p>
+                    <em>Solução.</em> Pelo Exemplo 3.11.10, com $T=\varepsilon^1\otimes\varepsilon^2\otimes\varepsilon^3$, cada $\sigma T$ é um produto $\varepsilon^{a}\otimes\varepsilon^{b}\otimes\varepsilon^{c}$ com os três covetores permutados, e o sinal é o da permutação:
+                    $$ \begin{aligned}\operatorname{Alt}T=\tfrac16\big[&\varepsilon^1\otimes\varepsilon^2\otimes\varepsilon^3+\varepsilon^2\otimes\varepsilon^3\otimes\varepsilon^1+\varepsilon^3\otimes\varepsilon^1\otimes\varepsilon^2\\
+                    &-\varepsilon^2\otimes\varepsilon^1\otimes\varepsilon^3-\varepsilon^1\otimes\varepsilon^3\otimes\varepsilon^2-\varepsilon^3\otimes\varepsilon^2\otimes\varepsilon^1\big].\end{aligned} $$
+                    Por outro lado, a fórmula de Leibniz para $\varepsilon^{123}(v_1,v_2,v_3)=\det\big(\varepsilon^a(v_b)\big)$ tem exatamente esses seis produtos, com os mesmos sinais. Logo $\operatorname{Alt}(\varepsilon^1\otimes\varepsilon^2\otimes\varepsilon^3)=\tfrac16\varepsilon^{123}$,
+                    e o fator $3!=6$ da Definição 3.11.17 o transforma em $\varepsilon^1\wedge\varepsilon^2\wedge\varepsilon^3=\varepsilon^{123}$. Conferência em $(E_1,E_2,E_3)$: só o primeiro produto vale $1$, e $\operatorname{Alt}T(E_1,E_2,E_3)=\tfrac16=\tfrac16\varepsilon^{123}(E_1,E_2,E_3)$. $\blacksquare$
+                </p>
+
+                <p id="exr-3-11-3"><strong>Exercício 3.11.3.</strong> Expanda $(\varepsilon^1+2\varepsilon^2)\wedge(3\varepsilon^1-\varepsilon^3)$ na base crescente de $\Lambda^2\big((\mathbb{R}^3)^*\big)$ e avalie em $v=(1,2,0)$ e $w=(0,1,1)$.</p>
+
+                <p>
+                    <em>Solução.</em> Por bilinearidade, anticomutatividade e $\varepsilon^1\wedge\varepsilon^1=0$,
+                    $$ \begin{aligned}(\varepsilon^1+2\varepsilon^2)\wedge(3\varepsilon^1-\varepsilon^3)&=3\,\varepsilon^1\wedge\varepsilon^1-\varepsilon^1\wedge\varepsilon^3+6\,\varepsilon^2\wedge\varepsilon^1-2\,\varepsilon^2\wedge\varepsilon^3\\
+                    &=-6\,\varepsilon^{12}-\varepsilon^{13}-2\,\varepsilon^{23}.\end{aligned} $$
+                    Como $\varepsilon^{ij}(v,w)=v^iw^j-v^jw^i$, valem $\varepsilon^{12}(v,w)=1\cdot1-2\cdot0=1$, $\varepsilon^{13}(v,w)=1\cdot1-0\cdot0=1$ e $\varepsilon^{23}(v,w)=2\cdot1-0\cdot1=2$, de modo que o valor é $-6-1-4=-11$.
+                    Pela (3.11.4), com $\omega^1=\varepsilon^1+2\varepsilon^2$ e $\omega^2=3\varepsilon^1-\varepsilon^3$: $\omega^1(v)=5$, $\omega^1(w)=2$, $\omega^2(v)=3$, $\omega^2(w)=-1$, e
+                    $\det\begin{pmatrix}5&2\\3&-1\end{pmatrix}=-5-6=-11$. $\blacksquare$
+                </p>
+
+                <p id="exr-3-11-4"><strong>Exercício 3.11.4.</strong> Em $\mathbb{R}^4$, calcule $\omega\wedge\omega$ para $\omega=a\,\varepsilon^{12}+b\,\varepsilon^{34}$ e decida quando é nulo.</p>
+
+                <p>
+                    <em>Solução.</em> Como $2$-covetores comutam (Teorema 3.11.20(c), $kl=4$),
+                    $$ \omega\wedge\omega=a^2\,\varepsilon^{12}\wedge\varepsilon^{12}+2ab\,\varepsilon^{12}\wedge\varepsilon^{34}+b^2\,\varepsilon^{34}\wedge\varepsilon^{34}=2ab\,\varepsilon^{1234}, $$
+                    porque $\varepsilon^{1212}$ e $\varepsilon^{3434}$ têm índices repetidos e se anulam. Logo $\omega\wedge\omega=0$ se, e só se, $ab=0$, isto é, quando $\omega$ é um múltiplo de um único $\varepsilon^{ij}$. Para $a=b=1$ é o
+                    Exemplo 3.11.22. $\blacksquare$
+                </p>
+
+                <p id="exr-3-11-5"><strong>Exercício 3.11.5.</strong> Mostre que $v_1,\dots,v_k\in V$ são linearmente independentes se, e só se, existe $\omega\in\Lambda^k(V^*)$ com $\omega(v_1,\dots,v_k)\neq0$.</p>
+
+                <p>
+                    <em>Solução.</em> ($\Leftarrow$) Se os $v_i$ fossem dependentes, $\omega(v_1,\dots,v_k)=0$ para todo $\omega$, pelo Lema 3.11.6(d). ($\Rightarrow$) Se são independentes, complete-os a uma base $(v_1,\dots,v_n)$ de $V$ e seja
+                    $(\tilde{\varepsilon}^1,\dots,\tilde{\varepsilon}^n)$ sua base dual. Então $\omega=\tilde{\varepsilon}^{1\dots k}$ cumpre $\omega(v_1,\dots,v_k)=\det(\delta^i_j)=1\neq0$ (Lema 3.11.12(c), na base $(v_i)$). $\blacksquare$
+                </p>
+
+                <p id="exr-3-11-6"><strong>Exercício 3.11.6.</strong> Calcule $i_v(\varepsilon^1\wedge\varepsilon^2\wedge\varepsilon^3)$ em $\mathbb{R}^3$, para $v=(a,b,c)$.</p>
+
+                <p>
+                    <em>Solução.</em> Por (3.11.5), com $\varepsilon^1(v)=a$, $\varepsilon^2(v)=b$ e $\varepsilon^3(v)=c$,
+                    $$ i_v(\varepsilon^1\wedge\varepsilon^2\wedge\varepsilon^3)=a\,\varepsilon^{23}-b\,\varepsilon^{13}+c\,\varepsilon^{12}=a\,\varepsilon^{23}+b\,\varepsilon^{31}+c\,\varepsilon^{12}. $$
+                    Conferência: $i_v\varepsilon^{123}(w_1,w_2)=\det[v\ w_1\ w_2]=v\cdot(w_1\times w_2)$, e, por (3.11.6), o lado direito aplicado a $(w_1,w_2)$ é $(w_1\times w_2)\cdot v$. A $2$-forma $i_v\varepsilon^{123}$ é o <em>fluxo</em> de $v$
+                    através do paralelogramo gerado por $w_1$ e $w_2$, o que será usado no tópico 3.19. $\blacksquare$
+                </p>
+
+                <p id="exr-3-11-7"><strong>Exercício 3.11.7.</strong> Deduza $\det(AB)=\det A\,\det B$ a partir de $\Lambda^n$, e confira com $A=\begin{pmatrix}1&2\\3&4\end{pmatrix}$ e $B=\begin{pmatrix}0&1\\1&5\end{pmatrix}$.</p>
+
+                <p>
+                    <em>Solução.</em> Para $\omega\neq0$ em $\Lambda^n(V^*)$, a Proposição 3.11.28(c) e o Corolário 3.11.29 dão
+                    $(AB)^*\omega=B^*(A^*\omega)=B^*(\det A\,\omega)=\det A\,\det B\,\omega$, e, por outro lado, $(AB)^*\omega=\det(AB)\,\omega$. Logo $\det(AB)=\det A\det B$. No exemplo, $\det A=-2$, $\det B=-1$, $AB=\begin{pmatrix}2&11\\4&23\end{pmatrix}$ e
+                    $\det(AB)=46-44=2=(-2)(-1)$. $\blacksquare$
+                </p>
+
+                <p id="exr-3-11-8"><strong>Exercício 3.11.8.</strong> Confira a convenção do determinante: mostre que $(\varepsilon^1\wedge\varepsilon^2)(E_1,E_2)=1$ e que, sem a razão de fatoriais, o valor seria $\tfrac12$.</p>
+
+                <p>
+                    <em>Solução.</em> Pela Definição 3.11.17,
+$$ \begin{aligned}\varepsilon^1\wedge\varepsilon^2&=\frac{2!}{1!\,1!}\operatorname{Alt}(\varepsilon^1\otimes\varepsilon^2)=2\cdot\tfrac12\big(\varepsilon^1\otimes\varepsilon^2-\varepsilon^2\otimes\varepsilon^1\big)\\
+&=\varepsilon^1\otimes\varepsilon^2-\varepsilon^2\otimes\varepsilon^1,\end{aligned} $$
+e $(\varepsilon^1\otimes\varepsilon^2-\varepsilon^2\otimes\varepsilon^1)(E_1,E_2)=1\cdot1-0\cdot0=1$. Concorda com $\varepsilon^{12}(E_1,E_2)=\det\begin{pmatrix}1&0\\0&1\end{pmatrix}=1$ e com o Lema 3.11.19. Sem o fator $2$, o valor seria
+                    $\operatorname{Alt}(\varepsilon^1\otimes\varepsilon^2)(E_1,E_2)=\tfrac12$. $\blacksquare$
+                </p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <p>
+                    Este tópico construiu, em um espaço vetorial $V$, toda a álgebra das formas:
+                </p>
+
+                <ul>
+                    <li>as <strong>permutações</strong> e o <strong>sinal</strong> (<a href="#def-3-11-3">Definição 3.11.3</a>, <a href="#prop-3-11-4">Proposição 3.11.4</a>), e a ação de $S_k$ em tensores, com $\tau(\sigma T)=(\tau\sigma)T$;</li>
+                    <li>os <strong>tensores alternados</strong> $\Lambda^k(V^*)$ e suas quatro caracterizações (<a href="#def-3-11-5">Definição 3.11.5</a>, <a href="#lema-3-11-6">Lema 3.11.6</a>), e a <strong>antissimetrização</strong> $\operatorname{Alt}$ (<a href="#def-3-11-8">Definição 3.11.8</a>, <a href="#prop-3-11-9">Proposição 3.11.9</a>);</li>
+                    <li>os <strong>covetores elementares</strong> $\varepsilon^I$, a <strong>base</strong> de $\Lambda^k(V^*)$ e sua dimensão $\binom nk$ (<a href="#def-3-11-11">Definição 3.11.11</a>, <a href="#teo-3-11-13">Teorema 3.11.13</a>), e a ação de uma aplicação linear em $\Lambda^n$ pelo
+                        determinante (<a href="#prop-3-11-14">Proposição 3.11.14</a>, <a href="#cor-3-11-15">Corolário 3.11.15</a>);</li>
+                    <li>o <strong>produto exterior</strong> na <strong>convenção do determinante</strong> (<a href="#def-3-11-17">Definição 3.11.17</a>, <a href="#obs-3-11-18">Observação 3.11.18</a>), o lema-chave $\varepsilon^I\wedge\varepsilon^J=\varepsilon^{IJ}$ (<a href="#lema-3-11-19">Lema 3.11.19</a>) e as propriedades de
+                        $\wedge$ (<a href="#teo-3-11-20">Teorema 3.11.20</a>), incluindo a fórmula do determinante (3.11.4);</li>
+                    <li>o <strong>produto interior</strong> $i_v$ e sua regra de antiderivação (<a href="#def-3-11-25">Definição 3.11.25</a>, <a href="#prop-3-11-26">Proposição 3.11.26</a>);</li>
+                    <li>o <strong>pullback</strong> por aplicações lineares, que comuta com $\wedge$ (<a href="#def-3-11-27">Definição 3.11.27</a>, <a href="#prop-3-11-28">Proposição 3.11.28</a>);</li>
+                    <li>o caso de $\mathbb{R}^3$, com o produto vetorial e o produto misto como $\wedge$ (<a href="#prop-3-11-30">Proposição 3.11.30</a>).</li>
+                </ul>
+
+                <p>
+                    Tudo aqui aconteceu em um único ponto. Falta variar o ponto: o próximo tópico,
+                    <a href="[12] - Formas Diferenciais.html">3.12 Formas Diferenciais</a>, reúne os $\Lambda^k(T_p^*M)$ de todos os pontos no fibrado $\Lambda^kT^*M$, define as <em>$k$-formas diferenciais</em>
+                    como suas seções suaves, o produto exterior e o produto interior de formas, e o pullback $F^*\omega$ por aplicações suaves, com a fórmula em coordenadas que o tornará calculável.
+                </p>
 
             </div>
         </main>
@@ -161,6 +846,16 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#produto-exterior">Tensores Alternados e o Produto Exterior</a></li>
+                    <li><a href="#permutacoes">Permutações e o sinal</a></li>
+                    <li><a href="#tensores-alternados">Tensores alternados</a></li>
+                    <li><a href="#base-e-dimensao">Base e dimensão</a></li>
+                    <li><a href="#o-produto-exterior">O produto exterior</a></li>
+                    <li><a href="#produto-interior">Produto interior</a></li>
+                    <li><a href="#pullback-linear">Pullback linear</a></li>
+                    <li><a href="#r3">O caso de ℝ³</a></li>
+                    <li><a href="#fisica">Ponte com a física</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
                 </ul>
             </div>
         </aside>
