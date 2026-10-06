@@ -151,7 +151,1050 @@
                 <h1 id="tensores">3.10 Álgebra Multilinear e Campos Tensoriais</h1>
                 <p class="lead">Aplicações multilineares, produto tensorial, tensores de tipo (r, s), campos tensoriais, o lema de caracterização tensorial e o pullback de tensores covariantes.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>
+                    Um covetor mede um vetor: $\omega(v)$ é um número que depende linearmente de $v$
+                    (<a href="[09] - Covetores e 1-Formas.html">tópico 3.9</a>). Mas muitas medições envolvem vários vetores ao mesmo tempo. A área
+                    orientada de um paralelogramo depende de dois vetores, os lados, e é linear em cada um; o produto
+                    escalar $\langle v,w\rangle$ também recebe dois vetores e é linear em cada um; o volume de um
+                    paralelepípedo depende de três. Os objetos que medem $k$ vetores de modo linear em cada um são os
+                    <em>tensores covariantes</em> de ordem $k$. Se entre os argumentos há também covetores, obtêm-se os
+                    tensores de tipo $(r,s)$, e o próprio vetor, o próprio covetor e o endomorfismo linear aparecem como
+                    casos particulares.
+                </p>
+
+                <p>
+                    Este tópico tem três movimentos. O primeiro é algébrico: aplicações multilineares, o produto
+                    tensorial, as bases dos espaços de tensores, a lei de transformação das componentes e a contração. O
+                    segundo é geométrico: os <em>campos tensoriais</em>, que são seções de um fibrado construído como o
+                    tangente e o cotangente (<a href="[07] - Fibrado Tangente e Campos Vetoriais.html">3.7</a> e 3.9), e o <em>lema de caracterização tensorial</em>, que responde à
+                    pergunta prática de como reconhecer um tensor: uma operação sobre campos define um tensor se, e só
+                    se, é linear sobre as funções, e não apenas sobre os números reais. O terceiro é o <em>pullback</em> de
+                    tensores covariantes, que generaliza o de 1-formas (<a href="[09] - Covetores e 1-Formas.html#def-3-9-24">Definição 3.9.24</a>) e é o que permite, por exemplo,
+                    escrever a métrica euclidiana em coordenadas polares.
+                </p>
+
+                <p>
+                    Por que isto é necessário para chegar ao Teorema de Stokes? As formas diferenciais dos próximos
+                    tópicos serão os tensores covariantes <em>alternados</em>: a álgebra do produto exterior (3.11) e das
+                    formas (3.12) é a álgebra deste tópico restrita a uma classe de simetria; o pullback de formas, que é
+                    o que se integra no tópico 3.17, é o pullback de tensores covariantes; e o lema de caracterização
+                    tensorial é o critério que mostrará, no 3.13, que a fórmula invariante da derivada exterior define de fato uma
+                    forma. A métrica aparece aqui apenas como exemplo de campo tensorial: nada do que resta do capítulo,
+                    até Stokes, a utiliza.
+                </p>
+
+                <h2 id="multilinear">Aplicações multilineares</h2>
+
+                <div class="definition-box" id="def-3-10-1" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.10.1 (Aplicação multilinear).</strong> Sejam $V_1,\dots,V_k$ espaços vetoriais
+                        reais de dimensão finita. Uma aplicação $F: V_1\times\dots\times V_k\to\mathbb{R}$ é
+                        <strong>multilinear</strong> (ou <strong>$k$-linear</strong>) se é linear em cada argumento quando
+                        os demais ficam fixos: para todo $i$, todos $a,b\in\mathbb{R}$ e todos $v_i,v_i'\in V_i$,</p>
+                    <p>$$ \begin{aligned}F(v_1,\dots,a\,v_i+b\,v_i',\dots,v_k)&=a\,F(v_1,\dots,v_i,\dots,v_k)\\&\quad+b\,F(v_1,\dots,v_i',\dots,v_k).\end{aligned} $$</p>
+                    <p>Com a soma e o produto por escalar definidos ponto a ponto, o conjunto das aplicações
+                        multilineares $V_1\times\dots\times V_k\to\mathbb{R}$ é um espaço vetorial real.</p>
+                </div>
+
+                <p>
+                    Multilinear não é o mesmo que linear em $V_1\times\dots\times V_k$. Por exemplo, para uma aplicação
+                    bilinear, $F(2v,2w)=4\,F(v,w)$, e não $2\,F(v,w)$; e $F(v,w)=0$ sempre que $v=0$ ou $w=0$. Para
+                    $k=1$ as aplicações multilineares são os covetores (<a href="[09] - Covetores e 1-Formas.html#def-3-9-1">Definição 3.9.1</a>); para $k=2$, as formas
+                    bilineares.
+                </p>
+
+                <p id="ex-3-10-2"><strong>Exemplo 3.10.2 (Aplicações multilineares).</strong></p>
+                <ul>
+                    <li><strong>Produto escalar.</strong> Em $\mathbb{R}^n$, $\langle v,w\rangle=\sum_iv^iw^i$ é bilinear:
+                        a soma de produtos $v^iw^i$ é linear em $v$ e em $w$ separadamente. (A soma
+                        $\langle v,w\rangle+1$, ao contrário, não é: $F(0,w)=1\neq0$.)</li>
+                    <li><strong>Determinante.</strong> A função $\det(v_1,\dots,v_n)$ das $n$ colunas de uma matriz
+                        $n\times n$ é $n$-linear. De fato, pela fórmula de Leibniz,
+                        $\det(v_1,\dots,v_n)=\sum_{\sigma}\operatorname{sgn}\sigma\ v_1^{\sigma(1)}\cdots v_n^{\sigma(n)}$, e cada
+                        parcela contém exatamente uma componente de cada $v_j$, de modo que é linear em cada $v_j$.</li>
+                    <li><strong>Produto de covetores.</strong> Se $\omega,\eta\in V^*$, a aplicação
+                        $(v,w)\mapsto\omega(v)\,\eta(w)$ é bilinear: é linear em $v$ para $w$ fixo (o fator $\eta(w)$ é uma
+                        constante) e vice-versa.</li>
+                    <li><strong>Forma bilinear dada por uma matriz.</strong> Se $B=(B_{ij})$ é uma matriz $n\times n$,
+                        $B(v,w)=v^{\mathsf{T}}Bw=B_{ij}\,v^iw^j$ é bilinear. Por exemplo,
+                        $B(v,w)=2v^1w^1-v^1w^2+3v^2w^2$ em $\mathbb{R}^2$ tem $B_{11}=2$, $B_{12}=-1$, $B_{21}=0$ e
+                        $B_{22}=3$. Veremos no <a href="#teo-3-10-6">Teorema 3.10.6</a> que toda forma bilinear é deste tipo.</li>
+                </ul>
+
+                <h2 id="produto-tensorial">Produto tensorial</h2>
+
+                <div class="definition-box" id="def-3-10-3" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.10.3 ($k$-tensor covariante).</strong> Seja $V$ um espaço vetorial real de
+                        dimensão $n$. Um <strong>$k$-tensor covariante</strong> em $V$ é uma aplicação $k$-linear
+                        $T: V\times\dots\times V\to\mathbb{R}$ ($k$ fatores); o inteiro $k$ é a <strong>ordem</strong>. O
+                        espaço vetorial dos $k$-tensores covariantes é denotado $T^k(V^*)$. Por convenção,
+                        $T^0(V^*)=\mathbb{R}$.</p>
+                </div>
+
+                <p>
+                    Assim $T^1(V^*)=V^*$ e $T^2(V^*)$ é o espaço das formas bilineares. A notação $T^k(V^*)$ sugere
+                    que se trata de "$k$ cópias do dual", e o produto a seguir é o que justifica a sugestão.
+                </p>
+
+                <div class="definition-box" id="def-3-10-4" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.10.4 (Produto tensorial).</strong> Se $F\in T^k(V^*)$ e $G\in T^l(V^*)$, o
+                        <strong>produto tensorial</strong> $F\otimes G\in T^{k+l}(V^*)$ é definido por</p>
+                    <p>$$ (F\otimes G)(v_1,\dots,v_{k+l})=F(v_1,\dots,v_k)\,G(v_{k+1},\dots,v_{k+l}). $$</p>
+                </div>
+
+                <div class="definition-box" id="prop-3-10-5">
+                    <p><strong>Proposição 3.10.5 (Propriedades do produto tensorial).</strong> Para $F,F'\in T^k(V^*)$,
+                        $G\in T^l(V^*)$, $H\in T^m(V^*)$ e $a,b\in\mathbb{R}$:</p>
+                    <p>(a) $F\otimes G$ é, de fato, $(k+l)$-linear;</p>
+                    <p>(b) o produto é bilinear: $(aF+bF')\otimes G=a\,F\otimes G+b\,F'\otimes G$, e analogamente na
+                        segunda entrada;</p>
+                    <p>(c) o produto é associativo: $(F\otimes G)\otimes H=F\otimes(G\otimes H)$;</p>
+                    <p>(d) o produto <em>não é comutativo</em>: em $\mathbb{R}^2$, com $(\varepsilon^1,\varepsilon^2)$ a base
+                        dual da canônica, $\varepsilon^1\otimes\varepsilon^2\neq\varepsilon^2\otimes\varepsilon^1$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Fixe todos os argumentos, exceto um. Se o argumento livre é um dos $k$
+                    primeiros, $F(\dots)$ é linear nele e $G(\dots)$ é uma constante, de modo que o produto é linear;
+                    se é um dos $l$ últimos, o papel dos fatores se inverte. (b) Segue da distributividade do produto de
+                    números reais:
+                    $$ \begin{aligned}&\big((aF+bF')\otimes G\big)(v,w)=\big(aF(v)+bF'(v)\big)G(w)\\
+                    &\qquad=a\,F(v)G(w)+b\,F'(v)G(w).\end{aligned} $$
+                    (c) Os dois lados, calculados em $(v_1,\dots,v_{k+l+m})$, valem
+                    $F(v_1,\dots,v_k)\,G(v_{k+1},\dots,v_{k+l})\,H(v_{k+l+1},\dots,v_{k+l+m})$, pela associatividade do produto de
+                    reais. (d) $(\varepsilon^1\otimes\varepsilon^2)(E_1,E_2)=\varepsilon^1(E_1)\,\varepsilon^2(E_2)=1$, enquanto
+                    $(\varepsilon^2\otimes\varepsilon^1)(E_1,E_2)=\varepsilon^2(E_1)\,\varepsilon^1(E_2)=0$. $\blacksquare$
+                </p>
+
+                <p>
+                    Pela associatividade, escrevemos $F_1\otimes\dots\otimes F_m$ sem parênteses. Para covetores,
+                    $(\omega^1\otimes\dots\otimes\omega^k)(v_1,\dots,v_k)=\omega^1(v_1)\cdots\omega^k(v_k)$: o produto
+                    tensorial de $k$ covetores mede cada vetor com um covetor e multiplica os resultados. O teorema a seguir
+                    diz que todos os $k$-tensores são somas desses produtos.
+                </p>
+
+                <div class="definition-box" id="teo-3-10-6">
+                    <p><strong>Teorema 3.10.6 (Base de $T^k(V^*)$).</strong> Seja $(E_1,\dots,E_n)$ uma base de $V$ e
+                        $(\varepsilon^1,\dots,\varepsilon^n)$ a base dual (<a href="[09] - Covetores e 1-Formas.html#prop-3-9-2">Proposição 3.9.2</a>). Os $n^k$ tensores
+                        $\varepsilon^{i_1}\otimes\dots\otimes\varepsilon^{i_k}$, com $1\le i_1,\dots,i_k\le n$, formam uma base de
+                        $T^k(V^*)$; em particular $\dim T^k(V^*)=n^k$. Todo $T\in T^k(V^*)$ se escreve de modo único como</p>
+                    <p>$$ \begin{aligned}T&=T_{i_1\dots i_k}\,\varepsilon^{i_1}\otimes\dots\otimes\varepsilon^{i_k},\\ T_{i_1\dots i_k}&=T(E_{i_1},\dots,E_{i_k}),\end{aligned} \tag{3.10.1} $$</p>
+                    <p>e, para vetores $v_a=v_a^iE_i$, vale $T(v_1,\dots,v_k)=T_{i_1\dots i_k}\,v_1^{i_1}\cdots v_k^{i_k}$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> <strong>Passo 1 (os produtos nos vetores da base).</strong> Pela definição do produto,
+                    $(\varepsilon^{i_1}\otimes\dots\otimes\varepsilon^{i_k})(E_{j_1},\dots,E_{j_k})=\varepsilon^{i_1}(E_{j_1})\cdots\varepsilon^{i_k}(E_{j_k})=\delta^{i_1}_{j_1}\cdots\delta^{i_k}_{j_k}$,
+                    que vale $1$ se $(i_1,\dots,i_k)=(j_1,\dots,j_k)$ e $0$ caso contrário.
+                </p>
+
+                <p>
+                    <strong>Passo 2 (um tensor é determinado pelos valores na base).</strong> Escreva $v_a=v_a^iE_i$ para
+                    $a=1,\dots,k$. Expandindo um argumento de cada vez, a multilinearidade dá
+                    $T(v_1,\dots,v_k)=v_1^{i_1}\cdots v_k^{i_k}\,T(E_{i_1},\dots,E_{i_k})$. Logo dois tensores que coincidem em todas as
+                    listas $(E_{i_1},\dots,E_{i_k})$ coincidem em todas as listas de vetores. Esta é também a última afirmação do enunciado.
+                </p>
+
+                <p>
+                    <strong>Passo 3 (geram).</strong> Dado $T$, ponha $T_{i_1\dots i_k}=T(E_{i_1},\dots,E_{i_k})$ e
+                    $S=T_{i_1\dots i_k}\,\varepsilon^{i_1}\otimes\dots\otimes\varepsilon^{i_k}$. Pelo Passo 1,
+                    $S(E_{j_1},\dots,E_{j_k})=T_{j_1\dots j_k}=T(E_{j_1},\dots,E_{j_k})$ para todas as listas; pelo Passo 2, $S=T$.
+                </p>
+
+                <p>
+                    <strong>Passo 4 (independentes).</strong> Se $c_{i_1\dots i_k}\,\varepsilon^{i_1}\otimes\dots\otimes\varepsilon^{i_k}=0$,
+                    avalie em $(E_{j_1},\dots,E_{j_k})$: pelo Passo 1, o resultado é $c_{j_1\dots j_k}$, que então se anula. Isso
+                    mostra que os $n^k$ tensores formam uma base e que os coeficientes em (3.10.1) são únicos. $\blacksquare$
+                </p>
+
+                <p>
+                    O produto tensorial é simples em componentes: calculando em vetores da base, vê-se que
+                    $(F\otimes G)_{i_1\dots i_{k+l}}=F_{i_1\dots i_k}\,G_{i_{k+1}\dots i_{k+l}}$. Em particular, o produto
+                    $\omega\otimes\eta$ de dois covetores tem componentes $\omega_i\eta_j$, isto é, a matriz de posto $1$
+                    $\omega\eta^{\mathsf{T}}$. Nem toda forma bilinear é um produto $\omega\otimes\eta$ (a matriz $\delta_{ij}$ tem
+                    posto $n$), mas toda é uma <em>soma</em> deles: o produto escalar de $\mathbb{R}^n$ é
+                    $\langle\,,\rangle=\delta_{ij}\,\varepsilon^i\otimes\varepsilon^j=\sum_i\varepsilon^i\otimes\varepsilon^i$, e a forma
+                    $B$ do <a href="#ex-3-10-2">Exemplo 3.10.2</a> é $2\,\varepsilon^1\otimes\varepsilon^1-\varepsilon^1\otimes\varepsilon^2+3\,\varepsilon^2\otimes\varepsilon^2$.
+                </p>
+
+                <p id="obs-3-10-7"><strong>Observação 3.10.7 (O produto tensorial abstrato).</strong> Existe uma construção
+                    abstrata do produto tensorial $V\otimes W$ de dois espaços vetoriais, caracterizada por uma
+                    <em>propriedade universal</em>: toda aplicação bilinear $V\times W\to U$ se fatora, de modo único, por uma
+                    aplicação linear $V\otimes W\to U$. Neste capítulo usamos o modelo concreto, o das aplicações
+                    multilineares, que basta para tudo o que se segue. A construção abstrata, e sua relação com este
+                    modelo, está no capítulo 12 de Lee, <em>Introduction to Smooth Manifolds</em>.</p>
+
+                <h2 id="tensores-mistos">Tensores contravariantes e mistos</h2>
+
+                <p>
+                    Os covetores são os elementos de $V^*$; os vetores, pela <a href="[09] - Covetores e 1-Formas.html#prop-3-9-5">Proposição 3.9.5</a>, são os elementos de $V^{**}$: um
+                    vetor $v$ age sobre covetores por $v(\omega)=\omega(v)$. Identificamos, daqui em diante, $v\in V$ com
+                    $\xi(v)\in V^{**}$. Com isso, vetores e covetores entram em pé de igualdade como argumentos e como
+                    valores de aplicações multilineares.
+                </p>
+
+                <div class="definition-box" id="def-3-10-8" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.10.8 (Tensor de tipo $(r,s)$).</strong> Um <strong>tensor de tipo $(r,s)$</strong>
+                        em $V$ ($r$ vezes contravariante e $s$ vezes covariante) é uma aplicação multilinear</p>
+                    <p>$$ T:\ \underbrace{V^*\times\dots\times V^*}_{r}\times\underbrace{V\times\dots\times V}_{s}\to\mathbb{R}. $$</p>
+                    <p>Os $r$ primeiros argumentos são covetores, e os $s$ últimos são vetores; esta ordem é fixa. O espaço
+                        vetorial dos tensores de tipo $(r,s)$ é denotado $T^{(r,s)}(V)$.</p>
+                </div>
+
+                <p>
+                    Os primeiros tipos têm nomes conhecidos. Por construção, $T^{(0,s)}(V)=T^s(V^*)$, e
+                    $T^{(1,0)}(V)=V^{**}\cong V$ é o próprio espaço dos vetores. O quadro resume os casos mais
+                    usados.
+                </p>
+
+                <div style="overflow-x: auto;">
+                <table>
+                    <tr><th>Tipo</th><th>O que é</th><th>Exemplo</th></tr>
+                    <tr><td>$(0,0)$</td><td>escalar</td><td>um número; o valor $f(p)$ de uma função</td></tr>
+                    <tr><td>$(1,0)$</td><td>vetor</td><td>uma velocidade $v$</td></tr>
+                    <tr><td>$(0,1)$</td><td>covetor</td><td>a diferencial $df_p$; uma força $F_i\,dx^i$</td></tr>
+                    <tr><td>$(0,2)$</td><td>forma bilinear</td><td>o produto escalar; a métrica $g$; o tensor de inércia</td></tr>
+                    <tr><td>$(1,1)$</td><td>endomorfismo (<a href="#prop-3-10-10">Proposição 3.10.10</a>)</td><td>a identidade $\delta$; a matriz de uma transformação linear</td></tr>
+                    <tr><td>$(2,0)$</td><td>forma bilinear em covetores</td><td>$v\otimes w$; o tensor de energia-momento $T^{\mu\nu}$</td></tr>
+                    <tr><td>$(0,k)$ alternado</td><td>forma de grau $k$</td><td>elemento de área, de volume (tópicos 3.11 e 3.12)</td></tr>
+                </table>
+                </div>
+
+                <div class="definition-box" id="def-3-10-9" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.10.9 (Produto tensorial, caso geral).</strong> Se $F\in T^{(r,s)}(V)$ e
+                        $G\in T^{(r',s')}(V)$, o <strong>produto tensorial</strong> $F\otimes G\in T^{(r+r',s+s')}(V)$ é</p>
+                    <p>$$ \begin{aligned}&(F\otimes G)(\omega^1,\dots,\omega^{r+r'},v_1,\dots,v_{s+s'})\\
+                        &\qquad=F(\omega^1,\dots,\omega^r,v_1,\dots,v_s)\,G(\omega^{r+1},\dots,\omega^{r+r'},v_{s+1},\dots,v_{s+s'}).\end{aligned} $$</p>
+                    <p>Os covetores de $F$ vêm antes dos de $G$, e os vetores de $F$ antes dos de $G$.</p>
+                </div>
+
+                <p>
+                    As provas da <a href="#prop-3-10-5">Proposição 3.10.5</a> valem sem mudança: o produto é multilinear, bilinear em $(F,G)$ e associativo.
+                    Em particular, se $v\in V$ e $\omega\in V^*$, então $v\otimes\omega\in T^{(1,1)}(V)$ é o tensor
+                    $(\eta,u)\mapsto\eta(v)\,\omega(u)$.
+                </p>
+
+                <div class="definition-box" id="prop-3-10-10">
+                    <p><strong>Proposição 3.10.10 (Tensores $(1,1)$ e endomorfismos).</strong> A aplicação
+                        $A\mapsto T_A$, com $T_A(\omega,v)=\omega(Av)$, é um isomorfismo linear
+                        $\operatorname{End}(V)\to T^{(1,1)}(V)$. Se $A$ tem matriz $(A^i{}_j)$ numa base $(E_i)$
+                        (isto é, $AE_j=A^i{}_jE_i$), as componentes de $T_A$ são $(T_A)^i{}_j=A^i{}_j$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> $T_A$ é linear em $\omega$ e em $v$, e $A\mapsto T_A$ é linear. É injetiva: se
+                    $T_A=0$, então $\varepsilon^i(Av)=0$ para todo $i$ e todo $v$, isto é, $Av=0$ para todo $v$. É sobrejetiva:
+                    dado $T\in T^{(1,1)}(V)$ e $v\in V$, a aplicação $\omega\mapsto T(\omega,v)$ é um elemento de $V^{**}$; pela
+                    <a href="[09] - Covetores e 1-Formas.html#prop-3-9-5">Proposição 3.9.5</a> existe um único $Av\in V$ com $\omega(Av)=T(\omega,v)$ para todo $\omega$. A aplicação $A$ é
+                    linear: para todo $\omega$,
+                    $\omega\big(A(av+bv')\big)=T(\omega,av+bv')=a\,\omega(Av)+b\,\omega(Av')=\omega(aAv+bAv')$, de modo que
+                    $A(av+bv')=aAv+bAv'$. Por construção, $T_A=T$. Por fim,
+                    $(T_A)^i{}_j=T_A(\varepsilon^i,E_j)=\varepsilon^i(AE_j)=A^i{}_j$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="teo-3-10-11">
+                    <p><strong>Teorema 3.10.11 (Base de $T^{(r,s)}(V)$).</strong> Seja $(E_i)$ uma base de $V$, com base dual
+                        $(\varepsilon^i)$. Os $n^{r+s}$ tensores</p>
+                    <p>$$ E_{i_1}\otimes\dots\otimes E_{i_r}\otimes\varepsilon^{j_1}\otimes\dots\otimes\varepsilon^{j_s} $$</p>
+                    <p>formam uma base de $T^{(r,s)}(V)$, e $\dim T^{(r,s)}(V)=n^{r+s}$. Todo $T\in T^{(r,s)}(V)$ se escreve de
+                        modo único como $T=T^{i_1\dots i_r}{}_{j_1\dots j_s}\,E_{i_1}\otimes\dots\otimes E_{i_r}\otimes\varepsilon^{j_1}\otimes\dots\otimes\varepsilon^{j_s}$,
+                        com <strong>componentes</strong></p>
+                    <p>$$ T^{i_1\dots i_r}{}_{j_1\dots j_s}=T(\varepsilon^{i_1},\dots,\varepsilon^{i_r},E_{j_1},\dots,E_{j_s}), \tag{3.10.2} $$</p>
+                    <p>e, para $\omega^a=\omega^a_i\varepsilon^i$ e $v_b=v_b^jE_j$,
+                        $T(\omega^1,\dots,\omega^r,v_1,\dots,v_s)=T^{i_1\dots i_r}{}_{j_1\dots j_s}\,\omega^1_{i_1}\cdots\omega^r_{i_r}\,v_1^{j_1}\cdots v_s^{j_s}$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> É a prova do <a href="#teo-3-10-6">Teorema 3.10.6</a> com argumentos de dois tipos. <strong>Passo 1.</strong> Como
+                    $E_i(\varepsilon^k)=\varepsilon^k(E_i)=\delta^k_i$, o produto da base, avaliado em
+                    $(\varepsilon^{k_1},\dots,\varepsilon^{k_r},E_{l_1},\dots,E_{l_s})$, vale
+                    $\delta^{k_1}_{i_1}\cdots\delta^{k_r}_{i_r}\,\delta^{j_1}_{l_1}\cdots\delta^{j_s}_{l_s}$. <strong>Passo 2.</strong> Expandindo cada
+                    covetor $\omega^a=\omega^a_i\varepsilon^i$ e cada vetor $v_b=v_b^jE_j$, a multilinearidade dá a última fórmula do
+                    enunciado, de modo que um tensor é determinado pelos seus valores nas listas
+                    $(\varepsilon^{k_1},\dots,\varepsilon^{k_r},E_{l_1},\dots,E_{l_s})$. <strong>Passo 3.</strong> O tensor
+                    $S=T^{i_1\dots i_r}{}_{j_1\dots j_s}\,E_{i_1}\otimes\dots\otimes\varepsilon^{j_s}$, com os coeficientes (3.10.2), tem os mesmos valores
+                    que $T$ nessas listas, pelo Passo 1; logo $S=T$ pelo Passo 2. <strong>Passo 4.</strong> Se uma combinação linear da família
+                    é nula, avaliar nas listas acima anula, pelo Passo 1, cada coeficiente. $\blacksquare$
+                </p>
+
+                <h3 id="lei-de-transformacao">Lei de transformação</h3>
+
+                <p>
+                    As componentes de um tensor dependem da base. Para saber como, usamos a mudança de base da
+                    <a href="[09] - Covetores e 1-Formas.html#prop-3-9-3">Proposição 3.9.3</a>: se $\tilde{E}_j=A^i{}_jE_i$, com $A$ invertível, então
+                    $\tilde{\varepsilon}^j=(A^{-1})^j{}_i\,\varepsilon^i$.
+                </p>
+
+                <div class="definition-box" id="prop-3-10-12">
+                    <p><strong>Proposição 3.10.12 (Lei de transformação).</strong> (a) Se $\tilde{E}_j=A^i{}_jE_i$, as
+                        componentes de $T\in T^{(r,s)}(V)$ nas duas bases estão ligadas por</p>
+                    <p>$$ \begin{aligned}\tilde{T}^{i_1\dots i_r}{}_{j_1\dots j_s}&=(A^{-1})^{i_1}{}_{k_1}\cdots(A^{-1})^{i_r}{}_{k_r}\\
+                        &\qquad\times A^{l_1}{}_{j_1}\cdots A^{l_s}{}_{j_s}\ T^{k_1\dots k_r}{}_{l_1\dots l_s}.\end{aligned} \tag{3.10.3} $$</p>
+                    <p>Cada índice de cima transforma-se com $A^{-1}$ e cada índice de baixo com $A$. (b) Reciprocamente, se a cada
+                        base de $V$ está associada uma lista de $n^{r+s}$ números tal que, para quaisquer duas bases, as listas
+                        satisfazem (3.10.3), então existe um único $T\in T^{(r,s)}(V)$ com essas componentes.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Por (3.10.2), pela mudança de base dual e pela multilinearidade,
+                    $$ \begin{aligned}\tilde{T}^{i_1\dots i_r}{}_{j_1\dots j_s}&=T\big(\tilde{\varepsilon}^{i_1},\dots,\tilde{\varepsilon}^{i_r},\tilde{E}_{j_1},\dots,\tilde{E}_{j_s}\big)\\
+                    &=T\big((A^{-1})^{i_1}{}_{k_1}\varepsilon^{k_1},\dots,A^{l_1}{}_{j_1}E_{l_1},\dots\big),\end{aligned} $$
+                    e tirar os coeficientes de cada argumento dá (3.10.3). No caso $(1,1)$, escrito com matrizes
+                    ($T^i{}_j$ na linha $i$ e coluna $j$), a fórmula diz $\tilde{T}=A^{-1}TA$: é a regra de mudança de base de
+                    um endomorfismo, em acordo com a <a href="#prop-3-10-10">Proposição 3.10.10</a>. Para um tensor covariante $(0,2)$, diz
+                    $\tilde{T}_{ij}=A^k{}_iA^l{}_jT_{kl}$, isto é, $\tilde{T}=A^{\mathsf{T}}TA$.
+                </p>
+
+                <p>
+                    (b) Fixe uma base $(E_i)$ e seja $T$ o tensor dado por (3.10.2) com a lista dessa base (<a href="#teo-3-10-11">Teorema 3.10.11</a>). Por (a),
+                    as componentes de $T$ em outra base $(\tilde{E}_j)$ são o lado direito de (3.10.3), e, pela hipótese, esse lado
+                    direito é a lista associada a $\tilde{E}$. A unicidade vem de que as componentes em uma base determinam o
+                    tensor. $\blacksquare$
+                </p>
+
+                <p>
+                    Esta é a <strong>definição de tensor dos livros de física</strong>: "um tensor é uma coleção de números com índices que se
+                    transforma pela regra (3.10.3)". Aqui ela é um teorema: o enunciado (a) diz que as componentes de um objeto
+                    multilinear se transformam assim, e (b) diz que toda coleção que se transforma assim vem de um objeto multilinear.
+                    A diferença entre as duas visões é só de ponto de partida.
+                </p>
+
+                <h3 id="contracao">Contração</h3>
+
+                <div class="definition-box" id="def-3-10-13" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.10.13 (Contração).</strong> A <strong>contração</strong>
+                        $\operatorname{tr}: T^{(r+1,s+1)}(V)\to T^{(r,s)}(V)$ é dada, em uma base $(E_k)$ com base dual
+                        $(\varepsilon^k)$, por</p>
+                    <p>$$ \begin{aligned}&(\operatorname{tr}T)(\omega^1,\dots,\omega^r,v_1,\dots,v_s)\\
+                        &\qquad=\sum_{k=1}^nT\big(\omega^1,\dots,\omega^r,\varepsilon^k,v_1,\dots,v_s,E_k\big).\end{aligned} $$</p>
+                    <p>Em componentes, $(\operatorname{tr}T)^{i_1\dots i_r}{}_{j_1\dots j_s}=T^{i_1\dots i_rk}{}_{j_1\dots j_sk}$: soma-se um
+                        índice de cima com um de baixo.</p>
+                </div>
+
+                <div class="definition-box" id="prop-3-10-14">
+                    <p><strong>Proposição 3.10.14 (A contração não depende da base).</strong> A aplicação
+                        $\operatorname{tr}T$ da Definição 3.10.13 é a mesma em qualquer base.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Seja $\tilde{E}_k=A^l{}_kE_l$, de modo que $\tilde{\varepsilon}^k=(A^{-1})^k{}_m\varepsilon^m$. Pela
+                    multilinearidade de $T$ nos dois argumentos que entram na soma,
+                    $$ \begin{aligned}&\sum_kT\big(\dots,\tilde{\varepsilon}^k,\dots,\tilde{E}_k\big)\\
+                    &\qquad=\sum_{k,m,l}(A^{-1})^k{}_m\,A^l{}_k\ T\big(\dots,\varepsilon^m,\dots,E_l\big)\\
+                    &\qquad=\sum_{m,l}\delta^l_m\ T\big(\dots,\varepsilon^m,\dots,E_l\big)\\
+                    &\qquad=\sum_mT\big(\dots,\varepsilon^m,\dots,E_m\big),\end{aligned} $$
+                    porque $\sum_kA^l{}_k(A^{-1})^k{}_m=(AA^{-1})^l{}_m=\delta^l_m$. As matrizes $A$ e $A^{-1}$ se cancelam. $\blacksquare$
+                </p>
+
+                <p>
+                    A contração de qualquer outro par de argumentos (um covetor e um vetor) é definida do mesmo modo, e a prova é a mesma.
+                </p>
+
+                <p id="ex-3-10-15"><strong>Exemplo 3.10.15 (Traço e avaliação).</strong></p>
+                <ul>
+                    <li><strong>Traço.</strong> Sob o isomorfismo da <a href="#prop-3-10-10">Proposição 3.10.10</a>, $\operatorname{tr}T_A=\sum_k\varepsilon^k(AE_k)=A^k{}_k$ é o
+                        traço da matriz de $A$. A <a href="#prop-3-10-14">Proposição 3.10.14</a> prova, portanto, que o traço de um endomorfismo não depende da base.</li>
+                    <li><strong>Avaliação.</strong> Para $v\in V$ e $\omega\in V^*$, a contração de $v\otimes\omega\in T^{(1,1)}(V)$ é
+                        $\operatorname{tr}(v\otimes\omega)=\sum_k\varepsilon^k(v)\,\omega(E_k)=v^k\omega_k=\omega(v)$. A avaliação de um covetor em um vetor
+                        é uma contração, e é por isso que $\omega_iv^i$ não depende da base (<a href="[09] - Covetores e 1-Formas.html#prop-3-9-3">Proposição 3.9.3</a>).</li>
+                </ul>
+
+                <h3 id="simetria">Tensores simétricos</h3>
+
+                <p>
+                    Seja $S_k$ o grupo das permutações de $\{1,\dots,k\}$, com a composição $(\tau\sigma)(i)=\tau(\sigma(i))$.
+                </p>
+
+                <div class="definition-box" id="def-3-10-16" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.10.16 (Tensor simétrico e simetrização).</strong> Para $\sigma\in S_k$ e
+                        $T\in T^k(V^*)$, seja $\sigma T\in T^k(V^*)$ o tensor</p>
+                    <p>$$ (\sigma T)(v_1,\dots,v_k)=T(v_{\sigma(1)},\dots,v_{\sigma(k)}). $$</p>
+                    <p>O tensor $T$ é <strong>simétrico</strong> se $\sigma T=T$ para toda $\sigma\in S_k$, o que equivale a dizer que
+                        $T$ não muda quando se trocam dois argumentos quaisquer. A <strong>simetrização</strong> de $T$ é
+                        $\operatorname{Sym}T=\dfrac{1}{k!}\displaystyle\sum_{\sigma\in S_k}\sigma T$.</p>
+                </div>
+
+                <div class="definition-box" id="prop-3-10-17">
+                    <p><strong>Proposição 3.10.17 (Propriedades de $\operatorname{Sym}$).</strong> (a)
+                        $\tau(\sigma T)=(\tau\sigma)T$. (b) $\operatorname{Sym}T$ é simétrico. (c)
+                        $\operatorname{Sym}T=T$ se, e só se, $T$ é simétrico; em particular, $\operatorname{Sym}\circ\operatorname{Sym}=\operatorname{Sym}$.
+                        (d) $T$ é simétrico se, e só se, $T_{i_1\dots i_k}=T_{i_{\sigma(1)}\dots i_{\sigma(k)}}$ em uma base (e então em toda base).</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Sejam $w_i=v_{\tau(i)}$. Então
+                    $$ \begin{aligned}(\tau(\sigma T))(v_1,\dots,v_k)&=(\sigma T)(w_1,\dots,w_k)=T(w_{\sigma(1)},\dots,w_{\sigma(k)})\\
+                    &=T(v_{\tau\sigma(1)},\dots,v_{\tau\sigma(k)})=((\tau\sigma)T)(v_1,\dots,v_k).\end{aligned} $$
+                    (b) Por (a), $\tau\operatorname{Sym}T=\frac{1}{k!}\sum_\sigma(\tau\sigma)T=\operatorname{Sym}T$, porque $\sigma\mapsto\tau\sigma$ é uma bijeção de $S_k$.
+                    (c) Se $T$ é simétrico, cada parcela $\sigma T$ vale $T$, e a média das $k!$ parcelas é $T$; reciprocamente, se
+                    $\operatorname{Sym}T=T$, então $T$ é simétrico por (b). (d) Avaliando $\sigma T$ em vetores da base,
+                    $(\sigma T)_{i_1\dots i_k}=T(E_{i_{\sigma(1)}},\dots,E_{i_{\sigma(k)}})=T_{i_{\sigma(1)}\dots i_{\sigma(k)}}$, e basta usar (3.10.1): $\sigma T=T$
+                    equivale à igualdade das componentes. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="def-3-10-18" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.10.18 (Produto simétrico).</strong> Para $\omega,\eta\in V^*$, o
+                        <strong>produto simétrico</strong> é</p>
+                    <p>$$ \omega\,\eta=\operatorname{Sym}(\omega\otimes\eta)=\tfrac12\big(\omega\otimes\eta+\eta\otimes\omega\big). $$</p>
+                </div>
+
+                <p>
+                    O produto simétrico é comutativo, e $\omega^2=\omega\,\omega=\omega\otimes\omega$. Em coordenadas, as componentes de
+                    $\omega\eta$ são $\tfrac12(\omega_i\eta_j+\omega_j\eta_i)$.
+                </p>
+
+                <p id="obs-3-10-19"><strong>Observação 3.10.19 ($dx^2$ não é uma $2$-forma).</strong> A notação $dx^2+dy^2$
+                    do cálculo, usada para o "elemento de linha" $ds^2$, designa o tensor simétrico
+                    $dx\otimes dx+dy\otimes dy$, e $dx\,dy$, o produto simétrico $\tfrac12(dx\otimes dy+dy\otimes dx)$. Nada tem a
+                    ver com o produto exterior do tópico 3.11, em que $dx\wedge dx=0$: aqui $dx^2=dx\otimes dx\neq0$ é um tensor simétrico de
+                    ordem $2$, não uma $2$-forma. Os tensores que, ao contrário, mudam de sinal quando se trocam dois argumentos,
+                    $T(\dots,v_i,\dots,v_j,\dots)=-T(\dots,v_j,\dots,v_i,\dots)$, são os <em>alternados</em>. Eles são o assunto do tópico 3.11,
+                    onde a operação análoga a $\operatorname{Sym}$, com o sinal $\operatorname{sgn}\sigma$ em cada parcela, será a $\operatorname{Alt}$.</p>
+
+                <h2 id="campos-tensoriais">Campos tensoriais em variedades</h2>
+
+                <p>
+                    Como nos tópicos 3.7 e 3.9, aplicamos a álgebra linear ponto a ponto: em cada $p\in M$, o espaço
+                    tangente $T_pM$ e seu dual $T_p^*M$ dão os espaços $T^{(r,s)}(T_pM)$, e reunimos todos em um só espaço.
+                    Em uma carta $(U,\varphi)$, a base $(\partial_i\vert_p)$ de $T_pM$ tem base dual $(dx^i\vert_p)$
+                    (<a href="[09] - Covetores e 1-Formas.html#prop-3-9-11">Proposição 3.9.11</a>), e o <a href="#teo-3-10-11">Teorema 3.10.11</a> dá a base de $T^{(r,s)}(T_pM)$ formada pelos produtos
+                    $\partial_{i_1}\vert_p\otimes\dots\otimes\partial_{i_r}\vert_p\otimes dx^{j_1}\vert_p\otimes\dots\otimes dx^{j_s}\vert_p$.
+                </p>
+
+                <div class="definition-box" id="def-3-10-20" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.10.20 (Fibrado tensorial e cartas naturais).</strong> O <strong>fibrado tensorial de
+                        tipo $(r,s)$</strong> de $M$ é $T^{(r,s)}TM=\bigsqcup_{p\in M}T^{(r,s)}(T_pM)$, com a projeção
+                        $\pi: T^{(r,s)}TM\to M$ que leva $T^{(r,s)}(T_pM)$ em $p$. Para uma carta $(U,\varphi)$ com coordenadas $(x^i)$, a
+                        <strong>carta natural</strong> é</p>
+                    <p>$$ \begin{aligned}&\Phi^{(r,s)}_\varphi:\pi^{-1}(U)\to\varphi(U)\times\mathbb{R}^{n^{r+s}},\\
+                        &\Phi^{(r,s)}_\varphi\big(A\big)=\Big(x^1(p),\dots,x^n(p),\ \big(A^{i_1\dots i_r}{}_{j_1\dots j_s}\big)\Big),\end{aligned} $$</p>
+                    <p>em que $A\in T^{(r,s)}(T_pM)$ e $A^{i_1\dots i_r}{}_{j_1\dots j_s}$ são as componentes (3.10.2) de $A$ nas bases
+                        $(\partial_i\vert_p)$ e $(dx^i\vert_p)$.</p>
+                </div>
+
+                <p>
+                    Para $(r,s)=(1,0)$ e $(0,1)$ obtêm-se, de novo, $TM$ e $T^*M$, com as cartas naturais $\Phi_\varphi$ (3.7.1) e $\Psi_\varphi$ (3.9.3).
+                    A transição entre duas cartas naturais é dada pela lei de transformação, agora com as jacobianas da mudança de coordenadas.
+                </p>
+
+                <div class="definition-box" id="prop-3-10-21">
+                    <p><strong>Proposição 3.10.21 (Lei de transformação com jacobianas).</strong> Sejam $(U,\varphi)$ e
+                        $(\tilde{U},\tilde{\varphi})$ cartas com coordenadas $(x^i)$ e $(\tilde{x}^i)$, e $A\in T^{(r,s)}(T_pM)$ com
+                        $p\in U\cap\tilde{U}$. As componentes de $A$ nas duas cartas estão ligadas por</p>
+                    <p>$$ \begin{aligned}\tilde{A}^{i_1\dots i_r}{}_{j_1\dots j_s}&=\frac{\partial\tilde{x}^{i_1}}{\partial x^{k_1}}\cdots\frac{\partial\tilde{x}^{i_r}}{\partial x^{k_r}}\\
+                        &\qquad\times\frac{\partial x^{l_1}}{\partial\tilde{x}^{j_1}}\cdots\frac{\partial x^{l_s}}{\partial\tilde{x}^{j_s}}\ A^{k_1\dots k_r}{}_{l_1\dots l_s},\end{aligned} \tag{3.10.4} $$</p>
+                    <p>com as jacobianas calculadas em $\varphi(p)$ ou em $\tilde{\varphi}(p)$, conforme a posição.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela <a href="[05] - Vetores Tangentes.html#prop-3-5-18">Proposição 3.5.18</a>, $\partial_i\vert_p=\dfrac{\partial\tilde{x}^j}{\partial x^i}\,\tilde{\partial}_j\vert_p$, e a
+                    matriz $\partial\tilde{x}^j/\partial x^i$ é invertível, com inversa $\partial x^i/\partial\tilde{x}^j$. Invertendo,
+                    $\tilde{\partial}_j\vert_p=\dfrac{\partial x^i}{\partial\tilde{x}^j}\,\partial_i\vert_p$: a mudança de base é $\tilde{E}_j=A^i{}_jE_i$
+                    com $A^i{}_j=\partial x^i/\partial\tilde{x}^j$, e $(A^{-1})^i{}_k=\partial\tilde{x}^i/\partial x^k$. A fórmula (3.10.4) é
+                    a (3.10.3) com essas matrizes. No caso $(1,1)$, por exemplo, $d\tilde{x}^i=\frac{\partial\tilde{x}^i}{\partial x^a}dx^a$ (<a href="[09] - Covetores e 1-Formas.html#prop-3-9-12">Proposição 3.9.12</a>) e
+                    $\tilde{\partial}_j=\frac{\partial x^b}{\partial\tilde{x}^j}\partial_b$ dão
+                    $\tilde{A}^i{}_j=A(d\tilde{x}^i,\tilde{\partial}_j)=\frac{\partial\tilde{x}^i}{\partial x^a}\frac{\partial x^b}{\partial\tilde{x}^j}A^a{}_b$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="teo-3-10-22">
+                    <p><strong>Teorema 3.10.22 ($T^{(r,s)}TM$ é um fibrado vetorial).</strong> $T^{(r,s)}TM$ tem uma
+                        topologia e uma estrutura diferenciável únicas para as quais todas as
+                        $\big(\pi^{-1}(U),\Phi^{(r,s)}_\varphi\big)$ são cartas suaves. Com elas, é uma variedade de dimensão
+                        $n+n^{r+s}$, $\pi$ é suave e $\pi: T^{(r,s)}TM\to M$ é um fibrado vetorial de posto $n^{r+s}$
+                        (<a href="[07] - Fibrado Tangente e Campos Vetoriais.html#def-3-7-5">Definição 3.7.5</a>).</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> É a prova do <a href="[07] - Fibrado Tangente e Campos Vetoriais.html#teo-3-7-2">Teorema 3.7.2</a> e do <a href="[09] - Covetores e 1-Formas.html#teo-3-9-17">Teorema 3.9.17</a>. Toma-se uma base enumerável de $M$ formada por domínios de
+                    cartas, e as cartas naturais correspondentes: bijeções de $\pi^{-1}(B)$ sobre $\varphi_B(B)\times\mathbb{R}^{n^{r+s}}$, com imagens abertas. Para duas
+                    cartas, com $\tau=\tilde{\varphi}\circ\varphi^{-1}$, a Proposição 3.10.21 dá
+                    $\Phi^{(r,s)}_{\tilde{\varphi}}\circ(\Phi^{(r,s)}_\varphi)^{-1}(x,a)=\big(\tau(x),\,\Lambda(x)\,a\big)$, em que $\Lambda(x)$ é a matriz
+                    $n^{r+s}\times n^{r+s}$ cujas entradas são produtos de $r$ entradas de $D\tau(x)$ e $s$ entradas de $D\tau(x)^{-1}$. Elas são suaves em $x$
+                    (a inversa de uma matriz suave e invertível tem entradas suaves, pela regra de Cramer), e a expressão é linear em $a$:
+                    a transição é suave. As hipóteses (iii) e (iv) do <a href="[03] - Variedades Diferenciáveis.html#lema-3-3-15">Lema 3.3.15</a> vêm da base enumerável e da propriedade de Hausdorff de $M$,
+                    como em 3.7.2, e o lema dá a variedade. A projeção $\pi$ é suave porque sua representação é $(x,a)\mapsto x$, e a trivialização local
+                    $(\varphi^{-1}\times\mathrm{id})\circ\Phi^{(r,s)}_\varphi$ é um difeomorfismo, linear em cada fibra: é a condição da <a href="[07] - Fibrado Tangente e Campos Vetoriais.html#def-3-7-5">Definição 3.7.5</a>. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="def-3-10-23" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.10.23 (Campo tensorial).</strong> Um <strong>campo tensorial</strong> de tipo $(r,s)$ em $M$
+                        é uma seção $A: M\to T^{(r,s)}TM$ (<a href="[07] - Fibrado Tangente e Campos Vetoriais.html#def-3-7-6">Definição 3.7.6</a>): a escolha de um tensor
+                        $A_p\in T^{(r,s)}(T_pM)$ em cada ponto. Em uma carta, as <strong>componentes</strong> de $A$ são as funções
+                        $A^{i_1\dots i_r}{}_{j_1\dots j_s}=A\big(dx^{i_1},\dots,dx^{i_r},\partial_{j_1},\dots,\partial_{j_s}\big):U\to\mathbb{R}$, e</p>
+                    <p>$$ A=A^{i_1\dots i_r}{}_{j_1\dots j_s}\ \partial_{i_1}\otimes\dots\otimes\partial_{i_r}\otimes dx^{j_1}\otimes\dots\otimes dx^{j_s}\quad\text{em }U. $$</p>
+                    <p>O conjunto dos campos tensoriais <em>suaves</em> (isto é, seções suaves) é denotado
+                        $\mathcal{T}^{(r,s)}(M)$, e escrevemos $\mathcal{T}^k(M)=\mathcal{T}^{(0,k)}(M)$ para os campos covariantes de ordem $k$.
+                        Daqui em diante, "campo tensorial" significa campo tensorial suave.</p>
+                </div>
+
+                <p>
+                    Os casos já conhecidos são $\mathcal{T}^{(0,0)}(M)=C^\infty(M)$, $\mathcal{T}^{(1,0)}(M)=\mathfrak{X}(M)$ e $\mathcal{T}^{(0,1)}(M)=\Omega^1(M)$.
+                </p>
+
+                <div class="definition-box" id="prop-3-10-24">
+                    <p><strong>Proposição 3.10.24 (Critérios de suavidade).</strong> Seja $A$ um campo de tensores de tipo
+                        $(r,s)$ em $M$. São equivalentes:</p>
+                    <p>(a) $A: M\to T^{(r,s)}TM$ é suave;</p>
+                    <p>(b) as componentes de $A$ são suaves nas cartas de algum atlas de $M$ (e então, por (3.10.4), em todas as cartas);</p>
+                    <p>(c) para todas $\omega^1,\dots,\omega^r\in\Omega^1(M)$ e $X_1,\dots,X_s\in\mathfrak{X}(M)$, a função
+                        $A(\omega^1,\dots,\omega^r,X_1,\dots,X_s)$, que em $p$ vale $A_p\big(\omega^1_p,\dots,\omega^r_p,X_1\vert_p,\dots,X_s\vert_p\big)$,
+                        é suave em $M$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> <strong>(a)$\Leftrightarrow$(b).</strong> Em coordenadas naturais, a representação de $A$ é
+                    $x\mapsto\big(x,\,(A^{i_1\dots i_r}{}_{j_1\dots j_s}\circ\varphi^{-1}(x))\big)$, suave se, e só se, as componentes o são, como na
+                    <a href="[07] - Fibrado Tangente e Campos Vetoriais.html#prop-3-7-8">Proposição 3.7.8</a> e na <a href="[09] - Covetores e 1-Formas.html#prop-3-9-19">Proposição 3.9.19</a>. <strong>(b)$\Rightarrow$(c).</strong> Por (3.10.2),
+                    $A(\omega^1,\dots,X_s)=A^{i_1\dots i_r}{}_{j_1\dots j_s}\,\omega^1_{i_1}\cdots\omega^r_{i_r}X_1^{j_1}\cdots X_s^{j_s}$ em cada domínio coordenado,
+                    um produto de funções suaves; a suavidade é local. <strong>(c)$\Rightarrow$(b).</strong> Seja $(U,\varphi)$ uma carta e $p\in U$.
+                    Tome um bump $\rho$ com $\rho\equiv1$ em uma vizinhança $W$ de $p$ e $\operatorname{supp}\rho\subset U$
+                    (<a href="[04] - Funções e Aplicações Suaves.html#prop-3-4-29">Proposição 3.4.29</a>). Os campos $\rho\,\partial_j$ e as $1$-formas $\rho\,dx^i$, estendidos por zero fora de $U$, são suaves em $M$ (como no
+                    <a href="[07] - Fibrado Tangente e Campos Vetoriais.html#lema-3-7-11">Lema 3.7.11</a> e na <a href="[09] - Covetores e 1-Formas.html#prop-3-9-19">Proposição 3.9.19</a>). Em $W$, a componente $A^{i_1\dots i_r}{}_{j_1\dots j_s}$ coincide com
+                    $A(\rho\,dx^{i_1},\dots,\rho\,dx^{i_r},\rho\,\partial_{j_1},\dots,\rho\,\partial_{j_s})$, suave por (c). As restrições das cartas a tais abertos $W$ formam um atlas. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="prop-3-10-25">
+                    <p><strong>Proposição 3.10.25 (Operações ponto a ponto).</strong> Sejam $A,B$ campos tensoriais e
+                        $f\in C^\infty(M)$. Então: (a) $A+B$ (do mesmo tipo) e $fA$ são campos tensoriais, e $\mathcal{T}^{(r,s)}(M)$ é um
+                        módulo sobre $C^\infty(M)$; (b) $A\otimes B$, definido por $(A\otimes B)_p=A_p\otimes B_p$, é um campo tensorial,
+                        com componentes $(A\otimes B)^{i_1\dots i_{r+r'}}{}_{j_1\dots j_{s+s'}}=A^{i_1\dots i_r}{}_{j_1\dots j_s}\,B^{i_{r+1}\dots i_{r+r'}}{}_{j_{s+1}\dots j_{s+s'}}$;
+                        (c) a contração $\operatorname{tr}A$, definida em cada ponto, é um campo tensorial, com componentes $A^{i_1\dots i_rk}{}_{j_1\dots j_sk}$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> As fórmulas para as componentes vêm de aplicar as definições de soma, de produto por função, de
+                    $\otimes$ (<a href="#def-3-10-9">Definição 3.10.9</a>) e de $\operatorname{tr}$ (<a href="#def-3-10-13">Definição 3.10.13</a>) aos vetores $\partial_j\vert_p$ e covetores $dx^i\vert_p$. Elas exprimem as
+                    componentes dos novos campos como somas e produtos das componentes de $A$, de $B$ e de $f$, que são suaves; pelo critério (b)
+                    da Proposição 3.10.24, os novos campos são suaves. $\blacksquare$
+                </p>
+
+                <p id="ex-3-10-26"><strong>Exemplo 3.10.26 (Dois campos tensoriais).</strong></p>
+                <ul>
+                    <li><strong>A identidade $\delta$.</strong> Em uma carta, seja $\delta=\partial_i\otimes dx^i$, de componentes
+                        $\delta^i{}_j$ (o delta de Kronecker). Em outra carta, por (3.10.4),
+                        $\tilde{\delta}^i{}_j=\frac{\partial\tilde{x}^i}{\partial x^a}\frac{\partial x^b}{\partial\tilde{x}^j}\delta^a{}_b=\frac{\partial\tilde{x}^i}{\partial x^a}\frac{\partial x^a}{\partial\tilde{x}^j}=\delta^i{}_j$:
+                        as componentes são as mesmas em toda carta. Intrinsecamente, $\delta_p(\omega,v)=\omega(v)$ é o tensor que a
+                        <a href="#prop-3-10-10">Proposição 3.10.10</a> associa à identidade de $T_pM$, e por isso está definido globalmente. É um campo tensorial $(1,1)$ suave,
+                        e $\operatorname{tr}\delta=n$.</li>
+                    <li><strong>$df\otimes dg$.</strong> Para $f,g\in C^\infty(M)$, $df\otimes dg\in\mathcal{T}^2(M)$ tem
+                        $(df\otimes dg)(X,Y)=(Xf)(Yg)$ e componentes $\partial_if\,\partial_jg$. Para $f=x$ e $g=y$ em $\mathbb{R}^2$, em coordenadas
+                        polares (com $dx=\cos\theta\,dr-r\sin\theta\,d\theta$ e $dy=\sin\theta\,dr+r\cos\theta\,d\theta$),
+                        $$ \begin{aligned}dx\otimes dy&=\sin\theta\cos\theta\ dr\otimes dr+r\cos^2\theta\ dr\otimes d\theta\\
+                        &\qquad-r\sin^2\theta\ d\theta\otimes dr-r^2\sin\theta\cos\theta\ d\theta\otimes d\theta.\end{aligned} $$</li>
+                </ul>
+
+                <h2 id="caracterizacao-tensorial">O lema de caracterização tensorial</h2>
+
+                <p>
+                    Uma operação sobre campos, como derivar ou formar o colchete, produz, em cada ponto, um número ou um vetor. Quando é que esse
+                    valor em $p$ só depende dos <em>valores</em> dos campos em $p$, isto é, quando a operação é um tensor? A resposta é uma só: quando
+                    a operação é linear não apenas sobre os números reais, mas sobre as <em>funções</em>. Esta é a propriedade que a
+                    <a href="[09] - Covetores e 1-Formas.html#obs-3-9-22">Observação 3.9.22</a> já notara nas $1$-formas.
+                </p>
+
+                <div class="definition-box" id="prop-3-10-27">
+                    <p><strong>Proposição 3.10.27 (Um tensor age sobre campos).</strong> Seja $A\in\mathcal{T}^k(M)$. A aplicação
+                        $\mathcal{A}:\mathfrak{X}(M)^k\to C^\infty(M)$,</p>
+                    <p>$$ \mathcal{A}(X_1,\dots,X_k)(p)=A_p\big(X_1\vert_p,\dots,X_k\vert_p\big), $$</p>
+                    <p>está bem definida e é <strong>multilinear sobre $C^\infty(M)$</strong>: para $f,g\in C^\infty(M)$ e em qualquer posição $i$,
+                        $\mathcal{A}(\dots,fX_i+gY_i,\dots)=f\,\mathcal{A}(\dots,X_i,\dots)+g\,\mathcal{A}(\dots,Y_i,\dots)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> A função $\mathcal{A}(X_1,\dots,X_k)$ é suave pelo critério (c) da <a href="#prop-3-10-24">Proposição 3.10.24</a>. Em cada $p$,
+                    $(fX_i+gY_i)\vert_p=f(p)X_i\vert_p+g(p)Y_i\vert_p$, e $A_p$ é linear no $i$-ésimo argumento. $\blacksquare$
+                </p>
+
+                <p>
+                    Isto é bem mais forte do que linearidade sobre $\mathbb{R}$: os "escalares" que saem de cada argumento são funções, que variam de ponto
+                    a ponto. O teorema abaixo diz que a recíproca vale.
+                </p>
+
+                <div class="definition-box" id="teo-3-10-28">
+                    <p><strong>Teorema 3.10.28 (Lema de caracterização tensorial).</strong> Seja
+                        $\mathcal{A}:\mathfrak{X}(M)^k\to C^\infty(M)$ uma aplicação multilinear sobre $C^\infty(M)$. Existe um único campo
+                        tensorial $A\in\mathcal{T}^k(M)$ tal que $\mathcal{A}(X_1,\dots,X_k)(p)=A_p\big(X_1\vert_p,\dots,X_k\vert_p\big)$ para
+                        todos os campos $X_i$ e todo $p$. Em suma, os campos tensoriais covariantes de ordem $k$ são exatamente as aplicações
+                        $C^\infty(M)$-multilineares $\mathfrak{X}(M)^k\to C^\infty(M)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Fixe $p\in M$. <strong>Passo 1 (localidade).</strong> Suponha que, para algum $i$, o campo $X_i$ se anula em
+                    um aberto $U\ni p$. Seja $\psi\in C^\infty(M)$ com $\psi(p)=1$ e $\operatorname{supp}\psi\subset U$ (<a href="[04] - Funções e Aplicações Suaves.html#prop-3-4-29">Proposição 3.4.29</a>). Então
+                    $\psi X_i=0$ em $M$ inteiro: em $U$, porque $X_i=0$; fora de $U$, porque $\psi=0$. Pela linearidade sobre $C^\infty(M)$,
+                    $$ \begin{aligned}0&=\mathcal{A}(X_1,\dots,\psi X_i,\dots,X_k)(p)\\
+                    &=\psi(p)\,\mathcal{A}(X_1,\dots,X_i,\dots,X_k)(p)=\mathcal{A}(X_1,\dots,X_k)(p).\end{aligned} $$
+                    (A primeira igualdade vale porque $\psi X_i$ é o campo nulo e $\mathcal{A}$ é linear em cada entrada.) Se dois campos coincidem em uma vizinhança de $p$ na
+                    $i$-ésima entrada, a diferença se anula nessa vizinhança, e os valores de $\mathcal{A}$ em $p$ coincidem.
+                </p>
+
+                <p>
+                    <strong>Passo 2 (pontualidade).</strong> Se $X_i\vert_p=0$ para algum $i$, então $\mathcal{A}(X_1,\dots,X_k)(p)=0$. De fato, tome uma carta
+                    $(U,\varphi)$ em torno de $p$ e escreva $X_i=X_i^j\,\partial_j$ em $U$, com $X_i^j\in C^\infty(U)$. Seja $\rho$ um bump com $\rho\equiv1$ em uma
+                    vizinhança $W$ de $p$ e $\operatorname{supp}\rho\subset U$. Os campos $E_j=\rho\,\partial_j$ (estendidos por zero) e as funções $f^j=\rho\,X_i^j$
+                    (estendidas por zero) são suaves em $M$, e em $W$ vale $f^jE_j=X_i$. Pelo Passo 1 e pela linearidade,
+                    $$ \mathcal{A}(\dots,X_i,\dots)(p)=\mathcal{A}(\dots,f^jE_j,\dots)(p)=f^j(p)\,\mathcal{A}(\dots,E_j,\dots)(p)=0, $$
+                    porque $f^j(p)=X_i^j(p)=0$ (as componentes de $X_i\vert_p=0$).
+                </p>
+
+                <p>
+                    <strong>Passo 3 (só importam os valores em $p$).</strong> Se $X_i\vert_p=Y_i\vert_p$ para todo $i$, então
+                    $\mathcal{A}(X_1,\dots,X_k)(p)=\mathcal{A}(Y_1,\dots,Y_k)(p)$. De fato, por aditividade em cada entrada,
+                    $$ \begin{aligned}&\mathcal{A}(X_1,\dots,X_k)-\mathcal{A}(Y_1,\dots,Y_k)\\
+                    &\qquad=\sum_{i=1}^k\mathcal{A}(Y_1,\dots,Y_{i-1},X_i-Y_i,X_{i+1},\dots,X_k),\end{aligned} $$
+                    e cada parcela se anula em $p$ pelo Passo 2, já que $(X_i-Y_i)\vert_p=0$.
+                </p>
+
+                <p>
+                    <strong>Passo 4 (o tensor).</strong> Para $v_1,\dots,v_k\in T_pM$, escolha $V_i\in\mathfrak{X}(M)$ com $V_i\vert_p=v_i$ (<a href="[07] - Fibrado Tangente e Campos Vetoriais.html#lema-3-7-11">Lema 3.7.11</a>) e defina
+                    $A_p(v_1,\dots,v_k)=\mathcal{A}(V_1,\dots,V_k)(p)$. O valor não depende das extensões, pelo Passo 3. Ele é multilinear em
+                    $(v_1,\dots,v_k)$: se $V_1$ e $V_1'$ estendem $v_1$ e $v_1'$, então $aV_1+bV_1'$ estende $av_1+bv_1'$, e $\mathcal{A}$ é linear (as constantes são funções). Logo $A_p\in T^k(T_p^*M)$.
+                    <em>Suavidade.</em> Com $(U,\varphi)$, $\rho$, $W$ e $E_j=\rho\,\partial_j$ como no Passo 2, para $q\in W$ vale $E_j\vert_q=\partial_j\vert_q$ e, portanto,
+                    $A_{i_1\dots i_k}(q)=A_q(\partial_{i_1}\vert_q,\dots,\partial_{i_k}\vert_q)=\mathcal{A}(E_{i_1},\dots,E_{i_k})(q)$. O lado direito é uma função
+                    suave em $M$, por hipótese; as componentes são suaves em $W$, e $A$ é suave pelo critério (b) da Proposição 3.10.24.
+                    <em>Conclusão.</em> Por construção, $A$ induz $\mathcal{A}$ (tome $V_i=X_i$). Se $A'$ também induz $\mathcal{A}$, então
+                    $A'_p(v_1,\dots,v_k)=\mathcal{A}(V_1,\dots,V_k)(p)=A_p(v_1,\dots,v_k)$ para extensões quaisquer, e $A'=A$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="teo-3-10-29">
+                    <p><strong>Teorema 3.10.29 (Versão mista).</strong> Seja
+                        $\mathcal{A}:\Omega^1(M)^r\times\mathfrak{X}(M)^s\to C^\infty(M)$ multilinear sobre $C^\infty(M)$. Existe um único
+                        $A\in\mathcal{T}^{(r,s)}(M)$ com
+                        $\mathcal{A}(\omega^1,\dots,\omega^r,X_1,\dots,X_s)(p)=A_p\big(\omega^1_p,\dots,\omega^r_p,X_1\vert_p,\dots,X_s\vert_p\big)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Repete-se a prova do Teorema 3.10.28, com três adaptações para as entradas que são $1$-formas. No Passo 1, se
+                    $\omega^a$ se anula em $U\ni p$, o mesmo bump $\psi$ dá $\psi\,\omega^a=0$. No Passo 2, se $\omega^a_p=0$, escreve-se
+                    $\omega^a=\omega_j\,dx^j$ em $U$ (com $\omega_j\in C^\infty(U)$, pela <a href="[09] - Covetores e 1-Formas.html#prop-3-9-19">Proposição 3.9.19</a>) e usam-se as $1$-formas globais $\varepsilon^j=\rho\,dx^j$ e as funções globais
+                    $f_j=\rho\,\omega_j$: perto de $p$, $\omega^a=f_j\varepsilon^j$, e o valor em $p$ é $f_j(p)\,\mathcal{A}(\dots,\varepsilon^j,\dots)(p)=0$, porque $f_j(p)=\omega_j(p)=0$.
+                    O Passo 3 (a soma telescópica) é idêntico. No Passo 4, todo covetor $\xi\in T_p^*M$ se estende a uma $1$-forma global,
+                    $\rho\,\xi_j\,dx^j$, e define-se $A_p(\xi^1,\dots,\xi^r,v_1,\dots,v_s)=\mathcal{A}(\Xi^1,\dots,\Xi^r,V_1,\dots,V_s)(p)$ com extensões quaisquer; perto de
+                    $p$, as componentes são $\mathcal{A}(\rho\,dx^{i_1},\dots,\rho\,dx^{i_r},\rho\,\partial_{j_1},\dots,\rho\,\partial_{j_s})$, suaves. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="cor-3-10-30">
+                    <p><strong>Corolário 3.10.30 ($1$-formas e campos como aplicações $C^\infty(M)$-lineares).</strong> (a) Toda aplicação
+                        $C^\infty(M)$-linear $\mathfrak{X}(M)\to C^\infty(M)$ é da forma $X\mapsto\omega(X)$ para uma única
+                        $\omega\in\Omega^1(M)$. (b) Toda aplicação $C^\infty(M)$-linear $\Omega^1(M)\to C^\infty(M)$ é da forma
+                        $\omega\mapsto\omega(X)$ para um único $X\in\mathfrak{X}(M)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) é o Teorema 3.10.28 com $k=1$; (b) é o Teorema 3.10.29 com $(r,s)=(1,0)$, lembrando que
+                    $\mathcal{T}^{(1,0)}(M)=\mathfrak{X}(M)$. $\blacksquare$
+                </p>
+
+                <p>
+                    O item (a) cumpre a promessa da <a href="[09] - Covetores e 1-Formas.html#obs-3-9-22">Observação 3.9.22</a>: a propriedade de ser $C^\infty(M)$-linear, que toda $1$-forma tem,
+                    <em>caracteriza</em> as $1$-formas. Os exemplos abaixo mostram o critério em ação, nos dois sentidos.
+                </p>
+
+                <p id="ex-3-10-31"><strong>Exemplo 3.10.31 (O colchete de Lie não é um tensor).</strong> Considere
+                    $(\omega,X,Y)\mapsto\omega([X,Y])$, de $\Omega^1(M)\times\mathfrak{X}(M)^2$ em $C^\infty(M)$. Pela
+                    <a href="[07] - Fibrado Tangente e Campos Vetoriais.html#prop-3-7-22">Proposição 3.7.22</a>(d), $[X,fY]=f[X,Y]+(Xf)\,Y$, de modo que</p>
+                <p>$$ \omega([X,fY])=f\,\omega([X,Y])+(Xf)\,\omega(Y). $$</p>
+                <p>O termo $(Xf)\,\omega(Y)$ impede a linearidade sobre $C^\infty(M)$ em $Y$: em $M=\mathbb{R}$, com $X=Y=\partial_x$,
+                    $\omega=dx$ e $f=x$, tem-se $\omega([X,fY])=\omega(\partial_x)=1$, enquanto $f\,\omega([X,Y])=0$. Se o colchete fosse um tensor, a
+                    <a href="#prop-3-10-27">Proposição 3.10.27</a> o tornaria $C^\infty(M)$-linear; como não é, o valor de $[X,Y]$ em $p$ <em>não</em> é função de $X_p$ e $Y_p$. Ele
+                    depende das derivadas dos campos, como já se via em (3.7.5). Isto cumpre a promessa da <a href="[07] - Fibrado Tangente e Campos Vetoriais.html#obs-3-7-23">Observação 3.7.23</a>.</p>
+
+                <p id="ex-3-10-32"><strong>Exemplo 3.10.32 (A "hessiana" não é um tensor).</strong> Fixe $f\in C^\infty(M)$ e considere
+                    $H(X,Y)=X(Yf)$. É $C^\infty(M)$-linear em $X$, porque $(gX)(Yf)=g\,X(Yf)$. Mas, em $Y$,
+                    $X\big((gY)f\big)=X\big(g\,Yf\big)=(Xg)(Yf)+g\,X(Yf)$, e o termo $(Xg)(Yf)$ destrói a linearidade: em $M=\mathbb{R}$,
+                    com $f=x$, $X=Y=\partial_x$ e $g=x$, vale $X((gY)f)=1$ e $g\,X(Yf)=0$. Assim, as "segundas derivadas" $\partial_i\partial_jf$ não são as
+                    componentes de um tensor em geral. Em um ponto crítico de $f$ (onde $df_p=0$), a situação é outra: o Exercício 3.10.5
+                    mostra que o valor em $p$ só depende de $X_p$ e $Y_p$.</p>
+
+                <p id="ex-3-10-33"><strong>Exemplo 3.10.33 (Um tensor inesperado).</strong> Para $\omega\in\Omega^1(M)$, defina</p>
+                <p>$$ \Delta_\omega(X,Y)=X\big(\omega(Y)\big)-Y\big(\omega(X)\big)-\omega([X,Y]). $$</p>
+                <p>Nenhuma das três parcelas é, sozinha, $C^\infty(M)$-bilinear (os Exemplos 3.10.31 e 3.10.32 mostram como derivar e formar o colchete quebram a linearidade),
+                    mas a soma é. De fato, para $f\in C^\infty(M)$,
+                    $$ \begin{aligned}
+                    \Delta_\omega(X,fY)&=X\big(f\,\omega(Y)\big)-fY\big(\omega(X)\big)-\omega\big(f[X,Y]+(Xf)Y\big)\\
+                    &=(Xf)\,\omega(Y)+f\,X(\omega(Y))-f\,Y(\omega(X))\\
+                    &\qquad-f\,\omega([X,Y])-(Xf)\,\omega(Y)=f\,\Delta_\omega(X,Y),
+                    \end{aligned} $$
+                    pois os termos com derivadas de $f$ se cancelam. Como $\Delta_\omega(Y,X)=-\Delta_\omega(X,Y)$, a linearidade em $X$ segue:
+                    $\Delta_\omega(fX,Y)=-\Delta_\omega(Y,fX)=-f\,\Delta_\omega(Y,X)=f\,\Delta_\omega(X,Y)$. Pelo Teorema 3.10.28, $\Delta_\omega$ é um
+                    campo tensorial $\Delta_\omega\in\mathcal{T}^2(M)$, antissimétrico. Suas componentes são
+                    $(\Delta_\omega)_{ij}=\Delta_\omega(\partial_i,\partial_j)=\partial_i\omega_j-\partial_j\omega_i-\omega([\partial_i,\partial_j])=\partial_i\omega_j-\partial_j\omega_i$, porque os campos
+                    coordenados comutam (<a href="[07] - Fibrado Tangente e Campos Vetoriais.html#ex-3-7-24">Exemplo 3.7.24</a>). (Todas as operações da definição de $\Delta_\omega$ são locais, e podem ser calculadas em $U$ com campos
+                    definidos apenas em $U$.)</p>
+                <p>Duas observações. Primeiro, a condição (3.9.6) de $\omega$ ser fechada diz exatamente que $\Delta_\omega=0$: como $\Delta_\omega$ é um tensor,
+                    anula-se em uma carta se, e só se, em todas, o que dá uma segunda prova de que a condição não depende da carta (<a href="[09] - Covetores e 1-Formas.html#prop-3-9-41">Proposição 3.9.41</a>). Segundo,
+                    anunciamos que $\Delta_\omega$ é a derivada exterior $d\omega$ do tópico 3.13, e que a fórmula acima é a expressão invariante $d\omega(X,Y)=X(\omega(Y))-Y(\omega(X))-\omega([X,Y])$
+                    da convenção adotada para o capítulo.</p>
+
+                <p id="obs-3-10-34"><strong>Observação 3.10.34 (O teste do físico e a $C^\infty(M)$-linearidade são o mesmo critério).</strong> Os físicos
+                    reconhecem um tensor pela lei de transformação das componentes: se aparecem derivadas da jacobiana, não é um tensor.
+                    Tome as derivadas $\partial_j\omega_i$ de uma $1$-forma. Como $\tilde{\omega}_i=\frac{\partial x^a}{\partial\tilde{x}^i}\omega_a$ (<a href="[09] - Covetores e 1-Formas.html#prop-3-9-14">Proposição 3.9.14</a>), a regra do produto dá
+                    $$ \tilde{\partial}_j\tilde{\omega}_i=\frac{\partial x^b}{\partial\tilde{x}^j}\frac{\partial x^a}{\partial\tilde{x}^i}\,\partial_b\omega_a+\frac{\partial^2x^a}{\partial\tilde{x}^j\partial\tilde{x}^i}\,\omega_a. $$
+                    A primeira parcela é a lei tensorial (3.10.4); a segunda contém as segundas derivadas da mudança de coordenadas, e estraga a lei.
+                    Um exemplo concreto: $\omega=dx$ em $\mathbb{R}^2$ tem componentes constantes $(1,0)$ em coordenadas cartesianas, de modo que todos os
+                    $\partial_b\omega_a$ se anulam; em polares, $dx=\cos\theta\,dr-r\sin\theta\,d\theta$ e $\partial_\theta\omega_\theta=-r\cos\theta\neq0$.
+                    Um tensor que se anula em uma carta se anula em todas, logo $\partial_j\omega_i$ não é um tensor. É a mesma falha de $C^\infty(M)$-linearidade:
+                    $X(\omega(Y))=X^jY^i\partial_j\omega_i+\omega_i\,X(Y^i)$, e o último termo é a parte não tensorial. Por fim, o termo extra é simétrico em $(i,j)$
+                    (pela igualdade das derivadas mistas, <a href="[02] - Preliminares de Topologia e Cálculo.html#teo-3-2-45">Teorema 3.2.45</a>), e portanto <em>desaparece</em> na antissimetrização $\partial_i\omega_j-\partial_j\omega_i$:
+                    esta é a razão pela qual $\Delta_\omega$ é um tensor, e o primeiro indício de que a derivada exterior exigirá antissimetria.</p>
+
+                <h2 id="pullback-tensores">Pullback de campos tensoriais covariantes</h2>
+
+                <p>
+                    No tópico 3.9, vimos que $1$-formas podem ser puxadas para trás por <em>qualquer</em> aplicação suave
+                    (<a href="[09] - Covetores e 1-Formas.html#obs-3-9-25">Observação 3.9.25</a>): como $dF_p$ vai de $T_pM$ a $T_{F(p)}N$, um covetor em $F(p)$ é, por composição, um covetor em $p$. O mesmo vale para
+                    tensores covariantes de qualquer ordem, e pela mesma razão: cada argumento vetorial é transportado por $dF_p$.
+                </p>
+
+                <div class="definition-box" id="def-3-10-35" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.10.35 (Pullback de tensores covariantes).</strong> Sejam $F: M\to N$ uma aplicação
+                        suave e $B\in\mathcal{T}^k(N)$. O <strong>pullback</strong> (ou <strong>retrocesso</strong>) $F^*B$ é o
+                        campo de tensores covariantes de ordem $k$ em $M$ dado por</p>
+                    <p>$$ (F^*B)_p(v_1,\dots,v_k)=B_{F(p)}\big(dF_p\,v_1,\dots,dF_p\,v_k\big) $$</p>
+                    <p>para $v_1,\dots,v_k\in T_pM$.</p>
+                    <p>Para $k=0$, $F^*f=f\circ F$; para $k=1$, é a <a href="[09] - Covetores e 1-Formas.html#def-3-9-24">Definição 3.9.24</a>.</p>
+                </div>
+
+                <div class="definition-box" id="prop-3-10-36">
+                    <p><strong>Proposição 3.10.36 (Propriedades do pullback).</strong> Sejam $F: M\to N$ e $G: N\to P$ suaves,
+                        $A,B\in\mathcal{T}^k(N)$, $C\in\mathcal{T}^l(N)$, $D\in\mathcal{T}^k(P)$ e $f\in C^\infty(N)$. Então:</p>
+                    <p>(a) $F^*(fB)=(f\circ F)\,F^*B$;</p>
+                    <p>(b) $F^*(B\otimes C)=F^*B\otimes F^*C$;</p>
+                    <p>(c) $F^*(A+B)=F^*A+F^*B$;</p>
+                    <p>(d) $(G\circ F)^*D=F^*(G^*D)$;</p>
+                    <p>(e) $F^*B$ é suave e, com coordenadas $x^i$ em $M$ e $y^j$ em $N$,</p>
+                    <p>$$ \begin{aligned}&F^*\big(B_{j_1\dots j_k}\,dy^{j_1}\otimes\dots\otimes dy^{j_k}\big)\\
+                        &\qquad=\big(B_{j_1\dots j_k}\circ F\big)\ dF^{j_1}\otimes\dots\otimes dF^{j_k},\\
+                        &\text{com}\quad dF^j=d(y^j\circ F)=\frac{\partial\hat{F}^j}{\partial x^i}\,dx^i.\end{aligned} \tag{3.10.5} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Para $v_1,\dots,v_k\in T_pM$,
+                    $$ \begin{aligned}&(F^*(fB))_p(v_1,\dots,v_k)\\
+                    &\qquad=f(F(p))\,B_{F(p)}(dF_pv_1,\dots,dF_pv_k)=\big((f\circ F)\,F^*B\big)_p(v_1,\dots,v_k).\end{aligned} $$
+                    (b) Pela definição do produto tensorial, para $v_1,\dots,v_{k+l}\in T_pM$,
+                    $$ \begin{aligned}&(F^*(B\otimes C))_p(v_1,\dots,v_{k+l})\\
+                    &\qquad=B_{F(p)}(dF_pv_1,\dots,dF_pv_k)\\
+                    &\qquad\quad\times C_{F(p)}(dF_pv_{k+1},\dots,dF_pv_{k+l})\\
+                    &\qquad=(F^*B\otimes F^*C)_p(v_1,\dots,v_{k+l}).\end{aligned} $$
+                    (c) Imediato da linearidade de cada $B_{F(p)}$ em $B$. (d) Pela regra da cadeia, $d(G\circ F)_p=dG_{F(p)}\circ dF_p$ (<a href="[05] - Vetores Tangentes.html#prop-3-5-11">Proposição 3.5.11</a>), e portanto
+                    $$ \begin{aligned}&((G\circ F)^*D)_p(v_1,\dots,v_k)\\
+                    &\qquad=D_{GF(p)}\big(dG_{F(p)}dF_pv_1,\dots,dG_{F(p)}dF_pv_k\big)\\
+                    &\qquad=(G^*D)_{F(p)}(dF_pv_1,\dots,dF_pv_k)=(F^*G^*D)_p(v_1,\dots,v_k).\end{aligned} $$
+                    (e) Em uma carta $(V,\psi)$ de $N$, $B=B_{j_1\dots j_k}\,dy^{j_1}\otimes\dots\otimes dy^{j_k}$, e em $F^{-1}(V)$, por (a) e (b),
+                    $F^*B=(B_{j_1\dots j_k}\circ F)\,F^*dy^{j_1}\otimes\dots\otimes F^*dy^{j_k}$, com $F^*dy^j=d(y^j\circ F)$ pela <a href="[09] - Covetores e 1-Formas.html#prop-3-9-26">Proposição 3.9.26</a>(c); e
+                    $d(y^j\circ F)=\frac{\partial\hat{F}^j}{\partial x^i}dx^i$ pela <a href="[09] - Covetores e 1-Formas.html#prop-3-9-12">Proposição 3.9.12</a>. Isto é (3.10.5). Em componentes,
+                    $(F^*B)_{i_1\dots i_k}=(B_{j_1\dots j_k}\circ F)\,\frac{\partial\hat{F}^{j_1}}{\partial x^{i_1}}\cdots\frac{\partial\hat{F}^{j_k}}{\partial x^{i_k}}$, produtos e somas de
+                    funções suaves; pelo critério (b) da <a href="#prop-3-10-24">Proposição 3.10.24</a>, $F^*B$ é suave. $\blacksquare$
+                </p>
+
+                <p>
+                    A Equação (3.10.5) é a <strong>receita</strong> do tópico 3.9, estendida: para puxar um tensor covariante, <em>substitua</em> $y=F(x)$ nas componentes
+                    e <em>troque</em> cada $dy^j$ por $d(y^j\circ F)$, mantendo os produtos tensoriais.
+                </p>
+
+                <p id="obs-3-10-37"><strong>Observação 3.10.37 (Índices contravariantes e mudança de coordenadas).</strong> Tensores com índices de cima só se
+                    transportam por difeomorfismos, como os campos vetoriais (<a href="[07] - Fibrado Tangente e Campos Vetoriais.html#prop-3-7-29">Proposição 3.7.29</a>): é preciso ir de volta pelo inverso de $dF$. Uma
+                    mudança de coordenadas é, ela própria, um pullback: se $(U,\varphi)$ é uma carta, as componentes de $A\in\mathcal{T}^k(M)$ em $U$ são as de
+                    $(\varphi^{-1})^*A$, o campo em $\varphi(U)\subset\mathbb{R}^n$ com as mesmas componentes. Os fluxos do tópico 3.8 também atuam por pullback
+                    ($\theta_t^*A$), e a derivada de Lie de tensores, definida a partir disso, fica para o tópico 3.14.</p>
+
+                <h2 id="metrica-exemplo">Exemplo central: a métrica como campo tensorial</h2>
+
+                <p>
+                    Esta seção usa os tensores para apresentar o exemplo que dá a Relatividade Geral o seu objeto fundamental. <strong>Aviso:</strong> a métrica
+                    entra aqui <em>apenas como exemplo</em> de campo tensorial $(0,2)$. A teoria (comprimentos, ângulos, geodésicas, conexão, curvatura) é
+                    tema de outro capítulo, e nada do que falta para o Teorema de Stokes depende dela.
+                </p>
+
+                <div class="definition-box" id="def-3-10-38" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.10.38 (Métrica).</strong> Um campo tensorial $g\in\mathcal{T}^2(M)$ é uma
+                        <strong>métrica pseudo-riemanniana</strong> se, em cada ponto, $g_p$ é <em>simétrico</em>, $g_p(v,w)=g_p(w,v)$, e
+                        <em>não degenerado</em>: se $g_p(v,w)=0$ para todo $w$, então $v=0$. É <strong>riemanniana</strong> se,
+                        além disso, $g_p(v,v)\gt0$ para todo $v\neq0$, e <strong>lorentziana</strong> se cada $T_pM$ tem uma base $(E_\mu)$ com
+                        $g_p(E_\mu,E_\nu)=\eta_{\mu\nu}=\operatorname{diag}(-1,1,\dots,1)$. Em uma carta,</p>
+                    <p>$$ g=g_{ij}\,dx^i\otimes dx^j=g_{ij}\,dx^i\,dx^j, \qquad g_{ij}=g_{ji}, $$</p>
+                    <p>em que a segunda igualdade usa o produto simétrico (<a href="#def-3-10-18">Definição 3.10.18</a>): como $g_{ij}$ é simétrico,
+                        $g_{ij}\,\tfrac12(dx^i\otimes dx^j+dx^j\otimes dx^i)=g_{ij}\,dx^i\otimes dx^j$. É a notação $ds^2=g_{ij}\,dx^idx^j$ do elemento de linha.</p>
+                </div>
+
+                <p id="ex-3-10-39"><strong>Exemplo 3.10.39 (A métrica euclidiana em polares e em esféricas).</strong> Em $\mathbb{R}^n$, a
+                    <strong>métrica euclidiana</strong> é $\bar{g}=\delta_{ij}\,dx^i\otimes dx^j=(dx^1)^2+\dots+(dx^n)^2$; é simétrica e riemanniana,
+                    pois $\bar{g}(v,v)=\sum_i(v^i)^2\gt0$ se $v\neq0$. Seja $F$ uma aplicação suave de um aberto $\Omega\subset\mathbb{R}^m$ em $\mathbb{R}^n$. Por (3.10.5),
+                    $F^*\bar{g}=\sum_jdF^j\otimes dF^j$, com componentes</p>
+                <p>$$ (F^*\bar{g})_{ab}=\sum_j\frac{\partial F^j}{\partial x^a}\,\frac{\partial F^j}{\partial x^b}, \tag{3.10.6} $$</p>
+                <p>isto é, a matriz das componentes de $F^*\bar{g}$ é $J^{\mathsf{T}}J$, em que $J$ é a matriz jacobiana de $F$. <em>Polares:</em> $F(r,\theta)=(r\cos\theta,r\sin\theta)$ tem
+                    $dF^1=\cos\theta\,dr-r\sin\theta\,d\theta$ e $dF^2=\sin\theta\,dr+r\cos\theta\,d\theta$, e
+                    $$ \begin{aligned}(F^*\bar{g})_{rr}&=\cos^2\theta+\sin^2\theta=1, \\
+                    (F^*\bar{g})_{r\theta}&=-r\sin\theta\cos\theta+r\sin\theta\cos\theta=0, \\
+                    (F^*\bar{g})_{\theta\theta}&=r^2\sin^2\theta+r^2\cos^2\theta=r^2. \end{aligned} $$
+                    Logo $F^*\bar{g}=dr\otimes dr+r^2\,d\theta\otimes d\theta=dr^2+r^2\,d\theta^2$: os termos cruzados em $dr\,d\theta$ se cancelam, e a métrica
+                    do plano em polares é diagonal, com $g_{\theta\theta}=r^2$. <em>Esféricas:</em> para
+                    $F(r,\theta,\phi)=(r\sin\theta\cos\phi,\ r\sin\theta\sin\phi,\ r\cos\theta)$,
+                    $$ \begin{aligned}
+                    dF^1&=\sin\theta\cos\phi\,dr+r\cos\theta\cos\phi\,d\theta-r\sin\theta\sin\phi\,d\phi,\\
+                    dF^2&=\sin\theta\sin\phi\,dr+r\cos\theta\sin\phi\,d\theta+r\sin\theta\cos\phi\,d\phi,\\
+                    dF^3&=\cos\theta\,dr-r\sin\theta\,d\theta.
+                    \end{aligned} $$
+                    As entradas diagonais de (3.10.6) são $\sin^2\theta(\cos^2\phi+\sin^2\phi)+\cos^2\theta=1$, $\ r^2\cos^2\theta(\cos^2\phi+\sin^2\phi)+r^2\sin^2\theta=r^2$ e
+                    $r^2\sin^2\theta(\sin^2\phi+\cos^2\phi)=r^2\sin^2\theta$; as fora da diagonal se anulam, por exemplo
+                    $(F^*\bar{g})_{r\theta}=r\sin\theta\cos\theta(\cos^2\phi+\sin^2\phi)-r\sin\theta\cos\theta=0$ e
+                    $(F^*\bar{g})_{r\phi}=-r\sin^2\theta\sin\phi\cos\phi+r\sin^2\theta\sin\phi\cos\phi=0$. Assim</p>
+                <p>$$ F^*\bar{g}=dr^2+r^2\,d\theta^2+r^2\sin^2\theta\,d\phi^2. $$</p>
+                <p>Em cada caso, como $F$ é a inversa de uma carta (a carta polar ou esférica, nos abertos onde $F$ é difeomorfismo sobre a imagem), $F^*\bar{g}$
+                    é a expressão de $\bar{g}$ <em>naquela carta</em> (<a href="#obs-3-10-37">Observação 3.10.37</a>). É a mesma conta que a lei de transformação (3.10.4) para um tensor $(0,2)$,
+                    como o Exercício 3.10.3 mostra.</p>
+
+                <figure class="lecture-figure" id="fig-3-10-1" style="overflow-x: auto; overflow-y: hidden;">
+                    <svg viewBox="0 0 640 300" role="img" style="min-width: 560px;" aria-label="Dois painéis. À esquerda, um quarto de plano com a malha polar: arcos de circunferência de raios 1, 2, 3 e 4 e raios saindo da origem de quinze em quinze graus, do eixo horizontal ao vertical. Uma célula da malha, entre os raios 2,6 e 3,2 e entre os ângulos 30 e 45 graus, está sombreada. À direita, essa célula ampliada: um quase retângulo com dois arcos e dois lados radiais, de lados dr, no sentido radial, e r vezes d teta, no sentido angular. Do vértice inferior direito, de coordenadas r e teta, saem dois vetores, um para cima, ao longo de d por d r, e outro para a esquerda, ao longo de um sobre r vezes d por d teta.">
+<defs><marker id="arr-3-10-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<rect x="14" y="16" width="300" height="272" rx="3" class="fig-frame"/>
+<text x="24" y="36" class="fig-label">(a)</text>
+<path d="M100,262 L100,260.6 L99.9,259.2 L99.8,257.8 L99.7,256.4 L99.5,255 L99.3,253.6 L99.1,252.2 L98.8,250.8 L98.5,249.4 L98.2,248 L97.8,246.7 L97.4,245.3 L96.9,244 L96.4,242.6 L95.9,241.3 L95.3,240 L94.7,238.8 L94.1,237.5 L93.5,236.2 L92.8,235 L92,233.8 L91.3,232.6 L90.5,231.4 L89.7,230.3 L88.8,229.1 L88,228 L87.1,226.9 L86.1,225.9 L85.2,224.8 L84.2,223.8 L83.2,222.8 L82.1,221.9 L81.1,220.9 L80,220 L78.9,219.2 L77.7,218.3 L76.6,217.5 L75.4,216.7 L74.2,216 L73,215.2 L71.8,214.5 L70.5,213.9 L69.2,213.3 L68,212.7 L66.7,212.1 L65.4,211.6 L64,211.1 L62.7,210.6 L61.3,210.2 L60,209.8 L58.6,209.5 L57.2,209.2 L55.8,208.9 L54.4,208.7 L53,208.5 L51.6,208.3 L50.2,208.2 L48.8,208.1 L47.4,208 L46,208" class="fig-guide"/>
+<text x="100" y="279" text-anchor="middle" class="fig-label fig-small fig-it">r = 1</text>
+<path d="M154,262 L154,259.2 L153.9,256.3 L153.7,253.5 L153.4,250.7 L153.1,247.9 L152.7,245.1 L152.2,242.3 L151.6,239.5 L151,236.8 L150.3,234 L149.6,231.3 L148.7,228.6 L147.8,225.9 L146.8,223.3 L145.8,220.7 L144.7,218.1 L143.5,215.5 L142.2,213 L140.9,210.5 L139.5,208 L138.1,205.6 L136.6,203.2 L135,200.8 L133.4,198.5 L131.7,196.3 L129.9,194 L128.1,191.9 L126.3,189.7 L124.3,187.7 L122.4,185.6 L120.3,183.7 L118.3,181.7 L116.1,179.9 L114,178.1 L111.7,176.3 L109.5,174.6 L107.2,173 L104.8,171.4 L102.4,169.9 L100,168.5 L97.5,167.1 L95,165.8 L92.5,164.5 L89.9,163.3 L87.3,162.2 L84.7,161.2 L82.1,160.2 L79.4,159.3 L76.7,158.4 L74,157.7 L71.2,157 L68.5,156.4 L65.7,155.8 L62.9,155.3 L60.1,154.9 L57.3,154.6 L54.5,154.3 L51.7,154.1 L48.8,154 L46,154" class="fig-guide"/>
+<text x="154" y="279" text-anchor="middle" class="fig-label fig-small fig-it">2</text>
+<path d="M208,262 L207.9,257.8 L207.8,253.5 L207.5,249.3 L207.1,245.1 L206.6,240.9 L206,236.7 L205.3,232.5 L204.5,228.3 L203.5,224.2 L202.5,220.1 L201.3,216 L200.1,211.9 L198.7,207.9 L197.2,203.9 L195.7,200 L194,196.1 L192.2,192.3 L190.3,188.5 L188.4,184.7 L186.3,181 L184.1,177.4 L181.9,173.8 L179.5,170.2 L177.1,166.8 L174.5,163.4 L171.9,160.1 L169.2,156.8 L166.4,153.6 L163.5,150.5 L160.6,147.4 L157.5,144.5 L154.4,141.6 L151.2,138.8 L147.9,136.1 L144.6,133.5 L141.2,130.9 L137.8,128.5 L134.2,126.1 L130.6,123.9 L127,121.7 L123.3,119.6 L119.5,117.7 L115.7,115.8 L111.9,114 L108,112.3 L104.1,110.8 L100.1,109.3 L96.1,107.9 L92,106.7 L87.9,105.5 L83.8,104.5 L79.7,103.5 L75.5,102.7 L71.3,102 L67.1,101.4 L62.9,100.9 L58.7,100.5 L54.5,100.2 L50.2,100.1 L46,100" class="fig-guide"/>
+<text x="208" y="279" text-anchor="middle" class="fig-label fig-small fig-it">3</text>
+<path d="M262,262 L261.9,256.3 L261.7,250.7 L261.3,245.1 L260.8,239.4 L260.2,233.8 L259.3,228.2 L258.4,222.6 L257.3,217.1 L256,211.6 L254.6,206.1 L253.1,200.7 L251.4,195.3 L249.6,189.9 L247.7,184.6 L245.6,179.3 L243.3,174.1 L241,169 L238.5,163.9 L235.8,158.9 L233.1,154 L230.2,149.1 L227.2,144.4 L224,139.7 L220.7,135 L217.4,130.5 L213.9,126.1 L210.2,121.7 L206.5,117.5 L202.7,113.3 L198.7,109.3 L194.7,105.3 L190.5,101.5 L186.3,97.8 L181.9,94.1 L177.5,90.6 L173,87.3 L168.3,84 L163.6,80.8 L158.9,77.8 L154,74.9 L149.1,72.2 L144.1,69.5 L139,67 L133.9,64.7 L128.7,62.4 L123.4,60.3 L118.1,58.4 L112.7,56.6 L107.3,54.9 L101.9,53.4 L96.4,52 L90.9,50.7 L85.4,49.6 L79.8,48.7 L74.2,47.8 L68.6,47.2 L62.9,46.7 L57.3,46.3 L51.7,46.1 L46,46" class="fig-guide"/>
+<text x="262" y="279" text-anchor="middle" class="fig-label fig-small fig-it">4</text>
+<line x1="46" y1="262" x2="270.1" y2="262" class="fig-axis"/>
+<line x1="46" y1="262" x2="262.5" y2="204" class="fig-guide"/>
+<line x1="46" y1="262" x2="240.1" y2="149.9" class="fig-guide"/>
+<line x1="46" y1="262" x2="204.5" y2="103.5" class="fig-guide"/>
+<line x1="46" y1="262" x2="158.1" y2="67.9" class="fig-guide"/>
+<line x1="46" y1="262" x2="104" y2="45.5" class="fig-guide"/>
+<line x1="46" y1="262" x2="46" y2="37.9" class="fig-axis"/>
+<text x="210.5" y="107.5" class="fig-label fig-small fig-it">θ = π/4</text>
+<text x="52" y="35.9" class="fig-label fig-small fig-it">θ = π/2</text>
+<circle cx="46" cy="262" r="3" class="fig-arrowhead"/>
+<path d="M167.6,191.8 L167.3,191.3 L167,190.7 L166.7,190.2 L166.3,189.7 L166,189.2 L165.7,188.6 L165.4,188.1 L165.1,187.6 L164.7,187.1 L164.4,186.6 L164.1,186 L163.7,185.5 L163.4,185 L163.1,184.5 L162.7,184 L162.4,183.5 L162.1,183 L161.7,182.5 L161.4,182 L161,181.5 L160.7,181 L160.3,180.5 L159.9,180 L159.6,179.5 L159.2,179 L158.9,178.5 L158.5,178 L158.1,177.5 L157.8,177 L157.4,176.5 L157,176 L156.6,175.6 L156.3,175.1 L155.9,174.6 L155.5,174.1 L155.1,173.6 L154.7,173.2 L154.3,172.7 L153.9,172.2 L153.6,171.8 L153.2,171.3 L152.8,170.8 L152.4,170.4 L152,169.9 L151.6,169.4 L151.2,169 L150.7,168.5 L150.3,168.1 L149.9,167.6 L149.5,167.1 L149.1,166.7 L148.7,166.2 L148.3,165.8 L147.8,165.4 L147.4,164.9 L147,164.5 L146.6,164 L146.1,163.6 L145.7,163.2 L145.3,162.7 L168.2,139.8 L168.7,140.3 L169.2,140.9 L169.8,141.4 L170.3,142 L170.8,142.5 L171.3,143.1 L171.9,143.6 L172.4,144.2 L172.9,144.7 L173.4,145.3 L173.9,145.8 L174.4,146.4 L174.9,146.9 L175.4,147.5 L175.9,148.1 L176.4,148.6 L176.9,149.2 L177.4,149.8 L177.9,150.3 L178.4,150.9 L178.9,151.5 L179.3,152.1 L179.8,152.7 L180.3,153.3 L180.8,153.8 L181.2,154.4 L181.7,155 L182.2,155.6 L182.6,156.2 L183.1,156.8 L183.5,157.4 L184,158 L184.5,158.6 L184.9,159.2 L185.4,159.8 L185.8,160.4 L186.2,161 L186.7,161.7 L187.1,162.3 L187.5,162.9 L188,163.5 L188.4,164.1 L188.8,164.7 L189.3,165.4 L189.7,166 L190.1,166.6 L190.5,167.3 L190.9,167.9 L191.3,168.5 L191.7,169.2 L192.1,169.8 L192.5,170.4 L192.9,171.1 L193.3,171.7 L193.7,172.4 L194.1,173 L194.5,173.6 L194.9,174.3 L195.3,174.9 L195.6,175.6 Z" class="fig-band"/>
+<path d="M167.6,191.8 L167.3,191.3 L167,190.7 L166.7,190.2 L166.3,189.7 L166,189.2 L165.7,188.6 L165.4,188.1 L165.1,187.6 L164.7,187.1 L164.4,186.6 L164.1,186 L163.7,185.5 L163.4,185 L163.1,184.5 L162.7,184 L162.4,183.5 L162.1,183 L161.7,182.5 L161.4,182 L161,181.5 L160.7,181 L160.3,180.5 L159.9,180 L159.6,179.5 L159.2,179 L158.9,178.5 L158.5,178 L158.1,177.5 L157.8,177 L157.4,176.5 L157,176 L156.6,175.6 L156.3,175.1 L155.9,174.6 L155.5,174.1 L155.1,173.6 L154.7,173.2 L154.3,172.7 L153.9,172.2 L153.6,171.8 L153.2,171.3 L152.8,170.8 L152.4,170.4 L152,169.9 L151.6,169.4 L151.2,169 L150.7,168.5 L150.3,168.1 L149.9,167.6 L149.5,167.1 L149.1,166.7 L148.7,166.2 L148.3,165.8 L147.8,165.4 L147.4,164.9 L147,164.5 L146.6,164 L146.1,163.6 L145.7,163.2 L145.3,162.7 L168.2,139.8 L168.7,140.3 L169.2,140.9 L169.8,141.4 L170.3,142 L170.8,142.5 L171.3,143.1 L171.9,143.6 L172.4,144.2 L172.9,144.7 L173.4,145.3 L173.9,145.8 L174.4,146.4 L174.9,146.9 L175.4,147.5 L175.9,148.1 L176.4,148.6 L176.9,149.2 L177.4,149.8 L177.9,150.3 L178.4,150.9 L178.9,151.5 L179.3,152.1 L179.8,152.7 L180.3,153.3 L180.8,153.8 L181.2,154.4 L181.7,155 L182.2,155.6 L182.6,156.2 L183.1,156.8 L183.5,157.4 L184,158 L184.5,158.6 L184.9,159.2 L185.4,159.8 L185.8,160.4 L186.2,161 L186.7,161.7 L187.1,162.3 L187.5,162.9 L188,163.5 L188.4,164.1 L188.8,164.7 L189.3,165.4 L189.7,166 L190.1,166.6 L190.5,167.3 L190.9,167.9 L191.3,168.5 L191.7,169.2 L192.1,169.8 L192.5,170.4 L192.9,171.1 L193.3,171.7 L193.7,172.4 L194.1,173 L194.5,173.6 L194.9,174.3 L195.3,174.9 L195.6,175.6 Z" class="fig-curve"/>
+<rect x="334" y="16" width="292" height="272" rx="3" class="fig-frame"/>
+<text x="344" y="36" class="fig-label">(b)</text>
+<path d="M544.5,211.2 L542.3,210.9 L540.2,210.7 L538.1,210.4 L535.9,210.2 L533.8,209.9 L531.6,209.7 L529.5,209.5 L527.3,209.3 L525.2,209.1 L523.1,208.9 L520.9,208.7 L518.8,208.5 L516.6,208.4 L514.5,208.2 L512.3,208.1 L510.2,207.9 L508,207.8 L505.9,207.7 L503.7,207.6 L501.5,207.5 L499.4,207.4 L497.2,207.3 L495.1,207.2 L492.9,207.2 L490.8,207.1 L488.6,207.1 L486.5,207 L484.3,207 L482.2,207 L480,207 L477.8,207 L475.7,207 L473.5,207 L471.4,207.1 L469.2,207.1 L467.1,207.2 L464.9,207.2 L462.8,207.3 L460.6,207.4 L458.5,207.5 L456.3,207.6 L454.1,207.7 L452,207.8 L449.8,207.9 L447.7,208.1 L445.5,208.2 L443.4,208.4 L441.2,208.5 L439.1,208.7 L436.9,208.9 L434.8,209.1 L432.7,209.3 L430.5,209.5 L428.4,209.7 L426.2,209.9 L424.1,210.2 L421.9,210.4 L419.8,210.7 L417.7,210.9 L415.5,211.2 L400.6,98.2 L403.3,97.9 L405.9,97.5 L408.5,97.2 L411.2,96.9 L413.8,96.6 L416.4,96.3 L419.1,96.1 L421.7,95.8 L424.4,95.6 L427,95.3 L429.7,95.1 L432.3,94.9 L434.9,94.7 L437.6,94.5 L440.2,94.3 L442.9,94.1 L445.5,94 L448.2,93.8 L450.8,93.7 L453.5,93.6 L456.1,93.5 L458.8,93.4 L461.4,93.3 L464.1,93.2 L466.7,93.1 L469.4,93.1 L472,93.1 L474.7,93 L477.3,93 L480,93 L482.7,93 L485.3,93 L488,93.1 L490.6,93.1 L493.3,93.1 L495.9,93.2 L498.6,93.3 L501.2,93.4 L503.9,93.5 L506.5,93.6 L509.2,93.7 L511.8,93.8 L514.5,94 L517.1,94.1 L519.8,94.3 L522.4,94.5 L525.1,94.7 L527.7,94.9 L530.3,95.1 L533,95.3 L535.6,95.6 L538.3,95.8 L540.9,96.1 L543.6,96.3 L546.2,96.6 L548.8,96.9 L551.5,97.2 L554.1,97.5 L556.7,97.9 L559.4,98.2 Z" class="fig-band"/>
+<path d="M544.5,211.2 L542.3,210.9 L540.2,210.7 L538.1,210.4 L535.9,210.2 L533.8,209.9 L531.6,209.7 L529.5,209.5 L527.3,209.3 L525.2,209.1 L523.1,208.9 L520.9,208.7 L518.8,208.5 L516.6,208.4 L514.5,208.2 L512.3,208.1 L510.2,207.9 L508,207.8 L505.9,207.7 L503.7,207.6 L501.5,207.5 L499.4,207.4 L497.2,207.3 L495.1,207.2 L492.9,207.2 L490.8,207.1 L488.6,207.1 L486.5,207 L484.3,207 L482.2,207 L480,207 L477.8,207 L475.7,207 L473.5,207 L471.4,207.1 L469.2,207.1 L467.1,207.2 L464.9,207.2 L462.8,207.3 L460.6,207.4 L458.5,207.5 L456.3,207.6 L454.1,207.7 L452,207.8 L449.8,207.9 L447.7,208.1 L445.5,208.2 L443.4,208.4 L441.2,208.5 L439.1,208.7 L436.9,208.9 L434.8,209.1 L432.7,209.3 L430.5,209.5 L428.4,209.7 L426.2,209.9 L424.1,210.2 L421.9,210.4 L419.8,210.7 L417.7,210.9 L415.5,211.2 L400.6,98.2 L403.3,97.9 L405.9,97.5 L408.5,97.2 L411.2,96.9 L413.8,96.6 L416.4,96.3 L419.1,96.1 L421.7,95.8 L424.4,95.6 L427,95.3 L429.7,95.1 L432.3,94.9 L434.9,94.7 L437.6,94.5 L440.2,94.3 L442.9,94.1 L445.5,94 L448.2,93.8 L450.8,93.7 L453.5,93.6 L456.1,93.5 L458.8,93.4 L461.4,93.3 L464.1,93.2 L466.7,93.1 L469.4,93.1 L472,93.1 L474.7,93 L477.3,93 L480,93 L482.7,93 L485.3,93 L488,93.1 L490.6,93.1 L493.3,93.1 L495.9,93.2 L498.6,93.3 L501.2,93.4 L503.9,93.5 L506.5,93.6 L509.2,93.7 L511.8,93.8 L514.5,94 L517.1,94.1 L519.8,94.3 L522.4,94.5 L525.1,94.7 L527.7,94.9 L530.3,95.1 L533,95.3 L535.6,95.6 L538.3,95.8 L540.9,96.1 L543.6,96.3 L546.2,96.6 L548.8,96.9 L551.5,97.2 L554.1,97.5 L556.7,97.9 L559.4,98.2 Z" class="fig-curve"/>
+<circle cx="544.5" cy="211.2" r="3.5" class="fig-arrowhead"/>
+<text x="552.5" y="227.2" class="fig-label fig-small fig-it">(r, θ)</text>
+<line x1="544.5" y1="211.2" x2="552.6" y2="149.8" class="fig-axis" marker-end="url(#arr-3-10-1)"/>
+<text x="560.6" y="163.8" class="fig-label fig-small fig-it">∂r</text>
+<line x1="544.5" y1="211.2" x2="483" y2="203.1" class="fig-axis" marker-end="url(#arr-3-10-1)"/>
+<text x="481" y="233.1" text-anchor="middle" class="fig-label fig-small fig-it">(1/r) ∂θ</text>
+<text x="396.1" y="159.7" text-anchor="end" class="fig-label fig-it">dr</text>
+<text x="480" y="81" text-anchor="middle" class="fig-label fig-it">r dθ</text>
+</svg>
+                    <figcaption><strong>Figura 3.10.1.</strong> (a) A malha polar em um quarto de plano: arcos $r=\text{const}$ e raios $\theta=\text{const}$, com uma célula coordenada
+                        $[r,r+dr]\times[\theta,\theta+d\theta]$ sombreada. (b) A mesma célula ampliada. Para $dr$ e $d\theta$ pequenos, é quase um retângulo, de lados $dr$ (radial) e
+                        $r\,d\theta$ (angular): é isso que codifica a fórmula $\bar{g}=dr^2+r^2\,d\theta^2$, com $g_{rr}=1$ e $g_{\theta\theta}=r^2$. Do vértice $(r,\theta)$ saem
+                        $\partial_r$ e $\tfrac1r\,\partial_\theta$, o referencial $E_r,E_\theta$ do <a href="[07] - Fibrado Tangente e Campos Vetoriais.html#ex-3-7-17">Exemplo 3.7.17</a>, que percorrem os dois lados.</figcaption>
+                </figure>
+
+                <p>
+                    (Falamos de comprimentos aqui apenas no sentido usual do plano euclidiano, para ler a figura. A definição geral de comprimento a partir
+                    de $g$ não faz parte deste capítulo.)
+                </p>
+
+                <p id="ex-3-10-40"><strong>Exemplo 3.10.40 (A métrica induzida em uma subvariedade).</strong> Seja $S\subset M$ uma subvariedade mergulhada,
+                    $\iota: S\hookrightarrow M$ a inclusão e $g$ uma métrica em $M$. O pullback $\iota^*g$ é um campo tensorial simétrico em $S$, a
+                    <strong>métrica induzida</strong>. Se $g$ é riemanniana, $\iota^*g$ também é, porque $d\iota_p$ é injetiva (<a href="[06] - Subvariedades.html#prop-3-6-23">Proposição 3.6.23</a>): $(\iota^*g)(v,v)=g(d\iota\,v,d\iota\,v)\gt0$
+                    para $v\neq0$. Em $S^2\subset\mathbb{R}^3$ com $\bar{g}$, seja $\sigma(\theta,\phi)=(\sin\theta\cos\phi,\sin\theta\sin\phi,\cos\theta)$, a inversa de uma carta de $S^2$ em $\theta\in(0,\pi)$, $\phi\in(0,2\pi)$.
+                    Pela <a href="#prop-3-10-36">Proposição 3.10.36</a>(d), $\sigma^*(\iota^*\bar{g})=(\iota\circ\sigma)^*\bar{g}$, e (3.10.6), com $r=1$ nas expressões de $dF^j$ e $dr=0$ (a aplicação $\iota\circ\sigma$ é $F(1,\theta,\phi)$), dá</p>
+                <p>$$ \iota^*\bar{g}=d\theta^2+\sin^2\theta\,d\phi^2 \quad\text{em coordenadas esféricas.} $$</p>
+
+                <p id="ex-3-10-41"><strong>Exemplo 3.10.41 (A métrica de Minkowski).</strong> Em $\mathbb{R}^4$, com coordenadas $(t,x,y,z)$, $c=1$ e a
+                    assinatura $(-,+,+,+)$ do capítulo 1, a <strong>métrica de Minkowski</strong> é</p>
+                <p>$$ \eta=-dt\otimes dt+dx\otimes dx+dy\otimes dy+dz\otimes dz=-dt^2+dx^2+dy^2+dz^2, $$</p>
+                <p>com componentes constantes $\eta_{\mu\nu}=\operatorname{diag}(-1,1,1,1)$. É simétrica, não degenerada e lorentziana (a base coordenada é a base
+                    exigida na definição), e não é riemanniana: $\eta(\partial_t,\partial_t)=-1$. Uma transformação linear $\Lambda$ de $\mathbb{R}^4$ é de
+                    <strong>Lorentz</strong> se $\Lambda^*\eta=\eta$. Por (3.10.5), com $B=\eta$ e $F=\Lambda$ linear,
+                    $(\Lambda^*\eta)_{\mu\nu}=\Lambda^\alpha{}_\mu\Lambda^\beta{}_\nu\eta_{\alpha\beta}$, de modo que a condição é
+                    $\Lambda^{\mathsf{T}}\eta\Lambda=\eta$. Para o <em>boost</em> de velocidade $v$ na direção $x$, $t=\gamma(t'+v\,x')$, $x=\gamma(x'+v\,t')$, com $\gamma=(1-v^2)^{-1/2}$,
+                    $$ \begin{aligned}-dt^2+dx^2&=\gamma^2\Big[-(dt'+v\,dx')^2+(dx'+v\,dt')^2\Big]\\
+                    &=\gamma^2(1-v^2)\big(-dt'^2+dx'^2\big)=-dt'^2+dx'^2,\end{aligned} $$
+                    porque os termos cruzados $\mp v\,(dt'\otimes dx'+dx'\otimes dt')$ se cancelam. Em coordenadas espaciais esféricas,
+                    $F(t,r,\theta,\phi)=(t,\,r\sin\theta\cos\phi,\,r\sin\theta\sin\phi,\,r\cos\theta)$ tem $F^*dt=dt$, e o Exemplo 3.10.39 dá
+                    $F^*\eta=-dt^2+dr^2+r^2\,d\theta^2+r^2\sin^2\theta\,d\phi^2$. A forma quadrática $\Phi(p)=-(p^0)^2+\lvert\vec{p}\rvert^2$ do
+                    <a href="[06] - Subvariedades.html#ex-3-6-20">Exemplo 3.6.20</a>, que lá era apenas uma forma quadrática, é $\Phi(p)=\eta(p,p)$, identificando $\mathbb{R}^4$ com seu espaço tangente (<a href="[05] - Vetores Tangentes.html#prop-3-5-27">Proposição 3.5.27</a>): a camada de massa é o
+                    conjunto $\eta(p,p)=-m^2$, $p^0\gt0$.</p>
+
+                <p id="obs-3-10-42"><strong>Observação 3.10.42 (Subir e baixar índices).</strong> Uma métrica fornece o isomorfismo que, na <a href="[09] - Covetores e 1-Formas.html#obs-3-9-6">Observação 3.9.6</a>, não existia
+                    canonicamente. Em cada ponto, $\flat:T_pM\to T_p^*M$, $v\mapsto g_p(v,\cdot)$, é injetiva (porque $g_p$ é não degenerada) e, como as dimensões
+                    coincidem, é um isomorfismo. Em componentes, $v_i=g_{ij}\,v^j$ ("baixar o índice"), e o isomorfismo inverso é dado pela matriz inversa $g^{ij}$:
+                    $\omega^i=g^{ij}\omega_j$ ("subir o índice"). É a escolha de $g$, e não a de uma base, que identifica vetores e covetores. O "gradiente" é
+                    $\operatorname{grad}f=g^{ij}\,\partial_jf\,\partial_i$, como na <a href="[09] - Covetores e 1-Formas.html#obs-3-9-15">Observação 3.9.15</a>: em polares, de (3.10.6) vem $g^{rr}=1$ e $g^{\theta\theta}=1/r^2$, o que dá
+                    $\partial_rf\,\partial_r+\tfrac{1}{r^2}\,\partial_\theta f\,\partial_\theta$. Nada disso é usado neste capítulo; só o registramos.</p>
+
+                <h2 id="fisica">Ponte com a física</h2>
+
+                <p>
+                    <strong>O princípio da covariância geral.</strong> Pela lei de transformação (3.10.4), as componentes de um tensor em duas cartas estão
+                    ligadas por uma aplicação linear <em>invertível</em> (um produto de jacobianas e de inversas de jacobianas). Em consequência, se um tensor tem todas as
+                    componentes nulas em uma carta, as tem nulas em todas: uma <em>equação tensorial</em> $A=B$, que é $A-B=0$, vale em todas as cartas se vale em uma.
+                    É por isso que as leis da física escritas como igualdades entre tensores têm a mesma forma em qualquer sistema de coordenadas,
+                    e esta é a ideia que Einstein tomou como princípio na Relatividade Geral. A restrição é essencial: <em>só</em> as equações entre tensores
+                    têm essa propriedade. O campo constante $\partial_x$ do plano tem componentes $(1,0)$, constantes, em coordenadas cartesianas; em polares,
+                    pela <a href="[05] - Vetores Tangentes.html#prop-3-5-18">Proposição 3.5.18</a> (com a inversa da jacobiana), $\partial_x=\cos\theta\,\partial_r-\frac{\sin\theta}{r}\,\partial_\theta$, e as componentes
+                    não são constantes. A equação "$\partial_\mu V^\nu=0$", que vale para o campo constante em cartesianas, falha em polares, e a <a href="#obs-3-10-34">Observação 3.10.34</a>
+                    mostra por quê: derivar componentes não é uma operação tensorial. Uma noção de derivada que seja tensorial exige uma estrutura adicional,
+                    a conexão, que é objeto de capítulo posterior.
+                </p>
+
+                <p>
+                    <strong>Tensores de uso corrente.</strong> O <em>tensor de inércia</em> $I_{ij}$ de um corpo rígido é um tensor simétrico de tipo $(0,2)$ no espaço
+                    euclidiano: a energia cinética de rotação é $K=\tfrac12\,I(\mathbf{w},\mathbf{w})=\tfrac12\,I_{ij}\,w^iw^j$, em que $\mathbf{w}$ é o vetor velocidade angular, e
+                    as componentes mudam por (3.10.3). Nos livros de mecânica, a regra $I'=RIR^{\mathsf{T}}$ para uma rotação $R$ é a lei de um tensor $(1,1)$; as duas leis
+                    coincidem sob rotações, porque $R^{\mathsf{T}}=R^{-1}$, e diferem sob mudanças gerais de base (<a href="#exr-3-10-4">Exercício 3.10.4</a>). O <em>tensor de tensões</em> $\sigma_{ij}$ de um meio
+                    contínuo é simétrico, e a força por unidade de área sobre um elemento de superfície de normal $\mathbf{n}$ é $t_i=\sigma_{ij}n^j$: a contração de
+                    $\sigma\otimes\mathbf{n}$, um covetor. O <em>tensor de energia-momento</em> $T^{\mu\nu}$ é simétrico, de tipo $(2,0)$; para a poeira, de densidade própria $\rho$ e
+                    quadrivelocidade $u$, é o produto tensorial $T=\rho\,u\otimes u$, com $T^{\mu\nu}=\rho\,u^\mu u^\nu$; no referencial em repouso da poeira, a única componente não
+                    nula é $T^{00}=\rho$, e em outro referencial, por (3.10.3), $\tilde{T}^{\mu\nu}=\Lambda^\mu{}_\alpha\Lambda^\nu{}_\beta\,T^{\alpha\beta}$.
+                </p>
+
+                <p>
+                    <strong>O campo eletromagnético.</strong> Seja $A=A_\mu\,dx^\mu$ o quadripotencial. O tensor do campo,
+                    $F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu$, é exatamente o tensor $\Delta_A$ do <a href="#ex-3-10-33">Exemplo 3.10.33</a> (com a convenção de sinais do capítulo):
+                    cada derivada $\partial_\mu A_\nu$ não é tensorial, mas a antissimetrização é (<a href="#obs-3-10-34">Observação 3.10.34</a>). Ele reúne os campos elétrico e
+                    magnético em um objeto só, e é um tensor $(0,2)$ <em>antissimétrico</em>, o que antecipa os tópicos 3.11 e 3.12: será a $2$-forma $F=\tfrac12F_{\mu\nu}\,dx^\mu\wedge dx^\nu$,
+                    e a fórmula acima será $F=dA$. A <em>invariância de calibre</em>, $A\mapsto A+d\chi$, não altera $F$, porque a diferença é
+                    $\partial_\mu\partial_\nu\chi-\partial_\nu\partial_\mu\chi=0$, pela igualdade das derivadas mistas.
+                </p>
+
+                <p>
+                    <strong>Um contraexemplo que virá.</strong> Os símbolos de Christoffel $\Gamma^\lambda{}_{\mu\nu}$, que aparecerão ao se derivar tensores,
+                    <em>não</em> são tensores. A lei de transformação deles, que não deduzimos aqui, é
+                    $$ \tilde{\Gamma}^\lambda{}_{\mu\nu}=\frac{\partial\tilde{x}^\lambda}{\partial x^\alpha}\frac{\partial x^\beta}{\partial\tilde{x}^\mu}\frac{\partial x^\gamma}{\partial\tilde{x}^\nu}\,\Gamma^\alpha{}_{\beta\gamma}+\frac{\partial\tilde{x}^\lambda}{\partial x^\alpha}\frac{\partial^2x^\alpha}{\partial\tilde{x}^\mu\partial\tilde{x}^\nu}, $$
+                    e o último termo, com derivadas segundas da mudança de coordenadas, é o que a torna não tensorial. Em consequência, os $\Gamma^\lambda{}_{\mu\nu}$ do plano euclidiano se anulam
+                    em coordenadas cartesianas e não em polares (onde, por exemplo, $\Gamma^r{}_{\theta\theta}=-r$, pelo termo extra), o que seria impossível para um tensor.
+                </p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p id="exr-3-10-1"><strong>Exercício 3.10.1.</strong> Em $\mathbb{R}^2$, seja $T=\varepsilon^1\otimes\varepsilon^2-\varepsilon^2\otimes\varepsilon^1$. Calcule suas
+                    componentes e o valor $T(v,w)$, e reconheça o determinante. Como as componentes mudam para a base $\tilde{E}_1=E_1+E_2$, $\tilde{E}_2=E_1-E_2$?</p>
+
+                <p>
+                    <em>Solução.</em> Por (3.10.1), $T_{12}=T(E_1,E_2)=\varepsilon^1(E_1)\varepsilon^2(E_2)-\varepsilon^2(E_1)\varepsilon^1(E_2)=1$, $T_{21}=-1$ e $T_{11}=T_{22}=0$. Logo
+                    $T(v,w)=v^1w^2-v^2w^1=\det\begin{pmatrix}v^1&w^1\\v^2&w^2\end{pmatrix}$, o determinante da matriz de colunas $v$ e $w$ (a área orientada do paralelogramo);
+                    em particular, $T(w,v)=-T(v,w)$. Na nova base, a matriz de mudança tem colunas $(1,1)$ e $(1,-1)$, com $\det A=-2$, e a lei $\tilde{T}_{ij}=A^k{}_iA^l{}_jT_{kl}$ dá
+                    $\tilde{T}_{12}=1\cdot(-1)\cdot T_{12}+1\cdot1\cdot T_{21}=-1-1=-2$ e $\tilde{T}_{21}=2$ (conferência direta: $T(\tilde{E}_1,\tilde{E}_2)=\det\begin{pmatrix}1&1\\1&-1\end{pmatrix}=-2$).
+                    As componentes foram multiplicadas por $\det A$: a área de $\tilde{E}_1,\tilde{E}_2$ medida em unidades de $E_1,E_2$ é $\det A$. $\blacksquare$
+                </p>
+
+                <p id="exr-3-10-2"><strong>Exercício 3.10.2.</strong> Mostre, com matrizes, que o traço de um tensor $(1,1)$ não depende da base, e confira com
+                    $T=\begin{pmatrix}1&2\\3&4\end{pmatrix}$ e $A=\begin{pmatrix}1&1\\0&1\end{pmatrix}$.</p>
+
+                <p>
+                    <em>Solução.</em> Por (3.10.3), $\tilde{T}=A^{-1}TA$, e $\operatorname{tr}\tilde{T}=\tilde{T}^i{}_i=(A^{-1})^i{}_kA^l{}_i\,T^k{}_l=\delta^l_k\,T^k{}_l=\operatorname{tr}T$,
+                    porque $A^l{}_i(A^{-1})^i{}_k=(AA^{-1})^l{}_k=\delta^l_k$. No caso numérico, $A^{-1}=\begin{pmatrix}1&-1\\0&1\end{pmatrix}$ e
+                    $TA=\begin{pmatrix}1&3\\3&7\end{pmatrix}$, de modo que $\tilde{T}=A^{-1}TA=\begin{pmatrix}-2&-4\\3&7\end{pmatrix}$: $\operatorname{tr}\tilde{T}=5=1+4=\operatorname{tr}T$. $\blacksquare$
+                </p>
+
+                <p id="exr-3-10-3"><strong>Exercício 3.10.3.</strong> Obtenha $dr^2+r^2\,d\theta^2$ a partir de $dx^2+dy^2$ pela lei de transformação das componentes e compare com o pullback.</p>
+
+                <p>
+                    <em>Solução.</em> As componentes de $\bar{g}$ em cartesianas são $g_{ij}=\delta_{ij}$. Na carta polar $\tilde{x}=(r,\theta)$, com $x=r\cos\theta$, $y=r\sin\theta$, a lei (3.10.4) para um tensor $(0,2)$
+                    dá $\tilde{g}_{ab}=\frac{\partial x^i}{\partial\tilde{x}^a}\frac{\partial x^j}{\partial\tilde{x}^b}\delta_{ij}$, isto é, $\tilde{g}=J^{\mathsf{T}}J$ com
+                    $J=\begin{pmatrix}\cos\theta&-r\sin\theta\\\sin\theta&r\cos\theta\end{pmatrix}$. Logo $\tilde{g}_{rr}=\cos^2\theta+\sin^2\theta=1$,
+                    $\tilde{g}_{r\theta}=-r\sin\theta\cos\theta+r\sin\theta\cos\theta=0$ e $\tilde{g}_{\theta\theta}=r^2\sin^2\theta+r^2\cos^2\theta=r^2$, ou seja, $\bar{g}=dr^2+r^2\,d\theta^2$.
+                    O pullback pela parametrização $F(r,\theta)=(r\cos\theta,r\sin\theta)$ é a mesma conta, escrita em (3.10.6): a carta polar é a inversa de $F$, e as componentes de $\bar{g}$
+                    na carta polar são as de $F^*\bar{g}$ (<a href="#obs-3-10-37">Observação 3.10.37</a>). Os dois métodos coincidem porque (3.10.4), no caso de uma mudança de coordenadas, é (3.10.5) com $F$ a transição. $\blacksquare$
+                </p>
+
+                <p id="exr-3-10-4"><strong>Exercício 3.10.4.</strong> Mostre que $\delta^i{}_j$ tem as mesmas componentes em toda base, mas que as componentes $\delta_{ij}$ de um tensor
+                    $(0,2)$ não se preservam por uma mudança geral de base. Dê exemplos.</p>
+
+                <p>
+                    <em>Solução.</em> Para o tensor identidade $(1,1)$, (3.10.3) dá $\tilde{\delta}=A^{-1}\,I\,A=I$ em qualquer base, para qualquer $A$ invertível. Para o tensor $(0,2)$ $g=\sum_i\varepsilon^i\otimes\varepsilon^i$, de componentes
+                    $\delta_{ij}$ na base dada, (3.10.3) dá $\tilde{g}=A^{\mathsf{T}}A$. Com a dilatação $\tilde{E}_i=2E_i$ ($A=2I$), $\tilde{g}=4\,\delta_{ij}$; com o cisalhamento $\tilde{E}_1=E_1$,
+                    $\tilde{E}_2=E_1+E_2$ ($A=\begin{pmatrix}1&1\\0&1\end{pmatrix}$), $\tilde{g}=\begin{pmatrix}1&1\\1&2\end{pmatrix}$ (de fato, $g(\tilde{E}_2,\tilde{E}_2)=\lvert(1,1)\rvert^2=2$). As componentes só se preservam se
+                    $A^{\mathsf{T}}A=I$, isto é, se $A$ é ortogonal. Moral: o "delta" $\delta^i{}_j$ é canônico (é a identidade, <a href="#ex-3-10-26">Exemplo 3.10.26</a>); o "delta" $\delta_{ij}$ depende de uma
+                    escolha (a de uma base ortonormal, que é a de uma métrica). $\blacksquare$
+                </p>
+
+                <p id="exr-3-10-5"><strong>Exercício 3.10.5.</strong> Seja $f=x^2+xy+y^3$ em $\mathbb{R}^2$ e $H(X,Y)=X(Yf)$. (a) Mostre que o valor de $H(X,Y)$ em $q=(1,0)$ não depende
+                    apenas de $X_q$ e $Y_q$. (b) Mostre que, no ponto crítico $p=(0,0)$, depende; ache a forma bilinear que resulta.</p>
+
+                <p>
+                    <em>Solução.</em> (a) Tome $X=\partial_x$, $Y=\partial_x$ e $Y'=\partial_x+(x-1)\,\partial_y$, que têm o mesmo valor $\partial_x$ em $q$. Como $df=(2x+y)\,dx+(x+3y^2)\,dy$, vale
+                    $Yf=2x+y$ e $X(Yf)=2$, enquanto $Y'f=(2x+y)+(x-1)(x+3y^2)$ e $X(Y'f)=2+(x+3y^2)+(x-1)=1+2x+3y^2$, que vale $3$ em $q$. Os valores $2\neq3$ diferem de
+                    $X(x-1)\cdot\partial_yf(q)=1$, o termo $(Xg)(Yf)$ do <a href="#ex-3-10-32">Exemplo 3.10.32</a>. (b) Em $p$, $df_p=0$. Para campos $X=X^i\partial_i$ e $Y=Y^j\partial_j$,
+                    $X(Yf)=X(Y^j\,\partial_jf)=X(Y^j)\,\partial_jf+Y^jX^i\,\partial_i\partial_jf$. Em $p$, $\partial_jf(p)=0$ elimina a primeira parcela, de modo que
+                    $H(X,Y)(p)=X^i(p)\,Y^j(p)\,\partial_i\partial_jf(p)$: só depende de $X_p$ e $Y_p$, e é uma forma bilinear simétrica (a <em>hessiana</em> de $f$ em $p$), de componentes
+                    $\partial_i\partial_jf(p)=\begin{pmatrix}2&1\\1&0\end{pmatrix}$. Conferência: com $X=Y=\partial_x$, vale $2$; com $Y''=\partial_x+x\,\partial_y$, que tem $Y''_p=\partial_x$,
+                    $X(Y''f)=\partial_x\big(2x+y+x^2+3xy^2\big)=2+2x+3y^2$, que vale $2$ em $p$. $\blacksquare$
+                </p>
+
+                <p id="exr-3-10-6"><strong>Exercício 3.10.6.</strong> Calcule o pullback da métrica euclidiana pela parametrização do toro do <a href="[06] - Subvariedades.html#exr-3-6-1">Exercício 3.6.1</a>,
+                    $F(u,v)=\big((2+\cos v)\cos u,\ (2+\cos v)\sin u,\ \sin v\big)$.</p>
+
+                <p>
+                    <em>Solução.</em> Por (3.10.5), $F^*\bar{g}=\sum_j dF^j\otimes dF^j$, com
+                    $dF^1=-(2+\cos v)\sin u\,du-\sin v\cos u\,dv$, $dF^2=(2+\cos v)\cos u\,du-\sin v\sin u\,dv$ e $dF^3=\cos v\,dv$. O coeficiente de $du\otimes du$ é
+                    $(2+\cos v)^2(\sin^2u+\cos^2u)=(2+\cos v)^2$. O de $dv\otimes dv$ é $\sin^2v(\cos^2u+\sin^2u)+\cos^2v=1$. Os termos cruzados são
+                    $(2+\cos v)\sin v\,(\sin u\cos u-\cos u\sin u)=0$. Portanto
+                    $$ F^*\bar{g}=(2+\cos v)^2\,du^2+dv^2. $$
+                    A coordenada $u$ percorre círculos de "raio" $2+\cos v$, e $v$, círculos de raio $1$. $\blacksquare$
+                </p>
+
+                <p id="exr-3-10-7"><strong>Exercício 3.10.7.</strong> Mostre que toda forma bilinear $B$ se escreve, de modo único, como $B=S+K$, com $S$ simétrica e $K$ antissimétrica
+                    ($K(w,v)=-K(v,w)$). Calcule para $B=\begin{pmatrix}1&2\\0&3\end{pmatrix}$ e para $dx\otimes dy$.</p>
+
+                <p>
+                    <em>Solução.</em> Seja $\sigma$ a transposição de $S_2$, de modo que $(\sigma B)(v,w)=B(w,v)$. Se $B=S+K$, então $\sigma B=S-K$, de modo que
+                    $S=\tfrac12(B+\sigma B)=\operatorname{Sym}B$ e $K=\tfrac12(B-\sigma B)$: a decomposição é única. Reciprocamente, estes $S$ e $K$ são simétrico e antissimétrico, e somam $B$. Em dimensão $n$, isso dá
+                    $n^2=\tfrac{n(n+1)}2+\tfrac{n(n-1)}2$. Para a matriz dada, $S=\tfrac12(B+B^{\mathsf{T}})=\begin{pmatrix}1&1\\1&3\end{pmatrix}$ e
+                    $K=\tfrac12(B-B^{\mathsf{T}})=\begin{pmatrix}0&1\\-1&0\end{pmatrix}$, e $S+K=\begin{pmatrix}1&2\\0&3\end{pmatrix}$. Para o produto de covetores,
+                    $$ \begin{aligned}dx\otimes dy&=\tfrac12(dx\otimes dy+dy\otimes dx)+\tfrac12(dx\otimes dy-dy\otimes dx)\\
+                    &=dx\,dy+\tfrac12(dx\otimes dy-dy\otimes dx),\end{aligned} $$
+                    a parte simétrica é o produto simétrico, e a antissimétrica será, no tópico 3.11, $\tfrac12\,dx\wedge dy$. $\blacksquare$
+                </p>
+
+                <p id="exr-3-10-8"><strong>Exercício 3.10.8.</strong> Em $\mathbb{R}^2$, seja $A=x\,\partial_x\otimes dx+y\,\partial_x\otimes dy+xy\,\partial_y\otimes dy$. Calcule $\operatorname{tr}A$ e confira
+                    que o resultado, escrito em coordenadas polares, é o traço das componentes polares de $A$.</p>
+
+                <p>
+                    <em>Solução.</em> As componentes cartesianas são $A^x{}_x=x$, $A^x{}_y=y$, $A^y{}_x=0$ e $A^y{}_y=xy$, de modo que $\operatorname{tr}A=A^x{}_x+A^y{}_y=x+xy$, uma função. Em polares, a jacobiana é
+                    $J=\partial(r,\theta)/\partial(x,y)=\begin{pmatrix}\cos\theta&\sin\theta\\-\sin\theta/r&\cos\theta/r\end{pmatrix}$ (pois $\partial_xr=x/r$, $\partial_yr=y/r$, $\partial_x\theta=-y/r^2$ e $\partial_y\theta=x/r^2$), e (3.10.4) dá
+                    $\tilde{A}=JAJ^{-1}$, de componentes
+                    $$ \begin{aligned}\tilde{A}^r{}_r&=r\cos\theta\,(1+r\sin^3\theta), & \tilde{A}^r{}_\theta&=r^3\sin^2\theta\cos^2\theta,\\
+                    \tilde{A}^\theta{}_r&=\sin\theta\,(r\sin\theta\cos^2\theta-1), & \tilde{A}^\theta{}_\theta&=r^2\sin\theta\cos^3\theta. \end{aligned} $$
+                    O traço é
+                    $$ \begin{aligned}\tilde{A}^r{}_r+\tilde{A}^\theta{}_\theta&=r\cos\theta+r^2\sin\theta\cos\theta\,(\sin^2\theta+\cos^2\theta)\\
+                    &=r\cos\theta+r^2\sin\theta\cos\theta=x+xy,\end{aligned} $$
+                    a mesma função. A contração é um escalar,
+                    que não depende da carta (<a href="#prop-3-10-14">Proposição 3.10.14</a>). $\blacksquare$
+                </p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <p>
+                    Este tópico construiu a álgebra dos tensores e os campos tensoriais:
+                </p>
+
+                <ul>
+                    <li>as <strong>aplicações multilineares</strong> e o <strong>produto tensorial</strong>
+                        (<a href="#def-3-10-1">Definição 3.10.1</a>, <a href="#def-3-10-4">Definição 3.10.4</a>, <a href="#prop-3-10-5">Proposição 3.10.5</a>), com a base de $T^k(V^*)$ e a fórmula (3.10.1)
+                        (<a href="#teo-3-10-6">Teorema 3.10.6</a>);</li>
+                    <li>os <strong>tensores de tipo $(r,s)$</strong>, com a identificação de $T^{(1,1)}(V)$ com os endomorfismos e a base de $T^{(r,s)}(V)$
+                        (<a href="#def-3-10-8">Definição 3.10.8</a>, <a href="#prop-3-10-10">Proposição 3.10.10</a>, <a href="#teo-3-10-11">Teorema 3.10.11</a>);</li>
+                    <li>a <strong>lei de transformação</strong> (3.10.3), que é a definição de tensor dos físicos como teorema (<a href="#prop-3-10-12">Proposição 3.10.12</a>), a
+                        <strong>contração</strong> (<a href="#def-3-10-13">Definição 3.10.13</a>, <a href="#prop-3-10-14">Proposição 3.10.14</a>) e a <strong>simetrização</strong> (<a href="#def-3-10-16">Definição 3.10.16</a>, <a href="#def-3-10-18">Definição 3.10.18</a>);</li>
+                    <li>os <strong>campos tensoriais</strong> e o fibrado $T^{(r,s)}TM$ (<a href="#teo-3-10-22">Teorema 3.10.22</a>), com os critérios de suavidade
+                        (<a href="#prop-3-10-24">Proposição 3.10.24</a>) e a lei de transformação com jacobianas (<a href="#prop-3-10-21">Proposição 3.10.21</a>);</li>
+                    <li>o <strong>lema de caracterização tensorial</strong> (<a href="#teo-3-10-28">Teorema 3.10.28</a>, <a href="#teo-3-10-29">Teorema 3.10.29</a>): um tensor é exatamente uma aplicação linear sobre as
+                        <em>funções</em>, o que cumpre a promessa da <a href="[09] - Covetores e 1-Formas.html#obs-3-9-22">Observação 3.9.22</a> (<a href="#cor-3-10-30">Corolário 3.10.30</a>), explica por que o colchete de Lie não é tensorial
+                        (<a href="#ex-3-10-31">Exemplo 3.10.31</a>) e mostra que $\Delta_\omega$ é um tensor (<a href="#ex-3-10-33">Exemplo 3.10.33</a>);</li>
+                    <li>o <strong>pullback</strong> de tensores covariantes (<a href="#def-3-10-35">Definição 3.10.35</a>, <a href="#prop-3-10-36">Proposição 3.10.36</a>), que generaliza o de $1$-formas;</li>
+                    <li>a <strong>métrica</strong> como exemplo de campo tensorial $(0,2)$ (<a href="#def-3-10-38">Definição 3.10.38</a>, <a href="#ex-3-10-39">Exemplo 3.10.39</a>, <a href="#ex-3-10-41">Exemplo 3.10.41</a>).</li>
+                </ul>
+
+                <p>
+                    Isto termina a Parte III, sobre covetores e tensores. O que falta para o Teorema de Stokes é separar, entre os tensores covariantes, os
+                    <em>alternados</em>, que são os objetos que se integram: as formas diferenciais. O tópico seguinte,
+                    <a href="[11] - Produto Exterior.html">3.11 Produto Exterior</a>, define a $\operatorname{Alt}$, o espaço $\Lambda^k(V^*)$ dos tensores alternados e o produto exterior, na
+                    convenção do determinante, e prova que $\varepsilon^{i_1}\wedge\dots\wedge\varepsilon^{i_k}$, com $i_1\lt\dots\lt i_k$, é uma base. Depois dele, o 3.12 organiza esses
+                    objetos em campos (as formas) e usa o pullback deste tópico; o 3.13 define a derivada exterior, cuja fórmula invariante será reconhecida como tensorial pelo
+                    <a href="#teo-3-10-28">Teorema 3.10.28</a>.
+                </p>
 
             </div>
         </main>
@@ -161,6 +1204,23 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#tensores">Álgebra Multilinear e Campos Tensoriais</a></li>
+                    <li><a href="#multilinear">Aplicações multilineares</a></li>
+                    <li><a href="#produto-tensorial">Produto tensorial</a></li>
+                    <li>
+                        <a href="#tensores-mistos">Tensores contravariantes e mistos</a>
+                        <ul>
+                            <li><a href="#lei-de-transformacao">Lei de transformação</a></li>
+                            <li><a href="#contracao">Contração</a></li>
+                            <li><a href="#simetria">Tensores simétricos</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#campos-tensoriais">Campos tensoriais</a></li>
+                    <li><a href="#caracterizacao-tensorial">Caracterização tensorial</a></li>
+                    <li><a href="#pullback-tensores">Pullback de tensores</a></li>
+                    <li><a href="#metrica-exemplo">A métrica como exemplo</a></li>
+                    <li><a href="#fisica">Ponte com a física</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
                 </ul>
             </div>
         </aside>

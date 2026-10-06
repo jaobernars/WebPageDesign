@@ -152,120 +152,135 @@
                 <p class="lead">O espaço dual, covetores tangentes, a diferencial de uma função, 1-formas, pullback, integrais de linha e o teorema fundamental das integrais de linha.</p>
 
                 <p>
-                    Um vetor tangente é uma direção de movimento. Um <em>covetor</em> é um instrumento que mede vetores:
-                    atribui um número a cada vetor, linearmente. O exemplo fundamental é a diferencial de uma
-                    função: $df_p$ mede, para cada direção $v$ em $p$, a taxa de variação de $f$ nessa direção. A
-                    ideia, comum no cálculo vetorial, de que o gradiente de $f$ "aponta" na direção de maior
-                    crescimento esconde uma escolha: o objeto intrínseco é o covetor $df$, e o gradiente é o vetor
-                    em que ele se disfarça quando se usa uma métrica. Sem métrica, o que existe é $df$, e é com
-                    covetores, e não com vetores, que a teoria de integração é construída.
+                    Um vetor tangente é uma direção de movimento. Um <em>covetor</em> é um instrumento de medida: a cada vetor
+                    ele associa um número, e o faz de modo linear. O exemplo fundamental é a diferencial de uma função: $df_p$
+                    informa, para cada direção $v$ em $p$, a taxa com que $f$ varia nessa direção. No cálculo vetorial costuma-se
+                    dizer que o gradiente de $f$ "aponta" para onde $f$ mais cresce, mas isso esconde uma escolha: o objeto
+                    intrínseco é o covetor $df$, e o gradiente é apenas o vetor em que ele se disfarça quando se dispõe de uma
+                    métrica. Sem métrica, o que existe é $df$, e é com covetores, e não com vetores, que a teoria da integração é
+                    construída.
                 </p>
 
                 <p>
-                    Este tópico tem quatro movimentos. Primeiro, a álgebra linear do espaço dual. Segundo, o espaço
-                    cotangente $T_p^*M$ e o fibrado cotangente $T^*M$, construído como $TM$ no tópico anterior. Terceiro,
+                    O tópico se desenvolve em quatro movimentos. Primeiro, a álgebra linear do espaço dual. Segundo, o espaço
+                    cotangente $T_p^*M$ e o fibrado cotangente $T^*M$, construído como o $TM$ do tópico anterior. Terceiro,
                     os campos de covetores, as <em>$1$-formas</em>, que, ao contrário dos campos vetoriais, podem ser
-                    transportadas por <em>qualquer</em> aplicação suave (o <em>pullback</em>). Quarto, as $1$-formas são o
-                    primeiro objeto que se <em>integra</em> sem nenhuma escolha adicional: a integral de linha. Ela leva
-                    ao teorema fundamental das integrais de linha, que é a primeira instância do Teorema de Stokes,
-                    a Equação (3.1.2) do <a href="[01] - Motivação e Roteiro.html">tópico 3.1</a>.
+                    transportadas por <em>qualquer</em> aplicação suave (o <em>pullback</em>, ou retrocesso). Quarto, as $1$-formas são o
+                    primeiro objeto que se <em>integra</em> sem nenhuma escolha adicional: a integral de linha.
+                </p>
+
+                <p>
+                    Por que isto é necessário para chegar ao Teorema de Stokes? Porque o que se integra em uma variedade
+                    são formas diferenciais, e as $1$-formas são o caso mais simples. Aqui já se vê o fenômeno completo em
+                    dimensão $1$: o teorema fundamental das integrais de linha, provado abaixo, é a Equação (3.1.2) do
+                    <a href="[01] - Motivação e Roteiro.html">tópico 3.1</a>, isto é, o primeiro caso do Teorema de Stokes. As formas de grau
+                    maior virão dos tensores dos tópicos 3.10 a 3.12.
                 </p>
 
                 <h2 id="espaco-dual">Álgebra linear: o espaço dual</h2>
 
                 <div class="definition-box" id="def-3-9-1" style="border-left: 4px solid #45503B;">
-                    <p><strong>Definição 3.9.1 (Covetor e espaço dual).</strong> Seja $V$ um espaço vetorial real de
-                        dimensão finita. Um <strong>covetor</strong> em $V$ é uma aplicação linear
-                        $\omega: V\to\mathbb{R}$. O conjunto dos covetores, com a soma e o produto por escalar
-                        definidos ponto a ponto, é um espaço vetorial, o <strong>espaço dual</strong> $V^*$.</p>
-                </div>
-
-                <div class="definition-box" id="prop-3-9-2">
-                    <p><strong>Proposição 3.9.2 (Base dual).</strong> Seja $(E_1,\dots,E_n)$ uma base de $V$. Os covetores
-                        $\varepsilon^1,\dots,\varepsilon^n$ definidos por $\varepsilon^i(E_j)=\delta^i_j$ formam uma base de
-                        $V^*$, a <strong>base dual</strong>. Em particular $\dim V^*=\dim V$. Todo covetor se
-                        escreve como $\omega=\omega_i\varepsilon^i$, com $\omega_i=\omega(E_i)$, e
-                        $\omega(v)=\omega_iv^i$ se $v=v^iE_i$.</p>
+                    <p><strong>Definição 3.9.1 (Covetor e espaço dual).</strong> Seja $V$ um espaço vetorial real de dimensão
+                        finita. Um <strong>covetor</strong> em $V$ é uma aplicação linear $\omega: V\to\mathbb{R}$. O conjunto dos
+                        covetores, com a soma e o produto por escalar definidos ponto a ponto, é um espaço vetorial, o
+                        <strong>espaço dual</strong> $V^*$.</p>
                 </div>
 
                 <p>
-                    <em>Demonstração.</em> Um covetor linear é determinado por seus valores na base, de modo que
-                    $\varepsilon^i$ existem e são únicos: $\varepsilon^i(v)=v^i$, a $i$-ésima componente de $v$. Dado
-                    $\omega\in V^*$, a combinação $\omega_i\varepsilon^i$ com $\omega_i=\omega(E_i)$ coincide com $\omega$ em
-                    cada $E_j$: $\omega_i\varepsilon^i(E_j)=\omega_j=\omega(E_j)$; logo $\omega=\omega_i\varepsilon^i$.
-                    Os $\varepsilon^i$ são independentes: se $c_i\varepsilon^i=0$, aplicando a $E_j$ obtém-se $c_j=0$.
-                    Por fim, $\omega(v)=\omega(v^iE_i)=v^i\omega(E_i)=\omega_iv^i$. $\blacksquare$
+                    Por exemplo, em $\mathbb{R}^n$ todo covetor é da forma $\omega(v)=a_1v^1+\dots+a_nv^n$: um "vetor linha"
+                    $(a_1,\dots,a_n)$ aplicado ao "vetor coluna" $v$. Outro exemplo: no espaço das matrizes $n\times n$, o traço
+                    $A\mapsto\operatorname{tr}A$ é um covetor. Um covetor não nulo $\omega$ tem núcleo de dimensão $n-1$, um
+                    hiperplano, e é isso que dá a ele a interpretação geométrica da Observação 3.9.7 mais adiante.
+                </p>
+
+                <div class="definition-box" id="prop-3-9-2">
+                    <p><strong>Proposição 3.9.2 (Base dual).</strong> Seja $(E_1,\dots,E_n)$ uma base de $V$. Os covetores
+                        $\varepsilon^1,\dots,\varepsilon^n$ definidos por $\varepsilon^i(E_j)=\delta^i_j$ formam uma base de $V^*$,
+                        a <strong>base dual</strong>. Em particular, $\dim V^*=\dim V$. Todo covetor se escreve como
+                        $\omega=\omega_i\varepsilon^i$, com $\omega_i=\omega(E_i)$, e, se $v=v^iE_i$, então $\omega(v)=\omega_iv^i$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Uma aplicação linear fica determinada pelos valores em uma base, de modo que
+                    os $\varepsilon^i$ existem e são únicos; explicitamente, $\varepsilon^i(v)=v^i$ é a $i$-ésima componente de $v$.
+                    Dado $\omega\in V^*$, o covetor $\omega_i\varepsilon^i$, com $\omega_i=\omega(E_i)$, vale
+                    $\omega_i\varepsilon^i(E_j)=\omega_j=\omega(E_j)$ em cada $E_j$, e portanto coincide com $\omega$. Os $\varepsilon^i$
+                    são independentes: se $c_i\varepsilon^i=0$, aplicar a $E_j$ dá $c_j=0$. Por fim,
+                    $\omega(v)=\omega(v^iE_i)=v^i\omega(E_i)=\omega_iv^i$. $\blacksquare$
                 </p>
 
                 <div class="definition-box" id="prop-3-9-3">
-                    <p><strong>Proposição 3.9.3 (Mudança de base).</strong> Se $\tilde{E}_j=A^i{}_jE_i$, com $A$ invertível, então</p>
+                    <p><strong>Proposição 3.9.3 (Mudança de base).</strong> Se $\tilde{E}_j=A^i{}_jE_i$, com $A$ invertível,
+                        então</p>
                     <p>$$ \tilde{\varepsilon}^j=(A^{-1})^j{}_i\,\varepsilon^i, \qquad \tilde{\omega}_j=A^i{}_j\,\omega_i, \qquad \tilde{v}^j=(A^{-1})^j{}_i\,v^i. $$</p>
                 </div>
 
                 <p>
-                    <em>Demonstração.</em> Para a base dual: $(A^{-1})^j{}_i\varepsilon^i(\tilde{E}_k)=(A^{-1})^j{}_iA^l{}_k\varepsilon^i(E_l)=(A^{-1})^j{}_iA^i{}_k=\delta^j_k$,
-                    de modo que $(A^{-1})^j{}_i\varepsilon^i$ satisfaz a definição de $\tilde{\varepsilon}^j$. As componentes de
-                    $\omega$: $\tilde{\omega}_j=\omega(\tilde{E}_j)=A^i{}_j\omega(E_i)=A^i{}_j\omega_i$. As de
-                    $v$: de $v=v^iE_i=\tilde{v}^j\tilde{E}_j=\tilde{v}^jA^i{}_jE_i$ vem $v^i=A^i{}_j\tilde{v}^j$, isto é,
+                    <em>Demonstração.</em> Para a base dual, o covetor $(A^{-1})^j{}_i\varepsilon^i$ satisfaz
+                    $(A^{-1})^j{}_i\varepsilon^i(\tilde{E}_k)=(A^{-1})^j{}_iA^l{}_k\,\varepsilon^i(E_l)=(A^{-1})^j{}_iA^i{}_k=\delta^j_k$,
+                    que é a definição de $\tilde{\varepsilon}^j$. As componentes de $\omega$ são
+                    $\tilde{\omega}_j=\omega(\tilde{E}_j)=A^i{}_j\,\omega(E_i)=A^i{}_j\,\omega_i$. As de $v$: de
+                    $v=v^iE_i=\tilde{v}^j\tilde{E}_j=\tilde{v}^jA^i{}_jE_i$ segue $v^i=A^i{}_j\tilde{v}^j$, isto é,
                     $\tilde{v}^j=(A^{-1})^j{}_iv^i$. $\blacksquare$
                 </p>
 
                 <p>
-                    As componentes de um covetor mudam com a <em>mesma</em> matriz que a base ($\tilde{\omega}_j=A^i{}_j\omega_i$:
-                    "covariantes"), as de um vetor, com a <em>inversa</em> ("contravariantes"). A combinação
-                    $\omega_iv^i$ é, em consequência, independente da base: $\tilde{\omega}_j\tilde{v}^j=A^i{}_j\omega_i(A^{-1})^j{}_kv^k=\omega_iv^i$,
+                    As componentes de um covetor mudam com a <em>mesma</em> matriz que a base ($\tilde{\omega}_j=A^i{}_j\omega_i$):
+                    são "covariantes". As de um vetor mudam com a <em>inversa</em>: são "contravariantes". Em consequência,
+                    $\omega_iv^i$ não depende da base,
+                    $$ \tilde{\omega}_j\tilde{v}^j=A^i{}_j\,\omega_i\,(A^{-1})^j{}_k\,v^k=\delta^i_k\,\omega_iv^k=\omega_iv^i, $$
                     como deve ser, pois é o valor $\omega(v)$.
                 </p>
 
                 <div class="definition-box" id="prop-3-9-4">
                     <p><strong>Proposição 3.9.4 (Aplicação dual).</strong> Se $A: V\to W$ é linear, a
-                        <strong>aplicação dual</strong> $A^*: W^*\to V^*$, $(A^*\omega)(v)=\omega(Av)$, é linear;
+                        <strong>aplicação dual</strong> $A^*: W^*\to V^*$, dada por $(A^*\omega)(v)=\omega(Av)$, é linear;
                         $(A\circ B)^*=B^*\circ A^*$; e, em bases de $V$ e de $W$ e nas bases duais, a matriz de $A^*$ é a
                         transposta da matriz de $A$.</p>
                 </div>
 
                 <p>
-                    <em>Demonstração.</em> $A^*\omega=\omega\circ A$ é linear em $v$, e $\omega\mapsto\omega\circ A$ é
-                    linear. Para $B: U\to V$ e $A: V\to W$, $((A\circ B)^*\omega)(u)=\omega(ABu)=(A^*\omega)(Bu)=(B^*A^*\omega)(u)$.
-                    Se $AE_j=A^i{}_jF_i$ (bases $(E_j)$ de $V$ e $(F_i)$ de $W$), então
-                    $(A^*\varphi^k)(E_j)=\varphi^k(AE_j)=A^k{}_j$, de modo que $A^*\varphi^k=A^k{}_j\varepsilon^j$:
-                    as componentes de $A^*\varphi^k$ na base dual de $V$ são a $k$-ésima linha de $A$, isto é, a
-                    matriz de $A^*$ tem entradas $(A^*)^j{}_k=A^k{}_j$, a transposta. $\blacksquare$
+                    <em>Demonstração.</em> $A^*\omega=\omega\circ A$ é linear em $v$, e $\omega\mapsto\omega\circ A$ é linear.
+                    Para $B: U\to V$ e $A: V\to W$,
+                    $((A\circ B)^*\omega)(u)=\omega(ABu)=(A^*\omega)(Bu)=(B^*A^*\omega)(u)$. Se $AE_j=A^i{}_jF_i$ (bases $(E_j)$
+                    de $V$ e $(F_i)$ de $W$, com bases duais $(\varepsilon^j)$ e $(\varphi^i)$), então
+                    $(A^*\varphi^k)(E_j)=\varphi^k(AE_j)=A^k{}_j$, de modo que $A^*\varphi^k=A^k{}_j\varepsilon^j$: as componentes
+                    de $A^*\varphi^k$ são a $k$-ésima linha de $A$, isto é, a matriz de $A^*$ tem entradas
+                    $(A^*)^j{}_k=A^k{}_j$, a transposta. $\blacksquare$
                 </p>
 
                 <div class="definition-box" id="prop-3-9-5">
-                    <p><strong>Proposição 3.9.5 (O bidual).</strong> A aplicação $\xi: V\to V^{**}$,
-                        $\xi(v)(\omega)=\omega(v)$, é um isomorfismo linear, sem escolha de base.</p>
+                    <p><strong>Proposição 3.9.5 (O bidual).</strong> A aplicação $\xi: V\to V^{**}$, $\xi(v)(\omega)=\omega(v)$, é
+                        um isomorfismo linear que não depende de nenhuma escolha de base.</p>
                 </div>
 
                 <p>
                     <em>Demonstração.</em> $\xi(v)$ é linear em $\omega$, de modo que $\xi(v)\in V^{**}$, e $\xi$ é linear em $v$.
-                    É injetiva: se $\xi(v)=0$, então $\omega(v)=0$ para todo $\omega$, em particular $\varepsilon^i(v)=v^i=0$
-                    para a base dual de uma base qualquer, e $v=0$. Como $\dim V^{**}=\dim V^*=\dim V$, é um
-                    isomorfismo. $\blacksquare$
+                    É injetiva: se $\xi(v)=0$, então $\omega(v)=0$ para todo $\omega$; em particular, $\varepsilon^i(v)=v^i=0$
+                    para a base dual de qualquer base, e $v=0$. Como $\dim V^{**}=\dim V^*=\dim V$, é um isomorfismo.
+                    $\blacksquare$
                 </p>
 
                 <p id="obs-3-9-6"><strong>Observação 3.9.6 (Não há isomorfismo canônico entre $V$ e $V^*$).</strong> Escolhida
                     uma base, a aplicação $E_i\mapsto\varepsilon^i$ é um isomorfismo $V\to V^*$, mas ele <em>depende da
-                        base</em>. Por exemplo, se $\tilde{E}_1=2E_1$ e os demais vetores ficam iguais, então
-                    $\tilde{\varepsilon}^1=\tfrac12\varepsilon^1$, e o isomorfismo associado a $\tilde{E}$ leva
-                    $\tilde{E}_1=2E_1$ em $\tfrac12\varepsilon^1$, enquanto o associado a $E$ leva $2E_1$ em
-                    $2\varepsilon^1$. Em geral, um isomorfismo $V\to V^*$ é o mesmo que uma forma bilinear não
-                    degenerada em $V$ (uma "métrica"), e é a escolha dela, e não a escolha de uma base, que dá uma maneira
-                    intrínseca de identificar vetores e covetores. É por isso que, na Relatividade Geral, "subir e baixar
-                    índices" exige a métrica.</p>
+                        base</em>. Por exemplo, se $\tilde{E}_1=2E_1$ e os outros vetores não mudam, então
+                    $\tilde{\varepsilon}^1=\tfrac12\varepsilon^1$: o isomorfismo associado a $\tilde{E}$ leva $2E_1$ em
+                    $\tfrac12\varepsilon^1$, e o associado a $E$ leva o mesmo vetor $2E_1$ em $2\varepsilon^1$. Em geral, um
+                    isomorfismo $V\to V^*$ é o mesmo que uma forma bilinear não degenerada em $V$ (uma "métrica"), e é a escolha
+                    dela, e não a de uma base, que dá uma identificação intrínseca entre vetores e covetores. É por isso que,
+                    na Relatividade Geral, "subir e baixar índices" exige a métrica. O bidual, ao contrário, é canônico
+                    (Proposição 3.9.5): é com ele que, a partir do tópico 3.10, os vetores serão tratados como covetores de $V^*$.</p>
 
                 <p id="obs-3-9-7"><strong>Observação 3.9.7 (O significado geométrico de um covetor).</strong> Um covetor
-                    $\omega\neq0$ é uma família de hiperplanos paralelos, igualmente espaçados: seus conjuntos de nível
-                    $\{\omega=c\}$, $c\in\mathbb{Z}$. O número $\omega(v)$ conta (com fração) quantos desses hiperplanos o
-                    vetor $v$ atravessa; um vetor paralelo aos hiperplanos não atravessa nenhum, e
-                    $\omega(v)=0$. A Figura 3.9.1 mostra $\omega=dx+\tfrac12dy$ em $\mathbb{R}^2$. Esta imagem é a
-                    certa para a diferencial $df$ de uma função: os hiperplanos são os planos tangentes às curvas
-                    de nível de $f$, e $df(v)$ é o número de curvas de nível (de espaçamento unitário) que $v$ atravessa.
-                    Um vetor, ao contrário, é uma seta.</p>
+                    $\omega\neq0$ é uma família de hiperplanos paralelos, igualmente espaçados: os conjuntos de nível
+                    $\{\omega=c\}$, $c\in\mathbb{Z}$. O número $\omega(v)$ conta, com frações, quantos desses hiperplanos o
+                    vetor $v$ atravessa; um vetor paralelo aos hiperplanos não atravessa nenhum, e $\omega(v)=0$. A Figura 3.9.1
+                    mostra $\omega=dx+\tfrac12dy$ em $\mathbb{R}^2$. Esta é a imagem certa para a diferencial $df$ de uma função: os
+                    hiperplanos são os planos tangentes às curvas de nível de $f$, e $df(v)$ é o número de curvas de nível (de
+                    espaçamento unitário) que $v$ atravessa. Um vetor, ao contrário, é uma seta.</p>
 
-                <figure class="lecture-figure" id="fig-3-9-1">
-                    <svg viewBox="0 0 640 300" role="img" aria-label="Uma moldura com retas paralelas inclinadas, igualmente espaçadas, rotuladas ômega igual a menos 1, 0, 1, 2, 3 e 4: são os níveis do covetor ômega igual a dx mais meio dy. Da origem saem dois vetores. O vetor v atravessa duas retas e um pouco mais, e portanto ômega de v vale 2,3. O vetor w é paralelo às retas, não atravessa nenhuma, e ômega de w vale 0.">
+                <figure class="lecture-figure" id="fig-3-9-1" style="overflow-x: auto; overflow-y: hidden;">
+                    <svg viewBox="0 0 640 300" role="img" style="min-width: 560px;" aria-label="Uma moldura com retas paralelas inclinadas, igualmente espaçadas, rotuladas ômega igual a menos 1, 0, 1, 2, 3 e 4: são os níveis do covetor ômega igual a dx mais meio dy. Da origem saem dois vetores. O vetor v atravessa duas retas e um pouco mais, e portanto ômega de v vale 2,3. O vetor w é paralelo às retas, não atravessa nenhuma, e ômega de w vale 0.">
 <defs><marker id="arr-3-9-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
 <rect x="44.6" y="28.1" width="429" height="283.8" rx="3" class="fig-frame"/>
 <line x1="44.6" y1="51.2" x2="174.9" y2="311.9" class="fig-guide"/>
@@ -290,8 +305,8 @@
 <text x="487.6" y="138" class="fig-label fig-small fig-it">ω(w) = 0</text>
 </svg>
                     <figcaption><strong>Figura 3.9.1.</strong> O covetor $\omega=dx+\tfrac12dy$ em $\mathbb{R}^2$ como
-                        família de retas paralelas, os níveis $\omega=c$. O vetor $v=(2,0{,}6)$ atravessa
-                        $\omega(v)=2{,}3$ retas; o vetor $w=(0{,}9,-1{,}8)$ é paralelo às retas, não atravessa
+                        família de retas paralelas, os níveis $\omega=c$. O vetor $v=(2;\,0{,}6)$ atravessa
+                        $\omega(v)=2{,}3$ retas; o vetor $w=(0{,}9;\,-1{,}8)$ é paralelo às retas, não atravessa
                         nenhuma, e $\omega(w)=0$. A seta de $v$ e as retas são objetos diferentes: o covetor não é
                         uma seta.</figcaption>
                 </figure>
@@ -300,9 +315,9 @@
 
                 <div class="definition-box" id="def-3-9-8" style="border-left: 4px solid #45503B;">
                     <p><strong>Definição 3.9.8 (Espaço cotangente).</strong> Para $p\in M$, o <strong>espaço
-                            cotangente</strong> a $M$ em $p$ é o dual do espaço tangente:
-                        $T_p^*M=(T_pM)^*$. Seus elementos são os <strong>covetores tangentes</strong> a $M$ em $p$.
-                        Como $\dim T_pM=n$ (<a href="[05] - Vetores Tangentes.html#teo-3-5-13">Teorema 3.5.13</a>), $\dim T_p^*M=n$.</p>
+                        cotangente</strong> a $M$ em $p$ é o dual do espaço tangente, $T_p^*M=(T_pM)^*$. Seus elementos
+                        são os <strong>covetores tangentes</strong> a $M$ em $p$. Como $\dim T_pM=n$ (<a href="[05] - Vetores Tangentes.html#teo-3-5-13">Teorema 3.5.13</a>),
+                        vale $\dim T_p^*M=n$.</p>
                 </div>
 
                 <div class="definition-box" id="def-3-9-9" style="border-left: 4px solid #45503B;">
@@ -312,10 +327,10 @@
                 </div>
 
                 <p>
-                    É linear em $v$ pela definição de soma e produto por escalar em $T_pM$, e portanto $df_p\in T_p^*M$. Pela
-                    <a href="[05] - Vetores Tangentes.html#obs-3-5-9">Observação 3.5.9</a>, $df_p$ também está definido para $f$ suave apenas perto de $p$. O mesmo símbolo
-                    foi usado, no tópico 3.5, para a diferencial $dF_p$ de uma aplicação; a proposição seguinte mostra
-                    que as duas noções coincidem quando $F=f$ toma valores em $\mathbb{R}$.
+                    A aplicação $v\mapsto v(f)$ é linear em $v$, pela definição das operações de $T_pM$, e portanto $df_p$ é de
+                    fato um covetor. Pela <a href="[05] - Vetores Tangentes.html#obs-3-5-9">Observação 3.5.9</a>, $df_p$ também está definido quando $f$ é suave apenas perto de $p$. No
+                    tópico 3.5, o símbolo $dF_p$ designou a diferencial de uma aplicação $F: M\to N$; a proposição seguinte
+                    mostra que as duas noções coincidem quando $F=f$ toma valores em $\mathbb{R}$.
                 </p>
 
                 <div class="definition-box" id="prop-3-9-10">
@@ -326,11 +341,10 @@
                 </div>
 
                 <p>
-                    <em>Demonstração.</em> Pela definição da diferencial (<a href="[05] - Vetores Tangentes.html#def-3-5-10">Definição 3.5.10</a>), para $h\in C^\infty(\mathbb{R})$,
-                    $(df_pv)(h)=v(h\circ f)$. Em uma carta, com $v=v^i\partial_i\vert_p$ e
-                    $\hat{f}=f\circ\varphi^{-1}$, a regra da cadeia dá
-                    $v(h\circ f)=v^i\,\partial_i(h\circ\hat{f})=h'(f(p))\,v^i\partial_i\hat{f}=h'(f(p))\,v(f)$. Logo
-                    $df_pv=v(f)\,\partial_t\vert_{f(p)}$, que corresponde ao número $v(f)$ pela identificação. $\blacksquare$
+                    <em>Demonstração.</em> Pela <a href="[05] - Vetores Tangentes.html#def-3-5-10">Definição 3.5.10</a>, para $h\in C^\infty(\mathbb{R})$ vale $(df_pv)(h)=v(h\circ f)$. Em uma
+                    carta, com $v=v^i\partial_i\vert_p$ e $\hat{f}=f\circ\varphi^{-1}$, a regra da cadeia dá
+                    $$ v(h\circ f)=v^i\,\partial_i(h\circ\hat{f})=h'(f(p))\,v^i\partial_i\hat{f}=h'(f(p))\,v(f). $$
+                    Logo $df_pv=v(f)\,\partial_t\vert_{f(p)}$, que corresponde ao número $v(f)$ pela identificação. $\blacksquare$
                 </p>
 
                 <div class="definition-box" id="prop-3-9-11">
@@ -340,7 +354,8 @@
                 </div>
 
                 <p>
-                    <em>Demonstração.</em> $dx^i(\partial_j)=\partial_j(x^i)=\delta^i_j$, por (3.5.2). $\blacksquare$
+                    <em>Demonstração.</em> $dx^i(\partial_j)=\partial_j(x^i)=\delta^i_j$, por (3.5.2): a derivada de uma coordenada
+                    ao longo de uma coordenada. $\blacksquare$
                 </p>
 
                 <div class="definition-box" id="prop-3-9-12">
@@ -349,25 +364,24 @@
                 </div>
 
                 <p>
-                    <em>Demonstração.</em> Pela Proposição 3.9.2 e pela Proposição 3.9.11, as componentes de $df_p$ na
-                    base $(dx^i)$ são $df_p(\partial_i\vert_p)=\partial_i\vert_pf=\partial\hat{f}/\partial x^i(\hat{p})$, por
-                    (3.5.2). $\blacksquare$
+                    <em>Demonstração.</em> Pelas Proposições 3.9.2 e 3.9.11, as componentes de $df_p$ na base $(dx^i)$ são
+                    $df_p(\partial_i\vert_p)=\partial_i\vert_pf=\partial\hat{f}/\partial x^i(\hat{p})$, por (3.5.2). $\blacksquare$
                 </p>
 
                 <p>
                     A Equação (3.9.1) é o sentido rigoroso da "diferencial total" do cálculo, $df=\frac{\partial f}{\partial x^i}dx^i$:
-                    um covetor escrito na base dual das coordenadas. E $df_p(v)=v^i\partial_if$ é a taxa de variação de
-                    $f$ na direção $v$. Para curvas, vale o seguinte.
+                    um covetor escrito na base dual das coordenadas. E $df_p(v)=v^i\partial_if$ é a taxa de variação de $f$
+                    na direção $v$. Para curvas, vale o seguinte.
                 </p>
 
                 <div class="definition-box" id="prop-3-9-13">
-                    <p><strong>Proposição 3.9.13.</strong> Se $\gamma$ é uma curva suave com $\gamma(0)=p$, então
-                        $df_p\big(\gamma'(0)\big)=(f\circ\gamma)'(0)$.</p>
+                    <p><strong>Proposição 3.9.13 ($df$ ao longo de uma curva).</strong> Se $\gamma$ é uma curva suave com
+                        $\gamma(0)=p$, então $df_p\big(\gamma'(0)\big)=(f\circ\gamma)'(0)$.</p>
                 </div>
 
                 <p>
-                    <em>Demonstração.</em> Pela definição da velocidade, $\gamma'(0)f=(f\circ\gamma)'(0)$
-                    (<a href="[05] - Vetores Tangentes.html#def-3-5-22">Definição 3.5.22</a>), e $df_p(\gamma'(0))=\gamma'(0)f$. $\blacksquare$
+                    <em>Demonstração.</em> Pela definição da velocidade (<a href="[05] - Vetores Tangentes.html#def-3-5-22">Definição 3.5.22</a>), $\gamma'(0)f=(f\circ\gamma)'(0)$, e
+                    $df_p(\gamma'(0))=\gamma'(0)f$ pela Definição 3.9.9. $\blacksquare$
                 </p>
 
                 <h3 id="lei-covariante">Mudança de coordenadas</h3>
@@ -375,104 +389,97 @@
                 <div class="definition-box" id="prop-3-9-14">
                     <p><strong>Proposição 3.9.14 (A lei covariante).</strong> Sejam $x^i$ e $\tilde{x}^j$ coordenadas de duas
                         cartas em torno de $p$. Então</p>
-                    <p>$$ d\tilde{x}^j=\frac{\partial\tilde{x}^j}{\partial x^i}\,dx^i, \qquad
-                        \tilde{\omega}_j=\frac{\partial x^i}{\partial\tilde{x}^j}\,\omega_i, \tag{3.9.2} $$</p>
-                    <p>para as componentes $\omega_i,\tilde{\omega}_j$ de um covetor $\omega\in T_p^*M$, com as derivadas
-                        calculadas em $\hat{p}$ (primeira) e em $\tilde{p}$ (segunda). Além disso, o número
+                    <p>$$ \begin{aligned}d\tilde{x}^j&=\frac{\partial\tilde{x}^j}{\partial x^i}\,dx^i,\\
+                        \tilde{\omega}_j&=\frac{\partial x^i}{\partial\tilde{x}^j}\,\omega_i,\end{aligned} \tag{3.9.2} $$</p>
+                    <p>em que $\omega_i,\tilde{\omega}_j$ são as componentes de um covetor $\omega\in T_p^*M$ nas duas cartas, e as
+                        derivadas são calculadas em $\hat{p}$ (primeira) e em $\tilde{p}$ (segunda). Além disso, o número
                         $\omega_iv^i$ não depende das coordenadas.</p>
                 </div>
 
                 <p>
-                    <em>Demonstração.</em> A primeira fórmula é (3.9.1) para $f=\tilde{x}^j$. Para a segunda, a
+                    <em>Demonstração.</em> A primeira fórmula é (3.9.1) com $f=\tilde{x}^j$. Para a segunda, a
                     <a href="[05] - Vetores Tangentes.html#prop-3-5-18">Proposição 3.5.18</a>, com os papéis das cartas trocados, dá
-                    $\tilde{\partial}_j=\dfrac{\partial x^i}{\partial\tilde{x}^j}\partial_i$, de modo que
-                    $\tilde{\omega}_j=\omega(\tilde{\partial}_j)=\dfrac{\partial x^i}{\partial\tilde{x}^j}\omega_i$.
-                    Finalmente, com $\tilde{v}^j=\dfrac{\partial\tilde{x}^j}{\partial x^k}v^k$ (lei contravariante),
-                </p>
-
-                <p>
+                    $\tilde{\partial}_j=\dfrac{\partial x^i}{\partial\tilde{x}^j}\,\partial_i$, de modo que
+                    $\tilde{\omega}_j=\omega(\tilde{\partial}_j)=\dfrac{\partial x^i}{\partial\tilde{x}^j}\,\omega_i$. Por fim, com
+                    $\tilde{v}^j=\dfrac{\partial\tilde{x}^j}{\partial x^k}\,v^k$ (lei contravariante, (3.5.4)),
                     $$ \tilde{\omega}_j\tilde{v}^j=\frac{\partial x^i}{\partial\tilde{x}^j}\frac{\partial\tilde{x}^j}{\partial x^k}\,\omega_iv^k=\delta^i_k\,\omega_iv^k=\omega_iv^i, $$
-                </p>
-
-                <p>
                     porque as jacobianas das duas transições são inversas uma da outra (<a href="[05] - Vetores Tangentes.html#prop-3-5-18">Proposição 3.5.18</a>). $\blacksquare$
                 </p>
 
                 <p>
-                    Compare (3.9.2) com a lei (3.5.4) dos vetores: nas componentes de um covetor entra a jacobiana
-                    "velhas por novas", $\partial x^i/\partial\tilde{x}^j$, a inversa da transposta da de vetores.
-                    É a lei covariante, e é a forma como os físicos reconhecem um covetor: um objeto $\omega_i$ cujas
-                    componentes se transformam por (3.9.2). O teorema de equivalência análogo ao do
-                    <a href="[05] - Vetores Tangentes.html#teo-3-5-19">Teorema 3.5.19</a> vale, com a mesma prova, para covetores.
+                    Compare (3.9.2) com a lei (3.5.4) dos vetores: nas componentes de um covetor entra a jacobiana "velhas por
+                    novas", $\partial x^i/\partial\tilde{x}^j$, a inversa transposta da dos vetores. É a <em>lei covariante</em>, e é como
+                    os físicos reconhecem um covetor: um conjunto de números $\omega_i$ que se transformam por (3.9.2). O teorema de
+                    equivalência análogo ao <a href="[05] - Vetores Tangentes.html#teo-3-5-19">Teorema 3.5.19</a> vale para covetores, com a mesma prova.
                 </p>
 
                 <h3 id="gradiente">E o gradiente?</h3>
 
                 <p id="obs-3-9-15"><strong>Observação 3.9.15 (E o gradiente?).</strong> A diferencial $df$ é um covetor: um
-                    objeto que mede vetores. O "vetor gradiente" $\nabla f$ do cálculo vetorial só existe depois de
-                    escolhida uma métrica $g$, e é o vetor dado por $\operatorname{grad}f=g^{ij}\,\partial_jf\,\partial_i$.
-                    Em coordenadas polares em $\mathbb{R}^2$, $df=\partial_rf\,dr+\partial_\theta f\,d\theta$, sem nenhum
-                    fator extra. O gradiente clássico, $\partial_rf\,\mathbf{e}_r+\tfrac1r\partial_\theta f\,\mathbf{e}_\theta$, tem o
-                    fator $1/r$, que vem da métrica euclidiana ($g^{rr}=1$ e $g^{\theta\theta}=1/r^2$) e da normalização do
-                    vetor unitário $\mathbf{e}_\theta=\tfrac1r\partial_\theta$ (o campo $E_\theta$ do
-                    <a href="[07] - Fibrado Tangente e Campos Vetoriais.html#ex-3-7-17">Exemplo 3.7.17</a>): $\operatorname{grad}f=\partial_rf\,\partial_r+\tfrac1{r^2}\partial_\theta f\,\partial_\theta$.
-                    Nada disso é necessário para $df$, nem para integrar, e é por isso que o capítulo trabalha sem
-                    métrica.</p>
+                    objeto que mede vetores. O "vetor gradiente" $\nabla f$ do cálculo vetorial só existe depois de escolhida uma
+                    métrica $g$, e é o vetor $\operatorname{grad}f=g^{ij}\,\partial_jf\,\partial_i$. Em coordenadas polares em
+                    $\mathbb{R}^2$, $df=\partial_rf\,dr+\partial_\theta f\,d\theta$, sem nenhum fator extra. O gradiente clássico,
+                    $\partial_rf\,\mathbf{e}_r+\tfrac1r\partial_\theta f\,\mathbf{e}_\theta$, tem o fator $1/r$, que vem da métrica
+                    euclidiana ($g^{rr}=1$ e $g^{\theta\theta}=1/r^2$) e da normalização do vetor unitário
+                    $\mathbf{e}_\theta=\tfrac1r\partial_\theta$ (o campo $E_\theta$ do <a href="[07] - Fibrado Tangente e Campos Vetoriais.html#ex-3-7-17">Exemplo 3.7.17</a>):
+                    $\operatorname{grad}f=\partial_rf\,\partial_r+\tfrac1{r^2}\partial_\theta f\,\partial_\theta$. Nada disso é necessário
+                    para $df$, nem para integrar, e é por isso que o capítulo trabalha sem métrica.</p>
 
                 <h2 id="fibrado-cotangente">Fibrado cotangente e 1-formas</h2>
 
                 <p>
-                    Como no tópico anterior, reunimos os espaços cotangentes de todos os pontos em um único espaço, que
-                    será uma variedade.
+                    Como no tópico anterior, reunimos os espaços cotangentes de todos os pontos em um único espaço, que será
+                    uma variedade e um fibrado vetorial.
                 </p>
 
                 <div class="definition-box" id="def-3-9-16" style="border-left: 4px solid #45503B;">
                     <p><strong>Definição 3.9.16 (Fibrado cotangente).</strong> O <strong>fibrado cotangente</strong> de $M$
                         é $T^*M=\bigsqcup_{p\in M}T_p^*M$, com a projeção $\pi: T^*M\to M$ e fibra $\pi^{-1}(p)=T_p^*M$.
                         Para uma carta $(U,\varphi)$, as <strong>coordenadas naturais</strong> são</p>
-                    <p>$$ \Psi_\varphi:\pi^{-1}(U)\to\varphi(U)\times\mathbb{R}^n, \qquad \Psi_\varphi\big(\xi_i\,dx^i\vert_p\big)=\big(x^1(p),\dots,x^n(p),\,\xi_1,\dots,\xi_n\big). \tag{3.9.3} $$</p>
+                    <p>$$ \begin{aligned}&\Psi_\varphi:\pi^{-1}(U)\to\varphi(U)\times\mathbb{R}^n,\\
+                        &\Psi_\varphi\big(\xi_i\,dx^i\vert_p\big)=\big(x^1(p),\dots,x^n(p),\,\xi_1,\dots,\xi_n\big).\end{aligned} \tag{3.9.3} $$</p>
                 </div>
+
+                <p>
+                    A aplicação $\Psi_\varphi$ está bem definida e é bijetora sobre $\varphi(U)\times\mathbb{R}^n$, porque
+                    $(dx^i\vert_p)$ é uma base de $T_p^*M$ (<a href="#prop-3-9-11">Proposição 3.9.11</a>).
+                </p>
 
                 <div class="definition-box" id="teo-3-9-17">
                     <p><strong>Teorema 3.9.17 ($T^*M$ é uma variedade e um fibrado vetorial).</strong> $T^*M$ tem uma
-                        topologia e uma estrutura diferenciável únicas para as quais todas as $\big(\pi^{-1}(U),\Psi_\varphi\big)$
-                        são cartas suaves. Com elas, $T^*M$ é uma variedade de dimensão $2n$, $\pi$ é suave e
-                        $\pi: T^*M\to M$ é um fibrado vetorial de posto $n$
-                        (<a href="[07] - Fibrado Tangente e Campos Vetoriais.html#def-3-7-5">Definição 3.7.5</a>).</p>
+                        topologia e uma estrutura diferenciável únicas para as quais todas as
+                        $\big(\pi^{-1}(U),\Psi_\varphi\big)$ são cartas suaves. Com elas, $T^*M$ é uma variedade de dimensão
+                        $2n$, $\pi$ é suave e $\pi: T^*M\to M$ é um fibrado vetorial de posto $n$ (<a href="[07] - Fibrado Tangente e Campos Vetoriais.html#def-3-7-5">Definição 3.7.5</a>).</p>
                 </div>
 
                 <p>
-                    <em>Demonstração.</em> A prova é a do <a href="[07] - Fibrado Tangente e Campos Vetoriais.html#teo-3-7-2">Teorema 3.7.2</a>, com a lei contravariante trocada pela covariante.
-                    Toma-se uma base enumerável $\mathfrak{B}'$ de $M$ formada por domínios de cartas, e as cartas
-                    naturais $\Psi_B$: bijeções de $\pi^{-1}(B)$ sobre $\varphi_B(B)\times\mathbb{R}^n$, com imagens abertas. Para duas
-                    cartas, com coordenadas $x^i$ e $\tilde{x}^j$ e $\tau=\tilde{\varphi}\circ\varphi^{-1}$, a Proposição 3.9.14 dá
-                </p>
-
-                <p>
-                    $$ \Psi_{\tilde{\varphi}}\circ\Psi_\varphi^{-1}(x,\xi)=\Big(\tau(x),\ \frac{\partial x^i}{\partial\tilde{x}^j}\,\xi_i\Big)=\Big(\tau(x),\ \big[D\tau(x)^{-1}\big]^{\mathsf{T}}\xi\Big), \tag{3.9.4} $$
-                </p>
-
-                <p>
-                    em que $D\tau(x)^{-1}$ é a inversa da jacobiana da transição. A primeira componente é suave; as outras
-                    são suaves em $(x,\xi)$, porque as entradas da matriz inversa de uma matriz suave e invertível são suaves
-                    (regra de Cramer) e dependem linearmente de $\xi$. As hipóteses (iii) e (iv) do lema de construção
-                    (<a href="[03] - Variedades Diferenciáveis.html#lema-3-3-15">Lema 3.3.15</a>) vêm da base enumerável e da propriedade de Hausdorff de $M$, como em 3.7.2. O lema
-                    dá a variedade; $\pi$ é suave porque sua representação é $(x,\xi)\mapsto x$. A trivialização local
-                    $(\varphi^{-1}\times\mathrm{id})\circ\Psi_\varphi$ é um difeomorfismo, linear em cada fibra, o que
-                    é a condição da <a href="[07] - Fibrado Tangente e Campos Vetoriais.html#def-3-7-5">Definição 3.7.5</a>. $\blacksquare$
+                    <em>Demonstração.</em> É a prova do <a href="[07] - Fibrado Tangente e Campos Vetoriais.html#teo-3-7-2">Teorema 3.7.2</a>, com a lei contravariante trocada pela covariante. Toma-se
+                    uma base enumerável de $M$ formada por domínios de cartas, e as cartas naturais correspondentes: bijeções de
+                    $\pi^{-1}(B)$ sobre $\varphi_B(B)\times\mathbb{R}^n$, com imagens abertas. Para duas cartas, com coordenadas
+                    $x^i$ e $\tilde{x}^j$ e $\tau=\tilde{\varphi}\circ\varphi^{-1}$, a Proposição 3.9.14 dá
+                    $$ \begin{aligned}&\Psi_{\tilde{\varphi}}\circ\Psi_\varphi^{-1}(x,\xi)\\
+                    &\qquad=\Big(\tau(x),\ \frac{\partial x^i}{\partial\tilde{x}^j}\,\xi_i\Big)\\
+                    &\qquad=\Big(\tau(x),\ \big[D\tau(x)^{-1}\big]^{\mathsf{T}}\xi\Big),\end{aligned} \tag{3.9.4} $$
+                    em que $D\tau(x)^{-1}$ é a inversa da jacobiana da transição. A primeira componente é suave. As outras são
+                    suaves em $(x,\xi)$, porque as entradas da inversa de uma matriz suave e invertível são suaves (regra de Cramer) e
+                    dependem linearmente de $\xi$. As hipóteses (iii) e (iv) do <a href="[03] - Variedades Diferenciáveis.html#lema-3-3-15">Lema 3.3.15</a>
+                    vêm da base enumerável e da propriedade de Hausdorff de $M$, como em 3.7.2, e o lema dá a variedade.
+                    A projeção $\pi$ é suave, porque sua representação é $(x,\xi)\mapsto x$. A trivialização local
+                    $(\varphi^{-1}\times\mathrm{id})\circ\Psi_\varphi$ é um difeomorfismo, linear em cada fibra: é a condição da
+                    <a href="[07] - Fibrado Tangente e Campos Vetoriais.html#def-3-7-5">Definição 3.7.5</a>. $\blacksquare$
                 </p>
 
                 <div class="definition-box" id="def-3-9-18" style="border-left: 4px solid #45503B;">
                     <p><strong>Definição 3.9.18 ($1$-forma diferencial).</strong> Um <strong>campo de covetores</strong> em
-                        $M$ é uma seção $\omega: M\to T^*M$ de $\pi$: uma escolha de $\omega_p\in T_p^*M$ para cada $p$. Em
+                        $M$ é uma seção $\omega: M\to T^*M$ de $\pi$: a escolha de um $\omega_p\in T_p^*M$ para cada $p$. Em
                         uma carta, $\omega=\omega_i\,dx^i$, com componentes $\omega_i=\omega(\partial_i)$. Uma
                         <strong>$1$-forma diferencial</strong> é um campo de covetores <em>suave</em> (seção suave, no
                         sentido da <a href="[07] - Fibrado Tangente e Campos Vetoriais.html#def-3-7-6">Definição 3.7.6</a>). O conjunto das $1$-formas é denotado $\Omega^1(M)$.</p>
                 </div>
 
                 <p>
-                    Como com campos vetoriais, "$1$-forma" significa $1$-forma suave. Para uma $1$-forma $\omega$ e um campo
-                    $X$, $\omega(X)$ é a função $p\mapsto\omega_p(X_p)$; em uma carta, $\omega(X)=\omega_iX^i$.
+                    Como nos campos vetoriais, "$1$-forma" significa $1$-forma suave. Para uma $1$-forma $\omega$ e um campo
+                    $X$, $\omega(X)$ é a função $p\mapsto\omega_p(X_p)$, e em uma carta $\omega(X)=\omega_iX^i$.
                 </p>
 
                 <div class="definition-box" id="prop-3-9-19">
@@ -485,32 +492,33 @@
 
                 <p>
                     <em>Demonstração.</em> <strong>(a)$\Leftrightarrow$(b).</strong> Em coordenadas naturais, a
-                    representação de $\omega$ é $\Psi_\varphi\circ\omega\circ\varphi^{-1}(x)=\big(x,\omega_1(\varphi^{-1}x),\dots,\omega_n(\varphi^{-1}x)\big)$,
-                    suave se, e somente se, as componentes o são, como na <a href="[07] - Fibrado Tangente e Campos Vetoriais.html#prop-3-7-8">Proposição 3.7.8</a>.
-                    <strong>(b)$\Rightarrow$(c).</strong> Em uma carta, $\omega(X)=\omega_iX^i$, e $X^i$ são suaves
-                    (<a href="[07] - Fibrado Tangente e Campos Vetoriais.html#prop-3-7-8">Proposição 3.7.8</a>); logo $\omega(X)$ é suave em cada domínio coordenado.
-                    <strong>(c)$\Rightarrow$(b).</strong> Seja $(U,\varphi)$ uma carta e $p\in U$. Tome um bump
-                    $\rho$ com $\rho\equiv1$ perto de $p$ e $\operatorname{supp}\rho\subset U$, e ponha $X_i=\rho\,\partial_i$
-                    em $U$ e $0$ fora: é um campo suave em $M$ (<a href="[07] - Fibrado Tangente e Campos Vetoriais.html#lema-3-7-11">Lema 3.7.11</a>), que coincide com $\partial_i$ perto de $p$.
-                    Nessa vizinhança, $\omega_i=\omega(\partial_i)=\omega(X_i)$, suave por (c). $\blacksquare$
+                    representação de $\omega$ é $x\mapsto\big(x,\omega_1(\varphi^{-1}x),\dots,\omega_n(\varphi^{-1}x)\big)$, suave se, e
+                    somente se, as componentes o são, como na <a href="[07] - Fibrado Tangente e Campos Vetoriais.html#prop-3-7-8">Proposição 3.7.8</a>.
+                    <strong>(b)$\Rightarrow$(c).</strong> Em uma carta, $\omega(X)=\omega_iX^i$, e as $X^i$ são suaves
+                    (<a href="[07] - Fibrado Tangente e Campos Vetoriais.html#prop-3-7-8">Proposição 3.7.8</a>); logo $\omega(X)$ é suave em cada domínio coordenado, e a suavidade é local.
+                    <strong>(c)$\Rightarrow$(b).</strong> Seja $(U,\varphi)$ uma carta e $p\in U$. Tome um bump $\rho$ com
+                    $\rho\equiv1$ perto de $p$ e $\operatorname{supp}\rho\subset U$ (<a href="[04] - Funções e Aplicações Suaves.html#prop-3-4-29">Proposição 3.4.29</a>), e ponha $X_i=\rho\,\partial_i$ em
+                    $U$ e $0$ fora de $U$. É um campo suave em $M$ (como no <a href="[07] - Fibrado Tangente e Campos Vetoriais.html#lema-3-7-11">Lema 3.7.11</a>) que coincide com $\partial_i$ perto de
+                    $p$. Nessa vizinhança, $\omega_i=\omega(\partial_i)=\omega(X_i)$, que é suave por (c). $\blacksquare$
                 </p>
 
                 <p>
-                    Pelo critério (b), somas de $1$-formas e produtos $u\omega$ com $u\in C^\infty(M)$ são $1$-formas:
-                    $\Omega^1(M)$ é um módulo sobre o anel $C^\infty(M)$ (e um espaço vetorial real).
+                    Pelo critério (b), somas de $1$-formas e produtos $u\omega$, com $u\in C^\infty(M)$, são $1$-formas:
+                    $\Omega^1(M)$ é um módulo sobre o anel $C^\infty(M)$ (e, em particular, um espaço vetorial real).
                 </p>
 
                 <div class="definition-box" id="def-3-9-20" style="border-left: 4px solid #45503B;">
                     <p><strong>Definição 3.9.20 (Correferencial).</strong> Seja $(E_1,\dots,E_n)$ um referencial local em
                         $U$ (<a href="[07] - Fibrado Tangente e Campos Vetoriais.html#def-3-7-15">Definição 3.7.15</a>). O <strong>correferencial</strong> dual é a lista
-                        $(\varepsilon^1,\dots,\varepsilon^n)$ de $1$-formas em $U$ tais que
-                        $\varepsilon^i\vert_p$ é a base dual de $(E_j\vert_p)$ para cada $p$. Para o referencial coordenado, o
-                        correferencial é $(dx^1,\dots,dx^n)$ (Proposição 3.9.11).</p>
+                        $(\varepsilon^1,\dots,\varepsilon^n)$ de $1$-formas em $U$ tais que $\varepsilon^i\vert_p$ é a base dual de
+                        $(E_j\vert_p)$ em cada $p$. Para o referencial coordenado, o correferencial é $(dx^1,\dots,dx^n)$
+                        (<a href="#prop-3-9-11">Proposição 3.9.11</a>).</p>
                 </div>
 
                 <p>
-                    As $\varepsilon^i$ são suaves, porque suas componentes em uma carta formam a matriz inversa, e
-                    portanto suave, da matriz das componentes dos $E_j$. Em termos dele, toda $1$-forma em $U$ é
+                    As $\varepsilon^i$ são suaves. De fato, se $E_j=E^k{}_j\,\partial_k$ em uma carta, a matriz $(E^k{}_j)$ é suave e
+                    invertível, e $\varepsilon^i=(E^{-1})^i{}_k\,dx^k$, porque $\varepsilon^i(E_j)=(E^{-1})^i{}_kE^k{}_j=\delta^i_j$; a
+                    inversa de uma matriz suave é suave. Em termos do correferencial, toda $1$-forma em $U$ é
                     $\omega=\omega_i\varepsilon^i$, com $\omega_i=\omega(E_i)\in C^\infty(U)$.
                 </p>
 
@@ -519,21 +527,22 @@
                         $df\in\Omega^1(M)$, e, para $f,g\in C^\infty(M)$ e $a,b\in\mathbb{R}$:</p>
                     <p>(a) $d(af+bg)=a\,df+b\,dg$;</p>
                     <p>(b) $d(fg)=f\,dg+g\,df$;</p>
-                    <p>(c) $d(f/g)=(g\,df-f\,dg)/g^2$, onde $g\ne0$;</p>
-                    <p>(d) $d(h\circ f)=(h'\circ f)\,df$, para $h\in C^\infty(J)$ com $f(M)\subset J$ aberto de $\mathbb{R}$;</p>
+                    <p>(c) $d(f/g)=(g\,df-f\,dg)/g^2$, onde $g\neq0$;</p>
+                    <p>(d) $d(h\circ f)=(h'\circ f)\,df$, para $h\in C^\infty(J)$, com $J\subset\mathbb{R}$ aberto e $f(M)\subset J$;</p>
                     <p>(e) $df=0$ se, e somente se, $f$ é constante em cada componente conexa de $M$.</p>
                 </div>
 
                 <p>
-                    <em>Demonstração.</em> $df$ é suave: em uma carta, as componentes $df(\partial_i)=\partial_if=\partial\hat{f}/\partial x^i\circ\varphi$
-                    são suaves, e vale o critério (b). Como $df_p(v)=v(f)$, (a) é a linearidade de $v$, e (b) é a regra de Leibniz
-                    de $v$ em $p$: $df_p(v)=v(fg)=f(p)v(g)+g(p)v(f)$. Para (c), aplique (b) a $f=(f/g)\,g$:
-                    $df=\frac fg\,dg+g\,d(f/g)$, de onde $d(f/g)=(df-\frac fg\,dg)/g=(g\,df-f\,dg)/g^2$. Para (d),
-                    em uma carta, a regra da cadeia dá $\partial_i(h\circ\hat{f})=h'(\hat{f})\,\partial_i\hat{f}$. Para (e), se $f$ é
-                    constante em cada componente, $df=0$. Reciprocamente, se $df=0$, em uma carta
-                    $\partial\hat{f}/\partial x^i=0$ para todo $i$, de modo que $\hat{f}$ é constante em cada bola contida em
-                    $\varphi(U)$ (as bolas são conexas, e uma função de derivadas nulas em um aberto conexo é constante).
-                    Portanto $f$ é localmente constante, e, em cada componente conexa (um espaço conexo), é constante
+                    <em>Demonstração.</em> $df$ é suave: em uma carta, as componentes
+                    $df(\partial_i)=\partial_if=\big(\partial\hat{f}/\partial x^i\big)\circ\varphi$ são suaves, e vale o critério (b)
+                    da Proposição 3.9.19. Como $df_p(v)=v(f)$, o item (a) é a linearidade de $v$, e (b) é a regra de Leibniz de $v$ em $p$:
+                    $v(fg)=f(p)\,v(g)+g(p)\,v(f)$. Para (c), aplique (b) ao produto $f=(f/g)\,g$, o que dá
+                    $df=\tfrac fg\,dg+g\,d(f/g)$ e, portanto, $d(f/g)=(df-\tfrac fg\,dg)/g=(g\,df-f\,dg)/g^2$. Para (d), em uma
+                    carta, a regra da cadeia dá $\partial_i(h\circ\hat{f})=h'(\hat{f})\,\partial_i\hat{f}$. Para (e), se $f$ é
+                    constante em cada componente conexa, então $df=0$. Reciprocamente, se $df=0$, em uma carta
+                    $\partial\hat{f}/\partial x^i=0$ para todo $i$, e $\hat{f}$ é constante em cada bola contida em
+                    $\varphi(U)$ (uma bola é conexa, e uma função de derivadas nulas em um aberto conexo é constante).
+                    Assim $f$ é localmente constante e, em cada componente conexa, é constante
                     (<a href="[02] - Preliminares de Topologia e Cálculo.html#prop-3-2-38">Proposição 3.2.38</a>). $\blacksquare$
                 </p>
 
@@ -541,50 +550,50 @@
                     $1$-forma define uma aplicação $\mathfrak{X}(M)\to C^\infty(M)$, $X\mapsto\omega(X)$, que é linear sobre
                     $\mathbb{R}$ e, mais ainda, <em>linear sobre $C^\infty(M)$</em>: $\omega(fX)=f\,\omega(X)$, porque
                     $(\omega(fX))(p)=\omega_p(f(p)X_p)=f(p)\,\omega_p(X_p)$. A propriedade é pontual: o valor de $\omega(X)$
-                    em $p$ só depende de $X_p$. Esta é a propriedade que distingue um covetor de, por exemplo, o colchete
-                    $[X,\cdot]$ (<a href="[07] - Fibrado Tangente e Campos Vetoriais.html#obs-3-7-23">Observação 3.7.23</a>), e a recíproca, que toda aplicação $C^\infty(M)$-linear de
-                    $\mathfrak{X}(M)$ em $C^\infty(M)$ vem de uma $1$-forma, é o lema de caracterização tensorial do
-                    <a href="[10] - Álgebra Multilinear e Tensores.html">tópico 3.10</a>.</p>
+                    em $p$ só depende de $X_p$. Ela distingue um covetor de, por exemplo, o colchete $[X,\cdot\,]$
+                    (<a href="[07] - Fibrado Tangente e Campos Vetoriais.html#obs-3-7-23">Observação 3.7.23</a>). A recíproca, que toda aplicação $C^\infty(M)$-linear de $\mathfrak{X}(M)$ em $C^\infty(M)$ vem
+                    de uma $1$-forma, é o lema de caracterização tensorial do <a href="[10] - Álgebra Multilinear e Tensores.html">tópico 3.10</a>.</p>
 
                 <p id="ex-3-9-23"><strong>Exemplo 3.9.23 (Algumas $1$-formas).</strong></p>
 
                 <ul>
                     <li>Em $\mathbb{R}^2$, $x\,dy-y\,dx$ é uma $1$-forma, de componentes $(\omega_x,\omega_y)=(-y,x)$.</li>
-                    <li>Em $\mathbb{R}^2\setminus\{0\}$, com $r=\sqrt{x^2+y^2}$,
+                    <li>Em $\mathbb{R}^2\setminus\{0\}$, com $r=\sqrt{x^2+y^2}$, vale
                         $dr=\dfrac{x\,dx+y\,dy}{r}$, pela Proposição 3.9.12 ($\partial_xr=x/r$ e $\partial_yr=y/r$).</li>
-                    <li>Em $\mathbb{R}^2\setminus\{0\}$, a $1$-forma
-                        $\omega=\dfrac{x\,dy-y\,dx}{x^2+y^2}$ é, em polares, $d\theta$ (Exercício 3.9.3 e Exemplo 3.9.27: lá
-                        $x\,dy-y\,dx=r^2d\theta$, e $x^2+y^2=r^2$). Mas $\theta$ <em>não é uma função
-                            em $\mathbb{R}^2\setminus\{0\}$</em>: só se pode defini-la localmente, a menos de $2\pi$. Assim
-                        $\omega$ é <em>localmente</em> a diferencial de uma função, e não é a diferencial de
-                        nenhuma função global; isso será provado no Exemplo 3.9.42.</li>
+                    <li>Em $\mathbb{R}^2\setminus\{0\}$, a $1$-forma $\omega=\dfrac{x\,dy-y\,dx}{x^2+y^2}$ é, em polares, $d\theta$
+                        (Exercício 3.9.3 e Exemplo 3.9.27: lá, $x\,dy-y\,dx=r^2d\theta$, e $x^2+y^2=r^2$). Mas $\theta$
+                        <em>não é uma função em $\mathbb{R}^2\setminus\{0\}$</em>: só se pode defini-la localmente, a menos de
+                        $2\pi$. Assim, $\omega$ é <em>localmente</em> a diferencial de uma função, e não é a diferencial de nenhuma
+                        função global; isso será provado no Exemplo 3.9.42.</li>
                 </ul>
 
                 <h2 id="pullback">Pullback de covetores e 1-formas</h2>
 
                 <p>
-                    A diferencial $dF_p: T_pM\to T_{F(p)}N$ vai de $M$ para $N$, e sua dual, pela Proposição 3.9.4, vai no sentido
-                    <em>contrário</em>: $(dF_p)^*: T_{F(p)}^*N\to T_p^*M$.
+                    A diferencial $dF_p: T_pM\to T_{F(p)}N$ vai de $M$ para $N$. Pela Proposição 3.9.4, sua dual vai no sentido
+                    <em>contrário</em>: $(dF_p)^*: T_{F(p)}^*N\to T_p^*M$. É isso que permite puxar uma $1$-forma de $N$ de volta
+                    para $M$.
                 </p>
 
                 <div class="definition-box" id="def-3-9-24" style="border-left: 4px solid #45503B;">
                     <p><strong>Definição 3.9.24 (Pullback).</strong> Seja $F: M\to N$ suave e $\omega$ uma $1$-forma em
                         $N$. O <strong>pullback</strong> (ou <strong>retrocesso</strong>) de $\omega$ por $F$ é a $1$-forma
                         $F^*\omega$ em $M$ dada por</p>
-                    <p>$$ (F^*\omega)_p(v)=\omega_{F(p)}\big(dF_p\,v\big), \qquad v\in T_pM, \qquad\text{isto é,}\qquad (F^*\omega)_p=(dF_p)^*\big(\omega_{F(p)}\big). $$</p>
+                    <p>$$ (F^*\omega)_p(v)=\omega_{F(p)}\big(dF_p\,v\big), \qquad v\in T_pM, $$</p>
+                    <p>isto é, $(F^*\omega)_p=(dF_p)^*\big(\omega_{F(p)}\big)$.</p>
                 </div>
 
                 <p id="obs-3-9-25"><strong>Observação 3.9.25 (O pullback existe para qualquer aplicação suave).</strong> A
                     Definição 3.9.24 não exige que $F$ seja injetiva, sobrejetiva ou um difeomorfismo. Compare com os campos
-                    vetoriais: para transportar um campo por $F$ é preciso um difeomorfismo (<a href="[07] - Fibrado Tangente e Campos Vetoriais.html#prop-3-7-29">Proposição 3.7.29</a>),
-                    porque os vetores vão no mesmo sentido que $F$ e disputam, ou deixam livres, os pontos da
-                    imagem. Para formas, o sentido é contrário, e cada ponto $p$ de $M$ tem exatamente um valor
-                    $\omega_{F(p)}$ a ser puxado para trás. Essa é a razão estrutural de se integrar <em>formas</em>, e
-                    não campos: uma forma pode ser puxada por uma parametrização, qualquer que ela seja.</p>
+                    vetoriais: para transportar um campo por $F$ é preciso um difeomorfismo (<a href="[07] - Fibrado Tangente e Campos Vetoriais.html#prop-3-7-29">Proposição 3.7.29</a>), porque os vetores
+                    vão no mesmo sentido que $F$ e disputam, ou deixam livres, os pontos da imagem. Para formas, o sentido é o
+                    contrário, e cada ponto $p$ de $M$ tem exatamente um valor $\omega_{F(p)}$ a ser puxado para trás. Essa é a
+                    razão estrutural de se integrar <em>formas</em>, e não campos: uma forma pode ser puxada por uma
+                    parametrização, qualquer que ela seja.</p>
 
                 <div class="definition-box" id="prop-3-9-26">
                     <p><strong>Proposição 3.9.26 (Propriedades do pullback).</strong> Sejam $F: M\to N$ e $G: N\to P$
-                        suaves, $\omega,\eta$ $1$-formas em $N$, $\zeta$ em $P$, e $u\in C^\infty(N)$. Então:</p>
+                        suaves, $\omega,\eta$ $1$-formas em $N$, $\zeta$ uma $1$-forma em $P$ e $u\in C^\infty(N)$. Então:</p>
                     <p>(a) $F^*(u\,\omega)=(u\circ F)\,F^*\omega$;</p>
                     <p>(b) $F^*(\omega+\eta)=F^*\omega+F^*\eta$;</p>
                     <p>(c) $F^*(du)=d(u\circ F)$;</p>
@@ -594,100 +603,99 @@
                 </div>
 
                 <p>
-                    <em>Demonstração.</em> (a) e (b) seguem da linearidade de $\omega_{F(p)}$ em $\omega$ e em $dF_pv$:
+                    <em>Demonstração.</em> (a) e (b) seguem da linearidade de $\omega_{F(p)}$ em $\omega$ e em $dF_pv$; por exemplo,
                     $(F^*(u\omega))_p(v)=u(F(p))\,\omega_{F(p)}(dF_pv)$. (c) Para $v\in T_pM$,
-                    $(F^*du)_p(v)=du_{F(p)}(dF_pv)=(dF_pv)(u)=v(u\circ F)=d(u\circ F)_p(v)$. (d)
-                    $(G\circ F)^*\zeta_p(v)=\zeta_{GF(p)}\big(d(G\circ F)_pv\big)=\zeta_{GF(p)}\big(dG_{F(p)}dF_pv\big)=(G^*\zeta)_{F(p)}(dF_pv)=(F^*G^*\zeta)_p(v)$, pela regra da cadeia
-                    (<a href="[05] - Vetores Tangentes.html#prop-3-5-11">Proposição 3.5.11</a>). (e) Em cartas $\varphi$ de $M$ e $\psi$ de $N$ com $F(U)\subset V$, a $i$-ésima
-                    componente de $F^*\omega$ é
-                    $(F^*\omega)(\partial_i)=\omega\big(dF(\partial_i)\big)=\omega\big(\frac{\partial\hat{F}^j}{\partial x^i}\partial_{y^j}\big)=(\omega_j\circ F)\frac{\partial\hat{F}^j}{\partial x^i}$,
-                    pela <a href="[05] - Vetores Tangentes.html#prop-3-5-17">Proposição 3.5.17</a>; é suave, e vale o critério (b) da Proposição 3.9.19. $\blacksquare$
+                    $$ (F^*du)_p(v)=du_{F(p)}(dF_pv)=(dF_pv)(u)=v(u\circ F)=d(u\circ F)_p(v). $$
+                    (d) Pela regra da cadeia, $d(G\circ F)_p=dG_{F(p)}\circ dF_p$ (<a href="[05] - Vetores Tangentes.html#prop-3-5-11">Proposição 3.5.11</a>), e portanto
+                    $$ \begin{aligned}((G\circ F)^*\zeta)_p(v)&=\zeta_{GF(p)}\big(dG_{F(p)}\,dF_pv\big)\\
+                    &=(G^*\zeta)_{F(p)}(dF_pv)=(F^*G^*\zeta)_p(v).\end{aligned} $$
+                    (e) Em cartas $\varphi$ de $M$ e $\psi$ de $N$, com $F(U)\subset V$, a $i$-ésima componente de $F^*\omega$ é,
+                    pela <a href="[05] - Vetores Tangentes.html#prop-3-5-17">Proposição 3.5.17</a>,
+                    $$ (F^*\omega)(\partial_i)=\omega\big(dF(\partial_i)\big)=\omega\Big(\frac{\partial\hat{F}^j}{\partial x^i}\,\partial_{y^j}\Big)=(\omega_j\circ F)\,\frac{\partial\hat{F}^j}{\partial x^i}. $$
+                    Ela é suave, e vale o critério (b) da <a href="#prop-3-9-19">Proposição 3.9.19</a>. $\blacksquare$
                 </p>
 
                 <p>
                     A Equação (3.9.5) dá uma <strong>receita</strong>: para puxar $\omega=\omega_j\,dy^j$ por $F$,
-                    <em>substitua</em> $y=F(x)$ nas componentes e <em>diferencie</em> as funções $y^j\circ F$:
+                    <em>substitua</em> $y=F(x)$ nas componentes e <em>diferencie</em> as funções $y^j\circ F$,
                     $F^*(\omega_j\,dy^j)=(\omega_j\circ F)\,d(y^j\circ F)$, em virtude de (c) e (a).
                 </p>
 
                 <p id="ex-3-9-27"><strong>Exemplo 3.9.27 (Coordenadas polares).</strong> Seja
-                    $F(r,\theta)=(r\cos\theta,\,r\sin\theta)$, de $(0,\infty)\times\mathbb{R}$ em $\mathbb{R}^2$. Pela receita,</p>
-
-                <p>
-                    $$ F^*dx=d(r\cos\theta)=\cos\theta\,dr-r\sin\theta\,d\theta, \qquad F^*dy=d(r\sin\theta)=\sin\theta\,dr+r\cos\theta\,d\theta, $$
-                </p>
-
-                <p>
+                    $F(r,\theta)=(r\cos\theta,\,r\sin\theta)$, de $(0,\infty)\times\mathbb{R}$ em $\mathbb{R}^2$. Pela receita,
+                    $$ \begin{aligned}F^*dx&=d(r\cos\theta)=\cos\theta\,dr-r\sin\theta\,d\theta,\\
+                    F^*dy&=d(r\sin\theta)=\sin\theta\,dr+r\cos\theta\,d\theta,\end{aligned} $$
                     e, por (a) e (b),
-                </p>
-
-                <p>
-                    $$ F^*(x\,dy-y\,dx)=r\cos\theta\,(\sin\theta\,dr+r\cos\theta\,d\theta)-r\sin\theta\,(\cos\theta\,dr-r\sin\theta\,d\theta)=r^2\,d\theta. $$
-                </p>
-
-                <p>
-                    A forma $dx$ escrita em polares é $\cos\theta\,dr-r\sin\theta\,d\theta$: é um pullback, e não uma
-                    mudança de variável ad hoc.</p>
+                    $$ \begin{aligned}F^*(x\,dy-y\,dx)&=r\cos\theta\,(\sin\theta\,dr+r\cos\theta\,d\theta)\\
+                    &\qquad-r\sin\theta\,(\cos\theta\,dr-r\sin\theta\,d\theta)=r^2\,d\theta.\end{aligned} $$
+                    A forma $dx$ escrita em polares, $\cos\theta\,dr-r\sin\theta\,d\theta$, é um pullback, e não uma mudança de
+                    variável ad hoc.</p>
 
                 <div class="definition-box" id="def-3-9-28" style="border-left: 4px solid #45503B;">
                     <p><strong>Definição 3.9.28 (Restrição a uma subvariedade).</strong> Se $S\subset M$ é uma subvariedade
-                        mergulhada, com inclusão $\iota: S\hookrightarrow M$
-                        (<a href="[06] - Subvariedades.html#teo-3-6-14">Teorema 3.6.14</a>), a <strong>restrição</strong> de $\omega\in\Omega^1(M)$ a $S$ é
-                        $\omega\vert_S=\iota^*\omega\in\Omega^1(S)$: $(\iota^*\omega)_p(v)=\omega_p(v)$ para $v\in T_pS\subset T_pM$.</p>
+                        mergulhada, com inclusão $\iota: S\hookrightarrow M$ (<a href="[06] - Subvariedades.html#teo-3-6-14">Teorema 3.6.14</a>), a <strong>restrição</strong> de
+                        $\omega\in\Omega^1(M)$ a $S$ é $\omega\vert_S=\iota^*\omega\in\Omega^1(S)$, isto é,
+                        $(\iota^*\omega)_p(v)=\omega_p(v)$ para $v\in T_pS\subset T_pM$.</p>
                 </div>
 
                 <p>
-                    Exemplo: em $S^1\subset\mathbb{R}^2$, $\iota^*(x\,dx+y\,dy)=0$. De fato,
-                    $x\,dx+y\,dy=d\big(\tfrac12(x^2+y^2)\big)$ e, por (c), $\iota^*d(\tfrac12r^2)=d\big(\tfrac12r^2\circ\iota\big)=d(\tfrac12)=0$,
-                    porque $r=1$ em $S^1$. Em palavras: $x\,dx+y\,dy$ mede, no ponto $p=(x,y)$, o produto escalar
-                    $p\cdot v$, que se anula nos vetores tangentes à circunferência.
+                    Por exemplo, em $S^1\subset\mathbb{R}^2$, $\iota^*(x\,dx+y\,dy)=0$. De fato,
+                    $x\,dx+y\,dy=d\big(\tfrac12(x^2+y^2)\big)$ e, por (c),
+                    $\iota^*d\big(\tfrac12r^2\big)=d\big(\tfrac12r^2\circ\iota\big)=d(\tfrac12)=0$, porque $r=1$ em $S^1$. Em
+                    palavras: $x\,dx+y\,dy$ mede, no ponto $p=(x,y)$, o produto escalar $p\cdot v$, que se anula nos vetores
+                    tangentes à circunferência.
                 </p>
 
                 <h2 id="integrais-de-linha">Integrais de linha</h2>
 
                 <p>
-                    O pullback permite integrar $1$-formas ao longo de curvas, sem nenhuma escolha. Um intervalo
-                    $[a,b]$ não é uma variedade (tem bordo; veja o tópico 3.16), e por isso trabalhamos com
-                    funções e formas definidas em um intervalo aberto que contém $[a,b]$. Dizemos que
-                    $\gamma:[a,b]\to M$ é <strong>suave</strong> se é a restrição de uma curva suave definida em um
-                    intervalo aberto $J\supset[a,b]$, e <strong>suave por partes</strong> se é contínua e existe uma partição
-                    $a=t_0\lt t_1\lt\dots\lt t_k=b$ tal que cada $\gamma\vert_{[t_{i-1},t_i]}$ é suave.
+                    O pullback permite integrar $1$-formas ao longo de curvas, sem nenhuma escolha adicional. Um intervalo
+                    fechado $[a,b]$ não é uma variedade (tem bordo, tema do tópico 3.16), e por isso trabalhamos com funções e
+                    formas definidas em um intervalo <em>aberto</em> que contém $[a,b]$. Dizemos que $\gamma:[a,b]\to M$ é
+                    <strong>suave</strong> se é a restrição de uma curva suave definida em um intervalo aberto $J\supset[a,b]$, e
+                    <strong>suave por partes</strong> se é contínua e existe uma partição $a=t_0\lt t_1\lt\dots\lt t_k=b$ tal que
+                    cada $\gamma\vert_{[t_{i-1},t_i]}$ é suave.
                 </p>
 
-                <p id="def-3-9-29"><strong>Definição 3.9.29 (Integral sobre um intervalo).</strong> Uma $1$-forma em um
-                    intervalo aberto $J$ de $\mathbb{R}$, com a coordenada $t$, é $\omega=f(t)\,dt$, com
-                    $f\in C^\infty(J)$. Para $[a,b]\subset J$, definimos
-                    $\int_{[a,b]}\omega=\int_a^bf(t)\,dt$, a integral de Riemann usual.
-                </p>
+                <div class="definition-box" id="def-3-9-29" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.9.29 (Integral sobre um intervalo).</strong> Uma $1$-forma em um intervalo aberto
+                        $J\subset\mathbb{R}$, com a coordenada $t$, é $\omega=f(t)\,dt$, com $f\in C^\infty(J)$. Para
+                        $[a,b]\subset J$, definimos $\int_{[a,b]}\omega=\int_a^bf(t)\,dt$, a integral de Riemann usual.</p>
+                </div>
 
                 <div class="definition-box" id="prop-3-9-30">
                     <p><strong>Proposição 3.9.30 (Invariância por reparametrização).</strong> Seja
                         $\phi:[c,d]\to[a,b]$ um difeomorfismo (suave, bijetor, com inversa suave) e $\omega$ uma
-                        $1$-forma em um aberto contendo $[a,b]$. Se $\phi$ é crescente,
+                        $1$-forma em um aberto que contém $[a,b]$. Se $\phi$ é crescente,
                         $\int_{[c,d]}\phi^*\omega=\int_{[a,b]}\omega$; se é decrescente,
                         $\int_{[c,d]}\phi^*\omega=-\int_{[a,b]}\omega$.</p>
                 </div>
 
                 <p>
-                    <em>Demonstração.</em> Se $\omega=f(t)\,dt$, a receita (3.9.5) dá $\phi^*\omega=f(\phi(s))\,\phi'(s)\,ds$.
-                    A substituição $t=\phi(s)$ do cálculo de uma variável dá
-                    $\int_c^df(\phi(s))\phi'(s)\,ds=\int_{\phi(c)}^{\phi(d)}f(t)\,dt$. Se $\phi$ é crescente,
-                    $\phi(c)=a$ e $\phi(d)=b$; se decrescente, $\phi(c)=b$ e $\phi(d)=a$, e a integral troca de sinal.
-                    $\blacksquare$
+                    <em>Demonstração.</em> Se $\omega=f(t)\,dt$, a receita (3.9.5) dá $\phi^*\omega=f(\phi(s))\,\phi'(s)\,ds$. A
+                    substituição $t=\phi(s)$ do cálculo de uma variável dá
+                    $\int_c^df(\phi(s))\,\phi'(s)\,ds=\int_{\phi(c)}^{\phi(d)}f(t)\,dt$. Se $\phi$ é crescente, $\phi(c)=a$ e
+                    $\phi(d)=b$. Se é decrescente, $\phi(c)=b$ e $\phi(d)=a$, e a integral troca de sinal. $\blacksquare$
                 </p>
 
                 <div class="definition-box" id="def-3-9-31" style="border-left: 4px solid #45503B;">
-                    <p><strong>Definição 3.9.31 (Integral de linha).</strong> Seja $\gamma:[a,b]\to M$ suave e $\omega\in\Omega^1(M)$.
-                        A <strong>integral de linha</strong> de $\omega$ ao longo de $\gamma$ é</p>
+                    <p><strong>Definição 3.9.31 (Integral de linha).</strong> Seja $\gamma:[a,b]\to M$ suave e
+                        $\omega\in\Omega^1(M)$. A <strong>integral de linha</strong> de $\omega$ ao longo de $\gamma$ é</p>
                     <p>$$ \int_\gamma\omega=\int_{[a,b]}\gamma^*\omega=\int_a^b\omega_{\gamma(t)}\big(\gamma'(t)\big)\,dt. $$</p>
                     <p>Para $\gamma$ suave por partes, é a soma das integrais sobre os pedaços suaves.</p>
                 </div>
 
                 <p>
                     A segunda igualdade é a receita do pullback: $\gamma^*\omega=(\gamma^*\omega)(\partial_t)\,dt=\omega(\gamma'(t))\,dt$.
-                    Em uma carta, com $\gamma^i=x^i\circ\gamma$, é a conhecida
-                    $\int_a^b\omega_i(\gamma(t))\,\dot\gamma^i(t)\,dt$. A integral não depende da partição
-                    escolhida (basta refiná-la, pela aditividade da integral de Riemann).
+                    Em uma carta, com $\gamma^i=x^i\circ\gamma$, é a conhecida $\int_a^b\omega_i(\gamma(t))\,\dot\gamma^i(t)\,dt$. A
+                    integral não depende da partição escolhida: basta refinar a partição e usar a aditividade da integral de Riemann.
+                </p>
+
+                <p>
+                    Duas operações sobre curvas serão necessárias. Se $\gamma_1:[a,b]\to M$ e $\gamma_2:[c,d]\to M$ têm
+                    $\gamma_1(b)=\gamma_2(c)$, a <strong>concatenação</strong> $\gamma_1*\gamma_2:[a,\,b+d-c]\to M$ percorre
+                    $\gamma_1$ e depois $\gamma_2$ (com o parâmetro de $\gamma_2$ transladado). A <strong>curva inversa</strong> de
+                    $\gamma:[a,b]\to M$ é $\gamma^-(t)=\gamma(a+b-t)$, que a percorre ao contrário.
                 </p>
 
                 <div class="definition-box" id="prop-3-9-32">
@@ -695,33 +703,29 @@
                         $\gamma_2$ curvas suaves por partes e $\omega,\eta\in\Omega^1(M)$.</p>
                     <p>(a) $\int_\gamma(a\omega+b\eta)=a\int_\gamma\omega+b\int_\gamma\eta$;</p>
                     <p>(b) $\int_\gamma\omega=0$ se $\gamma$ é constante;</p>
-                    <p>(c) se $\gamma_1(b)=\gamma_2(c)$, a concatenação $\gamma_1*\gamma_2$ (que percorre $\gamma_1$ e depois
-                        $\gamma_2$) tem $\int_{\gamma_1*\gamma_2}\omega=\int_{\gamma_1}\omega+\int_{\gamma_2}\omega$;</p>
-                    <p>(d) se $\gamma\circ\phi$ é uma reparametrização por um difeomorfismo crescente $\phi$, as integrais
-                        coincidem; se $\phi$ é decrescente, troca o sinal. Em particular, a curva inversa
-                        $\gamma^-(t)=\gamma(a+b-t)$ tem $\int_{\gamma^-}\omega=-\int_\gamma\omega$;</p>
+                    <p>(c) se $\gamma_1(b)=\gamma_2(c)$, então
+                        $\int_{\gamma_1*\gamma_2}\omega=\int_{\gamma_1}\omega+\int_{\gamma_2}\omega$;</p>
+                    <p>(d) se $\phi$ é um difeomorfismo crescente, $\gamma\circ\phi$ tem a mesma integral que $\gamma$; se $\phi$ é
+                        decrescente, a integral troca de sinal. Em particular, $\int_{\gamma^-}\omega=-\int_\gamma\omega$;</p>
                     <p>(e) para $F: M\to N$ suave e $\omega\in\Omega^1(N)$, $\int_\gamma F^*\omega=\int_{F\circ\gamma}\omega$.</p>
                 </div>
 
                 <p>
-                    <em>Demonstração.</em> (a) é a linearidade da integral de Riemann e do pullback
-                    (Proposição 3.9.26(b)). (b) Se $\gamma$ é constante, $\gamma'=0$ e o integrando é nulo. (c) A integral
-                    sobre um intervalo é aditiva em intervalos adjacentes, e uma translação do parâmetro é uma
-                    reparametrização crescente; usa-se (d). (d) Pela Proposição 3.9.26(d), $(\gamma\circ\phi)^*\omega=\phi^*(\gamma^*\omega)$,
-                    e vale a Proposição 3.9.30. (e) $(F\circ\gamma)^*\omega=\gamma^*(F^*\omega)$, pela Proposição 3.9.26(d).
-                    $\blacksquare$
+                    <em>Demonstração.</em> (a) É a linearidade da integral de Riemann e do pullback (Proposição 3.9.26(b)). (b) Se
+                    $\gamma$ é constante, $\gamma'=0$ e o integrando é nulo. (c) A integral sobre um intervalo é aditiva em
+                    intervalos adjacentes, e uma translação do parâmetro é uma reparametrização crescente, de modo que se usa (d).
+                    (d) Pela Proposição 3.9.26(d), $(\gamma\circ\phi)^*\omega=\phi^*(\gamma^*\omega)$, e vale a
+                    Proposição 3.9.30. (e) $(F\circ\gamma)^*\omega=\gamma^*(F^*\omega)$, de novo pela Proposição 3.9.26(d). $\blacksquare$
                 </p>
 
                 <p id="ex-3-9-33"><strong>Exemplo 3.9.33 (O círculo).</strong> Seja $\omega=x\,dy-y\,dx$ e
-                    $\gamma(t)=(\cos t,\sin t)$, $t\in[0,2\pi]$, o círculo unitário percorrido uma vez no sentido
-                    anti-horário. Então $\gamma'(t)=(-\sin t,\cos t)$ e
-                    $\omega(\gamma')=\cos t\cdot\cos t-\sin t\cdot(-\sin t)=1$, de modo que
-                    $\int_\gamma\omega=\int_0^{2\pi}dt=2\pi$. Do mesmo modo, a forma
-                    $\omega/(x^2+y^2)$ do Exemplo 3.9.23 dá $2\pi$ ao longo do mesmo círculo, onde $x^2+y^2=1$. Esta
-                    é a $1$-forma $d\theta$ na região, e a integral é o ângulo total percorrido: o círculo
-                    atravessa todas as semirretas $\theta=$ const. (Figura 3.9.2).</p>
+                    $\gamma(t)=(\cos t,\sin t)$, $t\in[0,2\pi]$, o círculo unitário percorrido uma vez no sentido anti-horário.
+                    Então $\gamma'(t)=(-\sin t,\cos t)$ e $\omega(\gamma')=\cos t\cdot\cos t-\sin t\cdot(-\sin t)=1$, de modo que
+                    $\int_\gamma\omega=\int_0^{2\pi}dt=2\pi$. Do mesmo modo, a forma $\omega/(x^2+y^2)$ do Exemplo 3.9.23 dá $2\pi$
+                    ao longo do mesmo círculo, onde $x^2+y^2=1$. Ela é a $1$-forma $d\theta$ na região, e a integral é o ângulo
+                    total percorrido: o círculo atravessa todas as semirretas $\theta=\text{const}$ (Figura 3.9.2).</p>
 
-                <figure class="lecture-figure" id="fig-3-9-2" style="overflow-x: auto;">
+                <figure class="lecture-figure" id="fig-3-9-2" style="overflow-x: auto; overflow-y: hidden;">
                     <svg viewBox="0 0 640 300" role="img" style="min-width: 560px;" aria-label="O plano menos a origem, com eixos x e y. Muitas semirretas saem da origem em ângulos igualmente espaçados de quinze graus: são os conjuntos de nível do ângulo teta, a 1-forma d teta. O círculo unitário, em traço grosso e percorrido uma vez no sentido anti-horário, atravessa todas as semirretas, e a integral de d teta ao longo dele é 2 pi.">
 <defs><marker id="arr-3-9-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
 <line x1="158.8" y1="152" x2="481.2" y2="152" class="fig-axis" marker-end="url(#arr-3-9-2)"/>
@@ -761,10 +765,10 @@
 <text x="474.8" y="36" class="fig-label">∫_γ dθ = 2π</text>
 </svg>
                     <figcaption><strong>Figura 3.9.2.</strong> A $1$-forma $d\theta$ em $\mathbb{R}^2\setminus\{0\}$, desenhada
-                        pelos seus níveis: as semirretas $\theta=$ const. O círculo unitário $\gamma$, percorrido uma vez no
+                        pelos seus níveis: as semirretas $\theta=\text{const}$. O círculo unitário $\gamma$, percorrido uma vez no
                         sentido anti-horário, atravessa todas elas, e $\int_\gamma d\theta=2\pi$. O ângulo $\theta$ não é uma
-                        função em $\mathbb{R}^2\setminus\{0\}$ (ele "dá a volta"), mas a $1$-forma $d\theta$ é bem definida
-                        em toda parte; é o que se chama de forma fechada que não é exata.</figcaption>
+                        função em $\mathbb{R}^2\setminus\{0\}$ (ele "dá a volta"), mas a $1$-forma $d\theta$ é bem definida em
+                        toda parte: é uma forma fechada que não é exata.</figcaption>
                 </figure>
 
                 <div class="definition-box" id="teo-3-9-34">
@@ -776,19 +780,17 @@
                 <p>
                     <em>Demonstração.</em> Em um pedaço suave $[t_{i-1},t_i]$, pela Proposição 3.9.26(c),
                     $\gamma^*df=d(f\circ\gamma)=(f\circ\gamma)'(t)\,dt$, e o teorema fundamental do cálculo dá
-                    $\int_{t_{i-1}}^{t_i}(f\circ\gamma)'\,dt=f(\gamma(t_i))-f(\gamma(t_{i-1}))$. Somando sobre os
-                    pedaços, os termos intermediários se cancelam (a soma é telescópica), e resta
-                    $f(\gamma(b))-f(\gamma(a))$. $\blacksquare$
+                    $\int_{t_{i-1}}^{t_i}(f\circ\gamma)'\,dt=f(\gamma(t_i))-f(\gamma(t_{i-1}))$. Somando sobre os pedaços, os
+                    termos intermediários se cancelam (a soma é telescópica), e resta $f(\gamma(b))-f(\gamma(a))$. $\blacksquare$
                 </p>
 
-                <p id="obs-3-9-35"><strong>Observação 3.9.35 (Stokes em dimensão $1$).</strong> O lado direito do Teorema 3.9.34
-                    envolve só os dois <em>extremos</em> da curva: o final com sinal $+$ e o inicial com sinal $-$. Se
+                <p id="obs-3-9-35"><strong>Observação 3.9.35 (Stokes em dimensão $1$).</strong> O lado direito do
+                    Teorema 3.9.34 envolve só os dois <em>extremos</em> da curva: o final com sinal $+$ e o inicial com sinal $-$. Se
                     pensarmos nos extremos como o "bordo" $\partial\gamma$ da curva, com essas orientações, o teorema diz
-                    $\int_\gamma df=\int_{\partial\gamma}f$: é a integral da "derivada" $df$ sobre a curva igual à integral
-                    de $f$ sobre o bordo. É o caso $\int_Md\omega=\int_{\partial M}\omega$ do Teorema de Stokes
-                    (Equação (3.1.6)), com $\omega=f$ uma $0$-forma e $M=\gamma$ uma variedade de dimensão $1$, e é a
-                    Equação (3.1.2) do tópico 3.1. A promessa de reconhecer esse teorema como o primeiro caso de Stokes
-                    será cumprida no tópico 3.18.</p>
+                    $\int_\gamma df=\int_{\partial\gamma}f$: a integral da "derivada" $df$ sobre a curva é igual à integral de $f$
+                    sobre o bordo. É o caso $\int_Md\omega=\int_{\partial M}\omega$ do Teorema de Stokes (Equação (3.1.6)), com
+                    $\omega=f$ uma $0$-forma e $M=\gamma$ uma variedade de dimensão $1$, e é a Equação (3.1.2) do tópico 3.1. A
+                    promessa de reconhecer este teorema como o primeiro caso de Stokes será cumprida no tópico 3.18.</p>
 
                 <h2 id="exatas-conservativas">Formas exatas, fechadas e campos conservativos</h2>
 
@@ -801,13 +803,13 @@
 
                 <div class="definition-box" id="prop-3-9-37">
                     <p><strong>Proposição 3.9.37.</strong> $\omega$ é conservativa se, e somente se, $\int_\gamma\omega$ só depende
-                        dos extremos de $\gamma$: duas curvas suaves por partes com o mesmo ponto inicial e o mesmo ponto
-                        final têm a mesma integral.</p>
+                        dos extremos de $\gamma$: duas curvas suaves por partes com o mesmo ponto inicial e o mesmo ponto final
+                        têm a mesma integral.</p>
                 </div>
 
                 <p>
                     <em>Demonstração.</em> ($\Rightarrow$) Se $\gamma_1,\gamma_2$ vão de $p$ a $q$, a concatenação
-                    $\gamma_1*\gamma_2^-$ é fechada, e, pela Proposição 3.9.32(c),(d),
+                    $\gamma_1*\gamma_2^-$ é fechada, e, pela Proposição 3.9.32(c) e (d),
                     $0=\int_{\gamma_1*\gamma_2^-}\omega=\int_{\gamma_1}\omega-\int_{\gamma_2}\omega$. ($\Leftarrow$) Uma curva
                     fechada em $p$ e a curva constante em $p$ têm os mesmos extremos, e a integral da segunda é $0$. $\blacksquare$
                 </p>
@@ -818,14 +820,13 @@
                 </div>
 
                 <p>
-                    <em>Demonstração.</em> Escreva $p\sim q$ se existe uma curva suave por partes de $p$ a $q$; é uma
-                    relação de equivalência (a curva inversa e a concatenação fornecem a simetria e a transitividade; a
-                    constante, a reflexividade). Cada classe é aberta: se $q$ está em uma classe, uma carta em torno de
-                    $q$ cuja imagem é uma bola dá, para cada ponto $q'$ do domínio, o segmento de reta em coordenadas de $q$ a
-                    $q'$, que é uma curva suave; logo todo o domínio da carta está na classe de $q$. Como o complementar de uma classe é
-                    a união das outras classes, também aberto, cada classe é aberta e fechada, e é, portanto, uma
-                    união de componentes conexas; como é conexa por curvas e curvas são contínuas, é exatamente uma
-                    componente. $\blacksquare$
+                    <em>Demonstração.</em> Escreva $p\sim q$ se existe uma curva suave por partes de $p$ a $q$. É uma relação de
+                    equivalência: a curva constante dá a reflexividade, a curva inversa, a simetria, e a concatenação, a
+                    transitividade. Cada classe é aberta: se $q$ está em uma classe, tome uma carta em torno de $q$ cuja imagem é uma
+                    bola; para cada ponto $q'$ do domínio, o segmento de reta em coordenadas de $q$ a $q'$ é uma curva suave, de modo
+                    que todo o domínio da carta está na classe de $q$. O complementar de uma classe é a união das outras classes, também
+                    aberto; logo cada classe é aberta e fechada, e é, portanto, uma união de componentes conexas. Como uma classe é
+                    conexa por curvas, e curvas são contínuas, ela é conexa, e então é exatamente uma componente. $\blacksquare$
                 </p>
 
                 <div class="definition-box" id="teo-3-9-39">
@@ -839,31 +840,30 @@
                 </p>
 
                 <p>
-                    ($\Leftarrow$) Em cada componente conexa $C$ de $M$, fixe $p_0\in C$ e defina
-                    $f(q)=\int_\gamma\omega$, para qualquer curva suave por partes $\gamma$ de $p_0$ a $q$; existe uma
-                    (Lema 3.9.38) e o valor não depende da escolha (Proposição 3.9.37). Mostramos que $f$ é suave e
-                    $df=\omega$. Seja $q\in C$ e $(U,\varphi)$ uma carta em torno de $q$, com $\varphi(U)\supset B_\delta(\hat{q})$
-                    uma bola. Para $\lvert h\rvert\lt\delta$, a curva $\sigma(s)=\varphi^{-1}(\hat{q}+s\,e_j)$, $s$ entre
-                    $0$ e $h$, é suave com $\sigma'(s)=\partial_j\vert_{\sigma(s)}$, e a concatenação de uma curva de $p_0$ a $q$
-                    com $\sigma$ vai de $p_0$ a $\varphi^{-1}(\hat{q}+he_j)$. Pela aditividade (Proposição 3.9.32(c)),
+                    ($\Leftarrow$) Em cada componente conexa $C$ de $M$, fixe $p_0\in C$ e defina $f(q)=\int_\gamma\omega$ para
+                    qualquer curva suave por partes $\gamma$ de $p_0$ a $q$. Existe uma tal curva (Lema 3.9.38), e o valor não depende da
+                    escolha (Proposição 3.9.37). Mostremos que $f$ é suave e que $df=\omega$.
                 </p>
 
                 <p>
-                    $$ f\big(\varphi^{-1}(\hat{q}+he_j)\big)-f(q)=\int_0^h\omega_j(\hat{q}+s\,e_j)\,ds, $$
+                    Seja $(U,\varphi)$ uma carta e $B\subset\varphi(U)$ uma bola aberta. Para $q'\in\varphi^{-1}(B)$, com
+                    $\hat{q}'=\varphi(q')$, e $h$ pequeno de modo que o segmento de $\hat{q}'$ a $\hat{q}'+h\,e_j$ fique em $B$,
+                    seja $\sigma(s)=\varphi^{-1}(\hat{q}'+s\,h\,e_j)$, $s\in[0,1]$. Ela é suave, com $\sigma'(s)=h\,\partial_j\vert_{\sigma(s)}$.
+                    A concatenação de uma curva de $p_0$ a $q'$ com $\sigma$ vai de $p_0$ a $\varphi^{-1}(\hat{q}'+h\,e_j)$, e a
+                    Proposição 3.9.32(c) dá
+                    $$ \begin{aligned}f\big(\varphi^{-1}(\hat{q}'+h\,e_j)\big)-f(q')&=\int_0^1h\,\omega_j(\hat{q}'+s\,h\,e_j)\,ds\\
+                    &=\int_0^h\omega_j(\hat{q}'+u\,e_j)\,du,\end{aligned} $$
+                    em que $\omega_j$ designa a componente $\omega_j\circ\varphi^{-1}$ em coordenadas. Dividindo por $h$ e fazendo
+                    $h\to0$, o teorema fundamental do cálculo dá $\partial_j\hat{f}(\hat{q}')=\omega_j(\hat{q}')$, com
+                    $\hat{f}=f\circ\varphi^{-1}$. Isto vale em todo ponto da bola: $\hat{f}$ tem todas as derivadas parciais de primeira ordem
+                    iguais às funções suaves $\omega_j$, e portanto é de classe $C^1$ e, como suas derivadas são $C^\infty$, é
+                    $C^\infty$. Logo $f$ é suave, e $df=\partial_j\hat{f}\,dx^j=\omega_j\,dx^j=\omega$. $\blacksquare$
                 </p>
 
                 <p>
-                    em que $\omega_j$ designa a componente em coordenadas. Pelo teorema fundamental do cálculo,
-                    $\partial_j\hat{f}(\hat{q})=\omega_j(\hat{q})$. O mesmo argumento vale em todo ponto da bola, de modo que
-                    $\hat{f}=f\circ\varphi^{-1}$ tem todas as derivadas parciais de primeira ordem iguais às funções suaves
-                    $\omega_j$: portanto $\hat{f}$ é de classe $C^1$ e, por indução, $C^\infty$. Logo $f$ é suave, e
-                    $df=\partial_j\hat{f}\,dx^j=\omega_j\,dx^j=\omega$. $\blacksquare$
-                </p>
-
-                <p>
-                    O potencial, quando existe, é único a menos de uma constante em cada componente conexa
-                    (Proposição 3.9.21(e)). Como saber se uma $1$-forma é exata sem calcular integrais sobre todas as
-                    curvas? Há uma condição necessária, local e fácil de verificar.
+                    O potencial, quando existe, é único a menos de uma constante em cada componente conexa (Proposição 3.9.21(e)).
+                    Como saber se uma $1$-forma é exata sem calcular integrais sobre todas as curvas? Há uma condição necessária,
+                    local e fácil de verificar.
                 </p>
 
                 <div class="definition-box" id="def-3-9-40" style="border-left: 4px solid #45503B;">
@@ -874,26 +874,20 @@
 
                 <div class="definition-box" id="prop-3-9-41">
                     <p><strong>Proposição 3.9.41.</strong> (a) A condição (3.9.6) em uma carta implica a mesma condição em
-                        qualquer outra carta com domínio que intersecta o da primeira; basta, portanto, verificá-la nas
-                        cartas de um atlas. (b) Toda $1$-forma exata é fechada.</p>
+                        qualquer outra carta cujo domínio intersecte o da primeira; basta, portanto, verificá-la nas cartas de um
+                        atlas. (b) Toda $1$-forma exata é fechada.</p>
                 </div>
 
                 <p>
-                    <em>Demonstração.</em> (a) Pela lei covariante (3.9.2), $\tilde{\omega}_k=\dfrac{\partial x^i}{\partial\tilde{x}^k}\omega_i$, e
+                    <em>Demonstração.</em> (a) Pela lei covariante (3.9.2), $\tilde{\omega}_k=\dfrac{\partial x^i}{\partial\tilde{x}^k}\,\omega_i$, e
                     derivando em relação a $\tilde{x}^l$,
-                </p>
-
-                <p>
-                    $$ \frac{\partial\tilde{\omega}_k}{\partial\tilde{x}^l}=\frac{\partial^2x^i}{\partial\tilde{x}^l\partial\tilde{x}^k}\,\omega_i+\frac{\partial x^i}{\partial\tilde{x}^k}\frac{\partial x^j}{\partial\tilde{x}^l}\,\frac{\partial\omega_i}{\partial x^j}. $$
-                </p>
-
-                <p>
-                    O primeiro termo é simétrico em $(k,l)$, pela igualdade das derivadas mistas
-                    (<a href="[02] - Preliminares de Topologia e Cálculo.html#teo-3-2-45">Teorema 3.2.45</a>). No segundo, trocar $k\leftrightarrow l$ equivale a trocar
-                    $i\leftrightarrow j$ em $\partial\omega_i/\partial x^j$, e, se esta é simétrica em $(i,j)$, o termo
-                    é simétrico em $(k,l)$. Logo $\partial_l\tilde{\omega}_k=\partial_k\tilde{\omega}_l$. Os termos
-                    com derivadas segundas da mudança de coordenadas, que não são tensoriais, cancelam-se justamente
-                    por serem simétricos. (b) Se $\omega=df$, as componentes são $\omega_i=\partial_i\hat{f}$ e
+                    $$ \begin{aligned}\frac{\partial\tilde{\omega}_k}{\partial\tilde{x}^l}&=\frac{\partial^2x^i}{\partial\tilde{x}^l\partial\tilde{x}^k}\,\omega_i\\
+                    &\qquad+\frac{\partial x^i}{\partial\tilde{x}^k}\frac{\partial x^j}{\partial\tilde{x}^l}\,\frac{\partial\omega_i}{\partial x^j}.\end{aligned} $$
+                    O primeiro termo é simétrico em $(k,l)$, pela igualdade das derivadas mistas (<a href="[02] - Preliminares de Topologia e Cálculo.html#teo-3-2-45">Teorema 3.2.45</a>). No segundo, trocar
+                    $k\leftrightarrow l$ equivale a trocar $i\leftrightarrow j$ em $\partial\omega_i/\partial x^j$, e, se esta é simétrica
+                    em $(i,j)$, o termo é simétrico em $(k,l)$. Logo $\partial_l\tilde{\omega}_k=\partial_k\tilde{\omega}_l$. Os termos com
+                    derivadas segundas da mudança de coordenadas, que não são tensoriais, se cancelam justamente por serem
+                    simétricos. (b) Se $\omega=df$, as componentes são $\omega_i=\partial_i\hat{f}$ e
                     $\partial_j\omega_i=\partial_j\partial_i\hat{f}$, simétrico em $(i,j)$ por Schwarz. $\blacksquare$
                 </p>
 
@@ -901,51 +895,36 @@
                     No tópico 3.13, a condição (3.9.6) será escrita $d\omega=0$, e o resultado (b) será $d(df)=0$.
                 </p>
 
-                <p id="ex-3-9-42"><strong>Exemplo 3.9.42 (Fechada, mas não exata).</strong> Em $\mathbb{R}^2\setminus\{0\}$,
-                    seja $\omega=\dfrac{x\,dy-y\,dx}{x^2+y^2}$, de componentes
-                    $\omega_x=-y/(x^2+y^2)$ e $\omega_y=x/(x^2+y^2)$. Então
-                </p>
+                <p id="ex-3-9-42"><strong>Exemplo 3.9.42 (Fechada, mas não exata).</strong> Em $\mathbb{R}^2\setminus\{0\}$, seja
+                    $\omega=\dfrac{x\,dy-y\,dx}{x^2+y^2}$, de componentes $\omega_x=-y/(x^2+y^2)$ e $\omega_y=x/(x^2+y^2)$. Então
+                    $$ \begin{aligned}\frac{\partial\omega_x}{\partial y}&=\frac{-(x^2+y^2)+2y^2}{(x^2+y^2)^2}=\frac{y^2-x^2}{(x^2+y^2)^2},\\
+                    \frac{\partial\omega_y}{\partial x}&=\frac{(x^2+y^2)-2x^2}{(x^2+y^2)^2}=\frac{y^2-x^2}{(x^2+y^2)^2},\end{aligned} $$
+                    que são iguais: $\omega$ é fechada. Mas, pelo Exemplo 3.9.33, $\int_\gamma\omega=2\pi\neq0$ ao longo do círculo
+                    unitário, uma curva fechada. Logo $\omega$ não é conservativa e, pelo Teorema 3.9.39, <em>não é exata</em>: não
+                    existe $f\in C^\infty(\mathbb{R}^2\setminus\{0\})$ com $df=\omega$. A forma $d\theta$ é "localmente exata" (é a
+                    diferencial do ângulo, em qualquer região onde se pode definir o ângulo continuamente), mas não globalmente. A
+                    obstrução é topológica: o furo na origem. Esta é a primeira aparição da cohomologia de de Rham, que mede a
+                    diferença entre fechada e exata.</p>
 
                 <p>
-                    $$ \frac{\partial\omega_x}{\partial y}=\frac{-(x^2+y^2)+2y^2}{(x^2+y^2)^2}=\frac{y^2-x^2}{(x^2+y^2)^2}, \qquad
-                    \frac{\partial\omega_y}{\partial x}=\frac{(x^2+y^2)-2x^2}{(x^2+y^2)^2}=\frac{y^2-x^2}{(x^2+y^2)^2}, $$
-                </p>
-
-                <p>
-                    iguais: $\omega$ é fechada. Mas, pelo Exemplo 3.9.33, $\int_\gamma\omega=2\pi\neq0$ ao longo do círculo
-                    unitário, uma curva fechada. Logo $\omega$ não é conservativa e, pelo Teorema 3.9.39, <em>não é
-                        exata</em>: não existe $f\in C^\infty(\mathbb{R}^2\setminus\{0\})$ com $df=\omega$. A forma $d\theta$ é
-                    "localmente exata" (ela é a diferencial do ângulo, em qualquer região onde se pode definir o ângulo
-                    continuamente), mas não globalmente. A obstrução é topológica: o furo na origem. Essa
-                    é a primeira aparição da cohomologia de de Rham, que mede a diferença entre fechada e exata.</p>
-
-                <p>
-                    A condição de ser fechada não é, porém, apenas necessária localmente: em regiões sem "furos", ela
-                    basta.
+                    A condição de ser fechada não é, porém, apenas necessária: em regiões sem "furos", ela basta.
                 </p>
 
                 <div class="definition-box" id="prop-3-9-43">
                     <p><strong>Proposição 3.9.43 (Lema de Poincaré para $1$-formas).</strong> Se $U\subset\mathbb{R}^n$ é um
-                        aberto estrelado em relação a $0$ e $\omega=\omega_i\,dx^i\in\Omega^1(U)$ é fechada, então
-                        $\omega$ é exata em $U$, com potencial</p>
+                        aberto estrelado em relação a $0$ e $\omega=\omega_i\,dx^i\in\Omega^1(U)$ é fechada, então $\omega$ é exata
+                        em $U$, com potencial</p>
                     <p>$$ f(x)=\int_0^1\omega_i(tx)\,x^i\,dt. \tag{3.9.7} $$</p>
                 </div>
 
                 <p>
-                    <em>Demonstração.</em> Como $U$ é estrelado, $tx\in U$ para $t\in[0,1]$, e o integrando é suave em
-                    $(t,x)$; pela derivação sob o sinal de integral
-                    (<a href="[02] - Preliminares de Topologia e Cálculo.html#teo-3-2-66">Teorema 3.2.66</a>), $f$ é suave e
-                    $\partial_jf=\int_0^1\big[\omega_j(tx)+t\,x^i\,(\partial_j\omega_i)(tx)\big]dt$, em que
-                    $\partial_j[\omega_i(tx)]=t\,(\partial_j\omega_i)(tx)$. Como $\omega$ é fechada,
-                    $\partial_j\omega_i=\partial_i\omega_j$, e então $t\,x^i(\partial_i\omega_j)(tx)=t\,\frac{d}{dt}\big[\omega_j(tx)\big]$,
-                    pela regra da cadeia. Portanto o integrando é
-                </p>
-
-                <p>
+                    <em>Demonstração.</em> Como $U$ é estrelado, $tx\in U$ para $t\in[0,1]$, e o integrando é suave em $(t,x)$. Pela
+                    derivação sob o sinal de integral (<a href="[02] - Preliminares de Topologia e Cálculo.html#teo-3-2-66">Teorema 3.2.66</a>), $f$ é suave e
+                    $\partial_jf=\int_0^1\big[\omega_j(tx)+t\,x^i\,(\partial_j\omega_i)(tx)\big]dt$, porque
+                    $\partial_j[\omega_i(tx)]=t\,(\partial_j\omega_i)(tx)$. Como $\omega$ é fechada, $\partial_j\omega_i=\partial_i\omega_j$, e
+                    então $t\,x^i(\partial_i\omega_j)(tx)=t\,\frac{d}{dt}\big[\omega_j(tx)\big]$, pela regra da cadeia. O integrando é,
+                    portanto,
                     $$ \omega_j(tx)+t\,\frac{d}{dt}\big[\omega_j(tx)\big]=\frac{d}{dt}\big[t\,\omega_j(tx)\big], $$
-                </p>
-
-                <p>
                     e $\partial_jf=\big[t\,\omega_j(tx)\big]_{t=0}^{t=1}=\omega_j(x)$. Logo $df=\omega$. $\blacksquare$
                 </p>
 
@@ -955,60 +934,57 @@
                 </div>
 
                 <p>
-                    <em>Demonstração.</em> Dado $p$, tome uma carta $(U,\varphi)$ com $\varphi(p)=0$ e $\varphi(U)$ uma
-                    bola, que é estrelada em relação a $0$. As componentes $\omega_i\circ\varphi^{-1}$ satisfazem
-                    (3.9.6), e a Proposição 3.9.43 dá $\hat{f}$ em $\varphi(U)$ com $d\hat{f}=\omega_i\circ\varphi^{-1}\,dx^i$;
-                    então $f=\hat{f}\circ\varphi$ satisfaz $df=\omega$ em $U$. $\blacksquare$
+                    <em>Demonstração.</em> Dado $p$, tome uma carta $(U,\varphi)$ com $\varphi(p)=0$ e $\varphi(U)$ uma bola, que é
+                    estrelada em relação a $0$. As componentes $\omega_i\circ\varphi^{-1}$ satisfazem (3.9.6), e a Proposição 3.9.43 dá
+                    $\hat{f}$ em $\varphi(U)$ com $d\hat{f}=\omega_i\circ\varphi^{-1}\,dx^i$; então $f=\hat{f}\circ\varphi$ satisfaz
+                    $df=\omega$ em $U$. $\blacksquare$
                 </p>
 
                 <p>
-                    O Exemplo 3.9.42 mostra que o resultado é só local: em $\mathbb{R}^2\setminus\{0\}$, que não é
-                    estrelado, a forma $d\theta$ é fechada e não é exata. Mas em cada disco que não contém a origem
-                    (ou, em $\mathbb{R}^2$ menos uma semirreta, que é estrelada), ela tem potencial.
+                    O Exemplo 3.9.42 mostra que o resultado é só local: em $\mathbb{R}^2\setminus\{0\}$, que não é estrelado, a forma
+                    $d\theta$ é fechada e não é exata. Mas em cada disco que não contém a origem (ou em $\mathbb{R}^2$ menos uma semirreta,
+                    que é estrelado em relação a um de seus pontos), ela tem potencial.
                 </p>
 
                 <h2 id="fisica">Ponte com a física</h2>
 
                 <p>
-                    <strong>Trabalho e forças.</strong> Uma força é, naturalmente, uma $1$-forma: ela mede
-                    deslocamentos, dando o trabalho $F_i\,dx^i$ realizado em um deslocamento infinitesimal, e o trabalho ao
-                    longo de uma trajetória é a integral de linha $W=\int_\gamma F_i\,dx^i$. Não é necessário nenhum
-                    produto escalar: a lei covariante (3.9.2) garante que $F_i\,dx^i$ tem o mesmo valor em
-                    qualquer sistema de coordenadas. Uma força é <em>conservativa</em>, no sentido da
-                    Definição 3.9.36, quando o trabalho em qualquer circuito fechado é nulo, o que, pelo Teorema 3.9.39, equivale
-                    a $F=-dV$ para um potencial $V$. O teste local para isso é (3.9.6), e, em uma região estrelada,
-                    é suficiente (Proposição 3.9.43).
+                    <strong>Trabalho e forças.</strong> Uma força é, naturalmente, uma $1$-forma: ela mede deslocamentos, dando o
+                    trabalho $F_i\,dx^i$ de um deslocamento infinitesimal, e o trabalho ao longo de uma trajetória é a integral de
+                    linha $W=\int_\gamma F_i\,dx^i$. Não é necessário nenhum produto escalar: a lei covariante (3.9.2) garante que
+                    $F_i\,dx^i$ tem o mesmo valor em qualquer sistema de coordenadas. Uma força é <em>conservativa</em>, no sentido
+                    da Definição 3.9.36, quando o trabalho em qualquer circuito fechado é nulo, o que, pelo Teorema 3.9.39, equivale
+                    a $F=-dV$ para um potencial $V$. O teste local é (3.9.6) e, em uma região estrelada, é suficiente
+                    (Proposição 3.9.43).
                 </p>
 
                 <p>
                     <strong>Momentos canônicos.</strong> Em mecânica lagrangiana, o momento conjugado
-                    $p_i=\partial L/\partial\dot{q}^i$ é um covetor: sob uma mudança de coordenadas generalizadas
-                    $q\to\tilde{q}$, $\dot{q}^i=\frac{\partial q^i}{\partial\tilde{q}^j}\dot{\tilde{q}}^j$ e
-                    $\tilde{p}_j=\partial L/\partial\dot{\tilde{q}}^j=\frac{\partial q^i}{\partial\tilde{q}^j}p_i$, que é a lei
-                    (3.9.2). O <em>espaço de fase</em> é, por isso, o fibrado cotangente $T^*Q$ do espaço de
-                    configurações $Q$, com as coordenadas naturais $(q^i,p_i)$ de (3.9.3).
+                    $p_i=\partial L/\partial\dot{q}^i$ é um covetor: sob uma mudança de coordenadas generalizadas $q\to\tilde{q}$,
+                    $\dot{q}^i=\frac{\partial q^i}{\partial\tilde{q}^j}\dot{\tilde{q}}^j$ e
+                    $\tilde{p}_j=\partial L/\partial\dot{\tilde{q}}^j=\frac{\partial q^i}{\partial\tilde{q}^j}p_i$, que é a lei (3.9.2). O
+                    <em>espaço de fase</em> é, por isso, o fibrado cotangente $T^*Q$ do espaço de configurações $Q$, com as
+                    coordenadas naturais $(q^i,p_i)$ de (3.9.3).
                 </p>
 
                 <p>
-                    <strong>Ondas.</strong> Para uma onda de fase $\phi$, o vetor de onda $k_\mu=\partial_\mu\phi$ é a
-                    diferencial $d\phi$: um covetor. As frentes de onda são os níveis de $\phi$, e a imagem da
-                    Figura 3.9.1, com hiperplanos paralelos igualmente espaçados, é exatamente a imagem
-                    das frentes de onda de uma onda plana. O fato de $k_\mu$ ser um covetor, e não um vetor, é o
-                    que torna a condição de fase invariante, $k_\mu x^\mu$.
+                    <strong>Ondas.</strong> Para uma onda de fase $\phi$, o vetor de onda $k_\mu=\partial_\mu\phi$ é a diferencial
+                    $d\phi$: um covetor. As frentes de onda são os níveis de $\phi$, e a imagem da Figura 3.9.1, com hiperplanos
+                    paralelos igualmente espaçados, é exatamente a das frentes de uma onda plana. O fato de $k_\mu$ ser um covetor,
+                    e não um vetor, é o que torna invariante a condição de fase $k_\mu x^\mu$.
                 </p>
 
                 <p>
-                    <strong>Termodinâmica.</strong> As quantidades infinitesimais de calor $\delta Q$ e de trabalho
-                    $\delta W$ são $1$-formas no espaço dos estados que <em>não</em> são exatas: seu valor em um
-                    ciclo não se anula, e não existe uma "função calor" $Q$. A energia interna, por outro lado, tem
-                    $dU=\delta Q-\delta W$, que é exata. A distinção entre fechada, exata e conservativa deste
-                    tópico é a que dá sentido a "função de estado".
+                    <strong>Termodinâmica.</strong> As quantidades infinitesimais de calor $\delta Q$ e de trabalho $\delta W$
+                    são $1$-formas no espaço dos estados que <em>não</em> são exatas: sua integral em um ciclo não se anula, e não
+                    existe uma "função calor" $Q$. A energia interna, por outro lado, tem $dU=\delta Q-\delta W$, que é exata. A
+                    distinção entre fechada, exata e conservativa deste tópico é o que dá sentido a "função de estado".
                 </p>
 
                 <p>
-                    <strong>Relatividade Geral.</strong> Os índices embaixo, como em $\omega_\mu$, indicam covetores. Sem
-                    uma métrica, não se pode converter um índice em outro; a métrica $g_{\mu\nu}$ é o que "baixa" e "sobe"
-                    índices, e será introduzida como um campo de formas bilineares.
+                    <strong>Relatividade Geral.</strong> Os índices embaixo, como em $\omega_\mu$, indicam covetores. Sem uma métrica
+                    não se pode converter um tipo de índice no outro; a métrica $g_{\mu\nu}$ é o que "baixa" e "sobe" índices, e será
+                    introduzida, no tópico 3.10, como um campo de formas bilineares.
                 </p>
 
                 <h2 id="exercicios">Exercícios Resolvidos</h2>
@@ -1017,33 +993,34 @@
                     $\mathbb{R}^2$ e as componentes do covetor $\omega(v)=2v^1+3v^2$ nessa base.</p>
 
                 <p>
-                    <em>Solução.</em> Os covetores $\varepsilon^1,\varepsilon^2$ são as linhas da inversa da matriz cujas
-                    colunas são $E_1,E_2$: $\begin{pmatrix}1&1\\1&-1\end{pmatrix}^{-1}=\tfrac12\begin{pmatrix}1&1\\1&-1\end{pmatrix}$,
-                    de modo que $\varepsilon^1(v)=\tfrac12(v^1+v^2)$ e $\varepsilon^2(v)=\tfrac12(v^1-v^2)$ (conferência:
-                    $\varepsilon^1(E_1)=1$, $\varepsilon^1(E_2)=0$, $\varepsilon^2(E_1)=0$, $\varepsilon^2(E_2)=1$). As
-                    componentes de $\omega$ são $\omega_1=\omega(E_1)=2+3=5$ e $\omega_2=\omega(E_2)=2-3=-1$, e
-                    $\omega=5\varepsilon^1-\varepsilon^2$: de fato,
-                    $\tfrac52(v^1+v^2)-\tfrac12(v^1-v^2)=2v^1+3v^2$. $\blacksquare$
+                    <em>Solução.</em> Os covetores $\varepsilon^1,\varepsilon^2$ são as linhas da inversa da matriz cujas colunas são
+                    $E_1,E_2$:
+                    $\begin{pmatrix}1&1\\1&-1\end{pmatrix}^{-1}=\tfrac12\begin{pmatrix}1&1\\1&-1\end{pmatrix}$, de modo que
+                    $\varepsilon^1(v)=\tfrac12(v^1+v^2)$ e $\varepsilon^2(v)=\tfrac12(v^1-v^2)$. Conferência:
+                    $\varepsilon^1(E_1)=1$, $\varepsilon^1(E_2)=0$, $\varepsilon^2(E_1)=0$ e $\varepsilon^2(E_2)=1$. As componentes de
+                    $\omega$ são $\omega_1=\omega(E_1)=2+3=5$ e $\omega_2=\omega(E_2)=2-3=-1$, e $\omega=5\varepsilon^1-\varepsilon^2$. De
+                    fato,
+                    $$ \tfrac52(v^1+v^2)-\tfrac12(v^1-v^2)=2v^1+3v^2. \qquad\blacksquare $$
                 </p>
 
                 <p id="exr-3-9-2"><strong>Exercício 3.9.2.</strong> Calcule $df$ para $f=x^2y+\sin z$ e seu valor em
                     $v=\partial_x-2\partial_y+\partial_z$ no ponto $(1,1,0)$.</p>
 
                 <p>
-                    <em>Solução.</em> Por (3.9.1), $df=2xy\,dx+x^2\,dy+\cos z\,dz$. Em $(1,1,0)$,
-                    $df=2\,dx+dy+dz$, e $df(v)=2\cdot1+1\cdot(-2)+1\cdot1=1$. Pela Proposição 3.9.13, é também a taxa de
-                    variação de $f$ ao longo da reta $t\mapsto(1+t,1-2t,t)$ em $t=0$. $\blacksquare$
+                    <em>Solução.</em> Por (3.9.1), $df=2xy\,dx+x^2\,dy+\cos z\,dz$. Em $(1,1,0)$, $df=2\,dx+dy+dz$, e
+                    $df(v)=2\cdot1+1\cdot(-2)+1\cdot1=1$. Pela Proposição 3.9.13, é também a taxa de variação de $f$ ao longo da reta
+                    $t\mapsto(1+t,\,1-2t,\,t)$ em $t=0$. $\blacksquare$
                 </p>
 
                 <p id="exr-3-9-3"><strong>Exercício 3.9.3.</strong> Escreva $\omega=x\,dy-y\,dx$ em coordenadas polares pela lei
                     covariante e pelo pullback.</p>
 
                 <p>
-                    <em>Solução.</em> <em>Lei covariante</em> (3.9.2), com $x^i=(x,y)$ as coordenadas "antigas" e
-                    $(r,\theta)$ as "novas", e $x=r\cos\theta$, $y=r\sin\theta$, $\omega_x=-y$, $\omega_y=x$:
-                    $\omega_r=\frac{\partial x}{\partial r}\omega_x+\frac{\partial y}{\partial r}\omega_y=\cos\theta(-r\sin\theta)+\sin\theta(r\cos\theta)=0$ e
-                    $\omega_\theta=\frac{\partial x}{\partial\theta}\omega_x+\frac{\partial y}{\partial\theta}\omega_y=r^2\sin^2\theta+r^2\cos^2\theta=r^2$.
-                    <em>Pullback</em> pelo Exemplo 3.9.27: $F^*\omega=r^2\,d\theta$. Os dois dão $\omega=r^2\,d\theta$. $\blacksquare$
+                    <em>Solução.</em> <em>Lei covariante</em> (3.9.2), com $(x,y)$ as coordenadas "antigas", $(r,\theta)$ as "novas",
+                    $x=r\cos\theta$, $y=r\sin\theta$ e $\omega_x=-y$, $\omega_y=x$:
+                    $$ \begin{aligned}\omega_r&=\frac{\partial x}{\partial r}\,\omega_x+\frac{\partial y}{\partial r}\,\omega_y=\cos\theta\,(-r\sin\theta)+\sin\theta\,(r\cos\theta)=0,\\
+                    \omega_\theta&=\frac{\partial x}{\partial\theta}\,\omega_x+\frac{\partial y}{\partial\theta}\,\omega_y=r^2\sin^2\theta+r^2\cos^2\theta=r^2.\end{aligned} $$
+                    <em>Pullback</em>, pelo Exemplo 3.9.27: $F^*\omega=r^2\,d\theta$. Os dois métodos dão $\omega=r^2\,d\theta$. $\blacksquare$
                 </p>
 
                 <p id="exr-3-9-4"><strong>Exercício 3.9.4.</strong> Calcule $\int_\gamma(y\,dx+x\,dy)$ para
@@ -1062,50 +1039,49 @@
                     <em>Solução.</em> Com $\omega_x=2xy+z^3$, $\omega_y=x^2$ e $\omega_z=3xz^2$:
                     $\partial_y\omega_x=2x=\partial_x\omega_y$, $\partial_z\omega_x=3z^2=\partial_x\omega_z$ e
                     $\partial_z\omega_y=0=\partial_y\omega_z$. Pela fórmula (3.9.7) do lema de Poincaré,
-                    $f(x,y,z)=\int_0^1\big[\omega_x(tx,ty,tz)\,x+\omega_y\,y+\omega_z\,z\big]dt=\int_0^1\big[(2t^2xy+t^3z^3)x+t^2x^2y+3t^3xz^3\big]dt=x^2y+xz^3$
-                    (cada termo integra: $\int_0^1t^2dt=\tfrac13$ e $\int_0^1t^3dt=\tfrac14$, e os coeficientes
-                    somam $\tfrac23x^2y+\tfrac13x^2y=x^2y$ e $\tfrac14xz^3+\tfrac34xz^3=xz^3$). Conferência:
-                    $d(x^2y+xz^3)=(2xy+z^3)dx+x^2dy+3xz^2dz$. $\blacksquare$
+                    $$ \begin{aligned}f(x,y,z)&=\int_0^1\big[\omega_x(tx,ty,tz)\,x+\omega_y(tx,ty,tz)\,y+\omega_z(tx,ty,tz)\,z\big]dt\\
+                    &=\int_0^1\big[(2t^2xy+t^3z^3)\,x+t^2x^2\,y+3t^3xz^2\,z\big]dt\\
+                    &=\int_0^1\big[3t^2x^2y+4t^3xz^3\big]dt=x^2y+xz^3,\end{aligned} $$
+                    porque $\int_0^1t^2\,dt=\tfrac13$ e $\int_0^1t^3\,dt=\tfrac14$. Conferência:
+                    $d(x^2y+xz^3)=(2xy+z^3)\,dx+x^2\,dy+3xz^2\,dz$. $\blacksquare$
                 </p>
 
                 <p id="exr-3-9-6"><strong>Exercício 3.9.6.</strong> A forma $\omega=-y\,dx+x\,dy$ em $\mathbb{R}^2$ não é
                     fechada; integre-a de $(0,0)$ a $(1,1)$ por dois caminhos.</p>
 
                 <p>
-                    <em>Solução.</em> $\partial_y\omega_x=-1\neq1=\partial_x\omega_y$. Ao longo da diagonal
-                    $\gamma(t)=(t,t)$, $\omega(\gamma')=-t+t=0$, e a integral é $0$. Ao longo de $(0,0)\to(1,0)\to(1,1)$:
-                    no primeiro trecho, $y=0$ e $dy=0$, de modo que $\omega=0$; no segundo, $x=1$ e $dx=0$, $\omega=dy$, e a
-                    integral é $\int_0^1dy=1$. Como $0\neq1$, a integral depende do caminho, e $\omega$ não é conservativa (nem
-                    exata), em acordo com o fato de não ser fechada (Proposição 3.9.41). $\blacksquare$
+                    <em>Solução.</em> $\partial_y\omega_x=-1\neq1=\partial_x\omega_y$. Ao longo da diagonal $\gamma(t)=(t,t)$,
+                    $\omega(\gamma')=-t+t=0$, e a integral é $0$. Ao longo de $(0,0)\to(1,0)\to(1,1)$: no primeiro trecho, $y=0$ e
+                    $dy=0$, de modo que $\omega=0$; no segundo, $x=1$ e $dx=0$, $\omega=dy$, e a integral é $\int_0^1dy=1$. Como
+                    $0\neq1$, a integral depende do caminho, e $\omega$ não é conservativa (nem exata), em acordo com o fato de não ser
+                    fechada (Proposição 3.9.41). $\blacksquare$
                 </p>
 
                 <p id="exr-3-9-7"><strong>Exercício 3.9.7.</strong> Mostre que a restrição de
-                    $\omega=\dfrac{x\,dy-y\,dx}{x^2+y^2}$ a $S^1$ é uma $1$-forma que não se anula em nenhum ponto e que não
-                    é exata.</p>
+                    $\omega=\dfrac{x\,dy-y\,dx}{x^2+y^2}$ a $S^1$ é uma $1$-forma que não se anula em nenhum ponto e que não é
+                    exata.</p>
 
                 <p>
-                    <em>Solução.</em> Seja $E:\mathbb{R}\to S^1\subset\mathbb{R}^2$, $E(t)=(\cos t,\sin t)$. Como $E$ é um
-                    difeomorfismo local sobre $S^1$ (<a href="[04] - Funções e Aplicações Suaves.html#exr-3-4-3">Exercício 3.4.3</a>) e
-                    $E^*(\iota^*\omega)=(\iota\circ E)^*\omega$, a receita dá
-                    $(\iota\circ E)^*\omega=\omega(E')\,dt=\big(\cos t\cdot\cos t-\sin t\cdot(-\sin t)\big)\,dt=dt$. Assim
-                    $\iota^*\omega=d\theta$ em cada carta angular, e $(\iota^*\omega)(\Theta)=1$ para o campo global $\Theta=\partial_\theta$
-                    de $S^1$: não se anula em ponto algum. Não é exata, porque $\int_{S^1}\iota^*\omega=\int_{\iota\circ E}\omega=2\pi\neq0$
-                    ao longo da curva fechada, pela Proposição 3.9.32(e) e pelo Teorema 3.9.34. Toda $1$-forma em uma
-                    variedade de dimensão $1$ é automaticamente fechada, e $d\theta$ mostra que a recíproca "fechada
-                    implica exata" falha na circunferência. $\blacksquare$
+                    <em>Solução.</em> Seja $E:\mathbb{R}\to S^1\subset\mathbb{R}^2$, $E(t)=(\cos t,\sin t)$. Como $E$ é um difeomorfismo
+                    local sobre $S^1$ (<a href="[04] - Funções e Aplicações Suaves.html#exr-3-4-3">Exercício 3.4.3</a>) e $E^*(\iota^*\omega)=(\iota\circ E)^*\omega$, a receita dá
+                    $$ (\iota\circ E)^*\omega=\omega(E')\,dt=\big(\cos t\cdot\cos t-\sin t\cdot(-\sin t)\big)\,dt=dt. $$
+                    Assim $\iota^*\omega=d\theta$ em cada carta angular, e $(\iota^*\omega)(\Theta)=1$ para o campo global
+                    $\Theta=\partial_\theta$ de $S^1$: a forma não se anula em ponto algum. Não é exata, porque
+                    $\int_{S^1}\iota^*\omega=\int_{\iota\circ E}\omega=2\pi\neq0$ ao longo da curva fechada, pela
+                    Proposição 3.9.32(e) e pelo Teorema 3.9.34. Toda $1$-forma em uma variedade de dimensão $1$ é automaticamente
+                    fechada, e $d\theta$ mostra que a recíproca "fechada implica exata" falha na circunferência. $\blacksquare$
                 </p>
 
                 <p id="exr-3-9-8"><strong>Exercício 3.9.8.</strong> Para $F:\mathbb{R}\to\mathbb{R}^2$, $F(t)=(t^2,t^3)$,
-                    calcule $F^*(x\,dy)$ e explique por que $\partial_t$ não tem pushforward bem definido como campo
-                    em $\mathbb{R}^2$.</p>
+                    calcule $F^*(x\,dy)$ e explique por que $\partial_t$ não tem pushforward bem definido como campo em
+                    $\mathbb{R}^2$.</p>
 
                 <p>
-                    <em>Solução.</em> Pela receita, $F^*(x\,dy)=t^2\,d(t^3)=3t^4\,dt$. O pushforward
-                    $dF(\partial_t)=(2t,3t^2)$ está definido apenas <em>sobre a curva</em> $F(\mathbb{R})$, onde dá o
-                    vetor tangente à cúspide em $F(t)$ (e, em $t=0$, o vetor nulo). Nos pontos de $\mathbb{R}^2$ fora da
-                    curva, $F$ não é sobrejetiva e não há nenhum valor natural para um campo: qualquer extensão seria
-                    uma escolha arbitrária. Ao contrário, o pullback $F^*(x\,dy)$ está definido em todo $t$, sem
-                    nenhuma escolha (Observação 3.9.25). $\blacksquare$
+                    <em>Solução.</em> Pela receita, $F^*(x\,dy)=t^2\,d(t^3)=3t^4\,dt$. O pushforward $dF(\partial_t)=(2t,3t^2)$ está
+                    definido apenas <em>sobre a curva</em> $F(\mathbb{R})$, onde dá o vetor tangente à cúspide em $F(t)$ (e, em
+                    $t=0$, o vetor nulo). Nos pontos de $\mathbb{R}^2$ fora da curva, $F$ não é sobrejetiva e não há nenhum valor
+                    natural para um campo: qualquer extensão seria uma escolha arbitrária. O pullback $F^*(x\,dy)$, ao contrário, está
+                    definido em todo $t$, sem nenhuma escolha (Observação 3.9.25). $\blacksquare$
                 </p>
 
                 <h2 id="o-que-construimos">O que construímos</h2>
@@ -1116,38 +1092,31 @@
 
                 <ul>
                     <li>o <strong>espaço dual</strong>, a base dual, a mudança de base e a aplicação dual
-                        (<a href="#def-3-9-1">Definição 3.9.1</a>, <a href="#prop-3-9-3">Proposição 3.9.3</a>,
-                        <a href="#prop-3-9-4">Proposição 3.9.4</a>), e o fato de que $V\cong V^*$ exige uma escolha
+                        (<a href="#def-3-9-1">Definição 3.9.1</a>, <a href="#prop-3-9-3">Proposição 3.9.3</a>, <a href="#prop-3-9-4">Proposição 3.9.4</a>), e o fato de que $V\cong V^*$ exige uma escolha
                         (<a href="#obs-3-9-6">Observação 3.9.6</a>);</li>
-                    <li>o <strong>espaço cotangente</strong> $T_p^*M$ e a diferencial $df$
-                        (<a href="#def-3-9-8">Definição 3.9.8</a>, <a href="#def-3-9-9">Definição 3.9.9</a>), com $df$ em
-                        coordenadas (<a href="#prop-3-9-12">Proposição 3.9.12</a>) e a lei covariante
-                        (<a href="#prop-3-9-14">Proposição 3.9.14</a>);</li>
-                    <li>o <strong>fibrado cotangente</strong> $T^*M$ (<a href="#teo-3-9-17">Teorema 3.9.17</a>), as
-                        <strong>$1$-formas</strong> $\Omega^1(M)$ e seus critérios de suavidade
-                        (<a href="#def-3-9-18">Definição 3.9.18</a>, <a href="#prop-3-9-19">Proposição 3.9.19</a>);</li>
-                    <li>o <strong>pullback</strong> por qualquer aplicação suave (<a href="#def-3-9-24">Definição 3.9.24</a>,
-                        <a href="#prop-3-9-26">Proposição 3.9.26</a>) e a restrição a subvariedades;</li>
-                    <li>a <strong>integral de linha</strong> (<a href="#def-3-9-31">Definição 3.9.31</a>) e o
-                        <strong>teorema fundamental</strong> (<a href="#teo-3-9-34">Teorema 3.9.34</a>), o primeiro caso
-                        do Teorema de Stokes;</li>
-                    <li>formas <strong>exatas, conservativas e fechadas</strong>, com o teorema
-                        "exata $\Leftrightarrow$ conservativa" (<a href="#teo-3-9-39">Teorema 3.9.39</a>), o
-                        contraexemplo $d\theta$ (<a href="#ex-3-9-42">Exemplo 3.9.42</a>) e o lema de Poincaré para
-                        $1$-formas (<a href="#prop-3-9-43">Proposição 3.9.43</a>).</li>
+                    <li>o <strong>espaço cotangente</strong> $T_p^*M$ e a diferencial $df$ (<a href="#def-3-9-8">Definição 3.9.8</a>, <a href="#def-3-9-9">Definição 3.9.9</a>), com $df$ em
+                        coordenadas (<a href="#prop-3-9-12">Proposição 3.9.12</a>) e a lei covariante (<a href="#prop-3-9-14">Proposição 3.9.14</a>);</li>
+                    <li>o <strong>fibrado cotangente</strong> $T^*M$ (<a href="#teo-3-9-17">Teorema 3.9.17</a>), as <strong>$1$-formas</strong> $\Omega^1(M)$ e seus
+                        critérios de suavidade (<a href="#def-3-9-18">Definição 3.9.18</a>, <a href="#prop-3-9-19">Proposição 3.9.19</a>);</li>
+                    <li>o <strong>pullback</strong> por qualquer aplicação suave (<a href="#def-3-9-24">Definição 3.9.24</a>, <a href="#prop-3-9-26">Proposição 3.9.26</a>) e a restrição a
+                        subvariedades;</li>
+                    <li>a <strong>integral de linha</strong> (<a href="#def-3-9-31">Definição 3.9.31</a>) e o <strong>teorema fundamental</strong>
+                        (<a href="#teo-3-9-34">Teorema 3.9.34</a>), o primeiro caso do Teorema de Stokes;</li>
+                    <li>formas <strong>exatas, conservativas e fechadas</strong>, com o teorema "exata $\Leftrightarrow$ conservativa"
+                        (<a href="#teo-3-9-39">Teorema 3.9.39</a>), o contraexemplo $d\theta$ (<a href="#ex-3-9-42">Exemplo 3.9.42</a>) e o lema de Poincaré para $1$-formas
+                        (<a href="#prop-3-9-43">Proposição 3.9.43</a>).</li>
                 </ul>
 
                 <p>
-                    Uma $1$-forma mede um vetor de cada vez. Para chegar ao Teorema de Stokes em dimensão maior que $1$,
-                    precisamos de objetos que medem vários vetores ao mesmo tempo: $2$ vetores para um elemento de área,
-                    $3$ para um elemento de volume. Eles são os tensores multilineares, e, entre eles, os alternados.
-                    Esse é o assunto dos próximos três tópicos.
+                    Uma $1$-forma mede um vetor de cada vez. Para chegar ao Teorema de Stokes em dimensão maior que $1$, precisamos
+                    de objetos que medem vários vetores ao mesmo tempo: $2$ vetores para um elemento de área, $3$ para um elemento
+                    de volume. Eles são os tensores multilineares e, entre eles, os alternados. Esse é o assunto dos próximos três
+                    tópicos.
                 </p>
 
                 <p>
-                    O próximo tópico,
-                    <a href="[10] - Álgebra Multilinear e Tensores.html">3.10 Álgebra Multilinear e Tensores</a>, estuda os
-                    tensores covariantes e contravariantes, o produto tensorial, a contração e o lema de caracterização
+                    O próximo tópico, <a href="[10] - Álgebra Multilinear e Tensores.html">3.10 Álgebra Multilinear e Tensores</a>,
+                    estuda os tensores covariantes e contravariantes, o produto tensorial, a contração e o lema de caracterização
                     tensorial, que reconhece uma aplicação $C^\infty(M)$-linear como um campo tensorial.
                 </p>
 
