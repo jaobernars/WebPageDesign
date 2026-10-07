@@ -151,7 +151,731 @@
                 <h1 id="orientacao">3.15 Orientação</h1>
                 <p class="lead">Orientação de espaços vetoriais e de variedades, formas de orientação, atlas orientados, hipersuperfícies e exemplos não orientáveis.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>
+                    No tópico 3.12, a mudança de coordenadas de uma $n$-forma trouxe o determinante da jacobiana, e não o seu módulo (<a href="[12] - Formas Diferenciais.html#cor-3-12-15">Corolário 3.12.15</a> e <a href="[12] - Formas Diferenciais.html#obs-3-12-17">Observação 3.12.17</a>):
+                    $d\tilde{x}^1\wedge\dots\wedge d\tilde{x}^n=\det\big(\partial\tilde{x}^j/\partial x^i\big)\,dx^1\wedge\dots\wedge dx^n$. É essa diferença que decide o sinal de uma integral. A integral $\int_a^b$ de uma $1$-forma troca de sinal quando o intervalo é percorrido em sentido contrário, e a
+                    integral de uma $n$-forma em $\mathbb{R}^n$ troca de sinal quando se troca a ordem de duas coordenadas. Para que $\int_M\omega$ não dependa da carta com que é calculada, é preciso usar apenas cartas ligadas por jacobianas de determinante positivo. Quando isso é possível em toda a variedade, ela é
+                    <em>orientável</em>, e uma tal família de cartas, a menos de equivalência, é uma <em>orientação</em>.
+                </p>
+
+                <p>
+                    O que usamos: o determinante como a ação de uma aplicação linear em $\Lambda^n$ (<a href="[11] - Produto Exterior.html#prop-3-11-14">Proposição 3.11.14</a> e <a href="[11] - Produto Exterior.html#cor-3-11-15">Corolário 3.11.15</a>), a fórmula do pullback (ou retrocesso) de uma $n$-forma (<a href="[12] - Formas Diferenciais.html#teo-3-12-14">Teorema 3.12.14</a>), o produto interior (<a href="[11] - Produto Exterior.html#def-3-11-25">Definição 3.11.25</a>), as partições da unidade (<a href="[04] - Funções e Aplicações Suaves.html#teo-3-4-35">Teorema 3.4.35</a>), a conexidade (<a href="[02] - Preliminares de Topologia e Cálculo.html#prop-3-2-38">Proposição 3.2.38</a>) e as
+                    hipersuperfícies dadas por valores regulares (<a href="[06] - Subvariedades.html#teo-3-6-18">Teorema 3.6.18</a>). O que obtemos: (i) a orientação de um espaço vetorial, por classes de bases e por um $n$-covetor; (ii) a orientação de uma variedade, descrita de três maneiras equivalentes: por uma escolha contínua de orientação em cada espaço tangente,
+                    por uma $n$-forma sem zeros (as <em>formas de orientação</em>, entre as quais estão as formas de volume do tópico 3.14) e por um atlas cujas transições têm jacobiana positiva; (iii) a orientação de uma hipersuperfície a partir de um campo transversal, pela regra "normal primeiro", que dará,
+                    no tópico 3.16, a orientação do bordo; (iv) exemplos que não admitem orientação: a faixa de Möbius e os espaços projetivos de dimensão par.
+                </p>
+
+                <p>
+                    Uma observação sobre o lugar do tópico no caminho até Stokes. Em $\int_Md\omega=\int_{\partial M}\omega$ há dois sinais a decidir: o de $\int_M$ e o de $\int_{\partial M}$. O primeiro é o assunto deste tópico. O segundo é a <em>orientação induzida no bordo</em>, que será definida no tópico 3.16 pela regra da
+                    seção sobre hipersuperfícies, com o campo transversal que aponta para fora, e que fará a fórmula de Stokes aparecer sem sinal algum. Este tópico não fala de bordo nem de integral: só prepara o sinal.
+                </p>
+
+                <h2 id="orientacao-espacos-vetoriais">Orientação de espaços vetoriais</h2>
+
+                <p>
+                    Em um espaço vetorial real $V$ de dimensão $n\ge1$, duas bases ordenadas $E=(E_1,\dots,E_n)$ e $\tilde{E}=(\tilde{E}_1,\dots,\tilde{E}_n)$ estão relacionadas por uma única matriz invertível $B=(B^j{}_i)$, a <em>matriz de mudança de base</em>,
+                    $$ \tilde{E}_i=B^j{}_i\,E_j \qquad(\text{soma em }j), $$
+                    cuja coluna $i$ é formada pelas componentes de $\tilde{E}_i$ na base $E$; escrevemos $\tilde{E}=EB$. Se $\hat{E}_k=C^i{}_k\,\tilde{E}_i$ é uma terceira base, então $\hat{E}_k=C^i{}_kB^j{}_i\,E_j=(BC)^j{}_k\,E_j$: a matriz de $E$ para $\hat{E}$ é o produto $BC$.
+                </p>
+
+                <div class="definition-box" id="def-3-15-1" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.15.1 (Bases consistentemente orientadas).</strong> Duas bases ordenadas de $V$ são <strong>consistentemente orientadas</strong> se a matriz de mudança de uma para a outra tem determinante positivo.</p>
+                </div>
+
+                <div class="definition-box" id="prop-3-15-2">
+                    <p><strong>Proposição 3.15.2 (Duas classes de bases).</strong> Seja $\dim V=n\ge1$. Ser consistentemente orientadas é uma relação de equivalência no conjunto das bases ordenadas de $V$, com <em>exatamente duas</em> classes. Além disso:</p>
+                    <p>(a) trocar dois vetores de uma base, ou trocar um vetor $E_i$ por $-E_i$, leva a base à outra classe;</p>
+                    <p>(b) se $\sigma\in S_n$, a base $(E_{\sigma(1)},\dots,E_{\sigma(n)})$ está na classe de $(E_1,\dots,E_n)$ se, e só se, $\operatorname{sgn}\sigma=+1$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> <strong>Relação de equivalência.</strong> Reflexiva: a matriz de $E$ para $E$ é a identidade, de determinante $1$. Simétrica: se $\tilde{E}=EB$ (no sentido acima), então $E=\tilde{E}B^{-1}$, e $\det B^{-1}=1/\det B$ tem o mesmo sinal que $\det B$. Transitiva: se as matrizes de $E$ para $\tilde{E}$
+                    e de $\tilde{E}$ para $\hat{E}$ são $B$ e $C$, com $\det B\gt0$ e $\det C\gt0$, a de $E$ para $\hat{E}$ é $BC$, e $\det(BC)=\det B\det C\gt0$ (<a href="[11] - Produto Exterior.html#cor-3-11-15">Corolário 3.11.15</a>(a)).
+                </p>
+
+                <p>
+                    <strong>Exatamente duas classes.</strong> Fixe uma base $E$ e ponha $E'=(-E_1,E_2,\dots,E_n)$. A matriz de $E$ para $E'$ é $\operatorname{diag}(-1,1,\dots,1)$, de determinante $-1$, de modo que $E'$ não está na classe de $E$. Seja $\tilde{E}$ uma base qualquer, com matriz $B$ de $E$ para $\tilde{E}$; como $B$ é invertível,
+                    $\det B\neq0$. Se $\det B\gt0$, $\tilde{E}$ está na classe de $E$. Se $\det B\lt0$, a matriz de $E'$ para $\tilde{E}$ é $\operatorname{diag}(-1,1,\dots,1)^{-1}B$, de determinante $(-1)\det B\gt0$, e $\tilde{E}$ está na classe de $E'$. Logo toda base está em uma das duas classes de $E$ e $E'$, que são distintas.
+                </p>
+
+                <p>
+                    (a) A matriz da base com $E_i$ e $E_j$ trocados é a identidade com as colunas $i$ e $j$ trocadas, de determinante $-1$; a de $E$ para a base com $E_i$ trocado por $-E_i$ é a identidade com $-1$ na posição $(i,i)$, também de determinante $-1$. (b) Escreva $\sigma$ como produto de $m$ transposições (<a href="[11] - Produto Exterior.html#prop-3-11-2">Proposição 3.11.2</a>), $\sigma=t_1\circ\dots\circ t_m$.
+                    Para uma lista $L_\tau=(E_{\tau(1)},\dots,E_{\tau(n)})$, trocar as posições $a$ e $b$ dá $L_{\tau\circ(a\ b)}$, porque o elemento na posição $a$ passa a ser $E_{\tau(b)}=E_{(\tau\circ(a\ b))(a)}$. Partindo de $L_{\mathrm{id}}=E$, as trocas por $t_1,\dots,t_m$ levam a $L_\sigma$, e, por (a), cada troca muda de classe.
+                    Assim $L_\sigma$ está na classe de $E$ se, e só se, $m$ é par, isto é, se, e só se, $\operatorname{sgn}\sigma=(-1)^m=+1$ (<a href="[11] - Produto Exterior.html#prop-3-11-4">Proposição 3.11.4</a>). $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="def-3-15-3" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.15.3 (Orientação de um espaço vetorial).</strong> Seja $\dim V=n\ge1$. Uma <strong>orientação</strong> de $V$ é uma das duas classes de bases da <a href="#prop-3-15-2">Proposição 3.15.2</a>. As bases da classe escolhida são <strong>positivas</strong> (ou orientadas positivamente); as da outra classe são <strong>negativas</strong>. Um espaço vetorial com uma orientação fixada é um
+                        <strong>espaço vetorial orientado</strong>; a outra orientação é a <strong>oposta</strong>, $-\mathcal{O}$, se a escolhida é $\mathcal{O}$. A <strong>orientação padrão</strong> de $\mathbb{R}^n$ é a classe da base canônica $(e_1,\dots,e_n)$. Em dimensão $0$, a única base é a lista vazia, e uma orientação de $V=\{0\}$ é, por convenção, a escolha de um sinal
+                        $+1$ ou $-1$ (a lista vazia é "positiva" se o sinal é $+1$).</p>
+                </div>
+
+                <p>
+                    A convenção em dimensão zero parece vazia, mas será usada: no tópico 3.16, o bordo de uma variedade de dimensão $1$ é um conjunto de pontos, e o que a fórmula de Stokes pede dele é exatamente um sinal $\pm1$ em cada ponto (o teorema fundamental do cálculo, $f(b)-f(a)$, tem sinal $+$ em $b$ e $-$ em $a$).
+                </p>
+
+                <p id="ex-3-15-4"><strong>Exemplo 3.15.4 (As orientações de $\mathbb{R}^1$, $\mathbb{R}^2$ e $\mathbb{R}^3$).</strong></p>
+
+                <ul>
+                    <li>$\mathbb{R}^1$: uma base é um vetor $v\neq0$, e $(v)$ e $(w)$ são consistentemente orientadas se $w=bv$ com $b\gt0$, isto é, se apontam para o mesmo lado. As duas orientações são os dois sentidos da reta; a padrão é a de $e_1=1$.</li>
+                    <li>$\mathbb{R}^2$: $(v,w)$ é positiva se, e só se, $\det[v\ \,w]=v^1w^2-v^2w^1\gt0$, a área orientada da <a href="[11] - Produto Exterior.html#obs-3-11-16">Observação 3.11.16</a>: a rotação de $v$ para $w$, pelo menor ângulo, é anti-horária. $(e_1,e_2)$ é positiva e $(e_2,e_1)$ é negativa (Figura 3.15.1(a) e (b)).</li>
+                    <li>$\mathbb{R}^3$: $(u,v,w)$ é positiva se, e só se, $\det[u\ \,v\ \,w]=u\cdot(v\times w)\gt0$ (<a href="[11] - Produto Exterior.html#prop-3-11-30">Proposição 3.11.30</a>), a <em>regra da mão direita</em>: os dedos da mão direita giram de $u$ para $v$ e o polegar aponta para o lado de $w$. Se $v$ e $w$ são independentes, $(v,w,v\times w)$ é positiva,
+                        porque o produto misto, que é cíclico, dá $\det[v\ \,w\ \,v\times w]=(v\times w)\cdot(v\times w)=\lvert v\times w\rvert^2\gt0$ (Figura 3.15.1(c)).</li>
+                </ul>
+
+                <p>
+                    Em todos os casos vale a <a href="#prop-3-15-2">Proposição 3.15.2</a>: trocar dois vetores inverte a orientação, e uma permutação dos vetores a multiplica pelo seu sinal. Em $\mathbb{R}^3$, as três bases $(e_1,e_2,e_3)$, $(e_2,e_3,e_1)$ e $(e_3,e_1,e_2)$ (permutações pares) são positivas, e as três bases $(e_2,e_1,e_3)$, $(e_1,e_3,e_2)$ e $(e_3,e_2,e_1)$ (permutações ímpares), negativas.
+                </p>
+
+                <figure class="lecture-figure" id="fig-3-15-1" style="overflow-x: auto; overflow-y: hidden;">
+                    <svg viewBox="0 0 640 300" role="img" style="min-width: 560px;" aria-label="Três partes. Em (a), o plano com dois vetores E1, horizontal para a direita, e E2, vertical para cima, e um arco anti-horário de E1 para E2: a base é positiva. Em (b), o plano com E1 vertical para cima e E2 horizontal para a direita, e um arco horário de E1 para E2: a base é negativa. Em (c), o espaço de três dimensões em projeção oblíqua, com E1 para o observador, E2 para a direita e E3 para cima, e um arco que gira de E1 para E2 no plano horizontal: os dedos da mão direita giram de E1 para E2 e o polegar aponta para E3, de modo que a base é positiva.">
+<defs><marker id="arr-3-15-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<rect x="14" y="16" width="612" height="272" rx="3" class="fig-frame"/>
+<text x="34" y="40" class="fig-label fig-small">(a) R²: base positiva</text>
+<line x1="70" y1="190" x2="152" y2="190" class="fig-curve" marker-end="url(#arr-3-15-1)"/>
+<line x1="70" y1="190" x2="70" y2="108" class="fig-curve" marker-end="url(#arr-3-15-1)"/>
+<path d="M103.8,185.9 A34,34 0 0,0 74.1,156.2" class="fig-guide" marker-end="url(#arr-3-15-1)"/>
+<circle cx="70" cy="190" r="3.5" class="fig-arrowhead"/>
+<text x="158" y="194" class="fig-label fig-it">E₁</text>
+<text x="62" y="100" class="fig-label fig-it">E₂</text>
+<text x="34" y="246" class="fig-label fig-small">(E₁, E₂) = (e₁, e₂)</text>
+<text x="34" y="264" class="fig-label fig-small">de E₁ para E₂: anti-horário</text>
+<text x="244" y="40" class="fig-label fig-small">(b) R²: base negativa</text>
+<line x1="280" y1="190" x2="362" y2="190" class="fig-curve" marker-end="url(#arr-3-15-1)"/>
+<line x1="280" y1="190" x2="280" y2="108" class="fig-curve" marker-end="url(#arr-3-15-1)"/>
+<path d="M284.1,156.2 A34,34 0 0,1 313.8,185.9" class="fig-guide" marker-end="url(#arr-3-15-1)"/>
+<circle cx="280" cy="190" r="3.5" class="fig-arrowhead"/>
+<text x="368" y="194" class="fig-label fig-it">E₂</text>
+<text x="272" y="100" class="fig-label fig-it">E₁</text>
+<text x="244" y="246" class="fig-label fig-small">(E₁, E₂) = (e₂, e₁)</text>
+<text x="244" y="264" class="fig-label fig-small">de E₁ para E₂: horário</text>
+<text x="446" y="40" class="fig-label fig-small">(c) R³: mão direita</text>
+<path d="M520,190 L468.7,226.1 L544.7,226.1 L596,190 Z" class="fig-band"/>
+<line x1="520" y1="190" x2="466" y2="228" class="fig-curve" marker-end="url(#arr-3-15-1)"/>
+<line x1="520" y1="190" x2="600" y2="190" class="fig-curve" marker-end="url(#arr-3-15-1)"/>
+<line x1="520" y1="190" x2="520" y2="102" class="fig-curve" marker-end="url(#arr-3-15-1)"/>
+<path d="M502.1,207.2 L504.6,207 L507.2,206.7 L509.8,206.3 L512.4,205.9 L515.1,205.5 L517.8,205 L520.4,204.4 L523.1,203.8 L525.8,203.1 L528.5,202.4 L531.1,201.6 L533.7,200.8 L536.2,199.9 L538.7,199 L541.1,198.1 L543.4,197.2 L545.6,196.2 L547.8,195.2 L549.8,194.2 L551.8,193.1" class="fig-guide" marker-end="url(#arr-3-15-1)"/>
+<circle cx="520" cy="190" r="3.5" class="fig-arrowhead"/>
+<text x="462" y="242" text-anchor="end" class="fig-label fig-it">E₁</text>
+<text x="606" y="194" class="fig-label fig-it">E₂</text>
+<text x="528" y="98" class="fig-label fig-it">E₃</text>
+<text x="446" y="264" class="fig-label fig-small">dedos: E₁ → E₂;  polegar: E₃</text>
+</svg>
+                    <figcaption><strong>Figura 3.15.1.</strong> Orientações de $\mathbb{R}^2$ e de $\mathbb{R}^3$. (a) A base $(E_1,E_2)=(e_1,e_2)$: o giro de $E_1$ para $E_2$ é anti-horário, e a base é positiva. (b) A base $(e_2,e_1)$: o giro é horário, e a base é negativa. (c) A regra da mão direita em $\mathbb{R}^3$: os dedos giram de $E_1$ para $E_2$ e o polegar aponta para $E_3$.</figcaption>
+                </figure>
+
+                <p>
+                    Uma orientação pode ser dada de outra maneira, que é a que se estende às variedades: por um único $n$-covetor não nulo. Aqui entra a <a href="[11] - Produto Exterior.html#prop-3-11-14">Proposição 3.11.14</a>, a álgebra por trás da mudança de variáveis.
+                </p>
+
+                <div class="definition-box" id="prop-3-15-5">
+                    <p><strong>Proposição 3.15.5 (Orientação por um $n$-covetor).</strong> Seja $\dim V=n\ge1$ e seja $0\neq\omega\in\Lambda^n(V^*)$.</p>
+                    <p>(a) O conjunto $\mathcal{O}_\omega=\{(E_1,\dots,E_n)\ \text{base de }V:\ \omega(E_1,\dots,E_n)\gt0\}$ é uma orientação de $V$.</p>
+                    <p>(b) Se $0\neq\omega'\in\Lambda^n(V^*)$, então $\omega'=c\,\omega$ com $c\neq0$, e $\mathcal{O}_{\omega'}=\mathcal{O}_\omega$ se $c\gt0$, $\mathcal{O}_{\omega'}=-\mathcal{O}_\omega$ se $c\lt0$.</p>
+                    <p>(c) Toda orientação de $V$ é $\mathcal{O}_\omega$ para algum $\omega$.</p>
+                    <p>Assim, as duas semirretas de $\Lambda^n(V^*)\setminus\{0\}\cong\mathbb{R}\setminus\{0\}$ correspondem às duas orientações de $V$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Para toda base $E$, $\omega(E_1,\dots,E_n)\neq0$ (<a href="[11] - Produto Exterior.html#cor-3-11-15">Corolário 3.11.15</a>(b)). Se $\tilde{E}_i=B^j{}_iE_j$, a aplicação linear $T$ com $TE_i=\tilde{E}_i$ tem matriz $B$, e a <a href="[11] - Produto Exterior.html#prop-3-11-14">Proposição 3.11.14</a> dá
+                    $$ \omega(\tilde{E}_1,\dots,\tilde{E}_n)=\det B\ \omega(E_1,\dots,E_n). $$
+                    Logo $\omega(\tilde{E}_1,\dots,\tilde{E}_n)$ e $\omega(E_1,\dots,E_n)$ têm o mesmo sinal se, e só se, $\det B\gt0$: o sinal de $\omega(E_1,\dots,E_n)$ é constante em cada classe da <a href="#prop-3-15-2">Proposição 3.15.2</a> e muda de uma classe para a outra. Portanto $\mathcal{O}_\omega$, o conjunto das bases em que esse sinal é $+$, é exatamente uma das duas classes.
+                    (b) Como $\dim\Lambda^n(V^*)=1$ (<a href="[11] - Produto Exterior.html#teo-3-11-13">Teorema 3.11.13</a>), $\omega'=c\,\omega$ com $c\neq0$, e $\omega'(E)=c\,\omega(E)$ para toda base $E$: com $c\gt0$ os sinais coincidem, e com $c\lt0$ são opostos. (c) Dada uma orientação $\mathcal{O}$, escolha uma base positiva $E$ e seja $\omega=\varepsilon^1\wedge\dots\wedge\varepsilon^n$, com $(\varepsilon^i)$ a base dual.
+                    Por (3.11.4), $\omega(E_1,\dots,E_n)=\det(\varepsilon^i(E_j))=\det(\delta^i_j)=1\gt0$, de modo que $E\in\mathcal{O}_\omega$, e então $\mathcal{O}_\omega=\mathcal{O}$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="def-3-15-6" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.15.6 (Isomorfismo que preserva ou inverte a orientação).</strong> Sejam $V$ e $W$ espaços vetoriais orientados de mesma dimensão $n\ge1$ e $T:V\to W$ um isomorfismo linear. $T$ <strong>preserva a orientação</strong> se leva toda base positiva de $V$ em uma base positiva de $W$, e <strong>inverte a orientação</strong> se leva toda base positiva de $V$ em uma base negativa de $W$.</p>
+                </div>
+
+                <div class="definition-box" id="prop-3-15-7">
+                    <p><strong>Proposição 3.15.7 (Critérios).</strong> Sejam $T:V\to W$ um isomorfismo entre espaços orientados de dimensão $n\ge1$ e $\omega_V$, $\omega_W$ covetores de grau $n$ que determinam as orientações (<a href="#prop-3-15-5">Proposição 3.15.5</a>). Então $T^*\omega_W=c\,\omega_V$ com $c\neq0$, e:</p>
+                    <p>(a) $T$ preserva a orientação se $c\gt0$ e a inverte se $c\lt0$; em particular, $T$ ou preserva, ou inverte, e basta testá-lo em uma base positiva;</p>
+                    <p>(b) se $V=W$, com a mesma orientação, então $c=\det T$: $T$ preserva a orientação se, e só se, $\det T\gt0$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> $T^*\omega_W$ é um $n$-covetor em $V$ (<a href="[11] - Produto Exterior.html#def-3-11-27">Definição 3.11.27</a>), e não é nulo, pois, para uma base $E$ de $V$, $(T^*\omega_W)(E_1,\dots,E_n)=\omega_W(TE_1,\dots,TE_n)\neq0$, já que $(TE_i)$ é uma base de $W$ (<a href="[11] - Produto Exterior.html#cor-3-11-15">Corolário 3.11.15</a>(b)). Logo $T^*\omega_W=c\,\omega_V$ com $c\neq0$. (a) Para uma base positiva $E$ de $V$,
+                    $$ \omega_W(TE_1,\dots,TE_n)=(T^*\omega_W)(E_1,\dots,E_n)=c\,\omega_V(E_1,\dots,E_n), $$
+                    com $\omega_V(E_1,\dots,E_n)\gt0$. O sinal de $\omega_W(TE_1,\dots,TE_n)$ é então o de $c$, para toda base positiva $E$: se $c\gt0$, todas as imagens são positivas; se $c\lt0$, todas são negativas. (b) Com $\omega_V=\omega_W=\omega$, $T^*\omega=(\det T)\,\omega$ (<a href="[11] - Produto Exterior.html#cor-3-11-29">Corolário 3.11.29</a>). $\blacksquare$
+                </p>
+
+                <h2 id="orientacao-variedades">Orientação de variedades</h2>
+
+                <p>
+                    Para orientar uma variedade $M$ de dimensão $n\ge1$, escolhe-se uma orientação de cada espaço tangente $T_pM$. Sem nenhuma condição entre pontos vizinhos, isso não serve para nada: queremos que "positivo" varie de modo contínuo. A condição natural usa os referenciais locais (<a href="[07] - Fibrado Tangente e Campos Vetoriais.html#def-3-7-15">Definição 3.7.15</a>), que são os campos suaves que dão, em cada ponto, uma base.
+                </p>
+
+                <div class="definition-box" id="def-3-15-8" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.15.8 (Orientação de uma variedade).</strong> Seja $M$ uma variedade de dimensão $n\ge1$. Uma <strong>orientação pontual</strong> de $M$ é uma escolha de uma orientação $\mathcal{O}_p$ de $T_pM$ para cada $p\in M$, sem condição alguma de regularidade. Um referencial local $(E_1,\dots,E_n)$ em um aberto $U$
+                        é <strong>orientado</strong> (ou positivo) se $(E_1\vert_p,\dots,E_n\vert_p)\in\mathcal{O}_p$ para todo $p\in U$; uma carta $(U,\varphi)$ é <strong>orientada</strong> se o seu referencial coordenado $(\partial_1,\dots,\partial_n)$ é orientado. A orientação pontual é <strong>contínua</strong> se todo ponto de $M$ tem uma vizinhança com um referencial local orientado.
+                        Uma <strong>orientação</strong> de $M$ é uma orientação pontual contínua; $M$ é <strong>orientável</strong> se admite uma orientação, e <strong>orientada</strong> quando uma foi escolhida. Se $\mathcal{O}$ é uma orientação, a orientação pontual oposta, $(-\mathcal{O})_p=-\mathcal{O}_p$, também é contínua (troque $E_1$ por $-E_1$ nos referenciais orientados),
+                        e $M$ com a orientação $-\mathcal{O}$ é denotada <strong>$-M$</strong>.</p>
+                    <p>Em dimensão zero, $M$ é um conjunto discreto, e uma orientação de $M$ é uma função $M\to\{+1,-1\}$ qualquer (a orientação de cada $T_pM=\{0\}$, no sentido da <a href="#def-3-15-3">Definição 3.15.3</a>); toda variedade de dimensão zero é orientável, e $-M$ é a mesma com o sinal trocado em todos os pontos.</p>
+                </div>
+
+                <p>
+                    A continuidade é essencial. Em $\mathbb{R}$, a orientação pontual que é a padrão em $x\ge0$ e a oposta em $x\lt0$ não é contínua: um referencial local em torno de $0$ é um campo suave $E=h\,\partial_x$, com $h$ sem zeros em um intervalo, logo de sinal constante, e não pode ser positivo de um lado de $0$ e negativo do outro.
+                    Como $\mathbb{R}^n$ tem o referencial global $(\partial_1,\dots,\partial_n)$, ele é orientável, e a orientação padrão é a das bases positivas de cada $T_p\mathbb{R}^n\cong\mathbb{R}^n$.
+                </p>
+
+                <p>
+                    A definição por referenciais é difícil de manipular: para decidir se uma orientação pontual é contínua é preciso exibir referenciais. A ferramenta que torna isso operacional é a <a href="#prop-3-15-5">Proposição 3.15.5</a> aplicada em todos os pontos de uma só vez: uma $n$-forma sem zeros.
+                </p>
+
+                <div class="definition-box" id="teo-3-15-9">
+                    <p><strong>Teorema 3.15.9 (Formas de orientação).</strong> Seja $M$ uma variedade de dimensão $n\ge1$.</p>
+                    <p>(a) Se $\omega\in\Omega^n(M)$ não se anula em ponto algum, existe uma única orientação de $M$ na qual $\omega$ é positiva em todo ponto, isto é, $\omega_p(E_1,\dots,E_n)\gt0$ para toda base positiva de $T_pM$, para todo $p$.</p>
+                    <p>(b) Se $M$ é orientada, existe $\omega\in\Omega^n(M)$ positiva em todo ponto (em particular, sem zeros).</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Em cada $p$, $\omega_p\neq0$, e a <a href="#prop-3-15-5">Proposição 3.15.5</a> dá a orientação $\mathcal{O}_p=\mathcal{O}_{\omega_p}$ de $T_pM$, em que $\omega_p$ é positiva em toda base positiva. É a única orientação pontual com essa propriedade: se $\mathcal{O}'_p$ é uma orientação de $T_pM$ em que $\omega_p$ é positiva em toda base positiva,
+                    então $\mathcal{O}'_p\subset\mathcal{O}_{\omega_p}$, e duas classes, uma contida na outra, são iguais. Falta a continuidade. Seja $p\in M$ e $(U,\varphi)$ uma carta em torno de $p$ com $U$ conexo (basta que a imagem seja uma bola, <a href="[03] - Variedades Diferenciáveis.html#obs-3-3-6">Observação 3.3.6</a>). Em $U$,
+                    $\omega=f\,dx^1\wedge\dots\wedge dx^n$, com $f=\omega(\partial_1,\dots,\partial_n)$ suave (<a href="[12] - Formas Diferenciais.html#prop-3-12-5">Proposição 3.12.5</a>) e sem zeros. A função $\operatorname{sgn}f:U\to\{\pm1\}$ é localmente constante, porque $f$ é contínua e não se anula, e é então constante, porque $U$ é conexo (<a href="[02] - Preliminares de Topologia e Cálculo.html#prop-3-2-38">Proposição 3.2.38</a>).
+                    Se $f\gt0$, o referencial coordenado $(\partial_1,\dots,\partial_n)$ é orientado em $U$, pois $\omega(\partial_1,\dots,\partial_n)=f\gt0$. Se $f\lt0$, o referencial suave $(-\partial_1,\partial_2,\dots,\partial_n)$ é orientado, pois $\omega(-\partial_1,\partial_2,\dots,\partial_n)=-f\gt0$. Em ambos os casos há um referencial orientado em torno de $p$.
+                </p>
+
+                <p>
+                    (b) <strong>Passo 1: cartas orientadas em torno de todo ponto.</strong> Seja $p\in M$. Pela continuidade, há um referencial orientado $(E_i)$ em um aberto $U_0\ni p$. Tome uma carta $(U,\varphi)$ em torno de $p$ com $U\subset U_0$ conexo (<a href="[03] - Variedades Diferenciáveis.html#obs-3-3-6">Observação 3.3.6</a>). Em $U$, $\partial_i=A^j{}_i\,E_j$, com $A^j{}_i\in C^\infty(U)$ e $A$ invertível em todo ponto
+                    (<a href="[07] - Fibrado Tangente e Campos Vetoriais.html#def-3-7-15">Definição 3.7.15</a>). A função $\det A$ é contínua e sem zeros, logo de sinal constante em $U$ (como acima). Se $\det A\gt0$, o referencial coordenado é orientado, e $(U,\varphi)$ é uma carta orientada. Se $\det A\lt0$, troque $\varphi$ por $r\circ\varphi$, com $r(x)=(-x^1,x^2,\dots,x^n)$ (<a href="[03] - Variedades Diferenciáveis.html#obs-3-3-6">Observação 3.3.6</a>, recomposição): a nova carta tem
+                    $\partial'_1=-\partial_1$ e $\partial'_i=\partial_i$ para $i\ge2$ (<a href="[05] - Vetores Tangentes.html#prop-3-5-18">Proposição 3.5.18</a>), a matriz de $(\partial'_i)$ em relação a $(E_i)$ tem determinante $-\det A\gt0$, e a carta é orientada.
+                </p>
+
+                <p>
+                    <strong>Passo 2: as formas locais.</strong> Seja $\{(U_\alpha,\varphi_\alpha)\}_{\alpha\in A}$ uma família de cartas orientadas que cobre $M$ (Passo 1), com coordenadas $x^i_\alpha$, e seja $\omega_\alpha=dx^1_\alpha\wedge\dots\wedge dx^n_\alpha\in\Omega^n(U_\alpha)$. Em $p\in U_\alpha$, $(\omega_\alpha)_p(\partial_1,\dots,\partial_n)=1\gt0$ e $(\partial_i\vert_p)\in\mathcal{O}_p$;
+                    pelo item (a) da <a href="#prop-3-15-5">Proposição 3.15.5</a>, $\mathcal{O}_p=\mathcal{O}_{(\omega_\alpha)_p}$, isto é, $(\omega_\alpha)_p(F_1,\dots,F_n)\gt0$ para toda base positiva $(F_i)$ de $T_pM$.
+                </p>
+
+                <p>
+                    <strong>Passo 3: colagem.</strong> Seja $\{\psi_\alpha\}$ uma partição da unidade subordinada a $\{U_\alpha\}$ (<a href="[04] - Funções e Aplicações Suaves.html#teo-3-4-35">Teorema 3.4.35</a>). Cada $\psi_\alpha\,\omega_\alpha$, estendida por zero fora de $U_\alpha$, é uma $n$-forma suave em $M$: $\operatorname{supp}\psi_\alpha$ é fechado em $M$ e está contido em $U_\alpha$, de modo que os abertos $U_\alpha$ e $M\setminus\operatorname{supp}\psi_\alpha$ cobrem $M$,
+                    e em cada um deles $\psi_\alpha\omega_\alpha$ é suave (no segundo é nula). A família dos suportes é localmente finita, e uma soma localmente finita de formas suaves é suave (como no <a href="[04] - Funções e Aplicações Suaves.html#lema-3-4-34">Lema 3.4.34</a>, componente a componente). Seja $\omega=\sum_\alpha\psi_\alpha\,\omega_\alpha$. Se $(F_i)$ é uma base positiva de $T_pM$,
+                    $$ \omega_p(F_1,\dots,F_n)=\sum_\alpha\psi_\alpha(p)\,(\omega_\alpha)_p(F_1,\dots,F_n), $$
+                    uma soma finita sobre os $\alpha$ com $\psi_\alpha(p)\neq0$ (para esses, $p\in\operatorname{supp}\psi_\alpha\subset U_\alpha$). Cada parcela é $\ge0$ pelo Passo 2, e alguma $\psi_\alpha(p)$ é $\gt0$, porque $\sum_\alpha\psi_\alpha(p)=1$: a soma é $\gt0$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="def-3-15-10" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.15.10 (Forma de orientação; atlas orientado).</strong> Seja $M$ orientada, de dimensão $n\ge1$. Uma <strong>forma de orientação</strong> de $M$ é uma $n$-forma $\omega\in\Omega^n(M)$ positiva em todo ponto; ela existe pelo <a href="#teo-3-15-9">Teorema 3.15.9</a>(b), e, pelo item (a), toda $n$-forma sem zeros é uma forma de orientação de uma única orientação.
+                        Um atlas $\{(U_\alpha,\varphi_\alpha)\}$ de $M$ é <strong>consistentemente orientado</strong> se todas as aplicações de transição têm jacobiana de determinante positivo: se $(x^i)$ e $(\tilde{x}^j)$ são as coordenadas de $\varphi_\alpha$ e de $\varphi_\beta$,
+                        $$ \det\Big(\frac{\partial\tilde{x}^j}{\partial x^i}\Big)\gt0\quad\text{em }\varphi_\alpha(U_\alpha\cap U_\beta). $$
+                        Em dimensão zero, uma forma de orientação é uma função $M\to\mathbb{R}$ sem zeros, e a orientação é o seu sinal (<a href="#def-3-15-8">Definição 3.15.8</a>).</p>
+                </div>
+
+                <p>
+                    Duas formas de orientação $\omega$ e $\omega'$ da mesma orientação diferem por um fator positivo: em uma carta, $\omega'=h\,\omega$ com $h=\omega'(\partial_1,\dots,\partial_n)/\omega(\partial_1,\dots,\partial_n)$ suave, e $h\gt0$ porque os dois valores são positivos no referencial coordenado de uma carta orientada.
+                    Por isso uma orientação não é uma forma, mas uma classe de formas a menos de um fator positivo: é o análogo, em $M$, da <a href="#prop-3-15-5">Proposição 3.15.5</a>(b). Em particular, uma <strong>forma de volume</strong> $\mu$, isto é, uma $n$-forma sem zeros como a da <a href="[14] - Fórmula de Cartan.html#def-3-14-25">Definição 3.14.25</a>, determina uma orientação (a única em que ela é positiva, <a href="#teo-3-15-9">Teorema 3.15.9</a>(a)), e é com esta orientação que a divergência $\operatorname{div}_\mu X$ do tópico 3.14 será integrada no tópico 3.19.
+                </p>
+
+                <div class="definition-box" id="teo-3-15-11">
+                    <p><strong>Teorema 3.15.11 (Orientação e atlas orientados).</strong> Seja $M$ uma variedade de dimensão $n\ge1$. $M$ é orientável se, e só se, admite um atlas consistentemente orientado. Mais precisamente:</p>
+                    <p>(a) se $M$ é orientada, as cartas orientadas formam um atlas consistentemente orientado;</p>
+                    <p>(b) se $\{(U_\alpha,\varphi_\alpha)\}$ é um atlas consistentemente orientado, existe uma única orientação de $M$ para a qual todas as suas cartas são orientadas.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Pelo Passo 1 da demonstração do <a href="#teo-3-15-9">Teorema 3.15.9</a>(b), há uma carta orientada em torno de todo ponto, e as cartas orientadas cobrem $M$. Sejam $(U,\varphi)$ e $(\tilde{U},\tilde{\varphi})$ orientadas, com coordenadas $x^i$ e $\tilde{x}^j$. Em $U\cap\tilde{U}$, o <a href="[12] - Formas Diferenciais.html#cor-3-12-15">Corolário 3.12.15</a> dá
+                    $$ d\tilde{x}^1\wedge\dots\wedge d\tilde{x}^n=\det\Big(\frac{\partial\tilde{x}^j}{\partial x^i}\Big)\,dx^1\wedge\dots\wedge dx^n. $$
+                    Pelo Passo 2 da mesma demonstração, $dx^1\wedge\dots\wedge dx^n$ e $d\tilde{x}^1\wedge\dots\wedge d\tilde{x}^n$ são positivas em toda base positiva de cada $T_pM$, $p\in U\cap\tilde{U}$. Calculando os dois lados em uma tal base, o determinante é positivo em todo $p$. Como a jacobiana da transição
+                    $\tilde{\varphi}\circ\varphi^{-1}$ em $\varphi(p)$ é a matriz $\big(\partial\tilde{x}^j/\partial x^i\big)(p)$ (<a href="[05] - Vetores Tangentes.html#prop-3-5-17">Proposição 3.5.17</a>), as transições têm determinante positivo.
+                </p>
+
+                <p>
+                    (b) Para $p\in U_\alpha$, seja $\mathcal{O}_p$ a classe da base $(\partial_1\vert_p,\dots,\partial_n\vert_p)$ da carta $\varphi_\alpha$. Não depende da carta do atlas: se $p\in U_\alpha\cap U_\beta$, a lei de transformação (<a href="[05] - Vetores Tangentes.html#prop-3-5-18">Proposição 3.5.18</a>),
+                    $\partial_i=\frac{\partial\tilde{x}^j}{\partial x^i}\,\tilde{\partial}_j$, mostra que a matriz de mudança de base entre os referenciais coordenados é a jacobiana da transição, de determinante positivo, de modo que as duas bases são consistentemente orientadas (<a href="#def-3-15-1">Definição 3.15.1</a>).
+                    A orientação pontual $\mathcal{O}$ é contínua, porque o referencial coordenado de cada $\varphi_\alpha$ é um referencial local orientado, e as cartas $\varphi_\alpha$ são orientadas por construção. Se $\mathcal{O}'$ é outra orientação para a qual todas as cartas do atlas são orientadas, então $\mathcal{O}'_p$ contém a base coordenada
+                    de $\varphi_\alpha$, para $p\in U_\alpha$, e portanto $\mathcal{O}'_p=\mathcal{O}_p$. Por fim, o caso "se" do enunciado é (b), e o caso "só se" é (a). $\blacksquare$
+                </p>
+
+                <p>
+                    Em suma, orientar $M$ é o mesmo que escolher, entre todos os atlas de $M$, uma classe de atlas consistentemente orientados. É esta a versão que a integração vai usar (tópico 3.17): a integral de uma $n$-forma calculada em uma carta orientada não dependerá da carta, porque a mudança de variáveis traz $\det\gt0$ (<a href="[12] - Formas Diferenciais.html#teo-3-12-14">Teorema 3.12.14</a>).
+                    Quando a variedade é conexa, há muito pouca liberdade de escolha:
+                </p>
+
+                <div class="definition-box" id="prop-3-15-12">
+                    <p><strong>Proposição 3.15.12 (Uma variedade conexa tem duas orientações).</strong> Seja $M$ uma variedade conexa, não vazia, de dimensão $n\ge1$.</p>
+                    <p>(a) Se $\mathcal{O}$ e $\mathcal{O}'$ são orientações de $M$, então $\mathcal{O}'=\mathcal{O}$ ou $\mathcal{O}'=-\mathcal{O}$. Se $M$ é orientável, tem portanto exatamente duas orientações.</p>
+                    <p>(b) Duas orientações de $M$ que coincidem em um ponto coincidem em todos. Em particular, uma orientação de $M$ fica determinada por uma orientação de um único espaço tangente $T_{p_0}M$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Defina $s:M\to\{+1,-1\}$ por $s(p)=+1$ se $\mathcal{O}_p=\mathcal{O}'_p$ e $s(p)=-1$ se $\mathcal{O}_p=-\mathcal{O}'_p$ (uma das duas, pela <a href="#prop-3-15-2">Proposição 3.15.2</a>). Mostramos que $s$ é localmente constante. Dado $p$, sejam $(E_i)$ um referencial orientado para $\mathcal{O}$ em uma vizinhança $U$ de $p$ e $(E'_i)$ um para $\mathcal{O}'$ em uma vizinhança $U'$.
+                    Em $U\cap U'$, $E'_i=A^j{}_iE_j$ com $A$ suave e invertível em todo ponto; $\det A$ é contínua e sem zeros, e o conjunto $W$ de pontos de $U\cap U'$ onde $\operatorname{sgn}\det A=\operatorname{sgn}\det A(p)$ é aberto e contém $p$. Para $p'\in W$, $(E_i\vert_{p'})\in\mathcal{O}_{p'}$ e $(E'_i\vert_{p'})\in\mathcal{O}'_{p'}$, e as duas orientações
+                    coincidem em $p'$ se, e só se, $\det A(p')\gt0$. Logo $s=\operatorname{sgn}\det A(p)$ em todo $W$. Como $M$ é conexo, $s$ é constante (<a href="[02] - Preliminares de Topologia e Cálculo.html#prop-3-2-38">Proposição 3.2.38</a>): $\mathcal{O}'=\mathcal{O}$ se $s=+1$ e $\mathcal{O}'=-\mathcal{O}$ se $s=-1$. Como $-\mathcal{O}$ é uma orientação (<a href="#def-3-15-8">Definição 3.15.8</a>) e difere de $\mathcal{O}$ em todo ponto, há exatamente duas.
+                    (b) Se $s(p_0)=+1$, então $s\equiv+1$. $\blacksquare$
+                </p>
+
+                <p>
+                    A proposição seguinte mostra que a orientabilidade é herdada pelas construções que já temos, e dá os primeiros exemplos.
+                </p>
+
+                <div class="definition-box" id="prop-3-15-13">
+                    <p><strong>Proposição 3.15.13 (Abertos, produtos, paralelizáveis).</strong></p>
+                    <p>(a) Todo aberto de uma variedade orientável é orientável.</p>
+                    <p>(b) Se $M$ e $N$ são orientáveis, $M\times N$ é orientável: se $\omega$ e $\eta$ são formas de orientação de $M$ e $N$, então $\pi_1^*\omega\wedge\pi_2^*\eta$ é uma forma de orientação de $M\times N$, com $\pi_1$, $\pi_2$ as projeções (a <strong>orientação produto</strong>).</p>
+                    <p>(c) Toda variedade paralelizável (<a href="[07] - Fibrado Tangente e Campos Vetoriais.html#def-3-7-15">Definição 3.7.15</a>) é orientável.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Seja $U\subset M$ aberto e $\omega$ uma forma de orientação de $M$ (<a href="#teo-3-15-9">Teorema 3.15.9</a>(b)). A restrição $\omega\vert_U$ é uma $n$-forma suave em $U$ (com $T_pU=T_pM$, <a href="[05] - Vetores Tangentes.html#prop-3-5-12">Proposição 3.5.12</a>), sem zeros; por (a) do mesmo teorema, $U$ é orientável. (Equivalentemente, restringem-se à $U$ os referenciais orientados.)
+                    (b) Sejam $m=\dim M$ e $n=\dim N$. Se $m$ ou $n$ é zero, $M\times N$ é uma união disjunta de cópias abertas de uma só das variedades, e a afirmação é imediata. Suponha $m,n\ge1$. Por <a href="#teo-3-15-9">Teorema 3.15.9</a>(b), existem $\omega\in\Omega^m(M)$ e $\eta\in\Omega^n(N)$ sem zeros, e $\vartheta=\pi_1^*\omega\wedge\pi_2^*\eta\in\Omega^{m+n}(M\times N)$
+                    (<a href="[12] - Formas Diferenciais.html#teo-3-12-12">Teorema 3.12.12</a> e <a href="[12] - Formas Diferenciais.html#prop-3-12-7">Proposição 3.12.7</a>). Em uma carta produto $(U\times V,\varphi\times\psi)$ (<a href="[03] - Variedades Diferenciáveis.html#prop-3-3-26">Proposição 3.3.26</a>), com coordenadas $(z^1,\dots,z^{m+n})=(x^1,\dots,x^m,y^1,\dots,y^n)$, escreva $\omega=f\,dx^1\wedge\dots\wedge dx^m$ e $\eta=g\,dy^1\wedge\dots\wedge dy^n$, com $f$ e $g$ sem zeros. Como $x^i\circ\pi_1=z^i$ e $y^j\circ\pi_2=z^{m+j}$,
+                    o <a href="[12] - Formas Diferenciais.html#teo-3-12-12">Teorema 3.12.12</a>(a)–(c) dá $\pi_1^*dx^i=dz^i$ e $\pi_2^*dy^j=dz^{m+j}$, de modo que
+                    $$ \vartheta=(f\circ\pi_1)\,(g\circ\pi_2)\ dz^1\wedge\dots\wedge dz^{m+n}. $$
+                    O coeficiente não tem zeros, e $dz^1\wedge\dots\wedge dz^{m+n}$ vale $1$ no referencial coordenado: $\vartheta$ não se anula em ponto algum. Pelo <a href="#teo-3-15-9">Teorema 3.15.9</a>(a), $M\times N$ é orientável, e $\vartheta$ é uma forma de orientação.
+                    (c) Seja $(E_1,\dots,E_n)$ um referencial global. Em cada $p$, seja $\mathcal{O}_p$ a classe de $(E_1\vert_p,\dots,E_n\vert_p)$. O próprio referencial global é um referencial local orientado em torno de cada ponto, de modo que $\mathcal{O}$ é contínua. $\blacksquare$
+                </p>
+
+                <p>
+                    Pelo item (c), $\mathbb{R}^n$, $S^1$ e $\mathbb{T}^2$ são orientáveis (<a href="[07] - Fibrado Tangente e Campos Vetoriais.html#ex-3-7-16">Exemplo 3.7.16</a>), e, pelo item (b), também o é o toro $\mathbb{T}^n=S^1\times\dots\times S^1$ (<a href="[03] - Variedades Diferenciáveis.html#ex-3-3-27">Exemplo 3.3.27</a>). A recíproca de (c) é falsa: $S^2$ não é paralelizável (teorema da bola cabeluda, <a href="[07] - Fibrado Tangente e Campos Vetoriais.html#ex-3-7-16">Exemplo 3.7.16</a>), mas é orientável, como veremos na próxima seção com uma forma de orientação explícita (<a href="#cor-3-15-17">Corolário 3.15.17</a>).
+                    Um exemplo de variedade que não é orientável precisa de um argumento global, e aparece na seção seguinte à das hipersuperfícies.
+                </p>
+
+                <h2 id="hipersuperficies">Orientação de hipersuperfícies</h2>
+
+                <p>
+                    Seja $M$ orientada, de dimensão $n$, e seja $S\subset M$ uma <em>hipersuperfície</em>, isto é, uma subvariedade mergulhada de dimensão $n-1$ (<a href="[06] - Subvariedades.html#def-3-6-13">Definição 3.6.13</a>), com inclusão $\iota:S\hookrightarrow M$ e $T_pS\subset T_pM$ (<a href="[06] - Subvariedades.html#prop-3-6-23">Proposição 3.6.23</a>). Em $T_pM$, o subespaço $T_pS$ tem dimensão $n-1$, e <em>falta um vetor</em> para uma base de $T_pM$.
+                    Se escolhermos um vetor $\nu_p\notin T_pS$, qualquer base $(E_1,\dots,E_{n-1})$ de $T_pS$ completa-se a uma base $(\nu_p,E_1,\dots,E_{n-1})$ de $T_pM$, e podemos perguntar se esta é positiva. A resposta divide as bases de $T_pS$ em duas classes: uma orientação de $S$. É a regra "normal primeiro". Para que ela dê uma orientação
+                    <em>contínua</em>, o vetor $\nu_p$ tem de variar suavemente com $p$.
+                </p>
+
+                <div class="definition-box" id="def-3-15-14" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.15.14 (Campo ao longo de $S$; campo transversal).</strong> Seja $S\subset M$ uma subvariedade mergulhada. Um <strong>campo vetorial ao longo de $S$</strong> é uma aplicação suave $\nu:S\to TM$ com $\nu_p\in T_pM$ para todo $p\in S$ (isto é, $\pi\circ\nu=\iota$, com $\pi:TM\to M$ a projeção).
+                        Ele é <strong>transversal a $S$</strong> se $\nu_p\notin T_pS$ para todo $p\in S$.</p>
+                </div>
+
+                <p>
+                    Um campo ao longo de $S$ não é um campo de $S$: o vetor $\nu_p$ mora em $T_pM$ e em geral não é tangente a $S$. A restrição $X\circ\iota$ de qualquer $X\in\mathfrak{X}(M)$ é um campo ao longo de $S$, e é transversal se, e só se, $X_p\notin T_pS$ para todo $p\in S$. Se $S$ é uma hipersuperfície, ser transversal equivale a
+                    $T_pM=T_pS\oplus\mathbb{R}\,\nu_p$. O campo transversal é denotado $\nu$, e não $N$, porque $N$ é uma variedade.
+                </p>
+
+                <div class="definition-box" id="prop-3-15-15">
+                    <p><strong>Proposição 3.15.15 (Orientação induzida por um campo transversal).</strong> Sejam $M$ uma variedade orientada de dimensão $n\ge1$, com forma de orientação $\omega$, $S\subset M$ uma hipersuperfície mergulhada e $\nu$ um campo ao longo de $S$ transversal a $S$. Para $p\in S$, seja $\mu_p\in\Lambda^{n-1}(T_p^*S)$ dado por</p>
+                    <p>$$ \mu_p(w_1,\dots,w_{n-1})=\omega_p(\nu_p,w_1,\dots,w_{n-1}),\qquad w_i\in T_pS\subset T_pM. $$</p>
+                    <p>Então $\mu=\iota^*(i_\nu\omega)$ é uma $(n-1)$-forma suave em $S$ que não se anula em ponto algum. Logo, $S$ é orientável, e a orientação em que $\mu$ é positiva é caracterizada assim: uma base $(E_1,\dots,E_{n-1})$ de $T_pS$ é positiva se, e só se, $(\nu_p,E_1,\dots,E_{n-1})$ é positiva em $T_pM$.
+                        Para $n=1$, $S$ é discreto, $\mu$ é a função $p\mapsto\omega_p(\nu_p)$, e a orientação de cada ponto $p\in S$ é o sinal de $\omega_p(\nu_p)$.</p>
+                </div>
+
+                <p>
+                    A notação $\iota^*(i_\nu\omega)$ é um abuso: $\nu$ é só um campo ao longo de $S$, e $i_\nu\omega$ vale, em $p$, $i_{\nu_p}\omega_p\in\Lambda^{n-1}(T_p^*M)$; a restrição a $T_pS$ é $\mu_p$ (se $\nu=X\circ\iota$ para um campo $X$ de $M$, é exatamente $\iota^*(i_X\omega)$).
+                </p>
+
+                <p>
+                    <em>Demonstração.</em> <strong>$\mu_p$ não é nulo.</strong> Seja $(E_1,\dots,E_{n-1})$ uma base de $T_pS$. Como $\nu_p\notin T_pS$, os $n$ vetores $\nu_p,E_1,\dots,E_{n-1}$ são linearmente independentes, e $\omega_p\neq0$; pelo <a href="[11] - Produto Exterior.html#cor-3-11-15">Corolário 3.11.15</a>(b), $\mu_p(E_1,\dots,E_{n-1})=\omega_p(\nu_p,E_1,\dots,E_{n-1})\neq0$.
+                    Como $\mu_p$ é multilinear e alternado nos $w_i$ (porque $\omega_p$ o é), $\mu_p\in\Lambda^{n-1}(T_p^*S)$.
+                </p>
+
+                <p>
+                    <strong>$\mu$ é suave.</strong> Seja $p\in S$ e $(U,\varphi)$ uma carta de $M$ adaptada a $S$ em torno de $p$, com $\varphi(S\cap U)=\{x^n=0\}$ (<a href="[06] - Subvariedades.html#def-3-6-13">Definição 3.6.13</a>, com $k=n-1$). Pelo <a href="[06] - Subvariedades.html#teo-3-6-14">Teorema 3.6.14</a>, $(S\cap U,(x^1,\dots,x^{n-1}))$ é uma carta de $S$; nela, a inclusão tem a representação
+                    $(x^1,\dots,x^{n-1})\mapsto(x^1,\dots,x^{n-1},0)$, e (<a href="[05] - Vetores Tangentes.html#prop-3-5-17">Proposição 3.5.17</a>) o vetor coordenado $\partial_a^S$ ($a\le n-1$) vai em $\partial_a$ por $d\iota$. Em $U$, $\omega=f\,dx^1\wedge\dots\wedge dx^n$ com $f$ suave e sem zeros, e ao longo de $S\cap U$, $\nu=\nu^i\partial_i$ com $\nu^i\in C^\infty(S\cap U)$
+                    (as componentes de uma aplicação suave $S\to TM$ são suaves, nas cartas naturais de $TM$, <a href="[07] - Fibrado Tangente e Campos Vetoriais.html#teo-3-7-2">Teorema 3.7.2</a>). Pela fórmula do determinante (3.11.4), com $(dx^1\wedge\dots\wedge dx^n)(v_1,\dots,v_n)=\det[v_1\ \cdots\ v_n]$ (colunas as componentes), e como a última linha de $[\nu\ \,e_1\ \cdots\ e_{n-1}]$ é $(\nu^n,0,\dots,0)$,
+                    $$ \mu(\partial^S_1,\dots,\partial^S_{n-1})=f\,\det[\nu\ \,e_1\ \cdots\ e_{n-1}]=(-1)^{n-1}\,f\,\nu^n. $$
+                    Logo, pela <a href="[12] - Formas Diferenciais.html#prop-3-12-5">Proposição 3.12.5</a>, na carta de $S$,
+                    $$ \mu=(-1)^{n-1}\,(f\,\nu^n)\ dx^1\wedge\dots\wedge dx^{n-1}, \tag{3.15.1} $$
+                    com coeficiente suave. (O coeficiente não tem zeros, de acordo com o que foi mostrado: $\nu^n\neq0$ é a transversalidade, porque $T_pS=\{v:\ v^n=0\}$.)
+                </p>
+
+                <p>
+                    <strong>A orientação.</strong> Como $\mu$ é suave e sem zeros, o <a href="#teo-3-15-9">Teorema 3.15.9</a>(a) dá uma orientação de $S$ em que $\mu$ é positiva, e uma base $E=(E_1,\dots,E_{n-1})$ de $T_pS$ é positiva se, e só se, $\mu_p(E)\gt0$ (<a href="#prop-3-15-5">Proposição 3.15.5</a>). Mas $\mu_p(E)=\omega_p(\nu_p,E_1,\dots,E_{n-1})$, e $(\nu_p,E_1,\dots,E_{n-1})$ é uma base de $T_pM$;
+                    como $\omega$ é positiva nas bases positivas e negativa nas negativas (<a href="#prop-3-15-5">Proposição 3.15.5</a>(a)), $\mu_p(E)\gt0$ se, e só se, essa base é positiva em $T_pM$. Para $n=1$, $T_pS=\{0\}$, a lista $(E_1,\dots,E_{n-1})$ é vazia, $\mu_p=\omega_p(\nu_p)$, e a base $(\nu_p)$ de $T_pM$ é positiva se, e só se, $\omega_p(\nu_p)\gt0$. $\blacksquare$
+                </p>
+
+                <p id="obs-3-15-16"><strong>Observação 3.15.16 (A orientação depende de $\nu$ só pelo lado).</strong> Sejam $\nu$ e $\nu'$ dois campos transversais ao longo de $S$. Em cada $p$, $T_pM=T_pS\oplus\mathbb{R}\nu_p$, de modo que $\nu'_p=a(p)\,\nu_p+w_p$ com $w_p\in T_pS$ e $a(p)\neq0$ (senão $\nu'_p\in T_pS$). Para $E$ uma base de $T_pS$,
+                    $$ \begin{aligned}\omega_p(\nu'_p,E_1,\dots,E_{n-1})&=a(p)\,\omega_p(\nu_p,E_1,\dots,E_{n-1})\\
+                    &\quad+\omega_p(w_p,E_1,\dots,E_{n-1}),\end{aligned} $$
+                    e o último termo é nulo: $w_p,E_1,\dots,E_{n-1}$ são $n$ vetores de $T_pS$, de dimensão $n-1$, e portanto dependentes (<a href="[11] - Produto Exterior.html#lema-3-11-6">Lema 3.11.6</a>(d)). Logo $\mu'=a\,\mu$, com $a$ suave (em uma carta adaptada, $a=\nu'^n/\nu^n$). As orientações induzidas por $\nu$ e $\nu'$ coincidem em $p$ se $a(p)\gt0$ e são opostas se $a(p)\lt0$:
+                    a orientação de $S$ só depende do <em>lado</em> de $S$ para o qual o campo transversal aponta. Se $S$ é conexa, $a$ tem sinal constante, e as duas orientações são iguais ou opostas. No tópico 3.16, o campo será o que aponta para fora do bordo. Trocar a orientação de $M$ (isto é, $\omega$ por $-\omega$) troca a de $S$.</p>
+
+                <p>
+                    O caso mais importante é o das esferas.
+                </p>
+
+                <div class="definition-box" id="cor-3-15-17">
+                    <p><strong>Corolário 3.15.17 (As esferas são orientáveis).</strong> Para $n\ge1$, a esfera $S^n\subset\mathbb{R}^{n+1}$ é orientável. O campo $\nu_p=p$, isto é, $R=x^i\partial_i$ restrito a $S^n$, é transversal a $S^n$, e, com $\omega=dx^1\wedge\dots\wedge dx^{n+1}$ (a forma de orientação padrão de $\mathbb{R}^{n+1}$), a forma de orientação correspondente é</p>
+                    <p>$$ \mu=\iota^*\Big(\sum_{i=1}^{n+1}(-1)^{i-1}\,x^i\ dx^1\wedge\dots\wedge\widehat{dx^i}\wedge\dots\wedge dx^{n+1}\Big). \tag{3.15.2} $$</p>
+                    <p>Para $n=2$, $\mu=\sin\theta\,d\theta\wedge d\phi$ (a forma de área do <a href="[12] - Formas Diferenciais.html#ex-3-12-19">Exemplo 3.12.19</a>); para $n=1$, $\mu=\iota^*(x\,dy-y\,dx)=d\theta$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> A aplicação $p\mapsto(p,p)$ de $S^n$ em $T\mathbb{R}^{n+1}=\mathbb{R}^{n+1}\times\mathbb{R}^{n+1}$ é suave, e $T_pS^n=p^\perp$ (<a href="[06] - Subvariedades.html#ex-3-6-26">Exemplo 3.6.26</a>) não contém $p$, porque $p\cdot p=1\neq0$: $\nu_p=p$ é um campo transversal. A forma $\omega$ vale $1$ na base canônica, logo é positiva para a orientação padrão. Pela <a href="#prop-3-15-15">Proposição 3.15.15</a>, $S^n$ é orientável, com
+                    forma de orientação $\mu=\iota^*(i_R\omega)$. Por (3.11.5), com $\omega^i=dx^i$ e $dx^i(R)=x^i$,
+                    $i_R(dx^1\wedge\dots\wedge dx^{n+1})=\sum_i(-1)^{i-1}x^i\,dx^1\wedge\dots\wedge\widehat{dx^i}\wedge\dots\wedge dx^{n+1}$, que é (3.15.2). Para $n=2$, a expressão é $x\,dy\wedge dz-y\,dx\wedge dz+z\,dx\wedge dy=x\,dy\wedge dz+y\,dz\wedge dx+z\,dx\wedge dy$, cujo pullback por $\sigma(\theta,\phi)$ é $\sin\theta\,d\theta\wedge d\phi$ (<a href="[12] - Formas Diferenciais.html#ex-3-12-19">Exemplo 3.12.19</a>).
+                    Para $n=1$, com $\sigma(\theta)=(\cos\theta,\sin\theta)$, $\sigma^*(x\,dy-y\,dx)=\cos\theta\,(\cos\theta\,d\theta)-\sin\theta\,(-\sin\theta\,d\theta)=d\theta$. $\blacksquare$
+                </p>
+
+                <p>
+                    Assim, a orientação de $S^n$ é a em que $(\nu,E_1,\dots,E_n)$ é uma base positiva de $\mathbb{R}^{n+1}$ quando $\nu$ é a normal <em>exterior</em> e $(E_1,\dots,E_n)$ é uma base positiva do espaço tangente. Para $S^1$, $(\nu,E_1)$ é positiva se, e só se, $E_1$ gira no sentido anti-horário; para $S^2$, vale a regra da mão direita, com $\nu$ apontando para fora
+                    (Figura 3.15.2). Será a orientação de $S^n=\partial\bar{B}^{n+1}$ no tópico 3.16.
+                </p>
+
+                <figure class="lecture-figure" id="fig-3-15-2" style="overflow-x: auto; overflow-y: hidden;">
+                    <svg viewBox="0 0 640 300" role="img" style="min-width: 560px;" aria-label="Duas partes. Em (a), uma esfera em perspectiva, com o equador e um meridiano, parte oculta tracejada. Em um ponto p da região visível, o plano tangente desenhado como um paralelogramo, a normal exterior nu, que sai da esfera, e dois vetores tangentes E1, para leste, e E2, para norte. A lista nu, E1, E2 é uma base positiva de R3, pela regra da mão direita, e portanto E1, E2 é uma base positiva do plano tangente. Em (b), uma circunferência no plano, com a normal exterior nu em um ponto p e o vetor tangente E1 no sentido anti-horário: nu, E1 é uma base positiva de R2.">
+<defs><marker id="arr-3-15-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<rect x="14" y="16" width="612" height="272" rx="3" class="fig-frame"/>
+<text x="34" y="40" class="fig-label fig-small">(a) S² ⊂ R³</text>
+<circle cx="190" cy="156" r="104" class="fig-shape"/>
+<path d="M294,156 L293.9,157.4 L293.7,158.7 L293.4,160.1 L293,161.4 L292.4,162.8 L291.7,164.1 L290.9,165.4 L290,166.7 L288.9,168 L287.7,169.3 L286.4,170.6 L285,171.8 L283.5,173.1 L281.8,174.3 L280.1,175.5 L278.2,176.6 L276.2,177.8 L274.1,178.9 L272,180 L269.7,181 L267.3,182.1 L264.8,183.1 L262.2,184 L259.6,185 L256.8,185.8 L254,186.7 L251.1,187.5 L248.2,188.3 L245.1,189 L242,189.7 L238.8,190.4 L235.6,191 L232.3,191.6 L229,192.1 L225.6,192.6 L222.1,193.1 L218.7,193.4 L215.2,193.8 L211.6,194.1 L208.1,194.4 L204.5,194.6 L200.9,194.7 L197.3,194.9 L193.6,194.9 L190,195 L186.4,194.9 L182.7,194.9 L179.1,194.7 L175.5,194.6 L171.9,194.4 L168.4,194.1 L164.8,193.8 L161.3,193.4 L157.9,193.1 L154.4,192.6 L151,192.1 L147.7,191.6 L144.4,191 L141.2,190.4 L138,189.7 L134.9,189 L131.8,188.3 L128.9,187.5 L126,186.7 L123.2,185.8 L120.4,185 L117.8,184 L115.2,183.1 L112.7,182.1 L110.3,181 L108,180 L105.9,178.9 L103.8,177.8 L101.8,176.6 L99.9,175.5 L98.2,174.3 L96.5,173.1 L95,171.8 L93.6,170.6 L92.3,169.3 L91.1,168 L90,166.7 L89.1,165.4 L88.3,164.1 L87.6,162.8 L87,161.4 L86.6,160.1 L86.3,158.7 L86.1,157.4 L86,156" class="fig-guide"/>
+<path d="M86.1,154.6 L86.3,153.3 L86.6,151.9 L87,150.6 L87.6,149.2 L88.3,147.9 L89.1,146.6 L90,145.3 L91.1,144 L92.3,142.7 L93.6,141.4 L95,140.2 L96.5,138.9 L98.2,137.7 L99.9,136.5 L101.8,135.4 L103.8,134.2 L105.9,133.1 L108,132 L110.3,131 L112.7,129.9 L115.2,128.9 L117.8,128 L120.4,127 L123.2,126.2 L126,125.3 L128.9,124.5 L131.8,123.7 L134.9,123 L138,122.3 L141.2,121.6 L144.4,121 L147.7,120.4 L151,119.9 L154.4,119.4 L157.9,118.9 L161.3,118.6 L164.8,118.2 L168.4,117.9 L171.9,117.6 L175.5,117.4 L179.1,117.3 L182.7,117.1 L186.4,117.1 L190,117 L193.6,117.1 L197.3,117.1 L200.9,117.3 L204.5,117.4 L208.1,117.6 L211.6,117.9 L215.2,118.2 L218.7,118.6 L222.1,118.9 L225.6,119.4 L229,119.9 L232.3,120.4 L235.6,121 L238.8,121.6 L242,122.3 L245.1,123 L248.2,123.7 L251.1,124.5 L254,125.3 L256.8,126.2 L259.6,127 L262.2,128 L264.8,128.9 L267.3,129.9 L269.7,131 L272,132 L274.1,133.1 L276.2,134.2 L278.2,135.4 L280.1,136.5 L281.8,137.7 L283.5,138.9 L285,140.2 L286.4,141.4 L287.7,142.7 L288.9,144 L290,145.3 L290.9,146.6 L291.7,147.9 L292.4,149.2 L293,150.6 L293.4,151.9 L293.7,153.3 L293.9,154.6 L294,156" class="fig-guide fig-dashed"/>
+<path d="M190,195 L190,191.6 L190,188.1 L190,184.7 L190,181.2 L190,177.6 L190,174.1 L190,170.5 L190,166.9 L190,163.3 L190,159.6 L190,156 L190,152.4 L190,148.7 L190,145.1 L190,141.5 L190,137.9 L190,134.4 L190,130.8 L190,127.3 L190,123.9 L190,120.4 L190,117 L190,113.7 L190,110.4 L190,107.2 L190,104 L190,100.9 L190,97.8 L190,94.9 L190,92 L190,89.2 L190,86.4 L190,83.8 L190,81.2 L190,78.7 L190,76.3 L190,74 L190,71.9 L190,69.8 L190,67.8 L190,65.9 L190,64.2 L190,62.5 L190,61 L190,59.6 L190,58.3 L190,57.1 L190,56 L190,55.1 L190,54.3 L190,53.6 L190,53 L190,52.6 L190,52.3 L190,52.1" class="fig-guide"/>
+<path d="M190,259.9 L190,259.7 L190,259.4 L190,259 L190,258.4 L190,257.7 L190,256.9 L190,256 L190,254.9 L190,253.7 L190,252.4 L190,251 L190,249.5 L190,247.8 L190,246.1 L190,244.2 L190,242.2 L190,240.1 L190,238 L190,235.7 L190,233.3 L190,230.8 L190,228.2 L190,225.6 L190,222.8 L190,220 L190,217.1 L190,214.2 L190,211.1 L190,208 L190,204.8 L190,201.6 L190,198.3 L190,195" class="fig-guide"/>
+<path d="M190,52 L190,52.1 L190,52.3 L190,52.6 L190,53 L190,53.6 L190,54.3 L190,55.1 L190,56 L190,57.1 L190,58.3 L190,59.6 L190,61 L190,62.5 L190,64.2 L190,65.9 L190,67.8 L190,69.8 L190,71.9 L190,74 L190,76.3 L190,78.7 L190,81.2 L190,83.8 L190,86.4 L190,89.2 L190,92 L190,94.9 L190,97.8 L190,100.9 L190,104 L190,107.2 L190,110.4 L190,113.7 L190,117 L190,120.4 L190,123.9 L190,127.3 L190,130.8 L190,134.4 L190,137.9 L190,141.5 L190,145.1 L190,148.7 L190,152.4 L190,156 L190,159.6 L190,163.3 L190,166.9 L190,170.5 L190,174.1 L190,177.6 L190,181.2 L190,184.7 L190,188.1 L190,191.6 L190,195 L190,198.3 L190,201.6 L190,204.8 L190,208 L190,211.1 L190,214.2 L190,217.1 L190,220 L190,222.8 L190,225.6 L190,228.2 L190,230.8 L190,233.3 L190,235.7 L190,238 L190,240.1 L190,242.2 L190,244.2 L190,246.1 L190,247.8 L190,249.5 L190,251 L190,252.4 L190,253.7 L190,254.9 L190,256 L190,256.9 L190,257.7 L190,258.4 L190,259 L190,259.4 L190,259.7 L190,259.9 L190,260" class="fig-guide fig-dashed"/>
+<path d="M195.4,173.3 L264.9,162.8 L249.2,90.7 L179.7,101.2 Z" class="fig-band"/>
+<line x1="222.3" y1="132" x2="259.4" y2="104.5" class="fig-curve" marker-end="url(#arr-3-15-2)"/>
+<text x="265.4" y="102.5" class="fig-label fig-it">ν</text>
+<line x1="222.3" y1="132" x2="270.5" y2="124.7" class="fig-curve" marker-end="url(#arr-3-15-2)"/>
+<text x="276.5" y="136.7" class="fig-label fig-it">E₁</text>
+<line x1="222.3" y1="132" x2="211.4" y2="82" class="fig-curve" marker-end="url(#arr-3-15-2)"/>
+<text x="203.4" y="88" text-anchor="end" class="fig-label fig-it">E₂</text>
+<circle cx="222.3" cy="132" r="3.5" class="fig-arrowhead"/>
+<text x="230.3" y="150" class="fig-label fig-it">p</text>
+<text x="34" y="268" class="fig-label fig-small">(ν, E₁, E₂) positiva em R³:</text>
+<text x="34" y="282" class="fig-label fig-small">(E₁, E₂) é positiva em T_pS²</text>
+<text x="386" y="40" class="fig-label fig-small">(b) S¹ ⊂ R²</text>
+<circle cx="482" cy="150" r="82" class="fig-shape"/>
+<line x1="544.8" y1="97.3" x2="584.6" y2="63.9" class="fig-curve" marker-end="url(#arr-3-15-2)"/>
+<line x1="544.8" y1="97.3" x2="511.4" y2="57.5" class="fig-curve" marker-end="url(#arr-3-15-2)"/>
+<circle cx="544.8" cy="97.3" r="3.5" class="fig-arrowhead"/>
+<text x="590.6" y="61.9" class="fig-label fig-it">ν</text>
+<text x="507.4" y="51.5" text-anchor="end" class="fig-label fig-it">E₁</text>
+<text x="552.8" y="115.3" class="fig-label fig-it">p</text>
+<text x="386" y="268" class="fig-label fig-small">(ν, E₁) positiva em R²:</text>
+<text x="386" y="282" class="fig-label fig-small">E₁ percorre S¹ no sentido anti-horário</text>
+</svg>
+                    <figcaption><strong>Figura 3.15.2.</strong> A orientação de uma hipersuperfície pela regra "normal primeiro". (a) Em $S^2\subset\mathbb{R}^3$, a normal exterior $\nu$ em $p$ e uma base tangente $(E_1,E_2)$ (leste e norte): $(\nu,E_1,E_2)$ é positiva em $\mathbb{R}^3$ (mão direita), logo $(E_1,E_2)$ é positiva em $T_pS^2$.
+                        (b) Em $S^1\subset\mathbb{R}^2$, $(\nu,E_1)$ é positiva se, e só se, $E_1$ percorre a circunferência no sentido anti-horário.</figcaption>
+                </figure>
+
+                <div class="definition-box" id="cor-3-15-18">
+                    <p><strong>Corolário 3.15.18 (Conjuntos de nível regulares em $\mathbb{R}^{n+1}$).</strong> Sejam $\Omega\subset\mathbb{R}^{n+1}$ aberto, $f\in C^\infty(\Omega)$, $c$ um valor regular de $f$ e $S=f^{-1}(c)\neq\varnothing$. Então $S$ é orientável: o campo $\nu=\operatorname{grad}f=(\partial_1f,\dots,\partial_{n+1}f)$ é transversal a $S$, e a forma de orientação correspondente é</p>
+                    <p>$$ \mu=\iota^*\Big(\sum_{i=1}^{n+1}(-1)^{i-1}\,\partial_if\ dx^1\wedge\dots\wedge\widehat{dx^i}\wedge\dots\wedge dx^{n+1}\Big). \tag{3.15.3} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pelo <a href="[06] - Subvariedades.html#teo-3-6-18">Teorema 3.6.18</a>, $S$ é uma hipersuperfície mergulhada, e, pela <a href="[06] - Subvariedades.html#prop-3-6-25">Proposição 3.6.25</a>, $T_pS=\ker df_p$. Como $c$ é valor regular, $df_p\neq0$ em $S$, de modo que $\operatorname{grad}f(p)\neq0$ e $df_p(\operatorname{grad}f(p))=\lvert\operatorname{grad}f(p)\rvert^2\gt0$: $\operatorname{grad}f(p)\notin\ker df_p=T_pS$. As componentes $\partial_if$ são suaves,
+                    e $\nu$ é um campo transversal ao longo de $S$. A <a href="#prop-3-15-15">Proposição 3.15.15</a>, com $\omega=dx^1\wedge\dots\wedge dx^{n+1}$, e a (3.11.5), com $dx^i(\operatorname{grad}f)=\partial_if$, dão (3.15.3). $\blacksquare$
+                </p>
+
+                <p>
+                    A esfera é o caso $f=\lvert x\rvert^2$, $c=1$, em que $\operatorname{grad}f=2x$ e $\nu$ é o dobro do campo do corolário anterior: a mesma orientação, pela <a href="#obs-3-15-16">Observação 3.15.16</a> com $a=2\gt0$. Os hiperboloides do <a href="[06] - Subvariedades.html#ex-3-6-20">Exemplo 3.6.20</a> e as quádricas regulares são outros exemplos, e o Exercício 3.15.7 trabalha com um paraboloide.
+                    O corolário também limita o que se pode esperar: como a faixa de Möbius (seção seguinte) não é orientável, ela não pode ser um conjunto de nível regular de nenhuma função suave em $\mathbb{R}^3$, embora se realize em $\mathbb{R}^3$, como a faixa de papel com meia torção, como subvariedade mergulhada.
+                </p>
+
+                <p id="obs-3-15-19"><strong>Observação 3.15.19 (As regras de orientação do bordo do tópico 3.1).</strong> No tópico 3.1, apareceram quatro regras para orientar o bordo de uma região: "extremo final menos extremo inicial", "a região fica à esquerda", "mão direita" e "normal para fora". Na regra "normal primeiro" da <a href="#prop-3-15-15">Proposição 3.15.15</a>, com $\nu$ apontando para fora da região, são todas a mesma:</p>
+                <ul>
+                    <li>$n=1$: a região é $[a,b]\subset\mathbb{R}$, com $\omega=dx$, e $S=\{a,b\}$. O campo que aponta para fora é $\nu=\partial_x$ em $b$ e $\nu=-\partial_x$ em $a$. A orientação de cada ponto é o sinal de $\omega(\nu)$: $+1$ em $b$ e $-1$ em $a$. Uma função $f$ integrada sobre esse bordo (com o sinal) dá $f(b)-f(a)$: <em>extremo final menos inicial</em>.</li>
+                    <li>$n=2$: a região é o disco, $S=S^1$ e $\nu=R$ (exterior). Pelo <a href="#cor-3-15-17">Corolário 3.15.17</a>, $\mu=d\theta$: $(\nu,E_1)$ é positiva se, e só se, $E_1$ percorre o círculo no sentido anti-horário, isto é, com a região <em>à esquerda</em> (a rotação de $E_1$ por $+90^\circ$ é $-\nu$, que aponta para dentro).</li>
+                    <li>$n=3$: a região é a bola, $S=S^2$. $(\nu,E_1,E_2)$ é positiva, e, como a permutação cíclica é par (<a href="#prop-3-15-2">Proposição 3.15.2</a>(b)), $(E_1,E_2,\nu)$ também: os dedos da mão direita giram de $E_1$ para $E_2$ e o polegar aponta <em>para fora</em>.</li>
+                </ul>
+                <p>
+                    Falta ainda definir o bordo $\partial M$ e o que significa "apontar para fora"; isso é o assunto do tópico 3.16, que fecha esta equivalência.
+                </p>
+
+                <h2 id="nao-orientaveis">Variedades não orientáveis</h2>
+
+                <p>
+                    Todos os exemplos até aqui são orientáveis, e o teorema 3.15.9 dá um critério: basta exibir uma $n$-forma sem zeros. Para mostrar que uma variedade <em>não</em> é orientável é preciso o contrário, excluir todas as $n$-formas, e isso exige um argumento global. O exemplo clássico é a faixa de Möbius. Intuitivamente, ela é uma fita de papel colada pelas pontas com meia torção:
+                    percorrendo-a uma vez pela circunferência central, um referencial volta invertido, e uma orientação contínua é impossível (Figura 3.15.3).
+                </p>
+
+                <p id="ex-3-15-20"><strong>Exemplo 3.15.20 (A faixa de Möbius).</strong> Sejam $\Sigma=\mathbb{R}\times(-1,1)\subset\mathbb{R}^2$ e $\tau:\Sigma\to\Sigma$, $\tau(x,y)=(x+1,-y)$. A aplicação $\tau$ é um difeomorfismo de $\Sigma$, de inversa $(x,y)\mapsto(x-1,-y)$, e $\tau^k(x,y)=(x+k,(-1)^ky)$ para $k\in\mathbb{Z}$. A <strong>faixa de Möbius</strong> é o quociente
+                    $\mathcal{M}=\Sigma/\!\sim$, em que $p\sim\tau^k(p)$ para $k\in\mathbb{Z}$, com a topologia quociente e a projeção $q:\Sigma\to\mathcal{M}$. Todo ponto de $\Sigma$ é equivalente a um único ponto do retângulo $[0,1)\times(-1,1)$, de modo que $\mathcal{M}$ é obtida do retângulo colando o lado esquerdo ao direito por $(1,y)\sim(0,-y)$:
+                    é a fita de papel com meia torção (Figura 3.15.3(a)). Sem o sinal, $\tau'(x,y)=(x+1,y)$, o quociente seria o cilindro $S^1\times(-1,1)$.</p>
+
+                <div class="definition-box" id="lema-3-15-21">
+                    <p><strong>Lema 3.15.21 (A estrutura de variedade da faixa de Möbius).</strong> $\mathcal{M}$ é uma variedade diferenciável de dimensão $2$ para a qual $q$ é um difeomorfismo local, e $q\circ\tau=q$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> $q\circ\tau=q$ é a definição de $\sim$. <strong>$q$ é aberta.</strong> Se $W\subset\Sigma$ é aberto, $q^{-1}(q(W))=\bigcup_{k\in\mathbb{Z}}\tau^k(W)$ é aberto, de modo que $q(W)$ é aberto na topologia quociente. <strong>Segundo-contável.</strong> Se $\mathcal{B}$ é uma base enumerável de $\Sigma$, as imagens $q(B)$, $B\in\mathcal{B}$, formam uma base enumerável de $\mathcal{M}$ ($q$ é contínua,
+                    aberta e sobrejetiva). <strong>Hausdorff.</strong> Sejam $q(p)\neq q(p')$, com $p=(x,y)$ e $p'=(x',y')$, isto é, $p'\neq\tau^k(p)$ para todo $k$. Como $\tau^k(p)=(x+k,(-1)^ky)$, só para um conjunto finito $F$ de inteiros $k$ vale $\lvert x+k-x'\rvert\lt1$. Seja $\varepsilon\gt0$ com $\varepsilon\lt\frac12$ e $2\varepsilon\lt\min_{k\in F}\lvert\tau^k(p)-p'\rvert$ (o mínimo é positivo; se $F$ é vazio, basta $\varepsilon\lt\frac12$).
+                    Sejam $W=B_\varepsilon(p)$ e $W'=B_\varepsilon(p')$ (intersectadas com $\Sigma$). Cada $\tau^k$ é uma isometria de $\mathbb{R}^2$ (uma translação composta com uma reflexão), de modo que $\tau^k(W)=B_\varepsilon(\tau^kp)$. Para $k\in F$, $\tau^k(W)\cap W'=\varnothing$ pela escolha de $\varepsilon$; para $k\notin F$, os pontos de $\tau^k(W)$ e de $W'$ têm abscissas que diferem de
+                    pelo menos $1-2\varepsilon\gt0$. Logo $\tau^k(W)\cap W'=\varnothing$ para todo $k$, e $q(W)\cap q(W')=\varnothing$ (se $q(w)=q(w')$, então $w'=\tau^k(w)\in\tau^k(W)\cap W'$). Como $q$ é aberta, são vizinhanças disjuntas de $q(p)$ e $q(p')$.
+                </p>
+
+                <p>
+                    <strong>Cartas.</strong> Seja $W\subset\Sigma$ aberto contido em uma faixa $\{a\lt x\lt a+1\}$. Então $\tau^k(W)\cap W=\varnothing$ para $k\neq0$ (as abscissas de $\tau^k(W)$ estão em $(a+k,a+k+1)$), de modo que $q\vert_W$ é injetora: se $q(w)=q(w')$ com $w,w'\in W$, então $w'=\tau^k(w)\in\tau^k(W)\cap W$, e $k=0$.
+                    Sendo contínua, aberta e injetora, $q\vert_W:W\to q(W)$ é um homeomorfismo sobre o aberto $q(W)$, e $(q(W),(q\vert_W)^{-1})$ é uma carta. Estas cartas cobrem $\mathcal{M}$, e $\mathcal{M}$ é uma variedade topológica de dimensão $2$. <strong>Transições.</strong> Sejam $W$ e $W'$ como acima, $\varphi=(q\vert_W)^{-1}$ e $\varphi'=(q\vert_{W'})^{-1}$.
+                    Se $w\in W$ e $q(w)\in q(W')$, existe um único $w'\in W'$ com $q(w')=q(w)$, e $w'=\tau^k(w)$ para um único $k=k(w)$ (único porque $\tau^k(w)=\tau^l(w)$ implica $k=l$). Os conjuntos $W_k=W\cap\tau^{-k}(W')$ são abertos, disjuntos dois a dois e cobrem $\varphi(q(W)\cap q(W'))$, e em $W_k$ a transição é $\varphi'\circ\varphi^{-1}=\tau^k$, suave.
+                    Logo as cartas formam um atlas suave. Em cada uma delas, $q\vert_W$ é a identidade de $W$ (em coordenadas), de modo que $q$ é um difeomorfismo de $W$ sobre $q(W)$: $q$ é um difeomorfismo local. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="prop-3-15-22">
+                    <p><strong>Proposição 3.15.22 (A faixa de Möbius não é orientável).</strong> $\mathcal{M}$ não é orientável.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Suponha que $\mathcal{M}$ é orientável. Pelo <a href="#teo-3-15-9">Teorema 3.15.9</a>(b), existe $\omega\in\Omega^2(\mathcal{M})$ sem zeros. Seja $\tilde{\omega}=q^*\omega\in\Omega^2(\Sigma)$. Ela não tem zeros: $(q^*\omega)_p=(dq_p)^*\omega_{q(p)}$, com $dq_p$ um isomorfismo ($q$ é um difeomorfismo local), e, para uma base $(E_1,E_2)$ de $T_p\Sigma$,
+                    $(q^*\omega)_p(E_1,E_2)=\omega_{q(p)}(dq_pE_1,dq_pE_2)\neq0$ pelo <a href="[11] - Produto Exterior.html#cor-3-11-15">Corolário 3.11.15</a>(b). Em $\Sigma$, que tem a carta global $(x,y)$, $\tilde{\omega}=f\,dx\wedge dy$ com $f\in C^\infty(\Sigma)$ sem zeros. Como $\Sigma$ é convexo, é conexo (<a href="[02] - Preliminares de Topologia e Cálculo.html#ex-3-2-37">Exemplo 3.2.37</a>), e $\operatorname{sgn}f$ é uma função localmente constante, logo constante (<a href="[02] - Preliminares de Topologia e Cálculo.html#prop-3-2-38">Proposição 3.2.38</a>): <em>$f$ tem sinal constante em $\Sigma$</em>.
+                </p>
+
+                <p>
+                    Agora use a transformação $\tau$. De $q\circ\tau=q$ segue $\tau^*\tilde{\omega}=\tau^*q^*\omega=(q\circ\tau)^*\omega=\tilde{\omega}$ (<a href="[12] - Formas Diferenciais.html#teo-3-12-12">Teorema 3.12.12</a>(d)). Por outro lado, $D\tau=\operatorname{diag}(1,-1)$ tem determinante $-1$, e (3.12.5) dá $\tau^*(f\,dx\wedge dy)=(f\circ\tau)\,(-1)\,dx\wedge dy$. Igualando,
+                    $$ f(x,y)=-f(x+1,-y)\qquad\text{para todo }(x,y)\in\Sigma. \tag{3.15.4} $$
+                    Assim $f$ e $f\circ\tau$ têm sempre sinais opostos, o que contradiz o sinal constante de $f$. Logo $\mathcal{M}$ não é orientável. $\blacksquare$
+                </p>
+
+                <p>
+                    A demonstração é a versão algébrica da Figura 3.15.3. Um referencial $(E_1,E_2)$, transportado de $x=0$ a $x=1$ ao longo do retângulo, chega à aresta direita; na identificação $(1,y)\sim(0,-y)$, o referencial chega à aresta esquerda como $(E_1,-E_2)$, que é de orientação oposta à de partida. Como o transporte é feito em $\mathcal{M}$ por um caminho fechado, uma orientação contínua, que leva referenciais positivos a referenciais positivos, teria de tornar positivo e negativo o mesmo referencial no ponto de partida.
+                </p>
+
+                <figure class="lecture-figure" id="fig-3-15-3" style="overflow-x: auto; overflow-y: hidden;">
+                    <svg viewBox="0 0 640 300" role="img" style="min-width: 560px;" aria-label="Duas partes. Em (a), um retângulo cujas arestas esquerda e direita são identificadas com uma torção: a aresta esquerda tem uma seta para cima e a direita uma seta para baixo, ambas rotuladas a. Um referencial formado por E1, horizontal, e E2, vertical, é mostrado em três posições, da esquerda para a direita. Perto da aresta esquerda aparece, tracejado, o mesmo referencial depois de cruzar a aresta direita: E1 continua para a direita e E2 aponta para baixo. Em (b), a faixa vista de cima como um anel elíptico, com a circunferência central e um corte tracejado embaixo. Um referencial parte do corte com E2 para dentro e, após uma volta completa, chega ao corte com E2 para fora: a orientação voltou invertida.">
+<defs><marker id="arr-3-15-3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<rect x="14" y="16" width="612" height="272" rx="3" class="fig-frame"/>
+<text x="34" y="40" class="fig-label fig-small">(a) o retângulo e a identificação</text>
+<rect x="50" y="80" width="240" height="140" class="fig-band"/>
+<line x1="50" y1="80" x2="290" y2="80" class="fig-curve"/>
+<line x1="50" y1="220" x2="290" y2="220" class="fig-curve"/>
+<line x1="50" y1="220" x2="50" y2="80" class="fig-axis" marker-end="url(#arr-3-15-3)"/>
+<line x1="290" y1="80" x2="290" y2="220" class="fig-axis" marker-end="url(#arr-3-15-3)"/>
+<text x="40" y="154" text-anchor="end" class="fig-label fig-it">a</text>
+<text x="300" y="154" class="fig-label fig-it">a</text>
+<text x="50" y="72" text-anchor="middle" class="fig-label fig-small fig-it">(0, y)</text>
+<text x="290" y="72" text-anchor="middle" class="fig-label fig-small fig-it">(1, y)</text>
+<line x1="122" y1="150" x2="148" y2="150" class="fig-curve" marker-end="url(#arr-3-15-3)"/>
+<line x1="122" y1="150" x2="122" y2="124" class="fig-curve" marker-end="url(#arr-3-15-3)"/>
+<circle cx="122" cy="150" r="3" class="fig-arrowhead"/>
+<line x1="192" y1="150" x2="218" y2="150" class="fig-curve" marker-end="url(#arr-3-15-3)"/>
+<line x1="192" y1="150" x2="192" y2="124" class="fig-curve" marker-end="url(#arr-3-15-3)"/>
+<circle cx="192" cy="150" r="3" class="fig-arrowhead"/>
+<line x1="252" y1="150" x2="278" y2="150" class="fig-curve" marker-end="url(#arr-3-15-3)"/>
+<line x1="252" y1="150" x2="252" y2="124" class="fig-curve" marker-end="url(#arr-3-15-3)"/>
+<circle cx="252" cy="150" r="3" class="fig-arrowhead"/>
+<text x="152" y="164" class="fig-label fig-small fig-it">E₁</text>
+<text x="116" y="120" class="fig-label fig-small fig-it">E₂</text>
+<line x1="62" y1="150" x2="88" y2="150" class="fig-curve fig-dashed" marker-end="url(#arr-3-15-3)"/>
+<line x1="62" y1="150" x2="62" y2="176" class="fig-curve fig-dashed" marker-end="url(#arr-3-15-3)"/>
+<text x="94" y="154" class="fig-label fig-small fig-it">E₁</text>
+<text x="56" y="192" class="fig-label fig-small fig-it">−E₂</text>
+<text x="34" y="252" class="fig-label fig-small">ao cruzar a aresta a, (E₁, E₂) passa a (E₁, −E₂)</text>
+<text x="34" y="270" class="fig-label fig-small">porque (x, y) ~ (x + 1, −y)</text>
+<text x="344" y="40" class="fig-label fig-small">(b) uma volta pelo círculo central</text>
+<path d="M352,150 A118,52 0 1,0 588,150 A118,52 0 1,0 352,150 Z" class="fig-curve"/>
+<path d="M378,150 A92,38 0 1,0 562,150 A92,38 0 1,0 378,150 Z" class="fig-guide"/>
+<path d="M326,150 A144,66 0 1,0 614,150 A144,66 0 1,0 326,150 Z" class="fig-guide"/>
+<line x1="470" y1="184" x2="470" y2="220" class="fig-guide fig-dashed"/>
+<path d="M526.6,195.6 L535.5,193.3 L543.8,190.6 L551.6,187.5 L558.8,184.2 L565.3,180.7 L571.1,176.8 L576,172.8 L580.2,168.6 L583.5,164.3 L585.9,159.8 L587.4,155.3 L588,150.7 L587.7,146.2 L586.5,141.6 L584.3,137.1 L581.3,132.8 L577.4,128.5 L572.7,124.4 L567.2,120.5 L561,116.9 L554,113.5 L546.4,110.4 L538.2,107.6 L529.5,105.1 L520.3,103 L510.7,101.2 L500.8,99.8 L490.7,98.8 L480.4,98.2 L470,98 L459.6,98.2 L449.3,98.8 L439.2,99.8 L429.3,101.2 L419.7,103 L410.5,105.1 L401.8,107.6 L393.6,110.4 L386,113.5 L379,116.9 L372.8,120.5 L367.3,124.4 L362.6,128.5 L358.7,132.8 L355.7,137.1 L353.5,141.6 L352.3,146.2 L352,150.7 L352.6,155.3 L354.1,159.8 L356.5,164.3 L359.8,168.6 L364,172.8 L368.9,176.8 L374.7,180.7 L381.2,184.2 L388.4,187.5 L396.2,190.6 L404.5,193.3 L413.4,195.6" class="fig-curve fig-dashed" marker-end="url(#arr-3-15-3)"/>
+<line x1="482" y1="200" x2="510" y2="200" class="fig-curve" marker-end="url(#arr-3-15-3)"/>
+<line x1="482" y1="200" x2="482" y2="170" class="fig-curve" marker-end="url(#arr-3-15-3)"/>
+<circle cx="482" cy="200" r="3" class="fig-arrowhead"/>
+<text x="487" y="166" class="fig-label fig-small fig-it">E₂</text>
+<line x1="426" y1="200" x2="454" y2="200" class="fig-curve fig-dashed" marker-end="url(#arr-3-15-3)"/>
+<line x1="426" y1="200" x2="426" y2="230" class="fig-curve fig-dashed" marker-end="url(#arr-3-15-3)"/>
+<circle cx="426" cy="200" r="3" class="fig-arrowhead"/>
+<text x="431" y="242" class="fig-label fig-small fig-it">−E₂</text>
+<text x="344" y="258" class="fig-label fig-small">contínuo: referencial de partida (E₁, E₂)</text>
+<text x="344" y="274" class="fig-label fig-small">tracejado: referencial de chegada (E₁, −E₂)</text>
+<text x="470" y="142" text-anchor="middle" class="fig-label fig-small fig-it">uma volta</text>
+<text x="470" y="158" text-anchor="middle" class="fig-label fig-small fig-it">inverte a orientação</text>
+</svg>
+                    <figcaption><strong>Figura 3.15.3.</strong> A faixa de Möbius. (a) O retângulo $[0,1]\times(-1,1)$ com as arestas laterais identificadas por $(1,y)\sim(0,-y)$ (as setas de mesmo rótulo $a$ são identificadas); um referencial $(E_1,E_2)$ transportado para a direita, ao cruzar a aresta, reaparece como $(E_1,-E_2)$. (b) Uma volta pela circunferência central: o referencial volta com $E_2$ invertido.</figcaption>
+                </figure>
+
+                <p id="obs-3-15-23"><strong>Observação 3.15.23 (O mesmo argumento em outros quocientes).</strong> A demonstração usou apenas: $q:\tilde{M}\to M$ é um difeomorfismo local, $\tilde{M}$ é conexa e orientável, e existe um difeomorfismo $\tau$ de $\tilde{M}$ com $q\circ\tau=q$ que inverte a orientação (de uma, e portanto das duas orientações de $\tilde{M}$). Então $M$ não é orientável: uma forma de orientação $\omega$ de $M$ daria $q^*\omega$ sem zeros e invariante por $\tau$, e $\tau$ preservaria a orientação em que $q^*\omega$ é positiva (<a href="#prop-3-15-25">Proposição 3.15.25</a>(b), com $h=1$). A <em>garrafa de Klein</em>, o quociente de $\mathbb{R}^2$ pelo grupo gerado por $(x,y)\mapsto(x+1,-y)$ e $(x,y)\mapsto(x,y+1)$
+                    (cuja estrutura de variedade se constrói como no <a href="#lema-3-15-21">Lema 3.15.21</a>), cai nesse caso, com a mesma $\tau$, e não é orientável. Outro caso é o do espaço projetivo $\mathbb{RP}^n$, quociente de $S^n$ pela antípoda, que inverte a orientação de $S^n$ se $n$ é par (<a href="#ex-3-15-27">Exemplo 3.15.27</a>): o resultado completo, <em>$\mathbb{RP}^n$ é orientável se, e só se, $n$ é ímpar</em>, é o <a href="#teo-3-15-28">Teorema 3.15.28</a>. Em particular, $\mathbb{RP}^2$ não é orientável.</p>
+
+                <h2 id="difeos-orientacao">Difeomorfismos e orientação</h2>
+
+                <p>
+                    Seja $F:M\to N$ um difeomorfismo local entre variedades orientadas de dimensão $n\ge1$. Em cada $p$, $dF_p:T_pM\to T_{F(p)}N$ é um isomorfismo entre espaços vetoriais orientados, e a <a href="#def-3-15-6">Definição 3.15.6</a> diz se ele preserva ou inverte a orientação. A pergunta é como isso varia com $p$.
+                </p>
+
+                <div class="definition-box" id="def-3-15-24" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 3.15.24 (Difeomorfismo que preserva ou inverte a orientação).</strong> Sejam $M$ e $N$ variedades orientadas de dimensão $n\ge1$ e $F:M\to N$ um difeomorfismo local (<a href="[06] - Subvariedades.html#def-3-6-6">Definição 3.6.6</a>). $F$ <strong>preserva a orientação</strong> se $dF_p:T_pM\to T_{F(p)}N$ preserva a orientação para todo $p\in M$, e <strong>inverte a orientação</strong> se $dF_p$ a inverte para todo $p\in M$.
+                        (Em dimensão zero, $F$ preserva a orientação se $F(p)$ e $p$ têm o mesmo sinal para todo $p$.)</p>
+                </div>
+
+                <div class="definition-box" id="prop-3-15-25">
+                    <p><strong>Proposição 3.15.25 (Critérios).</strong> Sejam $F:M\to N$ um difeomorfismo local entre variedades orientadas de dimensão $n\ge1$ e $\omega_M$, $\omega_N$ formas de orientação. Então $F^*\omega_N=h\,\omega_M$ com $h\in C^\infty(M)$ sem zeros, e são equivalentes:</p>
+                    <p>(a) $F$ preserva a orientação;</p>
+                    <p>(b) $h\gt0$, isto é, $F^*\omega_N$ é positiva para a orientação de $M$;</p>
+                    <p>(c) para cartas orientadas $(U,\varphi)$ de $M$ e $(V,\psi)$ de $N$ com $F(U)\subset V$, $\det D\hat{F}\gt0$ em $\varphi(U)$, com $\hat{F}=\psi\circ F\circ\varphi^{-1}$.</p>
+                    <p>Do mesmo modo, $F$ inverte a orientação se, e só se, $h\lt0$, se, e só se, $\det D\hat{F}\lt0$ nessas cartas.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Em cada $p$, $(F^*\omega_N)_p=(dF_p)^*\omega_{N,F(p)}$ é um $n$-covetor em $T_pM$, e, pela <a href="#prop-3-15-7">Proposição 3.15.7</a> com $T=dF_p$, vale $(dF_p)^*\omega_{N,F(p)}=h(p)\,\omega_{M,p}$ com $h(p)\neq0$. A função $h$ é suave: em uma carta, $h=(F^*\omega_N)(\partial_1,\dots,\partial_n)/\omega_M(\partial_1,\dots,\partial_n)$,
+                    quociente de funções suaves (<a href="[12] - Formas Diferenciais.html#teo-3-12-12">Teorema 3.12.12</a>(e)) com denominador sem zeros. (a)$\Leftrightarrow$(b): pela <a href="#prop-3-15-7">Proposição 3.15.7</a>(a), $dF_p$ preserva a orientação se, e só se, $h(p)\gt0$. (b)$\Leftrightarrow$(c): em cartas orientadas, $\omega_M=g\,dx^1\wedge\dots\wedge dx^n$ e $\omega_N=u\,dy^1\wedge\dots\wedge dy^n$, com $g\gt0$ e $u\gt0$ (os valores no referencial coordenado, que é orientado). Pelo <a href="[12] - Formas Diferenciais.html#teo-3-12-14">Teorema 3.12.14</a>,
+                    $$ F^*\omega_N=(u\circ F)\,(\det DF)\,dx^1\wedge\dots\wedge dx^n=\frac{(u\circ F)\,\det DF}{g}\ \omega_M, $$
+                    de modo que $h$ tem o sinal de $\det DF$, e $DF=D\hat{F}$ é a jacobiana de $\hat{F}$ (<a href="[05] - Vetores Tangentes.html#prop-3-5-17">Proposição 3.5.17</a>). O caso "inverte" é o mesmo, com os sinais trocados. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="prop-3-15-26">
+                    <p><strong>Proposição 3.15.26 (Conexidade; orientação por pullback).</strong></p>
+                    <p>(a) Se $M$ é conexa, um difeomorfismo local $F:M\to N$ entre variedades orientadas ou preserva a orientação em todo ponto, ou a inverte em todo ponto.</p>
+                    <p>(b) Se $N$ é orientada e $F:M\to N$ é um difeomorfismo local, então $M$ é orientável, e tem uma única orientação para a qual $F$ preserva a orientação: a orientação em que $F^*\omega_N$ é positiva (a <strong>orientação por pullback</strong>).</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) A função $h$ da <a href="#prop-3-15-25">Proposição 3.15.25</a> é contínua e sem zeros, e $\operatorname{sgn}h$ é localmente constante, logo constante em $M$ conexa (<a href="[02] - Preliminares de Topologia e Cálculo.html#prop-3-2-38">Proposição 3.2.38</a>): $h\gt0$ em todo ponto (e $F$ preserva) ou $h\lt0$ em todo ponto (e $F$ inverte). (b) $F^*\omega_N$ é uma $n$-forma sem zeros: em cada $p$, $(dF_p)^*\omega_{N,F(p)}\neq0$ pela <a href="#prop-3-15-7">Proposição 3.15.7</a>, porque $dF_p$ é um isomorfismo. Pelo <a href="#teo-3-15-9">Teorema 3.15.9</a>(a), $M$ tem uma única orientação em que $F^*\omega_N$ é positiva, e $F$ a preserva
+                    pela <a href="#prop-3-15-25">Proposição 3.15.25</a>(b), com $\omega_M=F^*\omega_N$ e $h=1$. Se $\mathcal{O}'$ é outra orientação de $M$ para a qual $F$ preserva a orientação, e $\omega'$ é uma forma de orientação dela, a <a href="#prop-3-15-25">Proposição 3.15.25</a>(b) dá $F^*\omega_N=h\,\omega'$ com $h\gt0$, de modo que $F^*\omega_N$ é positiva para $\mathcal{O}'$, e $\mathcal{O}'$ é a orientação já encontrada. $\blacksquare$
+                </p>
+
+                <p>
+                    Os dois exemplos seguintes serão usados: a antípoda de $S^n$, que decide o caso de $\mathbb{RP}^n$, e a transição das cartas estereográficas de $S^n$, que mostra como um atlas conhecido pode deixar de ser orientado.
+                </p>
+
+                <p id="ex-3-15-27"><strong>Exemplo 3.15.27 (A antípoda e as reflexões de $S^n$).</strong> Seja $n\ge1$ e dê a $S^n$ a orientação do <a href="#cor-3-15-17">Corolário 3.15.17</a>, com forma de orientação $\mu=\iota^*\varpi$, $\varpi$ a forma entre parênteses em (3.15.2). Seja $A:S^n\to S^n$ a <strong>antípoda</strong>, $A(x)=-x$, e $\rho:S^n\to S^n$ a reflexão $\rho(x)=(-x^1,x^2,\dots,x^{n+1})$ (difeomorfismos de $S^n$, <a href="[06] - Subvariedades.html#prop-3-6-28">Proposição 3.6.28</a>). Então</p>
+                <p>$$ A^*\mu=(-1)^{n+1}\mu,\qquad\rho^*\mu=-\mu. $$</p>
+                <p>Logo, $A$ preserva a orientação de $S^n$ se $n$ é ímpar e a inverte se $n$ é par; $\rho$ inverte a orientação em toda dimensão.</p>
+
+                <p>
+                    <em>Demonstração.</em> Seja $L$ uma aplicação linear de $\mathbb{R}^{n+1}$ que leva $S^n$ em $S^n$, com restrição $\ell:S^n\to S^n$. Como $\iota\circ\ell=L\circ\iota$, o <a href="[12] - Formas Diferenciais.html#teo-3-12-12">Teorema 3.12.12</a>(d) dá $\ell^*\mu=\ell^*\iota^*\varpi=(\iota\circ\ell)^*\varpi=(L\circ\iota)^*\varpi=\iota^*L^*\varpi$, e basta calcular $L^*\varpi$. Para $L=-\mathrm{Id}$: $L^*x^i=-x^i$ e $L^*dx^j=d(-x^j)=-dx^j$ (<a href="[12] - Formas Diferenciais.html#teo-3-12-12">Teorema 3.12.12</a>(c)), e $L^*$ respeita o produto exterior (item (b)).
+                    Cada parcela de $\varpi$ tem um fator $x^i$ e $n$ diferenciais, de modo que é multiplicada por $(-1)^{1+n}$, e $L^*\varpi=(-1)^{n+1}\varpi$. Para a reflexão $L(x)=(-x^1,x^2,\dots,x^{n+1})$: $L^*x^1=-x^1$, $L^*dx^1=-dx^1$ e as outras coordenadas ficam. A parcela de índice $i=1$ tem $x^1$ e nenhum $dx^1$: sinal $-1$. As parcelas de índice $i\ge2$ têm $dx^1$ (e $x^i$ inalterado): sinal $-1$. Logo $L^*\varpi=-\varpi$.
+                    A conclusão sobre preservar ou inverter é a <a href="#prop-3-15-25">Proposição 3.15.25</a>(b) com $\omega_M=\omega_N=\mu$. $\blacksquare$
+                </p>
+
+                <p>
+                    Para $n=1$, $A$ é a rotação de $\pi$, que preserva a orientação do círculo. Para $n=2$, uma conferência independente em coordenadas esféricas: $A(\theta,\phi)=(\pi-\theta,\phi+\pi)$ leva $\sin\theta\,d\theta\wedge d\phi$ em $\sin(\pi-\theta)\,d(\pi-\theta)\wedge d(\phi+\pi)=-\sin\theta\,d\theta\wedge d\phi$: a antípoda de $S^2$ inverte a orientação, como em geral (e a reflexão $\phi\mapsto\pi-\phi$ também).
+                </p>
+
+                <div class="definition-box" id="teo-3-15-28">
+                    <p><strong>Teorema 3.15.28 (Orientabilidade de $\mathbb{RP}^n$).</strong> Para $n\ge1$, o espaço projetivo $\mathbb{RP}^n$ é orientável se, e só se, $n$ é ímpar.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Seja $\pi:S^n\to\mathbb{RP}^n$ o quociente, um difeomorfismo local (<a href="[06] - Subvariedades.html#ex-3-6-7">Exemplo 3.6.7</a>), e $A$ a antípoda; vale $\pi\circ A=\pi$. Seja $\mu$ a forma de orientação de $S^n$ do <a href="#cor-3-15-17">Corolário 3.15.17</a>. Lembre que $S^n$ é conexa para $n\ge1$ (<a href="[02] - Preliminares de Topologia e Cálculo.html#ex-3-2-37">Exemplo 3.2.37</a>).
+                </p>
+
+                <p>
+                    <strong>($\Rightarrow$)</strong> Suponha $\mathbb{RP}^n$ orientável, e seja $\omega$ uma forma de orientação (<a href="#teo-3-15-9">Teorema 3.15.9</a>(b)). Então $\mu'=\pi^*\omega$ não tem zeros (como na <a href="#prop-3-15-26">Proposição 3.15.26</a>(b)) e $A^*\mu'=(\pi\circ A)^*\omega=\mu'$. Como $\mu$ e $\mu'$ são $n$-formas sem zeros na variedade $S^n$ de dimensão $n$, $\mu'=h\,\mu$ com $h$ suave e sem zeros, de sinal constante, porque $S^n$ é conexa. Pelo <a href="#ex-3-15-27">Exemplo 3.15.27</a>,
+                    $$ \mu'=A^*\mu'=(h\circ A)\,A^*\mu=(-1)^{n+1}(h\circ A)\,\mu, $$
+                    de modo que $h\circ A=(-1)^{n+1}h$. Se $n$ fosse par, $h(-x)=-h(x)$ para todo $x$, e $h$ mudaria de sinal entre $x$ e $-x$, contra o sinal constante. Logo $n$ é ímpar.
+                </p>
+
+                <p>
+                    <strong>($\Leftarrow$)</strong> Seja $n$ ímpar, de modo que $A^*\mu=\mu$ (<a href="#ex-3-15-27">Exemplo 3.15.27</a>). Para $q\in\mathbb{RP}^n$ e $x\in\pi^{-1}(q)$, como $d\pi_x$ é um isomorfismo, existe um único $n$-covetor $\alpha_x$ em $T_q\mathbb{RP}^n$ com $(d\pi_x)^*\alpha_x=\mu_x$. Não depende do representante: os representantes são $x$ e $-x=A(x)$, e de $\pi\circ A=\pi$ segue $d\pi_{-x}\circ dA_x=d\pi_x$, logo $(d\pi_x)^*=(dA_x)^*(d\pi_{-x})^*$ e
+                    $$ (d\pi_x)^*\alpha_{-x}=(dA_x)^*(d\pi_{-x})^*\alpha_{-x}=(dA_x)^*\mu_{-x}=(A^*\mu)_x=\mu_x, $$
+                    isto é, $\alpha_{-x}=\alpha_x$ pela unicidade. Seja $\omega_q$ esse covetor. Ele não é nulo, porque $(d\pi_x)^*\omega_q=\mu_x\neq0$. Falta a suavidade. Seja $V\subset S^n$ aberto tal que $\pi\vert_V$ é um difeomorfismo sobre o aberto $\pi(V)$, com inversa $s:\pi(V)\to V$. Para $q\in\pi(V)$ e $x=s(q)$, $ds_q=(d\pi_x)^{-1}$, e
+                    $(s^*\mu)_q=(ds_q)^*\mu_x=(ds_q)^*(d\pi_x)^*\omega_q=(d\pi_x\circ ds_q)^*\omega_q=\omega_q$. Assim $\omega=s^*\mu$ em $\pi(V)$ é suave, e esses abertos cobrem $\mathbb{RP}^n$. Portanto $\omega\in\Omega^n(\mathbb{RP}^n)$ é suave e sem zeros, e $\mathbb{RP}^n$ é orientável pelo <a href="#teo-3-15-9">Teorema 3.15.9</a>(a). $\blacksquare$
+                </p>
+
+                <p>
+                    Assim, $\mathbb{RP}^1\cong S^1$, $\mathbb{RP}^3$, $\mathbb{RP}^5,\dots$ são orientáveis, e $\mathbb{RP}^2$, $\mathbb{RP}^4,\dots$ não são.
+                </p>
+
+                <p id="ex-3-15-29"><strong>Exemplo 3.15.29 (As cartas estereográficas).</strong> No <a href="[03] - Variedades Diferenciáveis.html#ex-3-3-23">Exemplo 3.3.23</a>, $S^n$ tem o atlas $\{(U_N,\sigma_N),(U_S,\sigma_S)\}$, com transição (3.3.4), $F(u)=\sigma_S\circ\sigma_N^{-1}(u)=u/\lvert u\rvert^2$ em $\mathbb{R}^n\setminus\{0\}$. A jacobiana é
+                    $\partial_jF^i=\lvert u\rvert^{-2}\big(\delta^i_j-2\hat{u}^i\hat{u}^j\big)$, com $\hat{u}=u/\lvert u\rvert$. A matriz $I-2\hat{u}\hat{u}^{\mathsf{T}}$ leva $\hat{u}$ em $-\hat{u}$ e fixa os vetores ortogonais a $\hat{u}$ (um espaço de dimensão $n-1$): tem autovalores $-1$ (uma vez) e $+1$ ($n-1$ vezes), e determinante $-1$. Logo</p>
+                <p>$$ \det DF(u)=-\lvert u\rvert^{-2n}\lt0\qquad\text{em todo }u\neq0. \tag{3.15.5} $$</p>
+                <p>
+                    O atlas $\{\sigma_N,\sigma_S\}$ <strong>não</strong> é consistentemente orientado: as duas cartas induzem orientações opostas em $U_N\cap U_S$. Isso se vê também com a orientação do <a href="#cor-3-15-17">Corolário 3.15.17</a>, para $n=2$: em $S=(0,0,-1)$, a carta $\sigma_N$ tem $\partial_1=2e_1$, $\partial_2=2e_2$ (derive $\sigma_N^{-1}(u)=\big(2u,\lvert u\rvert^2-1\big)/(\lvert u\rvert^2+1)$ em $u=0$) e $\nu=-e_3$, com $\det[\nu\ \partial_1\ \partial_2]=\det[-e_3\ \,2e_1\ \,2e_2]=-4\lt0$,
+                    enquanto, em $N=(0,0,1)$, a carta $\sigma_S$ tem $\partial_1=2e_1$, $\partial_2=2e_2$ e $\nu=e_3$, com $\det[e_3\ \,2e_1\ \,2e_2]=+4\gt0$. Como os domínios são conexos, o sinal é constante em cada carta (como no Passo 1 do <a href="#teo-3-15-9">Teorema 3.15.9</a>(b)): $\sigma_N$ é uma carta negativa e $\sigma_S$ uma carta positiva.
+                    Compor uma das cartas com uma reflexão corrige o atlas: com $r(v)=(-v^1,v^2,\dots,v^n)$, a carta $r\circ\sigma_N$ (<a href="[03] - Variedades Diferenciáveis.html#obs-3-3-6">Observação 3.3.6</a>) tem transição $\sigma_S\circ(r\circ\sigma_N)^{-1}=F\circ r$, de determinante $\det DF(ru)\cdot\det r=(-\lvert u\rvert^{-2n})(-1)=\lvert u\rvert^{-2n}\gt0$ ($\lvert ru\rvert=\lvert u\rvert$), e a transição inversa tem a jacobiana inversa (<a href="[05] - Vetores Tangentes.html#prop-3-5-18">Proposição 3.5.18</a>), também positiva.
+                    Pelo <a href="#teo-3-15-11">Teorema 3.15.11</a>, $\{(U_N,r\circ\sigma_N),(U_S,\sigma_S)\}$ é um atlas consistentemente orientado: é uma segunda demonstração de que $S^n$ é orientável, agora sem coordenadas ambientes, e, para $n=2$, as duas cartas são positivas para a orientação do <a href="#cor-3-15-17">Corolário 3.15.17</a>.</p>
+
+                <p id="obs-3-15-30"><strong>Observação 3.15.30 (A variedade $-M$).</strong> Seja $F:M\to N$ um difeomorfismo local entre variedades orientadas. Se $\omega_M$ e $\omega_N$ são formas de orientação, $-\omega_M$ e $-\omega_N$ o são de $-M$ e $-N$ (<a href="#def-3-15-8">Definição 3.15.8</a>), e $F^*(-\omega_N)=h\,(-\omega_M)$ com o mesmo $h$ da <a href="#prop-3-15-25">Proposição 3.15.25</a>. Portanto: $F$ preserva a orientação se, e só se, $F:-M\to-N$ a preserva; $F$ inverte a orientação se, e só se, $F:M\to-N$ (ou $F:-M\to N$) a preserva. Em particular, a identidade $\mathrm{Id}:M\to-M$ é um difeomorfismo que inverte a orientação, e $-(-M)=M$.</p>
+
+                <h2 id="fisica">Ponte com a física</h2>
+
+                <p>
+                    <strong>A regra da mão direita é uma escolha.</strong> A forma $dV=dx\wedge dy\wedge dz$ é uma forma de orientação de $\mathbb{R}^3$ (a orientação padrão, <a href="#ex-3-15-4">Exemplo 3.15.4</a>). O dicionário do tópico 3.12, $\Phi_{\mathbf{G}}=i_{\mathbf{G}}\,dV$ (<a href="[12] - Formas Diferenciais.html#prop-3-12-9">Proposição 3.12.9</a>), e o produto vetorial, definido por $(\mathbf{a}\times\mathbf{b})\cdot\mathbf{c}=dV(\mathbf{a},\mathbf{b},\mathbf{c})$ (<a href="[11] - Produto Exterior.html#prop-3-11-30">Proposição 3.11.30</a>), dependem de $dV$ e, portanto, da orientação: se a orientação é trocada, $dV$ vira $-dV$, a mesma $2$-forma $\Phi$ corresponde ao vetor oposto,
+                    e $\times$ troca de sinal. Os vetores <em>axiais</em> (ou pseudovetores), como o momento angular $\mathbf{L}=\mathbf{r}\times\mathbf{p}$ e o campo magnético $\mathbf{B}$ da força de Lorentz $\mathbf{F}=q\,\mathbf{v}\times\mathbf{B}$, são, no fundo, $2$-formas ($L_{ij}=x_ip_j-x_jp_i$; $F_{ij}=\epsilon_{ijk}B_k$ no tópico 3.12), que não dependem de orientação alguma, e só viram vetores com o auxílio de $dV$. Quem usasse a regra da mão esquerda
+                    teria $-\mathbf{L}$ e $-\mathbf{B}$ (mesmas $2$-formas, vetores de sinal oposto), e as leis, escritas com $\times$, continuariam valendo, com o sinal compensado: o que tem significado físico é a $2$-forma. É a mesma observação da <a href="[11] - Produto Exterior.html#obs-3-11-31">Observação 3.11.31</a>, que dizia que $\mathbf{a}\times\mathbf{b}$ é um pseudovetor.
+                </p>
+
+                <p>
+                    <strong>Paridade e inversão temporal.</strong> A paridade $P:(t,\mathbf{x})\mapsto(t,-\mathbf{x})$ e a inversão temporal $T:(t,\mathbf{x})\mapsto(-t,\mathbf{x})$ (capítulos 1 e 2) são transformações lineares de $\mathbb{R}^4$ com determinantes $(-1)^3=-1$ e $-1$: pela <a href="#prop-3-15-7">Proposição 3.15.7</a>(b), invertem a orientação do espaço-tempo, e o produto $PT$, de determinante $+1$, a preserva. Em $\mathbb{R}^3$, $P$ tem determinante $-1$ e troca a mão direita pela esquerda;
+                    por isso, sob $P$, os vetores polares ($\mathbf{x}$, $\mathbf{p}$, $\mathbf{E}$) mudam de sinal e os axiais ($\mathbf{L}$, $\mathbf{B}$) não. Pelo <a href="#ex-3-15-27">Exemplo 3.15.27</a>, a restrição da inversão espacial $\mathbf{x}\mapsto-\mathbf{x}$ à esfera $S^2\subset\mathbb{R}^3$ é a antípoda, que inverte a orientação da esfera. Uma lei invariante por $P$ não distingue a mão direita da esquerda.
+                </p>
+
+                <p>
+                    <strong>O espaço-tempo da Relatividade Geral é orientável.</strong> Em Relatividade Geral, supõe-se que o espaço-tempo $(M,g)$ é orientável (e <em>orientável no tempo</em>, uma noção distinta, sobre a orientação dos cones de luz, que aparecerá com a estrutura causal). A razão é o conteúdo deste tópico. O símbolo $\epsilon_{\mu\nu\rho\sigma}=\sqrt{-g}\,[\mu\nu\rho\sigma]$ corresponde, em uma carta, à $4$-forma
+                    $\varepsilon=\sqrt{-g}\,dx^0\wedge dx^1\wedge dx^2\wedge dx^3$. Em outra carta, as componentes da métrica obedecem a $\tilde{g}_{\mu\nu}=\frac{\partial x^\alpha}{\partial\tilde{x}^\mu}\frac{\partial x^\beta}{\partial\tilde{x}^\nu}g_{\alpha\beta}$ (<a href="[10] - Álgebra Multilinear e Tensores.html#prop-3-10-21">Proposição 3.10.21</a>), de modo que $\det\tilde{g}=\big(\det\frac{\partial x}{\partial\tilde{x}}\big)^2\det g$ e
+                    $\sqrt{-\tilde{g}}=\big\lvert\det\frac{\partial x}{\partial\tilde{x}}\big\rvert\,\sqrt{-g}$. Por outro lado, pelo <a href="[12] - Formas Diferenciais.html#cor-3-12-15">Corolário 3.12.15</a>, $d\tilde{x}^0\wedge\dots\wedge d\tilde{x}^3=\det\frac{\partial\tilde{x}}{\partial x}\,dx^0\wedge\dots\wedge dx^3$. Multiplicando,
+                    $$ \begin{aligned}\sqrt{-\tilde{g}}\ d\tilde{x}^0\wedge\dots\wedge d\tilde{x}^3&=\operatorname{sgn}\Big(\det\frac{\partial\tilde{x}}{\partial x}\Big)\\
+                    &\quad\times\sqrt{-g}\ dx^0\wedge\dots\wedge dx^3.\end{aligned} $$
+                    As expressões locais $\varepsilon$ coincidem nas sobreposições se, e só se, as cartas estão ligadas por jacobianas positivas, isto é, em um atlas consistentemente orientado (<a href="#teo-3-15-11">Teorema 3.15.11</a>). Sem orientação, $\sqrt{-g}\,d^4x$ é só uma <em>densidade</em>, que carrega o módulo $\lvert\det\rvert$; com orientação, é a forma de volume $\varepsilon$ da métrica, o tensor de Levi-Civita. É ela que permite integrar a ação e as correntes conservadas em $M$.
+                </p>
+
+                <p>
+                    <strong>Fluxo e orientação da superfície.</strong> O fluxo $\int_S\mathbf{F}\cdot\mathbf{n}\,dA$ de um campo através de uma superfície depende do sentido da normal $\mathbf{n}$, isto é, da orientação de $S$. Pela <a href="#prop-3-15-15">Proposição 3.15.15</a>, escolher uma normal unitária $\mathbf{n}$ ao longo de $S\subset\mathbb{R}^3$ é orientar $S$ pela forma $dA=\iota^*(i_{\mathbf{n}}\,dV)$, para a qual $(\mathbf{n},E_1,E_2)$ é positiva; para $E_1,E_2$ ortonormais e positivos, $dA(E_1,E_2)=\det[\mathbf{n}\ \,E_1\ \,E_2]=1$.
+                    Escrevendo $\mathbf{F}=a\,\mathbf{n}+w$ com $w$ tangente a $S$, a mesma conta da <a href="#obs-3-15-16">Observação 3.15.16</a> dá $\Phi_{\mathbf{F}}(E_1,E_2)=dV(\mathbf{F},E_1,E_2)=a$, isto é, $\Phi_{\mathbf{F}}\vert_S=(\mathbf{F}\cdot\mathbf{n})\,dA$: a $2$-forma de fluxo restrita à superfície orientada é o integrando do fluxo. Trocar $\mathbf{n}$ por $-\mathbf{n}$ troca a orientação, $dA$ por $-dA$ e o sinal do fluxo. A integral dessa $2$-forma é o assunto do tópico 3.17, e o teorema de Gauss, do 3.19.
+                </p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p id="exr-3-15-1"><strong>Exercício 3.15.1.</strong> Decida se as bases $B_1=\big((1,0,0),(1,1,0),(1,1,1)\big)$, $B_2=\big((1,2,3),(4,5,6),(7,8,10)\big)$ e $B_3=(e_3,e_1,e_2)$ de $\mathbb{R}^3$ são positivas ou negativas, para a orientação padrão.</p>
+
+                <p>
+                    <em>Solução.</em> Pelo <a href="#ex-3-15-4">Exemplo 3.15.4</a>, $(v_1,v_2,v_3)$ é positiva se, e só se, $\det[v_1\ v_2\ v_3]\gt0$ (e é base se, e só se, o determinante não é nulo, pelo <a href="[11] - Produto Exterior.html#cor-3-11-15">Corolário 3.11.15</a>(b)). Para $B_1$, a matriz de colunas $v_1,v_2,v_3$ é triangular superior com diagonal $(1,1,1)$, de determinante $1\gt0$: <em>positiva</em>. Para $B_2$, desenvolvendo pela primeira linha,
+                    $$ \begin{aligned}\det\begin{pmatrix}1&4&7\\2&5&8\\3&6&10\end{pmatrix}&=1\,(50-48)-4\,(20-24)\\
+                    &\quad+7\,(12-15)=2+16-21=-3\lt0,\end{aligned} $$
+                    de modo que $B_2$ é uma base, <em>negativa</em>. Para $B_3$, $\det[e_3\ \,e_1\ \,e_2]=+1$: é a permutação cíclica $(e_1,e_2,e_3)\mapsto(e_3,e_1,e_2)$, um produto de duas transposições, de sinal $+1$ (<a href="#prop-3-15-2">Proposição 3.15.2</a>(b)): <em>positiva</em>. $\blacksquare$
+                </p>
+
+                <p id="exr-3-15-2"><strong>Exercício 3.15.2.</strong> Mostre que $(\partial_r,\partial_\theta)$ é um referencial orientado de $\mathbb{R}^2\setminus\{0\}$ (orientação padrão) e que $(\partial_\theta,\partial_r)$ não é. Relacione com $dx\wedge dy=r\,dr\wedge d\theta$.</p>
+
+                <p>
+                    <em>Solução.</em> Em componentes cartesianas, $\partial_r=(\cos\theta,\sin\theta)=(x,y)/r$ e $\partial_\theta=(-r\sin\theta,r\cos\theta)=(-y,x)$, campos suaves em $\mathbb{R}^2\setminus\{0\}$ (as expressões em $x,y$ são suaves para $r\gt0$). O determinante é
+                    $$ \det[\partial_r\ \ \partial_\theta]=\cos\theta\cdot r\cos\theta-\sin\theta\cdot(-r\sin\theta)=r\gt0 $$
+                    em todo ponto, de modo que $(\partial_r,\partial_\theta)$ é um referencial orientado (e global). Trocar a ordem troca o sinal: $\det[\partial_\theta\ \ \partial_r]=-r\lt0$, e $(\partial_\theta,\partial_r)$ é um referencial negativo. A relação com as formas: $(dx\wedge dy)(\partial_r,\partial_\theta)=\det[\partial_r\ \ \partial_\theta]=r$, e $(r\,dr\wedge d\theta)(\partial_r,\partial_\theta)=r$,
+                    o que confere $dx\wedge dy=r\,dr\wedge d\theta$ (<a href="[12] - Formas Diferenciais.html#ex-3-12-16">Exemplo 3.12.16</a>). O fator $r\gt0$ é a jacobiana da mudança $(r,\theta)\mapsto(x,y)$: a carta polar $(r,\theta)$ é orientada, e $(\theta,r)$ não seria ($dx\wedge dy=-r\,d\theta\wedge dr$). $\blacksquare$
+                </p>
+
+                <p id="exr-3-15-3"><strong>Exercício 3.15.3.</strong> Mostre que a jacobiana de $F(u)=u/\lvert u\rvert^2$ em $\mathbb{R}^2\setminus\{0\}$ tem determinante $-1/\lvert u\rvert^4$ e construa um atlas consistentemente orientado de $S^2$.</p>
+
+                <p>
+                    <em>Solução.</em> Com $s=\lvert u\rvert^2=u_1^2+u_2^2$ e $F=(u_1,u_2)/s$:
+                    $$ \begin{aligned}\partial_1F^1&=\frac1s-\frac{2u_1^2}{s^2}=\frac{u_2^2-u_1^2}{s^2},&\partial_2F^1&=-\frac{2u_1u_2}{s^2},\\
+                    \partial_1F^2&=-\frac{2u_1u_2}{s^2},&\partial_2F^2&=\frac{u_1^2-u_2^2}{s^2}.\end{aligned} $$
+                    O determinante é $\dfrac{(u_2^2-u_1^2)(u_1^2-u_2^2)-4u_1^2u_2^2}{s^4}=-\dfrac{(u_1^2-u_2^2)^2+4u_1^2u_2^2}{s^4}=-\dfrac{(u_1^2+u_2^2)^2}{s^4}=-\dfrac1{s^2}=-\dfrac1{\lvert u\rvert^4}$, de acordo com (3.15.5) para $n=2$. Como $\sigma_S\circ\sigma_N^{-1}=F$ (<a href="[03] - Variedades Diferenciáveis.html#ex-3-3-23">Exemplo 3.3.23</a>), o atlas $\{\sigma_N,\sigma_S\}$ de $S^2$ tem transições de determinante negativo e não é consistentemente orientado.
+                    Com $r(v)=(-v^1,v^2)$, a carta $r\circ\sigma_N$ tem $\sigma_S\circ(r\circ\sigma_N)^{-1}=F\circ r$, de jacobiana $DF(ru)\,Dr$ e determinante $\big(-1/\lvert u\rvert^4\big)(-1)=1/\lvert u\rvert^4\gt0$; a transição inversa tem a jacobiana inversa, também de determinante positivo. Logo $\{(U_N,r\circ\sigma_N),(U_S,\sigma_S)\}$ é um atlas consistentemente orientado de $S^2$ (<a href="#teo-3-15-11">Teorema 3.15.11</a>). $\blacksquare$
+                </p>
+
+                <p id="exr-3-15-4"><strong>Exercício 3.15.4.</strong> Mostre que $d\theta^1\wedge d\theta^2$ é uma forma de orientação do toro $\mathbb{T}^2=S^1\times S^1$.</p>
+
+                <p>
+                    <em>Solução.</em> As cartas angulares de $S^1$ (<a href="[03] - Variedades Diferenciáveis.html#ex-3-3-21">Exemplo 3.3.21</a>) têm a transição (3.3.1), uma translação, de derivada $1$ em cada pedaço; logo as $1$-formas $d\theta_1$ e $d\theta_2$ coincidem em $U_1\cap U_2$ (pelo <a href="[12] - Formas Diferenciais.html#cor-3-12-15">Corolário 3.12.15</a> com $n=1$, $d\theta_2=1\cdot d\theta_1$), e definem uma $1$-forma $d\theta$ em todo $S^1$, sem zeros (é a $\mu=d\theta$ do <a href="#cor-3-15-17">Corolário 3.15.17</a> para $n=1$). Sejam $\pi_1,\pi_2$ as projeções de $\mathbb{T}^2$ e $d\theta^i=\pi_i^*d\theta$. Pela <a href="#prop-3-15-13">Proposição 3.15.13</a>(b), com $\omega=\eta=d\theta$, $\pi_1^*d\theta\wedge\pi_2^*d\theta=d\theta^1\wedge d\theta^2$ é uma forma de orientação de $\mathbb{T}^2$.
+                    Em uma carta produto $(\theta_{a_1},\theta_{a_2})$, ela é $dt^1\wedge dt^2$, que vale $1$ no referencial coordenado; e as transições entre cartas produto, $(t^1,t^2)\mapsto(\tau_1(t^1),\tau_2(t^2))$, com $\tau_i$ uma translação ou a identidade, têm jacobiana $\operatorname{diag}(1,1)$, de determinante $1$: o atlas produto é consistentemente orientado, de acordo com o <a href="#teo-3-15-11">Teorema 3.15.11</a>. $\blacksquare$
+                </p>
+
+                <p id="exr-3-15-5"><strong>Exercício 3.15.5.</strong> Mostre que o cilindro $S^1\times(-1,1)$ é orientável. Repita o argumento da faixa de Möbius e diga onde ele falha.</p>
+
+                <p>
+                    <em>Solução.</em> $S^1$ e $(-1,1)$ são orientáveis ($\mathbb{R}$ tem o referencial global $\partial_x$, e $S^1$, o $\partial_\theta$), de modo que o produto é orientável (<a href="#prop-3-15-13">Proposição 3.15.13</a>(b)), com forma de orientação $d\theta\wedge dy$. Agora o argumento da faixa de Möbius: o cilindro é o quociente de $\Sigma=\mathbb{R}\times(-1,1)$ por $\tau'(x,y)=(x+1,y)$, com $q'(x,y)=(e^{2\pi ix},y)$, e $q'$ é um difeomorfismo local (a demonstração do <a href="#lema-3-15-21">Lema 3.15.21</a> vale com $\tau'$ no lugar de $\tau$).
+                    Se $\omega$ fosse uma forma sem zeros do cilindro, $q'^*\omega=f\,dx\wedge dy$ teria $f$ de sinal constante e $\tau'^*(q'^*\omega)=q'^*\omega$. Mas $D\tau'=I$, e (3.12.5) dá $\tau'^*(f\,dx\wedge dy)=(f\circ\tau')\,dx\wedge dy$, de modo que a invariância é só $f(x+1,y)=f(x,y)$, <em>sem contradição</em> com o sinal constante (por exemplo, $f\equiv1$:
+                    $\omega=\frac{1}{2\pi}d\theta\wedge dy$, pois $q'^*(d\theta\wedge dy)=2\pi\,dx\wedge dy$). O argumento falha porque $\det D\tau'=+1$, em vez de $-1$: a transformação de colagem preserva a orientação de $\Sigma$, e a torção da faixa é o que a inverte. $\blacksquare$
+                </p>
+
+                <p id="exr-3-15-6"><strong>Exercício 3.15.6.</strong> Mostre que a antípoda de $S^2$ inverte a orientação, e conclua que $\mathbb{RP}^2$ não é orientável.</p>
+
+                <p>
+                    <em>Solução.</em> Em coordenadas esféricas, $A(\theta,\phi)=(\pi-\theta,\phi+\pi)$ (o ponto $-x$ tem colatitude $\pi-\theta$ e longitude $\phi+\pi$), e $A^*(\sin\theta\,d\theta\wedge d\phi)=\sin(\pi-\theta)\,d(\pi-\theta)\wedge d(\phi+\pi)=\sin\theta\,(-d\theta)\wedge d\phi=-\sin\theta\,d\theta\wedge d\phi$. Como $\mu=\sin\theta\,d\theta\wedge d\phi$ é a forma de orientação de $S^2$ (<a href="#cor-3-15-17">Corolário 3.15.17</a>), $A^*\mu=-\mu$: $A$ inverte a orientação (<a href="#prop-3-15-25">Proposição 3.15.25</a>).
+                    Se $\mathbb{RP}^2$ fosse orientável, existiria $\omega\in\Omega^2(\mathbb{RP}^2)$ sem zeros, e $\mu'=\pi^*\omega$ seria uma $2$-forma sem zeros de $S^2$ com $A^*\mu'=\mu'$ (porque $\pi\circ A=\pi$). Escrevendo $\mu'=h\,\mu$, com $h$ sem zeros e de sinal constante (a esfera é conexa), $A^*\mu'=(h\circ A)(-\mu)$, e a igualdade $A^*\mu'=\mu'$ dá $h(-x)=-h(x)$: $h$ teria sinais opostos em $x$ e $-x$.
+                    Contradição; $\mathbb{RP}^2$ não é orientável (é o caso $n=2$ do <a href="#teo-3-15-28">Teorema 3.15.28</a>). $\blacksquare$
+                </p>
+
+                <p id="exr-3-15-7"><strong>Exercício 3.15.7.</strong> Oriente o paraboloide $S=\{z=x^2+y^2\}\subset\mathbb{R}^3$ como conjunto de nível de $f=z-x^2-y^2$ e escreva a forma de orientação nas coordenadas $(x,y)$.</p>
+
+                <p>
+                    <em>Solução.</em> $\operatorname{grad}f=(-2x,-2y,1)$ nunca se anula, de modo que $0$ é valor regular e $S=f^{-1}(0)$ é uma superfície orientável (<a href="#cor-3-15-18">Corolário 3.15.18</a>), com a forma de orientação
+                    $$ \begin{aligned}\mu&=\iota^*\big(\partial_1f\ dy\wedge dz-\partial_2f\ dx\wedge dz+\partial_3f\ dx\wedge dy\big)\\
+                    &=\iota^*\big(-2x\,dy\wedge dz+2y\,dx\wedge dz+dx\wedge dy\big).\end{aligned} $$
+                    A parametrização global $\sigma(x,y)=(x,y,x^2+y^2)$ (o gráfico, inverso da carta $(x,y)$ de $S$, <a href="[03] - Variedades Diferenciáveis.html#ex-3-3-20">Exemplo 3.3.20</a>) tem $\sigma^*dz=2x\,dx+2y\,dy$, e
+                    $$ \begin{aligned}\sigma^*(dy\wedge dz)&=dy\wedge(2x\,dx)=-2x\,dx\wedge dy,\\
+                    \sigma^*(dx\wedge dz)&=dx\wedge(2y\,dy)=2y\,dx\wedge dy.\end{aligned} $$
+                    Logo
+                    $$ \sigma^*\mu=\big(-2x\cdot(-2x)+2y\cdot2y+1\big)\,dx\wedge dy=\big(1+4x^2+4y^2\big)\,dx\wedge dy. $$
+                    O coeficiente é positivo: a carta $(x,y)$ é orientada, e a orientação é a de "normal para cima primeiro". Direto: com $\nu=(-2x,-2y,1)$ e $\partial_x\sigma=(1,0,2x)$, $\partial_y\sigma=(0,1,2y)$, $\det[\nu\ \,\partial_x\sigma\ \,\partial_y\sigma]=1+4x^2+4y^2\gt0$, como deve ser pela <a href="#prop-3-15-15">Proposição 3.15.15</a>. $\blacksquare$
+                </p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <p>
+                    Este tópico escolheu, para a integração do tópico 3.17, o sinal que a mudança de variáveis (<a href="[12] - Formas Diferenciais.html#teo-3-12-14">Teorema 3.12.14</a>) deixava em aberto:
+                </p>
+
+                <ul>
+                    <li>a <strong>orientação de um espaço vetorial</strong>, por classes de bases (<a href="#def-3-15-3">Definição 3.15.3</a>), com as duas classes (<a href="#prop-3-15-2">Proposição 3.15.2</a>) e a descrição por um $n$-covetor (<a href="#prop-3-15-5">Proposição 3.15.5</a>); isomorfismos que preservam ou invertem a orientação (<a href="#def-3-15-6">Definição 3.15.6</a>, <a href="#prop-3-15-7">Proposição 3.15.7</a>);</li>
+                    <li>a <strong>orientação de uma variedade</strong> (<a href="#def-3-15-8">Definição 3.15.8</a>) e os três modos equivalentes de dá-la: por <strong>formas de orientação</strong> (<a href="#teo-3-15-9">Teorema 3.15.9</a>, <a href="#def-3-15-10">Definição 3.15.10</a>), por um <strong>atlas consistentemente orientado</strong> (<a href="#teo-3-15-11">Teorema 3.15.11</a>) e por referenciais; $-M$; uma variedade conexa orientável tem exatamente duas orientações (<a href="#prop-3-15-12">Proposição 3.15.12</a>); abertos, produtos e paralelizáveis (<a href="#prop-3-15-13">Proposição 3.15.13</a>);</li>
+                    <li>a <strong>orientação de hipersuperfícies</strong> por um campo transversal, "normal primeiro" (<a href="#prop-3-15-15">Proposição 3.15.15</a>, <a href="#obs-3-15-16">Observação 3.15.16</a>), as esferas e os conjuntos de nível regulares (<a href="#cor-3-15-17">Corolário 3.15.17</a>, <a href="#cor-3-15-18">Corolário 3.15.18</a>), e as quatro regras de orientação do bordo do tópico 3.1 como casos desta (<a href="#obs-3-15-19">Observação 3.15.19</a>);</li>
+                    <li>os <strong>exemplos não orientáveis</strong>: a faixa de Möbius (<a href="#prop-3-15-22">Proposição 3.15.22</a>) e $\mathbb{RP}^n$ para $n$ par (<a href="#teo-3-15-28">Teorema 3.15.28</a>);</li>
+                    <li>difeomorfismos que preservam ou invertem a orientação, por formas e por cartas (<a href="#def-3-15-24">Definição 3.15.24</a>, <a href="#prop-3-15-25">Proposição 3.15.25</a>, <a href="#prop-3-15-26">Proposição 3.15.26</a>), a antípoda de $S^n$ (<a href="#ex-3-15-27">Exemplo 3.15.27</a>) e a correção do atlas estereográfico (<a href="#ex-3-15-29">Exemplo 3.15.29</a>).</li>
+                </ul>
+
+                <p>
+                    Falta, para escrever $\int_Md\omega=\int_{\partial M}\omega$, o domínio em que há bordo e a própria integral. O próximo tópico, <a href="[16] - Variedades com Bordo.html">3.16 Variedades com Bordo</a>, define o semiespaço $\mathbb{H}^n$, as variedades com bordo e o campo $\nu$ que aponta para fora, e dá ao bordo $\partial M$ a orientação induzida pela regra "normal primeiro" da <a href="#prop-3-15-15">Proposição 3.15.15</a> (as quatro regras do tópico 3.1 serão então uma só).
+                    Depois, o tópico 3.17 integra formas de grau máximo em uma variedade orientada, usando as cartas orientadas e uma partição da unidade, e o tópico 3.18 demonstra o Teorema de Stokes.
+                </p>
 
             </div>
         </main>
@@ -161,6 +885,14 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#orientacao">Orientação</a></li>
+                    <li><a href="#orientacao-espacos-vetoriais">Espaços vetoriais</a></li>
+                    <li><a href="#orientacao-variedades">Variedades</a></li>
+                    <li><a href="#hipersuperficies">Hipersuperfícies</a></li>
+                    <li><a href="#nao-orientaveis">Variedades não orientáveis</a></li>
+                    <li><a href="#difeos-orientacao">Difeomorfismos e orientação</a></li>
+                    <li><a href="#fisica">Ponte com a física</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
                 </ul>
             </div>
         </aside>
