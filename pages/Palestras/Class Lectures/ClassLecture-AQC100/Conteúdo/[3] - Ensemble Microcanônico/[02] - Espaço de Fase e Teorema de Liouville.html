@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espaço de Fase, Ensembles e o Teorema de Liouville | Introduction to Statistical Mechanics | The Journal of a Physicist</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../../../assets/images/Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../../../assets/images/Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../../../assets/images/Favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="../../../../../../assets/images/Favicon/favicon.ico">
+    <link rel="stylesheet" href="../../../../../../assets/css/class-lecture.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                        <line x1="9" x2="9" y1="3" y2="21"></line>
+                    </svg>
+                </button>
+                <button id="theme-toggle" class="sidebar-toggle" aria-label="Toggle Theme">
+                    <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="breadcrumbs-header">
+                    <a href="../../../../../../Páginas Principais/Lectures.html" class="breadcrumb-link">← Lectures</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <a href="../../index.html" class="breadcrumb-link active">Introduction to Statistical Mechanics</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-category" class="breadcrumb-link">Ensemble Microcanônico</span>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-current" class="breadcrumb-link active">4.2 Espaço de Fase e Teorema de Liouville</span>
+                </div>
+            </div>
+            <nav class="top-nav">
+                <a href="../../../../../../Páginas Principais/Lectures.html">Lectures</a>
+                <a href="../../../../../../index.html">Home</a>
+            </nav>
+        </div>
+
+        <script>
+            MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']]
+                }
+            };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    </header>
+
+    <div class="main-layout">
+        <aside class="left-sidebar" id="left-sidebar">
+            <div class="sidebar-content">
+
+                <button class="search-trigger" id="search-trigger">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                    </svg>
+                    <span>Search docs...</span>
+                </button>
+
+                <div class="sidebar-group">
+                    <h3>Início</h3>
+                    <ul>
+                        <li><a href="../../index.html">Overview</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Introdução aos Métodos Estatísticos</h3>
+                    <ul>
+                        <li><a href="../[0] - Introdução aos Métodos Estatísticos/[01] - Introdução.html">Introdução</a></li>
+                        <li><a href="../[0] - Introdução aos Métodos Estatísticos/[02] - Problema do Caminho Aleatório.html">Problema do Caminho Aleatório</a></li>
+                        <li><a href="../[0] - Introdução aos Métodos Estatísticos/[03] - Valores Médios e Desvio Padrão.html">Valores Médios e Desvio Padrão</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Descrição Estatística de um Sistema Físico</h3>
+                    <ul>
+                        <li><a href="../[1] - Descrição Estatística de um Sistema Físico/[01] - Visão Geral.html">Visão Geral</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Introdução à Termodinâmica</h3>
+                    <ul>
+                        <li><a href="../[2] - Introdução à Termodinâmica/[01] - Visão Geral.html">Visão Geral</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Ensemble Microcanônico</h3>
+                    <ul>
+                        <li><a href="[01] - Motivação e Roteiro.html">4.1 Motivação e Roteiro</a></li>
+                        <li><a href="[02] - Espaço de Fase e Teorema de Liouville.html" class="active">4.2 Espaço de Fase e Teorema de Liouville</a></li>
+                        <li><a href="[03] - O Ensemble Microcanônico.html">4.3 O Ensemble Microcanônico</a></li>
+                        <li><a href="[04] - Contato Térmico e Entropia.html">4.4 Contato Térmico e Entropia</a></li>
+                        <li><a href="[05] - Interações Mecânica e Difusiva.html">4.5 Interações Mecânica e Difusiva</a></li>
+                        <li><a href="[06] - Dois Níveis e Paramagneto Ideal.html">4.6 Dois Níveis e Paramagneto Ideal</a></li>
+                        <li><a href="[07] - Sólido de Einstein.html">4.7 Sólido de Einstein</a></li>
+                        <li><a href="[08] - Gás Ideal Clássico.html">4.8 Gás Ideal Clássico</a></li>
+                        <li><a href="[09] - Paradoxo de Gibbs e Contagem Correta.html">4.9 Paradoxo de Gibbs e Contagem Correta</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Ensemble Canônico</h3>
+                    <ul>
+                        <li><a href="../[4] - Ensemble Canônico/[01] - Do Microcanônico ao Canônico.html">5.1 Do Microcanônico ao Canônico</a></li>
+                        <li><a href="../[4] - Ensemble Canônico/[02] - Função de Partição e Termodinâmica.html">5.2 Função de Partição e Termodinâmica</a></li>
+                        <li><a href="../[4] - Ensemble Canônico/[03] - Flutuações e Equivalência dos Ensembles.html">5.3 Flutuações e Equivalência dos Ensembles</a></li>
+                        <li><a href="../[4] - Ensemble Canônico/[04] - Sistemas de Partículas Independentes.html">5.4 Sistemas de Partículas Independentes</a></li>
+                        <li><a href="../[4] - Ensemble Canônico/[05] - Paramagneto Ideal e Lei de Curie.html">5.5 Paramagneto Ideal e Lei de Curie</a></li>
+                        <li><a href="../[4] - Ensemble Canônico/[06] - Osciladores e o Sólido de Einstein.html">5.6 Osciladores e o Sólido de Einstein</a></li>
+                        <li><a href="../[4] - Ensemble Canônico/[07] - Gás Ideal e Sistemas de Dois Níveis.html">5.7 Gás Ideal e Sistemas de Dois Níveis</a></li>
+                        <li><a href="../[4] - Ensemble Canônico/[08] - Equipartição, Virial e Maxwell.html">5.8 Equipartição, Virial e Maxwell</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="prose">
+
+                <h1 id="espaco-de-fase-e-liouville">4.2 Espaço de Fase, Ensembles e o Teorema de Liouville</h1>
+                <p class="lead">A dinâmica hamiltoniana no espaço de fase, ensembles como densidades de probabilidade, o teorema de Liouville, os ensembles estacionários e a contagem semiclássica de estados.</p>
+
+                <p>
+                    O <a href="[01] - Motivação e Roteiro.html">tópico 4.1</a> contou microestados de moedas e de
+                    spins, que formam conjuntos finitos. Os microestados de um gás clássico não são assim: a
+                    posição e o momento de cada molécula variam continuamente, e "contar" estados passa a
+                    significar medir volumes. Antes de enunciar o postulado da mecânica estatística, no
+                    <a href="[03] - O Ensemble Microcanônico.html">tópico 4.3</a>, precisamos de três coisas: o
+                    espaço onde os microestados clássicos moram, uma maneira de pôr probabilidades nele e uma
+                    unidade de volume que transforme volumes em números de estados.
+                </p>
+
+                <p>
+                    O espaço é o espaço de fase da mecânica hamiltoniana, cujas equações relembramos. As
+                    probabilidades vêm da ideia de ensemble de Gibbs: uma coleção imaginária de cópias do sistema,
+                    descrita por uma densidade no espaço de fase. O resultado central do tópico é o teorema de
+                    Liouville: a dinâmica hamiltoniana conserva volumes no espaço de fase, e uma densidade de
+                    probabilidade é constante ao longo das trajetórias. Dele decorre que as densidades de
+                    equilíbrio dependem do microestado apenas por meio das grandezas conservadas, e é isso que
+                    torna natural o postulado do tópico 4.3. A unidade de volume é a constante de Planck $h$ por
+                    grau de liberdade, e a justificamos comparando a contagem clássica com a quântica em dois
+                    exemplos.
+                </p>
+
+                <p>
+                    Usamos a mecânica hamiltoniana no nível de um curso de Mecânica Clássica. Os resultados de
+                    análise de que precisamos (existência e unicidade de soluções de equações diferenciais e
+                    mudança de variáveis em integrais) são citados com enunciado preciso; todo o resto é provado.
+                </p>
+
+                <h2 id="dinamica-hamiltoniana">Dinâmica hamiltoniana</h2>
+
+                <p>
+                    Um sistema mecânico com $f$ graus de liberdade é descrito, na formulação hamiltoniana, por $f$
+                    coordenadas generalizadas e $f$ momentos conjugados. Para $N$ partículas em três dimensões,
+                    $f = 3N$; as coordenadas são as componentes das posições e os momentos, as componentes dos
+                    momentos lineares.
+                </p>
+
+                <div class="definition-box" id="def-4-2-1" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.2.1 (Sistema hamiltoniano).</strong> Um <strong>sistema
+                        hamiltoniano</strong> com $f$ graus de liberdade é dado por uma função suave
+                        $\mathcal{H}(q,p,t)$, o <strong>hamiltoniano</strong>, das coordenadas
+                        $q = (q_1,\dots,q_f)$, dos momentos $p = (p_1,\dots,p_f)$ e, eventualmente, do tempo. A
+                        evolução é dada pelas <strong>equações de Hamilton</strong></p>
+                    <p>$$ \dot q_i = \frac{\partial\mathcal{H}}{\partial p_i}, \qquad \dot p_i = -\frac{\partial\mathcal{H}}{\partial q_i}, \qquad i = 1,\dots,f. \tag{4.2.1} $$</p>
+                </div>
+
+                <p id="ex-4-2-2"><strong>Exemplo 4.2.2 (Oscilador harmônico).</strong> Para uma partícula de
+                    massa $m$ ligada a uma mola de frequência angular $\omega$,
+                    $\mathcal{H} = \dfrac{p^2}{2m} + \dfrac12m\omega^2q^2$. As equações (4.2.1) dão
+                    $\dot q = p/m$ e $\dot p = -m\omega^2q$, cuja solução geral é</p>
+
+                <p>$$ q(t) = A\cos(\omega t + \phi), \qquad p(t) = -m\omega A\sin(\omega t + \phi), $$</p>
+
+                <p>
+                    como se verifica derivando: $\dot q = -\omega A\sin(\omega t+\phi) = p/m$ e
+                    $\dot p = -m\omega^2A\cos(\omega t+\phi) = -m\omega^2q$.
+                </p>
+
+                <div class="definition-box" id="prop-4-2-3">
+                    <p><strong>Proposição 4.2.3 (Conservação da energia).</strong> Ao longo de uma solução das
+                        equações de Hamilton, $\dfrac{d\mathcal{H}}{dt} = \dfrac{\partial\mathcal{H}}{\partial t}$. Em
+                        particular, se $\mathcal{H}$ não depende explicitamente do tempo, ele é constante ao longo
+                        de cada solução.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela regra da cadeia e por (4.2.1),
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    \frac{d\mathcal{H}}{dt} &= \sum_{i=1}^{f}\left(\frac{\partial\mathcal{H}}{\partial q_i}\dot q_i + \frac{\partial\mathcal{H}}{\partial p_i}\dot p_i\right) + \frac{\partial\mathcal{H}}{\partial t} \\
+                    &= \sum_{i=1}^{f}\left(\frac{\partial\mathcal{H}}{\partial q_i}\frac{\partial\mathcal{H}}{\partial p_i} - \frac{\partial\mathcal{H}}{\partial p_i}\frac{\partial\mathcal{H}}{\partial q_i}\right) + \frac{\partial\mathcal{H}}{\partial t} = \frac{\partial\mathcal{H}}{\partial t}.
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    Cada termo da soma se cancela consigo mesmo. $\blacksquare$
+                </p>
+
+                <p>
+                    Daqui em diante, salvo aviso, o hamiltoniano não depende do tempo, e seu valor é a energia
+                    $E$ do sistema, conservada.
+                </p>
+
+                <div class="definition-box" id="def-4-2-4" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.2.4 (Colchete de Poisson).</strong> Para funções suaves $A$ e $B$ de
+                        $(q,p)$ (e eventualmente de $t$), o <strong>colchete de Poisson</strong> é</p>
+                    <p>$$ \{A,B\} = \sum_{i=1}^{f}\left(\frac{\partial A}{\partial q_i}\frac{\partial B}{\partial p_i} - \frac{\partial A}{\partial p_i}\frac{\partial B}{\partial q_i}\right). \tag{4.2.2} $$</p>
+                </div>
+
+                <p>
+                    O colchete é antissimétrico, $\{A,B\} = -\{B,A\}$; em particular, $\{A,A\} = 0$. Ele é linear em
+                    cada argumento e satisfaz a regra de Leibniz $\{AB,C\} = A\{B,C\} + \{A,C\}B$, como se verifica
+                    diretamente pela definição.
+                </p>
+
+                <div class="definition-box" id="prop-4-2-5">
+                    <p><strong>Proposição 4.2.5 (Evolução de uma grandeza).</strong> Se $A(q,p,t)$ é suave, então,
+                        ao longo de uma solução das equações de Hamilton,</p>
+                    <p>$$ \frac{dA}{dt} = \{A,\mathcal{H}\} + \frac{\partial A}{\partial t}. \tag{4.2.3} $$</p>
+                    <p>Em particular, uma grandeza $A(q,p)$ sem dependência explícita do tempo é conservada se, e
+                        somente se, $\{A,\mathcal{H}\} = 0$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela regra da cadeia,
+                    $\dfrac{dA}{dt} = \sum_i\left(\dfrac{\partial A}{\partial q_i}\dot q_i + \dfrac{\partial A}{\partial p_i}\dot p_i\right) + \dfrac{\partial A}{\partial t}$.
+                    Substituindo (4.2.1), a soma é
+                    $\sum_i\left(\dfrac{\partial A}{\partial q_i}\dfrac{\partial\mathcal{H}}{\partial p_i} - \dfrac{\partial A}{\partial p_i}\dfrac{\partial\mathcal{H}}{\partial q_i}\right) = \{A,\mathcal{H}\}$.
+                    Se $A$ não depende de $t$, $dA/dt = \{A,\mathcal{H}\}$ ao longo de toda solução; como por todo
+                    ponto passa uma solução (<a href="#teo-4-2-8">Teorema 4.2.8</a> adiante), $A$ é constante ao longo
+                    de todas as soluções se, e somente se, a função $\{A,\mathcal{H}\}$ se anula em todo ponto.
+                    $\blacksquare$
+                </p>
+
+                <p>
+                    A <a href="#prop-4-2-3">Proposição 4.2.3</a> é o caso $A = \mathcal{H}$, porque
+                    $\{\mathcal{H},\mathcal{H}\} = 0$.
+                </p>
+
+                <p id="ex-4-2-6"><strong>Exemplo 4.2.6 (Pêndulo e partícula em uma caixa).</strong> Para um
+                    pêndulo simples de massa $m$ e comprimento $\ell$, com $q$ o ângulo com a vertical,
+                    $\mathcal{H} = \dfrac{p^2}{2m\ell^2} - mg\ell\cos q$, e as equações de Hamilton são
+                    $\dot q = p/(m\ell^2)$ e $\dot p = -mg\ell\sin q$. Para uma partícula livre em um segmento
+                    $0 \le q \le L$ com paredes rígidas, $\mathcal{H} = p^2/2m$ no interior: a partícula anda com
+                    $p$ constante e, ao atingir uma parede, $p$ troca de sinal. As paredes são um vínculo ideal (um
+                    potencial infinito fora do segmento); as equações de Hamilton valem entre as colisões, e a
+                    energia $p^2/2m$ se conserva também nelas.</p>
+
+                <h2 id="espaco-de-fase">O espaço de fase</h2>
+
+                <p>
+                    As equações de Hamilton são de primeira ordem nas $2f$ variáveis $(q,p)$: dado o valor de todas
+                    elas em um instante, a evolução fica determinada. Isso sugere tratar o par $(q,p)$ como um único
+                    ponto de um espaço de dimensão $2f$.
+                </p>
+
+                <div class="definition-box" id="def-4-2-7" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.2.7 (Espaço de fase).</strong> O <strong>espaço de fase</strong>
+                        $\Gamma$ de um sistema com $f$ graus de liberdade é o conjunto dos pontos
+                        $x = (q,p) = (q_1,\dots,q_f,p_1,\dots,p_f)$ admissíveis, descrito, nas coordenadas
+                        escolhidas, como um subconjunto de $\mathbb{R}^{2f}$. Cada ponto de $\Gamma$ é um <strong>microestado</strong> clássico, no
+                        sentido da <a href="[01] - Motivação e Roteiro.html#def-4-1-1">Definição 4.1.1</a>. A curva
+                        $t \mapsto x(t)$ descrita por uma solução das equações de Hamilton é uma
+                        <strong>trajetória de fase</strong>. Escrevemos (4.2.1) como $\dot x = v(x)$, com o
+                        <strong>campo de velocidades</strong>
+                        $v = \big(\partial\mathcal{H}/\partial p_1,\dots,\partial\mathcal{H}/\partial p_f,\,-\partial\mathcal{H}/\partial q_1,\dots,-\partial\mathcal{H}/\partial q_f\big)$.</p>
+                </div>
+
+                <p>
+                    Para um mol de gás, $\Gamma$ tem cerca de $3{,}6\times10^{24}$ dimensões. Não há como desenhá-lo, mas
+                    a geometria de $\mathbb{R}^{2f}$ (volumes, regiões, superfícies) continua valendo, e é ela que
+                    usaremos. Os exemplos com $f = 1$, em que $\Gamma$ é desenhado como um plano, dão a intuição. Quando
+                    uma coordenada é um ângulo, como no pêndulo, os valores $q$ e $q + 2\pi$ representam a mesma
+                    posição: o espaço de fase do pêndulo é, a rigor, um cilindro, que desenhamos cortado ao longo de
+                    $q = \pm\pi$. Isso não muda nenhum cálculo local (derivadas, volumes, fluxos).
+                </p>
+
+                <div class="definition-box" id="teo-4-2-8">
+                    <p><strong>Teorema 4.2.8 (Existência e unicidade).</strong> Se $\mathcal{H}$ é suave em um aberto
+                        $\Gamma \subset \mathbb{R}^{2f}$, então por cada ponto $x_0 \in \Gamma$ passa exatamente uma
+                        solução maximal de $\dot x = v(x)$ com $x(0) = x_0$. Escrevendo
+                        $\varphi_t(x_0)$ para o ponto dessa solução no instante $t$, a aplicação
+                        $(t,x_0) \mapsto \varphi_t(x_0)$, o <strong>fluxo hamiltoniano</strong>, é suave onde está
+                        definida, e $\varphi_{t+s} = \varphi_t\circ\varphi_s$.</p>
+                </div>
+
+                <p>
+                    <em>Ideia da demonstração.</em> Escreve-se a equação na forma integral
+                    $x(t) = x_0 + \int_0^tv(x(s))\,ds$ e mostra-se que a iteração de Picard converge, pois $v$ é
+                    localmente lipschitziano; a unicidade sai da desigualdade de Gronwall, e a suavidade em relação
+                    a $x_0$ da equação que a derivada $\partial x/\partial x_0$ satisfaz. A lei
+                    $\varphi_{t+s} = \varphi_t\circ\varphi_s$ é a unicidade aplicada a $t \mapsto \varphi_{t+s}(x_0)$,
+                    que é solução com valor inicial $\varphi_s(x_0)$. Referência: qualquer texto de equações
+                    diferenciais ordinárias; para o contexto hamiltoniano, Huang, capítulo 6.
+                </p>
+
+                <p>
+                    Supomos daqui em diante que as soluções estão definidas para todo $t$ (o fluxo é
+                    <strong>completo</strong>). Uma solução maximal só deixa de existir em tempo finito se sair de todo
+                    compacto contido em $\Gamma$: se for ao infinito ou se aproximar da fronteira de $\Gamma$. Nos
+                    exemplos do curso isso não acontece: a energia conservada limita os momentos, as coordenadas
+                    angulares são periódicas e, nas partículas em uma caixa, as paredes não fazem parte do campo
+                    suave. Elas entram como a regra adicional de reflexão do <a href="#ex-4-2-6">Exemplo 4.2.6</a>: as
+                    equações de Hamilton valem entre as colisões, e a reflexão $p_i \mapsto -p_i$ também preserva
+                    volumes no espaço de fase.
+                </p>
+
+                <div class="definition-box" id="prop-4-2-9">
+                    <p><strong>Proposição 4.2.9 (Trajetórias não se cruzam).</strong> Se $\mathcal{H}$ não depende
+                        do tempo e duas trajetórias de fase têm um ponto em comum, então elas são a mesma curva,
+                        percorrida com um deslocamento no tempo.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Sejam $x(t)$ e $y(t)$ soluções com $x(t_1) = y(t_2)$. Como $v$ não
+                    depende de $t$, $z(t) = y(t + t_2 - t_1)$ também é solução: $\dot z(t) = \dot y(t+t_2-t_1) = v(z(t))$.
+                    E $z(t_1) = y(t_2) = x(t_1)$. Pela unicidade do <a href="#teo-4-2-8">Teorema 4.2.8</a>,
+                    $z = x$, ou seja, $y(t) = x(t - t_2 + t_1)$ para todo $t$. $\blacksquare$
+                </p>
+
+                <p>
+                    Assim, o espaço de fase é "folheado" por trajetórias que não se tocam. Pela
+                    <a href="#prop-4-2-3">Proposição 4.2.3</a>, cada trajetória fica sobre um conjunto de energia
+                    constante.
+                </p>
+
+                <div class="definition-box" id="def-4-2-10" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.2.10 (Superfície e casca de energia).</strong> Para um hamiltoniano
+                        independente do tempo, a <strong>superfície de energia</strong> $E$ é o conjunto
+                        $\{x \in \Gamma : \mathcal{H}(x) = E\}$, e a <strong>casca de energia</strong> de largura
+                        $\delta E \gt 0$ é a região $\{x \in \Gamma : E \le \mathcal{H}(x) \le E + \delta E\}$.</p>
+                </div>
+
+                <p>
+                    Uma trajetória com energia $E$ nunca sai da superfície de energia $E$. A casca aparecerá no
+                    <a href="[03] - O Ensemble Microcanônico.html">tópico 4.3</a>, porque a energia de um sistema
+                    real só é conhecida com alguma incerteza $\delta E$.
+                </p>
+
+                <p id="ex-4-2-11"><strong>Exemplo 4.2.11 (O espaço de fase do oscilador).</strong> Para o oscilador
+                    do <a href="#ex-4-2-2">Exemplo 4.2.2</a>, a superfície de energia $E$ é a elipse
+                    $\dfrac{p^2}{2mE} + \dfrac{q^2}{2E/(m\omega^2)} = 1$, de semieixos $\sqrt{2E/(m\omega^2)}$ na
+                    direção de $q$ e $\sqrt{2mE}$ na direção de $p$. A região $\mathcal{H} \le E$ é o interior da
+                    elipse, de área</p>
+
+                <p>$$ \pi\sqrt{\frac{2E}{m\omega^2}}\,\sqrt{2mE} = \frac{2\pi E}{\omega}. \tag{4.2.4} $$</p>
+
+                <p>
+                    As trajetórias são as próprias elipses, percorridas no sentido horário (quando $p \gt 0$,
+                    $\dot q = p/m \gt 0$), com período $2\pi/\omega$ independente da energia. A casca entre $E$ e
+                    $E + \delta E$ é um anel elíptico de área $2\pi\,\delta E/\omega$.
+                </p>
+
+                <figure class="lecture-figure" id="fig-4-2-1">
+                    <svg viewBox="0 0 640 320" role="img" aria-label="Plano de fase com o eixo q na horizontal e o eixo p na vertical. Três elipses concêntricas, centradas na origem e mais largas na direção de q, representam energias E1, E e E + delta E; a externa é tracejada. A faixa entre as elipses de energias E e E + delta E está sombreada e indicada como a casca de energia. Uma seta sobre a elipse interna mostra que o movimento é no sentido horário.">
+<defs><marker id="arr-4-2-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<path d="M451.5,160 L451.4,157.9 L451.3,155.7 L451.1,153.6 L450.8,151.5 L450.3,149.4 L449.9,147.2 L449.3,145.1 L448.6,143.1 L447.8,141 L447,138.9 L446.1,136.8 L445,134.8 L443.9,132.8 L442.7,130.8 L441.5,128.8 L440.1,126.8 L438.7,124.9 L437.1,123 L435.5,121.1 L433.9,119.2 L432.1,117.4 L430.3,115.6 L428.3,113.8 L426.4,112.1 L424.3,110.4 L422.2,108.7 L420,107.1 L417.7,105.5 L415.4,103.9 L413,102.4 L410.5,100.9 L408,99.4 L405.4,98 L402.7,96.7 L400,95.3 L397.3,94.1 L394.5,92.8 L391.6,91.6 L388.7,90.5 L385.7,89.4 L382.7,88.4 L379.7,87.4 L376.6,86.4 L373.5,85.5 L370.3,84.7 L367.1,83.9 L363.9,83.2 L360.6,82.5 L357.3,81.8 L354,81.3 L350.7,80.7 L347.3,80.3 L344,79.9 L340.6,79.5 L337.2,79.2 L333.7,78.9 L330.3,78.7 L326.9,78.6 L323.4,78.5 L320,78.5 L316.6,78.5 L313.1,78.6 L309.7,78.7 L306.3,78.9 L302.8,79.2 L299.4,79.5 L296,79.9 L292.7,80.3 L289.3,80.7 L286,81.3 L282.7,81.8 L279.4,82.5 L276.1,83.2 L272.9,83.9 L269.7,84.7 L266.5,85.5 L263.4,86.4 L260.3,87.4 L257.3,88.4 L254.3,89.4 L251.3,90.5 L248.4,91.6 L245.5,92.8 L242.7,94.1 L240,95.3 L237.3,96.7 L234.6,98 L232,99.4 L229.5,100.9 L227,102.4 L224.6,103.9 L222.3,105.5 L220,107.1 L217.8,108.7 L215.7,110.4 L213.6,112.1 L211.7,113.8 L209.7,115.6 L207.9,117.4 L206.1,119.2 L204.5,121.1 L202.9,123 L201.3,124.9 L199.9,126.8 L198.5,128.8 L197.3,130.8 L196.1,132.8 L195,134.8 L193.9,136.8 L193,138.9 L192.2,141 L191.4,143.1 L190.7,145.1 L190.1,147.2 L189.7,149.4 L189.2,151.5 L188.9,153.6 L188.7,155.7 L188.6,157.9 L188.5,160 L188.6,162.1 L188.7,164.3 L188.9,166.4 L189.2,168.5 L189.7,170.6 L190.1,172.8 L190.7,174.9 L191.4,176.9 L192.2,179 L193,181.1 L193.9,183.2 L195,185.2 L196.1,187.2 L197.3,189.2 L198.5,191.2 L199.9,193.2 L201.3,195.1 L202.9,197 L204.5,198.9 L206.1,200.8 L207.9,202.6 L209.7,204.4 L211.7,206.2 L213.6,207.9 L215.7,209.6 L217.8,211.3 L220,212.9 L222.3,214.5 L224.6,216.1 L227,217.6 L229.5,219.1 L232,220.6 L234.6,222 L237.3,223.3 L240,224.7 L242.7,225.9 L245.5,227.2 L248.4,228.4 L251.3,229.5 L254.3,230.6 L257.3,231.6 L260.3,232.6 L263.4,233.6 L266.5,234.5 L269.7,235.3 L272.9,236.1 L276.1,236.8 L279.4,237.5 L282.7,238.2 L286,238.7 L289.3,239.3 L292.7,239.7 L296,240.1 L299.4,240.5 L302.8,240.8 L306.3,241.1 L309.7,241.3 L313.1,241.4 L316.6,241.5 L320,241.5 L323.4,241.5 L326.9,241.4 L330.3,241.3 L333.7,241.1 L337.2,240.8 L340.6,240.5 L344,240.1 L347.3,239.7 L350.7,239.3 L354,238.7 L357.3,238.2 L360.6,237.5 L363.9,236.8 L367.1,236.1 L370.3,235.3 L373.5,234.5 L376.6,233.6 L379.7,232.6 L382.7,231.6 L385.7,230.6 L388.7,229.5 L391.6,228.4 L394.5,227.2 L397.3,225.9 L400,224.7 L402.7,223.3 L405.4,222 L408,220.6 L410.5,219.1 L413,217.6 L415.4,216.1 L417.7,214.5 L420,212.9 L422.2,211.3 L424.3,209.6 L426.4,207.9 L428.3,206.2 L430.3,204.4 L432.1,202.6 L433.9,200.8 L435.5,198.9 L437.1,197 L438.7,195.1 L440.1,193.2 L441.5,191.2 L442.7,189.2 L443.9,187.2 L445,185.2 L446.1,183.2 L447,181.1 L447.8,179 L448.6,176.9 L449.3,174.9 L449.9,172.8 L450.3,170.6 L450.8,168.5 L451.1,166.4 L451.3,164.3 L451.4,162.1 Z M437.3,160 L437.3,158.1 L437.1,156.2 L436.9,154.3 L436.7,152.4 L436.3,150.5 L435.9,148.6 L435.3,146.7 L434.7,144.9 L434.1,143 L433.3,141.2 L432.5,139.3 L431.6,137.5 L430.6,135.7 L429.5,133.9 L428.4,132.2 L427.2,130.4 L425.9,128.7 L424.5,127 L423.1,125.3 L421.6,123.6 L420,122 L418.4,120.4 L416.7,118.8 L414.9,117.2 L413.1,115.7 L411.2,114.2 L409.2,112.8 L407.2,111.3 L405.1,109.9 L403,108.6 L400.8,107.2 L398.5,105.9 L396.2,104.7 L393.8,103.5 L391.4,102.3 L389,101.2 L386.4,100.1 L383.9,99 L381.3,98 L378.7,97 L376,96.1 L373.3,95.2 L370.5,94.4 L367.7,93.6 L364.9,92.8 L362,92.1 L359.2,91.4 L356.3,90.8 L353.3,90.3 L350.4,89.7 L347.4,89.3 L344.4,88.9 L341.4,88.5 L338.4,88.2 L335.3,87.9 L332.3,87.7 L329.2,87.5 L326.1,87.4 L323.1,87.3 L320,87.3 L316.9,87.3 L313.9,87.4 L310.8,87.5 L307.7,87.7 L304.7,87.9 L301.6,88.2 L298.6,88.5 L295.6,88.9 L292.6,89.3 L289.6,89.7 L286.7,90.3 L283.7,90.8 L280.8,91.4 L278,92.1 L275.1,92.8 L272.3,93.6 L269.5,94.4 L266.7,95.2 L264,96.1 L261.3,97 L258.7,98 L256.1,99 L253.6,100.1 L251,101.2 L248.6,102.3 L246.2,103.5 L243.8,104.7 L241.5,105.9 L239.2,107.2 L237,108.6 L234.9,109.9 L232.8,111.3 L230.8,112.8 L228.8,114.2 L226.9,115.7 L225.1,117.2 L223.3,118.8 L221.6,120.4 L220,122 L218.4,123.6 L216.9,125.3 L215.5,127 L214.1,128.7 L212.8,130.4 L211.6,132.2 L210.5,133.9 L209.4,135.7 L208.4,137.5 L207.5,139.3 L206.7,141.2 L205.9,143 L205.3,144.9 L204.7,146.7 L204.1,148.6 L203.7,150.5 L203.3,152.4 L203.1,154.3 L202.9,156.2 L202.7,158.1 L202.7,160 L202.7,161.9 L202.9,163.8 L203.1,165.7 L203.3,167.6 L203.7,169.5 L204.1,171.4 L204.7,173.3 L205.3,175.1 L205.9,177 L206.7,178.8 L207.5,180.7 L208.4,182.5 L209.4,184.3 L210.5,186.1 L211.6,187.8 L212.8,189.6 L214.1,191.3 L215.5,193 L216.9,194.7 L218.4,196.4 L220,198 L221.6,199.6 L223.3,201.2 L225.1,202.8 L226.9,204.3 L228.8,205.8 L230.8,207.2 L232.8,208.7 L234.9,210.1 L237,211.4 L239.2,212.8 L241.5,214.1 L243.8,215.3 L246.2,216.5 L248.6,217.7 L251,218.8 L253.6,219.9 L256.1,221 L258.7,222 L261.3,223 L264,223.9 L266.7,224.8 L269.5,225.6 L272.3,226.4 L275.1,227.2 L278,227.9 L280.8,228.6 L283.7,229.2 L286.7,229.7 L289.6,230.3 L292.6,230.7 L295.6,231.1 L298.6,231.5 L301.6,231.8 L304.7,232.1 L307.7,232.3 L310.8,232.5 L313.9,232.6 L316.9,232.7 L320,232.7 L323.1,232.7 L326.1,232.6 L329.2,232.5 L332.3,232.3 L335.3,232.1 L338.4,231.8 L341.4,231.5 L344.4,231.1 L347.4,230.7 L350.4,230.3 L353.3,229.7 L356.3,229.2 L359.2,228.6 L362,227.9 L364.9,227.2 L367.7,226.4 L370.5,225.6 L373.3,224.8 L376,223.9 L378.7,223 L381.3,222 L383.9,221 L386.4,219.9 L389,218.8 L391.4,217.7 L393.8,216.5 L396.2,215.3 L398.5,214.1 L400.8,212.8 L403,211.4 L405.1,210.1 L407.2,208.7 L409.2,207.2 L411.2,205.8 L413.1,204.3 L414.9,202.8 L416.7,201.2 L418.4,199.6 L420,198 L421.6,196.4 L423.1,194.7 L424.5,193 L425.9,191.3 L427.2,189.6 L428.4,187.8 L429.5,186.1 L430.6,184.3 L431.6,182.5 L432.5,180.7 L433.3,178.8 L434.1,177 L434.7,175.1 L435.3,173.3 L435.9,171.4 L436.3,169.5 L436.7,167.6 L436.9,165.7 L437.1,163.8 L437.3,161.9 Z" class="fig-band" fill-rule="evenodd"/>
+<line x1="30" y1="160" x2="616" y2="160" class="fig-axis" marker-end="url(#arr-4-2-1)"/>
+<line x1="320" y1="298" x2="320" y2="18" class="fig-axis" marker-end="url(#arr-4-2-1)"/>
+<text x="612" y="182" text-anchor="end" class="fig-label fig-it">q</text>
+<text x="330" y="32" class="fig-label fig-it">p</text>
+<path d="M390.4,160 L390.4,158.9 L390.3,157.7 L390.2,156.6 L390,155.4 L389.8,154.3 L389.5,153.2 L389.2,152 L388.8,150.9 L388.4,149.8 L388,148.7 L387.5,147.6 L386.9,146.5 L386.3,145.4 L385.7,144.4 L385,143.3 L384.3,142.3 L383.5,141.2 L382.7,140.2 L381.9,139.2 L381,138.2 L380,137.2 L379,136.2 L378,135.3 L376.9,134.3 L375.8,133.4 L374.7,132.5 L373.5,131.7 L372.3,130.8 L371.1,130 L369.8,129.1 L368.5,128.3 L367.1,127.6 L365.7,126.8 L364.3,126.1 L362.8,125.4 L361.4,124.7 L359.9,124 L358.3,123.4 L356.8,122.8 L355.2,122.2 L353.6,121.6 L352,121.1 L350.3,120.6 L348.6,120.1 L346.9,119.7 L345.2,119.3 L343.5,118.9 L341.8,118.5 L340,118.2 L338.2,117.8 L336.4,117.6 L334.6,117.3 L332.8,117.1 L331,116.9 L329.2,116.7 L327.4,116.6 L325.5,116.5 L323.7,116.4 L321.8,116.4 L320,116.4 L318.2,116.4 L316.3,116.4 L314.5,116.5 L312.6,116.6 L310.8,116.7 L309,116.9 L307.2,117.1 L305.4,117.3 L303.6,117.6 L301.8,117.8 L300,118.2 L298.2,118.5 L296.5,118.9 L294.8,119.3 L293.1,119.7 L291.4,120.1 L289.7,120.6 L288,121.1 L286.4,121.6 L284.8,122.2 L283.2,122.8 L281.7,123.4 L280.1,124 L278.6,124.7 L277.2,125.4 L275.7,126.1 L274.3,126.8 L272.9,127.6 L271.5,128.3 L270.2,129.1 L268.9,130 L267.7,130.8 L266.5,131.7 L265.3,132.5 L264.2,133.4 L263.1,134.3 L262,135.3 L261,136.2 L260,137.2 L259,138.2 L258.1,139.2 L257.3,140.2 L256.5,141.2 L255.7,142.3 L255,143.3 L254.3,144.4 L253.7,145.4 L253.1,146.5 L252.5,147.6 L252,148.7 L251.6,149.8 L251.2,150.9 L250.8,152 L250.5,153.2 L250.2,154.3 L250,155.4 L249.8,156.6 L249.7,157.7 L249.6,158.9 L249.6,160 L249.6,161.1 L249.7,162.3 L249.8,163.4 L250,164.6 L250.2,165.7 L250.5,166.8 L250.8,168 L251.2,169.1 L251.6,170.2 L252,171.3 L252.5,172.4 L253.1,173.5 L253.7,174.6 L254.3,175.6 L255,176.7 L255.7,177.7 L256.5,178.8 L257.3,179.8 L258.1,180.8 L259,181.8 L260,182.8 L261,183.8 L262,184.7 L263.1,185.7 L264.2,186.6 L265.3,187.5 L266.5,188.3 L267.7,189.2 L268.9,190 L270.2,190.9 L271.5,191.7 L272.9,192.4 L274.3,193.2 L275.7,193.9 L277.2,194.6 L278.6,195.3 L280.1,196 L281.7,196.6 L283.2,197.2 L284.8,197.8 L286.4,198.4 L288,198.9 L289.7,199.4 L291.4,199.9 L293.1,200.3 L294.8,200.7 L296.5,201.1 L298.2,201.5 L300,201.8 L301.8,202.2 L303.6,202.4 L305.4,202.7 L307.2,202.9 L309,203.1 L310.8,203.3 L312.6,203.4 L314.5,203.5 L316.3,203.6 L318.2,203.6 L320,203.6 L321.8,203.6 L323.7,203.6 L325.5,203.5 L327.4,203.4 L329.2,203.3 L331,203.1 L332.8,202.9 L334.6,202.7 L336.4,202.4 L338.2,202.2 L340,201.8 L341.8,201.5 L343.5,201.1 L345.2,200.7 L346.9,200.3 L348.6,199.9 L350.3,199.4 L352,198.9 L353.6,198.4 L355.2,197.8 L356.8,197.2 L358.3,196.6 L359.9,196 L361.4,195.3 L362.8,194.6 L364.3,193.9 L365.7,193.2 L367.1,192.4 L368.5,191.7 L369.8,190.9 L371.1,190 L372.3,189.2 L373.5,188.3 L374.7,187.5 L375.8,186.6 L376.9,185.7 L378,184.7 L379,183.8 L380,182.8 L381,181.8 L381.9,180.8 L382.7,179.8 L383.5,178.8 L384.3,177.7 L385,176.7 L385.7,175.6 L386.3,174.6 L386.9,173.5 L387.5,172.4 L388,171.3 L388.4,170.2 L388.8,169.1 L389.2,168 L389.5,166.8 L389.8,165.7 L390,164.6 L390.2,163.4 L390.3,162.3 L390.4,161.1 Z" class="fig-curve"/>
+<path d="M437.3,160 L437.3,158.1 L437.1,156.2 L436.9,154.3 L436.7,152.4 L436.3,150.5 L435.9,148.6 L435.3,146.7 L434.7,144.9 L434.1,143 L433.3,141.2 L432.5,139.3 L431.6,137.5 L430.6,135.7 L429.5,133.9 L428.4,132.2 L427.2,130.4 L425.9,128.7 L424.5,127 L423.1,125.3 L421.6,123.6 L420,122 L418.4,120.4 L416.7,118.8 L414.9,117.2 L413.1,115.7 L411.2,114.2 L409.2,112.8 L407.2,111.3 L405.1,109.9 L403,108.6 L400.8,107.2 L398.5,105.9 L396.2,104.7 L393.8,103.5 L391.4,102.3 L389,101.2 L386.4,100.1 L383.9,99 L381.3,98 L378.7,97 L376,96.1 L373.3,95.2 L370.5,94.4 L367.7,93.6 L364.9,92.8 L362,92.1 L359.2,91.4 L356.3,90.8 L353.3,90.3 L350.4,89.7 L347.4,89.3 L344.4,88.9 L341.4,88.5 L338.4,88.2 L335.3,87.9 L332.3,87.7 L329.2,87.5 L326.1,87.4 L323.1,87.3 L320,87.3 L316.9,87.3 L313.9,87.4 L310.8,87.5 L307.7,87.7 L304.7,87.9 L301.6,88.2 L298.6,88.5 L295.6,88.9 L292.6,89.3 L289.6,89.7 L286.7,90.3 L283.7,90.8 L280.8,91.4 L278,92.1 L275.1,92.8 L272.3,93.6 L269.5,94.4 L266.7,95.2 L264,96.1 L261.3,97 L258.7,98 L256.1,99 L253.6,100.1 L251,101.2 L248.6,102.3 L246.2,103.5 L243.8,104.7 L241.5,105.9 L239.2,107.2 L237,108.6 L234.9,109.9 L232.8,111.3 L230.8,112.8 L228.8,114.2 L226.9,115.7 L225.1,117.2 L223.3,118.8 L221.6,120.4 L220,122 L218.4,123.6 L216.9,125.3 L215.5,127 L214.1,128.7 L212.8,130.4 L211.6,132.2 L210.5,133.9 L209.4,135.7 L208.4,137.5 L207.5,139.3 L206.7,141.2 L205.9,143 L205.3,144.9 L204.7,146.7 L204.1,148.6 L203.7,150.5 L203.3,152.4 L203.1,154.3 L202.9,156.2 L202.7,158.1 L202.7,160 L202.7,161.9 L202.9,163.8 L203.1,165.7 L203.3,167.6 L203.7,169.5 L204.1,171.4 L204.7,173.3 L205.3,175.1 L205.9,177 L206.7,178.8 L207.5,180.7 L208.4,182.5 L209.4,184.3 L210.5,186.1 L211.6,187.8 L212.8,189.6 L214.1,191.3 L215.5,193 L216.9,194.7 L218.4,196.4 L220,198 L221.6,199.6 L223.3,201.2 L225.1,202.8 L226.9,204.3 L228.8,205.8 L230.8,207.2 L232.8,208.7 L234.9,210.1 L237,211.4 L239.2,212.8 L241.5,214.1 L243.8,215.3 L246.2,216.5 L248.6,217.7 L251,218.8 L253.6,219.9 L256.1,221 L258.7,222 L261.3,223 L264,223.9 L266.7,224.8 L269.5,225.6 L272.3,226.4 L275.1,227.2 L278,227.9 L280.8,228.6 L283.7,229.2 L286.7,229.7 L289.6,230.3 L292.6,230.7 L295.6,231.1 L298.6,231.5 L301.6,231.8 L304.7,232.1 L307.7,232.3 L310.8,232.5 L313.9,232.6 L316.9,232.7 L320,232.7 L323.1,232.7 L326.1,232.6 L329.2,232.5 L332.3,232.3 L335.3,232.1 L338.4,231.8 L341.4,231.5 L344.4,231.1 L347.4,230.7 L350.4,230.3 L353.3,229.7 L356.3,229.2 L359.2,228.6 L362,227.9 L364.9,227.2 L367.7,226.4 L370.5,225.6 L373.3,224.8 L376,223.9 L378.7,223 L381.3,222 L383.9,221 L386.4,219.9 L389,218.8 L391.4,217.7 L393.8,216.5 L396.2,215.3 L398.5,214.1 L400.8,212.8 L403,211.4 L405.1,210.1 L407.2,208.7 L409.2,207.2 L411.2,205.8 L413.1,204.3 L414.9,202.8 L416.7,201.2 L418.4,199.6 L420,198 L421.6,196.4 L423.1,194.7 L424.5,193 L425.9,191.3 L427.2,189.6 L428.4,187.8 L429.5,186.1 L430.6,184.3 L431.6,182.5 L432.5,180.7 L433.3,178.8 L434.1,177 L434.7,175.1 L435.3,173.3 L435.9,171.4 L436.3,169.5 L436.7,167.6 L436.9,165.7 L437.1,163.8 L437.3,161.9 Z" class="fig-curve"/>
+<path d="M451.5,160 L451.4,157.9 L451.3,155.7 L451.1,153.6 L450.8,151.5 L450.3,149.4 L449.9,147.2 L449.3,145.1 L448.6,143.1 L447.8,141 L447,138.9 L446.1,136.8 L445,134.8 L443.9,132.8 L442.7,130.8 L441.5,128.8 L440.1,126.8 L438.7,124.9 L437.1,123 L435.5,121.1 L433.9,119.2 L432.1,117.4 L430.3,115.6 L428.3,113.8 L426.4,112.1 L424.3,110.4 L422.2,108.7 L420,107.1 L417.7,105.5 L415.4,103.9 L413,102.4 L410.5,100.9 L408,99.4 L405.4,98 L402.7,96.7 L400,95.3 L397.3,94.1 L394.5,92.8 L391.6,91.6 L388.7,90.5 L385.7,89.4 L382.7,88.4 L379.7,87.4 L376.6,86.4 L373.5,85.5 L370.3,84.7 L367.1,83.9 L363.9,83.2 L360.6,82.5 L357.3,81.8 L354,81.3 L350.7,80.7 L347.3,80.3 L344,79.9 L340.6,79.5 L337.2,79.2 L333.7,78.9 L330.3,78.7 L326.9,78.6 L323.4,78.5 L320,78.5 L316.6,78.5 L313.1,78.6 L309.7,78.7 L306.3,78.9 L302.8,79.2 L299.4,79.5 L296,79.9 L292.7,80.3 L289.3,80.7 L286,81.3 L282.7,81.8 L279.4,82.5 L276.1,83.2 L272.9,83.9 L269.7,84.7 L266.5,85.5 L263.4,86.4 L260.3,87.4 L257.3,88.4 L254.3,89.4 L251.3,90.5 L248.4,91.6 L245.5,92.8 L242.7,94.1 L240,95.3 L237.3,96.7 L234.6,98 L232,99.4 L229.5,100.9 L227,102.4 L224.6,103.9 L222.3,105.5 L220,107.1 L217.8,108.7 L215.7,110.4 L213.6,112.1 L211.7,113.8 L209.7,115.6 L207.9,117.4 L206.1,119.2 L204.5,121.1 L202.9,123 L201.3,124.9 L199.9,126.8 L198.5,128.8 L197.3,130.8 L196.1,132.8 L195,134.8 L193.9,136.8 L193,138.9 L192.2,141 L191.4,143.1 L190.7,145.1 L190.1,147.2 L189.7,149.4 L189.2,151.5 L188.9,153.6 L188.7,155.7 L188.6,157.9 L188.5,160 L188.6,162.1 L188.7,164.3 L188.9,166.4 L189.2,168.5 L189.7,170.6 L190.1,172.8 L190.7,174.9 L191.4,176.9 L192.2,179 L193,181.1 L193.9,183.2 L195,185.2 L196.1,187.2 L197.3,189.2 L198.5,191.2 L199.9,193.2 L201.3,195.1 L202.9,197 L204.5,198.9 L206.1,200.8 L207.9,202.6 L209.7,204.4 L211.7,206.2 L213.6,207.9 L215.7,209.6 L217.8,211.3 L220,212.9 L222.3,214.5 L224.6,216.1 L227,217.6 L229.5,219.1 L232,220.6 L234.6,222 L237.3,223.3 L240,224.7 L242.7,225.9 L245.5,227.2 L248.4,228.4 L251.3,229.5 L254.3,230.6 L257.3,231.6 L260.3,232.6 L263.4,233.6 L266.5,234.5 L269.7,235.3 L272.9,236.1 L276.1,236.8 L279.4,237.5 L282.7,238.2 L286,238.7 L289.3,239.3 L292.7,239.7 L296,240.1 L299.4,240.5 L302.8,240.8 L306.3,241.1 L309.7,241.3 L313.1,241.4 L316.6,241.5 L320,241.5 L323.4,241.5 L326.9,241.4 L330.3,241.3 L333.7,241.1 L337.2,240.8 L340.6,240.5 L344,240.1 L347.3,239.7 L350.7,239.3 L354,238.7 L357.3,238.2 L360.6,237.5 L363.9,236.8 L367.1,236.1 L370.3,235.3 L373.5,234.5 L376.6,233.6 L379.7,232.6 L382.7,231.6 L385.7,230.6 L388.7,229.5 L391.6,228.4 L394.5,227.2 L397.3,225.9 L400,224.7 L402.7,223.3 L405.4,222 L408,220.6 L410.5,219.1 L413,217.6 L415.4,216.1 L417.7,214.5 L420,212.9 L422.2,211.3 L424.3,209.6 L426.4,207.9 L428.3,206.2 L430.3,204.4 L432.1,202.6 L433.9,200.8 L435.5,198.9 L437.1,197 L438.7,195.1 L440.1,193.2 L441.5,191.2 L442.7,189.2 L443.9,187.2 L445,185.2 L446.1,183.2 L447,181.1 L447.8,179 L448.6,176.9 L449.3,174.9 L449.9,172.8 L450.3,170.6 L450.8,168.5 L451.1,166.4 L451.3,164.3 L451.4,162.1 Z" class="fig-curve fig-dashed"/>
+<line x1="293.6" y1="119.5" x2="332.2" y2="117" class="fig-curve" marker-end="url(#arr-4-2-1)"/>
+<text x="375.3" y="118" class="fig-label fig-it">E₁</text>
+<text x="387.4" y="207.7" text-anchor="end" class="fig-label fig-it">E</text>
+<text x="457.5" y="142" class="fig-label fig-it">E + δE</text>
+<text x="20" y="42" class="fig-label fig-small">casca E ≤ H ≤ E + δE</text>
+<line x1="115" y1="48" x2="150" y2="80" class="fig-guide" marker-end="url(#arr-4-2-1)"/>
+</svg>
+                    <figcaption><strong>Figura 4.2.1.</strong> O espaço de fase do oscilador harmônico. Cada elipse é
+                        uma superfície de energia e, ao mesmo tempo, uma trajetória de fase, percorrida no sentido
+                        horário. A região sombreada é a casca $E \le \mathcal{H} \le E + \delta E$, de área
+                        $2\pi\,\delta E/\omega$ pela Equação (4.2.4).</figcaption>
+                </figure>
+
+                <h2 id="ensembles">Ensembles e médias</h2>
+
+                <p>
+                    Não conhecemos o microestado de um sistema macroscópico; conhecemos apenas o seu macroestado.
+                    Gibbs propôs representar essa ignorância de forma concreta: em vez de um sistema, imaginamos um
+                    número enorme de cópias mentais dele, todas preparadas no mesmo macroestado mas espalhadas pelos
+                    microestados compatíveis. A fração de cópias em cada região do espaço de fase é a probabilidade
+                    de o sistema real estar nessa região.
+                </p>
+
+                <div class="definition-box" id="def-4-2-12" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.2.12 (Ensemble).</strong> Um <strong>ensemble</strong> é uma
+                        distribuição de probabilidade no espaço de fase, dada por uma <strong>densidade</strong>
+                        $\rho(x,t) \ge 0$ com</p>
+                    <p>$$ \int_\Gamma\rho(x,t)\,d^{2f}x = 1 \quad\text{para todo } t, \tag{4.2.5} $$</p>
+                    <p>em que $d^{2f}x = d^fq\,d^fp$. A probabilidade de o sistema estar, no instante $t$, em uma
+                        região $R \subset \Gamma$ é $\int_R\rho(x,t)\,d^{2f}x$.</p>
+                </div>
+
+                <div class="definition-box" id="def-4-2-13" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.2.13 (Média de ensemble e média temporal).</strong> Para uma grandeza
+                        física $A(x)$, a <strong>média de ensemble</strong> no instante $t$ e a <strong>média
+                        temporal</strong> ao longo da trajetória que parte de $x_0$ são</p>
+                    <p>$$ \langle A\rangle_t = \int_\Gamma A(x)\,\rho(x,t)\,d^{2f}x, \qquad \bar A(x_0) = \lim_{T\to\infty}\frac1T\int_0^TA\big(\varphi_t(x_0)\big)\,dt, \tag{4.2.6} $$</p>
+                    <p>quando o limite existe.</p>
+                </div>
+
+                <p>
+                    As duas médias respondem a perguntas diferentes. A média temporal é o que um instrumento lento
+                    registra ao observar <em>um</em> sistema por um tempo longo diante dos tempos microscópicos. A
+                    média de ensemble é uma média sobre <em>muitas</em> cópias em um mesmo instante. A teoria só é
+                    útil se elas coincidirem para as grandezas que medimos.
+                </p>
+
+                <p id="obs-4-2-14"><strong>Observação 4.2.14 (A hipótese ergódica).</strong> A
+                    <strong>hipótese ergódica</strong> afirma que, para um sistema isolado, a média temporal ao longo
+                    de quase toda trajetória é igual à média sobre a superfície de energia. O peso dessa média não é
+                    a área da superfície: é o limite, quando $\delta E \to 0$, da densidade uniforme no volume de fase
+                    da casca $E \le \mathcal{H} \le E + \delta E$. Como a casca é mais grossa onde
+                    $\lVert\nabla\mathcal{H}\rVert$ é menor, esse peso é o elemento de área
+                    $d\Sigma$ dividido por $\lVert\nabla\mathcal{H}\rVert$, e não $d\Sigma$. A hipótese
+                    exprimiria a ideia de que uma trajetória, com o tempo, passa perto de todos os pontos da
+                    superfície de energia, gastando em cada região um tempo proporcional ao seu peso. Provar isso
+                    para sistemas físicos realistas é um problema matemático muito difícil, resolvido apenas em casos
+                    especiais; e há sistemas, como o oscilador harmônico com várias frequências independentes, em que
+                    ela é falsa. Além disso, mesmo quando vale, ela não diz quanto tempo é preciso esperar. Por essas
+                    razões, a mecânica estatística não parte da hipótese ergódica: parte de um postulado sobre o
+                    ensemble, enunciado no <a href="[03] - O Ensemble Microcanônico.html">tópico 4.3</a> e julgado
+                    pelas suas consequências. O teorema de Liouville, a seguir, mostra que esse postulado é ao
+                    menos compatível com a dinâmica. Referência: Huang, capítulo 6.</p>
+
+                <h2 id="liouville">O teorema de Liouville</h2>
+
+                <p>
+                    Cada cópia do ensemble evolui pelas equações de Hamilton. O fluxo $\varphi_t$ do
+                    <a href="#teo-4-2-8">Teorema 4.2.8</a> leva, portanto, o conjunto das cópias que estavam em uma
+                    região $R$ no instante $0$ para a região $\varphi_t(R)$ no instante $t$, e nenhuma cópia surge ou
+                    desaparece. Para saber como a densidade muda, precisamos saber como os volumes mudam sob o fluxo.
+                    A resposta está no campo de velocidades.
+                </p>
+
+                <div class="definition-box" id="lema-4-2-15">
+                    <p><strong>Lema 4.2.15 (O fluxo hamiltoniano não tem divergência).</strong> Para todo
+                        hamiltoniano suave,</p>
+                    <p>$$ \nabla\cdot v = \sum_{i=1}^{f}\left(\frac{\partial\dot q_i}{\partial q_i} + \frac{\partial\dot p_i}{\partial p_i}\right) = 0. \tag{4.2.7} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Por (4.2.1),
+                    $\dfrac{\partial\dot q_i}{\partial q_i} + \dfrac{\partial\dot p_i}{\partial p_i} = \dfrac{\partial^2\mathcal{H}}{\partial q_i\,\partial p_i} - \dfrac{\partial^2\mathcal{H}}{\partial p_i\,\partial q_i} = 0$
+                    para cada $i$, pela igualdade das derivadas mistas de uma função suave. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="lema-4-2-16">
+                    <p><strong>Lema 4.2.16 (Jacobiano do fluxo).</strong> Seja $J(t,x) = \det D\varphi_t(x)$ o
+                        jacobiano do fluxo hamiltoniano. Então $J(t,x) = 1$ para todo $t$ e todo $x$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> <strong>Passo 1.</strong> Seja $M(t) = D\varphi_t(x)$, a matriz das
+                    derivadas de $\varphi_t(x)$ em relação a $x$. Derivando $\dfrac{\partial}{\partial t}\varphi_t(x) = v\big(\varphi_t(x)\big)$
+                    em relação a $x$ (o fluxo é suave, e as derivadas comutam) e usando a regra da cadeia, obtemos
+                    $\dot M(t) = Dv\big(\varphi_t(x)\big)\,M(t)$, com $M(0) = I$, pois $\varphi_0$ é a identidade.
+                </p>
+
+                <p>
+                    <strong>Passo 2.</strong> Para qualquer matriz $A$, $\det(I + \varepsilon A) = 1 + \varepsilon\operatorname{tr}A + O(\varepsilon^2)$:
+                    no desenvolvimento do determinante, os únicos termos de primeira ordem em $\varepsilon$ vêm do
+                    produto da diagonal, $\prod_k(1 + \varepsilon A_{kk})$. Como $M(t)$ é invertível (sua inversa é
+                    $D\varphi_{-t}$ no ponto $\varphi_t(x)$, pela lei de grupo), escrevemos
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    \det M(t+\varepsilon) &= \det\!\big(M(t) + \varepsilon\dot M(t) + O(\varepsilon^2)\big) \\
+                    &= \det M(t)\,\det\!\big(I + \varepsilon M(t)^{-1}\dot M(t) + O(\varepsilon^2)\big) \\
+                    &= \det M(t)\,\big(1 + \varepsilon\operatorname{tr}\big(M^{-1}\dot M\big) + O(\varepsilon^2)\big).
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    Logo $\dot J = J\operatorname{tr}(M^{-1}\dot M)$ (a fórmula de Jacobi). Pelo Passo 1,
+                    $M^{-1}\dot M = M^{-1}\,Dv\,M$, cujo traço é igual ao de $Dv$, que é $\nabla\cdot v$.
+                </p>
+
+                <p>
+                    <strong>Passo 3.</strong> Então $\dot J(t) = \big(\nabla\cdot v\big)\big(\varphi_t(x)\big)\,J(t) = 0$
+                    pelo <a href="#lema-4-2-15">Lema 4.2.15</a>, e $J(0) = \det I = 1$. Logo $J \equiv 1$.
+                    $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="teo-4-2-17">
+                    <p><strong>Teorema 4.2.17 (Conservação do volume de fase).</strong> Para toda região
+                        $R \subset \Gamma$ e todo $t$, $\operatorname{Vol}\big(\varphi_t(R)\big) = \operatorname{Vol}(R)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela fórmula de mudança de variáveis em integrais múltiplas, com
+                    $y = \varphi_t(x)$ (um difeomorfismo, de inversa $\varphi_{-t}$),
+                    $\operatorname{Vol}\big(\varphi_t(R)\big) = \int_{\varphi_t(R)}d^{2f}y = \int_R\lvert J(t,x)\rvert\,d^{2f}x = \int_Rd^{2f}x = \operatorname{Vol}(R)$,
+                    pelo <a href="#lema-4-2-16">Lema 4.2.16</a>. $\blacksquare$
+                </p>
+
+                <p>
+                    Uma região do espaço de fase pode se deformar muito sob o fluxo, esticando-se em uma direção e
+                    encolhendo em outra, mas não muda de volume. Na linguagem dos fluidos: os pontos do espaço de fase
+                    se movem como um fluido incompressível.
+                </p>
+
+                <div class="definition-box" id="teo-4-2-18">
+                    <p><strong>Teorema 4.2.18 (Liouville).</strong> Seja $\rho(x,t)$ a densidade de um ensemble
+                        cujas cópias evoluem pelas equações de Hamilton, e suponha $\rho$ suave. Então $\rho$ é
+                        constante ao longo das trajetórias de fase:</p>
+                    <p>$$ \rho\big(\varphi_t(x),t\big) = \rho(x,0) \quad\text{para todo } x \text{ e todo } t, $$</p>
+                    <p>o que equivale à <strong>equação de Liouville</strong></p>
+                    <p>$$ \frac{\partial\rho}{\partial t} + \{\rho,\mathcal{H}\} = 0. \tag{4.2.8} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> As cópias que no instante $t$ estão em $\varphi_t(R)$ são exatamente as
+                    que no instante $0$ estavam em $R$; logo a probabilidade se conserva:
+                    $\int_{\varphi_t(R)}\rho(y,t)\,d^{2f}y = \int_R\rho(x,0)\,d^{2f}x$ para toda região $R$. Mudando
+                    de variáveis no primeiro membro, com $y = \varphi_t(x)$ e $J = 1$,
+                </p>
+
+                <p>$$ \int_R\Big[\rho\big(\varphi_t(x),t\big) - \rho(x,0)\Big]\,d^{2f}x = 0 \quad\text{para toda região } R. $$</p>
+
+                <p>
+                    Uma função contínua cuja integral se anula em toda região (por exemplo, em toda bola pequena) é
+                    identicamente nula: se fosse positiva em um ponto, seria positiva em uma bola em torno dele, e a
+                    integral nessa bola seria positiva. Isso dá a primeira forma.
+                </p>
+
+                <p>
+                    Para a equivalência, derivamos $g(t) = \rho\big(\varphi_t(x),t\big)$ pela regra da cadeia e
+                    usamos as equações de Hamilton, como na
+                    <a href="#prop-4-2-5">Proposição 4.2.5</a>:
+                    $\dot g = \dfrac{\partial\rho}{\partial t} + \sum_i\left(\dfrac{\partial\rho}{\partial q_i}\dfrac{\partial\mathcal{H}}{\partial p_i} - \dfrac{\partial\rho}{\partial p_i}\dfrac{\partial\mathcal{H}}{\partial q_i}\right) = \dfrac{\partial\rho}{\partial t} + \{\rho,\mathcal{H}\}$,
+                    calculado no ponto $\big(\varphi_t(x),t\big)$. Se $g$ é constante para todo $x$, o segundo
+                    membro se anula em todos os pontos, pois todo ponto é da forma $\varphi_t(x)$; reciprocamente, se
+                    (4.2.8) vale, $\dot g = 0$ e $g(t) = g(0) = \rho(x,0)$. $\blacksquare$
+                </p>
+
+                <p id="obs-4-2-19"><strong>Observação 4.2.19 (O que o teorema diz e o que não diz).</strong> O
+                    teorema diz que $\rho$ é constante <em>ao longo de cada trajetória</em>; não diz que $\rho$ é
+                    constante no espaço de fase, nem no tempo em um ponto fixo. Uma densidade concentrada em uma região
+                    pequena continua com o mesmo valor, mas a região se deforma, como na Figura 4.2.2. A equação
+                    (4.2.8) também se escreve como uma equação de continuidade,
+                    $\partial_t\rho + \nabla\cdot(\rho v) = 0$, porque
+                    $\nabla\cdot(\rho v) = v\cdot\nabla\rho + \rho\,\nabla\cdot v = v\cdot\nabla\rho = \{\rho,\mathcal{H}\}$,
+                    pelo <a href="#lema-4-2-15">Lema 4.2.15</a>.</p>
+
+                <figure class="lecture-figure" id="fig-4-2-2">
+                    <svg viewBox="0 0 640 320" role="img" aria-label="Plano de fase do pêndulo, com q de menos pi a pi na horizontal e p na vertical. Duas curvas de nível fechadas, em forma de ovais, aparecem como guias, e a separatriz é desenhada tracejada, formando um olho entre q = -pi e q = pi. Um pequeno disco sombreado, perto de q = 0 e p positivo, é o conjunto inicial (t = 0). Depois de um tempo t = 7, o mesmo conjunto aparece como uma faixa fina e curva, esticada ao longo das curvas de nível; sua área é igual à do disco.">
+<defs><marker id="arr-4-2-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<path d="M254.2,153 L255.8,148.7 L257.4,145.9 L259,143.7 L260.6,141.8 L262.2,140.1 L263.8,138.7 L265.4,137.3 L267,136.1 L268.6,135 L270.2,133.9 L271.8,133 L273.4,132 L275,131.2 L276.6,130.4 L278.3,129.6 L279.9,128.9 L281.5,128.3 L283.1,127.6 L284.7,127 L286.3,126.5 L287.9,126 L289.5,125.5 L291.1,125 L292.7,124.6 L294.3,124.2 L295.9,123.8 L297.5,123.5 L299.1,123.2 L300.7,122.9 L302.3,122.6 L303.9,122.4 L305.5,122.1 L307.2,122 L308.8,121.8 L310.4,121.6 L312,121.5 L313.6,121.4 L315.2,121.3 L316.8,121.3 L318.4,121.2 L320,121.2 L321.6,121.2 L323.2,121.3 L324.8,121.3 L326.4,121.4 L328,121.5 L329.6,121.6 L331.2,121.8 L332.8,122 L334.5,122.1 L336.1,122.4 L337.7,122.6 L339.3,122.9 L340.9,123.2 L342.5,123.5 L344.1,123.8 L345.7,124.2 L347.3,124.6 L348.9,125 L350.5,125.5 L352.1,126 L353.7,126.5 L355.3,127 L356.9,127.6 L358.5,128.3 L360.1,128.9 L361.7,129.6 L363.4,130.4 L365,131.2 L366.6,132 L368.2,133 L369.8,133.9 L371.4,135 L373,136.1 L374.6,137.3 L376.2,138.7 L377.8,140.1 L379.4,141.8 L381,143.7 L382.6,145.9 L384.2,148.7 L385.8,153 L385.8,163 L384.2,167.3 L382.6,170.1 L381,172.3 L379.4,174.2 L377.8,175.9 L376.2,177.3 L374.6,178.7 L373,179.9 L371.4,181 L369.8,182.1 L368.2,183 L366.6,184 L365,184.8 L363.4,185.6 L361.7,186.4 L360.1,187.1 L358.5,187.7 L356.9,188.4 L355.3,189 L353.7,189.5 L352.1,190 L350.5,190.5 L348.9,191 L347.3,191.4 L345.7,191.8 L344.1,192.2 L342.5,192.5 L340.9,192.8 L339.3,193.1 L337.7,193.4 L336.1,193.6 L334.5,193.9 L332.8,194 L331.2,194.2 L329.6,194.4 L328,194.5 L326.4,194.6 L324.8,194.7 L323.2,194.7 L321.6,194.8 L320,194.8 L318.4,194.8 L316.8,194.7 L315.2,194.7 L313.6,194.6 L312,194.5 L310.4,194.4 L308.8,194.2 L307.2,194 L305.5,193.9 L303.9,193.6 L302.3,193.4 L300.7,193.1 L299.1,192.8 L297.5,192.5 L295.9,192.2 L294.3,191.8 L292.7,191.4 L291.1,191 L289.5,190.5 L287.9,190 L286.3,189.5 L284.7,189 L283.1,188.4 L281.5,187.7 L279.9,187.1 L278.3,186.4 L276.6,185.6 L275,184.8 L273.4,184 L271.8,183 L270.2,182.1 L268.6,181 L267,179.9 L265.4,178.7 L263.8,177.3 L262.2,175.9 L260.6,174.2 L259,172.3 L257.4,170.1 L255.8,167.3 L254.2,163 Z" class="fig-guide"/>
+<path d="M199.6,151.1 L201.2,146.2 L202.8,142.9 L204.4,140.1 L206,137.8 L207.6,135.7 L209.2,133.8 L210.8,132 L212.4,130.4 L214,128.9 L215.6,127.4 L217.2,126.1 L218.8,124.8 L220.4,123.5 L222.1,122.4 L223.7,121.2 L225.3,120.1 L226.9,119.1 L228.5,118.1 L230.1,117.1 L231.7,116.2 L233.3,115.3 L234.9,114.4 L236.5,113.5 L238.1,112.7 L239.7,111.9 L241.3,111.1 L242.9,110.4 L244.5,109.7 L246.1,109 L247.7,108.3 L249.3,107.6 L251,107 L252.6,106.4 L254.2,105.8 L255.8,105.2 L257.4,104.6 L259,104.1 L260.6,103.5 L262.2,103 L263.8,102.5 L265.4,102 L267,101.6 L268.6,101.1 L270.2,100.7 L271.8,100.3 L273.4,99.9 L275,99.5 L276.6,99.1 L278.3,98.8 L279.9,98.4 L281.5,98.1 L283.1,97.8 L284.7,97.5 L286.3,97.2 L287.9,96.9 L289.5,96.7 L291.1,96.4 L292.7,96.2 L294.3,96 L295.9,95.8 L297.5,95.6 L299.1,95.4 L300.7,95.2 L302.3,95.1 L303.9,95 L305.5,94.8 L307.2,94.7 L308.8,94.6 L310.4,94.5 L312,94.5 L313.6,94.4 L315.2,94.4 L316.8,94.3 L318.4,94.3 L320,94.3 L321.6,94.3 L323.2,94.3 L324.8,94.4 L326.4,94.4 L328,94.5 L329.6,94.5 L331.2,94.6 L332.8,94.7 L334.5,94.8 L336.1,95 L337.7,95.1 L339.3,95.2 L340.9,95.4 L342.5,95.6 L344.1,95.8 L345.7,96 L347.3,96.2 L348.9,96.4 L350.5,96.7 L352.1,96.9 L353.7,97.2 L355.3,97.5 L356.9,97.8 L358.5,98.1 L360.1,98.4 L361.7,98.8 L363.4,99.1 L365,99.5 L366.6,99.9 L368.2,100.3 L369.8,100.7 L371.4,101.1 L373,101.6 L374.6,102 L376.2,102.5 L377.8,103 L379.4,103.5 L381,104.1 L382.6,104.6 L384.2,105.2 L385.8,105.8 L387.4,106.4 L389,107 L390.7,107.6 L392.3,108.3 L393.9,109 L395.5,109.7 L397.1,110.4 L398.7,111.1 L400.3,111.9 L401.9,112.7 L403.5,113.5 L405.1,114.4 L406.7,115.3 L408.3,116.2 L409.9,117.1 L411.5,118.1 L413.1,119.1 L414.7,120.1 L416.3,121.2 L417.9,122.4 L419.6,123.5 L421.2,124.8 L422.8,126.1 L424.4,127.4 L426,128.9 L427.6,130.4 L429.2,132 L430.8,133.8 L432.4,135.7 L434,137.8 L435.6,140.1 L437.2,142.9 L438.8,146.2 L440.4,151.1 L440.4,164.9 L438.8,169.8 L437.2,173.1 L435.6,175.9 L434,178.2 L432.4,180.3 L430.8,182.2 L429.2,184 L427.6,185.6 L426,187.1 L424.4,188.6 L422.8,189.9 L421.2,191.2 L419.6,192.5 L417.9,193.6 L416.3,194.8 L414.7,195.9 L413.1,196.9 L411.5,197.9 L409.9,198.9 L408.3,199.8 L406.7,200.7 L405.1,201.6 L403.5,202.5 L401.9,203.3 L400.3,204.1 L398.7,204.9 L397.1,205.6 L395.5,206.3 L393.9,207 L392.3,207.7 L390.7,208.4 L389,209 L387.4,209.6 L385.8,210.2 L384.2,210.8 L382.6,211.4 L381,211.9 L379.4,212.5 L377.8,213 L376.2,213.5 L374.6,214 L373,214.4 L371.4,214.9 L369.8,215.3 L368.2,215.7 L366.6,216.1 L365,216.5 L363.4,216.9 L361.7,217.2 L360.1,217.6 L358.5,217.9 L356.9,218.2 L355.3,218.5 L353.7,218.8 L352.1,219.1 L350.5,219.3 L348.9,219.6 L347.3,219.8 L345.7,220 L344.1,220.2 L342.5,220.4 L340.9,220.6 L339.3,220.8 L337.7,220.9 L336.1,221 L334.5,221.2 L332.8,221.3 L331.2,221.4 L329.6,221.5 L328,221.5 L326.4,221.6 L324.8,221.6 L323.2,221.7 L321.6,221.7 L320,221.7 L318.4,221.7 L316.8,221.7 L315.2,221.6 L313.6,221.6 L312,221.5 L310.4,221.5 L308.8,221.4 L307.2,221.3 L305.5,221.2 L303.9,221 L302.3,220.9 L300.7,220.8 L299.1,220.6 L297.5,220.4 L295.9,220.2 L294.3,220 L292.7,219.8 L291.1,219.6 L289.5,219.3 L287.9,219.1 L286.3,218.8 L284.7,218.5 L283.1,218.2 L281.5,217.9 L279.9,217.6 L278.3,217.2 L276.6,216.9 L275,216.5 L273.4,216.1 L271.8,215.7 L270.2,215.3 L268.6,214.9 L267,214.4 L265.4,214 L263.8,213.5 L262.2,213 L260.6,212.5 L259,211.9 L257.4,211.4 L255.8,210.8 L254.2,210.2 L252.6,209.6 L251,209 L249.3,208.4 L247.7,207.7 L246.1,207 L244.5,206.3 L242.9,205.6 L241.3,204.9 L239.7,204.1 L238.1,203.3 L236.5,202.5 L234.9,201.6 L233.3,200.7 L231.7,199.8 L230.1,198.9 L228.5,197.9 L226.9,196.9 L225.3,195.9 L223.7,194.8 L222.1,193.6 L220.4,192.5 L218.8,191.2 L217.2,189.9 L215.6,188.6 L214,187.1 L212.4,185.6 L210.8,184 L209.2,182.2 L207.6,180.3 L206,178.2 L204.4,175.9 L202.8,173.1 L201.2,169.8 L199.6,164.9 Z" class="fig-guide"/>
+<path d="M31,158 L33.9,156.4 L36.8,154.7 L39.6,153.1 L42.5,151.5 L45.4,149.8 L48.3,148.2 L51.2,146.6 L54.1,145 L57,143.3 L59.9,141.7 L62.8,140.1 L65.7,138.5 L68.5,136.9 L71.4,135.3 L74.3,133.7 L77.2,132.1 L80.1,130.6 L83,129 L85.9,127.4 L88.8,125.9 L91.7,124.3 L94.6,122.8 L97.4,121.2 L100.3,119.7 L103.2,118.2 L106.1,116.7 L109,115.2 L111.9,113.7 L114.8,112.2 L117.7,110.8 L120.6,109.3 L123.5,107.9 L126.4,106.5 L129.2,105.1 L132.1,103.7 L135,102.3 L137.9,100.9 L140.8,99.5 L143.7,98.2 L146.6,96.9 L149.5,95.6 L152.4,94.3 L155.3,93 L158.1,91.7 L161,90.5 L163.9,89.2 L166.8,88 L169.7,86.8 L172.6,85.6 L175.5,84.5 L178.4,83.3 L181.3,82.2 L184.2,81.1 L187,80 L189.9,78.9 L192.8,77.9 L195.7,76.8 L198.6,75.8 L201.5,74.8 L204.4,73.9 L207.3,72.9 L210.2,72 L213.1,71.1 L216,70.2 L218.8,69.3 L221.7,68.5 L224.6,67.7 L227.5,66.9 L230.4,66.1 L233.3,65.3 L236.2,64.6 L239.1,63.9 L242,63.2 L244.9,62.6 L247.7,61.9 L250.6,61.3 L253.5,60.7 L256.4,60.1 L259.3,59.6 L262.2,59.1 L265.1,58.6 L268,58.1 L270.9,57.7 L273.8,57.3 L276.6,56.9 L279.5,56.5 L282.4,56.2 L285.3,55.8 L288.2,55.5 L291.1,55.3 L294,55 L296.9,54.8 L299.8,54.6 L302.7,54.5 L305.5,54.3 L308.4,54.2 L311.3,54.1 L314.2,54.1 L317.1,54 L320,54 L322.9,54 L325.8,54.1 L328.7,54.1 L331.6,54.2 L334.5,54.3 L337.3,54.5 L340.2,54.6 L343.1,54.8 L346,55 L348.9,55.3 L351.8,55.5 L354.7,55.8 L357.6,56.2 L360.5,56.5 L363.4,56.9 L366.2,57.3 L369.1,57.7 L372,58.1 L374.9,58.6 L377.8,59.1 L380.7,59.6 L383.6,60.1 L386.5,60.7 L389.4,61.3 L392.3,61.9 L395.1,62.6 L398,63.2 L400.9,63.9 L403.8,64.6 L406.7,65.3 L409.6,66.1 L412.5,66.9 L415.4,67.7 L418.3,68.5 L421.2,69.3 L424,70.2 L426.9,71.1 L429.8,72 L432.7,72.9 L435.6,73.9 L438.5,74.8 L441.4,75.8 L444.3,76.8 L447.2,77.9 L450.1,78.9 L453,80 L455.8,81.1 L458.7,82.2 L461.6,83.3 L464.5,84.5 L467.4,85.6 L470.3,86.8 L473.2,88 L476.1,89.2 L479,90.5 L481.9,91.7 L484.7,93 L487.6,94.3 L490.5,95.6 L493.4,96.9 L496.3,98.2 L499.2,99.5 L502.1,100.9 L505,102.3 L507.9,103.7 L510.8,105.1 L513.6,106.5 L516.5,107.9 L519.4,109.3 L522.3,110.8 L525.2,112.2 L528.1,113.7 L531,115.2 L533.9,116.7 L536.8,118.2 L539.7,119.7 L542.6,121.2 L545.4,122.8 L548.3,124.3 L551.2,125.9 L554.1,127.4 L557,129 L559.9,130.6 L562.8,132.1 L565.7,133.7 L568.6,135.3 L571.5,136.9 L574.3,138.5 L577.2,140.1 L580.1,141.7 L583,143.3 L585.9,145 L588.8,146.6 L591.7,148.2 L594.6,149.8 L597.5,151.5 L600.4,153.1 L603.2,154.7 L606.1,156.4 L609,158" class="fig-curve fig-dashed"/>
+<path d="M31,158 L33.9,159.6 L36.8,161.3 L39.6,162.9 L42.5,164.5 L45.4,166.2 L48.3,167.8 L51.2,169.4 L54.1,171 L57,172.7 L59.9,174.3 L62.8,175.9 L65.7,177.5 L68.5,179.1 L71.4,180.7 L74.3,182.3 L77.2,183.9 L80.1,185.4 L83,187 L85.9,188.6 L88.8,190.1 L91.7,191.7 L94.6,193.2 L97.4,194.8 L100.3,196.3 L103.2,197.8 L106.1,199.3 L109,200.8 L111.9,202.3 L114.8,203.8 L117.7,205.2 L120.6,206.7 L123.5,208.1 L126.4,209.5 L129.2,210.9 L132.1,212.3 L135,213.7 L137.9,215.1 L140.8,216.5 L143.7,217.8 L146.6,219.1 L149.5,220.4 L152.4,221.7 L155.3,223 L158.1,224.3 L161,225.5 L163.9,226.8 L166.8,228 L169.7,229.2 L172.6,230.4 L175.5,231.5 L178.4,232.7 L181.3,233.8 L184.2,234.9 L187,236 L189.9,237.1 L192.8,238.1 L195.7,239.2 L198.6,240.2 L201.5,241.2 L204.4,242.1 L207.3,243.1 L210.2,244 L213.1,244.9 L216,245.8 L218.8,246.7 L221.7,247.5 L224.6,248.3 L227.5,249.1 L230.4,249.9 L233.3,250.7 L236.2,251.4 L239.1,252.1 L242,252.8 L244.9,253.4 L247.7,254.1 L250.6,254.7 L253.5,255.3 L256.4,255.9 L259.3,256.4 L262.2,256.9 L265.1,257.4 L268,257.9 L270.9,258.3 L273.8,258.7 L276.6,259.1 L279.5,259.5 L282.4,259.8 L285.3,260.2 L288.2,260.5 L291.1,260.7 L294,261 L296.9,261.2 L299.8,261.4 L302.7,261.5 L305.5,261.7 L308.4,261.8 L311.3,261.9 L314.2,261.9 L317.1,262 L320,262 L322.9,262 L325.8,261.9 L328.7,261.9 L331.6,261.8 L334.5,261.7 L337.3,261.5 L340.2,261.4 L343.1,261.2 L346,261 L348.9,260.7 L351.8,260.5 L354.7,260.2 L357.6,259.8 L360.5,259.5 L363.4,259.1 L366.2,258.7 L369.1,258.3 L372,257.9 L374.9,257.4 L377.8,256.9 L380.7,256.4 L383.6,255.9 L386.5,255.3 L389.4,254.7 L392.3,254.1 L395.1,253.4 L398,252.8 L400.9,252.1 L403.8,251.4 L406.7,250.7 L409.6,249.9 L412.5,249.1 L415.4,248.3 L418.3,247.5 L421.2,246.7 L424,245.8 L426.9,244.9 L429.8,244 L432.7,243.1 L435.6,242.1 L438.5,241.2 L441.4,240.2 L444.3,239.2 L447.2,238.1 L450.1,237.1 L453,236 L455.8,234.9 L458.7,233.8 L461.6,232.7 L464.5,231.5 L467.4,230.4 L470.3,229.2 L473.2,228 L476.1,226.8 L479,225.5 L481.9,224.3 L484.7,223 L487.6,221.7 L490.5,220.4 L493.4,219.1 L496.3,217.8 L499.2,216.5 L502.1,215.1 L505,213.7 L507.9,212.3 L510.8,210.9 L513.6,209.5 L516.5,208.1 L519.4,206.7 L522.3,205.2 L525.2,203.8 L528.1,202.3 L531,200.8 L533.9,199.3 L536.8,197.8 L539.7,196.3 L542.6,194.8 L545.4,193.2 L548.3,191.7 L551.2,190.1 L554.1,188.6 L557,187 L559.9,185.4 L562.8,183.9 L565.7,182.3 L568.6,180.7 L571.5,179.1 L574.3,177.5 L577.2,175.9 L580.1,174.3 L583,172.7 L585.9,171 L588.8,169.4 L591.7,167.8 L594.6,166.2 L597.5,164.5 L600.4,162.9 L603.2,161.3 L606.1,159.6 L609,158" class="fig-curve fig-dashed"/>
+<line x1="25" y1="158" x2="623" y2="158" class="fig-axis" marker-end="url(#arr-4-2-2)"/>
+<line x1="320" y1="293.2" x2="320" y2="15" class="fig-axis" marker-end="url(#arr-4-2-2)"/>
+<text x="621" y="148" text-anchor="end" class="fig-label fig-it">q</text>
+<text x="330" y="22.8" class="fig-label fig-it">p</text>
+<text x="31" y="178" text-anchor="middle" class="fig-label fig-small">−π</text>
+<text x="609" y="178" text-anchor="middle" class="fig-label fig-small">π</text>
+<path d="M349.4,98.2 L349.4,97.9 L349.4,97.7 L349.4,97.4 L349.4,97.2 L349.3,96.9 L349.3,96.6 L349.3,96.4 L349.2,96.1 L349.1,95.9 L349.1,95.6 L349,95.3 L348.9,95.1 L348.8,94.8 L348.7,94.6 L348.6,94.3 L348.5,94.1 L348.4,93.8 L348.3,93.6 L348.1,93.3 L348,93.1 L347.9,92.8 L347.7,92.6 L347.5,92.3 L347.4,92.1 L347.2,91.8 L347,91.6 L346.8,91.4 L346.6,91.1 L346.4,90.9 L346.2,90.6 L346,90.4 L345.8,90.2 L345.6,90 L345.3,89.7 L345.1,89.5 L344.9,89.3 L344.6,89.1 L344.3,88.8 L344.1,88.6 L343.8,88.4 L343.5,88.2 L343.3,88 L343,87.8 L342.7,87.6 L342.4,87.4 L342.1,87.2 L341.8,87 L341.5,86.8 L341.1,86.6 L340.8,86.4 L340.5,86.3 L340.2,86.1 L339.8,85.9 L339.5,85.7 L339.1,85.5 L338.8,85.4 L338.4,85.2 L338,85.1 L337.7,84.9 L337.3,84.7 L336.9,84.6 L336.5,84.4 L336.2,84.3 L335.8,84.2 L335.4,84 L335,83.9 L334.6,83.7 L334.2,83.6 L333.8,83.5 L333.4,83.4 L333,83.3 L332.5,83.1 L332.1,83 L331.7,82.9 L331.3,82.8 L330.8,82.7 L330.4,82.6 L330,82.5 L329.5,82.5 L329.1,82.4 L328.7,82.3 L328.2,82.2 L327.8,82.1 L327.3,82.1 L326.9,82 L326.4,82 L326,81.9 L325.5,81.9 L325.1,81.8 L324.6,81.8 L324.1,81.7 L323.7,81.7 L323.2,81.7 L322.8,81.6 L322.3,81.6 L321.8,81.6 L321.4,81.6 L320.9,81.6 L320.5,81.6 L320,81.6 L319.5,81.6 L319.1,81.6 L318.6,81.6 L318.2,81.6 L317.7,81.6 L317.2,81.6 L316.8,81.7 L316.3,81.7 L315.9,81.7 L315.4,81.8 L314.9,81.8 L314.5,81.9 L314,81.9 L313.6,82 L313.1,82 L312.7,82.1 L312.2,82.1 L311.8,82.2 L311.3,82.3 L310.9,82.4 L310.5,82.5 L310,82.5 L309.6,82.6 L309.2,82.7 L308.7,82.8 L308.3,82.9 L307.9,83 L307.5,83.1 L307,83.3 L306.6,83.4 L306.2,83.5 L305.8,83.6 L305.4,83.7 L305,83.9 L304.6,84 L304.2,84.2 L303.8,84.3 L303.5,84.4 L303.1,84.6 L302.7,84.7 L302.3,84.9 L302,85.1 L301.6,85.2 L301.2,85.4 L300.9,85.5 L300.5,85.7 L300.2,85.9 L299.8,86.1 L299.5,86.3 L299.2,86.4 L298.9,86.6 L298.5,86.8 L298.2,87 L297.9,87.2 L297.6,87.4 L297.3,87.6 L297,87.8 L296.7,88 L296.5,88.2 L296.2,88.4 L295.9,88.6 L295.7,88.8 L295.4,89.1 L295.1,89.3 L294.9,89.5 L294.7,89.7 L294.4,90 L294.2,90.2 L294,90.4 L293.8,90.6 L293.6,90.9 L293.4,91.1 L293.2,91.4 L293,91.6 L292.8,91.8 L292.6,92.1 L292.5,92.3 L292.3,92.6 L292.1,92.8 L292,93.1 L291.9,93.3 L291.7,93.6 L291.6,93.8 L291.5,94.1 L291.4,94.3 L291.3,94.6 L291.2,94.8 L291.1,95.1 L291,95.3 L290.9,95.6 L290.9,95.9 L290.8,96.1 L290.7,96.4 L290.7,96.6 L290.7,96.9 L290.6,97.2 L290.6,97.4 L290.6,97.7 L290.6,97.9 L290.6,98.2 L290.6,98.5 L290.6,98.7 L290.6,99 L290.6,99.2 L290.7,99.5 L290.7,99.8 L290.7,100 L290.8,100.3 L290.9,100.5 L290.9,100.8 L291,101.1 L291.1,101.3 L291.2,101.6 L291.3,101.8 L291.4,102.1 L291.5,102.3 L291.6,102.6 L291.7,102.8 L291.9,103.1 L292,103.3 L292.1,103.6 L292.3,103.8 L292.5,104.1 L292.6,104.3 L292.8,104.6 L293,104.8 L293.2,105 L293.4,105.3 L293.6,105.5 L293.8,105.8 L294,106 L294.2,106.2 L294.4,106.4 L294.7,106.7 L294.9,106.9 L295.1,107.1 L295.4,107.3 L295.7,107.6 L295.9,107.8 L296.2,108 L296.5,108.2 L296.7,108.4 L297,108.6 L297.3,108.8 L297.6,109 L297.9,109.2 L298.2,109.4 L298.5,109.6 L298.9,109.8 L299.2,110 L299.5,110.1 L299.8,110.3 L300.2,110.5 L300.5,110.7 L300.9,110.9 L301.2,111 L301.6,111.2 L302,111.3 L302.3,111.5 L302.7,111.7 L303.1,111.8 L303.5,112 L303.8,112.1 L304.2,112.2 L304.6,112.4 L305,112.5 L305.4,112.7 L305.8,112.8 L306.2,112.9 L306.6,113 L307,113.1 L307.5,113.3 L307.9,113.4 L308.3,113.5 L308.7,113.6 L309.2,113.7 L309.6,113.8 L310,113.9 L310.5,113.9 L310.9,114 L311.3,114.1 L311.8,114.2 L312.2,114.3 L312.7,114.3 L313.1,114.4 L313.6,114.4 L314,114.5 L314.5,114.5 L314.9,114.6 L315.4,114.6 L315.9,114.7 L316.3,114.7 L316.8,114.7 L317.2,114.8 L317.7,114.8 L318.2,114.8 L318.6,114.8 L319.1,114.8 L319.5,114.8 L320,114.8 L320.5,114.8 L320.9,114.8 L321.4,114.8 L321.8,114.8 L322.3,114.8 L322.8,114.8 L323.2,114.7 L323.7,114.7 L324.1,114.7 L324.6,114.6 L325.1,114.6 L325.5,114.5 L326,114.5 L326.4,114.4 L326.9,114.4 L327.3,114.3 L327.8,114.3 L328.2,114.2 L328.7,114.1 L329.1,114 L329.5,113.9 L330,113.9 L330.4,113.8 L330.8,113.7 L331.3,113.6 L331.7,113.5 L332.1,113.4 L332.5,113.3 L333,113.1 L333.4,113 L333.8,112.9 L334.2,112.8 L334.6,112.7 L335,112.5 L335.4,112.4 L335.8,112.2 L336.2,112.1 L336.5,112 L336.9,111.8 L337.3,111.7 L337.7,111.5 L338,111.3 L338.4,111.2 L338.8,111 L339.1,110.9 L339.5,110.7 L339.8,110.5 L340.2,110.3 L340.5,110.1 L340.8,110 L341.1,109.8 L341.5,109.6 L341.8,109.4 L342.1,109.2 L342.4,109 L342.7,108.8 L343,108.6 L343.3,108.4 L343.5,108.2 L343.8,108 L344.1,107.8 L344.3,107.6 L344.6,107.3 L344.9,107.1 L345.1,106.9 L345.3,106.7 L345.6,106.4 L345.8,106.2 L346,106 L346.2,105.8 L346.4,105.5 L346.6,105.3 L346.8,105 L347,104.8 L347.2,104.6 L347.4,104.3 L347.5,104.1 L347.7,103.8 L347.9,103.6 L348,103.3 L348.1,103.1 L348.3,102.8 L348.4,102.6 L348.5,102.3 L348.6,102.1 L348.7,101.8 L348.8,101.6 L348.9,101.3 L349,101.1 L349.1,100.8 L349.1,100.5 L349.2,100.3 L349.3,100 L349.3,99.8 L349.3,99.5 L349.4,99.2 L349.4,99 L349.4,98.7 L349.4,98.5 Z" class="fig-band"/>
+<path d="M349.4,98.2 L349.4,97.9 L349.4,97.7 L349.4,97.4 L349.4,97.2 L349.3,96.9 L349.3,96.6 L349.3,96.4 L349.2,96.1 L349.1,95.9 L349.1,95.6 L349,95.3 L348.9,95.1 L348.8,94.8 L348.7,94.6 L348.6,94.3 L348.5,94.1 L348.4,93.8 L348.3,93.6 L348.1,93.3 L348,93.1 L347.9,92.8 L347.7,92.6 L347.5,92.3 L347.4,92.1 L347.2,91.8 L347,91.6 L346.8,91.4 L346.6,91.1 L346.4,90.9 L346.2,90.6 L346,90.4 L345.8,90.2 L345.6,90 L345.3,89.7 L345.1,89.5 L344.9,89.3 L344.6,89.1 L344.3,88.8 L344.1,88.6 L343.8,88.4 L343.5,88.2 L343.3,88 L343,87.8 L342.7,87.6 L342.4,87.4 L342.1,87.2 L341.8,87 L341.5,86.8 L341.1,86.6 L340.8,86.4 L340.5,86.3 L340.2,86.1 L339.8,85.9 L339.5,85.7 L339.1,85.5 L338.8,85.4 L338.4,85.2 L338,85.1 L337.7,84.9 L337.3,84.7 L336.9,84.6 L336.5,84.4 L336.2,84.3 L335.8,84.2 L335.4,84 L335,83.9 L334.6,83.7 L334.2,83.6 L333.8,83.5 L333.4,83.4 L333,83.3 L332.5,83.1 L332.1,83 L331.7,82.9 L331.3,82.8 L330.8,82.7 L330.4,82.6 L330,82.5 L329.5,82.5 L329.1,82.4 L328.7,82.3 L328.2,82.2 L327.8,82.1 L327.3,82.1 L326.9,82 L326.4,82 L326,81.9 L325.5,81.9 L325.1,81.8 L324.6,81.8 L324.1,81.7 L323.7,81.7 L323.2,81.7 L322.8,81.6 L322.3,81.6 L321.8,81.6 L321.4,81.6 L320.9,81.6 L320.5,81.6 L320,81.6 L319.5,81.6 L319.1,81.6 L318.6,81.6 L318.2,81.6 L317.7,81.6 L317.2,81.6 L316.8,81.7 L316.3,81.7 L315.9,81.7 L315.4,81.8 L314.9,81.8 L314.5,81.9 L314,81.9 L313.6,82 L313.1,82 L312.7,82.1 L312.2,82.1 L311.8,82.2 L311.3,82.3 L310.9,82.4 L310.5,82.5 L310,82.5 L309.6,82.6 L309.2,82.7 L308.7,82.8 L308.3,82.9 L307.9,83 L307.5,83.1 L307,83.3 L306.6,83.4 L306.2,83.5 L305.8,83.6 L305.4,83.7 L305,83.9 L304.6,84 L304.2,84.2 L303.8,84.3 L303.5,84.4 L303.1,84.6 L302.7,84.7 L302.3,84.9 L302,85.1 L301.6,85.2 L301.2,85.4 L300.9,85.5 L300.5,85.7 L300.2,85.9 L299.8,86.1 L299.5,86.3 L299.2,86.4 L298.9,86.6 L298.5,86.8 L298.2,87 L297.9,87.2 L297.6,87.4 L297.3,87.6 L297,87.8 L296.7,88 L296.5,88.2 L296.2,88.4 L295.9,88.6 L295.7,88.8 L295.4,89.1 L295.1,89.3 L294.9,89.5 L294.7,89.7 L294.4,90 L294.2,90.2 L294,90.4 L293.8,90.6 L293.6,90.9 L293.4,91.1 L293.2,91.4 L293,91.6 L292.8,91.8 L292.6,92.1 L292.5,92.3 L292.3,92.6 L292.1,92.8 L292,93.1 L291.9,93.3 L291.7,93.6 L291.6,93.8 L291.5,94.1 L291.4,94.3 L291.3,94.6 L291.2,94.8 L291.1,95.1 L291,95.3 L290.9,95.6 L290.9,95.9 L290.8,96.1 L290.7,96.4 L290.7,96.6 L290.7,96.9 L290.6,97.2 L290.6,97.4 L290.6,97.7 L290.6,97.9 L290.6,98.2 L290.6,98.5 L290.6,98.7 L290.6,99 L290.6,99.2 L290.7,99.5 L290.7,99.8 L290.7,100 L290.8,100.3 L290.9,100.5 L290.9,100.8 L291,101.1 L291.1,101.3 L291.2,101.6 L291.3,101.8 L291.4,102.1 L291.5,102.3 L291.6,102.6 L291.7,102.8 L291.9,103.1 L292,103.3 L292.1,103.6 L292.3,103.8 L292.5,104.1 L292.6,104.3 L292.8,104.6 L293,104.8 L293.2,105 L293.4,105.3 L293.6,105.5 L293.8,105.8 L294,106 L294.2,106.2 L294.4,106.4 L294.7,106.7 L294.9,106.9 L295.1,107.1 L295.4,107.3 L295.7,107.6 L295.9,107.8 L296.2,108 L296.5,108.2 L296.7,108.4 L297,108.6 L297.3,108.8 L297.6,109 L297.9,109.2 L298.2,109.4 L298.5,109.6 L298.9,109.8 L299.2,110 L299.5,110.1 L299.8,110.3 L300.2,110.5 L300.5,110.7 L300.9,110.9 L301.2,111 L301.6,111.2 L302,111.3 L302.3,111.5 L302.7,111.7 L303.1,111.8 L303.5,112 L303.8,112.1 L304.2,112.2 L304.6,112.4 L305,112.5 L305.4,112.7 L305.8,112.8 L306.2,112.9 L306.6,113 L307,113.1 L307.5,113.3 L307.9,113.4 L308.3,113.5 L308.7,113.6 L309.2,113.7 L309.6,113.8 L310,113.9 L310.5,113.9 L310.9,114 L311.3,114.1 L311.8,114.2 L312.2,114.3 L312.7,114.3 L313.1,114.4 L313.6,114.4 L314,114.5 L314.5,114.5 L314.9,114.6 L315.4,114.6 L315.9,114.7 L316.3,114.7 L316.8,114.7 L317.2,114.8 L317.7,114.8 L318.2,114.8 L318.6,114.8 L319.1,114.8 L319.5,114.8 L320,114.8 L320.5,114.8 L320.9,114.8 L321.4,114.8 L321.8,114.8 L322.3,114.8 L322.8,114.8 L323.2,114.7 L323.7,114.7 L324.1,114.7 L324.6,114.6 L325.1,114.6 L325.5,114.5 L326,114.5 L326.4,114.4 L326.9,114.4 L327.3,114.3 L327.8,114.3 L328.2,114.2 L328.7,114.1 L329.1,114 L329.5,113.9 L330,113.9 L330.4,113.8 L330.8,113.7 L331.3,113.6 L331.7,113.5 L332.1,113.4 L332.5,113.3 L333,113.1 L333.4,113 L333.8,112.9 L334.2,112.8 L334.6,112.7 L335,112.5 L335.4,112.4 L335.8,112.2 L336.2,112.1 L336.5,112 L336.9,111.8 L337.3,111.7 L337.7,111.5 L338,111.3 L338.4,111.2 L338.8,111 L339.1,110.9 L339.5,110.7 L339.8,110.5 L340.2,110.3 L340.5,110.1 L340.8,110 L341.1,109.8 L341.5,109.6 L341.8,109.4 L342.1,109.2 L342.4,109 L342.7,108.8 L343,108.6 L343.3,108.4 L343.5,108.2 L343.8,108 L344.1,107.8 L344.3,107.6 L344.6,107.3 L344.9,107.1 L345.1,106.9 L345.3,106.7 L345.6,106.4 L345.8,106.2 L346,106 L346.2,105.8 L346.4,105.5 L346.6,105.3 L346.8,105 L347,104.8 L347.2,104.6 L347.4,104.3 L347.5,104.1 L347.7,103.8 L347.9,103.6 L348,103.3 L348.1,103.1 L348.3,102.8 L348.4,102.6 L348.5,102.3 L348.6,102.1 L348.7,101.8 L348.8,101.6 L348.9,101.3 L349,101.1 L349.1,100.8 L349.1,100.5 L349.2,100.3 L349.3,100 L349.3,99.8 L349.3,99.5 L349.4,99.2 L349.4,99 L349.4,98.7 L349.4,98.5 Z" class="fig-shape"/>
+<path d="M350.2,98.3 L349.4,97.9 L348.6,97.6 L347.8,97.2 L346.9,96.8 L346.1,96.4 L345.2,96.1 L344.3,95.7 L343.4,95.3 L342.4,95 L341.5,94.6 L340.5,94.3 L339.5,93.9 L338.5,93.6 L337.4,93.3 L336.4,93 L335.3,92.6 L334.3,92.3 L333.2,92 L332.1,91.7 L331,91.5 L329.8,91.2 L328.7,90.9 L327.5,90.6 L326.3,90.4 L325.2,90.1 L324,89.9 L322.8,89.7 L321.5,89.5 L320.3,89.2 L319.1,89 L317.8,88.9 L316.6,88.7 L315.3,88.5 L314.1,88.3 L312.8,88.2 L311.5,88 L310.3,87.9 L309,87.8 L307.7,87.7 L306.4,87.6 L305.1,87.5 L303.8,87.4 L302.5,87.3 L301.2,87.2 L300,87.2 L298.7,87.1 L297.4,87.1 L296.1,87.1 L294.8,87 L293.6,87 L292.3,87 L291,87 L289.8,87 L288.5,87.1 L287.3,87.1 L286.1,87.1 L284.8,87.2 L283.6,87.2 L282.4,87.3 L281.2,87.4 L280.1,87.4 L278.9,87.5 L277.8,87.6 L276.6,87.7 L275.5,87.8 L274.4,87.9 L273.3,88 L272.2,88.1 L271.2,88.2 L270.1,88.4 L269.1,88.5 L268.1,88.6 L267.1,88.7 L266.1,88.9 L265.1,89 L264.2,89.2 L263.3,89.3 L262.4,89.4 L261.5,89.6 L260.7,89.7 L259.8,89.9 L259,90 L258.2,90.2 L257.4,90.3 L256.7,90.5 L256,90.6 L255.3,90.8 L254.6,90.9 L253.9,91.1 L253.3,91.2 L252.7,91.4 L252.1,91.5 L251.5,91.7 L251,91.8 L250.4,91.9 L249.9,92.1 L249.5,92.2 L249,92.4 L248.6,92.5 L248.2,92.6 L247.8,92.7 L247.4,92.9 L247.1,93 L246.8,93.1 L246.5,93.2 L246.2,93.3 L246,93.4 L245.7,93.5 L245.5,93.6 L245.4,93.7 L245.2,93.8 L245.1,93.9 L245,94 L244.9,94 L244.8,94.1 L244.8,94.2 L244.7,94.3 L244.7,94.3 L244.8,94.4 L244.8,94.5 L244.9,94.5 L245,94.6 L245.1,94.6 L245.2,94.7 L245.3,94.7 L245.5,94.7 L245.7,94.8 L245.9,94.8 L246.1,94.9 L246.3,94.9 L246.6,94.9 L246.9,94.9 L247.2,95 L247.5,95 L247.8,95 L248.2,95 L248.5,95 L248.9,95 L249.3,95.1 L249.7,95.1 L250.2,95.1 L250.6,95.1 L251.1,95.1 L251.5,95.1 L252,95.1 L252.5,95.1 L253,95.1 L253.6,95.1 L254.1,95.1 L254.7,95.1 L255.2,95.1 L255.8,95.1 L256.4,95.1 L257,95.2 L257.6,95.2 L258.2,95.2 L258.9,95.2 L259.5,95.2 L260.2,95.2 L260.8,95.2 L261.5,95.2 L262.2,95.2 L262.9,95.3 L263.6,95.3 L264.3,95.3 L265,95.3 L265.7,95.4 L266.4,95.4 L267.2,95.4 L267.9,95.5 L268.7,95.5 L269.4,95.5 L270.2,95.6 L270.9,95.6 L271.7,95.7 L272.4,95.7 L273.2,95.8 L274,95.8 L274.8,95.9 L275.5,96 L276.3,96 L277.1,96.1 L277.9,96.2 L278.7,96.3 L279.5,96.4 L280.3,96.5 L281.1,96.5 L281.8,96.6 L282.6,96.7 L283.4,96.8 L284.2,96.9 L285,97.1 L285.8,97.2 L286.6,97.3 L287.4,97.4 L288.2,97.5 L289,97.7 L289.8,97.8 L290.5,97.9 L291.3,98.1 L292.1,98.2 L292.9,98.4 L293.7,98.5 L294.4,98.7 L295.2,98.8 L296,99 L296.8,99.2 L297.5,99.3 L298.3,99.5 L299,99.7 L299.8,99.9 L300.5,100.1 L301.3,100.2 L302,100.4 L302.8,100.6 L303.5,100.8 L304.2,101 L305,101.2 L305.7,101.4 L306.4,101.6 L307.1,101.8 L307.8,102.1 L308.5,102.3 L309.2,102.5 L309.9,102.7 L310.6,102.9 L311.3,103.2 L312,103.4 L312.7,103.6 L313.4,103.8 L314,104.1 L314.7,104.3 L315.3,104.5 L316,104.8 L316.7,105 L317.3,105.2 L318,105.5 L318.6,105.7 L319.2,106 L319.9,106.2 L320.5,106.5 L321.1,106.7 L321.7,106.9 L322.3,107.2 L322.9,107.4 L323.5,107.7 L324.1,107.9 L324.7,108.2 L325.3,108.4 L325.9,108.7 L326.5,108.9 L327.1,109.2 L327.7,109.4 L328.2,109.6 L328.8,109.9 L329.4,110.1 L329.9,110.4 L330.5,110.6 L331,110.9 L331.6,111.1 L332.1,111.3 L332.7,111.6 L333.2,111.8 L333.7,112 L334.3,112.3 L334.8,112.5 L335.3,112.7 L335.8,113 L336.4,113.2 L336.9,113.4 L337.4,113.6 L337.9,113.8 L338.4,114.1 L338.9,114.3 L339.4,114.5 L339.9,114.7 L340.4,114.9 L340.9,115.1 L341.4,115.3 L341.8,115.5 L342.3,115.7 L342.8,115.8 L343.3,116 L343.7,116.2 L344.2,116.4 L344.7,116.6 L345.1,116.7 L345.6,116.9 L346.1,117 L346.5,117.2 L347,117.4 L347.4,117.5 L347.9,117.6 L348.3,117.8 L348.7,117.9 L349.2,118 L349.6,118.2 L350,118.3 L350.5,118.4 L350.9,118.5 L351.3,118.6 L351.7,118.7 L352.2,118.8 L352.6,118.9 L353,118.9 L353.4,119 L353.8,119.1 L354.2,119.1 L354.6,119.2 L355,119.2 L355.3,119.3 L355.7,119.3 L356.1,119.4 L356.5,119.4 L356.8,119.4 L357.2,119.4 L357.6,119.4 L357.9,119.4 L358.3,119.4 L358.6,119.4 L359,119.4 L359.3,119.3 L359.6,119.3 L359.9,119.3 L360.3,119.2 L360.6,119.2 L360.9,119.1 L361.2,119 L361.5,118.9 L361.7,118.9 L362,118.8 L362.3,118.7 L362.5,118.6 L362.8,118.4 L363,118.3 L363.3,118.2 L363.5,118.1 L363.7,117.9 L363.9,117.8 L364.2,117.6 L364.3,117.4 L364.5,117.3 L364.7,117.1 L364.9,116.9 L365,116.7 L365.2,116.5 L365.3,116.3 L365.4,116.1 L365.5,115.9 L365.6,115.6 L365.7,115.4 L365.8,115.2 L365.8,114.9 L365.9,114.7 L365.9,114.4 L365.9,114.1 L366,113.9 L366,113.6 L365.9,113.3 L365.9,113 L365.8,112.7 L365.8,112.4 L365.7,112.1 L365.6,111.8 L365.5,111.5 L365.4,111.2 L365.2,110.8 L365.1,110.5 L364.9,110.2 L364.7,109.8 L364.5,109.5 L364.3,109.1 L364,108.8 L363.8,108.4 L363.5,108 L363.2,107.7 L362.9,107.3 L362.5,106.9 L362.2,106.5 L361.8,106.2 L361.4,105.8 L361,105.4 L360.6,105 L360.1,104.6 L359.7,104.2 L359.2,103.8 L358.7,103.4 L358.1,103 L357.6,102.6 L357,102.3 L356.4,101.9 L355.8,101.5 L355.2,101.1 L354.5,100.7 L353.9,100.3 L353.2,99.9 L352.5,99.5 L351.7,99.1 L351,98.7 Z" class="fig-band"/>
+<path d="M350.2,98.3 L349.4,97.9 L348.6,97.6 L347.8,97.2 L346.9,96.8 L346.1,96.4 L345.2,96.1 L344.3,95.7 L343.4,95.3 L342.4,95 L341.5,94.6 L340.5,94.3 L339.5,93.9 L338.5,93.6 L337.4,93.3 L336.4,93 L335.3,92.6 L334.3,92.3 L333.2,92 L332.1,91.7 L331,91.5 L329.8,91.2 L328.7,90.9 L327.5,90.6 L326.3,90.4 L325.2,90.1 L324,89.9 L322.8,89.7 L321.5,89.5 L320.3,89.2 L319.1,89 L317.8,88.9 L316.6,88.7 L315.3,88.5 L314.1,88.3 L312.8,88.2 L311.5,88 L310.3,87.9 L309,87.8 L307.7,87.7 L306.4,87.6 L305.1,87.5 L303.8,87.4 L302.5,87.3 L301.2,87.2 L300,87.2 L298.7,87.1 L297.4,87.1 L296.1,87.1 L294.8,87 L293.6,87 L292.3,87 L291,87 L289.8,87 L288.5,87.1 L287.3,87.1 L286.1,87.1 L284.8,87.2 L283.6,87.2 L282.4,87.3 L281.2,87.4 L280.1,87.4 L278.9,87.5 L277.8,87.6 L276.6,87.7 L275.5,87.8 L274.4,87.9 L273.3,88 L272.2,88.1 L271.2,88.2 L270.1,88.4 L269.1,88.5 L268.1,88.6 L267.1,88.7 L266.1,88.9 L265.1,89 L264.2,89.2 L263.3,89.3 L262.4,89.4 L261.5,89.6 L260.7,89.7 L259.8,89.9 L259,90 L258.2,90.2 L257.4,90.3 L256.7,90.5 L256,90.6 L255.3,90.8 L254.6,90.9 L253.9,91.1 L253.3,91.2 L252.7,91.4 L252.1,91.5 L251.5,91.7 L251,91.8 L250.4,91.9 L249.9,92.1 L249.5,92.2 L249,92.4 L248.6,92.5 L248.2,92.6 L247.8,92.7 L247.4,92.9 L247.1,93 L246.8,93.1 L246.5,93.2 L246.2,93.3 L246,93.4 L245.7,93.5 L245.5,93.6 L245.4,93.7 L245.2,93.8 L245.1,93.9 L245,94 L244.9,94 L244.8,94.1 L244.8,94.2 L244.7,94.3 L244.7,94.3 L244.8,94.4 L244.8,94.5 L244.9,94.5 L245,94.6 L245.1,94.6 L245.2,94.7 L245.3,94.7 L245.5,94.7 L245.7,94.8 L245.9,94.8 L246.1,94.9 L246.3,94.9 L246.6,94.9 L246.9,94.9 L247.2,95 L247.5,95 L247.8,95 L248.2,95 L248.5,95 L248.9,95 L249.3,95.1 L249.7,95.1 L250.2,95.1 L250.6,95.1 L251.1,95.1 L251.5,95.1 L252,95.1 L252.5,95.1 L253,95.1 L253.6,95.1 L254.1,95.1 L254.7,95.1 L255.2,95.1 L255.8,95.1 L256.4,95.1 L257,95.2 L257.6,95.2 L258.2,95.2 L258.9,95.2 L259.5,95.2 L260.2,95.2 L260.8,95.2 L261.5,95.2 L262.2,95.2 L262.9,95.3 L263.6,95.3 L264.3,95.3 L265,95.3 L265.7,95.4 L266.4,95.4 L267.2,95.4 L267.9,95.5 L268.7,95.5 L269.4,95.5 L270.2,95.6 L270.9,95.6 L271.7,95.7 L272.4,95.7 L273.2,95.8 L274,95.8 L274.8,95.9 L275.5,96 L276.3,96 L277.1,96.1 L277.9,96.2 L278.7,96.3 L279.5,96.4 L280.3,96.5 L281.1,96.5 L281.8,96.6 L282.6,96.7 L283.4,96.8 L284.2,96.9 L285,97.1 L285.8,97.2 L286.6,97.3 L287.4,97.4 L288.2,97.5 L289,97.7 L289.8,97.8 L290.5,97.9 L291.3,98.1 L292.1,98.2 L292.9,98.4 L293.7,98.5 L294.4,98.7 L295.2,98.8 L296,99 L296.8,99.2 L297.5,99.3 L298.3,99.5 L299,99.7 L299.8,99.9 L300.5,100.1 L301.3,100.2 L302,100.4 L302.8,100.6 L303.5,100.8 L304.2,101 L305,101.2 L305.7,101.4 L306.4,101.6 L307.1,101.8 L307.8,102.1 L308.5,102.3 L309.2,102.5 L309.9,102.7 L310.6,102.9 L311.3,103.2 L312,103.4 L312.7,103.6 L313.4,103.8 L314,104.1 L314.7,104.3 L315.3,104.5 L316,104.8 L316.7,105 L317.3,105.2 L318,105.5 L318.6,105.7 L319.2,106 L319.9,106.2 L320.5,106.5 L321.1,106.7 L321.7,106.9 L322.3,107.2 L322.9,107.4 L323.5,107.7 L324.1,107.9 L324.7,108.2 L325.3,108.4 L325.9,108.7 L326.5,108.9 L327.1,109.2 L327.7,109.4 L328.2,109.6 L328.8,109.9 L329.4,110.1 L329.9,110.4 L330.5,110.6 L331,110.9 L331.6,111.1 L332.1,111.3 L332.7,111.6 L333.2,111.8 L333.7,112 L334.3,112.3 L334.8,112.5 L335.3,112.7 L335.8,113 L336.4,113.2 L336.9,113.4 L337.4,113.6 L337.9,113.8 L338.4,114.1 L338.9,114.3 L339.4,114.5 L339.9,114.7 L340.4,114.9 L340.9,115.1 L341.4,115.3 L341.8,115.5 L342.3,115.7 L342.8,115.8 L343.3,116 L343.7,116.2 L344.2,116.4 L344.7,116.6 L345.1,116.7 L345.6,116.9 L346.1,117 L346.5,117.2 L347,117.4 L347.4,117.5 L347.9,117.6 L348.3,117.8 L348.7,117.9 L349.2,118 L349.6,118.2 L350,118.3 L350.5,118.4 L350.9,118.5 L351.3,118.6 L351.7,118.7 L352.2,118.8 L352.6,118.9 L353,118.9 L353.4,119 L353.8,119.1 L354.2,119.1 L354.6,119.2 L355,119.2 L355.3,119.3 L355.7,119.3 L356.1,119.4 L356.5,119.4 L356.8,119.4 L357.2,119.4 L357.6,119.4 L357.9,119.4 L358.3,119.4 L358.6,119.4 L359,119.4 L359.3,119.3 L359.6,119.3 L359.9,119.3 L360.3,119.2 L360.6,119.2 L360.9,119.1 L361.2,119 L361.5,118.9 L361.7,118.9 L362,118.8 L362.3,118.7 L362.5,118.6 L362.8,118.4 L363,118.3 L363.3,118.2 L363.5,118.1 L363.7,117.9 L363.9,117.8 L364.2,117.6 L364.3,117.4 L364.5,117.3 L364.7,117.1 L364.9,116.9 L365,116.7 L365.2,116.5 L365.3,116.3 L365.4,116.1 L365.5,115.9 L365.6,115.6 L365.7,115.4 L365.8,115.2 L365.8,114.9 L365.9,114.7 L365.9,114.4 L365.9,114.1 L366,113.9 L366,113.6 L365.9,113.3 L365.9,113 L365.8,112.7 L365.8,112.4 L365.7,112.1 L365.6,111.8 L365.5,111.5 L365.4,111.2 L365.2,110.8 L365.1,110.5 L364.9,110.2 L364.7,109.8 L364.5,109.5 L364.3,109.1 L364,108.8 L363.8,108.4 L363.5,108 L363.2,107.7 L362.9,107.3 L362.5,106.9 L362.2,106.5 L361.8,106.2 L361.4,105.8 L361,105.4 L360.6,105 L360.1,104.6 L359.7,104.2 L359.2,103.8 L358.7,103.4 L358.1,103 L357.6,102.6 L357,102.3 L356.4,101.9 L355.8,101.5 L355.2,101.1 L354.5,100.7 L353.9,100.3 L353.2,99.9 L352.5,99.5 L351.7,99.1 L351,98.7 Z" class="fig-shape"/>
+<text x="352" y="76.2" class="fig-label fig-small">t = 0</text>
+<text x="310" y="141.4" text-anchor="middle" class="fig-label fig-small">t = 7</text>
+<text x="605" y="35.8" text-anchor="end" class="fig-label fig-small">separatriz</text>
+<line x1="575" y1="41.8" x2="510" y2="95.8" class="fig-guide" marker-end="url(#arr-4-2-2)"/>
+</svg>
+                    <figcaption><strong>Figura 4.2.2.</strong> O teorema de Liouville no pêndulo
+                        ($m = \ell = g = 1$, $\mathcal{H} = p^2/2 - \cos q$). Um disco de condições iniciais
+                        ($t = 0$) é levado pelo fluxo hamiltoniano até $t = 7$. Como o período cresce com a energia,
+                        os pontos de energia maior ficam para trás e o disco se estica em uma faixa curva ao longo das
+                        curvas de nível (tracejado fino); a separatriz, de energia $\mathcal{H} = 1$, está em tracejado
+                        grosso. As duas regiões sombreadas têm a mesma área: a integração numérica que gerou a figura
+                        conserva a área até duas partes em $10^5$.</figcaption>
+                </figure>
+
+                <p id="ex-4-2-20"><strong>Exemplo 4.2.20 (Um contraexemplo: o oscilador amortecido).</strong> As
+                    equações $\dot q = p/m$ e $\dot p = -m\omega^2q - \gamma p$, com $\gamma \gt 0$, descrevem um
+                    oscilador com atrito. Elas não são as equações de Hamilton de nenhum hamiltoniano, e o campo de
+                    velocidades tem divergência $\partial_q(p/m) + \partial_p(-m\omega^2q - \gamma p) = -\gamma$. Pela
+                    fórmula de Jacobi do <a href="#lema-4-2-16">Lema 4.2.16</a>, $\dot J = -\gamma J$, e
+                    $J(t) = e^{-\gamma t}$: toda área encolhe exponencialmente, e as trajetórias convergem para o
+                    ponto $q = p = 0$. Uma densidade inicial suave se concentra cada vez mais, e não há nada de
+                    parecido com o teorema de Liouville. A conservação do volume é, portanto, uma propriedade da
+                    dinâmica hamiltoniana, não de qualquer dinâmica.</p>
+
+                <h2 id="ensembles-estacionarios">Ensembles estacionários</h2>
+
+                <p>
+                    Um sistema em equilíbrio tem propriedades macroscópicas que não mudam com o tempo. O ensemble que
+                    o representa deve ter, então, uma densidade que não muda com o tempo em cada ponto do espaço de
+                    fase.
+                </p>
+
+                <div class="definition-box" id="def-4-2-21" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.2.21 (Ensemble estacionário).</strong> Um ensemble é
+                        <strong>estacionário</strong> se $\partial\rho/\partial t = 0$ em todo ponto, isto é, se
+                        $\rho = \rho(x)$ não depende do tempo.</p>
+                </div>
+
+                <p>
+                    Para um ensemble estacionário, toda média de ensemble $\langle A\rangle$ de uma grandeza
+                    $A(x)$ é constante no tempo, como se espera do equilíbrio.
+                </p>
+
+                <div class="definition-box" id="prop-4-2-22">
+                    <p><strong>Proposição 4.2.22 (Densidades de equilíbrio).</strong> Seja $\mathcal{H}$ independente
+                        do tempo e $\rho(x)$ uma densidade suave. Então:</p>
+                    <p>(a) o ensemble é estacionário se, e somente se, $\{\rho,\mathcal{H}\} = 0$, ou seja, se $\rho$
+                        é uma constante de movimento;</p>
+                    <p>(b) se $I_1,\dots,I_k$ são constantes de movimento independentes do tempo e $F$ é suave, então
+                        $\rho = F(I_1,\dots,I_k)$ é estacionária; em particular, toda $\rho = F(\mathcal{H})$ é
+                        estacionária.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) É a equação de Liouville (4.2.8) com $\partial_t\rho = 0$; pela
+                    <a href="#prop-4-2-5">Proposição 4.2.5</a>, $\{\rho,\mathcal{H}\} = 0$ é o mesmo que $\rho$ ser
+                    constante ao longo das trajetórias. (b) Pela regra da cadeia, aplicada a cada derivada parcial no
+                    colchete (4.2.2),
+                    $\{F(I_1,\dots,I_k),\mathcal{H}\} = \sum_{j=1}^{k}\dfrac{\partial F}{\partial I_j}\{I_j,\mathcal{H}\} = 0$,
+                    pois cada $\{I_j,\mathcal{H}\} = 0$. O caso $F(\mathcal{H})$ vem de $I_1 = \mathcal{H}$, que é
+                    constante de movimento porque $\{\mathcal{H},\mathcal{H}\} = 0$. $\blacksquare$
+                </p>
+
+                <p id="obs-4-2-23"><strong>Observação 4.2.23 (Por que só a energia).</strong> Um gás em um
+                    recipiente pode ter outras grandezas conservadas além da energia. O momento linear total e o
+                    momento angular total se conservam para um sistema livre; em um recipiente fixo, as paredes
+                    exercem forças externas que alteram o momento linear e, em geral, também o angular (que só se
+                    conserva em casos especiais, como paredes esféricas lisas). Em um gás ideal sem colisões entre as
+                    moléculas, até a energia de cada molécula se conserva. A
+                    <a href="#prop-4-2-22">Proposição 4.2.22</a> diz que qualquer função dessas constantes é
+                    estacionária; ela não diz qual delas descreve o equilíbrio. Reter apenas a energia, o volume e o
+                    número de partículas (os dois últimos fixados pelo recipiente) é uma <em>hipótese</em> sobre a
+                    descrição macroscópica: supõe que as interações, por fracas que sejam, e as paredes misturam os
+                    microestados o bastante para que nenhuma outra constante de movimento importe. Com ela, as
+                    densidades de equilíbrio dependem do microestado apenas por meio de $\mathcal{H}(x)$. A escolha
+                    mais simples, uniforme
+                    sobre a casca de energia, será o ensemble microcanônico do
+                    <a href="[03] - O Ensemble Microcanônico.html">tópico 4.3</a>; a escolha
+                    $\rho \propto e^{-\beta\mathcal{H}}$, que também é estacionária, será o ensemble canônico do
+                    <a href="../[4] - Ensemble Canônico/[01] - Do Microcanônico ao Canônico.html">tópico 5.1</a>. O
+                    teorema de Liouville não escolhe entre elas; ele apenas garante que nenhuma delas é incompatível
+                    com a dinâmica.</p>
+
+                <h2 id="celula-h">Contagem semiclássica: a célula $h$</h2>
+
+                <p>
+                    Para contar microestados de um sistema clássico, precisamos transformar volumes do espaço de fase
+                    em números. Um volume em $\Gamma$ tem dimensão de $(\text{ação})^f$, isto é,
+                    $(\text{momento}\times\text{comprimento})^f$, e a constante de ação natural é a de Planck. Os dois
+                    exemplos a seguir mostram que a escolha $h$ por grau de liberdade é exatamente a que faz a
+                    contagem clássica concordar com a quântica para energias altas.
+                </p>
+
+                <p id="ex-4-2-24"><strong>Exemplo 4.2.24 (O oscilador).</strong> Os níveis quânticos do oscilador
+                    harmônico são $E_n = \hbar\omega\left(n + \tfrac12\right)$, $n = 0, 1, 2, \dots$ O número de níveis
+                    com $E_n \le E$ é o número de inteiros $n \ge 0$ com $n \le E/\hbar\omega - \tfrac12$, isto é,
+                    $\lfloor E/\hbar\omega + \tfrac12\rfloor$ (para $E \ge \tfrac12\hbar\omega$), que difere de
+                    $E/\hbar\omega$ por no máximo $\tfrac12$. Pela Equação (4.2.4), a área da região clássica
+                    $\mathcal{H} \le E$, dividida por $h = 2\pi\hbar$, é</p>
+
+                <p>$$ \frac{1}{h}\cdot\frac{2\pi E}{\omega} = \frac{E}{\hbar\omega}. $$</p>
+
+                <p>
+                    As duas contagens diferem por um número limitado, enquanto ambas crescem sem limite com $E$: para
+                    $E \gg \hbar\omega$, cada nível quântico ocupa uma área $h$ do plano de fase. A área entre as
+                    elipses de energias $E_n$ e $E_{n+1}$ é exatamente $2\pi\hbar\omega/\omega = h$.
+                </p>
+
+                <p id="ex-4-2-25"><strong>Exemplo 4.2.25 (Partícula em uma caixa).</strong> Para uma partícula de
+                    massa $m$ em um segmento de comprimento $L$, os níveis quânticos são
+                    $E_n = \dfrac{n^2h^2}{8mL^2}$, $n = 1, 2, \dots$ A condição $E_n \le E$ equivale a
+                    $n \le 2L\sqrt{2mE}/h$, e o número de níveis é a parte inteira desse número. A região clássica
+                    $\mathcal{H} \le E$ é o retângulo $0 \le q \le L$, $\lvert p\rvert \le \sqrt{2mE}$, de área
+                    $2L\sqrt{2mE}$. De novo, a área dividida por $h$ coincide com a contagem quântica, agora a menos
+                    da parte inteira.</p>
+
+                <div class="definition-box" id="def-4-2-26" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.2.26 (Contagem clássica de estados).</strong> Para um sistema clássico com
+                        $f$ graus de liberdade, o <strong>número de estados</strong> em uma região
+                        $R \subset \Gamma$ é</p>
+                    <p>$$ \frac{\operatorname{Vol}(R)}{h^f} = \frac{1}{h^f}\int_Rd^fq\,d^fp. \tag{4.2.9} $$</p>
+                </div>
+
+                <p id="obs-4-2-27"><strong>Observação 4.2.27 (O que a célula $h$ faz e o que não faz).</strong> A
+                    Definição 4.2.26 transforma volumes em números adimensionais, o que é necessário para que
+                    $\ln\Omega$ faça sentido no <a href="[04] - Contato Térmico e Entropia.html">tópico 4.4</a>. Ela
+                    também fixa a constante aditiva da entropia, que só a mecânica quântica determina, e por isso o
+                    valor de $h$ aparecerá em resultados mensuráveis, como a equação de Sackur–Tetrode do
+                    <a href="[09] - Paradoxo de Gibbs e Contagem Correta.html">tópico 4.9</a>. Os dois exemplos
+                    justificam a escolha em casos particulares, e não a deduzem em geral. Falta ainda uma correção
+                    para partículas idênticas, que trocadas entre si não produzem um microestado novo; ela introduz um
+                    fator $1/N!$ e é o assunto do tópico 4.9. Até lá, toda contagem clássica trata as partículas como
+                    distinguíveis.</p>
+
+                <p id="obs-4-2-28"><strong>Observação 4.2.28 (O análogo quântico).</strong> Na mecânica quântica, o
+                    papel da densidade $\rho$ é desempenhado pelo operador densidade
+                    $\hat\rho = \sum_jw_j\lvert\psi_j\rangle\langle\psi_j\rvert$, em que $w_j \ge 0$, $\sum_jw_j = 1$, é a
+                    probabilidade do estado puro $\lvert\psi_j\rangle$ no ensemble. A equação de Schrödinger implica a
+                    <strong>equação de von Neumann</strong></p>
+
+                <p>$$ i\hbar\,\frac{\partial\hat\rho}{\partial t} = \big[\hat{\mathcal{H}},\hat\rho\big], \tag{4.2.10} $$</p>
+
+                <p>
+                    que é a equação de Liouville (4.2.8) com o colchete de Poisson trocado pelo comutador dividido por
+                    $i\hbar$. Um ensemble quântico é estacionário se, e somente se, $\hat\rho$ comuta com
+                    $\hat{\mathcal{H}}$, o que vale em particular para $\hat\rho = F(\hat{\mathcal{H}})$. Usaremos apenas
+                    esta consequência: nos sistemas quânticos dos capítulos 4 e 5, os microestados são os autoestados
+                    de energia, contados um a um.
+                </p>
+
+                <h2 id="conexao">Conexão com a termodinâmica e com o experimento</h2>
+
+                <p>
+                    Nada neste tópico é medido diretamente: o espaço de fase de um mol de gás tem da ordem de
+                    $10^{24}$ dimensões, e o que um instrumento registra é sempre uma média. O papel do tópico é
+                    estrutural. O teorema de Liouville garante que a contagem de estados por volume, que fará o papel
+                    da entropia, é invariante sob a evolução: a dinâmica não cria nem destrói volume de fase. Ele
+                    também mostra o que <em>não</em> pode explicar a aproximação ao equilíbrio. Como a densidade é
+                    transportada sem mudar de valor, uma grandeza como $-\int\rho\ln\rho$ é constante no tempo para
+                    qualquer ensemble que evolua pelas equações de Hamilton: com $y = \varphi_t(x)$ e $J = 1$, como na
+                    prova do <a href="#teo-4-2-18">Teorema 4.2.18</a>,
+                    $\int\rho(y,t)\ln\rho(y,t)\,d^{2f}y = \int\rho(x,0)\ln\rho(x,0)\,d^{2f}x$. O aumento da
+                    entropia, que veremos no <a href="[04] - Contato Térmico e Entropia.html">tópico 4.4</a>, não vem
+                    de a densidade fina mudar, mas de a descrição macroscópica perder a informação sobre os filamentos
+                    cada vez mais finos em que a região inicial se estica, como na Figura 4.2.2.
+                </p>
+
+                <p>
+                    A constante de Planck, por sua vez, entra em resultados macroscópicos mensuráveis: a entropia
+                    absoluta de um gás monoatômico (<a href="[09] - Paradoxo de Gibbs e Contagem Correta.html">tópico 4.9</a>)
+                    contém $h$, e o acordo dessa fórmula com a entropia medida por calorimetria foi uma das primeiras
+                    confirmações de que a célula de volume $h^f$ é a correta.
+                </p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p>
+                    Os exercícios aplicam as equações de Hamilton, o teorema de Liouville e a contagem com a célula
+                    $h$ a sistemas de um grau de liberdade e a coleções de osciladores e partículas. As contas foram
+                    conferidas por computação simbólica.
+                </p>
+
+                <p id="exr-4-2-1"><strong>Exercício 4.2.1.</strong> Para o pêndulo do
+                    <a href="#ex-4-2-6">Exemplo 4.2.6</a>, encontre os pontos de equilíbrio no plano de fase
+                    ($-\pi \lt q \le \pi$), diga qual é estável, e encontre a curva de fase que separa as oscilações das
+                    rotações completas.</p>
+
+                <p>
+                    <em>Solução.</em> Os equilíbrios são os pontos em que $\dot q = \dot p = 0$: $p/(m\ell^2) = 0$ e
+                    $-mg\ell\sin q = 0$, ou seja, $(q,p) = (0,0)$ e $(q,p) = (\pi,0)$. Em $(0,0)$ o hamiltoniano tem
+                    mínimo, $\mathcal{H} = -mg\ell$, e as curvas de nível próximas são fechadas em torno dele (perto do
+                    mínimo, $\mathcal{H} \approx -mg\ell + p^2/2m\ell^2 + mg\ell\,q^2/2$, um oscilador): o equilíbrio é
+                    estável. Em $(\pi,0)$, $\mathcal{H} = mg\ell$ é um ponto de sela: a energia aumenta na direção de
+                    $p$ e diminui na direção de $q$, e o equilíbrio é instável. A curva de nível que passa pela sela,
+                    $\mathcal{H} = mg\ell$, é a <strong>separatriz</strong>. Usando $1 + \cos q = 2\cos^2(q/2)$, ela é
+                </p>
+
+                <p>$$ \frac{p^2}{2m\ell^2} = mg\ell\,(1 + \cos q) \quad\Longleftrightarrow\quad p = \pm\,2m\ell\sqrt{g\ell}\,\cos\frac q2. $$</p>
+
+                <p>
+                    Para $-mg\ell \lt E \lt mg\ell$, as trajetórias são fechadas dentro da separatriz (oscilações); para
+                    $E \gt mg\ell$, $p$ nunca se anula e o pêndulo dá voltas completas (rotações). Na Figura 4.2.2,
+                    com $m = \ell = g = 1$, a separatriz é $p = \pm2\cos(q/2)$.
+                </p>
+
+                <p id="exr-4-2-2"><strong>Exercício 4.2.2.</strong> Considere $f$ osciladores harmônicos
+                    independentes de mesma massa $m$ e frequência $\omega$, com
+                    $\mathcal{H} = \sum_{i=1}^{f}\big(p_i^2/2m + m\omega^2q_i^2/2\big)$. Mostre que o número de estados
+                    clássicos com energia $\le E$ é $\dfrac{1}{f!}\left(\dfrac{E}{\hbar\omega}\right)^{f}$, e compare
+                    com a contagem quântica.</p>
+
+                <p>
+                    <em>Solução.</em> Em cada plano $(q_i,p_i)$ usamos coordenadas elípticas
+                    $q_i = \sqrt{2\varepsilon_i/(m\omega^2)}\cos\theta_i$, $p_i = \sqrt{2m\varepsilon_i}\sin\theta_i$, com
+                    $\varepsilon_i \ge 0$ a energia do oscilador $i$ e $0 \le \theta_i \lt 2\pi$. O jacobiano é
+                </p>
+
+                <p>$$ \frac{\partial(q_i,p_i)}{\partial(\varepsilon_i,\theta_i)} = \frac12\sqrt{\frac{2}{m\omega^2}}\sqrt{2m}\,\big(\cos^2\theta_i + \sin^2\theta_i\big) = \frac1\omega, $$</p>
+
+                <p>
+                    de modo que $dq_i\,dp_i = d\varepsilon_i\,d\theta_i/\omega$. Integrando os ângulos, o volume da região
+                    $\mathcal{H} \le E$ é $(2\pi/\omega)^f$ vezes o volume do simplexo
+                    $\{\varepsilon_i \ge 0,\ \sum_i\varepsilon_i \le E\}$. Esse volume é $E^f/f!$, por indução: para
+                    $f = 1$ é $E$, e
+                    $V_f(E) = \int_0^EV_{f-1}(E - \varepsilon)\,d\varepsilon = \int_0^E\dfrac{(E-\varepsilon)^{f-1}}{(f-1)!}\,d\varepsilon = \dfrac{E^f}{f!}$.
+                    Dividindo por $h^f = (2\pi\hbar)^f$, o número de estados é $\dfrac{1}{f!}\left(\dfrac{E}{\hbar\omega}\right)^f$.
+                </p>
+
+                <p>
+                    Na contagem quântica, $E$ é a energia de excitação, medida a partir da energia de ponto zero
+                    $f\hbar\omega/2$. Um microestado é uma lista $(n_1,\dots,n_f)$ de inteiros $\ge 0$ com
+                    $\sum n_i \le M$, em que $M = \lfloor E/\hbar\omega\rfloor$ é o maior número de quanta permitido.
+                    Acrescentando a folga $n_0 = M - \sum n_i \ge 0$, essas listas correspondem às listas de $f + 1$
+                    inteiros $\ge 0$ com soma exatamente $M$, cujo número é $\binom{M+f}{f}$ (a contagem por "estrelas e
+                    barras" do <a href="[07] - Sólido de Einstein.html">tópico 4.7</a>). Comparando com o resultado
+                    clássico escrito com o mesmo $M$,
+                    $\binom{M+f}{f}\Big/\dfrac{M^f}{f!} = \prod_{j=1}^{f}\left(1 + \dfrac jM\right)$, que tende a $1$
+                    quando $M \to \infty$ com $f$ fixo; e trocar $M$ por $E/\hbar\omega$ muda $M^f$ por um fator entre
+                    $1$ e $(1 + 1/M)^f$, que também tende a $1$. As duas contagens coincidem, portanto, para energias
+                    altas. Se $f$ também cresce, a condição é mais forte: o logaritmo do produto é cerca de
+                    $f^2/2M$, e é preciso $f^2 \ll M$. O $f!$
+                    aqui vem da geometria do simplexo; não tem relação com a indistinguibilidade de partículas do
+                    <a href="[09] - Paradoxo de Gibbs e Contagem Correta.html">tópico 4.9</a>, já que osciladores
+                    diferentes são distinguíveis.
+                </p>
+
+                <p id="exr-4-2-3"><strong>Exercício 4.2.3.</strong> No oscilador amortecido do
+                    <a href="#ex-4-2-20">Exemplo 4.2.20</a>, um retângulo de condições iniciais tem área $A_0$. Qual é a
+                    área da sua imagem no instante $t$? Confira resolvendo o caso $\omega = 0$.</p>
+
+                <p>
+                    <em>Solução.</em> As equações são lineares, $\dot x = Kx$ com
+                    $K = \begin{pmatrix}0 & 1/m\\ -m\omega^2 & -\gamma\end{pmatrix}$. O fluxo é $\varphi_t(x) = e^{tK}x$, e
+                    o seu jacobiano é $\det e^{tK} = e^{t\operatorname{tr}K} = e^{-\gamma t}$, o mesmo que a fórmula de
+                    Jacobi dá. A imagem de qualquer região, em particular do retângulo, tem área $A_0e^{-\gamma t}$. No
+                    caso $\omega = 0$ (partícula livre com atrito), $p(t) = p_0e^{-\gamma t}$ e
+                    $q(t) = q_0 + \dfrac{p_0}{m\gamma}\big(1 - e^{-\gamma t}\big)$. A matriz da aplicação
+                    $(q_0,p_0) \mapsto (q,p)$ é triangular, com diagonal $1$ e $e^{-\gamma t}$, e determinante
+                    $e^{-\gamma t}$, como previsto.
+                </p>
+
+                <p id="exr-4-2-4"><strong>Exercício 4.2.4.</strong> Para uma partícula livre,
+                    $\mathcal{H} = p^2/2m$, determine a imagem do retângulo $[q_0, q_0 + a]\times[p_0, p_0 + b]$ pelo
+                    fluxo e verifique a conservação da área.</p>
+
+                <p>
+                    <em>Solução.</em> As soluções são $q(t) = q + pt/m$, $p(t) = p$, de modo que
+                    $\varphi_t(q,p) = (q + pt/m,\ p)$: um cisalhamento horizontal, mais forte para $p$ maior. A matriz
+                    jacobiana é $\begin{pmatrix}1 & t/m\\ 0 & 1\end{pmatrix}$, de determinante $1$. O retângulo vira o
+                    paralelogramo de vértices $(q_0 + p_0t/m,\ p_0)$, $(q_0 + a + p_0t/m,\ p_0)$,
+                    $(q_0 + (p_0+b)t/m,\ p_0 + b)$ e $(q_0 + a + (p_0+b)t/m,\ p_0 + b)$: base $a$, altura $b$ e, portanto,
+                    área $ab$, a mesma do retângulo. Com o tempo, o paralelogramo fica cada vez mais inclinado e
+                    comprido, mas não mais largo nem mais alto: é o mecanismo de filamentação da Figura 4.2.2 no caso
+                    mais simples.
+                </p>
+
+                <p id="exr-4-2-5"><strong>Exercício 4.2.5.</strong> Mostre que, para qualquer constante
+                    $\beta \gt 0$, a densidade $\rho = C\,e^{-\beta\mathcal{H}}$ é estacionária, e calcule a constante de
+                    normalização $C$ para o oscilador harmônico.</p>
+
+                <p>
+                    <em>Solução.</em> É o caso $F(\mathcal{H}) = Ce^{-\beta\mathcal{H}}$ da
+                    <a href="#prop-4-2-22">Proposição 4.2.22</a>(b). Para o oscilador, separando as integrais
+                    gaussianas,
+                </p>
+
+                <p>$$ \int_{-\infty}^{\infty}\!\!\int_{-\infty}^{\infty}e^{-\beta\left(\frac{p^2}{2m} + \frac{m\omega^2q^2}{2}\right)}\,dq\,dp = \sqrt{\frac{2\pi m}{\beta}}\,\sqrt{\frac{2\pi}{\beta m\omega^2}} = \frac{2\pi}{\beta\omega}, $$</p>
+
+                <p>
+                    logo $C = \beta\omega/2\pi$. O parâmetro $\beta$ não tem, por enquanto, nenhuma interpretação; no
+                    <a href="../[4] - Ensemble Canônico/[01] - Do Microcanônico ao Canônico.html">tópico 5.1</a> ele será
+                    $1/k_BT$, e a integral acima será a função de partição clássica do oscilador, a menos do fator $1/h$.
+                </p>
+
+                <p id="exr-4-2-6"><strong>Exercício 4.2.6.</strong> Uma partícula de massa $m$ está em uma caixa
+                    cúbica de lado $L$. Calcule o número de estados com energia $\le E$ pela contagem clássica (4.2.9) e
+                    pela contagem dos níveis quânticos $E = \dfrac{h^2}{8mL^2}\big(n_x^2 + n_y^2 + n_z^2\big)$, com
+                    $n_x, n_y, n_z \ge 1$ inteiros, para $E$ grande.</p>
+
+                <p>
+                    <em>Solução.</em> Classicamente, a região $\mathcal{H} \le E$ é o produto do cubo (volume $L^3$) pela
+                    bola $\lvert\mathbf{p}\rvert \le \sqrt{2mE}$ (volume $\tfrac43\pi(2mE)^{3/2}$), e o número de estados é
+                    $\dfrac{4\pi}{3}\dfrac{L^3(2mE)^{3/2}}{h^3}$. Quanticamente, contamos os pontos de coordenadas
+                    inteiras positivas na bola $n_x^2 + n_y^2 + n_z^2 \le R^2$, com $R = \sqrt{8mL^2E}/h$. Para $R$ grande,
+                    cada ponto ocupa um cubo de volume $1$, e o número de pontos é aproximadamente o volume de um
+                    oitavo da bola:
+                </p>
+
+                <p>$$ \frac18\cdot\frac43\pi R^3 = \frac{\pi}{6}\,\frac{(8mL^2E)^{3/2}}{h^3} = \frac{4\pi}{3}\,\frac{L^3(2mE)^{3/2}}{h^3}, $$</p>
+
+                <p>
+                    porque $(8mE)^{3/2}/6 = 8\,(2mE)^{3/2}/6 = \tfrac43(2mE)^{3/2}$. As duas contagens coincidem na ordem
+                    dominante. A diferença vem da fronteira do octante de bola: dos pontos sobre os três planos
+                    coordenados ($n_x = 0$ etc.), que a contagem exclui, e do desacordo entre pontos e volume junto à
+                    superfície esférica. Só os cubos unitários que cortam essa fronteira contribuem, e a área dela é da
+                    ordem de $R^2$; a diferença é, portanto, da ordem de $R^2$, desprezível diante de $R^3$ para $E$
+                    grande. Numericamente, com $m = L = h = 1$ e
+                    $E = 400$, a contagem exata dá $91\,058$ estados e a fórmula dá $94\,782$; a diferença relativa de
+                    cerca de $4\%$ cai como $1/R$.
+                </p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <p>
+                    Este tópico deu aos microestados clássicos um lugar e uma dinâmica, e mostrou que a dinâmica
+                    respeita a contagem por volume:
+                </p>
+
+                <ul>
+                    <li><strong>o espaço de fase e o fluxo hamiltoniano</strong>
+                        (<a href="#def-4-2-7">Definição 4.2.7</a>, <a href="#teo-4-2-8">Teorema 4.2.8</a>), com
+                        trajetórias que não se cruzam e ficam sobre as superfícies de energia
+                        (<a href="#prop-4-2-9">Proposição 4.2.9</a>, <a href="#def-4-2-10">Definição 4.2.10</a>);</li>
+                    <li><strong>ensembles e médias</strong> (<a href="#def-4-2-12">Definição 4.2.12</a>,
+                        <a href="#def-4-2-13">Definição 4.2.13</a>), com a hipótese ergódica discutida, e não provada
+                        (<a href="#obs-4-2-14">Observação 4.2.14</a>);</li>
+                    <li><strong>o teorema de Liouville</strong>: o fluxo hamiltoniano não tem divergência
+                        (<a href="#lema-4-2-15">Lema 4.2.15</a>), seu jacobiano vale $1$
+                        (<a href="#lema-4-2-16">Lema 4.2.16</a>), o volume de fase se conserva
+                        (<a href="#teo-4-2-17">Teorema 4.2.17</a>) e a densidade obedece à equação de Liouville
+                        (<a href="#teo-4-2-18">Teorema 4.2.18</a>);</li>
+                    <li><strong>as densidades de equilíbrio</strong>: toda $\rho = F(\mathcal{H})$ é estacionária
+                        (<a href="#prop-4-2-22">Proposição 4.2.22</a>);</li>
+                    <li><strong>a célula $h$</strong>: o número de estados em uma região do espaço de fase é o seu
+                        volume dividido por $h^f$ (<a href="#def-4-2-26">Definição 4.2.26</a>), escolha que concorda
+                        com a contagem quântica do oscilador e da partícula em uma caixa.</li>
+                </ul>
+
+                <p>
+                    Falta escolher, entre todas as densidades estacionárias, a que representa um sistema isolado em
+                    equilíbrio. O teorema de Liouville mostrou que a distribuição uniforme sobre a casca de energia é
+                    compatível com a dinâmica, mas não que ela seja a única possível; essa escolha será um postulado,
+                    o de probabilidades iguais a priori, e é o assunto do próximo tópico,
+                    <a href="[03] - O Ensemble Microcanônico.html">4.3 O Ensemble Microcanônico</a>.
+                </p>
+
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="toc-container">
+                <h4>Nesta página</h4>
+                <ul>
+                    <li><a href="#espaco-de-fase-e-liouville">Espaço de Fase, Ensembles e o Teorema de Liouville</a></li>
+                    <li><a href="#dinamica-hamiltoniana">Dinâmica hamiltoniana</a></li>
+                    <li><a href="#espaco-de-fase">O espaço de fase</a></li>
+                    <li><a href="#ensembles">Ensembles e médias</a></li>
+                    <li><a href="#liouville">O teorema de Liouville</a></li>
+                    <li><a href="#ensembles-estacionarios">Ensembles estacionários</a></li>
+                    <li><a href="#celula-h">Contagem semiclássica: a célula $h$</a></li>
+                    <li><a href="#conexao">Conexão com a termodinâmica e com o experimento</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Search Modal Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-modal">
+            <div class="search-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search documentation..." autocomplete="off">
+            </div>
+            <div class="search-results" id="search-results"></div>
+            <div class="search-footer">
+                <div class="search-commands">
+                    <span class="cmd-key">↑</span>
+                    <span class="cmd-key">↓</span>
+                    <span class="cmd-label">navigate</span>
+                    <span class="cmd-key">↵</span>
+                    <span class="cmd-label">select</span>
+                </div>
+                <div class="search-commands">
+                    <span class="cmd-key">esc</span>
+                    <span class="cmd-label">close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../../../assets/js/class-lecture.js"></script>
+</body>
+
+</html>

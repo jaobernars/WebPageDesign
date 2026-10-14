@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Paradoxo de Gibbs e a Contagem Correta de Boltzmann | Introduction to Statistical Mechanics | The Journal of a Physicist</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../../../assets/images/Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../../../assets/images/Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../../../assets/images/Favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="../../../../../../assets/images/Favicon/favicon.ico">
+    <link rel="stylesheet" href="../../../../../../assets/css/class-lecture.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                        <line x1="9" x2="9" y1="3" y2="21"></line>
+                    </svg>
+                </button>
+                <button id="theme-toggle" class="sidebar-toggle" aria-label="Toggle Theme">
+                    <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="breadcrumbs-header">
+                    <a href="../../../../../../Páginas Principais/Lectures.html" class="breadcrumb-link">← Lectures</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <a href="../../index.html" class="breadcrumb-link active">Introduction to Statistical Mechanics</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-category" class="breadcrumb-link">Ensemble Microcanônico</span>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-current" class="breadcrumb-link active">4.9 Paradoxo de Gibbs e Contagem Correta</span>
+                </div>
+            </div>
+            <nav class="top-nav">
+                <a href="../../../../../../Páginas Principais/Lectures.html">Lectures</a>
+                <a href="../../../../../../index.html">Home</a>
+            </nav>
+        </div>
+
+        <script>
+            MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']]
+                }
+            };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    </header>
+
+    <div class="main-layout">
+        <aside class="left-sidebar" id="left-sidebar">
+            <div class="sidebar-content">
+
+                <button class="search-trigger" id="search-trigger">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                    </svg>
+                    <span>Search docs...</span>
+                </button>
+
+                <div class="sidebar-group">
+                    <h3>Início</h3>
+                    <ul>
+                        <li><a href="../../index.html">Overview</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Introdução aos Métodos Estatísticos</h3>
+                    <ul>
+                        <li><a href="../[0] - Introdução aos Métodos Estatísticos/[01] - Introdução.html">Introdução</a></li>
+                        <li><a href="../[0] - Introdução aos Métodos Estatísticos/[02] - Problema do Caminho Aleatório.html">Problema do Caminho Aleatório</a></li>
+                        <li><a href="../[0] - Introdução aos Métodos Estatísticos/[03] - Valores Médios e Desvio Padrão.html">Valores Médios e Desvio Padrão</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Descrição Estatística de um Sistema Físico</h3>
+                    <ul>
+                        <li><a href="../[1] - Descrição Estatística de um Sistema Físico/[01] - Visão Geral.html">Visão Geral</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Introdução à Termodinâmica</h3>
+                    <ul>
+                        <li><a href="../[2] - Introdução à Termodinâmica/[01] - Visão Geral.html">Visão Geral</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Ensemble Microcanônico</h3>
+                    <ul>
+                        <li><a href="[01] - Motivação e Roteiro.html">4.1 Motivação e Roteiro</a></li>
+                        <li><a href="[02] - Espaço de Fase e Teorema de Liouville.html">4.2 Espaço de Fase e Teorema de Liouville</a></li>
+                        <li><a href="[03] - O Ensemble Microcanônico.html">4.3 O Ensemble Microcanônico</a></li>
+                        <li><a href="[04] - Contato Térmico e Entropia.html">4.4 Contato Térmico e Entropia</a></li>
+                        <li><a href="[05] - Interações Mecânica e Difusiva.html">4.5 Interações Mecânica e Difusiva</a></li>
+                        <li><a href="[06] - Dois Níveis e Paramagneto Ideal.html">4.6 Dois Níveis e Paramagneto Ideal</a></li>
+                        <li><a href="[07] - Sólido de Einstein.html">4.7 Sólido de Einstein</a></li>
+                        <li><a href="[08] - Gás Ideal Clássico.html">4.8 Gás Ideal Clássico</a></li>
+                        <li><a href="[09] - Paradoxo de Gibbs e Contagem Correta.html" class="active">4.9 Paradoxo de Gibbs e Contagem Correta</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Ensemble Canônico</h3>
+                    <ul>
+                        <li><a href="../[4] - Ensemble Canônico/[01] - Do Microcanônico ao Canônico.html">5.1 Do Microcanônico ao Canônico</a></li>
+                        <li><a href="../[4] - Ensemble Canônico/[02] - Função de Partição e Termodinâmica.html">5.2 Função de Partição e Termodinâmica</a></li>
+                        <li><a href="../[4] - Ensemble Canônico/[03] - Flutuações e Equivalência dos Ensembles.html">5.3 Flutuações e Equivalência dos Ensembles</a></li>
+                        <li><a href="../[4] - Ensemble Canônico/[04] - Sistemas de Partículas Independentes.html">5.4 Sistemas de Partículas Independentes</a></li>
+                        <li><a href="../[4] - Ensemble Canônico/[05] - Paramagneto Ideal e Lei de Curie.html">5.5 Paramagneto Ideal e Lei de Curie</a></li>
+                        <li><a href="../[4] - Ensemble Canônico/[06] - Osciladores e o Sólido de Einstein.html">5.6 Osciladores e o Sólido de Einstein</a></li>
+                        <li><a href="../[4] - Ensemble Canônico/[07] - Gás Ideal e Sistemas de Dois Níveis.html">5.7 Gás Ideal e Sistemas de Dois Níveis</a></li>
+                        <li><a href="../[4] - Ensemble Canônico/[08] - Equipartição, Virial e Maxwell.html">5.8 Equipartição, Virial e Maxwell</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="prose">
+
+                <h1 id="paradoxo-de-gibbs">4.9 O Paradoxo de Gibbs e a Contagem Correta de Boltzmann</h1>
+                <p class="lead">A entropia de mistura, o fator N! da indistinguibilidade, a equação de Sackur–Tetrode e o domínio de validade da descrição clássica.</p>
+
+                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="toc-container">
+                <h4>Nesta página</h4>
+                <ul>
+                    <li><a href="#paradoxo-de-gibbs">O Paradoxo de Gibbs e a Contagem Correta de Boltzmann</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Search Modal Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-modal">
+            <div class="search-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search documentation..." autocomplete="off">
+            </div>
+            <div class="search-results" id="search-results"></div>
+            <div class="search-footer">
+                <div class="search-commands">
+                    <span class="cmd-key">↑</span>
+                    <span class="cmd-key">↓</span>
+                    <span class="cmd-label">navigate</span>
+                    <span class="cmd-key">↵</span>
+                    <span class="cmd-label">select</span>
+                </div>
+                <div class="search-commands">
+                    <span class="cmd-key">esc</span>
+                    <span class="cmd-label">close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../../../assets/js/class-lecture.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Ensemble Microcanônico | Introduction to Statistical Mechanics | The Journal of a Physicist</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../../../assets/images/Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../../../assets/images/Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../../../assets/images/Favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="../../../../../../assets/images/Favicon/favicon.ico">
+    <link rel="stylesheet" href="../../../../../../assets/css/class-lecture.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                        <line x1="9" x2="9" y1="3" y2="21"></line>
+                    </svg>
+                </button>
+                <button id="theme-toggle" class="sidebar-toggle" aria-label="Toggle Theme">
+                    <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="breadcrumbs-header">
+                    <a href="../../../../../../Páginas Principais/Lectures.html" class="breadcrumb-link">← Lectures</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <a href="../../index.html" class="breadcrumb-link active">Introduction to Statistical Mechanics</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-category" class="breadcrumb-link">Ensemble Microcanônico</span>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-current" class="breadcrumb-link active">4.3 O Ensemble Microcanônico</span>
+                </div>
+            </div>
+            <nav class="top-nav">
+                <a href="../../../../../../Páginas Principais/Lectures.html">Lectures</a>
+                <a href="../../../../../../index.html">Home</a>
+            </nav>
+        </div>
+
+        <script>
+            MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']]
+                }
+            };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    </header>
+
+    <div class="main-layout">
+        <aside class="left-sidebar" id="left-sidebar">
+            <div class="sidebar-content">
+
+                <button class="search-trigger" id="search-trigger">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                    </svg>
+                    <span>Search docs...</span>
+                </button>
+
+                <div class="sidebar-group">
+                    <h3>Início</h3>
+                    <ul>
+                        <li><a href="../../index.html">Overview</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Introdução aos Métodos Estatísticos</h3>
+                    <ul>
+                        <li><a href="../[0] - Introdução aos Métodos Estatísticos/[01] - Introdução.html">Introdução</a></li>
+                        <li><a href="../[0] - Introdução aos Métodos Estatísticos/[02] - Problema do Caminho Aleatório.html">Problema do Caminho Aleatório</a></li>
+                        <li><a href="../[0] - Introdução aos Métodos Estatísticos/[03] - Valores Médios e Desvio Padrão.html">Valores Médios e Desvio Padrão</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Descrição Estatística de um Sistema Físico</h3>
+                    <ul>
+                        <li><a href="../[1] - Descrição Estatística de um Sistema Físico/[01] - Visão Geral.html">Visão Geral</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Introdução à Termodinâmica</h3>
+                    <ul>
+                        <li><a href="../[2] - Introdução à Termodinâmica/[01] - Visão Geral.html">Visão Geral</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Ensemble Microcanônico</h3>
+                    <ul>
+                        <li><a href="[01] - Motivação e Roteiro.html">4.1 Motivação e Roteiro</a></li>
+                        <li><a href="[02] - Espaço de Fase e Teorema de Liouville.html">4.2 Espaço de Fase e Teorema de Liouville</a></li>
+                        <li><a href="[03] - O Ensemble Microcanônico.html" class="active">4.3 O Ensemble Microcanônico</a></li>
+                        <li><a href="[04] - Contato Térmico e Entropia.html">4.4 Contato Térmico e Entropia</a></li>
+                        <li><a href="[05] - Interações Mecânica e Difusiva.html">4.5 Interações Mecânica e Difusiva</a></li>
+                        <li><a href="[06] - Dois Níveis e Paramagneto Ideal.html">4.6 Dois Níveis e Paramagneto Ideal</a></li>
+                        <li><a href="[07] - Sólido de Einstein.html">4.7 Sólido de Einstein</a></li>
+                        <li><a href="[08] - Gás Ideal Clássico.html">4.8 Gás Ideal Clássico</a></li>
+                        <li><a href="[09] - Paradoxo de Gibbs e Contagem Correta.html">4.9 Paradoxo de Gibbs e Contagem Correta</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Ensemble Canônico</h3>
+                    <ul>
+                        <li><a href="../[4] - Ensemble Canônico/[01] - Do Microcanônico ao Canônico.html">5.1 Do Microcanônico ao Canônico</a></li>
+                        <li><a href="../[4] - Ensemble Canônico/[02] - Função de Partição e Termodinâmica.html">5.2 Função de Partição e Termodinâmica</a></li>
+                        <li><a href="../[4] - Ensemble Canônico/[03] - Flutuações e Equivalência dos Ensembles.html">5.3 Flutuações e Equivalência dos Ensembles</a></li>
+                        <li><a href="../[4] - Ensemble Canônico/[04] - Sistemas de Partículas Independentes.html">5.4 Sistemas de Partículas Independentes</a></li>
+                        <li><a href="../[4] - Ensemble Canônico/[05] - Paramagneto Ideal e Lei de Curie.html">5.5 Paramagneto Ideal e Lei de Curie</a></li>
+                        <li><a href="../[4] - Ensemble Canônico/[06] - Osciladores e o Sólido de Einstein.html">5.6 Osciladores e o Sólido de Einstein</a></li>
+                        <li><a href="../[4] - Ensemble Canônico/[07] - Gás Ideal e Sistemas de Dois Níveis.html">5.7 Gás Ideal e Sistemas de Dois Níveis</a></li>
+                        <li><a href="../[4] - Ensemble Canônico/[08] - Equipartição, Virial e Maxwell.html">5.8 Equipartição, Virial e Maxwell</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="prose">
+
+                <h1 id="ensemble-microcanonico">4.3 O Ensemble Microcanônico</h1>
+                <p class="lead">O sistema isolado, o postulado das probabilidades iguais a priori, a contagem de microestados acessíveis e a insensibilidade dos resultados à largura da casca de energia.</p>
+
+                <p>
+                    O <a href="[02] - Espaço de Fase e Teorema de Liouville.html">tópico 4.2</a> terminou com uma
+                    conclusão e uma lacuna. A conclusão: para um sistema isolado, as densidades de probabilidade
+                    compatíveis com a dinâmica e com o equilíbrio são as que dependem do microestado apenas por meio
+                    da energia. A lacuna: entre todas essas densidades, nada na mecânica escolhe uma. O passo seguinte
+                    não é um teorema, mas um postulado, o mais simples compatível com a conclusão: todos os
+                    microestados acessíveis de um sistema isolado são igualmente prováveis. Ele é o ponto de partida
+                    de toda a mecânica estatística de equilíbrio, e o capítulo 4 inteiro é o teste das suas
+                    consequências.
+                </p>
+
+                <p>
+                    Com o postulado, a probabilidade de um macroestado passa a ser a fração dos microestados
+                    acessíveis que o realizam, e o problema central vira um problema de contagem. Definimos as três
+                    funções de contagem que usaremos até o fim do curso: o número $\Omega$ de microestados em uma
+                    casca de energia, o número $\Phi$ de estados com energia até $E$ e a densidade de estados
+                    $\omega(E)$. Contamos com elas spins, osciladores e uma partícula livre, usando a célula $h$ do
+                    tópico 4.2 nos casos clássicos. Em seguida respondemos a uma objeção natural: a largura
+                    $\delta E$ da casca é arbitrária, e os resultados não deveriam depender dela. Provamos que, para
+                    sistemas com muitos graus de liberdade, $\ln\Omega$, $\ln\Phi$ e $\ln[\omega(E)\,\delta E]$ diferem
+                    por uma quantidade desprezível diante de cada uma delas, e que o mesmo vale para as suas
+                    derivadas.
+                </p>
+
+                <p>
+                    Por fim, calculamos médias no ensemble microcanônico. O exemplo central é a energia de um único
+                    oscilador dentro de um sistema isolado de muitos osciladores: sua distribuição não é uniforme,
+                    mas, no limite de muitos osciladores, exponencial. É a primeira aparição do fator de Boltzmann,
+                    que o capítulo 5 deduzirá em geral. Usamos do <a href="[01] - Motivação e Roteiro.html">tópico
+                    4.1</a> as multiplicidades binomiais, e do tópico 4.2 o espaço de fase, a conservação do volume
+                    e a contagem semiclássica.
+                </p>
+
+                <h2 id="sistema-isolado">O sistema isolado</h2>
+
+                <p>
+                    Um sistema isolado não troca energia nem partículas com o exterior, e as paredes que o contêm
+                    são fixas. Seu hamiltoniano não depende do tempo, e sua energia, seu volume e seu número de
+                    partículas são constantes. Na prática, a energia só é conhecida com alguma incerteza: nenhum
+                    preparo a fixa com precisão infinita, e nenhum isolamento é perfeito. Representamos essa
+                    incerteza por uma largura $\delta E$, pequena diante de $E$.
+                </p>
+
+                <div class="definition-box" id="def-4-3-1" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.3.1 (Sistema isolado e microestados acessíveis).</strong> Um
+                        <strong>sistema isolado</strong> tem hamiltoniano $\mathcal{H}$ independente do tempo, volume
+                        $V$ e número de partículas $N$ fixos, e energia conhecida no intervalo
+                        $E \lt \mathcal{H} \le E + \delta E$. Seus <strong>microestados acessíveis</strong> são os
+                        compatíveis com esses vínculos:</p>
+                    <p>(a) no caso quântico, os autoestados $j$ do hamiltoniano (com as partículas no volume $V$) de
+                        energia $E \lt E_j \le E + \delta E$;</p>
+                    <p>(b) no caso clássico, os pontos $x = (q,p)$ do espaço de fase, com as coordenadas no volume
+                        $V$, tais que $E \lt \mathcal{H}(x) \le E + \delta E$.</p>
+                </div>
+
+                <p>
+                    Usamos o intervalo semiaberto, e não a casca fechada da
+                    <a href="[02] - Espaço de Fase e Teorema de Liouville.html#def-4-2-10">Definição 4.2.10</a>,
+                    porque ele torna exatas as fórmulas de contagem da próxima seção. A diferença está só nos
+                    estados de energia exatamente $E$: no caso clássico, eles formam uma superfície, de volume nulo;
+                    no quântico, basta escolher $E$ diferente de todos os níveis.
+                </p>
+
+                <p id="obs-4-3-2"><strong>Observação 4.3.2 (Por que uma casca, e não uma superfície).</strong> Seria
+                    mais simples fixar a energia exatamente, $\mathcal{H} = E$. Há três razões para não fazê-lo. A
+                    primeira é física: a energia de um sistema real nunca é conhecida exatamente. A segunda é quântica:
+                    o espectro é discreto, e para quase todo valor de $E$ não haveria nenhum estado com energia
+                    exatamente $E$. A terceira é clássica: a superfície $\mathcal{H} = E$ tem volume nulo, e uma
+                    densidade uniforme sobre ela só pode ser definida como limite de densidades uniformes em cascas
+                    cada vez mais finas, como na
+                    <a href="[02] - Espaço de Fase e Teorema de Liouville.html#obs-4-2-14">Observação 4.2.14</a>. A
+                    largura $\delta E$ deve ser pequena diante de $E$, para que a energia seja bem definida, mas grande
+                    diante do espaçamento entre os níveis, para que a casca contenha muitos estados. Para um sistema
+                    macroscópico, cujos níveis são extraordinariamente densos, as duas exigências são compatíveis.
+                    A <a href="#prop-4-3-11">Proposição 4.3.11</a> mostrará que o valor exato de $\delta E$ não
+                    importa.</p>
+
+                <h2 id="postulado">O postulado das probabilidades iguais a priori</h2>
+
+                <p>
+                    Um sistema isolado em equilíbrio tem um número enorme de microestados acessíveis, e nada do que
+                    medimos distingue um do outro. O postulado fundamental da mecânica estatística de equilíbrio
+                    transforma essa ignorância em uma distribuição de probabilidades.
+                </p>
+
+                <div class="definition-box" id="post-4-3-3" style="border-left: 4px solid #45503B;">
+                    <p><strong>Postulado 4.3.3 (Probabilidades iguais a priori).</strong> Em equilíbrio, todos os
+                        microestados acessíveis de um sistema isolado são igualmente prováveis.</p>
+                </div>
+
+                <p>
+                    No caso clássico, "igualmente prováveis" significa: a probabilidade de uma região da casca é
+                    proporcional ao seu volume no espaço de fase, que a
+                    <a href="[02] - Espaço de Fase e Teorema de Liouville.html#def-4-2-26">Definição 4.2.26</a>
+                    transforma em número de estados.
+                </p>
+
+                <div class="definition-box" id="def-4-3-4" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.3.4 (Ensemble microcanônico).</strong> O <strong>ensemble
+                        microcanônico</strong> de energia $E$, largura $\delta E$, volume $V$ e número de partículas
+                        $N$ é o ensemble que realiza o Postulado 4.3.3. Sendo $\Omega$ o número de microestados
+                        acessíveis, ele atribui</p>
+                    <p>(a) no caso quântico, probabilidade $P_j = 1/\Omega$ a cada estado acessível e $P_j = 0$ aos
+                        demais;</p>
+                    <p>(b) no caso clássico, a densidade</p>
+                    <p>$$ \rho(x) = \begin{cases} \dfrac{1}{\operatorname{Vol}(C)}, & x \in C,\\[4pt] 0, & x \notin C, \end{cases} \tag{4.3.1} $$</p>
+                    <p>em que $C = \{x : E \lt \mathcal{H}(x) \le E + \delta E\}$ é a casca e
+                        $\operatorname{Vol}(C) = h^f\,\Omega$ é o seu volume.</p>
+                </div>
+
+                <p>
+                    A <a href="[02] - Espaço de Fase e Teorema de Liouville.html#prop-4-2-22">Proposição 4.2.22</a>
+                    garante que toda densidade da forma $F(\mathcal{H})$, com $F$ suave, é estacionária. A densidade
+                    (4.3.1) é desse tipo, mas $F$ é descontínua nas bordas da casca, e a proposição não se aplica
+                    diretamente. A conservação do volume dá a conclusão sem exigir suavidade.
+                </p>
+
+                <div class="definition-box" id="prop-4-3-5">
+                    <p><strong>Proposição 4.3.5 (O ensemble microcanônico é estacionário).</strong> Se as cópias de
+                        um sistema isolado estão distribuídas no instante $0$ pelo ensemble microcanônico, elas
+                        continuam distribuídas por ele em todo instante $t$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> No caso clássico, seja $\varphi_t$ o fluxo hamiltoniano e $R$ uma região do
+                    espaço de fase. As cópias que estão em $R$ no instante $t$ são as que estavam em $\varphi_{-t}(R)$
+                    no instante $0$, já que $\varphi_t\circ\varphi_{-t}$ é a identidade. Logo a probabilidade de $R$
+                    no instante $t$ é
+                    $\operatorname{Vol}\big(\varphi_{-t}(R)\cap C\big)/\operatorname{Vol}(C)$. A energia se conserva
+                    (<a href="[02] - Espaço de Fase e Teorema de Liouville.html#prop-4-2-3">Proposição 4.2.3</a>),
+                    então o fluxo leva a casca nela mesma: $\varphi_{-t}(C) = C$. Como $\varphi_{-t}$ é uma bijeção,
+                    $\varphi_{-t}(R)\cap C = \varphi_{-t}(R)\cap\varphi_{-t}(C) = \varphi_{-t}(R\cap C)$, e pela
+                    conservação do volume
+                    (<a href="[02] - Espaço de Fase e Teorema de Liouville.html#teo-4-2-17">Teorema 4.2.17</a>)
+                    esse conjunto tem o volume de $R \cap C$. A probabilidade de $R$ no instante $t$ é, portanto,
+                    $\operatorname{Vol}(R\cap C)/\operatorname{Vol}(C)$, a mesma do instante $0$. No caso quântico,
+                    cada autoestado de energia evolui apenas por uma fase, $e^{-iE_jt/\hbar}$, e continua sendo o mesmo
+                    estado físico; as probabilidades $P_j$ não mudam (é o caso $\hat\rho = F(\hat{\mathcal{H}})$ da
+                    <a href="[02] - Espaço de Fase e Teorema de Liouville.html#obs-4-2-28">Observação 4.2.28</a>).
+                    $\blacksquare$
+                </p>
+
+                <figure class="lecture-figure" id="fig-4-3-1">
+                    <svg viewBox="0 0 640 320" role="img" aria-label="Plano de fase com o eixo q na horizontal e o eixo p na vertical. Duas curvas fechadas em forma de amendoim, uma dentro da outra, são as superfícies de energia H = E (contínua) e H = E + delta E (tracejada) de um poço duplo. A faixa entre elas está sombreada e cheia de pontos espalhados uniformemente; a faixa é mais larga perto do eixo p e mais estreita nas pontas, sobre o eixo q.">
+<defs><marker id="arr-4-3-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<path d="M566.4,160 L566.4,157.2 L566.3,154.5 L566.2,151.7 L566.1,148.9 L566,146.2 L565.8,143.4 L565.5,140.6 L565.2,137.8 L564.9,135.1 L564.6,132.3 L564.2,129.5 L563.7,126.7 L563.3,123.9 L562.8,121.1 L562.2,118.3 L561.6,115.5 L560.9,112.7 L560.2,109.8 L559.4,107 L558.6,104.2 L557.8,101.3 L556.8,98.5 L555.8,95.6 L554.8,92.8 L553.7,90 L552.5,87.1 L551.2,84.3 L549.9,81.4 L548.4,78.6 L546.9,75.8 L545.3,73 L543.6,70.2 L541.8,67.4 L539.9,64.6 L537.9,61.9 L535.8,59.2 L533.5,56.6 L531.1,54 L528.6,51.4 L525.9,48.9 L523.1,46.5 L520.1,44.2 L516.9,41.9 L513.6,39.8 L510.1,37.8 L506.4,35.9 L502.5,34.2 L498.5,32.6 L494.2,31.2 L489.8,29.9 L485.2,28.9 L480.4,28 L475.5,27.3 L470.5,26.9 L465.3,26.6 L460.1,26.5 L454.8,26.6 L449.4,26.8 L444.1,27.2 L438.8,27.7 L433.6,28.3 L428.4,29 L423.3,29.7 L418.3,30.5 L413.4,31.3 L408.6,32.1 L403.9,32.9 L399.4,33.7 L395,34.5 L390.6,35.2 L386.4,35.9 L382.3,36.6 L378.4,37.3 L374.5,37.9 L370.6,38.5 L366.9,39.1 L363.3,39.6 L359.7,40 L356.1,40.5 L352.7,40.8 L349.3,41.2 L345.9,41.5 L342.6,41.8 L339.3,42 L336,42.2 L332.8,42.4 L329.6,42.5 L326.4,42.6 L323.2,42.6 L320,42.7 L316.8,42.6 L313.6,42.6 L310.4,42.5 L307.2,42.4 L304,42.2 L300.7,42 L297.4,41.8 L294.1,41.5 L290.7,41.2 L287.3,40.8 L283.9,40.5 L280.3,40 L276.7,39.6 L273.1,39.1 L269.4,38.5 L265.5,37.9 L261.6,37.3 L257.7,36.6 L253.6,35.9 L249.4,35.2 L245,34.5 L240.6,33.7 L236.1,32.9 L231.4,32.1 L226.6,31.3 L221.7,30.5 L216.7,29.7 L211.6,29 L206.4,28.3 L201.2,27.7 L195.9,27.2 L190.6,26.8 L185.2,26.6 L179.9,26.5 L174.7,26.6 L169.5,26.9 L164.5,27.3 L159.6,28 L154.8,28.9 L150.2,29.9 L145.8,31.2 L141.5,32.6 L137.5,34.2 L133.6,35.9 L129.9,37.8 L126.4,39.8 L123.1,41.9 L119.9,44.2 L116.9,46.5 L114.1,48.9 L111.4,51.4 L108.9,54 L106.5,56.6 L104.2,59.2 L102.1,61.9 L100.1,64.6 L98.2,67.4 L96.4,70.2 L94.7,73 L93.1,75.8 L91.6,78.6 L90.1,81.4 L88.8,84.3 L87.5,87.1 L86.3,90 L85.2,92.8 L84.2,95.6 L83.2,98.5 L82.2,101.3 L81.4,104.2 L80.6,107 L79.8,109.8 L79.1,112.7 L78.4,115.5 L77.8,118.3 L77.2,121.1 L76.7,123.9 L76.3,126.7 L75.8,129.5 L75.4,132.3 L75.1,135.1 L74.8,137.8 L74.5,140.6 L74.2,143.4 L74,146.2 L73.9,148.9 L73.8,151.7 L73.7,154.5 L73.6,157.2 L73.6,160 L73.6,162.8 L73.7,165.5 L73.8,168.3 L73.9,171.1 L74,173.8 L74.2,176.6 L74.5,179.4 L74.8,182.2 L75.1,184.9 L75.4,187.7 L75.8,190.5 L76.3,193.3 L76.7,196.1 L77.2,198.9 L77.8,201.7 L78.4,204.5 L79.1,207.3 L79.8,210.2 L80.6,213 L81.4,215.8 L82.2,218.7 L83.2,221.5 L84.2,224.4 L85.2,227.2 L86.3,230 L87.5,232.9 L88.8,235.7 L90.1,238.6 L91.6,241.4 L93.1,244.2 L94.7,247 L96.4,249.8 L98.2,252.6 L100.1,255.4 L102.1,258.1 L104.2,260.8 L106.5,263.4 L108.9,266 L111.4,268.6 L114.1,271.1 L116.9,273.5 L119.9,275.8 L123.1,278.1 L126.4,280.2 L129.9,282.2 L133.6,284.1 L137.5,285.8 L141.5,287.4 L145.8,288.8 L150.2,290.1 L154.8,291.1 L159.6,292 L164.5,292.7 L169.5,293.1 L174.7,293.4 L179.9,293.5 L185.2,293.4 L190.6,293.2 L195.9,292.8 L201.2,292.3 L206.4,291.7 L211.6,291 L216.7,290.3 L221.7,289.5 L226.6,288.7 L231.4,287.9 L236.1,287.1 L240.6,286.3 L245,285.5 L249.4,284.8 L253.6,284.1 L257.7,283.4 L261.6,282.7 L265.5,282.1 L269.4,281.5 L273.1,280.9 L276.7,280.4 L280.3,280 L283.9,279.5 L287.3,279.2 L290.7,278.8 L294.1,278.5 L297.4,278.2 L300.7,278 L304,277.8 L307.2,277.6 L310.4,277.5 L313.6,277.4 L316.8,277.4 L320,277.3 L323.2,277.4 L326.4,277.4 L329.6,277.5 L332.8,277.6 L336,277.8 L339.3,278 L342.6,278.2 L345.9,278.5 L349.3,278.8 L352.7,279.2 L356.1,279.5 L359.7,280 L363.3,280.4 L366.9,280.9 L370.6,281.5 L374.5,282.1 L378.4,282.7 L382.3,283.4 L386.4,284.1 L390.6,284.8 L395,285.5 L399.4,286.3 L403.9,287.1 L408.6,287.9 L413.4,288.7 L418.3,289.5 L423.3,290.3 L428.4,291 L433.6,291.7 L438.8,292.3 L444.1,292.8 L449.4,293.2 L454.8,293.4 L460.1,293.5 L465.3,293.4 L470.5,293.1 L475.5,292.7 L480.4,292 L485.2,291.1 L489.8,290.1 L494.2,288.8 L498.5,287.4 L502.5,285.8 L506.4,284.1 L510.1,282.2 L513.6,280.2 L516.9,278.1 L520.1,275.8 L523.1,273.5 L525.9,271.1 L528.6,268.6 L531.1,266 L533.5,263.4 L535.8,260.8 L537.9,258.1 L539.9,255.4 L541.8,252.6 L543.6,249.8 L545.3,247 L546.9,244.2 L548.4,241.4 L549.9,238.6 L551.2,235.7 L552.5,232.9 L553.7,230 L554.8,227.2 L555.8,224.4 L556.8,221.5 L557.8,218.7 L558.6,215.8 L559.4,213 L560.2,210.2 L560.9,207.3 L561.6,204.5 L562.2,201.7 L562.8,198.9 L563.3,196.1 L563.7,193.3 L564.2,190.5 L564.6,187.7 L564.9,184.9 L565.2,182.2 L565.5,179.4 L565.8,176.6 L566,173.8 L566.1,171.1 L566.2,168.3 L566.3,165.5 L566.4,162.8 Z M551.4,160 L551.4,157.4 L551.3,154.8 L551.2,152.2 L551.1,149.6 L550.9,147 L550.7,144.4 L550.4,141.8 L550.1,139.2 L549.7,136.6 L549.3,134 L548.9,131.4 L548.4,128.8 L547.8,126.2 L547.2,123.6 L546.6,121 L545.9,118.4 L545.1,115.7 L544.3,113.1 L543.5,110.5 L542.5,107.9 L541.5,105.3 L540.5,102.7 L539.3,100.1 L538.1,97.6 L536.8,95 L535.5,92.4 L534,89.9 L532.5,87.4 L530.8,84.9 L529.1,82.4 L527.2,80 L525.3,77.5 L523.2,75.2 L521,72.9 L518.6,70.6 L516.2,68.4 L513.5,66.2 L510.8,64.2 L507.8,62.2 L504.7,60.4 L501.4,58.6 L498,57 L494.3,55.5 L490.5,54.2 L486.5,53 L482.3,52 L477.9,51.1 L473.4,50.5 L468.6,50.1 L463.8,49.8 L458.8,49.8 L453.8,49.9 L448.7,50.2 L443.6,50.7 L438.4,51.3 L433.3,52 L428.3,52.8 L423.4,53.6 L418.6,54.5 L413.9,55.5 L409.3,56.4 L404.9,57.4 L400.6,58.3 L396.5,59.2 L392.5,60.1 L388.6,60.9 L384.9,61.8 L381.3,62.5 L377.8,63.2 L374.4,63.9 L371.1,64.6 L367.9,65.2 L364.8,65.7 L361.8,66.2 L358.9,66.7 L356,67.2 L353.2,67.6 L350.4,67.9 L347.7,68.3 L345.1,68.6 L342.5,68.9 L339.9,69.1 L337.3,69.3 L334.8,69.5 L332.3,69.7 L329.8,69.8 L327.3,69.9 L324.9,69.9 L322.4,70 L320,70 L317.6,70 L315.1,69.9 L312.7,69.9 L310.2,69.8 L307.7,69.7 L305.2,69.5 L302.7,69.3 L300.1,69.1 L297.5,68.9 L294.9,68.6 L292.3,68.3 L289.6,67.9 L286.8,67.6 L284,67.2 L281.1,66.7 L278.2,66.2 L275.2,65.7 L272.1,65.2 L268.9,64.6 L265.6,63.9 L262.2,63.2 L258.7,62.5 L255.1,61.8 L251.4,60.9 L247.5,60.1 L243.5,59.2 L239.4,58.3 L235.1,57.4 L230.7,56.4 L226.1,55.5 L221.4,54.5 L216.6,53.6 L211.7,52.8 L206.7,52 L201.6,51.3 L196.4,50.7 L191.3,50.2 L186.2,49.9 L181.2,49.8 L176.2,49.8 L171.4,50.1 L166.6,50.5 L162.1,51.1 L157.7,52 L153.5,53 L149.5,54.2 L145.7,55.5 L142,57 L138.6,58.6 L135.3,60.4 L132.2,62.2 L129.2,64.2 L126.5,66.2 L123.8,68.4 L121.4,70.6 L119,72.9 L116.8,75.2 L114.7,77.5 L112.8,80 L110.9,82.4 L109.2,84.9 L107.5,87.4 L106,89.9 L104.5,92.4 L103.2,95 L101.9,97.6 L100.7,100.1 L99.5,102.7 L98.5,105.3 L97.5,107.9 L96.5,110.5 L95.7,113.1 L94.9,115.7 L94.1,118.4 L93.4,121 L92.8,123.6 L92.2,126.2 L91.6,128.8 L91.1,131.4 L90.7,134 L90.3,136.6 L89.9,139.2 L89.6,141.8 L89.3,144.4 L89.1,147 L88.9,149.6 L88.8,152.2 L88.7,154.8 L88.6,157.4 L88.6,160 L88.6,162.6 L88.7,165.2 L88.8,167.8 L88.9,170.4 L89.1,173 L89.3,175.6 L89.6,178.2 L89.9,180.8 L90.3,183.4 L90.7,186 L91.1,188.6 L91.6,191.2 L92.2,193.8 L92.8,196.4 L93.4,199 L94.1,201.6 L94.9,204.3 L95.7,206.9 L96.5,209.5 L97.5,212.1 L98.5,214.7 L99.5,217.3 L100.7,219.9 L101.9,222.4 L103.2,225 L104.5,227.6 L106,230.1 L107.5,232.6 L109.2,235.1 L110.9,237.6 L112.8,240 L114.7,242.5 L116.8,244.8 L119,247.1 L121.4,249.4 L123.8,251.6 L126.5,253.8 L129.2,255.8 L132.2,257.8 L135.3,259.6 L138.6,261.4 L142,263 L145.7,264.5 L149.5,265.8 L153.5,267 L157.7,268 L162.1,268.9 L166.6,269.5 L171.4,269.9 L176.2,270.2 L181.2,270.2 L186.2,270.1 L191.3,269.8 L196.4,269.3 L201.6,268.7 L206.7,268 L211.7,267.2 L216.6,266.4 L221.4,265.5 L226.1,264.5 L230.7,263.6 L235.1,262.6 L239.4,261.7 L243.5,260.8 L247.5,259.9 L251.4,259.1 L255.1,258.2 L258.7,257.5 L262.2,256.8 L265.6,256.1 L268.9,255.4 L272.1,254.8 L275.2,254.3 L278.2,253.8 L281.1,253.3 L284,252.8 L286.8,252.4 L289.6,252.1 L292.3,251.7 L294.9,251.4 L297.5,251.1 L300.1,250.9 L302.7,250.7 L305.2,250.5 L307.7,250.3 L310.2,250.2 L312.7,250.1 L315.1,250.1 L317.6,250 L320,250 L322.4,250 L324.9,250.1 L327.3,250.1 L329.8,250.2 L332.3,250.3 L334.8,250.5 L337.3,250.7 L339.9,250.9 L342.5,251.1 L345.1,251.4 L347.7,251.7 L350.4,252.1 L353.2,252.4 L356,252.8 L358.9,253.3 L361.8,253.8 L364.8,254.3 L367.9,254.8 L371.1,255.4 L374.4,256.1 L377.8,256.8 L381.3,257.5 L384.9,258.2 L388.6,259.1 L392.5,259.9 L396.5,260.8 L400.6,261.7 L404.9,262.6 L409.3,263.6 L413.9,264.5 L418.6,265.5 L423.4,266.4 L428.3,267.2 L433.3,268 L438.4,268.7 L443.6,269.3 L448.7,269.8 L453.8,270.1 L458.8,270.2 L463.8,270.2 L468.6,269.9 L473.4,269.5 L477.9,268.9 L482.3,268 L486.5,267 L490.5,265.8 L494.3,264.5 L498,263 L501.4,261.4 L504.7,259.6 L507.8,257.8 L510.8,255.8 L513.5,253.8 L516.2,251.6 L518.6,249.4 L521,247.1 L523.2,244.8 L525.3,242.5 L527.2,240 L529.1,237.6 L530.8,235.1 L532.5,232.6 L534,230.1 L535.5,227.6 L536.8,225 L538.1,222.4 L539.3,219.9 L540.5,217.3 L541.5,214.7 L542.5,212.1 L543.5,209.5 L544.3,206.9 L545.1,204.3 L545.9,201.6 L546.6,199 L547.2,196.4 L547.8,193.8 L548.4,191.2 L548.9,188.6 L549.3,186 L549.7,183.4 L550.1,180.8 L550.4,178.2 L550.7,175.6 L550.9,173 L551.1,170.4 L551.2,167.8 L551.3,165.2 L551.4,162.6 Z" class="fig-band" fill-rule="evenodd"/>
+<line x1="30" y1="160" x2="616" y2="160" class="fig-axis" marker-end="url(#arr-4-3-1)"/>
+<line x1="320" y1="310" x2="320" y2="8" class="fig-axis" marker-end="url(#arr-4-3-1)"/>
+<text x="612" y="182" text-anchor="end" class="fig-label fig-it">q</text>
+<text x="330" y="20" class="fig-label fig-it">p</text>
+<path d="M551.4,160 L551.4,157.4 L551.3,154.8 L551.2,152.2 L551.1,149.6 L550.9,147 L550.7,144.4 L550.4,141.8 L550.1,139.2 L549.7,136.6 L549.3,134 L548.9,131.4 L548.4,128.8 L547.8,126.2 L547.2,123.6 L546.6,121 L545.9,118.4 L545.1,115.7 L544.3,113.1 L543.5,110.5 L542.5,107.9 L541.5,105.3 L540.5,102.7 L539.3,100.1 L538.1,97.6 L536.8,95 L535.5,92.4 L534,89.9 L532.5,87.4 L530.8,84.9 L529.1,82.4 L527.2,80 L525.3,77.5 L523.2,75.2 L521,72.9 L518.6,70.6 L516.2,68.4 L513.5,66.2 L510.8,64.2 L507.8,62.2 L504.7,60.4 L501.4,58.6 L498,57 L494.3,55.5 L490.5,54.2 L486.5,53 L482.3,52 L477.9,51.1 L473.4,50.5 L468.6,50.1 L463.8,49.8 L458.8,49.8 L453.8,49.9 L448.7,50.2 L443.6,50.7 L438.4,51.3 L433.3,52 L428.3,52.8 L423.4,53.6 L418.6,54.5 L413.9,55.5 L409.3,56.4 L404.9,57.4 L400.6,58.3 L396.5,59.2 L392.5,60.1 L388.6,60.9 L384.9,61.8 L381.3,62.5 L377.8,63.2 L374.4,63.9 L371.1,64.6 L367.9,65.2 L364.8,65.7 L361.8,66.2 L358.9,66.7 L356,67.2 L353.2,67.6 L350.4,67.9 L347.7,68.3 L345.1,68.6 L342.5,68.9 L339.9,69.1 L337.3,69.3 L334.8,69.5 L332.3,69.7 L329.8,69.8 L327.3,69.9 L324.9,69.9 L322.4,70 L320,70 L317.6,70 L315.1,69.9 L312.7,69.9 L310.2,69.8 L307.7,69.7 L305.2,69.5 L302.7,69.3 L300.1,69.1 L297.5,68.9 L294.9,68.6 L292.3,68.3 L289.6,67.9 L286.8,67.6 L284,67.2 L281.1,66.7 L278.2,66.2 L275.2,65.7 L272.1,65.2 L268.9,64.6 L265.6,63.9 L262.2,63.2 L258.7,62.5 L255.1,61.8 L251.4,60.9 L247.5,60.1 L243.5,59.2 L239.4,58.3 L235.1,57.4 L230.7,56.4 L226.1,55.5 L221.4,54.5 L216.6,53.6 L211.7,52.8 L206.7,52 L201.6,51.3 L196.4,50.7 L191.3,50.2 L186.2,49.9 L181.2,49.8 L176.2,49.8 L171.4,50.1 L166.6,50.5 L162.1,51.1 L157.7,52 L153.5,53 L149.5,54.2 L145.7,55.5 L142,57 L138.6,58.6 L135.3,60.4 L132.2,62.2 L129.2,64.2 L126.5,66.2 L123.8,68.4 L121.4,70.6 L119,72.9 L116.8,75.2 L114.7,77.5 L112.8,80 L110.9,82.4 L109.2,84.9 L107.5,87.4 L106,89.9 L104.5,92.4 L103.2,95 L101.9,97.6 L100.7,100.1 L99.5,102.7 L98.5,105.3 L97.5,107.9 L96.5,110.5 L95.7,113.1 L94.9,115.7 L94.1,118.4 L93.4,121 L92.8,123.6 L92.2,126.2 L91.6,128.8 L91.1,131.4 L90.7,134 L90.3,136.6 L89.9,139.2 L89.6,141.8 L89.3,144.4 L89.1,147 L88.9,149.6 L88.8,152.2 L88.7,154.8 L88.6,157.4 L88.6,160 L88.6,162.6 L88.7,165.2 L88.8,167.8 L88.9,170.4 L89.1,173 L89.3,175.6 L89.6,178.2 L89.9,180.8 L90.3,183.4 L90.7,186 L91.1,188.6 L91.6,191.2 L92.2,193.8 L92.8,196.4 L93.4,199 L94.1,201.6 L94.9,204.3 L95.7,206.9 L96.5,209.5 L97.5,212.1 L98.5,214.7 L99.5,217.3 L100.7,219.9 L101.9,222.4 L103.2,225 L104.5,227.6 L106,230.1 L107.5,232.6 L109.2,235.1 L110.9,237.6 L112.8,240 L114.7,242.5 L116.8,244.8 L119,247.1 L121.4,249.4 L123.8,251.6 L126.5,253.8 L129.2,255.8 L132.2,257.8 L135.3,259.6 L138.6,261.4 L142,263 L145.7,264.5 L149.5,265.8 L153.5,267 L157.7,268 L162.1,268.9 L166.6,269.5 L171.4,269.9 L176.2,270.2 L181.2,270.2 L186.2,270.1 L191.3,269.8 L196.4,269.3 L201.6,268.7 L206.7,268 L211.7,267.2 L216.6,266.4 L221.4,265.5 L226.1,264.5 L230.7,263.6 L235.1,262.6 L239.4,261.7 L243.5,260.8 L247.5,259.9 L251.4,259.1 L255.1,258.2 L258.7,257.5 L262.2,256.8 L265.6,256.1 L268.9,255.4 L272.1,254.8 L275.2,254.3 L278.2,253.8 L281.1,253.3 L284,252.8 L286.8,252.4 L289.6,252.1 L292.3,251.7 L294.9,251.4 L297.5,251.1 L300.1,250.9 L302.7,250.7 L305.2,250.5 L307.7,250.3 L310.2,250.2 L312.7,250.1 L315.1,250.1 L317.6,250 L320,250 L322.4,250 L324.9,250.1 L327.3,250.1 L329.8,250.2 L332.3,250.3 L334.8,250.5 L337.3,250.7 L339.9,250.9 L342.5,251.1 L345.1,251.4 L347.7,251.7 L350.4,252.1 L353.2,252.4 L356,252.8 L358.9,253.3 L361.8,253.8 L364.8,254.3 L367.9,254.8 L371.1,255.4 L374.4,256.1 L377.8,256.8 L381.3,257.5 L384.9,258.2 L388.6,259.1 L392.5,259.9 L396.5,260.8 L400.6,261.7 L404.9,262.6 L409.3,263.6 L413.9,264.5 L418.6,265.5 L423.4,266.4 L428.3,267.2 L433.3,268 L438.4,268.7 L443.6,269.3 L448.7,269.8 L453.8,270.1 L458.8,270.2 L463.8,270.2 L468.6,269.9 L473.4,269.5 L477.9,268.9 L482.3,268 L486.5,267 L490.5,265.8 L494.3,264.5 L498,263 L501.4,261.4 L504.7,259.6 L507.8,257.8 L510.8,255.8 L513.5,253.8 L516.2,251.6 L518.6,249.4 L521,247.1 L523.2,244.8 L525.3,242.5 L527.2,240 L529.1,237.6 L530.8,235.1 L532.5,232.6 L534,230.1 L535.5,227.6 L536.8,225 L538.1,222.4 L539.3,219.9 L540.5,217.3 L541.5,214.7 L542.5,212.1 L543.5,209.5 L544.3,206.9 L545.1,204.3 L545.9,201.6 L546.6,199 L547.2,196.4 L547.8,193.8 L548.4,191.2 L548.9,188.6 L549.3,186 L549.7,183.4 L550.1,180.8 L550.4,178.2 L550.7,175.6 L550.9,173 L551.1,170.4 L551.2,167.8 L551.3,165.2 L551.4,162.6 Z" class="fig-curve"/>
+<path d="M566.4,160 L566.4,157.2 L566.3,154.5 L566.2,151.7 L566.1,148.9 L566,146.2 L565.8,143.4 L565.5,140.6 L565.2,137.8 L564.9,135.1 L564.6,132.3 L564.2,129.5 L563.7,126.7 L563.3,123.9 L562.8,121.1 L562.2,118.3 L561.6,115.5 L560.9,112.7 L560.2,109.8 L559.4,107 L558.6,104.2 L557.8,101.3 L556.8,98.5 L555.8,95.6 L554.8,92.8 L553.7,90 L552.5,87.1 L551.2,84.3 L549.9,81.4 L548.4,78.6 L546.9,75.8 L545.3,73 L543.6,70.2 L541.8,67.4 L539.9,64.6 L537.9,61.9 L535.8,59.2 L533.5,56.6 L531.1,54 L528.6,51.4 L525.9,48.9 L523.1,46.5 L520.1,44.2 L516.9,41.9 L513.6,39.8 L510.1,37.8 L506.4,35.9 L502.5,34.2 L498.5,32.6 L494.2,31.2 L489.8,29.9 L485.2,28.9 L480.4,28 L475.5,27.3 L470.5,26.9 L465.3,26.6 L460.1,26.5 L454.8,26.6 L449.4,26.8 L444.1,27.2 L438.8,27.7 L433.6,28.3 L428.4,29 L423.3,29.7 L418.3,30.5 L413.4,31.3 L408.6,32.1 L403.9,32.9 L399.4,33.7 L395,34.5 L390.6,35.2 L386.4,35.9 L382.3,36.6 L378.4,37.3 L374.5,37.9 L370.6,38.5 L366.9,39.1 L363.3,39.6 L359.7,40 L356.1,40.5 L352.7,40.8 L349.3,41.2 L345.9,41.5 L342.6,41.8 L339.3,42 L336,42.2 L332.8,42.4 L329.6,42.5 L326.4,42.6 L323.2,42.6 L320,42.7 L316.8,42.6 L313.6,42.6 L310.4,42.5 L307.2,42.4 L304,42.2 L300.7,42 L297.4,41.8 L294.1,41.5 L290.7,41.2 L287.3,40.8 L283.9,40.5 L280.3,40 L276.7,39.6 L273.1,39.1 L269.4,38.5 L265.5,37.9 L261.6,37.3 L257.7,36.6 L253.6,35.9 L249.4,35.2 L245,34.5 L240.6,33.7 L236.1,32.9 L231.4,32.1 L226.6,31.3 L221.7,30.5 L216.7,29.7 L211.6,29 L206.4,28.3 L201.2,27.7 L195.9,27.2 L190.6,26.8 L185.2,26.6 L179.9,26.5 L174.7,26.6 L169.5,26.9 L164.5,27.3 L159.6,28 L154.8,28.9 L150.2,29.9 L145.8,31.2 L141.5,32.6 L137.5,34.2 L133.6,35.9 L129.9,37.8 L126.4,39.8 L123.1,41.9 L119.9,44.2 L116.9,46.5 L114.1,48.9 L111.4,51.4 L108.9,54 L106.5,56.6 L104.2,59.2 L102.1,61.9 L100.1,64.6 L98.2,67.4 L96.4,70.2 L94.7,73 L93.1,75.8 L91.6,78.6 L90.1,81.4 L88.8,84.3 L87.5,87.1 L86.3,90 L85.2,92.8 L84.2,95.6 L83.2,98.5 L82.2,101.3 L81.4,104.2 L80.6,107 L79.8,109.8 L79.1,112.7 L78.4,115.5 L77.8,118.3 L77.2,121.1 L76.7,123.9 L76.3,126.7 L75.8,129.5 L75.4,132.3 L75.1,135.1 L74.8,137.8 L74.5,140.6 L74.2,143.4 L74,146.2 L73.9,148.9 L73.8,151.7 L73.7,154.5 L73.6,157.2 L73.6,160 L73.6,162.8 L73.7,165.5 L73.8,168.3 L73.9,171.1 L74,173.8 L74.2,176.6 L74.5,179.4 L74.8,182.2 L75.1,184.9 L75.4,187.7 L75.8,190.5 L76.3,193.3 L76.7,196.1 L77.2,198.9 L77.8,201.7 L78.4,204.5 L79.1,207.3 L79.8,210.2 L80.6,213 L81.4,215.8 L82.2,218.7 L83.2,221.5 L84.2,224.4 L85.2,227.2 L86.3,230 L87.5,232.9 L88.8,235.7 L90.1,238.6 L91.6,241.4 L93.1,244.2 L94.7,247 L96.4,249.8 L98.2,252.6 L100.1,255.4 L102.1,258.1 L104.2,260.8 L106.5,263.4 L108.9,266 L111.4,268.6 L114.1,271.1 L116.9,273.5 L119.9,275.8 L123.1,278.1 L126.4,280.2 L129.9,282.2 L133.6,284.1 L137.5,285.8 L141.5,287.4 L145.8,288.8 L150.2,290.1 L154.8,291.1 L159.6,292 L164.5,292.7 L169.5,293.1 L174.7,293.4 L179.9,293.5 L185.2,293.4 L190.6,293.2 L195.9,292.8 L201.2,292.3 L206.4,291.7 L211.6,291 L216.7,290.3 L221.7,289.5 L226.6,288.7 L231.4,287.9 L236.1,287.1 L240.6,286.3 L245,285.5 L249.4,284.8 L253.6,284.1 L257.7,283.4 L261.6,282.7 L265.5,282.1 L269.4,281.5 L273.1,280.9 L276.7,280.4 L280.3,280 L283.9,279.5 L287.3,279.2 L290.7,278.8 L294.1,278.5 L297.4,278.2 L300.7,278 L304,277.8 L307.2,277.6 L310.4,277.5 L313.6,277.4 L316.8,277.4 L320,277.3 L323.2,277.4 L326.4,277.4 L329.6,277.5 L332.8,277.6 L336,277.8 L339.3,278 L342.6,278.2 L345.9,278.5 L349.3,278.8 L352.7,279.2 L356.1,279.5 L359.7,280 L363.3,280.4 L366.9,280.9 L370.6,281.5 L374.5,282.1 L378.4,282.7 L382.3,283.4 L386.4,284.1 L390.6,284.8 L395,285.5 L399.4,286.3 L403.9,287.1 L408.6,287.9 L413.4,288.7 L418.3,289.5 L423.3,290.3 L428.4,291 L433.6,291.7 L438.8,292.3 L444.1,292.8 L449.4,293.2 L454.8,293.4 L460.1,293.5 L465.3,293.4 L470.5,293.1 L475.5,292.7 L480.4,292 L485.2,291.1 L489.8,290.1 L494.2,288.8 L498.5,287.4 L502.5,285.8 L506.4,284.1 L510.1,282.2 L513.6,280.2 L516.9,278.1 L520.1,275.8 L523.1,273.5 L525.9,271.1 L528.6,268.6 L531.1,266 L533.5,263.4 L535.8,260.8 L537.9,258.1 L539.9,255.4 L541.8,252.6 L543.6,249.8 L545.3,247 L546.9,244.2 L548.4,241.4 L549.9,238.6 L551.2,235.7 L552.5,232.9 L553.7,230 L554.8,227.2 L555.8,224.4 L556.8,221.5 L557.8,218.7 L558.6,215.8 L559.4,213 L560.2,210.2 L560.9,207.3 L561.6,204.5 L562.2,201.7 L562.8,198.9 L563.3,196.1 L563.7,193.3 L564.2,190.5 L564.6,187.7 L564.9,184.9 L565.2,182.2 L565.5,179.4 L565.8,176.6 L566,173.8 L566.1,171.1 L566.2,168.3 L566.3,165.5 L566.4,162.8 Z" class="fig-curve fig-dashed"/>
+<circle cx="396.1" cy="275.4" r="2.1" class="fig-arrowhead"/>
+<circle cx="86.9" cy="177.9" r="2.1" class="fig-arrowhead"/>
+<circle cx="384.2" cy="39.1" r="2.1" class="fig-arrowhead"/>
+<circle cx="140.7" cy="263.2" r="2.1" class="fig-arrowhead"/>
+<circle cx="344.1" cy="278" r="2.1" class="fig-arrowhead"/>
+<circle cx="98" cy="239.4" r="2.1" class="fig-arrowhead"/>
+<circle cx="332.7" cy="58.7" r="2.1" class="fig-arrowhead"/>
+<circle cx="87.8" cy="114.6" r="2.1" class="fig-arrowhead"/>
+<circle cx="491.3" cy="39.9" r="2.1" class="fig-arrowhead"/>
+<circle cx="79.4" cy="170.3" r="2.1" class="fig-arrowhead"/>
+<circle cx="97.7" cy="87.6" r="2.1" class="fig-arrowhead"/>
+<circle cx="265" cy="59.7" r="2.1" class="fig-arrowhead"/>
+<circle cx="344.9" cy="56.5" r="2.1" class="fig-arrowhead"/>
+<circle cx="248.8" cy="56.3" r="2.1" class="fig-arrowhead"/>
+<circle cx="548.4" cy="108.6" r="2.1" class="fig-arrowhead"/>
+<circle cx="408.8" cy="280.4" r="2.1" class="fig-arrowhead"/>
+<circle cx="239.4" cy="280.8" r="2.1" class="fig-arrowhead"/>
+<circle cx="251.5" cy="261.8" r="2.1" class="fig-arrowhead"/>
+<circle cx="111.3" cy="267.4" r="2.1" class="fig-arrowhead"/>
+<circle cx="334.2" cy="255.4" r="2.1" class="fig-arrowhead"/>
+<circle cx="477" cy="29.1" r="2.1" class="fig-arrowhead"/>
+<circle cx="549.3" cy="196.5" r="2.1" class="fig-arrowhead"/>
+<circle cx="382.5" cy="51.9" r="2.1" class="fig-arrowhead"/>
+<circle cx="557.7" cy="188.1" r="2.1" class="fig-arrowhead"/>
+<circle cx="270.3" cy="39.4" r="2.1" class="fig-arrowhead"/>
+<circle cx="557.3" cy="119.6" r="2.1" class="fig-arrowhead"/>
+<circle cx="333.4" cy="42.9" r="2.1" class="fig-arrowhead"/>
+<circle cx="286.6" cy="59.6" r="2.1" class="fig-arrowhead"/>
+<circle cx="134.1" cy="49.3" r="2.1" class="fig-arrowhead"/>
+<circle cx="362" cy="50.8" r="2.1" class="fig-arrowhead"/>
+<circle cx="280" cy="47.2" r="2.1" class="fig-arrowhead"/>
+<circle cx="542.9" cy="224.9" r="2.1" class="fig-arrowhead"/>
+<circle cx="104.6" cy="230" r="2.1" class="fig-arrowhead"/>
+<circle cx="178.7" cy="37.8" r="2.1" class="fig-arrowhead"/>
+<circle cx="432" cy="289.7" r="2.1" class="fig-arrowhead"/>
+<circle cx="465.3" cy="32.6" r="2.1" class="fig-arrowhead"/>
+<circle cx="280.8" cy="48.9" r="2.1" class="fig-arrowhead"/>
+<circle cx="143.3" cy="46.8" r="2.1" class="fig-arrowhead"/>
+<circle cx="110.2" cy="63.8" r="2.1" class="fig-arrowhead"/>
+<circle cx="346.7" cy="44.8" r="2.1" class="fig-arrowhead"/>
+<circle cx="123.2" cy="251.4" r="2.1" class="fig-arrowhead"/>
+<circle cx="93.4" cy="240.5" r="2.1" class="fig-arrowhead"/>
+<circle cx="194.2" cy="290.9" r="2.1" class="fig-arrowhead"/>
+<circle cx="317.5" cy="69.7" r="2.1" class="fig-arrowhead"/>
+<circle cx="110.6" cy="67.9" r="2.1" class="fig-arrowhead"/>
+<circle cx="200.7" cy="35.3" r="2.1" class="fig-arrowhead"/>
+<circle cx="558.2" cy="147.3" r="2.1" class="fig-arrowhead"/>
+<circle cx="191.2" cy="34.3" r="2.1" class="fig-arrowhead"/>
+<circle cx="322.2" cy="69.6" r="2.1" class="fig-arrowhead"/>
+<circle cx="362.4" cy="53.9" r="2.1" class="fig-arrowhead"/>
+<circle cx="183.9" cy="286.6" r="2.1" class="fig-arrowhead"/>
+<circle cx="120.9" cy="69.3" r="2.1" class="fig-arrowhead"/>
+<circle cx="400.3" cy="277.2" r="2.1" class="fig-arrowhead"/>
+<circle cx="440.9" cy="31.6" r="2.1" class="fig-arrowhead"/>
+<circle cx="392" cy="274.1" r="2.1" class="fig-arrowhead"/>
+<circle cx="98.6" cy="222.4" r="2.1" class="fig-arrowhead"/>
+<circle cx="303" cy="263" r="2.1" class="fig-arrowhead"/>
+<circle cx="76.8" cy="171.1" r="2.1" class="fig-arrowhead"/>
+<circle cx="481.2" cy="33.6" r="2.1" class="fig-arrowhead"/>
+<circle cx="173.8" cy="39.7" r="2.1" class="fig-arrowhead"/>
+<circle cx="206.7" cy="282" r="2.1" class="fig-arrowhead"/>
+<circle cx="119.3" cy="69.6" r="2.1" class="fig-arrowhead"/>
+<circle cx="212" cy="42.4" r="2.1" class="fig-arrowhead"/>
+<circle cx="256.2" cy="36.8" r="2.1" class="fig-arrowhead"/>
+<circle cx="386" cy="48.4" r="2.1" class="fig-arrowhead"/>
+<circle cx="430.7" cy="281.6" r="2.1" class="fig-arrowhead"/>
+<circle cx="212.2" cy="281.8" r="2.1" class="fig-arrowhead"/>
+<circle cx="535.1" cy="260.6" r="2.1" class="fig-arrowhead"/>
+<circle cx="294.8" cy="257.3" r="2.1" class="fig-arrowhead"/>
+<circle cx="165" cy="270.5" r="2.1" class="fig-arrowhead"/>
+<circle cx="240.3" cy="270.4" r="2.1" class="fig-arrowhead"/>
+<circle cx="355.1" cy="55.4" r="2.1" class="fig-arrowhead"/>
+<circle cx="99.3" cy="220.1" r="2.1" class="fig-arrowhead"/>
+<circle cx="84.3" cy="103.4" r="2.1" class="fig-arrowhead"/>
+<circle cx="265.3" cy="44.8" r="2.1" class="fig-arrowhead"/>
+<circle cx="123" cy="253.3" r="2.1" class="fig-arrowhead"/>
+<circle cx="542.5" cy="100.1" r="2.1" class="fig-arrowhead"/>
+<circle cx="185.2" cy="46.6" r="2.1" class="fig-arrowhead"/>
+<circle cx="124.5" cy="276" r="2.1" class="fig-arrowhead"/>
+<circle cx="551.3" cy="121" r="2.1" class="fig-arrowhead"/>
+<circle cx="552.1" cy="104.7" r="2.1" class="fig-arrowhead"/>
+<circle cx="222.9" cy="289.1" r="2.1" class="fig-arrowhead"/>
+<circle cx="404.3" cy="45.2" r="2.1" class="fig-arrowhead"/>
+<circle cx="182.3" cy="285.8" r="2.1" class="fig-arrowhead"/>
+<circle cx="556.8" cy="210.8" r="2.1" class="fig-arrowhead"/>
+<circle cx="216.6" cy="38" r="2.1" class="fig-arrowhead"/>
+<circle cx="403.3" cy="38.8" r="2.1" class="fig-arrowhead"/>
+<circle cx="175.3" cy="32" r="2.1" class="fig-arrowhead"/>
+<circle cx="139.5" cy="281" r="2.1" class="fig-arrowhead"/>
+<circle cx="520.7" cy="56.4" r="2.1" class="fig-arrowhead"/>
+<circle cx="161.5" cy="42.3" r="2.1" class="fig-arrowhead"/>
+<circle cx="444.1" cy="286.4" r="2.1" class="fig-arrowhead"/>
+<circle cx="255.8" cy="46.7" r="2.1" class="fig-arrowhead"/>
+<circle cx="454.4" cy="284" r="2.1" class="fig-arrowhead"/>
+<circle cx="550.7" cy="128.4" r="2.1" class="fig-arrowhead"/>
+<circle cx="535.8" cy="245.6" r="2.1" class="fig-arrowhead"/>
+<circle cx="462.3" cy="273.7" r="2.1" class="fig-arrowhead"/>
+<circle cx="192.6" cy="277.5" r="2.1" class="fig-arrowhead"/>
+<circle cx="85.1" cy="145.8" r="2.1" class="fig-arrowhead"/>
+<circle cx="201.5" cy="272.3" r="2.1" class="fig-arrowhead"/>
+<circle cx="402.9" cy="262.3" r="2.1" class="fig-arrowhead"/>
+<circle cx="491.6" cy="48.1" r="2.1" class="fig-arrowhead"/>
+<circle cx="88.3" cy="215.7" r="2.1" class="fig-arrowhead"/>
+<circle cx="558.4" cy="137.5" r="2.1" class="fig-arrowhead"/>
+<circle cx="390.1" cy="270.4" r="2.1" class="fig-arrowhead"/>
+<circle cx="223" cy="37.6" r="2.1" class="fig-arrowhead"/>
+<circle cx="272.7" cy="56.6" r="2.1" class="fig-arrowhead"/>
+<circle cx="300.3" cy="251.1" r="2.1" class="fig-arrowhead"/>
+<circle cx="75.5" cy="146.1" r="2.1" class="fig-arrowhead"/>
+<circle cx="390.9" cy="49.4" r="2.1" class="fig-arrowhead"/>
+<circle cx="330.7" cy="45.1" r="2.1" class="fig-arrowhead"/>
+<circle cx="473.6" cy="33.9" r="2.1" class="fig-arrowhead"/>
+<circle cx="88.7" cy="143.2" r="2.1" class="fig-arrowhead"/>
+<circle cx="449.8" cy="284.7" r="2.1" class="fig-arrowhead"/>
+<circle cx="79.8" cy="127.9" r="2.1" class="fig-arrowhead"/>
+<circle cx="306.5" cy="266.1" r="2.1" class="fig-arrowhead"/>
+<circle cx="388.8" cy="272.8" r="2.1" class="fig-arrowhead"/>
+<circle cx="165.6" cy="29.9" r="2.1" class="fig-arrowhead"/>
+<circle cx="529.7" cy="250.4" r="2.1" class="fig-arrowhead"/>
+<circle cx="465.3" cy="43.7" r="2.1" class="fig-arrowhead"/>
+<circle cx="321.1" cy="46.6" r="2.1" class="fig-arrowhead"/>
+<circle cx="149.3" cy="42.2" r="2.1" class="fig-arrowhead"/>
+<circle cx="410.6" cy="53.2" r="2.1" class="fig-arrowhead"/>
+<circle cx="360.3" cy="56.7" r="2.1" class="fig-arrowhead"/>
+<circle cx="442.8" cy="282" r="2.1" class="fig-arrowhead"/>
+<circle cx="326.4" cy="53.2" r="2.1" class="fig-arrowhead"/>
+<circle cx="135.9" cy="42.1" r="2.1" class="fig-arrowhead"/>
+<circle cx="540.3" cy="96.9" r="2.1" class="fig-arrowhead"/>
+<circle cx="97.4" cy="84.7" r="2.1" class="fig-arrowhead"/>
+<circle cx="74.2" cy="146.3" r="2.1" class="fig-arrowhead"/>
+<circle cx="185.1" cy="284.5" r="2.1" class="fig-arrowhead"/>
+<circle cx="442.9" cy="39.9" r="2.1" class="fig-arrowhead"/>
+<circle cx="188.5" cy="50" r="2.1" class="fig-arrowhead"/>
+<circle cx="304.6" cy="68.3" r="2.1" class="fig-arrowhead"/>
+<circle cx="121.8" cy="44.2" r="2.1" class="fig-arrowhead"/>
+<circle cx="118.3" cy="268.6" r="2.1" class="fig-arrowhead"/>
+<circle cx="553.9" cy="159" r="2.1" class="fig-arrowhead"/>
+<circle cx="83.6" cy="183.5" r="2.1" class="fig-arrowhead"/>
+<circle cx="502.6" cy="270.5" r="2.1" class="fig-arrowhead"/>
+<circle cx="452.1" cy="31" r="2.1" class="fig-arrowhead"/>
+<circle cx="199.3" cy="40.2" r="2.1" class="fig-arrowhead"/>
+<circle cx="108.8" cy="82.3" r="2.1" class="fig-arrowhead"/>
+<circle cx="516.8" cy="271.7" r="2.1" class="fig-arrowhead"/>
+<circle cx="259.2" cy="56.3" r="2.1" class="fig-arrowhead"/>
+<circle cx="331.2" cy="251.6" r="2.1" class="fig-arrowhead"/>
+<circle cx="408.3" cy="43.8" r="2.1" class="fig-arrowhead"/>
+<circle cx="87.2" cy="148.3" r="2.1" class="fig-arrowhead"/>
+<circle cx="247.2" cy="279.7" r="2.1" class="fig-arrowhead"/>
+<circle cx="181.9" cy="34.8" r="2.1" class="fig-arrowhead"/>
+<circle cx="344.3" cy="261.2" r="2.1" class="fig-arrowhead"/>
+<circle cx="536.1" cy="64.3" r="2.1" class="fig-arrowhead"/>
+<circle cx="96.8" cy="71.5" r="2.1" class="fig-arrowhead"/>
+<circle cx="119.2" cy="256.5" r="2.1" class="fig-arrowhead"/>
+<circle cx="404.9" cy="53.6" r="2.1" class="fig-arrowhead"/>
+<circle cx="289" cy="56.7" r="2.1" class="fig-arrowhead"/>
+<circle cx="303.4" cy="256" r="2.1" class="fig-arrowhead"/>
+<circle cx="339.9" cy="62" r="2.1" class="fig-arrowhead"/>
+<circle cx="82.4" cy="130.4" r="2.1" class="fig-arrowhead"/>
+<circle cx="412" cy="43.5" r="2.1" class="fig-arrowhead"/>
+<circle cx="88.2" cy="99.9" r="2.1" class="fig-arrowhead"/>
+<circle cx="93" cy="213.9" r="2.1" class="fig-arrowhead"/>
+<circle cx="159.4" cy="285" r="2.1" class="fig-arrowhead"/>
+<circle cx="458.4" cy="48.2" r="2.1" class="fig-arrowhead"/>
+<circle cx="391.4" cy="42.9" r="2.1" class="fig-arrowhead"/>
+<circle cx="366.4" cy="41.8" r="2.1" class="fig-arrowhead"/>
+<circle cx="562.3" cy="166.6" r="2.1" class="fig-arrowhead"/>
+<circle cx="275.9" cy="267.4" r="2.1" class="fig-arrowhead"/>
+<circle cx="112.4" cy="60.2" r="2.1" class="fig-arrowhead"/>
+<circle cx="93.3" cy="86" r="2.1" class="fig-arrowhead"/>
+<circle cx="435.8" cy="272.2" r="2.1" class="fig-arrowhead"/>
+<text x="453" y="197.8" text-anchor="middle" class="fig-label fig-it">H = E</text>
+<text x="546.8" y="23.2" text-anchor="middle" class="fig-label fig-it">H = E + δE</text>
+<line x1="537" y1="32.2" x2="514.4" y2="37.2" class="fig-guide" marker-end="url(#arr-4-3-1)"/>
+</svg>
+                    <figcaption><strong>Figura 4.3.1.</strong> O ensemble microcanônico de um poço duplo,
+                        $\mathcal{H} = p^2/2 + q^4/4 - q^2/2$. As cópias (pontos) ocupam a casca
+                        $E \lt \mathcal{H} \le E + \delta E$ com densidade uniforme no volume de fase. A casca é mais
+                        larga onde $\lVert\nabla\mathcal{H}\rVert$ é menor, perto do eixo $p$, e ali há mais cópias por
+                        unidade de comprimento da curva: no limite $\delta E \to 0$, o peso de cada trecho da
+                        superfície é o da
+                        <a href="[02] - Espaço de Fase e Teorema de Liouville.html#obs-4-2-14">Observação 4.2.14</a>.</figcaption>
+                </figure>
+
+                <p id="obs-4-3-6"><strong>Observação 4.3.6 (Por que um postulado).</strong> A
+                    <a href="#prop-4-3-5">Proposição 4.3.5</a> mostra que o ensemble microcanônico é compatível com a
+                    dinâmica, não que ele seja o único compatível: qualquer densidade que dependa só da energia, ou de
+                    outras constantes de movimento, também é estacionária. A escolha da distribuição uniforme tem três
+                    apoios, nenhum dos quais é uma demonstração. O primeiro é a ausência de razão para preferir um
+                    microestado a outro quando nada do que medimos os distingue; daí o nome "a priori". O segundo é a
+                    hipótese ergódica da
+                    <a href="[02] - Espaço de Fase e Teorema de Liouville.html#obs-4-2-14">Observação 4.2.14</a>: se
+                    ela valesse, a média temporal de uma grandeza ao longo de quase toda trajetória seria a sua média
+                    no ensemble microcanônico, e o postulado seria uma consequência da dinâmica. Mas ela não está
+                    provada para sistemas realistas. O terceiro, decisivo, é o acordo das consequências com o
+                    experimento, que os tópicos 4.4 a 4.9 começam a testar. Referências: Salinas, capítulo 4; Pathria
+                    e Beale, capítulo 1; Huang, capítulo 6.</p>
+
+                <h2 id="contagem">Contagem de microestados</h2>
+
+                <p>
+                    Pelo postulado, tudo o que precisamos saber de um sistema isolado é quantos microestados ele tem
+                    em cada casca de energia. É conveniente contar também todos os estados abaixo de uma energia, o que
+                    em geral é mais fácil, e obter a casca por diferença.
+                </p>
+
+                <div class="definition-box" id="def-4-3-7" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.3.7 (Funções de contagem).</strong> Para um sistema de volume $V$ e $N$
+                        partículas, o <strong>número de estados com energia até $E$</strong>, $\Phi(E,V,N)$, é</p>
+                    <p>(a) no caso quântico, o número de autoestados com $E_j \le E$;</p>
+                    <p>(b) no caso clássico, com $f$ graus de liberdade,</p>
+                    <p>$$ \Phi(E,V,N) = \frac{1}{h^f}\int_{\mathcal{H}\le E}d^fq\,d^fp. \tag{4.3.2} $$</p>
+                    <p>O <strong>número de microestados acessíveis</strong> na casca de largura $\delta E$ e a
+                        <strong>densidade de estados</strong> são</p>
+                    <p>
+                        $$ \begin{aligned}
+                        \Omega(E,V,N) &= \Phi(E + \delta E,V,N) - \Phi(E,V,N), \\
+                        \omega(E) &= \frac{\partial\Phi}{\partial E}.
+                        \end{aligned} \tag{4.3.3} $$
+                    </p>
+                </div>
+
+                <p>
+                    A primeira igualdade de (4.3.3) é exata, pela escolha do intervalo semiaberto na
+                    <a href="#def-4-3-1">Definição 4.3.1</a>. Quando $\Phi$ é derivável, o teorema do valor médio dá
+                    $\Omega = \omega(E^*)\,\delta E$ para algum $E^*$ entre $E$ e $E + \delta E$; se $\omega$ varia pouco
+                    nessa faixa, $\Omega \approx \omega(E)\,\delta E$. No caso quântico, $\Phi$ é uma escada, e
+                    $\omega$ só faz sentido depois de alisada sobre muitos níveis, como no
+                    <a href="[02] - Espaço de Fase e Teorema de Liouville.html#ex-4-2-24">Exemplo 4.2.24</a>, em que a
+                    escada difere da reta $E/\hbar\omega$ por no máximo $\tfrac12$.
+                </p>
+
+                <p>
+                    A fórmula (4.3.2) trata as partículas como distinguíveis: trocar duas partículas idênticas
+                    produz um ponto diferente do espaço de fase, contado de novo. A
+                    <a href="[02] - Espaço de Fase e Teorema de Liouville.html#obs-4-2-27">Observação 4.2.27</a>
+                    anunciou a correção, um fator $1/N!$ que só introduziremos no
+                    <a href="[09] - Paradoxo de Gibbs e Contagem Correta.html">tópico 4.9</a>. Até lá, toda contagem
+                    clássica de partículas livres traz essa ressalva.
+                </p>
+
+                <p id="ex-4-3-8"><strong>Exemplo 4.3.8 (Spins em um campo).</strong> Considere $N$ spins com
+                    $\sigma_i = \pm 1$ em um campo $B$, com $\mathcal{H} = -\mu B\sum_{i=1}^{N}\sigma_i$. Com $N_+$ spins
+                    para cima e $N_- = N - N_+$ para baixo, a energia é $E = -\mu B(N_+ - N_-) = -\mu B(2N_+ - N)$. Os
+                    níveis são espaçados de $2\mu B$, e o nível com $N_+$ spins para cima tem degenerescência
+                    $\binom{N}{N_+}$, pela
+                    <a href="[01] - Motivação e Roteiro.html#prop-4-1-4">Proposição 4.1.4</a>. Escolhendo
+                    $\delta E \lt 2\mu B$ e a casca de modo que ela contenha exatamente um nível, de energia $E'$, temos</p>
+
+                <p>$$ \Omega = \binom{N}{N_+} = \frac{N!}{N_+!\,N_-!}, \qquad N_\pm = \frac12\left(N \mp \frac{E'}{\mu B}\right). $$</p>
+
+                <p>
+                    Se a casca contém $k$ níveis, $\Omega$ é a soma de $k$ coeficientes binomiais e fica entre o maior
+                    deles e $k$ vezes o maior. Como $k \le N + 1$, $\ln\Omega$ difere do logaritmo do maior deles por no
+                    máximo $\ln(N+1)$, enquanto o
+                    próprio $\ln\binom{N}{N_+}$ é da ordem de $N$
+                    (<a href="[01] - Motivação e Roteiro.html#prop-4-1-12">Proposição 4.1.12</a>). É uma primeira
+                    indicação de que a largura da casca pouco importa. O espectro deste sistema é limitado, entre
+                    $-N\mu B$ e $N\mu B$; o <a href="[06] - Dois Níveis e Paramagneto Ideal.html">tópico 4.6</a> tirará
+                    disso consequências surpreendentes.
+                </p>
+
+                <p id="ex-4-3-9"><strong>Exemplo 4.3.9 (Osciladores clássicos).</strong> Considere $N$ osciladores
+                    harmônicos clássicos unidimensionais, independentes, de mesma massa $m$ e frequência $\omega$, cada
+                    um preso a um sítio próprio (como os átomos de um sólido no
+                    <a href="[07] - Sólido de Einstein.html">tópico 4.7</a>), com
+                    $\mathcal{H} = \sum_{i=1}^{N}\big(p_i^2/2m + m\omega^2q_i^2/2\big)$. Aqui $f = N$, e o
+                    <a href="[02] - Espaço de Fase e Teorema de Liouville.html#exr-4-2-2">Exercício 4.2.2</a> dá</p>
+
+                <p>$$ \Phi(E) = \frac{1}{N!}\left(\frac{E}{\hbar\omega}\right)^{N}, \qquad \omega(E) = \frac{E^{N-1}}{(N-1)!\,(\hbar\omega)^N} = \frac{N\,\Phi(E)}{E}. $$</p>
+
+                <p>
+                    O $N!$ que aparece aqui é <strong>geométrico</strong>: vem do volume do simplexo
+                    $\{\varepsilon_i \ge 0,\ \sum_i\varepsilon_i \le E\}$ das energias individuais. Ele
+                    <strong>não</strong> tem relação com a indistinguibilidade de partículas do tópico 4.9. Osciladores
+                    presos a sítios diferentes são distinguíveis pelo sítio, e para eles nenhum fator de Gibbs será
+                    acrescentado, nem depois do tópico 4.9.
+                </p>
+
+                <p id="ex-4-3-10"><strong>Exemplo 4.3.10 (Uma partícula livre).</strong> Para uma partícula de massa
+                    $m$ em um recipiente de volume $V$, com $\mathcal{H} = \lvert\mathbf{p}\rvert^2/2m$ no interior, a
+                    região $\mathcal{H} \le E$ é o produto do recipiente pela bola
+                    $\lvert\mathbf{p}\rvert \le \sqrt{2mE}$. Com $f = 3$,</p>
+
+                <p>$$ \Phi(E) = \frac{V}{h^3}\cdot\frac{4\pi}{3}(2mE)^{3/2}, \qquad \omega(E) = \frac{2\pi V}{h^3}(2m)^{3/2}E^{1/2}. $$</p>
+
+                <p>
+                    Para um recipiente cúbico, é a contagem que o
+                    <a href="[02] - Espaço de Fase e Teorema de Liouville.html#exr-4-2-6">Exercício 4.2.6</a> comparou
+                    com os níveis quânticos. Para $N$ partículas, a bola passa a ter $3N$ dimensões, e o
+                    <a href="[08] - Gás Ideal Clássico.html">tópico 4.8</a> mostrará que $\Phi \propto V^NE^{3N/2}$.
+                    Nos Exemplos 4.3.9 e 4.3.10, como no gás ideal, $\Phi$ é uma potência da energia com expoente
+                    proporcional ao número de graus de liberdade. A próxima seção explora essa estrutura.
+                </p>
+
+                <h2 id="insensibilidade">Por que a largura da casca não importa</h2>
+
+                <p>
+                    A largura $\delta E$ não é uma propriedade do sistema: é a nossa incerteza sobre a energia. Se as
+                    previsões dependessem dela, a teoria seria inútil. Vamos mostrar que, para os sistemas em que
+                    $\Phi$ é uma potência da energia com expoente proporcional a $N$, como nos Exemplos 4.3.9 e 4.3.10,
+                    a dependência é desprezível. A ideia é que, com muitos graus de liberdade, $\Phi$ cresce tão
+                    depressa com $E$ que quase todos os estados abaixo de $E$ estão perto de $E$.
+                </p>
+
+                <div class="definition-box" id="prop-4-3-11">
+                    <p><strong>Proposição 4.3.11 (Insensibilidade à largura da casca).</strong> Suponha
+                        $\Phi(E) = cE^{n}$, com $c \gt 0$ e $n = aN \ge 1$, em que $a \gt 0$ não depende de $N$ nem de
+                        $E$. Seja $x = \delta E/E \gt 0$. Então:</p>
+                    <p>(a) $\Omega = \Phi(E)\,\big[(1+x)^n - 1\big]$ e $\omega(E)\,\delta E = n\,x\,\Phi(E)$;</p>
+                    <p>(b) as três contagens satisfazem</p>
+                    <p>
+                        $$ \begin{aligned}
+                        \ln(n x) \le \ln\Omega - \ln\Phi(E) &\le n x, \\
+                        \ln\big[\omega(E)\,\delta E\big] - \ln\Phi(E) &= \ln(n x);
+                        \end{aligned} \tag{4.3.4} $$
+                    </p>
+                    <p>(c) com $\delta E$ fixo,
+                        $\dfrac{n-1}{E + \delta E} \le \dfrac{\partial\ln\Omega}{\partial E} \le \dfrac{n-1}{E}$,
+                        enquanto $\dfrac{\partial\ln\Phi}{\partial E} = \dfrac nE$ e
+                        $\dfrac{\partial\ln\omega}{\partial E} = \dfrac{n-1}{E}$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Por (4.3.3),
+                    $\Omega = c(E + \delta E)^n - cE^n = cE^n\big[(1 + x)^n - 1\big]$, e
+                    $\omega(E) = ncE^{n-1} = n\Phi(E)/E$, de modo que $\omega(E)\,\delta E = nx\,\Phi(E)$.
+                </p>
+
+                <p>
+                    (b) A igualdade vem de (a). Para a cota inferior, seja $g(x) = (1+x)^n - 1 - nx$. Então $g(0) = 0$
+                    e $g'(x) = n\big[(1+x)^{n-1} - 1\big] \ge 0$ para $x \ge 0$, porque $n \ge 1$; logo
+                    $(1+x)^n - 1 \ge nx$ (desigualdade de Bernoulli). Para a superior,
+                    $(1+x)^n - 1 \lt (1+x)^n = e^{n\ln(1+x)} \le e^{nx}$, porque $\ln(1+x) \le x$. Tomando logaritmos
+                    em $nx \le \Omega/\Phi(E) \le e^{nx}$, obtemos (4.3.4).
+                </p>
+
+                <p>
+                    (c) As duas últimas igualdades são derivadas diretas de $\ln\Phi = \ln c + n\ln E$ e
+                    $\ln\omega = \ln(nc) + (n-1)\ln E$. Para $\Omega$, escrevemos
+                    $\Omega(E) = c\big[(E + \delta E)^n - E^n\big] = nc\int_E^{E+\delta E}s^{n-1}\,ds$, de modo que
+                    $\Omega'(E) = nc\big[(E + \delta E)^{n-1} - E^{n-1}\big] = n(n-1)c\int_E^{E+\delta E}s^{n-2}\,ds$.
+                    No intervalo de integração, $E\,s^{n-2} \le s^{n-1} = s\cdot s^{n-2} \le (E + \delta E)\,s^{n-2}$.
+                    Integrando,
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    E\int_E^{E+\delta E}s^{n-2}\,ds &\le \int_E^{E+\delta E}s^{n-1}\,ds \le (E + \delta E)\int_E^{E+\delta E}s^{n-2}\,ds, \\
+                    \frac{\Omega'(E)}{\Omega(E)} &= (n-1)\,\frac{\int_E^{E+\delta E}s^{n-2}\,ds}{\int_E^{E+\delta E}s^{n-1}\,ds} \in \left[\frac{n-1}{E + \delta E},\ \frac{n-1}{E}\right].
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    $\blacksquare$
+                </p>
+
+                <p>
+                    O que importa não é a diferença absoluta entre os logaritmos, mas a sua comparação com os
+                    próprios logaritmos, que são da ordem de $N$: para um gás, $\ln\Phi$ é $N$ vezes um número da
+                    ordem de $10$ (<a href="[08] - Gás Ideal Clássico.html">tópico 4.8</a>). E, para a termodinâmica,
+                    importam as derivadas de $\ln\Omega$ em relação a $E$, que darão a temperatura no
+                    <a href="[04] - Contato Térmico e Entropia.html">tópico 4.4</a>.
+                </p>
+
+                <div class="definition-box" id="cor-4-3-12">
+                    <p><strong>Corolário 4.3.12 (Equivalência das contagens).</strong> Nas hipóteses da
+                        <a href="#prop-4-3-11">Proposição 4.3.11</a>, suponha que a casca não seja exponencialmente
+                        fina: $\delta E/E \ge N^{-k}$ para algum $k \gt 0$ fixo. Então:</p>
+                    <p>(a) $\big\lvert\ln\Omega - \ln\Phi(E)\big\rvert \le aN\,\dfrac{\delta E}{E} + k\ln N + \lvert\ln a\rvert$,
+                        e a mesma cota vale para $\big\lvert\ln[\omega(E)\,\delta E] - \ln\Phi(E)\big\rvert$;</p>
+                    <p>(b) se, além disso, $\delta E \le E/(aN)$, as diferenças são $O(\ln N)$;</p>
+                    <p>(c) $\dfrac{\partial\ln\Omega}{\partial E}$ difere de $\dfrac{\partial\ln\Phi}{\partial E}$ por
+                        uma fração de no máximo $\dfrac{1}{aN} + \dfrac{\delta E}{E}$ do valor desta.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Por (4.3.4), $\ln\Omega - \ln\Phi(E)$ está entre $\ln(nx)$ e $nx$, e
+                    $\ln[\omega(E)\,\delta E] - \ln\Phi(E) = \ln(nx)$. A cota superior $nx = aN\,\delta E/E$ já está na
+                    forma pedida. Para a inferior, $x \ge N^{-k}$ dá
+                    $\ln(nx) \ge \ln a + (1 - k)\ln N \ge -\lvert\ln a\rvert - k\ln N$. Logo os dois valores absolutos são
+                    no máximo $aN\,\delta E/E + k\ln N + \lvert\ln a\rvert$. (b) Se $nx \le 1$, a cota superior é no
+                    máximo $1$, e a inferior continua sendo $-\lvert\ln a\rvert - k\ln N$. (c) Pela
+                    <a href="#prop-4-3-11">Proposição 4.3.11</a>(c), dividindo por $n/E$,
+                    $\dfrac{\partial_E\ln\Omega}{\partial_E\ln\Phi}$ fica entre
+                    $\dfrac{1 - 1/n}{1 + x} \ge \left(1 - \dfrac1n\right)(1 - x) \ge 1 - \dfrac1n - x$ e
+                    $1 - \dfrac1n \le 1$. $\blacksquare$
+                </p>
+
+                <p>
+                    O corolário tem dois regimes. Se a casca tem largura da ordem da energia por grau de liberdade,
+                    $\delta E \sim E/N$, as três contagens diferem por $O(\ln N)$, desprezível diante de $N$. Se a
+                    casca é estreita em escala macroscópica, mas larga em escala microscópica, como
+                    $\delta E/E = 10^{-10}$, a diferença absoluta pode ser enorme, mas por partícula é no máximo
+                    $a\,\delta E/E$ (mais termos de ordem $\ln N/N$), e as derivadas coincidem a menos de uma fração $\delta E/E$. Em qualquer
+                    caso, as grandezas que a termodinâmica usa, os logaritmos por partícula e as suas derivadas, são
+                    as mesmas no limite $N \to \infty$. O
+                    <a href="#exr-4-3-4">Exercício 4.3.4</a> dá os números nos dois regimes. Daqui em diante usaremos
+                    $\Omega$, $\Phi$ ou $\omega(E)\,\delta E$ conforme for mais cômodo.
+                </p>
+
+                <p id="obs-4-3-13"><strong>Observação 4.3.13 (O volume mora junto à superfície).</strong> A razão
+                    de fundo do corolário é geométrica. A fração dos estados com energia até $E$ que estão na faixa
+                    $E(1 - x) \lt \mathcal{H} \le E$ é
+                    $1 - \Phi\big(E(1-x)\big)/\Phi(E) = 1 - (1 - x)^n$. Para $x = 0{,}01$, essa fração é $3\%$ quando
+                    $n = 3$ (uma partícula livre), $78\%$ quando $n = 150$ (cem partículas) e, para
+                    $n = 1{,}5\times10^{20}$ e $x = 10^{-10}$, difere de $1$ por $e^{-1{,}5\times10^{10}}$. Em muitas
+                    dimensões, quase todo o volume de uma bola está junto à sua superfície; por isso contar os
+                    estados da casca ou todos os estados abaixo dela dá, na prática, o mesmo. O
+                    <a href="[08] - Gás Ideal Clássico.html">tópico 4.8</a> volta a esse fato com a bola em $3N$
+                    dimensões. Com poucos graus de liberdade, ao contrário, nada disso vale
+                    (<a href="#exr-4-3-3">Exercício 4.3.3</a>).</p>
+
+                <h2 id="medias-microcanonicas">Médias microcanônicas</h2>
+
+                <p>
+                    Com as probabilidades fixadas pelo postulado, o valor esperado de qualquer grandeza é uma média
+                    simples sobre os microestados acessíveis.
+                </p>
+
+                <div class="definition-box" id="def-4-3-14" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.3.14 (Média microcanônica).</strong> A <strong>média
+                        microcanônica</strong> de uma grandeza $A$ é</p>
+                    <p>
+                        $$ \begin{aligned}
+                        \langle A\rangle &= \frac{1}{\Omega}\sum_{j\ \text{acessível}}A_j &&\text{(quântico)}, \\
+                        \langle A\rangle &= \frac{\int_CA(x)\,d^fq\,d^fp}{\int_Cd^fq\,d^fp} &&\text{(clássico)},
+                        \end{aligned} \tag{4.3.5} $$
+                    </p>
+                    <p>em que $A_j$ é o valor de $A$ no estado $j$ e $C$ é a casca da
+                        <a href="#def-4-3-4">Definição 4.3.4</a>.</p>
+                </div>
+
+                <p id="ex-4-3-15"><strong>Exemplo 4.3.15 (Um spin dado).</strong> Nos spins do
+                    <a href="#ex-4-3-8">Exemplo 4.3.8</a>, com a casca contendo só o nível de $N_+$ spins para cima,
+                    qual é a probabilidade de o spin $1$ estar para cima? Os microestados acessíveis com $\sigma_1 = +1$
+                    são os que têm $N_+ - 1$ spins para cima entre os $N - 1$ restantes; são $\binom{N-1}{N_+-1}$.
+                    Pelo postulado,</p>
+
+                <p>$$ P(\sigma_1 = +1) = \frac{\binom{N-1}{N_+-1}}{\binom{N}{N_+}} = \frac{(N-1)!}{(N_+-1)!\,N_-!}\cdot\frac{N_+!\,N_-!}{N!} = \frac{N_+}{N}. $$</p>
+
+                <p>
+                    Logo $\langle\sigma_1\rangle = \dfrac{N_+}{N} - \dfrac{N_-}{N} = \dfrac{N_+ - N_-}{N} = -\dfrac{E'}{N\mu B}$,
+                    o mesmo para qualquer spin, por simetria. O resultado é o esperado: cada spin está para cima com a
+                    frequência com que os spins estão para cima no sistema todo. Mas os spins não são independentes,
+                    porque o total $N_+$ está fixo; o <a href="#exr-4-3-1">Exercício 4.3.1</a> mostra que
+                    $\langle\sigma_1\sigma_2\rangle \ne \langle\sigma_1\rangle\langle\sigma_2\rangle$, com uma diferença
+                    que some quando $N \to \infty$.
+                </p>
+
+                <p>
+                    O próximo resultado é o mais importante da seção. Em um sistema isolado de $N$ osciladores
+                    clássicos, a energia total está fixa, mas a energia de cada oscilador flutua. Qual é a sua
+                    distribuição?
+                </p>
+
+                <div class="definition-box" id="prop-4-3-16">
+                    <p><strong>Proposição 4.3.16 (Energia de um oscilador entre muitos).</strong> Considere os $N \ge 2$
+                        osciladores clássicos do <a href="#ex-4-3-9">Exemplo 4.3.9</a> no ensemble microcanônico, e seja
+                        $\varepsilon_1 = p_1^2/2m + m\omega^2q_1^2/2$ a energia do oscilador $1$. No limite
+                        $\delta E \to 0$, a probabilidade de $\varepsilon_1 \le \varepsilon'$ é
+                        $\int_0^{\varepsilon'}P(\varepsilon)\,d\varepsilon$, com</p>
+                    <p>$$ P(\varepsilon) = \frac{N-1}{E}\left(1 - \frac{\varepsilon}{E}\right)^{N-2}, \qquad 0 \le \varepsilon \le E, \tag{4.3.6} $$</p>
+                    <p>e $P(\varepsilon) = 0$ para $\varepsilon \gt E$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Usamos em cada plano $(q_i,p_i)$ as coordenadas $(\varepsilon_i,\theta_i)$ do
+                    <a href="[02] - Espaço de Fase e Teorema de Liouville.html#exr-4-2-2">Exercício 4.2.2</a>, em que
+                    $dq_i\,dp_i = d\varepsilon_i\,d\theta_i/\omega$. A casca e o evento $\varepsilon_1 \le \varepsilon'$
+                    só envolvem as energias, então a integral nos ângulos dá o mesmo fator $(2\pi/\omega)^N$ no
+                    numerador e no denominador, e basta medir volumes no espaço das energias
+                    $(\varepsilon_1,\dots,\varepsilon_N)$, com $\varepsilon_i \ge 0$. Seja $S_k(y) = y^k/k!$ para
+                    $y \ge 0$ e $S_k(y) = 0$ para $y \lt 0$: é o volume do simplexo
+                    $\{\varepsilon_i \ge 0,\ \sum_{i=1}^{k}\varepsilon_i \le y\}$, pelo mesmo exercício.
+                </p>
+
+                <p>
+                    O volume da casca $E \lt \sum_i\varepsilon_i \le E + \delta E$ é $S_N(E + \delta E) - S_N(E)$. Fixado
+                    $\varepsilon_1 = \varepsilon$, as outras $N - 1$ energias têm soma entre $E - \varepsilon$ e
+                    $E + \delta E - \varepsilon$; integrando em $\varepsilon$, o volume da parte da casca com
+                    $\varepsilon_1 \le \varepsilon'$ é
+                    $\int_0^{\varepsilon'}\big[S_{N-1}(E + \delta E - \varepsilon) - S_{N-1}(E - \varepsilon)\big]\,d\varepsilon$.
+                    A probabilidade é a razão entre os dois volumes. Dividimos ambos por $\delta E$ e fazemos
+                    $\delta E \to 0$. No denominador, o limite é $S_N'(E) = E^{N-1}/(N-1)!$. No numerador, $S_{N-1}$ é
+                    não decrescente e, até $y = E + \delta E$, sobe com inclinação no máximo
+                    $(E + \delta E)^{N-2}/(N-2)!$; o integrando dividido por $\delta E$ fica, portanto, entre $0$ e esse
+                    número. Ele tende a $S_{N-1}'(E - \varepsilon) = (E - \varepsilon)^{N-2}/(N-2)!$
+                    para $\varepsilon \lt E$ e a $0$ para $\varepsilon \gt E$. Como é limitado, o limite passa para
+                    dentro da integral. A razão dos limites é
+                </p>
+
+                <p>$$ \frac{(N-1)!}{(N-2)!}\,\frac{(E - \varepsilon)^{N-2}}{E^{N-1}} = \frac{N-1}{E}\left(1 - \frac{\varepsilon}{E}\right)^{N-2}. \qquad\blacksquare $$</p>
+
+                <p>
+                    Para $N = 2$, $P$ é uniforme: a energia total se divide igualmente bem de qualquer modo. Para
+                    $N \ge 3$, $P$ decresce: é mais provável que um oscilador tenha pouca energia, porque então sobra
+                    mais energia para os outros, e os outros têm mais microestados. A normalização e a média
+                    $\langle\varepsilon_1\rangle = E/N$ estão no <a href="#exr-4-3-5">Exercício 4.3.5</a>.
+                </p>
+
+                <div class="definition-box" id="cor-4-3-17">
+                    <p><strong>Corolário 4.3.17 (Limite de muitos osciladores).</strong> Fixada a energia média por
+                        oscilador $\bar\varepsilon = E/N$, para cada $\varepsilon \ge 0$,</p>
+                    <p>$$ \lim_{N\to\infty}P(\varepsilon) = \frac{1}{\bar\varepsilon}\,e^{-\varepsilon/\bar\varepsilon}. $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Com $E = N\bar\varepsilon$, o prefator é
+                    $\dfrac{N-1}{N\bar\varepsilon} \to \dfrac1{\bar\varepsilon}$. Para o outro fator, seja
+                    $u = \varepsilon/(N\bar\varepsilon)$, que tende a $0$; para $N$ grande, $u \le \tfrac12$. Para
+                    $0 \le u \le \tfrac12$ vale
+                    $-u - u^2 \le \ln(1 - u) \le -u$: a função $\ln(1-u) + u$ tem derivada $-u/(1-u) \le 0$ e se anula
+                    em $0$, e $\ln(1-u) + u + u^2$ tem derivada $u(1 - 2u)/(1 - u) \ge 0$ e também se anula em $0$. Logo
+                    $(N-2)\ln(1-u)$ fica entre $-(N-2)(u + u^2)$ e $-(N-2)u$, e ambos tendem a
+                    $-\varepsilon/\bar\varepsilon$, porque $(N-2)u \to \varepsilon/\bar\varepsilon$ e
+                    $(N-2)u^2 \to 0$. Portanto $(1 - u)^{N-2} \to e^{-\varepsilon/\bar\varepsilon}$. $\blacksquare$
+                </p>
+
+                <p id="obs-4-3-18"><strong>Observação 4.3.18 (Um subsistema não é microcanônico).</strong> O
+                    sistema todo está no ensemble microcanônico, mas o oscilador $1$ sozinho não está: a sua energia
+                    não é fixa, e a distribuição dela, para $N$ grande, é exponencial. Numericamente, para
+                    $\varepsilon = 2\bar\varepsilon$, $\bar\varepsilon\,P$ vale $0{,}151$ com $N = 10$, $0{,}137$ com
+                    $N = 100$ e $0{,}1355$ com $N = 1000$, contra $e^{-2} = 0{,}1353$. A exponencial é o fator de
+                    Boltzmann: no <a href="[04] - Contato Térmico e Entropia.html">tópico 4.4</a>, os outros
+                    $N - 1$ osciladores farão o papel de um reservatório térmico, e $\bar\varepsilon$ será $k_BT$; no
+                    <a href="../[4] - Ensemble Canônico/[01] - Do Microcanônico ao Canônico.html">tópico 5.1</a>, o
+                    mesmo argumento dará a probabilidade $e^{-E_j/k_BT}$ para qualquer sistema em contato com um
+                    reservatório. O mecanismo já está à vista: a probabilidade de o oscilador ter energia
+                    $\varepsilon$ é proporcional ao número de microestados do resto com a energia que sobra,
+                    $\omega_{N-1}(E - \varepsilon) \propto (E - \varepsilon)^{N-2}$.</p>
+
+                <h2 id="conexao">Conexão com a termodinâmica e com o experimento</h2>
+
+                <p>
+                    O postulado não é testado diretamente: nenhum instrumento registra a frequência de um microestado
+                    (<a href="[01] - Motivação e Roteiro.html#exr-4-1-6">Exercício 4.1.6</a>). Ele é testado pelas suas
+                    consequências para os macroestados. A primeira, no
+                    <a href="[04] - Contato Térmico e Entropia.html">tópico 4.4</a>, é a existência da temperatura e da
+                    entropia; as seguintes, nos tópicos 4.5 a 4.9, são a equação de estado do gás ideal, a
+                    magnetização de um paramagneto, o calor específico de um sólido e a entropia absoluta de um gás.
+                    Para gases, sólidos e paramagnetos em equilíbrio, o acordo com as medidas é o que sustenta toda a
+                    mecânica estatística.
+                </p>
+
+                <p>
+                    O postulado fala de microestados <em>acessíveis</em>, e o que é acessível depende da escala de tempo
+                    da medida. Um vidro, por exemplo, é um líquido cuja reorganização ficou tão lenta que, durante uma
+                    observação, ele explora só uma pequena parte dos arranjos atômicos compatíveis com a sua energia;
+                    tratá-lo como se explorasse todos dá previsões erradas. O diamante, à temperatura e à pressão
+                    ambientes, é uma forma metaestável do carbono: a forma de equilíbrio é o grafite, mas a conversão é
+                    tão lenta que, na prática, os arranjos do grafite não são acessíveis a um diamante. Há também
+                    sistemas com constantes de movimento além da energia, que confinam as trajetórias a uma parte da
+                    superfície de energia; o caso histórico é a simulação numérica de Fermi, Pasta e Ulam, nos anos
+                    1950, em que uma cadeia de osciladores fracamente anarmônicos não repartiu a energia entre os
+                    modos, ao contrário do esperado, no tempo simulado. Em todos esses casos, a aplicação do postulado
+                    exige primeiro decidir, com base na física do sistema, quais microestados são de fato acessíveis
+                    no tempo da medida.
+                </p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p>
+                    Os exercícios contam microestados em sistemas pequenos, calculam médias e distribuições no ensemble
+                    microcanônico e testam, com números, a insensibilidade à largura da casca. As contas foram
+                    conferidas por computação simbólica e por enumeração direta.
+                </p>
+
+                <p id="exr-4-3-1"><strong>Exercício 4.3.1.</strong> Para $N = 6$ spins no campo do
+                    <a href="#ex-4-3-8">Exemplo 4.3.8</a>, dê $\Omega$ para cada nível de energia, com a casca contendo
+                    um só nível. No nível com $N_+ = 4$, calcule $\langle\sigma_1\rangle$ e
+                    $\langle\sigma_1\sigma_2\rangle$, e compare $\langle\sigma_1\sigma_2\rangle$ com
+                    $\langle\sigma_1\rangle\langle\sigma_2\rangle$.</p>
+
+                <p>
+                    <em>Solução.</em> Os níveis são $E = -\mu B(2N_+ - 6)$, de $-6\mu B$ ($N_+ = 6$) a $6\mu B$
+                    ($N_+ = 0$), e $\Omega = \binom{6}{N_+}$: para $N_+ = 6, 5, 4, 3, 2, 1, 0$, os valores são
+                    $1, 6, 15, 20, 15, 6, 1$, que somam $2^6 = 64$. No nível $N_+ = 4$ ($E = -2\mu B$), o
+                    <a href="#ex-4-3-15">Exemplo 4.3.15</a> dá $\langle\sigma_1\rangle = (4 - 2)/6 = \tfrac13$.
+                </p>
+
+                <p>
+                    Para o produto, seja $M = N_+ - N_- = \sum_i\sigma_i$, fixo no nível. Como $\sigma_i^2 = 1$,
+                    $M^2 = N + \sum_{i\ne j}\sigma_i\sigma_j$. A soma tem $N(N-1)$ termos, todos com a mesma média por
+                    simetria entre os spins; logo
+                </p>
+
+                <p>$$ \langle\sigma_1\sigma_2\rangle = \frac{M^2 - N}{N(N-1)} = \frac{4 - 6}{30} = -\frac{1}{15}. $$</p>
+
+                <p>
+                    Contando diretamente: dos $15$ microestados, $6$ têm os spins $1$ e $2$ para cima, $1$ tem os dois
+                    para baixo e $8$ têm os dois opostos, e $(6 + 1 - 8)/15 = -\tfrac1{15}$. Já
+                    $\langle\sigma_1\rangle\langle\sigma_2\rangle = \tfrac19$. Os spins são anticorrelacionados: se o
+                    spin $1$ está para cima, sobram menos spins para cima para os outros. Com $m = M/N$, a diferença é
+                    $\langle\sigma_1\sigma_2\rangle - \langle\sigma_1\rangle\langle\sigma_2\rangle = -\dfrac{1 - m^2}{N-1}$
+                    (aqui, $-\tfrac{8}{45}$), que tende a $0$ quando $N \to \infty$ com $m$ fixo: em um sistema grande,
+                    poucos spins se comportam como independentes.
+                </p>
+
+                <p id="exr-4-3-2"><strong>Exercício 4.3.2.</strong> Três osciladores quânticos de mesma frequência
+                    $\omega$ têm, juntos, $3$ quanta de energia acima do ponto zero. Liste os microestados e calcule a
+                    probabilidade de o oscilador $1$ ter $0$, $1$, $2$ ou $3$ quanta.</p>
+
+                <p>
+                    <em>Solução.</em> Um microestado é uma lista $(n_1,n_2,n_3)$ de inteiros $\ge 0$ com soma $3$. São
+                    $10$: $(3,0,0)$, $(0,3,0)$, $(0,0,3)$, $(2,1,0)$, $(2,0,1)$, $(1,2,0)$, $(0,2,1)$, $(1,0,2)$,
+                    $(0,1,2)$ e $(1,1,1)$. Fixado $n_1 = n$, os outros dois dividem $3 - n$ quanta, o que pode ser feito
+                    de $4 - n$ modos. Pelo postulado,
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    P(n_1 = 0) &= \tfrac{4}{10}, & P(n_1 = 1) &= \tfrac{3}{10}, \\
+                    P(n_1 = 2) &= \tfrac{2}{10}, & P(n_1 = 3) &= \tfrac{1}{10},
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    com média $\langle n_1\rangle = (3 + 4 + 3)/10 = 1$, a terça parte dos $3$ quanta. Como no caso
+                    clássico da <a href="#prop-4-3-16">Proposição 4.3.16</a>, a distribuição decresce: o oscilador $1$
+                    tende a ter pouca energia, porque o resto tem mais microestados quando fica com mais energia. A
+                    contagem geral, $\binom{M+N-1}{M}$ microestados para $N$ osciladores e $M$ quanta, é o ponto de
+                    partida do <a href="[07] - Sólido de Einstein.html">tópico 4.7</a>.
+                </p>
+
+                <p id="exr-4-3-3"><strong>Exercício 4.3.3.</strong> Uma partícula de massa $m$ está livre em um
+                    segmento de comprimento $L$ ($d = 1$), em um quadrado de lado $L$ ($d = 2$) ou em um cubo de lado
+                    $L$ ($d = 3$). Calcule $\Phi(E)$ e $\omega(E)$ em cada caso. Com $d = 1$, $\Phi(E) = 1000$ e
+                    $\delta E/E = 10^{-3}$, compare $\ln\Omega$ com $\ln\Phi$.</p>
+
+                <p>
+                    <em>Solução.</em> A região $\mathcal{H} \le E$ é o produto da região espacial, de medida $L^d$,
+                    pela bola de raio $\sqrt{2mE}$ em $d$ dimensões, de medida $2R$, $\pi R^2$ e $\tfrac43\pi R^3$ para
+                    $d = 1, 2, 3$. Dividindo por $h^d$ e derivando,
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    d = 1&: \quad \Phi = \frac{2L\sqrt{2mE}}{h}, & \omega(E) &= \frac{L\sqrt{2m}}{h\sqrt E}, \\
+                    d = 2&: \quad \Phi = \frac{2\pi mL^2E}{h^2}, & \omega(E) &= \frac{2\pi mL^2}{h^2}, \\
+                    d = 3&: \quad \Phi = \frac{4\pi L^3(2mE)^{3/2}}{3h^3}, & \omega(E) &= \frac{2\pi L^3(2m)^{3/2}\sqrt E}{h^3}.
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    Em todos os casos $\Phi \propto E^{d/2}$ e $\omega(E)\,\delta E/\Phi = (d/2)\,\delta E/E$. A densidade de
+                    estados decresce com a energia em $d = 1$, é constante em $d = 2$ e cresce em $d = 3$; só com
+                    muitos graus de liberdade ela cresce depressa. Para $d = 1$, com $\Phi = 1000$ e $x = 10^{-3}$,
+                    $\Omega = \Phi\big[(1 + x)^{1/2} - 1\big] \approx 0{,}50$: a casca contém, em média, menos de um
+                    estado. Então $\ln\Omega \approx -0{,}69$, enquanto $\ln\Phi \approx 6{,}91$. Com um grau de
+                    liberdade, a casca e o volume abaixo dela são coisas completamente diferentes, e o resultado
+                    depende de $\delta E$. A <a href="#prop-4-3-11">Proposição 4.3.11</a> exige, com razão,
+                    $n = aN \ge 1$, e o seu interesse está em $n$ enorme.
+                </p>
+
+                <p id="exr-4-3-4"><strong>Exercício 4.3.4.</strong> Para $\Phi = cE^{3N/2}$ e $N = 10^{20}$, compare
+                    $\ln\Omega$, $\ln\Phi(E)$ e $\ln[\omega(E)\,\delta E]$ quando $\delta E/E = 10^{-10}$ e quando
+                    $\delta E/E = 10^{-30}$.</p>
+
+                <p>
+                    <em>Solução.</em> Aqui $n = 1{,}5\times10^{20}$. Pela
+                    <a href="#prop-4-3-11">Proposição 4.3.11</a>(a),
+                    $\ln\Omega - \ln\Phi(E) = \ln\big[(1+x)^n - 1\big] = n\ln(1+x) + \ln\big[1 - (1+x)^{-n}\big]$, e
+                    $\ln[\omega(E)\,\delta E] - \ln\Phi(E) = \ln(nx)$.
+                </p>
+
+                <p>
+                    Com $x = 10^{-10}$, $nx = 1{,}5\times10^{10}$. O primeiro termo é
+                    $n\big(x - x^2/2 + \dots\big) = 1{,}5\times10^{10} - 0{,}75 + \dots$, e o segundo é da ordem de
+                    $-e^{-1{,}5\times10^{10}}$, invisível. Logo $\ln\Omega - \ln\Phi(E) \approx 1{,}5\times10^{10}$:
+                    enorme em termos absolutos, mas $\ln\Phi$ é da ordem de $10^{21}$, e a diferença por partícula é
+                    $1{,}5\times10^{-10}$. Esse é o regime em que a casca é larga em escala microscópica: ela contém
+                    muito mais estados do que todo o volume abaixo de $E$, pois
+                    $\Phi(E)/\Phi(E + \delta E) = (1 + x)^{-n} \approx e^{-1{,}5\times10^{10}}$, e na prática
+                    $\Omega = \Phi(E + \delta E)$. Já $\ln[\omega(E)\,\delta E] - \ln\Phi(E) = \ln(1{,}5\times10^{10}) \approx 23{,}4$.
+                </p>
+
+                <p>
+                    Com $x = 10^{-30}$, $nx = 1{,}5\times10^{-10} \ll 1$, e $(1 + x)^n - 1 \approx nx$: as duas
+                    diferenças valem $\ln(nx) \approx -22{,}6$, de ordem $\ln N$, como no
+                    <a href="#cor-4-3-12">Corolário 4.3.12</a>(b), com $k = 1{,}5$. Nos dois casos, diante de
+                    $\ln\Phi \sim 10^{21}$, as diferenças são desprezíveis.
+                </p>
+
+                <p id="exr-4-3-5"><strong>Exercício 4.3.5.</strong> Para a distribuição (4.3.6), verifique a
+                    normalização e calcule a média e a variância de $\varepsilon_1$ para $N$ finito. Compare com a
+                    média e a variância da exponencial do <a href="#cor-4-3-17">Corolário 4.3.17</a>.</p>
+
+                <p>
+                    <em>Solução.</em> Com $u = 1 - \varepsilon/E$, vale
+                    $\int_0^Eg(\varepsilon)\,P(\varepsilon)\,d\varepsilon = (N-1)\int_0^1g\big(E(1-u)\big)\,u^{N-2}\,du$ para
+                    qualquer $g$. Com $g = 1$, $(N-1)\int_0^1u^{N-2}\,du = 1$. Com $g = \varepsilon$ e $g = \varepsilon^2$,
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    \langle\varepsilon_1\rangle &= (N-1)E\left(\frac{1}{N-1} - \frac1N\right) = \frac EN, \\
+                    \langle\varepsilon_1^2\rangle &= (N-1)E^2\left(\frac{1}{N-1} - \frac2N + \frac{1}{N+1}\right) = \frac{2E^2}{N(N+1)},
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    e a variância é $\dfrac{2E^2}{N(N+1)} - \dfrac{E^2}{N^2} = \dfrac{E^2(N-1)}{N^2(N+1)}$. A média $E/N$
+                    também sai por simetria: os $N$ osciladores têm a mesma média, e a soma das energias é $E$. Com
+                    $E = N\bar\varepsilon$, a média é $\bar\varepsilon$ e a variância é
+                    $\bar\varepsilon^2(N-1)/(N+1) \to \bar\varepsilon^2$. A exponencial
+                    $e^{-\varepsilon/\bar\varepsilon}/\bar\varepsilon$ tem média $\bar\varepsilon$ e
+                    $\langle\varepsilon^2\rangle = 2\bar\varepsilon^2$, ou seja, variância $\bar\varepsilon^2$: os
+                    momentos da distribuição exata tendem aos da distribuição limite. A flutuação da energia de um
+                    oscilador é da ordem da própria média; o que fica nítido, como no
+                    <a href="[01] - Motivação e Roteiro.html">tópico 4.1</a>, são as somas sobre muitos osciladores.
+                </p>
+
+                <p id="exr-4-3-6"><strong>Exercício 4.3.6.</strong> Por que o postulado é enunciado para um sistema
+                    isolado, e não para uma parte dele? Use os osciladores da
+                    <a href="#prop-4-3-16">Proposição 4.3.16</a> como exemplo.</p>
+
+                <p>
+                    <em>Solução.</em> Suponha que aplicássemos o postulado ao oscilador $1$ sozinho, tomando como
+                    acessíveis todos os pontos do seu plano de fase com $\varepsilon_1 \le E$, igualmente prováveis.
+                    Como $dq_1\,dp_1 = d\varepsilon_1\,d\theta_1/\omega$, a área entre as elipses de energia
+                    $\varepsilon$ e $\varepsilon + d\varepsilon$ é proporcional a $d\varepsilon$, e a distribuição de
+                    $\varepsilon_1$ seria uniforme em $[0,E]$. A distribuição correta, (4.3.6), só é uniforme para
+                    $N = 2$; para $N \ge 3$ ela decresce, e para $N$ grande é exponencial. O erro está em tratar o
+                    oscilador como isolado: ele troca energia com os outros, e um microestado seu com energia
+                    $\varepsilon$ é compatível com um número de microestados do resto que depende de $\varepsilon$,
+                    proporcional a $(E - \varepsilon)^{N-2}$. O postulado vale para o sistema isolado inteiro; as
+                    probabilidades de uma parte se obtêm dele somando sobre os microestados do resto. É exatamente o
+                    que faremos no <a href="[04] - Contato Térmico e Entropia.html">tópico 4.4</a>, para dois sistemas
+                    em contato térmico, e no capítulo 5, para um sistema em contato com um reservatório.
+                </p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <p>
+                    Este tópico deu à mecânica estatística o seu ponto de partida e as ferramentas de contagem:
+                </p>
+
+                <ul>
+                    <li><strong>o sistema isolado e os microestados acessíveis</strong>
+                        (<a href="#def-4-3-1">Definição 4.3.1</a>), com a casca de energia justificada na
+                        <a href="#obs-4-3-2">Observação 4.3.2</a>;</li>
+                    <li><strong>o postulado das probabilidades iguais a priori</strong>
+                        (<a href="#post-4-3-3">Postulado 4.3.3</a>) e o <strong>ensemble microcanônico</strong>
+                        (<a href="#def-4-3-4">Definição 4.3.4</a>), estacionário pela conservação do volume de fase
+                        (<a href="#prop-4-3-5">Proposição 4.3.5</a>);</li>
+                    <li><strong>as funções de contagem</strong> $\Phi$, $\Omega$ e $\omega(E)$
+                        (<a href="#def-4-3-7">Definição 4.3.7</a>), calculadas para spins, osciladores e uma partícula
+                        livre (Exemplos <a href="#ex-4-3-8">4.3.8</a> a <a href="#ex-4-3-10">4.3.10</a>);</li>
+                    <li><strong>a insensibilidade à largura da casca</strong>: quando $\Phi \propto E^{aN}$,
+                        $\ln\Omega$, $\ln\Phi$ e $\ln[\omega(E)\,\delta E]$ e as suas derivadas coincidem por partícula no
+                        limite de $N$ grande (<a href="#prop-4-3-11">Proposição 4.3.11</a> e
+                        <a href="#cor-4-3-12">Corolário 4.3.12</a>);</li>
+                    <li><strong>as médias microcanônicas</strong> (<a href="#def-4-3-14">Definição 4.3.14</a>) e a
+                        distribuição da energia de um oscilador entre muitos
+                        (<a href="#prop-4-3-16">Proposição 4.3.16</a>), que tende à exponencial
+                        (<a href="#cor-4-3-17">Corolário 4.3.17</a>).</li>
+                </ul>
+
+                <p>
+                    Falta ligar $\Omega$ à termodinâmica. Até aqui, ele é só um número de microestados; ainda não
+                    sabemos o que é temperatura nem o que é entropia nessa linguagem. A resposta vem de pôr dois
+                    sistemas em contato e perguntar como a energia se reparte entre eles: a repartição mais provável
+                    define a temperatura, e $k_B\ln\Omega$ se revela a entropia. É o assunto do próximo tópico,
+                    <a href="[04] - Contato Térmico e Entropia.html">4.4 Contato Térmico e Entropia</a>.
+                </p>
+
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="toc-container">
+                <h4>Nesta página</h4>
+                <ul>
+                    <li><a href="#ensemble-microcanonico">O Ensemble Microcanônico</a></li>
+                    <li><a href="#sistema-isolado">O sistema isolado</a></li>
+                    <li><a href="#postulado">O postulado das probabilidades iguais a priori</a></li>
+                    <li><a href="#contagem">Contagem de microestados</a></li>
+                    <li><a href="#insensibilidade">Por que a largura da casca não importa</a></li>
+                    <li><a href="#medias-microcanonicas">Médias microcanônicas</a></li>
+                    <li><a href="#conexao">Conexão com a termodinâmica e com o experimento</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Search Modal Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-modal">
+            <div class="search-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search documentation..." autocomplete="off">
+            </div>
+            <div class="search-results" id="search-results"></div>
+            <div class="search-footer">
+                <div class="search-commands">
+                    <span class="cmd-key">↑</span>
+                    <span class="cmd-key">↓</span>
+                    <span class="cmd-label">navigate</span>
+                    <span class="cmd-key">↵</span>
+                    <span class="cmd-label">select</span>
+                </div>
+                <div class="search-commands">
+                    <span class="cmd-key">esc</span>
+                    <span class="cmd-label">close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../../../assets/js/class-lecture.js"></script>
+</body>
+
+</html>

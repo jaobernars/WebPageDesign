@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motivação e Roteiro | Introduction to Statistical Mechanics | The Journal of a Physicist</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../../../assets/images/Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../../../assets/images/Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../../../assets/images/Favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="../../../../../../assets/images/Favicon/favicon.ico">
+    <link rel="stylesheet" href="../../../../../../assets/css/class-lecture.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                        <line x1="9" x2="9" y1="3" y2="21"></line>
+                    </svg>
+                </button>
+                <button id="theme-toggle" class="sidebar-toggle" aria-label="Toggle Theme">
+                    <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="breadcrumbs-header">
+                    <a href="../../../../../../Páginas Principais/Lectures.html" class="breadcrumb-link">← Lectures</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <a href="../../index.html" class="breadcrumb-link active">Introduction to Statistical Mechanics</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-category" class="breadcrumb-link">Ensemble Microcanônico</span>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-current" class="breadcrumb-link active">4.1 Motivação e Roteiro</span>
+                </div>
+            </div>
+            <nav class="top-nav">
+                <a href="../../../../../../Páginas Principais/Lectures.html">Lectures</a>
+                <a href="../../../../../../index.html">Home</a>
+            </nav>
+        </div>
+
+        <script>
+            MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']]
+                }
+            };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    </header>
+
+    <div class="main-layout">
+        <aside class="left-sidebar" id="left-sidebar">
+            <div class="sidebar-content">
+
+                <button class="search-trigger" id="search-trigger">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                    </svg>
+                    <span>Search docs...</span>
+                </button>
+
+                <div class="sidebar-group">
+                    <h3>Início</h3>
+                    <ul>
+                        <li><a href="../../index.html">Overview</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Introdução aos Métodos Estatísticos</h3>
+                    <ul>
+                        <li><a href="../[0] - Introdução aos Métodos Estatísticos/[01] - Introdução.html">Introdução</a></li>
+                        <li><a href="../[0] - Introdução aos Métodos Estatísticos/[02] - Problema do Caminho Aleatório.html">Problema do Caminho Aleatório</a></li>
+                        <li><a href="../[0] - Introdução aos Métodos Estatísticos/[03] - Valores Médios e Desvio Padrão.html">Valores Médios e Desvio Padrão</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Descrição Estatística de um Sistema Físico</h3>
+                    <ul>
+                        <li><a href="../[1] - Descrição Estatística de um Sistema Físico/[01] - Visão Geral.html">Visão Geral</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Introdução à Termodinâmica</h3>
+                    <ul>
+                        <li><a href="../[2] - Introdução à Termodinâmica/[01] - Visão Geral.html">Visão Geral</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Ensemble Microcanônico</h3>
+                    <ul>
+                        <li><a href="[01] - Motivação e Roteiro.html" class="active">4.1 Motivação e Roteiro</a></li>
+                        <li><a href="[02] - Espaço de Fase e Teorema de Liouville.html">4.2 Espaço de Fase e Teorema de Liouville</a></li>
+                        <li><a href="[03] - O Ensemble Microcanônico.html">4.3 O Ensemble Microcanônico</a></li>
+                        <li><a href="[04] - Contato Térmico e Entropia.html">4.4 Contato Térmico e Entropia</a></li>
+                        <li><a href="[05] - Interações Mecânica e Difusiva.html">4.5 Interações Mecânica e Difusiva</a></li>
+                        <li><a href="[06] - Dois Níveis e Paramagneto Ideal.html">4.6 Dois Níveis e Paramagneto Ideal</a></li>
+                        <li><a href="[07] - Sólido de Einstein.html">4.7 Sólido de Einstein</a></li>
+                        <li><a href="[08] - Gás Ideal Clássico.html">4.8 Gás Ideal Clássico</a></li>
+                        <li><a href="[09] - Paradoxo de Gibbs e Contagem Correta.html">4.9 Paradoxo de Gibbs e Contagem Correta</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Ensemble Canônico</h3>
+                    <ul>
+                        <li><a href="../[4] - Ensemble Canônico/[01] - Do Microcanônico ao Canônico.html">5.1 Do Microcanônico ao Canônico</a></li>
+                        <li><a href="../[4] - Ensemble Canônico/[02] - Função de Partição e Termodinâmica.html">5.2 Função de Partição e Termodinâmica</a></li>
+                        <li><a href="../[4] - Ensemble Canônico/[03] - Flutuações e Equivalência dos Ensembles.html">5.3 Flutuações e Equivalência dos Ensembles</a></li>
+                        <li><a href="../[4] - Ensemble Canônico/[04] - Sistemas de Partículas Independentes.html">5.4 Sistemas de Partículas Independentes</a></li>
+                        <li><a href="../[4] - Ensemble Canônico/[05] - Paramagneto Ideal e Lei de Curie.html">5.5 Paramagneto Ideal e Lei de Curie</a></li>
+                        <li><a href="../[4] - Ensemble Canônico/[06] - Osciladores e o Sólido de Einstein.html">5.6 Osciladores e o Sólido de Einstein</a></li>
+                        <li><a href="../[4] - Ensemble Canônico/[07] - Gás Ideal e Sistemas de Dois Níveis.html">5.7 Gás Ideal e Sistemas de Dois Níveis</a></li>
+                        <li><a href="../[4] - Ensemble Canônico/[08] - Equipartição, Virial e Maxwell.html">5.8 Equipartição, Virial e Maxwell</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="prose">
+
+                <h1 id="motivacao-e-roteiro">4.1 Motivação e Roteiro</h1>
+                <p class="lead">Microestados e macroestados, por que números enormes de partículas tornam a descrição estatística precisa e o plano dos capítulos dos ensembles microcanônico e canônico.</p>
+
+                <p>
+                    Um litro de ar em condições ambientes contém da ordem de $10^{22}$ moléculas. Descrever o
+                    estado mecânico desse gás exigiria dar a posição e o momento de cada uma delas, cerca de
+                    $10^{23}$ números, e acompanhar a evolução de todos. Ninguém faz isso, e nenhuma medida feita
+                    em laboratório dá acesso a essa informação. Mesmo assim, a termodinâmica descreve o mesmo gás
+                    com meia dúzia de números (energia, volume, número de partículas, temperatura, pressão) e
+                    acerta as suas previsões com enorme precisão.
+                </p>
+
+                <p>
+                    A mecânica estatística de equilíbrio explica por que isso funciona. O seu programa cabe em uma
+                    frase: <em>deduzir as propriedades termodinâmicas de um sistema macroscópico a partir da
+                    contagem dos seus estados microscópicos</em>. Os capítulos 4 e 5 executam esse programa para
+                    sistemas em equilíbrio, primeiro isolados (ensemble microcanônico) e depois em contato com um
+                    reservatório térmico (ensemble canônico). As ferramentas probabilísticas já apareceram no
+                    capítulo 1, no
+                    <a href="../[0] - Introdução aos Métodos Estatísticos/[02] - Problema do Caminho Aleatório.html">problema do caminho aleatório</a>
+                    e no estudo de
+                    <a href="../[0] - Introdução aos Métodos Estatísticos/[03] - Valores Médios e Desvio Padrão.html">valores médios e desvio padrão</a>.
+                </p>
+
+                <p>
+                    Este tópico prepara o terreno de três maneiras. Primeiro, separa as duas descrições de um
+                    sistema, a microscópica e a macroscópica, e dá nome ao número que as liga: a multiplicidade.
+                    Depois, mostra com contas simples por que um número enorme de constituintes torna as previsões
+                    estatísticas praticamente certas; para isso, provamos a forma da fórmula de Stirling que o
+                    capítulo inteiro usa. Por fim, apresenta o roteiro dos capítulos 4 e 5.
+                </p>
+
+                <h2 id="micro-e-macro">Microestados e macroestados</h2>
+
+                <p>
+                    Um mesmo sistema físico admite duas descrições de detalhamento muito diferente. A distinção
+                    entre elas é a primeira ideia da mecânica estatística, e convém fixá-la em exemplos tão simples
+                    que a física quase desaparece: moedas e spins.
+                </p>
+
+                <div class="definition-box" id="def-4-1-1" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.1.1 (Microestado e macroestado).</strong> Um <strong>microestado</strong>
+                        de um sistema é uma especificação completa do seu estado mecânico: tudo o que a mecânica
+                        (clássica ou quântica) precisa para determinar o sistema em um instante. Um
+                        <strong>macroestado</strong> é a especificação de apenas algumas grandezas globais, as que
+                        se medem macroscopicamente. Cada microestado determina um único macroestado; um
+                        macroestado, em geral, é compatível com muitos microestados.</p>
+                </div>
+
+                <p>
+                    Para $N$ moedas lançadas sobre a mesa, um microestado é a lista das faces de todas as moedas
+                    (a primeira deu cara, a segunda coroa, …); um macroestado possível é apenas o número $n$ de
+                    caras. Para $N$ spins $\tfrac12$ em um sólido, um microestado é a lista dos valores
+                    $\sigma_i = \pm 1$ de todos os spins; o macroestado é a magnetização total. Para um gás
+                    clássico, um microestado é o conjunto das posições e momentos de todas as moléculas, um ponto
+                    do espaço de fase do <a href="[02] - Espaço de Fase e Teorema de Liouville.html">tópico 4.2</a>;
+                    o macroestado é dado por energia, volume e número de partículas.
+                </p>
+
+                <p id="ex-4-1-2"><strong>Exemplo 4.1.2 (Três moedas).</strong> Com $N = 3$ moedas, cada uma com
+                    as faces C (cara) e K (coroa), há $2^3 = 8$ microestados. Agrupando-os pelo número $n$ de
+                    caras:</p>
+
+                <div style="overflow-x: auto;">
+                <table>
+                    <tr><th>Macroestado $n$</th><th>Microestados compatíveis</th><th>Quantidade</th></tr>
+                    <tr><td>$0$</td><td>KKK</td><td>$1$</td></tr>
+                    <tr><td>$1$</td><td>CKK, KCK, KKC</td><td>$3$</td></tr>
+                    <tr><td>$2$</td><td>CCK, CKC, KCC</td><td>$3$</td></tr>
+                    <tr><td>$3$</td><td>CCC</td><td>$1$</td></tr>
+                </table>
+                </div>
+
+                <p>
+                    Os quatro macroestados não são "do mesmo tamanho": os intermediários correspondem a três
+                    microestados cada, os extremos a um só.
+                </p>
+
+                <div class="definition-box" id="def-4-1-3" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.1.3 (Multiplicidade).</strong> A <strong>multiplicidade</strong>
+                        $\Omega$ de um macroestado é o número de microestados compatíveis com ele.</p>
+                </div>
+
+                <p>
+                    No <a href="#ex-4-1-2">Exemplo 4.1.2</a>, $\Omega(0) = \Omega(3) = 1$ e
+                    $\Omega(1) = \Omega(2) = 3$. A letra $\Omega$ é a mesma que, a partir do
+                    <a href="[03] - O Ensemble Microcanônico.html">tópico 4.3</a>, contará os microestados de um
+                    sistema isolado com energia dada; a ideia é exatamente esta.
+                </p>
+
+                <div class="definition-box" id="prop-4-1-4">
+                    <p><strong>Proposição 4.1.4 (Multiplicidade de sistemas de dois estados).</strong> Considere
+                        $N$ constituintes distinguíveis, cada um com dois estados possíveis, e o macroestado dado
+                        pelo número $n$ de constituintes no primeiro estado. Então</p>
+                    <p>$$ \Omega(n) = \binom{N}{n} = \frac{N!}{n!\,(N-n)!}, \qquad \sum_{n=0}^{N}\Omega(n) = 2^N. \tag{4.1.1} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Um microestado com exatamente $n$ constituintes no primeiro estado fica
+                    determinado pela escolha de <em>quais</em> $n$ dos $N$ constituintes estão nesse estado (os
+                    demais estão, necessariamente, no segundo). O número de subconjuntos de $n$ elementos de um
+                    conjunto de $N$ elementos é $\binom{N}{n}$. Para a soma: cada um dos $N$ constituintes tem dois
+                    estados, independentemente dos outros, então o número total de microestados é $2^N$; como
+                    cada microestado tem um único valor de $n$, somar $\Omega(n)$ sobre todos os $n$ conta cada
+                    microestado uma vez. (Alternativamente, é o binômio de Newton
+                    $(1+1)^N = \sum_n\binom{N}{n}$.) $\blacksquare$
+                </p>
+
+                <p id="ex-4-1-5"><strong>Exemplo 4.1.5 (Spins e magnetização).</strong> Em um sistema de $N$
+                    spins $\tfrac12$ localizados, cada spin tem momento magnético de módulo $\mu$ na direção de
+                    um campo aplicado, com $\sigma_i = +1$ (para cima) ou $\sigma_i = -1$ (para baixo). Se $N_+$
+                    spins apontam para cima e $N_- = N - N_+$ para baixo, a magnetização total é</p>
+
+                <p>$$ M = \mu\sum_{i=1}^{N}\sigma_i = \mu\,(N_+ - N_-) = \mu\,(2N_+ - N). $$</p>
+
+                <p>
+                    Dar $M$ é o mesmo que dar $N_+$, e pela <a href="#prop-4-1-4">Proposição 4.1.4</a> a
+                    multiplicidade do macroestado é $\Omega(N_+) = \binom{N}{N_+}$. Para $N = 100$, o macroestado
+                    de magnetização máxima ($N_+ = 100$) tem um único microestado, enquanto o de magnetização nula
+                    ($N_+ = 50$) tem $\binom{100}{50} \approx 1{,}01\times10^{29}$. Esse modelo será resolvido por
+                    completo no <a href="[06] - Dois Níveis e Paramagneto Ideal.html">tópico 4.6</a>.
+                </p>
+
+                <p id="obs-4-1-6"><strong>Observação 4.1.6 (A pergunta central).</strong> As multiplicidades,
+                    sozinhas, não dizem com que probabilidade o sistema está em cada macroestado: para isso é
+                    preciso saber a probabilidade de cada microestado. A hipótese mais simples é a de que todos
+                    os microestados acessíveis sejam igualmente prováveis. Para um sistema isolado, essa será a
+                    hipótese fundamental da teoria, o postulado das probabilidades iguais a priori do
+                    <a href="[03] - O Ensemble Microcanônico.html">tópico 4.3</a>. Se os $2^N$ microestados de
+                    $N$ moedas forem igualmente prováveis, a probabilidade do macroestado $n$ é a fração de
+                    microestados que o realizam:</p>
+
+                <p>$$ P(n) = \frac{\Omega(n)}{2^N} = \binom{N}{n}\left(\frac12\right)^{N}. \tag{4.1.2} $$</p>
+
+                <p>
+                    É a distribuição binomial do capítulo 1 com $p = q = \tfrac12$. O macroestado mais provável é
+                    o de maior multiplicidade. O que ainda não sabemos é se ele é <em>muito</em> mais provável do
+                    que os outros. A resposta, que a seção seguinte dá, depende de $N$ de modo decisivo.
+                </p>
+
+                <h2 id="grandes-numeros">Por que $N$ grande simplifica</h2>
+
+                <p>
+                    No capítulo 1, o caminho aleatório de $N$ passos, com probabilidade $p$ de um passo para a
+                    direita e $q = 1 - p$ de um passo para a esquerda, levou à
+                    <a href="../[0] - Introdução aos Métodos Estatísticos/[02] - Problema do Caminho Aleatório.html#enunciado">distribuição binomial</a>
+                    para o número $n$ de passos para a direita:
+                </p>
+
+                <p>$$ P_N(n) = \binom{N}{n}\,p^{\,n}q^{\,N-n}, \qquad n = 0, 1, \dots, N. \tag{4.1.3} $$</p>
+
+                <p>
+                    A mesma distribuição descreve $N$ moedas (com $p = \tfrac12$) e $N$ spins independentes, cada
+                    um para cima com probabilidade $p$. Já vimos, no estudo de
+                    <a href="../[0] - Introdução aos Métodos Estatísticos/[03] - Valores Médios e Desvio Padrão.html">valores médios</a>,
+                    que $\langle n\rangle = Np$. Falta a largura.
+                </p>
+
+                <div class="definition-box" id="prop-4-1-7">
+                    <p><strong>Proposição 4.1.7 (Média e variância da binomial).</strong> Para a distribuição
+                        (4.1.3),</p>
+                    <p>$$ \langle n\rangle = Np, \qquad \langle(\Delta n)^2\rangle = \langle n^2\rangle - \langle n\rangle^2 = Npq. \tag{4.1.4} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Tratamos $p$ e $q$ como variáveis independentes e só no fim usamos
+                    $p + q = 1$. Pelo binômio de Newton, $G(p,q) = \sum_n\binom{N}{n}p^nq^{N-n} = (p+q)^N$. Como
+                    $p\,\partial_p\big(p^nq^{N-n}\big) = n\,p^nq^{N-n}$, aplicar o operador $p\,\partial_p$ multiplica
+                    cada termo por $n$. Logo
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    \langle n\rangle &= p\,\partial_pG = Np\,(p+q)^{N-1}, \\
+                    \langle n^2\rangle &= (p\,\partial_p)^2G = p\,\partial_p\big[Np\,(p+q)^{N-1}\big] \\
+                    &= Np\,(p+q)^{N-1} + N(N-1)\,p^2(p+q)^{N-2}.
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    Com $p + q = 1$: $\langle n\rangle = Np$ e $\langle n^2\rangle = Np + N(N-1)p^2$. Então
+                    $\langle n^2\rangle - \langle n\rangle^2 = Np + N^2p^2 - Np^2 - N^2p^2 = Np(1-p) = Npq$.
+                    $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="cor-4-1-8">
+                    <p><strong>Corolário 4.1.8 (Largura relativa).</strong> O desvio padrão
+                        $\sigma_n = \sqrt{Npq}$ e a largura relativa da binomial satisfazem</p>
+                    <p>$$ \frac{\sigma_n}{\langle n\rangle} = \sqrt{\frac{q}{p}}\,\frac{1}{\sqrt N}. \tag{4.1.5} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Basta dividir $\sqrt{Npq}$ por $Np$:
+                    $\sqrt{Npq}/(Np) = \sqrt{q/(pN)}$. $\blacksquare$
+                </p>
+
+                <p>
+                    Para moedas ($p = q = \tfrac12$), a largura relativa é exatamente $1/\sqrt N$:
+                </p>
+
+                <div style="overflow-x: auto;">
+                <table>
+                    <tr><th>$N$</th><th>$\langle n\rangle$</th><th>$\sigma_n$</th><th>$\sigma_n/\langle n\rangle$</th></tr>
+                    <tr><td>$10$</td><td>$5$</td><td>$1{,}58$</td><td>$0{,}32$</td></tr>
+                    <tr><td>$10^3$</td><td>$500$</td><td>$15{,}8$</td><td>$0{,}032$</td></tr>
+                    <tr><td>$10^{23}$</td><td>$5\times10^{22}$</td><td>$1{,}6\times10^{11}$</td><td>$3{,}2\times10^{-12}$</td></tr>
+                </table>
+                </div>
+
+                <p id="obs-4-1-9"><strong>Observação 4.1.9 (Largura absoluta e largura relativa).</strong> As
+                    duas tendências opostas precisam ser ditas juntas. A largura <em>absoluta</em> $\sigma_n$
+                    cresce com $N$, como $\sqrt N$: com $10^{23}$ moedas, o número de caras flutua tipicamente por
+                    $10^{11}$ unidades em torno da média. A largura <em>relativa</em> $\sigma_n/\langle n\rangle$
+                    diminui como $1/\sqrt N$: essas $10^{11}$ unidades são três partes em um trilhão do valor
+                    médio, muito abaixo da resolução de qualquer medida macroscópica. É a largura relativa que
+                    importa para a termodinâmica.</p>
+
+                <h3 id="stirling">A fórmula de Stirling</h3>
+
+                <p>
+                    Para ir além da média e da variância, e saber como a multiplicidade $\binom{N}{n}$ decai longe
+                    do máximo, precisamos estimar fatoriais de números enormes. O capítulo 4 usará o resultado a
+                    seguir muitas vezes, e por isso o provamos.
+                </p>
+
+                <div class="definition-box" id="lema-4-1-10">
+                    <p><strong>Lema 4.1.10 (Stirling, forma fraca).</strong> Para todo inteiro $N \ge 1$,</p>
+                    <p>$$ N\ln N - N + 1 \;\le\; \ln N! \;\le\; N\ln N - N + 1 + \ln(N+1). \tag{4.1.6} $$</p>
+                    <p>Em particular, $\ln N! = N\ln N - N + O(\ln N)$ quando $N \to \infty$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Temos $\ln N! = \sum_{k=2}^{N}\ln k$. Como $\ln$ é crescente, para
+                    cada $k \ge 2$ vale
+                </p>
+
+                <p>$$ \int_{k-1}^{k}\ln x\,dx \;\le\; \ln k \;\le\; \int_{k}^{k+1}\ln x\,dx. $$</p>
+
+                <p>
+                    Somando de $k = 2$ a $k = N$:
+                    $\int_1^N\ln x\,dx \le \ln N! \le \int_2^{N+1}\ln x\,dx \le \int_1^{N+1}\ln x\,dx$. Com a
+                    primitiva $x\ln x - x$, a integral da esquerda vale $N\ln N - N + 1$ e a da direita vale
+                    $(N+1)\ln(N+1) - N$. Resta majorar esta última:
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    &(N+1)\ln(N+1) - N \\
+                    &\qquad = N\ln N - N + N\ln\!\left(1 + \tfrac1N\right) + \ln(N+1) \\
+                    &\qquad \le N\ln N - N + 1 + \ln(N+1),
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    porque $\ln(1+u) \le u$ para $u \gt -1$, logo $N\ln(1 + 1/N) \le 1$. Isso dá (4.1.6). A última
+                    afirmação segue porque o resto $\ln N! - (N\ln N - N)$ fica entre $1$ e $1 + \ln(N+1)$.
+                    $\blacksquare$
+                </p>
+
+                <p>
+                    O erro é pequeno em relação aos termos principais: para $N = 1000$, $\ln N! \approx 5912{,}1$,
+                    enquanto o resto vale $4{,}37$. Quando $N$ é da ordem de $10^{23}$, $N\ln N$ é da ordem de
+                    $5\times10^{24}$ e o resto fica entre $1$ e $54$. Uma versão mais precisa identifica o resto:
+                </p>
+
+                <div class="definition-box" id="teo-4-1-11">
+                    <p><strong>Teorema 4.1.11 (Fórmula de Stirling).</strong> Quando $N \to \infty$,</p>
+                    <p>$$ \ln N! = N\ln N - N + \tfrac12\ln(2\pi N) + O\!\left(\tfrac1N\right). \tag{4.1.7} $$</p>
+                </div>
+
+                <p>
+                    <em>Ideia da demonstração.</em> Escreve-se $N! = \Gamma(N+1) = \int_0^\infty e^{N\ln t - t}\,dt$.
+                    O expoente tem máximo em $t = N$; expandindo-o até a segunda ordem em torno do máximo, a
+                    integral vira uma gaussiana de largura $\sqrt N$, cuja área produz o fator $\sqrt{2\pi N}$.
+                    É o método de Laplace, que reaparecerá no
+                    <a href="../[4] - Ensemble Canônico/[03] - Flutuações e Equivalência dos Ensembles.html">tópico 5.3</a>.
+                    Referência: Salinas, capítulo 1.
+                </p>
+
+                <p>
+                    Para $N = 10$, $\ln 10! = 15{,}104$; a forma fraca dá $N\ln N - N = 13{,}026$, e com o termo
+                    $\tfrac12\ln(2\pi N)$ obtemos $15{,}096$. No restante do capítulo 4, usaremos sempre a forma
+                    fraca, salvo aviso em contrário.
+                </p>
+
+                <h3 id="multiplicidade-perto-do-maximo">A multiplicidade perto do máximo</h3>
+
+                <p>
+                    Com Stirling, o logaritmo da multiplicidade binomial ganha uma forma fechada. A função que
+                    aparece será, a menos de uma constante, a entropia de um sistema de spins no
+                    <a href="[06] - Dois Níveis e Paramagneto Ideal.html">tópico 4.6</a>.
+                </p>
+
+                <div class="definition-box" id="prop-4-1-12">
+                    <p><strong>Proposição 4.1.12 (Logaritmo da multiplicidade).</strong> Para $0 \le n \le N$,
+                        $N \ge 1$, seja $h(x) = -x\ln x - (1-x)\ln(1-x)$ para $0 \le x \le 1$ (com $0\ln 0 = 0$).
+                        Então</p>
+                    <p>$$ \ln\binom{N}{n} = N\,h\!\left(\frac nN\right) + R, \qquad \lvert R\rvert \le 1 + 2\ln(N+1). \tag{4.1.8} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Para cada inteiro $m \ge 0$, escrevemos $\ln m! = m\ln m - m + r_m$. Pelo
+                    <a href="#lema-4-1-10">Lema 4.1.10</a>, $1 \le r_m \le 1 + \ln(m+1)$ se $m \ge 1$, e $r_0 = 0$
+                    (com $0\ln 0 = 0$). Então
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    \ln\binom{N}{n} &= \ln N! - \ln n! - \ln(N-n)! \\
+                    &= N\ln N - n\ln n - (N-n)\ln(N-n) + \big(r_N - r_n - r_{N-n}\big),
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    pois os termos lineares se cancelam: $-N + n + (N - n) = 0$. Usando $N\ln N = n\ln N + (N-n)\ln N$,
+                    o primeiro grupo vale $-n\ln(n/N) - (N-n)\ln\big((N-n)/N\big) = N\,h(n/N)$. Quanto a
+                    $R = r_N - r_n - r_{N-n}$: por um lado, $R \le r_N \le 1 + \ln(N+1)$; por outro,
+                    $R \ge 1 - 2\big(1 + \ln(N+1)\big) = -1 - 2\ln(N+1)$, porque $r_N \ge 1$ e cada um dos outros
+                    dois é no máximo $1 + \ln(N+1)$. Em ambos os casos $\lvert R\rvert \le 1 + 2\ln(N+1)$.
+                    $\blacksquare$
+                </p>
+
+                <p>
+                    O termo principal é proporcional a $N$; o erro cresce apenas como $\ln N$. É esse o sentido
+                    preciso em que "o logaritmo da multiplicidade é extensivo": por constituinte,
+                    $\tfrac1N\ln\binom{N}{n} = h(n/N) + O\!\left(\tfrac{\ln N}{N}\right)$.
+                </p>
+
+                <div class="definition-box" id="cor-4-1-13">
+                    <p><strong>Corolário 4.1.13 (Decaimento gaussiano em torno do máximo).</strong> Sejam $N$ par
+                        e $n = N/2 + k$, com $\lvert k\rvert \lt N/2$. Então</p>
+                    <p>$$ \ln\binom{N}{N/2 + k} = N\ln 2 - \frac{2k^2}{N} - \varepsilon + R, \qquad 0 \le \varepsilon \le \frac{4k^4}{3N^3}\,\frac{1}{1 - 4k^2/N^2}, \tag{4.1.9} $$</p>
+                    <p>com $R$ como em (4.1.8).</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Ponha $x = 2k/N$, de modo que $n/N = (1+x)/2$ e $\lvert x\rvert \lt 1$. Uma
+                    conta direta dá
+                    $h\big(\tfrac{1+x}{2}\big) = \ln 2 - \tfrac12\big[(1+x)\ln(1+x) + (1-x)\ln(1-x)\big]$. Pela série de
+                    $\ln(1\pm x)$,
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    (1+x)\ln(1+x) + (1-x)\ln(1-x) &= \sum_{j=1}^{\infty}\frac{x^{2j}}{j\,(2j-1)} \\
+                    &= x^2 + \frac{x^4}{6} + \frac{x^6}{15} + \cdots
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    (todos os termos são positivos). O primeiro termo dá $N\cdot\tfrac12x^2 = 2k^2/N$. Os demais
+                    somam $\varepsilon = \tfrac N2\sum_{j\ge2}x^{2j}/\big(j(2j-1)\big) \ge 0$, e, como
+                    $j(2j-1) \ge 6$ para $j \ge 2$,
+                    $\varepsilon \le \tfrac N2\cdot\tfrac{x^4}{6}\sum_{i\ge0}x^{2i} = \tfrac{N x^4}{12(1-x^2)}$, que é a
+                    cota (4.1.9) depois de substituir $x = 2k/N$. Somando o erro $R$ da
+                    <a href="#prop-4-1-12">Proposição 4.1.12</a>, obtemos (4.1.9). $\blacksquare$
+                </p>
+
+                <p>
+                    Enquanto $\lvert k\rvert$ for pequeno diante de $N^{3/4}$, o termo $\varepsilon$ é desprezível, e o
+                    logaritmo da multiplicidade cai como uma parábola,
+                    $\ln\binom{N}{N/2+k} = N\ln2 - 2k^2/N + O(\ln N)$: na escala logarítmica, a multiplicidade é uma
+                    gaussiana de largura $\sigma = \sqrt N/2$, que é exatamente o $\sqrt{Npq}$ da
+                    <a href="#prop-4-1-7">Proposição 4.1.7</a> com $p = q = \tfrac12$. Essa forma ainda não é uma
+                    aproximação da própria multiplicidade: o erro $O(\ln N)$ é um fator multiplicativo não controlado,
+                    e para $k$ da ordem de $\sqrt N$ o termo $2k^2/N$ é de ordem $1$, menor que esse erro. Usando a
+                    forma completa (4.1.7) no lugar da fraca, o fator que o erro $R$ esconde aparece explicitamente, e
+                    obtém-se a aproximação de de Moivre–Laplace $P(N/2 + k) \approx \sqrt{2/(\pi N)}\;e^{-2k^2/N}$, a versão
+                    discreta da gaussiana com que o capítulo 1 encerrou o
+                    <a href="../[0] - Introdução aos Métodos Estatísticos/[02] - Problema do Caminho Aleatório.html#limite-difusivo">caminho aleatório</a>.
+                </p>
+
+                <figure class="lecture-figure" id="fig-4-1-1">
+                    <svg viewBox="0 0 640 300" role="img" aria-label="Gráfico com o eixo horizontal x = n/N de 0 a 1 e o eixo vertical P(n)/P(N/2) de 0 a 1. Três curvas em forma de sino, todas centradas em x = 1/2 e com altura 1: para N = 10, onze pontos ligados por uma linha fina, formando um sino largo que vai de x = 0 a x = 1; para N = 100, uma curva tracejada bem mais estreita, praticamente nula fora de 0,35 a 0,65; para N = 1000, uma curva contínua ainda mais estreita, concentrada entre 0,45 e 0,55. Uma legenda no canto superior esquerdo identifica os três estilos de traço.">
+<line x1="78" y1="252" x2="614" y2="252" class="fig-axis"/>
+<line x1="78" y1="252" x2="78" y2="28" class="fig-axis"/>
+<line x1="78" y1="252" x2="78" y2="257" class="fig-axis"/>
+<text x="78" y="272" text-anchor="middle" class="fig-label fig-small">0</text>
+<line x1="210" y1="252" x2="210" y2="257" class="fig-axis"/>
+<text x="210" y="272" text-anchor="middle" class="fig-label fig-small">0,25</text>
+<line x1="342" y1="252" x2="342" y2="257" class="fig-axis"/>
+<text x="342" y="272" text-anchor="middle" class="fig-label fig-small">0,5</text>
+<line x1="474" y1="252" x2="474" y2="257" class="fig-axis"/>
+<text x="474" y="272" text-anchor="middle" class="fig-label fig-small">0,75</text>
+<line x1="606" y1="252" x2="606" y2="257" class="fig-axis"/>
+<text x="606" y="272" text-anchor="middle" class="fig-label fig-small">1</text>
+<line x1="73" y1="144" x2="78" y2="144" class="fig-axis"/>
+<text x="69" y="148" text-anchor="end" class="fig-label fig-small">0,5</text>
+<line x1="78" y1="144" x2="606" y2="144" class="fig-guide fig-dashed"/>
+<line x1="73" y1="36" x2="78" y2="36" class="fig-axis"/>
+<text x="69" y="40" text-anchor="end" class="fig-label fig-small">1</text>
+<line x1="78" y1="36" x2="606" y2="36" class="fig-guide fig-dashed"/>
+<text x="342" y="292" text-anchor="middle" class="fig-label fig-it">x = n/N</text>
+<text x="72" y="22" class="fig-label fig-it">P(n) / P(N/2)</text>
+<path d="M306.6,252 L307.2,252 L307.7,252 L308.2,251.9 L308.7,251.9 L309.3,251.9 L309.8,251.9 L310.3,251.8 L310.8,251.8 L311.4,251.7 L311.9,251.7 L312.4,251.6 L313,251.5 L313.5,251.4 L314,251.2 L314.5,251 L315.1,250.8 L315.6,250.5 L316.1,250.2 L316.7,249.9 L317.2,249.4 L317.7,248.9 L318.2,248.2 L318.8,247.5 L319.3,246.7 L319.8,245.7 L320.4,244.5 L320.9,243.2 L321.4,241.7 L321.9,240 L322.5,238 L323,235.8 L323.5,233.4 L324,230.6 L324.6,227.5 L325.1,224.1 L325.6,220.4 L326.2,216.3 L326.7,211.8 L327.2,206.9 L327.7,201.7 L328.3,196.1 L328.8,190.1 L329.3,183.7 L329.9,177 L330.4,169.9 L330.9,162.5 L331.4,154.9 L332,147 L332.5,139 L333,130.8 L333.6,122.5 L334.1,114.2 L334.6,106 L335.1,97.9 L335.7,90 L336.2,82.4 L336.7,75.1 L337.2,68.3 L337.8,61.9 L338.3,56.1 L338.8,51 L339.4,46.5 L339.9,42.8 L340.4,39.8 L340.9,37.7 L341.5,36.4 L342,36 L342.5,36.4 L343.1,37.7 L343.6,39.8 L344.1,42.8 L344.6,46.5 L345.2,51 L345.7,56.1 L346.2,61.9 L346.8,68.3 L347.3,75.1 L347.8,82.4 L348.3,90 L348.9,97.9 L349.4,106 L349.9,114.2 L350.4,122.5 L351,130.8 L351.5,139 L352,147 L352.6,154.9 L353.1,162.5 L353.6,169.9 L354.1,177 L354.7,183.7 L355.2,190.1 L355.7,196.1 L356.3,201.7 L356.8,206.9 L357.3,211.8 L357.8,216.3 L358.4,220.4 L358.9,224.1 L359.4,227.5 L360,230.6 L360.5,233.4 L361,235.8 L361.5,238 L362.1,240 L362.6,241.7 L363.1,243.2 L363.6,244.5 L364.2,245.7 L364.7,246.7 L365.2,247.5 L365.8,248.2 L366.3,248.9 L366.8,249.4 L367.3,249.9 L367.9,250.2 L368.4,250.5 L368.9,250.8 L369.5,251 L370,251.2 L370.5,251.4 L371,251.5 L371.6,251.6 L372.1,251.7 L372.6,251.7 L373.2,251.8 L373.7,251.8 L374.2,251.9 L374.7,251.9 L375.3,251.9 L375.8,251.9 L376.3,252 L376.8,252 L377.4,252" class="fig-curve"/>
+<path d="M231.1,252 L236.4,251.9 L241.7,251.9 L247,251.7 L252.2,251.4 L257.5,250.8 L262.8,249.7 L268.1,247.8 L273.4,244.7 L278.6,239.9 L283.9,232.7 L289.2,222.6 L294.5,208.9 L299.8,191.5 L305,170.4 L310.3,146.3 L315.6,120.4 L320.9,94.7 L326.2,71.3 L331.4,52.5 L336.7,40.2 L342,36 L347.3,40.2 L352.6,52.5 L357.8,71.3 L363.1,94.7 L368.4,120.4 L373.7,146.3 L379,170.4 L384.2,191.5 L389.5,208.9 L394.8,222.6 L400.1,232.7 L405.4,239.9 L410.6,244.7 L415.9,247.8 L421.2,249.7 L426.5,250.8 L431.8,251.4 L437,251.7 L442.3,251.9 L447.6,251.9 L452.9,252" class="fig-curve fig-dashed"/>
+<path d="M78,251.1 L130.8,243.4 L183.6,213.4 L236.4,149.1 L289.2,72 L342,36 L394.8,72 L447.6,149.1 L500.4,213.4 L553.2,243.4 L606,251.1" class="fig-guide"/>
+<circle cx="78" cy="251.1" r="3.5" class="fig-arrowhead"/>
+<circle cx="130.8" cy="243.4" r="3.5" class="fig-arrowhead"/>
+<circle cx="183.6" cy="213.4" r="3.5" class="fig-arrowhead"/>
+<circle cx="236.4" cy="149.1" r="3.5" class="fig-arrowhead"/>
+<circle cx="289.2" cy="72" r="3.5" class="fig-arrowhead"/>
+<circle cx="342" cy="36" r="3.5" class="fig-arrowhead"/>
+<circle cx="394.8" cy="72" r="3.5" class="fig-arrowhead"/>
+<circle cx="447.6" cy="149.1" r="3.5" class="fig-arrowhead"/>
+<circle cx="500.4" cy="213.4" r="3.5" class="fig-arrowhead"/>
+<circle cx="553.2" cy="243.4" r="3.5" class="fig-arrowhead"/>
+<circle cx="606" cy="251.1" r="3.5" class="fig-arrowhead"/>
+<line x1="94" y1="44.6" x2="128" y2="44.6" class="fig-curve"/>
+<text x="138" y="48.6" class="fig-label fig-small">N = 1000</text>
+<line x1="94" y1="64.6" x2="128" y2="64.6" class="fig-curve fig-dashed"/>
+<text x="138" y="68.6" class="fig-label fig-small">N = 100</text>
+<line x1="94" y1="84.6" x2="128" y2="84.6" class="fig-guide"/>
+<circle cx="111" cy="84.6" r="3.5" class="fig-arrowhead"/>
+<text x="138" y="88.6" class="fig-label fig-small">N = 10</text>
+</svg>
+                    <figcaption><strong>Figura 4.1.1.</strong> A binomial com $p = q = \tfrac12$, dividida pelo
+                        valor no pico, em função da fração $x = n/N$, para $N = 10$ (pontos), $N = 100$ (tracejado)
+                        e $N = 1000$ (linha contínua). Todas são centradas em $x = \tfrac12$, mas a largura em $x$
+                        é $\sigma_n/N = 1/(2\sqrt N)$: cada fator 10 em $N$ estreita o sino por um fator
+                        $\sqrt{10} \approx 3{,}2$. Para $N = 10^{23}$, a largura seria de $1{,}6\times10^{-12}$, e o
+                        sino seria, na escala da figura, uma linha vertical.</figcaption>
+                </figure>
+
+                <p id="obs-4-1-14"><strong>Observação 4.1.14 (Todas as moléculas de um lado).</strong> Um gás de
+                    $N$ moléculas ocupa uma caixa. Se cada molécula, independentemente das outras, tem
+                    probabilidade $\tfrac12$ de estar na metade esquerda, a probabilidade de encontrarmos
+                    <em>todas</em> à esquerda é $2^{-N}$. Para $N = 10$, é cerca de $10^{-3}$: acontece. Para
+                    $N = 10^{20}$, é $10^{-3\times10^{19}}$, um número que não tem comparação com nada que se possa
+                    observar. O gás não "decide" ocupar a caixa inteira; simplesmente quase todos os microestados
+                    têm as moléculas espalhadas.</p>
+
+                <h2 id="roteiro">Roteiro dos capítulos 4 e 5</h2>
+
+                <p>
+                    Dois capítulos anteriores ainda estão em esboço e serão escritos depois; convém dizer o que
+                    se usa de cada um. O capítulo 2,
+                    <a href="../[1] - Descrição Estatística de um Sistema Físico/[01] - Visão Geral.html">Descrição Estatística de um Sistema Físico</a>,
+                    trata de como especificar microestados clássicos e quânticos. Do lado clássico, o que
+                    precisamos (espaço de fase, ensembles, teorema de Liouville, a célula de volume $h$) é
+                    desenvolvido no próprio <a href="[02] - Espaço de Fase e Teorema de Liouville.html">tópico 4.2</a>.
+                    Do lado quântico, basta saber que um sistema confinado tem níveis de energia discretos, e os
+                    níveis dos modelos que usaremos (spin em um campo, oscilador harmônico, partícula em uma caixa)
+                    são dados. O capítulo 3,
+                    <a href="../[2] - Introdução à Termodinâmica/[01] - Visão Geral.html">Introdução à Termodinâmica</a>,
+                    reúne a termodinâmica que a teoria deve reproduzir. Aqui, as grandezas termodinâmicas serão
+                    <em>definidas</em> a partir da contagem de estados e confrontadas com a termodinâmica
+                    conforme aparecerem.
+                </p>
+
+                <p>
+                    O <strong>capítulo 4</strong> trata do sistema isolado: energia, volume e número de partículas
+                    fixos. O espaço de fase e o teorema de Liouville (4.2) levam ao postulado das probabilidades
+                    iguais a priori e à contagem $\Omega(E,V,N)$ dos microestados acessíveis (4.3). Pondo dois
+                    sistemas em contato térmico, a temperatura aparece como a grandeza que se iguala no equilíbrio,
+                    e a entropia como $S = k_B\ln\Omega$ (4.4). Paredes móveis e permeáveis dão a pressão e o
+                    potencial químico (4.5). Com isso a termodinâmica inteira sai de uma única função, e o resto
+                    do capítulo a calcula em quatro modelos: spins em um campo (4.6), o sólido de Einstein (4.7),
+                    o gás ideal clássico (4.8) e a correção de Gibbs para partículas idênticas (4.9).
+                </p>
+
+                <p>
+                    O <strong>capítulo 5</strong> troca o vínculo de energia fixa pelo de temperatura fixa. A
+                    probabilidade de cada microestado passa a ser proporcional ao fator de Boltzmann $e^{-E/k_BT}$
+                    (5.1), e toda a termodinâmica sai de uma única soma, a função de partição (5.2). As flutuações
+                    de energia, agora presentes, são pequenas, e os dois ensembles dão a mesma termodinâmica (5.3).
+                    Para partículas que não interagem, a função de partição fatora (5.4), e os modelos do capítulo
+                    4 são refeitos com muito menos trabalho (5.5 a 5.7). O capítulo termina com a equipartição da
+                    energia e a distribuição de velocidades de Maxwell (5.8).
+                </p>
+
+                <figure class="lecture-figure" id="fig-4-1-2" style="overflow-x: auto; overflow-y: hidden;">
+                    <svg viewBox="0 0 640 395" role="img" style="min-width: 560px;" aria-label="Mapa em duas colunas. À esquerda, nove caixas empilhadas com os tópicos do capítulo 4, de 4.1 Motivação e roteiro até 4.9 Paradoxo de Gibbs. À direita, oito caixas com os tópicos do capítulo 5, de 5.1 Do micro ao canônico até 5.8 Equipartição e Maxwell. Setas tracejadas ligam 4.4 a 5.1 (rótulo usa), 4.6 a 5.5, 4.7 a 5.6 e 4.9 a 5.7 (rótulo confere).">
+<defs><marker id="arr-4-1-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<text x="146" y="30" text-anchor="middle" class="fig-label fig-small">Capítulo 4 — Ensemble Microcanônico</text>
+<text x="494" y="30" text-anchor="middle" class="fig-label fig-small">Capítulo 5 — Ensemble Canônico</text>
+<line x1="38" y1="87" x2="38" y2="326" class="fig-guide"/>
+<rect x="24" y="62" width="244" height="25" rx="5" class="fig-frame"/>
+<text x="34" y="79" class="fig-label fig-small">4.1 Motivação e roteiro</text>
+<rect x="24" y="95" width="244" height="25" rx="5" class="fig-frame"/>
+<text x="34" y="112" class="fig-label fig-small">4.2 Espaço de fase e Liouville</text>
+<rect x="24" y="128" width="244" height="25" rx="5" class="fig-frame"/>
+<text x="34" y="145" class="fig-label fig-small">4.3 Ensemble microcanônico</text>
+<rect x="24" y="161" width="244" height="25" rx="5" class="fig-frame"/>
+<text x="34" y="178" class="fig-label fig-small">4.4 Contato térmico e entropia</text>
+<rect x="24" y="194" width="244" height="25" rx="5" class="fig-frame"/>
+<text x="34" y="211" class="fig-label fig-small">4.5 Pressão e potencial químico</text>
+<rect x="24" y="227" width="244" height="25" rx="5" class="fig-frame"/>
+<text x="34" y="244" class="fig-label fig-small">4.6 Dois níveis e paramagneto</text>
+<rect x="24" y="260" width="244" height="25" rx="5" class="fig-frame"/>
+<text x="34" y="277" class="fig-label fig-small">4.7 Sólido de Einstein</text>
+<rect x="24" y="293" width="244" height="25" rx="5" class="fig-frame"/>
+<text x="34" y="310" class="fig-label fig-small">4.8 Gás ideal clássico</text>
+<rect x="24" y="326" width="244" height="25" rx="5" class="fig-frame"/>
+<text x="34" y="343" class="fig-label fig-small">4.9 Paradoxo de Gibbs</text>
+<line x1="386" y1="87" x2="386" y2="293" class="fig-guide"/>
+<rect x="372" y="62" width="244" height="25" rx="5" class="fig-frame"/>
+<text x="382" y="79" class="fig-label fig-small">5.1 Do micro ao canônico</text>
+<rect x="372" y="95" width="244" height="25" rx="5" class="fig-frame"/>
+<text x="382" y="112" class="fig-label fig-small">5.2 Função de partição</text>
+<rect x="372" y="128" width="244" height="25" rx="5" class="fig-frame"/>
+<text x="382" y="145" class="fig-label fig-small">5.3 Flutuações e equivalência</text>
+<rect x="372" y="161" width="244" height="25" rx="5" class="fig-frame"/>
+<text x="382" y="178" class="fig-label fig-small">5.4 Partículas independentes</text>
+<rect x="372" y="194" width="244" height="25" rx="5" class="fig-frame"/>
+<text x="382" y="211" class="fig-label fig-small">5.5 Paramagneto e lei de Curie</text>
+<rect x="372" y="227" width="244" height="25" rx="5" class="fig-frame"/>
+<text x="382" y="244" class="fig-label fig-small">5.6 Osciladores e Einstein</text>
+<rect x="372" y="260" width="244" height="25" rx="5" class="fig-frame"/>
+<text x="382" y="277" class="fig-label fig-small">5.7 Gás ideal e dois níveis</text>
+<rect x="372" y="293" width="244" height="25" rx="5" class="fig-frame"/>
+<text x="382" y="310" class="fig-label fig-small">5.8 Equipartição e Maxwell</text>
+<line x1="268" y1="173.5" x2="370" y2="74.5" class="fig-guide fig-dashed" marker-end="url(#arr-4-1-2)"/>
+<text x="319" y="119" text-anchor="middle" class="fig-label fig-small">usa</text>
+<line x1="268" y1="239.5" x2="370" y2="206.5" class="fig-guide fig-dashed" marker-end="url(#arr-4-1-2)"/>
+<text x="319" y="218" text-anchor="middle" class="fig-label fig-small">confere</text>
+<line x1="268" y1="272.5" x2="370" y2="239.5" class="fig-guide fig-dashed" marker-end="url(#arr-4-1-2)"/>
+<text x="319" y="251" text-anchor="middle" class="fig-label fig-small">confere</text>
+<line x1="268" y1="338.5" x2="370" y2="272.5" class="fig-guide fig-dashed" marker-end="url(#arr-4-1-2)"/>
+<text x="319" y="300.5" text-anchor="middle" class="fig-label fig-small">confere</text>
+<text x="320" y="381" text-anchor="middle" class="fig-label fig-small">ordem de leitura de cima para baixo; tracejado: o capítulo 5 usa ou confere o capítulo 4</text>
+</svg>
+                    <figcaption><strong>Figura 4.1.2.</strong> Mapa dos capítulos 4 e 5. Cada coluna se lê de
+                        cima para baixo, e cada tópico usa os anteriores da mesma coluna. As setas tracejadas
+                        marcam as pontes entre os capítulos: o fator de Boltzmann (5.1) é deduzido a partir do
+                        contato térmico (4.4), e os modelos canônicos 5.5, 5.6 e 5.7 reproduzem, por outro caminho,
+                        os resultados microcanônicos de 4.6, 4.7 e 4.8–4.9.</figcaption>
+                </figure>
+
+                <p>
+                    Os três livros de referência do curso cobrem esse material com ênfases diferentes. O Salinas
+                    é a referência principal, e a ordem dos tópicos segue a dele; Pathria e Beale e Huang entram
+                    nas deduções alternativas e nos tópicos que o Salinas trata em outro lugar.
+                </p>
+
+                <div style="overflow-x: auto;">
+                <table>
+                    <tr><th>Nossos capítulos</th><th>Salinas</th><th>Pathria e Beale</th><th>Huang</th></tr>
+                    <tr><td>4 (Ensemble Microcanônico)</td><td>cap. 4</td><td>cap. 1 a 3</td><td>cap. 6</td></tr>
+                    <tr><td>5 (Ensemble Canônico)</td><td>cap. 5 e 6</td><td>cap. 3</td><td>cap. 6 e 7</td></tr>
+                </table>
+                </div>
+
+                <h2 id="conexao">Conexão com a termodinâmica e com o experimento</h2>
+
+                <p>
+                    A termodinâmica trata grandezas como a energia interna ou a pressão de um gás como números bem
+                    definidos, e as medidas lhe dão razão: medindo de novo a pressão de um gás em equilíbrio,
+                    obtém-se o mesmo valor. O <a href="#cor-4-1-8">Corolário 4.1.8</a> explica esse fato. Uma
+                    grandeza que é a soma de contribuições de $N$ constituintes aproximadamente independentes
+                    flutua em torno da média por uma fração da ordem de $1/\sqrt N$; para $N \sim 10^{22}$, isso é
+                    $10^{-11}$. Nenhum manômetro ou calorímetro resolve flutuações dessa ordem. O
+                    <a href="../[4] - Ensemble Canônico/[03] - Flutuações e Equivalência dos Ensembles.html">tópico 5.3</a>
+                    mostrará que a energia de um sistema em contato com um reservatório se comporta exatamente
+                    assim.
+                </p>
+
+                <p>
+                    As flutuações não desaparecem; só ficam invisíveis em escala macroscópica. Elas aparecem quando
+                    o sistema é pequeno ou quando a medida é fina o bastante: no movimento browniano de uma
+                    partícula suspensa em um líquido (o tema físico do caminho aleatório do capítulo 1), no ruído
+                    térmico de um resistor, em sistemas de poucas moléculas e perto de pontos críticos, onde as
+                    flutuações crescem muito. Essas situações ficam fora dos capítulos 4 e 5, mas a regra de
+                    $1/\sqrt N$ é o que permite saber, em cada caso, se elas importam.
+                </p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p>
+                    Os exercícios vão da contagem direta à estimativa de ordens de grandeza. Todas as contas foram
+                    conferidas por computação simbólica.
+                </p>
+
+                <p id="exr-4-1-1"><strong>Exercício 4.1.1.</strong> Considere $N = 4$ spins $\tfrac12$. Liste
+                    os microestados, agrupe-os pelo número $N_+$ de spins para cima e verifique a
+                    <a href="#prop-4-1-4">Proposição 4.1.4</a>.</p>
+
+                <p>
+                    <em>Solução.</em> Escrevendo $+$ e $-$ para os dois estados, há $2^4 = 16$ microestados.
+                    Agrupando:
+                </p>
+
+                <div style="overflow-x: auto;">
+                <table>
+                    <tr><th>$N_+$</th><th>Microestados</th><th>$\Omega(N_+)$</th><th>$\binom{4}{N_+}$</th></tr>
+                    <tr><td>$0$</td><td>$----$</td><td>$1$</td><td>$1$</td></tr>
+                    <tr><td>$1$</td><td>$+---,\ -+--,\ --+-,\ ---+$</td><td>$4$</td><td>$4$</td></tr>
+                    <tr><td>$2$</td><td>$++--,\ +-+-,\ +--+,\ -++-,\ -+-+,\ --++$</td><td>$6$</td><td>$6$</td></tr>
+                    <tr><td>$3$</td><td>$+++-,\ ++-+,\ +-++,\ -+++$</td><td>$4$</td><td>$4$</td></tr>
+                    <tr><td>$4$</td><td>$++++$</td><td>$1$</td><td>$1$</td></tr>
+                </table>
+                </div>
+
+                <p>
+                    As multiplicidades $1, 4, 6, 4, 1$ coincidem com $\binom{4}{N_+}$ e somam $16 = 2^4$. O
+                    macroestado de magnetização nula ($N_+ = 2$) reúne $6/16 = 37{,}5\%$ dos microestados; mesmo com
+                    apenas quatro spins, ele já é o de maior multiplicidade (e, se os $16$ microestados forem
+                    equiprováveis, o mais provável), mas longe de dominar.
+                </p>
+
+                <p id="exr-4-1-2"><strong>Exercício 4.1.2.</strong> Lançam-se $100$ moedas honestas. Calcule a
+                    probabilidade de obter entre $45$ e $55$ caras (inclusive), de forma exata e pela aproximação
+                    gaussiana, e compare.</p>
+
+                <p>
+                    <em>Solução.</em> Pela Equação (4.1.2), a probabilidade exata é
+                    $\sum_{n=45}^{55}\binom{100}{n}/2^{100} \approx 0{,}72875$. Na aproximação gaussiana, a média é
+                    $50$ e o desvio padrão é $\sigma = \sqrt{100/4} = 5$. Como $n$ só assume valores inteiros, os
+                    inteiros de $45$ a $55$ correspondem ao intervalo contínuo $[44{,}5;\ 55{,}5]$ (a chamada correção
+                    de continuidade), isto é, $\lvert n - 50\rvert \le 5{,}5$. Integrando a gaussiana nesse intervalo
+                    com a substituição $u = (n - 50)/(5\sqrt2)$, e escrevendo o resultado com a
+                    <strong>função erro</strong> $\operatorname{erf}(z) = \dfrac{2}{\sqrt\pi}\displaystyle\int_0^ze^{-u^2}\,du$,
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    P &\approx \frac{1}{5\sqrt{2\pi}}\int_{-5{,}5}^{5{,}5}e^{-x^2/50}\,dx = \frac{2}{\sqrt\pi}\int_0^{5{,}5/(5\sqrt2)}e^{-u^2}\,du \\
+                    &= \operatorname{erf}\!\left(\frac{5{,}5}{5\sqrt2}\right) \approx 0{,}72867.
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    O acordo é de quatro casas decimais. Sem a correção de continuidade, usando
+                    $\lvert n - 50\rvert \le 5$, obteríamos $\operatorname{erf}(1/\sqrt2) \approx 0{,}68269$, a
+                    conhecida probabilidade de "um desvio padrão", bem pior. Com $N = 100$, cerca de $27\%$ dos
+                    lançamentos caem fora de $50 \pm 5$: as flutuações relativas, de $10\%$, ainda são bem visíveis.
+                </p>
+
+                <p id="exr-4-1-3"><strong>Exercício 4.1.3.</strong> Para $N = 10^{23}$ moedas honestas, qual é a
+                    largura relativa da distribuição do número de caras? Qual é a largura absoluta?</p>
+
+                <p>
+                    <em>Solução.</em> Pelo <a href="#cor-4-1-8">Corolário 4.1.8</a> com $p = q$,
+                    $\sigma_n/\langle n\rangle = 1/\sqrt N = 1/\sqrt{10^{23}} \approx 3{,}2\times10^{-12}$. A largura
+                    absoluta é $\sigma_n = \sqrt N/2 \approx 1{,}6\times10^{11}$. Uma balança que contasse as caras
+                    pela massa de moedas em um prato precisaria de resolução de uma parte em $10^{12}$ para perceber
+                    a flutuação.
+                </p>
+
+                <p id="exr-4-1-4"><strong>Exercício 4.1.4.</strong> Estime a razão
+                    $\Omega(N/2)/\Omega(N/2 + 0{,}01N)$ entre as multiplicidades do macroestado mais provável e de um
+                    macroestado que se afasta dele por $1\%$ de $N$, para $N = 100$ e para $N = 10^{20}$. Para
+                    $N = 100$, compare com o valor exato.</p>
+
+                <p>
+                    <em>Solução.</em> Com $k = 0{,}01N$, o <a href="#cor-4-1-13">Corolário 4.1.13</a> dá
+                    $\ln[\Omega(N/2)/\Omega(N/2 + k)] \approx 2k^2/N = 2\times10^{-4}N$, a menos de $\varepsilon$ e dos
+                    erros $R$ das duas multiplicidades.
+                </p>
+
+                <p>
+                    Para $N = 100$ ($k = 1$), a estimativa é $e^{0{,}02} \approx 1{,}0202$. O valor exato é
+                    $\binom{100}{50}/\binom{100}{51} = 51/50 = 1{,}02$, pois $\binom{N}{m+1} = \binom{N}{m}\,\frac{N-m}{m+1}$.
+                    Os dois macroestados são praticamente igualmente prováveis.
+                </p>
+
+                <p>
+                    Para $N = 10^{20}$ ($k = 10^{18}$), $2k^2/N = 2\times10^{16}$, e a razão é
+                    $e^{2\times10^{16}} \approx 10^{8{,}7\times10^{15}}$. As correções não mudam esse quadro: $\varepsilon$
+                    é no máximo cerca de $1{,}3\times10^{12}$ (menos de $0{,}01\%$ do expoente), e os erros $R$ são
+                    da ordem de $10^2$. Um desvio de $1\%$, imperceptível para $N = 100$, é para $N = 10^{20}$ algo
+                    que nunca será observado.
+                </p>
+
+                <p id="exr-4-1-5"><strong>Exercício 4.1.5.</strong> Em uma caixa com $N$ moléculas, cada molécula
+                    está, independentemente das outras, na metade esquerda com probabilidade $\tfrac12$. Suponha que
+                    a configuração das moléculas se renove, de forma independente, a cada $\tau = 10^{-10}\ \mathrm{s}$.
+                    Quanto tempo, em média, é preciso esperar para ver todas as moléculas à esquerda, para $N = 10$
+                    e para $N = 100$? Compare com a idade do universo, cerca de $13{,}8$ bilhões de anos.</p>
+
+                <p>
+                    <em>Solução.</em> Em cada renovação, a probabilidade do evento é $P = 2^{-N}$. O número de
+                    tentativas até o primeiro sucesso tem distribuição geométrica, de média $1/P = 2^N$; o tempo
+                    médio de espera é $\tau\,2^N$. Para $N = 10$: $10^{-10}\times1024 \approx 1{,}0\times10^{-7}\ \mathrm{s}$.
+                    Para $N = 100$: $10^{-10}\times2^{100} \approx 1{,}3\times10^{20}\ \mathrm{s}$. A idade do universo
+                    é $13{,}8\times10^9\ \text{anos} \approx 4{,}4\times10^{17}\ \mathrm{s}$; a espera, com apenas
+                    $100$ moléculas, já é cerca de $300$ vezes maior. Para um gás macroscópico, com
+                    $N \sim 10^{20}$, o tempo de espera é $\tau\cdot10^{3\times10^{19}}$, e a unidade em que é medido
+                    deixa de importar.
+                </p>
+
+                <p id="exr-4-1-6"><strong>Exercício 4.1.6.</strong> Por que não podemos medir a probabilidade de
+                    um microestado individual de um gás macroscópico, mas podemos medir a probabilidade de um
+                    macroestado?</p>
+
+                <p>
+                    <em>Solução.</em> Medir uma probabilidade exige observar o evento com uma frequência
+                    mensurável. Um microestado de um gás é especificado por cerca de $10^{23}$ números, que nenhum
+                    instrumento registra. Classicamente, um microestado é um ponto exato do espaço de fase, e um ponto
+                    isolado de um contínuo tem probabilidade nula. Mesmo contando os microestados com resolução finita
+                    (estados quânticos, ou as células de volume $h^f$ do
+                    <a href="[02] - Espaço de Fase e Teorema de Liouville.html">tópico 4.2</a>), o número dos
+                    acessíveis é da ordem de $e^{10^{23}}$ ou mais, como veremos no
+                    <a href="[08] - Gás Ideal Clássico.html">tópico 4.8</a>; se forem equiprováveis, a probabilidade de
+                    cada um é dessa ordem com o sinal do expoente trocado, e nenhum microestado se repete em
+                    observações reais. Um macroestado,
+                    ao contrário, é definido por poucas grandezas que os instrumentos medem, e reúne uma fração
+                    enorme dos microestados. Por isso a teoria é testada pelas suas previsões sobre macroestados e
+                    médias, e não pelas probabilidades de microestados individuais: o postulado do
+                    <a href="[03] - O Ensemble Microcanônico.html">tópico 4.3</a> é uma hipótese sobre estas, mas
+                    só é verificado por meio daquelas.
+                </p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <p>
+                    Este tópico ainda não fez física de um sistema específico; ele deixou prontos a linguagem e o
+                    argumento que sustentam os capítulos 4 e 5:
+                </p>
+
+                <ul>
+                    <li><strong>microestado, macroestado e multiplicidade</strong>
+                        (<a href="#def-4-1-1">Definição 4.1.1</a>, <a href="#def-4-1-3">Definição 4.1.3</a>), com a
+                        multiplicidade binomial dos sistemas de dois estados
+                        (<a href="#prop-4-1-4">Proposição 4.1.4</a>);</li>
+                    <li><strong>a nitidez de $1/\sqrt N$</strong>: a binomial tem largura relativa
+                        $\sqrt{q/(pN)}$ (<a href="#prop-4-1-7">Proposição 4.1.7</a> e
+                        <a href="#cor-4-1-8">Corolário 4.1.8</a>);</li>
+                    <li><strong>a fórmula de Stirling</strong> na forma fraca, provada
+                        (<a href="#lema-4-1-10">Lema 4.1.10</a>), e na forma completa, citada
+                        (<a href="#teo-4-1-11">Teorema 4.1.11</a>);</li>
+                    <li><strong>o logaritmo da multiplicidade</strong> $\ln\binom{N}{n} = N\,h(n/N) + O(\ln N)$
+                        (<a href="#prop-4-1-12">Proposição 4.1.12</a>) e o decaimento gaussiano em torno do máximo
+                        (<a href="#cor-4-1-13">Corolário 4.1.13</a>).</li>
+                </ul>
+
+                <p>
+                    Duas peças ainda faltam para que essas contas virem previsões. A primeira é uma regra que dê
+                    probabilidade a cada microestado; até aqui ela foi apenas sugerida, e será o postulado do
+                    <a href="[03] - O Ensemble Microcanônico.html">tópico 4.3</a>. A segunda é um lugar onde
+                    morem os microestados de um sistema clássico, que não são discretos como moedas e spins: o
+                    espaço de fase. É o assunto do próximo tópico,
+                    <a href="[02] - Espaço de Fase e Teorema de Liouville.html">4.2 Espaço de Fase e Teorema de Liouville</a>.
+                </p>
+
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="toc-container">
+                <h4>Nesta página</h4>
+                <ul>
+                    <li><a href="#motivacao-e-roteiro">Motivação e Roteiro</a></li>
+                    <li><a href="#micro-e-macro">Microestados e macroestados</a></li>
+                    <li>
+                        <a href="#grandes-numeros">Por que $N$ grande simplifica</a>
+                        <ul>
+                            <li><a href="#stirling">A fórmula de Stirling</a></li>
+                            <li><a href="#multiplicidade-perto-do-maximo">A multiplicidade perto do máximo</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#roteiro">Roteiro dos capítulos 4 e 5</a></li>
+                    <li><a href="#conexao">Conexão com a termodinâmica e com o experimento</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Search Modal Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-modal">
+            <div class="search-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search documentation..." autocomplete="off">
+            </div>
+            <div class="search-results" id="search-results"></div>
+            <div class="search-footer">
+                <div class="search-commands">
+                    <span class="cmd-key">↑</span>
+                    <span class="cmd-key">↓</span>
+                    <span class="cmd-label">navigate</span>
+                    <span class="cmd-key">↵</span>
+                    <span class="cmd-label">select</span>
+                </div>
+                <div class="search-commands">
+                    <span class="cmd-key">esc</span>
+                    <span class="cmd-label">close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../../../assets/js/class-lecture.js"></script>
+</body>
+
+</html>
