@@ -160,7 +160,1061 @@
                 <h1 id="contato-termico-e-entropia">4.4 Contato Térmico e a Entropia de Boltzmann</h1>
                 <p class="lead">Dois sistemas que trocam energia, a partição mais provável, a definição estatística de temperatura, a entropia de Boltzmann, a nitidez do pico e a segunda lei.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>
+                    Dois corpos postos em contato trocam energia até que algo neles se iguale; a esse algo a
+                    termodinâmica chama temperatura. Até aqui, porém, a mecânica estatística só sabe contar: o
+                    <a href="[03] - O Ensemble Microcanônico.html">tópico 4.3</a> deu o número $\Omega$ de microestados
+                    de um sistema isolado e o postulado de que eles são igualmente prováveis, mas nenhuma noção de
+                    temperatura nem de entropia. Neste tópico, as duas saem de uma única pergunta: quando dois
+                    sistemas trocam energia e o conjunto está isolado, como a energia se reparte entre eles?
+                </p>
+
+                <p>
+                    A resposta segue do postulado aplicado ao sistema composto. A probabilidade de uma repartição é
+                    proporcional ao produto $\Omega_1\Omega_2$ das contagens dos dois lados. Esse produto tem um
+                    máximo, e no máximo a derivada $\partial\ln\Omega/\partial E$ é a mesma nos dois sistemas: é ela que
+                    se iguala, e com ela definimos a temperatura. O logaritmo da contagem, multiplicado por $k_B$,
+                    é a entropia de Boltzmann; provamos que ela é aditiva, a menos de termos de ordem $\ln N$. Em
+                    seguida mostramos que, para sistemas macroscópicos, o máximo é tão estreito que a repartição
+                    observada é, com probabilidade esmagadora, a mais provável, com largura relativa da ordem de
+                    $N^{-1/2}$. Por fim, deduzimos a segunda lei: liberar um vínculo nunca diminui a entropia, a
+                    energia passa do corpo mais quente para o mais frio, e o equilíbrio só é estável se a capacidade
+                    térmica for positiva.
+                </p>
+
+                <p>
+                    Usamos do tópico 4.3 o postulado, as funções de contagem e a insensibilidade à largura da casca;
+                    do <a href="[01] - Motivação e Roteiro.html">tópico 4.1</a>, a fórmula de Stirling e o logaritmo
+                    dos coeficientes binomiais. O exemplo que acompanha todo o tópico são dois sólidos de Einstein,
+                    conjuntos de osciladores quânticos que trocam quanta de energia, para os quais todas as contas
+                    podem ser feitas exatamente.
+                </p>
+
+                <h2 id="dois-sistemas">Dois sistemas em contato térmico</h2>
+
+                <p>
+                    Considere dois sistemas, $1$ e $2$, separados por uma parede. A parede pode deixar passar energia
+                    ou não, pode mover-se ou não, pode deixar passar partículas ou não. Neste tópico, ela só deixa
+                    passar energia; o <a href="[05] - Interações Mecânica e Difusiva.html">tópico 4.5</a> libera
+                    as outras duas trocas.
+                </p>
+
+                <div class="definition-box" id="def-4-4-1" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.4.1 (Contato térmico e acoplamento fraco).</strong> Dois sistemas, de
+                        volumes $V_1, V_2$ e números de partículas $N_1, N_2$, estão em <strong>contato térmico</strong>
+                        quando separados por uma parede <strong>diatérmica</strong>, fixa e impermeável: ela permite a
+                        troca de energia, mas não a de volume nem a de partículas. O sistema composto é isolado, com
+                        energia na casca $E \lt \mathcal{H} \le E + \delta E$. O <strong>acoplamento é fraco</strong>
+                        quando o hamiltoniano do composto é $\mathcal{H} = \mathcal{H}_1 + \mathcal{H}_2 + \mathcal{H}_{\text{int}}$
+                        e o termo de interação $\mathcal{H}_{\text{int}}$ é desprezível na contagem: os microestados do
+                        composto são os pares $(j_1, j_2)$ formados por um microestado de cada sistema, e a energia do
+                        par é $E_{j_1} + E_{j_2}$. Escrevemos $E_1$ e $E_2$ para as energias dos dois sistemas, com
+                        $E_1 + E_2 = E$ (a menos de $\delta E$).</p>
+                </div>
+
+                <p id="obs-4-4-2"><strong>Observação 4.4.2 (Quando o acoplamento é fraco).</strong> O termo
+                    $\mathcal{H}_{\text{int}}$ tem dois papéis contraditórios. Ele precisa existir, porque sem ele cada
+                    sistema conservaria a sua energia e nada seria trocado; e precisa ser pequeno, para que a energia
+                    do composto seja a soma das energias das partes. Para forças de curto alcance, de alcance $\ell$
+                    da ordem de um diâmetro atômico, só interagem através da parede as partículas a uma distância
+                    menor que $\ell$ dela. Para um corpo de lado $L$, elas são uma fração da ordem de $\ell/L$ do
+                    total, ou seja, de $N^{-1/3}$, e a energia de interação é dessa ordem diante da energia do corpo:
+                    cerca de $10^{-8}$ para um centímetro cúbico de matéria. A hipótese falha para forças de longo
+                    alcance, como a gravitação, em que cada partícula interage com todas as outras, e para sistemas
+                    de poucas partículas, em que a superfície não é pequena diante do volume.</p>
+
+                <p>
+                    Com o acoplamento fraco, a energia $E_1$ do sistema $1$ deixa de ser fixa: ela pode ter qualquer
+                    valor compatível com $E_1 + E_2 = E$. O postulado das probabilidades iguais a priori
+                    (<a href="[03] - O Ensemble Microcanônico.html#post-4-3-3">Postulado 4.3.3</a>) vale para o sistema composto, que é isolado, e não para cada parte
+                    (<a href="[03] - O Ensemble Microcanônico.html#exr-4-3-6">Exercício 4.3.6</a>). A distribuição de
+                    $E_1$ sai dele por contagem.
+                </p>
+
+                <div class="definition-box" id="prop-4-4-3">
+                    <p><strong>Proposição 4.4.3 (Repartição da energia).</strong> Sejam $1$ e $2$ em contato térmico
+                        com acoplamento fraco e o composto no ensemble microcanônico, com energia na casca
+                        $E \lt \mathcal{H} \le E + \delta E$. Seja $\Omega_2(E_2)$ o número de estados do sistema $2$
+                        na casca $E_2 \lt \mathcal{H}_2 \le E_2 + \delta E$.</p>
+                    <p>(a) Se o sistema $1$ tem níveis discretos, e o nível de energia $E_1$ tem $\Omega_1(E_1)$
+                        estados, então, com a soma sobre os níveis de $1$,</p>
+                    <p>
+                        $$ \begin{aligned}
+                        \Omega(E) &= \sum_{E_1}\Omega_1(E_1)\,\Omega_2(E - E_1), \\
+                        P(E_1) &= \frac{\Omega_1(E_1)\,\Omega_2(E - E_1)}{\Omega(E)},
+                        \end{aligned} \tag{4.4.1} $$
+                    </p>
+                    <p>em que $P(E_1)$ é a probabilidade de o sistema $1$ estar no nível $E_1$.</p>
+                    <p>(b) Se o sistema $1$ é clássico, com $\Phi_1$ continuamente derivável e
+                        $\omega_1(E_1) = \Phi_1'(E_1)$, valem as mesmas fórmulas com a soma trocada por uma integral:
+                        $\Omega(E) = \int\omega_1(E_1)\,\Omega_2(E - E_1)\,dE_1$, e a probabilidade de
+                        $a \lt \mathcal{H}_1 \le b$ é $\int_a^b\omega_1(E_1)\,\Omega_2(E - E_1)\,dE_1/\Omega(E)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Um microestado do composto é um par $(j_1, j_2)$, acessível quando
+                    $E \lt E_{j_1} + E_{j_2} \le E + \delta E$. Agrupamos os pares pelo nível $E_1$ do estado $j_1$.
+                    Fixado um estado $j_1$ desse nível, o par é acessível se e só se
+                    $E - E_1 \lt E_{j_2} \le E - E_1 + \delta E$, o que deixa $\Omega_2(E - E_1)$ escolhas para $j_2$;
+                    e há $\Omega_1(E_1)$ escolhas de $j_1$ no nível. Somando sobre os níveis, obtemos a primeira
+                    linha de (4.4.1). Pelo postulado, cada par acessível tem probabilidade $1/\Omega(E)$, e o evento
+                    "o sistema $1$ está no nível $E_1$" contém $\Omega_1(E_1)\,\Omega_2(E - E_1)$ pares, o que dá a
+                    segunda linha.
+                </p>
+
+                <p>
+                    (b) Com $x_1$ e $x_2$ os pontos dos espaços de fase dos dois sistemas, de $f_1$ e $f_2$ graus de
+                    liberdade, o volume da casca do composto, dividido por $h^{f_1 + f_2}$, é calculado primeiro em
+                    $x_2$ com $x_1$ fixo: para cada $x_1$, a condição é
+                    $E - \mathcal{H}_1(x_1) \lt \mathcal{H}_2(x_2) \le E - \mathcal{H}_1(x_1) + \delta E$, e a integral
+                    em $x_2$, dividida por $h^{f_2}$, vale $\Omega_2\big(E - \mathcal{H}_1(x_1)\big)$. Assim,
+                </p>
+
+                <p>$$ \Omega(E) = \int\Omega_2\big(E - \mathcal{H}_1(x_1)\big)\,\frac{d^{f_1}q\,d^{f_1}p}{h^{f_1}}. $$</p>
+
+                <p>
+                    Resta trocar a integral sobre o espaço de fase de $1$ por uma integral sobre a energia. Para a
+                    função indicadora $g$ de um intervalo $(a, b]$, a integral de $g(\mathcal{H}_1)$ dividida por
+                    $h^{f_1}$ é, por definição, $\Phi_1(b) - \Phi_1(a) = \int_a^b\omega_1(E_1)\,dE_1$. Por linearidade,
+                    a igualdade
+                    $\int g(\mathcal{H}_1)\,d^{f_1}q\,d^{f_1}p/h^{f_1} = \int g(E_1)\,\omega_1(E_1)\,dE_1$ vale para
+                    combinações de indicadoras (funções escada) e, aproximando por funções escada, para as funções
+                    limitadas e integráveis, como $g(E_1) = \Omega_2(E - E_1)$ e o seu produto pela indicadora de
+                    $(a, b]$. Isso dá as duas fórmulas de (b); a probabilidade é a razão de volumes, pelo postulado.
+                    $\blacksquare$
+                </p>
+
+                <p>
+                    A <a href="[03] - O Ensemble Microcanônico.html#prop-4-3-16">Proposição 4.3.16</a> era um caso
+                    particular de (b): o sistema $1$ era um único oscilador clássico, com $\Phi_1 = \varepsilon/\hbar\omega$
+                    e portanto $\omega_1 = 1/\hbar\omega$ constante, e o sistema $2$, os outros $N - 1$, com
+                    $\Omega_2(E - \varepsilon) \approx \omega_2(E - \varepsilon)\,\delta E \propto (E - \varepsilon)^{N-2}$.
+                    Daqui em diante escrevemos as fórmulas com somas, como em (4.4.1); no caso clássico, a soma
+                    sobre os níveis de $1$ significa a integral de (b).
+                </p>
+
+                <p>
+                    A probabilidade de uma repartição é, portanto, proporcional ao produto $\Omega_1\Omega_2$: ela é
+                    grande quando os dois sistemas, juntos, têm muitos microestados. Para ver como esse produto se
+                    comporta, precisamos de um exemplo em que tudo possa ser contado. Um oscilador harmônico
+                    quântico de frequência $\omega$ tem níveis $\hbar\omega(n + \tfrac12)$, $n = 0, 1, 2, \dots$; o
+                    inteiro $n$ é o número de <strong>quanta</strong> de energia acima do ponto zero. Um conjunto de
+                    $N$ osciladores de mesma frequência, cada um preso a um sítio, é o modelo de Einstein para um
+                    sólido, estudado no <a href="[07] - Sólido de Einstein.html">tópico 4.7</a>. A sua contagem é o
+                    lema seguinte.
+                </p>
+
+                <div class="definition-box" id="lema-4-4-4">
+                    <p><strong>Lema 4.4.4 (Estrelas e barras).</strong> O número de modos de distribuir $M$ quanta
+                        entre $N \ge 1$ osciladores, isto é, o número de listas $(n_1, \dots, n_N)$ de inteiros
+                        $n_i \ge 0$ com $n_1 + \dots + n_N = M$, é</p>
+                    <p>$$ \Omega(N, M) = \binom{M + N - 1}{M} = \frac{(M + N - 1)!}{M!\,(N - 1)!}. $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> A cada lista associamos uma sequência de $M$ estrelas e $N - 1$ barras:
+                    $n_1$ estrelas, uma barra, $n_2$ estrelas, uma barra, e assim por diante, terminando com $n_N$
+                    estrelas. Por exemplo, com $N = 3$ e $M = 4$, a lista $(2, 0, 2)$ vira $\star\star\,|\,|\,\star\star$.
+                    Reciprocamente, em qualquer sequência de $M$ estrelas e $N - 1$ barras, as barras cortam a
+                    sequência em $N$ blocos, possivelmente vazios, cujos números de estrelas formam uma lista de
+                    inteiros $\ge 0$ com soma $M$. As duas construções são inversas uma da outra, e portanto o número
+                    de listas é o número de sequências. Uma sequência fica determinada pelas posições das $M$ estrelas
+                    entre as $M + N - 1$ posições, o que pode ser escolhido de $\binom{M + N - 1}{M}$ modos.
+                    $\blacksquare$
+                </p>
+
+                <p>
+                    Com isso fica provada a contagem que o
+                    <a href="[03] - O Ensemble Microcanônico.html#exr-4-3-2">Exercício 4.3.2</a> verificou para
+                    $N = M = 3$ ($\binom{5}{3} = 10$ microestados).
+                </p>
+
+                <p id="ex-4-4-5"><strong>Exemplo 4.4.5 (Dois sólidos de Einstein).</strong> Considere dois sólidos de
+                    Einstein com $N_1$ e $N_2$ osciladores de mesma frequência $\omega$, em contato térmico, com $M$
+                    quanta no total. A energia do sólido $i$ com $M_i$ quanta é $\hbar\omega(M_i + N_i/2)$, e o seu
+                    nível tem $\Omega(N_i, M_i)$ estados, pelo <a href="#lema-4-4-4">Lema 4.4.4</a>. Escolhemos
+                    $\delta E \lt \hbar\omega$, de modo que a casca do composto contenha só o nível com $M$ quanta; então
+                    $\Omega_2(E - E_1)$ é o número de estados do nível de $2$ com $M - M_1$ quanta. Pela
+                    <a href="#prop-4-4-3">Proposição 4.4.3</a>(a), a probabilidade de o sólido $1$ ter $M_1$ quanta é</p>
+
+                <p>$$ P(M_1) = \frac{\Omega(N_1, M_1)\,\Omega(N_2, M - M_1)}{\Omega(N_1 + N_2, M)}, \qquad M_1 = 0, 1, \dots, M. \tag{4.4.2} $$</p>
+
+                <p>
+                    O denominador também vem do lema: o composto é, ele mesmo, um sólido de $N_1 + N_2$ osciladores
+                    com $M$ quanta. Comparando com a primeira linha de (4.4.1), obtemos de graça a identidade
+                    $\sum_{M_1}\Omega(N_1, M_1)\,\Omega(N_2, M - M_1) = \Omega(N_1 + N_2, M)$.
+                </p>
+
+                <p>
+                    Tome dois sólidos iguais, com $N_1 = N_2 = N$, e $M = 2N$ quanta, um por oscilador em média. Por
+                    simetria, a repartição mais provável é $M_1 = N$. Com $N = 100$, ela tem probabilidade de apenas
+                    $0{,}040$: qualquer valor isolado de $M_1$ é improvável. Mas a probabilidade de $M_1/M$ estar entre
+                    $0{,}4$ e $0{,}6$ já é $0{,}961$. Com $N = 1000$, a probabilidade de $M_1/M$ cair fora desse
+                    intervalo é $1{,}8\times10^{-10}$. A <a href="#fig-4-4-1">Figura 4.4.1</a>(a) mostra a distribuição
+                    exata (4.4.2) nos dois casos.
+                </p>
+
+                <figure class="lecture-figure" id="fig-4-4-1">
+                    <svg viewBox="0 0 640 300" role="img" aria-label="Dois painéis sobre dois sólidos de Einstein em contato térmico. Painel (a), sólidos iguais com N osciladores e N quanta cada: eixo horizontal M1/M de 0 a 1, eixo vertical P(M1)/P(M/2) de 0 a 1. Duas curvas em forma de sino centradas em 1/2: tracejada para N = 100, com largura de cerca de 0,3, e contínua para N = 1000, três vezes mais estreita. Painel (b), sólidos com N1 = 100 e N2 = 300 osciladores e M = 400 quanta: eixo horizontal M1 de 0 a 400, eixo vertical de 0 a 600. A curva tracejada ln Omega1 cresce de 0 a cerca de 245; a curva tracejada ln Omega2 decresce de cerca de 474 a 0; as duas se cruzam, onde Omega1 = Omega2, perto de M1 = 301, ponto marcado por um pequeno círculo. A curva contínua da soma tem máximo de cerca de 547 em M1 = 99, marcado por uma linha vertical tracejada que passa também pelos pontos das duas curvas tracejadas nessa abscissa, onde uma sobe e a outra desce com a mesma inclinação em módulo.">
+<line x1="62" y1="250" x2="304" y2="250" class="fig-axis"/>
+<line x1="62" y1="250" x2="62" y2="36" class="fig-axis"/>
+<line x1="62" y1="250" x2="62" y2="255" class="fig-axis"/>
+<text x="62" y="269" text-anchor="middle" class="fig-label fig-small">0</text>
+<line x1="120.5" y1="250" x2="120.5" y2="255" class="fig-axis"/>
+<text x="120.5" y="269" text-anchor="middle" class="fig-label fig-small">0,25</text>
+<line x1="179" y1="250" x2="179" y2="255" class="fig-axis"/>
+<text x="179" y="269" text-anchor="middle" class="fig-label fig-small">0,5</text>
+<line x1="237.5" y1="250" x2="237.5" y2="255" class="fig-axis"/>
+<text x="237.5" y="269" text-anchor="middle" class="fig-label fig-small">0,75</text>
+<line x1="296" y1="250" x2="296" y2="255" class="fig-axis"/>
+<text x="296" y="269" text-anchor="middle" class="fig-label fig-small">1</text>
+<line x1="57" y1="147" x2="62" y2="147" class="fig-axis"/>
+<text x="53" y="151" text-anchor="end" class="fig-label fig-small">0,5</text>
+<line x1="62" y1="147" x2="296" y2="147" class="fig-guide fig-dashed"/>
+<line x1="57" y1="44" x2="62" y2="44" class="fig-axis"/>
+<text x="53" y="48" text-anchor="end" class="fig-label fig-small">1</text>
+<line x1="62" y1="44" x2="296" y2="44" class="fig-guide fig-dashed"/>
+<text x="179" y="288" text-anchor="middle" class="fig-label fig-it">M₁/M</text>
+<text x="58" y="28" class="fig-label fig-it">P(M₁)/P(M/2)</text>
+<text x="292" y="28" text-anchor="end" class="fig-label">(a)</text>
+<path d="M163.2,250 L163.3,250 L163.4,250 L163.6,250 L163.7,250 L163.8,250 L163.9,250 L164,249.9 L164.1,249.9 L164.3,249.9 L164.4,249.9 L164.5,249.9 L164.6,249.9 L164.7,249.9 L164.8,249.9 L165,249.8 L165.1,249.8 L165.2,249.8 L165.3,249.8 L165.4,249.8 L165.5,249.7 L165.7,249.7 L165.8,249.7 L165.9,249.6 L166,249.6 L166.1,249.5 L166.2,249.5 L166.4,249.4 L166.5,249.3 L166.6,249.3 L166.7,249.2 L166.8,249.1 L166.9,249 L167.1,248.9 L167.2,248.8 L167.3,248.6 L167.4,248.5 L167.5,248.3 L167.7,248.1 L167.8,248 L167.9,247.8 L168,247.5 L168.1,247.3 L168.2,247 L168.4,246.7 L168.5,246.4 L168.6,246.1 L168.7,245.7 L168.8,245.3 L168.9,244.9 L169.1,244.5 L169.2,244 L169.3,243.4 L169.4,242.9 L169.5,242.3 L169.6,241.6 L169.8,240.9 L169.9,240.2 L170,239.4 L170.1,238.5 L170.2,237.6 L170.3,236.7 L170.5,235.7 L170.6,234.6 L170.7,233.4 L170.8,232.2 L170.9,231 L171,229.6 L171.2,228.2 L171.3,226.7 L171.4,225.1 L171.5,223.4 L171.6,221.7 L171.7,219.9 L171.9,217.9 L172,215.9 L172.1,213.8 L172.2,211.7 L172.3,209.4 L172.4,207 L172.6,204.6 L172.7,202 L172.8,199.4 L172.9,196.7 L173,193.9 L173.1,190.9 L173.3,187.9 L173.4,184.9 L173.5,181.7 L173.6,178.4 L173.7,175.1 L173.9,171.7 L174,168.2 L174.1,164.7 L174.2,161.1 L174.3,157.4 L174.4,153.6 L174.6,149.9 L174.7,146 L174.8,142.2 L174.9,138.3 L175,134.4 L175.1,130.4 L175.3,126.5 L175.4,122.5 L175.5,118.6 L175.6,114.7 L175.7,110.7 L175.8,106.9 L176,103 L176.1,99.2 L176.2,95.5 L176.3,91.8 L176.4,88.2 L176.5,84.7 L176.7,81.3 L176.8,78 L176.9,74.8 L177,71.7 L177.1,68.7 L177.2,65.9 L177.4,63.2 L177.5,60.7 L177.6,58.3 L177.7,56.1 L177.8,54 L177.9,52.2 L178.1,50.5 L178.2,49 L178.3,47.7 L178.4,46.6 L178.5,45.6 L178.6,44.9 L178.8,44.4 L178.9,44.1 L179,44 L179.1,44.1 L179.2,44.4 L179.4,44.9 L179.5,45.6 L179.6,46.6 L179.7,47.7 L179.8,49 L179.9,50.5 L180.1,52.2 L180.2,54 L180.3,56.1 L180.4,58.3 L180.5,60.7 L180.6,63.2 L180.8,65.9 L180.9,68.7 L181,71.7 L181.1,74.8 L181.2,78 L181.3,81.3 L181.5,84.7 L181.6,88.2 L181.7,91.8 L181.8,95.5 L181.9,99.2 L182,103 L182.2,106.9 L182.3,110.7 L182.4,114.7 L182.5,118.6 L182.6,122.5 L182.7,126.5 L182.9,130.4 L183,134.4 L183.1,138.3 L183.2,142.2 L183.3,146 L183.4,149.9 L183.6,153.6 L183.7,157.4 L183.8,161.1 L183.9,164.7 L184,168.2 L184.1,171.7 L184.3,175.1 L184.4,178.4 L184.5,181.7 L184.6,184.9 L184.7,187.9 L184.9,190.9 L185,193.9 L185.1,196.7 L185.2,199.4 L185.3,202 L185.4,204.6 L185.6,207 L185.7,209.4 L185.8,211.7 L185.9,213.8 L186,215.9 L186.1,217.9 L186.3,219.9 L186.4,221.7 L186.5,223.4 L186.6,225.1 L186.7,226.7 L186.8,228.2 L187,229.6 L187.1,231 L187.2,232.2 L187.3,233.4 L187.4,234.6 L187.5,235.7 L187.7,236.7 L187.8,237.6 L187.9,238.5 L188,239.4 L188.1,240.2 L188.2,240.9 L188.4,241.6 L188.5,242.3 L188.6,242.9 L188.7,243.4 L188.8,244 L188.9,244.5 L189.1,244.9 L189.2,245.3 L189.3,245.7 L189.4,246.1 L189.5,246.4 L189.6,246.7 L189.8,247 L189.9,247.3 L190,247.5 L190.1,247.8 L190.2,248 L190.3,248.1 L190.5,248.3 L190.6,248.5 L190.7,248.6 L190.8,248.8 L190.9,248.9 L191.1,249 L191.2,249.1 L191.3,249.2 L191.4,249.3 L191.5,249.3 L191.6,249.4 L191.8,249.5 L191.9,249.5 L192,249.6 L192.1,249.6 L192.2,249.7 L192.3,249.7 L192.5,249.7 L192.6,249.8 L192.7,249.8 L192.8,249.8 L192.9,249.8 L193,249.8 L193.2,249.9 L193.3,249.9 L193.4,249.9 L193.5,249.9 L193.6,249.9 L193.7,249.9 L193.9,249.9 L194,249.9 L194.1,250 L194.2,250 L194.3,250 L194.4,250 L194.6,250 L194.7,250 L194.8,250" class="fig-curve"/>
+<path d="M129.9,250 L131,250 L132.2,249.9 L133.4,249.9 L134.5,249.9 L135.7,249.8 L136.9,249.7 L138.1,249.6 L139.2,249.4 L140.4,249.2 L141.6,248.9 L142.7,248.4 L143.9,247.9 L145.1,247.1 L146.2,246.1 L147.4,244.8 L148.6,243.2 L149.8,241.1 L150.9,238.6 L152.1,235.5 L153.3,231.8 L154.4,227.3 L155.6,222.1 L156.8,216 L157.9,209 L159.1,201.1 L160.3,192.4 L161.4,182.7 L162.6,172.2 L163.8,160.9 L165,149.1 L166.1,136.9 L167.3,124.5 L168.5,112 L169.6,99.9 L170.8,88.3 L172,77.6 L173.1,67.9 L174.3,59.7 L175.5,53 L176.7,48 L177.8,45 L179,44 L180.2,45 L181.3,48 L182.5,53 L183.7,59.7 L184.9,67.9 L186,77.6 L187.2,88.3 L188.4,99.9 L189.5,112 L190.7,124.5 L191.9,136.9 L193,149.1 L194.2,160.9 L195.4,172.2 L196.5,182.7 L197.7,192.4 L198.9,201.1 L200.1,209 L201.2,216 L202.4,222.1 L203.6,227.3 L204.7,231.8 L205.9,235.5 L207.1,238.6 L208.2,241.1 L209.4,243.2 L210.6,244.8 L211.8,246.1 L212.9,247.1 L214.1,247.9 L215.3,248.4 L216.4,248.9 L217.6,249.2 L218.8,249.4 L220,249.6 L221.1,249.7 L222.3,249.8 L223.5,249.9 L224.6,249.9 L225.8,249.9 L227,250 L228.1,250" class="fig-curve fig-dashed"/>
+<line x1="72" y1="58.4" x2="102" y2="58.4" class="fig-curve"/>
+<text x="110" y="62.4" class="fig-label fig-small">N = 1000</text>
+<line x1="72" y1="78.4" x2="102" y2="78.4" class="fig-curve fig-dashed"/>
+<text x="110" y="82.4" class="fig-label fig-small">N = 100</text>
+<line x1="382" y1="250" x2="624" y2="250" class="fig-axis"/>
+<line x1="382" y1="250" x2="382" y2="36" class="fig-axis"/>
+<line x1="382" y1="250" x2="382" y2="255" class="fig-axis"/>
+<text x="382" y="269" text-anchor="middle" class="fig-label fig-small">0</text>
+<line x1="440.5" y1="250" x2="440.5" y2="255" class="fig-axis"/>
+<text x="440.5" y="269" text-anchor="middle" class="fig-label fig-small">100</text>
+<line x1="499" y1="250" x2="499" y2="255" class="fig-axis"/>
+<text x="499" y="269" text-anchor="middle" class="fig-label fig-small">200</text>
+<line x1="557.5" y1="250" x2="557.5" y2="255" class="fig-axis"/>
+<text x="557.5" y="269" text-anchor="middle" class="fig-label fig-small">300</text>
+<line x1="616" y1="250" x2="616" y2="255" class="fig-axis"/>
+<text x="616" y="269" text-anchor="middle" class="fig-label fig-small">400</text>
+<line x1="377" y1="181.3" x2="382" y2="181.3" class="fig-axis"/>
+<text x="373" y="185.3" text-anchor="end" class="fig-label fig-small">200</text>
+<line x1="377" y1="112.7" x2="382" y2="112.7" class="fig-axis"/>
+<text x="373" y="116.7" text-anchor="end" class="fig-label fig-small">400</text>
+<line x1="377" y1="44" x2="382" y2="44" class="fig-axis"/>
+<text x="373" y="48" text-anchor="end" class="fig-label fig-small">600</text>
+<text x="499" y="288" text-anchor="middle" class="fig-label fig-it">M₁</text>
+<text x="378" y="28" class="fig-label fig-small">N₁ = 100, N₂ = 300</text>
+<text x="612" y="28" text-anchor="end" class="fig-label">(b)</text>
+<path d="M382,250 L382.6,248.4 L383.2,247.1 L383.8,245.9 L384.3,244.7 L384.9,243.7 L385.5,242.7 L386.1,241.8 L386.7,240.9 L387.3,240 L387.9,239.2 L388.4,238.4 L389,237.7 L389.6,236.9 L390.2,236.2 L390.8,235.5 L391.4,234.8 L391.9,234.2 L392.5,233.5 L393.1,232.9 L393.7,232.3 L394.3,231.7 L394.9,231.1 L395.5,230.5 L396,230 L396.6,229.4 L397.2,228.9 L397.8,228.4 L398.4,227.8 L399,227.3 L399.6,226.8 L400.1,226.3 L400.7,225.9 L401.3,225.4 L401.9,224.9 L402.5,224.5 L403.1,224 L403.6,223.6 L404.2,223.1 L404.8,222.7 L405.4,222.3 L406,221.8 L406.6,221.4 L407.2,221 L407.7,220.6 L408.3,220.2 L408.9,219.8 L409.5,219.4 L410.1,219 L410.7,218.7 L411.2,218.3 L411.8,217.9 L412.4,217.5 L413,217.2 L413.6,216.8 L414.2,216.5 L414.8,216.1 L415.3,215.8 L415.9,215.4 L416.5,215.1 L417.1,214.8 L417.7,214.4 L418.3,214.1 L418.9,213.8 L419.4,213.5 L420,213.1 L420.6,212.8 L421.2,212.5 L421.8,212.2 L422.4,211.9 L422.9,211.6 L423.5,211.3 L424.1,211 L424.7,210.7 L425.3,210.4 L425.9,210.1 L426.5,209.8 L427,209.6 L427.6,209.3 L428.2,209 L428.8,208.7 L429.4,208.4 L430,208.2 L430.6,207.9 L431.1,207.6 L431.7,207.4 L432.3,207.1 L432.9,206.8 L433.5,206.6 L434.1,206.3 L434.6,206.1 L435.2,205.8 L435.8,205.6 L436.4,205.3 L437,205.1 L437.6,204.8 L438.2,204.6 L438.7,204.3 L439.3,204.1 L439.9,203.9 L440.5,203.6 L441.1,203.4 L441.7,203.2 L442.3,202.9 L442.8,202.7 L443.4,202.5 L444,202.2 L444.6,202 L445.2,201.8 L445.8,201.6 L446.4,201.4 L446.9,201.1 L447.5,200.9 L448.1,200.7 L448.7,200.5 L449.3,200.3 L449.9,200.1 L450.4,199.9 L451,199.6 L451.6,199.4 L452.2,199.2 L452.8,199 L453.4,198.8 L454,198.6 L454.5,198.4 L455.1,198.2 L455.7,198 L456.3,197.8 L456.9,197.6 L457.5,197.4 L458.1,197.2 L458.6,197 L459.2,196.8 L459.8,196.7 L460.4,196.5 L461,196.3 L461.6,196.1 L462.1,195.9 L462.7,195.7 L463.3,195.5 L463.9,195.3 L464.5,195.2 L465.1,195 L465.7,194.8 L466.2,194.6 L466.8,194.4 L467.4,194.3 L468,194.1 L468.6,193.9 L469.2,193.7 L469.8,193.6 L470.3,193.4 L470.9,193.2 L471.5,193 L472.1,192.9 L472.7,192.7 L473.3,192.5 L473.8,192.4 L474.4,192.2 L475,192 L475.6,191.9 L476.2,191.7 L476.8,191.5 L477.4,191.4 L477.9,191.2 L478.5,191.1 L479.1,190.9 L479.7,190.7 L480.3,190.6 L480.9,190.4 L481.4,190.3 L482,190.1 L482.6,190 L483.2,189.8 L483.8,189.6 L484.4,189.5 L485,189.3 L485.5,189.2 L486.1,189 L486.7,188.9 L487.3,188.7 L487.9,188.6 L488.5,188.4 L489.1,188.3 L489.6,188.1 L490.2,188 L490.8,187.8 L491.4,187.7 L492,187.5 L492.6,187.4 L493.1,187.3 L493.7,187.1 L494.3,187 L494.9,186.8 L495.5,186.7 L496.1,186.5 L496.7,186.4 L497.2,186.3 L497.8,186.1 L498.4,186 L499,185.9 L499.6,185.7 L500.2,185.6 L500.8,185.4 L501.3,185.3 L501.9,185.2 L502.5,185 L503.1,184.9 L503.7,184.8 L504.3,184.6 L504.9,184.5 L505.4,184.4 L506,184.2 L506.6,184.1 L507.2,184 L507.8,183.8 L508.4,183.7 L508.9,183.6 L509.5,183.5 L510.1,183.3 L510.7,183.2 L511.3,183.1 L511.9,183 L512.5,182.8 L513,182.7 L513.6,182.6 L514.2,182.4 L514.8,182.3 L515.4,182.2 L516,182.1 L516.5,182 L517.1,181.8 L517.7,181.7 L518.3,181.6 L518.9,181.5 L519.5,181.3 L520.1,181.2 L520.6,181.1 L521.2,181 L521.8,180.9 L522.4,180.7 L523,180.6 L523.6,180.5 L524.2,180.4 L524.7,180.3 L525.3,180.2 L525.9,180 L526.5,179.9 L527.1,179.8 L527.7,179.7 L528.2,179.6 L528.8,179.5 L529.4,179.4 L530,179.2 L530.6,179.1 L531.2,179 L531.8,178.9 L532.3,178.8 L532.9,178.7 L533.5,178.6 L534.1,178.5 L534.7,178.4 L535.3,178.2 L535.9,178.1 L536.4,178 L537,177.9 L537.6,177.8 L538.2,177.7 L538.8,177.6 L539.4,177.5 L540,177.4 L540.5,177.3 L541.1,177.2 L541.7,177.1 L542.3,176.9 L542.9,176.8 L543.5,176.7 L544,176.6 L544.6,176.5 L545.2,176.4 L545.8,176.3 L546.4,176.2 L547,176.1 L547.6,176 L548.1,175.9 L548.7,175.8 L549.3,175.7 L549.9,175.6 L550.5,175.5 L551.1,175.4 L551.6,175.3 L552.2,175.2 L552.8,175.1 L553.4,175 L554,174.9 L554.6,174.8 L555.2,174.7 L555.7,174.6 L556.3,174.5 L556.9,174.4 L557.5,174.3 L558.1,174.2 L558.7,174.1 L559.3,174 L559.8,173.9 L560.4,173.8 L561,173.7 L561.6,173.6 L562.2,173.5 L562.8,173.4 L563.4,173.3 L563.9,173.2 L564.5,173.2 L565.1,173.1 L565.7,173 L566.3,172.9 L566.9,172.8 L567.4,172.7 L568,172.6 L568.6,172.5 L569.2,172.4 L569.8,172.3 L570.4,172.2 L571,172.1 L571.5,172 L572.1,171.9 L572.7,171.9 L573.3,171.8 L573.9,171.7 L574.5,171.6 L575,171.5 L575.6,171.4 L576.2,171.3 L576.8,171.2 L577.4,171.1 L578,171 L578.6,171 L579.1,170.9 L579.7,170.8 L580.3,170.7 L580.9,170.6 L581.5,170.5 L582.1,170.4 L582.7,170.3 L583.2,170.3 L583.8,170.2 L584.4,170.1 L585,170 L585.6,169.9 L586.2,169.8 L586.8,169.7 L587.3,169.7 L587.9,169.6 L588.5,169.5 L589.1,169.4 L589.7,169.3 L590.3,169.2 L590.8,169.1 L591.4,169.1 L592,169 L592.6,168.9 L593.2,168.8 L593.8,168.7 L594.4,168.6 L594.9,168.6 L595.5,168.5 L596.1,168.4 L596.7,168.3 L597.3,168.2 L597.9,168.2 L598.5,168.1 L599,168 L599.6,167.9 L600.2,167.8 L600.8,167.7 L601.4,167.7 L602,167.6 L602.5,167.5 L603.1,167.4 L603.7,167.3 L604.3,167.3 L604.9,167.2 L605.5,167.1 L606.1,167 L606.6,167 L607.2,166.9 L607.8,166.8 L608.4,166.7 L609,166.6 L609.6,166.6 L610.1,166.5 L610.7,166.4 L611.3,166.3 L611.9,166.3 L612.5,166.2 L613.1,166.1 L613.7,166 L614.2,165.9 L614.8,165.9 L615.4,165.8 L616,165.7" class="fig-curve fig-dashed"/>
+<path d="M382,87.4 L382.6,87.6 L383.2,87.7 L383.8,87.9 L384.3,88.1 L384.9,88.3 L385.5,88.5 L386.1,88.7 L386.7,88.9 L387.3,89.1 L387.9,89.3 L388.4,89.5 L389,89.7 L389.6,89.9 L390.2,90.1 L390.8,90.3 L391.4,90.5 L391.9,90.7 L392.5,90.9 L393.1,91.1 L393.7,91.3 L394.3,91.5 L394.9,91.7 L395.5,91.9 L396,92.1 L396.6,92.3 L397.2,92.5 L397.8,92.7 L398.4,92.9 L399,93.1 L399.6,93.3 L400.1,93.5 L400.7,93.7 L401.3,93.9 L401.9,94.1 L402.5,94.3 L403.1,94.5 L403.6,94.7 L404.2,94.9 L404.8,95.1 L405.4,95.3 L406,95.5 L406.6,95.7 L407.2,96 L407.7,96.2 L408.3,96.4 L408.9,96.6 L409.5,96.8 L410.1,97 L410.7,97.2 L411.2,97.4 L411.8,97.6 L412.4,97.9 L413,98.1 L413.6,98.3 L414.2,98.5 L414.8,98.7 L415.3,98.9 L415.9,99.1 L416.5,99.4 L417.1,99.6 L417.7,99.8 L418.3,100 L418.9,100.2 L419.4,100.4 L420,100.7 L420.6,100.9 L421.2,101.1 L421.8,101.3 L422.4,101.5 L422.9,101.8 L423.5,102 L424.1,102.2 L424.7,102.4 L425.3,102.6 L425.9,102.9 L426.5,103.1 L427,103.3 L427.6,103.5 L428.2,103.8 L428.8,104 L429.4,104.2 L430,104.4 L430.6,104.7 L431.1,104.9 L431.7,105.1 L432.3,105.4 L432.9,105.6 L433.5,105.8 L434.1,106.1 L434.6,106.3 L435.2,106.5 L435.8,106.7 L436.4,107 L437,107.2 L437.6,107.4 L438.2,107.7 L438.7,107.9 L439.3,108.2 L439.9,108.4 L440.5,108.6 L441.1,108.9 L441.7,109.1 L442.3,109.3 L442.8,109.6 L443.4,109.8 L444,110.1 L444.6,110.3 L445.2,110.5 L445.8,110.8 L446.4,111 L446.9,111.3 L447.5,111.5 L448.1,111.8 L448.7,112 L449.3,112.2 L449.9,112.5 L450.4,112.7 L451,113 L451.6,113.2 L452.2,113.5 L452.8,113.7 L453.4,114 L454,114.2 L454.5,114.5 L455.1,114.7 L455.7,115 L456.3,115.2 L456.9,115.5 L457.5,115.8 L458.1,116 L458.6,116.3 L459.2,116.5 L459.8,116.8 L460.4,117 L461,117.3 L461.6,117.6 L462.1,117.8 L462.7,118.1 L463.3,118.3 L463.9,118.6 L464.5,118.9 L465.1,119.1 L465.7,119.4 L466.2,119.7 L466.8,119.9 L467.4,120.2 L468,120.5 L468.6,120.7 L469.2,121 L469.8,121.3 L470.3,121.5 L470.9,121.8 L471.5,122.1 L472.1,122.3 L472.7,122.6 L473.3,122.9 L473.8,123.2 L474.4,123.4 L475,123.7 L475.6,124 L476.2,124.3 L476.8,124.6 L477.4,124.8 L477.9,125.1 L478.5,125.4 L479.1,125.7 L479.7,126 L480.3,126.2 L480.9,126.5 L481.4,126.8 L482,127.1 L482.6,127.4 L483.2,127.7 L483.8,128 L484.4,128.2 L485,128.5 L485.5,128.8 L486.1,129.1 L486.7,129.4 L487.3,129.7 L487.9,130 L488.5,130.3 L489.1,130.6 L489.6,130.9 L490.2,131.2 L490.8,131.5 L491.4,131.8 L492,132.1 L492.6,132.4 L493.1,132.7 L493.7,133 L494.3,133.3 L494.9,133.6 L495.5,133.9 L496.1,134.2 L496.7,134.5 L497.2,134.8 L497.8,135.2 L498.4,135.5 L499,135.8 L499.6,136.1 L500.2,136.4 L500.8,136.7 L501.3,137 L501.9,137.4 L502.5,137.7 L503.1,138 L503.7,138.3 L504.3,138.6 L504.9,139 L505.4,139.3 L506,139.6 L506.6,139.9 L507.2,140.3 L507.8,140.6 L508.4,140.9 L508.9,141.3 L509.5,141.6 L510.1,141.9 L510.7,142.3 L511.3,142.6 L511.9,142.9 L512.5,143.3 L513,143.6 L513.6,144 L514.2,144.3 L514.8,144.6 L515.4,145 L516,145.3 L516.5,145.7 L517.1,146 L517.7,146.4 L518.3,146.7 L518.9,147.1 L519.5,147.4 L520.1,147.8 L520.6,148.1 L521.2,148.5 L521.8,148.9 L522.4,149.2 L523,149.6 L523.6,149.9 L524.2,150.3 L524.7,150.7 L525.3,151 L525.9,151.4 L526.5,151.8 L527.1,152.2 L527.7,152.5 L528.2,152.9 L528.8,153.3 L529.4,153.7 L530,154 L530.6,154.4 L531.2,154.8 L531.8,155.2 L532.3,155.6 L532.9,156 L533.5,156.3 L534.1,156.7 L534.7,157.1 L535.3,157.5 L535.9,157.9 L536.4,158.3 L537,158.7 L537.6,159.1 L538.2,159.5 L538.8,159.9 L539.4,160.3 L540,160.7 L540.5,161.2 L541.1,161.6 L541.7,162 L542.3,162.4 L542.9,162.8 L543.5,163.2 L544,163.6 L544.6,164.1 L545.2,164.5 L545.8,164.9 L546.4,165.4 L547,165.8 L547.6,166.2 L548.1,166.7 L548.7,167.1 L549.3,167.5 L549.9,168 L550.5,168.4 L551.1,168.9 L551.6,169.3 L552.2,169.8 L552.8,170.2 L553.4,170.7 L554,171.1 L554.6,171.6 L555.2,172.1 L555.7,172.5 L556.3,173 L556.9,173.5 L557.5,173.9 L558.1,174.4 L558.7,174.9 L559.3,175.4 L559.8,175.8 L560.4,176.3 L561,176.8 L561.6,177.3 L562.2,177.8 L562.8,178.3 L563.4,178.8 L563.9,179.3 L564.5,179.8 L565.1,180.3 L565.7,180.8 L566.3,181.3 L566.9,181.9 L567.4,182.4 L568,182.9 L568.6,183.4 L569.2,184 L569.8,184.5 L570.4,185 L571,185.6 L571.5,186.1 L572.1,186.7 L572.7,187.2 L573.3,187.8 L573.9,188.3 L574.5,188.9 L575,189.5 L575.6,190 L576.2,190.6 L576.8,191.2 L577.4,191.8 L578,192.4 L578.6,193 L579.1,193.5 L579.7,194.1 L580.3,194.8 L580.9,195.4 L581.5,196 L582.1,196.6 L582.7,197.2 L583.2,197.8 L583.8,198.5 L584.4,199.1 L585,199.8 L585.6,200.4 L586.2,201.1 L586.8,201.7 L587.3,202.4 L587.9,203.1 L588.5,203.8 L589.1,204.4 L589.7,205.1 L590.3,205.8 L590.8,206.5 L591.4,207.2 L592,208 L592.6,208.7 L593.2,209.4 L593.8,210.2 L594.4,210.9 L594.9,211.7 L595.5,212.4 L596.1,213.2 L596.7,214 L597.3,214.8 L597.9,215.6 L598.5,216.4 L599,217.2 L599.6,218.1 L600.2,218.9 L600.8,219.8 L601.4,220.6 L602,221.5 L602.5,222.4 L603.1,223.3 L603.7,224.2 L604.3,225.2 L604.9,226.1 L605.5,227.1 L606.1,228.1 L606.6,229.1 L607.2,230.1 L607.8,231.1 L608.4,232.2 L609,233.3 L609.6,234.4 L610.1,235.6 L610.7,236.7 L611.3,237.9 L611.9,239.2 L612.5,240.5 L613.1,241.8 L613.7,243.3 L614.2,244.7 L614.8,246.3 L615.4,248 L616,250" class="fig-curve fig-dashed"/>
+<path d="M382,87.4 L382.6,86 L383.2,84.8 L383.8,83.8 L384.3,82.9 L384.9,82 L385.5,81.2 L386.1,80.5 L386.7,79.8 L387.3,79.1 L387.9,78.5 L388.4,77.9 L389,77.4 L389.6,76.8 L390.2,76.3 L390.8,75.8 L391.4,75.3 L391.9,74.9 L392.5,74.4 L393.1,74 L393.7,73.6 L394.3,73.2 L394.9,72.8 L395.5,72.4 L396,72 L396.6,71.7 L397.2,71.4 L397.8,71 L398.4,70.7 L399,70.4 L399.6,70.1 L400.1,69.8 L400.7,69.5 L401.3,69.3 L401.9,69 L402.5,68.8 L403.1,68.5 L403.6,68.3 L404.2,68 L404.8,67.8 L405.4,67.6 L406,67.4 L406.6,67.2 L407.2,67 L407.7,66.8 L408.3,66.6 L408.9,66.4 L409.5,66.2 L410.1,66 L410.7,65.9 L411.2,65.7 L411.8,65.5 L412.4,65.4 L413,65.2 L413.6,65.1 L414.2,65 L414.8,64.8 L415.3,64.7 L415.9,64.6 L416.5,64.4 L417.1,64.3 L417.7,64.2 L418.3,64.1 L418.9,64 L419.4,63.9 L420,63.8 L420.6,63.7 L421.2,63.6 L421.8,63.5 L422.4,63.4 L422.9,63.3 L423.5,63.3 L424.1,63.2 L424.7,63.1 L425.3,63.1 L425.9,63 L426.5,62.9 L427,62.9 L427.6,62.8 L428.2,62.8 L428.8,62.7 L429.4,62.7 L430,62.6 L430.6,62.6 L431.1,62.5 L431.7,62.5 L432.3,62.5 L432.9,62.4 L433.5,62.4 L434.1,62.4 L434.6,62.4 L435.2,62.3 L435.8,62.3 L436.4,62.3 L437,62.3 L437.6,62.3 L438.2,62.3 L438.7,62.3 L439.3,62.3 L439.9,62.3 L440.5,62.3 L441.1,62.3 L441.7,62.3 L442.3,62.3 L442.8,62.3 L443.4,62.3 L444,62.3 L444.6,62.3 L445.2,62.3 L445.8,62.4 L446.4,62.4 L446.9,62.4 L447.5,62.4 L448.1,62.5 L448.7,62.5 L449.3,62.5 L449.9,62.6 L450.4,62.6 L451,62.6 L451.6,62.7 L452.2,62.7 L452.8,62.8 L453.4,62.8 L454,62.9 L454.5,62.9 L455.1,63 L455.7,63 L456.3,63.1 L456.9,63.1 L457.5,63.2 L458.1,63.2 L458.6,63.3 L459.2,63.4 L459.8,63.4 L460.4,63.5 L461,63.6 L461.6,63.6 L462.1,63.7 L462.7,63.8 L463.3,63.9 L463.9,63.9 L464.5,64 L465.1,64.1 L465.7,64.2 L466.2,64.3 L466.8,64.4 L467.4,64.5 L468,64.5 L468.6,64.6 L469.2,64.7 L469.8,64.8 L470.3,64.9 L470.9,65 L471.5,65.1 L472.1,65.2 L472.7,65.3 L473.3,65.4 L473.8,65.5 L474.4,65.6 L475,65.8 L475.6,65.9 L476.2,66 L476.8,66.1 L477.4,66.2 L477.9,66.3 L478.5,66.5 L479.1,66.6 L479.7,66.7 L480.3,66.8 L480.9,66.9 L481.4,67.1 L482,67.2 L482.6,67.3 L483.2,67.5 L483.8,67.6 L484.4,67.7 L485,67.9 L485.5,68 L486.1,68.2 L486.7,68.3 L487.3,68.4 L487.9,68.6 L488.5,68.7 L489.1,68.9 L489.6,69 L490.2,69.2 L490.8,69.3 L491.4,69.5 L492,69.6 L492.6,69.8 L493.1,70 L493.7,70.1 L494.3,70.3 L494.9,70.4 L495.5,70.6 L496.1,70.8 L496.7,70.9 L497.2,71.1 L497.8,71.3 L498.4,71.5 L499,71.6 L499.6,71.8 L500.2,72 L500.8,72.2 L501.3,72.3 L501.9,72.5 L502.5,72.7 L503.1,72.9 L503.7,73.1 L504.3,73.3 L504.9,73.5 L505.4,73.7 L506,73.9 L506.6,74.1 L507.2,74.2 L507.8,74.4 L508.4,74.6 L508.9,74.9 L509.5,75.1 L510.1,75.3 L510.7,75.5 L511.3,75.7 L511.9,75.9 L512.5,76.1 L513,76.3 L513.6,76.5 L514.2,76.7 L514.8,77 L515.4,77.2 L516,77.4 L516.5,77.6 L517.1,77.9 L517.7,78.1 L518.3,78.3 L518.9,78.5 L519.5,78.8 L520.1,79 L520.6,79.3 L521.2,79.5 L521.8,79.7 L522.4,80 L523,80.2 L523.6,80.5 L524.2,80.7 L524.7,81 L525.3,81.2 L525.9,81.5 L526.5,81.7 L527.1,82 L527.7,82.2 L528.2,82.5 L528.8,82.8 L529.4,83 L530,83.3 L530.6,83.6 L531.2,83.8 L531.8,84.1 L532.3,84.4 L532.9,84.6 L533.5,84.9 L534.1,85.2 L534.7,85.5 L535.3,85.8 L535.9,86.1 L536.4,86.3 L537,86.6 L537.6,86.9 L538.2,87.2 L538.8,87.5 L539.4,87.8 L540,88.1 L540.5,88.4 L541.1,88.7 L541.7,89 L542.3,89.3 L542.9,89.7 L543.5,90 L544,90.3 L544.6,90.6 L545.2,90.9 L545.8,91.2 L546.4,91.6 L547,91.9 L547.6,92.2 L548.1,92.6 L548.7,92.9 L549.3,93.2 L549.9,93.6 L550.5,93.9 L551.1,94.3 L551.6,94.6 L552.2,95 L552.8,95.3 L553.4,95.7 L554,96 L554.6,96.4 L555.2,96.8 L555.7,97.1 L556.3,97.5 L556.9,97.9 L557.5,98.2 L558.1,98.6 L558.7,99 L559.3,99.4 L559.8,99.8 L560.4,100.2 L561,100.5 L561.6,100.9 L562.2,101.3 L562.8,101.7 L563.4,102.1 L563.9,102.5 L564.5,103 L565.1,103.4 L565.7,103.8 L566.3,104.2 L566.9,104.6 L567.4,105.1 L568,105.5 L568.6,105.9 L569.2,106.4 L569.8,106.8 L570.4,107.3 L571,107.7 L571.5,108.2 L572.1,108.6 L572.7,109.1 L573.3,109.5 L573.9,110 L574.5,110.5 L575,111 L575.6,111.4 L576.2,111.9 L576.8,112.4 L577.4,112.9 L578,113.4 L578.6,113.9 L579.1,114.4 L579.7,114.9 L580.3,115.4 L580.9,116 L581.5,116.5 L582.1,117 L582.7,117.6 L583.2,118.1 L583.8,118.7 L584.4,119.2 L585,119.8 L585.6,120.3 L586.2,120.9 L586.8,121.5 L587.3,122.1 L587.9,122.6 L588.5,123.2 L589.1,123.8 L589.7,124.4 L590.3,125.1 L590.8,125.7 L591.4,126.3 L592,126.9 L592.6,127.6 L593.2,128.2 L593.8,128.9 L594.4,129.6 L594.9,130.2 L595.5,130.9 L596.1,131.6 L596.7,132.3 L597.3,133 L597.9,133.7 L598.5,134.5 L599,135.2 L599.6,136 L600.2,136.7 L600.8,137.5 L601.4,138.3 L602,139.1 L602.5,139.9 L603.1,140.7 L603.7,141.6 L604.3,142.4 L604.9,143.3 L605.5,144.2 L606.1,145.1 L606.6,146 L607.2,147 L607.8,147.9 L608.4,148.9 L609,149.9 L609.6,151 L610.1,152 L610.7,153.1 L611.3,154.3 L611.9,155.4 L612.5,156.7 L613.1,157.9 L613.7,159.3 L614.2,160.7 L614.8,162.2 L615.4,163.8 L616,165.7" class="fig-curve"/>
+<line x1="439.9" y1="250" x2="439.9" y2="62.3" class="fig-guide fig-dashed"/>
+<circle cx="439.9" cy="62.3" r="3" class="fig-arrowhead"/>
+<circle cx="439.9" cy="203.9" r="3" class="fig-arrowhead"/>
+<circle cx="439.9" cy="108.4" r="3" class="fig-arrowhead"/>
+<text x="444.9" y="242" class="fig-label fig-small">M₁ = 99</text>
+<circle cx="558.1" cy="174.2" r="4" class="fig-shape"/>
+<text x="550.1" y="206.2" text-anchor="middle" class="fig-label fig-small">Ω₁ = Ω₂</text>
+<text x="478.5" y="211.1" text-anchor="middle" class="fig-label fig-small">ln Ω₁</text>
+<text x="501.9" y="157.4" text-anchor="middle" class="fig-label fig-small">ln Ω₂</text>
+<text x="501.9" y="52.3" text-anchor="middle" class="fig-label fig-small">ln(Ω₁Ω₂)</text>
+</svg>
+                    <figcaption><strong>Figura 4.4.1.</strong> Dois sólidos de Einstein em contato térmico. (a) Sólidos
+                        iguais, com $N$ osciladores e $N$ quanta cada ($M = 2N$): a distribuição exata (4.4.2), dividida
+                        pelo seu máximo, contra a fração $M_1/M$ dos quanta no sólido $1$. Com dez vezes mais
+                        osciladores, o pico fica $\sqrt{10} \approx 3{,}2$ vezes mais estreito. (b) Sólidos diferentes,
+                        com $N_1 = 100$, $N_2 = 300$ e $M = 400$: $\ln\Omega_1$ cresce e $\ln\Omega_2$ decresce com $M_1$
+                        (tracejadas). A soma tem máximo em $M_1 = 99$, onde uma curva tracejada sobe e a outra desce com
+                        inclinações de mesmo módulo, cerca de $0{,}69$, como afirma a <a href="#prop-4-4-6">Proposição 4.4.6</a>. O máximo
+                        não está no cruzamento das curvas (círculo, $M_1 \approx 301$), onde $\Omega_1 = \Omega_2$: o
+                        equilíbrio iguala as derivadas de $\ln\Omega$, e não as contagens. Na escala do gráfico, o máximo
+                        da soma parece achatado; mas a probabilidade é a exponencial da soma, e uma queda de $1$ em
+                        $\ln(\Omega_1\Omega_2)$ já divide a probabilidade por $e$.</figcaption>
+                </figure>
+
+                <h2 id="particao-mais-provavel">A partição mais provável e a temperatura</h2>
+
+                <p>
+                    Como $P(E_1) \propto \Omega_1(E_1)\,\Omega_2(E - E_1)$, a repartição mais provável é a que maximiza
+                    o produto, ou o seu logaritmo. Para sistemas macroscópicos, $\ln\Omega_1$ e $\ln\Omega_2$ são
+                    funções enormes e lisas da energia, e tratamos $E_1$ como variável contínua. Quando o espectro é
+                    discreto, como nos sólidos, usamos uma interpolação lisa de $\ln\Omega$: para o sólido,
+                    $\ln\Omega(N, M) = \ln\Gamma(M + N) - \ln\Gamma(M + 1) - \ln\Gamma(N)$, que vale para $M$ real e
+                    coincide com o logaritmo do <a href="#lema-4-4-4">Lema 4.4.4</a> nos inteiros. Pelo
+                    <a href="[03] - O Ensemble Microcanônico.html#cor-4-3-12">Corolário 4.3.12</a>, trocar uma contagem
+                    por outra muda os logaritmos por partícula e as suas derivadas por quantidades que somem quando
+                    $N \to \infty$.
+                </p>
+
+                <div class="definition-box" id="prop-4-4-6">
+                    <p><strong>Proposição 4.4.6 (Condição de equilíbrio térmico).</strong> Sejam $\ln\Omega_1$ e
+                        $\ln\Omega_2$ deriváveis em intervalos abertos de energia, e seja
+                        $f(E_1) = \ln\Omega_1(E_1) + \ln\Omega_2(E - E_1)$.</p>
+                    <p>(a) Se $f$ tem um máximo em um ponto $\tilde E_1$ interior ao seu domínio, então, com
+                        $\tilde E_2 = E - \tilde E_1$,</p>
+                    <p>$$ \frac{\partial\ln\Omega_1}{\partial E_1}\bigg|_{\tilde E_1} = \frac{\partial\ln\Omega_2}{\partial E_2}\bigg|_{\tilde E_2}. \tag{4.4.3} $$</p>
+                    <p>(b) Se $\ln\Omega_1$ e $\ln\Omega_2$ são estritamente côncavas, um ponto que satisfaz (4.4.3) é o
+                        único máximo de $f$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Em um máximo interior de uma função derivável, a derivada se anula. Pela
+                    regra da cadeia, a derivada de $E_1 \mapsto \ln\Omega_2(E - E_1)$ é
+                    $-(\partial\ln\Omega_2/\partial E_2)(E - E_1)$, de modo que
+                    $f'(E_1) = \dfrac{\partial\ln\Omega_1}{\partial E_1}(E_1) - \dfrac{\partial\ln\Omega_2}{\partial E_2}(E - E_1)$,
+                    e $f'(\tilde E_1) = 0$ é (4.4.3).
+                </p>
+
+                <p>
+                    (b) A função $E_1 \mapsto \ln\Omega_2(E - E_1)$ é a composição de uma função estritamente côncava com
+                    uma função afim, e portanto é estritamente côncava; somada a $\ln\Omega_1$, dá $f$ estritamente
+                    côncava. Então $f'$ é estritamente decrescente e se anula em no máximo um ponto. Se
+                    $f'(\tilde E_1) = 0$, temos $f' \gt 0$ à esquerda de $\tilde E_1$ e $f' \lt 0$ à direita: $f$ cresce
+                    até $\tilde E_1$ e decresce depois, e $\tilde E_1$ é o único máximo. $\blacksquare$
+                </p>
+
+                <p id="ex-4-4-7"><strong>Exemplo 4.4.7 (A repartição mais provável dos sólidos).</strong> Nos sólidos
+                    do <a href="#ex-4-4-5">Exemplo 4.4.5</a>, com $N_1, N_2 \ge 2$, o máximo pode ser achado
+                    exatamente, sem interpolação. Do <a href="#lema-4-4-4">Lema 4.4.4</a>,
+                    $\Omega(N, M + 1)/\Omega(N, M) = (M + N)/(M + 1)$. Logo, por (4.4.2),</p>
+
+                <p>$$ \frac{P(M_1 + 1)}{P(M_1)} = \frac{M_1 + N_1}{M_1 + 1}\cdot\frac{M - M_1}{M - M_1 + N_2 - 1}. $$</p>
+
+                <p>
+                    Multiplicando em cruz, a razão é maior que $1$ se e só se
+                    $(M_1 + N_1)(M - M_1) \gt (M_1 + 1)(M - M_1 + N_2 - 1)$. Expandindo os dois lados, os termos
+                    $M_1M - M_1^2$ se cancelam, e a condição fica
+                    $(N_1 - 1)(M - M_1) \gt (N_2 - 1)(M_1 + 1)$, ou seja,
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    &P(M_1 + 1) \gt P(M_1) \iff M_1 \lt m^*, \\
+                    &\qquad m^* = \frac{(N_1 - 1)M - (N_2 - 1)}{N_1 + N_2 - 2},
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    com igualdade de $P(M_1 + 1)$ e $P(M_1)$ quando $M_1 = m^*$. A probabilidade cresce enquanto
+                    $M_1 \lt m^*$ e decresce depois; a repartição mais provável é o menor inteiro maior que $m^*$ (se
+                    $m^*$ é inteiro, $m^*$ e $m^* + 1$ empatam). Para $N_1 = N_2$, $m^* = (M - 1)/2$, e com $M$ par a
+                    moda é $M/2$, como na <a href="#fig-4-4-1">Figura 4.4.1</a>. Para $N_1$ e $N_2$ grandes,
+                    $m^*/M \to N_1/(N_1 + N_2)$: os quanta se repartem na proporção do número de osciladores, isto é,
+                    com o mesmo número de quanta por oscilador dos dois lados, $\tilde M_1/N_1 \approx \tilde M_2/N_2$.
+                </p>
+
+                <p>
+                    A ligação com (4.4.3) é a seguinte. Como a energia do sólido é $\hbar\omega(M + N/2)$, derivar em
+                    relação a $E$ é derivar em relação a $M$ e dividir por $\hbar\omega$. O logaritmo da razão acima,
+                    $\ln[(M + N)/(M + 1)]$, é a versão discreta de $\partial\ln\Omega/\partial M$; com a forma de
+                    Stirling $\ln\Omega \approx (M + N)\ln(M + N) - M\ln M - N\ln N$, a derivada é
+                    $\ln[(M + N)/M] = \ln(1 + N/M)$, que só depende de $M/N$. A condição (4.4.3) diz, então, que $M/N$
+                    é o mesmo nos dois sólidos. Na <a href="#fig-4-4-1">Figura 4.4.1</a>(b), com $N_1 = 100$,
+                    $N_2 = 300$ e $M = 400$, a regra exata dá $m^* = 98{,}75$ e a moda $M_1 = 99$, perto da previsão
+                    contínua $M_1/N_1 = M_2/N_2$, que é $M_1 = 100$. Ali as duas inclinações valem, em módulo, cerca de
+                    $\ln 2 \approx 0{,}69$, porque os dois sólidos têm um quantum por oscilador. As contagens, porém, são
+                    muito diferentes: $\ln\Omega_1 \approx 134$ e $\ln\Omega_2 \approx 412$.
+                </p>
+
+                <p>
+                    A grandeza que se iguala entre os dois sistemas no equilíbrio é, portanto,
+                    $\partial\ln\Omega/\partial E$. Ela depende só do sistema e do seu estado, e não do parceiro com que
+                    ele troca energia. É a candidata natural à temperatura.
+                </p>
+
+                <div class="definition-box" id="def-4-4-8" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.4.8 (Temperatura).</strong> Para um sistema com $\ln\Omega(E, V, N)$
+                        derivável em $E$, definimos</p>
+                    <p>$$ \beta = \left(\frac{\partial\ln\Omega}{\partial E}\right)_{V,N}, \qquad k_BT = \frac{1}{\beta}. \tag{4.4.4} $$</p>
+                    <p>$T$ é a <strong>temperatura</strong> e $k_B$ é a constante de Boltzmann. A condição (4.4.3) de
+                        equilíbrio térmico fica $\beta_1 = \beta_2$, ou $T_1 = T_2$.</p>
+                </div>
+
+                <p>
+                    A grandeza $\beta$ tem dimensão de inverso de energia. Pelo
+                    <a href="[03] - O Ensemble Microcanônico.html#cor-4-3-12">Corolário 4.3.12</a>(c), calculá-la com
+                    $\Omega$ ou com $\Phi$ dá o mesmo resultado a menos de uma fração $1/(aN) + \delta E/E$. Nos
+                    sistemas usuais, $\Omega$ cresce com a energia, e $\beta \gt 0$, $T \gt 0$. Uma temperatura negativa
+                    exigiria $\Omega$ decrescente com $E$, o que só é possível se o espectro for limitado por cima, como
+                    nos spins do <a href="[03] - O Ensemble Microcanônico.html#ex-4-3-8">Exemplo 4.3.8</a>; o
+                    <a href="[06] - Dois Níveis e Paramagneto Ideal.html">tópico 4.6</a> trata desse caso.
+                </p>
+
+                <p id="obs-4-4-9"><strong>Observação 4.4.9 (A constante de Boltzmann).</strong> Nada na contagem fixa
+                    a unidade de temperatura: poderíamos usar a própria $\beta$, ou $k_BT$ medida em joules. A constante
+                    $k_B$ é um fator de conversão entre energia e a escala Kelvin, escolhido historicamente para que $T$
+                    coincida com a temperatura do termômetro a gás. O
+                    <a href="[08] - Gás Ideal Clássico.html">tópico 4.8</a> mostra que, com a
+                    <a href="#def-4-4-8">Definição 4.4.8</a>, o gás ideal obedece a $pV = Nk_BT$, e é essa lei que faz a
+                    identificação. Desde 2019, o Sistema Internacional define o kelvin fixando o valor exato
+                    $k_B = 1{,}380649\times10^{-23}\ \text{J/K}$. À temperatura ambiente, $T \approx 300\ \text{K}$, a
+                    energia $k_BT$ vale cerca de $4\times10^{-21}\ \text{J}$, ou $1/40$ de elétron-volt.</p>
+
+                <p id="ex-4-4-10"><strong>Exemplo 4.4.10 (Osciladores clássicos: $\bar\varepsilon = k_BT$).</strong> Para
+                    $N$ osciladores clássicos, $\Phi(E) = (E/\hbar\omega)^N/N!$
+                    (<a href="[03] - O Ensemble Microcanônico.html#ex-4-3-9">Exemplo 4.3.9</a>), e então
+                    $\beta = \partial\ln\Phi/\partial E = N/E$. Logo</p>
+
+                <p>$$ E = Nk_BT, \qquad \bar\varepsilon = \frac EN = k_BT. $$</p>
+
+                <p>
+                    Com $\Omega$ no lugar de $\Phi$, a
+                    <a href="[03] - O Ensemble Microcanônico.html#prop-4-3-11">Proposição 4.3.11</a>(c) põe $\beta$ entre
+                    $(N-1)/(E + \delta E)$ e $(N-1)/E$, o que muda a relação por uma fração da ordem de $1/N$. Isso dá
+                    sentido à exponencial do
+                    <a href="[03] - O Ensemble Microcanônico.html#cor-4-3-17">Corolário 4.3.17</a>. Tome o oscilador $1$
+                    como sistema $1$ e os outros $N - 1$ como sistema $2$. Pela
+                    <a href="#prop-4-4-3">Proposição 4.4.3</a>(b), a densidade de probabilidade de $\varepsilon_1$ é
+                    proporcional a $\omega_1\,\Omega_2(E - \varepsilon)$, que no limite $\delta E \to 0$ é proporcional a
+                    $(E - \varepsilon)^{N-2}$, como na prova da
+                    <a href="[03] - O Ensemble Microcanônico.html#prop-4-3-16">Proposição 4.3.16</a>. Expandindo o
+                    logaritmo em torno de $\varepsilon = 0$,
+                </p>
+
+                <p>$$ (N-2)\ln(E - \varepsilon) = (N-2)\ln E - \frac{N-2}{E}\,\varepsilon - \frac{N-2}{2E^2}\,\varepsilon^2 - \dots $$</p>
+
+                <p>
+                    O coeficiente do termo linear é a derivada de $\ln\Omega_2$, ou seja, o $\beta_2$ dos $N - 1$ osciladores
+                    restantes (a menos de uma fração $1/N$); o termo quadrático, com $E = N\bar\varepsilon$, é da
+                    ordem de $\varepsilon^2/(2N\bar\varepsilon^2)$, desprezível para $\varepsilon \ll \sqrt N\,\bar\varepsilon$.
+                    Portanto a distribuição do oscilador é proporcional a $e^{-\beta_2\varepsilon} = e^{-\varepsilon/k_BT}$,
+                    em que $T$ é a temperatura dos outros osciladores: eles fazem o papel de um
+                    <strong>reservatório térmico</strong>. Esse é o fator de Boltzmann, que o
+                    <a href="../[4] - Ensemble Canônico/[01] - Do Microcanônico ao Canônico.html">tópico 5.1</a>
+                    deduzirá com o mesmo argumento para qualquer sistema em contato com um reservatório.
+                </p>
+
+                <p>
+                    Falta saber em que sentido a energia flui quando dois sistemas com temperaturas diferentes são
+                    postos em contato. Suponha que os sistemas estivessem antes separados por uma parede
+                    <strong>adiabática</strong>, que não deixa passar energia, com energias $E_1^0$ e
+                    $E_2^0 = E - E_1^0$, e que a parede seja então trocada por uma diatérmica.
+                </p>
+
+                <div class="definition-box" id="prop-4-4-11">
+                    <p><strong>Proposição 4.4.11 (Sentido do fluxo de energia).</strong> Nas condições acima, sejam
+                        $\ln\Omega_1$ e $\ln\Omega_2$ estritamente côncavas, $\tilde E_1$ o máximo de $f$ e
+                        $\beta_i^0$ as temperaturas iniciais, $\beta_1^0 = \beta_1(E_1^0)$ e $\beta_2^0 = \beta_2(E_2^0)$.
+                        Se $\beta_1^0 \gt \beta_2^0$, então $\tilde E_1 \gt E_1^0$: a repartição mais provável depois do
+                        contato dá ao sistema $1$ mais energia do que ele tinha. Se $\beta_1^0 = \beta_2^0$, então
+                        $\tilde E_1 = E_1^0$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Como na prova da <a href="#prop-4-4-6">Proposição 4.4.6</a>,
+                    $f'(E_1) = \beta_1(E_1) - \beta_2(E - E_1)$ é estritamente decrescente e se anula em $\tilde E_1$.
+                    Se $\beta_1^0 \gt \beta_2^0$, então $f'(E_1^0) \gt 0 = f'(\tilde E_1)$, e, como $f'$ é decrescente,
+                    $E_1^0 \lt \tilde E_1$. Se $\beta_1^0 = \beta_2^0$, $E_1^0$ satisfaz (4.4.3) e é o máximo, pela
+                    <a href="#prop-4-4-6">Proposição 4.4.6</a>(b). $\blacksquare$
+                </p>
+
+                <p>
+                    A energia passa do sistema de menor $\beta$ para o de maior $\beta$. Com temperaturas positivas,
+                    menor $\beta$ é maior $T$: a energia passa do corpo mais quente para o mais frio, como na
+                    experiência comum. A proposição fala da repartição mais provável; a seção
+                    <a href="#nitidez-do-pico">A nitidez do pico</a> mostra que, para sistemas macroscópicos, a
+                    repartição observada coincide com ela a menos de flutuações relativas da ordem de $N^{-1/2}$.
+                </p>
+
+                <h2 id="entropia-de-boltzmann">A entropia de Boltzmann</h2>
+
+                <p>
+                    A condição de equilíbrio pede o máximo de $\ln\Omega_1 + \ln\Omega_2$, uma soma de grandezas, uma para
+                    cada sistema. Na termodinâmica, a grandeza aditiva que é máxima no equilíbrio de um sistema
+                    isolado é a entropia. Isso motiva a definição seguinte, que o resto do capítulo justifica.
+                </p>
+
+                <div class="definition-box" id="def-4-4-12" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.4.12 (Entropia de Boltzmann).</strong> A <strong>entropia</strong> de um
+                        sistema isolado com energia $E$, volume $V$ e $N$ partículas é dada pela primeira linha abaixo;
+                        a segunda segue de (4.4.4):</p>
+                    <p>
+                        $$ \begin{aligned}
+                        S(E, V, N) &= k_B\ln\Omega(E, V, N), \\
+                        \frac1T &= \left(\frac{\partial S}{\partial E}\right)_{V,N}.
+                        \end{aligned} \tag{4.4.5} $$
+                    </p>
+                </div>
+
+                <p>
+                    A segunda fórmula de (4.4.5) é (4.4.4) multiplicada por $k_B$. Com a entropia, a
+                    <a href="#prop-4-4-6">Proposição 4.4.6</a> diz que a repartição mais provável maximiza
+                    $S_1(E_1) + S_2(E - E_1)$, e que no máximo $T_1 = T_2$.
+                </p>
+
+                <p id="obs-4-4-13"><strong>Observação 4.4.13 (O que a definição fixa e o que deixa livre).</strong>
+                    Três escolhas entram em $\Omega$ e, portanto, em $S$. (i) A largura $\delta E$ da casca: pelo
+                    <a href="[03] - O Ensemble Microcanônico.html#cor-4-3-12">Corolário 4.3.12</a>, ela muda $S$ por
+                    $k_B$ vezes $O(\ln N)$ quando $\delta E \sim E/N$ e, em geral, por no máximo $k_BaN\,\delta E/E$ mais
+                    termos $O(\ln N)$; por partícula, a mudança some quando $N \to \infty$. (ii) A célula $h$ da contagem
+                    clássica: trocar $h$ por $h'$ multiplica $\Omega$ por $(h/h')^f$ e soma a $S$ a constante
+                    $k_Bf\ln(h/h')$, que não muda diferenças de entropia nem derivadas com $N$ fixo; o seu valor só
+                    importa quando $N$ varia, e é fixado pela mecânica quântica (o tópico 4.2 justificou $h$ pela
+                    comparação semiclássica). (iii) Antes do
+                    <a href="[09] - Paradoxo de Gibbs e Contagem Correta.html">tópico 4.9</a>, a contagem clássica trata
+                    partículas idênticas como distinguíveis; a correção, um termo $-k_B\ln N!$, também não muda $T$ com
+                    $N$ fixo, mas muda a dependência de $S$ em $N$, e por isso só será necessária quando $N$ variar.</p>
+
+                <p>
+                    A entropia de dois sistemas separados por uma parede adiabática é exatamente a soma das
+                    entropias: com $E_1 = E_1^0$ fixo, os microestados acessíveis do composto são os pares formados por
+                    um estado do nível $E_1^0$ de $1$ e um estado de $2$ na casca de $E_2^0 = E - E_1^0$, e são
+                    $\Omega_1(E_1^0)\,\Omega_2(E_2^0)$. Em contato térmico, a energia $E_1$ deixa de ser fixa, e a soma
+                    (4.4.1) tem muitos termos. Mesmo assim, a aditividade sobrevive a menos de termos pequenos.
+                </p>
+
+                <div class="definition-box" id="prop-4-4-14">
+                    <p><strong>Proposição 4.4.14 (Aditividade da entropia).</strong> Nas condições da
+                        <a href="#prop-4-4-3">Proposição 4.4.3</a>(a), suponha que a soma (4.4.1) tenha $K$ termos não
+                        nulos, e seja $\tilde E_1$ o nível em que o termo $\Omega_1(E_1)\,\Omega_2(E - E_1)$ é máximo. Então,
+                        com $\tilde E_2 = E - \tilde E_1$,</p>
+                    <p>$$ S_1(\tilde E_1) + S_2(\tilde E_2) \le S(E) \le S_1(\tilde E_1) + S_2(\tilde E_2) + k_B\ln K. \tag{4.4.6} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Os termos de (4.4.1) são não negativos, e um deles é
+                    $\Omega_1(\tilde E_1)\,\Omega_2(\tilde E_2)$; logo a soma é pelo menos esse termo. Cada um dos $K$
+                    termos não nulos é no máximo esse termo; logo a soma é no máximo $K$ vezes ele. Assim,
+                    $\Omega_1(\tilde E_1)\,\Omega_2(\tilde E_2) \le \Omega(E) \le K\,\Omega_1(\tilde E_1)\,\Omega_2(\tilde E_2)$.
+                    Tomando logaritmos e multiplicando por $k_B$, obtemos (4.4.6). $\blacksquare$
+                </p>
+
+                <p>
+                    O erro $k_B\ln K$ é pequeno quando $K$ cresce no máximo como uma potência de $N$, enquanto $S$ é da
+                    ordem de $Nk_B$. Nos sólidos do <a href="#ex-4-4-5">Exemplo 4.4.5</a>, $K = M + 1$. Com
+                    $N_1 = N_2 = 100$ e $M = 200$, $S/k_B = \ln\Omega(200, 200) = 273{,}34$, enquanto
+                    $[S_1(\tilde E_1) + S_2(\tilde E_2)]/k_B = 270{,}12$: a diferença, $3{,}22$, está abaixo da cota
+                    $\ln 201 = 5{,}30$ e é pouco mais de $1\%$ do total. O
+                    <a href="#exr-4-4-5">Exercício 4.4.5</a> mostra que ela cresce só como $\tfrac12\ln N$. Para um
+                    sistema $1$ clássico, a soma vira a integral da
+                    <a href="#prop-4-4-3">Proposição 4.4.3</a>(b), e o mesmo argumento, com a faixa de energias
+                    dividida em células de largura $\delta E$, dá um erro da ordem de $k_B\ln(E/\delta E)$, também
+                    $O(\ln N)$ se $\delta E/E \ge N^{-k}$. A aditividade da entropia de sistemas em contato vale,
+                    portanto, a menos de $O(\ln N)$, e não exatamente; essa diferença não tem efeito sobre nenhuma
+                    grandeza por partícula.
+                </p>
+
+                <p id="ex-4-4-15"><strong>Exemplo 4.4.15 (Entropia do sólido de Einstein e dos spins).</strong> Para
+                    o sólido de $N$ osciladores com $M$ quanta, $S = k_B\ln\binom{M + N - 1}{M}$. Como
+                    $\binom{M + N - 1}{M} = \frac{N}{M + N}\binom{M + N}{M}$, a
+                    <a href="[01] - Motivação e Roteiro.html#prop-4-1-12">Proposição 4.1.12</a> dá
+                    $\ln\binom{M + N - 1}{M} = (M + N)\ln(M + N) - M\ln M - N\ln N + O(\ln N)$ quando $M$ é
+                    proporcional a $N$. Com $q = M/N$, o número médio de quanta por oscilador,</p>
+
+                <p>$$ S = Nk_B\big[(1 + q)\ln(1 + q) - q\ln q\big] + k_B\,O(\ln N). \tag{4.4.7} $$</p>
+
+                <p>
+                    Como $E = \hbar\omega(M + N/2)$, derivar em $E$ é derivar em $M$ e dividir por $\hbar\omega$.
+                    Derivando o termo principal,
+                    $\dfrac1T = \dfrac{k_B}{\hbar\omega}\ln\dfrac{1 + q}{q}$, e invertendo,
+                </p>
+
+                <p>$$ q = \frac{1}{e^{\hbar\omega/k_BT} - 1}. $$</p>
+
+                <p>
+                    É o número médio de quanta por oscilador à temperatura $T$, que o
+                    <a href="[07] - Sólido de Einstein.html">tópico 4.7</a> usará para obter a energia e o calor
+                    específico do sólido.
+                </p>
+
+                <p>
+                    Para os $N$ spins do <a href="[03] - O Ensemble Microcanônico.html#ex-4-3-8">Exemplo 4.3.8</a> com
+                    $N_+$ spins para cima, $S = k_B\ln\binom{N}{N_+} = Nk_B\,h(N_+/N) + k_B\,O(\ln N)$, com
+                    $h(x) = -x\ln x - (1 - x)\ln(1 - x)$, pela mesma proposição. Como $E = -\mu B(2N_+ - N)$,
+                    $dN_+/dE = -1/(2\mu B)$, e $dS/dN_+ = k_BN\,h'(N_+/N)/N = k_B\ln(N_-/N_+)$; logo
+                    $\dfrac1T = \dfrac{k_B}{2\mu B}\ln\dfrac{N_+}{N_-}$. A temperatura é positiva quando há mais spins
+                    alinhados ao campo ($E \lt 0$) e negativa no caso contrário, o que o
+                    <a href="[06] - Dois Níveis e Paramagneto Ideal.html">tópico 4.6</a> discute. Nos dois exemplos,
+                    a entropia é $N$ vezes uma função de uma razão intensiva ($q$ ou $N_+/N$), a menos de $O(\ln N)$: ela
+                    é extensiva.
+                </p>
+
+                <h2 id="nitidez-do-pico">A nitidez do pico</h2>
+
+                <p>
+                    A repartição mais provável só tem interesse se a repartição observada estiver perto dela. A
+                    <a href="#fig-4-4-1">Figura 4.4.1</a>(a) sugere que sim, e que a concentração aumenta com $N$.
+                    Para quantificá-la, expandimos $f = \ln(\Omega_1\Omega_2)$ até a segunda ordem em torno do máximo.
+                    A curvatura de $\ln\Omega$ tem um significado termodinâmico direto.
+                </p>
+
+                <div class="definition-box" id="lema-4-4-16">
+                    <p><strong>Lema 4.4.16 (Curvatura de $\ln\Omega$ e capacidade térmica).</strong> Suponha que a
+                        temperatura $T(E)$ de um sistema, com $V$ e $N$ fixos, seja derivável e tenha derivada não nula,
+                        e seja $C = (\partial E/\partial T)_{V,N}$ a sua <strong>capacidade térmica</strong>. Então</p>
+                    <p>$$ \frac{\partial^2\ln\Omega}{\partial E^2} = \frac{\partial\beta}{\partial E} = -\frac{1}{k_BT^2C}. \tag{4.4.8} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> A primeira igualdade é a definição (4.4.4) de $\beta$. Como
+                    $\beta = 1/(k_BT)$, a regra da cadeia dá
+                    $\dfrac{\partial\beta}{\partial E} = -\dfrac{1}{k_BT^2}\dfrac{\partial T}{\partial E}$, e
+                    $\partial T/\partial E = 1/C$, pela derivada da função inversa. $\blacksquare$
+                </p>
+
+                <p>
+                    Com as paredes fixas e impermeáveis, toda a energia recebida pelo sistema entra como calor, e $C$ é a
+                    capacidade térmica a volume constante da termodinâmica. O lema diz que $\ln\Omega$ é côncava em $E$
+                    exatamente onde $C \gt 0$.
+                </p>
+
+                <div class="definition-box" id="teo-4-4-17">
+                    <p><strong>Teorema 4.4.17 (Nitidez do pico).</strong> Sejam $\ln\Omega_1$ e $\ln\Omega_2$ três vezes
+                        continuamente deriváveis, $\tilde E_1$ um máximo interior de
+                        $f(E_1) = \ln\Omega_1(E_1) + \ln\Omega_2(E - E_1)$, com temperatura comum $T$, e $C_1, C_2 \gt 0$ as
+                        capacidades térmicas em $\tilde E_1$ e $\tilde E_2 = E - \tilde E_1$.</p>
+                    <p>(a) Com $\Delta = E_1 - \tilde E_1$,</p>
+                    <p>$$ \frac{P(E_1)}{P(\tilde E_1)} = \exp\left[-\frac{\Delta^2}{2\sigma^2} + R\right], \qquad \sigma^2 = k_BT^2\,\frac{C_1C_2}{C_1 + C_2}, \tag{4.4.9} $$</p>
+                    <p>em que $\lvert R\rvert \le \tfrac16K_3\lvert\Delta\rvert^3$ e $K_3$ é o máximo de $\lvert f'''\rvert$
+                        entre $\tilde E_1$ e $E_1$.</p>
+                    <p>(b) Se existem constantes $K$, $c$ e $\lambda$, independentes de $N$, tais que
+                        $\lvert f'''\rvert \le K/N^2$ na faixa $\lvert\Delta\rvert \le \lambda\sigma$ e $\sigma^2 \le cN$,
+                        então nessa faixa $\lvert R\rvert \le Kc^{3/2}\lambda^3/(6\sqrt N)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Por (4.4.1), $P(E_1)$ é proporcional a $e^{f(E_1)}$, de modo que
+                    $P(E_1)/P(\tilde E_1) = e^{f(E_1) - f(\tilde E_1)}$. A fórmula de Taylor com resto de Lagrange dá,
+                    para algum $\xi$ entre $\tilde E_1$ e $E_1$,
+                </p>
+
+                <p>$$ f(E_1) = f(\tilde E_1) + f'(\tilde E_1)\,\Delta + \tfrac12f''(\tilde E_1)\,\Delta^2 + \tfrac16f'''(\xi)\,\Delta^3. $$</p>
+
+                <p>
+                    No máximo interior, $f'(\tilde E_1) = 0$. Derivando duas vezes, o fator $-1$ da regra da cadeia
+                    aparece ao quadrado no segundo termo, e o <a href="#lema-4-4-16">Lema 4.4.16</a> dá
+                </p>
+
+                <p>$$ f''(\tilde E_1) = \frac{\partial^2\ln\Omega_1}{\partial E_1^2} + \frac{\partial^2\ln\Omega_2}{\partial E_2^2} = -\frac{1}{k_BT^2}\left(\frac{1}{C_1} + \frac{1}{C_2}\right) = -\frac{1}{\sigma^2}. $$</p>
+
+                <p>
+                    Com $R = \tfrac16f'''(\xi)\,\Delta^3$, temos (4.4.9) e a cota de $R$. (b) Na faixa
+                    $\lvert\Delta\rvert \le \lambda\sigma$, a cota de (a) dá
+                    $\lvert R\rvert \le \dfrac{K}{6N^2}(\lambda\sigma)^3 \le \dfrac{K}{6N^2}\lambda^3c^{3/2}N^{3/2}$.
+                    $\blacksquare$
+                </p>
+
+                <p>
+                    As hipóteses de (b) são as de sistemas macroscópicos. Se $\ln\Omega_i(E_i) = N_is_i(E_i/N_i)$ com
+                    $N_i$ proporcional a $N$, como no sólido e nos spins do
+                    <a href="#ex-4-4-15">Exemplo 4.4.15</a>, cada derivada em relação a $E_i$ traz um fator $1/N_i$, e
+                    $f'''$ é da ordem de $1/N^2$; e $C_i = -1/(k_BT^2\,\partial^2\ln\Omega_i/\partial E_i^2)$ é da ordem de
+                    $N$, e $\sigma^2$ também. O teorema diz então que, em uma faixa de alguns $\sigma$ em torno do
+                    máximo, a distribuição de $E_1$ é gaussiana a menos de correções relativas da ordem de $N^{-1/2}$.
+                    Fora dessa faixa, a concavidade de $f$ impede que $P$ volte a crescer.
+                </p>
+
+                <div class="definition-box" id="cor-4-4-18">
+                    <p><strong>Corolário 4.4.18 (Largura relativa).</strong> Se as energias e as capacidades térmicas
+                        são proporcionais aos tamanhos, $\tilde E_i = N_ie_i$ e $C_i = N_ic_i$, com $N_i = \nu_iN$ e
+                        $e_i, c_i, \nu_i$ independentes de $N$, então $\sigma/\tilde E_1$ é da ordem de $N^{-1/2}$. Para
+                        dois sistemas iguais, $\sigma^2 = \tfrac12k_BT^2C$, com $C = C_1 = C_2$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Por (4.4.9),
+                    $\sigma^2 = k_BT^2N\,\dfrac{\nu_1\nu_2c_1c_2}{\nu_1c_1 + \nu_2c_2}$ é proporcional a $N$, e
+                    $\tilde E_1 = \nu_1Ne_1$ é proporcional a $N$; a razão $\sigma/\tilde E_1$ é proporcional a
+                    $N^{1/2}/N = N^{-1/2}$. Para $C_1 = C_2 = C$, $C_1C_2/(C_1 + C_2) = C/2$. $\blacksquare$
+                </p>
+
+                <p>
+                    É o mesmo $N^{-1/2}$ da largura relativa da binomial
+                    (<a href="[01] - Motivação e Roteiro.html#cor-4-1-8">Corolário 4.1.8</a>), e pela mesma razão: a
+                    energia de cada sistema é uma soma de muitas contribuições. Para um corpo macroscópico, com
+                    $N \sim 10^{22}$, a largura relativa é da ordem de $10^{-11}$
+                    (<a href="#exr-4-4-3">Exercício 4.4.3</a>), muito abaixo de qualquer resolução experimental: a
+                    energia de um corpo em contato térmico é, na prática, fixa e igual a $\tilde E_1$.
+                </p>
+
+                <p id="ex-4-4-19"><strong>Exemplo 4.4.19 (A largura nos sólidos).</strong> Para os sólidos iguais do
+                    <a href="#ex-4-4-5">Exemplo 4.4.5</a>, com $N$ osciladores e $N$ quanta cada, contamos a energia em
+                    quanta. Com a forma de Stirling do <a href="#ex-4-4-7">Exemplo 4.4.7</a>,
+                    $\partial^2\ln\Omega/\partial M^2 = \partial_M\ln[(M + N)/M] = -N/[M(M + N)]$, que vale $-1/(2N)$ em
+                    $M = N$. A soma das curvaturas dos dois sólidos é $-1/N$, e o teorema dá $\sigma_M^2 = N$, ou seja,
+                    $\sigma_M = \sqrt N$ quanta. Em energia, $\sigma = \hbar\omega\sqrt N$; pelo
+                    <a href="#lema-4-4-16">Lema 4.4.16</a>, isso corresponde a $k_BT^2C = (\hbar\omega)^2M(M + N)/N = 2N(\hbar\omega)^2$
+                    para cada sólido e $\sigma^2 = \tfrac12k_BT^2C$, como no
+                    <a href="#cor-4-4-18">Corolário 4.4.18</a>. A interpolação
+                    $\ln\Gamma(M + N) - \ln\Gamma(M + 1) - \ln\Gamma(N)$ tem terceira derivada da ordem de $1/N^2$ perto do
+                    máximo, e as hipóteses de (b) valem.</p>
+
+                <p>
+                    A comparação com a distribuição exata (4.4.2), calculada numericamente, é a seguinte. Para
+                    $N = 100$, o desvio padrão exato de $M_1$ é $9{,}975$, contra $\sigma_M = 10$; para $N = 1000$, é
+                    $31{,}615$, contra $31{,}623$. A meia largura à meia altura de uma gaussiana é
+                    $\sqrt{2\ln2}\,\sigma_M$, ou seja, $11{,}8$ e $37{,}2$; na distribuição exata, $P$ cai abaixo da
+                    metade do máximo em $M_1 = N + 12$ e $M_1 = N + 38$. A largura relativa $\sigma_M/\tilde M_1 = N^{-1/2}$
+                    vale $10\%$ e $3{,}2\%$; na variável $M_1/M$ da figura, a largura é $1/(2\sqrt N)$, isto é,
+                    $0{,}05$ e $0{,}016$.
+                </p>
+
+                <h2 id="segunda-lei">A segunda lei</h2>
+
+                <p>
+                    Um <strong>vínculo</strong> é uma restrição imposta a um sistema isolado por meio de paredes internas:
+                    uma parede adiabática que impede a troca de energia entre duas partes, uma parede fixa que impede a
+                    troca de volume, uma parede impermeável que impede a troca de partículas. Liberar um vínculo, sem
+                    mudar $E$, $V$ e $N$ do sistema todo, só pode aumentar o conjunto dos microestados acessíveis, porque
+                    todo microestado permitido com o vínculo continua permitido sem ele.
+                </p>
+
+                <div class="definition-box" id="teo-4-4-20">
+                    <p><strong>Teorema 4.4.20 (Liberar um vínculo não diminui a entropia).</strong> Seja um sistema
+                        isolado cujo conjunto de microestados acessíveis é $A_{\text{ini}}$ com um vínculo e
+                        $A_{\text{fin}} \supseteq A_{\text{ini}}$ depois que o vínculo é liberado. Então
+                        $S_{\text{fin}} \ge S_{\text{ini}}$. No contato térmico, com energias iniciais $E_1^0$ e
+                        $E_2^0 = E - E_1^0$ separadas por uma parede adiabática que se torna diatérmica,</p>
+                    <p>$$ S_{\text{fin}} \ge S_1(\tilde E_1) + S_2(\tilde E_2) \ge S_1(E_1^0) + S_2(E_2^0) = S_{\text{ini}}, \tag{4.4.10} $$</p>
+                    <p>e, no equilíbrio final, a probabilidade de a repartição ser de novo a inicial é
+                        $P(E_1^0) = e^{-(S_{\text{fin}} - S_{\text{ini}})/k_B}$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Como $A_{\text{ini}} \subseteq A_{\text{fin}}$, o número de elementos satisfaz
+                    $\Omega_{\text{fin}} \ge \Omega_{\text{ini}}$, e o logaritmo é crescente. No contato térmico,
+                    $A_{\text{ini}}$ é o conjunto dos pares com $j_1$ no nível $E_1^0$ e $j_2$ na casca de $E_2^0$, todos
+                    com energia total na casca de $E$; logo $A_{\text{ini}} \subseteq A_{\text{fin}}$, e
+                    $S_{\text{ini}} = S_1(E_1^0) + S_2(E_2^0)$, como vimos antes da
+                    <a href="#prop-4-4-14">Proposição 4.4.14</a>. A primeira desigualdade de (4.4.10) é a cota inferior de
+                    (4.4.6); a segunda vale porque $\tilde E_1$ maximiza $\Omega_1(E_1)\,\Omega_2(E - E_1)$. Por fim, por
+                    (4.4.1), $P(E_1^0) = \Omega_1(E_1^0)\,\Omega_2(E_2^0)/\Omega(E) = \Omega_{\text{ini}}/\Omega_{\text{fin}}$,
+                    que é a exponencial do enunciado. $\blacksquare$
+                </p>
+
+                <p>
+                    O teorema compara dois estados de equilíbrio e supõe que, liberado o vínculo, o sistema chega ao
+                    ensemble microcanônico sobre $A_{\text{fin}}$; essa é a aplicação do postulado ao novo sistema
+                    isolado, e não uma consequência da dinâmica. A dinâmica, aliás, conserva o volume de fase
+                    (<a href="[02] - Espaço de Fase e Teorema de Liouville.html#teo-4-2-17">Teorema 4.2.17</a>): um
+                    conjunto de pontos que ocupava $A_{\text{ini}}$ continua ocupando um conjunto de mesmo volume. O que
+                    acontece é que esse conjunto se deforma e se estica em filamentos finos, como na
+                    <a href="[02] - Espaço de Fase e Teorema de Liouville.html#obs-4-2-19">Observação 4.2.19</a>, até se
+                    espalhar por todo $A_{\text{fin}}$ na escala de resolução de qualquer medida. A entropia que cresce é
+                    a do macroestado, $k_B\ln\Omega_{\text{fin}}$, e não um volume que a dinâmica não altera.
+                </p>
+
+                <p>
+                    Perto do equilíbrio, o crescimento da entropia tem uma forma local, que é a de Clausius.
+                </p>
+
+                <div class="definition-box" id="prop-4-4-21">
+                    <p><strong>Proposição 4.4.21 (Produção de entropia perto do equilíbrio).</strong> Seja
+                        $S_{\text{tot}}(E_1) = S_1(E_1) + S_2(E - E_1)$. Se o sistema $1$ recebe uma pequena quantidade de
+                        energia $dE_1$ do sistema $2$, a entropia total varia de</p>
+                    <p>$$ dS_{\text{tot}} = \left(\frac{1}{T_1} - \frac{1}{T_2}\right)dE_1. \tag{4.4.11} $$</p>
+                    <p>Se $S_1$ e $S_2$ são estritamente côncavas e a energia flui no sentido da
+                        <a href="#prop-4-4-11">Proposição 4.4.11</a>, então $dS_{\text{tot}} \ge 0$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela regra da cadeia e por (4.4.5),
+                    $dS_{\text{tot}}/dE_1 = \partial S_1/\partial E_1 - \partial S_2/\partial E_2 = 1/T_1 - 1/T_2$. Pela
+                    <a href="#prop-4-4-11">Proposição 4.4.11</a>, o sistema $1$ ganha energia ($dE_1 \gt 0$) quando
+                    $\beta_1 \gt \beta_2$, isto é, quando $1/T_1 \gt 1/T_2$, e perde quando $1/T_1 \lt 1/T_2$; nos dois
+                    casos, os dois fatores de (4.4.11) têm o mesmo sinal. $\blacksquare$
+                </p>
+
+                <p>
+                    Como as paredes são fixas, a energia $dE_1$ que o sistema $1$ recebe é calor, e (4.4.11) diz que a
+                    sua entropia varia de $dS_1 = dE_1/T_1$: é a relação de Clausius entre calor e entropia, agora
+                    deduzida da contagem. A seção <a href="#conexao">Conexão</a> volta a ela.
+                </p>
+
+                <div class="definition-box" id="prop-4-4-22">
+                    <p><strong>Proposição 4.4.22 (Estabilidade e capacidade térmica positiva).</strong></p>
+                    <p>(a) Em um ponto $\tilde E_1$ que satisfaz (4.4.3),
+                        $f''(\tilde E_1) = -\dfrac{1}{k_BT^2}\left(\dfrac{1}{C_1} + \dfrac{1}{C_2}\right)$. O ponto é um
+                        máximo local estrito de $f$ se $1/C_1 + 1/C_2 \gt 0$, em particular se $C_1, C_2 \gt 0$, e um mínimo
+                        local estrito se $1/C_1 + 1/C_2 \lt 0$.</p>
+                    <p>(b) Seja um sistema homogêneo com $\ln\Omega(E) = Ns(E/N)$, $s$ duas vezes derivável. Se, para
+                        cada $E$ de um intervalo, a repartição igual da energia entre duas metades do sistema em contato
+                        térmico é um máximo local da probabilidade, então $s'' \le 0$ no intervalo correspondente: $S(E)$
+                        é côncava, e onde $\partial^2S/\partial E^2 \lt 0$ a capacidade térmica é positiva.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) A expressão de $f''$ foi obtida na prova do
+                    <a href="#teo-4-4-17">Teorema 4.4.17</a>, que só usou (4.4.3) e o
+                    <a href="#lema-4-4-16">Lema 4.4.16</a>. Como $f'(\tilde E_1) = 0$, o sinal de $f''(\tilde E_1)$ decide:
+                    negativo dá máximo local estrito, positivo dá mínimo local estrito.
+                </p>
+
+                <p>
+                    (b) Cada metade tem $N/2$ partículas e $\ln\Omega_{1/2}(E_1) = \tfrac N2\,s(2E_1/N)$. Então
+                    $f(E_1) = \tfrac N2\big[s(2E_1/N) + s\big(2(E - E_1)/N\big)\big]$ e, derivando duas vezes,
+                    $f''(E/2) = \tfrac N2\cdot\tfrac{4}{N^2}\cdot2s''(E/N) = \tfrac4N\,s''(E/N)$. Em um máximo local,
+                    $f''(E/2) \le 0$; logo $s''(E/N) \le 0$, e
+                    $\partial^2\ln\Omega/\partial E^2 = s''(E/N)/N \le 0$. Onde essa derivada é negativa, o
+                    <a href="#lema-4-4-16">Lema 4.4.16</a> dá $C = -1/(k_BT^2\,\partial^2\ln\Omega/\partial E^2) \gt 0$.
+                    $\blacksquare$
+                </p>
+
+                <p>
+                    Se $C$ fosse negativa, o sistema não ficaria homogêneo: uma das metades, ao receber um pouco de
+                    energia da outra, esfriaria, e a energia continuaria fluindo para ela. O caso de fronteira,
+                    $s'' = 0$ em um intervalo, corresponde a $S$ linear em $E$ e $C$ infinita: adicionar energia não
+                    muda a temperatura. É o que acontece na coexistência de duas fases, como gelo e água em fusão; esse
+                    caso foge do escopo deste capítulo. Sistemas com $C \lt 0$ existem quando o acoplamento não é fraco,
+                    como nos sistemas autogravitantes do <a href="#exr-4-4-6">Exercício 4.4.6</a>.
+                </p>
+
+                <p id="obs-4-4-23"><strong>Observação 4.4.23 (Irreversibilidade como estatística).</strong> Tome dois
+                    sólidos de $N = 100$ osciladores, inicialmente separados por uma parede adiabática, com
+                    $M_1^0 = 150$ e $M_2^0 = 50$ quanta: o sólido $1$, com $1{,}5$ quantum por oscilador, é o mais
+                    quente. Depois do contato, a distribuição de $M_1$ é (4.4.2) com $M = 200$, centrada em $100$. Pelo
+                    <a href="#teo-4-4-20">Teorema 4.4.20</a>, $S_{\text{fin}} - S_{\text{ini}} = 16{,}6\,k_B$, e a
+                    probabilidade de encontrar de novo $M_1 = 150$ é $e^{-16{,}6} = 6{,}3\times10^{-8}$. Com $N = 1000$ e
+                    $1500$ e $500$ quanta, a diferença de entropia é $139{,}5\,k_B$ e a probabilidade cai para
+                    $2{,}6\times10^{-61}$. Por (4.4.7), a diferença é de cerca de $0{,}135\,k_B$ por oscilador; para
+                    $N = 10^{22}$, ela é de $1{,}35\times10^{21}k_B$, e a probabilidade de volta é da ordem de
+                    $10^{-5{,}9\times10^{20}}$. Nenhuma lei da mecânica proíbe a volta: as equações de Hamilton são
+                    reversíveis no tempo, e o teorema de recorrência de Poincaré, que apenas mencionamos, garante até
+                    que um sistema isolado e limitado volta arbitrariamente perto do seu estado inicial. Mas, se a
+                    dinâmica for ergódica, a fração do tempo que o sistema passa com a repartição inicial é a
+                    probabilidade acima. A irreversibilidade não é uma impossibilidade; é uma improbabilidade que,
+                    para corpos macroscópicos, nenhuma observação distingue de uma impossibilidade.</p>
+
+                <h2 id="conexao">Conexão com a termodinâmica e com o experimento</h2>
+
+                <p>
+                    <strong>A lei zero.</strong> Se $A$ está em equilíbrio térmico com $B$, e $B$ com $C$, então $A$ está
+                    em equilíbrio com $C$. Na termodinâmica, essa transitividade é postulada; aqui ela é automática,
+                    porque o equilíbrio é a igualdade de uma grandeza, $\beta$, que pertence a cada sistema
+                    separadamente: $\beta_A = \beta_B$ e $\beta_B = \beta_C$ dão $\beta_A = \beta_C$. É isso que torna possível
+                    um termômetro: um sistema pequeno cuja $\beta$ se lê em alguma grandeza fácil de medir, como o
+                    volume de uma coluna de líquido, a pressão de um gás ou uma resistência elétrica. Como a sua
+                    capacidade térmica é pequena diante da do corpo, ele quase não muda a temperatura do corpo ao
+                    entrar em equilíbrio com ele.
+                </p>
+
+                <p>
+                    <strong>A entropia de Clausius.</strong> Na termodinâmica, a variação de entropia de um sistema que
+                    recebe uma quantidade pequena de calor $\delta Q$ de modo quase estático é $dS = \delta Q/T$. A
+                    <a href="#prop-4-4-21">Proposição 4.4.21</a> deu exatamente isso para a entropia de Boltzmann quando
+                    o calor entra por uma parede diatérmica fixa: $dS_1 = dE_1/T_1$. Para identificar as duas entropias
+                    em geral falta incluir o trabalho, o que exige deixar o volume variar; é o que faz o
+                    <a href="[05] - Interações Mecânica e Difusiva.html">tópico 4.5</a>, e a ligação com os postulados da
+                    termodinâmica fica para o capítulo 3, ainda em esboço. A definição de Clausius fixa a entropia a
+                    menos de uma constante; a contagem fixa a constante. No sólido de Einstein, por (4.4.7),
+                    $S/(Nk_B) \to 0$ quando $q \to 0$, isto é, quando $T \to 0$: é um primeiro encontro com a terceira
+                    lei, que o <a href="[07] - Sólido de Einstein.html">tópico 4.7</a> retoma.
+                </p>
+
+                <p>
+                    <strong>O que se mede.</strong> As previsões deste tópico são qualitativas, mas fortes: a energia
+                    passa do corpo mais quente para o mais frio; as capacidades térmicas da matéria em equilíbrio são
+                    positivas; as flutuações de energia de um corpo macroscópico em contato térmico são invisíveis. Todas
+                    concordam com a experiência. A fórmula $S = k\log W$ está gravada no túmulo de Boltzmann, em
+                    Viena; a forma com a constante $k$ explícita é de Planck, que a usou no início do século XX. As
+                    previsões quantitativas, como o calor específico do sólido e a equação de estado do gás ideal, vêm
+                    nos tópicos 4.6 a 4.9.
+                </p>
+
+                <p>
+                    <strong>Onde a descrição falha.</strong> Duas hipóteses podem falhar. A primeira é o acoplamento
+                    fraco (<a href="#obs-4-4-2">Observação 4.4.2</a>): para sistemas autogravitantes, como estrelas e
+                    aglomerados de estrelas, a energia de interação não é pequena, a entropia não é aditiva e a
+                    capacidade térmica pode ser negativa (<a href="#exr-4-4-6">Exercício 4.4.6</a>). A segunda é o
+                    tamanho: em sistemas de poucas centenas de partículas, como aglomerados atômicos, os termos
+                    $O(\ln N)$ e as flutuações relativas $N^{-1/2}$ deixam de ser desprezíveis, e a temperatura de um
+                    sistema isolado e a de um sistema em contato com um reservatório já não coincidem com precisão. O
+                    <a href="../[4] - Ensemble Canônico/[03] - Flutuações e Equivalência dos Ensembles.html">tópico 5.3</a>
+                    estuda essa diferença.
+                </p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p>
+                    Os exercícios contam repartições de energia em sistemas pequenos, calculam temperaturas e larguras,
+                    e aplicam a segunda lei a corpos com capacidade térmica conhecida. As contas foram conferidas por
+                    computação simbólica e por enumeração direta.
+                </p>
+
+                <p id="exr-4-4-1"><strong>Exercício 4.4.1.</strong> Dois sólidos de Einstein com $N_1 = N_2 = 3$
+                    osciladores estão em contato térmico com $M = 6$ quanta no total. Monte a tabela de
+                    $\Omega_1\Omega_2$ para cada $M_1$, ache a repartição mais provável e a probabilidade de $M_1$ estar
+                    entre $2$ e $4$.</p>
+
+                <p>
+                    <em>Solução.</em> Pelo <a href="#lema-4-4-4">Lema 4.4.4</a>, $\Omega(3, m) = \binom{m + 2}{m}$, que
+                    vale $1, 3, 6, 10, 15, 21, 28$ para $m = 0, \dots, 6$. Com $\Omega_2 = \Omega(3, 6 - M_1)$:
+                </p>
+
+                <div style="overflow-x: auto;">
+                <table>
+                    <tr><th>$M_1$</th><th>$0$</th><th>$1$</th><th>$2$</th><th>$3$</th><th>$4$</th><th>$5$</th><th>$6$</th></tr>
+                    <tr><td>$\Omega_1$</td><td>$1$</td><td>$3$</td><td>$6$</td><td>$10$</td><td>$15$</td><td>$21$</td><td>$28$</td></tr>
+                    <tr><td>$\Omega_2$</td><td>$28$</td><td>$21$</td><td>$15$</td><td>$10$</td><td>$6$</td><td>$3$</td><td>$1$</td></tr>
+                    <tr><td>$\Omega_1\Omega_2$</td><td>$28$</td><td>$63$</td><td>$90$</td><td>$100$</td><td>$90$</td><td>$63$</td><td>$28$</td></tr>
+                    <tr><td>$P(M_1)$</td><td>$0{,}061$</td><td>$0{,}136$</td><td>$0{,}195$</td><td>$0{,}216$</td><td>$0{,}195$</td><td>$0{,}136$</td><td>$0{,}061$</td></tr>
+                </table>
+                </div>
+
+                <p>
+                    A soma da quarta linha é $462 = \binom{11}{6}$, o número de microestados de um sólido de $6$
+                    osciladores com $6$ quanta, como afirma a identidade do <a href="#ex-4-4-5">Exemplo 4.4.5</a>. A
+                    repartição mais provável é $M_1 = 3$, um quantum por oscilador dos dois lados, de acordo com a regra
+                    do <a href="#ex-4-4-7">Exemplo 4.4.7</a>: $m^* = (2\cdot6 - 2)/4 = 2{,}5$, e a moda é o menor inteiro
+                    maior que $2{,}5$. Mas a sua probabilidade é só $100/462 = 0{,}216$, e
+                    $P(2 \le M_1 \le 4) = 280/462 = 0{,}606$: com $3$ osciladores de cada lado, o pico é largo, e a
+                    repartição observada se afasta muitas vezes da mais provável.
+                </p>
+
+                <p id="exr-4-4-2"><strong>Exercício 4.4.2.</strong> Um sistema tem $\Omega$ proporcional a $E^{aN}$, com
+                    $a \gt 0$ fixo. Mostre que $E = aNk_BT$ e que a capacidade térmica é $C = aNk_B$. Confira o
+                    <a href="#lema-4-4-16">Lema 4.4.16</a> nesse caso.</p>
+
+                <p>
+                    <em>Solução.</em> $\ln\Omega = aN\ln E + \text{const}$, e $\beta = aN/E$. Logo $E = aN/\beta = aNk_BT$, e
+                    $C = dE/dT = aNk_B$, independente da temperatura. Conferência:
+                    $\partial^2\ln\Omega/\partial E^2 = -aN/E^2 = -aN/(aNk_BT)^2 = -1/(k_BT^2\cdot aNk_B) = -1/(k_BT^2C)$. Para
+                    osciladores clássicos, $a = 1$ e $E = Nk_BT$ (<a href="#ex-4-4-10">Exemplo 4.4.10</a>); para
+                    partículas livres em três dimensões, $\Phi \propto E^{3N/2}$, $a = \tfrac32$ e $E = \tfrac32Nk_BT$, o
+                    resultado do gás ideal monoatômico do <a href="[08] - Gás Ideal Clássico.html">tópico 4.8</a>. Se a
+                    proporcionalidade vale para $\Phi$ e usamos $\Omega$, a
+                    <a href="[03] - O Ensemble Microcanônico.html#prop-4-3-11">Proposição 4.3.11</a>(c) troca $aN$ por
+                    $aN - 1$ (com $\delta E \to 0$), uma correção relativa de $1/(aN)$.
+                </p>
+
+                <p id="exr-4-4-3"><strong>Exercício 4.4.3.</strong> Dois sistemas iguais, cada um com $N = 10^{22}$
+                    partículas e $C = \tfrac32Nk_B$, estão em contato térmico. Calcule a largura relativa
+                    $\sigma/\tilde E_1$ e a razão $P/P_{\max}$ para um desvio relativo de $10^{-6}$ em torno do máximo.</p>
+
+                <p>
+                    <em>Solução.</em> Pelo <a href="#exr-4-4-2">Exercício 4.4.2</a> com $a = \tfrac32$,
+                    $\tilde E_1 = \tfrac32Nk_BT$. Pelo <a href="#cor-4-4-18">Corolário 4.4.18</a>,
+                    $\sigma^2 = \tfrac12k_BT^2C = \tfrac34N(k_BT)^2$. Logo
+                </p>
+
+                <p>$$ \frac{\sigma}{\tilde E_1} = \frac{\sqrt{3N/4}}{3N/2} = \frac{1}{\sqrt{3N}} = 5{,}8\times10^{-12}. $$</p>
+
+                <p>
+                    Para $\Delta = 10^{-6}\tilde E_1$, o expoente de (4.4.9) é
+                    $\Delta^2/(2\sigma^2) = 10^{-12}\cdot3N/2 = 1{,}5\times10^{10}$, e $P/P_{\max} \approx e^{-1{,}5\times10^{10}}$.
+                    O desvio é de cerca de $1{,}7\times10^5$ larguras, fora da faixa de alguns $\sigma$ do
+                    <a href="#teo-4-4-17">Teorema 4.4.17</a>(b); mas, comparado com o termo quadrático, o resto cúbico é
+                    da ordem de $\lvert f'''\rvert\,\sigma^2\lvert\Delta\rvert \sim (1/N^2)\cdot N\cdot10^{-6}N = 10^{-6}$, e a
+                    estimativa vale em ordem de grandeza. Um desvio de uma parte em um milhão na repartição da energia
+                    entre dois corpos macroscópicos nunca é observado.
+                </p>
+
+                <p id="exr-4-4-4"><strong>Exercício 4.4.4.</strong> Dois corpos com a mesma capacidade térmica $C$,
+                    constante, estão às temperaturas $T_1$ e $T_2$. Eles são postos em contato térmico, isolados do
+                    resto. Calcule a temperatura final e a variação de entropia, e mostre que ela não é negativa.</p>
+
+                <p>
+                    <em>Solução.</em> Com $C$ constante, $E_i = CT_i + \text{const}$. A energia total se conserva:
+                    $CT_1 + CT_2 = 2CT_f$, logo $T_f = (T_1 + T_2)/2$. Para cada corpo, por (4.4.5),
+                    $dS = dE/T = C\,dT/T$, e $S(T) = C\ln T + \text{const}$. Então
+                </p>
+
+                <p>$$ \Delta S = C\ln\frac{T_f}{T_1} + C\ln\frac{T_f}{T_2} = C\ln\frac{(T_1 + T_2)^2}{4T_1T_2}. $$</p>
+
+                <p>
+                    Como $(T_1 + T_2)^2 - 4T_1T_2 = (T_1 - T_2)^2 \ge 0$, o argumento do logaritmo é pelo menos $1$, e
+                    $\Delta S \ge 0$, com igualdade só se $T_1 = T_2$, como exige o
+                    <a href="#teo-4-4-20">Teorema 4.4.20</a>. Para $T_1 = 300\ \text{K}$ e $T_2 = 400\ \text{K}$,
+                    $T_f = 350\ \text{K}$ e $\Delta S = C\ln(49/48) = 0{,}0206\,C$. A hipótese de $C$ constante vale, por
+                    exemplo, para sólidos a temperaturas altas (<a href="[07] - Sólido de Einstein.html">tópico 4.7</a>).
+                </p>
+
+                <p id="exr-4-4-5"><strong>Exercício 4.4.5.</strong> Para os sólidos iguais do
+                    <a href="#ex-4-4-5">Exemplo 4.4.5</a>, com $N = 100$ e $N = 1000$ osciladores e $N$ quanta cada,
+                    compare $\ln\Omega$ do composto com o logaritmo do maior termo da soma (4.4.1). Explique por que a
+                    diferença cresce como $\tfrac12\ln N$.</p>
+
+                <p>
+                    <em>Solução.</em> O composto tem $\Omega(2N, 2N)$ microestados e o maior termo é $\Omega(N, N)^2$. Os
+                    números são $\ln\Omega = 273{,}34$ e $\ln(\text{maior termo}) = 270{,}12$ para $N = 100$, e $2767{,}52$
+                    e $2763{,}15$ para $N = 1000$. As diferenças, $3{,}22$ e $4{,}37$, respeitam a cota $\ln(M + 1)$ da
+                    <a href="#prop-4-4-14">Proposição 4.4.14</a>, que vale $5{,}30$ e $7{,}60$. Para estimá-las, usamos o
+                    <a href="#teo-4-4-17">Teorema 4.4.17</a>: perto do máximo, cada termo é o maior vezes
+                    $e^{-k^2/(2\sigma_M^2)}$, com $k = M_1 - N$ e $\sigma_M = \sqrt N$
+                    (<a href="#ex-4-4-19">Exemplo 4.4.19</a>). Para $\sigma_M \gg 1$, a soma sobre $k$ é uma soma de Riemann
+                    da integral gaussiana, $\sum_ke^{-k^2/(2\sigma_M^2)} \approx \int e^{-k^2/(2\sigma_M^2)}dk = \sqrt{2\pi}\,\sigma_M$.
+                    Logo
+                </p>
+
+                <p>$$ \ln\Omega - \ln(\text{maior termo}) \approx \ln\big(\sqrt{2\pi}\,\sigma_M\big) = \tfrac12\ln(2\pi N), $$</p>
+
+                <p>
+                    que vale $3{,}22$ e $4{,}37$, de acordo com os números exatos. O número efetivo de termos que
+                    contribuem para a soma é da ordem da largura do pico, $\sqrt N$, e não do número total de termos,
+                    $2N + 1$. Enquanto $\ln\Omega$ cresce como $N$, a diferença cresce como $\tfrac12\ln N$: ela é $1{,}2\%$
+                    do total para $N = 100$ e $0{,}16\%$ para $N = 1000$.
+                </p>
+
+                <p id="exr-4-4-6"><strong>Exercício 4.4.6.</strong> Em um sistema autogravitante, como uma estrela, a
+                    energia total é $E = -\langle K\rangle$, em que $\langle K\rangle$ é a energia cinética média (é o
+                    teorema do virial da mecânica para forças que caem com o inverso do quadrado da distância). Admitindo
+                    que $\langle K\rangle = \tfrac32Nk_BT$, como mostrarão os tópicos 4.8 e 5.8 para partículas livres,
+                    calcule a capacidade térmica e explique por que esse sistema não pode estar em equilíbrio estável com
+                    um reservatório térmico.</p>
+
+                <p>
+                    <em>Solução.</em> $E = -\tfrac32Nk_BT$, e $C_s = dE/dT = -\tfrac32Nk_B \lt 0$: ao perder energia, o
+                    sistema esquenta. Em contato com um segundo sistema de capacidade $C_2 \gt 0$, a
+                    <a href="#prop-4-4-22">Proposição 4.4.22</a>(a) dá, no ponto de temperaturas iguais,
+                    $f'' = -\dfrac{1}{k_BT^2}\left(\dfrac{1}{C_s} + \dfrac{1}{C_2}\right)$. Um reservatório é um sistema
+                    com $C_2 \to \infty$, e então $f'' \to -1/(k_BT^2C_s) \gt 0$: o ponto de temperaturas iguais é um
+                    mínimo da probabilidade, e não um máximo.
+                </p>
+
+                <p>
+                    O mecanismo é o seguinte. Se o sistema cede um pouco de energia ao reservatório, ele esquenta, fica
+                    mais quente que o reservatório e, pela
+                    <a href="#prop-4-4-11">Proposição 4.4.11</a>, continua cedendo energia; se recebe energia, esfria e
+                    continua recebendo. Não há equilíbrio estável. Com um parceiro finito, a estabilidade exige
+                    $1/C_s + 1/C_2 \gt 0$, isto é, $C_2 \lt \lvert C_s\rvert$: só um corpo de capacidade térmica menor que
+                    $\lvert C_s\rvert$ pode ficar em equilíbrio com ele. É por isso que um sistema com $C \lt 0$ só pode
+                    ser descrito como isolado, e não em contato com um reservatório, como faz o capítulo 5. A
+                    capacidade negativa não contradiz a <a href="#prop-4-4-22">Proposição 4.4.22</a>(b): a gravitação,
+                    de longo alcance, viola o acoplamento fraco entre as partes da própria estrela
+                    (<a href="#obs-4-4-2">Observação 4.4.2</a>), e a sua entropia não tem a forma extensiva $Ns(E/N)$. O
+                    acoplamento entre a estrela e o reservatório, através da superfície, pode continuar fraco, e a
+                    análise acima se aplica a ele.
+                </p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <p>
+                    Do postulado aplicado a dois sistemas que trocam energia saíram a temperatura, a entropia e a
+                    segunda lei:
+                </p>
+
+                <ul>
+                    <li><strong>o contato térmico com acoplamento fraco</strong>
+                        (<a href="#def-4-4-1">Definição 4.4.1</a>) e a <strong>repartição da energia</strong>,
+                        $P(E_1) \propto \Omega_1(E_1)\,\Omega_2(E - E_1)$ (<a href="#prop-4-4-3">Proposição 4.4.3</a>),
+                        calculada exatamente para dois sólidos de Einstein com a contagem por estrelas e barras
+                        (<a href="#lema-4-4-4">Lema 4.4.4</a> e <a href="#ex-4-4-5">Exemplo 4.4.5</a>);</li>
+                    <li><strong>a condição de equilíbrio térmico</strong>, igualdade de $\partial\ln\Omega/\partial E$
+                        (<a href="#prop-4-4-6">Proposição 4.4.6</a>), e a <strong>temperatura</strong>
+                        $\beta = 1/k_BT = \partial\ln\Omega/\partial E$ (<a href="#def-4-4-8">Definição 4.4.8</a>), com
+                        $\bar\varepsilon = k_BT$ para osciladores clássicos (<a href="#ex-4-4-10">Exemplo 4.4.10</a>) e a
+                        energia fluindo do corpo mais quente para o mais frio
+                        (<a href="#prop-4-4-11">Proposição 4.4.11</a>);</li>
+                    <li><strong>a entropia de Boltzmann</strong> $S = k_B\ln\Omega$
+                        (<a href="#def-4-4-12">Definição 4.4.12</a>), aditiva a menos de $O(\ln N)$
+                        (<a href="#prop-4-4-14">Proposição 4.4.14</a>) e extensiva no sólido e nos spins
+                        (<a href="#ex-4-4-15">Exemplo 4.4.15</a>);</li>
+                    <li><strong>a nitidez do pico</strong>: a distribuição de $E_1$ é gaussiana, com variância
+                        $\sigma^2 = k_BT^2C_1C_2/(C_1 + C_2)$ (<a href="#teo-4-4-17">Teorema 4.4.17</a>) e largura relativa
+                        da ordem de $N^{-1/2}$ (<a href="#cor-4-4-18">Corolário 4.4.18</a>);</li>
+                    <li><strong>a segunda lei</strong>: liberar um vínculo não diminui a entropia
+                        (<a href="#teo-4-4-20">Teorema 4.4.20</a>), $dS = (1/T_1 - 1/T_2)\,dE_1 \ge 0$ perto do equilíbrio
+                        (<a href="#prop-4-4-21">Proposição 4.4.21</a>), e o equilíbrio de um sistema homogêneo exige
+                        $S$ côncava e $C \gt 0$ (<a href="#prop-4-4-22">Proposição 4.4.22</a>).</li>
+                </ul>
+
+                <p>
+                    Até aqui, só a energia foi trocada; o volume e o número de partículas ficaram fixos, e $S$ foi
+                    derivada apenas em relação a $E$. O próximo passo é deixar a parede se mover e deixar partículas
+                    atravessá-la. A mesma maximização de $\Omega_1\Omega_2$ dará a pressão e o potencial químico como
+                    derivadas de $S$ em relação a $V$ e a $N$, e as três derivadas juntas formarão a relação
+                    fundamental da termodinâmica. É o assunto do próximo tópico,
+                    <a href="[05] - Interações Mecânica e Difusiva.html">4.5 Interações Mecânica e Difusiva</a>.
+                </p>
 
             </div>
         </main>
@@ -169,7 +1223,15 @@
             <div class="toc-container">
                 <h4>Nesta página</h4>
                 <ul>
-                    <li><a href="#contato-termico-e-entropia">Contato Térmico e a Entropia de Boltzmann</a></li>
+                    <li><a href="#contato-termico-e-entropia">Contato Térmico e Entropia</a></li>
+                    <li><a href="#dois-sistemas">Dois sistemas em contato</a></li>
+                    <li><a href="#particao-mais-provavel">Partição mais provável</a></li>
+                    <li><a href="#entropia-de-boltzmann">Entropia de Boltzmann</a></li>
+                    <li><a href="#nitidez-do-pico">Nitidez do pico</a></li>
+                    <li><a href="#segunda-lei">Segunda lei</a></li>
+                    <li><a href="#conexao">Conexão</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
                 </ul>
             </div>
         </aside>
