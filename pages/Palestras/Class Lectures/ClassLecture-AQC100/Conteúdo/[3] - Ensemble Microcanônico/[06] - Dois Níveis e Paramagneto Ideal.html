@@ -158,9 +158,576 @@
             <div class="prose">
 
                 <h1 id="dois-niveis-e-paramagneto">4.6 Sistemas de Dois Níveis e o Paramagneto Ideal</h1>
-                <p class="lead">Spins independentes em um campo magnético no ensemble microcanônico: contagem exata, entropia, magnetização, calor específico e temperaturas negativas.</p>
+                <p class="lead">O primeiro modelo resolvido por completo: entropia, temperatura, magnetização e calor específico de spins independentes em um campo, e as temperaturas negativas de um espectro limitado.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>
+                    Os tópicos 4.4 e 4.5 construíram a termodinâmica a partir de uma única função, $S = k_B\ln\Omega$.
+                    Falta calculá-la. O modelo mais simples em que isso dá resultados não triviais é um conjunto de $N$
+                    partículas independentes com só dois estados cada, como os momentos magnéticos de spin $\tfrac12$ de
+                    um sal paramagnético em um campo magnético. A contagem já foi feita no
+                    <a href="[03] - O Ensemble Microcanônico.html#ex-4-3-8">Exemplo 4.3.8</a>, e o
+                    <a href="[04] - Contato Térmico e Entropia.html#ex-4-4-15">Exemplo 4.4.15</a> obteve a sua entropia e a
+                    sua temperatura em uma linha. Aqui fazemos tudo com cuidado: a entropia com o seu erro controlado, a
+                    temperatura com as diferenças finitas exatas, a magnetização, o calor específico, a lei de Curie.
+                </p>
+
+                <p>
+                    O modelo tem uma propriedade que nenhum outro deste capítulo tem: a sua energia é limitada por cima.
+                    Por isso a entropia, depois de crescer, decresce com a energia, e a temperatura definida no
+                    <a href="[04] - Contato Térmico e Entropia.html">tópico 4.4</a> fica negativa. Mostramos que essas
+                    temperaturas negativas não são uma patologia da definição: um sistema a temperatura negativa cede
+                    energia a qualquer sistema a temperatura positiva, e é, nesse sentido, mais quente que qualquer um
+                    deles. Neste tópico, $\mu$ é o momento magnético; o potencial químico não aparece.
+                </p>
+
+                <h2 id="modelo">O modelo</h2>
+
+                <div class="definition-box" id="def-4-6-1" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.6.1 (Paramagneto ideal).</strong> O <strong>paramagneto ideal</strong> de spin
+                        $\tfrac12$ é um sistema de $N$ momentos magnéticos fixos em sítios distintos, cada um com dois
+                        estados, $\sigma_i = +1$ (alinhado ao campo) e $\sigma_i = -1$ (oposto), em um campo magnético $B$
+                        uniforme, sem interação entre si:</p>
+                    <p>$$ \mathcal{H} = -\mu B\sum_{i=1}^{N}\sigma_i. $$</p>
+                    <p>Com $N_+$ momentos alinhados e $N_- = N - N_+$ opostos, a energia e o momento magnético total
+                        (que chamamos de <strong>magnetização</strong>) são</p>
+                    <p>$$ E = -\mu B(N_+ - N_-), \qquad M = \mu(N_+ - N_-) = -\frac EB. $$</p>
+                </div>
+
+                <p>
+                    Os momentos estão presos a sítios, e portanto são distinguíveis pelo sítio: o estado do sistema é a
+                    lista $(\sigma_1, \dots, \sigma_N)$, e não há fator $1/N!$ a considerar. A energia vai de $-N\mu B$,
+                    com todos os momentos alinhados, a $+N\mu B$, com todos opostos, em níveis espaçados de $2\mu B$.
+                    Usaremos a energia por momento em unidades de $\mu B$,
+                </p>
+
+                <p>$$ \varepsilon = \frac{E}{N\mu B} \in [-1, 1], \qquad \frac{N_\pm}{N} = \frac{1 \mp \varepsilon}{2}. $$</p>
+
+                <p id="obs-4-6-2"><strong>Observação 4.6.2 (O que o modelo despreza).</strong> Em um sal paramagnético,
+                    como certos sais de ferro, cobre ou terras raras, os momentos são de íons separados por muitos átomos
+                    não magnéticos, e a interação entre eles é fraca. "Ideal" significa desprezá-la, o que é razoável
+                    quando $\mu B$ e $k_BT$ são grandes diante da energia de interação; perto do zero absoluto, ela volta a
+                    importar. O modelo também ignora todos os outros graus de liberdade do sólido, como as vibrações da
+                    rede: o "sistema" são só os momentos. O
+                    <a href="#temperatura-negativa">fim do tópico</a> mostra que essa separação é a condição física das
+                    temperaturas negativas. O momento de spin $\tfrac12$ só tem duas orientações em relação ao campo; o
+                    caso de momento angular maior, com mais orientações, fica para o
+                    <a href="../[4] - Ensemble Canônico/[05] - Paramagneto Ideal e Lei de Curie.html">tópico 5.5</a>.</p>
+
+                <h2 id="contagem">Contagem e entropia</h2>
+
+                <div class="definition-box" id="prop-4-6-3">
+                    <p><strong>Proposição 4.6.3 (Contagem).</strong> O nível de energia $E$ do paramagneto ideal tem</p>
+                    <p>
+                        $$ \begin{aligned}
+                        \Omega(E) &= \binom{N}{N_+} = \frac{N!}{N_+!\,N_-!}, \\
+                        N_\pm &= \frac12\left(N \mp \frac{E}{\mu B}\right),
+                        \end{aligned} \tag{4.6.1} $$
+                    </p>
+                    <p>estados, e a casca de largura $\delta E \lt 2\mu B$ que contém esse nível tem exatamente esses
+                        $\Omega(E)$ microestados.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Resolvendo $E = -\mu B(N_+ - N_-)$ e $N_+ + N_- = N$, obtemos $N_\pm$. Um estado
+                    com energia $E$ é uma lista $(\sigma_1, \dots, \sigma_N)$ com exatamente $N_+$ entradas iguais a $+1$,
+                    determinada pela escolha das posições dessas entradas: há $\binom{N}{N_+}$ escolhas
+                    (<a href="[01] - Motivação e Roteiro.html#prop-4-1-4">Proposição 4.1.4</a>). Como os níveis são
+                    espaçados de $2\mu B$, uma casca de largura menor que isso contém no máximo um nível. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="prop-4-6-4">
+                    <p><strong>Proposição 4.6.4 (Entropia).</strong> Com $h(x) = -x\ln x - (1 - x)\ln(1 - x)$ e
+                        $x_\pm = N_\pm/N = (1 \mp \varepsilon)/2$,</p>
+                    <p>
+                        $$ \begin{aligned}
+                        S(E) &= -Nk_B\big[x_+\ln x_+ + x_-\ln x_-\big] + k_BR \\
+                        &= Nk_B\,h(x_+) + k_BR, \\
+                        \lvert R\rvert &\le 1 + 2\ln(N + 1).
+                        \end{aligned} \tag{4.6.2} $$
+                    </p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Por (4.6.1), $S = k_B\ln\binom{N}{N_+}$, e a
+                    <a href="[01] - Motivação e Roteiro.html#prop-4-1-12">Proposição 4.1.12</a> dá
+                    $\ln\binom{N}{N_+} = N\,h(N_+/N) + R$ com essa cota para $R$, obtida da forma fraca de Stirling. Como
+                    $x_- = 1 - x_+$, as duas formas de $Nh(x_+)$ coincidem. $\blacksquare$
+                </p>
+
+                <p id="obs-4-6-5"><strong>Observação 4.6.5 (A forma de $S(E)$).</strong> O termo principal,
+                    $S/(Nk_B) = h\big((1 - \varepsilon)/2\big)$, é simétrico em $\varepsilon$ e côncavo, porque
+                    $h''(x) = -1/[x(1 - x)] \lt 0$. O seu máximo é em $x_+ = \tfrac12$, isto é, em $E = 0$, onde
+                    $h'(\tfrac12) = 0$ e $S = Nk_B\ln2$: metade dos momentos para cada lado, o macroestado de maior
+                    multiplicidade, com $\binom{N}{N/2} \approx 2^N$. Nos extremos $E = \mp N\mu B$, há um único estado, e
+                    $S = 0$ exatamente. A <a href="#fig-4-6-1">Figura 4.6.1</a>(a) mostra a curva. Para $E \lt 0$, $S$ cresce
+                    com $E$, como em todo sistema dos tópicos anteriores; para $E \gt 0$, $S$ decresce. É aqui que o
+                    espectro limitado faz diferença.</p>
+
+                <h2 id="termodinamica">Temperatura, magnetização e calor específico</h2>
+
+                <p>
+                    O espectro é discreto, e $\ln\Omega$ só está definido nos níveis. Para a temperatura usamos as
+                    diferenças finitas exatas entre níveis vizinhos e comparamos com a derivada do termo principal de
+                    (4.6.2), como no <a href="[04] - Contato Térmico e Entropia.html#ex-4-4-7">Exemplo 4.4.7</a>.
+                </p>
+
+                <div class="definition-box" id="prop-4-6-6">
+                    <p><strong>Proposição 4.6.6 (Temperatura).</strong> Para $0 \lt N_+ \lt N$, as diferenças finitas de
+                        $\ln\Omega$ para frente e para trás são</p>
+                    <p>
+                        $$ \begin{aligned}
+                        \frac{\ln\Omega(E + 2\mu B) - \ln\Omega(E)}{2\mu B} &= \frac{1}{2\mu B}\ln\frac{N_+}{N_- + 1}, \\
+                        \frac{\ln\Omega(E) - \ln\Omega(E - 2\mu B)}{2\mu B} &= \frac{1}{2\mu B}\ln\frac{N_+ + 1}{N_-},
+                        \end{aligned} $$
+                    </p>
+                    <p>e a derivada do termo principal de (4.6.2) em relação a $E$, que fica entre as duas, dá</p>
+                    <p>$$ \frac1T = \frac{k_B}{2\mu B}\ln\frac{N_+}{N_-}. \tag{4.6.3} $$</p>
+                    <p>As duas diferenças finitas diferem por no máximo $(1/N_+ + 1/N_-)/(2\mu B)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Subir a energia de $2\mu B$ é inverter um momento alinhado: $N_+$ passa a
+                    $N_+ - 1$ e $N_-$ a $N_- + 1$. Logo
+                    $\Omega(E + 2\mu B)/\Omega(E) = \binom{N}{N_+ - 1}\big/\binom{N}{N_+} = N_+/(N_- + 1)$, e, do mesmo modo,
+                    $\Omega(E)/\Omega(E - 2\mu B) = \binom{N}{N_+}\big/\binom{N}{N_+ + 1} = (N_+ + 1)/N_-$. Para o termo
+                    principal, $dx_+/dE = -1/(2N\mu B)$ e $h'(x) = \ln[(1 - x)/x]$, de modo que
+                    $\dfrac{d}{dE}\big[N\,h(x_+)\big] = N\ln\dfrac{x_-}{x_+}\cdot\left(-\dfrac{1}{2N\mu B}\right) = \dfrac{1}{2\mu B}\ln\dfrac{N_+}{N_-}$;
+                    multiplicando por $k_B$, temos (4.6.3). As desigualdades
+                    $N_+/(N_- + 1) \lt N_+/N_- \lt (N_+ + 1)/N_-$ mostram que ela fica entre as diferenças finitas, e a
+                    diferença entre os logaritmos destas é
+                    $\ln(1 + 1/N_+) + \ln(1 + 1/N_-) \le 1/N_+ + 1/N_-$. $\blacksquare$
+                </p>
+
+                <p>
+                    A ambiguidade de $\beta$ entre as duas diferenças finitas é relativa à ordem de $1/N$, desprezível
+                    para um sistema macroscópico com $N_+$ e $N_-$ ambos grandes. A fórmula (4.6.3) já tinha aparecido no
+                    <a href="[04] - Contato Térmico e Entropia.html#ex-4-4-15">Exemplo 4.4.15</a>; agora podemos invertê-la.
+                </p>
+
+                <div class="definition-box" id="cor-4-6-7">
+                    <p><strong>Corolário 4.6.7 (Energia e magnetização).</strong> Para todo $\beta$ real, positivo ou
+                        negativo,</p>
+                    <p>
+                        $$ \begin{aligned}
+                        \frac{N_\pm}{N} &= \frac{e^{\pm\beta\mu B}}{2\cosh(\beta\mu B)}, \\
+                        E &= -N\mu B\tanh(\beta\mu B), \\
+                        M &= N\mu\tanh(\beta\mu B).
+                        \end{aligned} \tag{4.6.4} $$
+                    </p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Exponenciando (4.6.3), $N_+/N_- = e^{2\beta\mu B}$. Com $x_+ + x_- = 1$,
+                    $x_+ = e^{2\beta\mu B}/(1 + e^{2\beta\mu B}) = e^{\beta\mu B}/(e^{\beta\mu B} + e^{-\beta\mu B})$, e
+                    $x_- = e^{-\beta\mu B}/(e^{\beta\mu B} + e^{-\beta\mu B})$. Então
+                    $\varepsilon = x_- - x_+ = -\tanh(\beta\mu B)$, o que dá $E = N\mu B\varepsilon$ e $M = -E/B$. Nenhum
+                    passo usou o sinal de $\beta$. $\blacksquare$
+                </p>
+
+                <p>
+                    Quando $\beta$ percorre a reta de $+\infty$ a $-\infty$, a energia $-N\mu B\tanh(\beta\mu B)$ cresce
+                    continuamente de $-N\mu B$ a $+N\mu B$. Os estados com $E \lt 0$ têm $\beta \gt 0$; o estado $E = 0$ tem
+                    $\beta = 0$; os estados com $E \gt 0$ têm $\beta \lt 0$. A
+                    <a href="#fig-4-6-1">Figura 4.6.1</a>(b) mostra a relação.
+                </p>
+
+                <figure class="lecture-figure" id="fig-4-6-1">
+                    <svg viewBox="0 0 640 300" role="img" aria-label="Dois painéis em função de E/(N mu B), de −1 a 1. Painel (a): a entropia por spin S/(N kB), uma curva em arco, simétrica, que vale 0 nos extremos −1 e 1 e tem máximo ln 2, cerca de 0,69, em E = 0, marcado por uma linha tracejada horizontal. Painel (b): beta mu B, uma curva decrescente que vai de +3 perto de E/(N mu B) = −1 até −3 perto de +1, passando por zero em E = 0, ponto marcado; à esquerda, onde a curva é positiva, o rótulo T &gt; 0; à direita, onde é negativa, o rótulo T &lt; 0. A inclinação de S no painel (a) é proporcional ao valor da curva do painel (b).">
+<line x1="62" y1="250" x2="304" y2="250" class="fig-axis"/>
+<line x1="179" y1="250" x2="179" y2="36" class="fig-axis"/>
+<line x1="62" y1="250" x2="62" y2="255" class="fig-axis"/>
+<text x="62" y="269" text-anchor="middle" class="fig-label fig-small">−1</text>
+<line x1="120.5" y1="250" x2="120.5" y2="255" class="fig-axis"/>
+<text x="120.5" y="269" text-anchor="middle" class="fig-label fig-small">−0,5</text>
+<line x1="179" y1="250" x2="179" y2="255" class="fig-axis"/>
+<text x="179" y="269" text-anchor="middle" class="fig-label fig-small">0</text>
+<line x1="237.5" y1="250" x2="237.5" y2="255" class="fig-axis"/>
+<text x="237.5" y="269" text-anchor="middle" class="fig-label fig-small">0,5</text>
+<line x1="296" y1="250" x2="296" y2="255" class="fig-axis"/>
+<text x="296" y="269" text-anchor="middle" class="fig-label fig-small">1</text>
+<line x1="62" y1="71.5" x2="296" y2="71.5" class="fig-guide fig-dashed"/>
+<text x="64" y="65.5" class="fig-label fig-small">ln 2</text>
+<path d="M62,250 L62.6,245.5 L63.2,241.9 L63.8,238.6 L64.3,235.6 L64.9,232.7 L65.5,229.9 L66.1,227.3 L66.7,224.8 L67.3,222.3 L67.9,219.9 L68.4,217.6 L69,215.3 L69.6,213.1 L70.2,210.9 L70.8,208.8 L71.4,206.8 L71.9,204.7 L72.5,202.7 L73.1,200.8 L73.7,198.9 L74.3,197 L74.9,195.2 L75.5,193.3 L76,191.6 L76.6,189.8 L77.2,188.1 L77.8,186.4 L78.4,184.7 L79,183 L79.6,181.4 L80.1,179.8 L80.7,178.2 L81.3,176.7 L81.9,175.1 L82.5,173.6 L83.1,172.1 L83.6,170.6 L84.2,169.2 L84.8,167.7 L85.4,166.3 L86,164.9 L86.6,163.5 L87.2,162.1 L87.7,160.8 L88.3,159.4 L88.9,158.1 L89.5,156.8 L90.1,155.5 L90.7,154.2 L91.2,153 L91.8,151.7 L92.4,150.5 L93,149.3 L93.6,148.1 L94.2,146.9 L94.8,145.7 L95.3,144.6 L95.9,143.4 L96.5,142.3 L97.1,141.2 L97.7,140 L98.3,138.9 L98.9,137.9 L99.4,136.8 L100,135.7 L100.6,134.7 L101.2,133.6 L101.8,132.6 L102.4,131.6 L102.9,130.6 L103.5,129.6 L104.1,128.6 L104.7,127.6 L105.3,126.7 L105.9,125.7 L106.5,124.8 L107,123.9 L107.6,123 L108.2,122 L108.8,121.1 L109.4,120.3 L110,119.4 L110.6,118.5 L111.1,117.7 L111.7,116.8 L112.3,116 L112.9,115.1 L113.5,114.3 L114.1,113.5 L114.6,112.7 L115.2,111.9 L115.8,111.1 L116.4,110.4 L117,109.6 L117.6,108.8 L118.2,108.1 L118.7,107.4 L119.3,106.6 L119.9,105.9 L120.5,105.2 L121.1,104.5 L121.7,103.8 L122.3,103.1 L122.8,102.4 L123.4,101.8 L124,101.1 L124.6,100.5 L125.2,99.8 L125.8,99.2 L126.4,98.5 L126.9,97.9 L127.5,97.3 L128.1,96.7 L128.7,96.1 L129.3,95.5 L129.9,94.9 L130.4,94.4 L131,93.8 L131.6,93.3 L132.2,92.7 L132.8,92.2 L133.4,91.6 L134,91.1 L134.5,90.6 L135.1,90.1 L135.7,89.6 L136.3,89.1 L136.9,88.6 L137.5,88.1 L138.1,87.6 L138.6,87.2 L139.2,86.7 L139.8,86.2 L140.4,85.8 L141,85.4 L141.6,84.9 L142.1,84.5 L142.7,84.1 L143.3,83.7 L143.9,83.3 L144.5,82.9 L145.1,82.5 L145.7,82.1 L146.2,81.7 L146.8,81.4 L147.4,81 L148,80.7 L148.6,80.3 L149.2,80 L149.8,79.6 L150.3,79.3 L150.9,79 L151.5,78.7 L152.1,78.4 L152.7,78.1 L153.3,77.8 L153.8,77.5 L154.4,77.2 L155,77 L155.6,76.7 L156.2,76.4 L156.8,76.2 L157.4,75.9 L157.9,75.7 L158.5,75.5 L159.1,75.3 L159.7,75 L160.3,74.8 L160.9,74.6 L161.4,74.4 L162,74.2 L162.6,74 L163.2,73.9 L163.8,73.7 L164.4,73.5 L165,73.4 L165.5,73.2 L166.1,73.1 L166.7,72.9 L167.3,72.8 L167.9,72.7 L168.5,72.6 L169.1,72.4 L169.6,72.3 L170.2,72.2 L170.8,72.1 L171.4,72.1 L172,72 L172.6,71.9 L173.1,71.8 L173.7,71.8 L174.3,71.7 L174.9,71.7 L175.5,71.6 L176.1,71.6 L176.7,71.6 L177.2,71.5 L177.8,71.5 L178.4,71.5 L179,71.5 L179.6,71.5 L180.2,71.5 L180.8,71.5 L181.3,71.6 L181.9,71.6 L182.5,71.6 L183.1,71.7 L183.7,71.7 L184.3,71.8 L184.9,71.8 L185.4,71.9 L186,72 L186.6,72.1 L187.2,72.1 L187.8,72.2 L188.4,72.3 L188.9,72.4 L189.5,72.6 L190.1,72.7 L190.7,72.8 L191.3,72.9 L191.9,73.1 L192.5,73.2 L193,73.4 L193.6,73.5 L194.2,73.7 L194.8,73.9 L195.4,74 L196,74.2 L196.5,74.4 L197.1,74.6 L197.7,74.8 L198.3,75 L198.9,75.3 L199.5,75.5 L200.1,75.7 L200.6,75.9 L201.2,76.2 L201.8,76.4 L202.4,76.7 L203,77 L203.6,77.2 L204.2,77.5 L204.7,77.8 L205.3,78.1 L205.9,78.4 L206.5,78.7 L207.1,79 L207.7,79.3 L208.2,79.6 L208.8,80 L209.4,80.3 L210,80.7 L210.6,81 L211.2,81.4 L211.8,81.7 L212.3,82.1 L212.9,82.5 L213.5,82.9 L214.1,83.3 L214.7,83.7 L215.3,84.1 L215.9,84.5 L216.4,84.9 L217,85.4 L217.6,85.8 L218.2,86.2 L218.8,86.7 L219.4,87.2 L220,87.6 L220.5,88.1 L221.1,88.6 L221.7,89.1 L222.3,89.6 L222.9,90.1 L223.5,90.6 L224,91.1 L224.6,91.6 L225.2,92.2 L225.8,92.7 L226.4,93.3 L227,93.8 L227.6,94.4 L228.1,94.9 L228.7,95.5 L229.3,96.1 L229.9,96.7 L230.5,97.3 L231.1,97.9 L231.7,98.5 L232.2,99.2 L232.8,99.8 L233.4,100.5 L234,101.1 L234.6,101.8 L235.2,102.4 L235.7,103.1 L236.3,103.8 L236.9,104.5 L237.5,105.2 L238.1,105.9 L238.7,106.6 L239.3,107.4 L239.8,108.1 L240.4,108.8 L241,109.6 L241.6,110.4 L242.2,111.1 L242.8,111.9 L243.3,112.7 L243.9,113.5 L244.5,114.3 L245.1,115.1 L245.7,116 L246.3,116.8 L246.9,117.7 L247.4,118.5 L248,119.4 L248.6,120.3 L249.2,121.1 L249.8,122 L250.4,123 L251,123.9 L251.5,124.8 L252.1,125.7 L252.7,126.7 L253.3,127.6 L253.9,128.6 L254.5,129.6 L255,130.6 L255.6,131.6 L256.2,132.6 L256.8,133.6 L257.4,134.7 L258,135.7 L258.6,136.8 L259.1,137.9 L259.7,138.9 L260.3,140 L260.9,141.2 L261.5,142.3 L262.1,143.4 L262.7,144.6 L263.2,145.7 L263.8,146.9 L264.4,148.1 L265,149.3 L265.6,150.5 L266.2,151.7 L266.8,153 L267.3,154.2 L267.9,155.5 L268.5,156.8 L269.1,158.1 L269.7,159.4 L270.3,160.8 L270.8,162.1 L271.4,163.5 L272,164.9 L272.6,166.3 L273.2,167.7 L273.8,169.2 L274.4,170.6 L274.9,172.1 L275.5,173.6 L276.1,175.1 L276.7,176.7 L277.3,178.2 L277.9,179.8 L278.5,181.4 L279,183 L279.6,184.7 L280.2,186.4 L280.8,188.1 L281.4,189.8 L282,191.6 L282.5,193.3 L283.1,195.2 L283.7,197 L284.3,198.9 L284.9,200.8 L285.5,202.7 L286.1,204.7 L286.6,206.8 L287.2,208.8 L287.8,210.9 L288.4,213.1 L289,215.3 L289.6,217.6 L290.1,219.9 L290.7,222.3 L291.3,224.8 L291.9,227.3 L292.5,229.9 L293.1,232.7 L293.7,235.6 L294.2,238.6 L294.8,241.9 L295.4,245.5 L296,250" class="fig-curve"/>
+<text x="179" y="288" text-anchor="middle" class="fig-label fig-it">E/(NμB)</text>
+<text x="185" y="30" class="fig-label fig-it">S/(N k_B)</text>
+<text x="292" y="30" text-anchor="end" class="fig-label">(a)</text>
+<line x1="382" y1="147" x2="624" y2="147" class="fig-axis"/>
+<line x1="499" y1="254" x2="499" y2="36" class="fig-axis"/>
+<line x1="382" y1="147" x2="382" y2="152" class="fig-axis"/>
+<text x="382" y="166" text-anchor="middle" class="fig-label fig-small">−1</text>
+<line x1="440.5" y1="147" x2="440.5" y2="152" class="fig-axis"/>
+<text x="440.5" y="166" text-anchor="middle" class="fig-label fig-small">−0,5</text>
+<line x1="557.5" y1="147" x2="557.5" y2="152" class="fig-axis"/>
+<text x="557.5" y="138" text-anchor="middle" class="fig-label fig-small">0,5</text>
+<line x1="616" y1="147" x2="616" y2="152" class="fig-axis"/>
+<text x="616" y="138" text-anchor="middle" class="fig-label fig-small">1</text>
+<line x1="494" y1="250" x2="499" y2="250" class="fig-axis"/>
+<text x="490" y="254" text-anchor="end" class="fig-label fig-small">−3</text>
+<line x1="494" y1="215.7" x2="499" y2="215.7" class="fig-axis"/>
+<text x="490" y="219.7" text-anchor="end" class="fig-label fig-small">−2</text>
+<line x1="494" y1="181.3" x2="499" y2="181.3" class="fig-axis"/>
+<text x="490" y="185.3" text-anchor="end" class="fig-label fig-small">−1</text>
+<line x1="494" y1="112.7" x2="499" y2="112.7" class="fig-axis"/>
+<text x="490" y="116.7" text-anchor="end" class="fig-label fig-small">1</text>
+<line x1="494" y1="78.3" x2="499" y2="78.3" class="fig-axis"/>
+<text x="490" y="82.3" text-anchor="end" class="fig-label fig-small">2</text>
+<line x1="494" y1="44" x2="499" y2="44" class="fig-axis"/>
+<text x="490" y="48" text-anchor="end" class="fig-label fig-small">3</text>
+<path d="M382.6,44.2 L383.2,56.1 L383.7,63.1 L384.3,68.1 L384.9,71.9 L385.5,75.1 L386.1,77.8 L386.7,80.1 L387.2,82.2 L387.8,84 L388.4,85.7 L389,87.2 L389.6,88.7 L390.2,90 L390.7,91.2 L391.3,92.4 L391.9,93.4 L392.5,94.5 L393.1,95.4 L393.6,96.4 L394.2,97.3 L394.8,98.1 L395.4,98.9 L396,99.7 L396.6,100.4 L397.1,101.1 L397.7,101.8 L398.3,102.5 L398.9,103.2 L399.5,103.8 L400,104.4 L400.6,105 L401.2,105.6 L401.8,106.1 L402.4,106.7 L403,107.2 L403.5,107.7 L404.1,108.2 L404.7,108.7 L405.3,109.2 L405.9,109.7 L406.5,110.1 L407,110.6 L407.6,111 L408.2,111.4 L408.8,111.9 L409.4,112.3 L409.9,112.7 L410.5,113.1 L411.1,113.5 L411.7,113.9 L412.3,114.3 L412.9,114.6 L413.4,115 L414,115.4 L414.6,115.7 L415.2,116.1 L415.8,116.4 L416.3,116.8 L416.9,117.1 L417.5,117.5 L418.1,117.8 L418.7,118.1 L419.3,118.4 L419.8,118.7 L420.4,119.1 L421,119.4 L421.6,119.7 L422.2,120 L422.7,120.3 L423.3,120.6 L423.9,120.9 L424.5,121.2 L425.1,121.4 L425.7,121.7 L426.2,122 L426.8,122.3 L427.4,122.6 L428,122.8 L428.6,123.1 L429.2,123.4 L429.7,123.6 L430.3,123.9 L430.9,124.1 L431.5,124.4 L432.1,124.7 L432.6,124.9 L433.2,125.2 L433.8,125.4 L434.4,125.7 L435,125.9 L435.6,126.1 L436.1,126.4 L436.7,126.6 L437.3,126.9 L437.9,127.1 L438.5,127.3 L439,127.6 L439.6,127.8 L440.2,128 L440.8,128.3 L441.4,128.5 L442,128.7 L442.5,128.9 L443.1,129.2 L443.7,129.4 L444.3,129.6 L444.9,129.8 L445.4,130 L446,130.2 L446.6,130.5 L447.2,130.7 L447.8,130.9 L448.4,131.1 L448.9,131.3 L449.5,131.5 L450.1,131.7 L450.7,131.9 L451.3,132.1 L451.9,132.3 L452.4,132.5 L453,132.7 L453.6,132.9 L454.2,133.1 L454.8,133.3 L455.3,133.5 L455.9,133.7 L456.5,133.9 L457.1,134.1 L457.7,134.3 L458.3,134.5 L458.8,134.7 L459.4,134.9 L460,135.1 L460.6,135.3 L461.2,135.5 L461.7,135.7 L462.3,135.9 L462.9,136.1 L463.5,136.2 L464.1,136.4 L464.7,136.6 L465.2,136.8 L465.8,137 L466.4,137.2 L467,137.4 L467.6,137.5 L468.2,137.7 L468.7,137.9 L469.3,138.1 L469.9,138.3 L470.5,138.5 L471.1,138.6 L471.6,138.8 L472.2,139 L472.8,139.2 L473.4,139.4 L474,139.5 L474.6,139.7 L475.1,139.9 L475.7,140.1 L476.3,140.3 L476.9,140.4 L477.5,140.6 L478,140.8 L478.6,141 L479.2,141.1 L479.8,141.3 L480.4,141.5 L481,141.7 L481.5,141.8 L482.1,142 L482.7,142.2 L483.3,142.4 L483.9,142.5 L484.4,142.7 L485,142.9 L485.6,143.1 L486.2,143.2 L486.8,143.4 L487.4,143.6 L487.9,143.7 L488.5,143.9 L489.1,144.1 L489.7,144.3 L490.3,144.4 L490.9,144.6 L491.4,144.8 L492,144.9 L492.6,145.1 L493.2,145.3 L493.8,145.5 L494.3,145.6 L494.9,145.8 L495.5,146 L496.1,146.1 L496.7,146.3 L497.3,146.5 L497.8,146.7 L498.4,146.8 L499,147 L499.6,147.2 L500.2,147.3 L500.7,147.5 L501.3,147.7 L501.9,147.9 L502.5,148 L503.1,148.2 L503.7,148.4 L504.2,148.5 L504.8,148.7 L505.4,148.9 L506,149.1 L506.6,149.2 L507.1,149.4 L507.7,149.6 L508.3,149.7 L508.9,149.9 L509.5,150.1 L510.1,150.3 L510.6,150.4 L511.2,150.6 L511.8,150.8 L512.4,150.9 L513,151.1 L513.6,151.3 L514.1,151.5 L514.7,151.6 L515.3,151.8 L515.9,152 L516.5,152.2 L517,152.3 L517.6,152.5 L518.2,152.7 L518.8,152.9 L519.4,153 L520,153.2 L520.5,153.4 L521.1,153.6 L521.7,153.7 L522.3,153.9 L522.9,154.1 L523.4,154.3 L524,154.5 L524.6,154.6 L525.2,154.8 L525.8,155 L526.4,155.2 L526.9,155.4 L527.5,155.5 L528.1,155.7 L528.7,155.9 L529.3,156.1 L529.8,156.3 L530.4,156.5 L531,156.6 L531.6,156.8 L532.2,157 L532.8,157.2 L533.3,157.4 L533.9,157.6 L534.5,157.8 L535.1,157.9 L535.7,158.1 L536.3,158.3 L536.8,158.5 L537.4,158.7 L538,158.9 L538.6,159.1 L539.2,159.3 L539.7,159.5 L540.3,159.7 L540.9,159.9 L541.5,160.1 L542.1,160.3 L542.7,160.5 L543.2,160.7 L543.8,160.9 L544.4,161.1 L545,161.3 L545.6,161.5 L546.1,161.7 L546.7,161.9 L547.3,162.1 L547.9,162.3 L548.5,162.5 L549.1,162.7 L549.6,162.9 L550.2,163.1 L550.8,163.3 L551.4,163.5 L552,163.8 L552.6,164 L553.1,164.2 L553.7,164.4 L554.3,164.6 L554.9,164.8 L555.5,165.1 L556,165.3 L556.6,165.5 L557.2,165.7 L557.8,166 L558.4,166.2 L559,166.4 L559.5,166.7 L560.1,166.9 L560.7,167.1 L561.3,167.4 L561.9,167.6 L562.4,167.9 L563,168.1 L563.6,168.3 L564.2,168.6 L564.8,168.8 L565.4,169.1 L565.9,169.3 L566.5,169.6 L567.1,169.9 L567.7,170.1 L568.3,170.4 L568.8,170.6 L569.4,170.9 L570,171.2 L570.6,171.4 L571.2,171.7 L571.8,172 L572.3,172.3 L572.9,172.6 L573.5,172.8 L574.1,173.1 L574.7,173.4 L575.3,173.7 L575.8,174 L576.4,174.3 L577,174.6 L577.6,174.9 L578.2,175.3 L578.7,175.6 L579.3,175.9 L579.9,176.2 L580.5,176.5 L581.1,176.9 L581.7,177.2 L582.2,177.6 L582.8,177.9 L583.4,178.3 L584,178.6 L584.6,179 L585.1,179.4 L585.7,179.7 L586.3,180.1 L586.9,180.5 L587.5,180.9 L588.1,181.3 L588.6,181.7 L589.2,182.1 L589.8,182.6 L590.4,183 L591,183.4 L591.5,183.9 L592.1,184.3 L592.7,184.8 L593.3,185.3 L593.9,185.8 L594.5,186.3 L595,186.8 L595.6,187.3 L596.2,187.9 L596.8,188.4 L597.4,189 L598,189.6 L598.5,190.2 L599.1,190.8 L599.7,191.5 L600.3,192.2 L600.9,192.9 L601.4,193.6 L602,194.3 L602.6,195.1 L603.2,195.9 L603.8,196.7 L604.4,197.6 L604.9,198.6 L605.5,199.5 L606.1,200.6 L606.7,201.6 L607.3,202.8 L607.8,204 L608.4,205.3 L609,206.8 L609.6,208.3 L610.2,210 L610.8,211.8 L611.3,213.9 L611.9,216.2 L612.5,218.9 L613.1,222.1 L613.7,225.9 L614.3,230.9 L614.8,237.9 L615.4,249.8" class="fig-curve"/>
+<text x="382" y="185" class="fig-label fig-it">E/(NμB)</text>
+<text x="505" y="30" class="fig-label fig-it">βμB</text>
+<text x="612" y="30" text-anchor="end" class="fig-label">(b)</text>
+<text x="426.5" y="81.8" text-anchor="middle" class="fig-label fig-small">T &gt; 0</text>
+<text x="571.5" y="207.1" text-anchor="middle" class="fig-label fig-small">T &lt; 0</text>
+<circle cx="499" cy="147" r="3" class="fig-arrowhead"/>
+<text x="507" y="139" class="fig-label fig-small">β = 0</text>
+</svg>
+                    <figcaption><strong>Figura 4.6.1.</strong> O paramagneto ideal em função de $\varepsilon = E/(N\mu B)$,
+                        com o termo principal de Stirling. (a) A entropia por momento, $S/(Nk_B) = h\big((1 - \varepsilon)/2\big)$:
+                        nula nos extremos, máxima e igual a $\ln2$ em $E = 0$. (b) $\beta\mu B = -\operatorname{artanh}\varepsilon$,
+                        proporcional à inclinação da curva (a): positivo à esquerda, nulo em $E = 0$, negativo à direita.
+                        Uma temperatura absoluta muito grande, de qualquer sinal, corresponde a $\beta$ perto de zero; os
+                        estados com $E \gt 0$ têm temperatura negativa.</figcaption>
+                </figure>
+
+                <p id="obs-4-6-8"><strong>Observação 4.6.8 (Cada momento e o fator de Boltzmann).</strong> Pelo
+                    <a href="[03] - O Ensemble Microcanônico.html#ex-4-3-15">Exemplo 4.3.15</a>, $N_\pm/N$ é a probabilidade
+                    de um momento dado estar alinhado ou oposto. Por (4.6.4), essa probabilidade é proporcional a
+                    $e^{-\beta e_\sigma}$, em que $e_\sigma = -\mu B\sigma$ é a energia do momento no estado
+                    $\sigma$, e o denominador $2\cosh(\beta\mu B) = e^{\beta\mu B} + e^{-\beta\mu B}$ é a soma desses fatores.
+                    É o fator de Boltzmann, agora com um subsistema de dois estados e os outros $N - 1$ momentos fazendo o
+                    papel de reservatório, como os osciladores do
+                    <a href="[04] - Contato Térmico e Entropia.html#ex-4-4-10">Exemplo 4.4.10</a>. O
+                    <a href="../[4] - Ensemble Canônico/[05] - Paramagneto Ideal e Lei de Curie.html">tópico 5.5</a>
+                    parte dessa forma e refaz o paramagneto no ensemble canônico.</p>
+
+                <div class="definition-box" id="prop-4-6-9">
+                    <p><strong>Proposição 4.6.9 (Calor específico).</strong> Com $x = \beta\mu B = \mu B/(k_BT)$, a
+                        capacidade térmica a campo fixo é</p>
+                    <p>$$ C = \left(\frac{\partial E}{\partial T}\right)_{B,N} = Nk_B\,x^2\operatorname{sech}^2x, \tag{4.6.5} $$</p>
+                    <p>positiva para $T$ de qualquer sinal. Para $\lvert x\rvert$ pequeno (temperatura alta em módulo),
+                        $Nk_Bx^2(1 - x^2) \le C \le Nk_Bx^2$; para $x \to +\infty$ (temperatura baixa e positiva),
+                        $C = 4Nk_Bx^2e^{-2x}/(1 + e^{-2x})^2 \approx 4Nk_Bx^2e^{-2x}$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Derivando (4.6.4) com $x = \mu B/(k_BT)$, cuja derivada é
+                    $dx/dT = -\mu B/(k_BT^2)$,
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    \frac{dE}{dT} &= -N\mu B\operatorname{sech}^2x\,\frac{dx}{dT} \\
+                    &= N\mu B\operatorname{sech}^2x\,\frac{\mu B}{k_BT^2} = Nk_Bx^2\operatorname{sech}^2x.
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    A expressão é par em $x$ e positiva para $x \ne 0$. Como $\operatorname{sech}^2x = 1 - \tanh^2x$ e
+                    $\lvert\tanh x\rvert \le \lvert x\rvert$, vale $1 - x^2 \le \operatorname{sech}^2x \le 1$, o que dá as cotas
+                    para $x$ pequeno. Por fim,
+                    $\operatorname{sech}^2x = 4/(e^x + e^{-x})^2 = 4e^{-2x}/(1 + e^{-2x})^2$. $\blacksquare$
+                </p>
+
+                <p>
+                    Os dois limites são característicos. Em temperatura alta, $C$ cai como $1/T^2$, porque a energia já está
+                    perto do seu valor máximo de entropia, $E = 0$, e não há mais o que absorver. Em temperatura baixa, $C$
+                    é exponencialmente pequeno: para inverter um momento é preciso a energia $2\mu B$, e a fração de
+                    momentos invertidos é da ordem de $e^{-2\mu B/k_BT}$. Esse "congelamento" de um grau de liberdade com
+                    um intervalo de energia reaparece no sólido de Einstein
+                    (<a href="[07] - Sólido de Einstein.html">tópico 4.7</a>). Entre os dois limites, $C$ tem um máximo, a
+                    <strong>anomalia de Schottky</strong> (<a href="#exr-4-6-5">Exercício 4.6.5</a>). A capacidade
+                    (4.6.5) é só a dos momentos; a de um sal real inclui a das vibrações da rede.
+                </p>
+
+                <div class="definition-box" id="cor-4-6-10">
+                    <p><strong>Corolário 4.6.10 (Lei de Curie).</strong> Para $T \gt 0$ e $x = \mu B/(k_BT)$,</p>
+                    <p>
+                        $$ \begin{aligned}
+                        M &= \frac{N\mu^2B}{k_BT}\,(1 - r), \qquad 0 \le r \le \frac{x^2}{3}, \\
+                        \chi &= \left(\frac{\partial M}{\partial B}\right)_{B=0} = \frac{N\mu^2}{k_BT}.
+                        \end{aligned} \tag{4.6.6} $$
+                    </p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Seja $g(x) = x - \tanh x$. Então $g(0) = 0$ e
+                    $g'(x) = 1 - \operatorname{sech}^2x = \tanh^2x$, que fica entre $0$ e $x^2$. Integrando de $0$ a $x \gt 0$,
+                    $0 \le x - \tanh x \le x^3/3$, ou seja, $\tanh x = x(1 - r)$ com $0 \le r \le x^2/3$. Substituindo em
+                    $M = N\mu\tanh x$, obtemos a primeira fórmula. Derivando $M = N\mu\tanh(\mu B/k_BT)$ em $B$ e fazendo
+                    $B = 0$, $\chi = N\mu\cdot\mu/(k_BT)$. $\blacksquare$
+                </p>
+
+                <p>
+                    A magnetização é linear no campo enquanto $\mu B \ll k_BT$, e a suscetibilidade é inversamente
+                    proporcional à temperatura: é a lei de Curie, $\chi = \mathcal{C}/T$, com constante de Curie
+                    $\mathcal{C} = N\mu^2/k_B$. A agitação térmica desalinha os momentos, e quanto maior a temperatura,
+                    menor a resposta ao campo. Para $\mu B \gg k_BT$, $M$ satura em $N\mu$: todos os momentos alinhados.
+                </p>
+
+                <h2 id="temperatura-negativa">Temperaturas negativas</h2>
+
+                <p>
+                    Para $E \gt 0$, $N_+ \lt N_-$, e (4.6.3) dá $1/T \lt 0$: mais momentos opostos que alinhados ao campo,
+                    uma <strong>inversão de população</strong>. Antes de discutir o que isso significa, precisamos
+                    conferir que a conclusão não depende da contagem usada, como as do
+                    <a href="[03] - O Ensemble Microcanônico.html">tópico 4.3</a> não dependiam.
+                </p>
+
+                <p id="obs-4-6-11"><strong>Observação 4.6.11 ($\Omega$ e $\Phi$ com espectro limitado).</strong> A
+                    insensibilidade à largura da casca
+                    (<a href="[03] - O Ensemble Microcanônico.html#cor-4-3-12">Corolário 4.3.12</a>) foi provada para
+                    $\Phi \propto E^{aN}$, em que quase todos os estados abaixo de $E$ estão perto de $E$. Aqui, para
+                    $E \lt 0$, ainda é assim: os níveis $E' \le E$ têm $N_+' \ge N_+ \gt N/2$, cada um com no máximo
+                    $\Omega(E)$ estados, e são no máximo $N + 1$; logo $\Omega(E) \le \Phi(E) \le (N + 1)\,\Omega(E)$, e os
+                    logaritmos diferem por no máximo $\ln(N + 1)$. Para $E \gt 0$, não: $\Phi(E)$ inclui todos os níveis com
+                    $E' \le 0$, isto é, com $N_+' \ge N/2$, que somam pelo menos metade dos $2^N$ estados; logo
+                    $(N - 1)\ln2 \le \ln\Phi(E) \le N\ln2$, enquanto $\ln\Omega(E) = Nh(x_+) + O(\ln N)$ fica abaixo de
+                    $N\ln2$ por uma quantidade da ordem de $N$. Com $N = 100$ e
+                    $N_+ = 30$ ($E = 40\mu B$), $\ln\Omega = 58{,}64$ e $\ln\Phi = 69{,}31$, que é $N\ln2$ até a segunda casa.
+                    Com $\Phi$, a "temperatura" seria positiva para todo $E$, e enorme para $E \gt 0$. A escolha não é
+                    arbitrária: a grandeza que se iguala no contato térmico é a derivada de $\ln\Omega$, a contagem na
+                    casca, porque é o produto $\Omega_1\Omega_2$ que conta os microestados do composto
+                    (<a href="[04] - Contato Térmico e Entropia.html#prop-4-4-3">Proposição 4.4.3</a>). Por isso a
+                    <a href="[04] - Contato Térmico e Entropia.html#def-4-4-8">Definição 4.4.8</a> usa $\Omega$. Há na
+                    literatura quem prefira a entropia calculada com $\Phi$, e a questão foi debatida de novo nos anos
+                    2010; com a definição que deduzimos do contato térmico, as temperaturas negativas existem e têm o
+                    sentido da proposição seguinte.</p>
+
+                <div class="definition-box" id="prop-4-6-12">
+                    <p><strong>Proposição 4.6.12 (Uma temperatura negativa é mais quente que qualquer positiva).</strong>
+                        Ponha um paramagneto ideal $A$ com temperatura inicial $T_A \lt 0$ em contato térmico, com
+                        acoplamento fraco, com um sistema $B$ de temperatura inicial $T_B \gt 0$, com $\ln\Omega_A$ e
+                        $\ln\Omega_B$ estritamente côncavas. Então, na repartição mais provável depois do contato, $B$ tem
+                        mais energia do que tinha: a energia passa de $A$ para $B$, qualquer que seja $T_B \gt 0$. A
+                        temperatura comum final, $\tilde\beta$, fica entre $\beta_A$ e $\beta_B$ iniciais.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Inicialmente, $\beta_A = 1/(k_BT_A) \lt 0 \lt \beta_B$. Pela
+                    <a href="[04] - Contato Térmico e Entropia.html#prop-4-4-11">Proposição 4.4.11</a>, com $B$ no papel do
+                    sistema $1$, $\beta_B \gt \beta_A$ implica que a repartição mais provável dá a $B$ mais energia que a
+                    inicial. O termo principal de $\ln\Omega_A$ é côncavo (<a href="#obs-4-6-5">Observação 4.6.5</a>).
+                    Como $\beta_i = \partial\ln\Omega_i/\partial E_i$ é decrescente em $E_i$ para funções côncavas, $\beta_B$
+                    diminui quando $B$ ganha energia, e $\beta_A$ aumenta quando $A$ perde; no máximo elas se igualam, e o
+                    valor comum fica entre os iniciais. $\blacksquare$
+                </p>
+
+                <p>
+                    O sinal de $\tilde\beta$ depende dos tamanhos. Se $B$ é um corpo comum muito maior que $A$, ele absorve
+                    a energia quase sem mudar de temperatura, e $A$ termina com $\tilde\beta \gt 0$, com mais momentos
+                    alinhados que opostos. A passagem de $\beta \lt 0$ a $\beta \gt 0$ é contínua e passa por $\beta = 0$,
+                    em que $T$ salta de $-\infty$ a $+\infty$; nada de especial acontece ali, além de a energia passar
+                    por $E = 0$.
+                </p>
+
+                <p id="obs-4-6-13"><strong>Observação 4.6.13 (A escala natural é $\beta$).</strong> Ordenando os estados do
+                    mais frio para o mais quente, isto é, pelo sentido em que a energia flui, a ordem é: $T = 0^+$
+                    ($\beta = +\infty$, todos os momentos alinhados), as temperaturas positivas crescentes, $T = \pm\infty$
+                    (os dois são o mesmo estado, $\beta = 0$, $E = 0$), as temperaturas negativas de módulo decrescente e,
+                    por fim, $T = 0^-$ ($\beta = -\infty$, todos os momentos opostos). Em $\beta$, ou em $-1/T$, essa ordem é
+                    monótona, sem saltos; em $T$, ela passa pelo infinito. A temperatura negativa não é "abaixo do zero
+                    absoluto": é acima do infinito.</p>
+
+                <p id="obs-4-6-14"><strong>Observação 4.6.14 (Condições físicas).</strong> Três condições são
+                    necessárias. (i) A energia dos graus de liberdade considerados tem de ser limitada por cima. Graus de
+                    liberdade com energia cinética, como os de um gás ou as vibrações da rede, não são
+                    (<a href="#exr-4-6-6">Exercício 4.6.6</a>), e por isso estão sempre a temperatura positiva. (ii) Esses
+                    graus de liberdade têm de entrar em equilíbrio entre si, para que a temperatura faça sentido. (iii)
+                    Eles têm de ficar isolados dos demais por um tempo longo diante do tempo desse equilíbrio interno,
+                    porque, pela <a href="#prop-4-6-12">Proposição 4.6.12</a>, o contato com qualquer sistema comum os leva
+                    de volta a temperaturas positivas. Os spins nucleares de um cristal satisfazem as três: os spins
+                    trocam energia entre si depressa, e com a rede devagar. Em 1951, Purcell e Pound inverteram o campo
+                    magnético sobre os spins nucleares de um cristal de fluoreto de lítio mais depressa do que os spins
+                    conseguiam acompanhar, produzindo uma inversão de população que se comportou como um estado de
+                    temperatura negativa e voltou às temperaturas positivas ao trocar energia com a rede. A inversão de
+                    população dos lasers é parecida, mas é mantida fora do equilíbrio, e não se descreve por uma
+                    temperatura.</p>
+
+                <h2 id="conexao">Conexão com a termodinâmica e com o experimento</h2>
+
+                <p>
+                    <strong>A lei de Curie.</strong> A proporcionalidade entre a suscetibilidade e $1/T$ foi observada
+                    por Pierre Curie, no fim do século XIX, em substâncias paramagnéticas, antes de qualquer teoria
+                    microscópica. O <a href="#cor-4-6-10">Corolário 4.6.10</a> a explica: é a competição entre o campo, que
+                    alinha os momentos, e a agitação térmica, que os desalinha. Os sais paramagnéticos seguem a lei de
+                    Curie em uma larga faixa de temperaturas; os desvios aparecem em temperaturas baixas, quando a
+                    interação entre os momentos, desprezada no modelo, deixa de ser pequena diante de $k_BT$, e em campos
+                    fortes, quando $M$ satura. Para íons com momento angular maior que $\tfrac12$, a forma da curva
+                    $M(B/T)$ muda, e a constante de Curie passa a depender do momento angular; o
+                    <a href="../[4] - Ensemble Canônico/[05] - Paramagneto Ideal e Lei de Curie.html">tópico 5.5</a>
+                    trata desse caso no ensemble canônico, em que a conta fica bem mais simples.
+                </p>
+
+                <p>
+                    <strong>Desmagnetização adiabática.</strong> A entropia do paramagneto ideal depende de $B$ e $T$ só por
+                    meio de $B/T$ (<a href="#exr-4-6-4">Exercício 4.6.4</a>). Isso sugere uma técnica de resfriamento:
+                    magnetiza-se a amostra em um campo forte, em contato com um banho frio, o que diminui a entropia dos
+                    spins; isola-se a amostra; e diminui-se o campo devagar. Com $S$ constante, $T$ cai na proporção do
+                    campo. A técnica, proposta nos anos 1920, foi a primeira a levar sistemas a frações de kelvin, e a sua
+                    versão com spins nucleares chega a temperaturas ainda muito menores. O limite é a interação entre os
+                    momentos: quando o campo fica comparável ao campo que os momentos fazem uns sobre os outros, o modelo
+                    ideal deixa de valer, e $T$ não cai mais na proporção de $B$.
+                </p>
+
+                <p>
+                    <strong>Calor específico e temperaturas negativas.</strong> O máximo de $C$ previsto por (4.6.5), a
+                    anomalia de Schottky, é observado em sólidos que contêm íons com dois níveis próximos, sobreposto ao
+                    calor específico da rede; o <a href="../[4] - Ensemble Canônico/[07] - Gás Ideal e Sistemas de Dois Níveis.html">tópico 5.7</a>
+                    volta a ele. As temperaturas negativas, por sua vez, são observadas em sistemas de spins nucleares
+                    (<a href="#obs-4-6-14">Observação 4.6.14</a>) e, mais recentemente, em outros sistemas cuja energia é
+                    limitada por cima; em todos, elas exigem um subsistema isolado do resto por um tempo suficiente.
+                </p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p>
+                    Os exercícios testam a fórmula de Stirling em sistemas pequenos, estimam polarizações com valores
+                    físicos, analisam a desmagnetização adiabática e localizam o máximo do calor específico. As contas foram
+                    conferidas por computação simbólica e numérica.
+                </p>
+
+                <p id="exr-4-6-1"><strong>Exercício 4.6.1.</strong> Para $N = 4$ momentos, calcule $\Omega$ e $S/k_B$
+                    exatos em cada nível e compare com o termo principal $Nh(x_+)$ de (4.6.2).</p>
+
+                <p>
+                    <em>Solução.</em> Os níveis têm $N_+ = 4, 3, 2, 1, 0$, com $E/(\mu B) = -4, -2, 0, 2, 4$, e
+                    $\Omega = 1, 4, 6, 4, 1$.
+                </p>
+
+                <div style="overflow-x: auto;">
+                <table>
+                    <tr><th>$E/(\mu B)$</th><th>$-4$</th><th>$-2$</th><th>$0$</th><th>$2$</th><th>$4$</th></tr>
+                    <tr><td>$\Omega$</td><td>$1$</td><td>$4$</td><td>$6$</td><td>$4$</td><td>$1$</td></tr>
+                    <tr><td>$S/k_B = \ln\Omega$</td><td>$0$</td><td>$1{,}386$</td><td>$1{,}792$</td><td>$1{,}386$</td><td>$0$</td></tr>
+                    <tr><td>$Nh(x_+)$</td><td>$0$</td><td>$2{,}249$</td><td>$2{,}773$</td><td>$2{,}249$</td><td>$0$</td></tr>
+                </table>
+                </div>
+
+                <p>
+                    O termo principal superestima $\ln\Omega$ por $0{,}86$ e $0{,}98$ nos níveis intermediários, bem dentro
+                    da cota $1 + 2\ln5 = 4{,}22$ da <a href="#prop-4-6-4">Proposição 4.6.4</a>. Com $4$ momentos, o erro é
+                    da ordem do próprio valor: a fórmula de Stirling é uma afirmação sobre $N$ grande, e para $N = 4$ ela
+                    só acerta a forma, simétrica e com máximo em $E = 0$.
+                </p>
+
+                <p id="exr-4-6-2"><strong>Exercício 4.6.2.</strong> Para $N = 100$ e $N_+ = 70$, calcule o erro relativo
+                    do termo principal de (4.6.2) e o do termo principal corrigido pela fórmula de Stirling completa.</p>
+
+                <p>
+                    <em>Solução.</em> $\binom{100}{70} = 2{,}94\times10^{25}$, e $\ln\Omega = 58{,}642$. Com $x_+ = 0{,}7$,
+                    $Nh(0{,}7) = 100\,(-0{,}7\ln0{,}7 - 0{,}3\ln0{,}3) = 61{,}086$: erro relativo de $4{,}2\%$. A fórmula de
+                    Stirling completa (<a href="[01] - Motivação e Roteiro.html#teo-4-1-11">Teorema 4.1.11</a>),
+                    $\ln m! = m\ln m - m + \tfrac12\ln(2\pi m) + o(1)$, acrescenta a
+                    $\ln N! - \ln N_+! - \ln N_-!$ o termo
+                    $\tfrac12\ln(2\pi N) - \tfrac12\ln(2\pi N_+) - \tfrac12\ln(2\pi N_-) = -\tfrac12\ln\big(2\pi Nx_+x_-\big)$,
+                    que vale $-\tfrac12\ln(2\pi\cdot100\cdot0{,}21) = -2{,}441$. O resultado, $58{,}645$, difere do exato por
+                    $0{,}003$. O erro do termo principal, $2{,}4$, é de ordem $\ln N$, como prevê a proposição; por momento,
+                    é $0{,}024$, e cai como $(\ln N)/N$.
+                </p>
+
+                <p id="exr-4-6-3"><strong>Exercício 4.6.3.</strong> O momento magnético do próton é
+                    $\mu_p = 1{,}4106\times10^{-26}\ \text{J/T}$. Para prótons em $B = 1\ \text{T}$ a $300\ \text{K}$,
+                    calcule $\beta\mu B$ e a polarização $M/(N\mu)$. Compare com um momento da ordem do magneton de Bohr,
+                    $\mu_B = 9{,}274\times10^{-24}\ \text{J/T}$, a $300\ \text{K}$ e a $1\ \text{K}$.</p>
+
+                <p>
+                    <em>Solução.</em> $\beta\mu_pB = \dfrac{1{,}4106\times10^{-26}}{1{,}380649\times10^{-23}\times300} = 3{,}41\times10^{-6}$,
+                    e, pelo <a href="#cor-4-6-10">Corolário 4.6.10</a>, $M/(N\mu) = \tanh(3{,}41\times10^{-6}) = 3{,}41\times10^{-6}$:
+                    de cada milhão de prótons, só uns três a mais estão alinhados. É por isso que a ressonância magnética
+                    nuclear precisa de muitos núcleos para dar sinal. Para ter $\beta\mu_pB = 1$ em $1\ \text{T}$, seria
+                    preciso $T = \mu_p/k_B \approx 1{,}0\ \text{mK}$. Com um momento da ordem de $\mu_B$, cerca de $660$
+                    vezes maior, $\beta\mu B = 2{,}24\times10^{-3}$ a $300\ \text{K}$, ainda no regime de Curie, e
+                    $\beta\mu B = 0{,}672$ a $1\ \text{K}$, com polarização $\tanh0{,}672 = 0{,}586$, já longe do regime linear.
+                </p>
+
+                <p id="exr-4-6-4"><strong>Exercício 4.6.4.</strong> Mostre que, para o paramagneto ideal, a entropia só
+                    depende de $B/T$. Uma amostra é magnetizada em $B = 1\ \text{T}$ a $T = 1\ \text{K}$, isolada, e o campo
+                    é reduzido a $0{,}01\ \text{T}$. Qual a temperatura final? Por que a entropia não muda?</p>
+
+                <p>
+                    <em>Solução.</em> Pelo <a href="#cor-4-6-7">Corolário 4.6.7</a>, $x_+ = e^b/(2\cosh b)$ com
+                    $b = \mu B/(k_BT)$, e o termo principal da entropia é $S/(Nk_B) = h(x_+)$: só depende de $b$, isto é, de
+                    $B/T$. Derivando, com $h'(x_+) = \ln(x_-/x_+) = -2b$ e $dx_+/db = \tfrac12\operatorname{sech}^2b$, obtemos
+                    $\dfrac{d}{db}\dfrac{S}{Nk_B} = -b\operatorname{sech}^2b \lt 0$ para $b \gt 0$: a entropia é estritamente
+                    decrescente em $b$, e $S$ fixa determina $b$, isto é, $B/T$.
+                </p>
+
+                <p>
+                    A entropia não muda porque, com o campo sempre na mesma direção, o hamiltoniano
+                    $-\mu B(t)\sum_i\sigma_i$ não muda o estado de nenhum momento: cada $\sigma_i$ se conserva, qualquer que
+                    seja a rapidez da variação de $B$. Então $N_+$, $\Omega$ e $S$ ficam constantes, e $B/T$ também:
+                    $T_f = 1\ \text{K}\times0{,}01/1 = 0{,}01\ \text{K}$. Para um momento da ordem de $\mu_B$, $b = 0{,}672$
+                    no início, e a entropia dos spins é $0{,}510\,Nk_B$, abaixo do máximo $Nk_B\ln2 = 0{,}693\,Nk_B$: a
+                    magnetização no banho a $1\ \text{K}$ tirou dos spins a entropia $0{,}183\,Nk_B$, cedida ao banho como
+                    calor. No sal real, a temperatura final é limitada pela interação entre os momentos
+                    (<a href="#obs-4-6-2">Observação 4.6.2</a>), e a rede, em contato com os spins, também esfria, o que
+                    é possível porque a sua capacidade térmica a essas temperaturas é pequena.
+                </p>
+
+                <p id="exr-4-6-5"><strong>Exercício 4.6.5.</strong> Mostre que, para $T \gt 0$, a capacidade térmica
+                    (4.6.5) tem um único máximo, e calcule $k_BT/(\mu B)$ e $C/(Nk_B)$ nele.</p>
+
+                <p>
+                    <em>Solução.</em> Com $x = \mu B/(k_BT) \gt 0$, $C/(Nk_B) = x^2\operatorname{sech}^2x$, e
+                    $\dfrac{d}{dx}\big(x^2\operatorname{sech}^2x\big) = 2x\operatorname{sech}^2x\,(1 - x\tanh x)$. A função
+                    $x\tanh x$ é estritamente crescente para $x \gt 0$, de $0$ a $\infty$, e cruza $1$ em um único ponto $x^*$;
+                    a derivada é positiva antes e negativa depois, e $x^*$ é o único máximo. A equação $x\tanh x = 1$ não
+                    tem solução em forma fechada; numericamente, $x^* = 1{,}1997$. Logo o máximo está em
+                    $k_BT/(\mu B) = 1/x^* = 0{,}834$, com $C/(Nk_B) = x^{*2}\operatorname{sech}^2x^* = 0{,}439$. A temperatura do
+                    máximo é da ordem do intervalo entre os dois níveis, $2\mu B$, dividido por $k_B$: é o critério para
+                    reconhecer, em um calor específico medido, a presença de níveis com esse intervalo.
+                </p>
+
+                <p id="exr-4-6-6"><strong>Exercício 4.6.6.</strong> Por que um gás ideal não pode ter temperatura
+                    negativa?</p>
+
+                <p>
+                    <em>Solução.</em> Para o gás de partículas livres, $\Phi \propto V^NE^{3N/2}$
+                    (<a href="[05] - Interações Mecânica e Difusiva.html#ex-4-5-3">Exemplo 4.5.3</a> e
+                    <a href="[03] - O Ensemble Microcanônico.html#ex-4-3-10">Exemplo 4.3.10</a>). Pela
+                    <a href="[03] - O Ensemble Microcanônico.html#prop-4-3-11">Proposição 4.3.11</a>(c), com
+                    $n = 3N/2 \gt 1$, $\partial\ln\Omega/\partial E \ge (n - 1)/(E + \delta E) \gt 0$ para todo $E$: $\beta$ é
+                    sempre positivo. A razão é que a energia cinética não tem limite superior: aumentar a energia sempre
+                    aumenta o volume da bola no espaço dos momentos, e com ele o número de estados. Uma temperatura
+                    negativa exige que acrescentar energia diminua o número de estados, o que só acontece quando há uma
+                    energia máxima, como nos momentos magnéticos.
+                </p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <p>
+                    O paramagneto ideal é o primeiro sistema resolvido por completo a partir da contagem:
+                </p>
+
+                <ul>
+                    <li><strong>a contagem e a entropia</strong>, $\Omega = \binom{N}{N_+}$ e
+                        $S = Nk_Bh(x_+) + O(\ln N)$ (<a href="#prop-4-6-3">Proposição 4.6.3</a> e
+                        <a href="#prop-4-6-4">Proposição 4.6.4</a>), máxima em $E = 0$ e nula nos extremos
+                        (<a href="#obs-4-6-5">Observação 4.6.5</a>);</li>
+                    <li><strong>a temperatura</strong>, $1/T = (k_B/2\mu B)\ln(N_+/N_-)$, presa entre as diferenças finitas
+                        exatas (<a href="#prop-4-6-6">Proposição 4.6.6</a>), e, invertendo,
+                        <strong>a energia e a magnetização</strong> $M = N\mu\tanh(\beta\mu B)$
+                        (<a href="#cor-4-6-7">Corolário 4.6.7</a>), com cada momento seguindo o fator de Boltzmann
+                        (<a href="#obs-4-6-8">Observação 4.6.8</a>);</li>
+                    <li><strong>o calor específico</strong> $C = Nk_Bx^2\operatorname{sech}^2x$, com os seus limites e o
+                        máximo de Schottky (<a href="#prop-4-6-9">Proposição 4.6.9</a> e
+                        <a href="#exr-4-6-5">Exercício 4.6.5</a>), e <strong>a lei de Curie</strong>
+                        $\chi = N\mu^2/(k_BT)$ (<a href="#cor-4-6-10">Corolário 4.6.10</a>);</li>
+                    <li><strong>as temperaturas negativas</strong>: com espectro limitado, $\Omega$ e $\Phi$ deixam de ser
+                        equivalentes, e é $\Omega$ que o contato térmico iguala
+                        (<a href="#obs-4-6-11">Observação 4.6.11</a>); um sistema a temperatura negativa cede energia a
+                        qualquer sistema a temperatura positiva (<a href="#prop-4-6-12">Proposição 4.6.12</a>), e a escala
+                        natural é $\beta$ (<a href="#obs-4-6-13">Observação 4.6.13</a>).</li>
+                </ul>
+
+                <p>
+                    O paramagneto tem só dois estados por partícula. O próximo modelo tem infinitos: osciladores
+                    harmônicos quânticos, cada um com uma escada de níveis igualmente espaçados, sem limite superior. A
+                    contagem já foi feita no <a href="[04] - Contato Térmico e Entropia.html#lema-4-4-4">Lema 4.4.4</a>,
+                    e com ela Einstein explicou por que o calor específico dos sólidos cai a temperaturas baixas. É o assunto
+                    do próximo tópico, <a href="[07] - Sólido de Einstein.html">4.7 O Sólido de Einstein</a>.
+                </p>
 
             </div>
         </main>
@@ -169,7 +736,14 @@
             <div class="toc-container">
                 <h4>Nesta página</h4>
                 <ul>
-                    <li><a href="#dois-niveis-e-paramagneto">Sistemas de Dois Níveis e o Paramagneto Ideal</a></li>
+                    <li><a href="#dois-niveis-e-paramagneto">Dois Níveis e Paramagneto</a></li>
+                    <li><a href="#modelo">O modelo</a></li>
+                    <li><a href="#contagem">Contagem e entropia</a></li>
+                    <li><a href="#termodinamica">Temperatura, M e C</a></li>
+                    <li><a href="#temperatura-negativa">Temperaturas negativas</a></li>
+                    <li><a href="#conexao">Conexão</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
                 </ul>
             </div>
         </aside>

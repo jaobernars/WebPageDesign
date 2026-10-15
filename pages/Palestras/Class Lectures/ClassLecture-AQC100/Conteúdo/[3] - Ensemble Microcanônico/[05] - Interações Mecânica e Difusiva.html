@@ -160,7 +160,827 @@
                 <h1 id="interacoes-mecanica-e-difusiva">4.5 Interações Mecânica e Difusiva</h1>
                 <p class="lead">Pressão e potencial químico a partir da entropia, a relação fundamental da termodinâmica, a extensividade e os processos quase estáticos.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>
+                    No <a href="[04] - Contato Térmico e Entropia.html">tópico 4.4</a>, dois sistemas trocavam só
+                    energia, através de uma parede fixa e impermeável. A repartição mais provável igualava
+                    $\partial S/\partial E$ dos dois lados, e daí saíram a temperatura, a entropia de Boltzmann e a
+                    segunda lei. Agora deixamos a parede andar e deixamos as partículas atravessá-la. O argumento é o
+                    mesmo: a probabilidade de uma repartição é proporcional ao produto das contagens, e o equilíbrio é o
+                    seu máximo. Cada nova troca acrescenta uma condição, e cada condição define uma nova grandeza
+                    intensiva: a pressão, quando o volume é trocado, e o potencial químico, quando as partículas são.
+                </p>
+
+                <p>
+                    Reunidas, as três derivadas de $S(E, V, N)$ formam a relação fundamental
+                    $dE = T\,dS - p\,dV + \mu\,dN$, da qual toda a termodinâmica de equilíbrio de um fluido simples
+                    pode ser deduzida. Para que ela seja a da termodinâmica, falta uma ligação: a pressão definida pela
+                    entropia tem de ser a força por unidade de área que o fluido faz sobre a parede. Provamos isso
+                    diretamente para o gás ideal e citamos o resultado geral, a invariância adiabática do volume de
+                    fase. Por fim, mostramos que, se $S$ é extensiva, valem a relação de Euler e a de Gibbs–Duhem, e
+                    distinguimos os processos quase estáticos dos que não o são, com a expansão livre de um gás como
+                    exemplo.
+                </p>
+
+                <p>
+                    Usamos do tópico 4.4 a repartição da energia, a definição de temperatura e a segunda lei, e do
+                    <a href="[03] - O Ensemble Microcanônico.html">tópico 4.3</a> a contagem clássica e a
+                    insensibilidade à largura da casca. Neste tópico, $\mu$ é o potencial químico; o momento magnético
+                    não aparece.
+                </p>
+
+                <h2 id="parede-movel">Parede móvel: pressão</h2>
+
+                <p>
+                    Considere de novo os sistemas $1$ e $2$ da
+                    <a href="[04] - Contato Térmico e Entropia.html#def-4-4-1">Definição 4.4.1</a>, separados agora por
+                    uma parede diatérmica e impermeável que pode deslizar, como um pistão. O composto está isolado, com
+                    energia $E = E_1 + E_2$ e volume $V = V_1 + V_2$ fixos; a posição da parede determina $V_1$. A parede
+                    é um corpo macroscópico, e tratamos a sua posição como mais uma coordenada do composto, desprezando
+                    a sua energia e a sua entropia próprias. Com essa hipótese, o argumento da
+                    <a href="[04] - Contato Térmico e Entropia.html#prop-4-4-3">Proposição 4.4.3</a> se repete: para cada
+                    posição da parede, os microestados acessíveis são os pares de microestados dos dois sistemas, e a
+                    probabilidade de o sistema $1$ ter energia $E_1$ e volume $V_1$ é proporcional a
+                    $\Omega_1(E_1, V_1)\,\Omega_2(E - E_1, V - V_1)$. Omitimos $N_1$ e $N_2$, que estão fixos.
+                </p>
+
+                <div class="definition-box" id="prop-4-5-1">
+                    <p><strong>Proposição 4.5.1 (Equilíbrio térmico e mecânico).</strong> Sejam $\ln\Omega_1$ e
+                        $\ln\Omega_2$ deriváveis em $E$ e $V$, e seja
+                        $f(E_1, V_1) = \ln\Omega_1(E_1, V_1) + \ln\Omega_2(E - E_1, V - V_1)$. Se $f$ tem um máximo em um
+                        ponto $(\tilde E_1, \tilde V_1)$ interior ao seu domínio, então, com $\tilde E_2 = E - \tilde E_1$
+                        e $\tilde V_2 = V - \tilde V_1$,</p>
+                    <p>
+                        $$ \begin{aligned}
+                        \frac{\partial\ln\Omega_1}{\partial E_1}\bigg|_{(\tilde E_1, \tilde V_1)} &= \frac{\partial\ln\Omega_2}{\partial E_2}\bigg|_{(\tilde E_2, \tilde V_2)}, \\
+                        \frac{\partial\ln\Omega_1}{\partial V_1}\bigg|_{(\tilde E_1, \tilde V_1)} &= \frac{\partial\ln\Omega_2}{\partial V_2}\bigg|_{(\tilde E_2, \tilde V_2)}.
+                        \end{aligned} \tag{4.5.1} $$
+                    </p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Em um máximo interior de uma função derivável de duas variáveis, as duas
+                    derivadas parciais se anulam. Pela regra da cadeia,
+                    $\partial f/\partial E_1 = \partial_{E_1}\ln\Omega_1 - \partial_{E_2}\ln\Omega_2$ e
+                    $\partial f/\partial V_1 = \partial_{V_1}\ln\Omega_1 - \partial_{V_2}\ln\Omega_2$, com cada derivada
+                    calculada no seu ponto. Igualando as duas a zero, obtemos (4.5.1). $\blacksquare$
+                </p>
+
+                <p>
+                    A primeira condição é a igualdade das temperaturas. A segunda define uma nova grandeza.
+                </p>
+
+                <div class="definition-box" id="def-4-5-2" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.5.2 (Pressão).</strong> A <strong>pressão</strong> $p$ de um sistema com
+                        entropia $S(E, V, N)$ e temperatura $T$ é definida por</p>
+                    <p>
+                        $$ \begin{aligned}
+                        \frac pT &= \left(\frac{\partial S}{\partial V}\right)_{E,N}, \\
+                        p &= k_BT\left(\frac{\partial\ln\Omega}{\partial V}\right)_{E,N}.
+                        \end{aligned} \tag{4.5.2} $$
+                    </p>
+                </div>
+
+                <p>
+                    A grandeza $k_BT\,\partial\ln\Omega/\partial V$ tem dimensão de energia por volume, que é a de uma
+                    pressão. Com ela, (4.5.1) diz que, no equilíbrio através de uma parede móvel e diatérmica,
+                    $T_1 = T_2$ e $p_1/T_1 = p_2/T_2$, ou seja, $T_1 = T_2$ e $p_1 = p_2$. Se as temperaturas já são
+                    iguais e $p_1 \gt p_2$, então $\partial f/\partial V_1 = (p_1 - p_2)/(k_BT) \gt 0$: aumentar $V_1$ aumenta
+                    a probabilidade, e, com $f$ côncava, o volume do sistema de maior pressão cresce, como se espera de
+                    uma pressão. Que $p$ seja de fato a força por unidade de área sobre a parede é o que mostraremos a
+                    seguir, primeiro para o gás ideal e depois em geral.
+                </p>
+
+                <p id="ex-4-5-3"><strong>Exemplo 4.5.3 (Partículas sem interação).</strong> Sejam $N$ partículas de massa
+                    $m$ sem interação entre si, em um recipiente de volume $V$, com
+                    $\mathcal{H} = \sum_{i=1}^{N}\lvert\mathbf{p}_i\rvert^2/2m$ dentro do recipiente. A região
+                    $\mathcal{H} \le E$ do espaço de fase é o produto do recipiente, repetido $N$ vezes, de volume $V^N$,
+                    pela região $\sum_i\lvert\mathbf{p}_i\rvert^2 \le 2mE$ do espaço dos momentos, que não depende de
+                    $V$. Logo $\Phi(E, V) = V^Ng(E)$ e $\Omega = V^N\big[g(E + \delta E) - g(E)\big]$, em que $g$ não
+                    depende de $V$. Então $\partial\ln\Omega/\partial V = N/V$ exatamente, e (4.5.2) dá</p>
+
+                <p>$$ pV = Nk_BT. \tag{4.5.3} $$</p>
+
+                <p>
+                    O resultado não depende da forma de $g$, nem de $\delta E$, nem da forma do recipiente, nem do fator
+                    $1/N!$ do <a href="[09] - Paradoxo de Gibbs e Contagem Correta.html">tópico 4.9</a>, que não depende
+                    de $V$. Vale também para moléculas com graus de liberdade internos (rotação, vibração), desde que
+                    eles não dependam da posição, porque estes só multiplicam $\Phi$ por um fator independente de $V$.
+                    O <a href="[08] - Gás Ideal Clássico.html">tópico 4.8</a> calcula $g$ e a entropia completa.
+                </p>
+
+                <p id="obs-4-5-4"><strong>Observação 4.5.4 (A escala de temperatura).</strong> Os gases diluídos obedecem
+                    a $pV = nRT$, em que $n$ é o número de mols, $R$ a constante dos gases e $T$ a temperatura medida
+                    pelo termômetro de gás. Com $n = N/N_A$, em que $N_A$ é a constante de Avogadro, a comparação com
+                    (4.5.3) mostra duas coisas: a temperatura da
+                    <a href="[04] - Contato Térmico e Entropia.html#def-4-4-8">Definição 4.4.8</a> coincide com a do
+                    termômetro de gás, e $k_B = R/N_A$. É essa a identificação anunciada na
+                    <a href="[04] - Contato Térmico e Entropia.html#obs-4-4-9">Observação 4.4.9</a>. Desde 2019, os
+                    valores de $k_B$ e de $N_A = 6{,}02214076\times10^{23}\ \text{mol}^{-1}$ são exatos no Sistema
+                    Internacional, e $R = k_BN_A = 8{,}314462618\ldots\ \text{J/(mol K)}$.</p>
+
+                <h3 id="pressao-mecanica">Pressão termodinâmica e pressão mecânica</h3>
+
+                <p>
+                    A pressão mecânica é a força média por unidade de área que o sistema faz sobre a parede. Para o gás
+                    sem interações, ela pode ser calculada diretamente.
+                </p>
+
+                <p id="ex-4-5-5"><strong>Exemplo 4.5.5 (A pressão cinética do gás ideal).</strong> Tome um recipiente
+                    em forma de caixa, com comprimento $L$ na direção $x$ e uma parede de área $A$ em $x = L$, e as
+                    partículas do <a href="#ex-4-5-3">Exemplo 4.5.3</a>. Uma partícula com componente $v_x$ da velocidade
+                    vai e volta entre as paredes $x = 0$ e $x = L$; a cada ida e volta, que dura $2L/\lvert v_x\rvert$, ela
+                    bate uma vez na parede $x = L$ e lhe transfere momento $2m\lvert v_x\rvert$. A força média que ela faz
+                    sobre a parede é a razão, $mv_x^2/L$. Somando sobre as partículas e dividindo pela área,</p>
+
+                <p>$$ p_{\text{mec}} = \frac{1}{AL}\sum_{i=1}^{N}mv_{ix}^2 = \frac2V\sum_{i=1}^{N}\tfrac12mv_{ix}^2. $$</p>
+
+                <p>
+                    No ensemble microcanônico, a média de $\sum_i\tfrac12mv_{ix}^2$ é $E/3$: o hamiltoniano é simétrico
+                    pela troca das componentes $x$, $y$ e $z$ dos momentos, e as paredes só restringem as posições, de
+                    modo que as três somas $\sum_i\tfrac12mv_{ix}^2$, $\sum_i\tfrac12mv_{iy}^2$ e
+                    $\sum_i\tfrac12mv_{iz}^2$ têm a mesma média, e a soma delas é $E$. Logo $p_{\text{mec}} = 2E/(3V)$.
+                    Como $\Phi \propto E^{3N/2}$, o
+                    <a href="[04] - Contato Térmico e Entropia.html#exr-4-4-2">Exercício 4.4.2</a> dá
+                    $E = \tfrac32Nk_BT$, e então $p_{\text{mec}} = Nk_BT/V$, a pressão (4.5.3). Para o gás ideal, a
+                    pressão definida pela entropia é a pressão mecânica.
+                </p>
+
+                <p>
+                    Em geral, a parede entra no hamiltoniano por meio de um parâmetro externo. Se o volume é controlado
+                    por um pistão de área $A$ na posição $X$, com $V = AX$, a força que o sistema faz sobre o pistão é
+                    $-\partial\mathcal{H}/\partial X$, e a pressão mecânica é a média de
+                    $-\partial\mathcal{H}/\partial V = -A^{-1}\,\partial\mathcal{H}/\partial X$. A ligação com (4.5.2) vem de
+                    um resultado de mecânica que citamos.
+                </p>
+
+                <div class="definition-box" id="teo-4-5-6">
+                    <p><strong>Teorema 4.5.6 (Invariância adiabática do volume de fase; citado).</strong> Seja
+                        $\mathcal{H}(q, p; V)$ um hamiltoniano que depende de um parâmetro externo $V$, e suponha que, para
+                        cada $V$ fixo, o movimento em cada superfície de energia seja ergódico. Se $V$ varia lentamente,
+                        em um tempo muito maior que o necessário para a trajetória percorrer a superfície de energia, então
+                        a energia varia de modo que $\Phi(E, V)$ permanece constante, com um erro que tende a zero quando a
+                        variação se torna infinitamente lenta. Além disso, $\partial\Phi/\partial E = \omega(E)$ e
+                        $\partial\Phi/\partial V = -\omega(E)\,\langle\partial\mathcal{H}/\partial V\rangle_E$, em que
+                        $\langle\cdot\rangle_E$ é a média microcanônica na superfície de energia $E$, de modo que, ao longo
+                        do processo,</p>
+                    <p>$$ \frac{dE}{dV} = \left\langle\frac{\partial\mathcal{H}}{\partial V}\right\rangle_E. \tag{4.5.4} $$</p>
+                </div>
+
+                <p>
+                    <em>Ideia da demonstração.</em> Ao longo de uma trajetória, a energia muda à taxa
+                    $d\mathcal{H}/dt = (\partial\mathcal{H}/\partial V)\,dV/dt$ (é a
+                    <a href="[02] - Espaço de Fase e Teorema de Liouville.html#prop-4-2-5">Proposição 4.2.5</a> com
+                    dependência explícita no tempo). Se $V$ varia lentamente, $dV/dt$ é quase constante durante o tempo
+                    em que a trajetória percorre a superfície de energia, e $\partial\mathcal{H}/\partial V$ pode ser
+                    trocado pela sua média temporal, que, pela ergodicidade, é a média microcanônica
+                    $\langle\partial\mathcal{H}/\partial V\rangle_E$; isso dá (4.5.4). Derivando
+                    $\Phi = h^{-f}\int_{\mathcal{H}\le E}d^fq\,d^fp$ em relação a $V$, só o deslocamento da superfície
+                    $\mathcal{H} = E$ contribui, e obtém-se
+                    $\partial\Phi/\partial V = -\omega(E)\langle\partial\mathcal{H}/\partial V\rangle_E$. Então
+                    $d\Phi/dt = \omega(E)\big[dE/dt - \langle\partial\mathcal{H}/\partial V\rangle_E\,dV/dt\big] = 0$. A
+                    parte difícil é controlar o erro da troca pela média, que é a teoria dos invariantes adiabáticos; com
+                    um grau de liberdade, $h\Phi$ é a área $\oint p\,dq$ dentro da órbita, o invariante adiabático
+                    clássico. Referências: Huang, capítulo 6; Pathria e Beale, capítulo 1.
+                </p>
+
+                <div class="definition-box" id="cor-4-5-7">
+                    <p><strong>Corolário 4.5.7 (Pressão termodinâmica e pressão mecânica).</strong> Nas hipóteses do
+                        <a href="#teo-4-5-6">Teorema 4.5.6</a>, e com a entropia calculada por $S = k_B\ln\Phi$, uma
+                        variação lenta de $V$ em um sistema isolado mantém $S$ constante, e</p>
+                    <p>$$ \left(\frac{\partial E}{\partial V}\right)_{S,N} = -p, \qquad p = -\left\langle\frac{\partial\mathcal{H}}{\partial V}\right\rangle_E. $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pelo teorema, $\Phi$ e portanto $S = k_B\ln\Phi$ ficam constantes. Ao longo do
+                    processo, $S\big(E(V), V\big)$ é constante; derivando em $V$,
+                    $\dfrac{\partial S}{\partial E}\dfrac{dE}{dV} + \dfrac{\partial S}{\partial V} = 0$, e então
+                    $\dfrac{dE}{dV} = -\dfrac{\partial S/\partial V}{\partial S/\partial E} = -\dfrac{p/T}{1/T} = -p$.
+                    Comparando com (4.5.4), $p = -\langle\partial\mathcal{H}/\partial V\rangle_E$. $\blacksquare$
+                </p>
+
+                <p>
+                    O corolário usa $\ln\Phi$ no lugar de $\ln\Omega$. Pelo
+                    <a href="[03] - O Ensemble Microcanônico.html#cor-4-3-12">Corolário 4.3.12</a>, as derivadas em $E$ das
+                    duas coincidem a menos de uma fração que some quando $N \to \infty$ se $\Phi$ é uma potência de $E$; nos
+                    sistemas macroscópicos usuais admitimos o mesmo para as derivadas em $V$, e no gás ideal elas são
+                    iguais exatamente (<a href="#ex-4-5-3">Exemplo 4.5.3</a>). Com essa ressalva, a pressão definida pela
+                    entropia é a força média por unidade de área.
+                </p>
+
+                <p id="ex-4-5-8"><strong>Exemplo 4.5.8 (Expansão lenta do gás ideal).</strong> Vamos conferir o teorema
+                    no gás do <a href="#ex-4-5-3">Exemplo 4.5.3</a>, em uma caixa cúbica de lado $L$ cujas três faces
+                    em $x = L$, $y = L$ e $z = L$ se afastam lentamente, com velocidade $u$. Considere a componente $x$
+                    do movimento de uma partícula, com velocidade $v = \lvert v_x\rvert \gg u$. No referencial da parede
+                    que se afasta, a partícula chega com velocidade $v - u$ e volta com a mesma velocidade; de volta ao
+                    referencial do laboratório, a sua velocidade passa a ser $v - 2u$. Durante uma ida e volta, que dura
+                    cerca de $2L/v$, o lado cresce cerca de $2uL/v$. Assim, a cada ida e volta,</p>
+
+                <p>$$ (v - 2u)\left(L + \frac{2uL}{v}\right) = vL\left(1 - \frac{4u^2}{v^2}\right), $$</p>
+
+                <p>
+                    e o produto $vL$ muda por uma fração da ordem de $u^2/v^2$. Para o lado dobrar são necessárias da ordem
+                    de $v/u$ idas e voltas, e a mudança acumulada de $vL$ é da ordem de $u/v$, que tende a zero quando a
+                    expansão é lenta. Logo $\lvert v_x\rvert L$ é constante, e o mesmo vale para $y$ e $z$; a energia de cada
+                    partícula é proporcional a $L^{-2}$, e a energia total satisfaz $EV^{2/3} = \text{constante}$. Do lado
+                    estatístico, $\Phi \propto V^NE^{3N/2}$, e $\Phi$ constante equivale a $VE^{3/2}$ constante, isto é, a
+                    $EV^{2/3}$ constante: a dinâmica conserva $\Phi$, como afirma o teorema. Derivando,
+                    $dE/dV = -\tfrac23E/V = -p$, de acordo com o <a href="#ex-4-5-5">Exemplo 4.5.5</a> e o
+                    <a href="#cor-4-5-7">Corolário 4.5.7</a>. O gás sem interações não satisfaz a hipótese de
+                    ergodicidade do teorema, porque o módulo de cada componente da velocidade de cada partícula se
+                    conserva entre as variações da parede. A conclusão vale assim mesmo porque a expansão é igual nas três
+                    direções e cada produto $\lvert v_{ix}\rvert L$ é, separadamente, um invariante adiabático. Se só uma
+                    face se movesse, seriam as colisões entre as moléculas, ausentes no modelo, que redistribuiriam a
+                    energia entre as direções.
+                </p>
+
+                <h2 id="troca-de-particulas">Parede permeável: potencial químico</h2>
+
+                <p>
+                    Troque agora a parede por uma fixa, diatérmica e permeável a partículas de uma única espécie. O
+                    composto tem $E = E_1 + E_2$ e $N = N_1 + N_2$ fixos, e os volumes estão fixos. Aqui aparece uma
+                    sutileza de contagem, que precisa ser resolvida antes de repetir o argumento.
+                </p>
+
+                <div class="definition-box" id="prop-4-5-9">
+                    <p><strong>Proposição 4.5.9 (Equilíbrio difusivo).</strong> Suponha que $\Omega_i(E_i, N_i)$ conte os
+                        estados de $N_i$ partículas idênticas no sistema $i$ sem distinguir as partículas por rótulos, como
+                        na mecânica quântica, e que o acoplamento entre os sistemas seja fraco. Então a probabilidade de o
+                        sistema $1$ ter energia $E_1$ e $N_1$ partículas é proporcional a
+                        $\Omega_1(E_1, N_1)\,\Omega_2(E - E_1, N - N_1)$. Se $\ln\Omega_i$ é derivável em $E_i$ e em $N_i$
+                        (tratado como variável contínua) e o máximo é interior, então nele</p>
+                    <p>
+                        $$ \begin{aligned}
+                        \frac{\partial\ln\Omega_1}{\partial E_1} &= \frac{\partial\ln\Omega_2}{\partial E_2}, \\
+                        \frac{\partial\ln\Omega_1}{\partial N_1} &= \frac{\partial\ln\Omega_2}{\partial N_2}.
+                        \end{aligned} \tag{4.5.5} $$
+                    </p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Com $N_1$ partículas do lado $1$, um microestado do composto fica determinado
+                    por um estado das $N_1$ partículas do lado $1$ e um estado das $N - N_1$ do lado $2$. Como as
+                    partículas são idênticas e não têm rótulo, não há nada mais a especificar: "quais" partículas estão
+                    do lado $1$ não é uma pergunta com sentido. O número de microestados com $E_1$ e $N_1$ é, portanto,
+                    $\Omega_1(E_1, N_1)\,\Omega_2(E - E_1, N - N_1)$, e o postulado dá a probabilidade proporcional. As
+                    condições (4.5.5) vêm do máximo, como na <a href="#prop-4-5-1">Proposição 4.5.1</a>. $\blacksquare$
+                </p>
+
+                <p id="obs-4-5-10"><strong>Observação 4.5.10 (Por que contar sem rótulos).</strong> A contagem clássica
+                    $h^{-f}\int d^fq\,d^fp$ trata as partículas como rotuladas
+                    (<a href="[02] - Espaço de Fase e Teorema de Liouville.html#obs-4-2-27">Observação 4.2.27</a>). Com
+                    ela, dizer que há $N_1$ partículas do lado $1$ não basta: é preciso escolher quais, o que pode ser feito
+                    de $\binom{N}{N_1}$ modos, e o número de microestados com $N_1$ partículas do lado $1$ é
+                    $\binom{N}{N_1}\Omega_1^{\text{rot}}\Omega_2^{\text{rot}}$, em que $\Omega_i^{\text{rot}}$ é a contagem
+                    rotulada. Como
+                    $\binom{N}{N_1}\Omega_1^{\text{rot}}\Omega_2^{\text{rot}} = N!\,\dfrac{\Omega_1^{\text{rot}}}{N_1!}\,\dfrac{\Omega_2^{\text{rot}}}{N_2!}$
+                    e $N!$ é fixo, a distribuição de $N_1$ é governada por $\Omega_i^{\text{rot}}/N_i!$, e não por
+                    $\Omega_i^{\text{rot}}$. As duas contagens descrevem a mesma física, mas a grandeza que se iguala no
+                    equilíbrio difusivo é a derivada em $N$ de $\ln(\Omega^{\text{rot}}/N!)$. Enquanto $N$ estava fixo
+                    (tópicos 4.3 e 4.4 e a seção anterior), o fator $1/N!$ era uma constante sem efeito; com troca de
+                    partículas, ele é indispensável. O
+                    <a href="[09] - Paradoxo de Gibbs e Contagem Correta.html">tópico 4.9</a> mostra por que a contagem sem
+                    rótulos é a correta também para a entropia de um único sistema; daqui em diante, $\Omega(E, V, N)$ e
+                    $S$ se referem a ela sempre que $N$ variar.</p>
+
+                <div class="definition-box" id="def-4-5-11" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.5.11 (Potencial químico).</strong> O <strong>potencial químico</strong> $\mu$ de
+                        um sistema com entropia $S(E, V, N)$ e temperatura $T$ é definido por</p>
+                    <p>$$ \frac\mu T = -\left(\frac{\partial S}{\partial N}\right)_{E,V}. \tag{4.5.6} $$</p>
+                </div>
+
+                <p>
+                    Com ela, (4.5.5) diz que, no equilíbrio através de uma parede diatérmica e permeável, $T_1 = T_2$ e
+                    $\mu_1 = \mu_2$. O sinal negativo é uma convenção, escolhida para que as partículas passem do sistema
+                    de $\mu$ maior para o de $\mu$ menor, como a energia passa do sistema de $T$ maior para o de $T$ menor.
+                    Para provar isso de uma vez para todas as trocas, generalizamos a
+                    <a href="[04] - Contato Térmico e Entropia.html#prop-4-4-11">Proposição 4.4.11</a>.
+                </p>
+
+                <div class="definition-box" id="prop-4-5-12">
+                    <p><strong>Proposição 4.5.12 (Sentido das trocas).</strong> Seja
+                        $S_{\text{tot}}(E_1, N_1) = S_1(E_1, N_1) + S_2(E - E_1, N - N_1)$ estritamente côncava, com máximo
+                        em $(\tilde E_1, \tilde N_1)$, e seja $(E_1^0, N_1^0)$ o estado inicial, com temperaturas $T_i$ e
+                        potenciais químicos $\mu_i$ calculados nele. Se $(\tilde E_1, \tilde N_1) \ne (E_1^0, N_1^0)$, então
+                        $\Delta E_1 = \tilde E_1 - E_1^0$ e $\Delta N_1 = \tilde N_1 - N_1^0$ satisfazem</p>
+                    <p>$$ \left(\frac{1}{T_1} - \frac{1}{T_2}\right)\Delta E_1 - \left(\frac{\mu_1}{T_1} - \frac{\mu_2}{T_2}\right)\Delta N_1 \gt 0. $$</p>
+                    <p>Em particular, se $T_1 = T_2$ e $\mu_1 \gt \mu_2$ no estado inicial, então $\Delta N_1 \lt 0$: as
+                        partículas passam do sistema de maior $\mu$ para o de menor $\mu$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Seja $g(t) = S_{\text{tot}}\big(E_1^0 + t\,\Delta E_1, N_1^0 + t\,\Delta N_1\big)$
+                    para $0 \le t \le 1$. Como $S_{\text{tot}}$ é estritamente côncava e o segmento não é um ponto, $g$ é
+                    estritamente côncava, e o gráfico de uma função côncava fica abaixo da sua tangente:
+                    $g(1) \lt g(0) + g'(0)$. Como $g(1) = S_{\text{tot}}(\tilde E_1, \tilde N_1) \ge g(0)$, pois $(\tilde E_1, \tilde N_1)$
+                    é o máximo, temos $g'(0) \gt 0$. Pela regra da cadeia, (4.4.5) e (4.5.6),
+                    $g'(0) = \big(\partial_{E_1}S_1 - \partial_{E_2}S_2\big)\Delta E_1 + \big(\partial_{N_1}S_1 - \partial_{N_2}S_2\big)\Delta N_1$,
+                    que é o lado esquerdo do enunciado. Se $T_1 = T_2 = T$, o primeiro termo some, e sobra
+                    $-(\mu_1 - \mu_2)\Delta N_1/T \gt 0$; com $\mu_1 \gt \mu_2$, isso exige $\Delta N_1 \lt 0$. $\blacksquare$
+                </p>
+
+                <p>
+                    Com $N_1$ fixo, a proposição contém a
+                    <a href="[04] - Contato Térmico e Entropia.html#prop-4-4-11">Proposição 4.4.11</a>: o termo em
+                    $\Delta E_1$ positivo diz que a energia vai para o sistema de menor $T$ (com $T \gt 0$). A
+                    <a href="#fig-4-5-1">Figura 4.5.1</a> resume as três paredes e o que cada uma iguala.
+                </p>
+
+                <figure class="lecture-figure" id="fig-4-5-1">
+                    <svg viewBox="0 0 640 210" role="img" aria-label="Três caixas lado a lado, cada uma dividida em dois sistemas, 1 à esquerda e 2 à direita, com partículas representadas por pontos e uma seta de duas pontas atravessando a parede central. (a) Parede diatérmica fixa, desenhada como uma linha contínua: troca energia; no equilíbrio, T1 = T2. (b) Parede diatérmica móvel, desenhada como um pistão com uma seta horizontal embaixo indicando que ele pode deslizar: troca energia e volume; no equilíbrio, T1 = T2 e p1 = p2. (c) Parede diatérmica permeável, desenhada como uma linha tracejada: troca energia e partículas; no equilíbrio, T1 = T2 e mu1 = mu2.">
+<defs><marker id="arr-4-5-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<text x="112" y="28" text-anchor="middle" class="fig-label fig-small">(a) diatérmica fixa</text>
+<rect x="18" y="58" width="188" height="100" class="fig-frame"/>
+<text x="28" y="76" class="fig-label fig-it">1</text>
+<text x="188" y="76" class="fig-label fig-it">2</text>
+<circle cx="77.8" cy="75" r="2.4" class="fig-arrowhead"/>
+<circle cx="44.7" cy="133.6" r="2.4" class="fig-arrowhead"/>
+<circle cx="58" cy="87.8" r="2.4" class="fig-arrowhead"/>
+<circle cx="78.5" cy="81.4" r="2.4" class="fig-arrowhead"/>
+<circle cx="78.3" cy="136" r="2.4" class="fig-arrowhead"/>
+<circle cx="72.3" cy="126.3" r="2.4" class="fig-arrowhead"/>
+<circle cx="80.3" cy="74.9" r="2.4" class="fig-arrowhead"/>
+<circle cx="142.3" cy="72.4" r="2.4" class="fig-arrowhead"/>
+<circle cx="164.8" cy="136.8" r="2.4" class="fig-arrowhead"/>
+<circle cx="164.6" cy="140" r="2.4" class="fig-arrowhead"/>
+<circle cx="147.3" cy="130.9" r="2.4" class="fig-arrowhead"/>
+<circle cx="150" cy="141.1" r="2.4" class="fig-arrowhead"/>
+<circle cx="173.5" cy="77.4" r="2.4" class="fig-arrowhead"/>
+<circle cx="133.3" cy="86.5" r="2.4" class="fig-arrowhead"/>
+<line x1="112" y1="58" x2="112" y2="158" class="fig-curve"/>
+<line x1="86" y1="108" x2="138" y2="108" class="fig-axis" marker-start="url(#arr-4-5-1)" marker-end="url(#arr-4-5-1)"/>
+<text x="112" y="46" text-anchor="middle" class="fig-label fig-small">troca E</text>
+<text x="112" y="198" text-anchor="middle" class="fig-label fig-small">T₁ = T₂</text>
+<text x="320" y="28" text-anchor="middle" class="fig-label fig-small">(b) diatérmica móvel</text>
+<rect x="226" y="58" width="188" height="100" class="fig-frame"/>
+<text x="236" y="76" class="fig-label fig-it">1</text>
+<text x="396" y="76" class="fig-label fig-it">2</text>
+<circle cx="292.1" cy="92.9" r="2.4" class="fig-arrowhead"/>
+<circle cx="289.4" cy="138.7" r="2.4" class="fig-arrowhead"/>
+<circle cx="295.6" cy="140.6" r="2.4" class="fig-arrowhead"/>
+<circle cx="306.8" cy="145.3" r="2.4" class="fig-arrowhead"/>
+<circle cx="295" cy="82.4" r="2.4" class="fig-arrowhead"/>
+<circle cx="307.1" cy="143.3" r="2.4" class="fig-arrowhead"/>
+<circle cx="297.7" cy="86" r="2.4" class="fig-arrowhead"/>
+<circle cx="356.5" cy="74.8" r="2.4" class="fig-arrowhead"/>
+<circle cx="381.6" cy="145.2" r="2.4" class="fig-arrowhead"/>
+<circle cx="347.9" cy="130.8" r="2.4" class="fig-arrowhead"/>
+<circle cx="362.1" cy="81.5" r="2.4" class="fig-arrowhead"/>
+<circle cx="356.9" cy="128.4" r="2.4" class="fig-arrowhead"/>
+<circle cx="382.4" cy="73.4" r="2.4" class="fig-arrowhead"/>
+<circle cx="371" cy="73.4" r="2.4" class="fig-arrowhead"/>
+<rect x="326" y="58" width="8" height="100" class="fig-shape"/>
+<line x1="308" y1="170" x2="352" y2="170" class="fig-axis" marker-start="url(#arr-4-5-1)" marker-end="url(#arr-4-5-1)"/>
+<line x1="304" y1="108" x2="356" y2="108" class="fig-axis" marker-start="url(#arr-4-5-1)" marker-end="url(#arr-4-5-1)"/>
+<text x="320" y="46" text-anchor="middle" class="fig-label fig-small">troca E e V</text>
+<text x="320" y="198" text-anchor="middle" class="fig-label fig-small">T₁ = T₂,  p₁ = p₂</text>
+<text x="528" y="28" text-anchor="middle" class="fig-label fig-small">(c) diatérmica permeável</text>
+<rect x="434" y="58" width="188" height="100" class="fig-frame"/>
+<text x="444" y="76" class="fig-label fig-it">1</text>
+<text x="604" y="76" class="fig-label fig-it">2</text>
+<circle cx="507.6" cy="144.5" r="2.4" class="fig-arrowhead"/>
+<circle cx="487.3" cy="145.9" r="2.4" class="fig-arrowhead"/>
+<circle cx="476.7" cy="75.8" r="2.4" class="fig-arrowhead"/>
+<circle cx="492.4" cy="72.4" r="2.4" class="fig-arrowhead"/>
+<circle cx="493" cy="81.9" r="2.4" class="fig-arrowhead"/>
+<circle cx="462.3" cy="136" r="2.4" class="fig-arrowhead"/>
+<circle cx="476.9" cy="142.9" r="2.4" class="fig-arrowhead"/>
+<circle cx="565.3" cy="124.7" r="2.4" class="fig-arrowhead"/>
+<circle cx="554.8" cy="92.9" r="2.4" class="fig-arrowhead"/>
+<circle cx="571.6" cy="70.9" r="2.4" class="fig-arrowhead"/>
+<circle cx="576.1" cy="74.6" r="2.4" class="fig-arrowhead"/>
+<circle cx="580.2" cy="126.1" r="2.4" class="fig-arrowhead"/>
+<circle cx="543.2" cy="74.6" r="2.4" class="fig-arrowhead"/>
+<circle cx="578.5" cy="143.2" r="2.4" class="fig-arrowhead"/>
+<line x1="528" y1="58" x2="528" y2="158" class="fig-guide fig-dashed"/>
+<line x1="502" y1="108" x2="554" y2="108" class="fig-axis" marker-start="url(#arr-4-5-1)" marker-end="url(#arr-4-5-1)"/>
+<text x="528" y="46" text-anchor="middle" class="fig-label fig-small">troca E e N</text>
+<text x="528" y="198" text-anchor="middle" class="fig-label fig-small">T₁ = T₂,  μ₁ = μ₂</text>
+</svg>
+                    <figcaption><strong>Figura 4.5.1.</strong> Três paredes entre os sistemas $1$ e $2$, com o conjunto
+                        isolado. (a) Uma parede diatérmica fixa deixa passar energia; no equilíbrio,
+                        $\partial S/\partial E$ se iguala, isto é, $T_1 = T_2$. (b) Uma parede diatérmica móvel troca também
+                        volume, e iguala $\partial S/\partial V$, isto é, $p_1 = p_2$. (c) Uma parede diatérmica permeável
+                        troca também partículas, e iguala $\partial S/\partial N$, isto é, $\mu_1 = \mu_2$. Cada grandeza
+                        extensiva trocada iguala a derivada de $S$ em relação a ela.</figcaption>
+                </figure>
+
+                <h2 id="relacao-fundamental">A relação fundamental</h2>
+
+                <p>
+                    As três derivadas parciais de $S(E, V, N)$ têm agora nomes: $1/T$, $p/T$ e $-\mu/T$. Juntando-as,
+                    obtemos a diferencial de $S$.
+                </p>
+
+                <div class="definition-box" id="teo-4-5-13">
+                    <p><strong>Teorema 4.5.13 (Relação fundamental).</strong> Se $S(E, V, N)$ é diferenciável, com $N$
+                        tratado como variável contínua, então</p>
+                    <p>
+                        $$ \begin{aligned}
+                        dS &= \frac1T\,dE + \frac pT\,dV - \frac\mu T\,dN, \\
+                        dE &= T\,dS - p\,dV + \mu\,dN,
+                        \end{aligned} \tag{4.5.7} $$
+                    </p>
+                    <p>a segunda forma valendo onde $T \gt 0$, com $E$ escrita como função $E(S, V, N)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> A diferencial de uma função diferenciável de três variáveis é
+                    $dS = (\partial S/\partial E)_{V,N}\,dE + (\partial S/\partial V)_{E,N}\,dV + (\partial S/\partial N)_{E,V}\,dN$,
+                    e as três derivadas são dadas por (4.4.5), (4.5.2) e (4.5.6). Onde $T \gt 0$,
+                    $(\partial S/\partial E)_{V,N} = 1/T \gt 0$: com $V$ e $N$ fixos, $S$ é estritamente crescente em $E$, e
+                    pode ser invertida, dando $E(S, V, N)$, diferenciável pelo teorema da função inversa. Isolando $dE$ na
+                    primeira linha, obtemos a segunda. $\blacksquare$
+                </p>
+
+                <p>
+                    A segunda forma é a relação fundamental da termodinâmica na representação da energia. Em um processo
+                    lento com $N$ fixo, o <a href="#cor-4-5-7">Corolário 4.5.7</a> identifica $-p\,dV$ com o trabalho
+                    mecânico feito sobre o sistema; o resto da variação de energia, $T\,dS = dE + p\,dV$, é o calor
+                    recebido, e a relação é a primeira lei, $dE = \delta Q + \delta W$, com $\delta Q = T\,dS$. É a forma
+                    geral da relação de Clausius que o
+                    <a href="[04] - Contato Térmico e Entropia.html#prop-4-4-21">tópico 4.4</a> obteve com a parede
+                    fixa. O termo $\mu\,dN$ é a energia que entra com as partículas acrescentadas a $S$ e $V$ fixos,
+                    às vezes chamada de trabalho químico. Os postulados da termodinâmica e as suas consequências são o
+                    assunto do <a href="../[2] - Introdução à Termodinâmica/[01] - Visão Geral.html">capítulo 3</a>, ainda
+                    em esboço; aqui, a relação fundamental é deduzida da contagem.
+                </p>
+
+                <p id="obs-4-5-14"><strong>Observação 4.5.14 (Equações de estado).</strong> As funções $T(E, V, N)$,
+                    $p(E, V, N)$ e $\mu(E, V, N)$ são as <strong>equações de estado</strong> do sistema. Elas não são
+                    independentes: são derivadas de uma única função, e as derivadas mistas de $S$ comutam. Por exemplo,
+                    $\partial^2S/\partial V\partial E = \partial^2S/\partial E\partial V$ dá
+                    $\big(\partial(1/T)/\partial V\big)_{E,N} = \big(\partial(p/T)/\partial E\big)_{V,N}$. No gás ideal,
+                    $p/T = Nk_B/V$ não depende de $E$; logo $1/T$ não depende de $V$, e a energia do gás ideal a
+                    temperatura fixa não depende do volume. Uma única função $S(E, V, N)$ contém toda a informação
+                    termodinâmica de equilíbrio do sistema; os tópicos 4.6 a 4.9 a calculam em modelos.</p>
+
+                <h2 id="extensividade">Extensividade</h2>
+
+                <p>
+                    Dois blocos iguais do mesmo material, postos lado a lado, formam um bloco com o dobro da energia, do
+                    volume, do número de partículas e, se as forças forem de curto alcance, da entropia: pela
+                    <a href="[04] - Contato Térmico e Entropia.html#prop-4-4-14">Proposição 4.4.14</a>, a entropia do
+                    conjunto é a soma das entropias a menos de $O(\ln N)$. É essa a origem da propriedade seguinte.
+                </p>
+
+                <div class="definition-box" id="def-4-5-15" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.5.15 (Extensividade).</strong> A entropia $S(E, V, N)$ é
+                        <strong>extensiva</strong> se, para todo $\lambda \gt 0$,</p>
+                    <p>$$ S(\lambda E, \lambda V, \lambda N) = \lambda\,S(E, V, N). \tag{4.5.8} $$</p>
+                    <p>Equivalentemente, $S(E, V, N) = N\,s(E/N, V/N)$, em que $s(e, v) = S(e, v, 1)$ é a entropia por
+                        partícula.</p>
+                </div>
+
+                <p>
+                    A entropia estatística de um sistema finito não satisfaz (4.5.8) exatamente: ela tem termos de ordem
+                    $\ln N$, como os do <a href="[04] - Contato Térmico e Entropia.html#ex-4-4-15">Exemplo 4.4.15</a>. O que
+                    se espera, para forças de curto alcance, é que exista o <strong>limite termodinâmico</strong>
+                    $s(e, v) = \lim_{N\to\infty}S(Ne, Nv, N)/N$; a função $N\,s(E/N, V/N)$ é então exatamente extensiva e
+                    difere de $S$ por uma quantidade desprezível por partícula. Daqui em diante, quando usarmos a
+                    extensividade, $S$ é essa função limite, e admitimos que as suas derivadas sejam os limites das
+                    derivadas de $S$. A equivalência das duas formas da definição é a escolha $\lambda = 1/N$ em (4.5.8).
+                </p>
+
+                <div class="definition-box" id="teo-4-5-16">
+                    <p><strong>Teorema 4.5.16 (Relação de Euler).</strong> Se $S$ é extensiva e diferenciável, então</p>
+                    <p>$$ E = TS - pV + \mu N. \tag{4.5.9} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Fixados $E$, $V$ e $N$, derivamos os dois lados de (4.5.8) em relação a
+                    $\lambda$. O lado direito dá $S(E, V, N)$. O lado esquerdo, pela regra da cadeia, dá
+                    $E\,\partial_ES + V\,\partial_VS + N\,\partial_NS$, com as derivadas calculadas em
+                    $(\lambda E, \lambda V, \lambda N)$. Em $\lambda = 1$, e usando (4.4.5), (4.5.2) e (4.5.6),
+                    $S = E/T + pV/T - \mu N/T$. Multiplicando por $T$, obtemos (4.5.9). $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="cor-4-5-17">
+                    <p><strong>Corolário 4.5.17 (Relação de Gibbs–Duhem).</strong> Nas mesmas hipóteses,</p>
+                    <p>$$ S\,dT - V\,dp + N\,d\mu = 0. \tag{4.5.10} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Diferenciando (4.5.9),
+                    $dE = T\,dS + S\,dT - p\,dV - V\,dp + \mu\,dN + N\,d\mu$. Subtraindo a segunda linha de (4.5.7),
+                    $dE = T\,dS - p\,dV + \mu\,dN$, sobra $0 = S\,dT - V\,dp + N\,d\mu$. $\blacksquare$
+                </p>
+
+                <p>
+                    As três grandezas intensivas $T$, $p$ e $\mu$ não variam independentemente. Dividindo (4.5.10) por $N$,
+                    $d\mu = -s\,dT + v\,dp$, com $s = S/N$ e $v = V/N$: para um sistema de uma só espécie, $\mu$ é função de
+                    $T$ e $p$, e as suas derivadas são a entropia e o volume por partícula. A relação de Euler, por sua vez,
+                    diz que, para um sistema extensivo, as equações de estado determinam $S$ sem integração:
+                    $S = (E + pV - \mu N)/T$.
+                </p>
+
+                <p id="obs-4-5-18"><strong>Observação 4.5.18 (Um gás que não é extensivo).</strong> O
+                    <a href="[08] - Gás Ideal Clássico.html">tópico 4.8</a> mostrará que, com a contagem rotulada, sem o
+                    fator $1/N!$, a entropia do gás ideal tem a forma $S = Nk_B\big[\ln V + \tfrac32\ln(E/N)\big] + Nc$,
+                    com $c$ constante. Ela não é extensiva: o termo $Nk_B\ln V$ dá
+                    $S(2E, 2V, 2N) = 2S(E, V, N) + 2Nk_B\ln 2$, e a relação de Euler falha
+                    (<a href="#exr-4-5-2">Exercício 4.5.2</a>). Trocar $V$ por $V/N$, que é o efeito do fator $1/N!$ pela
+                    fórmula de Stirling, torna-a extensiva. É mais um sinal, depois da
+                    <a href="#obs-4-5-10">Observação 4.5.10</a>, de que a contagem sem rótulos é a correta; o
+                    <a href="[09] - Paradoxo de Gibbs e Contagem Correta.html">tópico 4.9</a> trata disso.</p>
+
+                <h2 id="processos-quasi-estaticos">Processos quase estáticos</h2>
+
+                <p>
+                    A relação fundamental liga estados de equilíbrio vizinhos. Para usá-la ao longo de um processo, o
+                    sistema precisa estar em equilíbrio em cada instante.
+                </p>
+
+                <div class="definition-box" id="def-4-5-19" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.5.19 (Processo quase estático).</strong> Um processo é <strong>quase
+                        estático</strong> quando os parâmetros externos (o volume, os contatos com outros sistemas) mudam tão
+                        devagar que o sistema passa por uma sucessão de estados de equilíbrio, cada um descrito por
+                        $(E, V, N)$ e pela entropia $S(E, V, N)$. Um processo quase estático em um sistema isolado
+                        termicamente, isto é, sem troca de calor, é chamado de <strong>adiabático reversível</strong>.</p>
+                </div>
+
+                <p>
+                    Em um processo quase estático, cada passo satisfaz (4.5.7), e o calor recebido é $\delta Q = T\,dS$. Em
+                    particular, quando o volume de um sistema isolado varia devagar, o
+                    <a href="#teo-4-5-6">Teorema 4.5.6</a> mantém $\Phi$ constante, e portanto $S$ constante: o processo
+                    adiabático reversível é isentrópico, como no <a href="#ex-4-5-8">Exemplo 4.5.8</a>. Um processo que
+                    não é quase estático pode levar a um estado final de equilíbrio, mas os estados intermediários não são
+                    de equilíbrio, e (4.5.7) não vale ao longo dele. O exemplo típico é a expansão livre.
+                </p>
+
+                <p id="ex-4-5-20"><strong>Exemplo 4.5.20 (Expansão livre de Joule).</strong> Um gás de partículas sem
+                    interação ocupa o volume $V_i$ de um recipiente isolado; o resto do recipiente, até o volume $V_f$,
+                    está vazio. A divisória é retirada de repente, e o gás se expande até ocupar $V_f$. Não há troca de
+                    calor, porque o recipiente é isolado, nem trabalho, porque o vácuo não exerce força; logo $E$ é
+                    constante. Pelo <a href="#ex-4-5-3">Exemplo 4.5.3</a>, com $E$ e $N$ fixos, $\Omega$ é proporcional a
+                    $V^N$, e</p>
+
+                <p>$$ \Delta S = S_f - S_i = Nk_B\ln\frac{V_f}{V_i} \gt 0. $$</p>
+
+                <p>
+                    É uma instância do <a href="[04] - Contato Térmico e Entropia.html#teo-4-4-20">Teorema 4.4.20</a>:
+                    retirar a divisória libera um vínculo. O processo não é quase estático: durante a expansão, o gás não
+                    tem densidade uniforme nem pressão definida, e a entropia cresce sem que haja calor, de modo que
+                    $\Delta S \ne \int\delta Q/T = 0$. Os mesmos estados inicial e final podem ser ligados por um processo
+                    quase estático: uma expansão isotérmica lenta, empurrando um pistão, em contato com um reservatório à
+                    temperatura $T$ (como $E = \tfrac32Nk_BT$, a temperatura inicial e a final são as mesmas). Nela, o gás
+                    faz o trabalho $\int_{V_i}^{V_f}p\,dV = Nk_BT\ln(V_f/V_i)$ e recebe do reservatório o mesmo calor,
+                    $Q = T\,\Delta S$. A variação de entropia é a mesma nos dois processos, porque $S$ é uma função do
+                    estado; o calor não é. Por fim, pelo mesmo teorema, a probabilidade de, depois da expansão, encontrar
+                    todas as moléculas de volta em $V_i$ é $e^{-\Delta S/k_B} = (V_i/V_f)^N$; para $V_f = 2V_i$, é o
+                    $2^{-N}$ que a <a href="[01] - Motivação e Roteiro.html#obs-4-1-14">Observação 4.1.14</a> obteve
+                    tratando as moléculas como independentes.
+                </p>
+
+                <h2 id="conexao">Conexão com a termodinâmica e com o experimento</h2>
+
+                <p>
+                    A regra geral deste tópico e do anterior é simples: uma parede que deixa passar uma grandeza extensiva
+                    iguala, no equilíbrio, a derivada de $S$ em relação a ela, e só essa. A tabela resume as paredes
+                    idealizadas e onde cada uma aparece no laboratório.
+                </p>
+
+                <div style="overflow-x: auto;">
+                <table>
+                    <tr><th>Parede</th><th>Deixa passar</th><th>Iguala</th><th>Onde aparece</th></tr>
+                    <tr><td>diatérmica fixa</td><td>$E$</td><td>$T$</td><td>termômetro em contato com um corpo</td></tr>
+                    <tr><td>diatérmica móvel</td><td>$E$, $V$</td><td>$T$, $p$</td><td>pistão, manômetro</td></tr>
+                    <tr><td>diatérmica permeável</td><td>$E$, $N$</td><td>$T$, $\mu$</td><td>poros de uma membrana; a interface entre líquido e vapor, que também se move, iguala $T$, $p$ e $\mu$</td></tr>
+                    <tr><td>membrana semipermeável fixa</td><td>$E$, $N$ do solvente</td><td>$T$, $\mu$ do solvente</td><td>osmose</td></tr>
+                    <tr><td>adiabática móvel</td><td>$V$ (energia só como trabalho)</td><td>$p$</td><td>não determina o estado final (<a href="#exr-4-5-6">Exercício 4.5.6</a>)</td></tr>
+                </table>
+                </div>
+
+                <p>
+                    <strong>O termômetro de gás.</strong> Um termômetro de gás a volume constante mede a pressão de uma
+                    quantidade fixa de gás em contato térmico com o corpo; pelo <a href="#ex-4-5-3">Exemplo 4.5.3</a>, a
+                    temperatura é $T = pV/(Nk_B)$. A dedução supõe partículas sem interação, e por isso as medidas são
+                    extrapoladas para densidade nula, em que as interações deixam de importar. É por esse caminho que a
+                    temperatura estatística da
+                    <a href="[04] - Contato Térmico e Entropia.html#def-4-4-8">Definição 4.4.8</a> se liga à escala
+                    Kelvin (<a href="#obs-4-5-4">Observação 4.5.4</a>).
+                </p>
+
+                <p>
+                    <strong>Equilíbrio de fases.</strong> Um líquido e o seu vapor em um recipiente fechado são dois
+                    sistemas separados por uma interface que deixa passar energia, volume e moléculas. No equilíbrio,
+                    temperatura, pressão e potencial químico são iguais nas duas fases. Pela relação de Gibbs–Duhem, o
+                    potencial químico de cada fase é uma função $\mu(T, p)$; a condição $\mu_{\text{líq}}(T, p) = \mu_{\text{vap}}(T, p)$
+                    é uma equação entre $T$ e $p$, e define a curva de pressão de vapor no plano $(T, p)$. Esse é o
+                    ponto de partida do estudo das transições de fase, que fica fora deste capítulo.
+                </p>
+
+                <p>
+                    <strong>Osmose.</strong> Uma membrana que deixa passar a água, mas não um soluto dissolvido nela, é
+                    uma parede fixa, diatérmica e permeável só a uma espécie. No equilíbrio, o potencial químico da água é
+                    o mesmo dos dois lados, mas as pressões não precisam ser iguais, porque a parede não se move: a
+                    diferença de pressão é a pressão osmótica. É uma ilustração da regra: a membrana iguala o que deixa
+                    passar e nada mais.
+                </p>
+
+                <p>
+                    <strong>Termodinâmica.</strong> Na formulação axiomática da termodinâmica, a existência de uma função
+                    $S(E, V, N)$ que é máxima no equilíbrio de um sistema isolado é um postulado, e a relação fundamental
+                    é o seu ponto de partida; o
+                    <a href="../[2] - Introdução à Termodinâmica/[01] - Visão Geral.html">capítulo 3</a> segue esse
+                    caminho. Aqui, $S = k_B\ln\Omega$ foi construída a partir da contagem, a sua maximização foi deduzida
+                    do postulado das probabilidades iguais, e a identificação de $T\,dS$ com o calor e de $-p\,dV$ com o
+                    trabalho apoiou-se na dinâmica, com o
+                    <a href="#teo-4-5-6">Teorema 4.5.6</a>. A mecânica estatística acrescenta à termodinâmica o que esta não
+                    pode dar: a forma explícita de $S$ para cada sistema, que os próximos tópicos calculam.
+                </p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p>
+                    Os exercícios obtêm equações de estado a partir de uma entropia dada, testam a relação de Euler e a
+                    extensividade, e aplicam as condições de equilíbrio a gases ideais. As contas foram conferidas por
+                    computação simbólica.
+                </p>
+
+                <p id="exr-4-5-1"><strong>Exercício 4.5.1.</strong> Um sistema tem entropia
+                    $S = Nk_B\ln\big[(V/N)(E/N)^{3/2}\big] + Ns_0$, com $s_0$ constante. Obtenha $E(T)$, $p(T, V)$ e
+                    $\mu(T, V)$.</p>
+
+                <p>
+                    <em>Solução.</em> Derivando,
+                    $\dfrac1T = \dfrac{\partial S}{\partial E} = \dfrac{3Nk_B}{2E}$, logo $E = \tfrac32Nk_BT$; e
+                    $\dfrac pT = \dfrac{\partial S}{\partial V} = \dfrac{Nk_B}{V}$, logo $pV = Nk_BT$. Para o potencial
+                    químico, o logaritmo contém $N$ em dois lugares, $\ln(V/N) + \tfrac32\ln(E/N)$, cuja derivada em $N$ é
+                    $-\tfrac1N - \tfrac{3}{2N} = -\tfrac{5}{2N}$. Então
+                </p>
+
+                <p>$$ \frac{\partial S}{\partial N} = k_B\ln\left[\frac VN\left(\frac EN\right)^{3/2}\right] + s_0 - \frac52k_B, $$</p>
+
+                <p>
+                    e, com $E/N = \tfrac32k_BT$ e $\mu = -T\,\partial S/\partial N$,
+                </p>
+
+                <p>$$ \mu = k_BT\left[\frac52 - \frac{s_0}{k_B} - \ln\left(\frac VN\left(\frac32k_BT\right)^{3/2}\right)\right]. $$</p>
+
+                <p>
+                    É a forma da entropia do gás ideal monoatômico com a contagem correta, que o
+                    <a href="[09] - Paradoxo de Gibbs e Contagem Correta.html">tópico 4.9</a> calcula, com $s_0$
+                    determinado (fórmula de Sackur–Tetrode). Para um gás diluído, $V/N$ é grande, o logaritmo domina e
+                    $\mu$ é negativo.
+                </p>
+
+                <p id="exr-4-5-2"><strong>Exercício 4.5.2.</strong> Para a entropia do
+                    <a href="#exr-4-5-1">Exercício 4.5.1</a>, verifique a relação de Euler para todo $s_0$. Em seguida, troque
+                    $V/N$ por $V$ e mostre que a relação falha.</p>
+
+                <p>
+                    <em>Solução.</em> Com os resultados do exercício anterior,
+                    $TS = Nk_BT\ln[\dots] + NTs_0$, $pV = Nk_BT$ e
+                    $\mu N = \tfrac52Nk_BT - NTs_0 - Nk_BT\ln[\dots]$, em que $[\dots]$ é o mesmo argumento do logaritmo.
+                    Somando, $TS - pV + \mu N = -Nk_BT + \tfrac52Nk_BT = \tfrac32Nk_BT = E$: os logaritmos e os termos em
+                    $s_0$ se cancelam, e a relação vale para todo $s_0$. Isso era esperado, porque a entropia é homogênea
+                    de grau $1$: multiplicar $E$, $V$ e $N$ por $\lambda$ não muda $V/N$ nem $E/N$ e multiplica o prefator
+                    $N$ por $\lambda$.
+                </p>
+
+                <p>
+                    Com $V$ no lugar de $V/N$, $S' = Nk_B\ln\big[V(E/N)^{3/2}\big] + Ns_0$. As equações de $E(T)$ e $p$ não
+                    mudam, mas agora $\partial S'/\partial N = k_B\ln[\dots] + s_0 - \tfrac32k_B$, e a mesma soma dá
+                    $TS' - pV + \mu N = -Nk_BT + \tfrac32Nk_BT = \tfrac12Nk_BT$, que difere de $E$ por $Nk_BT$. A causa é
+                    que $S'$ não é extensiva: $S'(2E, 2V, 2N) = 2S'(E, V, N) + 2Nk_B\ln2$. É a situação da
+                    <a href="#obs-4-5-18">Observação 4.5.18</a>.
+                </p>
+
+                <p id="exr-4-5-3"><strong>Exercício 4.5.3.</strong> Um modelo fictício tem entropia
+                    $S = A(NVE)^{1/3}$, com $A \gt 0$ constante. Obtenha as equações de estado, verifique que $S$ é
+                    extensiva e mostre que $S$ é côncava.</p>
+
+                <p>
+                    <em>Solução.</em> $\dfrac1T = \dfrac A3(NV)^{1/3}E^{-2/3}$, de onde $E = (AT/3)^{3/2}(NV)^{1/2}$. Do mesmo
+                    modo, $\dfrac pT = \dfrac A3(NE)^{1/3}V^{-2/3}$ e $\dfrac\mu T = -\dfrac A3(VE)^{1/3}N^{-2/3}$. Substituindo
+                    $E(T)$,
+                </p>
+
+                <p>$$ p = \left(\frac A3\right)^{3/2}T^{3/2}\left(\frac NV\right)^{1/2}, \qquad \mu = -\left(\frac A3\right)^{3/2}T^{3/2}\left(\frac VN\right)^{1/2}. $$</p>
+
+                <p>
+                    A extensividade é imediata: $(\lambda N\,\lambda V\,\lambda E)^{1/3} = \lambda(NVE)^{1/3}$. Conferindo
+                    Euler: $TS$, $pV$ e $-\mu N$ valem $TA(NVE)^{1/3}$, $\tfrac13TA(NVE)^{1/3}$ e $\tfrac13TA(NVE)^{1/3}$, e
+                    $TS - pV + \mu N = \tfrac13TA(NVE)^{1/3}$, que é $E$, pois de $1/T$ vem
+                    $E = \tfrac A3T(NV)^{1/3}E^{1/3}$.
+                </p>
+
+                <p>
+                    Para a concavidade, seja $G = (x_1x_2x_3)^{1/3}$ com $x = (E, V, N)$. Então
+                    $\partial_iG = G/(3x_i)$ e
+                    $\partial_i\partial_jG = \dfrac{G}{9x_ix_j} - \delta_{ij}\dfrac{G}{3x_i^2}$. Para um deslocamento
+                    $a = (a_1, a_2, a_3)$, com $b_i = a_i/x_i$, a forma quadrática da hessiana é
+                </p>
+
+                <p>$$ \sum_{i,j}a_ia_j\,\partial_i\partial_jG = \frac G9\left[\Big(\sum_ib_i\Big)^2 - 3\sum_ib_i^2\right] \le 0, $$</p>
+
+                <p>
+                    pela desigualdade de Cauchy–Schwarz, $(b_1 + b_2 + b_3)^2 \le 3(b_1^2 + b_2^2 + b_3^2)$. A igualdade só
+                    ocorre com $b_1 = b_2 = b_3$, isto é, com $a$ proporcional a $(E, V, N)$: ao longo dessa direção, a
+                    extensividade torna $S$ linear. Logo $S = AG$ é côncava, e a
+                    <a href="[04] - Contato Térmico e Entropia.html#prop-4-4-22">Proposição 4.4.22</a> é respeitada; em
+                    particular, $C = dE/dT = \tfrac32E/T \gt 0$.
+                </p>
+
+                <p id="exr-4-5-4"><strong>Exercício 4.5.4.</strong> Um cilindro isolado é dividido por um pistão
+                    diatérmico, que desliza sem atrito com as paredes, em duas câmaras com o mesmo gás ideal monoatômico:
+                    $n_1 = 1\ \text{mol}$ a $T_1 = 300\ \text{K}$ em $V_1 = 10\ \text{L}$, e $n_2 = 2\ \text{mol}$ a
+                    $T_2 = 600\ \text{K}$ em $V_2 = 10\ \text{L}$. O pistão é solto. Ache o estado final e a variação de
+                    entropia.</p>
+
+                <p>
+                    <em>Solução.</em> No equilíbrio, $T$ e $p$ são iguais dos dois lados
+                    (<a href="#prop-4-5-1">Proposição 4.5.1</a>). Supomos que as oscilações do pistão se amortecem dentro
+                    dos gases e que a energia própria do pistão é desprezível; então a energia total,
+                    $\tfrac32R(n_1T_1 + n_2T_2)$, se conserva, e
+                    $T_f = (n_1T_1 + n_2T_2)/(n_1 + n_2) = 500\ \text{K}$. Pressões iguais com a mesma $T_f$ exigem
+                    $n_1/V_1' = n_2/V_2'$, logo $V_1' = 20\ \text{L}\cdot\tfrac13 = 6{,}67\ \text{L}$ e
+                    $V_2' = 13{,}33\ \text{L}$, e $p_f = 3RT_f/(20\ \text{L}) = 623{,}6\ \text{kPa}$. As pressões iniciais
+                    eram $249{,}4$ e $997{,}7\ \text{kPa}$: o pistão andou na direção da câmara $1$.
+                </p>
+
+                <p>
+                    Com $N$ fixo em cada câmara, a entropia do <a href="#exr-4-5-1">Exercício 4.5.1</a> dá
+                    $\Delta S_i = n_iR\big[\ln(V_i'/V_i) + \tfrac32\ln(T_f/T_i)\big]$. Numericamente,
+                    $\Delta S_1 = 3{,}00\ \text{J/K}$ e $\Delta S_2 = 0{,}24\ \text{J/K}$, e $\Delta S = 3{,}24\ \text{J/K} \gt 0$,
+                    como exige o <a href="[04] - Contato Térmico e Entropia.html#teo-4-4-20">Teorema 4.4.20</a>. A câmara $2$
+                    esfria, o que diminui a sua entropia, mas se expande, o que a aumenta mais.
+                </p>
+
+                <p id="exr-4-5-5"><strong>Exercício 4.5.5.</strong> Um mol de gás ideal dobra de volume em uma expansão
+                    livre. Calcule $\Delta S$ e a probabilidade de, depois, todas as moléculas estarem de novo na metade
+                    original.</p>
+
+                <p>
+                    <em>Solução.</em> Pelo <a href="#ex-4-5-20">Exemplo 4.5.20</a>, com $N = N_A$,
+                    $\Delta S = N_Ak_B\ln2 = R\ln2 = 8{,}314 \times 0{,}6931\ \text{J/K} = 5{,}76\ \text{J/K}$. A probabilidade de
+                    volta é $e^{-\Delta S/k_B} = 2^{-N_A}$, e $\log_{10}2^{-N_A} = -N_A\log_{10}2 = -1{,}8\times10^{23}$: a
+                    probabilidade é $10^{-1{,}8\times10^{23}}$. Uma variação de entropia de alguns joules por kelvin, típica
+                    do laboratório, corresponde a uma improbabilidade dessa ordem.
+                </p>
+
+                <p id="exr-4-5-6"><strong>Exercício 4.5.6.</strong> No cilindro do
+                    <a href="#exr-4-5-4">Exercício 4.5.4</a>, troque o pistão por um pistão adiabático. Por que o argumento
+                    deste tópico não determina, em geral, o estado final?</p>
+
+                <p>
+                    <em>Solução.</em> Um pistão adiabático e móvel não deixa passar calor, mas troca energia com os gases
+                    como trabalho, sempre que se move. As energias $E_1$ e $E_2$ não estão fixas, como na parede adiabática
+                    fixa, nem são livremente trocadas, como na diatérmica: a energia só muda acompanhando o volume. O
+                    argumento de contagem da <a href="#prop-4-5-1">Proposição 4.5.1</a> supunha que todos os pares de
+                    microestados com $E_1 + E_2 = E$ e $V_1 + V_2 = V$ fossem acessíveis, o que não é o caso. Com a
+                    conservação da energia e do volume, o estado final fica determinado por $E_1$ e $V_1$; a condição de
+                    equilíbrio mecânico, $p_1 = p_2$, é uma só equação para essas duas incógnitas. Falta uma.
+                </p>
+
+                <p>
+                    Se o pistão se move sem atrito e de modo quase estático, cada gás sofre uma transformação adiabática
+                    reversível, e as entropias $S_1$ e $S_2$ ficam constantes, o que daria as equações que faltam; mas um
+                    pistão sem atrito solto de uma posição fora do equilíbrio oscila, e não chega a um estado final. Se as
+                    oscilações são amortecidas, a energia dissipada vai parar em um dos gases ou em ambos, em uma proporção
+                    que depende dos detalhes do amortecimento, e o estado final depende dela. A termodinâmica sozinha não
+                    decide. É uma questão sutil, conhecida como o problema do pistão adiabático: em escalas de tempo muito
+                    longas, as flutuações do próprio pistão, atingido por moléculas dos dois lados, transmitem energia entre
+                    os gases e tendem a igualar as temperaturas, mas esse mecanismo está fora do modelo de parede ideal que
+                    usamos.
+                </p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <p>
+                    Com este tópico, a termodinâmica de equilíbrio de um fluido simples passou a sair de uma única função,
+                    $S(E, V, N) = k_B\ln\Omega$:
+                </p>
+
+                <ul>
+                    <li><strong>a pressão</strong>, $p/T = \partial S/\partial V$ (<a href="#def-4-5-2">Definição 4.5.2</a>),
+                        igual dos dois lados de uma parede móvel (<a href="#prop-4-5-1">Proposição 4.5.1</a>), com
+                        $pV = Nk_BT$ para partículas sem interação (<a href="#ex-4-5-3">Exemplo 4.5.3</a>), o que identifica
+                        $k_B = R/N_A$ (<a href="#obs-4-5-4">Observação 4.5.4</a>), e igual à pressão mecânica
+                        (<a href="#ex-4-5-5">Exemplo 4.5.5</a> e <a href="#cor-4-5-7">Corolário 4.5.7</a>, pela invariância
+                        adiabática do <a href="#teo-4-5-6">Teorema 4.5.6</a>);</li>
+                    <li><strong>o potencial químico</strong>, $\mu/T = -\partial S/\partial N$
+                        (<a href="#def-4-5-11">Definição 4.5.11</a>), igual dos dois lados de uma parede permeável
+                        (<a href="#prop-4-5-9">Proposição 4.5.9</a>), com a contagem sem rótulos exigida pela troca de
+                        partículas (<a href="#obs-4-5-10">Observação 4.5.10</a>), e o sentido das trocas
+                        (<a href="#prop-4-5-12">Proposição 4.5.12</a>);</li>
+                    <li><strong>a relação fundamental</strong> $dE = T\,dS - p\,dV + \mu\,dN$
+                        (<a href="#teo-4-5-13">Teorema 4.5.13</a>), com $T\,dS$ como calor e $-p\,dV$ como trabalho;</li>
+                    <li><strong>a extensividade</strong> (<a href="#def-4-5-15">Definição 4.5.15</a>), a relação de
+                        Euler (<a href="#teo-4-5-16">Teorema 4.5.16</a>) e a de Gibbs–Duhem
+                        (<a href="#cor-4-5-17">Corolário 4.5.17</a>);</li>
+                    <li><strong>os processos quase estáticos</strong> (<a href="#def-4-5-19">Definição 4.5.19</a>), com a
+                        expansão livre como exemplo de processo irreversível
+                        (<a href="#ex-4-5-20">Exemplo 4.5.20</a>).</li>
+                </ul>
+
+                <p>
+                    A parte geral do capítulo termina aqui. O que falta é calcular $S(E, V, N)$ em sistemas concretos e
+                    comparar as equações de estado com a experiência. O primeiro modelo é o mais simples possível:
+                    partículas com só dois níveis de energia, como spins em um campo magnético. Ele tem um espectro
+                    limitado, e com ele aparecem as temperaturas negativas. É o assunto do próximo tópico,
+                    <a href="[06] - Dois Níveis e Paramagneto Ideal.html">4.6 Sistemas de Dois Níveis e o Paramagneto Ideal</a>.
+                </p>
 
             </div>
         </main>
@@ -170,6 +990,19 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#interacoes-mecanica-e-difusiva">Interações Mecânica e Difusiva</a></li>
+                    <li>
+                        <a href="#parede-movel">Parede móvel: pressão</a>
+                        <ul>
+                            <li><a href="#pressao-mecanica">Pressão mecânica</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#troca-de-particulas">Parede permeável: potencial químico</a></li>
+                    <li><a href="#relacao-fundamental">Relação fundamental</a></li>
+                    <li><a href="#extensividade">Extensividade</a></li>
+                    <li><a href="#processos-quasi-estaticos">Processos quase estáticos</a></li>
+                    <li><a href="#conexao">Conexão</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
                 </ul>
             </div>
         </aside>

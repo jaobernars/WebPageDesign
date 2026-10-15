@@ -337,7 +337,11 @@
                     $\Omega_2(E - E_1)$ é o número de estados do nível de $2$ com $M - M_1$ quanta. Pela
                     <a href="#prop-4-4-3">Proposição 4.4.3</a>(a), a probabilidade de o sólido $1$ ter $M_1$ quanta é</p>
 
-                <p>$$ P(M_1) = \frac{\Omega(N_1, M_1)\,\Omega(N_2, M - M_1)}{\Omega(N_1 + N_2, M)}, \qquad M_1 = 0, 1, \dots, M. \tag{4.4.2} $$</p>
+                <p>$$ P(M_1) = \frac{\Omega(N_1, M_1)\,\Omega(N_2, M - M_1)}{\Omega(N_1 + N_2, M)}, \tag{4.4.2} $$</p>
+
+                <p>
+                    para $M_1 = 0, 1, \dots, M$.
+                </p>
 
                 <p>
                     O denominador também vem do lema: o composto é, ele mesmo, um sólido de $N_1 + N_2$ osciladores
@@ -667,7 +671,12 @@
                         <a href="#prop-4-4-3">Proposição 4.4.3</a>(a), suponha que a soma (4.4.1) tenha $K$ termos não
                         nulos, e seja $\tilde E_1$ o nível em que o termo $\Omega_1(E_1)\,\Omega_2(E - E_1)$ é máximo. Então,
                         com $\tilde E_2 = E - \tilde E_1$,</p>
-                    <p>$$ S_1(\tilde E_1) + S_2(\tilde E_2) \le S(E) \le S_1(\tilde E_1) + S_2(\tilde E_2) + k_B\ln K. \tag{4.4.6} $$</p>
+                    <p>
+                        $$ \begin{aligned}
+                        S_1(\tilde E_1) + S_2(\tilde E_2) &\le S(E) \\
+                        &\le S_1(\tilde E_1) + S_2(\tilde E_2) + k_B\ln K.
+                        \end{aligned} \tag{4.4.6} $$
+                    </p>
                 </div>
 
                 <p>
@@ -763,7 +772,12 @@
                         $f(E_1) = \ln\Omega_1(E_1) + \ln\Omega_2(E - E_1)$, com temperatura comum $T$, e $C_1, C_2 \gt 0$ as
                         capacidades térmicas em $\tilde E_1$ e $\tilde E_2 = E - \tilde E_1$.</p>
                     <p>(a) Com $\Delta = E_1 - \tilde E_1$,</p>
-                    <p>$$ \frac{P(E_1)}{P(\tilde E_1)} = \exp\left[-\frac{\Delta^2}{2\sigma^2} + R\right], \qquad \sigma^2 = k_BT^2\,\frac{C_1C_2}{C_1 + C_2}, \tag{4.4.9} $$</p>
+                    <p>
+                        $$ \begin{aligned}
+                        \frac{P(E_1)}{P(\tilde E_1)} &= \exp\left[-\frac{\Delta^2}{2\sigma^2} + R\right], \\
+                        \sigma^2 &= k_BT^2\,\frac{C_1C_2}{C_1 + C_2},
+                        \end{aligned} \tag{4.4.9} $$
+                    </p>
                     <p>em que $\lvert R\rvert \le \tfrac16K_3\lvert\Delta\rvert^3$ e $K_3$ é o máximo de $\lvert f'''\rvert$
                         entre $\tilde E_1$ e $E_1$.</p>
                     <p>(b) Se existem constantes $K$, $c$ e $\lambda$, independentes de $N$, tais que
@@ -864,7 +878,12 @@
                         $A_{\text{fin}} \supseteq A_{\text{ini}}$ depois que o vínculo é liberado. Então
                         $S_{\text{fin}} \ge S_{\text{ini}}$. No contato térmico, com energias iniciais $E_1^0$ e
                         $E_2^0 = E - E_1^0$ separadas por uma parede adiabática que se torna diatérmica,</p>
-                    <p>$$ S_{\text{fin}} \ge S_1(\tilde E_1) + S_2(\tilde E_2) \ge S_1(E_1^0) + S_2(E_2^0) = S_{\text{ini}}, \tag{4.4.10} $$</p>
+                    <p>
+                        $$ \begin{aligned}
+                        S_{\text{fin}} &\ge S_1(\tilde E_1) + S_2(\tilde E_2) \\
+                        &\ge S_1(E_1^0) + S_2(E_2^0) = S_{\text{ini}},
+                        \end{aligned} \tag{4.4.10} $$
+                    </p>
                     <p>e, no equilíbrio final, a probabilidade de a repartição ser de novo a inicial é
                         $P(E_1^0) = e^{-(S_{\text{fin}} - S_{\text{ini}})/k_B}$.</p>
                 </div>
@@ -1067,7 +1086,12 @@
                 <p>
                     <em>Solução.</em> $\ln\Omega = aN\ln E + \text{const}$, e $\beta = aN/E$. Logo $E = aN/\beta = aNk_BT$, e
                     $C = dE/dT = aNk_B$, independente da temperatura. Conferência:
-                    $\partial^2\ln\Omega/\partial E^2 = -aN/E^2 = -aN/(aNk_BT)^2 = -1/(k_BT^2\cdot aNk_B) = -1/(k_BT^2C)$. Para
+                </p>
+
+                <p>$$ \frac{\partial^2\ln\Omega}{\partial E^2} = -\frac{aN}{E^2} = -\frac{aN}{(aNk_BT)^2} = -\frac{1}{k_BT^2\cdot aNk_B} = -\frac{1}{k_BT^2C}. $$</p>
+
+                <p>
+                    Para
                     osciladores clássicos, $a = 1$ e $E = Nk_BT$ (<a href="#ex-4-4-10">Exemplo 4.4.10</a>); para
                     partículas livres em três dimensões, $\Phi \propto E^{3N/2}$, $a = \tfrac32$ e $E = \tfrac32Nk_BT$, o
                     resultado do gás ideal monoatômico do <a href="[08] - Gás Ideal Clássico.html">tópico 4.8</a>. Se a
