@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regras de Seleção Rotacionais | Simetrias e Leis de Conservação | Mecânica Quântica II | The Journal of a
+        Physicist</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../../../assets/images/Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../../../assets/images/Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../../../assets/images/Favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="../../../../../../assets/images/Favicon/favicon.ico">
+    <link rel="stylesheet" href="../../../../../../assets/css/class-lecture.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                        <line x1="9" x2="9" y1="3" y2="21"></line>
+                    </svg>
+                </button>
+                <button id="theme-toggle" class="sidebar-toggle" aria-label="Toggle Theme">
+                    <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="breadcrumbs-header">
+                    <a href="../../../../../../Páginas Principais/Lectures.html" class="breadcrumb-link">← Lectures</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <a href="../../index.html" class="breadcrumb-link active">Mecânica Quântica II</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-current" class="breadcrumb-link active">Regras de Seleção Rotacionais</span>
+                </div>
+            </div>
+            <nav class="top-nav">
+                <a href="../../../../../../Páginas Principais/Lectures.html">Lectures</a>
+                <a href="../../../../../../index.html">Home</a>
+            </nav>
+        </div>
+
+        <script>
+            MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']]
+                }
+            };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    </header>
+
+    <div class="main-layout">
+        <aside class="left-sidebar" id="left-sidebar">
+            <div class="sidebar-content">
+
+                <button class="search-trigger" id="search-trigger">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                    </svg>
+                    <span>Search docs...</span>
+                </button>
+
+                <div class="sidebar-group">
+                    <h3>Início</h3>
+                    <ul>
+                        <li><a href="../../index.html">Overview</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Partículas Idênticas</h3>
+                    <ul>
+                        <li><a href="../[4] - Partículas Idênticas/[01] - Sistemas de Duas Partículas.html">5.1 Sistemas de Duas Partículas</a></li>
+                        <li><a href="../[4] - Partículas Idênticas/[02] - Átomos.html">5.2 Átomos</a></li>
+                        <li><a href="../[4] - Partículas Idênticas/[03] - Sólidos.html">5.3 Sólidos</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Simetrias e Leis de Conservação</h3>
+                    <ul>
+                        <li><a href="[01] - Introdução.html">6.1 Introdução</a></li>
+                        <li><a href="[02] - O Operador de Translação.html">6.2 O Operador de Translação</a></li>
+                        <li><a href="[03] - Leis de Conservação.html">6.3 Leis de Conservação</a></li>
+                        <li><a href="[04] - Paridade.html">6.4 Paridade</a></li>
+                        <li><a href="[05] - Simetrias de Rotação.html">6.5 Simetrias de Rotação</a></li>
+                        <li><a href="[06] - Degenerescência.html">6.6 Degenerescência</a></li>
+                        <li><a href="[07] - Regras de Seleção Rotacionais.html" class="active">6.7 Regras de Seleção Rotacionais</a></li>
+                        <li><a href="[08] - Translações no Tempo.html">6.8 Translações no Tempo</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Teoria de Perturbação Independente do Tempo</h3>
+                    <ul>
+                        <li><a href="../[6] - Teoria de Perturbação Independente do Tempo/[01] - Teoria de Perturbação Não Degenerada.html">7.1 Teoria de Perturbação Não Degenerada</a></li>
+                        <li><a href="../[6] - Teoria de Perturbação Independente do Tempo/[02] - Teoria de Perturbação Degenerada.html">7.2 Teoria de Perturbação Degenerada</a></li>
+                        <li><a href="../[6] - Teoria de Perturbação Independente do Tempo/[03] - A Estrutura Fina do Hidrogênio.html">7.3 A Estrutura Fina do Hidrogênio</a></li>
+                        <li><a href="../[6] - Teoria de Perturbação Independente do Tempo/[04] - O Efeito Zeeman.html">7.4 O Efeito Zeeman</a></li>
+                        <li><a href="../[6] - Teoria de Perturbação Independente do Tempo/[05] - A Estrutura Hiperfina do Hidrogênio.html">7.5 A Estrutura Hiperfina do Hidrogênio</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>O Princípio Variacional</h3>
+                    <ul>
+                        <li><a href="../[7] - O Princípio Variacional/[01] - Teoria.html">8.1 Teoria</a></li>
+                        <li><a href="../[7] - O Princípio Variacional/[02] - O Estado Fundamental do Hélio.html">8.2 O Estado Fundamental do Hélio</a></li>
+                        <li><a href="../[7] - O Princípio Variacional/[03] - O Íon da Molécula de Hidrogênio.html">8.3 O Íon da Molécula de Hidrogênio</a></li>
+                        <li><a href="../[7] - O Princípio Variacional/[04] - A Molécula de Hidrogênio.html">8.4 A Molécula de Hidrogênio</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>A Aproximação WKB</h3>
+                    <ul>
+                        <li><a href="../[8] - A Aproximação WKB/[01] - A Região “Clássica”.html">9.1 A Região “Clássica”</a></li>
+                        <li><a href="../[8] - A Aproximação WKB/[02] - Tunelamento.html">9.2 Tunelamento</a></li>
+                        <li><a href="../[8] - A Aproximação WKB/[03] - As Fórmulas de Conexão.html">9.3 As Fórmulas de Conexão</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="prose">
+
+                <h1 id="regras-rotacionais">Regras de Seleção Rotacionais</h1>
+                <p class="lead">Elementos de matriz de operadores escalares e vetoriais entre estados de momento angular
+                    definido: elementos de matriz reduzidos e coeficientes de Clebsch–Gordan (Griffiths, Seção 6.7).</p>
+
+                <p>
+                    O enunciado mais geral das regras de seleção rotacionais é o <strong>Teorema de
+                        Wigner–Eckart</strong>; na prática, ele é possivelmente o teorema mais importante de toda a
+                    mecânica quântica. Em vez de demonstrá-lo em toda a sua generalidade, vamos obter as regras de
+                    seleção para as duas classes de operadores encontradas com mais frequência: os operadores
+                    <strong>escalares</strong> e os operadores <strong>vetoriais</strong>.
+                </p>
+
+                <p>
+                    Ao deduzir essas regras, consideramos apenas como os operadores se comportam sob uma rotação.
+                    Portanto, os resultados para escalares valem igualmente para escalares "verdadeiros" e
+                    pseudoescalares, e os resultados para vetores valem igualmente para vetores "verdadeiros" e
+                    pseudovetores. Essas regras podem ser combinadas com as <a
+                        href="[04] - Paridade.html#regras-de-selecao">regras de seleção de paridade</a> para obter um conjunto
+                    maior de regras de seleção para um dado operador.
+                </p>
+
+                <h2 id="operadores-escalares">Regras de Seleção para Operadores Escalares</h2>
+
+                <p>
+                    As relações de comutação de um operador escalar $\hat{f}$ com as três componentes do momento angular
+                    (Equação 6.34) podem ser reescritas em termos dos operadores de subida e descida como
+                </p>
+
+                <p>
+                    $$ \left[\hat{L}_z, \hat{f}\right] = 0, \tag{6.40} $$
+                </p>
+
+                <p>
+                    $$ \left[\hat{L}_\pm, \hat{f}\right] = 0, \tag{6.41} $$
+                </p>
+
+                <p>
+                    $$ \left[\hat{L}^2, \hat{f}\right] = 0. \tag{6.42} $$
+                </p>
+
+                <p>
+                    Obtemos as regras de seleção para $\hat{f}$ "ensanduichando" esses comutadores entre dois estados de
+                    momento angular definido, que escreveremos $|n\ell m\rangle$ e $|n'\ell'm'\rangle$. Eles podem ser
+                    orbitais hidrogenoides, mas não precisam ser (na verdade, nem precisam ser autoestados de um
+                    Hamiltoniano; mantemos o número quântico $n$ apenas para que pareçam familiares). Exigimos somente
+                    que $|n\ell m\rangle$ seja autoestado de $\hat{L}^2$ e de $\hat{L}_z$, com números quânticos $\ell$
+                    e $m$, respectivamente.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref">1</a></sup>
+                </p>
+
+                <h3 id="escalar-m">A Restrição sobre $m$</h3>
+
+                <p>
+                    Ensanduichando a Equação 6.40 entre dois desses estados,
+                </p>
+
+                <p>
+                    $$ \langle n'\ell'm' | \left[\hat{L}_z, \hat{f}\right] | n\ell m \rangle = 0, $$
+                </p>
+
+                <p>
+                    ou
+                </p>
+
+                <p>
+                    $$ \langle n'\ell'm' | \hat{L}_z\hat{f} | n\ell m \rangle - \langle n'\ell'm' | \hat{f}\hat{L}_z |
+                    n\ell m \rangle = 0, $$
+                </p>
+
+                <p>
+                    e portanto, usando a hermiticidade de $\hat{L}_z$ (para fazê-lo agir sobre o bra no primeiro termo),
+                </p>
+
+                <p>
+                    $$ (m' - m)\,\langle n'\ell'm' | \hat{f} | n\ell m \rangle = 0. \tag{6.43} $$
+                </p>
+
+                <p>
+                    A Equação 6.43 diz que os elementos de matriz de um operador escalar se anulam a menos que $m' - m
+                    \equiv \Delta m = 0$.
+                </p>
+
+                <h3 id="escalar-l">A Restrição sobre $\ell$</h3>
+
+                <p>
+                    Repetindo o procedimento com a Equação 6.42:
+                </p>
+
+                <p>
+                    $$
+                    \begin{aligned}
+                    \langle n'\ell'm' | \left[\hat{L}^2, \hat{f}\right] | n\ell m \rangle &= 0, \\
+                    \langle n'\ell'm' | \hat{L}^2\hat{f} | n\ell m \rangle - \langle n'\ell'm' | \hat{f}\hat{L}^2 |
+                    n\ell m \rangle &= 0, \\
+                    \left[\ell'(\ell' + 1) - \ell(\ell + 1)\right]\hbar^2\,\langle n'\ell'm' | \hat{f} | n\ell m \rangle
+                    &= 0.
+                    \end{aligned}
+                    \tag{6.44}
+                    $$
+                </p>
+
+                <p>
+                    Isso nos diz que os elementos de matriz de um operador escalar se anulam a menos que $\ell' - \ell
+                    \equiv \Delta\ell = 0$.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref">2</a></sup> Essas são,
+                    então, as regras de seleção para um operador escalar: $\Delta\ell = 0$ e $\Delta m = 0$.
+                </p>
+
+                <h3 id="escalar-independencia">Independência em Relação a $m$</h3>
+
+                <p>
+                    Podemos obter ainda mais informação sobre os elementos de matriz a partir dos comutadores restantes.
+                    Fazendo o caso $+$ (o caso $-$ é o Problema 6.20 de Griffiths):
+                </p>
+
+                <p>
+                    $$
+                    \begin{aligned}
+                    \langle n'\ell'm' | \left[\hat{L}_+, \hat{f}\right] | n\ell m \rangle &= 0, \\
+                    \langle n'\ell'm' | \hat{L}_+\hat{f} | n\ell m \rangle - \langle n'\ell'm' | \hat{f}\hat{L}_+ |
+                    n\ell m \rangle &= 0, \\
+                    B_{\ell'}^{m'}\,\langle n'\ell'(m' - 1) | \hat{f} | n\ell m \rangle - A_\ell^m\,\langle n'\ell'm' |
+                    \hat{f} | n\ell(m + 1) \rangle &= 0,
+                    \end{aligned}
+                    \tag{6.45}
+                    $$
+                </p>
+
+                <p>
+                    onde (Problema 4.21 de Griffiths)
+                </p>
+
+                <p>
+                    $$ A_\ell^m = \hbar\sqrt{\ell(\ell + 1) - m(m + 1)} \qquad \text{e} \qquad B_\ell^m =
+                    \hbar\sqrt{\ell(\ell + 1) - m(m - 1)}. $$
+                </p>
+
+                <p>
+                    (Usamos também o fato de que $\hat{L}_\pm$ é o conjugado hermitiano de $\hat{L}_\mp$: $\langle \psi |
+                    \hat{L}_\pm = \langle \hat{L}_\mp\psi |$.<sup id="fnref:3"><a href="#fn:3"
+                            class="footnote-ref">3</a></sup>) Os dois termos da Equação 6.45 são nulos a menos que $m' = m
+                    + 1$ e $\ell' = \ell$, como demonstramos nas Equações 6.43 e 6.44. Quando essas condições são
+                    satisfeitas, os dois coeficientes são iguais ($B_\ell^{m+1} = A_\ell^m$), e a Equação 6.45 se reduz a
+                </p>
+
+                <p>
+                    $$ \langle n'\ell m | \hat{f} | n\ell m \rangle = \langle n'\ell(m + 1) | \hat{f} | n\ell(m + 1)
+                    \rangle. \tag{6.46} $$
+                </p>
+
+                <p>
+                    Evidentemente, os elementos de matriz de um operador escalar são <strong>independentes de
+                        $m$</strong>. Os resultados desta seção podem ser resumidos assim:
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p>
+                        $$ \langle n'\ell'm' | \hat{f} | n\ell m \rangle = \delta_{\ell\ell'}\,\delta_{mm'}\,\langle
+                        n'\ell \| f \| n\ell \rangle. \tag{6.47} $$
+                    </p>
+                    <p>
+                        O elemento de matriz de aparência curiosa à direita, com duas barras, é chamado de
+                        <strong>elemento de matriz reduzido</strong>; é apenas uma abreviação para "uma constante que
+                        depende de $n$, $\ell$ e $n'$, mas não de $m$".
+                    </p>
+                </div>
+
+                <p>
+                    Um caso particular importante: o Hamiltoniano de um potencial central é um operador escalar. Pela
+                    Equação 6.47, seus elementos de matriz são diagonais em $\ell$ e $m$ e independentes de $m$ — mais
+                    uma maneira de ver a degenerescência $2\ell + 1$ discutida em
+                    <a href="[06] - Degenerescência.html#potencial-central-deg">Degenerescência</a>.
+                </p>
+
+                <h3 id="exemplo-6-4">Exemplo: $\langle r^2 \rangle$ nos Estados $n = 2$ do Hidrogênio</h3>
+
+                <p>
+                    <strong>Exemplo 6.4 (a).</strong> Encontre $\langle r^2 \rangle$ para os quatro estados degenerados
+                    $n = 2$ do átomo de hidrogênio.
+                </p>
+
+                <p>
+                    <i>Solução:</i> pela Equação 6.47, para os estados com $\ell = 1$ vale a igualdade
+                </p>
+
+                <p>
+                    $$ \langle 211 | r^2 | 211 \rangle = \langle 210 | r^2 | 210 \rangle = \langle 21{-1} | r^2 |
+                    21{-1} \rangle \equiv \langle 21 \| r^2 \| 21 \rangle. $$
+                </p>
+
+                <p>
+                    Para calcular o elemento de matriz reduzido, basta escolher qualquer um desses valores esperados:
+                </p>
+
+                <p>
+                    $$
+                    \begin{aligned}
+                    \langle 21 \| r^2 \| 21 \rangle = \langle 210 | r^2 | 210 \rangle
+                    &= \int r^2\,|\psi_{210}(\mathbf{r})|^2\, d^3\mathbf{r} \\
+                    &= \int_0^\infty r^4\,|R_{21}(r)|^2\, dr \int \left| Y_1^0(\theta, \phi) \right|^2 d\Omega.
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p>
+                    Os harmônicos esféricos são normalizados, de modo que a integral angular vale 1, e as funções
+                    radiais $R_{n\ell}$ estão na Tabela 4.7 de Griffiths:
+                </p>
+
+                <p>
+                    $$ \langle 21 \| r^2 \| 21 \rangle = \int_0^\infty r^4\,\frac{1}{24a^3}\frac{r^2}{a^2}\,e^{-r/a}\, dr =
+                    30a^2. $$
+                </p>
+
+                <p>
+                    Isso determina três dos valores esperados. O último é
+                </p>
+
+                <p>
+                    $$
+                    \begin{aligned}
+                    \langle 20 \| r^2 \| 20 \rangle = \langle 200 | r^2 | 200 \rangle
+                    &= \int_0^\infty r^4\,|R_{20}(r)|^2\, dr \int \left| Y_0^0(\theta, \phi) \right|^2 d\Omega \\
+                    &= \int_0^\infty r^4\,\frac{1}{2a^3}\left(1 - \frac{1}{2}\frac{r}{a}\right)^2 e^{-r/a}\, dr =
+                    42a^2.
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p>
+                    Resumindo:
+                </p>
+
+                <p>
+                    $$ \langle 200 | r^2 | 200 \rangle = 42a^2, \qquad \langle 211 | r^2 | 211 \rangle = \langle 210 |
+                    r^2 | 210 \rangle = \langle 21{-1} | r^2 | 21{-1} \rangle = 30a^2. \tag{6.48} $$
+                </p>
+
+                <p>
+                    <strong>Exemplo 6.4 (b).</strong> Encontre o valor esperado de $r^2$ para um elétron no estado de
+                    superposição
+                </p>
+
+                <p>
+                    $$ |\psi\rangle = \frac{1}{\sqrt{2}}\left( |200\rangle - i\,|211\rangle \right). $$
+                </p>
+
+                <p>
+                    <i>Solução:</i> expandindo o valor esperado,
+                </p>
+
+                <p>
+                    $$
+                    \begin{aligned}
+                    \langle \psi | r^2 | \psi \rangle &= \frac{1}{2}\left( \langle 200| + i\,\langle 211| \right)
+                    r^2 \left( |200\rangle - i\,|211\rangle \right) \\
+                    &= \frac{1}{2}\left( \langle 200 | r^2 | 200 \rangle + i\,\langle 211 | r^2 | 200 \rangle -
+                    i\,\langle 200 | r^2 | 211 \rangle + \langle 211 | r^2 | 211 \rangle \right).
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p>
+                    Pela Equação 6.47, dois desses elementos de matriz se anulam, e
+                </p>
+
+                <p>
+                    $$ \langle \psi | r^2 | \psi \rangle = \frac{1}{2}\left( \langle 20 \| r^2 \| 20 \rangle + \langle 21
+                    \| r^2 \| 21 \rangle \right) = 36a^2. \tag{6.49} $$
+                </p>
+
+                <h2 id="operadores-vetoriais">Regras de Seleção para Operadores Vetoriais</h2>
+
+                <p>
+                    Passamos agora às regras de seleção para um operador vetorial $\hat{\mathbf{V}}$. Isso dá
+                    significativamente mais trabalho que o caso escalar, mas o resultado é central para entender as
+                    transições atômicas (Capítulo 11 de Griffiths). Começamos definindo, por analogia com os operadores
+                    de subida e descida do momento angular, os operadores<sup id="fnref:4"><a href="#fn:4"
+                            class="footnote-ref">4</a></sup>
+                </p>
+
+                <p>
+                    $$ \hat{V}_\pm \equiv \hat{V}_x \pm i\hat{V}_y. $$
+                </p>
+
+                <p>
+                    Escrita em termos desses operadores, a Equação 6.33 se torna
+                </p>
+
+                <p>
+                    $$ \left[\hat{L}_z, \hat{V}_z\right] = 0, \tag{6.50} $$
+                </p>
+
+                <p>
+                    $$ \left[\hat{L}_z, \hat{V}_\pm\right] = \pm\hbar\,\hat{V}_\pm, \tag{6.51} $$
+                </p>
+
+                <p>
+                    $$ \left[\hat{L}_\pm, \hat{V}_\pm\right] = 0, \tag{6.52} $$
+                </p>
+
+                <p>
+                    $$ \left[\hat{L}_\pm, \hat{V}_z\right] = \mp\hbar\,\hat{V}_\pm, \tag{6.53} $$
+                </p>
+
+                <p>
+                    $$ \left[\hat{L}_\pm, \hat{V}_\mp\right] = \pm 2\hbar\,\hat{V}_z, \tag{6.54} $$
+                </p>
+
+                <p>
+                    como mostra o Problema 6.22(a) de Griffiths.<sup id="fnref:5"><a href="#fn:5"
+                            class="footnote-ref">5</a></sup> Por exemplo, para a Equação 6.51: usando $[\hat{L}_z,
+                    \hat{V}_x] = i\hbar\hat{V}_y$ e $[\hat{L}_z, \hat{V}_y] = -i\hbar\hat{V}_x$,
+                </p>
+
+                <p>
+                    $$ \left[\hat{L}_z, \hat{V}_\pm\right] = i\hbar\hat{V}_y \pm i\left(-i\hbar\hat{V}_x\right) =
+                    \pm\hbar\left(\hat{V}_x \pm i\hat{V}_y\right) = \pm\hbar\,\hat{V}_\pm. $$
+                </p>
+
+                <p>
+                    Assim como no caso escalar, ensanduichamos cada um desses comutadores entre dois estados de momento
+                    angular definido para obter (a) as condições sob as quais os elementos de matriz certamente se
+                    anulam e (b) relações entre elementos de matriz com valores diferentes de $m$ ou com componentes
+                    diferentes de $\hat{\mathbf{V}}$.
+                </p>
+
+                <h3 id="vetorial-m">A Restrição sobre $m$</h3>
+
+                <p>
+                    Da Equação 6.51,
+                </p>
+
+                <p>
+                    $$ \langle n'\ell'm' | \hat{L}_z\hat{V}_\pm | n\ell m \rangle - \langle n'\ell'm' |
+                    \hat{V}_\pm\hat{L}_z | n\ell m \rangle = \pm\hbar\,\langle n'\ell'm' | \hat{V}_\pm | n\ell m
+                    \rangle, $$
+                </p>
+
+                <p>
+                    e, como nossos estados são autoestados de $\hat{L}_z$, isso se simplifica para
+                </p>
+
+                <p>
+                    $$ \left[m' - (m \pm 1)\right]\langle n'\ell'm' | \hat{V}_\pm | n\ell m \rangle = 0. \tag{6.55} $$
+                </p>
+
+                <p>
+                    A Equação 6.55 diz que <i>ou</i> $m' = m \pm 1$, <i>ou</i> o elemento de matriz de $\hat{V}_\pm$ se
+                    anula. A Equação 6.50 funciona de modo análogo (Problema 6.22), e esse primeiro conjunto de
+                    comutadores nos dá as regras de seleção para $m$:
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p>
+                        $$ \langle n'\ell'm' | \hat{V}_+ | n\ell m \rangle = 0 \quad \text{a menos que } m' = m + 1,
+                        \tag{6.56} $$
+                    </p>
+                    <p>
+                        $$ \langle n'\ell'm' | \hat{V}_z | n\ell m \rangle = 0 \quad \text{a menos que } m' = m, \tag{6.57}
+                        $$
+                    </p>
+                    <p>
+                        $$ \langle n'\ell'm' | \hat{V}_- | n\ell m \rangle = 0 \quad \text{a menos que } m' = m - 1.
+                        \tag{6.58} $$
+                    </p>
+                </div>
+
+                <p>
+                    Se desejado, essas expressões podem ser convertidas de volta em regras de seleção para as
+                    componentes $x$ e $y$ do operador, já que
+                </p>
+
+                <p>
+                    $$
+                    \begin{aligned}
+                    \langle n'\ell'm' | \hat{V}_x | n\ell m \rangle &= \frac{1}{2}\left[ \langle n'\ell'm' | \hat{V}_- |
+                    n\ell m \rangle + \langle n'\ell'm' | \hat{V}_+ | n\ell m \rangle \right], \\
+                    \langle n'\ell'm' | \hat{V}_y | n\ell m \rangle &= \frac{i}{2}\left[ \langle n'\ell'm' | \hat{V}_- |
+                    n\ell m \rangle - \langle n'\ell'm' | \hat{V}_+ | n\ell m \rangle \right].
+                    \end{aligned}
+                    $$
+                </p>
+
+                <h3 id="vetorial-l">A Restrição sobre $\ell$ e os Coeficientes de Clebsch–Gordan</h3>
+
+                <p>
+                    Os comutadores restantes, Equações 6.52–6.54, fornecem uma regra de seleção para $\ell$ e relações
+                    entre os elementos de matriz não nulos. Como mostra o Problema 6.24 de Griffiths, os resultados
+                    podem ser resumidos como<sup id="fnref:6"><a href="#fn:6" class="footnote-ref">6</a></sup>
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p>
+                        $$ \langle n'\ell'm' | \hat{V}_+ | n\ell m \rangle = -\sqrt{2}\,C^{\ell\,1\,\ell'}_{m\,1\,m'}\,
+                        \langle n'\ell' \| V \| n\ell \rangle, \tag{6.59} $$
+                    </p>
+                    <p>
+                        $$ \langle n'\ell'm' | \hat{V}_- | n\ell m \rangle = \sqrt{2}\,C^{\ell\,1\,\ell'}_{m\,{-1}\,m'}\,
+                        \langle n'\ell' \| V \| n\ell \rangle, \tag{6.60} $$
+                    </p>
+                    <p>
+                        $$ \langle n'\ell'm' | \hat{V}_z | n\ell m \rangle = C^{\ell\,1\,\ell'}_{m\,0\,m'}\, \langle
+                        n'\ell' \| V \| n\ell \rangle. \tag{6.61} $$
+                    </p>
+                </div>
+
+                <p>
+                    As constantes $C^{j_1 j_2 J}_{m_1 m_2 M}$ nessas expressões são precisamente os
+                    <strong>coeficientes de Clebsch–Gordan</strong> que apareceram na adição de momentos angulares
+                    (Seção 4.4.3 de Griffiths). O coeficiente $C^{j_1 j_2 J}_{m_1 m_2 M}$ se anula a menos que $M = m_1 +
+                    m_2$ (pois as componentes $z$ dos momentos angulares se somam) e a menos que $J = j_1 + j_2, j_1 +
+                    j_2 - 1, \dots, |j_1 - j_2|$ (Equação 4.182 de Griffiths). Em particular, os elementos de matriz de
+                    qualquer componente de um operador vetorial, $\langle n'\ell'm' | \hat{V}_i | n\ell m \rangle$, só
+                    são não nulos se
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p>
+                        $$ \Delta\ell = 0, \pm 1 \qquad \text{e} \qquad \Delta m = 0, \pm 1. \tag{6.62} $$
+                    </p>
+                </div>
+
+                <p>
+                    (Pela mesma regra de soma de momentos angulares, com $j_1 = 0$ e $j_2 = 1$ o único valor possível é
+                    $J = 1$: um operador vetorial não conecta dois estados com $\ell = \ell' = 0$.)
+                </p>
+
+                <h3 id="exemplo-6-5">Exemplo: os Elementos de Matriz de $\hat{\mathbf{r}}$ entre $n = 2$ e $n = 3$</h3>
+
+                <p>
+                    <strong>Exemplo 6.5.</strong> Encontre todos os elementos de matriz de $\hat{\mathbf{r}}$ entre os
+                    estados com $n = 2$, $\ell = 1$ e $n' = 3$, $\ell' = 2$:
+                </p>
+
+                <p>
+                    $$ \langle 3\,2\,m' | r_i | 2\,1\,m \rangle, $$
+                </p>
+
+                <p>
+                    com $m = -1, 0, 1$, $m' = -2, -1, 0, 1, 2$ e $r_i = x, y, z$.
+                </p>
+
+                <p>
+                    <i>Solução:</i> com o operador vetorial $\hat{\mathbf{V}} = \hat{\mathbf{r}}$, as componentes são
+                    $V_z = z$, $V_+ = x + iy$ e $V_- = x - iy$. Começamos calculando <i>um</i> dos elementos de matriz:
+                </p>
+
+                <p>
+                    $$
+                    \begin{aligned}
+                    \langle 320 | z | 210 \rangle &= \int \psi_{320}(\mathbf{r})^*\, r\cos\theta\, \psi_{210}(\mathbf{r})\,
+                    d^3\mathbf{r} \\
+                    &= \int R_{32}(r)^*\, r\, R_{21}(r)\, r^2\, dr \int Y_2^0(\theta, \phi)^*\cos\theta\, Y_1^0(\theta,
+                    \phi)\, d\Omega \\
+                    &= \frac{2^{12}\,3^3\,\sqrt{3}}{5^7}\, a.
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p>
+                    Pela Equação 6.61, determinamos então o elemento de matriz reduzido:
+                </p>
+
+                <p>
+                    $$ \langle 320 | z | 210 \rangle = C^{1\,1\,2}_{0\,0\,0}\,\langle 32 \| V \| 21 \rangle
+                    \quad\Longrightarrow\quad \frac{2^{12}\,3^3\,\sqrt{3}}{5^7}\,a = \sqrt{\frac{2}{3}}\,\langle 32 \| V
+                    \| 21 \rangle. $$
+                </p>
+
+                <p>
+                    Portanto,
+                </p>
+
+                <p>
+                    $$ \langle 32 \| V \| 21 \rangle = \frac{2^{12}\,3^4}{5^7\sqrt{2}}\, a. \tag{6.63} $$
+                </p>
+
+                <p>
+                    Todos os demais elementos de matriz podem agora ser obtidos das Equações 6.59–6.61 com a ajuda da
+                    tabela de Clebsch–Gordan (os coeficientes relevantes estão na tabela abaixo). Os elementos de matriz
+                    não nulos são
+                </p>
+
+                <p>
+                    $$
+                    \begin{aligned}
+                    \langle 322 | \hat{V}_+ | 211 \rangle &= -\sqrt{2}\,C^{1\,1\,2}_{1\,1\,2}\,\langle 32 \| V \| 21
+                    \rangle = -\sqrt{2}\,\langle 32 \| V \| 21 \rangle, \\
+                    \langle 321 | \hat{V}_+ | 210 \rangle &= -\sqrt{2}\,C^{1\,1\,2}_{0\,1\,1}\,\langle 32 \| V \| 21
+                    \rangle = -\langle 32 \| V \| 21 \rangle, \\
+                    \langle 320 | \hat{V}_+ | 21{-1} \rangle &= -\sqrt{2}\,C^{1\,1\,2}_{-1\,1\,0}\,\langle 32 \| V \| 21
+                    \rangle = -\frac{1}{\sqrt{3}}\,\langle 32 \| V \| 21 \rangle, \\
+                    \langle 320 | \hat{V}_- | 211 \rangle &= \sqrt{2}\,C^{1\,1\,2}_{1\,-1\,0}\,\langle 32 \| V \| 21
+                    \rangle = \frac{1}{\sqrt{3}}\,\langle 32 \| V \| 21 \rangle, \\
+                    \langle 32{-1} | \hat{V}_- | 210 \rangle &= \sqrt{2}\,C^{1\,1\,2}_{0\,-1\,-1}\,\langle 32 \| V \| 21
+                    \rangle = \langle 32 \| V \| 21 \rangle, \\
+                    \langle 32{-2} | \hat{V}_- | 21{-1} \rangle &= \sqrt{2}\,C^{1\,1\,2}_{-1\,-1\,-2}\,\langle 32 \| V \|
+                    21 \rangle = \sqrt{2}\,\langle 32 \| V \| 21 \rangle, \\
+                    \langle 321 | \hat{V}_z | 211 \rangle &= C^{1\,1\,2}_{1\,0\,1}\,\langle 32 \| V \| 21 \rangle =
+                    \frac{1}{\sqrt{2}}\,\langle 32 \| V \| 21 \rangle, \\
+                    \langle 320 | \hat{V}_z | 210 \rangle &= C^{1\,1\,2}_{0\,0\,0}\,\langle 32 \| V \| 21 \rangle =
+                    \sqrt{\frac{2}{3}}\,\langle 32 \| V \| 21 \rangle, \\
+                    \langle 32{-1} | \hat{V}_z | 21{-1} \rangle &= C^{1\,1\,2}_{-1\,0\,-1}\,\langle 32 \| V \| 21 \rangle
+                    = \frac{1}{\sqrt{2}}\,\langle 32 \| V \| 21 \rangle,
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p>
+                    com o elemento de matriz reduzido dado pela Equação 6.63. Os outros trinta e seis elementos de
+                    matriz se anulam por causa das regras de seleção (Equações 6.56–6.58 e 6.62). Determinamos assim
+                    todos os quarenta e cinco elementos de matriz calculando uma <i>única</i> integral! (Deixamos os
+                    resultados em termos de $V_+$ e $V_-$, mas é fácil reescrevê-los em termos de $x$ e $y$ com as
+                    expressões da seção anterior.)
+                </p>
+
+                <table>
+                    <tr>
+                        <th>$M$</th>
+                        <th>$m_1$</th>
+                        <th>$m_2$</th>
+                        <th>$J = 2$</th>
+                        <th>$J = 1$</th>
+                        <th>$J = 0$</th>
+                    </tr>
+                    <tr><td>$+2$</td><td>$+1$</td><td>$+1$</td><td>$1$</td><td>—</td><td>—</td></tr>
+                    <tr><td rowspan="2">$+1$</td><td>$+1$</td><td>$0$</td><td>$\sqrt{1/2}$</td><td>$\sqrt{1/2}$</td><td>—</td></tr>
+                    <tr><td>$0$</td><td>$+1$</td><td>$\sqrt{1/2}$</td><td>$-\sqrt{1/2}$</td><td>—</td></tr>
+                    <tr><td rowspan="3">$0$</td><td>$+1$</td><td>$-1$</td><td>$\sqrt{1/6}$</td><td>$\sqrt{1/2}$</td><td>$\sqrt{1/3}$</td></tr>
+                    <tr><td>$0$</td><td>$0$</td><td>$\sqrt{2/3}$</td><td>$0$</td><td>$-\sqrt{1/3}$</td></tr>
+                    <tr><td>$-1$</td><td>$+1$</td><td>$\sqrt{1/6}$</td><td>$-\sqrt{1/2}$</td><td>$\sqrt{1/3}$</td></tr>
+                    <tr><td rowspan="2">$-1$</td><td>$0$</td><td>$-1$</td><td>$\sqrt{1/2}$</td><td>$\sqrt{1/2}$</td><td>—</td></tr>
+                    <tr><td>$-1$</td><td>$0$</td><td>$\sqrt{1/2}$</td><td>$-\sqrt{1/2}$</td><td>—</td></tr>
+                    <tr><td>$-2$</td><td>$-1$</td><td>$-1$</td><td>$1$</td><td>—</td><td>—</td></tr>
+                </table>
+
+                <p>
+                    <i>Coeficientes de Clebsch–Gordan $C^{1\,1\,J}_{m_1\,m_2\,M}$ para $1 \otimes 1$ (Figura 6.8 de
+                        Griffiths).</i>
+                </p>
+
+                <h3 id="por-que-clebsch-gordan">Por Que os Coeficientes de Clebsch–Gordan?</h3>
+
+                <p>
+                    Não é coincidência que os coeficientes de Clebsch–Gordan apareçam nas Equações 6.59–6.61. Os estados
+                    têm momento angular, mas os <i>operadores</i> também carregam momento angular. Um operador escalar
+                    (Equação 6.34) tem $\ell = 0$ — ele não se altera por uma rotação —, assim como um estado de momento
+                    angular 0 não se altera. Um operador vetorial (Equação 6.33) tem $\ell = 1$: suas três componentes se
+                    transformam umas nas outras sob uma rotação da mesma forma que o tripleto de estados com momento
+                    angular $\ell = 1$.<sup id="fnref:7"><a href="#fn:7" class="footnote-ref">7</a></sup> Quando agimos
+                    sobre um estado com um operador, somamos o momento angular do estado ao do operador para obter o
+                    momento angular do estado resultante; essa adição de momentos angulares é a origem dos coeficientes
+                    de Clebsch–Gordan nas Equações 6.59–6.61.<sup id="fnref:8"><a href="#fn:8"
+                            class="footnote-ref">8</a></sup>
+                </p>
+
+                <p>
+                    Para referência, os coeficientes de Clebsch–Gordan são definidos pela expansão (Equação 4.183 de
+                    Griffiths)
+                </p>
+
+                <p>
+                    $$ |J\,M\rangle = \sum_{m_1, m_2} C^{j_1 j_2 J}_{m_1 m_2 M}\,|j_1\,j_2\,m_1\,m_2\rangle, \tag{6.64}
+                    $$
+                </p>
+
+                <p>
+                    de modo que $C^{j_1 j_2 J}_{m_1 m_2 M} = \langle j_1\,j_2\,m_1\,m_2 | J\,M \rangle$ (6.65). Aplicando
+                    $\hat{J}_\pm = \hat{J}_\pm^{(1)} + \hat{J}_\pm^{(2)}$ à Equação 6.64, obtêm-se relações de
+                    recorrência entre eles (Equação 6.66, Problema 6.23 de Griffiths), que são usadas para mostrar que as
+                    Equações 6.59–6.61 satisfazem as relações entre elementos de matriz vindas dos comutadores 6.52–6.54
+                    (Problema 6.24).
+                </p>
+
+                <h2 id="dipolo-eletrico">Combinando com a Paridade: Transições de Dipolo Elétrico</h2>
+
+                <p>
+                    As regras rotacionais podem ser combinadas com as de paridade. O operador momento de dipolo elétrico,
+                    $\hat{\mathbf{p}}_e = q\hat{\mathbf{r}}$, é um vetor "verdadeiro": sob rotações ele obedece à
+                    Equação 6.62, e sob paridade ele é ímpar, obedecendo à regra de Laporte (Equação 6.26):
+                </p>
+
+                <table>
+                    <tr>
+                        <th>Simetria</th>
+                        <th>Regra de seleção para $\langle n'\ell'm' | \hat{\mathbf{p}}_e | n\ell m \rangle$</th>
+                    </tr>
+                    <tr>
+                        <td>Rotação ($\hat{\mathbf{p}}_e$ é um operador vetorial)</td>
+                        <td>$\Delta\ell = 0, \pm 1$ e $\Delta m = 0, \pm 1$</td>
+                    </tr>
+                    <tr>
+                        <td>Paridade ($\hat{\mathbf{p}}_e$ é ímpar)</td>
+                        <td>$\ell + \ell'$ ímpar; elimina $\Delta\ell = 0$</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Combinação</strong></td>
+                        <td>$\Delta\ell = \pm 1$ e $\Delta m = 0, \pm 1$</td>
+                    </tr>
+                </table>
+
+                <p>
+                    Nenhuma das duas simetrias, sozinha, dá esse resultado: a rotação permitiria $\Delta\ell = 0$, e a
+                    paridade permitiria $\Delta\ell = \pm 3, \pm 5, \dots$ É a combinação das duas que determina quais
+                    transições de dipolo elétrico podem ocorrer (Capítulo 11 de Griffiths). No Exemplo 6.5, por exemplo,
+                    os estados $\ell = 1$ e $\ell' = 2$ têm paridades opostas e $\Delta\ell = 1$, e por isso há elementos
+                    de matriz não nulos.
+                </p>
+
+                <h3 id="problemas">Problemas Relacionados</h3>
+
+                <ul>
+                    <li><strong>6.20–6.21:</strong> o caso $\hat{L}_-$ para operadores escalares; $\langle r \rangle$
+                        para $\psi = (\psi_{211} + \psi_{21-1})/\sqrt{2}$ a partir de um único elemento de matriz
+                        reduzido.</li>
+                    <li><strong>6.22:</strong> as Equações 6.50–6.54 e a regra 6.57.</li>
+                    <li><strong>6.23–6.24:</strong> coeficientes de Clebsch–Gordan, suas relações de recorrência e a
+                        demonstração das Equações 6.59–6.61.</li>
+                    <li><strong>6.25:</strong> o momento de dipolo no estado $\psi = (\psi_{211} + \psi_{210})/\sqrt{2}$
+                        (sem esquecer a regra de Laporte!).</li>
+                </ul>
+
+                <hr class="footnotes-sep">
+                <section class="footnotes">
+                    <ol>
+                        <li id="fn:1">
+                            <p>O importante é que eles satisfaçam as Equações 4.118 e 4.120 de Griffiths.<a href="#fnref:1"
+                                    class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:2">
+                            <p>A outra raiz da equação do segundo grau $\ell'(\ell' + 1) - \ell(\ell + 1) = 0$ é $\ell' =
+                                -(\ell + 1)$; como $\ell$ e $\ell'$ são inteiros não negativos, isso não é possível.<a
+                                    href="#fnref:2" class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:3">
+                            <p>Como $\hat{L}_x$ e $\hat{L}_y$ são hermitianos, $\hat{L}_\pm^\dagger = (\hat{L}_x \pm
+                                i\hat{L}_y)^\dagger = \hat{L}_x^\dagger \pm (-i)\hat{L}_y^\dagger = \hat{L}_x \mp i\hat{L}_y
+                                = \hat{L}_\mp$.<a href="#fnref:3" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:4">
+                            <p>Os operadores $\hat{V}_\pm$ são, a menos de constantes, componentes do que se chama
+                                <strong>operadores tensoriais esféricos</strong> de ordem 1, escritos $\hat{T}_q^{(k)}$,
+                                com $k$ a ordem e $q$ a componente: $\hat{T}_{\pm 1}^{(1)} = \mp\frac{1}{\sqrt{2}}\hat{V}_\pm$
+                                e $\hat{T}_0^{(1)} = \hat{V}_z$. Da mesma forma, o operador escalar $\hat{f}$ é um operador
+                                tensorial esférico de ordem 0: $\hat{T}_0^{(0)} = \hat{f}$.<a href="#fnref:4"
+                                    class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:5">
+                            <p>Cada uma das Equações 6.51–6.54 representa <i>duas</i> equações: leia os sinais de cima em
+                                toda a equação, ou os de baixo.<a href="#fnref:5" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:6">
+                            <p>Um aviso sobre a notação: nas regras de seleção para o operador <i>escalar</i> $r$,
+                                $\langle n'\ell'm' | r | n\ell m \rangle = \delta_{\ell\ell'}\delta_{mm'}\langle n'\ell' \| r
+                                \| n\ell \rangle$, e para uma componente (digamos $z$) do operador <i>vetorial</i>
+                                $\mathbf{r}$, $\langle n'\ell'm' | z | n\ell m \rangle = C^{\ell 1 \ell'}_{m 0 m'}\langle
+                                n'\ell' \| r \| n\ell \rangle$, os dois elementos de matriz reduzidos <i>não são os
+                                    mesmos</i>: um é o de $r$ e o outro é o de $\mathbf{r}$, operadores <i>diferentes</i> que
+                                compartilham o mesmo nome. Se ajudar, acrescente índices, $\langle n'\ell' \| r \| n\ell
+                                \rangle_s$ e $\langle n'\ell' \| r \| n\ell \rangle_v$, para distingui-los.<a
+                                    href="#fnref:6" class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:7">
+                            <p>No caso do operador posição, essa correspondência fica particularmente evidente quando o
+                                reescrevemos com a ajuda da Tabela 4.3 de Griffiths: $x \pm iy = r\sin\theta\,e^{\pm i\phi}
+                                = \mp r\sqrt{8\pi/3}\;Y_1^{\pm 1}(\theta, \phi)$ e $z = r\cos\theta = r\sqrt{4\pi/3}\;Y_1^0(\theta,
+                                \phi)$.<a href="#fnref:7" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:8">
+                            <p>Como $C^{\ell 0 \ell'}_{m 0 m'} = \delta_{mm'}\delta_{\ell\ell'}$, poderíamos reescrever as
+                                regras de seleção de um operador escalar (Equação 6.47) como $\langle n'\ell'm' | \hat{f} |
+                                n\ell m \rangle = C^{\ell 0 \ell'}_{m 0 m'}\langle n'\ell' \| f \| n\ell \rangle$.<a
+                                    href="#fnref:8" class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                    </ol>
+                </section>
+
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="toc-container">
+                <h4>Nesta página</h4>
+                <ul>
+                    <li><a href="#regras-rotacionais">Regras de Seleção Rotacionais</a></li>
+                    <li>
+                        <a href="#operadores-escalares">Operadores Escalares</a>
+                        <ul>
+                            <li><a href="#escalar-m">Restrição sobre m</a></li>
+                            <li><a href="#escalar-l">Restrição sobre ℓ</a></li>
+                            <li><a href="#escalar-independencia">Independência de m</a></li>
+                            <li><a href="#exemplo-6-4">Exemplo: ⟨r²⟩ em n = 2</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#operadores-vetoriais">Operadores Vetoriais</a>
+                        <ul>
+                            <li><a href="#vetorial-m">Restrição sobre m</a></li>
+                            <li><a href="#vetorial-l">Clebsch–Gordan</a></li>
+                            <li><a href="#exemplo-6-5">Exemplo: elementos de r</a></li>
+                            <li><a href="#por-que-clebsch-gordan">Por Que Clebsch–Gordan?</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#dipolo-eletrico">Dipolo Elétrico</a>
+                        <ul>
+                            <li><a href="#problemas">Problemas Relacionados</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Search Modal Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-modal">
+            <div class="search-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search documentation..." autocomplete="off">
+            </div>
+            <div class="search-results" id="search-results"></div>
+            <div class="search-footer">
+                <div class="search-commands">
+                    <span class="cmd-key">↑</span>
+                    <span class="cmd-key">↓</span>
+                    <span class="cmd-label">navigate</span>
+                    <span class="cmd-key">↵</span>
+                    <span class="cmd-label">select</span>
+                </div>
+                <div class="search-commands">
+                    <span class="cmd-key">esc</span>
+                    <span class="cmd-label">close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../../../assets/js/class-lecture.js"></script>
+</body>
+
+</html>

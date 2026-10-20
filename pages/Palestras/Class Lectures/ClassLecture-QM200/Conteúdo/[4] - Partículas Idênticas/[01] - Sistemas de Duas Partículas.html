@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Duas partículas | Mecânica Quântica II | The Journal of a Physicist</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../../../assets/images/Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../../../assets/images/Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../../../assets/images/Favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="../../../../../../assets/images/Favicon/favicon.ico">
+    <link rel="stylesheet" href="../../../../../../assets/css/class-lecture.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                        <line x1="9" x2="9" y1="3" y2="21"></line>
+                    </svg>
+                </button>
+                <button id="theme-toggle" class="sidebar-toggle" aria-label="Toggle Theme">
+                    <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="breadcrumbs-header">
+                    <a href="../../../../../../Páginas Principais/Lectures.html" class="breadcrumb-link">← Lectures</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <a href="../../index.html" class="breadcrumb-link active">Mecânica Quântica II</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-current" class="breadcrumb-link active">Sistema de Duas partículas</span>
+                </div>
+            </div>
+            <nav class="top-nav">
+                <a href="../../../../../../Páginas Principais/Lectures.html">Lectures</a>
+                <a href="../../../../../../index.html">Home</a>
+            </nav>
+        </div>
+
+        <script>
+            MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']]
+                }
+            };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    </header>
+
+    <div class="main-layout">
+        <aside class="left-sidebar" id="left-sidebar">
+            <div class="sidebar-content">
+
+                <button class="search-trigger" id="search-trigger">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                    </svg>
+                    <span>Search docs...</span>
+                </button>
+
+                <div class="sidebar-group">
+                    <h3>Início</h3>
+                    <ul>
+                        <li><a href="../../index.html">Overview</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Partículas Idênticas</h3>
+                    <ul>
+                        <li><a href="[01] - Sistemas de Duas Partículas.html" class="active">5.1 Sistemas de Duas Partículas</a></li>
+                        <li><a href="[02] - Átomos.html">5.2 Átomos</a></li>
+                        <li><a href="[03] - Sólidos.html">5.3 Sólidos</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Simetrias e Leis de Conservação</h3>
+                    <ul>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[01] - Introdução.html">6.1 Introdução</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[02] - O Operador de Translação.html">6.2 O Operador de Translação</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[03] - Leis de Conservação.html">6.3 Leis de Conservação</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[04] - Paridade.html">6.4 Paridade</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[05] - Simetrias de Rotação.html">6.5 Simetrias de Rotação</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[06] - Degenerescência.html">6.6 Degenerescência</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[07] - Regras de Seleção Rotacionais.html">6.7 Regras de Seleção Rotacionais</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[08] - Translações no Tempo.html">6.8 Translações no Tempo</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Teoria de Perturbação Independente do Tempo</h3>
+                    <ul>
+                        <li><a href="../[6] - Teoria de Perturbação Independente do Tempo/[01] - Teoria de Perturbação Não Degenerada.html">7.1 Teoria de Perturbação Não Degenerada</a></li>
+                        <li><a href="../[6] - Teoria de Perturbação Independente do Tempo/[02] - Teoria de Perturbação Degenerada.html">7.2 Teoria de Perturbação Degenerada</a></li>
+                        <li><a href="../[6] - Teoria de Perturbação Independente do Tempo/[03] - A Estrutura Fina do Hidrogênio.html">7.3 A Estrutura Fina do Hidrogênio</a></li>
+                        <li><a href="../[6] - Teoria de Perturbação Independente do Tempo/[04] - O Efeito Zeeman.html">7.4 O Efeito Zeeman</a></li>
+                        <li><a href="../[6] - Teoria de Perturbação Independente do Tempo/[05] - A Estrutura Hiperfina do Hidrogênio.html">7.5 A Estrutura Hiperfina do Hidrogênio</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>O Princípio Variacional</h3>
+                    <ul>
+                        <li><a href="../[7] - O Princípio Variacional/[01] - Teoria.html">8.1 Teoria</a></li>
+                        <li><a href="../[7] - O Princípio Variacional/[02] - O Estado Fundamental do Hélio.html">8.2 O Estado Fundamental do Hélio</a></li>
+                        <li><a href="../[7] - O Princípio Variacional/[03] - O Íon da Molécula de Hidrogênio.html">8.3 O Íon da Molécula de Hidrogênio</a></li>
+                        <li><a href="../[7] - O Princípio Variacional/[04] - A Molécula de Hidrogênio.html">8.4 A Molécula de Hidrogênio</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>A Aproximação WKB</h3>
+                    <ul>
+                        <li><a href="../[8] - A Aproximação WKB/[01] - A Região “Clássica”.html">9.1 A Região “Clássica”</a></li>
+                        <li><a href="../[8] - A Aproximação WKB/[02] - Tunelamento.html">9.2 Tunelamento</a></li>
+                        <li><a href="../[8] - A Aproximação WKB/[03] - As Fórmulas de Conexão.html">9.3 As Fórmulas de Conexão</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="prose">
+
+                <h1 id="sistema-de-duas-particulas">Sistema de Duas partículas</h1>
+                <p class="lead">Funções de onda de duas partículas, emaranhamento, partículas idênticas, bósons e
+                    férmions, forças de troca e o princípio de simetrização generalizado (Griffiths, Seção 5.1).</p>
+
+                <p style="color: yellow;">
+                    Na mecânica quântica, o estado de um sistema de uma única partícula é descrito por uma função de
+                    onda $\Psi(\mathbf{r}, t)$. Esta função depende apenas das coordenadas espaciais
+                    $\mathbf{r}$ da partícula e do tempo $t$. Através dela, podemos extrair todas as informações
+                    probabilísticas e dinâmicas do sistema.
+                </p>
+
+                <p style="color: yellow;">
+                    No entanto, ao analisar problemas mais complexos, precisamos expandir
+                    essa descrição. Ao passarmos para um sistema de duas partículas, a
+                    representação do estado exige uma descrição de ambos os constituintes
+                    simultaneamente.
+                </p>
+
+                <p style="color: yellow;">
+                    Assim, o estado de um sistema de duas partículas é condicionado por uma função de onda
+                    $\Psi(\mathbf{r}_1, \mathbf{r}_2, t)$. Nessa notação, $\mathbf{r}_1$ denota a posição da primeira
+                    partícula no espaço e $\mathbf{r}_2$ a posição da segunda partícula, além de preservar a
+                    dependência global do tempo $t$.
+                </p>
+
+                <p style="color: yellow;">
+                    A evolução no tempo dessa função de onda é perfeitamente determinada pela Equação de Schrödinger:
+                </p>
+
+                <p style="color: yellow;">
+                    $$ i\hbar \frac{\partial \Psi}{\partial t} = \hat{H}\Psi. \tag{5.2} $$
+                </p>
+
+                <p style="color: yellow;">
+                    Para um sistema composto por duas partículas (com massas $m_1$ e $m_2$), o operador Hamiltoniano
+                    $\hat{H}$ inclui
+                    as energias cinéticas de ambas as partículas associadas a um campo de potencial $V$, que pode
+                    depender mutuamente
+                    da posição de ambas as partículas. Explicitamente, o Hamiltoniano é dado por:
+                </p>
+
+                <p style="color: yellow;">
+                    $$ \hat{H} = -\frac{\hbar^2}{2m_1}\nabla_1^2 - \frac{\hbar^2}{2m_2}\nabla_2^2 + V(\mathbf{r}_1,
+                    \mathbf{r}_2, t). \tag{5.3} $$
+                </p>
+
+                <p style="color: yellow;">
+                    Onde o operador Laplaciano $\nabla_1^2$ atua somente nas coordenadas da partícula 1, enquanto
+                    $\nabla_2^2$
+                    atua somente nas coordenadas da partícula 2.
+                </p>
+
+                <p style="color: yellow;">
+                    Seguindo a interpretação estatística de Born, a densidade de probabilidade do sistema é representada
+                    por $|\Psi(\mathbf{r}_1, \mathbf{r}_2, t)|^2$. Exprimindo matematicamente, a probabilidade
+                    infinitesimal
+                    $dP$ de se encontrar, num instante de tempo $t$, a partícula 1 no volume infinitesimal
+                    $d^3\mathbf{r}_1$ e
+                    simultaneamente a partícula 2 no volume $d^3\mathbf{r}_2$ pode ser escrita como:
+                </p>
+
+                <p style="color: yellow;">
+                    $$ dP(\mathbf{r}_1, \mathbf{r}_2, t) = |\Psi(\mathbf{r}_1, \mathbf{r}_2, t)|^2 d^3\mathbf{r}_1
+                    d^3\mathbf{r}_2. \tag{5.4} $$
+                </p>
+
+                <p style="color: yellow;">
+                    Naturalmente, como as partículas devem existir em algum lugar, a probabilidade total de se encontrar
+                    ambas
+                    as partículas sobre todo o domínio de espaço permitido tem que ser rigorosamente 1. Dessa premissa,
+                    decorre
+                    a condição de normalização da função de onda, configurada como uma integral dupla no espaço
+                    volumétrico (uma integral sêxtupla sobre as componentes escalares):
+                </p>
+
+                <p style="color: yellow;">
+                    $$ \int |\Psi(\mathbf{r}_1, \mathbf{r}_2, t)|^2 d^3\mathbf{r}_1 d^3\mathbf{r}_2 = 1. \tag{5.5} $$
+                </p>
+
+                <p>
+                    Uma importante simplificação ocorre quando o potencial $V(\mathbf{r}_1, \mathbf{r}_2)$ é
+                    independente do tempo. Nesse caso, a separação de variáveis entre o tempo e o espaço fornece um
+                    conjunto completo de soluções, cada uma formada por uma parte puramente espacial multiplicada por
+                    um fator de fase que oscila no tempo:
+                </p>
+
+                <p style="color: yellow;">
+                    $$ \Psi(\mathbf{r}_1, \mathbf{r}_2, t) = \psi(\mathbf{r}_1, \mathbf{r}_2) e^{-iEt/\hbar}. \tag{5.6} $$
+                </p>
+
+                <p style="color: yellow;">
+                    Nessa decomposição, a função de estado estacionário $\psi(\mathbf{r}_1, \mathbf{r}_2)$ satisfaz, por
+                    conseguinte, a
+                    Equação de Schrödinger independente do tempo generalizada para as duas partículas, denotada
+                    compactamente por:
+                </p>
+
+                <p style="color: yellow;">
+                    $$ \hat{H}\psi(\mathbf{r}_1, \mathbf{r}_2) = E\psi(\mathbf{r}_1, \mathbf{r}_2) $$
+                </p>
+
+                <p style="color: yellow;">
+                    O que, expandindo o operador Hamiltoniano explicitamente, revela a equação diferencial que dita a
+                    estrutura espacial:
+                </p>
+
+                <p style="color: yellow;">
+                    $$ \left[ -\frac{\hbar^2}{2m_1}\nabla_1^2 - \frac{\hbar^2}{2m_2}\nabla_2^2 + V(\mathbf{r}_1,
+                    \mathbf{r}_2) \right] \psi(\mathbf{r}_1, \mathbf{r}_2) = E\psi(\mathbf{r}_1, \mathbf{r}_2). \tag{5.7} $$
+                </p>
+
+                <p>
+                    Aqui, $E$ é a energia <strong>total</strong> do sistema. Resolver essa equação diferencial parcial
+                    para um potencial arbitrário $V(\mathbf{r}_1, \mathbf{r}_2)$ é, em geral, muito difícil. No
+                    entanto, existem dois casos especiais em que o problema de duas partículas se reduz a problemas de
+                    uma única partícula.
+                </p>
+
+                <h4 id="caso-1" style="color: yellow;">1. Partículas não-interagentes (Potenciais Separados)</h4>
+
+                <p style="color: yellow;">
+                    O primeiro caso ocorre quando assumimos que não há interação (atração ou repulsão) entre as duas
+                    partículas. Cada partícula interage apenas com o potencial de seu respectivo ambiente. Portanto, o
+                    termo de energia potencial do sistema se divide na soma dos potenciais independentes:
+                </p>
+
+                <p style="color: yellow;">
+                    $$ V(\mathbf{r}_1, \mathbf{r}_2) = V_1(\mathbf{r}_1) + V_2(\mathbf{r}_2) \tag{5.8} $$
+                </p>
+
+                <p>
+                    Um exemplo concreto é o de duas partículas presas a duas molas diferentes: cada uma sente apenas a
+                    força da sua própria mola, e nenhuma delas sente a outra.
+                </p>
+
+                <p style="color: yellow;">
+                    Como resultado, o Hamiltoniano total perde a parcela de acoplamento e assume uma forma aditiva
+                    equivalente à soma dos dois Hamiltonianos singulares:
+                </p>
+
+                <p style="color: yellow;">
+                    $$ \hat{H}(\mathbf{r}_1, \mathbf{r}_2) = \left[ -\frac{\hbar^2}{2m_1}\nabla_1^2 + V_1(\mathbf{r}_1)
+                    \right] + \left[ -\frac{\hbar^2}{2m_2}\nabla_2^2 + V_2(\mathbf{r}_2) \right] =
+                    \hat{H}_1(\mathbf{r}_1) + \hat{H}_2(\mathbf{r}_2) $$
+                </p>
+
+                <p>
+                    Com isso, temos a possibilidade de utilizar a técnica da separação de variáveis. Nossa hipótese é
+                    que a solução espacial estacionária total $\psi$ fatora no produto das funções de onda de cada
+                    partícula isolada (cada uma no seu próprio potencial $V_1$ ou $V_2$ — não se trata de partículas
+                    livres):
+                </p>
+
+                <p style="color: yellow;">
+                    $$ \psi(\mathbf{r}_1, \mathbf{r}_2) = \psi_a(\mathbf{r}_1)\psi_b(\mathbf{r}_2) \tag{5.9} $$
+                </p>
+
+                <p style="color: yellow;">
+                    Substituindo essa função na Equação de Schrödinger para duas partículas e dividindo a equação
+                    por $\psi_a(\mathbf{r}_1)\psi_b(\mathbf{r}_2)$, obtemos duas Equações de Schrödinger de uma
+                    partícula independentes:
+                </p>
+
+                <p style="color: yellow;">
+                    $$ \left[ -\frac{\hbar^2}{2m_1}\nabla_1^2 + V_1(\mathbf{r}_1) \right] \psi_a(\mathbf{r}_1) =
+                    E_a\psi_a(\mathbf{r}_1) $$
+                </p>
+                <p style="color: yellow;">
+                    $$ \left[ -\frac{\hbar^2}{2m_2}\nabla_2^2 + V_2(\mathbf{r}_2) \right] \psi_b(\mathbf{r}_2) =
+                    E_b\psi_b(\mathbf{r}_2) \tag{5.10} $$
+                </p>
+
+                <p style="color: yellow;">
+                    Isso mostra que a energia total do sistema é a simples soma da energia individual de cada estado
+                    estacionário em $E = E_a + E_b$. Neste cenário, a função de onda completa dependente do tempo para o
+                    sistema de duas partículas $\Psi(\mathbf{r}_1, \mathbf{r}_2, t)$ é dado como o produto das
+                    funções espaciais individuais multiplicadas pela evolução temporal conjunta:
+                </p>
+
+                <p>
+                    $$
+                    \Psi(\mathbf{r}_1, \mathbf{r}_2, t) = \psi_a(\mathbf{r}_1)\psi_b(\mathbf{r}_2) e^{-i(E_a +
+                    E_b)t/\hbar}
+                    = \left[\psi_a(\mathbf{r}_1)e^{-iE_a t/\hbar}\right]\left[\psi_b(\mathbf{r}_2)e^{-iE_b t/\hbar}\right]
+                    = \Psi_a(\mathbf{r}_1, t)\,\Psi_b(\mathbf{r}_2, t). \tag{5.11}
+                    $$
+                </p>
+
+                <p style="color: yellow;">
+                    Onde $\psi_a(\mathbf{r}_1)$ é a solução particular correspondente ao estado $a$ da partícula 1, e
+                    $\psi_b(\mathbf{r}_2)$ é a solução particular correspondente ao estado $b$ da partícula 2.
+                </p>
+
+                <h4 id="emaranhamento">Estados emaranhados</h4>
+
+                <p>
+                    A Equação 5.11 descreve uma situação simples: a partícula 1 está no estado $a$ e a partícula 2 está
+                    no estado $b$. Mas a Equação de Schrödinger é linear, e portanto <i>qualquer</i> combinação linear
+                    de soluções desse tipo também é uma solução legítima. Por exemplo:
+                </p>
+
+                <p>
+                    $$ \Psi = \frac{3}{5}\,\Psi_a(\mathbf{r}_1, t)\,\Psi_b(\mathbf{r}_2, t) + \frac{4}{5}\,
+                    \Psi_c(\mathbf{r}_1, t)\,\Psi_d(\mathbf{r}_2, t). \tag{5.12} $$
+                </p>
+
+                <p>
+                    Neste estado, o estado da partícula 1 depende do estado da partícula 2, e vice-versa. Se medirmos
+                    a energia da partícula 1, podemos obter $E_a$ (com probabilidade $9/25$), e nesse caso uma medida
+                    da energia da partícula 2 certamente dará $E_b$; ou podemos obter $E_c$ (com probabilidade
+                    $16/25$), e então a partícula 2 terá, com certeza, energia $E_d$. Dizemos que as duas partículas
+                    estão <strong>emaranhadas</strong> — o termo é de Schrödinger.
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p>
+                        <strong>Estado emaranhado:</strong> um estado de duas partículas que <i>não pode</i> ser
+                        escrito como o produto de dois estados de uma partícula. O exemplo clássico é o de duas
+                        partículas de spin $1/2$ na configuração de singleto.<sup id="fnref:1"><a href="#fn:1"
+                                class="footnote-ref">1</a></sup>
+                    </p>
+                </div>
+
+                <h4 id="caso-2" style="color: yellow;">2. Potenciais Centrais (Interagentes em Separação Relativa)</h4>
+
+                <p>
+                    O segundo caso abrange os sistemas em que as partículas interagem <i>apenas uma com a outra</i>,
+                    por meio de um potencial que depende somente da distância entre elas:
+                </p>
+
+                <p>
+                    $$ V(\mathbf{r}_1, \mathbf{r}_2) \;\longrightarrow\; V(|\mathbf{r}_1 - \mathbf{r}_2|). \tag{5.13} $$
+                </p>
+
+                <p>
+                    É o caso do átomo de hidrogênio, quando incluímos o movimento do próton. Assim como na mecânica
+                    clássica, o problema de dois corpos se reduz a um problema equivalente de um corpo. Definindo a
+                    <strong>coordenada relativa</strong> $\mathbf{r} \equiv \mathbf{r}_1 - \mathbf{r}_2$ e a
+                    coordenada do <strong>centro de massa</strong> $\mathbf{R} \equiv (m_1\mathbf{r}_1 +
+                    m_2\mathbf{r}_2)/(m_1 + m_2)$, as posições das partículas se escrevem como
+                </p>
+
+                <p>
+                    $$ \mathbf{r}_1 = \mathbf{R} + \frac{\mu}{m_1}\mathbf{r}, \qquad \mathbf{r}_2 = \mathbf{R} -
+                    \frac{\mu}{m_2}\mathbf{r}, $$
+                </p>
+
+                <p>
+                    onde
+                </p>
+
+                <p>
+                    $$ \mu \equiv \frac{m_1 m_2}{m_1 + m_2} \tag{5.15} $$
+                </p>
+
+                <p>
+                    é a <strong>massa reduzida</strong> do sistema. Em termos dessas novas variáveis (Problema 5.1 de
+                    Griffiths), a Equação de Schrödinger independente do tempo assume a forma
+                </p>
+
+                <p>
+                    $$ -\frac{\hbar^2}{2(m_1 + m_2)}\nabla_R^2\psi - \frac{\hbar^2}{2\mu}\nabla_r^2\psi +
+                    V(r)\,\psi = E\psi, $$
+                </p>
+
+                <p>
+                    que se separa em $\psi(\mathbf{R}, \mathbf{r}) = \psi_R(\mathbf{R})\,\psi_r(\mathbf{r})$, com $E =
+                    E_R + E_r$. A função $\psi_R$ obedece à equação de uma partícula <i>livre</i> de massa total
+                    $m_1 + m_2$: o centro de massa move-se como uma partícula livre. Já $\psi_r$ obedece à equação de
+                    <i>uma única partícula</i> de massa $\mu$ sujeita ao potencial $V(r)$: o movimento relativo é
+                    idêntico ao de uma partícula de massa reduzida no potencial de interação. É exatamente a mesma
+                    decomposição da mecânica clássica.
+                </p>
+
+                <p>
+                    Na prática, isso significa que o movimento do núcleo no hidrogênio pode ser levado em conta
+                    simplesmente substituindo a massa do elétron pela massa reduzida. Como o núcleo é muito mais
+                    pesado que o elétron, essa correção é pequena, mas mensurável (Problemas 5.2 e 5.3 de Griffiths
+                    exploram, por exemplo, o deslocamento entre as linhas do hidrogênio e do deutério, o positrônio e
+                    o hidrogênio muônico).<sup id="fnref:2"><a href="#fn:2" class="footnote-ref">2</a></sup>
+                </p>
+
+                <h4 id="caso-geral">O caso geral</h4>
+
+                <p>
+                    Em geral, as partículas estão sujeitas <i>ao mesmo tempo</i> a forças externas e a interações
+                    mútuas, e o problema fica mais complicado. No hélio, por exemplo, cada elétron sente a atração
+                    coulombiana do núcleo (de carga $2e$) e os dois elétrons se repelem:
+                </p>
+
+                <p>
+                    $$ V(\mathbf{r}_1, \mathbf{r}_2) = \frac{1}{4\pi\epsilon_0}\left( -\frac{2e^2}{|\mathbf{r}_1|} -
+                    \frac{2e^2}{|\mathbf{r}_2|} + \frac{e^2}{|\mathbf{r}_1 - \mathbf{r}_2|} \right). \tag{5.14} $$
+                </p>
+
+                <p>
+                    Esse problema será retomado em <a href="[02] - Átomos.html">Átomos</a>.
+                </p>
+
+                <p style="color: yellow;">
+                    Para o andamento desta disciplina, <b>nos conectaremos exclusivamente ao primeiro caso
+                        (partículas não-interagentes)</b>. Investigaremos as implicações para os casos onde estas
+                    partículas são idênticas.
+                </p>
+
+                <h2 id="bosons-e-fermions">Bósons e Férmions</h2>
+
+                <p style="color: yellow;">
+                    Seguindo a suposição de um sistema composto por partículas não-interagentes, vamos considerar o
+                    cenário em que a partícula localizada na posição $\mathbf{r}_1$ encontra-se num estado quântico
+                    $\psi_a(\mathbf{r}_1)$, e a partícula localizada na posição $\mathbf{r}_2$ encontra-se num estado
+                    $\psi_b(\mathbf{r}_2)$.
+                </p>
+
+                <p style="color: yellow;">
+                    Como vimos, em sistemas onde não há influências mútuas repulsivas ou atrativas, a função de onda
+                    espacial total do sistema, $\psi(\mathbf{r}_1, \mathbf{r}_2)$, é construída simplesmente fazendo o
+                    produto direto dos estados individuais ocupados por cada partícula:
+                </p>
+
+                <p style="color: yellow;">
+                    $$ \psi(\mathbf{r}_1, \mathbf{r}_2) = \psi_a(\mathbf{r}_1)\psi_b(\mathbf{r}_2) \tag{5.16} $$
+                </p>
+
+                <p style="color: yellow;">
+                    O que acabamos de descrever assume que podemos identificar cada partícula de forma independente,
+                    afirmando que "a partícula 1" está no estado $a$ e "a partícula 2" está no estado $b$. Na Mecânica
+                    Clássica, isso é possível: como os objetos macroscópicos possuem trajetórias contínuas e bem
+                    definidas, podemos acompanhar o movimento de cada um ao longo do tempo e distingui-los, mesmo que
+                    sejam fisicamente idênticos.
+                </p>
+
+                <p style="color: yellow;">
+                    No entanto, na Mecânica Quântica, as partículas não possuem trajetórias definidas. Devido ao
+                    Princípio da Incerteza, elas são descritas probabilisticamente por funções de onda. Quando as
+                    funções de onda de duas partículas idênticas se sobrepõem no espaço, torna-se impossível rastrear
+                    qual partícula é qual. A teoria quântica não permite que "etiquetemos" as partículas para
+                    acompanhá-las.
+                </p>
+
+                <p>
+                    Na verdade, a situação é ainda mais radical. Classicamente, sempre podemos, em princípio, distinguir
+                    duas partículas: basta pintar uma de vermelho e a outra de azul, gravar números de identificação
+                    nelas, ou contratar detetives particulares para segui-las. Na mecânica quântica nada disso é
+                    possível: não se pode pintar um elétron de vermelho nem pregar uma etiqueta nele, e as observações
+                    de um detetive inevitavelmente — e de forma imprevisível — alterariam o seu estado, abrindo a
+                    possibilidade de que as duas partículas tivessem trocado de lugar às escondidas. Os elétrons são
+                    <i>absolutamente idênticos</i>, de um modo que nenhum par de objetos clássicos jamais é. Não se
+                    trata apenas de <i>nós</i> não sabermos qual elétron é qual: simplesmente não existe "este" elétron
+                    ou "aquele" elétron; tudo o que podemos legitimamente mencionar é "um" elétron.
+                </p>
+
+                <p style="color: yellow;">
+                    Esse é o fenômeno da indistinguibilidade. Em um sistema com partículas idênticas (como dois elétrons
+                    em um átomo), podemos afirmar apenas que <i>uma</i> partícula ocupa o estado $a$ e <i>a outra</i>
+                    partícula ocupa o estado $b$. É fisicamente impossível determinar especificamente qual delas ocupa
+                    cada estado.
+                </p>
+
+                <p>
+                    A mecânica quântica acomoda de forma natural a existência de partículas indistinguíveis em
+                    princípio: basta construir uma função de onda que seja <strong>neutra</strong> quanto a qual
+                    partícula está em qual estado. O produto 5.16 não serve, pois ele afirma que é a partícula 1 que
+                    está no estado $a$. Existem exatamente duas maneiras de construir uma combinação que não faça essa
+                    afirmação:
+                </p>
+
+                <p>
+                    $$ \psi_{\pm}(\mathbf{r}_1, \mathbf{r}_2) = A \left[ \psi_a(\mathbf{r}_1)\psi_b(\mathbf{r}_2) \pm
+                    \psi_b(\mathbf{r}_1)\psi_a(\mathbf{r}_2) \right] \tag{5.17} $$
+                </p>
+
+                <p>
+                    onde $A$ é uma constante de normalização. A teoria admite, portanto, dois tipos de partículas
+                    idênticas:
+                </p>
+
+                <ul>
+                    <li><strong>Bósons</strong>, para os quais usamos o sinal $+$. Seus estados são
+                        <strong>simétricos</strong> sob a troca das partículas: $\psi_{+}(\mathbf{r}_2, \mathbf{r}_1) =
+                        \psi_{+}(\mathbf{r}_1, \mathbf{r}_2)$.
+                    </li>
+                    <li><strong>Férmions</strong>, para os quais usamos o sinal $-$. Seus estados são
+                        <strong>antissimétricos</strong> sob a troca: $\psi_{-}(\mathbf{r}_2, \mathbf{r}_1) =
+                        -\psi_{-}(\mathbf{r}_1, \mathbf{r}_2)$.
+                    </li>
+                </ul>
+
+                <p>
+                    A natureza decide qual das duas regras vale para cada tipo de partícula, e a decisão é governada
+                    pelo spin:
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p>
+                        <strong>Conexão spin–estatística:</strong>
+                        $$ \begin{cases} \text{Todas as partículas de spin inteiro são bósons,} \\ \text{todas as
+                        partículas de spin semi-inteiro são férmions.} \end{cases} \tag{5.18} $$
+                    </p>
+                </div>
+
+                <p>
+                    Assim, elétrons, prótons e nêutrons (spin $1/2$) são férmions, enquanto fótons (spin $1$) são
+                    bósons. Essa <strong>conexão entre spin e estatística</strong> — bósons e férmions têm
+                    propriedades estatísticas muito diferentes — pode ser <i>demonstrada</i> na mecânica quântica
+                    <i>relativística</i>; na teoria não-relativística, ela é simplesmente adotada como um
+                    axioma.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref">3</a></sup>
+                </p>
+
+                <h3 id="principio-de-exclusao-de-pauli">O Princípio de Exclusão de Pauli</h3>
+
+                <p>
+                    A consequência mais famosa da Equação 5.17 aparece quando perguntamos se duas partículas idênticas
+                    podem ocupar o <i>mesmo</i> estado, isto é, o que acontece se $\psi_a = \psi_b$.
+                </p>
+
+                <p>
+                    Para <strong>férmions</strong>, a resposta é imediata:
+                </p>
+
+                <p>
+                    $$ \psi_{-}(\mathbf{r}_1, \mathbf{r}_2) = A \left[ \psi_a(\mathbf{r}_1)\psi_a(\mathbf{r}_2) -
+                    \psi_a(\mathbf{r}_1)\psi_a(\mathbf{r}_2) \right] = 0. $$
+                </p>
+
+                <p>
+                    Não sobra função de onda alguma: <strong>dois férmions idênticos não podem ocupar o mesmo
+                        estado</strong>.<sup id="fnref:4"><a href="#fn:4" class="footnote-ref">4</a></sup> Este é o
+                    famoso <strong>Princípio de Exclusão de Pauli</strong>. Note que ele não é uma hipótese estranha,
+                    feita sob medida apenas para elétrons: é uma <i>consequência</i> das regras de construção de
+                    funções de onda de duas partículas, e vale para <i>todos</i> os férmions idênticos.
+                </p>
+
+                <p>
+                    Para <strong>bósons</strong>, por outro lado, nada impede que $\psi_a = \psi_b$: a combinação
+                    simétrica fica $\psi_{+} = 2A\,\psi_a(\mathbf{r}_1)\psi_a(\mathbf{r}_2)$, que é perfeitamente
+                    aceitável (e normalizada com $A = 1/2$, se $\psi_a$ for normalizada). Já quando $\psi_a$ e
+                    $\psi_b$ são ortogonais e normalizadas, a constante na Equação 5.17 vale $A = 1/\sqrt{2}$
+                    (Problema 5.4 de Griffiths).
+                </p>
+
+                <h3 id="exemplo-poco-infinito">Exemplo: duas partículas no poço infinito</h3>
+
+                <p>
+                    O Exemplo 5.1 de Griffiths mostra como a simetrização altera o espectro de um sistema simples.
+                    Suponha duas partículas não-interagentes, ambas de massa $m$, no poço quadrado infinito de largura
+                    $a$ (as partículas "passam uma através da outra", sem se afetarem). Os estados de uma partícula são
+                </p>
+
+                <p>
+                    $$ \psi_n(x) = \sqrt{\frac{2}{a}}\,\sin\left(\frac{n\pi}{a}x\right), \qquad E_n = n^2 K, \qquad K
+                    \equiv \frac{\pi^2\hbar^2}{2ma^2}. $$
+                </p>
+
+                <p>
+                    <strong>Partículas distinguíveis.</strong> Com a partícula 1 no estado $n_1$ e a partícula 2 no
+                    estado $n_2$, temos $\psi_{n_1 n_2}(x_1, x_2) = \psi_{n_1}(x_1)\psi_{n_2}(x_2)$ e $E_{n_1 n_2} =
+                    (n_1^2 + n_2^2)K$. O estado fundamental é
+                </p>
+
+                <p>
+                    $$ \psi_{11} = \frac{2}{a}\sin\left(\frac{\pi x_1}{a}\right)\sin\left(\frac{\pi x_2}{a}\right),
+                    \qquad E_{11} = 2K, $$
+                </p>
+
+                <p>
+                    e o primeiro estado excitado é <strong>duplamente degenerado</strong>:
+                </p>
+
+                <p>
+                    $$ \psi_{12} = \frac{2}{a}\sin\left(\frac{\pi x_1}{a}\right)\sin\left(\frac{2\pi x_2}{a}\right),
+                    \qquad \psi_{21} = \frac{2}{a}\sin\left(\frac{2\pi x_1}{a}\right)\sin\left(\frac{\pi x_2}{a}\right),
+                    \qquad E_{12} = E_{21} = 5K. $$
+                </p>
+
+                <p>
+                    <strong>Bósons idênticos.</strong> O estado fundamental não muda ($\psi_{11}$ já é simétrico), mas o
+                    primeiro estado excitado passa a ser <strong>não-degenerado</strong>, pois apenas a combinação
+                    simétrica é permitida:
+                </p>
+
+                <p>
+                    $$ \frac{\sqrt{2}}{a}\left[ \sin\left(\frac{\pi x_1}{a}\right)\sin\left(\frac{2\pi x_2}{a}\right) +
+                    \sin\left(\frac{2\pi x_1}{a}\right)\sin\left(\frac{\pi x_2}{a}\right) \right], \qquad E = 5K. $$
+                </p>
+
+                <p>
+                    <strong>Férmions idênticos.</strong> Não existe estado com energia $2K$, pois as duas partículas
+                    não podem estar ambas em $n = 1$. O estado fundamental é
+                </p>
+
+                <p>
+                    $$ \frac{\sqrt{2}}{a}\left[ \sin\left(\frac{\pi x_1}{a}\right)\sin\left(\frac{2\pi x_2}{a}\right) -
+                    \sin\left(\frac{2\pi x_1}{a}\right)\sin\left(\frac{\pi x_2}{a}\right) \right], \qquad E = 5K. $$
+                </p>
+
+                <table>
+                    <tr>
+                        <th>Caso</th>
+                        <th>Estado fundamental</th>
+                        <th>Primeiro nível acima do fundamental</th>
+                    </tr>
+                    <tr>
+                        <td>Distinguíveis</td>
+                        <td>$2K$ (não-degenerado)</td>
+                        <td>$5K$ (duplamente degenerado)</td>
+                    </tr>
+                    <tr>
+                        <td>Bósons idênticos</td>
+                        <td>$2K$ (não-degenerado)</td>
+                        <td>$5K$ (não-degenerado)</td>
+                    </tr>
+                    <tr>
+                        <td>Férmions idênticos</td>
+                        <td>$5K$ (não-degenerado)</td>
+                        <td>Problema 5.5 de Griffiths</td>
+                    </tr>
+                </table>
+
+                <p>
+                    (Aqui, como no restante desta seção, o spin está sendo ignorado — ou, equivalentemente, supomos as
+                    duas partículas no mesmo estado de spin. O efeito do spin é discutido
+                    <a href="#spins">mais adiante</a>.)
+                </p>
+
+                <h2 id="forcas-de-troca">Forças de Troca (Exchange Forces)</h2>
+
+                <p>
+                    Para entender o que a exigência de simetrização realmente <i>faz</i>, consideremos um exemplo
+                    unidimensional simples. Uma partícula está no estado $\psi_a(x)$ e a outra no estado $\psi_b(x)$,
+                    e esses dois estados são ortogonais e normalizados. Se as partículas forem
+                    <strong>distinguíveis</strong>, e a partícula 1 for a que está em $\psi_a$, a função de onda
+                    combinada é
+                </p>
+
+                <p>
+                    $$ \psi(x_1, x_2) = \psi_a(x_1)\psi_b(x_2). \tag{5.19} $$
+                </p>
+
+                <p>
+                    Se forem <strong>bósons idênticos</strong>, a função de onda combinada é
+                </p>
+
+                <p>
+                    $$ \psi_{+}(x_1, x_2) = \frac{1}{\sqrt{2}} \left[ \psi_a(x_1)\psi_b(x_2) + \psi_b(x_1)\psi_a(x_2)
+                    \right], \tag{5.20} $$
+                </p>
+
+                <p>
+                    e, se forem <strong>férmions idênticos</strong>,
+                </p>
+
+                <p>
+                    $$ \psi_{-}(x_1, x_2) = \frac{1}{\sqrt{2}} \left[ \psi_a(x_1)\psi_b(x_2) - \psi_b(x_1)\psi_a(x_2)
+                    \right]. \tag{5.21} $$
+                </p>
+
+                <p>
+                    Calculemos o valor esperado do quadrado da separação entre as duas partículas:
+                </p>
+
+                <p>
+                    $$ \left\langle (x_1 - x_2)^2 \right\rangle = \langle x_1^2 \rangle + \langle x_2^2 \rangle -
+                    2\langle x_1 x_2 \rangle. \tag{5.22} $$
+                </p>
+
+                <h3 id="troca-distinguiveis">Caso 1: partículas distinguíveis</h3>
+
+                <p>
+                    Para a função de onda 5.19, a integral dupla se fatora:
+                </p>
+
+                <p>
+                    $$ \langle x_1^2 \rangle = \int x_1^2 |\psi_a(x_1)|^2\, dx_1 \int |\psi_b(x_2)|^2\, dx_2 = \langle
+                    x^2 \rangle_a, $$
+                </p>
+
+                <p>
+                    isto é, o valor esperado de $x^2$ no estado de uma partícula $\psi_a$. Do mesmo modo,
+                </p>
+
+                <p>
+                    $$ \langle x_2^2 \rangle = \int |\psi_a(x_1)|^2\, dx_1 \int x_2^2 |\psi_b(x_2)|^2\, dx_2 = \langle
+                    x^2 \rangle_b, \qquad \langle x_1 x_2 \rangle = \int x_1 |\psi_a(x_1)|^2\, dx_1 \int x_2
+                    |\psi_b(x_2)|^2\, dx_2 = \langle x \rangle_a \langle x \rangle_b. $$
+                </p>
+
+                <p>
+                    Portanto,
+                </p>
+
+                <p>
+                    $$ \left\langle (x_1 - x_2)^2 \right\rangle_d = \langle x^2 \rangle_a + \langle x^2 \rangle_b -
+                    2\langle x \rangle_a \langle x \rangle_b. \tag{5.23} $$
+                </p>
+
+                <p>
+                    (A resposta seria a mesma se a partícula 1 estivesse em $\psi_b$ e a partícula 2 em $\psi_a$.)
+                </p>
+
+                <h3 id="troca-identicas">Caso 2: partículas idênticas</h3>
+
+                <p>
+                    Para as funções de onda 5.20 e 5.21,
+                </p>
+
+                <p>
+                    $$
+                    \begin{aligned}
+                    \langle x_1^2 \rangle &= \frac{1}{2}\left[ \int x_1^2 |\psi_a(x_1)|^2 dx_1 \int |\psi_b(x_2)|^2
+                    dx_2 + \int x_1^2 |\psi_b(x_1)|^2 dx_1 \int |\psi_a(x_2)|^2 dx_2 \right. \\
+                    &\quad \left. \pm \int x_1^2 \psi_a(x_1)^*\psi_b(x_1)\, dx_1 \int \psi_b(x_2)^*\psi_a(x_2)\, dx_2
+                    \pm \int x_1^2 \psi_b(x_1)^*\psi_a(x_1)\, dx_1 \int \psi_a(x_2)^*\psi_b(x_2)\, dx_2 \right] \\
+                    &= \frac{1}{2}\left( \langle x^2 \rangle_a + \langle x^2 \rangle_b \pm 0 \pm 0 \right) =
+                    \frac{1}{2}\left( \langle x^2 \rangle_a + \langle x^2 \rangle_b \right),
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p>
+                    pois os termos cruzados contêm a integral de sobreposição $\int \psi_a^*\psi_b\, dx$, que se anula
+                    por ortogonalidade. Da mesma forma, $\langle x_2^2 \rangle = \frac{1}{2}(\langle x^2 \rangle_b +
+                    \langle x^2 \rangle_a)$ — naturalmente, $\langle x_2^2 \rangle = \langle x_1^2 \rangle$, já que não
+                    é possível distinguir as partículas. O termo cruzado, porém, é diferente:
+                </p>
+
+                <p>
+                    $$
+                    \begin{aligned}
+                    \langle x_1 x_2 \rangle &= \frac{1}{2}\left( \langle x \rangle_a \langle x \rangle_b + \langle x
+                    \rangle_b \langle x \rangle_a \pm \langle x \rangle_{ab} \langle x \rangle_{ba} \pm \langle x
+                    \rangle_{ba} \langle x \rangle_{ab} \right) \\
+                    &= \langle x \rangle_a \langle x \rangle_b \pm \left| \langle x \rangle_{ab} \right|^2,
+                    \end{aligned}
+                    $$
+                </p>
+
+                <p>
+                    onde definimos
+                </p>
+
+                <p>
+                    $$ \langle x \rangle_{ab} \equiv \int x\, \psi_a(x)^*\, \psi_b(x)\, dx. \tag{5.24} $$
+                </p>
+
+                <p>
+                    (Note que $\langle x \rangle_{ba} = \langle x \rangle_{ab}^*$.) Juntando tudo:
+                </p>
+
+                <p>
+                    $$ \left\langle (x_1 - x_2)^2 \right\rangle_{\pm} = \langle x^2 \rangle_a + \langle x^2 \rangle_b -
+                    2\langle x \rangle_a \langle x \rangle_b \mp 2\left| \langle x \rangle_{ab} \right|^2. \tag{5.25} $$
+                </p>
+
+                <p>
+                    Comparando as Equações 5.23 e 5.25, vemos que a diferença está inteiramente no último termo:
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p>
+                        $$ \left\langle (\Delta x)^2 \right\rangle_{\pm} = \left\langle (\Delta x)^2 \right\rangle_d \mp
+                        2\left| \langle x \rangle_{ab} \right|^2. \tag{5.26} $$
+                    </p>
+                </div>
+
+                <h3 id="troca-interpretacao">Interpretação</h3>
+
+                <p>
+                    Bósons idênticos (sinais superiores) tendem a ficar um pouco <strong>mais próximos</strong>, e
+                    férmions idênticos (sinais inferiores) um pouco <strong>mais afastados</strong>, do que partículas
+                    distinguíveis nos mesmos dois estados.
+                </p>
+
+                <p>
+                    Observe que $\langle x \rangle_{ab}$ se anula a menos que as duas funções de onda de fato se
+                    <strong>sobreponham</strong>: se $\psi_a(x)$ for zero onde quer que $\psi_b(x)$ seja não-nula, a
+                    integral 5.24 é nula. Assim, se $\psi_a$ representa um elétron num átomo em Chicago e $\psi_b$ um
+                    elétron num átomo em Seattle, não faz diferença alguma antissimetrizar ou não a função de onda.
+                    Na prática, portanto, <strong>é legítimo tratar como distinguíveis elétrons cujas funções de onda
+                        não se sobrepõem</strong>. (É só isso que permite a físicos e químicos trabalhar: em princípio,
+                    todo elétron do universo está ligado a todos os outros pela antissimetrização da função de onda, e
+                    se isso realmente importasse não seria possível falar de um elétron sem lidar com todos eles!)
+                </p>
+
+                <p>
+                    O caso interessante é aquele em que a integral de sobreposição <i>não</i> é zero. Então o sistema se
+                    comporta <i>como se</i> existisse uma "força de atração" entre bósons idênticos, aproximando-os, e
+                    uma "força de repulsão" entre férmions idênticos, afastando-os (lembrando que, por enquanto,
+                    estamos ignorando o spin). Esse efeito é chamado de <strong>força de troca</strong>, embora
+                    <i>não seja realmente uma força</i>: nenhum agente físico está empurrando as partículas. Trata-se
+                    de uma consequência puramente <strong>geométrica</strong> da exigência de simetrização — um fenômeno
+                    estritamente quântico, sem análogo clássico.<sup id="fnref:5"><a href="#fn:5"
+                            class="footnote-ref">5</a></sup> Ainda assim, ele tem consequências profundas, como veremos
+                    em <a href="[02] - Átomos.html">Átomos</a> e <a href="[03] - Sólidos.html">Sólidos</a>.
+                </p>
+
+                <h2 id="spins">A Inclusão dos Spins</h2>
+
+                <p>
+                    É hora de trazer o spin de volta à história. O estado completo de um elétron inclui não apenas a
+                    função de onda de posição, mas também um <strong>spinor</strong>, que descreve a orientação do seu
+                    spin:<sup id="fnref:6"><a href="#fn:6" class="footnote-ref">6</a></sup>
+                </p>
+
+                <p>
+                    $$ \psi(\mathbf{r})\,\chi. \tag{5.27} $$
+                </p>
+
+                <p>
+                    Ao montar o estado de duas partículas,
+                </p>
+
+                <p>
+                    $$ \psi(\mathbf{r}_1, \mathbf{r}_2)\,\chi(1, 2), \tag{5.28} $$
+                </p>
+
+                <p>
+                    é o <i>conjunto completo</i> — e não apenas a parte espacial — que deve ser antissimétrico sob a
+                    troca das partículas:<sup id="fnref:7"><a href="#fn:7" class="footnote-ref">7</a></sup>
+                </p>
+
+                <p>
+                    $$ \psi(\mathbf{r}_1, \mathbf{r}_2)\,\chi(1, 2) = -\psi(\mathbf{r}_2, \mathbf{r}_1)\,\chi(2, 1).
+                    \tag{5.29} $$
+                </p>
+
+                <p>
+                    Os estados de spin compostos de duas partículas de spin $1/2$ já são conhecidos (Seção 4.4.3 de
+                    Griffiths). Os três estados do <strong>tripleto</strong> ($s = 1$) são simétricos:
+                </p>
+
+                <p>
+                    $$ |1\,1\rangle = \uparrow\uparrow, \qquad |1\,0\rangle = \frac{1}{\sqrt{2}}(\uparrow\downarrow +
+                    \downarrow\uparrow), \qquad |1\,{-1}\rangle = \downarrow\downarrow, $$
+                </p>
+
+                <p>
+                    enquanto o <strong>singleto</strong> ($s = 0$) é antissimétrico:
+                </p>
+
+                <p>
+                    $$ |0\,0\rangle = \frac{1}{\sqrt{2}}(\uparrow\downarrow - \downarrow\uparrow). $$
+                </p>
+
+                <p>
+                    Para que o produto 5.28 seja antissimétrico, há portanto apenas duas combinações possíveis:
+                </p>
+
+                <table>
+                    <tr>
+                        <th>Parte espacial $\psi(\mathbf{r}_1, \mathbf{r}_2)$</th>
+                        <th>Parte de spin $\chi(1,2)$</th>
+                        <th>Estado completo</th>
+                    </tr>
+                    <tr>
+                        <td>Simétrica</td>
+                        <td>Singleto (antissimétrico)</td>
+                        <td>Antissimétrico</td>
+                    </tr>
+                    <tr>
+                        <td>Antissimétrica</td>
+                        <td>Tripleto (simétrico)</td>
+                        <td>Antissimétrico</td>
+                    </tr>
+                </table>
+
+                <p>
+                    Uma consequência importante: o Princípio de Pauli, na verdade, <strong>permite dois elétrons num
+                        mesmo estado de posição</strong>, desde que seus spins estejam na configuração de singleto. O
+                    que ele proíbe é que ocupem o mesmo estado de posição <i>e</i> o mesmo estado de spin (por exemplo,
+                    ambos com spin para cima). Além disso, a força de troca da seção anterior passa a depender do spin:
+                    é a simetria da parte espacial — ditada pelo estado de spin — que determina se os elétrons tendem a
+                    ficar mais próximos ou mais afastados. Esse será o ponto central da discussão sobre o
+                    <a href="[02] - Átomos.html">átomo de hélio</a>.
+                </p>
+
+                <p>
+                    Para três ou mais elétrons, o estado nem sempre pode ser escrito como um simples produto de uma
+                    parte espacial por uma parte de spin. Com três partículas de spin $1/2$, por exemplo, existe uma
+                    configuração de spin completamente simétrica (o quadrupleto), mas <strong>não existe nenhuma
+                        configuração de spin completamente antissimétrica</strong> (Problema 5.10 de Griffiths). Para
+                    construir um estado totalmente antissimétrico de três férmions, é preciso recorrer a
+                    <i>combinações lineares</i> de produtos de estados espaciais e de spin — por exemplo, com o
+                    determinante de Slater apresentado a seguir.
+                </p>
+
+                <h2 id="simetrizacao-generalizada">O Princípio da Simetrização Generalizada</h2>
+
+                <p>
+                    Até aqui, por simplicidade, supusemos que as partículas não interagem, que o spin e a posição estão
+                    desacoplados (o estado combinado é um produto de uma parte de posição por uma parte de spin) e que
+                    o potencial é independente do tempo. A exigência fundamental de simetrização (ou antissimetrização)
+                    é, porém, muito mais geral. Para enunciá-la, definimos o <strong>operador de troca</strong>
+                    $\hat{P}$, que permuta as duas partículas:<sup id="fnref:8"><a href="#fn:8"
+                            class="footnote-ref">8</a></sup>
+                </p>
+
+                <p>
+                    $$ \hat{P}\,|(1, 2)\rangle = |(2, 1)\rangle. \tag{5.30} $$
+                </p>
+
+                <p>
+                    Evidentemente, $\hat{P}^2 = 1$: trocar as partículas duas vezes devolve o estado original. Segue
+                    daí que os autovalores de $\hat{P}$ só podem ser $\pm 1$: se $\hat{P}|\psi\rangle =
+                    \lambda|\psi\rangle$, então $|\psi\rangle = \hat{P}^2|\psi\rangle = \lambda^2|\psi\rangle$, e
+                    portanto $\lambda^2 = 1$.
+                </p>
+
+                <p>
+                    Se as duas partículas são idênticas, o Hamiltoniano precisa tratá-las da mesma forma: $m_1 = m_2$ e
+                    $V(\mathbf{r}_1, \mathbf{r}_2, t) = V(\mathbf{r}_2, \mathbf{r}_1, t)$. Nesse caso, $\hat{P}$ e
+                    $\hat{H}$ são observáveis compatíveis,
+                </p>
+
+                <p>
+                    $$ \left[\hat{P}, \hat{H}\right] = 0, \tag{5.31} $$
+                </p>
+
+                <p>
+                    e, pelo teorema de Ehrenfest generalizado (Equação 3.73 de Griffiths),
+                </p>
+
+                <p>
+                    $$ \frac{d\langle \hat{P} \rangle}{dt} = 0. \tag{5.32} $$
+                </p>
+
+                <p>
+                    Se o sistema começa num autoestado de $\hat{P}$ — simétrico ($\langle \hat{P} \rangle = 1$) ou
+                    antissimétrico ($\langle \hat{P} \rangle = -1$) —, ele permanece assim para sempre.
+                </p>
+
+                <h3 id="enunciado-simetrizacao">O Enunciado do Princípio</h3>
+
+                <p>
+                    O <strong>axioma de simetrização</strong> vai além da Equação 5.32: ele afirma que, para partículas
+                    idênticas, o estado não é apenas <i>permitido</i>, mas <strong>obrigado</strong> a satisfazer
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p>
+                        $$ |(1, 2)\rangle = \pm\,|(2, 1)\rangle, \tag{5.33} $$
+                    </p>
+                    <p>
+                        com o sinal $+$ para bósons e o sinal $-$ para férmions.
+                    </p>
+                </div>
+
+                <p>
+                    É importante perceber que esse requisito <strong>não</strong> é uma consequência do fato de
+                    $\hat{P}$ e $\hat{H}$ comutarem.<sup id="fnref:9"><a href="#fn:9" class="footnote-ref">9</a></sup>
+                    É perfeitamente possível imaginar duas partículas <i>distinguíveis</i> (digamos, um elétron e um
+                    pósitron) com um Hamiltoniano simétrico, sem que o estado precise ser simétrico ou antissimétrico.
+                    Mas partículas <i>idênticas</i> precisam ocupar estados simétricos ou antissimétricos, e isso é uma
+                    <strong>nova lei fundamental</strong> — logicamente, no mesmo nível da Equação de Schrödinger e da
+                    interpretação estatística. Nada obrigava a existência de partículas idênticas; poderia ser que cada
+                    partícula do universo fosse distinguível de todas as outras. A mecânica quântica permite a
+                    <i>possibilidade</i> de partículas idênticas, e a natureza aproveitou a oportunidade — o que, aliás,
+                    simplifica enormemente as coisas.
+                </p>
+
+                <p>
+                    Note também o ganho de generalidade: a construção 5.17 dependia de partículas não-interagentes, de
+                    um potencial independente do tempo e da fatoração entre espaço e spin. O enunciado 5.33 não depende
+                    de nenhuma dessas hipóteses; a Equação 5.17 é apenas um caso particular dele.
+                </p>
+
+                <h3 id="n-particulas">Generalização para $n$ Partículas</h3>
+
+                <p>
+                    Para $n$ partículas idênticas, o estado deve ser simétrico ou antissimétrico sob a troca de
+                    <i>quaisquer duas</i> delas:
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p>
+                        $$ |(1, 2, \dots, i, \dots, j, \dots, n)\rangle = \pm\,|(1, 2, \dots, j, \dots, i, \dots,
+                        n)\rangle. \tag{5.34} $$
+                    </p>
+                </div>
+
+                <p>
+                    Esse é o enunciado geral do princípio de simetrização. Para bósons, a função de onda é
+                    <strong>completamente simétrica</strong>; para férmions, <strong>completamente antissimétrica</strong>.
+                </p>
+
+                <h3 id="determinante-de-slater">O Determinante de Slater</h3>
+
+                <p>
+                    Uma maneira sistemática de construir um estado completamente antissimétrico é o
+                    <strong>determinante de Slater</strong> (Problema 5.8 de Griffiths). Para $n$ partículas nos
+                    estados $\psi_a, \psi_b, \psi_c, \dots$, a primeira linha do determinante contém $\psi_a(x_1),
+                    \psi_b(x_1), \psi_c(x_1), \dots$; a segunda, $\psi_a(x_2), \psi_b(x_2), \psi_c(x_2), \dots$; e assim
+                    por diante:
+                </p>
+
+                <p>
+                    $$
+                    \psi(x_1, x_2, \dots, x_n) \propto
+                    \begin{vmatrix}
+                    \psi_a(x_1) & \psi_b(x_1) & \psi_c(x_1) & \cdots \\
+                    \psi_a(x_2) & \psi_b(x_2) & \psi_c(x_2) & \cdots \\
+                    \psi_a(x_3) & \psi_b(x_3) & \psi_c(x_3) & \cdots \\
+                    \vdots & \vdots & \vdots & \ddots
+                    \end{vmatrix}
+                    $$
+                </p>
+
+                <p>
+                    Duas propriedades dos determinantes tornam essa construção natural. Trocar duas partículas equivale
+                    a trocar duas linhas, o que inverte o sinal do determinante: a antissimetria está garantida. E se
+                    dois estados forem iguais, duas colunas coincidem e o determinante se anula: o Princípio de Pauli
+                    aparece automaticamente. Para construir um estado completamente <i>simétrico</i>, usa-se a
+                    <strong>permanente</strong> — igual ao determinante, mas sem os sinais negativos.
+                </p>
+
+                <p>
+                    Um produto de estados de uma partícula (ou um único determinante de Slater) só descreve
+                    corretamente partículas <i>não-interagentes</i>. Para partículas que interagem, o estado
+                    fundamental em geral é uma combinação de vários determinantes. Um exemplo notável é a
+                    <strong>função de onda de Laughlin</strong> (Problema 5.11 de Griffiths), uma aproximação para o
+                    estado fundamental de $N$ elétrons confinados em duas dimensões sob um campo magnético
+                    perpendicular (efeito Hall quântico fracionário):
+                </p>
+
+                <p>
+                    $$ \psi(z_1, z_2, \dots, z_N) = A\left[ \prod_{j \lt k}^{N} (z_j - z_k)^q \right]
+                    \exp\left[ -\frac{1}{2}\sum_{k=1}^{N} |z_k|^2 \right], $$
+                </p>
+
+                <p>
+                    onde $q$ é um inteiro ímpar positivo e $z_j \equiv \sqrt{eB/2\hbar c}\,(x_j + iy_j)$. Para $q = 1$
+                    ela descreve elétrons não-interagentes (um único determinante de Slater); para $q > 1$ ela não pode
+                    ser escrita como um único determinante, refletindo a repulsão coulombiana entre os elétrons.
+                </p>
+
+                <h3 id="resumo-proximos">Resumo e Próximos Passos</h3>
+
+                <p>
+                    A indistinguibilidade só produz efeitos observáveis quando as funções de onda se sobrepõem. É
+                    exatamente o que acontece com os elétrons de um átomo, que compartilham o mesmo pequeno volume ao
+                    redor do núcleo, e com os elétrons de condução de um sólido, espalhados por todo o cristal. Nos
+                    próximos tópicos aplicaremos o princípio de simetrização a esses dois casos:
+                    <a href="[02] - Átomos.html">Átomos</a>, onde ele organiza a Tabela Periódica, e
+                    <a href="[03] - Sólidos.html">Sólidos</a>, onde ele explica a "rigidez" da matéria e a diferença entre
+                    condutores e isolantes.
+                </p>
+
+                <h3 id="problemas">Problemas Relacionados</h3>
+
+                <ul>
+                    <li><strong>5.1–5.3:</strong> centro de massa e massa reduzida; correções para o movimento do núcleo
+                        (hidrogênio, deutério, positrônio, hidrogênio muônico, HCl).</li>
+                    <li><strong>5.4–5.5:</strong> normalização de $\psi_{\pm}$; estados excitados de duas partículas no
+                        poço infinito.</li>
+                    <li><strong>5.6–5.7:</strong> separação quadrática média no poço infinito e no oscilador harmônico
+                        (distinguíveis, bósons e férmions).</li>
+                    <li><strong>5.8:</strong> estados de três partículas e o determinante de Slater.</li>
+                    <li><strong>5.9–5.10:</strong> spin $1/2$ e spin $1$ no poço infinito; ausência de estado de spin
+                        completamente antissimétrico para três partículas de spin $1/2$.</li>
+                    <li><strong>5.11:</strong> a função de onda de Laughlin.</li>
+                </ul>
+
+                <hr class="footnotes-sep">
+                <section class="footnotes">
+                    <ol>
+                        <li id="fn:1">
+                            <p>O singleto é $\frac{1}{\sqrt{2}}(\uparrow\downarrow - \downarrow\uparrow)$ (Equação 4.176
+                                de Griffiths): não há como escrevê-lo como (estado da partícula 1) $\times$ (estado da
+                                partícula 2).<a href="#fnref:1" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:2">
+                            <p>O truque da massa reduzida funciona apenas para o problema de <i>dois</i> corpos. Em átomos
+                                com mais elétrons, o núcleo é tratado como estacionário; como ele é muito mais pesado que
+                                os elétrons, a correção é extremamente pequena mesmo no hidrogênio.<a href="#fnref:2"
+                                    class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:3">
+                            <p>Parece estranho que a <i>relatividade</i> tenha algo a ver com isso, e muito se discutiu
+                                se seria possível demonstrar a conexão spin–estatística de outras formas. Veja, por
+                                exemplo, R. C. Hilborn, <i>Am. J. Phys.</i> <b>63</b>, 298 (1995), e I. Duck e E. C. G.
+                                Sudarshan, <i>Pauli and the Spin-Statistics Theorem</i>, World Scientific
+                                (1997).<a href="#fnref:3" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:4">
+                            <p>Estamos ainda deixando o spin de fora. Se isso incomoda (afinal, um férmion sem spin é um
+                                oximoro), suponha que as duas partículas estejam no <i>mesmo</i> estado de
+                                spin.<a href="#fnref:4" class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a>
+                            </p>
+                        </li>
+                        <li id="fn:5">
+                            <p>Para uma crítica incisiva dessa terminologia, veja W. J. Mullin e G. Blaylock, <i>Am. J.
+                                    Phys.</i> <b>71</b>, 1223 (2003).<a href="#fnref:5" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:6">
+                            <p>Na ausência de acoplamento entre spin e posição, podemos supor que o estado é
+                                <i>separável</i> em suas coordenadas de spin e espaciais: a probabilidade de encontrar o
+                                spin para cima independe da <i>posição</i> da partícula. Havendo acoplamento, o estado
+                                geral é uma combinação linear do tipo $\psi_{+}(\mathbf{r})\chi_{+} +
+                                \psi_{-}(\mathbf{r})\chi_{-}$.<a href="#fnref:6" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:7">
+                            <p>$\chi(1,2)$ representa o estado de spin combinado; em notação de Dirac, é alguma combinação
+                                linear dos estados $|s_1 s_2 m_1 m_2\rangle$. Supõe-se aqui que o estado é um simples
+                                produto de um estado de posição por um estado de spin — o que, como discutido acima, nem
+                                sempre é verdade com três ou mais elétrons.<a href="#fnref:7" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:8">
+                            <p>$\hat{P}$ troca as partículas ($1 \leftrightarrow 2$): troca suas posições, seus spins e
+                                quaisquer outras propriedades que possuam — ou, se preferir, troca os <i>rótulos</i> 1 e
+                                2. Note que $\hat{P}$ não é um operador de multiplicação nem de derivação.<a
+                                    href="#fnref:8" class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:9">
+                            <p>Às vezes se afirma que o requisito de simetrização (5.33) é <i>forçado</i> pela comutação
+                                de $\hat{P}$ e $\hat{H}$. Isso é falso, como explica o texto.<a href="#fnref:9"
+                                    class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                    </ol>
+                </section>
+
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="toc-container">
+                <h4>Nesta página</h4>
+                <ul>
+                    <li>
+                        <a href="#sistema-de-duas-particulas">Sistema de Duas partículas</a>
+                        <ul>
+                            <li><a href="#caso-1">Caso 1: Não-interagentes</a></li>
+                            <li><a href="#emaranhamento">Estados emaranhados</a></li>
+                            <li><a href="#caso-2">Caso 2: Potenciais Centrais</a></li>
+                            <li><a href="#caso-geral">O caso geral</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#bosons-e-fermions">Bósons e Férmions</a>
+                        <ul>
+                            <li><a href="#principio-de-exclusao-de-pauli">Princípio de Exclusão</a></li>
+                            <li><a href="#exemplo-poco-infinito">Exemplo: poço infinito</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#forcas-de-troca">Forças de Troca</a>
+                        <ul>
+                            <li><a href="#troca-distinguiveis">Partículas distinguíveis</a></li>
+                            <li><a href="#troca-identicas">Partículas idênticas</a></li>
+                            <li><a href="#troca-interpretacao">Interpretação</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#spins">A Inclusão dos Spins</a></li>
+                    <li>
+                        <a href="#simetrizacao-generalizada">Simetrização Generalizada</a>
+                        <ul>
+                            <li><a href="#enunciado-simetrizacao">Enunciado do Princípio</a></li>
+                            <li><a href="#n-particulas">Generalização para n partículas</a></li>
+                            <li><a href="#determinante-de-slater">Determinante de Slater</a></li>
+                            <li><a href="#resumo-proximos">Resumo e Próximos Passos</a></li>
+                            <li><a href="#problemas">Problemas Relacionados</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Search Modal Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-modal">
+            <div class="search-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search documentation..." autocomplete="off">
+            </div>
+            <div class="search-results" id="search-results"></div>
+            <div class="search-footer">
+                <div class="search-commands">
+                    <span class="cmd-key">↑</span>
+                    <span class="cmd-key">↓</span>
+                    <span class="cmd-label">navigate</span>
+                    <span class="cmd-key">↵</span>
+                    <span class="cmd-label">select</span>
+                </div>
+                <div class="search-commands">
+                    <span class="cmd-key">esc</span>
+                    <span class="cmd-label">close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../../../assets/js/class-lecture.js"></script>
+</body>
+
+</html>

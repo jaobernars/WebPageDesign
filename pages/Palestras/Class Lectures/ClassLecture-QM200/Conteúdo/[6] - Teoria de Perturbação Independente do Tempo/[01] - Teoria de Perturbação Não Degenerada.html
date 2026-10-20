@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teoria de Perturbação Não Degenerada | Mecânica Quântica II | The Journal of a Physicist</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../../../assets/images/Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../../../assets/images/Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../../../assets/images/Favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="../../../../../../assets/images/Favicon/favicon.ico">
+    <link rel="stylesheet" href="../../../../../../assets/css/class-lecture.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                        <line x1="9" x2="9" y1="3" y2="21"></line>
+                    </svg>
+                </button>
+                <button id="theme-toggle" class="sidebar-toggle" aria-label="Toggle Theme">
+                    <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="breadcrumbs-header">
+                    <a href="../../../../../../Páginas Principais/Lectures.html" class="breadcrumb-link">← Lectures</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <a href="../../index.html" class="breadcrumb-link active">Mecânica Quântica II</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-category" class="breadcrumb-link">Teoria de Perturbação Independente do Tempo</span>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-current" class="breadcrumb-link active">7.1 Teoria de Perturbação Não Degenerada</span>
+                </div>
+            </div>
+            <nav class="top-nav">
+                <a href="../../../../../../Páginas Principais/Lectures.html">Lectures</a>
+                <a href="../../../../../../index.html">Home</a>
+            </nav>
+        </div>
+
+        <script>
+            MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']]
+                }
+            };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    </header>
+
+    <div class="main-layout">
+        <aside class="left-sidebar" id="left-sidebar">
+            <div class="sidebar-content">
+
+                <button class="search-trigger" id="search-trigger">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                    </svg>
+                    <span>Search docs...</span>
+                </button>
+
+                <div class="sidebar-group">
+                    <h3>Início</h3>
+                    <ul>
+                        <li><a href="../../index.html">Overview</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Partículas Idênticas</h3>
+                    <ul>
+                        <li><a href="../[4] - Partículas Idênticas/[01] - Sistemas de Duas Partículas.html">5.1 Sistemas de Duas Partículas</a></li>
+                        <li><a href="../[4] - Partículas Idênticas/[02] - Átomos.html">5.2 Átomos</a></li>
+                        <li><a href="../[4] - Partículas Idênticas/[03] - Sólidos.html">5.3 Sólidos</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Simetrias e Leis de Conservação</h3>
+                    <ul>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[01] - Introdução.html">6.1 Introdução</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[02] - O Operador de Translação.html">6.2 O Operador de Translação</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[03] - Leis de Conservação.html">6.3 Leis de Conservação</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[04] - Paridade.html">6.4 Paridade</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[05] - Simetrias de Rotação.html">6.5 Simetrias de Rotação</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[06] - Degenerescência.html">6.6 Degenerescência</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[07] - Regras de Seleção Rotacionais.html">6.7 Regras de Seleção Rotacionais</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[08] - Translações no Tempo.html">6.8 Translações no Tempo</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Teoria de Perturbação Independente do Tempo</h3>
+                    <ul>
+                        <li><a href="[01] - Teoria de Perturbação Não Degenerada.html" class="active">7.1 Teoria de Perturbação Não Degenerada</a></li>
+                        <li><a href="[02] - Teoria de Perturbação Degenerada.html">7.2 Teoria de Perturbação Degenerada</a></li>
+                        <li><a href="[03] - A Estrutura Fina do Hidrogênio.html">7.3 A Estrutura Fina do Hidrogênio</a></li>
+                        <li><a href="[04] - O Efeito Zeeman.html">7.4 O Efeito Zeeman</a></li>
+                        <li><a href="[05] - A Estrutura Hiperfina do Hidrogênio.html">7.5 A Estrutura Hiperfina do Hidrogênio</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>O Princípio Variacional</h3>
+                    <ul>
+                        <li><a href="../[7] - O Princípio Variacional/[01] - Teoria.html">8.1 Teoria</a></li>
+                        <li><a href="../[7] - O Princípio Variacional/[02] - O Estado Fundamental do Hélio.html">8.2 O Estado Fundamental do Hélio</a></li>
+                        <li><a href="../[7] - O Princípio Variacional/[03] - O Íon da Molécula de Hidrogênio.html">8.3 O Íon da Molécula de Hidrogênio</a></li>
+                        <li><a href="../[7] - O Princípio Variacional/[04] - A Molécula de Hidrogênio.html">8.4 A Molécula de Hidrogênio</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>A Aproximação WKB</h3>
+                    <ul>
+                        <li><a href="../[8] - A Aproximação WKB/[01] - A Região “Clássica”.html">9.1 A Região “Clássica”</a></li>
+                        <li><a href="../[8] - A Aproximação WKB/[02] - Tunelamento.html">9.2 Tunelamento</a></li>
+                        <li><a href="../[8] - A Aproximação WKB/[03] - As Fórmulas de Conexão.html">9.3 As Fórmulas de Conexão</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="prose">
+
+                <h1 id="perturbacao-nao-degenerada">7.1 Teoria de Perturbação Não Degenerada</h1>
+                <p class="lead">Como corrigir energias e estados de um hamiltoniano que sabemos resolver quando acrescentamos a ele uma
+                    perturbação pequena: a expansão em potências de $\lambda$ e as correções de primeira e de segunda ordem.</p>
+
+                <p>Quase nenhum problema realista da mecânica quântica tem solução exata. O poço infinito, o oscilador harmônico e o
+                    átomo de hidrogênio são exceções preciosas, e o que encontramos na natureza costuma ser um desses problemas
+                    <em>mais</em> alguma coisa pequena: uma saliência no fundo do poço, um campo elétrico fraco, a correção relativística
+                    da energia cinética, a interação entre o spin e a órbita do elétron. A teoria de perturbação (<em>perturbation
+                    theory</em>) é o procedimento sistemático para aproveitar a solução exata do problema simples e obter, ordem a ordem,
+                    a solução aproximada do problema perturbado.</p>
+
+                <p>Nesta seção, que segue a Seção 7.1 do Griffiths, supomos que o espectro do problema simples é
+                    <strong>não degenerado</strong>: a cada energia corresponde um único estado. Construímos as correções de primeira
+                    ordem da energia e da função de onda e a correção de segunda ordem da energia. Só usamos o que vem da Mecânica
+                    Quântica I: os autoestados de um operador hermitiano formam uma base ortonormal completa, e conhecemos o espectro do
+                    poço infinito. A pergunta física é simples de enunciar: se o hamiltoniano muda um pouco, quanto mudam as energias e
+                    os estados?</p>
+
+                <h2 id="formulacao-geral">Formulação geral</h2>
+
+                <p>Suponha que já resolvemos a equação de Schrödinger independente do tempo para algum potencial, por exemplo o poço
+                    infinito unidimensional:</p>
+                <p>$$ H^0\psi_n^0 = E_n^0\psi_n^0, \tag{7.1} $$</p>
+                <p>obtendo um conjunto completo de autofunções ortonormais $\psi_n^0$,</p>
+                <p>$$ \langle\psi_n^0|\psi_m^0\rangle = \delta_{nm}, \tag{7.2} $$</p>
+                <p>com autovalores $E_n^0$. O índice superior $0$ marca sempre as grandezas do problema <em>não perturbado</em>. Agora
+                    perturbamos levemente o potencial, por exemplo pondo uma pequena saliência no fundo do poço (Figura 7.1). Queremos as
+                    novas autofunções e os novos autovalores,</p>
+                <p>$$ H\psi_n = E_n\psi_n, \tag{7.3} $$</p>
+                <p>mas, a menos de muita sorte, não conseguiremos resolver essa equação exatamente para o potencial mais complicado.</p>
+
+                <figure class="lecture-figure" id="fig-7-1">
+                    <svg viewBox="0 0 640 250" role="img" aria-label="Figura 7.1: poço infinito de largura a com uma pequena saliência no fundo, a perturbação H′.">
+<defs><marker id="arr-7-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<rect x="96" y="30" width="14" height="175" class="fig-band"/>
+<rect x="470" y="30" width="14" height="175" class="fig-band"/>
+<line x1="60" y1="205" x2="600" y2="205" class="fig-axis" marker-end="url(#arr-7-1)"/>
+<line x1="110" y1="225" x2="110" y2="14" class="fig-axis" marker-end="url(#arr-7-1)"/>
+<line x1="470" y1="30" x2="470" y2="205" class="fig-curve"/>
+<text x="102" y="22" text-anchor="end" class="fig-label fig-it">V(x)</text>
+<text x="606" y="223" class="fig-label fig-it">x</text>
+<text x="470" y="227" text-anchor="middle" class="fig-label fig-it">a</text>
+<line x1="110" y1="205" x2="470" y2="205" class="fig-axis"/>
+<path d="M110,205 L113,205 L116,205 L119,205 L122,205 L125,205 L128,205 L131,205 L134,205 L137,205 L140,205 L143,205 L146,205 L149,205 L152,205 L155,205 L158,205 L161,205 L164,205 L167,205 L170,205 L173,205 L176,205 L179,205 L182,205 L185,205 L188,205 L191,205 L194,205 L197,205 L200,205 L203,205 L206,205 L209,205 L212,205 L215,205 L218,205 L221,205 L224,205 L227,205 L230,205 L233,205 L236,205 L239,205 L242,205 L245,205 L248,205 L251,205 L254,205 L257,205 L260,205 L263,205 L266,204.9 L269,204.8 L272,204.6 L275,204.2 L278,203.6 L281,202.7 L284,201.3 L287,199.4 L290,196.9 L293,194 L296,190.9 L299,187.9 L302,185.3 L305,183.6 L308,183 L311,183.6 L314,185.3 L317,187.9 L320,190.9 L323,194 L326,196.9 L329,199.4 L332,201.3 L335,202.7 L338,203.6 L341,204.2 L344,204.6 L347,204.8 L350,204.9 L353,205 L356,205 L359,205 L362,205 L365,205 L368,205 L371,205 L374,205 L377,205 L380,205 L383,205 L386,205 L389,205 L392,205 L395,205 L398,205 L401,205 L404,205 L407,205 L410,205 L413,205 L416,205 L419,205 L422,205 L425,205 L428,205 L431,205 L434,205 L437,205 L440,205 L443,205 L446,205 L449,205 L452,205 L455,205 L458,205 L461,205 L464,205 L467,205 L470,205" class="fig-curve"/>
+<text x="308" y="173" text-anchor="middle" class="fig-label fig-it">H′</text>
+</svg>
+                    <figcaption><strong>Figura 7.1.</strong> Poço infinito com uma pequena perturbação no fundo. O problema sem a
+                        saliência tem solução exata; a saliência é o termo $H'$ que tratamos por aproximação.</figcaption>
+                </figure>
+
+                <div class="definition-box" id="def-hamiltoniano-perturbado" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição (Hamiltoniano perturbado).</strong> Escrevemos o novo hamiltoniano como a soma do hamiltoniano
+                        não perturbado $H^0$, cujo problema de autovalores já está resolvido, com uma <em>perturbação</em> $H'$
+                        multiplicada por um parâmetro $\lambda$:</p>
+                    <p>$$ H = H^0 + \lambda H'. \tag{7.4} $$</p>
+                    <p>Por ora, $\lambda$ é um número pequeno; no fim faremos $\lambda = 1$, e então $H$ será o hamiltoniano verdadeiro.</p>
+                </div>
+
+                <p>O parâmetro $\lambda$ é apenas um contador de ordens: cada potência de $\lambda$ marca quantas vezes a perturbação
+                    entrou numa expressão. A ideia central é supor que $\psi_n$ e $E_n$ dependem suavemente de $\lambda$ e podem ser
+                    escritos como séries de potências:</p>
+                <p>$$ \psi_n = \psi_n^0 + \lambda\psi_n^1 + \lambda^2\psi_n^2 + \cdots; \tag{7.5} $$</p>
+                <p>$$ E_n = E_n^0 + \lambda E_n^1 + \lambda^2E_n^2 + \cdots. \tag{7.6} $$</p>
+                <p>Aqui $E_n^1$ é a <strong>correção de primeira ordem</strong> (<em>first-order correction</em>) ao $n$-ésimo autovalor,
+                    $\psi_n^1$ é a correção de primeira ordem à $n$-ésima autofunção, $E_n^2$ e $\psi_n^2$ são as
+                    <strong>correções de segunda ordem</strong>, e assim por diante. Quando $\lambda \to 0$, voltamos ao problema não
+                    perturbado, como deve ser.</p>
+
+                <p>Substituindo as Eqs. (7.5) e (7.6) na Eq. (7.3), com $H$ dado pela Eq. (7.4), obtemos</p>
+                <p>$$ \begin{aligned}
+                    &\left(H^0 + \lambda H'\right)\left[\psi_n^0 + \lambda\psi_n^1 + \lambda^2\psi_n^2 + \cdots\right] \\
+                    &\qquad = \left(E_n^0 + \lambda E_n^1 + \lambda^2E_n^2 + \cdots\right)\left[\psi_n^0 + \lambda\psi_n^1 + \lambda^2\psi_n^2 + \cdots\right].
+                    \end{aligned} $$</p>
+                <p>Distribuindo os produtos e agrupando os termos de mesma potência de $\lambda$, o lado esquerdo fica</p>
+                <p>$$ H^0\psi_n^0 + \lambda\left(H^0\psi_n^1 + H'\psi_n^0\right) + \lambda^2\left(H^0\psi_n^2 + H'\psi_n^1\right) + \cdots $$</p>
+                <p>e o lado direito,</p>
+                <p>$$ E_n^0\psi_n^0 + \lambda\left(E_n^0\psi_n^1 + E_n^1\psi_n^0\right) + \lambda^2\left(E_n^0\psi_n^2 + E_n^1\psi_n^1 + E_n^2\psi_n^0\right) + \cdots. $$</p>
+                <p>A igualdade vale para todo $\lambda$ pequeno, e duas séries de potências só são iguais num intervalo se seus
+                    coeficientes forem iguais um a um. Igualamos, então, os coeficientes de cada potência. Em ordem zero ($\lambda^0$)
+                    obtemos $H^0\psi_n^0 = E_n^0\psi_n^0$, que não é nada de novo: é a Eq. (7.1). Em primeira ordem ($\lambda^1$),</p>
+                <p>$$ H^0\psi_n^1 + H'\psi_n^0 = E_n^0\psi_n^1 + E_n^1\psi_n^0. \tag{7.7} $$</p>
+                <p>Em segunda ordem ($\lambda^2$),</p>
+                <p>$$ H^0\psi_n^2 + H'\psi_n^1 = E_n^0\psi_n^2 + E_n^1\psi_n^1 + E_n^2\psi_n^0, \tag{7.8} $$</p>
+                <p>e assim por diante. Terminamos com $\lambda$: ele era só um artifício para separar as ordens, e daqui em diante o
+                    fazemos igual a $1$. Cada correção é, portanto, uma parcela da energia ou da função de onda que é "de ordem $k$" na
+                    perturbação $H'$.</p>
+
+                <h2 id="primeira-ordem">Teoria de primeira ordem</h2>
+
+                <h3 id="correcao-da-energia">A correção da energia</h3>
+
+                <div class="definition-box" id="teo-correcao-primeira-ordem">
+                    <p><strong>Teorema (Correção de primeira ordem da energia).</strong> Se o nível $E_n^0$ de $H^0$ é não degenerado, a
+                        correção de primeira ordem à sua energia é o valor esperado da perturbação no estado não perturbado:</p>
+                    <p>$$ E_n^1 = \langle\psi_n^0|H'|\psi_n^0\rangle. \tag{7.9} $$</p>
+                </div>
+
+                <p><em>Demonstração.</em> Tomamos o produto interno da Eq. (7.7) com $\psi_n^0$, isto é, multiplicamos por
+                    $(\psi_n^0)^*$ e integramos:</p>
+                <p>$$ \langle\psi_n^0|H^0\psi_n^1\rangle + \langle\psi_n^0|H'\psi_n^0\rangle = E_n^0\langle\psi_n^0|\psi_n^1\rangle + E_n^1\langle\psi_n^0|\psi_n^0\rangle. $$</p>
+                <p>Como $H^0$ é hermitiano, podemos passá-lo para o primeiro fator do produto interno e usar a Eq. (7.1), lembrando que
+                    $E_n^0$ é real:</p>
+                <p>$$ \langle\psi_n^0|H^0\psi_n^1\rangle = \langle H^0\psi_n^0|\psi_n^1\rangle = \langle E_n^0\psi_n^0|\psi_n^1\rangle = E_n^0\langle\psi_n^0|\psi_n^1\rangle. $$</p>
+                <p>Esse termo cancela o primeiro termo do lado direito. Além disso, $\langle\psi_n^0|\psi_n^0\rangle = 1$ pela Eq. (7.2).
+                    Sobra $\langle\psi_n^0|H'\psi_n^0\rangle = E_n^1$, que é a Eq. (7.9). Note que esta etapa ainda não usou a hipótese
+                    de não degenerescência; ela vai aparecer na correção da função de onda. $\blacksquare$</p>
+
+                <p>A Eq. (7.9) é o resultado fundamental da teoria de perturbação de primeira ordem e, na prática, talvez seja a equação
+                    mais usada de toda a mecânica quântica. Ela diz que a correção de primeira ordem da energia é o <em>valor
+                    esperado</em> da perturbação calculado no estado <em>não perturbado</em>. A interpretação é natural: em primeira
+                    ordem, o sistema ainda está essencialmente no estado antigo, e a energia sobe ou desce pela média de $H'$ sobre
+                    esse estado.</p>
+
+                <div id="ex-7-1">
+                    <p><strong>Exemplo 7.1 (Poço infinito com o fundo elevado).</strong> As funções de onda não perturbadas do poço
+                        infinito de largura $a$ são</p>
+                    <p>$$ \psi_n^0(x) = \sqrt{\frac2a}\,\sin\left(\frac{n\pi}{a}x\right). $$</p>
+                    <p>Suponha que perturbamos o sistema simplesmente elevando o "chão" do poço de uma quantidade constante $V_0$
+                        (Figura 7.2). Qual é a correção de primeira ordem às energias?</p>
+                    <figure class="lecture-figure" id="fig-7-2">
+                        <svg viewBox="0 0 640 250" role="img" aria-label="Figura 7.2: poço infinito de largura a com o fundo elevado de uma constante V0 em toda a largura.">
+<defs><marker id="arr-7-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<rect x="96" y="30" width="14" height="175" class="fig-band"/>
+<rect x="470" y="30" width="14" height="175" class="fig-band"/>
+<line x1="60" y1="205" x2="600" y2="205" class="fig-axis" marker-end="url(#arr-7-2)"/>
+<line x1="110" y1="225" x2="110" y2="14" class="fig-axis" marker-end="url(#arr-7-2)"/>
+<line x1="470" y1="30" x2="470" y2="205" class="fig-curve"/>
+<text x="102" y="22" text-anchor="end" class="fig-label fig-it">V(x)</text>
+<text x="606" y="223" class="fig-label fig-it">x</text>
+<text x="470" y="227" text-anchor="middle" class="fig-label fig-it">a</text>
+<path d="M110,150 L470,150" class="fig-curve"/>
+<text x="102" y="155" text-anchor="end" class="fig-label">V₀</text>
+</svg>
+                        <figcaption><strong>Figura 7.2.</strong> Perturbação constante $H' = V_0$ em todo o poço.</figcaption>
+                    </figure>
+                    <p><em>Solução.</em> Agora $H' = V_0$, um número, e a correção de primeira ordem à energia do $n$-ésimo estado é</p>
+                    <p>$$ E_n^1 = \langle\psi_n^0|V_0|\psi_n^0\rangle = V_0\langle\psi_n^0|\psi_n^0\rangle = V_0. $$</p>
+                    <p>As energias corrigidas são $E_n \approx E_n^0 + V_0$: todos os níveis sobem exatamente $V_0$. É claro: somar uma
+                        constante ao hamiltoniano não muda as autofunções e apenas desloca todas as energias. A única surpresa é que,
+                        neste caso, a teoria de primeira ordem dá a resposta <em>exata</em>. De fato, como $H'\psi_n^0 = V_0\psi_n^0 =
+                        E_n^1\psi_n^0$, o lado direito da Eq. (7.10) abaixo se anula, logo $\psi_n^1 = 0$; e então a Eq. (7.14) dá
+                        $E_n^2 = 0$. O mesmo argumento, repetido ordem a ordem, mostra que todas as correções superiores se anulam.</p>
+                    <p>Se, por outro lado, a perturbação ocupa só a metade esquerda do poço (Figura 7.3), $H' = V_0$ para
+                        $0 \lt x \lt a/2$ e $H' = 0$ no resto, então</p>
+                    <p>$$ E_n^1 = \frac{2V_0}{a}\int_0^{a/2}\sin^2\left(\frac{n\pi}{a}x\right)dx = \frac{V_0}{2}. $$</p>
+                    <p>A integral se faz com $\sin^2\theta = \tfrac12(1 - \cos 2\theta)$:</p>
+                    <p>$$ \frac{2V_0}{a}\left[\frac{x}{2} - \frac{a}{4n\pi}\sin\left(\frac{2n\pi}{a}x\right)\right]_0^{a/2} = \frac{2V_0}{a}\left[\frac a4 - \frac{a}{4n\pi}\sin(n\pi)\right] = \frac{V_0}{2}, $$</p>
+                    <p>pois $\sin(n\pi) = 0$. Todos os níveis sobem $V_0/2$. Isso não é o resultado exato, mas é razoável como primeira
+                        aproximação: a densidade de probabilidade $|\psi_n^0|^2$ é simétrica em torno de $x = a/2$, de modo que a
+                        partícula passa metade do tempo na região elevada.</p>
+                    <figure class="lecture-figure" id="fig-7-3">
+                        <svg viewBox="0 0 640 250" role="img" aria-label="Figura 7.3: poço infinito de largura a com o fundo elevado de V0 apenas entre x = 0 e x = a/2.">
+<defs><marker id="arr-7-3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<rect x="96" y="30" width="14" height="175" class="fig-band"/>
+<rect x="470" y="30" width="14" height="175" class="fig-band"/>
+<line x1="60" y1="205" x2="600" y2="205" class="fig-axis" marker-end="url(#arr-7-3)"/>
+<line x1="110" y1="225" x2="110" y2="14" class="fig-axis" marker-end="url(#arr-7-3)"/>
+<line x1="470" y1="30" x2="470" y2="205" class="fig-curve"/>
+<text x="102" y="22" text-anchor="end" class="fig-label fig-it">V(x)</text>
+<text x="606" y="223" class="fig-label fig-it">x</text>
+<text x="290" y="227" text-anchor="middle" class="fig-label fig-it">a/2</text>
+<text x="470" y="227" text-anchor="middle" class="fig-label fig-it">a</text>
+<path d="M110,150 L290,150 L290,205 L470,205" class="fig-curve"/>
+<text x="102" y="155" text-anchor="end" class="fig-label">V₀</text>
+<line x1="110" y1="205" x2="290" y2="205" class="fig-axis"/>
+</svg>
+                        <figcaption><strong>Figura 7.3.</strong> Perturbação constante $V_0$ só na metade esquerda do poço,
+                            $0 \lt x \lt a/2$.</figcaption>
+                    </figure>
+                </div>
+
+                <h3 id="correcao-da-funcao-de-onda">A correção da função de onda</h3>
+
+                <p>A Eq. (7.9) dá a correção de primeira ordem à <em>energia</em>. Para a correção à <em>função de onda</em>, reescrevemos
+                    a Eq. (7.7) como</p>
+                <p>$$ \left(H^0 - E_n^0\right)\psi_n^1 = -\left(H' - E_n^1\right)\psi_n^0. \tag{7.10} $$</p>
+                <p>O lado direito é uma função conhecida, de modo que esta é uma equação diferencial não homogênea para $\psi_n^1$.
+                    Como as autofunções não perturbadas formam um conjunto completo, $\psi_n^1$, como qualquer outra função, pode ser
+                    escrita como combinação linear delas:</p>
+                <p>$$ \psi_n^1 = \sum_{m \ne n} c_m^{(n)}\psi_m^0. \tag{7.11} $$</p>
+                <p>Não é preciso incluir o termo $m = n$ na soma: se $\psi_n^1$ satisfaz a Eq. (7.10), então $\psi_n^1 + \alpha\psi_n^0$
+                    também satisfaz, para qualquer constante $\alpha$, porque $(H^0 - E_n^0)\psi_n^0 = 0$. Usamos essa liberdade para
+                    eliminar a componente ao longo de $\psi_n^0$. Essa escolha tem um sentido simples: somar $\alpha\lambda\psi_n^0$
+                    à correção só multiplica $\psi_n$ por $(1 + \alpha\lambda)$ em primeira ordem, o que muda sua normalização e sua fase,
+                    mas não o estado físico.</p>
+
+                <div class="definition-box" id="teo-correcao-funcao-de-onda">
+                    <p><strong>Teorema (Correção de primeira ordem da função de onda).</strong> Se o espectro de $H^0$ é não degenerado,
+                        os coeficientes da Eq. (7.11) são</p>
+                    <p>$$ c_m^{(n)} = \frac{\langle\psi_m^0|H'|\psi_n^0\rangle}{E_n^0 - E_m^0}, \tag{7.12} $$</p>
+                    <p>e portanto</p>
+                    <p>$$ \psi_n^1 = \sum_{m \ne n}\frac{\langle\psi_m^0|H'|\psi_n^0\rangle}{E_n^0 - E_m^0}\,\psi_m^0. \tag{7.13} $$</p>
+                </div>
+
+                <p><em>Demonstração.</em> Substituímos a Eq. (7.11) na Eq. (7.10). Como cada $\psi_m^0$ satisfaz a equação não perturbada,
+                    $H^0\psi_m^0 = E_m^0\psi_m^0$, o lado esquerdo vira</p>
+                <p>$$ \sum_{m \ne n}\left(E_m^0 - E_n^0\right)c_m^{(n)}\psi_m^0 = -\left(H' - E_n^1\right)\psi_n^0. $$</p>
+                <p>Tomamos o produto interno com $\psi_l^0$ e usamos a ortonormalidade (7.2):</p>
+                <p>$$ \sum_{m \ne n}\left(E_m^0 - E_n^0\right)c_m^{(n)}\langle\psi_l^0|\psi_m^0\rangle = -\langle\psi_l^0|H'|\psi_n^0\rangle + E_n^1\langle\psi_l^0|\psi_n^0\rangle. $$</p>
+                <p>Se $l = n$, o lado esquerdo é zero (a soma não tem o termo $m = n$, e os demais são ortogonais a $\psi_n^0$), e
+                    reencontramos a Eq. (7.9). Se $l \ne n$, só o termo $m = l$ sobrevive à esquerda, e $\langle\psi_l^0|\psi_n^0\rangle = 0$
+                    à direita:</p>
+                <p>$$ \left(E_l^0 - E_n^0\right)c_l^{(n)} = -\langle\psi_l^0|H'|\psi_n^0\rangle. $$</p>
+                <p>Como o espectro é não degenerado, $E_l^0 \ne E_n^0$ para todo $l \ne n$, e podemos dividir. Trocando o nome do índice
+                    $l$ por $m$, obtemos a Eq. (7.12); levando-a à Eq. (7.11), a Eq. (7.13). $\blacksquare$</p>
+
+                <p id="obs-degenerescencia"><strong>Observação.</strong> O denominador $E_n^0 - E_m^0$ é seguro, já que não há coeficiente
+                    com $m = n$, <em>enquanto o espectro não perturbado for não degenerado</em>. Se dois estados diferentes tiverem a mesma
+                    energia não perturbada, estaremos em sérios apuros: dividimos por zero para chegar à Eq. (7.12). Nesse caso precisamos
+                    da teoria de perturbação degenerada, que é o assunto da
+                    <a href="[02] - Teoria de Perturbação Degenerada.html">Seção 7.2</a>. Mesmo sem degenerescência exata, a Eq. (7.13)
+                    já avisa que níveis muito próximos são perigosos: um denominador pequeno torna a correção grande.</p>
+
+                <p>Com isso a teoria de primeira ordem está completa: a correção de primeira ordem à energia, $E_n^1$, é dada pela
+                    Eq. (7.9), e a correção à função de onda, $\psi_n^1$, pela Eq. (7.13). Uma consequência da escolha feita na Eq. (7.11)
+                    será útil logo adiante:</p>
+                <p>$$ \langle\psi_n^0|\psi_n^1\rangle = \sum_{m \ne n}c_m^{(n)}\langle\psi_n^0|\psi_m^0\rangle = 0, $$</p>
+                <p>porque a soma exclui $m = n$ e todos os outros estados são ortogonais a $\psi_n^0$. Isso garante também que $\psi_n$
+                    continua normalizada até primeira ordem: $\langle\psi_n|\psi_n\rangle = 1 + 2\lambda\,\mathrm{Re}\langle\psi_n^0|\psi_n^1\rangle + O(\lambda^2) = 1 + O(\lambda^2)$.</p>
+
+                <h2 id="segunda-ordem">Energias de segunda ordem</h2>
+
+                <div class="definition-box" id="teo-correcao-segunda-ordem">
+                    <p><strong>Teorema (Correção de segunda ordem da energia).</strong> Se o espectro de $H^0$ é não degenerado, a
+                        correção de segunda ordem à energia do nível $n$ é</p>
+                    <p>$$ E_n^2 = \langle\psi_n^0|H'|\psi_n^1\rangle - E_n^1\langle\psi_n^0|\psi_n^1\rangle, \tag{7.14} $$</p>
+                    <p>e, com a correção (7.13) da função de onda,</p>
+                    <p>$$ E_n^2 = \sum_{m \ne n}\frac{|\langle\psi_m^0|H'|\psi_n^0\rangle|^2}{E_n^0 - E_m^0}. \tag{7.15} $$</p>
+                </div>
+
+                <p><em>Demonstração.</em> Procedemos como na primeira ordem: tomamos o produto interno da equação de segunda ordem,
+                    Eq. (7.8), com $\psi_n^0$:</p>
+                <p>$$ \begin{aligned}
+                    &\langle\psi_n^0|H^0\psi_n^2\rangle + \langle\psi_n^0|H'\psi_n^1\rangle \\
+                    &\qquad = E_n^0\langle\psi_n^0|\psi_n^2\rangle + E_n^1\langle\psi_n^0|\psi_n^1\rangle + E_n^2\langle\psi_n^0|\psi_n^0\rangle.
+                    \end{aligned} $$</p>
+                <p>De novo usamos que $H^0$ é hermitiano:</p>
+                <p>$$ \langle\psi_n^0|H^0\psi_n^2\rangle = \langle H^0\psi_n^0|\psi_n^2\rangle = E_n^0\langle\psi_n^0|\psi_n^2\rangle, $$</p>
+                <p>de modo que o primeiro termo da esquerda cancela o primeiro da direita. Com $\langle\psi_n^0|\psi_n^0\rangle = 1$,
+                    sobra uma fórmula para $E_n^2$, que é a Eq. (7.14). Ela vale qualquer que seja a forma escolhida para $\psi_n^1$.
+                    Com a escolha da Eq. (7.11), porém, já vimos que $\langle\psi_n^0|\psi_n^1\rangle = 0$, e o segundo termo
+                    desaparece. Usando a Eq. (7.11) e depois a Eq. (7.12),</p>
+                <p>$$ \begin{aligned}
+                    E_n^2 &= \langle\psi_n^0|H'|\psi_n^1\rangle = \sum_{m \ne n}c_m^{(n)}\langle\psi_n^0|H'|\psi_m^0\rangle \\
+                    &= \sum_{m \ne n}\frac{\langle\psi_m^0|H'|\psi_n^0\rangle\langle\psi_n^0|H'|\psi_m^0\rangle}{E_n^0 - E_m^0}.
+                    \end{aligned} $$</p>
+                <p>Por fim, como $H'$ é hermitiano, $\langle\psi_n^0|H'|\psi_m^0\rangle = \langle\psi_m^0|H'|\psi_n^0\rangle^*$, e o
+                    numerador é o módulo ao quadrado de $\langle\psi_m^0|H'|\psi_n^0\rangle$. Isso é a Eq. (7.15). $\blacksquare$</p>
+
+                <p>A Eq. (7.15) é o resultado fundamental da teoria de perturbação de segunda ordem. Poderíamos continuar e calcular a
+                    correção de segunda ordem à função de onda ($\psi_n^2$), a correção de terceira ordem à energia e assim por diante,
+                    mas, na prática, a Eq. (7.15) costuma ser o ponto além do qual o método deixa de compensar.</p>
+
+                <p id="obs-segunda-ordem-fundamental"><strong>Observação (O estado fundamental sempre desce em segunda ordem).</strong>
+                    Para o estado fundamental, $E_n^0$ é a menor energia, de modo que todos os denominadores $E_n^0 - E_m^0$ da
+                    Eq. (7.15) são negativos, enquanto os numeradores são módulos ao quadrado, maiores ou iguais a zero. Logo a correção
+                    de segunda ordem à energia do estado fundamental nunca é positiva. Em geral, cada estado $m$ "empurra" o nível $n$:
+                    os estados acima o empurram para baixo, os de baixo o empurram para cima, tanto mais quanto mais próximos estão e
+                    quanto maior é o elemento de matriz que os liga.</p>
+
+                <p id="obs-validade"><strong>Observação (Quando a série é confiável).</strong> As Eqs. (7.13) e (7.15) só fazem sentido
+                    como correções pequenas se os elementos de matriz da perturbação forem pequenos em comparação com os espaçamentos
+                    entre os níveis,</p>
+                <p>$$ |\langle\psi_m^0|H'|\psi_n^0\rangle| \ll |E_n^0 - E_m^0|. $$</p>
+                <p>Caso contrário, os primeiros termos, que são tudo o que normalmente calculamos, aproximam mal a grandeza de interesse,
+                    e a série pode até mesmo não convergir; o próprio Griffiths faz essa advertência ao fim da Seção 7.1.</p>
+
+                <h2 id="conexao">Conexão com o experimento</h2>
+
+                <p>Esta seção do Griffiths é puramente formal: ela prepara a ferramenta, e a confrontação com o experimento vem nas
+                    Seções 7.3 a 7.5, onde a Eq. (7.9) será aplicada ao átomo de hidrogênio. Ali, $H^0$ será o hamiltoniano de Bohr e
+                    $H'$ serão a correção relativística, o acoplamento spin-órbita, a interação com um campo magnético externo e a
+                    interação entre os momentos magnéticos do elétron e do próton. As correções resultantes são justamente as pequenas
+                    separações observadas nas linhas espectrais do hidrogênio. O que dá confiança ao método é o critério da última
+                    observação: nesses casos as perturbações são milhares de vezes menores que os espaçamentos de Bohr, e por isso a
+                    primeira ordem, às vezes complementada pela segunda, já reproduz os espectros medidos.</p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p id="exr-7-1-1"><strong>Exercício 7.1-1.</strong> No poço infinito de largura $a$, eleve o fundo de $V_0$ apenas no
+                    terço central, $a/3 \lt x \lt 2a/3$. Calcule $E_n^1$ em geral e para $n = 1, 2, 3$, e explique a ordem dos três
+                    resultados.</p>
+                <p><em>Solução.</em> Pela Eq. (7.9), com $\sin^2\theta = \tfrac12(1 - \cos 2\theta)$,</p>
+                <p>$$ \begin{aligned}
+                    E_n^1 &= \frac{2V_0}{a}\int_{a/3}^{2a/3}\sin^2\left(\frac{n\pi x}{a}\right)dx
+                    = \frac{2V_0}{a}\left[\frac x2 - \frac{a}{4n\pi}\sin\left(\frac{2n\pi x}{a}\right)\right]_{a/3}^{2a/3} \\
+                    &= V_0\left[\frac13 - \frac{1}{2n\pi}\left(\sin\frac{4n\pi}{3} - \sin\frac{2n\pi}{3}\right)\right].
+                    \end{aligned} $$</p>
+                <p>Para $n = 1$: $\sin(4\pi/3) - \sin(2\pi/3) = -\sqrt3$, logo $E_1^1 = V_0\left(\tfrac13 + \tfrac{\sqrt3}{2\pi}\right) \approx 0{,}609\,V_0$.
+                    Para $n = 2$: a diferença vale $+\sqrt3$, e $E_2^1 = V_0\left(\tfrac13 - \tfrac{\sqrt3}{4\pi}\right) \approx 0{,}196\,V_0$.
+                    Para $n = 3$: a diferença é $\sin 4\pi - \sin 2\pi = 0$, e $E_3^1 = V_0/3$. A ordem é a esperada: o estado
+                    fundamental tem o máximo de $|\psi_1^0|^2$ no centro e "sente" mais o degrau; o estado $n = 2$ tem um nó em
+                    $x = a/2$ e sente menos; para $n = 3$ cada terço do poço contém exatamente meio comprimento de onda, e a
+                    probabilidade no terço central é exatamente $1/3$.</p>
+
+                <p id="exr-7-1-2"><strong>Exercício 7.1-2.</strong> No mesmo poço, a perturbação é uma rampa, $H' = \epsilon\,x/a$.
+                    Mostre que todos os níveis sobem $\epsilon/2$ em primeira ordem, sem calcular a integral.</p>
+                <p><em>Solução.</em> $E_n^1 = (\epsilon/a)\langle x\rangle_n$, com $\langle x\rangle_n$ o valor esperado da posição no
+                    estado $\psi_n^0$. Como $\sin^2(n\pi x/a)$ é simétrica em relação a $x = a/2$ (trocar $x$ por $a - x$ muda o seno
+                    no máximo de sinal), a densidade $|\psi_n^0|^2$ é simétrica em torno do centro, e $\langle x\rangle_n = a/2$ para
+                    todo $n$. Logo $E_n^1 = \epsilon/2$. Fisicamente, em primeira ordem a rampa equivale a seu valor médio sobre o poço.</p>
+
+                <p id="exr-7-1-3"><strong>Exercício 7.1-3.</strong> Um oscilador harmônico de frequência $\omega$ recebe a perturbação
+                    anarmônica $H' = \epsilon x^4$. Calcule $E_n^1$ usando os operadores de levantamento e abaixamento.</p>
+                <p><em>Solução.</em> Com $x = \sqrt{\hbar/2m\omega}\,(a_+ + a_-)$, $a_+|n\rangle = \sqrt{n+1}\,|n+1\rangle$ e
+                    $a_-|n\rangle = \sqrt n\,|n-1\rangle$, temos</p>
+                <p>$$ \begin{aligned}
+                    (a_+ + a_-)^2|n\rangle &= \sqrt{(n+1)(n+2)}\,|n+2\rangle \\
+                    &\qquad + (2n+1)|n\rangle + \sqrt{n(n-1)}\,|n-2\rangle.
+                    \end{aligned} $$</p>
+                <p>Como $(a_+ + a_-)^2$ é hermitiano, $\langle n|(a_+ + a_-)^4|n\rangle$ é a norma ao quadrado do vetor acima:
+                    $(n+1)(n+2) + (2n+1)^2 + n(n-1) = 6n^2 + 6n + 3$. Portanto</p>
+                <p>$$ E_n^1 = \epsilon\left(\frac{\hbar}{2m\omega}\right)^2\left(6n^2 + 6n + 3\right) = 3\epsilon\left(\frac{\hbar}{2m\omega}\right)^2\left(2n^2 + 2n + 1\right). $$</p>
+                <p>Para o estado fundamental, $E_0^1 = 3\epsilon\hbar^2/(4m^2\omega^2)$. A correção cresce como $n^2$: quanto mais
+                    excitado o estado, mais ele explora a região de $x$ grande, onde $x^4$ domina, e mais cedo a aproximação falha.</p>
+
+                <p id="exr-7-1-4"><strong>Exercício 7.1-4.</strong> Um sistema de três níveis tem, em unidades de uma energia $\varepsilon_0$,
+                    $H^0 = \mathrm{diag}(1, 2, 4)$ e uma perturbação cujos únicos elementos não nulos são
+                    $H'_{12} = H'_{21} = 0{,}1$, $H'_{13} = H'_{31} = 0{,}05$ e $H'_{23} = H'_{32} = 0{,}1$. Calcule as energias até
+                    segunda ordem e compare com os autovalores exatos $0{,}98957$, $2{,}00444$ e $4{,}00599$.</p>
+                <p><em>Solução.</em> Os elementos diagonais de $H'$ são nulos, logo $E_n^1 = 0$ para os três níveis. Pela Eq. (7.15),</p>
+                <p>$$ \begin{aligned}
+                    E_1^2 &= \frac{(0{,}1)^2}{1 - 2} + \frac{(0{,}05)^2}{1 - 4} = -\frac{13}{1200} \approx -0{,}01083, \\
+                    E_2^2 &= \frac{(0{,}1)^2}{2 - 1} + \frac{(0{,}1)^2}{2 - 4} = \frac{1}{200} = 0{,}00500, \\
+                    E_3^2 &= \frac{(0{,}05)^2}{4 - 1} + \frac{(0{,}1)^2}{4 - 2} = \frac{7}{1200} \approx 0{,}00583.
+                    \end{aligned} $$</p>
+                <p>As energias aproximadas, $0{,}98917$, $2{,}00500$ e $4{,}00583$, diferem das exatas em menos de $6\times10^{-4}$, que é
+                    a ordem esperada para a terceira ordem. Note duas coisas: o nível 1 desce e o nível 3 sobe (cada um é empurrado
+                    pelos vizinhos), e a soma das três correções de segunda ordem é zero, como deve ser, porque o traço de
+                    $H^0 + H'$ é igual ao de $H^0$.</p>
+
+                <p id="exr-7-1-5"><strong>Exercício 7.1-5.</strong> Explique por que a correção de segunda ordem à energia do estado
+                    fundamental é sempre menor ou igual a zero, e em que caso ela é exatamente zero.</p>
+                <p><em>Solução.</em> Na Eq. (7.15), para o estado fundamental, todos os denominadores $E_0^0 - E_m^0$ são negativos, pois
+                    $E_0^0$ é a menor energia não degenerada; os numeradores $|\langle\psi_m^0|H'|\psi_0^0\rangle|^2$ são maiores ou iguais a
+                    zero. Uma soma de termos não positivos é não positiva. Ela é zero se, e somente se, todos os elementos
+                    $\langle\psi_m^0|H'|\psi_0^0\rangle$ com $m \ne 0$ se anulam, isto é, se $H'\psi_0^0$ for proporcional a $\psi_0^0$ e o
+                    estado fundamental não for misturado com nenhum outro, como no caso da perturbação constante do Exemplo 7.1.</p>
+
+                <p id="exr-7-1-6"><strong>Exercício 7.1-6.</strong> Para a perturbação da Figura 7.3 (degrau $V_0$ na metade esquerda),
+                    calcule $\langle\psi_2^0|H'|\psi_1^0\rangle$ e use o critério de validade da Seção 7.1.3 para estimar até que valor
+                    de $V_0$ a teoria de perturbação é confiável para o estado fundamental.</p>
+                <p><em>Solução.</em> Com $\sin A\sin B = \tfrac12[\cos(A - B) - \cos(A + B)]$,</p>
+                <p>$$ \begin{aligned}
+                    \langle\psi_2^0|H'|\psi_1^0\rangle &= \frac{2V_0}{a}\int_0^{a/2}\sin\frac{\pi x}{a}\,\sin\frac{2\pi x}{a}\,dx \\
+                    &= \frac{V_0}{a}\left[\frac{a}{\pi}\sin\frac{\pi x}{a} - \frac{a}{3\pi}\sin\frac{3\pi x}{a}\right]_0^{a/2} = \frac{4V_0}{3\pi}.
+                    \end{aligned} $$</p>
+                <p>Como $E_n^0 = n^2E_1^0$, o espaçamento é $E_2^0 - E_1^0 = 3E_1^0$. O critério
+                    $|\langle\psi_2^0|H'|\psi_1^0\rangle| \ll |E_2^0 - E_1^0|$ dá $4V_0/3\pi \ll 3E_1^0$, isto é,
+                    $V_0 \ll \tfrac{9\pi}{4}E_1^0 \approx 7{,}1\,E_1^0$. Curiosamente, o elemento com $m = 3$ é nulo: a mesma conta com
+                    $\sin(3\pi x/a)$ dá $\langle\psi_3^0|H'|\psi_1^0\rangle = 0$, e o primeiro estado que mistura com o fundamental, além
+                    de $\psi_2^0$, é $\psi_4^0$, mais distante em energia.</p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <ul>
+                    <li>A formulação da teoria de perturbação: $H = H^0 + \lambda H'$ e as expansões (7.5) e (7.6), com as equações de
+                        primeira e de segunda ordem (7.7) e (7.8).</li>
+                    <li>A correção de primeira ordem da energia, $E_n^1 = \langle\psi_n^0|H'|\psi_n^0\rangle$ (Eq. 7.9), aplicada ao poço
+                        com o fundo elevado (Exemplo 7.1).</li>
+                    <li>A correção de primeira ordem da função de onda (Eq. 7.13) e a correção de segunda ordem da energia (Eq. 7.15),
+                        com o critério de validade $|\langle\psi_m^0|H'|\psi_n^0\rangle| \ll |E_n^0 - E_m^0|$.</li>
+                </ul>
+                <p>Tudo isso supôs um espectro não degenerado: os denominadores $E_n^0 - E_m^0$ nunca se anulam. O que fazer quando dois
+                    ou mais estados têm a mesma energia é o assunto da próxima seção,
+                    <a href="[02] - Teoria de Perturbação Degenerada.html">7.2 Teoria de Perturbação Degenerada</a>.</p>
+
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="toc-container">
+                <h4>Nesta página</h4>
+                <ul>
+                    <li><a href="#perturbacao-nao-degenerada">Teoria de Perturbação Não Degenerada</a></li>
+                    <li><a href="#formulacao-geral">Formulação geral</a></li>
+                    <li>
+                        <a href="#primeira-ordem">Teoria de primeira ordem</a>
+                        <ul>
+                            <li><a href="#correcao-da-energia">A correção da energia</a></li>
+                            <li><a href="#correcao-da-funcao-de-onda">A correção da função de onda</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#segunda-ordem">Energias de segunda ordem</a></li>
+                    <li><a href="#conexao">Conexão com o experimento</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Search Modal Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-modal">
+            <div class="search-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search documentation..." autocomplete="off">
+            </div>
+            <div class="search-results" id="search-results"></div>
+            <div class="search-footer">
+                <div class="search-commands">
+                    <span class="cmd-key">↑</span>
+                    <span class="cmd-key">↓</span>
+                    <span class="cmd-label">navigate</span>
+                    <span class="cmd-key">↵</span>
+                    <span class="cmd-label">select</span>
+                </div>
+                <div class="search-commands">
+                    <span class="cmd-key">esc</span>
+                    <span class="cmd-label">close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../../../assets/js/class-lecture.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teoria de Perturbação Degenerada | Mecânica Quântica II | The Journal of a Physicist</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../../../assets/images/Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../../../assets/images/Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../../../assets/images/Favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="../../../../../../assets/images/Favicon/favicon.ico">
+    <link rel="stylesheet" href="../../../../../../assets/css/class-lecture.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                        <line x1="9" x2="9" y1="3" y2="21"></line>
+                    </svg>
+                </button>
+                <button id="theme-toggle" class="sidebar-toggle" aria-label="Toggle Theme">
+                    <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="breadcrumbs-header">
+                    <a href="../../../../../../Páginas Principais/Lectures.html" class="breadcrumb-link">← Lectures</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <a href="../../index.html" class="breadcrumb-link active">Mecânica Quântica II</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-category" class="breadcrumb-link">Teoria de Perturbação Independente do Tempo</span>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-current" class="breadcrumb-link active">7.2 Teoria de Perturbação Degenerada</span>
+                </div>
+            </div>
+            <nav class="top-nav">
+                <a href="../../../../../../Páginas Principais/Lectures.html">Lectures</a>
+                <a href="../../../../../../index.html">Home</a>
+            </nav>
+        </div>
+
+        <script>
+            MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']]
+                }
+            };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    </header>
+
+    <div class="main-layout">
+        <aside class="left-sidebar" id="left-sidebar">
+            <div class="sidebar-content">
+
+                <button class="search-trigger" id="search-trigger">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                    </svg>
+                    <span>Search docs...</span>
+                </button>
+
+                <div class="sidebar-group">
+                    <h3>Início</h3>
+                    <ul>
+                        <li><a href="../../index.html">Overview</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Partículas Idênticas</h3>
+                    <ul>
+                        <li><a href="../[4] - Partículas Idênticas/[01] - Sistemas de Duas Partículas.html">5.1 Sistemas de Duas Partículas</a></li>
+                        <li><a href="../[4] - Partículas Idênticas/[02] - Átomos.html">5.2 Átomos</a></li>
+                        <li><a href="../[4] - Partículas Idênticas/[03] - Sólidos.html">5.3 Sólidos</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Simetrias e Leis de Conservação</h3>
+                    <ul>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[01] - Introdução.html">6.1 Introdução</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[02] - O Operador de Translação.html">6.2 O Operador de Translação</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[03] - Leis de Conservação.html">6.3 Leis de Conservação</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[04] - Paridade.html">6.4 Paridade</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[05] - Simetrias de Rotação.html">6.5 Simetrias de Rotação</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[06] - Degenerescência.html">6.6 Degenerescência</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[07] - Regras de Seleção Rotacionais.html">6.7 Regras de Seleção Rotacionais</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[08] - Translações no Tempo.html">6.8 Translações no Tempo</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Teoria de Perturbação Independente do Tempo</h3>
+                    <ul>
+                        <li><a href="[01] - Teoria de Perturbação Não Degenerada.html">7.1 Teoria de Perturbação Não Degenerada</a></li>
+                        <li><a href="[02] - Teoria de Perturbação Degenerada.html" class="active">7.2 Teoria de Perturbação Degenerada</a></li>
+                        <li><a href="[03] - A Estrutura Fina do Hidrogênio.html">7.3 A Estrutura Fina do Hidrogênio</a></li>
+                        <li><a href="[04] - O Efeito Zeeman.html">7.4 O Efeito Zeeman</a></li>
+                        <li><a href="[05] - A Estrutura Hiperfina do Hidrogênio.html">7.5 A Estrutura Hiperfina do Hidrogênio</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>O Princípio Variacional</h3>
+                    <ul>
+                        <li><a href="../[7] - O Princípio Variacional/[01] - Teoria.html">8.1 Teoria</a></li>
+                        <li><a href="../[7] - O Princípio Variacional/[02] - O Estado Fundamental do Hélio.html">8.2 O Estado Fundamental do Hélio</a></li>
+                        <li><a href="../[7] - O Princípio Variacional/[03] - O Íon da Molécula de Hidrogênio.html">8.3 O Íon da Molécula de Hidrogênio</a></li>
+                        <li><a href="../[7] - O Princípio Variacional/[04] - A Molécula de Hidrogênio.html">8.4 A Molécula de Hidrogênio</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>A Aproximação WKB</h3>
+                    <ul>
+                        <li><a href="../[8] - A Aproximação WKB/[01] - A Região “Clássica”.html">9.1 A Região “Clássica”</a></li>
+                        <li><a href="../[8] - A Aproximação WKB/[02] - Tunelamento.html">9.2 Tunelamento</a></li>
+                        <li><a href="../[8] - A Aproximação WKB/[03] - As Fórmulas de Conexão.html">9.3 As Fórmulas de Conexão</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="prose">
+
+                <h1 id="perturbacao-degenerada">7.2 Teoria de Perturbação Degenerada</h1>
+                <p class="lead">O que fazer quando a teoria não degenerada falha: diagonalizar a perturbação no subespaço degenerado,
+                    encontrar os estados “bons” e levantar a degenerescência.</p>
+
+                <p>Na <a href="[01] - Teoria de Perturbação Não Degenerada.html">Seção 7.1</a> supusemos que cada energia não perturbada
+                    pertence a um único estado. Se, ao contrário, dois ou mais estados distintos, $\psi_a^0$ e $\psi_b^0$, têm a mesma
+                    energia, a teoria comum falha: o coeficiente $c_a^{(b)}$ da Eq. (7.12) e a correção $E_a^2$ da Eq. (7.15) explodem,
+                    porque seus denominadores se anulam. A única brecha é o caso em que o numerador também se anula,
+                    $\langle\psi_a^0|H'|\psi_b^0\rangle = 0$, e ela será importante adiante. No caso degenerado, portanto, não há motivo
+                    para confiar nem mesmo na correção de <em>primeira</em> ordem da energia (Eq. 7.9), e precisamos de outra
+                    maneira de tratar o problema.</p>
+
+                <p>Isso não é um problema menor: quase todas as aplicações da teoria de perturbação envolvem degenerescência. O
+                    hidrogênio, que estudaremos nas próximas seções, tem $n^2$ estados (sem contar o spin) para cada energia de Bohr.
+                    Esta seção, que segue a Seção 7.2 do Griffiths, mostra que a saída está em escolher bem as combinações lineares dos
+                    estados degenerados, as combinações que a perturbação "prefere", e que essas combinações quase sempre são ditadas
+                    por uma simetria, no espírito do <a href="../[5] - Simetrias e Leis de Conservação/[06] - Degenerescência.html">capítulo 6</a>.</p>
+
+                <h2 id="degenerescencia-dupla">Degenerescência dupla</h2>
+
+                <p>Suponha que</p>
+                <p>$$ H^0\psi_a^0 = E^0\psi_a^0, \qquad H^0\psi_b^0 = E^0\psi_b^0, \qquad \langle\psi_a^0|\psi_b^0\rangle = 0, \tag{7.16} $$</p>
+                <p>com $\psi_a^0$ e $\psi_b^0$ normalizados. Qualquer combinação linear desses estados,</p>
+                <p>$$ \psi^0 = \alpha\psi_a^0 + \beta\psi_b^0, \tag{7.17} $$</p>
+                <p>continua sendo autoestado de $H^0$ com o mesmo autovalor $E^0$, por linearidade:</p>
+                <p>$$ H^0\psi^0 = E^0\psi^0. \tag{7.18} $$</p>
+
+                <p>Em geral, a perturbação $H'$ "quebra" (ou "levanta") a degenerescência: quando $\lambda$ cresce de $0$ a $1$, a
+                    energia comum $E^0$ se divide em duas (Figura 7.4). Na direção contrária, quando <em>desligamos</em> a perturbação,
+                    o estado "de cima" se reduz a <em>uma</em> combinação linear de $\psi_a^0$ e $\psi_b^0$, e o estado "de baixo", a
+                    outra combinação (ortogonal à primeira). O problema é que não sabemos de antemão que combinações são essas. Por isso
+                    não conseguimos calcular nem a energia de primeira ordem pela Eq. (7.9): não sabemos que estado não perturbado usar.</p>
+
+                <figure class="lecture-figure" id="fig-7-4">
+                    <svg viewBox="0 0 640 240" role="img" aria-label="Figura 7.4: um nível duplamente degenerado de energia E0 se separa em dois níveis à medida que lambda cresce de 0 a 1.">
+<defs><marker id="arr-7-4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="90" y1="215" x2="560" y2="215" class="fig-axis" marker-end="url(#arr-7-4)"/>
+<line x1="90" y1="215" x2="90" y2="18" class="fig-axis" marker-end="url(#arr-7-4)"/>
+<text x="82" y="22" text-anchor="end" class="fig-label fig-it">E</text>
+<text x="566" y="220" class="fig-label fig-it">λ</text>
+<text x="82" y="135" text-anchor="end" class="fig-label fig-it">E⁰</text>
+<line x1="470" y1="215" x2="470" y2="40" class="fig-guide fig-dashed"/>
+<text x="470" y="235" text-anchor="middle" class="fig-label">1</text>
+<path d="M90,130 L99.5,128.4 L109,126.9 L118.5,125.3 L128,123.7 L137.5,122 L147,120.4 L156.5,118.7 L166,117 L175.5,115.3 L185,113.6 L194.5,111.9 L204,110.1 L213.5,108.4 L223,106.6 L232.5,104.8 L242,103 L251.5,101.1 L261,99.3 L270.5,97.4 L280,95.5 L289.5,93.6 L299,91.7 L308.5,89.7 L318,87.8 L327.5,85.8 L337,83.8 L346.5,81.8 L356,79.7 L365.5,77.7 L375,75.6 L384.5,73.5 L394,71.4 L403.5,69.3 L413,67.2 L422.5,65 L432,62.9 L441.5,60.7 L451,58.5 L460.5,56.2 L470,54" class="fig-curve"/>
+<path d="M90,130 L99.5,131.4 L109,132.7 L118.5,134.1 L128,135.4 L137.5,136.7 L147,138 L156.5,139.3 L166,140.6 L175.5,141.9 L185,143.1 L194.5,144.4 L204,145.6 L213.5,146.8 L223,148 L232.5,149.2 L242,150.4 L251.5,151.6 L261,152.7 L270.5,153.9 L280,155 L289.5,156.1 L299,157.2 L308.5,158.3 L318,159.4 L327.5,160.5 L337,161.5 L346.5,162.6 L356,163.6 L365.5,164.6 L375,165.6 L384.5,166.6 L394,167.6 L403.5,168.6 L413,169.5 L422.5,170.5 L432,171.4 L441.5,172.3 L451,173.2 L460.5,174.1 L470,175" class="fig-curve"/>
+</svg>
+                    <figcaption><strong>Figura 7.4.</strong> "Levantamento" de uma degenerescência por uma perturbação: os dois estados
+                        de energia $E^0$ em $\lambda = 0$ seguem caminhos diferentes à medida que $\lambda$ cresce.</figcaption>
+                </figure>
+
+                <div class="definition-box" id="def-estados-bons" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição (Estados “bons”).</strong> Os estados <em>bons</em> (<em>good states</em>) de um nível
+                        degenerado são as combinações lineares (7.17) que se obtêm como limite dos autoestados verdadeiros de
+                        $H = H^0 + \lambda H'$ quando a perturbação é desligada ($\lambda \to 0$).</p>
+                </div>
+
+                <p>Essa definição diz o que os estados bons <em>são</em>, mas não é assim que os encontramos na prática: se
+                    conhecêssemos os autoestados exatos, não precisaríamos de teoria de perturbação. Antes de mostrar a técnica para
+                    calculá-los, vejamos um exemplo em que podemos de fato tomar o limite $\lambda \to 0$ dos autoestados exatos.</p>
+
+                <h3 id="exemplo-exato">Um exemplo que se resolve exatamente</h3>
+
+                <div id="ex-7-2">
+                    <p><strong>Exemplo 7.2 (Oscilador bidimensional com perturbação $\epsilon m\omega^2xy$).</strong> Considere uma
+                        partícula de massa $m$ no potencial do oscilador bidimensional,</p>
+                    <p>$$ H^0 = \frac{p^2}{2m} + \frac12m\omega^2\left(x^2 + y^2\right), $$</p>
+                    <p>ao qual se soma a perturbação</p>
+                    <p>$$ H' = \epsilon\,m\omega^2xy. $$</p>
+                    <p>O primeiro estado excitado não perturbado (com $E^0 = 2\hbar\omega$) é duplamente degenerado, e <em>uma</em>
+                        base para esses dois estados é</p>
+                    <p>$$ \begin{aligned}
+                        \psi_a^0 &= \psi_0(x)\,\psi_1(y) = \sqrt{\frac2\pi}\,\frac{m\omega}{\hbar}\,y\,e^{-\frac{m\omega}{2\hbar}(x^2 + y^2)}, \\
+                        \psi_b^0 &= \psi_1(x)\,\psi_0(y) = \sqrt{\frac2\pi}\,\frac{m\omega}{\hbar}\,x\,e^{-\frac{m\omega}{2\hbar}(x^2 + y^2)},
+                        \end{aligned} \tag{7.19} $$</p>
+                    <p>em que $\psi_0$ e $\psi_1$ são os estados do oscilador unidimensional,
+                        $\psi_0(u) = (m\omega/\pi\hbar)^{1/4}e^{-m\omega u^2/2\hbar}$ e $\psi_1(u) = \sqrt{2m\omega/\hbar}\,u\,\psi_0(u)$; o
+                        produto dos fatores dá o prefator $(m\omega/\pi\hbar)^{1/2}\sqrt{2m\omega/\hbar} = \sqrt{2/\pi}\,(m\omega/\hbar)$.
+                        Para achar as combinações "boas", resolvemos exatamente o problema de $H = H^0 + H'$ e tomamos o limite
+                        $\epsilon \to 0$. O problema se resolve girando os eixos de $45^\circ$:</p>
+                    <p>$$ x' = \frac{x + y}{\sqrt2}, \qquad y' = \frac{x - y}{\sqrt2}. \tag{7.20} $$</p>
+                    <p><em>Solução.</em> Nas coordenadas giradas, $x^2 + y^2 = x'^2 + y'^2$, o laplaciano não muda (a rotação é uma
+                        transformação ortogonal) e $xy = \tfrac12\left(x'^2 - y'^2\right)$. Logo o hamiltoniano fica</p>
+                    <p>$$ H = -\frac{\hbar^2}{2m}\left(\frac{\partial^2}{\partial x'^2} + \frac{\partial^2}{\partial y'^2}\right) + \frac12m(1 + \epsilon)\omega^2x'^2 + \frac12m(1 - \epsilon)\omega^2y'^2. $$</p>
+                    <p>São dois osciladores unidimensionais independentes. As soluções exatas são</p>
+                    <p>$$ \psi_{mn} = \psi_m^+(x')\,\psi_n^-(y'), $$</p>
+                    <p>em que $\psi_m^\pm$ são estados de osciladores unidimensionais de frequências $\omega_\pm = \sqrt{1 \pm \epsilon}\,\omega$.
+                        As primeiras energias exatas,</p>
+                    <p>$$ E_{mn} = \left(m + \frac12\right)\hbar\omega_+ + \left(n + \frac12\right)\hbar\omega_-, \tag{7.21} $$</p>
+                    <p>aparecem na Figura 7.5.</p>
+                    <figure class="lecture-figure" id="fig-7-5">
+                        <svg viewBox="0 0 680 285" role="img" aria-label="Figura 7.5: energias exatas E_mn em unidades de hbar omega em função de epsilon, de 0 a 0,5, para o oscilador bidimensional do Exemplo 7.2; os níveis degenerados em epsilon = 0 se separam linearmente.">
+<line x1="90" y1="250" x2="590" y2="250" class="fig-axis"/>
+<line x1="90" y1="250" x2="90" y2="30" class="fig-axis"/>
+<line x1="90" y1="250" x2="90" y2="255" class="fig-axis"/>
+<text x="90" y="270" text-anchor="middle" class="fig-label fig-small">0,0</text>
+<line x1="190" y1="250" x2="190" y2="255" class="fig-axis"/>
+<text x="190" y="270" text-anchor="middle" class="fig-label fig-small">0,1</text>
+<line x1="290" y1="250" x2="290" y2="255" class="fig-axis"/>
+<text x="290" y="270" text-anchor="middle" class="fig-label fig-small">0,2</text>
+<line x1="390" y1="250" x2="390" y2="255" class="fig-axis"/>
+<text x="390" y="270" text-anchor="middle" class="fig-label fig-small">0,3</text>
+<line x1="490" y1="250" x2="490" y2="255" class="fig-axis"/>
+<text x="490" y="270" text-anchor="middle" class="fig-label fig-small">0,4</text>
+<line x1="590" y1="250" x2="590" y2="255" class="fig-axis"/>
+<text x="590" y="270" text-anchor="middle" class="fig-label fig-small">0,5</text>
+<line x1="85" y1="213.3" x2="90" y2="213.3" class="fig-axis"/>
+<text x="80" y="218.3" text-anchor="end" class="fig-label">1</text>
+<line x1="90" y1="213.3" x2="590" y2="213.3" class="fig-guide fig-dashed"/>
+<line x1="85" y1="140" x2="90" y2="140" class="fig-axis"/>
+<text x="80" y="145" text-anchor="end" class="fig-label">2</text>
+<line x1="90" y1="140" x2="590" y2="140" class="fig-guide fig-dashed"/>
+<line x1="85" y1="66.7" x2="90" y2="66.7" class="fig-axis"/>
+<text x="80" y="71.7" text-anchor="end" class="fig-label">3</text>
+<line x1="90" y1="66.7" x2="590" y2="66.7" class="fig-guide fig-dashed"/>
+<text x="80" y="22" text-anchor="end" class="fig-label fig-it">E/ħω</text>
+<text x="596" y="255" class="fig-label fig-it">ϵ</text>
+<path d="M90,213.3 L100,213.3 L110,213.3 L120,213.3 L130,213.3 L140,213.4 L150,213.4 L160,213.4 L170,213.4 L180,213.4 L190,213.4 L200,213.4 L210,213.5 L220,213.5 L230,213.5 L240,213.5 L250,213.6 L260,213.6 L270,213.6 L280,213.7 L290,213.7 L300,213.7 L310,213.8 L320,213.8 L330,213.9 L340,213.9 L350,214 L360,214 L370,214.1 L380,214.1 L390,214.2 L400,214.2 L410,214.3 L420,214.4 L430,214.4 L440,214.5 L450,214.6 L460,214.6 L470,214.7 L480,214.8 L490,214.9 L500,215 L510,215 L520,215.1 L530,215.2 L540,215.3 L550,215.4 L560,215.5 L570,215.6 L580,215.7 L590,215.8" class="fig-curve"/>
+<text x="596" y="219.8" class="fig-label fig-small">(0,0)</text>
+<path d="M90,140 L100,140.4 L110,140.7 L120,141.1 L130,141.5 L140,141.9 L150,142.3 L160,142.7 L170,143.1 L180,143.5 L190,143.9 L200,144.3 L210,144.7 L220,145.1 L230,145.5 L240,145.9 L250,146.4 L260,146.8 L270,147.2 L280,147.7 L290,148.1 L300,148.6 L310,149 L320,149.5 L330,149.9 L340,150.4 L350,150.9 L360,151.4 L370,151.8 L380,152.3 L390,152.8 L400,153.3 L410,153.8 L420,154.3 L430,154.9 L440,155.4 L450,155.9 L460,156.4 L470,157 L480,157.5 L490,158.1 L500,158.6 L510,159.2 L520,159.8 L530,160.4 L540,160.9 L550,161.5 L560,162.1 L570,162.7 L580,163.4 L590,164" class="fig-curve"/>
+<text x="596" y="168" class="fig-label fig-small">(0,1)</text>
+<path d="M90,66.7 L100,67.4 L110,68.1 L120,68.9 L130,69.6 L140,70.4 L150,71.2 L160,71.9 L170,72.7 L180,73.5 L190,74.3 L200,75.1 L210,75.9 L220,76.7 L230,77.5 L240,78.3 L250,79.1 L260,80 L270,80.8 L280,81.7 L290,82.5 L300,83.4 L310,84.3 L320,85.1 L330,86 L340,86.9 L350,87.8 L360,88.7 L370,89.6 L380,90.5 L390,91.5 L400,92.4 L410,93.4 L420,94.3 L430,95.3 L440,96.3 L450,97.2 L460,98.2 L470,99.2 L480,100.2 L490,101.3 L500,102.3 L510,103.4 L520,104.4 L530,105.5 L540,106.6 L550,107.6 L560,108.7 L570,109.9 L580,111 L590,112.1" class="fig-curve"/>
+<text x="596" y="116.1" class="fig-label fig-small">(0,2)</text>
+<path d="M90,140 L100,139.6 L110,139.3 L120,138.9 L130,138.6 L140,138.2 L150,137.9 L160,137.5 L170,137.2 L180,136.8 L190,136.5 L200,136.2 L210,135.9 L220,135.5 L230,135.2 L240,134.9 L250,134.6 L260,134.3 L270,134 L280,133.7 L290,133.4 L300,133.1 L310,132.8 L320,132.5 L330,132.2 L340,131.9 L350,131.7 L360,131.4 L370,131.1 L380,130.8 L390,130.6 L400,130.3 L410,130.1 L420,129.8 L430,129.5 L440,129.3 L450,129.1 L460,128.8 L470,128.6 L480,128.3 L490,128.1 L500,127.9 L510,127.7 L520,127.4 L530,127.2 L540,127 L550,126.8 L560,126.6 L570,126.4 L580,126.2 L590,126" class="fig-curve"/>
+<text x="596" y="130" class="fig-label fig-small">(1,0)</text>
+<path d="M90,66.7 L100,66.7 L110,66.7 L120,66.7 L130,66.7 L140,66.7 L150,66.8 L160,66.8 L170,66.8 L180,66.9 L190,66.9 L200,67 L210,67.1 L220,67.1 L230,67.2 L240,67.3 L250,67.4 L260,67.5 L270,67.6 L280,67.7 L290,67.8 L300,67.9 L310,68 L320,68.1 L330,68.3 L340,68.4 L350,68.6 L360,68.7 L370,68.9 L380,69 L390,69.2 L400,69.4 L410,69.6 L420,69.8 L430,70 L440,70.2 L450,70.4 L460,70.6 L470,70.8 L480,71.1 L490,71.3 L500,71.6 L510,71.8 L520,72.1 L530,72.4 L540,72.6 L550,72.9 L560,73.2 L570,73.5 L580,73.8 L590,74.2" class="fig-curve"/>
+<text x="596" y="78.2" class="fig-label fig-small">(1,1)</text>
+<path d="M90,66.7 L100,65.9 L110,65.2 L120,64.5 L130,63.8 L140,63.1 L150,62.4 L160,61.7 L170,61 L180,60.3 L190,59.6 L200,58.9 L210,58.2 L220,57.6 L230,56.9 L240,56.3 L250,55.6 L260,55 L270,54.3 L280,53.7 L290,53 L300,52.4 L310,51.8 L320,51.2 L330,50.6 L340,49.9 L350,49.3 L360,48.7 L370,48.1 L380,47.5 L390,47 L400,46.4 L410,45.8 L420,45.2 L430,44.7 L440,44.1 L450,43.5 L460,43 L470,42.4 L480,41.9 L490,41.3 L500,40.8 L510,40.3 L520,39.7 L530,39.2 L540,38.7 L550,38.2 L560,37.7 L570,37.2 L580,36.7 L590,36.2" class="fig-curve"/>
+<text x="596" y="40.2" class="fig-label fig-small">(2,0)</text>
+</svg>
+                        <figcaption><strong>Figura 7.5.</strong> Níveis exatos $E_{mn}$ (em unidades de $\hbar\omega$) em função de
+                            $\epsilon$ para o Exemplo 7.2, calculados pela Eq. (7.21). Os rótulos à direita são $(m, n)$. O nível
+                            fundamental quase não se move; o primeiro excitado se divide em dois; o segundo, em três.</figcaption>
+                    </figure>
+                    <p>Os dois estados que nascem do primeiro excitado degenerado quando $\epsilon$ cresce são $m = 0$, $n = 1$ (o de
+                        baixo, pois $\omega_- \lt \omega_+$) e $m = 1$, $n = 0$ (o de cima). Seguindo esses estados até $\epsilon = 0$,
+                        limite em que $\omega_+ = \omega_- = \omega$, obtemos</p>
+                    <p>$$ \begin{aligned}
+                        \lim_{\epsilon\to0}\psi_{01}(x) &= \lim_{\epsilon\to0}\psi_0^+(x')\,\psi_1^-(y') \\
+                        &= \psi_0\left(\frac{x + y}{\sqrt2}\right)\psi_1\left(\frac{x - y}{\sqrt2}\right) \\
+                        &= \sqrt{\frac2\pi}\,\frac{m\omega}{\hbar}\,\frac{x - y}{\sqrt2}\,e^{-\frac{m\omega}{2\hbar}(x^2 + y^2)} \\
+                        &= \frac{-\psi_a^0 + \psi_b^0}{\sqrt2}, \\
+                        \lim_{\epsilon\to0}\psi_{10}(x) &= \frac{\psi_a^0 + \psi_b^0}{\sqrt2}.
+                        \end{aligned} \tag{7.22} $$</p>
+                    <p>Na terceira e na quarta linhas usamos de novo $x'^2 + y'^2 = x^2 + y^2$ e as Eqs. (7.19): $x$ multiplica
+                        $\psi_b^0$ e $y$ multiplica $\psi_a^0$. A última linha sai do mesmo modo, com $\psi_1(x')\psi_0(y')$ e o fator $(x + y)/\sqrt2$.
+                        Portanto os estados "bons" deste problema são</p>
+                    <div class="definition-box" id="prop-estados-bons-oscilador">
+                        <p><strong>Proposição (Estados bons do Exemplo 7.2).</strong></p>
+                        <p>$$ \psi_\pm^0 \equiv \frac{1}{\sqrt2}\left(\psi_b^0 \pm \psi_a^0\right). \tag{7.23} $$</p>
+                    </div>
+                    <p>Neste exemplo conseguimos achar os autoestados exatos de $H$ e depois desligar a perturbação para ver de que
+                        estados eles nascem. Mas como encontrar os estados "bons" quando <em>não</em> sabemos resolver o problema
+                        exatamente?</p>
+                </div>
+
+                <h3 id="a-matriz-w">A matriz W</h3>
+
+                <p>Por ora, escrevemos os estados não perturbados "bons" na forma genérica (7.17), deixando $\alpha$ e $\beta$ livres.
+                    Queremos resolver a equação de Schrödinger</p>
+                <p>$$ H\psi = E\psi, \tag{7.24} $$</p>
+                <p>com $H = H^0 + \lambda H'$ e</p>
+                <p>$$ \begin{aligned}
+                    E &= E^0 + \lambda E^1 + \lambda^2E^2 + \cdots, \\
+                    \psi &= \psi^0 + \lambda\psi^1 + \lambda^2\psi^2 + \cdots.
+                    \end{aligned} \tag{7.25} $$</p>
+                <p>Substituindo na Eq. (7.24) e agrupando as potências de $\lambda$, como na Seção 7.1,</p>
+                <p>$$ H^0\psi^0 + \lambda\left(H'\psi^0 + H^0\psi^1\right) + \cdots = E^0\psi^0 + \lambda\left(E^1\psi^0 + E^0\psi^1\right) + \cdots. $$</p>
+                <p>Mas $H^0\psi^0 = E^0\psi^0$ (Eq. 7.18), e os primeiros termos se cancelam; na ordem $\lambda^1$,</p>
+                <p>$$ H^0\psi^1 + H'\psi^0 = E^0\psi^1 + E^1\psi^0. \tag{7.26} $$</p>
+                <p>Tomamos o produto interno com $\psi_a^0$:</p>
+                <p>$$ \langle\psi_a^0|H^0\psi^1\rangle + \langle\psi_a^0|H'\psi^0\rangle = E^0\langle\psi_a^0|\psi^1\rangle + E^1\langle\psi_a^0|\psi^0\rangle. $$</p>
+                <p>Como $H^0$ é hermitiano, $\langle\psi_a^0|H^0\psi^1\rangle = E^0\langle\psi_a^0|\psi^1\rangle$, e o primeiro termo da
+                    esquerda cancela o primeiro da direita. Substituindo $\psi^0 = \alpha\psi_a^0 + \beta\psi_b^0$ e usando a
+                    ortonormalidade (7.16), $\langle\psi_a^0|\psi^0\rangle = \alpha$, e obtemos</p>
+                <p>$$ \alpha\langle\psi_a^0|H'|\psi_a^0\rangle + \beta\langle\psi_a^0|H'|\psi_b^0\rangle = \alpha E^1, $$</p>
+                <p>ou, de modo mais compacto,</p>
+                <p>$$ \alpha W_{aa} + \beta W_{ab} = \alpha E^1, \tag{7.27} $$</p>
+                <p>em que</p>
+                <p>$$ W_{ij} \equiv \langle\psi_i^0|H'|\psi_j^0\rangle \qquad (i, j = a, b). \tag{7.28} $$</p>
+                <p>Da mesma forma, o produto interno com $\psi_b^0$ dá</p>
+                <p>$$ \alpha W_{ba} + \beta W_{bb} = \beta E^1. \tag{7.29} $$</p>
+                <p>Os $W$ são, em princípio, conhecidos: são os elementos de matriz de $H'$ entre as funções não perturbadas $\psi_a^0$ e
+                    $\psi_b^0$. Em forma matricial, as Eqs. (7.27) e (7.29) são</p>
+                <p>$$ \underbrace{\begin{pmatrix} W_{aa} & W_{ab} \\ W_{ba} & W_{bb} \end{pmatrix}}_{\mathsf W}\begin{pmatrix} \alpha \\ \beta \end{pmatrix} = E^1\begin{pmatrix} \alpha \\ \beta \end{pmatrix}. \tag{7.30} $$</p>
+                <p>Os autovalores da matriz $\mathsf W$ dão as correções de primeira ordem da energia, e os autovetores correspondentes
+                    dão os coeficientes $\alpha$ e $\beta$ que determinam os estados "bons". Para achar os autovalores, passamos tudo
+                    para o lado esquerdo:</p>
+                <p>$$ \begin{pmatrix} W_{aa} - E^1 & W_{ab} \\ W_{ba} & W_{bb} - E^1 \end{pmatrix}\begin{pmatrix} \alpha \\ \beta \end{pmatrix} = 0. \tag{7.31} $$</p>
+                <p>Essa equação só tem solução não trivial se a matriz da esquerda não for invertível, isto é, se seu determinante se
+                    anular:</p>
+                <p>$$ \begin{aligned}
+                    &\begin{vmatrix} W_{aa} - E^1 & W_{ab} \\ W_{ba} & W_{bb} - E^1 \end{vmatrix} \\
+                    &\qquad = \left(W_{aa} - E^1\right)\left(W_{bb} - E^1\right) - |W_{ab}|^2 = 0,
+                    \end{aligned} \tag{7.32} $$</p>
+                <p>em que usamos $W_{ba} = W_{ab}^*$, consequência de $H'$ ser hermitiano.</p>
+
+                <div class="definition-box" id="teo-degenerescencia-dupla">
+                    <p><strong>Teorema (Correções de primeira ordem de um nível duplamente degenerado).</strong> As correções de
+                        primeira ordem às energias que nascem de um nível duplamente degenerado são</p>
+                    <p>$$ E_\pm^1 = \frac12\left[W_{aa} + W_{bb} \pm \sqrt{\left(W_{aa} - W_{bb}\right)^2 + 4|W_{ab}|^2}\,\right], \tag{7.33} $$</p>
+                    <p>e os estados bons são os autovetores correspondentes da matriz $\mathsf W$ da Eq. (7.30).</p>
+                </div>
+
+                <p><em>Demonstração.</em> Expandindo a Eq. (7.32), $(E^1)^2 - (W_{aa} + W_{bb})E^1 + W_{aa}W_{bb} - |W_{ab}|^2 = 0$. Pela
+                    fórmula da equação do segundo grau,</p>
+                <p>$$ E^1 = \frac12\left[W_{aa} + W_{bb} \pm \sqrt{(W_{aa} + W_{bb})^2 - 4W_{aa}W_{bb} + 4|W_{ab}|^2}\,\right], $$</p>
+                <p>e $(W_{aa} + W_{bb})^2 - 4W_{aa}W_{bb} = (W_{aa} - W_{bb})^2$, o que dá a Eq. (7.33). As duas raízes são reais, pois o
+                    radicando é uma soma de quadrados. Para cada raiz, a Eq. (7.31) tem solução não trivial $(\alpha, \beta)$, que é o
+                    autovetor correspondente, e o estado (7.17) com esses coeficientes é aquele em que o desenvolvimento (7.25) é
+                    consistente em primeira ordem. $\blacksquare$</p>
+
+                <p>Este é o resultado fundamental da teoria de perturbação degenerada: as duas raízes correspondem às duas energias
+                    perturbadas. Note que a soma $E_+^1 + E_-^1 = W_{aa} + W_{bb}$ é o traço de $\mathsf W$, e a separação entre os níveis,
+                    $E_+^1 - E_-^1 = \sqrt{(W_{aa} - W_{bb})^2 + 4|W_{ab}|^2}$, só se anula se $W_{aa} = W_{bb}$ e $W_{ab} = 0$: nesse caso a
+                    degenerescência não é levantada em primeira ordem.</p>
+
+                <div id="ex-7-3">
+                    <p><strong>Exemplo 7.3 (A matriz W do oscilador bidimensional).</strong> Voltando ao Exemplo 7.2, mostre que
+                        diagonalizar a matriz $\mathsf W$ dá os mesmos estados "bons" que encontramos resolvendo o problema
+                        exatamente.</p>
+                    <p><em>Solução.</em> Precisamos dos elementos de $\mathsf W$. Primeiro,</p>
+                    <p>$$ \begin{aligned}
+                        W_{aa} &= \iint\psi_a^0(x, y)\,H'\,\psi_a^0(x, y)\,dx\,dy \\
+                        &= \epsilon m\omega^2\int|\psi_0(x)|^2x\,dx\int|\psi_1(y)|^2y\,dy = 0,
+                        \end{aligned} $$</p>
+                    <p>porque os dois integrandos são funções ímpares. Do mesmo modo $W_{bb} = 0$, e só precisamos de</p>
+                    <p>$$ \begin{aligned}
+                        W_{ab} &= \iint\psi_a^0(x, y)\,H'\,\psi_b^0(x, y)\,dx\,dy \\
+                        &= \epsilon m\omega^2\int\psi_0(x)\,x\,\psi_1(x)\,dx\int\psi_1(y)\,y\,\psi_0(y)\,dy.
+                        \end{aligned} $$</p>
+                    <p>As duas integrais são iguais. Lembrando que $x = \sqrt{\hbar/2m\omega}\,(a_+ + a_-)$, e que
+                        $a_-\psi_1 = \psi_0$ enquanto $a_+\psi_1 = \sqrt2\,\psi_2$ é ortogonal a $\psi_0$,</p>
+                    <p>$$ \begin{aligned}
+                        W_{ab} &= \epsilon m\omega^2\left[\int\psi_0(x)\sqrt{\frac{\hbar}{2m\omega}}\,(a_+ + a_-)\psi_1(x)\,dx\right]^2 \\
+                        &= \epsilon\,\frac{\hbar\omega}{2}\left[\int\psi_0(x)\psi_0(x)\,dx\right]^2 = \epsilon\,\frac{\hbar\omega}{2}.
+                        \end{aligned} $$</p>
+                    <p>Portanto</p>
+                    <p>$$ \mathsf W = \epsilon\,\frac{\hbar\omega}{2}\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}. $$</p>
+                    <p>Os autovetores normalizados dessa matriz são $\tfrac{1}{\sqrt2}\binom{1}{1}$ e $\tfrac{1}{\sqrt2}\binom{-1}{1}$, e
+                        eles dizem quais combinações de $\psi_a^0$ e $\psi_b^0$ são os estados bons:
+                        $\psi_\pm^0 = \tfrac{1}{\sqrt2}(\psi_b^0 \pm \psi_a^0)$, exatamente como na Eq. (7.23). Os autovalores de
+                        $\mathsf W$,</p>
+                    <p>$$ E^1 = \pm\epsilon\,\frac{\hbar\omega}{2}, \tag{7.34} $$</p>
+                    <p>são as correções de primeira ordem da energia (compare com a Eq. 7.33, que dá o mesmo com $W_{aa} = W_{bb} = 0$).
+                        Conferimos com a solução exata: expandindo a Eq. (7.21), $E_{10} = \tfrac32\hbar\omega\sqrt{1 + \epsilon} +
+                        \tfrac12\hbar\omega\sqrt{1 - \epsilon} = 2\hbar\omega + \epsilon\hbar\omega/2 + O(\epsilon^2)$, e $E_{01} =
+                        2\hbar\omega - \epsilon\hbar\omega/2 + O(\epsilon^2)$.</p>
+                </div>
+
+                <p>Se acontecer de $W_{ab} = 0$ na Eq. (7.30), os dois autovetores são $\binom{1}{0}$ e $\binom{0}{1}$, e as energias</p>
+                <p>$$ E_+^1 = W_{aa} = \langle\psi_a^0|H'|\psi_a^0\rangle, \qquad E_-^1 = W_{bb} = \langle\psi_b^0|H'|\psi_b^0\rangle \tag{7.35} $$</p>
+                <p>são exatamente o que teríamos obtido com a teoria <em>não</em> degenerada (Eq. 7.9). Tivemos sorte: os estados
+                    $\psi_a^0$ e $\psi_b^0$ <em>já eram</em> as combinações "boas". Seria muito vantajoso poder <em>adivinhar</em> os
+                    estados bons desde o início, para então usar a teoria não degenerada. Como veremos, quase sempre conseguimos isso
+                    com o teorema da próxima seção.</p>
+
+                <h2 id="estados-bons">Estados “bons”</h2>
+
+                <div class="definition-box" id="teo-estados-bons">
+                    <p><strong>Teorema (Estados bons por um operador que comuta).</strong> Seja $A$ um operador hermitiano que comuta com
+                        $H^0$ e com $H'$. Se $\psi_a^0$ e $\psi_b^0$, as autofunções degeneradas de $H^0$, também são autofunções de
+                        $A$, com autovalores <em>distintos</em>,</p>
+                    <p>$$ A\psi_a^0 = \mu\psi_a^0, \qquad A\psi_b^0 = \nu\psi_b^0, \qquad \mu \ne \nu, $$</p>
+                    <p>então $\psi_a^0$ e $\psi_b^0$ são os estados "bons" para a teoria de perturbação.</p>
+                </div>
+
+                <p><em>Demonstração.</em> Como $H(\lambda) = H^0 + \lambda H'$ e $A$ comutam, existem autoestados simultâneos
+                    $\psi_\gamma(\lambda)$ dos dois:</p>
+                <p>$$ H(\lambda)\,\psi_\gamma(\lambda) = E(\lambda)\,\psi_\gamma(\lambda) \quad\text{e}\quad A\,\psi_\gamma(\lambda) = \gamma\,\psi_\gamma(\lambda). \tag{7.36} $$</p>
+                <p>O fato de $A$ ser hermitiano dá</p>
+                <p>$$ \begin{aligned}
+                    \langle\psi_a^0|A\psi_\gamma(\lambda)\rangle &= \langle A\psi_a^0|\psi_\gamma(\lambda)\rangle, \\
+                    \gamma\,\langle\psi_a^0|\psi_\gamma(\lambda)\rangle &= \mu^*\langle\psi_a^0|\psi_\gamma(\lambda)\rangle,
+                    \end{aligned} \tag{7.37} $$</p>
+                <p>e, como $\mu$ é real (autovalor de um operador hermitiano),</p>
+                <p>$$ (\gamma - \mu)\,\langle\psi_a^0|\psi_\gamma(\lambda)\rangle = 0. \tag{7.38} $$</p>
+                <p>Isso vale para qualquer valor de $\lambda$. Tomando o limite $\lambda \to 0$, em que $\psi_\gamma(\lambda)$ tende ao
+                    estado bom $\psi_\gamma(0)$ (o autovalor $\gamma$ não depende de $\lambda$, porque é um autovalor de $A$, que não
+                    contém $\lambda$), concluímos que</p>
+                <p>$$ \begin{aligned}
+                    \langle\psi_a^0|\psi_\gamma(0)\rangle &= 0 \ \text{ a menos que } \gamma = \mu, \\
+                    \langle\psi_b^0|\psi_\gamma(0)\rangle &= 0 \ \text{ a menos que } \gamma = \nu.
+                    \end{aligned} $$</p>
+                <p>Ora, os estados bons são combinações lineares de $\psi_a^0$ e $\psi_b^0$: $\psi_\gamma(0) = \alpha\psi_a^0 + \beta\psi_b^0$.
+                    Pelo que acabamos de ver, ou $\gamma = \mu$, e então $\gamma \ne \nu$ e $\beta = \langle\psi_b^0|\psi_\gamma(0)\rangle = 0$,
+                    de modo que o estado bom é simplesmente $\psi_a^0$; ou $\gamma = \nu$, e pelo mesmo argumento o estado bom é
+                    $\psi_b^0$. (Se $\gamma$ não fosse nem $\mu$ nem $\nu$, teríamos $\alpha = \beta = 0$, o que é impossível para um
+                    estado.) $\blacksquare$</p>
+
+                <p>Uma vez identificados os estados "bons", seja resolvendo a Eq. (7.30), seja aplicando este teorema, podemos usá-los
+                    como estados não perturbados e aplicar a teoria de perturbação <em>não degenerada</em> comum. Na maioria dos casos,
+                    o operador $A$ é sugerido por uma <strong>simetria</strong>: como vimos no
+                    <a href="../[5] - Simetrias e Leis de Conservação/[01] - Introdução.html">capítulo 6</a>, simetrias estão associadas
+                    a operadores que comutam com o hamiltoniano, que é exatamente o que precisamos para identificar os estados bons.</p>
+
+                <div id="ex-7-4">
+                    <p><strong>Exemplo 7.4 (Um operador para os estados bons do Exemplo 7.2).</strong> Encontre um operador $A$ que
+                        satisfaça as hipóteses do teorema e construa os estados "bons" dos Exemplos 7.2 e 7.3.</p>
+                    <p><em>Solução.</em> A perturbação $H'$ tem menos simetria que $H^0$. $H^0$ tinha simetria contínua de rotação, mas
+                        $H = H^0 + H'$ só é invariante por rotações de múltiplos inteiros de $\pi$, porque $xy$ muda sob uma rotação
+                        genérica. Tentemos para $A$ o operador $R(\pi)$, que gira uma função de um ângulo $\pi$ no sentido
+                        anti-horário. Aplicado aos nossos estados,</p>
+                    <p>$$ \begin{aligned}
+                        R(\pi)\,\psi_a^0(x, y) &= \psi_a^0(-x, -y) = -\psi_a^0(x, y), \\
+                        R(\pi)\,\psi_b^0(x, y) &= \psi_b^0(-x, -y) = -\psi_b^0(x, y).
+                        \end{aligned} $$</p>
+                    <p>Não serve: precisamos de um operador com autovalores <em>distintos</em> nos dois estados. Que tal o operador que
+                        troca $x$ e $y$? Ele é uma reflexão em relação à diagonal de $45^\circ$; chamemo-lo de $D$. $D$ comuta com $H^0$
+                        e com $H'$, porque ambos ficam inalterados quando trocamos $x$ por $y$. Agora,</p>
+                    <p>$$ D\psi_a^0(x, y) = \psi_a^0(y, x) = \psi_b^0(x, y), \qquad D\psi_b^0(x, y) = \psi_b^0(y, x) = \psi_a^0(x, y). $$</p>
+                    <p>Assim, nossos estados degenerados não são autoestados de $D$. Mas podemos construir combinações lineares que são:</p>
+                    <p>$$ \psi_\pm^0 \equiv \pm\psi_a^0 + \psi_b^0. \tag{7.39} $$</p>
+                    <p>De fato,</p>
+                    <p>$$ D\left(\pm\psi_a^0 + \psi_b^0\right) = \pm D\psi_a^0 + D\psi_b^0 = \pm\psi_b^0 + \psi_a^0 = \pm\left(\pm\psi_a^0 + \psi_b^0\right). $$</p>
+                    <p>Estes são estados "bons", pois são autoestados de um operador $D$ com autovalores distintos ($\pm1$), e $D$ comuta
+                        com $H^0$ e com $H'$. A menos da normalização $1/\sqrt2$, são os estados da Eq. (7.23).</p>
+                </div>
+
+                <p id="obs-moral"><strong>Observação (A moral).</strong> Diante de estados degenerados, procure algum operador hermitiano
+                    $A$ que comute com $H^0$ e com $H'$; escolha como estados não perturbados aqueles que são autofunções simultâneas de
+                    $H^0$ e de $A$ (com autovalores <em>distintos</em>); depois use a teoria de perturbação de primeira ordem
+                    <em>comum</em>. Se não encontrar um operador assim, recorra à Eq. (7.33), mas, na prática, isso raramente é
+                    necessário.</p>
+
+                <h2 id="degenerescencia-maior">Degenerescência de ordem maior</h2>
+
+                <p>Até aqui supusemos que a degenerescência era dupla, mas o método se generaliza. No caso de degenerescência de ordem
+                    $n$, procuramos os autovalores da matriz $n \times n$</p>
+                <p>$$ W_{ij} = \langle\psi_i^0|H'|\psi_j^0\rangle. \tag{7.40} $$</p>
+                <p>Para degenerescência tripla, com estados degenerados $\psi_a^0$, $\psi_b^0$ e $\psi_c^0$, as correções de primeira
+                    ordem $E^1$ são os autovalores de $\mathsf W$, determinados por</p>
+                <p>$$ \begin{pmatrix} W_{aa} & W_{ab} & W_{ac} \\ W_{ba} & W_{bb} & W_{bc} \\ W_{ca} & W_{cb} & W_{cc} \end{pmatrix}\begin{pmatrix} \alpha \\ \beta \\ \gamma \end{pmatrix} = E^1\begin{pmatrix} \alpha \\ \beta \\ \gamma \end{pmatrix}, \tag{7.41} $$</p>
+                <p>e os estados "bons" são os autovetores correspondentes:</p>
+                <p>$$ \psi^0 = \alpha\psi_a^0 + \beta\psi_b^0 + \gamma\psi_c^0. \tag{7.42} $$</p>
+
+                <p>O Griffiths apresenta essa generalização como a extensão "natural" do caso $n = 2$ e deixa a prova ao leitor. Como a
+                    usaremos na estrutura fina e no efeito Zeeman, nas próximas seções, fazemos a prova aqui.</p>
+
+                <div class="definition-box" id="teo-degenerescencia-n">
+                    <p><strong>Teorema (Degenerescência de ordem n).</strong> Se $\psi_1^0, \dots, \psi_n^0$ são ortonormais e todos têm a
+                        energia $E^0$, as correções de primeira ordem às $n$ energias que nascem desse nível são os autovalores da
+                        matriz hermitiana $\mathsf W$ da Eq. (7.40), e os estados bons são os autovetores correspondentes.</p>
+                </div>
+
+                <p><em>Demonstração.</em> O estado não perturbado é uma combinação qualquer do subespaço degenerado,
+                    $\psi^0 = \sum_{j=1}^n\alpha_j\psi_j^0$, que generaliza a Eq. (7.17) e continua satisfazendo $H^0\psi^0 = E^0\psi^0$. A
+                    equação de primeira ordem é exatamente a Eq. (7.26), pois sua dedução não usou o número de estados degenerados.
+                    Tomamos o produto interno dela com $\psi_i^0$:</p>
+                <p>$$ \langle\psi_i^0|H^0\psi^1\rangle + \langle\psi_i^0|H'\psi^0\rangle = E^0\langle\psi_i^0|\psi^1\rangle + E^1\langle\psi_i^0|\psi^0\rangle. $$</p>
+                <p>Pela hermiticidade de $H^0$, $\langle\psi_i^0|H^0\psi^1\rangle = E^0\langle\psi_i^0|\psi^1\rangle$, e os primeiros termos
+                    se cancelam. Pela ortonormalidade, $\langle\psi_i^0|\psi^0\rangle = \alpha_i$, e por linearidade
+                    $\langle\psi_i^0|H'\psi^0\rangle = \sum_j\alpha_jW_{ij}$. Sobra</p>
+                <p>$$ \sum_{j=1}^nW_{ij}\,\alpha_j = E^1\,\alpha_i, \qquad i = 1, \dots, n, $$</p>
+                <p>que é a equação de autovalores $\mathsf W\boldsymbol\alpha = E^1\boldsymbol\alpha$ para o vetor
+                    $\boldsymbol\alpha = (\alpha_1, \dots, \alpha_n)$; para $n = 3$, é a Eq. (7.41). Como $H'$ é hermitiano,
+                    $W_{ji} = W_{ij}^*$, de modo que $\mathsf W$ é hermitiana: seus $n$ autovalores são reais e seus autovetores podem ser
+                    escolhidos ortonormais. Cada autovetor define um estado bom (Eq. 7.42 para $n = 3$), e o autovalor correspondente é
+                    sua correção de primeira ordem. $\blacksquare$</p>
+
+                <p>Mais uma vez: se você conseguir pensar num operador $A$ que <em>comute</em> com $H^0$ e com $H'$, e usar as
+                    autofunções simultâneas de $A$ e de $H^0$, a matriz $\mathsf W$ já sairá <em>diagonal</em>, e não será preciso
+                    calcular os elementos fora da diagonal nem resolver a equação característica. Os elementos fora da diagonal entre
+                    autoestados de $A$ com autovalores diferentes se anulam pelo mesmo argumento da Eq. (7.38): se $A\psi_i^0 = \mu_i\psi_i^0$,
+                    então $(\mu_i - \mu_j)W_{ij} = \langle\psi_i^0|[A, H']|\psi_j^0\rangle = 0$.</p>
+
+                <h2 id="conexao">Conexão com o experimento</h2>
+
+                <p>O que esta seção do Griffiths prepara é a leitura dos espectros atômicos. No hidrogênio, cada nível de Bohr é
+                    degenerado, e as pequenas perturbações, relativística, de spin-órbita, de um campo magnético externo e hiperfina,
+                    levantam parte dessa degenerescência. Uma linha espectral que, no modelo de Bohr, deveria ser única aparece
+                    dividida em várias componentes próximas. As separações medidas são as correções de primeira ordem que a matriz
+                    $\mathsf W$ fornece, e a forma como as linhas se dividem revela quais são os estados "bons": nas
+                    <a href="[03] - A Estrutura Fina do Hidrogênio.html">Seções 7.3</a> e
+                    <a href="[04] - O Efeito Zeeman.html">7.4</a>, eles serão os autoestados de $J^2$ e $J_z$, ou de $L_z$ e $S_z$,
+                    conforme a perturbação que domina. O teorema dos estados bons é a tradução, em teoria de perturbação, da ideia do
+                    capítulo 6 de que a degenerescência reflete a simetria do hamiltoniano e só é levantada pelo que quebra essa simetria.</p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p id="exr-7-2-1"><strong>Exercício 7.2-1.</strong> Num nível duplamente degenerado, a matriz da perturbação na base
+                    $\{\psi_a^0, \psi_b^0\}$ é, em unidades de uma energia $w$,
+                    $\mathsf W = \begin{pmatrix} 1 & 2 \\ 2 & -2 \end{pmatrix}$. Encontre as correções de primeira ordem e os estados bons.</p>
+                <p><em>Solução.</em> Pela Eq. (7.33), com $W_{aa} = 1$, $W_{bb} = -2$ e $W_{ab} = 2$,</p>
+                <p>$$ E_\pm^1 = \frac12\left[1 - 2 \pm \sqrt{(1 + 2)^2 + 4\cdot4}\,\right]w = \frac{-1 \pm 5}{2}\,w, $$</p>
+                <p>isto é, $E_+^1 = 2w$ e $E_-^1 = -3w$. Para $E^1 = 2w$, a Eq. (7.27) dá $\alpha + 2\beta = 2\alpha$, ou $\alpha = 2\beta$;
+                    o estado bom normalizado é $\psi_+^0 = (2\psi_a^0 + \psi_b^0)/\sqrt5$. Para $E^1 = -3w$, $\alpha + 2\beta = -3\alpha$, ou
+                    $\beta = -2\alpha$, e $\psi_-^0 = (\psi_a^0 - 2\psi_b^0)/\sqrt5$. Os dois são ortogonais, como deve ser, e a soma das
+                    correções, $-w$, é o traço de $\mathsf W$.</p>
+
+                <p id="exr-7-2-2"><strong>Exercício 7.2-2.</strong> No oscilador do Exemplo 7.2, o <em>segundo</em> nível excitado,
+                    $E^0 = 3\hbar\omega$, é triplamente degenerado, com base $\psi_2(x)\psi_0(y)$, $\psi_1(x)\psi_1(y)$ e $\psi_0(x)\psi_2(y)$.
+                    Calcule a matriz $\mathsf W$ de $H' = \epsilon m\omega^2xy$ e as correções de primeira ordem, e compare com a
+                    Figura 7.5.</p>
+                <p><em>Solução.</em> Como $H'$ é um produto, $\langle n_x'n_y'|xy|n_xn_y\rangle = \langle n_x'|x|n_x\rangle\langle n_y'|y|n_y\rangle$,
+                    e $x$ só liga estados cujos números quânticos diferem de uma unidade, com
+                    $\langle n+1|x|n\rangle = \sqrt{\hbar/2m\omega}\,\sqrt{n+1}$. Os elementos diagonais se anulam (cada fator muda o número
+                    quântico), assim como o elemento entre $(2, 0)$ e $(0, 2)$ (exigiria mudar $n_x$ de duas unidades). Restam</p>
+                <p>$$ W_{(2,0),(1,1)} = \epsilon m\omega^2\langle2|x|1\rangle\langle0|y|1\rangle = \epsilon m\omega^2\,\frac{\hbar}{2m\omega}\,\sqrt2\cdot1 = \frac{\epsilon\hbar\omega}{\sqrt2}, $$</p>
+                <p>e o mesmo valor para $W_{(1,1),(0,2)}$. Logo</p>
+                <p>$$ \mathsf W = \frac{\epsilon\hbar\omega}{\sqrt2}\begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 0 \end{pmatrix}. $$</p>
+                <p>A equação característica é $-E\left(E^2 - 2\right) = 0$ (na unidade $\epsilon\hbar\omega/\sqrt2$), com raízes $0$ e
+                    $\pm\sqrt2$, isto é, $E^1 = 0$ e $E^1 = \pm\epsilon\hbar\omega$. A Figura 7.5 mostra exatamente isso: do nível $3\hbar\omega$
+                    saem três retas, uma que sobe, uma quase horizontal e uma que desce. Expandindo a Eq. (7.21),
+                    $E_{20} \approx (3 + \epsilon)\hbar\omega$, $E_{11} \approx 3\hbar\omega$ e $E_{02} \approx (3 - \epsilon)\hbar\omega$, em
+                    primeira ordem.</p>
+
+                <p id="exr-7-2-3"><strong>Exercício 7.2-3.</strong> Use o operador de troca $D$ do Exemplo 7.4 no nível do exercício
+                    anterior. Ele basta para identificar os três estados bons?</p>
+                <p><em>Solução.</em> $D$ leva $\psi_2(x)\psi_0(y)$ em $\psi_0(x)\psi_2(y)$ e deixa $\psi_1(x)\psi_1(y)$ invariante. Seus
+                    autoestados no nível são $(\psi_{20} - \psi_{02})/\sqrt2$, com autovalor $-1$, e dois estados com autovalor $+1$:
+                    $\psi_{11}$ e $(\psi_{20} + \psi_{02})/\sqrt2$. O teorema dos estados bons exige autovalores <em>distintos</em>, e o
+                    autovalor $+1$ se repete; $D$ separa o nível em dois subespaços, mas não resolve o de dimensão dois. O estado com
+                    $D = -1$ é bom, e sua correção é $\langle\psi|H'|\psi\rangle = \tfrac12(W_{(2,0),(2,0)} + W_{(0,2),(0,2)} - 2W_{(2,0),(0,2)}) = 0$.
+                    No subespaço $D = +1$, como os elementos de $\mathsf W$ entre subespaços de $D$ diferentes se anulam, basta
+                    diagonalizar a matriz $2 \times 2$: com $u = \psi_{11}$ e $s = (\psi_{20} + \psi_{02})/\sqrt2$,
+                    $\langle u|H'|s\rangle = \tfrac{1}{\sqrt2}\cdot2\cdot\tfrac{\epsilon\hbar\omega}{\sqrt2} = \epsilon\hbar\omega$ e os elementos
+                    diagonais são nulos, de modo que as correções são $\pm\epsilon\hbar\omega$, com estados $(u \pm s)/\sqrt2$. A simetria
+                    reduziu o problema de $3 \times 3$ a $2 \times 2$; isso já é uma grande ajuda, mesmo quando não resolve tudo.</p>
+
+                <p id="exr-7-2-4"><strong>Exercício 7.2-4.</strong> Um poço infinito quadrado bidimensional de lado $a$ tem os estados
+                    $\psi_{n_xn_y} = \tfrac2a\sin(n_x\pi x/a)\sin(n_y\pi y/a)$. Uma perturbação eleva o fundo de $V_0$ só no quadrante
+                    $0 \lt x \lt a/2$, $0 \lt y \lt a/2$. Encontre as correções de primeira ordem do primeiro nível excitado, formado por
+                    $\psi_{12}$ e $\psi_{21}$.</p>
+                <p><em>Solução.</em> As integrais se fatoram em $x$ e $y$. Na Seção 7.1 (Exemplo 7.1 e Exercício 7.1-6) vimos que
+                    $\tfrac2a\int_0^{a/2}\sin^2(n\pi x/a)\,dx = \tfrac12$ e $\tfrac2a\int_0^{a/2}\sin(\pi x/a)\sin(2\pi x/a)\,dx = \tfrac{4}{3\pi}$. Então</p>
+                <p>$$ W_{aa} = W_{bb} = V_0\cdot\frac12\cdot\frac12 = \frac{V_0}{4}, \qquad W_{ab} = V_0\left(\frac{4}{3\pi}\right)^2 = \frac{16V_0}{9\pi^2}. $$</p>
+                <p>Pela Eq. (7.33), $E_\pm^1 = V_0\left(\tfrac14 \pm \tfrac{16}{9\pi^2}\right)$, ou seja, $0{,}430\,V_0$ e $0{,}070\,V_0$. Como
+                    $W_{aa} = W_{bb}$, os estados bons são $(\psi_{12} \pm \psi_{21})/\sqrt2$, e isso tem uma razão de simetria: a perturbação
+                    é invariante pela troca $x \leftrightarrow y$, e esses são os autoestados de $D$.</p>
+
+                <p id="exr-7-2-5"><strong>Exercício 7.2-5.</strong> No Exemplo 7.2, o que daria o uso ingênuo da teoria não degenerada
+                    (Eq. 7.9) com os estados $\psi_a^0$ e $\psi_b^0$? Por que o resultado está errado?</p>
+                <p><em>Solução.</em> Daria $E^1 = W_{aa} = 0$ e $E^1 = W_{bb} = 0$: nenhuma separação em primeira ordem. Mas a solução
+                    exata mostra uma separação $\epsilon\hbar\omega$ entre os dois níveis. O erro está em usar estados que não são os
+                    bons: como $W_{ab} \ne 0$, a perturbação mistura $\psi_a^0$ e $\psi_b^0$ já em ordem zero, e a Eq. (7.9) só vale para
+                    os estados que diagonalizam $\mathsf W$. Não é coincidência que a teoria não degenerada falhe precisamente quando
+                    $W_{ab} \ne 0$: é o numerador que, na Eq. (7.12), multiplicaria um denominador nulo.</p>
+
+                <p id="exr-7-2-6"><strong>Exercício 7.2-6.</strong> Mostre que, num nível de degenerescência $n$, a soma das correções
+                    de primeira ordem é $\sum_iW_{ii}$, qualquer que seja a base escolhida, e use isso para conferir o Exercício 7.2-2.</p>
+                <p><em>Solução.</em> As correções são os autovalores de $\mathsf W$, e a soma dos autovalores de uma matriz é seu traço.
+                    O traço não depende da base: numa mudança de base unitária $\mathsf W \to U^\dagger\mathsf WU$, e
+                    $\mathrm{tr}(U^\dagger\mathsf WU) = \mathrm{tr}(\mathsf WUU^\dagger) = \mathrm{tr}\,\mathsf W$. No Exercício 7.2-2, os
+                    elementos diagonais são todos nulos e, de fato, $0 + \epsilon\hbar\omega - \epsilon\hbar\omega = 0$. Fisicamente, em
+                    primeira ordem o "centro de gravidade" do nível degenerado se desloca de $\mathrm{tr}\,\mathsf W/n$, e a perturbação
+                    apenas redistribui os níveis em torno dele.</p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <ul>
+                    <li>O diagnóstico: com degenerescência, a teoria da Seção 7.1 falha, e é preciso escolher os estados "bons", definidos
+                        como limite dos autoestados exatos (Exemplo 7.2, Figuras 7.4 e 7.5).</li>
+                    <li>O método geral: as correções de primeira ordem são os autovalores da matriz $W_{ij} = \langle\psi_i^0|H'|\psi_j^0\rangle$
+                        no subespaço degenerado (Eq. 7.33 para $n = 2$; teorema provado para qualquer $n$), e os estados bons são seus
+                        autovetores (Exemplo 7.3).</li>
+                    <li>O atalho por simetria: um operador hermitiano que comuta com $H^0$ e com $H'$ e tem autovalores distintos no nível
+                        identifica os estados bons sem cálculo (Exemplo 7.4), e mesmo quando não resolve tudo reduz o tamanho da matriz.</li>
+                </ul>
+                <p>Com isso temos as ferramentas para atacar o átomo de hidrogênio, cujos níveis de Bohr são altamente degenerados. A
+                    próxima seção calcula as primeiras correções a esses níveis:
+                    <a href="[03] - A Estrutura Fina do Hidrogênio.html">7.3 A Estrutura Fina do Hidrogênio</a>.</p>
+
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="toc-container">
+                <h4>Nesta página</h4>
+                <ul>
+                    <li><a href="#perturbacao-degenerada">Teoria de Perturbação Degenerada</a></li>
+                    <li>
+                        <a href="#degenerescencia-dupla">Degenerescência dupla</a>
+                        <ul>
+                            <li><a href="#exemplo-exato">Um exemplo que se resolve exatamente</a></li>
+                            <li><a href="#a-matriz-w">A matriz W</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#estados-bons">Estados “bons”</a></li>
+                    <li><a href="#degenerescencia-maior">Degenerescência de ordem maior</a></li>
+                    <li><a href="#conexao">Conexão com o experimento</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Search Modal Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-modal">
+            <div class="search-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search documentation..." autocomplete="off">
+            </div>
+            <div class="search-results" id="search-results"></div>
+            <div class="search-footer">
+                <div class="search-commands">
+                    <span class="cmd-key">↑</span>
+                    <span class="cmd-key">↓</span>
+                    <span class="cmd-label">navigate</span>
+                    <span class="cmd-key">↵</span>
+                    <span class="cmd-label">select</span>
+                </div>
+                <div class="search-commands">
+                    <span class="cmd-key">esc</span>
+                    <span class="cmd-label">close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../../../assets/js/class-lecture.js"></script>
+</body>
+
+</html>

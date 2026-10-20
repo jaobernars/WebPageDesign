@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Efeito Zeeman | Mecânica Quântica II | The Journal of a Physicist</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../../../assets/images/Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../../../assets/images/Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../../../assets/images/Favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="../../../../../../assets/images/Favicon/favicon.ico">
+    <link rel="stylesheet" href="../../../../../../assets/css/class-lecture.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                        <line x1="9" x2="9" y1="3" y2="21"></line>
+                    </svg>
+                </button>
+                <button id="theme-toggle" class="sidebar-toggle" aria-label="Toggle Theme">
+                    <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="breadcrumbs-header">
+                    <a href="../../../../../../Páginas Principais/Lectures.html" class="breadcrumb-link">← Lectures</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <a href="../../index.html" class="breadcrumb-link active">Mecânica Quântica II</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-category" class="breadcrumb-link">Teoria de Perturbação Independente do Tempo</span>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-current" class="breadcrumb-link active">7.4 O Efeito Zeeman</span>
+                </div>
+            </div>
+            <nav class="top-nav">
+                <a href="../../../../../../Páginas Principais/Lectures.html">Lectures</a>
+                <a href="../../../../../../index.html">Home</a>
+            </nav>
+        </div>
+
+        <script>
+            MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']]
+                }
+            };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    </header>
+
+    <div class="main-layout">
+        <aside class="left-sidebar" id="left-sidebar">
+            <div class="sidebar-content">
+
+                <button class="search-trigger" id="search-trigger">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                    </svg>
+                    <span>Search docs...</span>
+                </button>
+
+                <div class="sidebar-group">
+                    <h3>Início</h3>
+                    <ul>
+                        <li><a href="../../index.html">Overview</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Partículas Idênticas</h3>
+                    <ul>
+                        <li><a href="../[4] - Partículas Idênticas/[01] - Sistemas de Duas Partículas.html">5.1 Sistemas de Duas Partículas</a></li>
+                        <li><a href="../[4] - Partículas Idênticas/[02] - Átomos.html">5.2 Átomos</a></li>
+                        <li><a href="../[4] - Partículas Idênticas/[03] - Sólidos.html">5.3 Sólidos</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Simetrias e Leis de Conservação</h3>
+                    <ul>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[01] - Introdução.html">6.1 Introdução</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[02] - O Operador de Translação.html">6.2 O Operador de Translação</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[03] - Leis de Conservação.html">6.3 Leis de Conservação</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[04] - Paridade.html">6.4 Paridade</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[05] - Simetrias de Rotação.html">6.5 Simetrias de Rotação</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[06] - Degenerescência.html">6.6 Degenerescência</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[07] - Regras de Seleção Rotacionais.html">6.7 Regras de Seleção Rotacionais</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[08] - Translações no Tempo.html">6.8 Translações no Tempo</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Teoria de Perturbação Independente do Tempo</h3>
+                    <ul>
+                        <li><a href="[01] - Teoria de Perturbação Não Degenerada.html">7.1 Teoria de Perturbação Não Degenerada</a></li>
+                        <li><a href="[02] - Teoria de Perturbação Degenerada.html">7.2 Teoria de Perturbação Degenerada</a></li>
+                        <li><a href="[03] - A Estrutura Fina do Hidrogênio.html">7.3 A Estrutura Fina do Hidrogênio</a></li>
+                        <li><a href="[04] - O Efeito Zeeman.html" class="active">7.4 O Efeito Zeeman</a></li>
+                        <li><a href="[05] - A Estrutura Hiperfina do Hidrogênio.html">7.5 A Estrutura Hiperfina do Hidrogênio</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>O Princípio Variacional</h3>
+                    <ul>
+                        <li><a href="../[7] - O Princípio Variacional/[01] - Teoria.html">8.1 Teoria</a></li>
+                        <li><a href="../[7] - O Princípio Variacional/[02] - O Estado Fundamental do Hélio.html">8.2 O Estado Fundamental do Hélio</a></li>
+                        <li><a href="../[7] - O Princípio Variacional/[03] - O Íon da Molécula de Hidrogênio.html">8.3 O Íon da Molécula de Hidrogênio</a></li>
+                        <li><a href="../[7] - O Princípio Variacional/[04] - A Molécula de Hidrogênio.html">8.4 A Molécula de Hidrogênio</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>A Aproximação WKB</h3>
+                    <ul>
+                        <li><a href="../[8] - A Aproximação WKB/[01] - A Região “Clássica”.html">9.1 A Região “Clássica”</a></li>
+                        <li><a href="../[8] - A Aproximação WKB/[02] - Tunelamento.html">9.2 Tunelamento</a></li>
+                        <li><a href="../[8] - A Aproximação WKB/[03] - As Fórmulas de Conexão.html">9.3 As Fórmulas de Conexão</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="prose">
+
+                <h1 id="efeito-zeeman">7.4 O Efeito Zeeman</h1>
+                <p class="lead">O hidrogênio num campo magnético externo: os regimes de campo fraco, forte e intermediário, e a competição com a estrutura fina.</p>
+
+                <p>Quando um átomo é colocado num campo magnético externo uniforme, seus níveis de energia se deslocam: é o
+                    <strong>efeito Zeeman</strong>. Um ímã perto de uma lâmpada de hidrogênio separa ainda mais as linhas espectrais, e o
+                    padrão dessa separação muda conforme o campo aplicado é fraco ou forte <em>em comparação com o campo magnético interno
+                    do átomo</em>, o mesmo campo que, na <a href="[03] - A Estrutura Fina do Hidrogênio.html">Seção 7.3</a>, produziu o
+                    acoplamento spin-órbita.</p>
+
+                <p>Esta seção, que segue a Seção 7.4 do Griffiths, é um exercício completo de teoria de perturbação degenerada. Temos duas
+                    perturbações ao hamiltoniano de Bohr, a estrutura fina e o termo de Zeeman, e a pergunta decisiva é sempre a mesma da
+                    <a href="[02] - Teoria de Perturbação Degenerada.html">Seção 7.2</a>: quais são os estados "bons"? No campo fraco, são
+                    os estados $|n\,l\,j\,m_j\rangle$ da estrutura fina; no campo forte, os estados $|n\,l\,m_l\,m_s\rangle$; no campo
+                    intermediário, nenhum dos dois, e teremos de diagonalizar a matriz $\mathsf W$ "à mão". Usamos a soma de momentos
+                    angulares e os coeficientes de Clebsch–Gordan (Griffiths, Seção 4.4) e a relação entre simetria de rotação e
+                    degenerescência do <a href="../[5] - Simetrias e Leis de Conservação/[06] - Degenerescência.html">capítulo 6</a>.</p>
+
+                <h2 id="hamiltoniano-zeeman">O hamiltoniano de Zeeman</h2>
+
+                <p>Seja $\mathbf B_{\text{ext}}$ o campo externo. Para um único elétron, a perturbação é<sup id="fnref:1"><a href="#fn:1"
+                    class="footnote-ref">1</a></sup></p>
+                <p>$$ H'_Z = -\left(\boldsymbol\mu_l + \boldsymbol\mu_s\right)\cdot\mathbf B_{\text{ext}}, \tag{7.70} $$</p>
+                <p>em que</p>
+                <p>$$ \boldsymbol\mu_s = -\frac em\mathbf S \tag{7.71} $$</p>
+                <p>(Eq. 7.62) é o momento de dipolo magnético associado ao spin do elétron, e</p>
+                <p>$$ \boldsymbol\mu_l = -\frac{e}{2m}\mathbf L \tag{7.72} $$</p>
+                <p>(Eq. 7.61, com $q = -e$) é o momento de dipolo associado ao movimento orbital.<sup id="fnref:2"><a href="#fn:2"
+                    class="footnote-ref">2</a></sup> Somando, $\boldsymbol\mu_l + \boldsymbol\mu_s = -\frac{e}{2m}(\mathbf L + 2\mathbf S)$,
+                    e portanto</p>
+                <p>$$ H'_Z = \frac{e}{2m}\left(\mathbf L + 2\mathbf S\right)\cdot\mathbf B_{\text{ext}}. \tag{7.73} $$</p>
+
+                <p>A natureza da separação de Zeeman depende criticamente da intensidade do campo externo em comparação com o campo
+                    <em>interno</em> (Eq. 7.60), responsável pelo acoplamento spin-órbita:</p>
+                <ul>
+                    <li>se $B_{\text{ext}} \ll B_{\text{int}}$, a estrutura fina domina, e $H'_Z$ pode ser tratado como uma pequena
+                        perturbação;</li>
+                    <li>se $B_{\text{ext}} \gg B_{\text{int}}$, o efeito Zeeman domina, e a estrutura fina passa a ser a perturbação;</li>
+                    <li>na zona intermediária, em que os dois campos são comparáveis, precisamos de toda a maquinaria da teoria de
+                        perturbação degenerada e temos de diagonalizar "à mão" a parte relevante do hamiltoniano.</li>
+                </ul>
+                <p>Nas próximas subseções exploramos brevemente cada um desses regimes, para o hidrogênio. Uma estimativa de onde fica a
+                    fronteira entre eles está no <a href="#exr-7-4-3">Exercício 7.4-3</a>.</p>
+
+                <h2 id="campo-fraco">Efeito Zeeman de campo fraco</h2>
+
+                <p>Se $B_{\text{ext}} \ll B_{\text{int}}$, a estrutura fina domina. Tratamos $H_{\text{Bohr}} + H'_{\text{fs}}$ como o
+                    hamiltoniano "não perturbado" e $H'_Z$ como a perturbação. Os autoestados "não perturbados" são então os da estrutura
+                    fina, $|n\,l\,j\,m_j\rangle$, e as energias "não perturbadas" são $E_{nj}$ (Eq. 7.69). Embora a estrutura fina tenha
+                    levantado parte da degenerescência do modelo de Bohr, esses estados ainda são degenerados, porque a energia não
+                    depende de $m_j$ nem de $l$.</p>
+
+                <p>Por sorte, os estados $|n\,l\,j\,m_j\rangle$ são os estados "bons" para tratar a perturbação $H'_Z$: não precisamos
+                    escrever a matriz $\mathsf W$ de $H'_Z$, porque ela já é diagonal. De fato, alinhando $\mathbf B_{\text{ext}}$ com o
+                    eixo $z$, $H'_Z = (eB_{\text{ext}}/2m)(L_z + 2S_z)$ comuta com $J_z$ (pois $L_z$ e $S_z$ comutam com
+                    $J_z = L_z + S_z$) e com $L^2$; e cada um dos estados degenerados é identificado de modo <em>único</em> pelos dois
+                    números quânticos $m_j$ e $l$. É a <a href="[02] - Teoria de Perturbação Degenerada.html#obs-moral">moral da
+                    Seção 7.2</a>, com $J_z$ e $L^2$ no papel de $A$.</p>
+
+                <p>Em primeira ordem, a correção de Zeeman à energia é</p>
+                <p>$$ E_Z^1 = \langle n\,l\,j\,m_j|H'_Z|n\,l\,j\,m_j\rangle = \frac{e}{2m}B_{\text{ext}}\,\hat k\cdot\langle\mathbf L + 2\mathbf S\rangle, \tag{7.74} $$</p>
+                <p>em que, como dissemos, alinhamos $\mathbf B_{\text{ext}}$ com o eixo $z$ para eliminar os elementos fora da diagonal
+                    de $\mathsf W$. Agora, $\mathbf L + 2\mathbf S = \mathbf J + \mathbf S$. Infelizmente, não conhecemos de imediato o
+                    valor esperado de $\mathbf S$. Mas podemos descobri-lo assim: o momento angular total $\mathbf J = \mathbf L + \mathbf S$
+                    é constante (Figura 7.9), e $\mathbf L$ e $\mathbf S$ precessionam rapidamente em torno desse vetor fixo. Em
+                    particular, o valor <em>médio</em> (no tempo) de $\mathbf S$ é simplesmente sua projeção ao longo de $\mathbf J$:</p>
+                <p>$$ \mathbf S_{\text{méd}} = \frac{(\mathbf S\cdot\mathbf J)}{J^2}\mathbf J. \tag{7.75} $$</p>
+
+                <figure class="lecture-figure" id="fig-7-9">
+                    <svg viewBox="0 0 640 350" role="img" aria-label="Figura 7.9: o momento angular total J fica fixo; L, da origem até um ponto do círculo tracejado, e S, desse ponto até a ponta de J, precessionam em torno de J.">
+<defs><marker id="arr-7-9" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<path d="M225.6,89.6 A95,26 39.6 1,0 372,210.8 A95,26 39.6 1,0 225.6,89.6" class="fig-curve fig-dashed"/>
+<line x1="150" y1="330" x2="390" y2="40" class="fig-axis" marker-end="url(#arr-7-9)"/>
+<line x1="150" y1="330" x2="372" y2="210.8" class="fig-axis" marker-end="url(#arr-7-9)"/>
+<line x1="372" y1="210.8" x2="390" y2="40" class="fig-axis" marker-end="url(#arr-7-9)"/>
+<circle cx="298.8" cy="150.2" r="3.5" class="fig-arrowhead"/>
+<circle cx="150" cy="330" r="3.5" class="fig-arrowhead"/>
+<text x="247.5" y="199.7" text-anchor="end" class="fig-label">J</text>
+<text x="269" y="292.4" class="fig-label">L</text>
+<text x="393" y="129.4" class="fig-label">S</text>
+<text x="386" y="232.8" class="fig-label fig-small">precessão</text>
+</svg>
+                    <figcaption><strong>Figura 7.9.</strong> Na presença do acoplamento spin-órbita, $\mathbf L$ e $\mathbf S$ não se
+                        conservam separadamente: eles precessionam em torno do momento angular total $\mathbf J$, que fica fixo. A
+                        componente de $\mathbf S$ perpendicular a $\mathbf J$ gira e tem média nula; sobra a projeção ao longo de
+                        $\mathbf J$.</figcaption>
+                </figure>
+
+                <p>Mas $\mathbf L = \mathbf J - \mathbf S$, de modo que $L^2 = J^2 + S^2 - 2\mathbf J\cdot\mathbf S$ (note que
+                    $\mathbf S\cdot\mathbf J = S^2 + \mathbf S\cdot\mathbf L = \mathbf J\cdot\mathbf S$, porque $\mathbf S$ comuta com
+                    $\mathbf L$), e portanto</p>
+                <p>$$ \begin{aligned}
+                    \mathbf S\cdot\mathbf J &= \frac12\left(J^2 + S^2 - L^2\right) \\
+                    &= \frac{\hbar^2}{2}\left[j(j + 1) + s(s + 1) - l(l + 1)\right].
+                    \end{aligned} \tag{7.76} $$</p>
+
+                <p>O argumento da precessão é semiclássico, mas o Griffiths observa (nota do livro) que o resultado não é uma aproximação.
+                    $\mathbf L + 2\mathbf S$ e $\mathbf J$ são ambos operadores vetoriais, e os estados são autoestados de momento angular;
+                    pelo teorema de Wigner–Eckart (veja os
+                    <a href="../[5] - Simetrias e Leis de Conservação/[07] - Regras de Seleção Rotacionais.html#operadores-vetoriais">operadores
+                    vetoriais</a> do capítulo 6), seus elementos de matriz são proporcionais:</p>
+                <p>$$ \langle n\,l\,j\,m_j|\mathbf L + 2\mathbf S|n\,l\,j\,m'_j\rangle = g_J\,\langle n\,l\,j\,m_j|\mathbf J|n\,l\,j\,m'_j\rangle, \tag{7.77} $$</p>
+                <p>e a constante de proporcionalidade $g_J$ é a razão entre elementos de matriz reduzidos. Resta calcular $g_J$, e é isso
+                    que a média (7.75) faz. Juntando as Eqs. (7.75) e (7.76), com $J^2 \to \hbar^2j(j + 1)$ e $s(s + 1) = 3/4$, segue
+                    que</p>
+                <p>$$ \begin{aligned}
+                    \langle\mathbf L + 2\mathbf S\rangle &= \left\langle\left(1 + \frac{\mathbf S\cdot\mathbf J}{J^2}\right)\mathbf J\right\rangle \\
+                    &= \left[1 + \frac{j(j + 1) - l(l + 1) + 3/4}{2j(j + 1)}\right]\langle\mathbf J\rangle.
+                    \end{aligned} \tag{7.78} $$</p>
+                <p>O termo entre colchetes é o <strong>fator g de Landé</strong>, $g_J$.<sup id="fnref:3"><a href="#fn:3"
+                    class="footnote-ref">3</a></sup> Como $\hat k\cdot\langle\mathbf J\rangle = \langle J_z\rangle = m_j\hbar$, a Eq. (7.74)
+                    dá o resultado central do campo fraco.</p>
+
+                <div class="definition-box" id="teo-zeeman-campo-fraco">
+                    <p><strong>Teorema (Efeito Zeeman de campo fraco).</strong> No regime $B_{\text{ext}} \ll B_{\text{int}}$, as correções
+                        de primeira ordem às energias $E_{nj}$ são</p>
+                    <p>$$ E_Z^1 = \mu_Bg_JB_{\text{ext}}m_j, \tag{7.79} $$</p>
+                    <p>com $g_J = 1 + \dfrac{j(j + 1) - l(l + 1) + 3/4}{2j(j + 1)}$, que para um único elétron ($j = l \pm 1/2$) vale
+                        $g_J = (2j + 1)/(2l + 1)$, e</p>
+                    <p>$$ \mu_B \equiv \frac{e\hbar}{2m} = 5{,}788\times10^{-5}\ \text{eV/T} \tag{7.80} $$</p>
+                    <p>é o <strong>magnéton de Bohr</strong>.</p>
+                </div>
+                <p><em>Demonstração.</em> Damos uma prova direta, sem o argumento da precessão. Por (7.74), basta calcular
+                    $\langle L_z + 2S_z\rangle = \langle J_z\rangle + \langle S_z\rangle = m_j\hbar + \langle S_z\rangle$ no estado
+                    $|n\,l\,j\,m_j\rangle$.</p>
+                <p><strong>Passo 1 (os estados).</strong> Pelos coeficientes de Clebsch–Gordan da soma de $l$ com $s = 1/2$
+                    (Griffiths, Seção 4.4.3; resultado citado), com $|m_l\,m_s\rangle$ abreviando $|l\,\tfrac12\,m_l\,m_s\rangle$,</p>
+                <p>$$ \begin{aligned}
+                    \left|j = l \pm \tfrac12,\,m_j\right\rangle = {}&\sqrt{\frac{l \pm m_j + \frac12}{2l + 1}}\,\left|m_j - \tfrac12,\,\tfrac12\right\rangle \\
+                    &\pm \sqrt{\frac{l \mp m_j + \frac12}{2l + 1}}\,\left|m_j + \tfrac12,\,-\tfrac12\right\rangle,
+                    \end{aligned} $$</p>
+                <p>a menos de um sinal global, que não afeta valores esperados (quando $m_j \pm \tfrac12$ passa de $l$ em módulo, o
+                    coeficiente correspondente se anula).</p>
+                <p><strong>Passo 2 ($\langle S_z\rangle$).</strong> $S_z$ multiplica o primeiro termo por $+\hbar/2$ e o segundo por
+                    $-\hbar/2$, e os dois são ortogonais. Logo</p>
+                <p>$$ \langle S_z\rangle = \frac\hbar2\,\frac{\left(l \pm m_j + \frac12\right) - \left(l \mp m_j + \frac12\right)}{2l + 1} = \pm\frac{m_j\hbar}{2l + 1}. $$</p>
+                <p><strong>Passo 3 ($g_J$).</strong> Então $\langle L_z + 2S_z\rangle = m_j\hbar\left(1 \pm \frac{1}{2l + 1}\right)$, isto é,
+                    $g_J = \frac{2l + 2}{2l + 1}$ para $j = l + \frac12$ e $g_J = \frac{2l}{2l + 1}$ para $j = l - \frac12$; nos dois casos,
+                    $g_J = (2j + 1)/(2l + 1)$. A fórmula geral de (7.78) dá o mesmo: para $j = l + \frac12$, o numerador
+                    $j(j + 1) - l(l + 1) + \frac34$ vale $l + \frac32$, e o colchete é $1 + \frac{l + 3/2}{2(l + 1/2)(l + 3/2)} = 1 + \frac{1}{2l + 1}$;
+                    para $j = l - \frac12$, o numerador vale $-(l - \frac12)$, e o colchete é $1 - \frac{1}{2l + 1}$.</p>
+                <p><strong>Passo 4.</strong> Substituindo em (7.74), $E_Z^1 = \dfrac{eB_{\text{ext}}}{2m}\,g_Jm_j\hbar = \mu_Bg_JB_{\text{ext}}m_j$.
+                    O valor numérico (7.80) sai das constantes. $\blacksquare$</p>
+
+                <p>Lembre (capítulo 6; Griffiths, Exemplo 6.3) que a degenerescência no número quântico $m$ é consequência da
+                    <a href="../[5] - Simetrias e Leis de Conservação/[06] - Degenerescência.html#potencial-central-deg">invariância por
+                    rotações</a>.<sup id="fnref:4"><a href="#fn:4" class="footnote-ref">4</a></sup> A perturbação $H'_Z$ escolhe uma direção
+                    específica no espaço (a direção de $\mathbf B_{\text{ext}}$), o que quebra a simetria de rotação e levanta a
+                    degenerescência em $m_j$: cada nível $E_{nj}$ se separa em $2j + 1$ níveis igualmente espaçados, com espaçamento
+                    $\mu_Bg_JB_{\text{ext}}$.</p>
+
+                <p>A energia <em>total</em> é a soma da parte de estrutura fina (Eq. 7.69) com a contribuição de Zeeman (Eq. 7.79). Por
+                    exemplo, o estado fundamental ($n = 1$, $l = 0$, $j = 1/2$ e, portanto, $g_J = 2$) se separa em dois níveis:</p>
+                <p>$$ -13{,}6\ \text{eV}\left(1 + \alpha^2/4\right) \pm \mu_BB_{\text{ext}}, \tag{7.81} $$</p>
+                <p>com o sinal positivo para $m_j = 1/2$ e o negativo para $m_j = -1/2$. A primeira parcela é a Eq. (7.69) com $n = 1$,
+                    $j = 1/2$: $1 + \alpha^2(1 - \frac34) = 1 + \alpha^2/4$. Essas energias estão desenhadas, em função de
+                    $B_{\text{ext}}$, na Figura 7.10.</p>
+
+                <figure class="lecture-figure" id="fig-7-10">
+                    <svg viewBox="0 0 640 345" role="img" aria-label="Figura 7.10: efeito Zeeman de campo fraco no estado fundamental do hidrogênio. A partir de -13,6(1 + alfa²/4) eV, o nível se divide em duas retas: m_j = +1/2 sobe com inclinação 1 e m_j = -1/2 desce com inclinação -1.">
+<defs><marker id="arr-7-10" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="200" y1="330" x2="200" y2="22" class="fig-axis" marker-end="url(#arr-7-10)"/>
+<text x="192" y="26" text-anchor="end" class="fig-label fig-it">E</text>
+<line x1="180" y1="60" x2="560" y2="60" class="fig-axis" marker-end="url(#arr-7-10)"/>
+<text x="556" y="50" text-anchor="end" class="fig-label">μ_B B_ext</text>
+<path d="M191,98 q4.5,-5 9,0 t9,0" class="fig-axis"/>
+<path d="M191,106 q4.5,-5 9,0 t9,0" class="fig-axis"/>
+<line x1="200" y1="230" x2="500" y2="104" class="fig-curve"/>
+<line x1="200" y1="230" x2="500" y2="356" class="fig-curve"/>
+<circle cx="200" cy="230" r="4" class="fig-arrowhead"/>
+<text x="190" y="235" text-anchor="end" class="fig-label fig-small">−13,6 (1 + α²/4) eV</text>
+<text x="508" y="109" class="fig-label fig-small">m_j = +1/2</text>
+<text x="508" y="361" class="fig-label fig-small">m_j = −1/2</text>
+</svg>
+                    <figcaption><strong>Figura 7.10.</strong> Efeito Zeeman de campo fraco no estado fundamental do hidrogênio
+                        (Eq. 7.81). Em função de $\mu_BB_{\text{ext}}$, a reta de cima ($m_j = 1/2$) tem inclinação $1$ e a de baixo
+                        ($m_j = -1/2$) tem inclinação $-1$. O eixo de energia está interrompido: o zero fica muito acima.</figcaption>
+                </figure>
+
+                <h2 id="campo-forte">Efeito Zeeman de campo forte</h2>
+
+                <p>Se $B_{\text{ext}} \gg B_{\text{int}}$, o efeito Zeeman domina,<sup id="fnref:5"><a href="#fn:5"
+                    class="footnote-ref">5</a></sup> e tomamos como hamiltoniano "não perturbado" $H_{\text{Bohr}} + H'_Z$ e como
+                    perturbação $H'_{\text{fs}}$. Com $\mathbf B_{\text{ext}}$ ao longo de $z$, o hamiltoniano de Zeeman é</p>
+                <p>$$ H'_Z = \frac{e}{2m}B_{\text{ext}}\left(L_z + 2S_z\right), $$</p>
+                <p>e é imediato calcular as energias "não perturbadas": os estados $\psi_{nlm_l}\chi_{m_s}$, produto de uma função do
+                    hidrogênio por um espinor, são autoestados de $H_{\text{Bohr}}$, de $L_z$ (autovalor $m_l\hbar$) e de $S_z$
+                    (autovalor $m_s\hbar$), e portanto</p>
+                <p>$$ E_{nm_lm_s} = -\frac{13{,}6\ \text{eV}}{n^2} + \mu_BB_{\text{ext}}\left(m_l + 2m_s\right). \tag{7.83} $$</p>
+
+                <p>Os estados que estamos usando, $|n\,l\,m_l\,m_s\rangle$, são degenerados, pois a energia não depende de $l$, e há uma
+                    degenerescência adicional porque, por exemplo, $m_l = 3$ e $m_s = -1/2$, ou $m_l = 1$ e $m_s = 1/2$, dão a mesma
+                    energia. De novo temos sorte: $|n\,l\,m_l\,m_s\rangle$ são os estados "bons" para tratar a perturbação. O hamiltoniano
+                    da estrutura fina $H'_{\text{fs}}$ comuta com $L^2$ e com $J_z$ (esses dois operadores fazem o papel de $A$ no
+                    <a href="[02] - Teoria de Perturbação Degenerada.html#teo-estados-bons">Teorema (Estados bons por um operador que comuta)</a>): o primeiro resolve a degenerescência em $l$, e o segundo resolve a degenerescência que vem das
+                    coincidências em $m_l + 2m_s = m_j + m_s$. De fato, dentro de um mesmo $l$, dois estados com o mesmo $m_l + 2m_s$ e
+                    $(m_l, m_s)$ diferentes têm $m_s$ diferentes, logo $m_j = m_l + m_s$ diferentes.</p>
+
+                <p>Em teoria de perturbação de primeira ordem, a correção de estrutura fina a esses níveis é</p>
+                <p>$$ E_{\text{fs}}^1 = \langle n\,l\,m_l\,m_s|\left(H'_r + H'_{\text{so}}\right)|n\,l\,m_l\,m_s\rangle. \tag{7.84} $$</p>
+                <p>A contribuição relativística é a mesma de antes (Eq. 7.58), pois $H'_r$ não age no spin e os estados
+                    $\psi_{nlm_l}$ já eram os bons para ela. Para o termo spin-órbita (Eq. 7.63), precisamos de</p>
+                <p>$$ \langle\mathbf S\cdot\mathbf L\rangle = \langle S_x\rangle\langle L_x\rangle + \langle S_y\rangle\langle L_y\rangle + \langle S_z\rangle\langle L_z\rangle = \hbar^2m_lm_s. \tag{7.85} $$</p>
+                <p>O valor esperado de cada produto $S_iL_i$ se fatora porque o estado é um produto de uma parte orbital por uma parte de
+                    spin; e $\langle S_x\rangle = \langle S_y\rangle = \langle L_x\rangle = \langle L_y\rangle = 0$ nos autoestados de
+                    $S_z$ e $L_z$ (por exemplo, $S_x = (S_+ + S_-)/2$ leva $\chi_{m_s}$ a estados ortogonais a ele).</p>
+
+                <div class="definition-box" id="teo-estrutura-fina-campo-forte">
+                    <p><strong>Teorema (Estrutura fina no campo forte).</strong> Nos estados $|n\,l\,m_l\,m_s\rangle$, com $l \ge 1$,</p>
+                    <p>$$ E_{\text{fs}}^1 = \frac{13{,}6\ \text{eV}}{n^3}\,\alpha^2\left\{\frac{3}{4n} - \left[\frac{l(l + 1) - m_lm_s}{l\,(l + 1/2)\,(l + 1)}\right]\right\}. \tag{7.86} $$</p>
+                </div>
+                <p><em>Demonstração.</em> O cálculo de $E_{\text{so}}^1$ é o da Seção 7.3, com o valor esperado de $\mathbf S\cdot\mathbf L$
+                    trocado: lá, $\langle\mathbf S\cdot\mathbf L\rangle = \frac{\hbar^2}{2}[j(j + 1) - l(l + 1) - \frac34]$ levou à
+                    Eq. (7.67); aqui, $\langle\mathbf S\cdot\mathbf L\rangle = \hbar^2m_lm_s = \frac{\hbar^2}{2}\,(2m_lm_s)$. Basta, portanto,
+                    trocar o colchete $[j(j + 1) - l(l + 1) - \frac34]$ da Eq. (7.67) por $2m_lm_s$:</p>
+                <p>$$ E_{\text{so}}^1 = \frac{(E_n)^2}{mc^2}\,\frac{2n\,m_lm_s}{l\,(l + 1/2)\,(l + 1)}. $$</p>
+                <p>Somando a Eq. (7.58) e escrevendo $\frac{4n}{l + 1/2} = \frac{4n\,l(l + 1)}{l\,(l + 1/2)\,(l + 1)}$,</p>
+                <p>$$ E_r^1 + E_{\text{so}}^1 = \frac{(E_n)^2}{2mc^2}\left\{3 - 4n\left[\frac{l(l + 1) - m_lm_s}{l\,(l + 1/2)\,(l + 1)}\right]\right\}. $$</p>
+                <p>Por fim, $\dfrac{(E_n)^2}{2mc^2} = |E_n|\,\dfrac{\alpha^2}{4n^2} = \dfrac{13{,}6\ \text{eV}}{4n^4}\,\alpha^2$ (pois
+                    $E_n/mc^2 = -\alpha^2/2n^2$), e colocando $4n$ em evidência obtemos a Eq. (7.86). $\blacksquare$</p>
+
+                <p id="obs-campo-forte-l-zero"><strong>Observação (O caso $l = 0$).</strong> O termo entre colchetes da Eq. (7.86) é
+                    indeterminado para $l = 0$; seu valor correto, nesse caso, é $1$. Para ver por quê, note que com $l = 0$ temos
+                    $m_l = 0$, $j = 1/2$ e $m_j = m_s$: os estados $|n\,0\,0\,m_s\rangle$ e $|n\,0\,\tfrac12\,m_j\rangle$ são os mesmos, e os
+                    estados bons do campo fraco e do campo forte coincidem. Então $H'_{\text{fs}}$ e $H'_Z$ são diagonais ao mesmo tempo, e o
+                    resultado de campo fraco vale para qualquer campo: com $g_J = 2$, a energia é $E_{n,1/2} + 2\mu_BB_{\text{ext}}m_s$, e
+                    pela Eq. (7.69)</p>
+                <p>$$ \begin{aligned}
+                    E_{n,1/2} &= -\frac{13{,}6\ \text{eV}}{n^2}\left[1 + \frac{\alpha^2}{n^2}\left(n - \frac34\right)\right] \\
+                    &= -\frac{13{,}6\ \text{eV}}{n^2} + \frac{13{,}6\ \text{eV}}{n^3}\,\alpha^2\left(\frac{3}{4n} - 1\right).
+                    \end{aligned} $$</p>
+                <p>Comparando com as Eqs. (7.83) e (7.86) (com $m_l + 2m_s = 2m_s$), o colchete tem de valer $1$.</p>
+
+                <p>A energia <em>total</em> é a soma da parte de Zeeman (Eq. 7.83) com a contribuição de estrutura fina (Eq. 7.86).</p>
+
+                <h2 id="campo-intermediario">Efeito Zeeman de campo intermediário</h2>
+
+                <p>No regime intermediário, nem $H'_Z$ nem $H'_{\text{fs}}$ domina, e temos de tratar os dois em pé de igualdade, como
+                    perturbações do hamiltoniano de Bohr (Eq. 7.43):</p>
+                <p>$$ H' = H'_Z + H'_{\text{fs}}. \tag{7.87} $$</p>
+                <p>Como o Griffiths, vamos nos restringir ao caso $n = 2$. Não é óbvio quais são os estados "bons", e por isso temos de
+                    recorrer a toda a maquinaria da teoria de perturbação degenerada (<a href="[02] - Teoria de Perturbação Degenerada.html#teo-degenerescencia-n">Teorema (Degenerescência de ordem n)</a>).</p>
+
+                <h3 id="base-n2">A base</h3>
+
+                <p>Escolhemos estados de base caracterizados por $l$, $j$ e $m_j$.<sup id="fnref:6"><a href="#fn:6"
+                    class="footnote-ref">6</a></sup> Usando os coeficientes de Clebsch–Gordan (Griffiths, Tabela 4.8; resultado citado)
+                    para escrever $|j\,m_j\rangle$ como combinações lineares de $|l\,s\,m_l\,m_s\rangle$,<sup id="fnref:7"><a href="#fn:7"
+                    class="footnote-ref">7</a></sup> temos, para $l = 0$,</p>
+                <p>$$ \begin{aligned}
+                    \psi_1 &\equiv \left|\tfrac12\,\tfrac12\right\rangle = \left|0\,\tfrac12\,0\,\tfrac12\right\rangle, \\
+                    \psi_2 &\equiv \left|\tfrac12\,\tfrac{-1}{2}\right\rangle = \left|0\,\tfrac12\,0\,\tfrac{-1}{2}\right\rangle,
+                    \end{aligned} $$</p>
+                <p>e, para $l = 1$,</p>
+                <p>$$ \begin{aligned}
+                    \psi_3 &\equiv \left|\tfrac32\,\tfrac32\right\rangle = \left|1\,\tfrac12\,1\,\tfrac12\right\rangle, \\
+                    \psi_4 &\equiv \left|\tfrac32\,\tfrac{-3}{2}\right\rangle = \left|1\,\tfrac12\,{-1}\,\tfrac{-1}{2}\right\rangle, \\
+                    \psi_5 &\equiv \left|\tfrac32\,\tfrac12\right\rangle = \sqrt{2/3}\,\left|1\,\tfrac12\,0\,\tfrac12\right\rangle + \sqrt{1/3}\,\left|1\,\tfrac12\,1\,\tfrac{-1}{2}\right\rangle, \\
+                    \psi_6 &\equiv \left|\tfrac12\,\tfrac12\right\rangle = -\sqrt{1/3}\,\left|1\,\tfrac12\,0\,\tfrac12\right\rangle + \sqrt{2/3}\,\left|1\,\tfrac12\,1\,\tfrac{-1}{2}\right\rangle, \\
+                    \psi_7 &\equiv \left|\tfrac32\,\tfrac{-1}{2}\right\rangle = \sqrt{1/3}\,\left|1\,\tfrac12\,{-1}\,\tfrac12\right\rangle + \sqrt{2/3}\,\left|1\,\tfrac12\,0\,\tfrac{-1}{2}\right\rangle, \\
+                    \psi_8 &\equiv \left|\tfrac12\,\tfrac{-1}{2}\right\rangle = -\sqrt{2/3}\,\left|1\,\tfrac12\,{-1}\,\tfrac12\right\rangle + \sqrt{1/3}\,\left|1\,\tfrac12\,0\,\tfrac{-1}{2}\right\rangle.
+                    \end{aligned} $$</p>
+
+                <h3 id="matriz-w-zeeman">A matriz W</h3>
+
+                <p>O Griffiths dá a matriz e deixa o cálculo dos elementos para um problema; como ela é o coração desta subseção, fazemos a
+                    conta. Escrevemos</p>
+                <p>$$ \gamma \equiv (\alpha/8)^2\,13{,}6\ \text{eV} \qquad\text{e}\qquad \beta \equiv \mu_BB_{\text{ext}}. $$</p>
+                <p>Note que $\gamma = 13{,}6\,\alpha^2/64$ eV $= (E_2)^2/2mc^2$ é exatamente a escala da estrutura fina de $n = 2$.</p>
+
+                <p><strong>A parte de estrutura fina.</strong> $H'_{\text{fs}}$ comuta com $L^2$, $J^2$ e $J_z$, e os oito estados acima
+                    são identificados por valores distintos de $(l, j, m_j)$; logo $H'_{\text{fs}}$ é diagonal nesta base, com os valores da
+                    Eq. (7.68) para $n = 2$: $E_{\text{fs}}^1 = \gamma\left(3 - \frac{8}{j + 1/2}\right)$, isto é, $-5\gamma$ para $j = 1/2$
+                    ($\psi_1$, $\psi_2$, $\psi_6$, $\psi_8$) e $-\gamma$ para $j = 3/2$ ($\psi_3$, $\psi_4$, $\psi_5$, $\psi_7$).</p>
+
+                <p><strong>A parte de Zeeman.</strong> $H'_Z = \frac{\beta}{\hbar}(L_z + 2S_z) = \frac{\beta}{\hbar}(J_z + S_z)$. $J_z$ é
+                    diagonal, com autovalor $m_j\hbar$. $S_z$ comuta com $L^2$ e com $J_z$, de modo que só liga estados com o mesmo $l$ e o
+                    mesmo $m_j$: os pares $(\psi_5, \psi_6)$ e $(\psi_7, \psi_8)$. Nos estados $\psi_1$ a $\psi_4$, que são de um único termo,
+                    $S_z$ vale $m_s\hbar$. Nos outros, $S_z$ multiplica cada termo por $\pm\hbar/2$; por exemplo,</p>
+                <p>$$ \begin{aligned}
+                    \langle\psi_5|S_z|\psi_5\rangle &= \frac\hbar2\left(\frac23 - \frac13\right) = \frac\hbar6, \\
+                    \langle\psi_6|S_z|\psi_6\rangle &= \frac\hbar2\left(\frac13 - \frac23\right) = -\frac\hbar6, \\
+                    \langle\psi_5|S_z|\psi_6\rangle &= \frac\hbar2\left[\sqrt{\tfrac23}\left(-\sqrt{\tfrac13}\right) - \sqrt{\tfrac13}\sqrt{\tfrac23}\right] = -\frac{\sqrt2}{3}\hbar,
+                    \end{aligned} $$</p>
+                <p>e do mesmo modo $\langle\psi_7|S_z|\psi_7\rangle = -\hbar/6$, $\langle\psi_8|S_z|\psi_8\rangle = \hbar/6$ e
+                    $\langle\psi_7|S_z|\psi_8\rangle = -\sqrt2\,\hbar/3$. Somando $m_j$ a esses valores (em unidades de $\hbar$), os elementos
+                    diagonais de $H'_Z$ são $\beta$, $-\beta$, $2\beta$, $-2\beta$, $\frac23\beta$, $\frac13\beta$, $-\frac23\beta$,
+                    $-\frac13\beta$, e os quatro elementos fora da diagonal valem $-\frac{\sqrt2}{3}\beta$.</p>
+
+                <p>Assim, nesta base, os elementos não nulos de $H'_{\text{fs}}$ estão todos na diagonal, e $H'_Z$ tem quatro elementos fora
+                    da diagonal. O Griffiths escreve a matriz completa com o sinal trocado, $-\mathsf W$, para que os termos em $\gamma$
+                    fiquem positivos (na tabela abaixo, as entradas em branco são nulas):</p>
+
+                <div style="overflow-x: auto;">
+                    <table style="font-size: 0.82em;">
+                        <caption>A matriz $-\mathsf W$ de $H'_Z + H'_{\text{fs}}$ na base $\psi_1, \dots, \psi_8$.</caption>
+                        <thead>
+                            <tr><th></th><th>$\psi_1$</th><th>$\psi_2$</th><th>$\psi_3$</th><th>$\psi_4$</th><th>$\psi_5$</th><th>$\psi_6$</th><th>$\psi_7$</th><th>$\psi_8$</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><th>$\psi_1$</th><td>$5\gamma - \beta$</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                            <tr><th>$\psi_2$</th><td></td><td>$5\gamma + \beta$</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                            <tr><th>$\psi_3$</th><td></td><td></td><td>$\gamma - 2\beta$</td><td></td><td></td><td></td><td></td><td></td></tr>
+                            <tr><th>$\psi_4$</th><td></td><td></td><td></td><td>$\gamma + 2\beta$</td><td></td><td></td><td></td><td></td></tr>
+                            <tr><th>$\psi_5$</th><td></td><td></td><td></td><td></td><td>$\gamma - \frac23\beta$</td><td>$\frac{\sqrt2}{3}\beta$</td><td></td><td></td></tr>
+                            <tr><th>$\psi_6$</th><td></td><td></td><td></td><td></td><td>$\frac{\sqrt2}{3}\beta$</td><td>$5\gamma - \frac13\beta$</td><td></td><td></td></tr>
+                            <tr><th>$\psi_7$</th><td></td><td></td><td></td><td></td><td></td><td></td><td>$\gamma + \frac23\beta$</td><td>$\frac{\sqrt2}{3}\beta$</td></tr>
+                            <tr><th>$\psi_8$</th><td></td><td></td><td></td><td></td><td></td><td></td><td>$\frac{\sqrt2}{3}\beta$</td><td>$5\gamma + \frac13\beta$</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 id="autovalores-n2">Os autovalores</h3>
+
+                <p>A matriz é diagonal por blocos, porque $m_j$ se conserva: só estados com o mesmo $m_j$ se misturam. Os quatro primeiros
+                    autovalores já aparecem na diagonal; resta achar os autovalores dos dois blocos $2 \times 2$,</p>
+                <p>$$ m_j = \tfrac12:\quad \begin{pmatrix} \gamma - \frac23\beta & \frac{\sqrt2}{3}\beta \\ \frac{\sqrt2}{3}\beta & 5\gamma - \frac13\beta \end{pmatrix}, $$</p>
+                <p>$$ m_j = -\tfrac12:\quad \begin{pmatrix} \gamma + \frac23\beta & \frac{\sqrt2}{3}\beta \\ \frac{\sqrt2}{3}\beta & 5\gamma + \frac13\beta \end{pmatrix}. $$</p>
+                <p>A equação característica do primeiro é $\lambda^2 - \lambda\,\mathrm{tr} + \det = 0$, com traço $6\gamma - \beta$ e
+                    determinante $(\gamma - \frac23\beta)(5\gamma - \frac13\beta) - \frac29\beta^2 = 5\gamma^2 - \frac{11}{3}\gamma\beta$ (os
+                    termos em $\beta^2$ se cancelam):</p>
+                <p>$$ \lambda^2 - \lambda\left(6\gamma - \beta\right) + \left(5\gamma^2 - \frac{11}{3}\gamma\beta\right) = 0, $$</p>
+                <p>e a fórmula da equação do segundo grau dá os autovalores (o discriminante é
+                    $(6\gamma - \beta)^2 - 4(5\gamma^2 - \frac{11}{3}\gamma\beta) = 16\gamma^2 + \frac83\gamma\beta + \beta^2$):</p>
+                <p>$$ \lambda_\pm = 3\gamma - (\beta/2) \pm \sqrt{4\gamma^2 + (2/3)\gamma\beta + (\beta^2/4)}. \tag{7.88} $$</p>
+                <p>Os autovalores do segundo bloco são os mesmos, com o sinal de $\beta$ trocado (o segundo bloco é o primeiro com
+                    $\beta \to -\beta$). As energias são $E_2$ menos os autovalores de $-\mathsf W$; as oito estão na Tabela 7.2 e no
+                    gráfico contra $B_{\text{ext}}$ da Figura 7.11.</p>
+
+                <div style="overflow-x: auto;">
+                    <table>
+                        <caption><strong>Tabela 7.2.</strong> Níveis de energia dos estados $n = 2$ do hidrogênio, com estrutura fina e
+                            separação de Zeeman.</caption>
+                        <thead>
+                            <tr><th>Nível</th><th>Energia</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>$\epsilon_1$</td><td>$E_2 - 5\gamma + \beta$</td></tr>
+                            <tr><td>$\epsilon_2$</td><td>$E_2 - 5\gamma - \beta$</td></tr>
+                            <tr><td>$\epsilon_3$</td><td>$E_2 - \gamma + 2\beta$</td></tr>
+                            <tr><td>$\epsilon_4$</td><td>$E_2 - \gamma - 2\beta$</td></tr>
+                            <tr><td>$\epsilon_5$</td><td>$E_2 - 3\gamma + \beta/2 + \sqrt{4\gamma^2 + (2/3)\gamma\beta + \beta^2/4}$</td></tr>
+                            <tr><td>$\epsilon_6$</td><td>$E_2 - 3\gamma + \beta/2 - \sqrt{4\gamma^2 + (2/3)\gamma\beta + \beta^2/4}$</td></tr>
+                            <tr><td>$\epsilon_7$</td><td>$E_2 - 3\gamma - \beta/2 + \sqrt{4\gamma^2 - (2/3)\gamma\beta + \beta^2/4}$</td></tr>
+                            <tr><td>$\epsilon_8$</td><td>$E_2 - 3\gamma - \beta/2 - \sqrt{4\gamma^2 - (2/3)\gamma\beta + \beta^2/4}$</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <figure class="lecture-figure" id="fig-7-11">
+                    <svg viewBox="0 0 640 460" role="img" aria-label="Figura 7.11: as oito energias dos estados n = 2 do hidrogênio em função do campo externo, calculadas pela Tabela 7.2. Em campo nulo há dois níveis (j = 3/2 em -gamma e j = 1/2 em -5 gamma); em campo forte as curvas tendem a cinco famílias de retas paralelas.">
+<defs><marker id="arr-7-11" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="80" y1="428" x2="80" y2="22" class="fig-axis" marker-end="url(#arr-7-11)"/>
+<line x1="74" y1="428" x2="550" y2="428" class="fig-axis" marker-end="url(#arr-7-11)"/>
+<text x="90" y="26" class="fig-label fig-small">E − E₂ (unid. γ)</text>
+<text x="546" y="450" text-anchor="end" class="fig-label fig-small">μ_B B_ext / γ</text>
+<line x1="80" y1="428" x2="80" y2="433" class="fig-axis"/>
+<text x="80" y="447" text-anchor="middle" class="fig-label fig-small">0</text>
+<line x1="190" y1="428" x2="190" y2="433" class="fig-axis"/>
+<text x="190" y="447" text-anchor="middle" class="fig-label fig-small">2</text>
+<line x1="300" y1="428" x2="300" y2="433" class="fig-axis"/>
+<text x="300" y="447" text-anchor="middle" class="fig-label fig-small">4</text>
+<line x1="410" y1="428" x2="410" y2="433" class="fig-axis"/>
+<text x="410" y="447" text-anchor="middle" class="fig-label fig-small">6</text>
+<line x1="520" y1="428" x2="520" y2="433" class="fig-axis"/>
+<text x="520" y="447" text-anchor="middle" class="fig-label fig-small">8</text>
+<line x1="75" y1="386.5" x2="80" y2="386.5" class="fig-axis"/>
+<text x="71" y="390.5" text-anchor="end" class="fig-label fig-small">−15</text>
+<line x1="75" y1="330.6" x2="80" y2="330.6" class="fig-axis"/>
+<text x="71" y="334.6" text-anchor="end" class="fig-label fig-small">−10</text>
+<line x1="75" y1="274.7" x2="80" y2="274.7" class="fig-axis"/>
+<text x="71" y="278.7" text-anchor="end" class="fig-label fig-small">−5</text>
+<line x1="75" y1="218.8" x2="80" y2="218.8" class="fig-axis"/>
+<text x="71" y="222.8" text-anchor="end" class="fig-label fig-small">0</text>
+<line x1="75" y1="162.9" x2="80" y2="162.9" class="fig-axis"/>
+<text x="71" y="166.9" text-anchor="end" class="fig-label fig-small">5</text>
+<line x1="75" y1="107.1" x2="80" y2="107.1" class="fig-axis"/>
+<text x="71" y="111.1" text-anchor="end" class="fig-label fig-small">10</text>
+<line x1="75" y1="51.2" x2="80" y2="51.2" class="fig-axis"/>
+<text x="71" y="55.2" text-anchor="end" class="fig-label fig-small">15</text>
+<line x1="80" y1="218.8" x2="520" y2="218.8" class="fig-guide fig-dashed"/>
+<path d="M80,274.7 L82.8,274.1 L85.5,273.6 L88.2,273 L91,272.5 L93.8,271.9 L96.5,271.4 L99.2,270.8 L102,270.2 L104.8,269.7 L107.5,269.1 L110.2,268.6 L113,268 L115.8,267.4 L118.5,266.9 L121.2,266.3 L124,265.8 L126.8,265.2 L129.5,264.6 L132.2,264.1 L135,263.5 L137.8,263 L140.5,262.4 L143.2,261.9 L146,261.3 L148.8,260.7 L151.5,260.2 L154.2,259.6 L157,259.1 L159.8,258.5 L162.5,257.9 L165.2,257.4 L168,256.8 L170.8,256.3 L173.5,255.7 L176.2,255.1 L179,254.6 L181.8,254 L184.5,253.5 L187.2,252.9 L190,252.4 L192.8,251.8 L195.5,251.2 L198.2,250.7 L201,250.1 L203.8,249.6 L206.5,249 L209.2,248.4 L212,247.9 L214.8,247.3 L217.5,246.8 L220.2,246.2 L223,245.6 L225.8,245.1 L228.5,244.5 L231.2,244 L234,243.4 L236.8,242.9 L239.5,242.3 L242.2,241.7 L245,241.2 L247.8,240.6 L250.5,240.1 L253.2,239.5 L256,238.9 L258.8,238.4 L261.5,237.8 L264.2,237.3 L267,236.7 L269.8,236.1 L272.5,235.6 L275.2,235 L278,234.5 L280.8,233.9 L283.5,233.4 L286.2,232.8 L289,232.2 L291.8,231.7 L294.5,231.1 L297.2,230.6 L300,230 L302.8,229.4 L305.5,228.9 L308.2,228.3 L311,227.8 L313.8,227.2 L316.5,226.6 L319.2,226.1 L322,225.5 L324.8,225 L327.5,224.4 L330.2,223.9 L333,223.3 L335.8,222.7 L338.5,222.2 L341.2,221.6 L344,221.1 L346.8,220.5 L349.5,219.9 L352.2,219.4 L355,218.8 L357.8,218.3 L360.5,217.7 L363.2,217.1 L366,216.6 L368.8,216 L371.5,215.5 L374.2,214.9 L377,214.4 L379.8,213.8 L382.5,213.2 L385.2,212.7 L388,212.1 L390.8,211.6 L393.5,211 L396.2,210.4 L399,209.9 L401.8,209.3 L404.5,208.8 L407.2,208.2 L410,207.6 L412.8,207.1 L415.5,206.5 L418.2,206 L421,205.4 L423.8,204.9 L426.5,204.3 L429.2,203.7 L432,203.2 L434.8,202.6 L437.5,202.1 L440.2,201.5 L443,200.9 L445.8,200.4 L448.5,199.8 L451.2,199.3 L454,198.7 L456.8,198.1 L459.5,197.6 L462.2,197 L465,196.5 L467.8,195.9 L470.5,195.4 L473.2,194.8 L476,194.2 L478.8,193.7 L481.5,193.1 L484.2,192.6 L487,192 L489.8,191.4 L492.5,190.9 L495.2,190.3 L498,189.8 L500.8,189.2 L503.5,188.6 L506.2,188.1 L509,187.5 L511.8,187 L514.5,186.4 L517.2,185.9 L520,185.3" class="fig-curve"/>
+<path d="M80,274.7 L82.8,275.3 L85.5,275.8 L88.2,276.4 L91,276.9 L93.8,277.5 L96.5,278.1 L99.2,278.6 L102,279.2 L104.8,279.7 L107.5,280.3 L110.2,280.9 L113,281.4 L115.8,282 L118.5,282.5 L121.2,283.1 L124,283.6 L126.8,284.2 L129.5,284.8 L132.2,285.3 L135,285.9 L137.8,286.4 L140.5,287 L143.2,287.6 L146,288.1 L148.8,288.7 L151.5,289.2 L154.2,289.8 L157,290.4 L159.8,290.9 L162.5,291.5 L165.2,292 L168,292.6 L170.8,293.1 L173.5,293.7 L176.2,294.3 L179,294.8 L181.8,295.4 L184.5,295.9 L187.2,296.5 L190,297.1 L192.8,297.6 L195.5,298.2 L198.2,298.7 L201,299.3 L203.8,299.9 L206.5,300.4 L209.2,301 L212,301.5 L214.8,302.1 L217.5,302.6 L220.2,303.2 L223,303.8 L225.8,304.3 L228.5,304.9 L231.2,305.4 L234,306 L236.8,306.6 L239.5,307.1 L242.2,307.7 L245,308.2 L247.8,308.8 L250.5,309.4 L253.2,309.9 L256,310.5 L258.8,311 L261.5,311.6 L264.2,312.1 L267,312.7 L269.8,313.3 L272.5,313.8 L275.2,314.4 L278,314.9 L280.8,315.5 L283.5,316.1 L286.2,316.6 L289,317.2 L291.8,317.7 L294.5,318.3 L297.2,318.9 L300,319.4 L302.8,320 L305.5,320.5 L308.2,321.1 L311,321.6 L313.8,322.2 L316.5,322.8 L319.2,323.3 L322,323.9 L324.8,324.4 L327.5,325 L330.2,325.6 L333,326.1 L335.8,326.7 L338.5,327.2 L341.2,327.8 L344,328.4 L346.8,328.9 L349.5,329.5 L352.2,330 L355,330.6 L357.8,331.1 L360.5,331.7 L363.2,332.3 L366,332.8 L368.8,333.4 L371.5,333.9 L374.2,334.5 L377,335.1 L379.8,335.6 L382.5,336.2 L385.2,336.7 L388,337.3 L390.8,337.9 L393.5,338.4 L396.2,339 L399,339.5 L401.8,340.1 L404.5,340.6 L407.2,341.2 L410,341.8 L412.8,342.3 L415.5,342.9 L418.2,343.4 L421,344 L423.8,344.6 L426.5,345.1 L429.2,345.7 L432,346.2 L434.8,346.8 L437.5,347.4 L440.2,347.9 L443,348.5 L445.8,349 L448.5,349.6 L451.2,350.1 L454,350.7 L456.8,351.3 L459.5,351.8 L462.2,352.4 L465,352.9 L467.8,353.5 L470.5,354.1 L473.2,354.6 L476,355.2 L478.8,355.7 L481.5,356.3 L484.2,356.9 L487,357.4 L489.8,358 L492.5,358.5 L495.2,359.1 L498,359.6 L500.8,360.2 L503.5,360.8 L506.2,361.3 L509,361.9 L511.8,362.4 L514.5,363 L517.2,363.6 L520,364.1" class="fig-curve"/>
+<path d="M80,230 L82.8,228.9 L85.5,227.8 L88.2,226.6 L91,225.5 L93.8,224.4 L96.5,223.3 L99.2,222.2 L102,221.1 L104.8,219.9 L107.5,218.8 L110.2,217.7 L113,216.6 L115.8,215.5 L118.5,214.4 L121.2,213.2 L124,212.1 L126.8,211 L129.5,209.9 L132.2,208.8 L135,207.6 L137.8,206.5 L140.5,205.4 L143.2,204.3 L146,203.2 L148.8,202.1 L151.5,200.9 L154.2,199.8 L157,198.7 L159.8,197.6 L162.5,196.5 L165.2,195.4 L168,194.2 L170.8,193.1 L173.5,192 L176.2,190.9 L179,189.8 L181.8,188.6 L184.5,187.5 L187.2,186.4 L190,185.3 L192.8,184.2 L195.5,183.1 L198.2,181.9 L201,180.8 L203.8,179.7 L206.5,178.6 L209.2,177.5 L212,176.4 L214.8,175.2 L217.5,174.1 L220.2,173 L223,171.9 L225.8,170.8 L228.5,169.6 L231.2,168.5 L234,167.4 L236.8,166.3 L239.5,165.2 L242.2,164.1 L245,162.9 L247.8,161.8 L250.5,160.7 L253.2,159.6 L256,158.5 L258.8,157.4 L261.5,156.2 L264.2,155.1 L267,154 L269.8,152.9 L272.5,151.8 L275.2,150.6 L278,149.5 L280.8,148.4 L283.5,147.3 L286.2,146.2 L289,145.1 L291.8,143.9 L294.5,142.8 L297.2,141.7 L300,140.6 L302.8,139.5 L305.5,138.4 L308.2,137.2 L311,136.1 L313.8,135 L316.5,133.9 L319.2,132.8 L322,131.6 L324.8,130.5 L327.5,129.4 L330.2,128.3 L333,127.2 L335.8,126.1 L338.5,124.9 L341.2,123.8 L344,122.7 L346.8,121.6 L349.5,120.5 L352.2,119.4 L355,118.2 L357.8,117.1 L360.5,116 L363.2,114.9 L366,113.8 L368.8,112.6 L371.5,111.5 L374.2,110.4 L377,109.3 L379.8,108.2 L382.5,107.1 L385.2,105.9 L388,104.8 L390.8,103.7 L393.5,102.6 L396.2,101.5 L399,100.4 L401.8,99.2 L404.5,98.1 L407.2,97 L410,95.9 L412.8,94.8 L415.5,93.6 L418.2,92.5 L421,91.4 L423.8,90.3 L426.5,89.2 L429.2,88.1 L432,86.9 L434.8,85.8 L437.5,84.7 L440.2,83.6 L443,82.5 L445.8,81.4 L448.5,80.2 L451.2,79.1 L454,78 L456.8,76.9 L459.5,75.8 L462.2,74.6 L465,73.5 L467.8,72.4 L470.5,71.3 L473.2,70.2 L476,69.1 L478.8,67.9 L481.5,66.8 L484.2,65.7 L487,64.6 L489.8,63.5 L492.5,62.4 L495.2,61.2 L498,60.1 L500.8,59 L503.5,57.9 L506.2,56.8 L509,55.6 L511.8,54.5 L514.5,53.4 L517.2,52.3 L520,51.2" class="fig-curve"/>
+<path d="M80,230 L82.8,231.1 L85.5,232.2 L88.2,233.4 L91,234.5 L93.8,235.6 L96.5,236.7 L99.2,237.8 L102,238.9 L104.8,240.1 L107.5,241.2 L110.2,242.3 L113,243.4 L115.8,244.5 L118.5,245.6 L121.2,246.8 L124,247.9 L126.8,249 L129.5,250.1 L132.2,251.2 L135,252.4 L137.8,253.5 L140.5,254.6 L143.2,255.7 L146,256.8 L148.8,257.9 L151.5,259.1 L154.2,260.2 L157,261.3 L159.8,262.4 L162.5,263.5 L165.2,264.6 L168,265.8 L170.8,266.9 L173.5,268 L176.2,269.1 L179,270.2 L181.8,271.4 L184.5,272.5 L187.2,273.6 L190,274.7 L192.8,275.8 L195.5,276.9 L198.2,278.1 L201,279.2 L203.8,280.3 L206.5,281.4 L209.2,282.5 L212,283.6 L214.8,284.8 L217.5,285.9 L220.2,287 L223,288.1 L225.8,289.2 L228.5,290.4 L231.2,291.5 L234,292.6 L236.8,293.7 L239.5,294.8 L242.2,295.9 L245,297.1 L247.8,298.2 L250.5,299.3 L253.2,300.4 L256,301.5 L258.8,302.6 L261.5,303.8 L264.2,304.9 L267,306 L269.8,307.1 L272.5,308.2 L275.2,309.4 L278,310.5 L280.8,311.6 L283.5,312.7 L286.2,313.8 L289,314.9 L291.8,316.1 L294.5,317.2 L297.2,318.3 L300,319.4 L302.8,320.5 L305.5,321.6 L308.2,322.8 L311,323.9 L313.8,325 L316.5,326.1 L319.2,327.2 L322,328.4 L324.8,329.5 L327.5,330.6 L330.2,331.7 L333,332.8 L335.8,333.9 L338.5,335.1 L341.2,336.2 L344,337.3 L346.8,338.4 L349.5,339.5 L352.2,340.6 L355,341.8 L357.8,342.9 L360.5,344 L363.2,345.1 L366,346.2 L368.8,347.4 L371.5,348.5 L374.2,349.6 L377,350.7 L379.8,351.8 L382.5,352.9 L385.2,354.1 L388,355.2 L390.8,356.3 L393.5,357.4 L396.2,358.5 L399,359.6 L401.8,360.8 L404.5,361.9 L407.2,363 L410,364.1 L412.8,365.2 L415.5,366.4 L418.2,367.5 L421,368.6 L423.8,369.7 L426.5,370.8 L429.2,371.9 L432,373.1 L434.8,374.2 L437.5,375.3 L440.2,376.4 L443,377.5 L445.8,378.6 L448.5,379.8 L451.2,380.9 L454,382 L456.8,383.1 L459.5,384.2 L462.2,385.4 L465,386.5 L467.8,387.6 L470.5,388.7 L473.2,389.8 L476,390.9 L478.8,392.1 L481.5,393.2 L484.2,394.3 L487,395.4 L489.8,396.5 L492.5,397.6 L495.2,398.8 L498,399.9 L500.8,401 L503.5,402.1 L506.2,403.2 L509,404.4 L511.8,405.5 L514.5,406.6 L517.2,407.7 L520,408.8" class="fig-curve"/>
+<path d="M80,230 L82.8,229.6 L85.5,229.2 L88.2,228.9 L91,228.5 L93.8,228.1 L96.5,227.7 L99.2,227.3 L102,226.9 L104.8,226.5 L107.5,226.1 L110.2,225.7 L113,225.3 L115.8,224.9 L118.5,224.5 L121.2,224.1 L124,223.7 L126.8,223.3 L129.5,222.8 L132.2,222.4 L135,222 L137.8,221.6 L140.5,221.1 L143.2,220.7 L146,220.3 L148.8,219.8 L151.5,219.4 L154.2,218.9 L157,218.5 L159.8,218.1 L162.5,217.6 L165.2,217.2 L168,216.7 L170.8,216.3 L173.5,215.8 L176.2,215.4 L179,214.9 L181.8,214.4 L184.5,214 L187.2,213.5 L190,213 L192.8,212.6 L195.5,212.1 L198.2,211.6 L201,211.2 L203.8,210.7 L206.5,210.2 L209.2,209.8 L212,209.3 L214.8,208.8 L217.5,208.3 L220.2,207.9 L223,207.4 L225.8,206.9 L228.5,206.4 L231.2,205.9 L234,205.4 L236.8,205 L239.5,204.5 L242.2,204 L245,203.5 L247.8,203 L250.5,202.5 L253.2,202 L256,201.5 L258.8,201 L261.5,200.5 L264.2,200 L267,199.5 L269.8,199 L272.5,198.5 L275.2,198 L278,197.5 L280.8,197 L283.5,196.5 L286.2,196 L289,195.5 L291.8,195 L294.5,194.5 L297.2,194 L300,193.5 L302.8,193 L305.5,192.5 L308.2,192 L311,191.5 L313.8,191 L316.5,190.4 L319.2,189.9 L322,189.4 L324.8,188.9 L327.5,188.4 L330.2,187.9 L333,187.4 L335.8,186.8 L338.5,186.3 L341.2,185.8 L344,185.3 L346.8,184.8 L349.5,184.3 L352.2,183.7 L355,183.2 L357.8,182.7 L360.5,182.2 L363.2,181.7 L366,181.1 L368.8,180.6 L371.5,180.1 L374.2,179.6 L377,179 L379.8,178.5 L382.5,178 L385.2,177.5 L388,177 L390.8,176.4 L393.5,175.9 L396.2,175.4 L399,174.9 L401.8,174.3 L404.5,173.8 L407.2,173.3 L410,172.7 L412.8,172.2 L415.5,171.7 L418.2,171.2 L421,170.6 L423.8,170.1 L426.5,169.6 L429.2,169 L432,168.5 L434.8,168 L437.5,167.4 L440.2,166.9 L443,166.4 L445.8,165.9 L448.5,165.3 L451.2,164.8 L454,164.3 L456.8,163.7 L459.5,163.2 L462.2,162.7 L465,162.1 L467.8,161.6 L470.5,161.1 L473.2,160.5 L476,160 L478.8,159.4 L481.5,158.9 L484.2,158.4 L487,157.8 L489.8,157.3 L492.5,156.8 L495.2,156.2 L498,155.7 L500.8,155.2 L503.5,154.6 L506.2,154.1 L509,153.5 L511.8,153 L514.5,152.5 L517.2,151.9 L520,151.4" class="fig-curve"/>
+<path d="M80,274.7 L82.8,274.5 L85.5,274.3 L88.2,274.2 L91,274 L93.8,273.8 L96.5,273.6 L99.2,273.5 L102,273.3 L104.8,273.2 L107.5,273 L110.2,272.8 L113,272.7 L115.8,272.5 L118.5,272.4 L121.2,272.2 L124,272.1 L126.8,272 L129.5,271.8 L132.2,271.7 L135,271.5 L137.8,271.4 L140.5,271.3 L143.2,271.2 L146,271 L148.8,270.9 L151.5,270.8 L154.2,270.7 L157,270.6 L159.8,270.4 L162.5,270.3 L165.2,270.2 L168,270.1 L170.8,270 L173.5,269.9 L176.2,269.8 L179,269.7 L181.8,269.6 L184.5,269.5 L187.2,269.4 L190,269.3 L192.8,269.2 L195.5,269.1 L198.2,269 L201,268.9 L203.8,268.9 L206.5,268.8 L209.2,268.7 L212,268.6 L214.8,268.5 L217.5,268.4 L220.2,268.4 L223,268.3 L225.8,268.2 L228.5,268.1 L231.2,268 L234,268 L236.8,267.9 L239.5,267.8 L242.2,267.8 L245,267.7 L247.8,267.6 L250.5,267.6 L253.2,267.5 L256,267.4 L258.8,267.4 L261.5,267.3 L264.2,267.2 L267,267.2 L269.8,267.1 L272.5,267.1 L275.2,267 L278,266.9 L280.8,266.9 L283.5,266.8 L286.2,266.8 L289,266.7 L291.8,266.7 L294.5,266.6 L297.2,266.6 L300,266.5 L302.8,266.5 L305.5,266.4 L308.2,266.4 L311,266.3 L313.8,266.3 L316.5,266.2 L319.2,266.2 L322,266.1 L324.8,266.1 L327.5,266 L330.2,266 L333,265.9 L335.8,265.9 L338.5,265.8 L341.2,265.8 L344,265.8 L346.8,265.7 L349.5,265.7 L352.2,265.6 L355,265.6 L357.8,265.6 L360.5,265.5 L363.2,265.5 L366,265.4 L368.8,265.4 L371.5,265.4 L374.2,265.3 L377,265.3 L379.8,265.3 L382.5,265.2 L385.2,265.2 L388,265.2 L390.8,265.1 L393.5,265.1 L396.2,265.1 L399,265 L401.8,265 L404.5,265 L407.2,264.9 L410,264.9 L412.8,264.9 L415.5,264.8 L418.2,264.8 L421,264.8 L423.8,264.8 L426.5,264.7 L429.2,264.7 L432,264.7 L434.8,264.6 L437.5,264.6 L440.2,264.6 L443,264.6 L445.8,264.5 L448.5,264.5 L451.2,264.5 L454,264.5 L456.8,264.4 L459.5,264.4 L462.2,264.4 L465,264.4 L467.8,264.3 L470.5,264.3 L473.2,264.3 L476,264.3 L478.8,264.2 L481.5,264.2 L484.2,264.2 L487,264.2 L489.8,264.1 L492.5,264.1 L495.2,264.1 L498,264.1 L500.8,264 L503.5,264 L506.2,264 L509,264 L511.8,264 L514.5,263.9 L517.2,263.9 L520,263.9" class="fig-curve"/>
+<path d="M80,230 L82.8,230.4 L85.5,230.7 L88.2,231.1 L91,231.5 L93.8,231.8 L96.5,232.2 L99.2,232.5 L102,232.9 L104.8,233.2 L107.5,233.6 L110.2,233.9 L113,234.2 L115.8,234.6 L118.5,234.9 L121.2,235.2 L124,235.5 L126.8,235.9 L129.5,236.2 L132.2,236.5 L135,236.8 L137.8,237.1 L140.5,237.4 L143.2,237.7 L146,238 L148.8,238.3 L151.5,238.5 L154.2,238.8 L157,239.1 L159.8,239.4 L162.5,239.6 L165.2,239.9 L168,240.2 L170.8,240.4 L173.5,240.7 L176.2,240.9 L179,241.2 L181.8,241.4 L184.5,241.7 L187.2,241.9 L190,242.1 L192.8,242.4 L195.5,242.6 L198.2,242.8 L201,243 L203.8,243.2 L206.5,243.5 L209.2,243.7 L212,243.9 L214.8,244.1 L217.5,244.3 L220.2,244.5 L223,244.7 L225.8,244.8 L228.5,245 L231.2,245.2 L234,245.4 L236.8,245.6 L239.5,245.7 L242.2,245.9 L245,246.1 L247.8,246.2 L250.5,246.4 L253.2,246.6 L256,246.7 L258.8,246.9 L261.5,247 L264.2,247.2 L267,247.3 L269.8,247.5 L272.5,247.6 L275.2,247.7 L278,247.9 L280.8,248 L283.5,248.1 L286.2,248.3 L289,248.4 L291.8,248.5 L294.5,248.7 L297.2,248.8 L300,248.9 L302.8,249 L305.5,249.1 L308.2,249.2 L311,249.4 L313.8,249.5 L316.5,249.6 L319.2,249.7 L322,249.8 L324.8,249.9 L327.5,250 L330.2,250.1 L333,250.2 L335.8,250.3 L338.5,250.4 L341.2,250.5 L344,250.6 L346.8,250.6 L349.5,250.7 L352.2,250.8 L355,250.9 L357.8,251 L360.5,251.1 L363.2,251.1 L366,251.2 L368.8,251.3 L371.5,251.4 L374.2,251.5 L377,251.5 L379.8,251.6 L382.5,251.7 L385.2,251.8 L388,251.8 L390.8,251.9 L393.5,252 L396.2,252 L399,252.1 L401.8,252.2 L404.5,252.2 L407.2,252.3 L410,252.4 L412.8,252.4 L415.5,252.5 L418.2,252.5 L421,252.6 L423.8,252.7 L426.5,252.7 L429.2,252.8 L432,252.8 L434.8,252.9 L437.5,252.9 L440.2,253 L443,253 L445.8,253.1 L448.5,253.1 L451.2,253.2 L454,253.2 L456.8,253.3 L459.5,253.3 L462.2,253.4 L465,253.4 L467.8,253.5 L470.5,253.5 L473.2,253.6 L476,253.6 L478.8,253.7 L481.5,253.7 L484.2,253.7 L487,253.8 L489.8,253.8 L492.5,253.9 L495.2,253.9 L498,254 L500.8,254 L503.5,254 L506.2,254.1 L509,254.1 L511.8,254.1 L514.5,254.2 L517.2,254.2 L520,254.3" class="fig-curve"/>
+<path d="M80,274.7 L82.8,274.9 L85.5,275.1 L88.2,275.3 L91,275.5 L93.8,275.7 L96.5,275.9 L99.2,276.1 L102,276.3 L104.8,276.5 L107.5,276.7 L110.2,277 L113,277.2 L115.8,277.4 L118.5,277.6 L121.2,277.9 L124,278.1 L126.8,278.3 L129.5,278.6 L132.2,278.8 L135,279.1 L137.8,279.4 L140.5,279.6 L143.2,279.9 L146,280.1 L148.8,280.4 L151.5,280.7 L154.2,281 L157,281.3 L159.8,281.5 L162.5,281.8 L165.2,282.1 L168,282.4 L170.8,282.7 L173.5,283 L176.2,283.3 L179,283.6 L181.8,284 L184.5,284.3 L187.2,284.6 L190,284.9 L192.8,285.3 L195.5,285.6 L198.2,285.9 L201,286.3 L203.8,286.6 L206.5,287 L209.2,287.3 L212,287.7 L214.8,288 L217.5,288.4 L220.2,288.7 L223,289.1 L225.8,289.5 L228.5,289.9 L231.2,290.2 L234,290.6 L236.8,291 L239.5,291.4 L242.2,291.8 L245,292.2 L247.8,292.6 L250.5,292.9 L253.2,293.3 L256,293.8 L258.8,294.2 L261.5,294.6 L264.2,295 L267,295.4 L269.8,295.8 L272.5,296.2 L275.2,296.6 L278,297.1 L280.8,297.5 L283.5,297.9 L286.2,298.3 L289,298.8 L291.8,299.2 L294.5,299.6 L297.2,300.1 L300,300.5 L302.8,301 L305.5,301.4 L308.2,301.8 L311,302.3 L313.8,302.7 L316.5,303.2 L319.2,303.6 L322,304.1 L324.8,304.6 L327.5,305 L330.2,305.5 L333,305.9 L335.8,306.4 L338.5,306.9 L341.2,307.3 L344,307.8 L346.8,308.3 L349.5,308.7 L352.2,309.2 L355,309.7 L357.8,310.2 L360.5,310.6 L363.2,311.1 L366,311.6 L368.8,312.1 L371.5,312.6 L374.2,313 L377,313.5 L379.8,314 L382.5,314.5 L385.2,315 L388,315.5 L390.8,316 L393.5,316.4 L396.2,316.9 L399,317.4 L401.8,317.9 L404.5,318.4 L407.2,318.9 L410,319.4 L412.8,319.9 L415.5,320.4 L418.2,320.9 L421,321.4 L423.8,321.9 L426.5,322.4 L429.2,322.9 L432,323.4 L434.8,323.9 L437.5,324.4 L440.2,324.9 L443,325.4 L445.8,325.9 L448.5,326.4 L451.2,327 L454,327.5 L456.8,328 L459.5,328.5 L462.2,329 L465,329.5 L467.8,330 L470.5,330.5 L473.2,331 L476,331.6 L478.8,332.1 L481.5,332.6 L484.2,333.1 L487,333.6 L489.8,334.1 L492.5,334.7 L495.2,335.2 L498,335.7 L500.8,336.2 L503.5,336.7 L506.2,337.3 L509,337.8 L511.8,338.3 L514.5,338.8 L517.2,339.3 L520,339.9" class="fig-curve"/>
+<text x="526" y="55.2" class="fig-label fig-small">ε₃</text>
+<text x="526" y="155.4" class="fig-label fig-small">ε₅</text>
+<text x="526" y="189.3" class="fig-label fig-small">ε₁</text>
+<text x="526" y="258.3" class="fig-label fig-small">ε₇</text>
+<text x="526" y="270.3" class="fig-label fig-small">ε₆</text>
+<text x="526" y="343.9" class="fig-label fig-small">ε₈</text>
+<text x="526" y="368.1" class="fig-label fig-small">ε₂</text>
+<text x="526" y="412.8" class="fig-label fig-small">ε₄</text>
+<text x="113" y="46" text-anchor="middle" class="fig-label fig-small">fraco</text>
+<text x="245" y="46" text-anchor="middle" class="fig-label fig-small">intermediário</text>
+<text x="454" y="46" text-anchor="middle" class="fig-label fig-small">forte</text>
+</svg>
+                    <figcaption><strong>Figura 7.11.</strong> Separação de Zeeman dos estados $n = 2$ do hidrogênio nos regimes de campo
+                        fraco, intermediário e forte, calculada pela Tabela 7.2: $\epsilon_k - E_2$ em unidades de $\gamma$ contra
+                        $\beta/\gamma = \mu_BB_{\text{ext}}/\gamma$. Em campo nulo há dois níveis, $-\gamma$ ($j = 3/2$) e $-5\gamma$
+                        ($j = 1/2$); em campo forte, as oito curvas se agrupam em cinco famílias de inclinações $2, 1, 0, -1, -2$.</figcaption>
+                </figure>
+
+                <p>Os limites conferem com as duas subseções anteriores:</p>
+                <ul>
+                    <li>no limite de campo nulo ($\beta = 0$), as energias se reduzem aos valores da estrutura fina, $E_2 - 5\gamma$ e
+                        $E_2 - \gamma$;</li>
+                    <li>em campo fraco ($\beta \ll \gamma$), reproduzem as retas $E_{2j} + \mu_Bg_JB_{\text{ext}}m_j$ da Eq. (7.79)
+                        (<a href="#exr-7-4-4">Exercício 7.4-4</a>);</li>
+                    <li>em campo forte ($\beta \gg \gamma$), recuperamos as Eqs. (7.83) e (7.86) e a convergência para cinco níveis
+                        distintos de energia, um para cada valor de $m_l + 2m_s$ (<a href="#exr-7-4-5">Exercício 7.4-5</a>).</li>
+                </ul>
+
+                <h2 id="conexao">Conexão com o experimento</h2>
+
+                <p>A escala do efeito Zeeman é o magnéton de Bohr, $\mu_B = 5{,}788\times10^{-5}$ eV/T (Eq. 7.80): num campo de laboratório
+                    de 1 T, os deslocamentos são de alguns centésimos de milésimo de eV, a mesma ordem da estrutura fina dos níveis
+                    $n = 2$. Por isso os três regimes do Griffiths são todos acessíveis no laboratório, e a pergunta "fraco ou forte?"
+                    tem resposta numérica: para $n = 2$, a fronteira fica em torno de alguns décimos de tesla (<a href="#exr-7-4-3">Exercício 7.4-3</a>).</p>
+
+                <p>Cada regime deixa uma assinatura que se mede. No campo fraco, cada nível $E_{nj}$ se abre em $2j + 1$ níveis igualmente
+                    espaçados, e o espaçamento $\mu_Bg_JB_{\text{ext}}$ dá o fator de Landé: medir $g_J$ é identificar $j$ e $l$ do nível
+                    (por exemplo, $2P_{1/2}$ e $2P_{3/2}$ têm $g_J = 2/3$ e $4/3$). No campo forte, o regime que se chama efeito
+                    Paschen–Back, as linhas se reagrupam em cinco níveis igualmente espaçados para $n = 2$, um para cada valor de
+                    $m_l + 2m_s$, como prevê a Eq. (7.83), com a estrutura fina aparecendo só como um pequeno desdobramento de cada um.
+                    E no meio do caminho as curvas da Figura 7.11 se curvam, sem se cruzar quando têm o mesmo $m_j$: é a assinatura
+                    direta de que os estados bons mudam de $|n\,l\,j\,m_j\rangle$ para $|n\,l\,m_l\,m_s\rangle$.</p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p id="exr-7-4-1"><strong>Exercício 7.4-1.</strong> Calcule o fator de Landé dos níveis $2S_{1/2}$, $2P_{1/2}$ e
+                    $2P_{3/2}$ e dê as inclinações (em unidades de $\mu_B$) das oito retas de campo fraco dos estados $n = 2$.</p>
+                <p><em>Solução.</em> Pela fórmula $g_J = (2j + 1)/(2l + 1)$: $2S_{1/2}$ ($l = 0$, $j = 1/2$) tem $g_J = 2/1 = 2$;
+                    $2P_{1/2}$ ($l = 1$, $j = 1/2$) tem $g_J = 2/3$; $2P_{3/2}$ ($l = 1$, $j = 3/2$) tem $g_J = 4/3$. A fórmula geral de
+                    (7.78) dá o mesmo: para $2P_{3/2}$, $1 + \frac{15/4 - 2 + 3/4}{2\cdot15/4} = 1 + \frac13 = \frac43$. As inclinações
+                    $g_Jm_j$ são $\pm1$ para $2S_{1/2}$, $\pm\frac13$ para $2P_{1/2}$ e $\pm2$, $\pm\frac23$ para $2P_{3/2}$: oito retas, que
+                    partem de dois pontos ($E_2 - 5\gamma$ para $j = 1/2$ e $E_2 - \gamma$ para $j = 3/2$).</p>
+
+                <p id="exr-7-4-2"><strong>Exercício 7.4-2.</strong> Num campo de 1 T, qual é a separação de Zeeman do estado
+                    fundamental do hidrogênio, em eV e em frequência? Compare com o deslocamento de estrutura fina desse estado. A
+                    Eq. (7.81) continua válida se o campo for muito mais forte?</p>
+                <p><em>Solução.</em> Pela Eq. (7.81), a separação entre $m_j = \pm1/2$ é
+                    $2\mu_BB_{\text{ext}} = 2\times5{,}788\times10^{-5} = 1{,}158\times10^{-4}$ eV, o que corresponde a
+                    $\nu = \Delta E/h = 1{,}158\times10^{-4}/4{,}136\times10^{-15} \approx 2{,}80\times10^{10}$ Hz. O deslocamento de
+                    estrutura fina do estado fundamental é $-13{,}6\,\alpha^2/4 = -1{,}81\times10^{-4}$ eV: da mesma ordem. Mas isso não
+                    torna o campo "intermediário" para este estado: com $l = 0$ só há $j = 1/2$, os estados bons dos dois regimes coincidem
+                    (<a href="#obs-campo-forte-l-zero">Observação (O caso $l = 0$)</a>), e a Eq. (7.81) vale para qualquer campo, em
+                    primeira ordem.</p>
+
+                <p id="exr-7-4-3"><strong>Exercício 7.4-3.</strong> Para $n = 2$, estime o campo externo em que o efeito Zeeman fica
+                    comparável à estrutura fina, comparando $\beta = \mu_BB_{\text{ext}}$ com $\gamma$ e com a separação de campo nulo
+                    entre $j = 3/2$ e $j = 1/2$.</p>
+                <p><em>Solução.</em> $\gamma = (\alpha/8)^2\,13{,}6\ \text{eV} = 13{,}6/(64\times137{,}036^2) = 1{,}13\times10^{-5}$ eV.
+                    $\beta = \gamma$ quando $B_{\text{ext}} = \gamma/\mu_B = 1{,}13\times10^{-5}/5{,}788\times10^{-5} \approx 0{,}20$ T. A
+                    separação de campo nulo é $-\gamma - (-5\gamma) = 4\gamma$, e $\beta = 4\gamma$ em $B_{\text{ext}} \approx 0{,}78$ T. Para
+                    $n = 2$, portanto, "campo fraco" significa $B_{\text{ext}}$ bem abaixo de $0{,}2$ T e "campo forte", bem acima de $1$ T;
+                    o eixo da Figura 7.11, que vai até $\beta = 8\gamma$, cobre de $0$ a cerca de $1{,}6$ T.</p>
+
+                <p id="exr-7-4-4"><strong>Exercício 7.4-4.</strong> Mostre que, em campo fraco ($\beta \ll \gamma$), as energias
+                    $\epsilon_5$ a $\epsilon_8$ da Tabela 7.2 se reduzem, em primeira ordem em $\beta$, às retas da Eq. (7.79).</p>
+                <p><em>Solução.</em> Para $\beta \ll \gamma$,
+                    $\sqrt{4\gamma^2 \pm \frac23\gamma\beta + \frac{\beta^2}{4}} = 2\gamma\sqrt{1 \pm \frac{\beta}{6\gamma} + \cdots} \approx 2\gamma \pm \frac\beta6$.
+                    Então</p>
+                <p>$$ \begin{aligned}
+                    \epsilon_5 &\approx E_2 - 3\gamma + \tfrac\beta2 + 2\gamma + \tfrac\beta6 = E_2 - \gamma + \tfrac23\beta, &
+                    \epsilon_6 &\approx E_2 - 5\gamma + \tfrac13\beta, \\
+                    \epsilon_7 &\approx E_2 - 3\gamma - \tfrac\beta2 + 2\gamma - \tfrac\beta6 = E_2 - \gamma - \tfrac23\beta, &
+                    \epsilon_8 &\approx E_2 - 5\gamma - \tfrac13\beta.
+                    \end{aligned} $$</p>
+                <p>São exatamente $E_{2j} + \mu_Bg_JB_{\text{ext}}m_j$: $\epsilon_5$ e $\epsilon_7$ são $2P_{3/2}$ com $m_j = \pm\frac12$
+                    ($g_Jm_j = \pm\frac23$), e $\epsilon_6$ e $\epsilon_8$ são $2P_{1/2}$ com $m_j = \pm\frac12$ ($g_Jm_j = \pm\frac13$).
+                    As outras quatro já são retas, com inclinações $\pm1$ ($2S_{1/2}$) e $\pm2$ ($2P_{3/2}$, $m_j = \pm\frac32$).</p>
+
+                <p id="exr-7-4-5"><strong>Exercício 7.4-5.</strong> Mostre que, em campo forte ($\beta \gg \gamma$), as energias da
+                    Tabela 7.2 tendem às das Eqs. (7.83) e (7.86). Se a estrutura fina for desprezada, quantos níveis distintos sobram e
+                    qual é a degenerescência de cada um?</p>
+                <p><em>Solução.</em> Para $\beta \gg \gamma$,
+                    $\sqrt{\frac{\beta^2}{4} \pm \frac23\gamma\beta + 4\gamma^2} = \frac\beta2\sqrt{1 \pm \frac{8\gamma}{3\beta} + \cdots} \approx \frac\beta2 \pm \frac23\gamma$,
+                    e</p>
+                <p>$$ \epsilon_5 \approx E_2 + \beta - \tfrac73\gamma, \qquad \epsilon_6 \approx \epsilon_7 \approx E_2 - \tfrac{11}{3}\gamma, \qquad \epsilon_8 \approx E_2 - \beta - \tfrac73\gamma. $$</p>
+                <p>Do lado do campo forte, para $n = 2$ temos $\frac{13{,}6\ \text{eV}}{8}\alpha^2 = 8\gamma$, e a Eq. (7.86) com $l = 1$
+                    dá $E_{\text{fs}}^1 = 8\gamma\left[\frac38 - \frac{2 - m_lm_s}{3}\right]$: $-\gamma$ para $m_lm_s = \frac12$,
+                    $-\frac73\gamma$ para $m_lm_s = 0$ e $-\frac{11}{3}\gamma$ para $m_lm_s = -\frac12$; com $l = 0$ (colchete igual a 1),
+                    $-5\gamma$. Com a parte de Zeeman $\beta(m_l + 2m_s)$, isso reproduz as oito energias: $\epsilon_3$, $\epsilon_4$
+                    ($m_l = \pm1$, $m_s = \pm\frac12$), $\epsilon_5$, $\epsilon_8$ ($m_l = 0$), $\epsilon_6$, $\epsilon_7$ ($m_l + 2m_s = 0$)
+                    e $\epsilon_1$, $\epsilon_2$ ($l = 0$). Sem a estrutura fina, só resta $\beta(m_l + 2m_s)$, com $m_l + 2m_s = 2, 1, 0,
+                    -1, -2$: cinco níveis, com degenerescências $1, 2, 2, 2, 1$ (total $8$).</p>
+
+                <p id="exr-7-4-6"><strong>Exercício 7.4-6.</strong> Explique por que os estados $|n\,l\,m_l\,m_s\rangle$ não são bons no
+                    campo fraco e por que os estados $|n\,l\,j\,m_j\rangle$ não são bons no campo forte.</p>
+                <p><em>Solução.</em> No campo fraco, a perturbação dominante (a que define os estados não perturbados) é
+                    $H'_{\text{fs}}$, que contém $\mathbf L\cdot\mathbf S$; como $[\mathbf L\cdot\mathbf S, L_z] \ne 0$ e
+                    $[\mathbf L\cdot\mathbf S, S_z] \ne 0$ (<a href="[03] - A Estrutura Fina do Hidrogênio.html#exr-7-3-6">Exercício 7.3-6</a>), ela mistura estados de mesmo $m_j$ e $(m_l, m_s)$ diferentes, e
+                    seus autoestados são os $|n\,l\,j\,m_j\rangle$. No campo forte, a perturbação dominante é
+                    $H'_Z \propto L_z + 2S_z = J_z + S_z$, e $S_z$ não comuta com $J^2$: ele liga $j = l + \frac12$ a $j = l - \frac12$ com o
+                    mesmo $m_j$, como mostra o elemento $\langle\psi_5|S_z|\psi_6\rangle = -\frac{\sqrt2}{3}\hbar \ne 0$. Em cada regime, os
+                    estados bons são os que diagonalizam o termo dominante; no meio, nenhum dos dois conjuntos serve, e é preciso
+                    diagonalizar a soma.</p>
+
+                <p id="exr-7-4-7"><strong>Exercício 7.4-7.</strong> Mostre que a soma das oito energias da Tabela 7.2 não depende de
+                    $B_{\text{ext}}$ e interprete.</p>
+                <p><em>Solução.</em> A soma dos autovalores de $\mathsf W$ é o seu traço (<a href="[02] - Teoria de Perturbação Degenerada.html#exr-7-2-6">Exercício 7.2-6</a>). Pela matriz $-\mathsf W$, o traço
+                    é $(5 + 5 + 1 + 1 + 1 + 5 + 1 + 5)\gamma = 24\gamma$, porque os termos em $\beta$ se cancelam aos pares; logo
+                    $\sum_k\epsilon_k = 8E_2 - 24\gamma$. Também dá para ver direto na tabela: os termos em $\beta$ e as raízes se cancelam
+                    aos pares. Fisicamente, $\mathrm{tr}(L_z + 2S_z) = 0$ no espaço dos oito estados (para cada estado com $m_l + 2m_s$ há
+                    outro com o valor oposto), e o campo apenas redistribui os níveis em torno do "centro de gravidade"
+                    $E_2 - 3\gamma$, que já era o da estrutura fina: $(4\times(-5\gamma) + 4\times(-\gamma))/8 = -3\gamma$.</p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <ul>
+                    <li>O hamiltoniano de Zeeman $H'_Z = \frac{e}{2m}(\mathbf L + 2\mathbf S)\cdot\mathbf B_{\text{ext}}$ (Eq. 7.73) e o
+                        critério dos três regimes: comparar $B_{\text{ext}}$ com o campo interno.</li>
+                    <li>O campo fraco: estados bons $|n\,l\,j\,m_j\rangle$, o fator de Landé $g_J$ (provado com Clebsch–Gordan, e exato pelo
+                        teorema de Wigner–Eckart) e $E_Z^1 = \mu_Bg_JB_{\text{ext}}m_j$ (Eq. 7.79).</li>
+                    <li>O campo forte: estados bons $|n\,l\,m_l\,m_s\rangle$, as energias (7.83) e a estrutura fina como perturbação
+                        (Eq. 7.86), com o caso $l = 0$ resolvido.</li>
+                    <li>O campo intermediário para $n = 2$: a matriz $\mathsf W$ deduzida elemento a elemento, diagonal por blocos porque
+                        $m_j$ se conserva, os autovalores (7.88), a Tabela 7.2 e as curvas da Figura 7.11, que ligam os dois limites.</li>
+                </ul>
+                <p>Falta a última e menor das correções da Tabela 7.1 que o Griffiths trata: a interação entre os momentos magnéticos do
+                    elétron e do próton, que separa o estado fundamental e produz a famosa linha de 21 cm:
+                    <a href="[05] - A Estrutura Hiperfina do Hidrogênio.html">7.5 A Estrutura Hiperfina do Hidrogênio</a>.</p>
+
+                <hr class="footnotes-sep">
+                <section class="footnotes">
+                    <ol>
+                        <li id="fn:1">
+                            <p>Isto está correto em primeira ordem em $B$. Estamos ignorando um termo de ordem $B^2$ no hamiltoniano (o
+                                resultado exato foi calculado num problema do capítulo 4). Além disso, o momento magnético orbital
+                                (Eq. 7.72) é proporcional ao momento angular <em>mecânico</em>, e não ao canônico. Esses termos desprezados
+                                dão correções de ordem $B^2$, comparáveis às correções de segunda ordem de $H'_Z$; como estamos trabalhando
+                                em primeira ordem, podemos ignorá-los aqui. (Nota do livro.)<a href="#fnref:1" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:2">
+                            <p>A razão giromagnética do movimento <em>orbital</em> é exatamente o valor clássico, $q/2m$: só para o
+                                <em>spin</em> há um fator 2 "extra". (Nota do livro.)<a href="#fnref:2" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:3">
+                            <p>No caso de um único elétron, em que $j = l \pm 1/2$, $g_J = (2j + 1)/(2l + 1)$; provamos isso logo abaixo.
+                                (Nota do livro.)<a href="#fnref:3" class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:4">
+                            <p>Aquele exemplo tratava especificamente do momento angular orbital, mas o mesmo argumento vale para o momento
+                                angular total. (Nota do livro.)<a href="#fnref:4" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:5">
+                            <p>Neste regime, o efeito Zeeman também é conhecido como <strong>efeito Paschen–Back</strong>. (Nota do
+                                livro.)<a href="#fnref:5" class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:6">
+                            <p>Também se pode usar os estados $l$, $m_l$, $m_s$, se preferir: isso facilita os elementos de matriz de
+                                $H'_Z$, mas dificulta os de $H'_{\text{fs}}$; a matriz $\mathsf W$ fica mais complicada, mas seus
+                                autovalores, que não dependem da base, são os mesmos. (Nota do livro.)<a href="#fnref:6"
+                                    class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:7">
+                            <p>Não confunda a notação $|l\,s\,m_l\,m_s\rangle$ das tabelas de Clebsch–Gordan com $|n\,l\,j\,m_j\rangle$
+                                (campo fraco) ou $|n\,l\,m_l\,m_s\rangle$ (campo forte); aqui $n$ é sempre $2$ e $s$ é, claro, sempre
+                                $1/2$. (Nota do livro.)<a href="#fnref:7" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                    </ol>
+                </section>
+
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="toc-container">
+                <h4>Nesta página</h4>
+                <ul>
+                    <li><a href="#efeito-zeeman">O Efeito Zeeman</a></li>
+                    <li><a href="#hamiltoniano-zeeman">O hamiltoniano de Zeeman</a></li>
+                    <li><a href="#campo-fraco">Efeito Zeeman de campo fraco</a></li>
+                    <li><a href="#campo-forte">Efeito Zeeman de campo forte</a></li>
+                    <li>
+                        <a href="#campo-intermediario">Efeito Zeeman de campo intermediário</a>
+                        <ul>
+                            <li><a href="#base-n2">A base</a></li>
+                            <li><a href="#matriz-w-zeeman">A matriz W</a></li>
+                            <li><a href="#autovalores-n2">Os autovalores</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#conexao">Conexão com o experimento</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Search Modal Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-modal">
+            <div class="search-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search documentation..." autocomplete="off">
+            </div>
+            <div class="search-results" id="search-results"></div>
+            <div class="search-footer">
+                <div class="search-commands">
+                    <span class="cmd-key">↑</span>
+                    <span class="cmd-key">↓</span>
+                    <span class="cmd-label">navigate</span>
+                    <span class="cmd-key">↵</span>
+                    <span class="cmd-label">select</span>
+                </div>
+                <div class="search-commands">
+                    <span class="cmd-key">esc</span>
+                    <span class="cmd-label">close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../../../assets/js/class-lecture.js"></script>
+</body>
+
+</html>

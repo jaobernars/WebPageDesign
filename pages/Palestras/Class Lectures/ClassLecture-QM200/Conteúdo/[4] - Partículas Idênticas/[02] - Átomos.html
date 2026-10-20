@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Átomos | Mecânica Quântica II | The Journal of a Physicist</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../../../assets/images/Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../../../assets/images/Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../../../assets/images/Favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="../../../../../../assets/images/Favicon/favicon.ico">
+    <link rel="stylesheet" href="../../../../../../assets/css/class-lecture.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                        <line x1="9" x2="9" y1="3" y2="21"></line>
+                    </svg>
+                </button>
+                <button id="theme-toggle" class="sidebar-toggle" aria-label="Toggle Theme">
+                    <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="breadcrumbs-header">
+                    <a href="../../../../../../Páginas Principais/Lectures.html" class="breadcrumb-link">← Lectures</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <a href="../../index.html" class="breadcrumb-link active">Mecânica Quântica II</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-current" class="breadcrumb-link active">Átomos</span>
+                </div>
+            </div>
+            <nav class="top-nav">
+                <a href="../../../../../../Páginas Principais/Lectures.html">Lectures</a>
+                <a href="../../../../../../index.html">Home</a>
+            </nav>
+        </div>
+
+        <script>
+            MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']]
+                }
+            };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    </header>
+
+    <div class="main-layout">
+        <aside class="left-sidebar" id="left-sidebar">
+            <div class="sidebar-content">
+
+                <button class="search-trigger" id="search-trigger">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                    </svg>
+                    <span>Search docs...</span>
+                </button>
+
+                <div class="sidebar-group">
+                    <h3>Início</h3>
+                    <ul>
+                        <li><a href="../../index.html">Overview</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Partículas Idênticas</h3>
+                    <ul>
+                        <li><a href="[01] - Sistemas de Duas Partículas.html">5.1 Sistemas de Duas Partículas</a></li>
+                        <li><a href="[02] - Átomos.html" class="active">5.2 Átomos</a></li>
+                        <li><a href="[03] - Sólidos.html">5.3 Sólidos</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Simetrias e Leis de Conservação</h3>
+                    <ul>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[01] - Introdução.html">6.1 Introdução</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[02] - O Operador de Translação.html">6.2 O Operador de Translação</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[03] - Leis de Conservação.html">6.3 Leis de Conservação</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[04] - Paridade.html">6.4 Paridade</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[05] - Simetrias de Rotação.html">6.5 Simetrias de Rotação</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[06] - Degenerescência.html">6.6 Degenerescência</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[07] - Regras de Seleção Rotacionais.html">6.7 Regras de Seleção Rotacionais</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[08] - Translações no Tempo.html">6.8 Translações no Tempo</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Teoria de Perturbação Independente do Tempo</h3>
+                    <ul>
+                        <li><a href="../[6] - Teoria de Perturbação Independente do Tempo/[01] - Teoria de Perturbação Não Degenerada.html">7.1 Teoria de Perturbação Não Degenerada</a></li>
+                        <li><a href="../[6] - Teoria de Perturbação Independente do Tempo/[02] - Teoria de Perturbação Degenerada.html">7.2 Teoria de Perturbação Degenerada</a></li>
+                        <li><a href="../[6] - Teoria de Perturbação Independente do Tempo/[03] - A Estrutura Fina do Hidrogênio.html">7.3 A Estrutura Fina do Hidrogênio</a></li>
+                        <li><a href="../[6] - Teoria de Perturbação Independente do Tempo/[04] - O Efeito Zeeman.html">7.4 O Efeito Zeeman</a></li>
+                        <li><a href="../[6] - Teoria de Perturbação Independente do Tempo/[05] - A Estrutura Hiperfina do Hidrogênio.html">7.5 A Estrutura Hiperfina do Hidrogênio</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>O Princípio Variacional</h3>
+                    <ul>
+                        <li><a href="../[7] - O Princípio Variacional/[01] - Teoria.html">8.1 Teoria</a></li>
+                        <li><a href="../[7] - O Princípio Variacional/[02] - O Estado Fundamental do Hélio.html">8.2 O Estado Fundamental do Hélio</a></li>
+                        <li><a href="../[7] - O Princípio Variacional/[03] - O Íon da Molécula de Hidrogênio.html">8.3 O Íon da Molécula de Hidrogênio</a></li>
+                        <li><a href="../[7] - O Princípio Variacional/[04] - A Molécula de Hidrogênio.html">8.4 A Molécula de Hidrogênio</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>A Aproximação WKB</h3>
+                    <ul>
+                        <li><a href="../[8] - A Aproximação WKB/[01] - A Região “Clássica”.html">9.1 A Região “Clássica”</a></li>
+                        <li><a href="../[8] - A Aproximação WKB/[02] - Tunelamento.html">9.2 Tunelamento</a></li>
+                        <li><a href="../[8] - A Aproximação WKB/[03] - As Fórmulas de Conexão.html">9.3 As Fórmulas de Conexão</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="prose">
+
+                <h1 id="atomos">Átomos</h1>
+                <p class="lead">O princípio de simetrização aplicado aos elétrons de um átomo: o hélio, a Tabela
+                    Periódica e a notação espectroscópica (Griffiths, Seção 5.2).</p>
+
+                <p>
+                    Um átomo neutro de número atômico $Z$ é formado por um núcleo pesado, de carga $Ze$, cercado por
+                    $Z$ elétrons, cada um de massa $m$ e carga $-e$. Tratando o núcleo como estacionário,<sup
+                        id="fnref:1"><a href="#fn:1" class="footnote-ref">1</a></sup> o Hamiltoniano do sistema é
+                </p>
+
+                <p>
+                    $$ \hat{H} = \sum_{j=1}^{Z} \left\{ -\frac{\hbar^2}{2m}\nabla_j^2 -
+                    \left(\frac{1}{4\pi\epsilon_0}\right)\frac{Ze^2}{r_j} \right\}
+                    + \frac{1}{2}\left(\frac{1}{4\pi\epsilon_0}\right)\sum_{j \neq k}^{Z}
+                    \frac{e^2}{|\mathbf{r}_j - \mathbf{r}_k|}. \tag{5.36} $$
+                </p>
+
+                <p>
+                    O termo entre chaves representa a energia cinética mais a energia potencial do $j$-ésimo elétron no
+                    campo elétrico do núcleo. A segunda soma — que percorre todos os valores de $j$ e $k$, exceto $j =
+                    k$ — é a energia potencial associada à repulsão mútua dos elétrons; o fator $1/2$ corrige o fato de
+                    que a soma conta cada par duas vezes. O problema consiste em resolver a Equação de Schrödinger
+                </p>
+
+                <p>
+                    $$ \hat{H}\psi = E\psi \tag{5.37} $$
+                </p>
+
+                <p>
+                    para a função de onda $\psi(\mathbf{r}_1, \mathbf{r}_2, \dots, \mathbf{r}_Z)$.<sup id="fnref:2"><a
+                            href="#fn:2" class="footnote-ref">2</a></sup> Como os elétrons são férmions idênticos, nem
+                    toda solução serve: só são permitidas as que satisfazem a exigência de antissimetrização do tópico
+                    anterior, <a href="[01] - Sistemas de Duas Partículas.html">Sistema de Duas partículas</a> (o Problema
+                    5.12 de Griffiths mostra como construir, a partir de uma solução qualquer, as combinações
+                    completamente simétrica e antissimétrica com a mesma energia).
+                </p>
+
+                <p>
+                    Infelizmente, a Equação 5.37 não pode ser resolvida exatamente (ou, pelo menos, não foi até hoje),
+                    exceto no caso mais simples, $Z = 1$ (hidrogênio). Na prática, é preciso recorrer a métodos de
+                    aproximação elaborados. Aqui vamos apenas esboçar as características qualitativas das soluções,
+                    obtidas <strong>desprezando completamente o termo de repulsão entre os elétrons</strong>.
+                    Estudaremos primeiro os estados fundamental e excitados do hélio e, em seguida, os estados
+                    fundamentais dos átomos mais pesados.
+                </p>
+
+                <h2 id="helio">O Átomo de Hélio</h2>
+
+                <p>
+                    Depois do hidrogênio, o átomo mais simples é o hélio ($Z = 2$). Seu Hamiltoniano,
+                </p>
+
+                <p>
+                    $$
+                    \hat{H} = \left\{ -\frac{\hbar^2}{2m}\nabla_1^2 - \frac{1}{4\pi\epsilon_0}\frac{2e^2}{r_1} \right\}
+                    + \left\{ -\frac{\hbar^2}{2m}\nabla_2^2 - \frac{1}{4\pi\epsilon_0}\frac{2e^2}{r_2} \right\}
+                    + \frac{1}{4\pi\epsilon_0}\frac{e^2}{|\mathbf{r}_1 - \mathbf{r}_2|}, \tag{5.38}
+                    $$
+                </p>
+
+                <p>
+                    é formado por dois Hamiltonianos hidrogenoides (com carga nuclear $2e$), um para cada elétron,
+                    mais um termo final que descreve a repulsão entre os dois elétrons. É esse último termo que causa
+                    todas as dificuldades.
+                </p>
+
+                <h3 id="helio-ordem-zero">Desprezando a Repulsão</h3>
+
+                <p>
+                    Se simplesmente ignorarmos a repulsão, a Equação de Schrödinger se separa, e as soluções podem ser
+                    escritas como produtos de funções de onda do hidrogênio:
+                </p>
+
+                <p>
+                    $$ \psi(\mathbf{r}_1, \mathbf{r}_2) = \psi_{n\ell m}(\mathbf{r}_1)\, \psi_{n'\ell'm'}(\mathbf{r}_2),
+                    \tag{5.39} $$
+                </p>
+
+                <p>
+                    só que com a <strong>metade do raio de Bohr</strong> e com <strong>quatro vezes as energias de
+                        Bohr</strong> (a carga nuclear passou de $e$ para $2e$). A energia total fica
+                </p>
+
+                <p>
+                    $$ E = 4(E_n + E_{n'}), \tag{5.40} $$
+                </p>
+
+                <p>
+                    com $E_n = -13{,}6/n^2$ eV.
+                </p>
+
+                <h3 id="helio-fundamental">O Estado Fundamental</h3>
+
+                <p>
+                    No estado fundamental, os dois elétrons ocupam o orbital $\psi_{100}$:
+                </p>
+
+                <p>
+                    $$ \psi_0(\mathbf{r}_1, \mathbf{r}_2) = \psi_{100}(\mathbf{r}_1)\psi_{100}(\mathbf{r}_2) =
+                    \frac{8}{\pi a^3}\, e^{-2(r_1 + r_2)/a}, \tag{5.41} $$
+                </p>
+
+                <p>
+                    onde $a$ é o raio de Bohr, e a energia prevista é
+                </p>
+
+                <p>
+                    $$ E_0 = 8(-13{,}6\ \text{eV}) = -109\ \text{eV}. \tag{5.42} $$
+                </p>
+
+                <p>
+                    Como $\psi_0$ é uma função <strong>simétrica</strong> de $\mathbf{r}_1$ e $\mathbf{r}_2$, o estado
+                    de spin tem de ser <strong>antissimétrico</strong>. Portanto, o estado fundamental do hélio é um
+                    <strong>singleto</strong>, com os spins "opostamente alinhados":
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p>
+                        Parte espacial simétrica $\times$ spin antissimétrico (singleto) $=$ estado completo
+                        antissimétrico. O estado fundamental do hélio tem spin total $S = 0$.
+                    </p>
+                </div>
+
+                <p>
+                    O estado fundamental real do hélio é, de fato, um singleto. A energia medida experimentalmente,
+                    porém, é $-78{,}975$ eV, de modo que a concordância numérica não é boa. Isso não surpreende:
+                    ignoramos a repulsão entre os elétrons, que certamente <i>não</i> é uma contribuição pequena. Ela é
+                    claramente <i>positiva</i> (Equação 5.38), o que é reconfortante: é ela que eleva a energia total
+                    de $-109$ eV para cerca de $-79$ eV.
+                </p>
+
+                <p>
+                    O Problema 5.15 de Griffiths estima essa contribuição usando a própria função de onda aproximada
+                    5.41. O valor esperado necessário é
+                </p>
+
+                <p>
+                    $$ \left\langle \frac{1}{|\mathbf{r}_1 - \mathbf{r}_2|} \right\rangle = \frac{5}{4a}, $$
+                </p>
+
+                <p>
+                    e, como $e^2/(4\pi\epsilon_0 a) = 2 \times 13{,}6\ \text{eV} = 27{,}2$ eV, a energia de interação
+                    entre os elétrons fica
+                </p>
+
+                <p>
+                    $$ \frac{e^2}{4\pi\epsilon_0}\left\langle \frac{1}{|\mathbf{r}_1 - \mathbf{r}_2|} \right\rangle =
+                    \frac{5}{4}\,(27{,}2\ \text{eV}) = 34\ \text{eV}, $$
+                </p>
+
+                <p>
+                    o que corrige a estimativa para $E_0 \approx -109 + 34 = -75$ eV — muito mais próxima do valor
+                    experimental. (Não se deve esperar concordância perfeita, pois a função de onda usada é apenas
+                    aproximada.)
+                </p>
+
+                <h3 id="helio-excitados">Estados Excitados: Parahélio e Ortohélio</h3>
+
+                <p>
+                    Os estados excitados do hélio consistem em um elétron no estado fundamental hidrogenoide e o outro
+                    num estado excitado:
+                </p>
+
+                <p>
+                    $$ \psi_{n\ell m}\, \psi_{100}. \tag{5.43} $$
+                </p>
+
+                <p>
+                    Se tentarmos colocar <i>ambos</i> os elétrons em estados excitados, um deles cai imediatamente para
+                    o estado fundamental, liberando energia suficiente para arremessar o outro para o contínuo ($E \gt
+                    0$). Sobram então um <i>íon</i> de hélio ($\text{He}^+$) e um elétron livre — um sistema
+                    interessante por si só (Problema 5.13 de Griffiths), mas que não nos interessa aqui.
+                </p>
+
+                <p>
+                    Com os dois elétrons em estados diferentes, podemos construir combinações simétricas e
+                    antissimétricas, como na Equação 5.17:
+                </p>
+
+                <p>
+                    $$
+                    \psi_{\pm}(\mathbf{r}_1, \mathbf{r}_2) = \frac{1}{\sqrt{2}}\left[
+                    \psi_{n\ell m}(\mathbf{r}_1)\psi_{100}(\mathbf{r}_2) \pm
+                    \psi_{100}(\mathbf{r}_1)\psi_{n\ell m}(\mathbf{r}_2) \right].
+                    $$
+                </p>
+
+                <p>
+                    As combinações simétricas acompanham a configuração de spin <i>antissimétrica</i> (singleto) e são
+                    chamadas de <strong>parahélio</strong>; as antissimétricas exigem uma configuração de spin
+                    <i>simétrica</i> (tripleto) e são chamadas de <strong>ortohélio</strong>.
+                </p>
+
+                <table>
+                    <tr>
+                        <th>Família</th>
+                        <th>Parte espacial</th>
+                        <th>Parte de spin</th>
+                        <th>Spin total</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Parahélio</strong></td>
+                        <td>Simétrica</td>
+                        <td>Singleto</td>
+                        <td>$S = 0$</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ortohélio</strong></td>
+                        <td>Antissimétrica</td>
+                        <td>Tripleto</td>
+                        <td>$S = 1$</td>
+                    </tr>
+                </table>
+
+                <p>
+                    O estado fundamental é necessariamente parahélio; os estados excitados aparecem nas duas formas.
+                    Como a combinação espacial simétrica aproxima os elétrons (as forças de troca da seção
+                    <a href="[01] - Sistemas de Duas Partículas.html#forcas-de-troca">Forças de Troca</a>), esperamos uma
+                    energia de interação maior no parahélio. E, de fato, confirma-se experimentalmente que
+                    <strong>os estados de parahélio têm energia um pouco mais alta que os correspondentes estados de
+                        ortohélio</strong>.
+                </p>
+
+                <p>
+                    Note que essa diferença não vem de nenhuma interação entre os spins — o Hamiltoniano 5.38 nem sequer
+                    contém o spin. O spin entra apenas ao determinar a simetria da parte espacial; é a parte espacial
+                    que determina quão próximos os elétrons tendem a ficar e, portanto, o tamanho da energia de
+                    repulsão.
+                </p>
+
+                <div class="definition-box">
+                    <p>
+                        <strong>O diagrama de níveis do hélio</strong> (Figura 5.1 de Griffiths) organiza os estados em
+                        colunas de parahélio ($^1S$, $^1P$, $^1D$, $^1F$) e de ortohélio ($^3S$, $^3P$, $^3D$, $^3F$),
+                        na notação da próxima seção. As energias são medidas a partir do estado fundamental do hélio
+                        ionizado, $\text{He}^+$, que vale $4 \times (-13{,}6\ \text{eV}) = -54{,}4$ eV; para obter a
+                        energia total de um estado, basta subtrair $54{,}4$ eV. Nessa escala, o estado fundamental do
+                        parahélio fica em $-24{,}5$ eV, muito abaixo dos demais. Os níveis de parahélio ficam
+                        uniformemente acima dos correspondentes níveis de ortohélio.
+                    </p>
+                </div>
+
+                <h3 id="litio">O Estado Fundamental do Lítio</h3>
+
+                <p>
+                    O Problema 5.16 de Griffiths aplica as mesmas ideias ao lítio ($Z = 3$), ainda desprezando a
+                    repulsão entre os elétrons. A parte espacial é análoga à Equação 5.41, mas apenas dois elétrons
+                    podem ocupar o estado fundamental hidrogenoide; o terceiro vai para $\psi_{200}$.<sup
+                        id="fnref:3"><a href="#fn:3" class="footnote-ref">3</a></sup> Com energias hidrogenoides
+                    escalando com $Z^2 = 9$, a energia desse estado nessa aproximação é
+                </p>
+
+                <p>
+                    $$ E = 9\left[ 2E_1 + E_2 \right] = 9\,(-13{,}6\ \text{eV})\left( 1 + 1 + \frac{1}{4} \right)
+                    \approx -275\ \text{eV}. $$
+                </p>
+
+                <p>
+                    Para completar o estado, é preciso acrescentar o spin e antissimetrizar — o que, com três elétrons,
+                    exige combinações lineares de produtos, como discutido no tópico anterior.
+                </p>
+
+                <h2 id="tabela-periodica">A Tabela Periódica</h2>
+
+                <p>
+                    As configurações eletrônicas do estado fundamental dos átomos mais pesados podem ser montadas da
+                    mesma maneira. Em primeira aproximação (desprezando completamente a repulsão mútua), cada elétron
+                    ocupa um estado hidrogenoide de uma partícula, $(n, \ell, m)$, chamado de <strong>orbital</strong>,
+                    no potencial coulombiano de um núcleo de carga $Ze$.
+                </p>
+
+                <p>
+                    Se os elétrons fossem bósons (ou partículas distinguíveis), todos cairiam para o estado fundamental
+                    $(1, 0, 0)$, e a química seria realmente muito monótona. Mas os elétrons são férmions idênticos,
+                    sujeitos ao Princípio de Exclusão de Pauli, e por isso apenas <strong>dois</strong> podem ocupar
+                    um dado orbital: um com spin para cima e outro com spin para baixo — ou, mais precisamente, na
+                    configuração de singleto.
+                </p>
+
+                <p>
+                    Para um dado $n$ existem $n^2$ funções de onda hidrogenoides, todas com a mesma energia $E_n$.
+                    Assim, a <strong>camada</strong> $n = 1$ comporta dois elétrons, a camada $n = 2$ comporta oito, a
+                    camada $n = 3$ comporta 18 e, em geral, a $n$-ésima camada comporta $2n^2$ elétrons.
+                    Qualitativamente, as linhas horizontais da <strong>Tabela Periódica</strong> correspondem ao
+                    preenchimento de cada camada. Se essa fosse toda a história, as linhas teriam comprimentos 2, 8,
+                    18, 32, 50 etc., e não 2, 8, 8, 18, 18 etc.; é a repulsão entre os elétrons que altera a contagem.
+                </p>
+
+                <h3 id="blindagem">Blindagem e Ordem de Preenchimento</h3>
+
+                <p>
+                    Com a camada $n = 1$ completa no hélio, o próximo átomo, o lítio ($Z = 3$), precisa colocar um
+                    elétron na camada $n = 2$. Esse elétron pode ter $\ell = 0$ ou $\ell = 1$ — qual deles ele escolhe?
+                    Na ausência de interação entre os elétrons, os dois têm a mesma energia (as energias de Bohr
+                    dependem de $n$, mas não de $\ell$). O efeito da repulsão eletrônica, porém, é favorecer o menor
+                    valor de $\ell$, pelo seguinte motivo:
+                </p>
+
+                <ul>
+                    <li>o momento angular tende a "empurrar" o elétron para longe do núcleo;</li>
+                    <li>quanto mais afastado estiver, mais eficazmente os elétrons internos <strong>blindam</strong> o
+                        núcleo — grosso modo, o elétron mais interno "enxerga" a carga nuclear completa $Ze$, enquanto o
+                        mais externo enxerga uma carga efetiva pouco maior que $e$;</li>
+                    <li>assim, dentro de uma mesma camada, o estado de menor energia (o elétron mais fortemente ligado)
+                        é o de $\ell = 0$, e a energia cresce com $\ell$.<sup id="fnref:4"><a href="#fn:4"
+                                class="footnote-ref">4</a></sup></li>
+                </ul>
+
+                <p>
+                    Por isso, o terceiro elétron do lítio ocupa o orbital $(2, 0, 0)$. O próximo átomo, o berílio ($Z =
+                    4$), também cabe nesse estado (apenas com spin "oposto"), mas o boro ($Z = 5$) já precisa usar $\ell
+                    = 1$.
+                </p>
+
+                <p>
+                    Continuando assim, chegamos ao neônio ($Z = 10$), no qual a camada $n = 2$ está completa, e
+                    avançamos para a próxima linha da tabela, começando a preencher a camada $n = 3$. Os dois primeiros
+                    átomos (sódio e magnésio) têm $\ell = 0$; os seis seguintes (do alumínio ao argônio) têm $\ell =
+                    1$. Depois do argônio "deveria" haver dez átomos com $n = 3$ e $\ell = 2$. Porém, a essa altura o
+                    efeito de blindagem é tão forte que se sobrepõe à camada seguinte: o potássio ($Z = 19$) e o cálcio
+                    ($Z = 20$) preferem $n = 4$, $\ell = 0$ a $n = 3$, $\ell = 2$. Em seguida, a tabela "volta" para
+                    completar os orbitais $n = 3$, $\ell = 2$ que ficaram para trás (do escândio ao zinco), seguidos de
+                    $n = 4$, $\ell = 1$ (do gálio ao criptônio). Nesse ponto ocorre um novo salto prematuro para a
+                    linha seguinte ($n = 5$), e só mais tarde são encaixados os orbitais $\ell = 2$ e $\ell = 3$ da
+                    camada $n = 4$. Os detalhes desse intrincado contraponto são tratados nos livros de física
+                    atômica.<sup id="fnref:5"><a href="#fn:5" class="footnote-ref">5</a></sup>
+                </p>
+
+                <h3 id="configuracoes">Notação Espectroscópica</h3>
+
+                <p>
+                    Os espectroscopistas do século XIX criaram uma nomenclatura arcaica que químicos e a maioria dos
+                    físicos continuam usando. Os valores de $\ell$ recebem letras:
+                </p>
+
+                <table>
+                    <tr>
+                        <th>$\ell$</th>
+                        <th>0</th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4, 5, 6, …</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Letra</strong></td>
+                        <td>$s$ ("sharp")</td>
+                        <td>$p$ ("principal")</td>
+                        <td>$d$ ("diffuse")</td>
+                        <td>$f$ ("fundamental")</td>
+                        <td>$g$, $h$, $i$, … (em ordem alfabética, pulando o $j$)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Elétrons por subcamada, $2(2\ell+1)$</strong></td>
+                        <td>2</td>
+                        <td>6</td>
+                        <td>10</td>
+                        <td>14</td>
+                        <td>18, 22, 26, …</td>
+                    </tr>
+                </table>
+
+                <p>
+                    O estado de um elétron é representado pelo par $n\ell$, com $n$ (um número) indicando a camada e
+                    $\ell$ (uma letra) indicando o momento angular orbital; o número quântico magnético $m$ não é
+                    listado, e um expoente indica quantos elétrons ocupam aquele estado.<sup id="fnref:6"><a
+                            href="#fn:6" class="footnote-ref">6</a></sup> Por exemplo, a configuração
+                </p>
+
+                <p>
+                    $$ (1s)^2 (2s)^2 (2p)^2 \tag{5.44} $$
+                </p>
+
+                <p>
+                    indica dois elétrons no orbital $(1, 0, 0)$, dois no orbital $(2, 0, 0)$ e dois em alguma
+                    combinação dos orbitais $(2, 1, 1)$, $(2, 1, 0)$ e $(2, 1, -1)$. Essa é a configuração do estado
+                    fundamental do carbono.
+                </p>
+
+                <h3 id="simbolos-de-termo">Momentos Angulares Totais e Símbolos de Termo</h3>
+
+                <p>
+                    Nesse exemplo há dois elétrons com número quântico de momento angular orbital $1$, e o número
+                    quântico do momento angular orbital <i>total</i>, $L$, pode ser $2$, $1$ ou $0$. (Usa-se a letra
+                    maiúscula $L$ para indicar que se trata do total, e não do momento angular de um elétron
+                    individual.) Os dois elétrons $(1s)$ estão travados num singleto, com spin total zero, e o mesmo
+                    vale para os dois elétrons $(2s)$; mas os dois elétrons $(2p)$ podem estar no singleto ou no
+                    tripleto. Assim, o spin total $S$ pode ser $1$ ou $0$, e o momento angular total $J$ (orbital mais
+                    spin) pode ser $3$, $2$, $1$ ou $0$.
+                </p>
+
+                <p>
+                    Esses totais são registrados no <strong>símbolo de termo</strong>:
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <p>
+                        $$ ^{2S+1}L_J \tag{5.45} $$
+                    </p>
+                    <p>
+                        $S$ e $J$ são números; $L$ é a letra correspondente, em maiúscula ($S, P, D, F, G, H, I, \dots$
+                        para $L = 0, 1, 2, 3, 4, 5, 6, \dots$).
+                    </p>
+                </div>
+
+                <p>
+                    O estado fundamental do carbono é $^3P_0$: spin total $1$ (daí o $3$), momento angular orbital
+                    total $1$ (daí o $P$) e momento angular total $0$. Do mesmo modo, o estado fundamental do disprósio
+                    (elemento 66), $^5I_8$, corresponde a $S = 2$, $L = 6$ e $J = 8$ (Problema 5.19 de Griffiths). A
+                    Tabela 5.1 de Griffiths lista as configurações e os símbolos de termo dos estados fundamentais das
+                    quatro primeiras linhas da Tabela Periódica:<sup id="fnref:7"><a href="#fn:7"
+                            class="footnote-ref">7</a></sup>
+                </p>
+
+                <table>
+                    <tr>
+                        <th>$Z$</th>
+                        <th>Elemento</th>
+                        <th>Configuração</th>
+                        <th>Termo</th>
+                    </tr>
+                    <tr><td>1</td><td>H</td><td>$(1s)$</td><td>$^2S_{1/2}$</td></tr>
+                    <tr><td>2</td><td>He</td><td>$(1s)^2$</td><td>$^1S_0$</td></tr>
+                    <tr><td>3</td><td>Li</td><td>$(\text{He})(2s)$</td><td>$^2S_{1/2}$</td></tr>
+                    <tr><td>4</td><td>Be</td><td>$(\text{He})(2s)^2$</td><td>$^1S_0$</td></tr>
+                    <tr><td>5</td><td>B</td><td>$(\text{He})(2s)^2(2p)$</td><td>$^2P_{1/2}$</td></tr>
+                    <tr><td>6</td><td>C</td><td>$(\text{He})(2s)^2(2p)^2$</td><td>$^3P_0$</td></tr>
+                    <tr><td>7</td><td>N</td><td>$(\text{He})(2s)^2(2p)^3$</td><td>$^4S_{3/2}$</td></tr>
+                    <tr><td>8</td><td>O</td><td>$(\text{He})(2s)^2(2p)^4$</td><td>$^3P_2$</td></tr>
+                    <tr><td>9</td><td>F</td><td>$(\text{He})(2s)^2(2p)^5$</td><td>$^2P_{3/2}$</td></tr>
+                    <tr><td>10</td><td>Ne</td><td>$(\text{He})(2s)^2(2p)^6$</td><td>$^1S_0$</td></tr>
+                    <tr><td>11</td><td>Na</td><td>$(\text{Ne})(3s)$</td><td>$^2S_{1/2}$</td></tr>
+                    <tr><td>12</td><td>Mg</td><td>$(\text{Ne})(3s)^2$</td><td>$^1S_0$</td></tr>
+                    <tr><td>13</td><td>Al</td><td>$(\text{Ne})(3s)^2(3p)$</td><td>$^2P_{1/2}$</td></tr>
+                    <tr><td>14</td><td>Si</td><td>$(\text{Ne})(3s)^2(3p)^2$</td><td>$^3P_0$</td></tr>
+                    <tr><td>15</td><td>P</td><td>$(\text{Ne})(3s)^2(3p)^3$</td><td>$^4S_{3/2}$</td></tr>
+                    <tr><td>16</td><td>S</td><td>$(\text{Ne})(3s)^2(3p)^4$</td><td>$^3P_2$</td></tr>
+                    <tr><td>17</td><td>Cl</td><td>$(\text{Ne})(3s)^2(3p)^5$</td><td>$^2P_{3/2}$</td></tr>
+                    <tr><td>18</td><td>Ar</td><td>$(\text{Ne})(3s)^2(3p)^6$</td><td>$^1S_0$</td></tr>
+                    <tr><td>19</td><td>K</td><td>$(\text{Ar})(4s)$</td><td>$^2S_{1/2}$</td></tr>
+                    <tr><td>20</td><td>Ca</td><td>$(\text{Ar})(4s)^2$</td><td>$^1S_0$</td></tr>
+                    <tr><td>21</td><td>Sc</td><td>$(\text{Ar})(4s)^2(3d)$</td><td>$^2D_{3/2}$</td></tr>
+                    <tr><td>22</td><td>Ti</td><td>$(\text{Ar})(4s)^2(3d)^2$</td><td>$^3F_2$</td></tr>
+                    <tr><td>23</td><td>V</td><td>$(\text{Ar})(4s)^2(3d)^3$</td><td>$^4F_{3/2}$</td></tr>
+                    <tr><td>24</td><td>Cr</td><td>$(\text{Ar})(4s)(3d)^5$</td><td>$^7S_3$</td></tr>
+                    <tr><td>25</td><td>Mn</td><td>$(\text{Ar})(4s)^2(3d)^5$</td><td>$^6S_{5/2}$</td></tr>
+                    <tr><td>26</td><td>Fe</td><td>$(\text{Ar})(4s)^2(3d)^6$</td><td>$^5D_4$</td></tr>
+                    <tr><td>27</td><td>Co</td><td>$(\text{Ar})(4s)^2(3d)^7$</td><td>$^4F_{9/2}$</td></tr>
+                    <tr><td>28</td><td>Ni</td><td>$(\text{Ar})(4s)^2(3d)^8$</td><td>$^3F_4$</td></tr>
+                    <tr><td>29</td><td>Cu</td><td>$(\text{Ar})(4s)(3d)^{10}$</td><td>$^2S_{1/2}$</td></tr>
+                    <tr><td>30</td><td>Zn</td><td>$(\text{Ar})(4s)^2(3d)^{10}$</td><td>$^1S_0$</td></tr>
+                    <tr><td>31</td><td>Ga</td><td>$(\text{Ar})(4s)^2(3d)^{10}(4p)$</td><td>$^2P_{1/2}$</td></tr>
+                    <tr><td>32</td><td>Ge</td><td>$(\text{Ar})(4s)^2(3d)^{10}(4p)^2$</td><td>$^3P_0$</td></tr>
+                    <tr><td>33</td><td>As</td><td>$(\text{Ar})(4s)^2(3d)^{10}(4p)^3$</td><td>$^4S_{3/2}$</td></tr>
+                    <tr><td>34</td><td>Se</td><td>$(\text{Ar})(4s)^2(3d)^{10}(4p)^4$</td><td>$^3P_2$</td></tr>
+                    <tr><td>35</td><td>Br</td><td>$(\text{Ar})(4s)^2(3d)^{10}(4p)^5$</td><td>$^2P_{3/2}$</td></tr>
+                    <tr><td>36</td><td>Kr</td><td>$(\text{Ar})(4s)^2(3d)^{10}(4p)^6$</td><td>$^1S_0$</td></tr>
+                </table>
+
+                <h3 id="regras-de-hund">As Regras de Hund</h3>
+
+                <p>
+                    Como saber, entre os valores possíveis de $S$, $L$ e $J$, qual corresponde ao estado fundamental? A
+                    resposta é dada por um conjunto de regras empíricas, as <strong>regras de Hund</strong> (Problema
+                    5.18 de Griffiths):
+                </p>
+
+                <div class="definition-box" style="border-left: 4px solid #45503B;">
+                    <ol>
+                        <li>
+                            <strong>Primeira regra:</strong> respeitado o Princípio de Pauli, o estado de
+                            <strong>maior spin total</strong> $S$ tem a menor energia.
+                        </li>
+                        <li>
+                            <strong>Segunda regra:</strong> para um dado spin, o estado de <strong>maior momento angular
+                                orbital total</strong> $L$, compatível com a antissimetrização global, tem a menor
+                            energia.
+                        </li>
+                        <li>
+                            <strong>Terceira regra:</strong> se uma subcamada $(n, \ell)$ estiver preenchida <strong>no
+                                máximo até a metade</strong>, o nível de menor energia tem $J = |L - S|$; se estiver
+                            <strong>mais do que meio cheia</strong>, o nível de menor energia tem $J = L + S$.
+                        </li>
+                    </ol>
+                </div>
+
+                <p>
+                    A primeira regra é coerente com o que vimos no hélio: os estados de ortohélio ($S = 1$) ficam
+                    abaixo dos correspondentes estados de parahélio ($S = 0$).
+                </p>
+
+                <h4 id="exemplo-carbono">Exemplo: o estado fundamental do carbono</h4>
+
+                <p>
+                    Apliquemos as regras aos dois elétrons $2p$ do carbono (as subcamadas completas $1s$ e $2s$ não
+                    contribuem).
+                </p>
+
+                <ul>
+                    <li>
+                        <strong>Spin:</strong> pela primeira regra, $S = 1$. O estado de spin (tripleto) é
+                        simétrico, de modo que a parte espacial precisa ser <strong>antissimétrica</strong>.
+                    </li>
+                    <li>
+                        <strong>Momento angular orbital:</strong> dos valores $L = 2, 1, 0$, a segunda regra sugeriria
+                        $L = 2$. Mas o estado "do topo da escada" de $L = 2$ ($M_L = L = 2$) tem os dois elétrons com $m
+                        = 1$, e é portanto simétrico — assim como toda a escada $L = 2$ (e também o estado $L = 0$). O
+                        único valor compatível com uma parte espacial antissimétrica é $L = 1$ (letra $P$). É por isso
+                        que o carbono não tem $L = 2$.
+                    </li>
+                    <li>
+                        <strong>Momento angular total:</strong> a subcamada $2p$ comporta seis elétrons e tem apenas
+                        dois, ou seja, não passa da metade. Pela terceira regra, $J = |L - S| = 0$.
+                    </li>
+                </ul>
+
+                <p>
+                    O resultado, $^3P_0$, concorda com a Tabela 5.1. O mesmo raciocínio reproduz os demais termos do
+                    segundo período:
+                </p>
+
+                <table>
+                    <tr>
+                        <th>Elemento</th>
+                        <th>Subcamada externa</th>
+                        <th>$S$</th>
+                        <th>$L$</th>
+                        <th>$J$</th>
+                        <th>Termo</th>
+                    </tr>
+                    <tr><td>B</td><td>$(2p)^1$</td><td>$1/2$</td><td>1</td><td>$1/2 = |L - S|$</td><td>$^2P_{1/2}$</td></tr>
+                    <tr><td>C</td><td>$(2p)^2$</td><td>1</td><td>1</td><td>$0 = |L - S|$</td><td>$^3P_0$</td></tr>
+                    <tr><td>N</td><td>$(2p)^3$</td><td>$3/2$</td><td>0</td><td>$3/2$</td><td>$^4S_{3/2}$</td></tr>
+                    <tr><td>O</td><td>$(2p)^4$</td><td>1</td><td>1</td><td>$2 = L + S$</td><td>$^3P_2$</td></tr>
+                    <tr><td>F</td><td>$(2p)^5$</td><td>$1/2$</td><td>1</td><td>$3/2 = L + S$</td><td>$^2P_{3/2}$</td></tr>
+                    <tr><td>Ne</td><td>$(2p)^6$</td><td>0</td><td>0</td><td>0</td><td>$^1S_0$</td></tr>
+                </table>
+
+                <p>
+                    No nitrogênio, por exemplo, os três elétrons $2p$ com spins paralelos ($S = 3/2$) formam um estado
+                    de spin completamente simétrico; a parte espacial precisa então ser completamente antissimétrica, o
+                    que só é possível com $L = 0$. No oxigênio e no flúor, a subcamada $2p$ está mais do que meio cheia,
+                    e a terceira regra dá $J = L + S$.
+                </p>
+
+                <p>
+                    Assim, a indistinguibilidade dos elétrons — por meio do Princípio de Exclusão — é o que impede que
+                    todos os elétrons de um átomo caiam para o orbital $1s$ e o que produz a estrutura em camadas da
+                    Tabela Periódica. No próximo tópico, <a href="[03] - Sólidos.html">Sólidos</a>, levaremos o número de
+                    elétrons à escala macroscópica.
+                </p>
+
+                <h3 id="problemas">Problemas Relacionados</h3>
+
+                <ul>
+                    <li><strong>5.12:</strong> soluções completamente simétricas e antissimétricas de 5.37; impossibilidade
+                        de um estado de spin completamente antissimétrico para $Z \gt 2$.</li>
+                    <li><strong>5.13–5.14:</strong> hélio com os dois elétrons em $n = 2$; espectro do $\text{He}^+$; como
+                        seriam os níveis do hélio se os elétrons fossem bósons ou distinguíveis.</li>
+                    <li><strong>5.15:</strong> estimativa da energia de repulsão no estado fundamental do hélio.</li>
+                    <li><strong>5.16:</strong> o estado fundamental do lítio.</li>
+                    <li><strong>5.17–5.19:</strong> configurações e momentos angulares totais; regras de Hund; o
+                        disprósio.</li>
+                </ul>
+
+                <hr class="footnotes-sep">
+                <section class="footnotes">
+                    <ol>
+                        <li id="fn:1">
+                            <p>O truque da massa reduzida só funciona para o problema de dois corpos; felizmente, o
+                                núcleo é tão mais pesado que os elétrons que a correção é extremamente pequena mesmo no
+                                hidrogênio, e menor ainda nos outros átomos. Há efeitos mais interessantes — interações
+                                magnéticas associadas ao spin, correções relativísticas e o tamanho finito do núcleo —,
+                                tratados em capítulos posteriores de Griffiths; todos são correções minúsculas ao átomo
+                                "puramente coulombiano" descrito pela Equação 5.36.<a href="#fnref:1"
+                                    class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:2">
+                            <p>Como o Hamiltoniano 5.36 não faz referência ao spin, o produto $\psi(\mathbf{r}_1, \dots,
+                                \mathbf{r}_Z)\,\chi(\mathbf{s}_1, \dots, \mathbf{s}_Z)$ ainda satisfaz a Equação de
+                                Schrödinger. Porém, para $Z \gt 2$, esses produtos em geral não conseguem satisfazer a
+                                exigência de antissimetrização, e é preciso construir combinações lineares com índices
+                                permutados. Aqui, por enquanto, só nos interessa a função de onda espacial.<a
+                                    href="#fnref:2" class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:3">
+                            <p>Na verdade, $\ell = 1$ também serviria (sem repulsão, a energia é a mesma), mas a repulsão
+                                entre os elétrons favorece $\ell = 0$, como veremos adiante.<a href="#fnref:3"
+                                    class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:4">
+                            <p>Esse argumento padrão foi questionado por W. Stacey e F. Marsiglio, <i>EPL</i>
+                                <b>100</b>, 43002 (2012).<a href="#fnref:4" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:5">
+                            <p>Veja, por exemplo, U. Fano e L. Fano, <i>Basic Physics of Atoms and Molecules</i>, Wiley
+                                (1959), Cap. 18, ou o clássico de G. Herzberg, <i>Atomic Spectra and Atomic Structure</i>,
+                                Dover (1944).<a href="#fnref:5" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:6">
+                            <p>As próprias camadas recebem apelidos igualmente arbitrários, começando pela letra $K$: a
+                                camada $K$ é $n = 1$, a $L$ é $n = 2$, a $M$ é $n = 3$, e assim por diante.<a
+                                    href="#fnref:6" class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:7">
+                            <p>Depois do criptônio (elemento 36), a situação fica mais complicada — a estrutura fina passa
+                                a ter papel importante na ordenação dos estados —, e por isso a tabela termina ali.<a
+                                    href="#fnref:7" class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                    </ol>
+                </section>
+
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="toc-container">
+                <h4>Nesta página</h4>
+                <ul>
+                    <li><a href="#atomos">Átomos</a></li>
+                    <li>
+                        <a href="#helio">O Átomo de Hélio</a>
+                        <ul>
+                            <li><a href="#helio-ordem-zero">Desprezando a Repulsão</a></li>
+                            <li><a href="#helio-fundamental">Estado Fundamental</a></li>
+                            <li><a href="#helio-excitados">Parahélio e Ortohélio</a></li>
+                            <li><a href="#litio">O Lítio</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#tabela-periodica">A Tabela Periódica</a>
+                        <ul>
+                            <li><a href="#blindagem">Blindagem e Preenchimento</a></li>
+                            <li><a href="#configuracoes">Notação Espectroscópica</a></li>
+                            <li><a href="#simbolos-de-termo">Símbolos de Termo</a></li>
+                            <li><a href="#regras-de-hund">Regras de Hund</a></li>
+                            <li><a href="#exemplo-carbono">Exemplo: Carbono</a></li>
+                            <li><a href="#problemas">Problemas Relacionados</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Search Modal Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-modal">
+            <div class="search-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search documentation..." autocomplete="off">
+            </div>
+            <div class="search-results" id="search-results"></div>
+            <div class="search-footer">
+                <div class="search-commands">
+                    <span class="cmd-key">↑</span>
+                    <span class="cmd-key">↓</span>
+                    <span class="cmd-label">navigate</span>
+                    <span class="cmd-key">↵</span>
+                    <span class="cmd-label">select</span>
+                </div>
+                <div class="search-commands">
+                    <span class="cmd-key">esc</span>
+                    <span class="cmd-label">close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../../../assets/js/class-lecture.js"></script>
+</body>
+
+</html>

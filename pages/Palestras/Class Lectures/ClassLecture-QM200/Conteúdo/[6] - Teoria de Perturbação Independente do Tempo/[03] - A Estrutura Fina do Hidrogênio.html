@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Estrutura Fina do Hidrogênio | Mecânica Quântica II | The Journal of a Physicist</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../../../assets/images/Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../../../assets/images/Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../../../assets/images/Favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="../../../../../../assets/images/Favicon/favicon.ico">
+    <link rel="stylesheet" href="../../../../../../assets/css/class-lecture.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                        <line x1="9" x2="9" y1="3" y2="21"></line>
+                    </svg>
+                </button>
+                <button id="theme-toggle" class="sidebar-toggle" aria-label="Toggle Theme">
+                    <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="breadcrumbs-header">
+                    <a href="../../../../../../Páginas Principais/Lectures.html" class="breadcrumb-link">← Lectures</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <a href="../../index.html" class="breadcrumb-link active">Mecânica Quântica II</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-category" class="breadcrumb-link">Teoria de Perturbação Independente do Tempo</span>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-current" class="breadcrumb-link active">7.3 A Estrutura Fina do Hidrogênio</span>
+                </div>
+            </div>
+            <nav class="top-nav">
+                <a href="../../../../../../Páginas Principais/Lectures.html">Lectures</a>
+                <a href="../../../../../../index.html">Home</a>
+            </nav>
+        </div>
+
+        <script>
+            MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']]
+                }
+            };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    </header>
+
+    <div class="main-layout">
+        <aside class="left-sidebar" id="left-sidebar">
+            <div class="sidebar-content">
+
+                <button class="search-trigger" id="search-trigger">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                    </svg>
+                    <span>Search docs...</span>
+                </button>
+
+                <div class="sidebar-group">
+                    <h3>Início</h3>
+                    <ul>
+                        <li><a href="../../index.html">Overview</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Partículas Idênticas</h3>
+                    <ul>
+                        <li><a href="../[4] - Partículas Idênticas/[01] - Sistemas de Duas Partículas.html">5.1 Sistemas de Duas Partículas</a></li>
+                        <li><a href="../[4] - Partículas Idênticas/[02] - Átomos.html">5.2 Átomos</a></li>
+                        <li><a href="../[4] - Partículas Idênticas/[03] - Sólidos.html">5.3 Sólidos</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Simetrias e Leis de Conservação</h3>
+                    <ul>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[01] - Introdução.html">6.1 Introdução</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[02] - O Operador de Translação.html">6.2 O Operador de Translação</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[03] - Leis de Conservação.html">6.3 Leis de Conservação</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[04] - Paridade.html">6.4 Paridade</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[05] - Simetrias de Rotação.html">6.5 Simetrias de Rotação</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[06] - Degenerescência.html">6.6 Degenerescência</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[07] - Regras de Seleção Rotacionais.html">6.7 Regras de Seleção Rotacionais</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[08] - Translações no Tempo.html">6.8 Translações no Tempo</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Teoria de Perturbação Independente do Tempo</h3>
+                    <ul>
+                        <li><a href="[01] - Teoria de Perturbação Não Degenerada.html">7.1 Teoria de Perturbação Não Degenerada</a></li>
+                        <li><a href="[02] - Teoria de Perturbação Degenerada.html">7.2 Teoria de Perturbação Degenerada</a></li>
+                        <li><a href="[03] - A Estrutura Fina do Hidrogênio.html" class="active">7.3 A Estrutura Fina do Hidrogênio</a></li>
+                        <li><a href="[04] - O Efeito Zeeman.html">7.4 O Efeito Zeeman</a></li>
+                        <li><a href="[05] - A Estrutura Hiperfina do Hidrogênio.html">7.5 A Estrutura Hiperfina do Hidrogênio</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>O Princípio Variacional</h3>
+                    <ul>
+                        <li><a href="../[7] - O Princípio Variacional/[01] - Teoria.html">8.1 Teoria</a></li>
+                        <li><a href="../[7] - O Princípio Variacional/[02] - O Estado Fundamental do Hélio.html">8.2 O Estado Fundamental do Hélio</a></li>
+                        <li><a href="../[7] - O Princípio Variacional/[03] - O Íon da Molécula de Hidrogênio.html">8.3 O Íon da Molécula de Hidrogênio</a></li>
+                        <li><a href="../[7] - O Princípio Variacional/[04] - A Molécula de Hidrogênio.html">8.4 A Molécula de Hidrogênio</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>A Aproximação WKB</h3>
+                    <ul>
+                        <li><a href="../[8] - A Aproximação WKB/[01] - A Região “Clássica”.html">9.1 A Região “Clássica”</a></li>
+                        <li><a href="../[8] - A Aproximação WKB/[02] - Tunelamento.html">9.2 Tunelamento</a></li>
+                        <li><a href="../[8] - A Aproximação WKB/[03] - As Fórmulas de Conexão.html">9.3 As Fórmulas de Conexão</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="prose">
+
+                <h1 id="estrutura-fina">7.3 A Estrutura Fina do Hidrogênio</h1>
+                <p class="lead">As duas correções de ordem α² à energia do hidrogênio — a relativística e a de spin-órbita — e a fórmula da estrutura fina que depende só de n e j.</p>
+
+                <p>O espectro de Bohr do hidrogênio, $E_n = -13{,}6\ \text{eV}/n^2$, depende só do número quântico principal $n$: todos os
+                    $n^2$ estados $\psi_{nlm}$ de um mesmo $n$ (o dobro, contando o spin) têm a mesma energia. Um espectrômetro de boa
+                    resolução, porém, mostra que cada linha do hidrogênio é na verdade um pequeno grupo de linhas muito próximas. Esta seção,
+                    que segue a Seção 7.3 do Griffiths, explica de onde vêm essas separações: de duas correções ao hamiltoniano de Bohr, de
+                    origens físicas completamente diferentes, que por acaso têm o mesmo tamanho e somadas dão uma fórmula surpreendentemente
+                    simples.</p>
+
+                <p>É a primeira aplicação séria das duas seções anteriores. Os níveis de Bohr são altamente degenerados, e por isso não basta
+                    a <a href="[01] - Teoria de Perturbação Não Degenerada.html">teoria não degenerada</a>: precisamos escolher os estados
+                    "bons" da <a href="[02] - Teoria de Perturbação Degenerada.html">Seção 7.2</a>. Veremos que, nos dois casos, uma
+                    simetria nos entrega esses estados sem que seja preciso diagonalizar nenhuma matriz. Usamos ainda os resultados do
+                    átomo de hidrogênio e da soma de momentos angulares (Griffiths, Seções 4.2 e 4.4) e a discussão de simetria e
+                    degenerescência do <a href="../[5] - Simetrias e Leis de Conservação/[06] - Degenerescência.html">capítulo 6</a>.</p>
+
+                <h2 id="escala">Escalas de energia</h2>
+
+                <p>No estudo do átomo de hidrogênio (Griffiths, Seção 4.2), tomamos como hamiltoniano o <em>hamiltoniano de Bohr</em>,</p>
+                <p>$$ H_{\text{Bohr}} = -\frac{\hbar^2}{2m}\nabla^2 - \frac{e^2}{4\pi\epsilon_0}\frac1r, \tag{7.43} $$</p>
+                <p>a energia cinética do elétron mais a energia potencial coulombiana. Essa não é a história completa. Já sabemos corrigir o
+                    movimento do núcleo: basta trocar $m$ pela massa reduzida. Mais importante é a chamada <strong>estrutura fina</strong>
+                    (<em>fine structure</em>), que na verdade se deve a dois mecanismos distintos: uma <strong>correção relativística</strong>
+                    e o <strong>acoplamento spin-órbita</strong> (<em>spin-orbit coupling</em>). Comparada às energias de Bohr, a estrutura
+                    fina é uma perturbação minúscula, menor por um fator $\alpha^2$, em que</p>
+                <p>$$ \alpha \equiv \frac{e^2}{4\pi\epsilon_0\hbar c} \approx \frac{1}{137{,}036} \tag{7.44} $$</p>
+                <p>é a famosa <strong>constante de estrutura fina</strong>. Ela é adimensional, e é ela que mede o tamanho de todas as
+                    correções desta seção. As próprias energias de Bohr se escrevem com ela: trocando $e^2/4\pi\epsilon_0 = \alpha\hbar c$ na
+                    fórmula de Bohr (Griffiths, Eq. 4.70),</p>
+                <p>$$ E_n = -\frac{m}{2\hbar^2}\left(\frac{e^2}{4\pi\epsilon_0}\right)^2\frac{1}{n^2} = -\frac{\alpha^2mc^2}{2n^2}, $$</p>
+                <p>isto é, as energias de Bohr são da ordem de $\alpha^2mc^2$, em que $mc^2 \approx 511\,000$ eV é a energia de repouso do
+                    elétron.</p>
+
+                <p>Menor ainda (por mais um fator $\alpha$) é o <strong>deslocamento de Lamb</strong> (<em>Lamb shift</em>), associado à
+                    quantização do campo elétrico; e menor por mais uma ordem de grandeza é a <strong>estrutura hiperfina</strong>
+                    (<em>hyperfine splitting</em>), que vem da interação entre os momentos de dipolo magnético do elétron e do próton e que
+                    estudaremos na Seção 7.5. A hierarquia está resumida na Tabela 7.1.</p>
+
+                <div style="overflow-x: auto;">
+                    <table>
+                        <caption><strong>Tabela 7.1.</strong> Hierarquia das correções às energias de Bohr do hidrogênio.</caption>
+                        <thead>
+                            <tr><th>Efeito</th><th>Ordem de grandeza</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Energias de Bohr</td><td>$\alpha^2mc^2$</td></tr>
+                            <tr><td>Estrutura fina</td><td>$\alpha^4mc^2$</td></tr>
+                            <tr><td>Deslocamento de Lamb</td><td>$\alpha^5mc^2$</td></tr>
+                            <tr><td>Estrutura hiperfina</td><td>$(m/m_p)\,\alpha^4mc^2$</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>Nesta seção analisamos a estrutura fina como aplicação da teoria de perturbação independente do tempo: $H^0$ é o
+                    hamiltoniano de Bohr (7.43), e $H'$ será a soma das duas correções que vamos deduzir agora, uma em cada subseção.</p>
+
+                <h2 id="correcao-relativistica">A correção relativística</h2>
+
+                <p>O primeiro termo do hamiltoniano (7.43) deveria representar a energia cinética:</p>
+                <p>$$ T = \frac12mv^2 = \frac{p^2}{2m}, \tag{7.45} $$</p>
+                <p>e a substituição canônica $\mathbf p \to -i\hbar\nabla$ dá o operador</p>
+                <p>$$ T = -\frac{\hbar^2}{2m}\nabla^2. \tag{7.46} $$</p>
+                <p>Mas a Eq. (7.45) é a expressão <em>clássica</em> da energia cinética; a fórmula <em>relativística</em> é</p>
+                <p>$$ T = \frac{mc^2}{\sqrt{1 - (v/c)^2}} - mc^2. \tag{7.47} $$</p>
+                <p>O primeiro termo é a energia relativística <em>total</em> (sem contar a energia potencial, que não nos interessa agora), e
+                    o segundo é a energia de repouso; a <em>diferença</em> é a energia que se deve ao movimento.</p>
+
+                <p>Precisamos escrever $T$ em termos do momento (relativístico),</p>
+                <p>$$ p = \frac{mv}{\sqrt{1 - (v/c)^2}}, \tag{7.48} $$</p>
+                <p>em vez da velocidade. Note que</p>
+                <p>$$ \begin{aligned}
+                    p^2c^2 + m^2c^4 &= \frac{m^2v^2c^2 + m^2c^4\left[1 - (v/c)^2\right]}{1 - (v/c)^2} \\
+                    &= \frac{m^2c^4}{1 - (v/c)^2} = \left(T + mc^2\right)^2,
+                    \end{aligned} $$</p>
+                <p>em que, no numerador, $m^2c^4(v/c)^2 = m^2v^2c^2$ cancela o primeiro termo, e na última igualdade usamos a Eq. (7.47) na
+                    forma $T + mc^2 = mc^2/\sqrt{1 - (v/c)^2}$. Logo</p>
+                <p>$$ T = \sqrt{p^2c^2 + m^2c^4} - mc^2. \tag{7.49} $$</p>
+
+                <p>Essa equação relativística se reduz, como deveria, ao resultado clássico (7.45) no limite não relativístico $p \ll mc$.
+                    Expandindo em potências do número pequeno $(p/mc)$ com $\sqrt{1 + x} = 1 + \tfrac12x - \tfrac18x^2 + \cdots$, temos</p>
+                <p>$$ \begin{aligned}
+                    T &= mc^2\left[\sqrt{1 + \left(\frac{p}{mc}\right)^2} - 1\right] \\
+                    &= mc^2\left[1 + \frac12\left(\frac{p}{mc}\right)^2 - \frac18\left(\frac{p}{mc}\right)^4 \cdots - 1\right] \\
+                    &= \frac{p^2}{2m} - \frac{p^4}{8m^3c^2} + \cdots.
+                    \end{aligned} \tag{7.50} $$</p>
+                <p>A correção relativística de ordem mais baixa<sup id="fnref:1"><a href="#fn:1" class="footnote-ref">1</a></sup> ao
+                    hamiltoniano é, portanto,</p>
+                <p>$$ H'_r = -\frac{p^4}{8m^3c^2}. \tag{7.51} $$</p>
+
+                <p>Em teoria de perturbação de primeira ordem, a correção a $E_n$ é o valor esperado de $H'$ no estado não perturbado
+                    (<a href="[01] - Teoria de Perturbação Não Degenerada.html#teo-correcao-primeira-ordem">Teorema (Correção de primeira ordem da energia)</a>, Eq. 7.9):</p>
+                <p>$$ E_r^1 = \langle H'_r\rangle = -\frac{1}{8m^3c^2}\langle\psi|p^4\psi\rangle = -\frac{1}{8m^3c^2}\langle p^2\psi|p^2\psi\rangle. \tag{7.52} $$</p>
+                <p>Na última passagem usamos que $p^2$ é hermitiano, para passar um dos fatores $p^2$ para o lado esquerdo do produto
+                    interno.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref">2</a></sup> Agora, a equação de Schrödinger para os
+                    estados não perturbados, $\left(p^2/2m + V\right)\psi = E\psi$, diz que</p>
+                <p>$$ p^2\psi = 2m(E - V)\psi, \tag{7.53} $$</p>
+                <p>e, substituindo na Eq. (7.52), $\langle p^2\psi|p^2\psi\rangle = 4m^2\langle(E - V)\psi|(E - V)\psi\rangle = 4m^2\langle(E - V)^2\rangle$
+                    (pois $E - V$ é real). Portanto</p>
+                <p>$$ \begin{aligned}
+                    E_r^1 &= -\frac{1}{2mc^2}\left\langle(E - V)^2\right\rangle \\
+                    &= -\frac{1}{2mc^2}\left[E^2 - 2E\langle V\rangle + \langle V^2\rangle\right].
+                    \end{aligned} \tag{7.54} $$</p>
+                <p>Até aqui tudo é geral; mas o que nos interessa é o hidrogênio, para o qual $V(r) = -(1/4\pi\epsilon_0)\,e^2/r$:</p>
+                <p>$$ \begin{aligned}
+                    E_r^1 = -\frac{1}{2mc^2}\biggl[E_n^2 &+ 2E_n\left(\frac{e^2}{4\pi\epsilon_0}\right)\left\langle\frac1r\right\rangle \\
+                    &+ \left(\frac{e^2}{4\pi\epsilon_0}\right)^2\left\langle\frac{1}{r^2}\right\rangle\biggr],
+                    \end{aligned} \tag{7.55} $$</p>
+                <p>em que $E_n$ é a energia de Bohr do estado em questão.</p>
+
+                <h3 id="valores-esperados">Os valores esperados de $1/r$ e $1/r^2$</h3>
+
+                <p>Para completar a conta, precisamos dos valores esperados de $1/r$ e $1/r^2$ no estado (não perturbado) $\psi_{nlm}$. O
+                    Griffiths os enuncia e deixa a dedução para problemas; como a seção depende deles, fazemos a dedução aqui. Partimos dos
+                    resultados do capítulo 4.</p>
+
+                <div class="definition-box" id="prop-hidrogenio-bohr">
+                    <p><strong>Resultado citado (O átomo de hidrogênio).</strong> Os estados ligados do hidrogênio são
+                        $\psi_{nlm}(r, \theta, \phi) = R_{nl}(r)\,Y_l^m(\theta, \phi)$, e $u(r) = rR_{nl}(r)$ satisfaz a equação radial</p>
+                    <p>$$ -\frac{\hbar^2}{2m}\frac{d^2u}{dr^2} + \left[-\frac{e^2}{4\pi\epsilon_0}\frac1r + \frac{\hbar^2}{2m}\frac{l(l + 1)}{r^2}\right]u = Eu, $$</p>
+                    <p>com $\int_0^\infty|u|^2\,dr = 1$. As energias são $E_n = -\dfrac{m}{2\hbar^2}\left(\dfrac{e^2}{4\pi\epsilon_0}\right)^2\dfrac{1}{n^2}$,
+                        com $n = N + l + 1$, em que $N = 0, 1, 2, \dots$ conta os nós da função radial; o raio de Bohr é
+                        $a = 4\pi\epsilon_0\hbar^2/me^2$.</p>
+                </div>
+                <p><em>Ideia.</em> É a solução da equação de Schrödinger com potencial coulombiano por separação de variáveis e série de
+                    potências (Griffiths, Seção 4.2, Eqs. 4.53, 4.67, 4.70 e 4.72). Vamos usar a combinação
+                    $E_n = -\dfrac{e^2}{4\pi\epsilon_0}\dfrac{1}{2an^2}$, que sai de substituir $a$ na fórmula de $E_n$.</p>
+
+                <p>A ferramenta que o Griffiths sugere para esses valores esperados é o teorema de Feynman–Hellmann.</p>
+
+                <div class="definition-box" id="teo-feynman-hellmann">
+                    <p><strong>Teorema (Feynman–Hellmann).</strong> Se o hamiltoniano $H(\lambda)$ depende de um parâmetro $\lambda$, e
+                        $\psi_n(\lambda)$ é uma autofunção normalizada com autovalor $E_n(\lambda)$, então</p>
+                    <p>$$ \frac{\partial E_n}{\partial\lambda} = \left\langle\psi_n\middle|\frac{\partial H}{\partial\lambda}\middle|\psi_n\right\rangle. $$</p>
+                </div>
+                <p><em>Demonstração.</em> Como $\psi_n$ é normalizada, $E_n = \langle\psi_n|H\psi_n\rangle$. Derivando em relação a
+                    $\lambda$,</p>
+                <p>$$ \frac{\partial E_n}{\partial\lambda} = \left\langle\frac{\partial\psi_n}{\partial\lambda}\middle|H\psi_n\right\rangle + \left\langle\psi_n\middle|\frac{\partial H}{\partial\lambda}\psi_n\right\rangle + \left\langle\psi_n\middle|H\frac{\partial\psi_n}{\partial\lambda}\right\rangle. $$</p>
+                <p>No primeiro termo, $H\psi_n = E_n\psi_n$; no terceiro, como $H$ é hermitiano,
+                    $\langle\psi_n|H\,\partial_\lambda\psi_n\rangle = \langle H\psi_n|\partial_\lambda\psi_n\rangle = E_n\langle\psi_n|\partial_\lambda\psi_n\rangle$
+                    ($E_n$ é real). A soma deles é $E_n\,\partial_\lambda\langle\psi_n|\psi_n\rangle = E_n\,\partial_\lambda(1) = 0$, e sobra
+                    só o termo do meio. $\blacksquare$</p>
+
+                <p>Aplicamos o teorema ao hamiltoniano radial do quadro acima. O valor esperado de uma função de $r$ é o mesmo no problema
+                    radial e no tridimensional, pois $\langle f(r)\rangle = \int|R_{nl}|^2f\,r^2\,dr\int|Y_l^m|^2\,d\Omega = \int|u|^2f\,dr$.</p>
+
+                <p><strong>Passo 1 ($\langle 1/r\rangle$, com $\lambda = e$).</strong> A carga $e$ só aparece no termo coulombiano, logo
+                    $\partial H/\partial e = -\dfrac{2e}{4\pi\epsilon_0}\dfrac1r$. Como $E_n \propto e^4$, $\partial E_n/\partial e = 4E_n/e$.
+                    O teorema dá</p>
+                <p>$$ -\frac{2e}{4\pi\epsilon_0}\left\langle\frac1r\right\rangle = \frac{4E_n}{e}
+                    \quad\Longrightarrow\quad
+                    \left\langle\frac1r\right\rangle = -\frac{2E_n}{e^2/4\pi\epsilon_0} = \frac{1}{n^2a}, $$</p>
+                <p>em que na última passagem usamos $E_n = -(e^2/4\pi\epsilon_0)/(2an^2)$. É o primeiro resultado que procurávamos:</p>
+                <p>$$ \left\langle\frac1r\right\rangle = \frac{1}{n^2a}, \tag{7.56} $$</p>
+                <p>em que $a$ é o raio de Bohr (Griffiths, Eq. 4.72). O Griffiths sugere também o teorema do virial, que dá o mesmo
+                    resultado.</p>
+
+                <p><strong>Passo 2 ($\langle 1/r^2\rangle$, com $\lambda = l$).</strong> Tratamos $l$ como uma variável contínua: a equação
+                    radial faz sentido para qualquer $l$ real, e seus autovalores continuam dados pela fórmula de Bohr com $n = N + l + 1$,
+                    em que $N$, o número de nós, é inteiro e <em>fica fixo</em> quando variamos $l$. Assim $n$ passa a depender de $l$, com
+                    $\partial n/\partial l = 1$. De um lado, $l$ só aparece no termo centrífugo:</p>
+                <p>$$ \frac{\partial H}{\partial l} = \frac{\hbar^2}{2m}\frac{2l + 1}{r^2}. $$</p>
+                <p>Do outro, $E_n \propto n^{-2}$, e</p>
+                <p>$$ \frac{\partial E_n}{\partial l} = \frac{\partial E_n}{\partial n} = -\frac{2E_n}{n} = \frac{e^2}{4\pi\epsilon_0}\frac{1}{an^3}. $$</p>
+                <p>Igualando, e usando $\dfrac{e^2}{4\pi\epsilon_0}\dfrac{m}{\hbar^2} = \dfrac1a$ (a definição de $a$),</p>
+                <p>$$ \left\langle\frac{1}{r^2}\right\rangle = \frac{2m}{\hbar^2(2l + 1)}\,\frac{e^2}{4\pi\epsilon_0}\,\frac{1}{an^3} = \frac{2}{(2l + 1)\,n^3a^2}, $$</p>
+                <p>isto é,</p>
+                <p>$$ \left\langle\frac{1}{r^2}\right\rangle = \frac{1}{(l + 1/2)\,n^3a^2}. \tag{7.57} $$</p>
+                <p>Conferimos as Eqs. (7.56) e (7.57) integrando diretamente com as funções radiais do hidrogênio para todos os estados com
+                    $n \le 5$ (veja também o <a href="#exr-7-3-1">Exercício 7.3-1</a>).</p>
+
+                <h3 id="resultado-relativistico">O resultado</h3>
+
+                <p>Levando as Eqs. (7.56) e (7.57) à Eq. (7.55), segue que</p>
+                <p>$$ E_r^1 = -\frac{1}{2mc^2}\left[E_n^2 + 2E_n\left(\frac{e^2}{4\pi\epsilon_0}\right)\frac{1}{n^2a} + \left(\frac{e^2}{4\pi\epsilon_0}\right)^2\frac{1}{(l + 1/2)\,n^3a^2}\right]. $$</p>
+                <p>Para eliminar $a$ e escrever tudo em termos de $E_n$, usamos de novo $E_n = -(e^2/4\pi\epsilon_0)/(2an^2)$: o segundo
+                    termo do colchete vale $2E_n(-2E_n) = -4E_n^2$, e o terceiro vale
+                    $\left(\dfrac{e^2}{4\pi\epsilon_0}\dfrac{1}{an^2}\right)^2\dfrac{n}{l + 1/2} = 4E_n^2\,\dfrac{n}{l + 1/2}$. Logo</p>
+
+                <div class="definition-box" id="teo-correcao-relativistica">
+                    <p><strong>Teorema (Correção relativística da energia).</strong> Em primeira ordem, a correção relativística aos níveis
+                        do hidrogênio é</p>
+                    <p>$$ E_r^1 = -\frac{(E_n)^2}{2mc^2}\left[\frac{4n}{l + 1/2} - 3\right]. \tag{7.58} $$</p>
+                </div>
+
+                <p>A correção relativística é menor que $E_n$ por um fator da ordem de $E_n/mc^2 \approx 2\times10^{-5}$. Ela é sempre
+                    negativa, pois $4n/(l + 1/2) \ge 4n/(n - 1/2) \gt 4 \gt 3$; e é maior, em módulo, para $l$ pequeno: as órbitas de
+                    $l$ pequeno chegam mais perto do núcleo, onde o elétron é mais rápido.</p>
+
+                <h3 id="estados-bons-relativistica">Por que a teoria não degenerada basta</h3>
+
+                <p>Você deve ter notado que usamos a teoria de perturbação <em>não</em> degenerada (Eq. 7.52), apesar de o átomo de
+                    hidrogênio ser altamente degenerado. Mas a perturbação $H'_r$ tem simetria esférica (depende só de $p^2$, que é
+                    invariante por rotações), e portanto comuta com $L^2$ e com $L_z$. Além disso, as autofunções desses operadores (tomados
+                    juntos) têm autovalores distintos para os $n^2$ estados de um dado $E_n$: cada $\psi_{nlm}$ é identificado pelo par
+                    $(l, m)$. Por sorte, então, as funções de onda $\psi_{nlm}$ <em>são</em> os estados "bons" deste problema (ou, como se
+                    diz, $n$, $l$ e $m$ são os <strong>bons números quânticos</strong>), e o uso da teoria não degenerada era legítimo,
+                    exatamente como diz a <a href="[02] - Teoria de Perturbação Degenerada.html#obs-moral">moral da Seção 7.2</a> (aqui
+                    com dois operadores, $L^2$ e $L_z$, no papel de $A$).</p>
+
+                <p>Pela Eq. (7.58), <em>parte</em> da degenerescência do $n$-ésimo nível foi levantada. A degenerescência de ordem
+                    $(2l + 1)$ em $m$ continua; como vimos no capítulo 6, ela se deve à
+                    <a href="../[5] - Simetrias e Leis de Conservação/[06] - Degenerescência.html#potencial-central-deg">simetria de
+                    rotação</a>, que esta perturbação mantém intacta. Já a degenerescência "acidental" em $l$ desapareceu: como sua origem é
+                    uma simetria adicional, própria do potencial $1/r$ (a
+                    <a href="../[5] - Simetrias e Leis de Conservação/[06] - Degenerescência.html#runge-lenz">conservação do vetor de
+                    Runge–Lenz</a>), esperamos que praticamente qualquer perturbação a quebre.</p>
+
+                <h2 id="spin-orbita">Acoplamento spin-órbita</h2>
+
+                <p>Imagine o elétron em órbita em torno do núcleo. Do ponto de vista do <em>elétron</em>, é o próton que circula em volta
+                    dele (Figura 7.6). Essa carga positiva em órbita produz um campo magnético $\mathbf B$, no referencial do elétron, que
+                    exerce um torque sobre o elétron girante, tendendo a alinhar seu momento magnético $\boldsymbol\mu$ com a direção do
+                    campo. O hamiltoniano (Griffiths, Eq. 4.157) é</p>
+                <p>$$ H = -\boldsymbol\mu\cdot\mathbf B. \tag{7.59} $$</p>
+                <p>Para começar, precisamos do campo magnético do próton ($\mathbf B$) e do momento de dipolo do elétron
+                    ($\boldsymbol\mu$).</p>
+
+                <figure class="lecture-figure" id="fig-7-6">
+                    <svg viewBox="0 0 640 275" role="img" aria-label="Figura 7.6: o elétron em repouso no centro; o próton, de carga +e, percorre um círculo de raio r em volta dele; o campo B e o momento angular L apontam para cima.">
+<defs><marker id="arr-7-6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<path d="M110,205 A210,48 0 1,0 530,205 A210,48 0 1,0 110,205" class="fig-curve"/>
+<path d="M283.5,252.3 A210,48 0 0,0 391.8,250.1" class="fig-axis" marker-end="url(#arr-7-6)"/>
+<line x1="320" y1="205" x2="320" y2="28" class="fig-axis" marker-end="url(#arr-7-6)"/>
+<text x="308" y="34" text-anchor="end" class="fig-label">B, L</text>
+<line x1="320" y1="205" x2="498.4" y2="225.5" class="fig-axis" marker-end="url(#arr-7-6)"/>
+<text x="416.7" y="208.3" class="fig-label">r</text>
+<circle cx="320" cy="205" r="4.5" class="fig-arrowhead"/>
+<text x="310" y="225" text-anchor="end" class="fig-label fig-small">−e (elétron)</text>
+<circle cx="505.4" cy="227.5" r="4.5" class="fig-arrowhead"/>
+<text x="511.4" y="249.5" class="fig-label fig-small">+e (próton)</text>
+</svg>
+                    <figcaption><strong>Figura 7.6.</strong> O átomo de hidrogênio do ponto de vista do elétron: o elétron está em repouso
+                        no centro, e o próton, de carga $+e$, percorre um círculo de raio $r$ em volta dele. O campo $\mathbf B$ produzido
+                        por essa espira de corrente e o momento angular orbital $\mathbf L$ do elétron (no referencial do núcleo) apontam
+                        no mesmo sentido.</figcaption>
+                </figure>
+
+                <h3 id="campo-do-proton">O campo magnético do próton</h3>
+
+                <p>Se imaginamos o próton (do ponto de vista do elétron) como uma espira contínua de corrente (Figura 7.6), seu campo
+                    magnético no centro sai da lei de Biot–Savart:</p>
+                <p>$$ B = \frac{\mu_0I}{2r}, $$</p>
+                <p>com uma corrente efetiva $I = e/T$, em que $e$ é a carga do próton e $T$ é o período da órbita. Por outro lado, o
+                    momento angular orbital do <em>elétron</em> (no referencial de repouso do <em>núcleo</em>) é
+                    $L = rmv = 2\pi mr^2/T$, isto é, $1/T = L/2\pi mr^2$. Além disso, $\mathbf B$ e $\mathbf L$ apontam no mesmo sentido
+                    (para cima, na Figura 7.6), de modo que</p>
+                <p>$$ B = \frac{\mu_0}{2r}\,\frac{e}{T} = \frac{\mu_0e}{4\pi mr^3}\,L = \frac{1}{4\pi\epsilon_0}\frac{e}{mc^2r^3}\,L, $$</p>
+                <p>em que na última passagem usamos $c = 1/\sqrt{\epsilon_0\mu_0}$ para eliminar $\mu_0 = 1/\epsilon_0c^2$ em favor de
+                    $\epsilon_0$. Em forma vetorial,</p>
+                <p>$$ \mathbf B = \frac{1}{4\pi\epsilon_0}\frac{e}{mc^2r^3}\mathbf L. \tag{7.60} $$</p>
+
+                <h3 id="momento-do-eletron">O momento de dipolo magnético do elétron</h3>
+
+                <p>O momento de dipolo magnético de uma carga que gira é proporcional ao seu momento angular (de spin); a constante de
+                    proporcionalidade é a <strong>razão giromagnética</strong>, que já encontramos na Seção 4.4.2 do Griffiths. Vamos
+                    deduzi-la, desta vez, com a eletrodinâmica clássica. Considere primeiro uma carga $q$ espalhada ao longo de um anel de
+                    raio $r$, que gira em torno do próprio eixo com período $T$ (Figura 7.7). O momento de dipolo magnético do anel é, por
+                    definição, a corrente $(q/T)$ vezes a área $(\pi r^2)$:</p>
+                <p>$$ \mu = \frac{q\pi r^2}{T}. $$</p>
+                <p>Se a massa do anel é $m$, seu momento angular é o momento de inércia $(mr^2)$ vezes a velocidade angular $(2\pi/T)$:</p>
+                <p>$$ S = \frac{2\pi mr^2}{T}. $$</p>
+
+                <figure class="lecture-figure" id="fig-7-7">
+                    <svg viewBox="0 0 640 280" role="img" aria-label="Figura 7.7: anel de raio r, com carga q e massa m, girando em torno do próprio eixo; o momento de dipolo magnético e o momento angular apontam ao longo do eixo.">
+<defs><marker id="arr-7-7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<path d="M120,205 A200,46 0 1,0 520,205 A200,46 0 1,0 120,205" class="fig-curve"/>
+<path d="M120,205 A200,46 0 1,0 520,205 A200,46 0 1,0 120,205" class="fig-band"/>
+<path d="M420,244.8 A200,46 0 0,0 493.2,228" class="fig-axis" marker-end="url(#arr-7-7)"/>
+<line x1="320" y1="205" x2="320" y2="28" class="fig-axis" marker-end="url(#arr-7-7)"/>
+<text x="308" y="34" text-anchor="end" class="fig-label">μ, S</text>
+<line x1="320" y1="205" x2="520" y2="205" class="fig-guide fig-dashed"/>
+<text x="420" y="197" text-anchor="middle" class="fig-label fig-it">r</text>
+<circle cx="320" cy="205" r="4" class="fig-arrowhead"/>
+<text x="128" y="273" class="fig-label fig-small">carga q, massa m</text>
+</svg>
+                    <figcaption><strong>Figura 7.7.</strong> Um anel de carga $q$ e massa $m$, de raio $r$, girando em torno do próprio
+                        eixo. O momento de dipolo magnético $\boldsymbol\mu$ e o momento angular $\mathbf S$ apontam ao longo do
+                        eixo.</figcaption>
+                </figure>
+
+                <p>A razão giromagnética dessa configuração é, evidentemente, $\mu/S = q/2m$: $\pi r^2$ e $T$ se cancelam. Note que ela não
+                    depende de $r$ (nem de $T$). Se tivéssemos um objeto mais complicado, como uma esfera (basta que seja um corpo de
+                    revolução girando em torno do próprio eixo), poderíamos calcular $\boldsymbol\mu$ e $\mathbf S$ cortando-o em pequenos
+                    anéis e somando as contribuições. Desde que a massa e a carga estejam distribuídas do mesmo modo (de forma que a razão
+                    carga/massa seja uniforme), a razão giromagnética é a mesma para cada anel e, portanto, para o objeto como um todo. Além
+                    disso, $\boldsymbol\mu$ e $\mathbf S$ têm o mesmo sentido (ou sentidos opostos, se a carga for negativa), de modo
+                    que</p>
+                <p>$$ \boldsymbol\mu = \left(\frac{q}{2m}\right)\mathbf S. \tag{7.61} $$</p>
+
+                <p>Essa foi, porém, uma conta puramente <em>clássica</em>, e o elétron não segue o resultado clássico.</p>
+
+                <div class="definition-box" id="prop-momento-magnetico-eletron">
+                    <p><strong>Resultado citado (Momento magnético do elétron).</strong> O momento magnético do elétron é o <em>dobro</em>
+                        do valor clássico (7.61) com $q = -e$:</p>
+                    <p>$$ \boldsymbol\mu_e = -\frac{e}{m}\mathbf S. \tag{7.62} $$</p>
+                </div>
+                <p><em>Ideia.</em> O fator 2 "extra" foi explicado por Dirac, na sua teoria relativística do elétron (Griffiths, Seção 7.3.2
+                    e Seção 4.4.2).<sup id="fnref:3"><a href="#fn:3" class="footnote-ref">3</a></sup></p>
+
+                <h3 id="hamiltoniano-spin-orbita">O hamiltoniano spin-órbita</h3>
+
+                <p>Juntando tudo, com $\boldsymbol\mu_e$ da Eq. (7.62) e $\mathbf B$ da Eq. (7.60) na Eq. (7.59),</p>
+                <p>$$ H = -\left(-\frac{e}{m}\mathbf S\right)\cdot\frac{1}{4\pi\epsilon_0}\frac{e}{mc^2r^3}\mathbf L = \left(\frac{e^2}{4\pi\epsilon_0}\right)\frac{1}{m^2c^2r^3}\mathbf S\cdot\mathbf L. $$</p>
+                <p>Mas há uma fraude séria nessa conta: fizemos a análise no referencial de repouso do elétron, e esse <em>não é um
+                    referencial inercial</em>: ele é <em>acelerado</em>, porque o elétron orbita em torno do núcleo. Podemos escapar disso
+                    fazendo uma correção cinemática apropriada.</p>
+
+                <div class="definition-box" id="prop-precessao-de-thomas">
+                    <p><strong>Resultado citado (Precessão de Thomas).</strong> A análise feita no referencial de repouso (acelerado) do
+                        elétron é corrigida por um efeito cinemático, a <strong>precessão de Thomas</strong>
+                        (<em>Thomas precession</em>), que neste contexto introduz um fator $1/2$ na interação.</p>
+                </div>
+                <p><em>Ideia.</em> O elétron está continuamente passando de um referencial inercial para outro, e a precessão de Thomas é o
+                    efeito acumulado de todas essas transformações de Lorentz (Griffiths, Seção 7.3.2).<sup id="fnref:4"><a href="#fn:4"
+                    class="footnote-ref">4</a></sup></p>
+
+                <p>Com o fator $1/2$ da precessão de Thomas,</p>
+                <p>$$ H'_{\text{so}} = \left(\frac{e^2}{8\pi\epsilon_0}\right)\frac{1}{m^2c^2r^3}\mathbf S\cdot\mathbf L. \tag{7.63} $$</p>
+                <p>Esta é a <strong>interação spin-órbita</strong>. A não ser por duas correções (a razão giromagnética modificada do
+                    elétron e o fator da precessão de Thomas, que, por coincidência, se cancelam exatamente), ela é exatamente o que se
+                    esperaria de um modelo clássico ingênuo. Fisicamente, ela se deve ao torque que o campo magnético do próton, no
+                    referencial de repouso instantâneo do elétron, exerce sobre o momento de dipolo magnético do elétron girante.</p>
+
+                <h3 id="estados-bons-spin-orbita">Os estados bons: $j$ e $m_j$</h3>
+
+                <p>Passemos agora à mecânica quântica. Na presença do acoplamento spin-órbita, o hamiltoniano não comuta mais com
+                    $\mathbf L$ e $\mathbf S$, de modo que os momentos angulares de spin e orbital não se conservam separadamente (veja o
+                    <a href="#exr-7-3-6">Exercício 7.3-6</a>). Mas $H'_{\text{so}}$ <em>comuta</em> com $L^2$, com $S^2$ e com o momento angular <em>total</em></p>
+                <p>$$ \mathbf J \equiv \mathbf L + \mathbf S, \tag{7.64} $$</p>
+                <p>e portanto essas grandezas <em>se conservam</em> (Griffiths, Eq. 3.73; veja as
+                    <a href="../[5] - Simetrias e Leis de Conservação/[03] - Leis de Conservação.html">leis de conservação</a> do capítulo 6).
+                    Dito de outro modo: os autoestados de $L_z$ e $S_z$ não são estados "bons" para a teoria de perturbação, mas os
+                    autoestados de $L^2$, $S^2$, $J^2$ e $J_z$ são. É o mesmo raciocínio da
+                    <a href="[02] - Teoria de Perturbação Degenerada.html#obs-moral">moral da Seção 7.2</a>: dentro de um nível $n$, os
+                    estados $|n\,l\,j\,m_j\rangle$ são identificados pelos autovalores desses operadores, que comutam com $H^0$ e com
+                    $H'_{\text{so}}$.</p>
+
+                <p>Para calcular $\mathbf L\cdot\mathbf S$ nesses estados, note que, como $\mathbf L$ e $\mathbf S$ comutam,</p>
+                <p>$$ J^2 = (\mathbf L + \mathbf S)\cdot(\mathbf L + \mathbf S) = L^2 + S^2 + 2\mathbf L\cdot\mathbf S, $$</p>
+                <p>de modo que</p>
+                <p>$$ \mathbf L\cdot\mathbf S = \frac12\left(J^2 - L^2 - S^2\right), \tag{7.65} $$</p>
+                <p>e, portanto, os autovalores de $\mathbf L\cdot\mathbf S$ são</p>
+                <p>$$ \frac{\hbar^2}{2}\left[j(j + 1) - l(l + 1) - s(s + 1)\right]. $$</p>
+                <p>Neste caso, é claro, $s = 1/2$, e $s(s + 1) = 3/4$.</p>
+
+                <h3 id="valor-esperado-r3">O valor esperado de $1/r^3$</h3>
+
+                <p>Falta o valor esperado de $1/r^3$, que o Griffiths enuncia e deixa para um problema (pela relação de Kramers).
+                    Como a seção depende dele, fazemos a dedução, por um caminho direto.<sup id="fnref:5"><a href="#fn:5"
+                    class="footnote-ref">5</a></sup></p>
+
+                <div class="definition-box" id="prop-valor-esperado-r3">
+                    <p><strong>Proposição (Valor esperado de $1/r^3$).</strong> No estado $\psi_{nlm}$ do hidrogênio, com $l \ge 1$,</p>
+                    <p>$$ \left\langle\frac{1}{r^3}\right\rangle = \frac{1}{l\,(l + 1/2)\,(l + 1)\,n^3a^3}. \tag{7.66} $$</p>
+                </div>
+                <p><em>Demonstração.</em> Escrevemos a equação radial (no quadro <a href="#prop-hidrogenio-bohr">Resultado citado (O átomo de hidrogênio)</a>) como
+                    $-\frac{\hbar^2}{2m}u'' + V_{\text{ef}}u = Eu$, com
+                    $V_{\text{ef}}(r) = -\dfrac{e^2}{4\pi\epsilon_0}\dfrac1r + \dfrac{\hbar^2}{2m}\dfrac{l(l + 1)}{r^2}$ e $u$ real.</p>
+                <p><strong>Passo 1.</strong> Multiplicamos a equação por $u'$ e integramos de $0$ a $\infty$:</p>
+                <p>$$ -\frac{\hbar^2}{2m}\int_0^\infty u''u'\,dr + \int_0^\infty V_{\text{ef}}\,uu'\,dr = E\int_0^\infty uu'\,dr. $$</p>
+                <p><strong>Passo 2.</strong> Cada integral é uma derivada total ou se reduz a uma. Do lado direito,
+                    $\int uu'\,dr = \left[u^2/2\right]_0^\infty = 0$, pois $u(0) = 0$ e $u \to 0$ no infinito. No primeiro termo,
+                    $\int u''u'\,dr = \left[u'^2/2\right]_0^\infty = -u'(0)^2/2$, que se anula para $l \ge 1$, porque perto da origem
+                    $u \sim r^{l + 1}$ e portanto $u'(0) = 0$. No segundo, integrando por partes,</p>
+                <p>$$ \int_0^\infty V_{\text{ef}}\,uu'\,dr = \left[\frac{V_{\text{ef}}u^2}{2}\right]_0^\infty - \frac12\int_0^\infty V'_{\text{ef}}\,u^2\,dr, $$</p>
+                <p>e o termo de fronteira se anula, porque $V_{\text{ef}}u^2 \sim r^{-2}r^{2l + 2} \to 0$ na origem.</p>
+                <p><strong>Passo 3.</strong> Sobra $\int_0^\infty V'_{\text{ef}}\,u^2\,dr = 0$, isto é, $\langle dV_{\text{ef}}/dr\rangle = 0$: num
+                    estado estacionário, a força radial média é nula. Como
+                    $V'_{\text{ef}} = \dfrac{e^2}{4\pi\epsilon_0}\dfrac{1}{r^2} - \dfrac{\hbar^2l(l + 1)}{m}\dfrac{1}{r^3}$,</p>
+                <p>$$ \frac{e^2}{4\pi\epsilon_0}\left\langle\frac{1}{r^2}\right\rangle = \frac{\hbar^2l(l + 1)}{m}\left\langle\frac{1}{r^3}\right\rangle
+                    \quad\Longrightarrow\quad
+                    \left\langle\frac{1}{r^3}\right\rangle = \frac{1}{l(l + 1)\,a}\left\langle\frac{1}{r^2}\right\rangle, $$</p>
+                <p>em que usamos de novo $\dfrac{e^2}{4\pi\epsilon_0}\dfrac{m}{\hbar^2} = \dfrac1a$. Com a Eq. (7.57), obtemos a
+                    Eq. (7.66). $\blacksquare$</p>
+
+                <p>O valor esperado não depende de $m$, e por isso tanto faz calculá-lo nos estados $\psi_{nlm}$ ou nos estados bons
+                    $|n\,l\,j\,m_j\rangle$, que são combinações lineares de estados com o mesmo $n$ e o mesmo $l$.<sup id="fnref:6"><a
+                    href="#fn:6" class="footnote-ref">6</a></sup></p>
+
+                <h3 id="resultado-spin-orbita">A correção spin-órbita</h3>
+
+                <p>Juntando os autovalores de $\mathbf L\cdot\mathbf S$ e a Eq. (7.66), concluímos que</p>
+                <p>$$ \begin{aligned}
+                    E_{\text{so}}^1 = \langle H'_{\text{so}}\rangle
+                    &= \frac{e^2}{8\pi\epsilon_0}\frac{1}{m^2c^2}\left\langle\frac{1}{r^3}\right\rangle\langle\mathbf S\cdot\mathbf L\rangle \\
+                    &= \frac{e^2}{8\pi\epsilon_0}\frac{1}{m^2c^2}\,\frac{(\hbar^2/2)\left[j(j + 1) - l(l + 1) - 3/4\right]}{l\,(l + 1/2)\,(l + 1)\,n^3a^3}.
+                    \end{aligned} $$</p>
+                <p>Para escrever tudo em termos de $E_n$, usamos $\hbar^2/m = (e^2/4\pi\epsilon_0)\,a$ (a definição de $a$) num dos fatores
+                    $1/m$ e, no fim, $E_n = -(e^2/4\pi\epsilon_0)/(2an^2)$. O prefator fica</p>
+                <p>$$ \begin{aligned}
+                    \frac{e^2}{8\pi\epsilon_0}\,\frac{\hbar^2}{2m^2c^2}\,\frac{1}{n^3a^3} &= \frac{1}{4mc^2}\left(\frac{e^2}{4\pi\epsilon_0}\right)^2\frac{1}{n^3a^2} \\
+                    &= \frac{n}{4mc^2}\left(\frac{e^2}{4\pi\epsilon_0}\,\frac{1}{an^2}\right)^2 = \frac{(E_n)^2}{mc^2}\,n,
+                    \end{aligned} $$</p>
+                <p>e, portanto,</p>
+
+                <div class="definition-box" id="teo-correcao-spin-orbita">
+                    <p><strong>Teorema (Correção spin-órbita da energia).</strong> Para $l \ge 1$, em primeira ordem,</p>
+                    <p>$$ E_{\text{so}}^1 = \frac{(E_n)^2}{mc^2}\left\{\frac{n\left[j(j + 1) - l(l + 1) - 3/4\right]}{l\,(l + 1/2)\,(l + 1)}\right\}. \tag{7.67} $$</p>
+                </div>
+
+                <h3 id="formula-estrutura-fina">A fórmula da estrutura fina</h3>
+
+                <p>É notável, dados os mecanismos físicos completamente diferentes, que a correção relativística e o acoplamento spin-órbita
+                    sejam da mesma ordem, $(E_n)^2/mc^2$. Somando os dois, obtemos a fórmula completa da estrutura fina.</p>
+
+                <div class="definition-box" id="teo-estrutura-fina">
+                    <p><strong>Teorema (Fórmula da estrutura fina).</strong> A correção de estrutura fina aos níveis do hidrogênio,
+                        $E_{\text{fs}}^1 = E_r^1 + E_{\text{so}}^1$, é</p>
+                    <p>$$ E_{\text{fs}}^1 = \frac{(E_n)^2}{2mc^2}\left(3 - \frac{4n}{j + 1/2}\right). \tag{7.68} $$</p>
+                    <p>Ela depende de $n$ e $j$, mas não de $l$.</p>
+                </div>
+                <p><em>Demonstração.</em> Para $l \ge 1$, os valores possíveis de $j$ são $j = l \pm 1/2$; tratamos os dois sinais
+                    separadamente.</p>
+                <p><strong>Passo 1 ($j = l + 1/2$).</strong> O colchete da Eq. (7.67) vale
+                    $(l + \tfrac12)(l + \tfrac32) - l(l + 1) - \tfrac34 = l$, e $E_{\text{so}}^1 = \dfrac{(E_n)^2}{mc^2}\,\dfrac{n}{(l + 1/2)(l + 1)}$.
+                    Somando com a Eq. (7.58),</p>
+                <p>$$ \begin{aligned}
+                    E_r^1 + E_{\text{so}}^1 &= \frac{(E_n)^2}{2mc^2}\left[3 - \frac{4n}{l + 1/2} + \frac{2n}{(l + 1/2)(l + 1)}\right] \\
+                    &= \frac{(E_n)^2}{2mc^2}\left[3 - \frac{2n(2l + 1)}{(l + 1/2)(l + 1)}\right] = \frac{(E_n)^2}{2mc^2}\left[3 - \frac{4n}{l + 1}\right],
+                    \end{aligned} $$</p>
+                <p>pois $4n(l + 1) - 2n = 2n(2l + 1)$ e $2l + 1 = 2(l + 1/2)$. Como $j + 1/2 = l + 1$, este é o resultado (7.68).</p>
+                <p><strong>Passo 2 ($j = l - 1/2$).</strong> Agora o colchete vale $(l - \tfrac12)(l + \tfrac12) - l(l + 1) - \tfrac34 = -(l + 1)$, e
+                    $E_{\text{so}}^1 = -\dfrac{(E_n)^2}{mc^2}\,\dfrac{n}{l\,(l + 1/2)}$. Somando com a Eq. (7.58),</p>
+                <p>$$ \begin{aligned}
+                    E_r^1 + E_{\text{so}}^1 &= \frac{(E_n)^2}{2mc^2}\left[3 - \frac{4n}{l + 1/2} - \frac{2n}{l\,(l + 1/2)}\right] \\
+                    &= \frac{(E_n)^2}{2mc^2}\left[3 - \frac{2n(2l + 1)}{l\,(l + 1/2)}\right] = \frac{(E_n)^2}{2mc^2}\left[3 - \frac{4n}{l}\right],
+                    \end{aligned} $$</p>
+                <p>pois $4nl + 2n = 2n(2l + 1)$. Como agora $j + 1/2 = l$, este é de novo o resultado (7.68).</p>
+                <p><strong>Passo 3 ($l = 0$).</strong> Só há $j = 1/2$, e a Eq. (7.67) fica indeterminada, como discutimos abaixo. O
+                    Griffiths afirma que a soma (7.68) vale para <em>todo</em> $l$, inclusive $l = 0$, e que isso é confirmado pela
+                    solução exata da equação de Dirac (quadro <a href="#prop-niveis-de-dirac">Resultado citado (Níveis exatos de Dirac)</a>). $\blacksquare$</p>
+
+                <p id="obs-caso-l-zero"><strong>Observação (O caso $l = 0$).</strong> Para $l = 0$, a Eq. (7.67) parece problemática, pois
+                    estaríamos dividindo por zero. Por outro lado, o numerador <em>também</em> se anula, pois nesse caso $j = s = 1/2$ e
+                    $j(j + 1) - 0 - 3/4 = 0$: a Eq. (7.67) é indeterminada. Por razões físicas, não deveria haver acoplamento spin-órbita
+                    quando $l = 0$. Em todo caso, o problema desaparece quando o acoplamento spin-órbita é somado à correção relativística:
+                    a soma, Eq. (7.68), está correta para todo $l$. Se você ficar desconfortável com essa conta, o Griffiths diz que não o
+                    culpa; o consolo é que a solução <em>exata</em>, obtida com a equação de Dirac (relativística) no lugar da equação de
+                    Schrödinger, confirma os resultados que obtivemos aqui por meios menos rigorosos. Vale notar, como conta, que se
+                    tomarmos a Eq. (7.67) com $j = l + 1/2$ antes de fazer $l \to 0$, ela tende a $2n\,(E_n)^2/mc^2$, e esse valor somado a
+                    $E_r^1(l = 0)$ reproduz exatamente a Eq. (7.68) com $j = 1/2$.</p>
+
+                <p>Combinando a Eq. (7.68) com a fórmula de Bohr, e usando $E_n/2mc^2 = -\alpha^2/4n^2$ (da expressão
+                    $E_n = -\alpha^2mc^2/2n^2$ da seção <a href="#escala">Escalas de energia</a>), chegamos ao grande resultado para os
+                    níveis de energia do hidrogênio com estrutura fina:</p>
+                <p>$$ E_n + E_{\text{fs}}^1 = E_n\left[1 - \frac{\alpha^2}{4n^2}\left(3 - \frac{4n}{j + 1/2}\right)\right], $$</p>
+                <p>isto é,</p>
+                <div class="definition-box" id="teo-niveis-estrutura-fina">
+                    <p><strong>Teorema (Níveis do hidrogênio com estrutura fina).</strong></p>
+                    <p>$$ E_{nj} = -\frac{13{,}6\ \text{eV}}{n^2}\left[1 + \frac{\alpha^2}{n^2}\left(\frac{n}{j + 1/2} - \frac34\right)\right]. \tag{7.69} $$</p>
+                </div>
+
+                <p>A estrutura fina quebra a degenerescência em $l$ (para um dado $n$, os diferentes valores permitidos de $l$ já não têm
+                    todos a mesma energia), mas ainda preserva a degenerescência em $j$ (Figura 7.8): os estados $2S_{1/2}$ e $2P_{1/2}$,
+                    por exemplo, continuam com a mesma energia (na notação espectroscópica $nL_j$, a letra $L$ = S, P, D, F indica
+                    $l = 0, 1, 2, 3$, e o índice é o valor de $j$). Os autovalores das componentes $z$ dos momentos angulares orbital e de spin,
+                    $m_l$ e $m_s$, já não são "bons" números quânticos: os estados estacionários são combinações lineares de estados com
+                    valores diferentes dessas grandezas. Os bons números quânticos são $n$, $l$, $s$, $j$ e
+                    $m_j$.<sup id="fnref:7"><a href="#fn:7" class="footnote-ref">7</a></sup></p>
+
+                <figure class="lecture-figure" id="fig-7-8">
+                    <svg viewBox="0 0 640 478" role="img" aria-label="Figura 7.8: níveis de energia do hidrogênio com estrutura fina, fora de escala. Cada nível de Bohr n se separa em subníveis rotulados por j; subníveis com o mesmo j e l diferentes têm a mesma energia.">
+<defs><marker id="arr-7-8" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="70" y1="420" x2="455" y2="420" class="fig-curve"/>
+<text x="62" y="425" text-anchor="end" class="fig-label">n = 1</text>
+<line x1="92" y1="434" x2="154" y2="434" class="fig-axis"/>
+<line x1="455" y1="420" x2="503" y2="434" class="fig-guide"/>
+<line x1="503" y1="434" x2="537" y2="434" class="fig-guide fig-dashed"/>
+<text x="543" y="438" class="fig-label fig-small">j = 1/2</text>
+<line x1="70" y1="300" x2="455" y2="300" class="fig-curve"/>
+<text x="62" y="305" text-anchor="end" class="fig-label">n = 2</text>
+<line x1="92" y1="328" x2="154" y2="328" class="fig-axis"/>
+<line x1="182" y1="328" x2="244" y2="328" class="fig-axis"/>
+<line x1="182" y1="314" x2="244" y2="314" class="fig-axis"/>
+<line x1="455" y1="300" x2="503" y2="328" class="fig-guide"/>
+<line x1="503" y1="328" x2="537" y2="328" class="fig-guide fig-dashed"/>
+<text x="543" y="332" class="fig-label fig-small">j = 1/2</text>
+<line x1="455" y1="300" x2="503" y2="314" class="fig-guide"/>
+<line x1="503" y1="314" x2="537" y2="314" class="fig-guide fig-dashed"/>
+<text x="543" y="318" class="fig-label fig-small">j = 3/2</text>
+<line x1="70" y1="190" x2="455" y2="190" class="fig-curve"/>
+<text x="62" y="195" text-anchor="end" class="fig-label">n = 3</text>
+<line x1="92" y1="232" x2="154" y2="232" class="fig-axis"/>
+<line x1="182" y1="232" x2="244" y2="232" class="fig-axis"/>
+<line x1="182" y1="218" x2="244" y2="218" class="fig-axis"/>
+<line x1="272" y1="218" x2="334" y2="218" class="fig-axis"/>
+<line x1="272" y1="204" x2="334" y2="204" class="fig-axis"/>
+<line x1="455" y1="190" x2="503" y2="232" class="fig-guide"/>
+<line x1="503" y1="232" x2="537" y2="232" class="fig-guide fig-dashed"/>
+<text x="543" y="236" class="fig-label fig-small">j = 1/2</text>
+<line x1="455" y1="190" x2="503" y2="218" class="fig-guide"/>
+<line x1="503" y1="218" x2="537" y2="218" class="fig-guide fig-dashed"/>
+<text x="543" y="222" class="fig-label fig-small">j = 3/2</text>
+<line x1="455" y1="190" x2="503" y2="204" class="fig-guide"/>
+<line x1="503" y1="204" x2="537" y2="204" class="fig-guide fig-dashed"/>
+<text x="543" y="208" class="fig-label fig-small">j = 5/2</text>
+<line x1="70" y1="80" x2="455" y2="80" class="fig-curve"/>
+<text x="62" y="85" text-anchor="end" class="fig-label">n = 4</text>
+<line x1="92" y1="136" x2="154" y2="136" class="fig-axis"/>
+<line x1="182" y1="136" x2="244" y2="136" class="fig-axis"/>
+<line x1="182" y1="122" x2="244" y2="122" class="fig-axis"/>
+<line x1="272" y1="122" x2="334" y2="122" class="fig-axis"/>
+<line x1="272" y1="108" x2="334" y2="108" class="fig-axis"/>
+<line x1="362" y1="108" x2="424" y2="108" class="fig-axis"/>
+<line x1="362" y1="94" x2="424" y2="94" class="fig-axis"/>
+<line x1="455" y1="80" x2="503" y2="136" class="fig-guide"/>
+<line x1="503" y1="136" x2="537" y2="136" class="fig-guide fig-dashed"/>
+<text x="543" y="140" class="fig-label fig-small">j = 1/2</text>
+<line x1="455" y1="80" x2="503" y2="122" class="fig-guide"/>
+<line x1="503" y1="122" x2="537" y2="122" class="fig-guide fig-dashed"/>
+<text x="543" y="126" class="fig-label fig-small">j = 3/2</text>
+<line x1="455" y1="80" x2="503" y2="108" class="fig-guide"/>
+<line x1="503" y1="108" x2="537" y2="108" class="fig-guide fig-dashed"/>
+<text x="543" y="112" class="fig-label fig-small">j = 5/2</text>
+<line x1="455" y1="80" x2="503" y2="94" class="fig-guide"/>
+<line x1="503" y1="94" x2="537" y2="94" class="fig-guide fig-dashed"/>
+<text x="543" y="98" class="fig-label fig-small">j = 7/2</text>
+<text x="123" y="466" text-anchor="middle" class="fig-label fig-small">l = 0 (S)</text>
+<text x="213" y="466" text-anchor="middle" class="fig-label fig-small">l = 1 (P)</text>
+<text x="303" y="466" text-anchor="middle" class="fig-label fig-small">l = 2 (D)</text>
+<text x="393" y="466" text-anchor="middle" class="fig-label fig-small">l = 3 (F)</text>
+</svg>
+                    <figcaption><strong>Figura 7.8.</strong> Níveis de energia do hidrogênio com estrutura fina (fora de escala). Cada
+                        linha longa é um nível de Bohr; abaixo dela, em cada coluna $l$, ficam os subníveis $j = l \pm 1/2$. Pela
+                        Eq. (7.68), todos os subníveis estão abaixo do nível de Bohr, e a energia cresce com $j$; subníveis de mesmo $j$
+                        em colunas diferentes têm a mesma energia, e por isso à direita só aparecem os valores de $j$.</figcaption>
+                </figure>
+
+                <div class="definition-box" id="prop-niveis-de-dirac">
+                    <p><strong>Resultado citado (Níveis exatos de Dirac).</strong> A fórmula exata da estrutura fina do hidrogênio, obtida
+                        da equação de Dirac sem recorrer à teoria de perturbação, é</p>
+                    <p>$$ E_{nj} = mc^2\left\{\left[1 + \left(\frac{\alpha}{D_{nj}}\right)^2\right]^{-1/2} - 1\right\}, $$</p>
+                    <p>em que</p>
+                    <p>$$ D_{nj} = n - (j + 1/2) + \sqrt{(j + 1/2)^2 - \alpha^2}. $$</p>
+                </div>
+                <p><em>Ideia.</em> É a solução da equação relativística de Dirac para o elétron no potencial coulombiano; o Griffiths a
+                    enuncia num problema da Seção 7.3. Expandida até ordem $\alpha^4$, ela reproduz a Eq. (7.69) (<a href="#exr-7-3-7">Exercício 7.3-7</a>).</p>
+
+                <h2 id="conexao">Conexão com o experimento</h2>
+
+                <p>A estrutura fina é pequena. A correção relativística é menor que $E_n$ por um fator da ordem de
+                    $E_n/mc^2 \approx 2\times10^{-5}$, e o mesmo vale para o acoplamento spin-órbita; ambos são da ordem de $\alpha^2$ em
+                    relação às energias de Bohr, com $\alpha \approx 1/137{,}036$ (Eq. 7.44). Em números, a separação entre os subníveis
+                    $j = 3/2$ e $j = 1/2$ do nível $n = 2$ é de cerca de $4{,}5\times10^{-5}$ eV (<a href="#exr-7-3-4">Exercício 7.3-4</a>), contra os $10{,}2$ eV que
+                    separam $n = 2$ de $n = 1$.</p>
+
+                <p>É por isso que só espectrômetros de boa resolução a revelam. O Griffiths cita o exemplo mais visível: a característica
+                    mais proeminente do espectro do hidrogênio na região visível é a linha vermelha de Balmer, que vem da transição de
+                    $n = 3$ para $n = 2$. A estrutura fina separa essa linha em várias linhas muito próximas, uma para cada transição entre
+                    um subnível $j$ de $n = 3$ e um subnível $j$ de $n = 2$; o que se observa são as separações entre essas linhas, e não o
+                    deslocamento de cada uma em relação à linha "não perturbada", que não é observável.</p>
+
+                <p>Duas confirmações independentes sustentam a fórmula (7.68), apesar dos passos pouco rigorosos da dedução (o fator de
+                    Thomas, o caso $l = 0$). A primeira é a solução exata da equação de Dirac, que reproduz a Eq. (7.69) quando expandida
+                    em $\alpha$ (<a href="#exr-7-3-7">Exercício 7.3-7</a>). A segunda é o próprio fator $g = 2$ do elétron, que entra na Eq. (7.62): a eletrodinâmica
+                    quântica o corrige para $2{,}002\ldots$, e o cálculo e a medida desse momento magnético anômalo concordam com precisão
+                    extraordinária. Por fim, a Tabela 7.1 diz onde a fórmula deixa de bastar: as próximas correções são o deslocamento de
+                    Lamb, de ordem $\alpha^5mc^2$, e a estrutura hiperfina, que veremos na Seção 7.5.</p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p id="exr-7-3-1"><strong>Exercício 7.3-1.</strong> Com as funções radiais
+                    $R_{20} = \frac{1}{\sqrt2}a^{-3/2}\left(1 - \frac{r}{2a}\right)e^{-r/2a}$ e
+                    $R_{21} = \frac{1}{\sqrt{24}}a^{-3/2}\,\frac ra\,e^{-r/2a}$ (Griffiths, Seção 4.2), calcule $\langle 1/r\rangle$ e
+                    $\langle 1/r^2\rangle$ nos estados $n = 2$, $l = 0$ e $n = 2$, $l = 1$, e confira as Eqs. (7.56) e (7.57).</p>
+                <p><em>Solução.</em> O valor esperado é $\langle r^p\rangle = \int_0^\infty R^2r^{p + 2}\,dr$, e todas as integrais saem de
+                    $\int_0^\infty r^ke^{-r/a}\,dr = k!\,a^{k + 1}$. Para $l = 1$, $R_{21}^2 = \frac{1}{24a^5}r^2e^{-r/a}$, e</p>
+                <p>$$ \begin{aligned}
+                    \left\langle\frac1r\right\rangle_{21} &= \frac{1}{24a^5}\int_0^\infty r^3e^{-r/a}\,dr = \frac{3!\,a^4}{24a^5} = \frac{1}{4a}, \\
+                    \left\langle\frac{1}{r^2}\right\rangle_{21} &= \frac{1}{24a^5}\int_0^\infty r^2e^{-r/a}\,dr = \frac{2!\,a^3}{24a^5} = \frac{1}{12a^2}.
+                    \end{aligned} $$</p>
+                <p>Para $l = 0$, $R_{20}^2 = \frac{1}{2a^3}\left(1 - \frac ra + \frac{r^2}{4a^2}\right)e^{-r/a}$, e</p>
+                <p>$$ \begin{aligned}
+                    \left\langle\frac1r\right\rangle_{20} &= \frac{1}{2a^3}\left(a^2 - 2a^2 + \frac{6a^4}{4a^2}\right) = \frac{1}{2a^3}\,\frac{a^2}{2} = \frac{1}{4a}, \\
+                    \left\langle\frac{1}{r^2}\right\rangle_{20} &= \frac{1}{2a^3}\left(a - a + \frac{2a^3}{4a^2}\right) = \frac{1}{2a^3}\,\frac a2 = \frac{1}{4a^2}.
+                    \end{aligned} $$</p>
+                <p>A Eq. (7.56) dá $1/(4a)$ nos dois casos: $\langle 1/r\rangle$ só depende de $n$, como a energia de Bohr. A Eq. (7.57) dá
+                    $1/(\tfrac12\cdot8a^2) = 1/(4a^2)$ para $l = 0$ e $1/(\tfrac32\cdot8a^2) = 1/(12a^2)$ para $l = 1$. O estado $2S$ tem
+                    $\langle 1/r^2\rangle$ três vezes maior: a função $s$ não se anula na origem e "visita" a região perto do núcleo.</p>
+
+                <p id="exr-7-3-2"><strong>Exercício 7.3-2.</strong> Para $l = 1$ e $s = 1/2$, encontre os autovalores de
+                    $\mathbf L\cdot\mathbf S$ nos dois valores possíveis de $j$ e mostre que a soma deles, cada um contado tantas vezes
+                    quantos são os seus estados, é zero. Por que isso tinha de acontecer?</p>
+                <p><em>Solução.</em> Pela Eq. (7.65), os autovalores são $\frac{\hbar^2}{2}\left[j(j + 1) - 2 - \frac34\right]$. Para
+                    $j = 3/2$, $\frac{\hbar^2}{2}\left(\frac{15}{4} - \frac{11}{4}\right) = \frac{\hbar^2}{2}$; para $j = 1/2$,
+                    $\frac{\hbar^2}{2}\left(\frac34 - \frac{11}{4}\right) = -\hbar^2$. Há $2j + 1 = 4$ estados com $j = 3/2$ e $2$ com
+                    $j = 1/2$, e $4\cdot\frac{\hbar^2}{2} + 2\cdot(-\hbar^2) = 0$. Isso tinha de acontecer: a soma dos autovalores é o traço
+                    de $\mathbf L\cdot\mathbf S$ no espaço de $3 \times 2 = 6$ estados, e o traço não depende da base
+                    (<a href="[02] - Teoria de Perturbação Degenerada.html#exr-7-2-6">Exercício 7.2-6</a>). Na base $|m_l\,m_s\rangle$, o traço de $L_xS_x + L_yS_y + L_zS_z$ é
+                    $\sum_i\mathrm{tr}(L_i)\,\mathrm{tr}(S_i) = 0$, porque cada componente de um momento angular tem traço nulo. O
+                    acoplamento spin-órbita, portanto, só redistribui os estados em torno do nível original, sem deslocar seu "centro de
+                    gravidade".</p>
+
+                <p id="exr-7-3-3"><strong>Exercício 7.3-3.</strong> Calcule, em eV, as correções $E_r^1$ e $E_{\text{so}}^1$ dos estados
+                    $2P_{1/2}$ e $2P_{3/2}$ e confira que suas somas coincidem com a Eq. (7.68). Use $E_2 = -3{,}4$ eV e
+                    $mc^2 = 511\,000$ eV. Qual é a correção do estado $2S_{1/2}$?</p>
+                <p><em>Solução.</em> A escala comum é $(E_2)^2/2mc^2 = (3{,}4)^2/1\,022\,000 = 1{,}131\times10^{-5}$ eV. Pela Eq. (7.58)
+                    com $n = 2$, $l = 1$, o colchete vale $8/1{,}5 - 3 = 7/3$, e $E_r^1 = -\tfrac73\cdot1{,}131\times10^{-5} = -2{,}639\times10^{-5}$ eV
+                    para os dois estados $2P$. Pela Eq. (7.67), $E_{\text{so}}^1 = 2\cdot1{,}131\times10^{-5}\cdot\dfrac{2\,[\ldots]}{1\cdot\tfrac32\cdot2}$,
+                    com $[\ldots] = l = 1$ para $j = 3/2$ e $[\ldots] = -(l + 1) = -2$ para $j = 1/2$:</p>
+                <p>$$ E_{\text{so}}^1(2P_{3/2}) = +1{,}508\times10^{-5}\ \text{eV}, \qquad E_{\text{so}}^1(2P_{1/2}) = -3{,}016\times10^{-5}\ \text{eV}. $$</p>
+                <p>As somas são $-1{,}131\times10^{-5}$ eV para $2P_{3/2}$ e $-5{,}655\times10^{-5}$ eV para $2P_{1/2}$. A Eq. (7.68) dá
+                    $1{,}131\times10^{-5}\,(3 - 8/2) = -1{,}131\times10^{-5}$ eV para $j = 3/2$ e $1{,}131\times10^{-5}\,(3 - 8/1) = -5{,}656\times10^{-5}$ eV
+                    para $j = 1/2$ (a diferença na última casa é arredondamento). Para $2S_{1/2}$, a Eq. (7.68) dá o mesmo valor que para
+                    $2P_{1/2}$, $-5{,}656\times10^{-5}$ eV: os dois estados continuam degenerados. Note que, sozinha, a correção
+                    relativística desse estado seria $-13\cdot1{,}131\times10^{-5} = -1{,}470\times10^{-4}$ eV; é a soma (7.68), e não
+                    $E_r^1$ isolada, que vale para $l = 0$ (<a href="#obs-caso-l-zero">Observação (O caso $l = 0$)</a>).</p>
+
+                <p id="exr-7-3-4"><strong>Exercício 7.3-4.</strong> Encontre a separação de estrutura fina entre os níveis $j = 3/2$ e
+                    $j = 1/2$ de $n = 2$, mostre que ela vale $\alpha^2|E_2|/4$ e converta-a em frequência e em comprimento de onda de um
+                    fóton com essa energia. Use $h = 4{,}136\times10^{-15}$ eV·s.</p>
+                <p><em>Solução.</em> Pela Eq. (7.68), a diferença entre os colchetes é $(3 - 4) - (3 - 8) = 4$, e</p>
+                <p>$$ \Delta E = 4\,\frac{(E_2)^2}{2mc^2} = \frac{2(E_2)^2}{mc^2} = 4{,}52\times10^{-5}\ \text{eV}. $$</p>
+                <p>Como $E_n/mc^2 = -\alpha^2/2n^2$, temos $(E_2)^2/mc^2 = |E_2|\,\alpha^2/8$, e $\Delta E = \alpha^2|E_2|/4$; com
+                    $\alpha = 1/137{,}036$ e $|E_2| = 3{,}4$ eV, isso dá de novo $4{,}53\times10^{-5}$ eV. A frequência correspondente é
+                    $\nu = \Delta E/h = 1{,}09\times10^{10}$ Hz, cerca de $11$ GHz, e o comprimento de onda é $\lambda = c/\nu \approx 2{,}7$ cm:
+                    uma transição entre os subníveis de estrutura fina fica na região das micro-ondas, enquanto as linhas de Balmer estão
+                    no visível.</p>
+
+                <p id="exr-7-3-5"><strong>Exercício 7.3-5.</strong> Liste os subníveis de estrutura fina de $n = 3$: para cada $j$, quais
+                    valores de $l$ contribuem, quantos estados há e qual é $E_{\text{fs}}^1$ em eV. Confira que o total de estados é
+                    $2n^2$.</p>
+                <p><em>Solução.</em> Para $n = 3$, $l = 0, 1, 2$, e $j = l \pm 1/2$ (só $j = 1/2$ para $l = 0$). Cada par $(l, j)$ tem
+                    $2j + 1$ estados. Agrupando por $j$:</p>
+                <ul>
+                    <li>$j = 1/2$: $3S_{1/2}$ e $3P_{1/2}$, com $2 + 2 = 4$ estados;</li>
+                    <li>$j = 3/2$: $3P_{3/2}$ e $3D_{3/2}$, com $4 + 4 = 8$ estados;</li>
+                    <li>$j = 5/2$: $3D_{5/2}$, com $6$ estados.</li>
+                </ul>
+                <p>O total é $4 + 8 + 6 = 18 = 2\cdot3^2$, como deveria: a estrutura fina só reorganiza os $n^2$ estados orbitais vezes
+                    os dois estados de spin. Com $(E_3)^2/2mc^2 = (13{,}6/9)^2/1\,022\,000 = 2{,}234\times10^{-6}$ eV e o colchete
+                    $3 - 12/(j + 1/2)$ igual a $-9$, $-3$ e $-1$, as correções são $-2{,}01\times10^{-5}$ eV ($j = 1/2$),
+                    $-6{,}70\times10^{-6}$ eV ($j = 3/2$) e $-2{,}23\times10^{-6}$ eV ($j = 5/2$). Note como elas são menores que as de
+                    $n = 2$: a escala $(E_n)^2/2mc^2$ cai como $1/n^4$.</p>
+
+                <p id="exr-7-3-6"><strong>Exercício 7.3-6.</strong> Mostre que $[\mathbf L\cdot\mathbf S, L_z] = i\hbar(\mathbf L\times\mathbf S)_z$
+                    e $[\mathbf L\cdot\mathbf S, S_z] = -i\hbar(\mathbf L\times\mathbf S)_z$. O que isso diz sobre os números quânticos
+                    $m_l$, $m_s$ e $m_j$ na presença de $H'_{\text{so}}$?</p>
+                <p><em>Solução.</em> Como $\mathbf L$ e $\mathbf S$ comutam entre si, só os comutadores dentro de cada momento angular
+                    contribuem. Com $[L_x, L_z] = -i\hbar L_y$ e $[L_y, L_z] = i\hbar L_x$,</p>
+                <p>$$ [\mathbf L\cdot\mathbf S, L_z] = [L_x, L_z]\,S_x + [L_y, L_z]\,S_y = i\hbar\left(L_xS_y - L_yS_x\right) = i\hbar(\mathbf L\times\mathbf S)_z, $$</p>
+                <p>e, do mesmo modo, com $[S_x, S_z] = -i\hbar S_y$ e $[S_y, S_z] = i\hbar S_x$,
+                    $[\mathbf L\cdot\mathbf S, S_z] = i\hbar(L_yS_x - L_xS_y) = -i\hbar(\mathbf L\times\mathbf S)_z$. Os dois comutadores não
+                    são nulos, mas a soma é: $[\mathbf L\cdot\mathbf S, J_z] = 0$. O fator $1/r^3$ de $H'_{\text{so}}$ comuta com $\mathbf L$
+                    (que só age nos ângulos) e com $\mathbf S$, e portanto $H'_{\text{so}}$ não comuta com $L_z$ nem com $S_z$, mas comuta com
+                    $J_z$ (e, pelo mesmo argumento aplicado às outras componentes, com $\mathbf J$). Assim $m_l$ e $m_s$ deixam de ser bons
+                    números quânticos e $m_j$ continua sendo: o torque do campo do próton sobre o spin troca momento angular entre o spin e a
+                    órbita, e só o total se conserva.</p>
+
+                <p id="exr-7-3-7"><strong>Exercício 7.3-7.</strong> Expanda a fórmula exata de Dirac (quadro <a href="#prop-niveis-de-dirac">Resultado citado (Níveis exatos de Dirac)</a>) até
+                    ordem $\alpha^4$ e mostre que ela reproduz a Eq. (7.69).</p>
+                <p><em>Solução.</em> Escreva $J \equiv j + 1/2$. Primeiro, $\sqrt{J^2 - \alpha^2} = J - \dfrac{\alpha^2}{2J} + O(\alpha^4)$,
+                    de modo que o denominador é $n - \dfrac{\alpha^2}{2J} + O(\alpha^4)$, e</p>
+                <p>$$ x \equiv \left(\frac{\alpha}{n - \alpha^2/2J}\right)^2 = \frac{\alpha^2}{n^2}\left(1 + \frac{\alpha^2}{nJ}\right) + O(\alpha^6) = \frac{\alpha^2}{n^2} + \frac{\alpha^4}{n^3J} + O(\alpha^6). $$</p>
+                <p>Com $(1 + x)^{-1/2} = 1 - \frac12x + \frac38x^2 + \cdots$, e lembrando que $x^2 = \alpha^4/n^4 + O(\alpha^6)$,</p>
+                <p>$$ \begin{aligned}
+                    E_{nj} &= mc^2\left[-\frac{\alpha^2}{2n^2} - \frac{\alpha^4}{2n^3J} + \frac{3\alpha^4}{8n^4}\right] + O(\alpha^6) \\
+                    &= -\frac{\alpha^2mc^2}{2n^2}\left[1 + \frac{\alpha^2}{n^2}\left(\frac nJ - \frac34\right)\right] + O(\alpha^6).
+                    \end{aligned} $$</p>
+                <p>Como $-\alpha^2mc^2/2n^2 = E_n = -13{,}6\ \text{eV}/n^2$ e $J = j + 1/2$, este é exatamente o resultado (7.69). A
+                    concordância é a confirmação de que a dedução perturbativa, com o fator de Thomas e o caso $l = 0$, dá o resultado
+                    certo na ordem $\alpha^4mc^2$; os termos seguintes, $O(\alpha^6mc^2)$, são menores ainda que o deslocamento de Lamb.</p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <ul>
+                    <li>A hierarquia das correções ao átomo de Bohr (Tabela 7.1), com a constante de estrutura fina $\alpha$ medindo cada
+                        degrau.</li>
+                    <li>A correção relativística $E_r^1$ (Eq. 7.58), com os valores esperados $\langle 1/r\rangle$ e $\langle 1/r^2\rangle$
+                        deduzidos pelo teorema de Feynman–Hellmann; os estados $\psi_{nlm}$ já são bons porque $H'_r$ comuta com $L^2$ e
+                        $L_z$.</li>
+                    <li>O acoplamento spin-órbita $H'_{\text{so}}$ (Eq. 7.63), com a imagem clássica do próton em órbita, o fator $g = 2$ e o
+                        fator de Thomas; os estados bons $|n\,l\,j\,m_j\rangle$, porque $H'_{\text{so}}$ comuta com $L^2$, $S^2$ e
+                        $\mathbf J$; e $\langle 1/r^3\rangle$ (Eq. 7.66), deduzido da força radial média nula.</li>
+                    <li>A fórmula da estrutura fina (7.68), que só depende de $n$ e $j$, os níveis (7.69) e a confirmação pela solução exata
+                        de Dirac (Figura 7.8).</li>
+                </ul>
+                <p>Os estados bons $|n\,l\,j\,m_j\rangle$ e a fórmula (7.68) são o ponto de partida da próxima seção, em que um campo
+                    magnético externo compete com o campo interno do átomo:
+                    <a href="[04] - O Efeito Zeeman.html">7.4 O Efeito Zeeman</a>.</p>
+
+                <hr class="footnotes-sep">
+                <section class="footnotes">
+                    <ol>
+                        <li id="fn:1">
+                            <p>A energia cinética do elétron no hidrogênio é da ordem de 10 eV, minúscula comparada à sua energia de
+                                repouso (511 000 eV); o átomo de hidrogênio é basicamente não relativístico, e podemos nos dar ao luxo de
+                                manter só a correção de ordem mais baixa. Na Eq. (7.50), $p$ é o momento <em>relativístico</em>
+                                (Eq. 7.48), e não o momento clássico $mv$; é ele que associamos agora ao operador quântico
+                                $-i\hbar\nabla$ na Eq. (7.51). (Nota do livro.)<a href="#fnref:1" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:2">
+                            <p>Uma edição anterior do Griffiths afirmava que $p^4$ não é hermitiano para estados com $l = 0$, o que punha
+                                em dúvida a passagem que leva à Eq. (7.54). Isso estava errado: $p^4$ é hermitiano para todo $l$, o que o
+                                livro mostra num problema da Seção 7.3. (Nota do livro.)<a href="#fnref:2" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:3">
+                            <p>Já notamos que pode ser perigoso imaginar o elétron como uma esfera que gira, e não é muito surpreendente
+                                que o modelo clássico ingênuo erre a razão giromagnética. O desvio em relação ao valor clássico é medido
+                                pelo <strong>fator g</strong>: $\boldsymbol\mu = g\,(q/2m)\,\mathbf S$. Na teoria de Dirac, o fator $g$ do
+                                elétron é exatamente 2. Mas a eletrodinâmica quântica revela pequenas correções: $g_e$ vale na verdade
+                                $2 + (\alpha/\pi) + \cdots = 2{,}002\ldots$. O cálculo e a medida desse chamado <strong>momento magnético
+                                anômalo</strong> do elétron, que concordam com precisão extraordinária, estão entre as maiores conquistas
+                                da física do século XX. (Nota do livro.)<a href="#fnref:3" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:4">
+                            <p>Poderíamos evitar o problema ficando no referencial do laboratório, em que o núcleo está em repouso. Nesse
+                                caso o campo do próton é puramente <em>elétrico</em>, e é natural perguntar por que ele exerce algum torque
+                                sobre o elétron. Acontece que um dipolo <em>magnético</em> em movimento adquire um momento de dipolo
+                                <em>elétrico</em>, e no referencial do laboratório o acoplamento spin-órbita se deve à interação do campo
+                                elétrico do núcleo com esse dipolo elétrico do elétron. Como essa análise exige uma eletrodinâmica mais
+                                sofisticada, é melhor adotar o ponto de vista do elétron, em que o mecanismo físico é mais transparente.
+                                Mais precisamente, a precessão de Thomas subtrai 1 da razão giromagnética (em unidades de $q/2m$), o que
+                                leva o fator 2 da Eq. (7.62) a 1: é o fator $1/2$ da Eq. (7.63). (Notas do livro.)<a href="#fnref:4"
+                                    class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:5">
+                            <p>O Griffiths obtém a Eq. (7.66) pela relação de Kramers, que liga os valores esperados de três potências
+                                consecutivas de $r$ nos estados do hidrogênio e é provada num problema do capítulo 7. O argumento do texto
+                                é o caso particular de que precisamos: com expoente $-1$, a relação de Kramers diz exatamente que
+                                $a\langle r^{-2}\rangle = l(l + 1)\,a^2\langle r^{-3}\rangle$.<a href="#fnref:5" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:6">
+                            <p>Os estados bons com um dado $m_j$ são combinações lineares de estados com $m = m_j + 1/2$ e
+                                $m = m_j - 1/2$ (e o mesmo $n$ e $l$); como $\langle r^s\rangle$ não depende de $m$, os valores esperados
+                                calculados com as funções $\psi_{nlm}$ servem também para eles. (Nota do livro.)<a href="#fnref:6"
+                                    class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:7">
+                            <p>Para escrever $|j\,m_j\rangle$ (para dados $l$ e $s$) como combinação linear de
+                                $|l\,s\,m_l\,m_s\rangle$, usaríamos os coeficientes de Clebsch–Gordan apropriados (Griffiths, Eq. 4.183).
+                                (Nota do livro.)<a href="#fnref:7" class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                    </ol>
+                </section>
+
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="toc-container">
+                <h4>Nesta página</h4>
+                <ul>
+                    <li><a href="#estrutura-fina">A Estrutura Fina do Hidrogênio</a></li>
+                    <li><a href="#escala">Escalas de energia</a></li>
+                    <li>
+                        <a href="#correcao-relativistica">A correção relativística</a>
+                        <ul>
+                            <li><a href="#valores-esperados">Os valores esperados de $1/r$ e $1/r^2$</a></li>
+                            <li><a href="#resultado-relativistico">O resultado</a></li>
+                            <li><a href="#estados-bons-relativistica">Por que a teoria não degenerada basta</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#spin-orbita">Acoplamento spin-órbita</a>
+                        <ul>
+                            <li><a href="#campo-do-proton">O campo magnético do próton</a></li>
+                            <li><a href="#momento-do-eletron">O momento de dipolo magnético do elétron</a></li>
+                            <li><a href="#hamiltoniano-spin-orbita">O hamiltoniano spin-órbita</a></li>
+                            <li><a href="#estados-bons-spin-orbita">Os estados bons: $j$ e $m_j$</a></li>
+                            <li><a href="#valor-esperado-r3">O valor esperado de $1/r^3$</a></li>
+                            <li><a href="#resultado-spin-orbita">A correção spin-órbita</a></li>
+                            <li><a href="#formula-estrutura-fina">A fórmula da estrutura fina</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#conexao">Conexão com o experimento</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Search Modal Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-modal">
+            <div class="search-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search documentation..." autocomplete="off">
+            </div>
+            <div class="search-results" id="search-results"></div>
+            <div class="search-footer">
+                <div class="search-commands">
+                    <span class="cmd-key">↑</span>
+                    <span class="cmd-key">↓</span>
+                    <span class="cmd-label">navigate</span>
+                    <span class="cmd-key">↵</span>
+                    <span class="cmd-label">select</span>
+                </div>
+                <div class="search-commands">
+                    <span class="cmd-key">esc</span>
+                    <span class="cmd-label">close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../../../assets/js/class-lecture.js"></script>
+</body>
+
+</html>
