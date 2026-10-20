@@ -161,7 +161,339 @@
                 <h1 id="teoria">8.1 Teoria</h1>
                 <p class="lead">O princípio variacional: qualquer função de onda normalizada dá um limite superior para a energia do estado fundamental, e funções-tentativa com parâmetros dão boas estimativas.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>A teoria de perturbação do capítulo 7 exige um problema vizinho que saibamos resolver exatamente. Muitas vezes não há
+                    nenhum: o átomo de hélio, com seus dois elétrons que se repelem, ou uma molécula. Este capítulo, que segue o capítulo 8
+                    do Griffiths, apresenta uma ferramenta de natureza completamente diferente. Para estimar a energia do estado fundamental,
+                    basta "chutar" uma função de onda: o valor esperado do hamiltoniano nessa função <em>nunca</em> fica abaixo da energia
+                    verdadeira.</p>
+
+                <p>Esta seção prova esse princípio e o testa em três problemas cuja resposta exata já conhecemos do curso de Mecânica
+                    Quântica I (Griffiths, capítulo 2): o oscilador harmônico, o potencial delta e o poço infinito. Nas seções seguintes ele
+                    será aplicado ao hélio e às moléculas $\text{H}_2^+$ e $\text{H}_2$, em que não há solução exata para comparar.</p>
+
+                <h2 id="principio-variacional">O princípio variacional</h2>
+
+                <p>Suponha que queremos calcular a energia do estado fundamental, $E_{\text{gs}}$, de um sistema descrito pelo hamiltoniano
+                    $H$, mas não sabemos resolver a equação de Schrödinger (independente do tempo). O <strong>princípio
+                    variacional</strong> nos dá um <em>limite superior</em> para $E_{\text{gs}}$, o que às vezes é tudo de que precisamos e,
+                    com frequência, se formos espertos, fica muito perto do valor exato.</p>
+
+                <div class="definition-box" id="teo-principio-variacional">
+                    <p><strong>Teorema (Princípio variacional).</strong> Para <em>qualquer</em> função normalizada $\psi$,</p>
+                    <p>$$ E_{\text{gs}} \le \langle\psi|H|\psi\rangle \equiv \langle H\rangle. \tag{8.1} $$</p>
+                </div>
+
+                <p>Isto é, o valor esperado de $H$ no estado (presumivelmente errado) $\psi$ com certeza <em>superestima</em> a energia do
+                    estado fundamental. É claro que, se $\psi$ for um dos estados <em>excitados</em>, $\langle H\rangle$ obviamente excede
+                    $E_{\text{gs}}$; a questão é que o mesmo vale para <em>qualquer</em> $\psi$.</p>
+
+                <p><em>Demonstração.</em> Como as autofunções (desconhecidas) de $H$ formam um conjunto completo, podemos escrever $\psi$ como
+                    combinação linear delas:<sup id="fnref:1"><a href="#fn:1" class="footnote-ref">1</a></sup></p>
+                <p>$$ \psi = \sum_nc_n\psi_n, \qquad \text{com } H\psi_n = E_n\psi_n. $$</p>
+                <p>Como $\psi$ é normalizada,</p>
+                <p>$$ 1 = \langle\psi|\psi\rangle = \left\langle\sum_mc_m\psi_m\middle|\sum_nc_n\psi_n\right\rangle = \sum_m\sum_nc_m^*c_n\langle\psi_m|\psi_n\rangle = \sum_n|c_n|^2, $$</p>
+                <p>supondo que as próprias autofunções foram ortonormalizadas: $\langle\psi_m|\psi_n\rangle = \delta_{mn}$. Enquanto isso,</p>
+                <p>$$ \begin{aligned}
+                    \langle H\rangle &= \left\langle\sum_mc_m\psi_m\middle|H\sum_nc_n\psi_n\right\rangle \\
+                    &= \sum_m\sum_nc_m^*E_nc_n\langle\psi_m|\psi_n\rangle = \sum_nE_n|c_n|^2.
+                    \end{aligned} $$</p>
+                <p>Mas a energia do estado fundamental é, por definição, o <em>menor</em> autovalor, $E_{\text{gs}} \le E_n$, e portanto</p>
+                <p>$$ \langle H\rangle \ge E_{\text{gs}}\sum_n|c_n|^2 = E_{\text{gs}}, $$</p>
+                <p>que é o que queríamos provar. $\blacksquare$</p>
+
+                <p>Isso não chega a surpreender. Afinal, $\psi$ poderia ser a função de onda <em>real</em> do sistema (em, digamos,
+                    $t = 0$). Se medíssemos a energia da partícula, obteríamos com certeza um dos autovalores de $H$, o menor dos quais é
+                    $E_{\text{gs}}$; então a <em>média</em> de várias medidas ($\langle H\rangle$) não pode ficar abaixo de $E_{\text{gs}}$.</p>
+
+                <p>Na prática, escolhemos uma <strong>função-tentativa</strong> (<em>trial wave function</em>) que depende de um ou mais
+                    <strong>parâmetros variacionais</strong>, calculamos $\langle H\rangle$ como função deles e procuramos o mínimo: como
+                    a Eq. (8.1) vale para todo valor dos parâmetros, o menor $\langle H\rangle$ é o limite superior mais apertado que essa
+                    família de funções pode dar. Os três exemplos a seguir mostram o método funcionando.</p>
+
+                <h2 id="exemplos">Exemplos</h2>
+
+                <div id="ex-8-1">
+                    <p><strong>Exemplo 8.1 (Oscilador harmônico com uma gaussiana).</strong> Suponha que queremos achar a energia do estado
+                        fundamental do oscilador harmônico unidimensional:</p>
+                    <p>$$ H = -\frac{\hbar^2}{2m}\frac{d^2}{dx^2} + \frac12m\omega^2x^2. $$</p>
+                    <p>É claro que já conhecemos a resposta <em>exata</em> neste caso (Griffiths, Eq. 2.62): $E_{\text{gs}} = (1/2)\hbar\omega$;
+                        mas isso faz dele um bom teste do método. Podemos escolher como função "tentativa" a gaussiana</p>
+                    <p>$$ \psi(x) = Ae^{-bx^2}, \tag{8.2} $$</p>
+                    <p>em que $b$ é uma constante e $A$ é determinado pela normalização:</p>
+                    <p>$$ \begin{aligned}
+                        1 &= |A|^2\int_{-\infty}^\infty e^{-2bx^2}\,dx = |A|^2\sqrt{\frac{\pi}{2b}} \\
+                        &\Longrightarrow\quad A = \left(\frac{2b}{\pi}\right)^{1/4}.
+                        \end{aligned} \tag{8.3} $$</p>
+                    <p>Agora,</p>
+                    <p>$$ \langle H\rangle = \langle T\rangle + \langle V\rangle, \tag{8.4} $$</p>
+                    <p>em que, neste caso,</p>
+                    <p>$$ \langle T\rangle = -\frac{\hbar^2}{2m}|A|^2\int_{-\infty}^\infty e^{-bx^2}\frac{d^2}{dx^2}\left(e^{-bx^2}\right)dx = \frac{\hbar^2b}{2m}. \tag{8.5} $$</p>
+                    <p>Para ver isso, use $\frac{d^2}{dx^2}e^{-bx^2} = (4b^2x^2 - 2b)\,e^{-bx^2}$ e as integrais gaussianas
+                        $\int e^{-2bx^2}dx = \sqrt{\pi/2b}$ e $\int x^2e^{-2bx^2}dx = \frac{1}{4b}\sqrt{\pi/2b}$: a integral vale
+                        $(4b^2\cdot\frac{1}{4b} - 2b)\sqrt{\pi/2b} = -b\sqrt{\pi/2b}$, e $|A|^2\sqrt{\pi/2b} = 1$. Do mesmo modo,</p>
+                    <p>$$ \langle V\rangle = \frac12m\omega^2|A|^2\int_{-\infty}^\infty e^{-2bx^2}x^2\,dx = \frac{m\omega^2}{8b}, $$</p>
+                    <p>de modo que</p>
+                    <p>$$ \langle H\rangle = \frac{\hbar^2b}{2m} + \frac{m\omega^2}{8b}. \tag{8.6} $$</p>
+                    <p>Pela Eq. (8.1), isso excede $E_{\text{gs}}$ <em>para qualquer</em> $b$; para obter o limite mais <em>apertado</em>,
+                        vamos <em>minimizar</em> $\langle H\rangle$:</p>
+                    <p>$$ \frac{d}{db}\langle H\rangle = \frac{\hbar^2}{2m} - \frac{m\omega^2}{8b^2} = 0 \quad\Longrightarrow\quad b = \frac{m\omega}{2\hbar}. $$</p>
+                    <p>Levando de volta a $\langle H\rangle$, cada termo vale $\hbar\omega/4$, e encontramos</p>
+                    <p>$$ \langle H\rangle_{\text{min}} = \frac12\hbar\omega. \tag{8.7} $$</p>
+                    <p>Neste caso acertamos a energia do estado fundamental em cheio, porque (obviamente) "por acaso" escolhemos uma
+                        função-tentativa com exatamente a forma do estado fundamental verdadeiro (Griffiths, Eq. 2.60). Mas a gaussiana é
+                        muito fácil de usar, e por isso é uma função-tentativa popular, mesmo quando não se parece muito com o estado
+                        fundamental verdadeiro.</p>
+                </div>
+
+                <div id="ex-8-2">
+                    <p><strong>Exemplo 8.2 (Potencial delta com uma gaussiana).</strong> Suponha que procuramos a energia do estado
+                        fundamental do potencial delta:</p>
+                    <p>$$ H = -\frac{\hbar^2}{2m}\frac{d^2}{dx^2} - \alpha\delta(x). $$</p>
+                    <p>De novo, já conhecemos a resposta exata (Griffiths, Eq. 2.132): $E_{\text{gs}} = -m\alpha^2/2\hbar^2$. Como antes,
+                        usamos a função-tentativa gaussiana (Eq. 8.2). Já determinamos a normalização e calculamos $\langle T\rangle$; só
+                        precisamos de</p>
+                    <p>$$ \langle V\rangle = -\alpha|A|^2\int_{-\infty}^\infty e^{-2bx^2}\delta(x)\,dx = -\alpha\sqrt{\frac{2b}{\pi}}. $$</p>
+                    <p>Evidentemente,</p>
+                    <p>$$ \langle H\rangle = \frac{\hbar^2b}{2m} - \alpha\sqrt{\frac{2b}{\pi}}, \tag{8.8} $$</p>
+                    <p>e sabemos que isso excede $E_{\text{gs}}$ para todo $b$. Minimizando,</p>
+                    <p>$$ \frac{d}{db}\langle H\rangle = \frac{\hbar^2}{2m} - \frac{\alpha}{\sqrt{2\pi b}} = 0 \quad\Longrightarrow\quad b = \frac{2m^2\alpha^2}{\pi\hbar^4}. $$</p>
+                    <p>Com esse $b$, o primeiro termo vale $m\alpha^2/\pi\hbar^2$ e o segundo, $-\alpha\sqrt{4m^2\alpha^2/\pi^2\hbar^4} = -2m\alpha^2/\pi\hbar^2$.
+                        Então</p>
+                    <p>$$ \langle H\rangle_{\text{min}} = -\frac{m\alpha^2}{\pi\hbar^2}, \tag{8.9} $$</p>
+                    <p>que é de fato um pouco maior que $E_{\text{gs}} = -m\alpha^2/2\hbar^2$, já que $\pi \gt 2$. O erro é de cerca de
+                        $36\%$ ($1 - 2/\pi$): a gaussiana, lisa na origem, não reproduz o "bico" que a função exata, $e^{-m\alpha|x|/\hbar^2}$,
+                        tem ali.</p>
+                </div>
+
+                <h3 id="funcoes-com-bico">Funções-tentativa com bicos</h3>
+
+                <p>Dissemos que dá para usar <em>qualquer</em> função-tentativa $\psi$ (normalizada), e isso é verdade num certo sentido.
+                    Para funções <em>descontínuas</em>, porém, é preciso certo malabarismo para dar um sentido razoável à segunda derivada,
+                    de que precisamos para calcular $\langle T\rangle$. Funções contínuas com bicos são permitidas, desde que se tome
+                    cuidado; o próximo exemplo mostra como lidar com elas.</p>
+
+                <div id="ex-8-3">
+                    <p><strong>Exemplo 8.3 (Poço infinito com uma função triangular).</strong> Encontre um limite superior para a energia do
+                        estado fundamental do poço quadrado infinito unidimensional (Griffiths, Eq. 2.22), de largura $a$, usando a função
+                        "triangular" (Figura 8.1):<sup id="fnref:2"><a href="#fn:2" class="footnote-ref">2</a></sup></p>
+                    <p>$$ \psi(x) = \begin{cases} Ax, & 0 \le x \le a/2, \\ A(a - x), & a/2 \le x \le a, \\ 0, & \text{caso contrário}, \end{cases} \tag{8.10} $$</p>
+                    <p>em que $A$ é determinado pela normalização:</p>
+                    <p>$$ \begin{aligned}
+                        1 &= |A|^2\left[\int_0^{a/2}x^2\,dx + \int_{a/2}^a(a - x)^2\,dx\right] = |A|^2\frac{a^3}{12} \\
+                        &\Longrightarrow\quad A = \frac2a\sqrt{\frac3a}.
+                        \end{aligned} \tag{8.11} $$</p>
+                    <p>(Cada uma das duas integrais vale $a^3/24$.)</p>
+
+                    <figure class="lecture-figure" id="fig-8-1">
+                        <svg viewBox="0 0 640 260" role="img" aria-label="Figura 8.1: função-tentativa triangular no poço infinito: sobe linearmente de 0 em x = 0 até Aa/2 em x = a/2 e desce até 0 em x = a; fora do poço (paredes sombreadas) é nula.">
+<defs><marker id="arr-8-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<rect x="112" y="40" width="18" height="190" class="fig-band"/>
+<rect x="470" y="40" width="18" height="190" class="fig-band"/>
+<line x1="90" y1="230" x2="540" y2="230" class="fig-axis" marker-end="url(#arr-8-1)"/>
+<line x1="130" y1="240" x2="130" y2="26" class="fig-axis" marker-end="url(#arr-8-1)"/>
+<text x="122" y="30" text-anchor="end" class="fig-label fig-it">ψ(x)</text>
+<text x="536" y="252" text-anchor="end" class="fig-label fig-it">x</text>
+<path d="M130,230 L300,80 L470,230" class="fig-curve"/>
+<line x1="300" y1="80" x2="300" y2="230" class="fig-guide fig-dashed"/>
+<line x1="300" y1="225" x2="300" y2="235" class="fig-axis"/>
+<text x="300" y="252" text-anchor="middle" class="fig-label">a/2</text>
+<text x="470" y="252" text-anchor="middle" class="fig-label fig-it">a</text>
+<text x="122" y="252" text-anchor="end" class="fig-label">0</text>
+<line x1="125" y1="80" x2="300" y2="80" class="fig-guide fig-dashed"/>
+<text x="120" y="85" text-anchor="end" class="fig-label fig-small">Aa/2</text>
+</svg>
+                        <figcaption><strong>Figura 8.1.</strong> Função-tentativa triangular para o poço infinito (Eq. 8.10). Ela é contínua
+                            e se anula nas paredes, mas tem bicos em $x = 0$, $a/2$ e $a$.</figcaption>
+                    </figure>
+
+                    <p>Neste caso,</p>
+                    <p>$$ \frac{d\psi}{dx} = \begin{cases} A, & 0 \le x \le a/2, \\ -A, & a/2 \le x \le a, \\ 0, & \text{caso contrário}, \end{cases} $$</p>
+                    <p>como mostra a Figura 8.2. A derivada de uma função degrau é uma função delta (Griffiths, Problema 2.23(b)): em
+                        $x = 0$ a derivada salta de $0$ para $A$, em $x = a/2$ de $A$ para $-A$, e em $x = a$ de $-A$ para $0$. Logo</p>
+                    <p>$$ \frac{d^2\psi}{dx^2} = A\delta(x) - 2A\delta(x - a/2) + A\delta(x - a), \tag{8.12} $$</p>
+                    <p>e portanto</p>
+                    <p>$$ \begin{aligned}
+                        \langle H\rangle &= -\frac{\hbar^2A}{2m}\int\left[\delta(x) - 2\delta(x - a/2) + \delta(x - a)\right]\psi(x)\,dx \\
+                        &= -\frac{\hbar^2A}{2m}\left[\psi(0) - 2\psi(a/2) + \psi(a)\right] \\
+                        &= \frac{\hbar^2A^2a}{2m} = \frac{12\hbar^2}{2ma^2}.
+                        \end{aligned} \tag{8.13} $$</p>
+                    <p>(Dentro do poço $V = 0$, de modo que $\langle H\rangle = \langle T\rangle$; e $\psi(0) = \psi(a) = 0$,
+                        $\psi(a/2) = Aa/2$.) A energia exata do estado fundamental é $E_{\text{gs}} = \pi^2\hbar^2/2ma^2$ (Griffiths,
+                        Eq. 2.30), e o teorema funciona ($12 \gt \pi^2$): o limite superior erra por cerca de $22\%$.</p>
+
+                    <figure class="lecture-figure" id="fig-8-2">
+                        <svg viewBox="0 0 640 270" role="img" aria-label="Figura 8.2: a derivada da função triangular vale A entre 0 e a/2 e -A entre a/2 e a; os saltos em 0, a/2 e a dão as funções delta da segunda derivada.">
+<defs><marker id="arr-8-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="90" y1="150" x2="540" y2="150" class="fig-axis" marker-end="url(#arr-8-2)"/>
+<line x1="130" y1="265" x2="130" y2="26" class="fig-axis" marker-end="url(#arr-8-2)"/>
+<text x="122" y="30" text-anchor="end" class="fig-label fig-it">dψ/dx</text>
+<text x="536" y="172" text-anchor="end" class="fig-label fig-it">x</text>
+<path d="M130,60 L300,60 L300,240 L470,240 L470,150" class="fig-curve"/>
+<text x="120" y="65" text-anchor="end" class="fig-label fig-it">A</text>
+<text x="120" y="245" text-anchor="end" class="fig-label fig-it">−A</text>
+<line x1="125" y1="240" x2="130" y2="240" class="fig-axis"/>
+<text x="306" y="142" class="fig-label">a/2</text>
+<text x="476" y="142" class="fig-label fig-it">a</text>
+</svg>
+                        <figcaption><strong>Figura 8.2.</strong> Derivada da função de onda da Figura 8.1: dois degraus, $+A$ e $-A$. Os
+                            saltos em $0$, $a/2$ e $a$ são as funções delta da Eq. (8.12).</figcaption>
+                    </figure>
+
+                    <p>Outro caminho é explorar a hermiticidade de $\hat p$:</p>
+                    <p>$$ \begin{aligned}
+                        \langle H\rangle &= \frac{1}{2m}\left\langle\hat p^2\right\rangle = \frac{1}{2m}\langle\hat p\psi|\hat p\psi\rangle \\
+                        &= \frac{1}{2m}\int_0^a\left(-i\hbar\frac{d\psi}{dx}\right)^*\left(-i\hbar\frac{d\psi}{dx}\right)dx \\
+                        &= \frac{\hbar^2}{2m}\left[\int_0^{a/2}(A)^2\,dx + \int_{a/2}^a(-A)^2\,dx\right] \\
+                        &= \frac{\hbar^2}{2m}A^2a = \frac{12\hbar^2}{2ma^2}.
+                        \end{aligned} \tag{8.14} $$</p>
+                    <p>Esse segundo caminho só precisa da primeira derivada, que é uma função degrau perfeitamente comportada; os dois
+                        caminhos concordam, como deviam.</p>
+                </div>
+
+                <h2 id="limitacoes">Alcance e limites do método</h2>
+
+                <p>O princípio variacional é extraordinariamente poderoso e embaraçosamente fácil de usar. O que um químico faz para achar a
+                    energia do estado fundamental de uma molécula complicada é escrever uma função-tentativa com um grande número de
+                    parâmetros ajustáveis, calcular $\langle H\rangle$ e mexer nos parâmetros até obter o menor valor possível. Mesmo que
+                    $\psi$ se pareça pouco com a função de onda verdadeira, muitas vezes se obtêm valores milagrosamente precisos para
+                    $E_{\text{gs}}$. Naturalmente, se você tiver algum modo de adivinhar uma $\psi$ realista, tanto melhor.</p>
+
+                <p>O único <em>problema</em> do método é que nunca sabemos ao certo quão perto estamos do alvo: tudo o que podemos garantir é
+                    que temos um <em>limite superior</em>.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref">3</a></sup> Além disso,
+                    como está, a técnica só se aplica ao estado fundamental. Há, porém, uma extensão simples, que o Griffiths propõe como
+                    problema e que usaremos nos exercícios.</p>
+
+                <div class="definition-box" id="cor-primeiro-excitado">
+                    <p><strong>Corolário (Limite para o primeiro estado excitado).</strong> Se o estado fundamental não é degenerado e
+                        $\langle\psi|\psi_{\text{gs}}\rangle = 0$, então $\langle H\rangle \ge E_{\text{fe}}$, em que $E_{\text{fe}}$ é a
+                        energia do primeiro estado excitado.</p>
+                </div>
+                <p><em>Demonstração.</em> Na expansão da prova do princípio variacional, a hipótese diz que $c_1 = \langle\psi_1|\psi\rangle = 0$
+                    para o estado fundamental $\psi_1 = \psi_{\text{gs}}$. Então
+                    $\langle H\rangle = \sum_{n\ge2}E_n|c_n|^2 \ge E_2\sum_{n\ge2}|c_n|^2 = E_2 = E_{\text{fe}}$. $\blacksquare$</p>
+
+                <p>Em geral é difícil garantir que $\psi$ seja ortogonal a $\psi_{\text{gs}}$, já que (presumivelmente) não conhecemos esta
+                    última. Mas se o potencial $V(x)$ for uma função <em>par</em> de $x$, o estado fundamental também é par, e qualquer
+                    função-tentativa <em>ímpar</em> satisfaz automaticamente a condição do corolário (<a href="#exr-8-1-4">Exercício 8.1-4</a>).<sup id="fnref:4"><a
+                    href="#fn:4" class="footnote-ref">4</a></sup></p>
+
+                <h2 id="conexao">Conexão com o experimento</h2>
+
+                <p>Nos três exemplos desta seção conhecíamos a resposta exata, e por isso pudemos medir o erro: zero no oscilador (a
+                    tentativa tinha a forma certa), cerca de $36\%$ na delta e $22\%$ no poço infinito. O interesse do método está nos casos
+                    em que não há resposta exata, e aí a comparação é com o experimento. O Griffiths observa que essa é a ferramenta do
+                    químico diante de moléculas complicadas, e que a limitação de só conhecer um limite superior pesa pouco na prática: a
+                    energia de ligação do hélio, por exemplo, foi calculada variacionalmente com muitos algarismos significativos.</p>
+
+                <p>As próximas três seções fazem exatamente isso: a energia do estado fundamental do hélio, comparada com o valor medido
+                    (8.2), e a existência da ligação química nas moléculas $\text{H}_2^+$ e $\text{H}_2$ (8.3 e 8.4), em que o princípio
+                    variacional prova que a molécula é estável sem que seja preciso resolver a equação de Schrödinger.</p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p id="exr-8-1-1"><strong>Exercício 8.1-1.</strong> Use a função-tentativa $\psi(x) = Ae^{-b|x|}$ no oscilador harmônico.
+                    Encontre o melhor limite superior e o erro relativo.</p>
+                <p><em>Solução.</em> A normalização dá $|A|^2\cdot2\int_0^\infty e^{-2bx}dx = |A|^2/b = 1$, isto é, $|A|^2 = b$. A função
+                    tem um bico na origem; como no Exemplo 8.3, calculamos $\langle T\rangle$ pela primeira derivada:
+                    $|\psi'|^2 = b^2|\psi|^2$ em todo ponto, logo $\langle T\rangle = \frac{\hbar^2}{2m}\int|\psi'|^2dx = \frac{\hbar^2b^2}{2m}$.
+                    E $\langle x^2\rangle = b\cdot2\int_0^\infty x^2e^{-2bx}dx = b\cdot2\cdot\frac{2}{(2b)^3} = \frac{1}{2b^2}$, de modo que
+                    $\langle V\rangle = \frac{m\omega^2}{4b^2}$. Então</p>
+                <p>$$ \langle H\rangle = \frac{\hbar^2b^2}{2m} + \frac{m\omega^2}{4b^2}, \qquad \frac{d\langle H\rangle}{db} = 0 \;\Longrightarrow\; b^2 = \frac{m\omega}{\sqrt2\,\hbar}, $$</p>
+                <p>e cada termo vale $\hbar\omega/(2\sqrt2)$, de modo que $\langle H\rangle_{\text{min}} = \hbar\omega/\sqrt2 \approx 0{,}707\,\hbar\omega$.
+                    O limite está $41\%$ acima do valor exato $\hbar\omega/2$: a exponencial decai devagar demais e tem um bico onde a
+                    função verdadeira é lisa. (Pela segunda derivada, $\psi'' = b^2\psi - 2b\,\delta(x)\psi$, e o termo da delta compensa
+                    exatamente: o resultado é o mesmo.)</p>
+
+                <p id="exr-8-1-2"><strong>Exercício 8.1-2.</strong> Repita o Exemplo 8.2 (potencial delta) com a função-tentativa
+                    $Ae^{-b|x|}$. Por que o resultado é exato?</p>
+                <p><em>Solução.</em> Do exercício anterior, $\langle T\rangle = \hbar^2b^2/2m$, e
+                    $\langle V\rangle = -\alpha|\psi(0)|^2 = -\alpha b$. Assim $\langle H\rangle = \frac{\hbar^2b^2}{2m} - \alpha b$, com
+                    mínimo em $b = m\alpha/\hbar^2$, onde $\langle H\rangle_{\text{min}} = \frac{m\alpha^2}{2\hbar^2} - \frac{m\alpha^2}{\hbar^2} = -\frac{m\alpha^2}{2\hbar^2}$,
+                    exatamente $E_{\text{gs}}$. A razão é a mesma do Exemplo 8.1: o estado fundamental verdadeiro do potencial delta é
+                    $\sqrt{m\alpha}/\hbar\;e^{-m\alpha|x|/\hbar^2}$, que pertence à família testada, e o mínimo a encontra. Compare com a
+                    gaussiana (Eq. 8.9): agora a tentativa tem o bico certo na origem.</p>
+
+                <p id="exr-8-1-3"><strong>Exercício 8.1-3.</strong> Use a função-tentativa parabólica $\psi = Ax(a - x)$, $0 \le x \le a$,
+                    no poço infinito e compare com o Exemplo 8.3.</p>
+                <p><em>Solução.</em> $\int_0^ax^2(a - x)^2dx = a^5/30$, logo $|A|^2 = 30/a^5$. Pela hermiticidade de $\hat p$ (como na
+                    Eq. 8.14), $\langle H\rangle = \frac{\hbar^2}{2m}|A|^2\int_0^a(a - 2x)^2dx = \frac{\hbar^2}{2m}\,\frac{30}{a^5}\,\frac{a^3}{3} = \frac{10\hbar^2}{2ma^2}$.
+                    Como $10 \gt \pi^2 \approx 9{,}87$, o teorema funciona, e o erro é de só $1{,}3\%$, contra $22\%$ da função triangular.
+                    Não há nenhum parâmetro para variar: a parábola simplesmente se parece muito mais com $\sin(\pi x/a)$ do que o
+                    triângulo.</p>
+
+                <p id="exr-8-1-4"><strong>Exercício 8.1-4.</strong> Ainda no poço infinito, use a função-tentativa
+                    $\psi = Ax(a - x)(a - 2x)$ para obter um limite superior para a energia do <em>primeiro estado excitado</em>.</p>
+                <p><em>Solução.</em> O potencial do poço é simétrico em torno de $x = a/2$, e o estado fundamental, $\sin(\pi x/a)$, é par em
+                    relação a esse ponto. A função-tentativa é ímpar em relação a $a/2$ (troca de sinal com $x \to a - x$), logo é
+                    ortogonal ao estado fundamental, e o <a href="#cor-primeiro-excitado">Corolário (Limite para o primeiro estado excitado)</a> se aplica. Com $\psi' \propto a^2 - 6ax + 6x^2$,
+                    $\int_0^a\psi^2dx = |A|^2a^7/210$ e $\int_0^a\psi'^2dx = |A|^2a^5/5$, de modo que</p>
+                <p>$$ \langle H\rangle = \frac{\hbar^2}{2m}\,\frac{a^5/5}{a^7/210} = \frac{42\hbar^2}{2ma^2} \ge E_{\text{fe}} = \frac{4\pi^2\hbar^2}{2ma^2} \approx \frac{39{,}5\,\hbar^2}{2ma^2}. $$</p>
+                <p>O limite está $6\%$ acima do valor exato. Sem a ortogonalidade, a Eq. (8.1) só garantiria $\langle H\rangle \ge E_{\text{gs}}$,
+                    o que não diria nada sobre o estado excitado.</p>
+
+                <p id="exr-8-1-5"><strong>Exercício 8.1-5.</strong> Por que uma função-tentativa com $\psi'$ descontínua exige cuidado no
+                    cálculo de $\langle T\rangle$, e por que não se deve usar uma $\psi$ descontínua?</p>
+                <p><em>Solução.</em> Onde $\psi'$ salta, $\psi''$ tem uma função delta, e esquecer esse termo (calculando $\psi''$ só nos
+                    trechos lisos) dá a resposta errada: no Exemplo 8.3, $\psi'' = 0$ em todos os trechos, e a energia sairia zero, abaixo
+                    de $E_{\text{gs}}$, o que o princípio variacional proíbe. As duas maneiras corretas são incluir as deltas (Eq. 8.13) ou
+                    usar $\langle T\rangle = \frac{\hbar^2}{2m}\int|\psi'|^2dx$ (Eq. 8.14), que só exige que $\psi'$ seja integrável ao
+                    quadrado. Se a própria $\psi$ for descontínua, $\psi'$ tem uma delta, e $\int|\psi'|^2dx$ diverge: a energia cinética
+                    é infinita. Pelo mesmo motivo, uma gaussiana que vaze para fora do poço infinito daria $\langle H\rangle = \infty$, e
+                    a Eq. (8.1) não diria nada.</p>
+
+                <p id="exr-8-1-6"><strong>Exercício 8.1-6.</strong> Use no oscilador harmônico a função-tentativa triangular
+                    $\psi = A(c - |x|)$ para $|x| \le c$ (e zero fora), com $c$ como parâmetro variacional.</p>
+                <p><em>Solução.</em> A normalização dá $|A|^2\cdot2\int_0^c(c - x)^2dx = |A|^2\,\frac{2c^3}{3} = 1$, isto é,
+                    $|A|^2 = 3/2c^3$. Como $|\psi'| = A$ dentro do intervalo,
+                    $\langle T\rangle = \frac{\hbar^2}{2m}\,|A|^2\,2c = \frac{3\hbar^2}{2mc^2}$. E
+                    $\langle x^2\rangle = |A|^2\cdot2\int_0^cx^2(c - x)^2dx = \frac{3}{2c^3}\cdot\frac{c^5}{15} = \frac{c^2}{10}$, logo
+                    $\langle V\rangle = \frac{m\omega^2c^2}{20}$. O mínimo de
+                    $\langle H\rangle = \frac{3\hbar^2}{2mc^2} + \frac{m\omega^2c^2}{20}$ está em $c^4 = 30\hbar^2/m^2\omega^2$, onde os dois
+                    termos são iguais e</p>
+                <p>$$ \langle H\rangle_{\text{min}} = 2\sqrt{\frac{3\hbar^2}{2m}\cdot\frac{m\omega^2}{20}} = \sqrt{\frac{3}{10}}\,\hbar\omega \approx 0{,}548\,\hbar\omega, $$</p>
+                <p>só $9{,}5\%$ acima de $\hbar\omega/2$, bem melhor que a exponencial do <a href="#exr-8-1-1">Exercício 8.1-1</a>, apesar dos três bicos.</p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <ul>
+                    <li>O princípio variacional (Eq. 8.1), provado pela expansão nos autoestados de $H$: qualquer função normalizada dá um
+                        limite superior para $E_{\text{gs}}$.</li>
+                    <li>O método prático: uma família de funções-tentativa com parâmetros, minimizando $\langle H\rangle$ (Exemplos 8.1 e
+                        8.2), e o cuidado com funções que têm bicos (Exemplo 8.3, Figuras 8.1 e 8.2).</li>
+                    <li>O limite do método (só um limite superior, sem estimativa do erro) e sua extensão ao primeiro estado excitado por
+                        ortogonalidade (<a href="#cor-primeiro-excitado">Corolário (Limite para o primeiro estado excitado)</a>).</li>
+                </ul>
+                <p>Agora o aplicamos a um problema sem solução exata, o primeiro de verdade:
+                    <a href="[02] - O Estado Fundamental do Hélio.html">8.2 O Estado Fundamental do Hélio</a>.</p>
+
+                <hr class="footnotes-sep">
+                <section class="footnotes">
+                    <ol>
+                        <li id="fn:1">
+                            <p>Se o hamiltoniano admitir estados de espalhamento além dos estados ligados, precisaremos de uma integral além
+                                da soma, mas o argumento não muda. (Nota do livro.)<a href="#fnref:1" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:2">
+                            <p>Não adianta testar uma função (como a gaussiana) que se estende para fora do poço, porque se obtém
+                                $\langle V\rangle = \infty$, e a Eq. (8.1) não diz nada. (Nota do livro.)<a href="#fnref:2"
+                                    class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:3">
+                            <p>Na prática, isso não chega a ser uma grande limitação, e às vezes há maneiras de estimar a precisão. A energia
+                                de ligação do hélio foi calculada assim com muitos algarismos significativos. (Nota do livro.)<a
+                                    href="#fnref:3" class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:4">
+                            <p>O truque se estende a outras simetrias. Suponha que haja um operador hermitiano $A$ que comute com $H$. O
+                                estado fundamental (supondo-o não degenerado) tem de ser autoestado de $A$, com algum autovalor $\lambda$. Se
+                                escolhermos uma função-tentativa que seja autoestado de $A$ com um autovalor <em>diferente</em>, ela é com
+                                certeza ortogonal ao estado fundamental (autovetores de um operador hermitiano com autovalores distintos são
+                                ortogonais). (Nota do livro.)<a href="#fnref:4" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                    </ol>
+                </section>
 
             </div>
         </main>
@@ -171,6 +503,17 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#teoria">Teoria</a></li>
+                    <li><a href="#principio-variacional">O princípio variacional</a></li>
+                    <li>
+                        <a href="#exemplos">Exemplos</a>
+                        <ul>
+                            <li><a href="#funcoes-com-bico">Funções-tentativa com bicos</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#limitacoes">Alcance e limites do método</a></li>
+                    <li><a href="#conexao">Conexão com o experimento</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
                 </ul>
             </div>
         </aside>

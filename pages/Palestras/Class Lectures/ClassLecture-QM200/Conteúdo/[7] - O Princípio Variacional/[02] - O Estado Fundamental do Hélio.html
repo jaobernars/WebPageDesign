@@ -161,7 +161,328 @@
                 <h1 id="estado-fundamental-do-helio">8.2 O Estado Fundamental do Hélio</h1>
                 <p class="lead">A energia do estado fundamental do hélio: a aproximação sem repulsão, a repulsão em primeira ordem e a blindagem com carga efetiva como parâmetro variacional.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>O átomo de hélio (Figura 8.3) tem dois elétrons em órbita em torno de um núcleo com dois prótons (e também nêutrons,
+                    irrelevantes aqui). Já o encontramos no <a href="../[4] - Partículas Idênticas/[02] - Átomos.html#helio">capítulo 5</a>,
+                    quando discutimos átomos com vários elétrons, mas lá a repulsão entre os elétrons foi simplesmente ignorada. É curioso
+                    que um problema tão simples e tão importante não tenha solução exata conhecida.<sup id="fnref:1"><a href="#fn:1"
+                    class="footnote-ref">1</a></sup></p>
+
+                <p>Esta seção, que segue a Seção 8.2 do Griffiths, é a primeira aplicação séria do
+                    <a href="[01] - Teoria.html">princípio variacional</a>. Em três passos, cada um com uma função-tentativa melhor,
+                    chegaremos a $2\%$ do valor experimental: primeiro sem a repulsão, depois com a repulsão calculada nessa mesma função de
+                    onda e, por fim, deixando cada elétron "ver" uma carga nuclear efetiva, blindada pelo outro.</p>
+
+                <h2 id="sem-repulsao">Sem a repulsão</h2>
+
+                <p>O hamiltoniano do sistema (ignorando a estrutura fina e correções menores) é</p>
+                <p>$$ H = -\frac{\hbar^2}{2m}\left(\nabla_1^2 + \nabla_2^2\right) - \frac{e^2}{4\pi\epsilon_0}\left(\frac{2}{r_1} + \frac{2}{r_2} - \frac{1}{|\mathbf r_1 - \mathbf r_2|}\right). \tag{8.15} $$</p>
+                <p>Nosso problema é calcular a energia do estado fundamental, $E_{\text{gs}}$. Fisicamente, ela representa a energia
+                    necessária para arrancar os dois elétrons. (Conhecida $E_{\text{gs}}$, é fácil obter a "energia de ionização" necessária
+                    para remover um <em>único</em> elétron.) A energia do estado fundamental do hélio foi medida com grande precisão em
+                    laboratório:</p>
+                <p>$$ E_{\text{gs}} = -78{,}975\ \text{eV} \quad (\text{experimental}). \tag{8.16} $$</p>
+                <p>É esse o número que gostaríamos de reproduzir teoricamente.</p>
+
+                <figure class="lecture-figure" id="fig-8-3">
+                    <svg viewBox="0 0 640 265" role="img" aria-label="Figura 8.3: o átomo de hélio: núcleo de carga +2e e dois elétrons nas posições r1 e r2, à distância |r1 - r2| um do outro.">
+<defs><marker id="arr-8-3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="320" y1="230" x2="156" y2="88" class="fig-axis" marker-end="url(#arr-8-3)"/>
+<line x1="320" y1="230" x2="465" y2="49" class="fig-axis" marker-end="url(#arr-8-3)"/>
+<line x1="150" y1="80" x2="470" y2="40" class="fig-guide"/>
+<circle cx="320" cy="230" r="5" class="fig-arrowhead"/>
+<circle cx="150" cy="80" r="5" class="fig-arrowhead"/>
+<circle cx="470" cy="40" r="5" class="fig-arrowhead"/>
+<text x="320" y="254" text-anchor="middle" class="fig-label">+2e</text>
+<text x="140" y="84" text-anchor="end" class="fig-label">−e</text>
+<text x="480" y="44" class="fig-label">−e</text>
+<text x="223" y="163" text-anchor="end" class="fig-label">r₁</text>
+<text x="407" y="143" class="fig-label">r₂</text>
+<text x="310" y="50" text-anchor="middle" class="fig-label">|r₁ − r₂|</text>
+</svg>
+                    <figcaption><strong>Figura 8.3.</strong> O átomo de hélio: núcleo de carga $+2e$ e dois elétrons nas posições
+                        $\mathbf r_1$ e $\mathbf r_2$, à distância $|\mathbf r_1 - \mathbf r_2|$ um do outro.</figcaption>
+                </figure>
+
+                <p>O problema vem da repulsão entre os elétrons,</p>
+                <p>$$ V_{ee} = \frac{e^2}{4\pi\epsilon_0}\frac{1}{|\mathbf r_1 - \mathbf r_2|}. \tag{8.17} $$</p>
+                <p>Se ignorarmos completamente esse termo, $H$ se separa em dois hamiltonianos de hidrogênio independentes (só que com carga
+                    nuclear $2e$ em vez de $e$), e a solução exata é simplesmente o produto de funções de onda hidrogenoides:</p>
+                <p>$$ \psi_0(\mathbf r_1, \mathbf r_2) \equiv \psi_{100}(\mathbf r_1)\,\psi_{100}(\mathbf r_2) = \frac{8}{\pi a^3}e^{-2(r_1 + r_2)/a}, \tag{8.18} $$</p>
+                <p>com energia $8E_1 = -109$ eV.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref">2</a></sup> De fato, para um núcleo
+                    de carga $Z$, o raio de Bohr vira $a/Z$ e as energias viram $Z^2E_n$ (Griffiths, Seção 4.2): com $Z = 2$,
+                    $\psi_{100}(\mathbf r) = \sqrt{8/\pi a^3}\,e^{-2r/a}$ e cada elétron contribui com $4E_1$, em que
+                    $E_1 = -13{,}6$ eV. Isso está longe de $-79$ eV, mas é um começo.</p>
+
+                <h2 id="repulsao">A repulsão em primeira ordem</h2>
+
+                <p>Para uma aproximação melhor de $E_{\text{gs}}$, aplicamos o princípio variacional usando $\psi_0$ como função-tentativa.
+                    É uma escolha particularmente conveniente, porque ela é autofunção da <em>maior parte</em> do hamiltoniano: a parte sem
+                    $V_{ee}$ dá $8E_1\psi_0$, de modo que</p>
+                <p>$$ H\psi_0 = \left(8E_1 + V_{ee}\right)\psi_0. \tag{8.19} $$</p>
+                <p>Assim,</p>
+                <p>$$ \langle H\rangle = 8E_1 + \langle V_{ee}\rangle, \tag{8.20} $$</p>
+                <p>em que<sup id="fnref:3"><a href="#fn:3" class="footnote-ref">3</a></sup></p>
+                <p>$$ \langle V_{ee}\rangle = \left(\frac{e^2}{4\pi\epsilon_0}\right)\left(\frac{8}{\pi a^3}\right)^2\int\frac{e^{-4(r_1 + r_2)/a}}{|\mathbf r_1 - \mathbf r_2|}\,d^3\mathbf r_1\,d^3\mathbf r_2. \tag{8.21} $$</p>
+
+                <figure class="lecture-figure" id="fig-8-4">
+                    <svg viewBox="0 0 640 380" role="img" aria-label="Figura 8.4: para a integral em r2, o eixo polar z2 é escolhido ao longo de r1; r2 faz o ângulo theta2 com esse eixo e tem azimute phi2; |r1 - r2| liga as pontas dos dois vetores.">
+<defs><marker id="arr-8-4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="300" y1="250" x2="300" y2="60" class="fig-axis" marker-end="url(#arr-8-4)"/>
+<text x="292" y="64" text-anchor="end" class="fig-label fig-it">z₂</text>
+<line x1="300" y1="250" x2="490" y2="250" class="fig-axis" marker-end="url(#arr-8-4)"/>
+<text x="496" y="268" class="fig-label fig-it">y₂</text>
+<line x1="300" y1="250" x2="182.2" y2="335.5" class="fig-axis" marker-end="url(#arr-8-4)"/>
+<text x="176.2" y="351.5" text-anchor="end" class="fig-label fig-it">x₂</text>
+<line x1="300" y1="250" x2="300" y2="156" class="fig-curve" marker-end="url(#arr-8-4)"/>
+<circle cx="300" cy="150" r="4" class="fig-arrowhead"/>
+<text x="290" y="220" text-anchor="end" class="fig-label">r₁</text>
+<line x1="300" y1="250" x2="388.6" y2="147.3" class="fig-curve" marker-end="url(#arr-8-4)"/>
+<circle cx="392.6" cy="142.3" r="4" class="fig-arrowhead"/>
+<text x="358.3" y="200.2" class="fig-label">r₂</text>
+<line x1="392.6" y1="142.3" x2="392.6" y2="269.6" class="fig-guide fig-dashed"/>
+<line x1="300" y1="250" x2="392.6" y2="269.6" class="fig-guide fig-dashed"/>
+<line x1="300" y1="150" x2="392.6" y2="142.3" class="fig-guide"/>
+<text x="346.3" y="136.2" text-anchor="middle" class="fig-label fig-small">|r₁ − r₂|</text>
+<path d="M300,210 L301.9,210.5 L303.8,211.1 L305.7,212 L307.5,213 L309.4,214.1 L311.1,215.4 L312.9,216.8 L314.6,218.4 L316.2,220.2 L317.7,222 L319.2,224 L320.6,226.1" class="fig-axis"/>
+<text x="317.1" y="209.4" class="fig-label fig-small">θ₂</text>
+<path d="M281.4,263.5 L284.5,263.4 L287.9,263.2 L291.3,262.9 L294.8,262.4 L298.4,261.8 L302,261.1 L305.5,260.2 L309.1,259.3 L312.5,258.2 L315.8,257.1 L318.9,255.9 L321.8,254.6" class="fig-axis"/>
+<text x="300" y="279.1" class="fig-label fig-small">φ₂</text>
+</svg>
+                    <figcaption><strong>Figura 8.4.</strong> Escolha das coordenadas para a integral em $\mathbf r_2$ (Eq. 8.21): com
+                        $\mathbf r_1$ fixo, o eixo polar $z_2$ é tomado ao longo de $\mathbf r_1$, e $\theta_2$ é o ângulo entre
+                        $\mathbf r_1$ e $\mathbf r_2$.</figcaption>
+                </figure>
+
+                <div class="definition-box" id="teo-repulsao-helio">
+                    <p><strong>Teorema (Repulsão eletrônica no estado $\psi_0$).</strong> No estado (8.18),</p>
+                    <p>$$ \langle V_{ee}\rangle = \frac{5}{4a}\left(\frac{e^2}{4\pi\epsilon_0}\right) = -\frac52E_1 = 34\ \text{eV}. $$</p>
+                </div>
+                <p><em>Demonstração.</em> <strong>Passo 1 (a integral em $\mathbf r_2$).</strong> Fazemos primeiro a integral em
+                    $\mathbf r_2$; para isso $\mathbf r_1$ fica fixo, e podemos orientar o sistema de coordenadas de $\mathbf r_2$ de modo
+                    que o eixo polar fique ao longo de $\mathbf r_1$ (Figura 8.4). Pela lei dos cossenos,</p>
+                <p>$$ |\mathbf r_1 - \mathbf r_2| = \sqrt{r_1^2 + r_2^2 - 2r_1r_2\cos\theta_2}, \tag{8.22} $$</p>
+                <p>e portanto</p>
+                <p>$$ \begin{aligned}
+                    I_2 &\equiv \int\frac{e^{-4r_2/a}}{|\mathbf r_1 - \mathbf r_2|}\,d^3\mathbf r_2 \\
+                    &= \int\frac{e^{-4r_2/a}}{\sqrt{r_1^2 + r_2^2 - 2r_1r_2\cos\theta_2}}\,r_2^2\sin\theta_2\,dr_2\,d\theta_2\,d\phi_2.
+                    \end{aligned} \tag{8.23} $$</p>
+                <p><strong>Passo 2 (os ângulos).</strong> A integral em $\phi_2$ é trivial ($2\pi$). Para a integral em $\theta_2$, note que
+                    $\frac{d}{d\theta_2}\sqrt{r_1^2 + r_2^2 - 2r_1r_2\cos\theta_2} = \frac{r_1r_2\sin\theta_2}{\sqrt{r_1^2 + r_2^2 - 2r_1r_2\cos\theta_2}}$;
+                    logo</p>
+                <p>$$ \begin{aligned}
+                    &\int_0^\pi\frac{\sin\theta_2}{\sqrt{r_1^2 + r_2^2 - 2r_1r_2\cos\theta_2}}\,d\theta_2 \\
+                    &\quad = \left.\frac{\sqrt{r_1^2 + r_2^2 - 2r_1r_2\cos\theta_2}}{r_1r_2}\right|_0^\pi \\
+                    &\quad = \frac{1}{r_1r_2}\left(\sqrt{r_1^2 + r_2^2 + 2r_1r_2} - \sqrt{r_1^2 + r_2^2 - 2r_1r_2}\right) \\
+                    &\quad = \frac{1}{r_1r_2}\left[(r_1 + r_2) - |r_1 - r_2|\right] \\
+                    &\quad = \begin{cases} 2/r_1, & r_2 \lt r_1, \\ 2/r_2, & r_2 \gt r_1. \end{cases}
+                    \end{aligned} \tag{8.24} $$</p>
+                <p>O valor absoluto é essencial: a raiz quadrada de $(r_1 - r_2)^2$ é $|r_1 - r_2|$, e os dois casos têm de ser separados.</p>
+                <p><strong>Passo 3 (a integral radial em $r_2$).</strong> Assim,</p>
+                <p>$$ \begin{aligned}
+                    I_2 &= 4\pi\left(\frac{1}{r_1}\int_0^{r_1}e^{-4r_2/a}r_2^2\,dr_2 + \int_{r_1}^\infty e^{-4r_2/a}r_2\,dr_2\right) \\
+                    &= \frac{\pi a^3}{8r_1}\left[1 - \left(1 + \frac{2r_1}{a}\right)e^{-4r_1/a}\right].
+                    \end{aligned} \tag{8.25} $$</p>
+                <p>(As duas integrais são elementares: por partes, $\int_0^{r_1}r^2e^{-4r/a}dr = \frac{a^3}{32}\left[1 - \left(1 + \frac{4r_1}{a} + \frac{8r_1^2}{a^2}\right)e^{-4r_1/a}\right]$
+                    e $\int_{r_1}^\infty re^{-4r/a}dr = \frac{a}{4}\left(r_1 + \frac a4\right)e^{-4r_1/a}$; somando com os fatores, os termos em
+                    $r_1^2$ se cancelam.)</p>
+                <p><strong>Passo 4 (a integral em $\mathbf r_1$).</strong> Segue que $\langle V_{ee}\rangle$ é igual a</p>
+                <p>$$ \left(\frac{e^2}{4\pi\epsilon_0}\right)\left(\frac{8}{\pi a^3}\right)\int\left[1 - \left(1 + \frac{2r_1}{a}\right)e^{-4r_1/a}\right]e^{-4r_1/a}\,r_1\sin\theta_1\,dr_1\,d\theta_1\,d\phi_1, $$</p>
+                <p>em que um fator $8/\pi a^3$ cancelou o $\pi a^3/8$ de $I_2$, e $r_1^2/r_1 = r_1$. As integrais angulares são fáceis
+                    ($4\pi$), e a integral em $r_1$ fica</p>
+                <p>$$ \int_0^\infty\left[re^{-4r/a} - \left(r + \frac{2r^2}{a}\right)e^{-8r/a}\right]dr = \frac{a^2}{16} - \frac{a^2}{64} - \frac{2}{a}\,\frac{2a^3}{512} = \frac{5a^2}{128}, $$</p>
+                <p>usando $\int_0^\infty r^ne^{-\lambda r}dr = n!/\lambda^{n + 1}$. Então
+                    $\langle V_{ee}\rangle = \frac{e^2}{4\pi\epsilon_0}\,\frac{8}{\pi a^3}\,4\pi\,\frac{5a^2}{128}$, e como
+                    $E_1 = -\frac{e^2}{4\pi\epsilon_0}\frac{1}{2a}$, finalmente</p>
+                <p>$$ \langle V_{ee}\rangle = \frac{5}{4a}\left(\frac{e^2}{4\pi\epsilon_0}\right) = -\frac52E_1 = 34\ \text{eV}. \tag{8.26} $$</p>
+                <p>$\blacksquare$</p>
+
+                <p>Portanto,</p>
+                <p>$$ \langle H\rangle = -109\ \text{eV} + 34\ \text{eV} = -75\ \text{eV}. \tag{8.27} $$</p>
+                <p>Nada mal (lembre que o valor experimental é $-79$ eV). Mas dá para fazer melhor.</p>
+
+                <h2 id="carga-efetiva">Blindagem: a carga efetiva</h2>
+
+                <p>Precisamos de uma função-tentativa mais realista que $\psi_0$, que trata os dois elétrons como se não interagissem. Em vez
+                    de <em>ignorar</em> completamente a influência do outro elétron, digamos que, em média, cada elétron representa uma nuvem
+                    de carga negativa que <em>blinda</em> parcialmente o núcleo, de modo que o outro elétron enxerga uma carga nuclear
+                    <em>efetiva</em> ($Z$) um pouco <em>menor</em> que 2. Isso sugere uma função-tentativa da forma</p>
+                <p>$$ \psi_1(\mathbf r_1, \mathbf r_2) \equiv \frac{Z^3}{\pi a^3}e^{-Z(r_1 + r_2)/a}. \tag{8.28} $$</p>
+                <p>Tratamos $Z$ como parâmetro variacional e escolhemos o valor que minimiza $\langle H\rangle$. (Note que no método
+                    variacional <em>nunca mexemos no hamiltoniano</em>: o hamiltoniano do hélio é, e continua sendo, a Eq. (8.15). Mas não há
+                    problema em <em>pensar</em> numa aproximação do hamiltoniano <em>como forma de motivar a escolha da função-tentativa</em>.)</p>
+
+                <p>Essa função de onda é autoestado do hamiltoniano "não perturbado" (sem a repulsão entre os elétrons), só que com $Z$, em
+                    vez de 2, nos termos coulombianos. Com isso em mente, reescrevemos $H$ (Eq. 8.15) somando e subtraindo $Z/r_1$ e
+                    $Z/r_2$:</p>
+                <p>$$ \begin{aligned}
+                    H = &-\frac{\hbar^2}{2m}\left(\nabla_1^2 + \nabla_2^2\right) - \frac{e^2}{4\pi\epsilon_0}\left(\frac{Z}{r_1} + \frac{Z}{r_2}\right) \\
+                    &+ \frac{e^2}{4\pi\epsilon_0}\left(\frac{(Z - 2)}{r_1} + \frac{(Z - 2)}{r_2} + \frac{1}{|\mathbf r_1 - \mathbf r_2|}\right).
+                    \end{aligned} \tag{8.29} $$</p>
+                <p>A primeira linha, aplicada a $\psi_1$, dá $2Z^2E_1\,\psi_1$ (dois átomos hidrogenoides de carga $Z$). Logo o valor
+                    esperado de $H$ é</p>
+                <p>$$ \langle H\rangle = 2Z^2E_1 + 2(Z - 2)\left(\frac{e^2}{4\pi\epsilon_0}\right)\left\langle\frac1r\right\rangle + \langle V_{ee}\rangle. \tag{8.30} $$</p>
+                <p>Aqui $\langle 1/r\rangle$ é o valor esperado de $1/r$ no estado fundamental hidrogenoide $\psi_{100}$ (de um elétron) com
+                    carga nuclear $Z$; pela Eq. (7.56), com $a \to a/Z$ e $n = 1$,</p>
+                <p>$$ \left\langle\frac1r\right\rangle = \frac Za. \tag{8.31} $$</p>
+                <p>O valor esperado de $V_{ee}$ é o mesmo de antes (Eq. 8.26), só que, em vez de $Z = 2$, queremos agora um $Z$
+                    <em>arbitrário</em>; então multiplicamos $a$ por $2/Z$ (a função $\psi_0$ é a $\psi_1$ com $Z = 2$, e o único
+                    comprimento em jogo é $a/Z$):</p>
+                <p>$$ \langle V_{ee}\rangle = \frac{5Z}{8a}\left(\frac{e^2}{4\pi\epsilon_0}\right) = -\frac{5Z}{4}E_1. \tag{8.32} $$</p>
+
+                <p>Juntando tudo, com $\frac{e^2}{4\pi\epsilon_0}\frac Za = -2ZE_1$, encontramos</p>
+                <p>$$ \begin{aligned}
+                    \langle H\rangle &= \left[2Z^2 - 4Z(Z - 2) - (5/4)Z\right]E_1 \\
+                    &= \left[-2Z^2 + (27/4)Z\right]E_1.
+                    \end{aligned} \tag{8.33} $$</p>
+                <p>Pelo princípio variacional, essa quantidade excede $E_{\text{gs}}$ para <em>qualquer</em> valor de $Z$. O limite superior
+                    <em>mais baixo</em> ocorre quando $\langle H\rangle$ é mínimo:</p>
+                <p>$$ \frac{d}{dZ}\langle H\rangle = \left[-4Z + (27/4)\right]E_1 = 0, $$</p>
+                <p>e daí segue que</p>
+                <p>$$ Z = \frac{27}{16} = 1{,}69. \tag{8.34} $$</p>
+
+                <div class="definition-box" id="teo-helio-carga-efetiva">
+                    <p><strong>Teorema (Estimativa variacional do hélio com carga efetiva).</strong> Na família (8.28), o menor valor de
+                        $\langle H\rangle$ ocorre em $Z = 27/16$ e vale</p>
+                    <p>$$ \langle H\rangle = \frac12\left(\frac32\right)^6E_1 = -77{,}5\ \text{eV}. \tag{8.35} $$</p>
+                </div>
+                <p><em>Demonstração.</em> No mínimo, $4Z = 27/4$, e então $(27/4)Z = 4Z^2$; a Eq. (8.33) dá
+                    $\langle H\rangle = (-2Z^2 + 4Z^2)E_1 = 2Z^2E_1 = 2\left(\frac{27}{16}\right)^2E_1 = \frac{729}{128}E_1$. Como
+                    $\frac{729}{128} = \frac12\cdot\frac{3^6}{2^6}$, isso é $\frac12\left(\frac32\right)^6E_1 = 5{,}695\times(-13{,}6\ \text{eV}) = -77{,}5$ eV.
+                    É um mínimo, porque o coeficiente de $Z^2$ em $\langle H\rangle$ é $-2E_1 \gt 0$. $\blacksquare$</p>
+
+                <p>O resultado (8.34) parece razoável: o outro elétron blinda parcialmente o núcleo, reduzindo sua carga efetiva de 2 para
+                    cerca de 1,69. O estado fundamental do hélio foi calculado com grande precisão dessa maneira, usando funções-tentativa
+                    cada vez mais complicadas, com mais e mais parâmetros ajustáveis. Mas já estamos a $2\%$ da resposta correta, e, como
+                    confessa o Griffiths, a essa altura o interesse dele pelo problema começa a diminuir.<sup id="fnref:4"><a href="#fn:4"
+                    class="footnote-ref">4</a></sup></p>
+
+                <h2 id="conexao">Conexão com o experimento</h2>
+
+                <p>O valor medido é $E_{\text{gs}} = -78{,}975$ eV (Eq. 8.16), e os três passos da seção se aproximam dele por cima, como o
+                    princípio variacional garante para os dois últimos:</p>
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr><th>Aproximação</th><th>Energia</th><th>Erro</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Sem repulsão, $8E_1$</td><td>$-109$ eV</td><td>$38\%$ (abaixo)</td></tr>
+                            <tr><td>Repulsão em $\psi_0$ (Eq. 8.27)</td><td>$-75$ eV</td><td>$5\%$ (acima)</td></tr>
+                            <tr><td>Carga efetiva $Z = 27/16$ (Eq. 8.35)</td><td>$-77{,}5$ eV</td><td>$2\%$ (acima)</td></tr>
+                            <tr><td>Experimental (Eq. 8.16)</td><td>$-78{,}975$ eV</td><td>—</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>A primeira linha fica <em>abaixo</em> do valor verdadeiro, e não há contradição: $8E_1$ não é o valor esperado do
+                    hamiltoniano completo em estado nenhum, e sim a energia de outro hamiltoniano, sem a repulsão. As outras duas são valores
+                    esperados de $H$, e por isso são limites superiores. A interpretação física do terceiro passo é a blindagem: cada elétron
+                    passa parte do tempo entre o núcleo e o outro elétron, e o resultado é uma carga efetiva intermediária entre 1 e 2
+                    (<a href="#exr-8-2-5">Exercício 8.2-5</a>).</p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p id="exr-8-2-1"><strong>Exercício 8.2-1.</strong> Refaça o cálculo de $\langle V_{ee}\rangle$ (Eq. 8.26) em outra ordem:
+                    primeiro todas as integrais angulares, depois a integral radial dividida nas regiões $r_2 \lt r_1$ e $r_2 \gt r_1$.</p>
+                <p><em>Solução.</em> O Passo 2 da demonstração mostra que a média de $1/|\mathbf r_1 - \mathbf r_2|$ sobre a direção de
+                    $\mathbf r_2$ é $\frac{1}{4\pi}\int\frac{d\Omega_2}{|\mathbf r_1 - \mathbf r_2|} = \frac{1}{r_\gt}$, em que $r_\gt$ é o maior
+                    de $r_1$ e $r_2$. A média sobre a direção de $\mathbf r_1$ é então trivial. Com $|\psi_0|^2 = (8/\pi a^3)^2e^{-4(r_1 + r_2)/a}$
+                    e $(4\pi)^2$ das duas integrais angulares,</p>
+                <p>$$ \langle V_{ee}\rangle = \frac{e^2}{4\pi\epsilon_0}\left(\frac{8}{\pi a^3}\right)^2(4\pi)^2\int_0^\infty\!\!\int_0^\infty\frac{e^{-4(r_1 + r_2)/a}}{r_\gt}\,r_1^2r_2^2\,dr_1\,dr_2. $$</p>
+                <p>Por simetria, a região $r_2 \gt r_1$ dá o mesmo que $r_2 \lt r_1$, e basta dobrar esta última, em que $r_\gt = r_1$:</p>
+                <p>$$ 2\int_0^\infty r_1e^{-4r_1/a}\left[\int_0^{r_1}r_2^2e^{-4r_2/a}\,dr_2\right]dr_1 = \frac{5a^5}{4096}. $$</p>
+                <p>(A integral interna é a do Passo 3; o resultado final sai das integrais $\int r^ne^{-\lambda r}dr$.) Multiplicando,
+                    $\frac{e^2}{4\pi\epsilon_0}\,\frac{64\cdot16\pi^2}{\pi^2a^6}\,\frac{5a^5}{4096} = \frac{5}{4a}\,\frac{e^2}{4\pi\epsilon_0}$,
+                    como na Eq. (8.26).</p>
+
+                <p id="exr-8-2-2"><strong>Exercício 8.2-2.</strong> Interprete a Eq. (8.32): por que $\langle V_{ee}\rangle$ é proporcional a
+                    $Z$?</p>
+                <p><em>Solução.</em> Na função (8.28), o único comprimento é $a/Z$: todas as distâncias, inclusive a separação típica
+                    $|\mathbf r_1 - \mathbf r_2|$, escalam como $a/Z$. Como $V_{ee} \propto 1/|\mathbf r_1 - \mathbf r_2|$, seu valor esperado
+                    escala como $Z/a$. Comparando com $Z = 2$ (Eq. 8.26), $\langle V_{ee}\rangle(Z) = \frac Z2\cdot\frac{5}{4a}\frac{e^2}{4\pi\epsilon_0} = \frac{5Z}{8a}\frac{e^2}{4\pi\epsilon_0}$.
+                    Pelo mesmo argumento de escala, a energia cinética (que tem duas derivadas) escala como $Z^2$ e a atração nuclear
+                    (uma potência de $1/r$) como $Z$, que é a estrutura da Eq. (8.33).</p>
+
+                <p id="exr-8-2-3"><strong>Exercício 8.2-3.</strong> Generalize o cálculo da carga efetiva para um íon de dois elétrons com
+                    núcleo de carga $Z_n$ (no hélio, $Z_n = 2$). Aplique ao íon $\text{Li}^+$ ($Z_n = 3$) e ao íon $\text{H}^-$ ($Z_n = 1$).</p>
+                <p><em>Solução.</em> Trocando $2$ por $Z_n$ na Eq. (8.29), a Eq. (8.30) fica
+                    $\langle H\rangle = 2Z^2E_1 + 2(Z - Z_n)\frac{e^2}{4\pi\epsilon_0}\frac Za - \frac{5Z}{4}E_1 = \left[-2Z^2 + 4ZZ_n - \tfrac54Z\right]E_1$.
+                    O mínimo está em $Z = Z_n - \frac{5}{16}$, e ali, como antes, $\langle H\rangle = 2Z^2E_1$. A blindagem é sempre a mesma,
+                    $5/16$ de carga. Para o $\text{Li}^+$, $Z = 43/16 = 2{,}69$ e $\langle H\rangle = 2(2{,}69)^2(-13{,}6) = -196{,}5$ eV. Para o
+                    $\text{H}^-$, $Z = 11/16 = 0{,}69$ e $\langle H\rangle = -12{,}9$ eV. Esse último valor é <em>maior</em> que $-13{,}6$ eV,
+                    a energia de um átomo de hidrogênio neutro mais um elétron livre: com esta função-tentativa, o $\text{H}^-$ pareceria
+                    não ser ligado. Mas um limite superior acima do limiar não prova nada: o Griffiths comenta que, com uma função-tentativa
+                    mais sofisticada, se mostra que $E_{\text{gs}} \lt -13{,}6$ eV, de modo que o $\text{H}^-$ existe, embora mal ligado e
+                    sem estados excitados ligados.</p>
+
+                <p id="exr-8-2-4"><strong>Exercício 8.2-4.</strong> Mostre que, no mínimo $Z = 27/16$, a energia cinética média é
+                    $\langle T\rangle = -\langle H\rangle$, e que isso não vale para $Z = 2$.</p>
+                <p><em>Solução.</em> Na função (8.28), cada elétron tem a energia cinética do estado fundamental hidrogenoide de carga $Z$,
+                    $-Z^2E_1$ (pelo teorema do virial no átomo hidrogenoide, $\langle T\rangle = -E$). Logo $\langle T\rangle = -2Z^2E_1$. No
+                    mínimo, $\langle H\rangle = 2Z^2E_1$ (Teorema acima), e portanto $\langle T\rangle = -\langle H\rangle$: é o teorema do virial
+                    para um sistema coulombiano, $2\langle T\rangle = -\langle V\rangle$, que o hamiltoniano exato satisfaz e que o mínimo
+                    variacional numa família com um parâmetro de escala também satisfaz. Para $Z = 2$, $\langle T\rangle = -8E_1 = 109$ eV,
+                    mas $\langle H\rangle = -75$ eV: a função $\psi_0$ está "comprimida demais", e deixar a escala variar é justamente o que
+                    a melhora.</p>
+
+                <p id="exr-8-2-5"><strong>Exercício 8.2-5.</strong> Explique por que a carga efetiva ótima fica entre 1 e 2, e por que mais
+                    perto de 2.</p>
+                <p><em>Solução.</em> Se um elétron estivesse sempre muito mais longe do núcleo que o outro, veria a carga $+2e$ do núcleo
+                    menos a carga $-e$ do outro elétron, isto é, $Z = 1$; se estivesse sempre mais perto, veria $Z = 2$. Os dois elétrons
+                    ocupam a mesma nuvem $1s$, de modo que cada um está "por dentro" do outro só parte do tempo, e a carga efetiva fica no
+                    meio. A blindagem é de só $5/16 \approx 0{,}31$ de carga, e não $1/2$, porque a nuvem do outro elétron é difusa e se
+                    sobrepõe muito à do primeiro: a carga que de fato fica entre um elétron e o núcleo é bem menos que uma carga inteira.</p>
+
+                <p id="exr-8-2-6"><strong>Exercício 8.2-6.</strong> A função (8.28) é simétrica pela troca dos dois elétrons. Qual tem de
+                    ser o estado de spin, e por quê?</p>
+                <p><em>Solução.</em> Os elétrons são férmions idênticos, e a função de onda total (espacial vezes spin) tem de ser
+                    antissimétrica pela troca (<a href="../[4] - Partículas Idênticas/[01] - Sistemas de Duas Partículas.html#spins">capítulo
+                    5</a>). Como a parte espacial $\psi_1(\mathbf r_1, \mathbf r_2) = \psi_1(\mathbf r_2, \mathbf r_1)$ é simétrica, a parte de
+                    spin tem de ser antissimétrica: o singleto. É o que o Griffiths observa (em nota) sobre a Eq. (8.18): os dois elétrons
+                    no orbital $1s$ têm necessariamente spins opostos, e por isso o estado fundamental do hélio é um singleto.</p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <ul>
+                    <li>O hamiltoniano do hélio (8.15) e a aproximação sem repulsão, $8E_1 = -109$ eV.</li>
+                    <li>O cálculo completo de $\langle V_{ee}\rangle = -\frac52E_1 = 34$ eV (Eq. 8.26), com a escolha de coordenadas da
+                        Figura 8.4 e o cuidado com $|r_1 - r_2|$; o primeiro limite superior, $-75$ eV.</li>
+                    <li>A blindagem como parâmetro variacional: $\langle H\rangle(Z)$ (Eq. 8.33), o mínimo em $Z = 27/16$ e o limite
+                        $-77{,}5$ eV, a $2\%$ do valor experimental.</li>
+                </ul>
+                <p>No hélio, o princípio variacional deu um número. Na próxima seção ele responde a uma pergunta qualitativa, mas
+                    fundamental: dois prótons e um elétron formam uma molécula estável?
+                    <a href="[03] - O Íon da Molécula de Hidrogênio.html">8.3 O Íon da Molécula de Hidrogênio</a>.</p>
+
+                <hr class="footnotes-sep">
+                <section class="footnotes">
+                    <ol>
+                        <li id="fn:1">
+                            <p>Existem problemas de três corpos exatamente solúveis com muitas das características qualitativas do hélio,
+                                mas com potenciais não coulombianos. (Nota do livro.)<a href="#fnref:1" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:2">
+                            <p>Aqui $a$ é o raio de Bohr comum e $E_n = -13{,}6/n^2$ eV é a $n$-ésima energia de Bohr; lembre que, para um
+                                núcleo de número atômico $Z$, $E_n \to Z^2E_n$ e $a \to a/Z$. A configuração de spin associada à Eq. (8.18)
+                                é antissimétrica (o singleto). (Nota do livro.)<a href="#fnref:2" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:3">
+                            <p>Pode-se, se quiser, interpretar a Eq. (8.21) como teoria de perturbação de primeira ordem, com
+                                $H' = V_{ee}$. O Griffiths, porém, considera isso um mau uso do método, já que a perturbação tem tamanho
+                                comparável ao do potencial não perturbado; ele prefere pensar no cálculo como variacional, em que buscamos
+                                um limite superior rigoroso para $E_{\text{gs}}$. (Nota do livro.)<a href="#fnref:3"
+                                    class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:4">
+                            <p>O primeiro estado excitado do hélio pode ser calculado de modo bem parecido, usando uma função-tentativa
+                                ortogonal ao estado fundamental (veja o
+                                <a href="[01] - Teoria.html#cor-primeiro-excitado">Corolário (Limite para o primeiro estado
+                                excitado)</a>). (Nota do livro.)<a href="#fnref:4" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                    </ol>
+                </section>
 
             </div>
         </main>
@@ -171,6 +492,12 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#estado-fundamental-do-helio">O Estado Fundamental do Hélio</a></li>
+                    <li><a href="#sem-repulsao">Sem a repulsão</a></li>
+                    <li><a href="#repulsao">A repulsão em primeira ordem</a></li>
+                    <li><a href="#carga-efetiva">Blindagem: a carga efetiva</a></li>
+                    <li><a href="#conexao">Conexão com o experimento</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
                 </ul>
             </div>
         </aside>

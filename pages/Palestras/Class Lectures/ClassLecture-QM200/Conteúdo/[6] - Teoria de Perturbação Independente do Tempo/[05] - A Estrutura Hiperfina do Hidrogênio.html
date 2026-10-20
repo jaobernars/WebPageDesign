@@ -161,7 +161,253 @@
                 <h1 id="estrutura-hiperfina">7.5 A Estrutura Hiperfina do Hidrogênio</h1>
                 <p class="lead">A interação entre os momentos magnéticos do próton e do elétron, a separação singleto–tripleto do estado fundamental e a linha de 21 cm.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>Até aqui o próton foi só uma carga pontual. Mas ele também é um pequeno ímã: tem spin e, portanto, momento de dipolo
+                    magnético. O elétron sente o campo desse dipolo, e a interação entre os dois spins separa o estado fundamental do
+                    hidrogênio em dois níveis muito próximos. A transição entre eles produz uma das linhas mais famosas da física, a
+                    <strong>linha de 21 cm</strong>.</p>
+
+                <p>Esta seção, que segue a Seção 7.5 do Griffiths, é a última e a menor das correções da Tabela 7.1 da
+                    <a href="[03] - A Estrutura Fina do Hidrogênio.html">Seção 7.3</a>, de ordem $(m/m_p)\,\alpha^4mc^2$. A conta tem a mesma
+                    estrutura da do acoplamento spin-órbita: um momento magnético no campo de outro, teoria de perturbação de primeira ordem
+                    e estados bons escolhidos pelo momento angular total, agora o spin total do elétron e do próton, com seus estados de
+                    singleto e tripleto (<a href="../[4] - Partículas Idênticas/[01] - Sistemas de Duas Partículas.html#spins">capítulo
+                    5</a>; Griffiths, Seção 4.4.3).</p>
+
+                <h2 id="dipolo-do-proton">O dipolo do próton</h2>
+
+                <p>O próton constitui, ele mesmo, um dipolo magnético, embora seu momento de dipolo seja muito menor que o do elétron, por
+                    causa da massa no denominador (compare com a Eq. 7.62):</p>
+                <p>$$ \boldsymbol\mu_p = \frac{g_pe}{2m_p}\mathbf S_p, \qquad \boldsymbol\mu_e = -\frac{e}{m_e}\mathbf S_e. \tag{7.89} $$</p>
+                <p>O próton é uma estrutura composta, feita de três quarks, e sua razão giromagnética não é tão simples quanto a do elétron;
+                    daí o fator $g$ explícito, $g_p$, cujo valor medido é $5{,}59$, contra $2{,}00$ para o elétron. Como $m_p \approx 1836\,m_e$,
+                    a razão entre os dois momentos (para spins de mesmo tamanho) é $g_pm_e/2m_p \approx 1/657$: o momento do próton é
+                    umas 660 vezes menor que o do elétron. (Nesta seção o Griffiths escreve $m_e$ para a massa do
+                    elétron, para não confundir com $m_p$.)</p>
+
+                <div class="definition-box" id="prop-campo-dipolo">
+                    <p><strong>Resultado citado (Campo de um dipolo magnético).</strong> Pela eletrodinâmica clássica, um dipolo
+                        $\boldsymbol\mu$ na origem produz o campo magnético</p>
+                    <p>$$ \mathbf B = \frac{\mu_0}{4\pi r^3}\left[3\left(\boldsymbol\mu\cdot\hat r\right)\hat r - \boldsymbol\mu\right] + \frac{2\mu_0}{3}\boldsymbol\mu\,\delta^3(\mathbf r). \tag{7.90} $$</p>
+                </div>
+                <p><em>Ideia.</em> O primeiro termo é o campo de dipolo usual, válido fora da origem. O segundo, com a função delta, dá o
+                    campo <em>dentro</em> do dipolo: é o que se obtém tratando o dipolo como uma casca esférica carregada que gira, no
+                    limite em que o raio vai a zero e a carga ao infinito, com $\boldsymbol\mu$ fixo (Griffiths, Seção 7.5, nota de
+                    rodapé).<sup id="fnref:1"><a href="#fn:1" class="footnote-ref">1</a></sup></p>
+
+                <h2 id="interacao-spin-spin">A interação spin-spin</h2>
+
+                <p>O hamiltoniano do elétron no campo magnético produzido pelo momento de dipolo do próton é, pela Eq. (7.59),
+                    $H = -\boldsymbol\mu_e\cdot\mathbf B$, com $\boldsymbol\mu = \boldsymbol\mu_p$ na Eq. (7.90). Como
+                    $-\boldsymbol\mu_e\cdot\boldsymbol\mu_p = \dfrac{e}{m_e}\dfrac{g_pe}{2m_p}\mathbf S_e\cdot\mathbf S_p$,</p>
+                <p>$$ \begin{aligned}
+                    H'_{\text{hf}} &= \frac{\mu_0g_pe^2}{8\pi m_pm_e}\,\frac{\left[3\left(\mathbf S_p\cdot\hat r\right)\left(\mathbf S_e\cdot\hat r\right) - \mathbf S_p\cdot\mathbf S_e\right]}{r^3} \\
+                    &\quad + \frac{\mu_0g_pe^2}{3m_pm_e}\mathbf S_p\cdot\mathbf S_e\,\delta^3(\mathbf r).
+                    \end{aligned} \tag{7.91} $$</p>
+                <p>Pela teoria de perturbação, a correção de primeira ordem à energia (<a href="[01] - Teoria de Perturbação Não Degenerada.html#teo-correcao-primeira-ordem">Teorema (Correção de primeira ordem da energia)</a>, Eq. 7.9) é o valor
+                    esperado do hamiltoniano perturbador:</p>
+                <p>$$ \begin{aligned}
+                    E_{\text{hf}}^1 &= \frac{\mu_0g_pe^2}{8\pi m_pm_e}\left\langle\frac{3\left(\mathbf S_p\cdot\hat r\right)\left(\mathbf S_e\cdot\hat r\right) - \mathbf S_p\cdot\mathbf S_e}{r^3}\right\rangle \\
+                    &\quad + \frac{\mu_0g_pe^2}{3m_pm_e}\left\langle\mathbf S_p\cdot\mathbf S_e\right\rangle|\psi(0)|^2.
+                    \end{aligned} \tag{7.92} $$</p>
+                <p>No segundo termo, a função delta, integrada contra $|\psi(\mathbf r)|^2$, seleciona o valor da densidade na origem; o
+                    valor esperado de spin fica como fator.</p>
+
+                <div class="definition-box" id="prop-media-angular-dipolar">
+                    <p><strong>Proposição (Média angular do termo dipolar).</strong> Num estado com $l = 0$, o primeiro valor esperado da
+                        Eq. (7.92) se anula:</p>
+                    <p>$$ \left\langle\frac{3\left(\mathbf S_p\cdot\hat r\right)\left(\mathbf S_e\cdot\hat r\right) - \mathbf S_p\cdot\mathbf S_e}{r^3}\right\rangle = 0. $$</p>
+                </div>
+                <p><em>Demonstração.</em> O Griffiths deixa esta conta para um problema; como a seção depende dela, fazemos aqui.</p>
+                <p><strong>Passo 1 (a identidade angular).</strong> Com
+                    $\hat r = \sin\theta\cos\phi\,\hat\imath + \sin\theta\sin\phi\,\hat\jmath + \cos\theta\,\hat k$, as integrais
+                    $\int\hat r_i\hat r_j\,d\Omega$ (com $d\Omega = \sin\theta\,d\theta\,d\phi$) se anulam para $i \ne j$, porque a
+                    integral em $\phi$ de $\cos\phi\sin\phi$, $\cos\phi$ ou $\sin\phi$ é zero; e para $i = j$ valem todas o mesmo, por
+                    simetria, com soma $\int(\hat r_x^2 + \hat r_y^2 + \hat r_z^2)\,d\Omega = 4\pi$. Logo
+                    $\int\hat r_i\hat r_j\,d\Omega = \frac{4\pi}{3}\delta_{ij}$ e, para vetores constantes $\mathbf a$ e $\mathbf b$,</p>
+                <p>$$ \int\left(\mathbf a\cdot\hat r\right)\left(\mathbf b\cdot\hat r\right)\sin\theta\,d\theta\,d\phi = \sum_{i,j}a_ib_j\int\hat r_i\hat r_j\,d\Omega = \frac{4\pi}{3}\left(\mathbf a\cdot\mathbf b\right). $$</p>
+                <p><strong>Passo 2 (o valor esperado).</strong> Num estado com $l = 0$, a função de onda tem simetria esférica,
+                    $\psi = \psi(r)$, e a parte de spin não depende de $\mathbf r$. Os operadores de spin fazem o papel de $\mathbf a$ e
+                    $\mathbf b$ (as componentes de $\mathbf S_p$ e $\mathbf S_e$ comutam entre si, e as integrais são sobre os ângulos,
+                    que não envolvem spin). Fazendo primeiro as integrais angulares, em cada $r$,</p>
+                <p>$$ \int\left[3\left(\mathbf S_p\cdot\hat r\right)\left(\mathbf S_e\cdot\hat r\right) - \mathbf S_p\cdot\mathbf S_e\right]d\Omega = 3\cdot\frac{4\pi}{3}\,\mathbf S_p\cdot\mathbf S_e - 4\pi\,\mathbf S_p\cdot\mathbf S_e = 0, $$</p>
+                <p>e portanto o integrando radial é identicamente nulo. $\blacksquare$</p>
+                <p>A ordem importa: a integral radial de $|\psi|^2/r^3$ sozinha divergiria na origem para um estado $s$. É por isso que as
+                    integrais angulares vêm primeiro, e é o termo de contato, com a função delta, que dá conta do que acontece em
+                    $r = 0$.</p>
+
+                <p>No estado fundamental (ou em qualquer outro estado com $l = 0$), portanto, só sobra o termo de contato. Da Eq. (4.80)
+                    do Griffiths, $\psi_{100} = e^{-r/a}/\sqrt{\pi a^3}$, e $|\psi_{100}(0)|^2 = 1/(\pi a^3)$. Assim,</p>
+                <p>$$ E_{\text{hf}}^1 = \frac{\mu_0g_pe^2}{3\pi m_pm_ea^3}\left\langle\mathbf S_p\cdot\mathbf S_e\right\rangle \tag{7.93} $$</p>
+                <p>no estado fundamental. Isso se chama <strong>acoplamento spin-spin</strong>, porque envolve o produto escalar de dois
+                    spins (compare com o acoplamento spin-órbita, que envolve $\mathbf S\cdot\mathbf L$).</p>
+
+                <h2 id="estado-fundamental">O estado fundamental</h2>
+
+                <p>Na presença do acoplamento spin-spin, os momentos angulares de spin individuais não se conservam mais; os estados "bons"
+                    são os autovetores do spin <em>total</em>,</p>
+                <p>$$ \mathbf S \equiv \mathbf S_e + \mathbf S_p. \tag{7.94} $$</p>
+                <p>É o mesmo argumento da Seção 7.3, agora com $S^2$ e $S_z$ no papel de $A$: eles comutam com $\mathbf S_p\cdot\mathbf S_e$
+                    e distinguem os quatro estados de spin do nível fundamental. Como antes, elevamos ao quadrado,
+                    $S^2 = S_e^2 + S_p^2 + 2\mathbf S_p\cdot\mathbf S_e$, para obter</p>
+                <p>$$ \mathbf S_p\cdot\mathbf S_e = \frac12\left(S^2 - S_e^2 - S_p^2\right). \tag{7.95} $$</p>
+                <p>Mas o elétron e o próton têm ambos spin $1/2$, de modo que $S_e^2 = S_p^2 = (3/4)\hbar^2$. No estado de
+                    <strong>tripleto</strong> (spins "paralelos"), o spin total é $1$, e portanto $S^2 = 2\hbar^2$; no estado de
+                    <strong>singleto</strong>, o spin total é $0$, e $S^2 = 0$. Logo
+                    $\langle\mathbf S_p\cdot\mathbf S_e\rangle = \frac12\left(2 - \frac32\right)\hbar^2 = \frac{\hbar^2}{4}$ no tripleto e
+                    $\frac12\left(0 - \frac32\right)\hbar^2 = -\frac34\hbar^2$ no singleto.</p>
+
+                <p>Para escrever o prefator da Eq. (7.93) em termos de $\hbar$ e $a$, usamos $\mu_0 = 1/\epsilon_0c^2$ e
+                    $e^2/4\pi\epsilon_0 = \hbar^2/m_ea$ (a definição do raio de Bohr):
+                    $\dfrac{\mu_0e^2}{\pi} = \dfrac{4}{c^2}\,\dfrac{e^2}{4\pi\epsilon_0} = \dfrac{4\hbar^2}{m_eac^2}$. Então</p>
+
+                <div class="definition-box" id="teo-estrutura-hiperfina">
+                    <p><strong>Teorema (Estrutura hiperfina do estado fundamental).</strong> No estado fundamental do hidrogênio, a
+                        correção hiperfina é</p>
+                    <p>$$ E_{\text{hf}}^1 = \frac{4g_p\hbar^4}{3m_pm_e^2c^2a^4}\begin{cases} +1/4, & \text{(tripleto)}; \\ -3/4, & \text{(singleto)}. \end{cases} \tag{7.96} $$</p>
+                </div>
+
+                <p>O acoplamento spin-spin quebra a degenerescência de spin do estado fundamental: eleva a configuração de tripleto e
+                    abaixa a de singleto (Figura 7.12). A distância entre elas é</p>
+                <p>$$ \Delta E = \frac{4g_p\hbar^4}{3m_pm_e^2c^2a^4} = 5{,}88\times10^{-6}\ \text{eV}. \tag{7.97} $$</p>
+                <p>Com $a = \hbar/(\alpha m_ec)$, a mesma separação se escreve $\Delta E = \frac43\,g_p\,\frac{m_e}{m_p}\,\alpha^4m_ec^2$:
+                    é exatamente a ordem de grandeza $(m/m_p)\,\alpha^4mc^2$ da Tabela 7.1.</p>
+
+                <figure class="lecture-figure" id="fig-7-12">
+                    <svg viewBox="0 0 640 300" role="img" aria-label="Figura 7.12: o estado fundamental do hidrogênio se separa em um tripleto, ΔE/4 acima do nível não perturbado, e um singleto, 3ΔE/4 abaixo; ΔE é a separação hiperfina.">
+<defs><marker id="arr-7-12" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="60" y1="120" x2="250" y2="120" class="fig-curve"/>
+<text x="60" y="110" class="fig-label fig-small">não perturbado</text>
+<line x1="250" y1="120" x2="300" y2="80" class="fig-guide fig-dashed"/>
+<line x1="250" y1="120" x2="300" y2="240" class="fig-guide fig-dashed"/>
+<line x1="300" y1="80" x2="470" y2="80" class="fig-curve"/>
+<line x1="300" y1="240" x2="470" y2="240" class="fig-curve"/>
+<text x="310" y="70" class="fig-label fig-small">tripleto (+ΔE/4)</text>
+<text x="310" y="262" class="fig-label fig-small">singleto (−3ΔE/4)</text>
+<line x1="520" y1="80" x2="520" y2="240" class="fig-axis" marker-start="url(#arr-7-12)" marker-end="url(#arr-7-12)"/>
+<text x="532" y="165" class="fig-label fig-it">ΔE</text>
+<line x1="470" y1="80" x2="530" y2="80" class="fig-guide"/>
+<line x1="470" y1="240" x2="530" y2="240" class="fig-guide"/>
+</svg>
+                    <figcaption><strong>Figura 7.12.</strong> Separação hiperfina do estado fundamental do hidrogênio. Pela Eq. (7.96), o
+                        tripleto (três estados) sobe $\Delta E/4$ e o singleto (um estado) desce $3\Delta E/4$; as distâncias na figura
+                        respeitam essa razão $1 : 3$.</figcaption>
+                </figure>
+
+                <p>A frequência do fóton emitido numa transição do tripleto para o singleto é</p>
+                <p>$$ \nu = \frac{\Delta E}{h} = 1420\ \text{MHz}, \tag{7.98} $$</p>
+                <p>e o comprimento de onda correspondente é $c/\nu = 21$ cm, na região das micro-ondas. Esta famosa <strong>linha de 21
+                    centímetros</strong> está entre as formas de radiação mais difundidas do universo.</p>
+
+                <h2 id="conexao">Conexão com o experimento</h2>
+
+                <p>A separação hiperfina é minúscula, $5{,}88\times10^{-6}$ eV, cerca de trinta vezes menor que o deslocamento de estrutura
+                    fina do estado fundamental (<a href="#exr-7-5-4">Exercício 7.5-4</a>). Mesmo assim, ela produz o que o Griffiths chama de uma das formas de radiação
+                    mais difundidas do universo: a linha de 21 cm, de frequência próxima de 1420 MHz, que cai na região das micro-ondas.
+                    Um átomo de hidrogênio que esteja no tripleto do estado fundamental pode passar para o singleto emitindo um fóton com
+                    exatamente essa energia, e o hidrogênio é o elemento mais abundante do universo.</p>
+
+                <p>O Griffiths também comenta, nos problemas desta seção, outros "átomos" em que a mesma conta se aplica com as massas e os
+                    fatores $g$ trocados: o hidrogênio muônico (<a href="#exr-7-5-5">Exercício 7.5-5</a>), o positrônio e o muônio. No positrônio, a fórmula
+                    adaptada dá $4{,}82\times10^{-4}$ eV, bem longe do valor experimental, $8{,}41\times10^{-4}$ eV; a grande diferença
+                    se deve à aniquilação de pares ($e^+ + e^- \to \gamma + \gamma$), que contribui com $\frac34\Delta E$ a mais e que,
+                    claro, não ocorre no hidrogênio comum. É um bom lembrete de que a conta desta seção só inclui a interação magnética
+                    entre os dois dipolos.</p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p id="exr-7-5-1"><strong>Exercício 7.5-1.</strong> Calcule $\Delta E$ pela Eq. (7.97) com
+                    $\hbar = 1{,}055\times10^{-34}$ J·s, $m_e = 9{,}109\times10^{-31}$ kg, $m_p = 1{,}673\times10^{-27}$ kg,
+                    $c = 2{,}998\times10^8$ m/s, $a = 0{,}5292\times10^{-10}$ m e $g_p = 5{,}59$, e confira a frequência e o comprimento de
+                    onda da linha de 21 cm.</p>
+                <p><em>Solução.</em> O numerador é $4g_p\hbar^4 = 4\times5{,}59\times(1{,}055\times10^{-34})^4 = 2{,}77\times10^{-135}$. O
+                    denominador é</p>
+                <p>$$ \begin{aligned}
+                    3m_pm_e^2c^2a^4 &= 3\times1{,}673\times10^{-27}\times(9{,}109\times10^{-31})^2 \\
+                    &\quad\times(2{,}998\times10^8)^2\times(0{,}5292\times10^{-10})^4 = 2{,}94\times10^{-111}.
+                    \end{aligned} $$</p>
+                <p>A razão é $9{,}44\times10^{-25}$ J, isto é, $\Delta E = 9{,}44\times10^{-25}/1{,}602\times10^{-19} = 5{,}89\times10^{-6}$ eV;
+                    a diferença na última casa em relação aos $5{,}88\times10^{-6}$ eV do livro vem do arredondamento das constantes.
+                    A frequência é $\nu = \Delta E/h \approx 5{,}88\times10^{-6}/4{,}136\times10^{-15} \approx 1{,}42\times10^9$ Hz, os
+                    $1420$ MHz da Eq. (7.98), e $\lambda = c/\nu = 2{,}998\times10^8/1{,}42\times10^9 \approx 0{,}21$ m. Pela forma
+                    $\Delta E = \frac43g_p\frac{m_e}{m_p}\alpha^4m_ec^2$, com $m_e/m_p = 1/1836$, $\alpha = 1/137{,}036$ e
+                    $m_ec^2 = 511\,000$ eV, sai o mesmo número.</p>
+
+                <p id="exr-7-5-2"><strong>Exercício 7.5-2.</strong> Confira os valores de $\mathbf S_p\cdot\mathbf S_e$ no tripleto e no
+                    singleto agindo diretamente nos estados, sem usar $S^2$.</p>
+                <p><em>Solução.</em> Com $S_\pm = S_x \pm iS_y$, temos
+                    $\mathbf S_p\cdot\mathbf S_e = S_{pz}S_{ez} + \frac12\left(S_{p+}S_{e-} + S_{p-}S_{e+}\right)$. No estado
+                    $|\uparrow\uparrow\rangle$ (primeiro o próton), os termos com $S_{\pm}$ dão zero (cada um contém $S_{p+}$ ou $S_{e+}$
+                    agindo num spin já para cima, e $S_+|\uparrow\rangle = 0$), e sobra
+                    $S_{pz}S_{ez} = \hbar^2/4$. Nos estados $|\uparrow\downarrow\rangle$ e $|\downarrow\uparrow\rangle$,
+                    $S_{pz}S_{ez} = -\hbar^2/4$, e o termo de troca leva um no outro: $\frac12S_{p-}S_{e+}|\uparrow\downarrow\rangle = \frac{\hbar^2}{2}|\downarrow\uparrow\rangle$.
+                    Assim, na combinação simétrica $(|\uparrow\downarrow\rangle + |\downarrow\uparrow\rangle)/\sqrt2$ o resultado é
+                    $(-\frac14 + \frac12)\hbar^2 = \frac{\hbar^2}{4}$, e na antissimétrica (o singleto) é
+                    $(-\frac14 - \frac12)\hbar^2 = -\frac34\hbar^2$, como na Eq. (7.96).</p>
+
+                <p id="exr-7-5-3"><strong>Exercício 7.5-3.</strong> Mostre que o "centro de gravidade" do nível fundamental não se move
+                    com a interação hiperfina: a média de $E_{\text{hf}}^1$ sobre os quatro estados de spin é zero.</p>
+                <p><em>Solução.</em> O tripleto tem três estados, cada um deslocado de $+\Delta E/4$, e o singleto tem um, deslocado de
+                    $-3\Delta E/4$: a soma é $3\cdot\frac{\Delta E}{4} - \frac{3\Delta E}{4} = 0$. É o mesmo fato do <a href="[03] - A Estrutura Fina do Hidrogênio.html#exr-7-3-2">Exercício 7.3-2</a>: o traço de
+                    $\mathbf S_p\cdot\mathbf S_e$ no espaço de $2\times2 = 4$ estados é $\sum_i\mathrm{tr}(S_{pi})\,\mathrm{tr}(S_{ei}) = 0$.
+                    É também por isso que, na Figura 7.12, o singleto desce três vezes mais do que o tripleto sobe.</p>
+
+                <p id="exr-7-5-4"><strong>Exercício 7.5-4.</strong> Compare a separação hiperfina com o deslocamento de estrutura fina do
+                    estado fundamental e explique a ordem de grandeza da razão.</p>
+                <p><em>Solução.</em> Pela Eq. (7.69) com $n = 1$, $j = 1/2$, o deslocamento de estrutura fina é
+                    $-13{,}6\,\alpha^2/4$ eV $= -1{,}81\times10^{-4}$ eV $= -\alpha^4m_ec^2/8$ (pois $13{,}6$ eV $= \alpha^2m_ec^2/2$). A
+                    razão é</p>
+                <p>$$ \frac{\Delta E}{|E_{\text{fs}}^1|} = \frac{\frac43g_p(m_e/m_p)\,\alpha^4m_ec^2}{\alpha^4m_ec^2/8} = \frac{32}{3}\,g_p\,\frac{m_e}{m_p} = \frac{32\times5{,}59}{3\times1836} \approx 0{,}032. $$</p>
+                <p>Os fatores $\alpha^4m_ec^2$ se cancelam: as duas correções são magnéticas e da mesma ordem em $\alpha$, e o que torna a
+                    hiperfina menor é o fator $m_e/m_p$, que vem do momento magnético do próton, menor por causa da sua massa.</p>
+
+                <p id="exr-7-5-5"><strong>Exercício 7.5-5.</strong> No hidrogênio muônico, um múon (mesma carga e mesmo fator $g$ do
+                    elétron, mas massa $207\,m_e$) faz o papel do elétron. Estime a separação hiperfina do estado fundamental, usando a
+                    massa reduzida no raio de Bohr e a massa verdadeira do múon no seu momento magnético.</p>
+                <p><em>Solução.</em> Pela Eq. (7.93), $\Delta E \propto \dfrac{1}{m_\ell}\,|\psi(0)|^2 \propto \dfrac{1}{m_\ell\,a_\ell^3}$,
+                    em que $m_\ell$ é a massa do lépton (no momento magnético) e $a_\ell = 4\pi\epsilon_0\hbar^2/\mu e^2$ é o raio de Bohr
+                    com a massa reduzida $\mu = m_\ell m_p/(m_\ell + m_p)$. Para o múon,
+                    $\mu = \frac{207\times1836}{207 + 1836}\,m_e = 186\,m_e$, logo $a_\ell = a/186$. Comparando com o hidrogênio (em que
+                    tomamos $m_\ell = m_e$ e $a_\ell = a$),</p>
+                <p>$$ \frac{\Delta E_\mu}{\Delta E} = \frac{m_e}{207\,m_e}\left(\frac{a}{a_\ell}\right)^3 = \frac{186^3}{207} \approx 3{,}1\times10^4, $$</p>
+                <p>e $\Delta E_\mu \approx 3{,}1\times10^4\times5{,}88\times10^{-6} \approx 0{,}18$ eV, que corresponde a um comprimento de
+                    onda de cerca de $7\ \mu$m, no infravermelho. O múon fica cerca de 186 vezes mais perto do próton, e a densidade na
+                    origem cresce com o cubo disso; o momento magnético menor do múon só compensa uma fração.</p>
+
+                <p id="exr-7-5-6"><strong>Exercício 7.5-6.</strong> Por que é o tripleto, e não o singleto, que fica acima? Dê uma
+                    explicação a partir dos sentidos dos momentos magnéticos.</p>
+                <p><em>Solução.</em> Pela Eq. (7.89), $\boldsymbol\mu_p$ é paralelo a $\mathbf S_p$ ($g_p \gt 0$), mas $\boldsymbol\mu_e$
+                    é antiparalelo a $\mathbf S_e$ (a carga do elétron é negativa). Com spins "paralelos" (tripleto), os momentos
+                    magnéticos são antiparalelos. No estado $s$, o que conta é o termo de contato da Eq. (7.90): dentro do dipolo do
+                    próton, o campo $\frac{2\mu_0}{3}\boldsymbol\mu_p\,\delta^3(\mathbf r)$ aponta no sentido de $\boldsymbol\mu_p$, e a
+                    energia $-\boldsymbol\mu_e\cdot\mathbf B$ é positiva quando $\boldsymbol\mu_e$ aponta contra esse campo. Logo
+                    momentos antiparalelos, isto é, spins paralelos, custam energia: o tripleto sobe e o singleto desce.</p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <ul>
+                    <li>O momento magnético do próton, com o fator $g_p = 5{,}59$, e o campo de dipolo com o termo de contato (Eq. 7.90).</li>
+                    <li>O hamiltoniano hiperfino (7.91) e a prova de que, em estados $l = 0$, o termo dipolar tem média angular nula, de
+                        modo que só o termo de contato contribui (Eq. 7.93).</li>
+                    <li>Os estados bons de spin total, a separação singleto–tripleto (7.96) e a linha de 21 cm (Eqs. 7.97 e 7.98).</li>
+                </ul>
+                <p>Com isso fecha-se o capítulo 7. A teoria de perturbação independente do tempo nos levou dos níveis de Bohr à estrutura
+                    fina, ao efeito Zeeman e à estrutura hiperfina, cada passo descendo uma ordem de grandeza na Tabela 7.1, e sempre com
+                    a mesma pergunta guiando a conta: quais são os estados "bons"? Mas a teoria de perturbação exige um problema vizinho
+                    que saibamos resolver exatamente. Quando não há nenhum, como no átomo de hélio, precisamos de outra ferramenta, que é o
+                    assunto do capítulo 8: <a href="../[7] - O Princípio Variacional/[01] - Teoria.html">8.1 Teoria</a> (o princípio
+                    variacional).</p>
+
+                <hr class="footnotes-sep">
+                <section class="footnotes">
+                    <ol>
+                        <li id="fn:1">
+                            <p>Se o termo com a função delta na Eq. (7.90) não lhe é familiar, você pode deduzi-lo tratando o dipolo
+                                como uma casca esférica carregada que gira, no limite em que o raio vai a zero e a carga ao infinito (com
+                                $\boldsymbol\mu$ fixo). (Nota do livro.)<a href="#fnref:1" class="footnote-backref"
+                                    aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                    </ol>
+                </section>
 
             </div>
         </main>
@@ -171,6 +417,12 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#estrutura-hiperfina">A Estrutura Hiperfina do Hidrogênio</a></li>
+                    <li><a href="#dipolo-do-proton">O dipolo do próton</a></li>
+                    <li><a href="#interacao-spin-spin">A interação spin-spin</a></li>
+                    <li><a href="#estado-fundamental">O estado fundamental</a></li>
+                    <li><a href="#conexao">Conexão com o experimento</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
                 </ul>
             </div>
         </aside>
