@@ -161,7 +161,502 @@
                 <h1 id="molecula-de-hidrogenio">8.4 A Molécula de Hidrogênio</h1>
                 <p class="lead">Dois elétrons e dois prótons: a função-tentativa de Heitler–London, os estados singleto e tripleto e a origem da ligação covalente.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>Na seção anterior, o <a href="[03] - O Íon da Molécula de Hidrogênio.html">íon H$_2^+$</a> mostrou que um único
+                    elétron compartilhado basta para ligar dois prótons. Agora acrescentamos o segundo elétron e chegamos à própria
+                    molécula de hidrogênio, H$_2$. A novidade não é só uma repulsão a mais. Com dois elétrons idênticos, a
+                    <a href="../[4] - Partículas Idênticas/[01] - Sistemas de Duas Partículas.html#spins">simetria de troca</a> entra
+                    em cena: a parte espacial da função de onda tem de ser simétrica ou antissimétrica, e isso amarra o estado de spin.</p>
+
+                <p>Esta seção segue a Seção 8.4 do Griffiths. A estratégia é a mesma da 8.3: uma função-tentativa sem parâmetros
+                    livres, montada com orbitais 1s do hidrogênio; o valor esperado de $H$ escrito com as integrais $I$, $D$ e $X$ que já
+                    calculamos, mais duas integrais novas de dois elétrons; e as curvas de energia em função de $R$. O resultado é
+                    nítido: o estado com spins no <strong>singleto</strong> liga, e o estado com spins no <strong>tripleto</strong> não.
+                    No fim, a diferença de energia entre os dois explica, de modo surpreendente, a origem do ferromagnetismo.</p>
+
+                <h2 id="hamiltoniano">O hamiltoniano</h2>
+
+                <p>Como no H$_2^+$, tomamos os prótons em repouso, a uma distância $R$ fixa. O hamiltoniano dos dois elétrons é</p>
+                <p>$$ \begin{aligned}
+                    \hat H = &-\frac{\hbar^2}{2m}\left(\nabla_1^2 + \nabla_2^2\right) \\
+                    &+ \frac{e^2}{4\pi\epsilon_0}\left(\frac{1}{r_{12}} + \frac1R - \frac{1}{r_1} - \frac{1}{r_1'} - \frac{1}{r_2} - \frac{1}{r_2'}\right),
+                    \end{aligned} \tag{8.54} $$</p>
+                <p>em que $r_1$ e $r_1'$ são as distâncias do elétron 1 a cada um dos prótons, $r_2$ e $r_2'$ as do elétron 2, e $r_{12}$
+                    a distância entre os elétrons (Figura 8.8). Os seis termos de energia potencial descrevem a repulsão entre os dois
+                    elétrons, a repulsão entre os dois prótons e a atração de cada elétron por cada próton. A convenção de nomes é a da
+                    8.3: sem linha, a distância ao próton 1; com linha, ao próton 2.</p>
+
+                <figure class="lecture-figure" id="fig-8-8">
+                    <svg viewBox="0 0 640 300" role="img" aria-label="Figura 8.8: molécula H2 com dois prótons de carga +e à distância R e dois elétrons; r1 e r1&#x27; são as distâncias do elétron 1 a cada próton, r2 e r2&#x27; as do elétron 2, e r12 a distância entre os elétrons.">
+<line x1="150" y1="255" x2="490" y2="255" class="fig-guide fig-dashed"/>
+<line x1="150" y1="255" x2="250" y2="40" class="fig-guide"/>
+<text x="190" y="147.5" text-anchor="end" class="fig-label fig-it">r₁</text>
+<line x1="490" y1="255" x2="250" y2="40" class="fig-guide"/>
+<text x="382" y="147.5" class="fig-label fig-it">r₁′</text>
+<line x1="150" y1="255" x2="300" y2="165" class="fig-guide"/>
+<text x="221" y="224" text-anchor="end" class="fig-label fig-it">r₂</text>
+<line x1="490" y1="255" x2="300" y2="165" class="fig-guide"/>
+<text x="405" y="226" class="fig-label fig-it">r₂′</text>
+<line x1="250" y1="40" x2="300" y2="165" class="fig-guide"/>
+<text x="283" y="102.5" class="fig-label fig-it">r₁₂</text>
+<circle cx="150" cy="255" r="9" class="fig-shape"/>
+<text x="150" y="287" text-anchor="middle" class="fig-label">+e</text>
+<circle cx="490" cy="255" r="9" class="fig-shape"/>
+<text x="490" y="287" text-anchor="middle" class="fig-label">+e</text>
+<text x="320" y="277" text-anchor="middle" class="fig-label fig-it">R</text>
+<circle cx="250" cy="40" r="5" class="fig-arrowhead"/>
+<text x="262" y="36" class="fig-label">−e</text>
+<circle cx="300" cy="165" r="5" class="fig-arrowhead"/>
+<text x="290" y="157" text-anchor="end" class="fig-label">−e</text>
+</svg>
+                    <figcaption><strong>Figura 8.8.</strong> A molécula H$_2$: as distâncias de que depende a energia potencial. Os dois
+                        prótons (carga $+e$) estão à distância $R$; $r_1$ e $r_1'$ ligam o elétron 1 aos prótons, $r_2$ e $r_2'$ ligam o
+                        elétron 2, e $r_{12}$ liga os dois elétrons.</figcaption>
+                </figure>
+
+                <h2 id="funcao-tentativa">A função-tentativa</h2>
+
+                <p>Para a função-tentativa, associamos um elétron a cada próton e simetrizamos:</p>
+                <p>$$ \psi_+(\mathbf r_1, \mathbf r_2) = A_+\left[\psi_0(r_1)\,\psi_0(r_2') + \psi_0(r_1')\,\psi_0(r_2)\right], \tag{8.55} $$</p>
+                <p>em que $\psi_0$ é o estado fundamental do hidrogênio (Eq. 8.37). O primeiro termo põe o elétron 1 no próton 1 e o
+                    elétron 2 no próton 2; o segundo troca os papéis. Vamos calcular a constante $A_+$ em instantes. Como essa função
+                    espacial é <em>simétrica</em> pela troca $\mathbf r_1 \leftrightarrow \mathbf r_2$, e a função de onda completa de dois
+                    elétrons tem de ser antissimétrica, os spins precisam ocupar o estado antissimétrico, o
+                    <a href="../[4] - Partículas Idênticas/[01] - Sistemas de Duas Partículas.html#spins">singleto</a>. Poderíamos
+                    também escolher a função-tentativa</p>
+                <p>$$ \psi_-(\mathbf r_1, \mathbf r_2) = A_-\left[\psi_0(r_1)\,\psi_0(r_2') - \psi_0(r_1')\,\psi_0(r_2)\right], \tag{8.56} $$</p>
+                <p>que é antissimétrica na troca; nesse caso os spins ficam num estado simétrico, o <strong>tripleto</strong>. As duas
+                    funções (8.55) e (8.56) constituem a <strong>aproximação de Heitler–London</strong>. Não é óbvio qual delas tem energia
+                    menor; vamos calcular a energia de cada uma e descobrir.</p>
+
+                <p>O livro comenta, em nota, outra função-tentativa natural: pôr os <em>dois</em> elétrons no orbital ligante da 8.3
+                    (Eq. 8.38), cada um com seu fator de normalização,</p>
+                <p>$$ \psi(\mathbf r_1, \mathbf r_2) = \left(\frac{\psi_0(r_1) + \psi_0(r_1')}{\sqrt{2(1 + I)}}\right)\left(\frac{\psi_0(r_2) + \psi_0(r_2')}{\sqrt{2(1 + I)}}\right), \tag{8.57} $$</p>
+                <p>também combinada com o singleto de spin, porque é simétrica. Expandindo o produto, metade dos termos, como
+                    $\psi_0(r_1)\,\psi_0(r_2)$, põe os dois elétrons no <em>mesmo</em> próton, o que custa caro por causa da repulsão
+                    entre eles em (8.54). A aproximação de Heitler–London (8.55) equivale a descartar esses termos "iônicos" de (8.57). O
+                    <a href="#exr-8-4-1">Exercício 8.4-1</a> compara as duas funções.</p>
+
+                <p>Primeiro, normalizamos. Como $\psi_0$ é real,</p>
+                <p>$$ \begin{aligned}
+                    |\psi_\pm(\mathbf r_1, \mathbf r_2)|^2 = A_\pm^2\Big[&\psi_0(r_1)^2\,\psi_0(r_2')^2 + \psi_0(r_1')^2\,\psi_0(r_2)^2 \\
+                    &\pm 2\,\psi_0(r_1)\,\psi_0(r_2')\,\psi_0(r_1')\,\psi_0(r_2)\Big].
+                    \end{aligned} \tag{8.58} $$</p>
+                <p>A normalização exige</p>
+                <p>$$ \begin{aligned}
+                    1 &= \int\!\!\int|\psi_\pm(\mathbf r_1, \mathbf r_2)|^2\,d^3\mathbf r_1\,d^3\mathbf r_2 \\
+                    &= A_\pm^2\bigg[\int\psi_0(r_1)^2\,d^3\mathbf r_1\int\psi_0(r_2')^2\,d^3\mathbf r_2 \\
+                    &\qquad + \int\psi_0(r_1')^2\,d^3\mathbf r_1\int\psi_0(r_2)^2\,d^3\mathbf r_2 \\
+                    &\qquad \pm 2\int\psi_0(r_1)\,\psi_0(r_1')\,d^3\mathbf r_1\int\psi_0(r_2')\,\psi_0(r_2)\,d^3\mathbf r_2\bigg].
+                    \end{aligned} \tag{8.59} $$</p>
+                <p>Cada orbital é normalizado, e as duas integrais da última linha são a integral de superposição $I$ da 8.3
+                    (<a href="[03] - O Íon da Molécula de Hidrogênio.html#teo-integral-de-superposicao">Teorema (Integral de superposição)</a>, Eq. 8.43), uma para cada elétron. Logo $1 = A_\pm^2\,(2 \pm 2I^2)$, isto é,</p>
+                <p>$$ A_\pm = \frac{1}{\sqrt{2\left(1 \pm I^2\right)}}. \tag{8.60} $$</p>
+
+                <h2 id="energia">A energia</h2>
+
+                <p>Calculamos $\langle H\rangle_\pm$ por partes: energia cinética, atração elétron–próton, repulsão elétron–elétron e
+                    repulsão próton–próton. Em todas, as integrais de um elétron são as da 8.3: a superposição $I$ (8.43), a integral
+                    direta $D$ (8.46) e a de troca $X$ (8.47), cujos valores estão em <a href="[03] - O Íon da Molécula de Hidrogênio.html#teo-integrais-direta-e-troca">Teorema (Integrais direta e de troca)</a>.</p>
+
+                <h3 id="energia-cinetica">A energia cinética</h3>
+
+                <p>Começamos pela energia cinética do elétron 1. Como $\psi_0$ é o estado fundamental do hamiltoniano do hidrogênio,
+                    $-\frac{\hbar^2}{2m}\nabla^2\psi_0(r) = \left(E_1 + \frac{e^2}{4\pi\epsilon_0}\frac1r\right)\psi_0(r)$, e o mesmo vale
+                    com $r'$ no lugar de $r$, porque $\nabla_1^2$ não depende de onde está a origem. É o mesmo truque que levou à
+                    Eq. (8.45):</p>
+                <p>$$ \begin{aligned}
+                    -\frac{\hbar^2}{2m}\nabla_1^2\psi_\pm &= A_\pm\bigg[\left(-\frac{\hbar^2}{2m}\nabla_1^2\psi_0(r_1)\right)\psi_0(r_2') \\
+                    &\qquad \pm \left(-\frac{\hbar^2}{2m}\nabla_1^2\psi_0(r_1')\right)\psi_0(r_2)\bigg] \\
+                    &= A_\pm\bigg[\left(E_1 + \frac{e^2}{4\pi\epsilon_0 r_1}\right)\psi_0(r_1)\,\psi_0(r_2') \\
+                    &\qquad \pm \left(E_1 + \frac{e^2}{4\pi\epsilon_0 r_1'}\right)\psi_0(r_1')\,\psi_0(r_2)\bigg] \\
+                    &= E_1\psi_\pm + \frac{e^2}{4\pi\epsilon_0 a}A_\pm\bigg(\frac{a}{r_1}\psi_0(r_1)\,\psi_0(r_2') \\
+                    &\qquad \pm \frac{a}{r_1'}\psi_0(r_1')\,\psi_0(r_2)\bigg).
+                    \end{aligned} $$</p>
+                <p>Fazendo o produto interno com $\psi_\pm$ (que é normalizada), sobram quatro termos:</p>
+                <p>$$ \begin{aligned}
+                    &\left\langle-\frac{\hbar^2}{2m}\nabla_1^2\right\rangle = E_1 + \left(\frac{e^2}{4\pi\epsilon_0 a}\right)A_\pm^2\,\bigg[ \\
+                    &\qquad \left\langle\psi_0(r_1)\left|\frac{a}{r_1}\right|\psi_0(r_1)\right\rangle\big\langle\psi_0(r_2')\big|\psi_0(r_2')\big\rangle \\
+                    &\qquad \pm \left\langle\psi_0(r_1')\left|\frac{a}{r_1}\right|\psi_0(r_1)\right\rangle\big\langle\psi_0(r_2)\big|\psi_0(r_2')\big\rangle \\
+                    &\qquad \pm \left\langle\psi_0(r_1)\left|\frac{a}{r_1'}\right|\psi_0(r_1')\right\rangle\big\langle\psi_0(r_2')\big|\psi_0(r_2)\big\rangle \\
+                    &\qquad + \left\langle\psi_0(r_1')\left|\frac{a}{r_1'}\right|\psi_0(r_1')\right\rangle\big\langle\psi_0(r_2)\big|\psi_0(r_2)\big\rangle\bigg].
+                    \end{aligned} \tag{8.61} $$</p>
+                <p>Esses produtos internos já foram calculados na 8.3:</p>
+                <ul>
+                    <li>No primeiro e no último termo, o elétron 1 está no orbital de um próton e o operador é $a/r$ medido a partir do
+                        <em>mesmo</em> próton: $\langle a/r\rangle = 1$ no estado fundamental do hidrogênio (é a Eq. 8.31 com $Z = 1$). Os
+                        fatores do elétron 2 valem 1, pela normalização.</li>
+                    <li>No segundo termo, $\langle\psi_0(r_1')|a/r_1|\psi_0(r_1)\rangle = X$, pela definição (8.47), e o fator do elétron
+                        2 é $I$. O terceiro termo é a imagem do segundo pela reflexão no plano mediador dos prótons, que troca
+                        $r \leftrightarrow r'$; vale também $XI$.</li>
+                </ul>
+                <p>Assim o colchete vale $2(1 \pm IX)$, e com $A_\pm^2 = 1/2(1 \pm I^2)$ a energia cinética do elétron 1 é</p>
+                <p>$$ \left\langle-\frac{\hbar^2}{2m}\nabla_1^2\right\rangle = E_1 + \left(\frac{e^2}{4\pi\epsilon_0 a}\right)\frac{1 \pm IX}{1 \pm I^2}. \tag{8.62} $$</p>
+                <p>A do elétron 2 é a mesma (basta trocar os rótulos 1 e 2, o que só multiplica $\psi_\pm$ por $\pm 1$), e a energia
+                    cinética total é o dobro de (8.62).</p>
+
+                <h3 id="eletron-proton">A energia potencial elétron–próton</h3>
+
+                <div class="definition-box" id="teo-energia-eletron-proton-h2">
+                    <p><strong>Teorema (Atração elétron–próton no H$_2$).</strong> Nos estados (8.55) e (8.56),</p>
+                    <p>$$ \left\langle-\frac{e^2}{4\pi\epsilon_0 r_1}\right\rangle = -\frac12\left(\frac{e^2}{4\pi\epsilon_0 a}\right)\frac{1 + D \pm 2IX}{1 \pm I^2}, \tag{8.63} $$</p>
+                    <p>e os outros três termos de atração ($r_1'$, $r_2$, $r_2'$) dão o mesmo valor.</p>
+                </div>
+                <p><em>Demonstração.</em> (O Griffiths deixa a conta para o leitor.) Com (8.55)–(8.56),</p>
+                <p>$$ \begin{aligned}
+                    \left\langle\frac{a}{r_1}\right\rangle = A_\pm^2\bigg[&\left\langle\psi_0(r_1)\left|\frac{a}{r_1}\right|\psi_0(r_1)\right\rangle\big\langle\psi_0(r_2')\big|\psi_0(r_2')\big\rangle \\
+                    + &\left\langle\psi_0(r_1')\left|\frac{a}{r_1}\right|\psi_0(r_1')\right\rangle\big\langle\psi_0(r_2)\big|\psi_0(r_2)\big\rangle \\
+                    \pm\, 2&\left\langle\psi_0(r_1)\left|\frac{a}{r_1}\right|\psi_0(r_1')\right\rangle\big\langle\psi_0(r_2')\big|\psi_0(r_2)\big\rangle\bigg].
+                    \end{aligned} $$</p>
+                <p>O primeiro produto vale $1 \cdot 1$, como na energia cinética. No segundo, o elétron 1 está no orbital do próton 2 e o
+                    operador mede a distância ao próton 1: pela reflexão $r \leftrightarrow r'$, é exatamente a integral direta
+                    $D = a\langle\psi_0(r)|1/r'|\psi_0(r)\rangle$ (8.46). No terceiro, o elemento de matriz é $X$ (8.47) e a superposição
+                    do elétron 2 é $I$; os dois termos cruzados são iguais porque as funções são reais. Logo
+                    $\langle a/r_1\rangle = (1 + D \pm 2IX)/2(1 \pm I^2)$, e multiplicando por $-e^2/4\pi\epsilon_0 a$ obtemos (8.63).</p>
+                <p>Para os outros termos, $|\psi_\pm|^2$ não muda nem pela reflexão no plano mediador (que troca $r_1 \leftrightarrow r_1'$
+                    e $r_2 \leftrightarrow r_2'$ ao mesmo tempo e leva $\psi_\pm$ em $\pm\psi_\pm$) nem pela troca dos rótulos 1 e 2. A
+                    reflexão leva $1/r_1$ em $1/r_1'$; a troca de rótulos leva $1/r_1$ em $1/r_2$ e $1/r_1'$ em $1/r_2'$. Os quatro
+                    valores esperados são iguais. $\blacksquare$</p>
+                <p>A energia potencial elétron–próton total é, portanto, quatro vezes (8.63).</p>
+
+                <h3 id="eletron-eletron">A energia potencial elétron–elétron</h3>
+
+                <p>A repulsão entre os elétrons dá</p>
+                <p>$$ \begin{aligned}
+                    \langle V_{ee}\rangle &= \left(\frac{e^2}{4\pi\epsilon_0 a}\right)\int\!\!\int|\psi_\pm|^2\,\frac{a}{r_{12}}\,d^3\mathbf r_1\,d^3\mathbf r_2 \\
+                    &= \left(\frac{e^2}{4\pi\epsilon_0 a}\right)A_\pm^2\,\bigg[ \\
+                    &\quad \int\!\!\int\psi_0(r_1)^2\,\frac{a}{r_{12}}\,\psi_0(r_2')^2\,d^3\mathbf r_1\,d^3\mathbf r_2 \\
+                    &\quad + \int\!\!\int\psi_0(r_1')^2\,\frac{a}{r_{12}}\,\psi_0(r_2)^2\,d^3\mathbf r_1\,d^3\mathbf r_2 \\
+                    &\quad \pm 2\int\!\!\int\psi_0(r_1)\,\psi_0(r_1')\,\frac{a}{r_{12}} \\
+                    &\qquad\qquad \times \psi_0(r_2)\,\psi_0(r_2')\,d^3\mathbf r_1\,d^3\mathbf r_2\bigg].
+                    \end{aligned} \tag{8.64} $$</p>
+                <p>As duas primeiras integrais são iguais: basta trocar os rótulos 1 e 2 (e $r_{12}$ é simétrico). Damos nomes às duas
+                    integrais restantes:</p>
+                <p>$$ D_2 \equiv \int\!\!\int|\psi_0(r_1)|^2\,\frac{a}{r_{12}}\,|\psi_0(r_2')|^2\,d^3\mathbf r_1\,d^3\mathbf r_2, \tag{8.65} $$</p>
+                <p>$$ X_2 \equiv \int\!\!\int\psi_0(r_1)\,\psi_0(r_1')\,\frac{a}{r_{12}}\,\psi_0(r_2)\,\psi_0(r_2')\,d^3\mathbf r_1\,d^3\mathbf r_2, \tag{8.66} $$</p>
+                <p>de modo que</p>
+                <p>$$ \langle V_{ee}\rangle = \left(\frac{e^2}{4\pi\epsilon_0 a}\right)\frac{D_2 \pm X_2}{1 \pm I^2}. \tag{8.67} $$</p>
+                <p>A integral $D_2$ é simplesmente a energia eletrostática (em unidades de $e^2/4\pi\epsilon_0 a$) de duas distribuições
+                    de carga, $\rho_1 = |\psi_0(r_1)|^2$ e $\rho_2 = |\psi_0(r_2')|^2$: uma nuvem 1s em torno de cada próton. Já o termo
+                    de troca $X_2$ não tem análogo clássico: nele, cada elétron entra com o produto $\psi_0(r)\,\psi_0(r')$, a "densidade
+                    de superposição" dos dois orbitais. As duas integrais são calculadas na próxima seção.</p>
+
+                <h3 id="energia-total">A energia total</h3>
+
+                <div class="definition-box" id="teo-energia-heitler-london">
+                    <p><strong>Teorema (Energia da molécula na aproximação de Heitler–London).</strong> Nos estados (8.55) e (8.56),</p>
+                    <p>$$ \langle H\rangle_\pm = 2E_1\left[1 - \frac aR + \frac{2D - D_2 \pm (2IX - X_2)}{1 \pm I^2}\right]. \tag{8.68} $$</p>
+                </div>
+                <p><em>Demonstração.</em> Somamos as contribuições: a energia cinética, duas vezes (8.62); a atração elétron–próton,
+                    quatro vezes (8.63); a repulsão elétron–elétron (8.67); e a repulsão entre os prótons, que é a constante
+                    $e^2/4\pi\epsilon_0 R$. Escrevendo $k = e^2/4\pi\epsilon_0$,</p>
+                <p>$$ \begin{aligned}
+                    \langle H\rangle_\pm &= 2E_1 + \frac ka\,\frac{2(1 \pm IX) - 2(1 + D \pm 2IX) + D_2 \pm X_2}{1 \pm I^2} + \frac kR \\
+                    &= 2E_1 + \frac ka\left[\frac{-2D + D_2 \mp (2IX - X_2)}{1 \pm I^2} + \frac aR\right].
+                    \end{aligned} $$</p>
+                <p>Como $k/a = -2E_1$ (Eq. 8.51 da 8.3), o colchete troca de sinal e obtemos (8.68). $\blacksquare$</p>
+
+                <p>A diferença entre as energias do singleto e do tripleto é chamada <strong>desdobramento de troca</strong>
+                    (<em>exchange splitting</em>) $J$. Subtraindo as duas versões de (8.68), com $N = 2D - D_2$ e $P = 2IX - X_2$,</p>
+                <p>$$ \begin{aligned}
+                    2E_1\left[\frac{N + P}{1 + I^2} - \frac{N - P}{1 - I^2}\right] &= 2E_1\,\frac{(N + P)(1 - I^2) - (N - P)(1 + I^2)}{1 - I^4} \\
+                    &= 4E_1\,\frac{P - NI^2}{1 - I^4},
+                    \end{aligned} $$</p>
+                <p>isto é, na aproximação de Heitler–London,</p>
+                <p>$$ J = \langle H\rangle_+ - \langle H\rangle_- = 4E_1\,\frac{(D_2 - 2D)\,I^2 - (X_2 - 2IX)}{1 - I^4}. \tag{8.69} $$</p>
+                <p>Para conhecer o sinal e o tamanho de $J$, e o formato das curvas de energia, falta calcular $D_2$ e $X_2$.</p>
+
+
+                <h2 id="integrais-de-dois-eletrons">As integrais de dois elétrons</h2>
+
+                <p>A integral direta $D_2$ sai com as mesmas ferramentas da 8.3, e boa parte dela é a própria integral $D$. A de troca
+                    $X_2$ é bem mais difícil, e o livro apenas enuncia o resultado.</p>
+
+                <div class="definition-box" id="teo-integral-direta-d2">
+                    <p><strong>Teorema (Integral direta de dois elétrons).</strong></p>
+                    <p>$$ \begin{aligned}
+                        D_2 = \frac aR - e^{-2R/a}\bigg[&\frac16\left(\frac Ra\right)^2 + \frac34\left(\frac Ra\right) \\
+                        &+ \frac{11}{8} + \frac aR\bigg].
+                        \end{aligned} \tag{8.70} $$</p>
+                </div>
+                <p><em>Demonstração.</em> <strong>Passo 1 (o potencial de uma nuvem).</strong> Integramos primeiro sobre o elétron 1,
+                    com $\mathbf r_2$ fixo. Seja</p>
+                <p>$$ \Phi(\mathbf r_2) \equiv \int|\psi_0(r_1)|^2\,\frac{a}{|\mathbf r_1 - \mathbf r_2|}\,d^3\mathbf r_1, $$</p>
+                <p>de modo que $D_2 = \int|\psi_0(r_2')|^2\,\Phi(\mathbf r_2)\,d^3\mathbf r_2$. Compare com a definição (8.46):
+                    $D = a\langle\psi_0(r)|1/r'|\psi_0(r)\rangle$ é a mesma integral, com o ponto $\mathbf r_2$ no lugar do próton 2.
+                    Logo $\Phi$ é a função $D$ de (8.48) com $R$ trocado por $r_2$:</p>
+                <p>$$ \Phi(r_2) = \frac{a}{r_2} - \left(1 + \frac{a}{r_2}\right)e^{-2r_2/a}. $$</p>
+                <p>Fisicamente, $\Phi/a$ é o potencial (em unidades de $e/4\pi\epsilon_0$) da nuvem 1s em torno do próton 1: o de uma
+                    carga pontual, $1/r_2$, menos uma correção que só importa dentro da nuvem.</p>
+                <p><strong>Passo 2 (de novo a integral $D$).</strong> Levando $\Phi$ a $D_2$, o primeiro termo dá
+                    $\int|\psi_0(r_2')|^2\,(a/r_2)\,d^3\mathbf r_2$: a nuvem do próton 2 "vendo" o próton 1, que, pela reflexão no plano
+                    mediador, é outra vez $D$. Portanto</p>
+                <p>$$ D_2 = D - Q, \qquad Q \equiv \int|\psi_0(r_2')|^2\left(1 + \frac{a}{r_2}\right)e^{-2r_2/a}\,d^3\mathbf r_2. $$</p>
+                <p><strong>Passo 3 (a integral angular).</strong> Usamos as coordenadas da Figura 8.6 para o elétron 2: próton 1 na
+                    origem, próton 2 no eixo $z$, $r = r_2$ e $\theta$ o ângulo entre $\mathbf R$ e $\mathbf r_2$, de modo que
+                    $r_2' = \sqrt{r^2 + R^2 - 2rR\cos\theta}$. A integral em $\phi$ dá $2\pi$. Na integral em $\theta$, com
+                    $y = r_2'$ e $y\,dy = rR\sin\theta\,d\theta$, como no <a href="[03] - O Íon da Molécula de Hidrogênio.html#teo-integral-de-superposicao">Teorema (Integral de superposição)</a>,</p>
+                <p>$$ \begin{aligned}
+                    \int_0^\pi e^{-2r_2'/a}\sin\theta\,d\theta &= \frac{1}{rR}\int_{|r - R|}^{r + R}y\,e^{-2y/a}\,dy \\
+                    &= \frac{a}{2rR}\bigg[\left(|r - R| + \frac a2\right)e^{-2|r - R|/a} \\
+                    &\qquad - \left(r + R + \frac a2\right)e^{-2(r + R)/a}\bigg],
+                    \end{aligned} $$</p>
+                <p>porque $-\frac a2\left(y + \frac a2\right)e^{-2y/a}$ é uma primitiva de $y\,e^{-2y/a}$. Com
+                    $|\psi_0(r_2')|^2 = e^{-2r_2'/a}/\pi a^3$ e o elemento de volume $r^2\,dr$, os fatores se simplificam:
+                    $\frac{2\pi}{\pi a^3}\,r^2\left(1 + \frac ar\right)\frac{a}{2rR} = \frac{r + a}{a^2R}$, e</p>
+                <p>$$ \begin{aligned}
+                    Q = \frac{1}{a^2R}\int_0^\infty(r + a)\,e^{-2r/a}\bigg[&\left(|r - R| + \frac a2\right)e^{-2|r - R|/a} \\
+                    &- \left(r + R + \frac a2\right)e^{-2(r + R)/a}\bigg]dr.
+                    \end{aligned} $$</p>
+                <p><strong>Passo 4 (as integrais radiais).</strong> As exponenciais se combinam. Para $r \lt R$,
+                    $e^{-2r/a}e^{-2(R - r)/a} = e^{-2R/a}$ não depende de $r$; para $r \gt R$, $e^{-2r/a}e^{-2(r - R)/a} = e^{2R/a}e^{-4r/a}$;
+                    e no último termo, $e^{-2r/a}e^{-2(r + R)/a} = e^{-2R/a}e^{-4r/a}$. Sobram integrais de polinômios vezes exponenciais:</p>
+                <p>$$ \begin{aligned}
+                    Q_1 &= e^{-2R/a}\int_0^R(r + a)\left(R - r + \frac a2\right)dr \\
+                    &= e^{-2R/a}\,\frac{R\left(2R^2 + 9aR + 6a^2\right)}{12}, \\
+                    Q_2 &= e^{2R/a}\int_R^\infty(r + a)\left(r - R + \frac a2\right)e^{-4r/a}\,dr \\
+                    &= e^{-2R/a}\,\frac{a^2(3R + 4a)}{16}, \\
+                    Q_3 &= -e^{-2R/a}\int_0^\infty(r + a)\left(r + R + \frac a2\right)e^{-4r/a}\,dr \\
+                    &= -e^{-2R/a}\,\frac{a^2(5R + 4a)}{16}.
+                    \end{aligned} $$</p>
+                <p>Somando, os termos em $a^3$ se cancelam e</p>
+                <p>$$ Q = \frac{Q_1 + Q_2 + Q_3}{a^2R} = e^{-2R/a}\left[\frac16\left(\frac Ra\right)^2 + \frac34\left(\frac Ra\right) + \frac38\right]. $$</p>
+                <p><strong>Passo 5.</strong> Com $D = \frac aR - \left(1 + \frac aR\right)e^{-2R/a}$ (8.48),</p>
+                <p>$$ D_2 = D - Q = \frac aR - e^{-2R/a}\left[\frac16\left(\frac Ra\right)^2 + \frac34\left(\frac Ra\right) + \frac38 + 1 + \frac aR\right], $$</p>
+                <p>e $\frac38 + 1 = \frac{11}{8}$ dá (8.70). $\blacksquare$</p>
+
+                <div class="definition-box" id="prop-integral-de-troca-x2">
+                    <p><strong>Resultado citado (Integral de troca de dois elétrons).</strong></p>
+                    <p>$$ \begin{aligned}
+                        X_2 &= e^{-2R/a}\bigg[\frac58 - \frac{23}{20}\frac Ra \\
+                        &\qquad - \frac35\left(\frac Ra\right)^2 - \frac{1}{15}\left(\frac Ra\right)^3\bigg] \\
+                        &\quad + \frac65\frac aRI^2\bigg[\gamma + \log\left(\frac Ra\right) \\
+                        &\qquad + \left(\frac{\tilde I}{I}\right)^2\operatorname{Ei}\left(-\frac{4R}{a}\right) \\
+                        &\qquad - 2\frac{\tilde I}{I}\operatorname{Ei}\left(-\frac{2R}{a}\right)\bigg],
+                        \end{aligned} \tag{8.71} $$</p>
+                    <p>em que $\gamma = 0{,}5772\ldots$ é a constante de Euler, $\operatorname{Ei}(x) = -\int_{-x}^\infty\frac{e^{-t}}{t}\,dt$ é a
+                        integral exponencial, e $\tilde I$ se obtém de $I$ trocando o sinal de $R$:</p>
+                    <p>$$ \tilde I = e^{R/a}\left[1 - \frac Ra + \frac13\left(\frac Ra\right)^2\right]. \tag{8.72} $$</p>
+                </div>
+                <p><em>Ideia.</em> O integrando de $X_2$ contém, para cada elétron, a densidade de superposição $\psi_0(r)\,\psi_0(r')$,
+                    que não tem simetria esférica em torno de nenhum dos prótons. O cálculo fechado é possível nas coordenadas
+                    elipsoidais do <a href="[03] - O Íon da Molécula de Hidrogênio.html#exr-8-3-1">Exercício 8.3-1</a>, com uma expansão de $1/r_{12}$ nessas coordenadas, mas é longo; o Griffiths
+                    (Problema 8.14) apenas enuncia o resultado. Como conferência independente, uma integração de Monte Carlo
+                    da definição (8.66) em $R = 1{,}64\,a$ dá $X_2 = 0{,}2619 \pm 0{,}0003$, contra $0{,}2618$ da fórmula. Quando
+                    $R \to 0$, $\psi_0(r') \to \psi_0(r)$ e $X_2 \to D_2 \to 5/8$ (<a href="#exr-8-4-2">Exercício 8.4-2</a>).</p>
+
+                <h2 id="singleto-e-tripleto">Singleto, tripleto e a ligação</h2>
+
+                <p>Com $I$, $D$, $X$ (8.43, 8.48, 8.49), $D_2$ (8.70) e $X_2$ (8.71), a Eq. (8.68) dá $\langle H\rangle_+$ e
+                    $\langle H\rangle_-$ como funções explícitas de $R/a$. As duas curvas estão na Figura 8.9. Lembre que o estado
+                    $\psi_+$ exige os dois elétrons no singleto de spin, enquanto $\psi_-$ os põe no tripleto. Pela figura, a ligação só
+                    ocorre se os elétrons estiverem no <strong>singleto</strong>, o que é confirmado experimentalmente. De novo, é uma
+                    ligação covalente.</p>
+
+                <figure class="lecture-figure" id="fig-8-9">
+                    <svg viewBox="0 0 640 330" role="img" aria-label="Figura 8.9: energia total do H2 em unidades de |E1| em função de R/a, de 0 a 6. A curva do singleto (cheia) desce abaixo de -2, com mínimo perto de R = 1,64a; a do tripleto (tracejada) fica sempre acima de -2 e decresce até -2.">
+<line x1="80" y1="290" x2="80" y2="30" class="fig-axis"/>
+<line x1="80" y1="232.2" x2="600" y2="232.2" class="fig-axis"/>
+<line x1="80" y1="232.2" x2="80" y2="237.2" class="fig-axis"/>
+<line x1="166.7" y1="232.2" x2="166.7" y2="237.2" class="fig-axis"/>
+<text x="166.7" y="252.2" text-anchor="middle" class="fig-label fig-small">1</text>
+<line x1="253.3" y1="232.2" x2="253.3" y2="237.2" class="fig-axis"/>
+<text x="253.3" y="252.2" text-anchor="middle" class="fig-label fig-small">2</text>
+<line x1="340" y1="232.2" x2="340" y2="237.2" class="fig-axis"/>
+<text x="340" y="252.2" text-anchor="middle" class="fig-label fig-small">3</text>
+<line x1="426.7" y1="232.2" x2="426.7" y2="237.2" class="fig-axis"/>
+<text x="426.7" y="252.2" text-anchor="middle" class="fig-label fig-small">4</text>
+<line x1="513.3" y1="232.2" x2="513.3" y2="237.2" class="fig-axis"/>
+<text x="513.3" y="252.2" text-anchor="middle" class="fig-label fig-small">5</text>
+<line x1="600" y1="232.2" x2="600" y2="237.2" class="fig-axis"/>
+<text x="600" y="252.2" text-anchor="middle" class="fig-label fig-small">6</text>
+<line x1="75" y1="58.9" x2="80" y2="58.9" class="fig-axis"/>
+<text x="70" y="63.9" text-anchor="end" class="fig-label fig-small">−0,5</text>
+<line x1="75" y1="116.7" x2="80" y2="116.7" class="fig-axis"/>
+<text x="70" y="121.7" text-anchor="end" class="fig-label fig-small">−1,0</text>
+<line x1="75" y1="174.4" x2="80" y2="174.4" class="fig-axis"/>
+<text x="70" y="179.4" text-anchor="end" class="fig-label fig-small">−1,5</text>
+<line x1="75" y1="232.2" x2="80" y2="232.2" class="fig-axis"/>
+<text x="70" y="237.2" text-anchor="end" class="fig-label fig-small">−2,0</text>
+<line x1="75" y1="290" x2="80" y2="290" class="fig-axis"/>
+<text x="70" y="295" text-anchor="end" class="fig-label fig-small">−2,5</text>
+<text x="70" y="20" text-anchor="end" class="fig-label fig-it">⟨H⟩/|E₁|</text>
+<text x="608" y="237.2" class="fig-label fig-it">R/a</text>
+<path d="M123.3,54.6 L125.3,72.5 L127.3,88.7 L129.3,103.3 L131.3,116.6 L133.3,128.7 L135.2,139.7 L137.2,149.8 L139.2,159.1 L141.2,167.5 L143.2,175.3 L145.2,182.4 L147.2,189 L149.2,195 L151.1,200.5 L153.1,205.7 L155.1,210.4 L157.1,214.7 L159.1,218.7 L161.1,222.4 L163.1,225.9 L165,229 L167,231.9 L169,234.6 L171,237 L173,239.3 L175,241.4 L177,243.3 L178.9,245 L180.9,246.6 L182.9,248.1 L184.9,249.5 L186.9,250.7 L188.9,251.8 L190.9,252.8 L192.8,253.7 L194.8,254.5 L196.8,255.2 L198.8,255.9 L200.8,256.5 L202.8,257 L204.8,257.4 L206.8,257.8 L208.7,258.1 L210.7,258.4 L212.7,258.6 L214.7,258.8 L216.7,258.9 L218.7,259 L220.7,259 L222.6,259 L224.6,259 L226.6,259 L228.6,258.9 L230.6,258.8 L232.6,258.6 L234.6,258.5 L236.5,258.3 L238.5,258.1 L240.5,257.9 L242.5,257.7 L244.5,257.4 L246.5,257.1 L248.5,256.9 L250.4,256.6 L252.4,256.3 L254.4,256 L256.4,255.7 L258.4,255.3 L260.4,255 L262.4,254.7 L264.3,254.3 L266.3,254 L268.3,253.6 L270.3,253.3 L272.3,252.9 L274.3,252.6 L276.3,252.2 L278.2,251.9 L280.2,251.5 L282.2,251.1 L284.2,250.8 L286.2,250.4 L288.2,250.1 L290.2,249.7 L292.2,249.3 L294.1,249 L296.1,248.6 L298.1,248.3 L300.1,247.9 L302.1,247.6 L304.1,247.3 L306.1,246.9 L308,246.6 L310,246.3 L312,245.9 L314,245.6 L316,245.3 L318,245 L320,244.7 L321.9,244.4 L323.9,244.1 L325.9,243.8 L327.9,243.5 L329.9,243.2 L331.9,242.9 L333.9,242.7 L335.8,242.4 L337.8,242.1 L339.8,241.9 L341.8,241.6 L343.8,241.4 L345.8,241.1 L347.8,240.9 L349.7,240.7 L351.7,240.4 L353.7,240.2 L355.7,240 L357.7,239.8 L359.7,239.6 L361.7,239.4 L363.7,239.2 L365.6,239 L367.6,238.8 L369.6,238.6 L371.6,238.4 L373.6,238.2 L375.6,238 L377.6,237.9 L379.5,237.7 L381.5,237.5 L383.5,237.4 L385.5,237.2 L387.5,237.1 L389.5,236.9 L391.5,236.8 L393.4,236.7 L395.4,236.5 L397.4,236.4 L399.4,236.3 L401.4,236.1 L403.4,236 L405.4,235.9 L407.3,235.8 L409.3,235.7 L411.3,235.6 L413.3,235.5 L415.3,235.4 L417.3,235.3 L419.3,235.2 L421.2,235.1 L423.2,235 L425.2,234.9 L427.2,234.8 L429.2,234.7 L431.2,234.6 L433.2,234.6 L435.2,234.5 L437.1,234.4 L439.1,234.3 L441.1,234.3 L443.1,234.2 L445.1,234.1 L447.1,234.1 L449.1,234 L451,234 L453,233.9 L455,233.8 L457,233.8 L459,233.7 L461,233.7 L463,233.6 L464.9,233.6 L466.9,233.5 L468.9,233.5 L470.9,233.5 L472.9,233.4 L474.9,233.4 L476.9,233.3 L478.8,233.3 L480.8,233.3 L482.8,233.2 L484.8,233.2 L486.8,233.2 L488.8,233.1 L490.8,233.1 L492.8,233.1 L494.7,233 L496.7,233 L498.7,233 L500.7,233 L502.7,232.9 L504.7,232.9 L506.7,232.9 L508.6,232.9 L510.6,232.8 L512.6,232.8 L514.6,232.8 L516.6,232.8 L518.6,232.8 L520.6,232.7 L522.5,232.7 L524.5,232.7 L526.5,232.7 L528.5,232.7 L530.5,232.7 L532.5,232.6 L534.5,232.6 L536.4,232.6 L538.4,232.6 L540.4,232.6 L542.4,232.6 L544.4,232.6 L546.4,232.5 L548.4,232.5 L550.3,232.5 L552.3,232.5 L554.3,232.5 L556.3,232.5 L558.3,232.5 L560.3,232.5 L562.3,232.5 L564.2,232.5 L566.2,232.4 L568.2,232.4 L570.2,232.4 L572.2,232.4 L574.2,232.4 L576.2,232.4 L578.2,232.4 L580.1,232.4 L582.1,232.4 L584.1,232.4 L586.1,232.4 L588.1,232.4 L590.1,232.4 L592.1,232.4 L594,232.4 L596,232.3 L598,232.3 L600,232.3" class="fig-curve"/>
+<path d="M156.8,33.6 L158.7,41.2 L160.6,48.3 L162.5,55.2 L164.4,61.7 L166.2,67.9 L168.1,73.9 L170,79.5 L171.9,85 L173.7,90.2 L175.6,95.2 L177.5,100 L179.4,104.5 L181.3,108.9 L183.1,113.2 L185,117.2 L186.9,121.1 L188.8,124.8 L190.6,128.4 L192.5,131.9 L194.4,135.2 L196.3,138.4 L198.2,141.5 L200,144.5 L201.9,147.3 L203.8,150.1 L205.7,152.7 L207.5,155.3 L209.4,157.8 L211.3,160.1 L213.2,162.4 L215.1,164.6 L216.9,166.8 L218.8,168.9 L220.7,170.8 L222.6,172.8 L224.4,174.6 L226.3,176.4 L228.2,178.2 L230.1,179.9 L232,181.5 L233.8,183.1 L235.7,184.6 L237.6,186 L239.5,187.5 L241.3,188.8 L243.2,190.2 L245.1,191.5 L247,192.7 L248.9,193.9 L250.7,195.1 L252.6,196.2 L254.5,197.3 L256.4,198.4 L258.2,199.4 L260.1,200.4 L262,201.4 L263.9,202.3 L265.8,203.2 L267.6,204.1 L269.5,204.9 L271.4,205.8 L273.3,206.6 L275.1,207.3 L277,208.1 L278.9,208.8 L280.8,209.5 L282.7,210.2 L284.5,210.9 L286.4,211.5 L288.3,212.1 L290.2,212.7 L292,213.3 L293.9,213.9 L295.8,214.4 L297.7,215 L299.6,215.5 L301.4,216 L303.3,216.5 L305.2,217 L307.1,217.4 L308.9,217.9 L310.8,218.3 L312.7,218.7 L314.6,219.1 L316.5,219.5 L318.3,219.9 L320.2,220.3 L322.1,220.6 L324,221 L325.8,221.3 L327.7,221.6 L329.6,222 L331.5,222.3 L333.4,222.6 L335.2,222.9 L337.1,223.1 L339,223.4 L340.9,223.7 L342.7,223.9 L344.6,224.2 L346.5,224.4 L348.4,224.7 L350.3,224.9 L352.1,225.1 L354,225.3 L355.9,225.6 L357.8,225.8 L359.6,226 L361.5,226.1 L363.4,226.3 L365.3,226.5 L367.2,226.7 L369,226.9 L370.9,227 L372.8,227.2 L374.7,227.3 L376.5,227.5 L378.4,227.6 L380.3,227.8 L382.2,227.9 L384.1,228 L385.9,228.2 L387.8,228.3 L389.7,228.4 L391.6,228.5 L393.4,228.7 L395.3,228.8 L397.2,228.9 L399.1,229 L401,229.1 L402.8,229.2 L404.7,229.3 L406.6,229.4 L408.5,229.5 L410.3,229.5 L412.2,229.6 L414.1,229.7 L416,229.8 L417.9,229.9 L419.7,229.9 L421.6,230 L423.5,230.1 L425.4,230.1 L427.2,230.2 L429.1,230.3 L431,230.3 L432.9,230.4 L434.8,230.5 L436.6,230.5 L438.5,230.6 L440.4,230.6 L442.3,230.7 L444.1,230.7 L446,230.8 L447.9,230.8 L449.8,230.9 L451.7,230.9 L453.5,230.9 L455.4,231 L457.3,231 L459.2,231.1 L461,231.1 L462.9,231.1 L464.8,231.2 L466.7,231.2 L468.6,231.2 L470.4,231.3 L472.3,231.3 L474.2,231.3 L476.1,231.4 L477.9,231.4 L479.8,231.4 L481.7,231.4 L483.6,231.5 L485.5,231.5 L487.3,231.5 L489.2,231.5 L491.1,231.6 L493,231.6 L494.8,231.6 L496.7,231.6 L498.6,231.6 L500.5,231.7 L502.4,231.7 L504.2,231.7 L506.1,231.7 L508,231.7 L509.9,231.7 L511.7,231.8 L513.6,231.8 L515.5,231.8 L517.4,231.8 L519.3,231.8 L521.1,231.8 L523,231.8 L524.9,231.9 L526.8,231.9 L528.6,231.9 L530.5,231.9 L532.4,231.9 L534.3,231.9 L536.2,231.9 L538,231.9 L539.9,231.9 L541.8,232 L543.7,232 L545.5,232 L547.4,232 L549.3,232 L551.2,232 L553.1,232 L554.9,232 L556.8,232 L558.7,232 L560.6,232 L562.4,232 L564.3,232 L566.2,232.1 L568.1,232.1 L570,232.1 L571.8,232.1 L573.7,232.1 L575.6,232.1 L577.5,232.1 L579.3,232.1 L581.2,232.1 L583.1,232.1 L585,232.1 L586.9,232.1 L588.7,232.1 L590.6,232.1 L592.5,232.1 L594.4,232.1 L596.2,232.1 L598.1,232.1 L600,232.1" class="fig-curve fig-dashed"/>
+<text x="305.3" y="269" text-anchor="middle" class="fig-label fig-small">singleto</text>
+<text x="287.3" y="199" class="fig-label fig-small">tripleto</text>
+</svg>
+                    <figcaption><strong>Figura 8.9.</strong> Energia total do singleto (curva cheia) e do tripleto (tracejada) do H$_2$,
+                        em unidades de $|E_1|$, em função da separação $R$ entre os prótons, calculada ponto a ponto pela Eq. (8.68). O
+                        singleto tem mínimo perto de $1{,}6$ raios de Bohr: uma ligação estável. O tripleto é instável e se dissocia,
+                        porque sua energia é mínima quando $R \to \infty$.</figcaption>
+                </figure>
+
+                <p>A referência é $2E_1 = -27{,}2$ eV (ordenada $-2$), a energia de dois átomos de hidrogênio isolados, que é o limite
+                    das duas curvas quando $R \to \infty$ (<a href="#exr-8-4-2">Exercício 8.4-2</a>). Localizando o mínimo no gráfico, o cálculo prevê um comprimento
+                    de ligação de $1{,}64$ raios de Bohr e uma energia de ligação de $3{,}15$ eV (<a href="#exr-8-4-3">Exercício 8.4-3</a>). Por que o tripleto não
+                    liga é o assunto do <a href="#exr-8-4-4">Exercício 8.4-4</a>.</p>
+
+                <p><strong>O desdobramento de troca.</strong> Na separação de equilíbrio, a Eq. (8.69) dá $J \approx -10$ eV, negativo
+                    porque o singleto tem energia menor. Há, portanto, uma forte preferência por spins
+                    <em>antiparalelos</em>. Mas, neste tratamento do H$_2$, deixamos completamente de fora a interação magnética
+                    spin–spin entre os elétrons; lembre que é a interação spin–spin entre o <em>próton</em> e o elétron que produz a
+                    <a href="../[6] - Teoria de Perturbação Independente do Tempo/[05] - A Estrutura Hiperfina do Hidrogênio.html#interacao-spin-spin">estrutura
+                    hiperfina</a> (7.5). Fizemos bem em ignorá-la aqui? Sem dúvida: aplicando a Eq. (7.92) a dois elétrons a uma
+                    distância $R$, a energia da interação spin–spin é da ordem de $10^{-4}$ eV neste sistema, cinco ordens de grandeza
+                    abaixo do desdobramento de troca (<a href="#exr-8-4-5">Exercício 8.4-5</a>).</p>
+
+                <p>O cálculo mostra que configurações de spin diferentes podem ter energias muito diferentes, mesmo quando a interação
+                    entre os spins é desprezível. Isso ajuda a entender o <strong>ferromagnetismo</strong> (em que os spins de um material
+                    se alinham) e o <strong>antiferromagnetismo</strong> (em que os spins se alternam). Como acabamos de ver, a interação
+                    spin–spin é fraca demais para explicar esses fenômenos, mas o desdobramento de troca não é. Contra a intuição, não é
+                    uma interação <em>magnética</em> que explica o ferromagnetismo, e sim uma interação eletrostática! O H$_2$ é uma
+                    espécie de antiferromagneto rudimentar: o hamiltoniano, que não depende do spin, escolhe um estado fundamental
+                    <em>espacial</em>, e o estado de <em>spin</em> vem junto, para satisfazer a estatística de Fermi. É a mesma
+                    "<a href="../[4] - Partículas Idênticas/[01] - Sistemas de Duas Partículas.html#forcas-de-troca">força de troca</a>"
+                    do cap. 5, agora com consequências medidas em elétron-volts.</p>
+
+                <h2 id="conexao">Conexão com o experimento</h2>
+
+                <p>O Griffiths compara a estimativa com os valores medidos para o H$_2$:</p>
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr><th>Grandeza</th><th>Heitler–London (Eq. 8.68)</th><th>Experimental</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Comprimento de ligação</td><td>$1{,}64\,a$</td><td>$1{,}40\,a$</td></tr>
+                            <tr><td>Energia de ligação</td><td>$3{,}15$ eV</td><td>$4{,}75$ eV</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>As tendências são as do íon H$_2^+$ (8.3): o cálculo superestima o comprimento de ligação e subestima a energia de
+                    ligação. A segunda tendência é garantida pelo princípio variacional: a função-tentativa reproduz exatamente a energia
+                    dos átomos separados, $2E_1$, e no mínimo dá um limite superior para a energia da molécula, de modo que a diferença
+                    entre as duas só pode sair menor que a verdadeira. Ainda assim, a concordância é surpreendentemente boa para um
+                    cálculo variacional sem nenhum parâmetro ajustável. O fato qualitativo, que só o singleto liga, é confirmado pela
+                    experiência.</p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p id="exr-8-4-1"><strong>Exercício 8.4-1.</strong> Expanda a função (8.57), dos dois elétrons no orbital ligante, e
+                    separe os termos "covalentes" (um elétron em cada próton) dos "iônicos" (os dois no mesmo próton). Calcule a
+                    superposição $\langle\psi_+|\psi\rangle$ entre (8.57) e a função de Heitler–London (8.55) e seus valores na
+                    separação de equilíbrio e quando $R \to \infty$.</p>
+                <p><em>Solução.</em> Expandindo o produto,</p>
+                <p>$$ \begin{aligned}
+                    \psi = \frac{1}{2(1 + I)}\Big\{&\left[\psi_0(r_1)\,\psi_0(r_2') + \psi_0(r_1')\,\psi_0(r_2)\right] \\
+                    + &\left[\psi_0(r_1)\,\psi_0(r_2) + \psi_0(r_1')\,\psi_0(r_2')\right]\Big\}.
+                    \end{aligned} $$</p>
+                <p>O primeiro colchete é covalente e proporcional a $\psi_+$; o segundo é iônico (H$^-$ e um próton nu). Para a
+                    superposição, cada termo de $\psi_+$ contra cada termo de $\psi$ dá um produto de duas integrais de um elétron, que
+                    valem 1 (mesmo próton) ou $I$ (prótons diferentes). Para $\psi_0(r_1)\,\psi_0(r_2')$: contra si mesmo, $1$; contra
+                    $\psi_0(r_1')\,\psi_0(r_2)$, $I^2$; contra cada termo iônico, $I$. A soma é $1 + 2I + I^2 = (1 + I)^2$, e o outro termo
+                    covalente dá o mesmo. Com $A_+ = 1/\sqrt{2(1 + I^2)}$,</p>
+                <p>$$ \langle\psi_+|\psi\rangle = \frac{1}{\sqrt{2(1 + I^2)}}\,\frac{2(1 + I)^2}{2(1 + I)} = \frac{1 + I}{\sqrt{2(1 + I^2)}}. $$</p>
+                <p>Na separação de equilíbrio, $I = 0{,}685$ e a superposição vale $0{,}983$: as duas funções quase coincidem, porque,
+                    com orbitais tão superpostos, os termos iônicos se parecem muito com os covalentes. Quando $R \to \infty$,
+                    $I \to 0$ e a superposição tende a $1/\sqrt2$. Aí a diferença é física: a função (8.57) descreve, com probabilidade
+                    $1/2$, um par H$^+$ + H$^-$ em vez de dois átomos neutros, enquanto (8.55) se dissocia corretamente em dois átomos.</p>
+
+                <p id="exr-8-4-2"><strong>Exercício 8.4-2.</strong> Discuta os limites de (8.68). (a) Mostre que
+                    $\langle H\rangle_\pm \to 2E_1$ quando $R \to \infty$. (b) Mostre que, quando $R \to 0$, a energia eletrônica do
+                    singleto, $\langle H\rangle_+ - e^2/4\pi\epsilon_0R$, tende a $\frac{19}{4}E_1$, e reconheça esse número.</p>
+                <p><em>Solução.</em> (a) Quando $R \to \infty$, $I$, $X$ e $X_2$ caem exponencialmente (em $X_2$, todos os termos
+                    de (8.71) decaem como $e^{-2R/a}$ vezes potências e logaritmos de $R/a$), enquanto $D \to a/R$ e $D_2 \to a/R$ a menos de termos exponencialmente
+                    pequenos: nuvens distantes agem como cargas pontuais. Então o colchete de (8.68) tende a
+                    $1 - \frac aR + \frac{2a}{R} - \frac aR = 1$, e $\langle H\rangle_\pm \to 2E_1$: dois átomos de hidrogênio neutros e
+                    isolados. Os três termos em $a/R$ (a repulsão dos prótons, a atração de cada elétron pelo próton distante e a
+                    repulsão dos elétrons) se cancelam, como deve ser entre objetos neutros.</p>
+                <p>(b) Quando $R \to 0$, $\psi_0(r') \to \psi_0(r)$, e as integrais de um elétron tendem a $I, D, X \to 1$ (8.3,
+                    <a href="[03] - O Íon da Molécula de Hidrogênio.html#exr-8-3-2">Exercício 8.3-2</a>). Na Eq. (8.70), $e^{-2x} = 1 - 2x + O(x^2)$ com $x = R/a$ dá</p>
+                <p>$$ D_2 = \frac1x - \left(\frac1x - 2 + \frac{11}{8} + O(x)\right) \to \frac58, $$</p>
+                <p>e $X_2 \to D_2$ pela própria definição (8.66). No colchete de (8.68), o termo $-a/R$ é a repulsão dos prótons
+                    ($2E_1 \cdot (-a/R) = e^{2}/4\pi\epsilon_0R$); o resto tende a</p>
+                <p>$$ 2E_1\left[1 + \frac{\left(2 - \frac58\right) + \left(2 - \frac58\right)}{2}\right] = 2E_1\left(1 + \frac{11}{8}\right) = \frac{19}{4}E_1 = -64{,}6\ \text{eV}. $$</p>
+                <p>É a Eq. (8.33) da 8.2 com $Z = 1$: $\left[-2 + \frac{27}{4}\right]E_1 = \frac{19}{4}E_1$. Com os prótons
+                    superpostos, temos um núcleo de carga $2e$ (o "átomo unido", hélio) com os dois elétrons em orbitais 1s de
+                    hidrogênio, e $D_2 \to 5/8$ é a repulsão (8.32) com $Z = 1$. A conta da 8.4 contém a da 8.2 como caso limite.</p>
+
+                <p id="exr-8-4-3"><strong>Exercício 8.4-3.</strong> Ache numericamente o mínimo de $\langle H\rangle_+$, a energia de
+                    ligação em eV e o comprimento de ligação em Å ($a = 0{,}529$ Å, $|E_1| = 13{,}6$ eV). Calcule também $J$ nessa
+                    separação.</p>
+                <p><em>Solução.</em> Minimizando (8.68) com as Eqs. (8.43), (8.48), (8.49), (8.70) e (8.71), o mínimo fica em
+                    $x_0 = R/a = 1{,}643$, onde</p>
+                <p>$$ I = 0{,}685, \quad D = 0{,}549, \quad X = 0{,}511, \quad D_2 = 0{,}472, \quad X_2 = 0{,}261, $$</p>
+                <p>e $\langle H\rangle_+ = -2{,}232\,|E_1|$. A energia de ligação é $(2{,}232 - 2)\times 13{,}6 = 3{,}16$ eV, e o
+                    comprimento de ligação, $1{,}643 \times 0{,}529 = 0{,}87$ Å (os valores do livro, $1{,}64\,a$ e $3{,}15$ eV, vêm da
+                    leitura do gráfico). Na mesma separação, $\langle H\rangle_- = -1{,}484\,|E_1|$, e
+                    $J = (-2{,}232 + 1{,}484) \times 13{,}6 = -10{,}2$ eV.</p>
+
+                <p id="exr-8-4-4"><strong>Exercício 8.4-4.</strong> Por que o tripleto não liga? (a) Compare os termos de (8.68) no
+                    singleto e no tripleto em $x_0 = 1{,}643$. (b) Calcule a densidade de probabilidade de um dos elétrons,
+                    $\rho(\mathbf r_1) = \int|\psi_\pm|^2\,d^3\mathbf r_2$, e compare as duas no ponto médio entre os prótons.</p>
+                <p><em>Solução.</em> (a) Há ligação quando o colchete de (8.68) passa de 1 (então $\langle H\rangle \lt 2E_1$). Em $x_0$,
+                    $1 - a/R = 0{,}391$, $2D - D_2 = 0{,}626$ e $2IX - X_2 = 0{,}440$. No singleto, o colchete vale
+                    $0{,}391 + (0{,}626 + 0{,}440)/1{,}470 = 1{,}116$; no tripleto, $0{,}391 + (0{,}626 - 0{,}440)/0{,}530 = 0{,}742$. A
+                    parte "clássica", sem os termos de troca ($I = X = X_2 = 0$), daria $0{,}391 + 0{,}626 = 1{,}017$, muito perto de 1. É
+                    o termo de troca $2IX - X_2 \gt 0$ que decide: ele soma no singleto e subtrai no tripleto. A Figura 8.9 mostra que o
+                    tripleto fica acima de $2E_1$ para todo $R$.</p>
+                <p>(b) Integrando (8.58) sobre $\mathbf r_2$, com as integrais de um elétron do elétron 2 (1, 1 e $I$),</p>
+                <p>$$ \rho(\mathbf r_1) = \frac{\psi_0(r_1)^2 + \psi_0(r_1')^2 \pm 2I\,\psi_0(r_1)\,\psi_0(r_1')}{2(1 \pm I^2)}. $$</p>
+                <p>É a densidade dos orbitais ligante e antiligante da 8.3, com o termo de interferência pesado por $I$. No ponto médio,
+                    $\psi_0(r_1) = \psi_0(r_1')$, e a razão entre $\rho$ e a soma das duas nuvens atômicas sem interferência
+                    ($\psi_0^2$ ali) vale $(1 + I)/(1 + I^2) = 1{,}15$ no singleto e $(1 - I)/(1 - I^2) = 1/(1 + I) = 0{,}59$ no tripleto.
+                    No singleto, a carga eletrônica se acumula entre os prótons e os atrai; no tripleto, ela é expulsa dessa região, e a
+                    repulsão entre os prótons vence. A antissimetria espacial de $\psi_-$ é a responsável: $\psi_-$ se anula sempre que
+                    os dois elétrons estão no plano mediador.</p>
+
+                <p id="exr-8-4-5"><strong>Exercício 8.4-5.</strong> Estime a energia da interação magnética entre os spins dos dois
+                    elétrons a uma distância $R = 1{,}64\,a$ e compare-a com $J$.</p>
+                <p><em>Solução.</em> A Eq. (7.92), escrita para dois elétrons, tem a estrutura da energia de dois dipolos,
+                    $\sim \frac{\mu_0}{4\pi}\,\mu_e^2/R^3$, a menos de um fator angular de ordem 1. Pelo
+                    <a href="../[6] - Teoria de Perturbação Independente do Tempo/[03] - A Estrutura Fina do Hidrogênio.html#prop-momento-magnetico-eletron">Resultado citado (Momento magnético do elétron)</a>, $\mu_e = (e/m)S$, e com $S_z = \hbar/2$ o momento é $e\hbar/2m = \mu_B$, o
+                    magneton de Bohr. Com $R = 1{,}64 \times 0{,}529$ Å $= 0{,}868$ Å,</p>
+                <p>$$ \frac{\mu_0}{4\pi}\,\frac{\mu_B^2}{R^3} = 10^{-7}\,\frac{\left(9{,}27\times 10^{-24}\right)^2}{\left(0{,}868\times 10^{-10}\right)^3}\ \text{J} = 1{,}3\times 10^{-23}\ \text{J} \approx 8\times 10^{-5}\ \text{eV}. $$</p>
+                <p>Isso é da ordem de $10^{-4}$ eV, como diz o livro, e $|J|/(8\times 10^{-5}\ \text{eV}) \approx 1{,}2\times 10^5$: cinco
+                    ordens de grandeza. A preferência pelo singleto não tem nada de magnética.</p>
+
+                <p id="exr-8-4-6"><strong>Exercício 8.4-6.</strong> Compare as estimativas para o H$_2^+$ (8.3) e para o H$_2$ entre si
+                    e com os valores experimentais que o livro cita. O que muda com o segundo elétron?</p>
+                <p><em>Solução.</em> Em unidades de $a$ e eV:</p>
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr><th></th><th>H$_2^+$, cálculo</th><th>H$_2^+$, exp.</th><th>H$_2$, cálculo</th><th>H$_2$, exp.</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Separação</td><td>$2{,}49\,a$</td><td>$2{,}0\,a$ (1,06 Å)</td><td>$1{,}64\,a$</td><td>$1{,}40\,a$</td></tr>
+                            <tr><td>Ligação</td><td>$1{,}76$ eV</td><td>$2{,}8$ eV</td><td>$3{,}16$ eV</td><td>$4{,}75$ eV</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>Com dois elétrons no orbital ligante, a ligação fica mais curta e mais forte, mas não duas vezes mais forte: a razão
+                    das energias de ligação é $3{,}16/1{,}76 = 1{,}8$ no cálculo e $4{,}75/2{,}8 = 1{,}7$ na experiência. O segundo
+                    elétron também repele o primeiro (os termos $D_2$ e $X_2$), e cada um contribui menos para a ligação do que o elétron
+                    solitário do H$_2^+$. Nos dois casos, o cálculo erra no mesmo sentido (separação grande demais, ligação fraca demais),
+                    e os erros relativos na energia de ligação são parecidos: 37% para o H$_2^+$ e 34% para o H$_2$.</p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <ul>
+                    <li>O hamiltoniano (8.54) do H$_2$ com prótons fixos e a função-tentativa de Heitler–London (8.55)–(8.56), com a
+                        ligação entre a simetria espacial e o spin (singleto e tripleto), e a comparação com o orbital molecular (8.57)
+                        no <a href="#exr-8-4-1">Exercício 8.4-1</a>.</li>
+                    <li>As energias cinética (8.62), elétron–próton (8.63, deduzida) e elétron–elétron (8.67), todas escritas com as
+                        integrais $I$, $D$, $X$ da 8.3 e as novas integrais $D_2$ (8.70, deduzida, reaproveitando $D$) e $X_2$ (8.71,
+                        citada e conferida numericamente).</li>
+                    <li>A energia de Heitler–London (8.68) e a Figura 8.9: só o singleto liga, com $R \approx 1{,}64\,a$ e
+                        $3{,}15$ eV; o limite $R \to 0$ reproduz a estimativa do hélio da 8.2.</li>
+                    <li>O desdobramento de troca (8.69), $J \approx -10$ eV, cinco ordens acima da interação spin–spin, e a origem
+                        eletrostática do ferromagnetismo.</li>
+                </ul>
+                <p>Isso fecha o capítulo do princípio variacional. Em quatro seções, ele deu limites superiores sem resolver nenhuma
+                    equação diferencial: para o estado fundamental de potenciais simples (8.1), para o hélio, onde a blindagem apareceu
+                    como uma carga efetiva (8.2), e para as moléculas mais simples, onde mostrou que a ligação covalente existe e de onde
+                    ela vem (8.3 e 8.4). O próximo capítulo traz outro método aproximado, adequado quando o potencial varia devagar na
+                    escala do comprimento de onda:
+                    <a href="../[8] - A Aproximação WKB/[01] - A Região “Clássica”.html">9.1 A Região “Clássica”</a>.</p>
 
             </div>
         </main>
@@ -171,6 +666,22 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#molecula-de-hidrogenio">A Molécula de Hidrogênio</a></li>
+                    <li><a href="#hamiltoniano">O hamiltoniano</a></li>
+                    <li><a href="#funcao-tentativa">A função-tentativa</a></li>
+                    <li>
+                        <a href="#energia">A energia</a>
+                        <ul>
+                            <li><a href="#energia-cinetica">A energia cinética</a></li>
+                            <li><a href="#eletron-proton">A energia potencial elétron–próton</a></li>
+                            <li><a href="#eletron-eletron">A energia potencial elétron–elétron</a></li>
+                            <li><a href="#energia-total">A energia total</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#integrais-de-dois-eletrons">As integrais de dois elétrons</a></li>
+                    <li><a href="#singleto-e-tripleto">Singleto, tripleto e a ligação</a></li>
+                    <li><a href="#conexao">Conexão com o experimento</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
                 </ul>
             </div>
         </aside>

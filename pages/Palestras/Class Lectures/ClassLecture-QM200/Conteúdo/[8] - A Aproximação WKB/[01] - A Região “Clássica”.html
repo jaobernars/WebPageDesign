@@ -161,7 +161,323 @@
                 <h1 id="regiao-classica">9.1 A Região “Clássica”</h1>
                 <p class="lead">A aproximação WKB onde a energia é maior que o potencial: amplitude e fase que variam lentamente, e a quantização em poços com paredes verticais.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>O método <strong>WKB</strong> (Wentzel, Kramers, Brillouin)<sup id="fnref:1"><a href="#fn:1" class="footnote-ref">1</a></sup>
+                    é uma técnica para obter soluções aproximadas da equação de Schrödinger independente do tempo em uma dimensão. (A
+                    mesma ideia básica se aplica a muitas outras equações diferenciais e à parte radial da equação de Schrödinger em três
+                    dimensões.) Ele é particularmente útil para calcular energias de estados ligados e taxas de tunelamento através de
+                    barreiras de potencial. Este capítulo segue o capítulo 9 do Griffiths; esta seção trata da região em que a partícula
+                    é classicamente permitida.</p>
+
+                <p>A ideia essencial é a seguinte. Imagine uma partícula de energia $E$ que se move numa região em que o potencial
+                    $V(x)$ é <em>constante</em>. Se $E \gt V$, a função de onda tem a forma</p>
+                <p>$$ \psi(x) = Ae^{\pm ikx}, \qquad \text{com } k \equiv \sqrt{2m(E - V)}/\hbar. $$</p>
+                <p>O sinal de mais indica que a partícula viaja para a direita, e o de menos, para a esquerda (a solução geral, é claro,
+                    é uma combinação linear das duas). A função de onda é oscilatória, com comprimento de onda fixo ($\lambda = 2\pi/k$) e
+                    amplitude constante ($A$). Suponha agora que $V(x)$ <em>não</em> seja constante, mas varie lentamente em comparação
+                    com $\lambda$, de modo que, numa região que contenha muitos comprimentos de onda completos, o potencial seja
+                    <em>praticamente</em> constante. É razoável supor, então, que $\psi$ continue <em>praticamente</em> senoidal, exceto
+                    que o comprimento de onda e a amplitude mudam devagar com $x$. Essa é a inspiração da aproximação WKB. Na prática,
+                    ela separa dois níveis de dependência em $x$: oscilações rápidas, <em>moduladas</em> por uma variação gradual da
+                    amplitude e do comprimento de onda.</p>
+
+                <p>Do mesmo modo, se $E \lt V$ (com $V$ constante), $\psi$ é exponencial:</p>
+                <p>$$ \psi(x) = Ae^{\pm\kappa x}, \qquad \text{com } \kappa \equiv \sqrt{2m(V - E)}/\hbar. $$</p>
+                <p>E, se $V(x)$ não for constante, mas variar lentamente em comparação com $1/\kappa$, a solução continua
+                    <em>praticamente</em> exponencial, só que agora $A$ e $\kappa$ são funções de $x$ que variam devagar.</p>
+
+                <p>Há um lugar em que todo esse programa está fadado a falhar: a vizinhança imediata de um <strong>ponto de
+                    retorno</strong> clássico, onde $E \approx V$. Ali $\lambda$ (ou $1/\kappa$) vai a infinito, e não se pode dizer que
+                    $V(x)$ varie "devagar" em comparação. Como veremos, o tratamento correto dos pontos de retorno é a parte mais difícil
+                    da aproximação WKB, embora os resultados finais sejam simples de enunciar e fáceis de usar. Esta seção cuida da região
+                    clássica; o tunelamento (9.2) e os pontos de retorno (9.3) vêm depois.</p>
+
+                <h2 id="aproximacao-wkb">A aproximação na região clássica</h2>
+
+                <p>A equação de Schrödinger,</p>
+                <p>$$ -\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2} + V(x)\,\psi = E\psi, $$</p>
+                <p>pode ser reescrita da seguinte forma:</p>
+                <p>$$ \frac{d^2\psi}{dx^2} = -\frac{p^2}{\hbar^2}\psi, \tag{9.1} $$</p>
+                <p>em que</p>
+                <p>$$ p(x) \equiv \sqrt{2m\left[E - V(x)\right]} \tag{9.2} $$</p>
+                <p>é a fórmula clássica para o (módulo do) momento de uma partícula com energia total $E$ e energia potencial $V(x)$.
+                    Por enquanto, vamos supor que $E \gt V(x)$, de modo que $p(x)$ é <em>real</em>; chamamos essa região de "clássica",
+                    por razões óbvias: classicamente, a partícula fica <em>confinada</em> a esse intervalo de $x$ (Figura 9.1).</p>
+
+                <figure class="lecture-figure" id="fig-9-1">
+                    <svg viewBox="0 0 640 345" role="img" aria-label="Figura 9.1: um potencial V(x) com um mínimo e o nível de energia E; os dois pontos de retorno, onde V = E, delimitam a região clássica, em que E &gt;= V(x).">
+<defs><marker id="arr-9-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="80" y1="300" x2="590" y2="300" class="fig-axis" marker-end="url(#arr-9-1)"/>
+<line x1="110" y1="325" x2="110" y2="20" class="fig-axis" marker-end="url(#arr-9-1)"/>
+<text x="102" y="30" text-anchor="end" class="fig-label fig-it">V(x)</text>
+<text x="596" y="305" class="fig-label fig-it">x</text>
+<line x1="110" y1="185" x2="560" y2="185" class="fig-guide fig-dashed"/>
+<text x="102" y="190" text-anchor="end" class="fig-label fig-it">E</text>
+<path d="M165,125.6 L168,132.1 L171,138.5 L174,144.8 L177,150.9 L180,156.9 L183,162.8 L186,168.4 L189,174 L192,179.4 L195,184.6 L198,189.7 L201,194.6 L204,199.4 L207,204.1 L210,208.6 L213,212.9 L216,217.1 L219,221.2 L222,225.1 L225,228.9 L228,232.5 L231,236 L234,239.3 L237,242.5 L240,245.5 L243,248.4 L246,251.1 L249,253.7 L252,256.1 L255,258.4 L258,260.5 L261,262.5 L264,264.4 L267,266.1 L270,267.6 L273,269 L276,270.3 L279,271.4 L282,272.3 L285,273.2 L288,273.8 L291,274.3 L294,274.7 L297,274.9 L300,275 L303,275 L306,274.8 L309,274.7 L312,274.4 L315,274.1 L318,273.6 L321,273.1 L324,272.6 L327,271.9 L330,271.2 L333,270.4 L336,269.6 L339,268.6 L342,267.6 L345,266.5 L348,265.3 L351,264.1 L354,262.8 L357,261.4 L360,259.9 L363,258.3 L366,256.7 L369,255 L372,253.2 L375,251.4 L378,249.4 L381,247.4 L384,245.4 L387,243.2 L390,241 L393,238.7 L396,236.3 L399,233.8 L402,231.3 L405,228.7 L408,226 L411,223.3 L414,220.4 L417,217.5 L420,214.5 L423,211.5 L426,208.3 L429,205.1 L432,201.8 L435,198.5 L438,195 L441,191.5 L444,187.9 L447,184.2 L450,180.5 L453,176.7 L456,172.8 L459,168.8 L462,164.8 L465,160.7 L468,156.5 L471,152.2 L474,147.8 L477,143.4 L480,138.9 L483,134.3 L486,129.7 L489,125 L492,120.2 L495,115.3 L498,110.3" class="fig-curve"/>
+<line x1="195.2" y1="185" x2="195.2" y2="300" class="fig-guide fig-dashed"/>
+<circle cx="195.2" cy="185" r="3.5" class="fig-arrowhead"/>
+<line x1="446.4" y1="185" x2="446.4" y2="300" class="fig-guide fig-dashed"/>
+<circle cx="446.4" cy="185" r="3.5" class="fig-arrowhead"/>
+<text x="330" y="128" text-anchor="middle" class="fig-label fig-small">Pontos de retorno</text>
+<line x1="290" y1="136" x2="201.2" y2="180" class="fig-axis" marker-end="url(#arr-9-1)"/>
+<line x1="372" y1="136" x2="440.4" y2="180" class="fig-axis" marker-end="url(#arr-9-1)"/>
+<path d="M195.2,308 L195.2,314 L446.4,314 L446.4,308" class="fig-axis"/>
+<text x="320.8" y="334" text-anchor="middle" class="fig-label fig-small">Região clássica</text>
+</svg>
+                    <figcaption><strong>Figura 9.1.</strong> Classicamente, a partícula fica confinada à região em que $E \ge V(x)$. Nos
+                        pontos de retorno, $V(x) = E$ e a partícula clássica para e volta.</figcaption>
+                </figure>
+
+                <p>Em geral, $\psi$ é uma função complexa; podemos escrevê-la em termos de sua <em>amplitude</em>, $A(x)$, e de sua
+                    <em>fase</em>, $\phi(x)$, ambas <em>reais</em>:</p>
+                <p>$$ \psi(x) = A(x)\,e^{i\phi(x)}. \tag{9.3} $$</p>
+                <p>Usando a linha para indicar a derivada em relação a $x$,</p>
+                <p>$$ \frac{d\psi}{dx} = \left(A' + iA\phi'\right)e^{i\phi}, $$</p>
+                <p>e, derivando de novo (o primeiro fator dá $A'' + iA'\phi' + iA\phi''$, e a exponencial contribui com
+                    $i\phi'(A' + iA\phi')$),</p>
+                <p>$$ \frac{d^2\psi}{dx^2} = \left[A'' + 2iA'\phi' + iA\phi'' - A\left(\phi'\right)^2\right]e^{i\phi}. \tag{9.4} $$</p>
+                <p>Substituindo na Eq. (9.1) e cancelando $e^{i\phi}$:</p>
+                <p>$$ A'' + 2iA'\phi' + iA\phi'' - A\left(\phi'\right)^2 = -\frac{p^2}{\hbar^2}A. \tag{9.5} $$</p>
+                <p>Como $A$, $\phi$ e $p$ são reais, isso equivale a duas equações reais, uma para a parte real e outra para a parte
+                    imaginária:</p>
+                <p>$$ A'' - A\left(\phi'\right)^2 = -\frac{p^2}{\hbar^2}A, \qquad \text{ou} \qquad A'' = A\left[\left(\phi'\right)^2 - \frac{p^2}{\hbar^2}\right], \tag{9.6} $$</p>
+                <p>e</p>
+                <p>$$ 2A'\phi' + A\phi'' = 0, \qquad \text{ou} \qquad \left(A^2\phi'\right)' = 0. \tag{9.7} $$</p>
+                <p>(A segunda forma de (9.7) é a primeira multiplicada por $A$: $\left(A^2\phi'\right)' = 2AA'\phi' + A^2\phi''$.)</p>
+
+                <p>As Eqs. (9.6) e (9.7) são inteiramente equivalentes à equação de Schrödinger original. A segunda se resolve com
+                    facilidade:</p>
+                <p>$$ A^2\phi' = C^2, \qquad \text{ou} \qquad A = \frac{C}{\sqrt{|\phi'|}}, \tag{9.8} $$</p>
+                <p>em que $C$ é uma constante (real). A primeira, Eq. (9.6), não pode ser resolvida em geral, e é aqui que entra a
+                    aproximação: <em>supomos que a amplitude $A$ varia devagar</em>, de modo que o termo $A''$ é desprezível. (Mais
+                    precisamente, supomos que $A''/A$ é muito menor que $\left(\phi'\right)^2$ e que $p^2/\hbar^2$.) Nesse caso podemos
+                    desprezar o lado esquerdo da Eq. (9.6), e sobra</p>
+                <p>$$ \left(\phi'\right)^2 = \frac{p^2}{\hbar^2}, \qquad \text{ou} \qquad \frac{d\phi}{dx} = \pm\frac p\hbar, $$</p>
+                <p>e, portanto,</p>
+                <p>$$ \phi(x) = \pm\frac1\hbar\int p(x)\,dx. \tag{9.9} $$</p>
+                <p>Vamos escrever, por enquanto, uma integral <em>indefinida</em>: qualquer constante de integração pode ser absorvida em
+                    $C$, que com isso se torna complexa ($e^{i\phi}$ ganha um fator de fase constante). Como $|\phi'| = p/\hbar$, a
+                    Eq. (9.8) dá $A = C\sqrt{\hbar/p}$, e também absorvemos o fator $\sqrt\hbar$ em $C$.</p>
+
+                <div class="definition-box" id="teo-aproximacao-wkb">
+                    <p><strong>Teorema (Aproximação WKB na região clássica).</strong> Onde $E \gt V(x)$ e a amplitude varia devagar
+                        ($|A''/A| \ll p^2/\hbar^2$), as soluções da equação de Schrödinger são, aproximadamente,</p>
+                    <p>$$ \psi(x) \approx \frac{C}{\sqrt{p(x)}}\,e^{\pm\frac i\hbar\int p(x)\,dx}, \tag{9.10} $$</p>
+                    <p>e a solução geral (aproximada) é uma combinação linear das duas, uma com cada sinal.</p>
+                </div>
+                <p><em>Demonstração.</em> A Eq. (9.7) é exata e dá $A = C/\sqrt{|\phi'|}$ (9.8). Desprezando $A''$ na Eq. (9.6), a fase
+                    satisfaz $\phi' = \pm p/\hbar$, isto é, (9.9). Levando $|\phi'| = p/\hbar$ a (9.8) e as duas expressões a (9.3),
+                    obtemos (9.10), com as constantes absorvidas em $C$. Como a Eq. (9.1) é linear, qualquer combinação das duas soluções
+                    também é solução (aproximada). $\blacksquare$</p>
+
+                <p>Note que</p>
+                <p>$$ |\psi(x)|^2 \approx \frac{|C|^2}{p(x)}, \tag{9.11} $$</p>
+                <p>o que diz que a probabilidade de encontrar a partícula no ponto $x$ é inversamente proporcional ao seu momento
+                    (clássico) ali e, portanto, à sua velocidade. É exatamente o que se esperaria: a partícula passa pouco tempo nos lugares
+                    em que se move depressa, e por isso a probabilidade de ser apanhada ali é pequena. Na verdade, a aproximação WKB às
+                    vezes é <em>deduzida</em> a partir dessa observação "semiclássica", em vez de desprezar o termo $A''$ na equação
+                    diferencial. A segunda abordagem é matematicamente mais limpa, mas a primeira dá uma motivação física mais esclarecedora
+                    (<a href="#exr-9-1-4">Exercício 9.1-4</a>).</p>
+
+                <p id="obs-validade-wkb"><strong>Observação (Quando a aproximação é boa).</strong> Na aproximação,
+                    $\left(\phi'\right)^2 = p^2/\hbar^2$, de modo que as duas condições do livro são a mesma: $|A''/A| \ll p^2/\hbar^2$.
+                    Podemos testá-la com a própria solução, $A = C/\sqrt p$. Derivando duas vezes,</p>
+                <p>$$ \frac{A''}{A} = \frac34\left(\frac{p'}{p}\right)^2 - \frac{p''}{2p}, $$</p>
+                <p>e a condição pede que $\hbar|p'|/p^2 \ll 1$ e $\hbar^2|p''|/p^3 \ll 1$. Como $\hbar|p'|/p^2 = |d(\hbar/p)/dx|$, a
+                    primeira diz que o comprimento de onda reduzido $\hbar/p = \lambda/2\pi$ varia pouco ao longo de um comprimento de onda,
+                    que é a ideia da abertura em forma quantitativa. Ela falha onde $p \to 0$, isto é, nos pontos de retorno
+                    (<a href="#exr-9-1-3">Exercício 9.1-3</a>).</p>
+
+
+                <h2 id="paredes-verticais">Duas paredes verticais</h2>
+
+                <p>O primeiro uso da Eq. (9.10) é quantizar um poço em que a partícula nunca chega a um ponto de retorno "suave": as
+                    paredes são verticais, e $E \gt V$ em todo o interior. Assim, a aproximação vale de uma parede à outra, e as condições
+                    de contorno nas paredes são as exatas.</p>
+
+                <div id="ex-9-1">
+                    <p><strong>Exemplo 9.1 (Poço com duas paredes verticais).</strong> Suponha um poço quadrado infinito com fundo
+                        irregular (Figura 9.2):</p>
+                    <p>$$ V(x) = \begin{cases} \text{alguma função dada}, & 0 \lt x \lt a, \\ \infty, & \text{fora desse intervalo}. \end{cases} \tag{9.12} $$</p>
+
+                    <figure class="lecture-figure" id="fig-9-2">
+                        <svg viewBox="0 0 640 250" role="img" aria-label="Figura 9.2: poço quadrado infinito de largura a com fundo irregular: paredes infinitas em x = 0 e x = a e, entre elas, um potencial V(x) que oscila suavemente.">
+<defs><marker id="arr-9-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<rect x="96" y="30" width="14" height="175" class="fig-band"/>
+<rect x="470" y="30" width="14" height="175" class="fig-band"/>
+<line x1="60" y1="205" x2="600" y2="205" class="fig-axis" marker-end="url(#arr-9-2)"/>
+<line x1="110" y1="225" x2="110" y2="14" class="fig-axis" marker-end="url(#arr-9-2)"/>
+<line x1="470" y1="30" x2="470" y2="205" class="fig-curve"/>
+<text x="102" y="22" text-anchor="end" class="fig-label fig-it">V(x)</text>
+<text x="606" y="223" class="fig-label fig-it">x</text>
+<text x="470" y="227" text-anchor="middle" class="fig-label fig-it">a</text>
+<path d="M110,117 L112.2,116.7 L114.5,116.4 L116.8,116.3 L119,116.4 L121.2,116.5 L123.5,116.7 L125.8,117.1 L128,117.5 L130.2,118.1 L132.5,118.8 L134.8,119.5 L137,120.4 L139.2,121.3 L141.5,122.4 L143.8,123.5 L146,124.7 L148.2,125.9 L150.5,127.2 L152.8,128.6 L155,130 L157.2,131.5 L159.5,133 L161.8,134.5 L164,136 L166.2,137.6 L168.5,139.1 L170.8,140.6 L173,142.2 L175.2,143.7 L177.5,145.2 L179.8,146.6 L182,148.1 L184.2,149.4 L186.5,150.8 L188.8,152 L191,153.2 L193.2,154.4 L195.5,155.4 L197.8,156.4 L200,157.3 L202.2,158.1 L204.5,158.8 L206.8,159.5 L209,160 L211.2,160.5 L213.5,160.8 L215.8,161 L218,161.2 L220.2,161.2 L222.5,161.2 L224.8,161 L227,160.7 L229.2,160.4 L231.5,159.9 L233.8,159.4 L236,158.8 L238.2,158.1 L240.5,157.3 L242.8,156.4 L245,155.4 L247.2,154.4 L249.5,153.4 L251.8,152.2 L254,151.1 L256.2,149.8 L258.5,148.6 L260.8,147.3 L263,146 L265.2,144.6 L267.5,143.3 L269.8,142 L272,140.6 L274.2,139.3 L276.5,138 L278.8,136.7 L281,135.5 L283.2,134.2 L285.5,133.1 L287.8,131.9 L290,130.9 L292.2,129.9 L294.5,128.9 L296.8,128.1 L299,127.3 L301.2,126.6 L303.5,126 L305.8,125.4 L308,125 L310.2,124.7 L312.5,124.4 L314.8,124.3 L317,124.2 L319.2,124.3 L321.5,124.4 L323.8,124.7 L326,125 L328.2,125.5 L330.5,126.1 L332.8,126.7 L335,127.5 L337.2,128.3 L339.5,129.2 L341.8,130.2 L344,131.3 L346.2,132.5 L348.5,133.7 L350.8,135 L353,136.4 L355.2,137.8 L357.5,139.3 L359.8,140.7 L362,142.3 L364.2,143.8 L366.5,145.4 L368.8,147 L371,148.6 L373.2,150.1 L375.5,151.7 L377.8,153.3 L380,154.8 L382.2,156.3 L384.5,157.7 L386.8,159.2 L389,160.5 L391.2,161.8 L393.5,163 L395.8,164.2 L398,165.3 L400.2,166.2 L402.5,167.1 L404.8,167.9 L407,168.7 L409.2,169.3 L411.5,169.7 L413.8,170.1 L416,170.4 L418.2,170.6 L420.5,170.6 L422.8,170.5 L425,170.3 L427.2,170 L429.5,169.6 L431.8,169 L434,168.4 L436.2,167.6 L438.5,166.7 L440.8,165.7 L443,164.6 L445.2,163.4 L447.5,162.1 L449.8,160.7 L452,159.3 L454.2,157.7 L456.5,156.1 L458.8,154.4 L461,152.6 L463.2,150.8 L465.5,149 L467.8,147.1 L470,145.1" class="fig-curve"/>
+</svg>
+                        <figcaption><strong>Figura 9.2.</strong> Poço quadrado infinito com fundo irregular.</figcaption>
+                    </figure>
+
+                    <p>Dentro do poço (supondo $E \gt V(x)$ em todo ele), a solução geral é a combinação das duas soluções (9.10):</p>
+                    <p>$$ \psi(x) \approx \frac{1}{\sqrt{p(x)}}\left[C_+e^{i\phi(x)} + C_-e^{-i\phi(x)}\right], \tag{9.13} $$</p>
+                    <p>ou, de modo mais conveniente, usando $e^{\pm i\phi} = \cos\phi \pm i\sin\phi$ e chamando
+                        $C_1 = i(C_+ - C_-)$ e $C_2 = C_+ + C_-$,</p>
+                    <p>$$ \psi(x) \approx \frac{1}{\sqrt{p(x)}}\left[C_1\sin\phi(x) + C_2\cos\phi(x)\right], \tag{9.14} $$</p>
+                    <p>em que, aproveitando a liberdade, já observada, de escolher um limite inferior conveniente para a
+                        integral,<sup id="fnref:2"><a href="#fn:2" class="footnote-ref">2</a></sup></p>
+                    <p>$$ \phi(x) = \frac1\hbar\int_0^xp(x')\,dx'. \tag{9.15} $$</p>
+                    <p>Agora, $\psi(x)$ precisa se anular em $x = 0$ e, como $\phi(0) = 0$ (e $p(0) \ne 0$), isso exige $C_2 = 0$. Além
+                        disso, $\psi(x)$ se anula em $x = a$; como $C_1 \ne 0$ (senão $\psi \equiv 0$), $\sin\phi(a) = 0$, e portanto</p>
+                    <p>$$ \phi(a) = n\pi \qquad (n = 1, 2, 3, \dots). \tag{9.16} $$</p>
+                    <p>(O caso $n = 0$ e os negativos estão excluídos porque $p \gt 0$ no interior, e então $\phi(a) \gt 0$.)
+                        Conclusão:</p>
+                    <p>$$ \int_0^ap(x)\,dx = n\pi\hbar. \tag{9.17} $$</p>
+                    <p>Essa condição de quantização determina as energias permitidas (aproximadas): para cada $n$, $E_n$ é o valor de
+                        $E$ que faz a integral de $p(x) = \sqrt{2m[E - V(x)]}$ valer $n\pi\hbar$.</p>
+                    <p>Por exemplo, se o poço tem fundo <em>plano</em> ($V(x) = 0$), então $p(x) = \sqrt{2mE}$ (uma constante), e a
+                        Eq. (9.17) diz que $pa = n\pi\hbar$, ou</p>
+                    <p>$$ E_n = \frac{n^2\pi^2\hbar^2}{2ma^2}, $$</p>
+                    <p>que é a velha fórmula para os níveis de energia do poço quadrado infinito (Griffiths, Eq. 2.30). Neste caso, a
+                        aproximação WKB dá a resposta <em>exata</em>: a amplitude da função de onda verdadeira é <em>constante</em>, de
+                        modo que desprezar $A''$ não custou nada.</p>
+                </div>
+
+                <h2 id="conexao">Conexão com o experimento</h2>
+
+                <p>Esta seção do Griffiths não traz dados experimentais; o que ela oferece é uma ponte com a física clássica, e é essa
+                    ponte que se pode testar. A Eq. (9.11) diz que $|\psi|^2$ acompanha o tempo que uma partícula clássica passa em cada
+                    trecho, $dt = dx/v$: o <a href="#exr-9-1-4">Exercício 9.1-4</a> mostra que, em média sobre as oscilações rápidas de $\psi$, a densidade WKB é
+                    exatamente a densidade de probabilidade clássica. E a condição (9.17) diz que a integral do momento clássico ao longo
+                    de uma ida e volta entre as paredes, $2\int_0^ap\,dx$, vale $2\pi\hbar n = nh$.</p>
+                <p>A aproximação fica melhor justamente no regime semiclássico, de números quânticos grandes. Nos <a href="#exr-9-1-2">Exercício 9.1-2</a> e
+                    <a href="#exr-9-1-5">Exercício 9.1-5</a>, comparando a Eq. (9.17) com as energias exatas (calculadas numericamente), o erro cai de alguns por
+                    cento em $n = 1$ para milésimos de por cento em $n = 5$. A teoria de perturbação da 7.1 se sai melhor no estado
+                    fundamental, quando a perturbação é pequena; a WKB, quando $n$ é grande. Ela é exata quando o fundo é plano, mesmo
+                    com $n = 1$.</p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p id="exr-9-1-1"><strong>Exercício 9.1-1.</strong> Um poço infinito de largura $a$ tem o fundo inteiro elevado a
+                    $V_0$ (constante). Mostre que a Eq. (9.17) dá os níveis exatos e que a função WKB é a solução exata.</p>
+                <p><em>Solução.</em> Para $E \gt V_0$, $p = \sqrt{2m(E - V_0)}$ é constante, e (9.17) dá
+                    $a\sqrt{2m(E - V_0)} = n\pi\hbar$, isto é,</p>
+                <p>$$ E_n = V_0 + \frac{n^2\pi^2\hbar^2}{2ma^2} = V_0 + E_n^0, $$</p>
+                <p>em que $E_n^0$ são os níveis do poço com fundo zero. É o resultado exato: um potencial constante só desloca o zero da
+                    energia. A função WKB com $C_2 = 0$ é $\psi = C_1\sin(kx)/\sqrt p$, com $k = p/\hbar$; como $p$ é constante, isso
+                    é um seno de amplitude constante, e $-\frac{\hbar^2}{2m}\psi'' + V_0\psi = \left(\frac{\hbar^2k^2}{2m} + V_0\right)\psi
+                    = E\psi$ exatamente. A hipótese da aproximação, $A'' = 0$, aqui é verdadeira.</p>
+
+                <p id="exr-9-1-2"><strong>Exercício 9.1-2.</strong> O fundo do poço é uma rampa, $V(x) = \epsilon x/a$, com
+                    $\epsilon \gt 0$. (a) Calcule a integral de (9.17) e mostre que, em primeira ordem em $\epsilon$, os níveis WKB sobem
+                    $\epsilon/2$, como na teoria de perturbação (<a href="../[6] - Teoria de Perturbação Independente do Tempo/[01] - Teoria de Perturbação Não Degenerada.html#exr-7-1-2">Exercício 7.1-2</a>). (b) Para $\epsilon = E_1^0$, compare os cinco primeiros
+                    níveis WKB com os exatos.</p>
+                <p><em>Solução.</em> (a) Para $E \gt \epsilon$ (então $E \gt V$ em todo o poço),</p>
+                <p>$$ \int_0^a\sqrt{2m\left(E - \frac{\epsilon x}{a}\right)}\,dx = \frac{2a\sqrt{2m}}{3\epsilon}\left[E^{3/2} - (E - \epsilon)^{3/2}\right]. $$</p>
+                <p>Com $\alpha = \epsilon/E$, $(1 - \alpha)^{3/2} = 1 - \frac32\alpha + \frac38\alpha^2 + \frac{1}{16}\alpha^3 + \cdots$, e a
+                    integral vale $a\sqrt{2mE}\left(1 - \frac\alpha4 - \frac{\alpha^2}{24} - \cdots\right)$. A condição (9.17) fica
+                    $\sqrt E\left(1 - \frac{\epsilon}{4E}\right) \approx \sqrt{E_n^0}$; escrevendo $E = E_n^0 + \delta$ e expandindo em
+                    primeira ordem, $\sqrt{E_n^0}\left(1 + \frac{\delta}{2E_n^0} - \frac{\epsilon}{4E_n^0}\right) = \sqrt{E_n^0}$, ou seja,
+                    $\delta = \epsilon/2$: o mesmo deslocamento da teoria de perturbação.</p>
+                <p>(b) Resolvendo (9.17) numericamente para $E$ e comparando com os autovalores exatos (obtidos por diferenças finitas),
+                    em unidades de $E_1^0$:</p>
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr><th>$n$</th><th>WKB (9.17)</th><th>Exato</th><th>1.ª ordem ($E_n^0 + \epsilon/2$)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>$1{,}521$</td><td>$1{,}489$</td><td>$1{,}5$</td></tr>
+                            <tr><td>2</td><td>$4{,}505$</td><td>$4{,}503$</td><td>$4{,}5$</td></tr>
+                            <tr><td>3</td><td>$9{,}5023$</td><td>$9{,}5019$</td><td>$9{,}5$</td></tr>
+                            <tr><td>4</td><td>$16{,}5013$</td><td>$16{,}5012$</td><td>$16{,}5$</td></tr>
+                            <tr><td>5</td><td>$25{,}5008$</td><td>$25{,}5008$</td><td>$25{,}5$</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>O erro da WKB é de $2{,}2\%$ em $n = 1$ e cai para $0{,}045\%$, $0{,}004\%$ e $0{,}001\%$ nos seguintes; o da primeira
+                    ordem é de $0{,}7\%$, $0{,}07\%$, $0{,}02\%$ e $0{,}007\%$. No estado fundamental a perturbação ganha; de $n = 2$ em
+                    diante, a WKB. Faz sentido: com $n$ grande, cabem muitos comprimentos de onda no poço, e a rampa varia devagar na
+                    escala de $\lambda$.</p>
+
+                <p id="exr-9-1-3"><strong>Exercício 9.1-3.</strong> Um elétron com energia cinética de 1 eV se move num campo elétrico
+                    uniforme de 1 V/cm. Verifique a <a href="#obs-validade-wkb">condição de validade</a> da aproximação e estime a que distância do ponto de
+                    retorno ela deixa de valer.</p>
+                <p><em>Solução.</em> Com uma força constante $F$ no sentido do movimento, $V = -Fx$ e $p\,p' = -mV' = mF$, logo
+                    $p' = mF/p$ e $p'' = -(mF)^2/p^3$. As duas condições ficam</p>
+                <p>$$ \frac{\hbar|p'|}{p^2} = \frac{\hbar mF}{p^3} \ll 1, \qquad \frac{\hbar^2|p''|}{p^3} = \left(\frac{\hbar mF}{p^3}\right)^2 \ll 1, $$</p>
+                <p>isto é, um único parâmetro, $\hbar mF/p^3$, tem de ser pequeno. Com $F = e \times 100$ V/m $= 1{,}6\times10^{-17}$ N e
+                    $p = \sqrt{2mK} = 5{,}4\times10^{-25}$ kg·m/s para $K = 1$ eV, $\hbar mF/p^3 \approx 1\times10^{-8}$: a aproximação
+                    é excelente. Ela só falha quando $p^3 \sim \hbar mF$, isto é, $p \sim 1{,}2\times10^{-27}$ kg·m/s, ou
+                    $K \sim 5\times10^{-6}$ eV. Como $K = F\,d$ a uma distância $d$ do ponto de retorno, isso acontece a
+                    $d \sim 50$ nm dele. A região em que a WKB falha é minúscula, mas existe, e é dela que trata a Seção 9.3.</p>
+
+                <p id="exr-9-1-4"><strong>Exercício 9.1-4.</strong> Uma partícula clássica vai e volta entre as paredes de um poço.
+                    Mostre que a densidade de probabilidade de encontrá-la em $x$ é $\rho_{\text{cl}}(x) = \frac{1/p(x)}{\int_0^a dx'/p(x')}$
+                    e que a densidade WKB (9.14), em média sobre as oscilações, é a mesma.</p>
+                <p><em>Solução.</em> Numa ida de $0$ a $a$, que dura $T/2 = \int_0^a dx/v$, a partícula passa o tempo $dt = dx/v$ no
+                    intervalo $dx$. A fração do tempo, $\rho_{\text{cl}}\,dx = dt/(T/2)$, com $v = p/m$, dá a fórmula do enunciado (o fator
+                    $m$ se cancela); a volta repete a ida. Do lado quântico, com $C_2 = 0$,
+                    $|\psi|^2 = C_1^2\sin^2\phi(x)/p(x)$. Quando muitos comprimentos de onda cabem no poço, $\sin^2\phi$ oscila depressa
+                    enquanto $1/p$ varia devagar, e a média de $\sin^2$ sobre uma oscilação é $\frac12$. Logo
+                    $\overline{|\psi|^2} = C_1^2/2p$, e a normalização exige $C_1^2 = 2\big/\int_0^adx/p$. Então
+                    $\overline{|\psi|^2} = \rho_{\text{cl}}$. A densidade quântica oscila em torno da clássica, e a concordância melhora
+                    com $n$: é o princípio da correspondência. No poço de fundo plano, $\rho_{\text{cl}} = 1/a$ e
+                    $|\psi_n|^2 = (2/a)\sin^2(n\pi x/a)$, que de fato tem média $1/a$.</p>
+
+                <p id="exr-9-1-5"><strong>Exercício 9.1-5.</strong> O fundo do poço é $V(x) = V_0\cos(\pi x/a)$, com
+                    $V_0 = E_1^0/2$. Calcule os três primeiros níveis pela Eq. (9.17), compare com os exatos e explique o resultado do
+                    estado fundamental com a teoria de perturbação de segunda ordem.</p>
+                <p><em>Solução.</em> Numericamente, em unidades de $E_1^0$ (os três níveis ficam acima de $V_0$, como a Eq. 9.17 exige):</p>
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr><th>$n$</th><th>WKB (9.17)</th><th>Exato</th><th>Erro da WKB</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>$1{,}032$</td><td>$0{,}979$</td><td>$+5{,}4\%$</td></tr>
+                            <tr><td>2</td><td>$4{,}0078$</td><td>$4{,}0082$</td><td>$-0{,}01\%$</td></tr>
+                            <tr><td>3</td><td>$9{,}0035$</td><td>$9{,}0036$</td><td>$-0{,}001\%$</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>Para entender, expanda $p = \sqrt{2m(E - V)} = \sqrt{2mE}\left(1 - \frac{V}{2E} - \frac{V^2}{8E^2} - \cdots\right)$. A
+                    média de $V$ sobre o poço é zero, e a de $V^2$ é $V_0^2/2$; então (9.17) dá
+                    $\sqrt E\left(1 - V_0^2/16E^2\right) \approx \sqrt{E_n^0}$, ou $E_n \approx E_n^0 + V_0^2/8E_n^0$. Para $n = 1$ isso é
+                    $E_1^0(1 + 1/32) = 1{,}031\,E_1^0$: a WKB <em>sobe</em> o nível. O exato <em>desce</em>. Na teoria de perturbação, a
+                    primeira ordem é zero (a média de $\cos(\pi x/a)$ ponderada por $\sin^2(\pi x/a)$ se anula), e a segunda
+                    (<a href="../[6] - Teoria de Perturbação Independente do Tempo/[01] - Teoria de Perturbação Não Degenerada.html#teo-correcao-segunda-ordem">Teorema (Correção de segunda ordem da energia)</a>) só tem o termo com $m = 2$, porque
+                    $\langle\psi_m^0|\cos(\pi x/a)|\psi_1^0\rangle = \frac2a\int_0^a\sin\frac{m\pi x}{a}\sin\frac{\pi x}{a}\cos\frac{\pi x}{a}\,dx = \frac12\delta_{m2}$.
+                    Assim,</p>
+                <p>$$ E_1^2 = \frac{(V_0/2)^2}{E_1^0 - E_2^0} = \frac{\left(E_1^0/4\right)^2}{-3E_1^0} = -\frac{E_1^0}{48}, $$</p>
+                <p>e $E_1 \approx 0{,}979\,E_1^0$, de acordo com o exato. Em $n = 1$ só meio comprimento de onda cabe no poço, e o
+                    potencial varia na mesma escala: a hipótese da WKB falha, a ponto de errar o sinal da correção. Em $n = 2$, a mesma
+                    conta de perturbação dá $E_2^0 + E_1^0/120 = 4{,}0083\,E_1^0$, e a WKB, $4{,}0078\,E_1^0$: já concordam.</p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <ul>
+                    <li>A forma polar $\psi = Ae^{i\phi}$ e as duas equações exatas (9.6) e (9.7), com a conservação $A^2\phi' = C^2$.</li>
+                    <li>A aproximação WKB na região clássica (9.10), deduzida desprezando $A''$, e sua condição de validade
+                        ($\hbar|p'|/p^2 \ll 1$), que falha nos pontos de retorno.</li>
+                    <li>A leitura semiclássica $|\psi|^2 \propto 1/p$ (9.11), que coincide com a densidade clássica em média
+                        (<a href="#exr-9-1-4">Exercício 9.1-4</a>).</li>
+                    <li>A condição de quantização (9.17) para poços com duas paredes verticais, exata no fundo plano e cada vez melhor
+                        com $n$ grande.</li>
+                </ul>
+                <p>Falta o outro lado: a região em que $E \lt V$, onde a solução WKB é exponencial. Com ela vem o cálculo da
+                    probabilidade de atravessar uma barreira:
+                    <a href="[02] - Tunelamento.html">9.2 Tunelamento</a>.</p>
+
+                <hr class="footnotes-sep">
+                <section class="footnotes">
+                    <ol>
+                        <li id="fn:1">
+                            <p>Na Holanda é KWB, na França é BWK, e na Inglaterra é JWKB (por causa de Jeffreys). (Nota do
+                                livro.)<a href="#fnref:1" class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:2">
+                            <p>Podemos também tomar o sinal positivo em (9.9), já que os dois sinais estão incluídos na Eq. (9.13). (Nota do
+                                livro.)<a href="#fnref:2" class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                    </ol>
+                </section>
 
             </div>
         </main>
@@ -171,6 +487,11 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#regiao-classica">A Região “Clássica”</a></li>
+                    <li><a href="#aproximacao-wkb">A aproximação na região clássica</a></li>
+                    <li><a href="#paredes-verticais">Duas paredes verticais</a></li>
+                    <li><a href="#conexao">Conexão com o experimento</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
                 </ul>
             </div>
         </aside>

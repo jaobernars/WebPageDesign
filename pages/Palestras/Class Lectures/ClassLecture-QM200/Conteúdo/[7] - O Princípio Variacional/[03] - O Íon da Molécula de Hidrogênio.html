@@ -161,7 +161,499 @@
                 <h1 id="ion-da-molecula-de-hidrogenio">8.3 O Íon da Molécula de Hidrogênio</h1>
                 <p class="lead">Um elétron e dois prótons: a função-tentativa como combinação de orbitais 1s, as integrais que ela exige e a prova de que existe um estado ligado.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>Outra aplicação clássica do <a href="[01] - Teoria.html#teo-principio-variacional">princípio variacional</a> é o
+                    íon da molécula de hidrogênio, H$_2^+$: um único elétron no campo coulombiano de dois prótons (Figura 8.5). A pergunta
+                    é qualitativa, mas fundamental: esse sistema forma um estado ligado, ou o elétron fica preso a um dos prótons enquanto o
+                    outro se afasta? Em outras palavras, a energia do íon pode ficar <em>abaixo</em> da de um átomo de hidrogênio neutro
+                    mais um próton livre?</p>
+
+                <p>Esta seção, que segue a Seção 8.3 do Griffiths, responde "sim" com uma conta de poucas páginas. A estratégia é a de
+                    sempre: escolher uma função-tentativa razoável, calcular $\langle H\rangle$ e usar o fato de que ele é um limite
+                    superior para a energia do estado fundamental. Se a função-tentativa já indicar um estado ligado, uma função melhor só
+                    pode tornar a ligação ainda mais forte. Usaremos apenas o estado fundamental do hidrogênio
+                    (<a href="../[6] - Teoria de Perturbação Independente do Tempo/[03] - A Estrutura Fina do Hidrogênio.html#prop-hidrogenio-bohr">Resultado citado (O átomo de hidrogênio)</a>) e três integrais, que vamos calcular por completo. De quebra, a conta fornece a distância
+                    de equilíbrio entre os prótons.</p>
+
+                <h2 id="funcao-tentativa">A função-tentativa</h2>
+
+                <p>Vamos supor, por enquanto, que os prótons estão fixos a uma distância $R$ dada. (Os prótons são cerca de 1800 vezes
+                    mais pesados que o elétron, e esta é a aproximação natural; um dos subprodutos mais interessantes do cálculo será o
+                    <em>valor</em> de $R$.) O hamiltoniano do elétron é</p>
+                <p>$$ H = -\frac{\hbar^2}{2m}\nabla^2 - \frac{e^2}{4\pi\epsilon_0}\left(\frac1r + \frac{1}{r'}\right), \tag{8.36} $$</p>
+                <p>em que $r$ e $r'$ são as distâncias do elétron a cada um dos prótons.</p>
+
+                <figure class="lecture-figure" id="fig-8-5">
+                    <svg viewBox="0 0 640 230" role="img" aria-label="Figura 8.5: dois prótons de carga +e separados pela distância R e um elétron de carga -e, à distância r do primeiro próton e r&#x27; do segundo.">
+<line x1="130" y1="185" x2="500" y2="185" class="fig-guide fig-dashed"/>
+<line x1="130" y1="185" x2="400" y2="40" class="fig-guide"/>
+<line x1="500" y1="185" x2="400" y2="40" class="fig-guide"/>
+<circle cx="130" cy="185" r="9" class="fig-shape"/>
+<text x="130" y="217" text-anchor="middle" class="fig-label">+e</text>
+<circle cx="500" cy="185" r="9" class="fig-shape"/>
+<text x="500" y="217" text-anchor="middle" class="fig-label">+e</text>
+<circle cx="400" cy="40" r="5" class="fig-arrowhead"/>
+<text x="414" y="34" class="fig-label">−e</text>
+<text x="315" y="207" text-anchor="middle" class="fig-label fig-it">R</text>
+<text x="251" y="106.5" text-anchor="end" class="fig-label fig-it">r</text>
+<text x="464" y="112.5" class="fig-label fig-it">r′</text>
+</svg>
+                    <figcaption><strong>Figura 8.5.</strong> O íon da molécula de hidrogênio, H$_2^+$: dois prótons (carga $+e$) à
+                        distância $R$ e um elétron (carga $-e$) às distâncias $r$ e $r'$ de cada um deles.</figcaption>
+                </figure>
+
+                <p>Para construir a função-tentativa, imagine que o íon é formado assim: tomamos um átomo de hidrogênio no estado
+                    fundamental,</p>
+                <p>$$ \psi_0(\mathbf r) = \frac{1}{\sqrt{\pi a^3}}\,e^{-r/a}, \tag{8.37} $$</p>
+                <p>trazemos o segundo próton do "infinito" e o fixamos a uma distância $R$. Se $R$ for bem maior que o raio de Bohr $a$,
+                    a função de onda do elétron provavelmente quase não muda. Mas queremos tratar os dois prótons em pé de igualdade, de
+                    modo que o elétron tenha a mesma probabilidade de estar associado a qualquer um deles. Isso sugere a função-tentativa
+                    (<em>trial wave function</em>)</p>
+                <p>$$ \psi = A\left[\psi_0(r) + \psi_0(r')\right]. \tag{8.38} $$</p>
+                <p>(Os químicos quânticos chamam isso de técnica <strong>LCAO</strong>, do inglês <em>linear combination of atomic
+                    orbitals</em>: a função de onda <em>molecular</em> é escrita como combinação linear de orbitais atômicos.) Aqui
+                    $\psi_0(r)$ é o orbital 1s centrado no próton 1 e $\psi_0(r')$, o mesmo orbital centrado no próton 2. A função
+                    não tem parâmetro livre além de $R$: o cálculo variacional vai simplesmente testar se ela já basta para ligar.</p>
+
+                <p>A primeira tarefa é <em>normalizar</em> a função-tentativa. Como $\psi_0$ é real,</p>
+                <p>$$ \begin{aligned}
+                    1 &= \int|\psi|^2\,d^3\mathbf r = |A|^2\bigg[\int\psi_0(r)^2\,d^3\mathbf r \\
+                    &\qquad + \int\psi_0(r')^2\,d^3\mathbf r + 2\int\psi_0(r)\,\psi_0(r')\,d^3\mathbf r\bigg].
+                    \end{aligned} \tag{8.39} $$</p>
+                <p>As duas primeiras integrais valem 1, porque o próprio $\psi_0$ é normalizado (a segunda é a primeira com a origem
+                    deslocada para o próton 2). A terceira é mais trabalhosa e merece um nome.</p>
+
+                <h2 id="integrais">As integrais</h2>
+
+                <h3 id="superposicao">A integral de superposição</h3>
+
+                <p>Definimos</p>
+                <p>$$ I \equiv \langle\psi_0(r)|\psi_0(r')\rangle = \frac{1}{\pi a^3}\int e^{-(r + r')/a}\,d^3\mathbf r. \tag{8.40} $$</p>
+                <p>Escolhemos coordenadas esféricas com o próton 1 na origem e o próton 2 no eixo $z$, no ponto $R$ (Figura 8.6). Pela
+                    lei dos cossenos,</p>
+                <p>$$ r' = \sqrt{r^2 + R^2 - 2rR\cos\theta}, \tag{8.41} $$</p>
+                <p>e portanto</p>
+                <p>$$ I = \frac{1}{\pi a^3}\int e^{-r/a}\,e^{-\sqrt{r^2 + R^2 - 2rR\cos\theta}/a}\,r^2\sin\theta\,dr\,d\theta\,d\phi. \tag{8.42} $$</p>
+
+                <figure class="lecture-figure" id="fig-8-6">
+                    <svg viewBox="0 0 640 340" role="img" aria-label="Figura 8.6: próton 1 na origem e próton 2 no eixo z, à distância R; o elétron está à distância r do próton 1, com ângulo polar theta, e à distância r&#x27; = raiz de (r² + R² - 2rR cos theta) do próton 2.">
+<defs><marker id="arr-8-6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="300" y1="260" x2="300" y2="30" class="fig-axis" marker-end="url(#arr-8-6)"/>
+<text x="292" y="34" text-anchor="end" class="fig-label fig-it">z</text>
+<line x1="300" y1="260" x2="460" y2="260" class="fig-axis" marker-end="url(#arr-8-6)"/>
+<text x="466" y="278" class="fig-label fig-it">y</text>
+<line x1="300" y1="260" x2="200.8" y2="332" class="fig-axis" marker-end="url(#arr-8-6)"/>
+<text x="194.8" y="348" text-anchor="end" class="fig-label fig-it">x</text>
+<circle cx="300" cy="260" r="7" class="fig-shape"/>
+<circle cx="300" cy="70" r="7" class="fig-shape"/>
+<text x="286" y="252" text-anchor="end" class="fig-label fig-small">próton 1</text>
+<text x="286" y="75" text-anchor="end" class="fig-label fig-small">próton 2</text>
+<text x="288" y="195" text-anchor="end" class="fig-label fig-it">R</text>
+<line x1="300" y1="260" x2="388.6" y2="181" class="fig-curve" marker-end="url(#arr-8-6)"/>
+<circle cx="392.6" cy="177" r="4.5" class="fig-arrowhead"/>
+<text x="402.6" y="171" class="fig-label fig-small">elétron</text>
+<text x="356.3" y="232.5" class="fig-label fig-it">r</text>
+<line x1="300" y1="70" x2="392.6" y2="177" class="fig-guide"/>
+<text x="350.3" y="113.5" class="fig-label fig-it">r′</text>
+<line x1="392.6" y1="177" x2="392.6" y2="273.4" class="fig-guide fig-dashed"/>
+<line x1="300" y1="260" x2="392.6" y2="273.4" class="fig-guide fig-dashed"/>
+<path d="M300,215 L302.6,215.5 L305.3,216.2 L307.8,217.2 L310.4,218.4 L312.9,219.8 L315.3,221.4 L317.7,223.3 L319.9,225.3 L322.1,227.5 L324.1,229.9 L326,232.4 L327.8,235.1" class="fig-axis"/>
+<text x="321.3" y="215.4" class="fig-label fig-small">θ</text>
+<text x="630" y="330" text-anchor="end" class="fig-label fig-small">r′ = √(r² + R² − 2rR cos θ)</text>
+</svg>
+                    <figcaption><strong>Figura 8.6.</strong> Coordenadas para o cálculo de $I$ (Eq. 8.40): o próton 1 na origem, o
+                        próton 2 no eixo $z$ à distância $R$; o elétron está à distância $r$ do próton 1, com ângulo polar $\theta$, e à
+                        distância $r' = \sqrt{r^2 + R^2 - 2rR\cos\theta}$ do próton 2.</figcaption>
+                </figure>
+
+                <div class="definition-box" id="teo-integral-de-superposicao">
+                    <p><strong>Teorema (Integral de superposição).</strong> Para dois orbitais 1s centrados em pontos à distância $R$,</p>
+                    <p>$$ I = e^{-R/a}\left[1 + \left(\frac Ra\right) + \frac13\left(\frac Ra\right)^2\right]. \tag{8.43} $$</p>
+                </div>
+                <p><em>Demonstração.</em> <strong>Passo 1 (os ângulos).</strong> A integral em $\phi$ é trivial e dá $2\pi$. Para a
+                    integral em $\theta$, fazemos $y \equiv \sqrt{r^2 + R^2 - 2rR\cos\theta}$, de modo que $d(y^2) = 2y\,dy = 2rR\sin\theta\,d\theta$.
+                    Quando $\theta$ vai de $0$ a $\pi$, $y$ vai de $\sqrt{(r - R)^2} = |r - R|$ a $r + R$. Então</p>
+                <p>$$ \begin{aligned}
+                    \int_0^\pi e^{-\sqrt{r^2 + R^2 - 2rR\cos\theta}/a}\sin\theta\,d\theta
+                    &= \frac{1}{rR}\int_{|r - R|}^{r + R}e^{-y/a}\,y\,dy \\
+                    &= -\frac{a}{rR}\Big[e^{-(r + R)/a}(r + R + a) \\
+                    &\qquad\quad - e^{-|r - R|/a}\left(|r - R| + a\right)\Big],
+                    \end{aligned} $$</p>
+                <p>porque uma primitiva de $y\,e^{-y/a}$ é $-a\,e^{-y/a}(y + a)$ (derive para conferir).</p>
+                <p><strong>Passo 2 (as três integrais radiais).</strong> Levando isso a (8.42), com o fator $2\pi$ e $r^2/r = r$, e separando
+                    as regiões $r \lt R$ (em que $|r - R| = R - r$ e $e^{-r/a}e^{-(R - r)/a} = e^{-R/a}$) e $r \gt R$ (em que
+                    $|r - R| = r - R$ e $e^{-r/a}e^{-(r - R)/a} = e^{R/a}e^{-2r/a}$),</p>
+                <p>$$ \begin{aligned}
+                    I = \frac{2}{a^2R}\bigg[&-e^{-R/a}\int_0^\infty(r + R + a)\,e^{-2r/a}\,r\,dr \\
+                    &+ e^{-R/a}\int_0^R(R - r + a)\,r\,dr \\
+                    &+ e^{R/a}\int_R^\infty(r - R + a)\,e^{-2r/a}\,r\,dr\bigg].
+                    \end{aligned} $$</p>
+                <p>Com $\int_0^\infty r^ne^{-2r/a}\,dr = n!\,(a/2)^{n + 1}$, a primeira integral vale
+                    $\frac{a^3}{4} + (R + a)\frac{a^2}{4} = \frac{a^2}{4}(2a + R)$. A segunda é polinomial:
+                    $(R + a)\frac{R^2}{2} - \frac{R^3}{3} = \frac{R^3}{6} + \frac{aR^2}{2}$. Na terceira, trocamos $r = R + u$:</p>
+                <p>$$ \begin{aligned}
+                    \int_R^\infty(r - R + a)\,e^{-2r/a}\,r\,dr &= e^{-2R/a}\int_0^\infty(u + a)(u + R)\,e^{-2u/a}\,du \\
+                    &= e^{-2R/a}\left[\frac{a^3}{4} + (a + R)\frac{a^2}{4} + aR\,\frac a2\right] \\
+                    &= e^{-2R/a}\,\frac{a^2}{4}(2a + 3R).
+                    \end{aligned} $$</p>
+                <p><strong>Passo 3 (a simplificação).</strong> Multiplicada por $e^{R/a}$, a terceira parcela fica com o mesmo fator
+                    $e^{-R/a}$ das outras duas, e</p>
+                <p>$$ \begin{aligned}
+                    I &= \frac{2e^{-R/a}}{a^2R}\left[-\frac{a^2}{4}(2a + R) + \frac{R^3}{6} + \frac{aR^2}{2} + \frac{a^2}{4}(2a + 3R)\right] \\
+                    &= \frac{2e^{-R/a}}{a^2R}\left[\frac{a^2R}{2} + \frac{aR^2}{2} + \frac{R^3}{6}\right],
+                    \end{aligned} $$</p>
+                <p>que é a Eq. (8.43). $\blacksquare$</p>
+
+                <p>$I$ é chamada integral de <strong>superposição</strong> (<em>overlap integral</em>): mede quanto $\psi_0(r)$ se
+                    sobrepõe a $\psi_0(r')$. Note que ela tende a 1 quando $R \to 0$ (os dois orbitais coincidem) e a 0 quando
+                    $R \to \infty$ (não se tocam). Em termos de $I$, a normalização (8.39) dá $|A|^2(2 + 2I) = 1$, isto é,</p>
+                <p>$$ |A|^2 = \frac{1}{2(1 + I)}. \tag{8.44} $$</p>
+
+                <h3 id="valor-esperado">O valor esperado de $H$</h3>
+
+                <p>Agora calculamos o valor esperado de $H$ no estado $\psi$. O truque é que $\psi_0(r)$ é autofunção de <em>parte</em>
+                    do hamiltoniano: a do hidrogênio com o próton 1,</p>
+                <p>$$ \left(-\frac{\hbar^2}{2m}\nabla^2 - \frac{e^2}{4\pi\epsilon_0}\frac1r\right)\psi_0(r) = E_1\,\psi_0(r), $$</p>
+                <p>em que $E_1 = -13{,}6$ eV é a energia do estado fundamental do hidrogênio; e o mesmo vale com $r'$ no lugar de $r$.
+                    Então, de cada termo de $H$ que "sobra", só fica a atração pelo <em>outro</em> próton:</p>
+                <p>$$ \begin{aligned}
+                    H\psi &= A\left[-\frac{\hbar^2}{2m}\nabla^2 - \frac{e^2}{4\pi\epsilon_0}\left(\frac1r + \frac{1}{r'}\right)\right]\left[\psi_0(r) + \psi_0(r')\right] \\
+                    &= E_1\psi - A\left(\frac{e^2}{4\pi\epsilon_0}\right)\left[\frac{1}{r'}\psi_0(r) + \frac1r\psi_0(r')\right].
+                    \end{aligned} $$</p>
+                <p>Tomando o produto interno com $\psi = A[\psi_0(r) + \psi_0(r')]$ e usando $\langle\psi|\psi\rangle = 1$, aparecem
+                    quatro termos:</p>
+                <p>$$ \begin{aligned}
+                    \langle H\rangle = E_1 - |A|^2\left(\frac{e^2}{4\pi\epsilon_0}\right)\bigg[&\left\langle\psi_0(r)\left|\frac{1}{r'}\right|\psi_0(r)\right\rangle \\
+                    &+ \left\langle\psi_0(r)\left|\frac1r\right|\psi_0(r')\right\rangle + \left\langle\psi_0(r')\left|\frac{1}{r'}\right|\psi_0(r)\right\rangle \\
+                    &+ \left\langle\psi_0(r')\left|\frac1r\right|\psi_0(r')\right\rangle\bigg].
+                    \end{aligned} $$</p>
+                <p>A reflexão pelo plano mediador dos prótons troca $r \leftrightarrow r'$ e não muda o valor das integrais: por isso o
+                    quarto termo é igual ao primeiro, e o terceiro é igual ao segundo (que, além disso, é simétrico porque as funções são
+                    reais). Segue que</p>
+                <p>$$ \begin{aligned}
+                    \langle H\rangle = E_1 - 2|A|^2\left(\frac{e^2}{4\pi\epsilon_0}\right)\bigg[&\left\langle\psi_0(r)\left|\frac{1}{r'}\right|\psi_0(r)\right\rangle \\
+                    &+ \left\langle\psi_0(r)\left|\frac1r\right|\psi_0(r')\right\rangle\bigg].
+                    \end{aligned} \tag{8.45} $$</p>
+
+                <h3 id="direta-e-troca">As integrais direta e de troca</h3>
+
+                <p>Restam duas quantidades, a chamada <strong>integral direta</strong>,</p>
+                <p>$$ D \equiv a\left\langle\psi_0(r)\left|\frac{1}{r'}\right|\psi_0(r)\right\rangle, \tag{8.46} $$</p>
+                <p>e a <strong>integral de troca</strong> (<em>exchange integral</em>),</p>
+                <p>$$ X \equiv a\left\langle\psi_0(r)\left|\frac1r\right|\psi_0(r')\right\rangle. \tag{8.47} $$</p>
+                <p>O fator $a$ as torna adimensionais. $D$ tem leitura clássica: $\frac{e^2}{4\pi\epsilon_0}\frac{D}{a}$ é a energia
+                    potencial do próton 2 na nuvem de carga $-e|\psi_0(r)|^2$ do átomo centrado no próton 1. $X$ não tem análogo clássico:
+                    ela envolve o produto $\psi_0(r)\psi_0(r')$, que só existe porque o elétron está nos dois átomos ao mesmo tempo.</p>
+
+                <div class="definition-box" id="teo-integrais-direta-e-troca">
+                    <p><strong>Teorema (Integrais direta e de troca).</strong></p>
+                    <p>$$ D = \frac aR - \left(1 + \frac aR\right)e^{-2R/a}, \tag{8.48} $$</p>
+                    <p>$$ X = \left(1 + \frac Ra\right)e^{-R/a}. \tag{8.49} $$</p>
+                </div>
+                <p><em>Demonstração.</em> Usamos as mesmas coordenadas da Figura 8.6. (O Griffiths deixa as duas contas para o leitor.)</p>
+                <p><strong>A integral direta.</strong> Com $\psi_0(r)^2 = e^{-2r/a}/\pi a^3$,</p>
+                <p>$$ D = \frac{a}{\pi a^3}\int\frac{e^{-2r/a}}{\sqrt{r^2 + R^2 - 2rR\cos\theta}}\,r^2\sin\theta\,dr\,d\theta\,d\phi. $$</p>
+                <p>A integral em $\phi$ dá $2\pi$. Na integral em $\theta$, com o mesmo $y$ do teorema anterior,</p>
+                <p>$$ \int_0^\pi\frac{\sin\theta\,d\theta}{\sqrt{r^2 + R^2 - 2rR\cos\theta}} = \frac{1}{rR}\int_{|r - R|}^{r + R}dy = \frac{(r + R) - |r - R|}{rR}, $$</p>
+                <p>que vale $2/R$ se $r \lt R$ e $2/r$ se $r \gt R$. (É a lei de Gauss: a média de $1/r'$ sobre uma esfera de raio $r$ em
+                    torno do próton 1 é $1/\max(r, R)$.) Portanto</p>
+                <p>$$ D = \frac{4}{a^2}\left[\frac1R\int_0^Rr^2e^{-2r/a}\,dr + \int_R^\infty r\,e^{-2r/a}\,dr\right]. $$</p>
+                <p>Integrando por partes,</p>
+                <p>$$ \begin{aligned}
+                    \int_0^Rr^2e^{-2r/a}\,dr &= \frac{a^3}{4}\left[1 - \left(1 + \frac{2R}{a} + \frac{2R^2}{a^2}\right)e^{-2R/a}\right], \\
+                    \int_R^\infty r\,e^{-2r/a}\,dr &= \frac{a^2}{4}\left(1 + \frac{2R}{a}\right)e^{-2R/a}.
+                    \end{aligned} $$</p>
+                <p>Logo $D = \frac aR - \left(\frac aR + 2 + \frac{2R}{a}\right)e^{-2R/a} + \left(1 + \frac{2R}{a}\right)e^{-2R/a}$,
+                    e os termos em $R/a$ se cancelam, deixando a Eq. (8.48).</p>
+                <p><strong>A integral de troca.</strong> Agora o integrando é $\psi_0(r)\,\frac{a}{r}\,\psi_0(r') = \frac{a}{\pi a^3}\frac{e^{-r/a}e^{-r'/a}}{r}$,
+                    e o fator $1/r$ cancela um $r$ do elemento de volume:</p>
+                <p>$$ X = \frac{1}{\pi a^2}\,2\pi\int_0^\infty r\,e^{-r/a}\left[\int_0^\pi e^{-r'/a}\sin\theta\,d\theta\right]dr. $$</p>
+                <p>A integral entre colchetes é exatamente a do Passo 1 da demonstração da Eq. (8.43). Levando-a para cá, o fator $r$
+                    se cancela com o $1/r$ dela, e, separando as mesmas duas regiões,</p>
+                <p>$$ \begin{aligned}
+                    X = \frac{2}{aR}\bigg[&-e^{-R/a}\int_0^\infty(r + R + a)\,e^{-2r/a}\,dr \\
+                    &+ e^{-R/a}\int_0^R(R - r + a)\,dr + e^{R/a}\int_R^\infty(r - R + a)\,e^{-2r/a}\,dr\bigg].
+                    \end{aligned} $$</p>
+                <p>As três integrais valem $\frac{a^2}{4} + (R + a)\frac a2$, $\frac{R^2}{2} + aR$ e, com $r = R + u$,
+                    $e^{-2R/a}\left(\frac{a^2}{4} + \frac{a^2}{2}\right)$. Somando com os fatores exponenciais,</p>
+                <p>$$ X = \frac{2e^{-R/a}}{aR}\left[-\frac{3a^2}{4} - \frac{aR}{2} + \frac{R^2}{2} + aR + \frac{3a^2}{4}\right] = \frac{2e^{-R/a}}{aR}\,\frac{R(a + R)}{2}, $$</p>
+                <p>que é a Eq. (8.49). $\blacksquare$</p>
+
+                <h2 id="energia">A energia e a ligação</h2>
+
+                <p>Juntando tudo, falta só um ingrediente: a relação entre $E_1$ e $a$. Das fórmulas de <a href="../[6] - Teoria de Perturbação Independente do Tempo/[03] - A Estrutura Fina do Hidrogênio.html#prop-hidrogenio-bohr">Resultado citado (O átomo de hidrogênio)</a>,
+                    $E_1 = -\frac{m}{2\hbar^2}\left(\frac{e^2}{4\pi\epsilon_0}\right)^2$ e $a = \frac{4\pi\epsilon_0\hbar^2}{me^2}$, de
+                    modo que</p>
+                <p>$$ E_1 = -\left(\frac{e^2}{4\pi\epsilon_0}\right)\frac{1}{2a}, \qquad\text{isto é,}\qquad \frac{e^2}{4\pi\epsilon_0}\,\frac1a = -2E_1. $$</p>
+
+                <div class="definition-box" id="teo-energia-eletronica-h2-mais">
+                    <p><strong>Teorema (Energia do elétron na função-tentativa).</strong> No estado (8.38), com os prótons fixos à
+                        distância $R$,</p>
+                    <p>$$ \langle H\rangle = \left[1 + 2\,\frac{(D + X)}{(1 + I)}\right]E_1. \tag{8.50} $$</p>
+                </div>
+                <p><em>Demonstração.</em> Em (8.45), as duas integrais entre colchetes são $D/a$ e $X/a$, por definição, e
+                    $2|A|^2 = 1/(1 + I)$, por (8.44). Então</p>
+                <p>$$ \langle H\rangle = E_1 - \left(\frac{e^2}{4\pi\epsilon_0}\,\frac1a\right)\frac{D + X}{1 + I} = E_1 + 2E_1\,\frac{D + X}{1 + I}. $$</p>
+                <p>$\blacksquare$</p>
+
+                <p>Pelo princípio variacional, a energia do estado fundamental do elétron é <em>menor</em> que $\langle H\rangle$. Mas
+                    essa é só a energia do <em>elétron</em>: há também a energia potencial da repulsão entre os prótons,</p>
+                <p>$$ V_{pp} = \frac{e^2}{4\pi\epsilon_0}\,\frac1R = -\frac{2a}{R}E_1. \tag{8.51} $$</p>
+                <p>Para $R$ fixo, $V_{pp}$ é uma constante: somá-la ao hamiltoniano soma o mesmo número a todos os níveis e a
+                    $\langle H\rangle$. Assim a energia <em>total</em> do sistema, em unidades de $-E_1$ e como função de $x \equiv R/a$,
+                    é menor que</p>
+                <p>$$ F(x) = -1 + \frac2x\left\{\frac{\left(1 - (2/3)x^2\right)e^{-x} + (1 + x)\,e^{-2x}}{1 + \left(1 + x + (1/3)x^2\right)e^{-x}}\right\}. \tag{8.52} $$</p>
+                <p>De fato, dividindo $\langle H\rangle + V_{pp}$ por $-E_1$,</p>
+                <p>$$ F = -1 - \frac{2(D + X)}{1 + I} + \frac2x = -1 + \frac2x\,\frac{1 + I - x(D + X)}{1 + I}. $$</p>
+                <p>Com $D = \frac1x - \left(1 + \frac1x\right)e^{-2x}$, $X = (1 + x)e^{-x}$ e $I = \left(1 + x + \frac13x^2\right)e^{-x}$,
+                    o numerador fica</p>
+                <p>$$ \begin{aligned}
+                    1 + I - xD - xX &= 1 + \left(1 + x + \tfrac13x^2\right)e^{-x} \\
+                    &\quad - 1 + (x + 1)e^{-2x} - (x + x^2)e^{-x} \\
+                    &= \left(1 - \tfrac23x^2\right)e^{-x} + (1 + x)\,e^{-2x},
+                    \end{aligned} $$</p>
+                <p>e o denominador é $1 + I$: é a Eq. (8.52).</p>
+
+                <figure class="lecture-figure" id="fig-8-7">
+                    <svg viewBox="0 0 640 330" role="img" aria-label="Figura 8.7: gráfico de F(x), Eq. 8.52, para x de 0 a 6; a curva desce de valores positivos, cruza -1 perto de x = 1,5, atinge o mínimo F = -1,13 em x = 2,49 (equilíbrio) e volta a -1 por baixo quando x cresce.">
+<defs><marker id="arr-8-7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="80" y1="290" x2="80" y2="30" class="fig-axis"/>
+<line x1="80" y1="246.7" x2="600" y2="246.7" class="fig-axis"/>
+<line x1="80" y1="246.7" x2="80" y2="251.7" class="fig-axis"/>
+<line x1="166.7" y1="246.7" x2="166.7" y2="251.7" class="fig-axis"/>
+<text x="166.7" y="266.7" text-anchor="middle" class="fig-label fig-small">1</text>
+<line x1="253.3" y1="246.7" x2="253.3" y2="251.7" class="fig-axis"/>
+<text x="253.3" y="266.7" text-anchor="middle" class="fig-label fig-small">2</text>
+<line x1="340" y1="246.7" x2="340" y2="251.7" class="fig-axis"/>
+<text x="340" y="266.7" text-anchor="middle" class="fig-label fig-small">3</text>
+<line x1="426.7" y1="246.7" x2="426.7" y2="251.7" class="fig-axis"/>
+<text x="426.7" y="266.7" text-anchor="middle" class="fig-label fig-small">4</text>
+<line x1="513.3" y1="246.7" x2="513.3" y2="251.7" class="fig-axis"/>
+<text x="513.3" y="266.7" text-anchor="middle" class="fig-label fig-small">5</text>
+<line x1="600" y1="246.7" x2="600" y2="251.7" class="fig-axis"/>
+<text x="600" y="266.7" text-anchor="middle" class="fig-label fig-small">6</text>
+<line x1="75" y1="30" x2="80" y2="30" class="fig-axis"/>
+<text x="70" y="35" text-anchor="end" class="fig-label fig-small">0</text>
+<line x1="75" y1="138.3" x2="80" y2="138.3" class="fig-axis"/>
+<text x="70" y="143.3" text-anchor="end" class="fig-label fig-small">−0,5</text>
+<line x1="75" y1="246.7" x2="80" y2="246.7" class="fig-axis"/>
+<text x="70" y="251.7" text-anchor="end" class="fig-label fig-small">−1</text>
+<line x1="75" y1="290" x2="80" y2="290" class="fig-axis"/>
+<text x="70" y="295" text-anchor="end" class="fig-label fig-small">−1,2</text>
+<text x="70" y="20" text-anchor="end" class="fig-label fig-it">F(x)</text>
+<text x="608" y="251.7" class="fig-label fig-it">x</text>
+<path d="M144.1,33.2 L145.9,46.2 L147.6,58.5 L149.3,70.1 L151.1,80.9 L152.8,91.1 L154.5,100.8 L156.3,109.9 L158,118.5 L159.7,126.6 L161.5,134.3 L163.2,141.6 L164.9,148.4 L166.7,155 L168.4,161.1 L170.1,167 L171.9,172.6 L173.6,177.8 L175.3,182.8 L177.1,187.6 L178.8,192.1 L180.5,196.4 L182.3,200.5 L184,204.4 L185.7,208.1 L187.5,211.6 L189.2,214.9 L190.9,218.1 L192.7,221.1 L194.4,224 L196.1,226.8 L197.9,229.4 L199.6,231.9 L201.3,234.2 L203.1,236.5 L204.8,238.7 L206.5,240.7 L208.3,242.7 L210,244.5 L211.7,246.3 L213.5,248 L215.2,249.6 L216.9,251.1 L218.7,252.5 L220.4,253.9 L222.1,255.2 L223.9,256.5 L225.6,257.6 L227.3,258.8 L229.1,259.8 L230.8,260.8 L232.5,261.8 L234.3,262.7 L236,263.6 L237.7,264.4 L239.5,265.2 L241.2,265.9 L242.9,266.6 L244.7,267.2 L246.4,267.8 L248.1,268.4 L249.9,269 L251.6,269.5 L253.3,270 L255.1,270.4 L256.8,270.8 L258.5,271.2 L260.3,271.6 L262,271.9 L263.7,272.3 L265.5,272.6 L267.2,272.8 L268.9,273.1 L270.7,273.3 L272.4,273.5 L274.1,273.7 L275.9,273.9 L277.6,274 L279.3,274.2 L281.1,274.3 L282.8,274.4 L284.5,274.5 L286.3,274.6 L288,274.6 L289.7,274.7 L291.5,274.7 L293.2,274.7 L294.9,274.8 L296.7,274.8 L298.4,274.8 L300.1,274.7 L301.9,274.7 L303.6,274.7 L305.3,274.6 L307.1,274.6 L308.8,274.5 L310.5,274.4 L312.3,274.3 L314,274.3 L315.7,274.2 L317.5,274.1 L319.2,274 L320.9,273.8 L322.7,273.7 L324.4,273.6 L326.1,273.5 L327.9,273.3 L329.6,273.2 L331.3,273 L333.1,272.9 L334.8,272.7 L336.5,272.6 L338.3,272.4 L340,272.3 L341.7,272.1 L343.5,271.9 L345.2,271.8 L346.9,271.6 L348.7,271.4 L350.4,271.2 L352.1,271 L353.9,270.9 L355.6,270.7 L357.3,270.5 L359.1,270.3 L360.8,270.1 L362.5,269.9 L364.3,269.7 L366,269.5 L367.7,269.3 L369.5,269.1 L371.2,268.9 L372.9,268.7 L374.7,268.5 L376.4,268.3 L378.1,268.1 L379.9,267.9 L381.6,267.7 L383.3,267.5 L385.1,267.3 L386.8,267.1 L388.5,266.9 L390.3,266.7 L392,266.5 L393.7,266.3 L395.5,266.1 L397.2,265.9 L398.9,265.7 L400.7,265.5 L402.4,265.3 L404.1,265.1 L405.9,264.9 L407.6,264.7 L409.3,264.6 L411.1,264.4 L412.8,264.2 L414.5,264 L416.3,263.8 L418,263.6 L419.7,263.4 L421.5,263.2 L423.2,263 L424.9,262.8 L426.7,262.6 L428.4,262.5 L430.1,262.3 L431.9,262.1 L433.6,261.9 L435.3,261.7 L437.1,261.5 L438.8,261.4 L440.5,261.2 L442.3,261 L444,260.8 L445.7,260.7 L447.5,260.5 L449.2,260.3 L450.9,260.2 L452.7,260 L454.4,259.8 L456.1,259.7 L457.9,259.5 L459.6,259.3 L461.3,259.2 L463.1,259 L464.8,258.8 L466.5,258.7 L468.3,258.5 L470,258.4 L471.7,258.2 L473.5,258.1 L475.2,257.9 L476.9,257.8 L478.7,257.6 L480.4,257.5 L482.1,257.3 L483.9,257.2 L485.6,257.1 L487.3,256.9 L489.1,256.8 L490.8,256.6 L492.5,256.5 L494.3,256.4 L496,256.2 L497.7,256.1 L499.5,256 L501.2,255.8 L502.9,255.7 L504.7,255.6 L506.4,255.5 L508.1,255.3 L509.9,255.2 L511.6,255.1 L513.3,255 L515.1,254.9 L516.8,254.8 L518.5,254.6 L520.3,254.5 L522,254.4 L523.7,254.3 L525.5,254.2 L527.2,254.1 L528.9,254 L530.7,253.9 L532.4,253.8 L534.1,253.7 L535.9,253.6 L537.6,253.5 L539.3,253.4 L541.1,253.3 L542.8,253.2 L544.5,253.1 L546.3,253 L548,252.9 L549.7,252.8 L551.5,252.7 L553.2,252.6 L554.9,252.5 L556.7,252.4 L558.4,252.4 L560.1,252.3 L561.9,252.2 L563.6,252.1 L565.3,252 L567.1,251.9 L568.8,251.9 L570.5,251.8 L572.3,251.7 L574,251.6 L575.7,251.5 L577.5,251.5 L579.2,251.4 L580.9,251.3 L582.7,251.3 L584.4,251.2 L586.1,251.1 L587.9,251 L589.6,251 L591.3,250.9 L593.1,250.8 L594.8,250.8 L596.5,250.7 L598.3,250.7 L600,250.6" class="fig-curve"/>
+<line x1="296" y1="241.7" x2="296" y2="251.7" class="fig-axis"/>
+<line x1="356" y1="276.7" x2="302" y2="254.7" class="fig-axis" marker-end="url(#arr-8-7)"/>
+<text x="360" y="282.7" class="fig-label fig-small">Equilíbrio</text>
+</svg>
+                    <figcaption><strong>Figura 8.7.</strong> Gráfico da função $F(x)$, Eq. (8.52), calculado ponto a ponto. A curva
+                        desce abaixo de $-1$ (a energia de um átomo de hidrogênio neutro mais um próton livre) entre $x \approx 1{,}5$ e
+                        $x \to \infty$, com mínimo perto de $x \approx 2{,}5$: existe um estado ligado.</figcaption>
+                </figure>
+
+                <p>A função está no gráfico da Figura 8.7. A ligação <em>de fato</em> ocorre: há uma região em que o gráfico fica abaixo
+                    de $-1$, ou seja, a energia é menor que a de um átomo neutro mais um próton livre ($-13{,}6$ eV). É uma
+                    <strong>ligação covalente</strong>, com o elétron compartilhado igualmente pelos dois prótons. A separação de equilíbrio
+                    dos prótons é de cerca de 2,4 raios de Bohr, ou 1,3 Å, e a energia de ligação calculada é de 1,8 eV
+                    (<a href="#exr-8-3-3">Exercício 8.3-3</a> refaz a conta numericamente). Note a lógica: o princípio variacional dá um limite superior para a
+                    energia; se o limite já está abaixo de $-1$, a energia verdadeira também está, e uma função-tentativa melhor só pode
+                    aprofundar o poço.</p>
+
+                <p>De onde vem a ligação? Se o elétron ficasse preso ao próton 1, como num átomo de hidrogênio comum, o termo de troca
+                    desapareceria, e a energia total seria sempre maior que $-1$: a nuvem eletrônica neutraliza a carga do próton 1, e o
+                    próton 2 só "sente" a parte da carga que não está blindada (<a href="#exr-8-3-5">Exercício 8.3-5</a>). É a integral de troca $X$, que mede o
+                    elétron "dividido" entre os dois prótons, que abaixa a energia o suficiente.</p>
+
+                <h2 id="antiligante">Ligante e antiligante</h2>
+
+                <p>A função (8.38) é chamada <strong>orbital ligante</strong> (<em>bonding orbital</em>). E se usássemos o sinal de
+                    menos na função-tentativa?<sup id="fnref:1"><a href="#fn:1" class="footnote-ref">1</a></sup></p>
+                <p>$$ \psi = A\left[\psi_0(r) - \psi_0(r')\right]. \tag{8.53} $$</p>
+                <p>Não é preciso nenhuma integral nova. Na normalização, o termo cruzado muda de sinal: $|A|^2 = 1/[2(1 - I)]$. Em
+                    $H\psi$, o sinal de menos acompanha o segundo orbital, e no produto interno os termos cruzados (os que contêm $X$)
+                    trocam de sinal, enquanto os diretos (os que contêm $D$) não:</p>
+                <p>$$ \langle H\rangle_- = \left[1 + 2\,\frac{D - X}{1 - I}\right]E_1. $$</p>
+                <p>Somando $V_{pp}$ e repetindo a conta do numerador com $I \to -I$ e $X \to -X$,</p>
+                <p>$$ F_-(x) = -1 + \frac2x\left\{\frac{-\left(1 - (2/3)x^2\right)e^{-x} + (1 + x)\,e^{-2x}}{1 - \left(1 + x + (1/3)x^2\right)e^{-x}}\right\}. $$</p>
+
+                <div class="definition-box" id="prop-antiligante-nao-liga">
+                    <p><strong>Proposição (O orbital antiligante não indica ligação).</strong> Para todo $x \gt 0$, $F_-(x) \gt -1$.</p>
+                </div>
+                <p><em>Demonstração.</em> $F_-(x) + 1 = \frac2x\,\frac{N(x)}{1 - I}$, com
+                    $N(x) = \left(\frac23x^2 - 1\right)e^{-x} + (1 + x)e^{-2x}$. O denominador é positivo, porque
+                    $1 - I \gt 0$ equivale a $e^x \gt 1 + x + \frac13x^2$, que vale para $x \gt 0$ (a série de $e^x$ tem
+                    $\frac12x^2 \gt \frac13x^2$ e os demais termos positivos). Para o numerador, considere
+                    $g(x) \equiv e^xN(x) = \frac23x^2 - 1 + (1 + x)e^{-x}$. Temos $g(0) = 0$ e</p>
+                <p>$$ g'(x) = \frac43x + e^{-x} - (1 + x)e^{-x} = x\left(\frac43 - e^{-x}\right) \gt 0 \quad (x \gt 0), $$</p>
+                <p>logo $g(x) \gt 0$ e $N(x) \gt 0$ para todo $x \gt 0$. $\blacksquare$</p>
+
+                <p>A curva $F_-$ (Figura 8.3-A) desce monotonicamente até $-1$, sem passar abaixo: com essa função-tentativa, os prótons
+                    sempre se repelem. Como o princípio variacional só dá um limite <em>superior</em>, isso não <em>prova</em> que a ligação
+                    seja impossível num estado desse tipo, mas certamente não é promissor. Há aqui um ponto sutil: $\psi_-$ não é uma
+                    tentativa para o estado fundamental. O hamiltoniano (8.36) é simétrico pela reflexão que troca os dois prótons, o
+                    estado fundamental é par por essa reflexão e $\psi_-$ é ímpar; logo $\psi_-$ é ortogonal a ele, e pelo
+                    <a href="[01] - Teoria.html#cor-primeiro-excitado">Corolário (Limite para o primeiro estado excitado)</a>
+                    $\langle H\rangle_-$ é um limite superior para o primeiro estado excitado (o mais baixo dos ímpares).</p>
+
+                <figure class="lecture-figure" id="fig-8-3-a">
+                    <svg viewBox="0 0 640 330" role="img" aria-label="Figura 8.3-A: F(x) do orbital ligante (curva cheia), que desce abaixo de -1, e F-(x) do orbital antiligante (tracejada), que fica sempre acima de -1 e decresce monotonamente até -1.">
+<line x1="80" y1="290" x2="80" y2="30" class="fig-axis"/>
+<line x1="80" y1="259.4" x2="600" y2="259.4" class="fig-axis"/>
+<line x1="80" y1="106.5" x2="600" y2="106.5" class="fig-guide fig-dashed"/>
+<line x1="80" y1="259.4" x2="80" y2="264.4" class="fig-axis"/>
+<line x1="166.7" y1="259.4" x2="166.7" y2="264.4" class="fig-axis"/>
+<text x="166.7" y="279.4" text-anchor="middle" class="fig-label fig-small">1</text>
+<line x1="253.3" y1="259.4" x2="253.3" y2="264.4" class="fig-axis"/>
+<text x="253.3" y="279.4" text-anchor="middle" class="fig-label fig-small">2</text>
+<line x1="340" y1="259.4" x2="340" y2="264.4" class="fig-axis"/>
+<text x="340" y="279.4" text-anchor="middle" class="fig-label fig-small">3</text>
+<line x1="426.7" y1="259.4" x2="426.7" y2="264.4" class="fig-axis"/>
+<text x="426.7" y="279.4" text-anchor="middle" class="fig-label fig-small">4</text>
+<line x1="513.3" y1="259.4" x2="513.3" y2="264.4" class="fig-axis"/>
+<text x="513.3" y="279.4" text-anchor="middle" class="fig-label fig-small">5</text>
+<line x1="600" y1="259.4" x2="600" y2="264.4" class="fig-axis"/>
+<text x="600" y="279.4" text-anchor="middle" class="fig-label fig-small">6</text>
+<line x1="75" y1="30" x2="80" y2="30" class="fig-axis"/>
+<text x="70" y="35" text-anchor="end" class="fig-label fig-small">0,5</text>
+<line x1="75" y1="106.5" x2="80" y2="106.5" class="fig-axis"/>
+<text x="70" y="111.5" text-anchor="end" class="fig-label fig-small">0</text>
+<line x1="75" y1="182.9" x2="80" y2="182.9" class="fig-axis"/>
+<text x="70" y="187.9" text-anchor="end" class="fig-label fig-small">−0,5</text>
+<line x1="75" y1="259.4" x2="80" y2="259.4" class="fig-axis"/>
+<text x="70" y="264.4" text-anchor="end" class="fig-label fig-small">−1</text>
+<text x="70" y="20" text-anchor="end" class="fig-label fig-it">F(x)</text>
+<text x="608" y="264.4" class="fig-label fig-it">x</text>
+<path d="M133.7,38.5 L135.5,52.3 L137.2,65.2 L138.9,77.2 L140.7,88.4 L142.4,98.9 L144.1,108.7 L145.9,117.9 L147.6,126.6 L149.3,134.7 L151.1,142.4 L152.8,149.6 L154.5,156.4 L156.3,162.9 L158,168.9 L159.7,174.7 L161.5,180.1 L163.2,185.2 L164.9,190.1 L166.7,194.7 L168.4,199 L170.1,203.2 L171.9,207.1 L173.6,210.8 L175.3,214.4 L177.1,217.7 L178.8,220.9 L180.5,223.9 L182.3,226.8 L184,229.6 L185.7,232.2 L187.5,234.7 L189.2,237 L190.9,239.3 L192.7,241.4 L194.4,243.4 L196.1,245.4 L197.9,247.2 L199.6,249 L201.3,250.6 L203.1,252.2 L204.8,253.8 L206.5,255.2 L208.3,256.6 L210,257.9 L211.7,259.1 L213.5,260.3 L215.2,261.4 L216.9,262.5 L218.7,263.5 L220.4,264.5 L222.1,265.4 L223.9,266.3 L225.6,267.2 L227.3,267.9 L229.1,268.7 L230.8,269.4 L232.5,270.1 L234.3,270.7 L236,271.3 L237.7,271.9 L239.5,272.5 L241.2,273 L242.9,273.5 L244.7,273.9 L246.4,274.4 L248.1,274.8 L249.9,275.2 L251.6,275.5 L253.3,275.9 L255.1,276.2 L256.8,276.5 L258.5,276.8 L260.3,277 L262,277.3 L263.7,277.5 L265.5,277.7 L267.2,277.9 L268.9,278.1 L270.7,278.2 L272.4,278.4 L274.1,278.5 L275.9,278.6 L277.6,278.7 L279.3,278.8 L281.1,278.9 L282.8,279 L284.5,279.1 L286.3,279.1 L288,279.2 L289.7,279.2 L291.5,279.2 L293.2,279.2 L294.9,279.2 L296.7,279.2 L298.4,279.2 L300.1,279.2 L301.9,279.2 L303.6,279.2 L305.3,279.1 L307.1,279.1 L308.8,279.1 L310.5,279 L312.3,278.9 L314,278.9 L315.7,278.8 L317.5,278.7 L319.2,278.7 L320.9,278.6 L322.7,278.5 L324.4,278.4 L326.1,278.3 L327.9,278.2 L329.6,278.1 L331.3,278 L333.1,277.9 L334.8,277.8 L336.5,277.7 L338.3,277.6 L340,277.5 L341.7,277.4 L343.5,277.2 L345.2,277.1 L346.9,277 L348.7,276.9 L350.4,276.8 L352.1,276.6 L353.9,276.5 L355.6,276.4 L357.3,276.2 L359.1,276.1 L360.8,276 L362.5,275.8 L364.3,275.7 L366,275.6 L367.7,275.4 L369.5,275.3 L371.2,275.1 L372.9,275 L374.7,274.9 L376.4,274.7 L378.1,274.6 L379.9,274.4 L381.6,274.3 L383.3,274.1 L385.1,274 L386.8,273.9 L388.5,273.7 L390.3,273.6 L392,273.4 L393.7,273.3 L395.5,273.2 L397.2,273 L398.9,272.9 L400.7,272.7 L402.4,272.6 L404.1,272.5 L405.9,272.3 L407.6,272.2 L409.3,272 L411.1,271.9 L412.8,271.8 L414.5,271.6 L416.3,271.5 L418,271.4 L419.7,271.2 L421.5,271.1 L423.2,271 L424.9,270.8 L426.7,270.7 L428.4,270.6 L430.1,270.4 L431.9,270.3 L433.6,270.2 L435.3,270 L437.1,269.9 L438.8,269.8 L440.5,269.7 L442.3,269.5 L444,269.4 L445.7,269.3 L447.5,269.2 L449.2,269.1 L450.9,268.9 L452.7,268.8 L454.4,268.7 L456.1,268.6 L457.9,268.5 L459.6,268.3 L461.3,268.2 L463.1,268.1 L464.8,268 L466.5,267.9 L468.3,267.8 L470,267.7 L471.7,267.6 L473.5,267.5 L475.2,267.4 L476.9,267.3 L478.7,267.2 L480.4,267 L482.1,266.9 L483.9,266.8 L485.6,266.7 L487.3,266.6 L489.1,266.5 L490.8,266.5 L492.5,266.4 L494.3,266.3 L496,266.2 L497.7,266.1 L499.5,266 L501.2,265.9 L502.9,265.8 L504.7,265.7 L506.4,265.6 L508.1,265.5 L509.9,265.5 L511.6,265.4 L513.3,265.3 L515.1,265.2 L516.8,265.1 L518.5,265 L520.3,265 L522,264.9 L523.7,264.8 L525.5,264.7 L527.2,264.6 L528.9,264.6 L530.7,264.5 L532.4,264.4 L534.1,264.4 L535.9,264.3 L537.6,264.2 L539.3,264.1 L541.1,264.1 L542.8,264 L544.5,263.9 L546.3,263.9 L548,263.8 L549.7,263.7 L551.5,263.7 L553.2,263.6 L554.9,263.5 L556.7,263.5 L558.4,263.4 L560.1,263.4 L561.9,263.3 L563.6,263.2 L565.3,263.2 L567.1,263.1 L568.8,263.1 L570.5,263 L572.3,263 L574,262.9 L575.7,262.9 L577.5,262.8 L579.2,262.8 L580.9,262.7 L582.7,262.7 L584.4,262.6 L586.1,262.6 L587.9,262.5 L589.6,262.5 L591.3,262.4 L593.1,262.4 L594.8,262.3 L596.5,262.3 L598.3,262.2 L600,262.2" class="fig-curve"/>
+<path d="M190.5,32.8 L192.2,38 L193.8,42.9 L195.5,47.7 L197.2,52.4 L198.9,57 L200.5,61.4 L202.2,65.7 L203.9,69.9 L205.5,73.9 L207.2,77.9 L208.9,81.8 L210.6,85.5 L212.2,89.2 L213.9,92.7 L215.6,96.2 L217.2,99.6 L218.9,102.9 L220.6,106.1 L222.3,109.2 L223.9,112.3 L225.6,115.3 L227.3,118.2 L228.9,121 L230.6,123.8 L232.3,126.5 L234,129.2 L235.6,131.7 L237.3,134.3 L239,136.7 L240.6,139.1 L242.3,141.5 L244,143.8 L245.7,146 L247.3,148.2 L249,150.3 L250.7,152.4 L252.3,154.5 L254,156.5 L255.7,158.4 L257.4,160.4 L259,162.2 L260.7,164.1 L262.4,165.9 L264,167.6 L265.7,169.3 L267.4,171 L269.1,172.6 L270.7,174.3 L272.4,175.8 L274.1,177.4 L275.7,178.9 L277.4,180.4 L279.1,181.8 L280.8,183.2 L282.4,184.6 L284.1,186 L285.8,187.3 L287.4,188.6 L289.1,189.9 L290.8,191.2 L292.5,192.4 L294.1,193.6 L295.8,194.8 L297.5,195.9 L299.1,197.1 L300.8,198.2 L302.5,199.3 L304.2,200.3 L305.8,201.4 L307.5,202.4 L309.2,203.4 L310.8,204.4 L312.5,205.4 L314.2,206.3 L315.9,207.3 L317.5,208.2 L319.2,209.1 L320.9,209.9 L322.5,210.8 L324.2,211.6 L325.9,212.5 L327.6,213.3 L329.2,214.1 L330.9,214.9 L332.6,215.6 L334.2,216.4 L335.9,217.1 L337.6,217.9 L339.3,218.6 L340.9,219.3 L342.6,220 L344.3,220.7 L345.9,221.3 L347.6,222 L349.3,222.6 L351,223.2 L352.6,223.9 L354.3,224.5 L356,225 L357.6,225.6 L359.3,226.2 L361,226.8 L362.7,227.3 L364.3,227.9 L366,228.4 L367.7,228.9 L369.3,229.4 L371,229.9 L372.7,230.4 L374.4,230.9 L376,231.4 L377.7,231.9 L379.4,232.3 L381,232.8 L382.7,233.2 L384.4,233.7 L386.1,234.1 L387.7,234.5 L389.4,234.9 L391.1,235.3 L392.7,235.7 L394.4,236.1 L396.1,236.5 L397.8,236.9 L399.4,237.3 L401.1,237.7 L402.8,238 L404.4,238.4 L406.1,238.7 L407.8,239.1 L409.5,239.4 L411.1,239.7 L412.8,240.1 L414.5,240.4 L416.1,240.7 L417.8,241 L419.5,241.3 L421.2,241.6 L422.8,241.9 L424.5,242.2 L426.2,242.5 L427.8,242.7 L429.5,243 L431.2,243.3 L432.9,243.6 L434.5,243.8 L436.2,244.1 L437.9,244.3 L439.5,244.6 L441.2,244.8 L442.9,245.1 L444.6,245.3 L446.2,245.5 L447.9,245.8 L449.6,246 L451.2,246.2 L452.9,246.4 L454.6,246.6 L456.3,246.8 L457.9,247 L459.6,247.2 L461.3,247.4 L462.9,247.6 L464.6,247.8 L466.3,248 L468,248.2 L469.6,248.4 L471.3,248.6 L473,248.7 L474.6,248.9 L476.3,249.1 L478,249.3 L479.7,249.4 L481.3,249.6 L483,249.8 L484.7,249.9 L486.3,250.1 L488,250.2 L489.7,250.4 L491.4,250.5 L493,250.7 L494.7,250.8 L496.4,250.9 L498,251.1 L499.7,251.2 L501.4,251.4 L503.1,251.5 L504.7,251.6 L506.4,251.7 L508.1,251.9 L509.7,252 L511.4,252.1 L513.1,252.2 L514.8,252.3 L516.4,252.5 L518.1,252.6 L519.8,252.7 L521.4,252.8 L523.1,252.9 L524.8,253 L526.5,253.1 L528.1,253.2 L529.8,253.3 L531.5,253.4 L533.1,253.5 L534.8,253.6 L536.5,253.7 L538.2,253.8 L539.8,253.9 L541.5,254 L543.2,254.1 L544.8,254.2 L546.5,254.2 L548.2,254.3 L549.9,254.4 L551.5,254.5 L553.2,254.6 L554.9,254.6 L556.5,254.7 L558.2,254.8 L559.9,254.9 L561.6,255 L563.2,255 L564.9,255.1 L566.6,255.2 L568.2,255.2 L569.9,255.3 L571.6,255.4 L573.3,255.4 L574.9,255.5 L576.6,255.6 L578.3,255.6 L579.9,255.7 L581.6,255.8 L583.3,255.8 L585,255.9 L586.6,255.9 L588.3,256 L590,256 L591.6,256.1 L593.3,256.2 L595,256.2 L596.7,256.3 L598.3,256.3 L600,256.4" class="fig-curve fig-dashed"/>
+<text x="392" y="295.4" text-anchor="middle" class="fig-label fig-small">ligante</text>
+<text x="346" y="206.9" class="fig-label fig-small">antiligante</text>
+</svg>
+                    <figcaption><strong>Figura 8.3-A.</strong> As funções $F(x)$ do orbital ligante (Eq. 8.52, curva cheia) e $F_-(x)$
+                        do orbital antiligante (Eq. 8.53, tracejada), em unidades de $-E_1$. Só a primeira desce abaixo de $-1$.</figcaption>
+                </figure>
+
+                <h2 id="conexao">Conexão com o experimento</h2>
+
+                <p>O Griffiths compara a estimativa com os valores medidos para o H$_2^+$:</p>
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr><th>Grandeza</th><th>Variacional (Eq. 8.52)</th><th>Experimental</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Separação de equilíbrio</td><td>$\approx 2{,}4\,a \approx 1{,}3$ Å</td><td>$1{,}06$ Å</td></tr>
+                            <tr><td>Energia de ligação</td><td>$1{,}8$ eV</td><td>$2{,}8$ eV</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>O princípio variacional, como sempre, <em>superestima</em> a energia do estado fundamental e por isso
+                    <em>subestima</em> a força da ligação. Mas o ponto essencial era ver se a ligação ocorre, e isso a conta responde sem
+                    ambiguidade: uma função-tentativa melhor só pode tornar o poço da Figura 8.7 ainda mais fundo. A separação também sai
+                    maior que a medida, coerente com um poço raso demais.</p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p id="exr-8-3-1"><strong>Exercício 8.3-1.</strong> Calcule a integral de superposição $I$ em <em>coordenadas
+                    elipsoidais</em>, $\mu = (r + r')/R$ e $\nu = (r - r')/R$, com o ângulo azimutal $\phi$ em torno do eixo dos prótons,
+                    e confira a Eq. (8.43).</p>
+                <p><em>Solução.</em> Pela desigualdade triangular, $\mu \ge 1$ e $-1 \le \nu \le 1$. Invertendo, $r = R(\mu + \nu)/2$ e
+                    $r' = R(\mu - \nu)/2$. Com o próton 1 na origem e o próton 2 em $z = R$, temos $r^2 - r'^2 = 2zR - R^2$, logo
+                    $z = \frac R2(1 + \mu\nu)$ e $\rho^2 = r^2 - z^2 = \frac{R^2}{4}(\mu^2 - 1)(1 - \nu^2)$, em que $\rho$ é a distância
+                    ao eixo. O jacobiano de $(\rho, z)$ em relação a $(\mu, \nu)$ é</p>
+                <p>$$ \frac{\partial\rho}{\partial\mu}\frac{\partial z}{\partial\nu} - \frac{\partial\rho}{\partial\nu}\frac{\partial z}{\partial\mu} = \frac{R^2}{4}\,\frac{\mu^2 - \nu^2}{\sqrt{(\mu^2 - 1)(1 - \nu^2)}}, $$</p>
+                <p>e, multiplicado por $\rho$, dá o elemento de volume $d^3\mathbf r = \rho\,d\rho\,dz\,d\phi = \frac{R^3}{8}(\mu^2 - \nu^2)\,d\mu\,d\nu\,d\phi$.
+                    Como $r + r' = R\mu$, o integrando de (8.40) só depende de $\mu$:</p>
+                <p>$$ \begin{aligned}
+                    I &= \frac{1}{\pi a^3}\,\frac{R^3}{8}\,2\pi\int_1^\infty e^{-R\mu/a}\left[\int_{-1}^1(\mu^2 - \nu^2)\,d\nu\right]d\mu \\
+                    &= \frac{x^3}{4}\int_1^\infty e^{-x\mu}\left(2\mu^2 - \frac23\right)d\mu,
+                    \end{aligned} $$</p>
+                <p>com $x = R/a$. Usando $\int_1^\infty\mu^2e^{-x\mu}d\mu = e^{-x}\left(\frac1x + \frac{2}{x^2} + \frac{2}{x^3}\right)$ e
+                    $\int_1^\infty e^{-x\mu}d\mu = e^{-x}/x$,</p>
+                <p>$$ I = e^{-x}\left(\frac{x^2}{2} + x + 1 - \frac{x^2}{6}\right) = e^{-x}\left(1 + x + \frac{x^2}{3}\right), $$</p>
+                <p>que é a Eq. (8.43), agora sem nenhum valor absoluto: nessas coordenadas a geometria de dois centros é natural.</p>
+
+                <p id="exr-8-3-2"><strong>Exercício 8.3-2.</strong> Encontre os limites de $I$, $D$, $X$ e da energia do elétron
+                    $\langle H\rangle$ (Eq. 8.50) quando $R \to 0$ e quando $R \to \infty$, e interprete os dois resultados.</p>
+                <p><em>Solução.</em> Expandindo em $x = R/a$: $I = 1 - \frac{x^2}{6} + \dots$, $X = 1 - \frac{x^2}{2} + \dots$ e, como
+                    $\left(1 + \frac1x\right)e^{-2x} = \frac1x - 1 + \frac23x^2 + \dots$, $D = 1 - \frac23x^2 + \dots$. Então, quando
+                    $R \to 0$,</p>
+                <p>$$ \langle H\rangle \to \left[1 + 2\,\frac{1 + 1}{1 + 1}\right]E_1 = 3E_1 = -40{,}8\ \text{eV}. $$</p>
+                <p>Com os prótons superpostos, temos um núcleo de carga $2e$, isto é, o íon He$^+$, e a função-tentativa virou o
+                    orbital 1s do <em>hidrogênio</em>. Conferindo direto: nesse estado, a energia cinética média é $-E_1$ e a potencial é
+                    $-2\frac{e^2}{4\pi\epsilon_0}\left\langle\frac1r\right\rangle = -2\frac{e^2}{4\pi\epsilon_0}\frac1a = 4E_1$, o que soma
+                    $3E_1$. A energia exata do He$^+$ é $Z^2E_1 = 4E_1 = -54{,}4$ eV, abaixo de $3E_1$, como o princípio variacional exige.
+                    (A energia total, com $V_{pp}$, vai a $+\infty$.) Quando $R \to \infty$, $I$, $D$ e $X$ vão a zero e
+                    $\langle H\rangle \to E_1$: um átomo de hidrogênio e um próton livre, sem interação, e $F \to -1$.</p>
+
+                <p id="exr-8-3-3"><strong>Exercício 8.3-3.</strong> Localize numericamente o mínimo de $F(x)$ e calcule a separação de
+                    equilíbrio (em Å, com $a = 0{,}529$ Å) e a energia de ligação (em eV).</p>
+                <p><em>Solução.</em> Resolvendo $F'(x) = 0$ numericamente (por bisseção, entre $x = 2$ e $x = 3$, em que $F'$ troca de
+                    sinal), obtemos $x_0 = 2{,}493$ e $F(x_0) = -1{,}1297$. A separação de equilíbrio é $R_0 = 2{,}49\,a = 1{,}32$ Å, e a
+                    energia de ligação é a distância do mínimo até a assíntota $-1$:</p>
+                <p>$$ E_{\text{lig}} = \left(1{,}1297 - 1\right)\times13{,}6\ \text{eV} = 1{,}76\ \text{eV}. $$</p>
+                <p>O Griffiths, lendo o gráfico, dá "cerca de 2,4 raios de Bohr, ou 1,3 Å" e 1,8 eV. O mínimo é raso e largo: $F$
+                    cruza $-1$ em $x \approx 1{,}52$ e só volta a $-1$ no infinito, e a segunda derivada no mínimo é pequena,
+                    $F''(x_0) \approx 0{,}126$.</p>
+
+                <p id="exr-8-3-4"><strong>Exercício 8.3-4.</strong> Compare a densidade de probabilidade do elétron no ponto médio
+                    entre os prótons para o orbital ligante, para o antiligante e para a média das densidades atômicas,
+                    $\frac12\left[\psi_0(r)^2 + \psi_0(r')^2\right]$, na separação de equilíbrio.</p>
+                <p><em>Solução.</em> No ponto médio, $r = r' = R/2$. Para o ligante,
+                    $|\psi|^2 = |A|^2\left[2\psi_0(R/2)\right]^2 = \frac{2}{1 + I}\,\psi_0(R/2)^2$; para o antiligante, $|\psi|^2 = 0$
+                    (um nó, porque $\psi_0(r) = \psi_0(r')$ ali); e a média das densidades atômicas vale $\psi_0(R/2)^2$. Em $x_0 = 2{,}49$,
+                    $I = 0{,}460$ e a razão é $2/(1 + I) = 1{,}37$: o orbital ligante acumula $37\%$ a mais de probabilidade entre os
+                    prótons do que dois átomos "pela metade". A carga total se conserva: o termo de interferência $2\psi_0(r)\psi_0(r')$,
+                    que integra a $2I$, é compensado pelo fator $1/(1 + I)$, que tira probabilidade das regiões externas. É essa carga
+                    acumulada entre os prótons, atraindo os dois, que caracteriza a ligação.</p>
+
+                <p id="exr-8-3-5"><strong>Exercício 8.3-5.</strong> Suponha que o elétron fique no orbital $\psi_0(r)$ do próton 1, sem
+                    a combinação (8.38). Calcule a energia total em unidades de $-E_1$ e mostre que não há ligação. O que isso diz sobre o
+                    papel da integral de troca?</p>
+                <p><em>Solução.</em> Como $\psi_0(r)$ é autofunção da parte do hamiltoniano com o próton 1,
+                    $\langle H\rangle = E_1 - \frac{e^2}{4\pi\epsilon_0}\left\langle\frac{1}{r'}\right\rangle = E_1 - \frac{e^2}{4\pi\epsilon_0}\frac Da = (1 + 2D)E_1$.
+                    Somando $V_{pp} = -\frac2xE_1$ e dividindo por $-E_1$,</p>
+                <p>$$ F_{\text{sem troca}}(x) = -1 - 2D + \frac2x = -1 + 2\left(1 + \frac1x\right)e^{-2x} \gt -1. $$</p>
+                <p>A energia é sempre maior que a de um átomo mais um próton livre: o próton 2 vê um átomo neutro, cuja carga eletrônica
+                    blindada só deixa um resto repulsivo, que cai como $e^{-2x}$. A integral direta, que tem interpretação clássica, não
+                    liga. Na função (8.38), o que muda é o aparecimento de $I$ e $X$, que vêm do produto $\psi_0(r)\psi_0(r')$, isto é,
+                    da <em>interferência</em> entre os dois orbitais. É um efeito puramente quântico, e é ele que produz o mínimo da
+                    Figura 8.7.</p>
+
+                <p id="exr-8-3-6"><strong>Exercício 8.3-6.</strong> Na separação de equilíbrio $x_0 = 2{,}49$, estime a diferença de
+                    energia entre os estados descritos pelos orbitais antiligante e ligante, em eV, e o comprimento de onda do fóton com
+                    essa energia ($hc = 1240$ eV·nm).</p>
+                <p><em>Solução.</em> Com as fórmulas de $F$ e $F_-$: $F(x_0) = -1{,}130$ e $F_-(x_0) = -0{,}578$. A diferença é
+                    $0{,}551\,|E_1| = 7{,}5$ eV, e $\lambda = hc/\Delta E = 1240/7{,}5 \approx 165$ nm, no ultravioleta. É só uma
+                    estimativa: cada número é um limite superior de um nível diferente (o fundamental, para $\psi_+$; o mais baixo dos
+                    ímpares, para $\psi_-$), e a diferença de dois limites superiores não é limite de nada. Repare também que
+                    $F_-(x_0) \gt -1$: no estado antiligante, o íon não fica ligado, e os prótons se afastam.</p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <ul>
+                    <li>A função-tentativa LCAO (8.38) para o H$_2^+$ e sua normalização em termos da integral de superposição $I$
+                        (Eq. 8.43), calculada por completo (e, no <a href="#exr-8-3-1">Exercício 8.3-1</a>, em coordenadas elipsoidais).</li>
+                    <li>As integrais direta $D$ e de troca $X$ (Eqs. 8.48 e 8.49), deduzidas, e a energia do elétron (8.50).</li>
+                    <li>A energia total $F(x)$ (Eq. 8.52), com mínimo abaixo de $-1$: o H$_2^+$ tem estado ligado, com separação de
+                        equilíbrio $\approx 2{,}4\,a$ e energia de ligação $\approx 1{,}8$ eV.</li>
+                    <li>O orbital antiligante (8.53), que não indica ligação, e o papel da interferência (a troca) na ligação covalente.</li>
+                </ul>
+                <p>Com um segundo elétron, temos a molécula de hidrogênio propriamente dita. As integrais $I$, $D$ e $X$ desta seção
+                    voltam a aparecer, agora acompanhadas da repulsão entre os elétrons e do spin:
+                    <a href="[04] - A Molécula de Hidrogênio.html">8.4 A Molécula de Hidrogênio</a>.</p>
+
+                <hr class="footnotes-sep">
+                <section class="footnotes">
+                    <ol>
+                        <li id="fn:1">
+                            <p>A função com o sinal de mais (Eq. 8.38) é o <strong>orbital ligante</strong>. A ligação está associada a um
+                                acúmulo de probabilidade eletrônica entre os dois núcleos. A combinação ímpar (Eq. 8.53) tem um
+                                <em>nó</em> no centro, de modo que não surpreende que essa configuração não leve à ligação: ela é chamada
+                                <strong>orbital antiligante</strong> (<em>anti-bonding orbital</em>). (Nota do livro.)<a href="#fnref:1"
+                                    class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                    </ol>
+                </section>
 
             </div>
         </main>
@@ -171,6 +663,20 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#ion-da-molecula-de-hidrogenio">O Íon da Molécula de Hidrogênio</a></li>
+                    <li><a href="#funcao-tentativa">A função-tentativa</a></li>
+                    <li>
+                        <a href="#integrais">As integrais</a>
+                        <ul>
+                            <li><a href="#superposicao">A integral de superposição</a></li>
+                            <li><a href="#valor-esperado">O valor esperado de $H$</a></li>
+                            <li><a href="#direta-e-troca">As integrais direta e de troca</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#energia">A energia e a ligação</a></li>
+                    <li><a href="#antiligante">Ligante e antiligante</a></li>
+                    <li><a href="#conexao">Conexão com o experimento</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
                 </ul>
             </div>
         </aside>
