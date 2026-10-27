@@ -159,9 +159,659 @@
             <div class="prose">
 
                 <h1 id="formulas-de-conexao">9.3 As Fórmulas de Conexão</h1>
-                <p class="lead">Como colar as soluções WKB através de um ponto de retorno usando as funções de Airy, e as regras de quantização para poços com uma ou nenhuma parede vertical.</p>
+                <p class="lead">Como colar as soluções WKB através de um ponto de retorno usando as funções de Airy, e as regras de
+                    quantização para poços com uma ou nenhuma parede vertical.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>Até aqui, supusemos que as "paredes" do poço (ou da barreira) eram <em>verticais</em>. Assim, a solução "exterior"
+                    era simples e as condições de contorno, triviais: no <a href="[01] - A Região “Clássica”.html#ex-9-1">Exemplo 9.1</a>
+                    a função de onda simplesmente se anulava nas paredes, e, no
+                    <a href="[02] - Tunelamento.html#teo-transmissao-wkb">Teorema (Probabilidade de transmissão WKB)</a>, casamos as
+                    soluções nas bordas da barreira só em ordem de grandeza. Os resultados principais, as Eqs. (9.17) e (9.23), são
+                    razoavelmente precisos mesmo quando as bordas não são tão abruptas; na teoria de Gamow, por exemplo, eles foram
+                    aplicados justamente a um caso assim. Ainda assim, vale a pena estudar com mais cuidado o que acontece com a função
+                    de onda num <strong>ponto de retorno</strong> (<em>turning point</em>), onde $E = V$: é ali que a região "clássica"
+                    encontra a "não clássica", e é ali que a própria aproximação WKB falha.<sup id="fnref:1"><a href="#fn:1"
+                    class="footnote-ref">1</a></sup></p>
+                <p>A dificuldade é de princípio. Na aproximação WKB, $\psi \propto 1/\sqrt{p}$ vai ao infinito no ponto de retorno, onde
+                    $p(x) \to 0$; a função de onda verdadeira, é claro, não faz nada disso: como já se via na
+                    <a href="[01] - A Região “Clássica”.html#obs-validade-wkb">Observação (Quando a aproximação é boa)</a>, o método
+                    simplesmente deixa de valer perto do ponto de retorno. E, no entanto, são exatamente as condições de contorno nos
+                    pontos de retorno que determinam as energias permitidas. A saída é uma ideia simples: perto do ponto de retorno o
+                    potencial é quase uma reta, e a equação de Schrödinger com potencial linear tem solução conhecida, as
+                    <strong>funções de Airy</strong>. Elas servem de ponte entre as duas soluções WKB, uma de cada lado.</p>
+                <p>Trataremos aqui o problema de estados ligados (<a href="[01] - A Região “Clássica”.html#fig-9-1">Figura 9.1</a>,
+                    da 9.1); o espalhamento por uma barreira de paredes inclinadas,
+                    que segue o mesmo caminho, o livro deixa como problema. O resultado são as <strong>fórmulas de conexão</strong>
+                    (<em>connection formulas</em>) e, com elas, regras de quantização para poços com uma parede vertical e sem nenhuma
+                    parede vertical, que diferem da (9.17) apenas pelo número subtraído de $n$.</p>
+
+                <h2 id="ponto-de-retorno">O ponto de retorno</h2>
+
+                <p>Para simplificar, deslocamos os eixos de modo que o ponto de retorno da direita fique em $x = 0$ (Figura 9.8): à
+                    esquerda ($x \lt 0$) está a região clássica, com $E \gt V$; à direita ($x \gt 0$), a não clássica. Na aproximação WKB,
+                    a solução geral à esquerda é a (9.13), escrita com o limite das integrais no ponto de retorno, e à direita é a (9.18):</p>
+                <p>$$ \psi(x) \approx \begin{cases} \frac{1}{\sqrt{p(x)}}\left[Be^{\frac i\hbar\int_x^0p(x')dx'} + Ce^{-\frac i\hbar\int_x^0p(x')dx'}\right], & x \lt 0, \\[1ex] \frac{1}{\sqrt{|p(x)|}}De^{-\frac1\hbar\int_0^x|p(x')|dx'}, & x \gt 0. \end{cases} \tag{9.32} $$</p>
+                <p>Supondo que $V(x)$ continue maior que $E$ para <em>todo</em> $x \gt 0$, podemos descartar a exponencial positiva
+                    nessa região, porque ela explode quando $x \to \infty$. Nossa tarefa é ligar as duas soluções na fronteira, isto é,
+                    encontrar $B$ e $C$ em termos de $D$. Mas não podemos casar $\psi$ e $\psi'$ em $x = 0$, porque ali as duas expressões
+                    divergem. Precisamos de uma função de onda de <strong>remendo</strong>, $\psi_p$, que atravesse o ponto de retorno.</p>
+
+                <figure class="lecture-figure" id="fig-9-8">
+                    <svg viewBox="0 0 640 350" role="img" aria-label="Figura 9.8: perto do ponto de retorno x = 0, onde V = E, o potencial V(x) sobe e é aproximado pela reta tangente (potencial linearizado, tracejada). A faixa sombreada em torno de x = 0 é a região de remendo; à esquerda fica a região clássica e à direita a não clássica.">
+<defs><marker id="arr-9-8" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<rect x="245" y="35" width="110" height="245" class="fig-band"/>
+<line x1="60" y1="290" x2="600" y2="290" class="fig-axis" marker-end="url(#arr-9-8)"/>
+<text x="606" y="295" class="fig-label fig-it">x</text>
+<line x1="300" y1="290" x2="300" y2="22" class="fig-axis" marker-end="url(#arr-9-8)"/>
+<text x="308" y="30" class="fig-label fig-it">V(x)</text>
+<line x1="70" y1="165" x2="560" y2="165" class="fig-guide fig-dashed"/>
+<text x="568" y="170" class="fig-label fig-it">E</text>
+<path d="M90,266.2 L93,266 L96,265.8 L99,265.5 L102,265.3 L105,265 L108,264.7 L111,264.4 L114,264.1 L117,263.8 L120,263.4 L123,263 L126,262.6 L129,262.2 L132,261.8 L135,261.3 L138,260.8 L141,260.3 L144,259.8 L147,259.2 L150,258.6 L153,258 L156,257.3 L159,256.6 L162,255.9 L165,255.1 L168,254.3 L171,253.4 L174,252.5 L177,251.6 L180,250.6 L183,249.6 L186,248.5 L189,247.4 L192,246.2 L195,245 L198,243.7 L201,242.3 L204,240.9 L207,239.5 L210,238 L213,236.4 L216,234.7 L219,233 L222,231.2 L225,229.4 L228,227.5 L231,225.5 L234,223.5 L237,221.4 L240,219.2 L243,217 L246,214.7 L249,212.3 L252,209.9 L255,207.4 L258,204.9 L261,202.3 L264,199.7 L267,197 L270,194.2 L273,191.4 L276,188.6 L279,185.7 L282,182.8 L285,179.9 L288,176.9 L291,174 L294,171 L297,168 L300,165 L303,162 L306,159 L309,156 L312,153.1 L315,150.1 L318,147.2 L321,144.3 L324,141.4 L327,138.6 L330,135.8 L333,133 L336,130.3 L339,127.7 L342,125.1 L345,122.6 L348,120.1 L351,117.7 L354,115.3 L357,113 L360,110.8 L363,108.6 L366,106.5 L369,104.5 L372,102.5 L375,100.6 L378,98.8 L381,97 L384,95.3 L387,93.6 L390,92 L393,90.5 L396,89.1 L399,87.7 L402,86.3 L405,85 L408,83.8 L411,82.6 L414,81.5 L417,80.4 L420,79.4 L423,78.4 L426,77.5 L429,76.6 L432,75.7 L435,74.9 L438,74.1 L441,73.4 L444,72.7 L447,72 L450,71.4 L453,70.8 L456,70.2 L459,69.7 L462,69.2 L465,68.7 L468,68.2 L471,67.8 L474,67.4 L477,67 L480,66.6 L483,66.2 L486,65.9 L489,65.6 L492,65.3 L495,65 L498,64.7 L501,64.5 L504,64.2 L507,64 L510,63.8 L513,63.6 L516,63.4 L519,63.2 L522,63 L525,62.9 L528,62.7 L531,62.5 L534,62.4 L537,62.3 L540,62.1" class="fig-curve"/>
+<line x1="175" y1="290" x2="425" y2="40" class="fig-curve fig-dashed"/>
+<circle cx="300" cy="165" r="4" class="fig-arrowhead"/>
+<text x="150" y="70" text-anchor="middle" class="fig-label fig-small">Ponto de retorno</text>
+<line x1="170" y1="78" x2="294" y2="161" class="fig-axis" marker-end="url(#arr-9-8)"/>
+<text x="470" y="40" text-anchor="middle" class="fig-label fig-small">Potencial linearizado</text>
+<line x1="450" y1="48" x2="410" y2="59" class="fig-axis" marker-end="url(#arr-9-8)"/>
+<text x="300" y="276" text-anchor="middle" class="fig-label fig-small">Região de remendo</text>
+<text x="296" y="310" text-anchor="end" class="fig-label">0</text>
+<path d="M90,316 L90,322 L290,322 L290,316" class="fig-axis"/>
+<text x="190" y="340" text-anchor="middle" class="fig-label fig-small">Região clássica</text>
+<path d="M310,316 L310,322 L540,322 L540,316" class="fig-axis"/>
+<text x="425" y="340" text-anchor="middle" class="fig-label fig-small">Região não clássica</text>
+</svg>
+                    <figcaption><strong>Figura 9.8.</strong> Vista ampliada do ponto de retorno da direita. Perto de $x = 0$ o potencial
+                        é aproximado pela reta tangente (potencial linearizado); a faixa sombreada é a região de remendo, que inclui um
+                        pedaço da região clássica ($x \lt 0$) e um da não clássica ($x \gt 0$).</figcaption>
+                </figure>
+
+                <p>Como só precisamos de $\psi_p$ na vizinhança da origem, <em>aproximamos o potencial por uma reta</em>, sua tangente
+                    em $x = 0$; lembrando que $V(0) = E$,</p>
+                <p>$$ V(x) \approx E + V'(0)\,x, \tag{9.33} $$</p>
+                <p>e resolvemos a equação de Schrödinger para esse $V$ linearizado:</p>
+                <p>$$ -\frac{\hbar^2}{2m}\frac{d^2\psi_p}{dx^2} + \left[E + V'(0)\,x\right]\psi_p = E\psi_p. $$</p>
+                <p>O termo $E\psi_p$ cancela dos dois lados; multiplicando o que sobra por $-2m/\hbar^2$,</p>
+                <p>$$ \frac{d^2\psi_p}{dx^2} = \alpha^3x\,\psi_p, \tag{9.34} $$</p>
+                <p>em que</p>
+                <p>$$ \alpha \equiv \left[\frac{2m}{\hbar^2}V'(0)\right]^{1/3}. \tag{9.35} $$</p>
+                <p>Como o ponto de retorno é da direita, o potencial sobe ali: $V'(0) \gt 0$, e $\alpha$ é real e positivo, com
+                    dimensão de inverso de comprimento. Os $\alpha$ podem ser absorvidos na variável independente, definindo a variável
+                    adimensional</p>
+                <p>$$ z \equiv \alpha x, \tag{9.36} $$</p>
+                <p>de modo que $d/dx = \alpha\,d/dz$, $d^2\psi_p/dx^2 = \alpha^2\,d^2\psi_p/dz^2$, e (9.34) fica
+                    $\alpha^2\,d^2\psi_p/dz^2 = \alpha^3(z/\alpha)\psi_p = \alpha^2z\,\psi_p$, ou</p>
+                <p>$$ \frac{d^2\psi_p}{dz^2} = z\,\psi_p. \tag{9.37} $$</p>
+                <p>Essa é a <strong>equação de Airy</strong>, e suas soluções são as <strong>funções de
+                    Airy</strong>.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref">2</a></sup> Repare que ela não tem nenhum
+                    parâmetro: todo ponto de retorno em que o potencial pode ser tratado como linear, em qualquer problema, é o mesmo
+                    problema, a menos da escala $1/\alpha$.</p>
+
+                <h2 id="funcoes-de-airy">As funções de Airy</h2>
+
+                <p>Como a equação de Airy é de segunda ordem, há duas funções de Airy linearmente independentes, $\mathrm{Ai}(z)$ e
+                    $\mathrm{Bi}(z)$. Elas são aparentadas às funções de Bessel de ordem $1/3$; algumas de suas propriedades estão na
+                    Tabela 9.1, e seus gráficos, na Figura 9.9. A função de remendo é, então, uma combinação linear das duas:</p>
+                <p>$$ \psi_p(x) = a\,\mathrm{Ai}(\alpha x) + b\,\mathrm{Bi}(\alpha x), \tag{9.38} $$</p>
+                <p>com constantes $a$ e $b$ a determinar.</p>
+
+                <p><strong>Tabela 9.1.</strong> Algumas propriedades das funções de Airy.</p>
+                <div style="overflow-x: auto;">
+                    <table>
+                        <tbody>
+                            <tr><th>Equação diferencial</th><td>$\dfrac{d^2y}{dz^2} = zy$</td></tr>
+                            <tr><th>Soluções</th><td>Combinações lineares das funções de Airy, $\mathrm{Ai}(z)$ e $\mathrm{Bi}(z)$</td></tr>
+                            <tr><th>Representação integral</th><td>$\mathrm{Ai}(z) = \dfrac1\pi\displaystyle\int_0^\infty\cos\left(\frac{s^3}{3} + sz\right)ds$<br>
+                                $\mathrm{Bi}(z) = \dfrac1\pi\displaystyle\int_0^\infty\left[e^{-\frac{s^3}{3} + sz} + \sin\left(\frac{s^3}{3} + sz\right)\right]ds$</td></tr>
+                            <tr><th>Formas assintóticas, $z \gg 0$</th><td>$\mathrm{Ai}(z) \sim \dfrac{1}{2\sqrt\pi\,z^{1/4}}\,e^{-\frac23z^{3/2}}$<br>
+                                $\mathrm{Bi}(z) \sim \dfrac{1}{\sqrt\pi\,z^{1/4}}\,e^{\frac23z^{3/2}}$</td></tr>
+                            <tr><th>Formas assintóticas, $z \ll 0$</th><td>$\mathrm{Ai}(z) \sim \dfrac{1}{\sqrt\pi\,(-z)^{1/4}}\sin\left[\dfrac23(-z)^{3/2} + \dfrac\pi4\right]$<br>
+                                $\mathrm{Bi}(z) \sim \dfrac{1}{\sqrt\pi\,(-z)^{1/4}}\cos\left[\dfrac23(-z)^{3/2} + \dfrac\pi4\right]$</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="definition-box" id="prop-assintoticas-airy">
+                    <p><strong>Resultado citado (Formas assintóticas das funções de Airy).</strong> Para $|z|$ grande, as funções de Airy
+                        se comportam como nas duas últimas linhas da Tabela 9.1: para $z \gg 0$, $\mathrm{Ai}$ decai e $\mathrm{Bi}$ cresce
+                        como $e^{\mp\frac23z^{3/2}}$; para $z \ll 0$, as duas oscilam, defasadas de um quarto de período, com amplitude
+                        que cai como $(-z)^{-1/4}$.</p>
+                </div>
+                <p><em>Ideia.</em> A forma dessas expressões é a da própria aproximação WKB aplicada à equação de Airy. Escrevendo
+                    (9.37) como $y'' = -\left[p(z)/\hbar\right]^2y$, o papel de $p/\hbar$ é feito por $\sqrt{-z}$; para $z \gt 0$, (9.18)
+                    dá $y \approx z^{-1/4}e^{\pm\int_0^z\sqrt{z'}\,dz'} = z^{-1/4}e^{\pm\frac23z^{3/2}}$, e para $z \lt 0$, (9.10) dá
+                    $(-z)^{-1/4}$ vezes senos e cossenos de $\frac23(-z)^{3/2}$. E a WKB é boa aqui exatamente quando $|z|$ é grande: a
+                    condição $\hbar|p'|/p^2 \ll 1$ vira $\frac12|z|^{-3/2} \ll 1$. O que a WKB <em>não</em> dá são as constantes (os
+                    fatores $1/2\sqrt\pi$ e $1/\sqrt\pi$ e a fase $\pi/4$), que fixam <em>qual</em> combinação de decrescente e crescente
+                    à direita corresponde a qual oscilação à esquerda; elas saem das representações integrais da tabela, avaliadas
+                    para $|z|$ grande (Griffiths, Tabela 9.1). O <a href="#exr-9-3-2">Exercício 9.3-2</a> confere numericamente essas formas.</p>
+
+                <figure class="lecture-figure" id="fig-9-9">
+                    <svg viewBox="0 0 640 300" role="img" aria-label="Figura 9.9: à esquerda, Ai(z) para z de −9 a 4,5: oscila para z negativo com amplitude de cerca de 0,4 a 0,5, tem o último máximo perto de z = −1 e decai a zero para z positivo. À direita, Bi(z) para z de −9 a 3: oscila para z negativo e cresce rapidamente para z positivo, passando de 2 perto de z = 1,6.">
+<rect x="55" y="15" width="245" height="240" class="fig-frame"/>
+<line x1="55" y1="135" x2="300" y2="135" class="fig-guide"/>
+<line x1="218.3" y1="15" x2="218.3" y2="255" class="fig-guide"/>
+<line x1="73.1" y1="255" x2="73.1" y2="250" class="fig-axis"/>
+<text x="73.1" y="271" text-anchor="middle" class="fig-label fig-small">−8</text>
+<line x1="109.4" y1="255" x2="109.4" y2="250" class="fig-axis"/>
+<text x="109.4" y="271" text-anchor="middle" class="fig-label fig-small">−6</text>
+<line x1="145.7" y1="255" x2="145.7" y2="250" class="fig-axis"/>
+<text x="145.7" y="271" text-anchor="middle" class="fig-label fig-small">−4</text>
+<line x1="182" y1="255" x2="182" y2="250" class="fig-axis"/>
+<text x="182" y="271" text-anchor="middle" class="fig-label fig-small">−2</text>
+<line x1="218.3" y1="255" x2="218.3" y2="250" class="fig-axis"/>
+<text x="218.3" y="271" text-anchor="middle" class="fig-label fig-small">0</text>
+<line x1="254.6" y1="255" x2="254.6" y2="250" class="fig-axis"/>
+<text x="254.6" y="271" text-anchor="middle" class="fig-label fig-small">2</text>
+<line x1="290.9" y1="255" x2="290.9" y2="250" class="fig-axis"/>
+<text x="290.9" y="271" text-anchor="middle" class="fig-label fig-small">4</text>
+<line x1="55" y1="222.3" x2="60" y2="222.3" class="fig-axis"/>
+<text x="49" y="226.3" text-anchor="end" class="fig-label fig-small">−0,4</text>
+<line x1="55" y1="178.6" x2="60" y2="178.6" class="fig-axis"/>
+<text x="49" y="182.6" text-anchor="end" class="fig-label fig-small">−0,2</text>
+<line x1="55" y1="135" x2="60" y2="135" class="fig-axis"/>
+<text x="49" y="139" text-anchor="end" class="fig-label fig-small">0</text>
+<line x1="55" y1="91.4" x2="60" y2="91.4" class="fig-axis"/>
+<text x="49" y="95.4" text-anchor="end" class="fig-label fig-small">0,2</text>
+<line x1="55" y1="47.7" x2="60" y2="47.7" class="fig-axis"/>
+<text x="49" y="51.7" text-anchor="end" class="fig-label fig-small">0,4</text>
+<path d="M55,139.8 L55.6,147 L56.2,154 L56.8,160.9 L57.5,167.5 L58.1,173.7 L58.7,179.6 L59.3,185 L59.9,189.9 L60.5,194.3 L61.1,198.1 L61.8,201.2 L62.4,203.7 L63,205.5 L63.6,206.7 L64.2,207.1 L64.8,206.8 L65.4,205.9 L66.1,204.2 L66.7,201.9 L67.3,199 L67.9,195.4 L68.5,191.3 L69.1,186.6 L69.7,181.5 L70.4,175.9 L71,169.9 L71.6,163.6 L72.2,157.1 L72.8,150.3 L73.4,143.4 L74,136.4 L74.6,129.5 L75.3,122.5 L75.9,115.7 L76.5,109 L77.1,102.6 L77.7,96.5 L78.3,90.7 L78.9,85.3 L79.6,80.3 L80.2,75.9 L80.8,71.9 L81.4,68.5 L82,65.6 L82.6,63.4 L83.2,61.7 L83.9,60.7 L84.5,60.3 L85.1,60.6 L85.7,61.4 L86.3,62.9 L86.9,65 L87.5,67.7 L88.2,70.9 L88.8,74.6 L89.4,78.9 L90,83.6 L90.6,88.7 L91.2,94.2 L91.8,100 L92.5,106.1 L93.1,112.4 L93.7,118.9 L94.3,125.5 L94.9,132.2 L95.5,138.9 L96.1,145.6 L96.8,152.2 L97.4,158.7 L98,165 L98.6,171.1 L99.2,176.9 L99.8,182.4 L100.4,187.5 L101.1,192.2 L101.7,196.5 L102.3,200.4 L102.9,203.8 L103.5,206.7 L104.1,209 L104.7,210.9 L105.4,212.2 L106,212.9 L106.6,213.1 L107.2,212.7 L107.8,211.8 L108.4,210.4 L109,208.4 L109.6,205.9 L110.3,203 L110.9,199.6 L111.5,195.7 L112.1,191.4 L112.7,186.8 L113.3,181.8 L113.9,176.5 L114.6,170.9 L115.2,165.1 L115.8,159.1 L116.4,153 L117,146.7 L117.6,140.3 L118.2,134 L118.9,127.6 L119.5,121.3 L120.1,115 L120.7,108.9 L121.3,102.9 L121.9,97.2 L122.5,91.6 L123.2,86.4 L123.8,81.4 L124.4,76.7 L125,72.4 L125.6,68.5 L126.2,64.9 L126.8,61.7 L127.5,59 L128.1,56.7 L128.7,54.9 L129.3,53.5 L129.9,52.5 L130.5,52.1 L131.1,52.1 L131.8,52.5 L132.4,53.4 L133,54.7 L133.6,56.5 L134.2,58.7 L134.8,61.2 L135.4,64.2 L136.1,67.6 L136.7,71.3 L137.3,75.3 L137.9,79.6 L138.5,84.2 L139.1,89.1 L139.7,94.2 L140.4,99.5 L141,105 L141.6,110.6 L142.2,116.3 L142.8,122.1 L143.4,128 L144,133.9 L144.6,139.9 L145.3,145.8 L145.9,151.6 L146.5,157.4 L147.1,163.1 L147.7,168.6 L148.3,174 L148.9,179.3 L149.6,184.3 L150.2,189.1 L150.8,193.7 L151.4,198 L152,202.1 L152.6,205.9 L153.2,209.4 L153.9,212.6 L154.5,215.5 L155.1,218 L155.7,220.3 L156.3,222.1 L156.9,223.7 L157.5,224.9 L158.2,225.7 L158.8,226.3 L159.4,226.4 L160,226.3 L160.6,225.7 L161.2,224.9 L161.8,223.7 L162.5,222.3 L163.1,220.5 L163.7,218.4 L164.3,216 L164.9,213.4 L165.5,210.5 L166.1,207.3 L166.8,203.9 L167.4,200.3 L168,196.5 L168.6,192.4 L169.2,188.2 L169.8,183.9 L170.4,179.3 L171.1,174.7 L171.7,169.9 L172.3,165 L172.9,160.1 L173.5,155 L174.1,149.9 L174.7,144.8 L175.4,139.6 L176,134.5 L176.6,129.3 L177.2,124.1 L177.8,119 L178.4,113.9 L179,108.9 L179.6,103.9 L180.3,99 L180.9,94.2 L181.5,89.5 L182.1,84.9 L182.7,80.4 L183.3,76 L183.9,71.8 L184.6,67.7 L185.2,63.7 L185.8,59.9 L186.4,56.2 L187,52.7 L187.6,49.4 L188.2,46.2 L188.9,43.2 L189.5,40.4 L190.1,37.8 L190.7,35.3 L191.3,33 L191.9,30.8 L192.5,28.9 L193.2,27.1 L193.8,25.4 L194.4,24 L195,22.7 L195.6,21.6 L196.2,20.6 L196.8,19.8 L197.5,19.2 L198.1,18.7 L198.7,18.4 L199.3,18.2 L199.9,18.1 L200.5,18.2 L201.1,18.4 L201.8,18.8 L202.4,19.2 L203,19.8 L203.6,20.5 L204.2,21.3 L204.8,22.2 L205.4,23.2 L206.1,24.3 L206.7,25.4 L207.3,26.7 L207.9,28 L208.5,29.4 L209.1,30.9 L209.7,32.4 L210.4,34 L211,35.6 L211.6,37.3 L212.2,39 L212.8,40.7 L213.4,42.5 L214,44.4 L214.6,46.2 L215.3,48.1 L215.9,49.9 L216.5,51.8 L217.1,53.7 L217.7,55.6 L218.3,57.5 L218.9,59.4 L219.6,61.4 L220.2,63.3 L220.8,65.2 L221.4,67 L222,68.9 L222.6,70.8 L223.2,72.6 L223.9,74.4 L224.5,76.2 L225.1,78 L225.7,79.7 L226.3,81.5 L226.9,83.1 L227.5,84.8 L228.2,86.5 L228.8,88.1 L229.4,89.6 L230,91.2 L230.6,92.7 L231.2,94.2 L231.8,95.6 L232.5,97 L233.1,98.4 L233.7,99.8 L234.3,101.1 L234.9,102.4 L235.5,103.6 L236.1,104.8 L236.8,106 L237.4,107.1 L238,108.3 L238.6,109.3 L239.2,110.4 L239.8,111.4 L240.4,112.4 L241.1,113.3 L241.7,114.2 L242.3,115.1 L242.9,116 L243.5,116.8 L244.1,117.6 L244.7,118.4 L245.4,119.1 L246,119.8 L246.6,120.5 L247.2,121.2 L247.8,121.8 L248.4,122.4 L249,123 L249.6,123.6 L250.3,124.1 L250.9,124.6 L251.5,125.1 L252.1,125.6 L252.7,126.1 L253.3,126.5 L253.9,126.9 L254.6,127.3 L255.2,127.7 L255.8,128.1 L256.4,128.4 L257,128.8 L257.6,129.1 L258.2,129.4 L258.9,129.7 L259.5,130 L260.1,130.2 L260.7,130.5 L261.3,130.7 L261.9,131 L262.5,131.2 L263.2,131.4 L263.8,131.6 L264.4,131.8 L265,132 L265.6,132.1 L266.2,132.3 L266.8,132.4 L267.5,132.6 L268.1,132.7 L268.7,132.9 L269.3,133 L269.9,133.1 L270.5,133.2 L271.1,133.3 L271.8,133.4 L272.4,133.5 L273,133.6 L273.6,133.7 L274.2,133.8 L274.8,133.8 L275.4,133.9 L276.1,134 L276.7,134 L277.3,134.1 L277.9,134.1 L278.5,134.2 L279.1,134.2 L279.7,134.3 L280.4,134.3 L281,134.4 L281.6,134.4 L282.2,134.5 L282.8,134.5 L283.4,134.5 L284,134.6 L284.6,134.6 L285.3,134.6 L285.9,134.6 L286.5,134.7 L287.1,134.7 L287.7,134.7 L288.3,134.7 L288.9,134.7 L289.6,134.8 L290.2,134.8 L290.8,134.8 L291.4,134.8 L292,134.8 L292.6,134.8 L293.2,134.8 L293.9,134.9 L294.5,134.9 L295.1,134.9 L295.7,134.9 L296.3,134.9 L296.9,134.9 L297.5,134.9 L298.2,134.9 L298.8,134.9 L299.4,134.9 L300,134.9" class="fig-curve"/>
+<text x="177.5" y="291" text-anchor="middle" class="fig-label fig-it">z</text>
+<text x="63" y="33" class="fig-label">Ai(z)</text>
+<rect x="375" y="15" width="245" height="240" class="fig-frame"/>
+<line x1="375" y1="175" x2="620" y2="175" class="fig-guide"/>
+<line x1="558.8" y1="15" x2="558.8" y2="255" class="fig-guide"/>
+<line x1="395.4" y1="255" x2="395.4" y2="250" class="fig-axis"/>
+<text x="395.4" y="271" text-anchor="middle" class="fig-label fig-small">−8</text>
+<line x1="436.2" y1="255" x2="436.2" y2="250" class="fig-axis"/>
+<text x="436.2" y="271" text-anchor="middle" class="fig-label fig-small">−6</text>
+<line x1="477.1" y1="255" x2="477.1" y2="250" class="fig-axis"/>
+<text x="477.1" y="271" text-anchor="middle" class="fig-label fig-small">−4</text>
+<line x1="517.9" y1="255" x2="517.9" y2="250" class="fig-axis"/>
+<text x="517.9" y="271" text-anchor="middle" class="fig-label fig-small">−2</text>
+<line x1="558.8" y1="255" x2="558.8" y2="250" class="fig-axis"/>
+<text x="558.8" y="271" text-anchor="middle" class="fig-label fig-small">0</text>
+<line x1="599.6" y1="255" x2="599.6" y2="250" class="fig-axis"/>
+<text x="599.6" y="271" text-anchor="middle" class="fig-label fig-small">2</text>
+<line x1="375" y1="255" x2="380" y2="255" class="fig-axis"/>
+<text x="369" y="259" text-anchor="end" class="fig-label fig-small">−1</text>
+<line x1="375" y1="215" x2="380" y2="215" class="fig-axis"/>
+<text x="369" y="219" text-anchor="end" class="fig-label fig-small">−0,5</text>
+<line x1="375" y1="175" x2="380" y2="175" class="fig-axis"/>
+<text x="369" y="179" text-anchor="end" class="fig-label fig-small">0</text>
+<line x1="375" y1="135" x2="380" y2="135" class="fig-axis"/>
+<text x="369" y="139" text-anchor="end" class="fig-label fig-small">0,5</text>
+<line x1="375" y1="95" x2="380" y2="95" class="fig-axis"/>
+<text x="369" y="99" text-anchor="end" class="fig-label fig-small">1</text>
+<line x1="375" y1="55" x2="380" y2="55" class="fig-axis"/>
+<text x="369" y="59" text-anchor="end" class="fig-label fig-small">1,5</text>
+<line x1="375" y1="15" x2="380" y2="15" class="fig-axis"/>
+<text x="369" y="19" text-anchor="end" class="fig-label fig-small">2</text>
+<path d="M375,149 L375.6,149.2 L376.2,149.7 L376.8,150.4 L377.5,151.2 L378.1,152.3 L378.7,153.5 L379.3,154.9 L379.9,156.4 L380.5,158.2 L381.1,160 L381.8,161.9 L382.4,164 L383,166.2 L383.6,168.4 L384.2,170.6 L384.8,172.9 L385.4,175.2 L386.1,177.6 L386.7,179.9 L387.3,182.1 L387.9,184.3 L388.5,186.4 L389.1,188.5 L389.7,190.4 L390.4,192.3 L391,194 L391.6,195.5 L392.2,196.9 L392.8,198.2 L393.4,199.3 L394,200.2 L394.6,200.9 L395.3,201.4 L395.9,201.7 L396.5,201.9 L397.1,201.8 L397.7,201.6 L398.3,201.2 L398.9,200.5 L399.6,199.7 L400.2,198.8 L400.8,197.6 L401.4,196.3 L402,194.9 L402.6,193.3 L403.2,191.6 L403.9,189.8 L404.5,187.8 L405.1,185.8 L405.7,183.7 L406.3,181.6 L406.9,179.4 L407.5,177.2 L408.2,174.9 L408.8,172.7 L409.4,170.5 L410,168.3 L410.6,166.1 L411.2,164.1 L411.8,162 L412.5,160.1 L413.1,158.3 L413.7,156.6 L414.3,154.9 L414.9,153.5 L415.5,152.1 L416.1,150.9 L416.8,149.9 L417.4,149 L418,148.3 L418.6,147.7 L419.2,147.3 L419.8,147.1 L420.4,147 L421.1,147.2 L421.7,147.5 L422.3,147.9 L422.9,148.5 L423.5,149.3 L424.1,150.3 L424.7,151.4 L425.4,152.6 L426,153.9 L426.6,155.4 L427.2,157 L427.8,158.7 L428.4,160.5 L429,162.4 L429.6,164.3 L430.3,166.4 L430.9,168.4 L431.5,170.5 L432.1,172.6 L432.7,174.8 L433.3,176.9 L433.9,179 L434.6,181.2 L435.2,183.2 L435.8,185.3 L436.4,187.2 L437,189.1 L437.6,191 L438.2,192.7 L438.9,194.3 L439.5,195.9 L440.1,197.3 L440.7,198.6 L441.3,199.8 L441.9,200.9 L442.5,201.8 L443.2,202.6 L443.8,203.3 L444.4,203.8 L445,204.2 L445.6,204.4 L446.2,204.4 L446.8,204.4 L447.5,204.1 L448.1,203.8 L448.7,203.3 L449.3,202.6 L449.9,201.8 L450.5,200.9 L451.1,199.9 L451.8,198.7 L452.4,197.5 L453,196.1 L453.6,194.6 L454.2,193.1 L454.8,191.4 L455.4,189.7 L456.1,187.9 L456.7,186.1 L457.3,184.2 L457.9,182.2 L458.5,180.3 L459.1,178.3 L459.7,176.3 L460.4,174.3 L461,172.2 L461.6,170.2 L462.2,168.3 L462.8,166.3 L463.4,164.4 L464,162.5 L464.6,160.7 L465.3,159 L465.9,157.3 L466.5,155.7 L467.1,154.1 L467.7,152.7 L468.3,151.3 L468.9,150 L469.6,148.9 L470.2,147.8 L470.8,146.8 L471.4,146 L472,145.3 L472.6,144.6 L473.2,144.1 L473.9,143.7 L474.5,143.5 L475.1,143.3 L475.7,143.3 L476.3,143.4 L476.9,143.6 L477.5,143.9 L478.2,144.3 L478.8,144.8 L479.4,145.5 L480,146.2 L480.6,147 L481.2,148 L481.8,149 L482.5,150.1 L483.1,151.3 L483.7,152.6 L484.3,154 L484.9,155.4 L485.5,156.9 L486.1,158.4 L486.8,160 L487.4,161.7 L488,163.4 L488.6,165.1 L489.2,166.9 L489.8,168.7 L490.4,170.5 L491.1,172.3 L491.7,174.1 L492.3,175.9 L492.9,177.8 L493.5,179.6 L494.1,181.4 L494.7,183.2 L495.4,184.9 L496,186.7 L496.6,188.4 L497.2,190 L497.8,191.7 L498.4,193.3 L499,194.8 L499.6,196.3 L500.3,197.7 L500.9,199.1 L501.5,200.4 L502.1,201.6 L502.7,202.8 L503.3,203.9 L503.9,204.9 L504.6,205.9 L505.2,206.7 L505.8,207.6 L506.4,208.3 L507,208.9 L507.6,209.5 L508.2,210 L508.9,210.5 L509.5,210.8 L510.1,211.1 L510.7,211.2 L511.3,211.4 L511.9,211.4 L512.5,211.4 L513.2,211.2 L513.8,211.1 L514.4,210.8 L515,210.5 L515.6,210.1 L516.2,209.6 L516.8,209.1 L517.5,208.5 L518.1,207.8 L518.7,207.1 L519.3,206.3 L519.9,205.5 L520.5,204.6 L521.1,203.7 L521.8,202.7 L522.4,201.7 L523,200.6 L523.6,199.5 L524.2,198.4 L524.8,197.2 L525.4,196 L526.1,194.7 L526.7,193.5 L527.3,192.2 L527.9,190.8 L528.5,189.5 L529.1,188.1 L529.7,186.8 L530.4,185.4 L531,183.9 L531.6,182.5 L532.2,181.1 L532.8,179.7 L533.4,178.2 L534,176.8 L534.6,175.3 L535.3,173.9 L535.9,172.4 L536.5,171 L537.1,169.5 L537.7,168.1 L538.3,166.7 L538.9,165.3 L539.6,163.8 L540.2,162.4 L540.8,161 L541.4,159.7 L542,158.3 L542.6,156.9 L543.2,155.6 L543.9,154.3 L544.5,152.9 L545.1,151.6 L545.7,150.4 L546.3,149.1 L546.9,147.8 L547.5,146.6 L548.2,145.3 L548.8,144.1 L549.4,142.9 L550,141.7 L550.6,140.5 L551.2,139.4 L551.8,138.2 L552.5,137.1 L553.1,135.9 L553.7,134.8 L554.3,133.7 L554.9,132.6 L555.5,131.5 L556.1,130.4 L556.8,129.3 L557.4,128.2 L558,127.2 L558.6,126.1 L559.2,125 L559.8,123.9 L560.4,122.8 L561.1,121.7 L561.7,120.7 L562.3,119.6 L562.9,118.5 L563.5,117.3 L564.1,116.2 L564.7,115.1 L565.4,113.9 L566,112.7 L566.6,111.5 L567.2,110.3 L567.8,109.1 L568.4,107.8 L569,106.5 L569.6,105.2 L570.3,103.8 L570.9,102.4 L571.5,101 L572.1,99.5 L572.7,98 L573.3,96.4 L573.9,94.8 L574.6,93.1 L575.2,91.3 L575.8,89.5 L576.4,87.7 L577,85.8 L577.6,83.8 L578.2,81.7 L578.9,79.5 L579.5,77.3 L580.1,74.9 L580.7,72.5 L581.3,70 L581.9,67.4 L582.5,64.6 L583.2,61.7 L583.8,58.8 L584.4,55.7 L585,52.4 L585.6,49 L586.2,45.5 L586.8,41.8 L587.5,37.9 L588.1,33.9 L588.7,29.7 L589.3,25.3 L589.9,20.6 L590.5,15.8" class="fig-curve"/>
+<text x="497.5" y="291" text-anchor="middle" class="fig-label fig-it">z</text>
+<text x="383" y="33" class="fig-label">Bi(z)</text>
+</svg>
+                    <figcaption><strong>Figura 9.9.</strong> Gráfico das funções de Airy. Para $z \lt 0$ as duas oscilam, com
+                        amplitude que diminui devagar e comprimento de onda cada vez menor; para $z \gt 0$, $\mathrm{Ai}$ decai a zero e
+                        $\mathrm{Bi}$ explode. Curvas calculadas numericamente.</figcaption>
+                </figure>
+
+                <h2 id="casamento">As zonas de superposição</h2>
+
+                <p>Agora, $\psi_p$ é a função de onda (aproximada) na vizinhança da origem; nossa tarefa é casá-la com as soluções WKB
+                    nas <strong>zonas de superposição</strong> (<em>overlap zones</em>) de cada lado (Figura 9.10). Essas zonas estão
+                    perto o bastante do ponto de retorno para que o potencial linearizado seja razoavelmente preciso (e então $\psi_p$ é
+                    uma boa aproximação da função de onda verdadeira), e longe o bastante para que a aproximação WKB seja
+                    confiável.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref">3</a></sup> Nas zonas de superposição vale a
+                    Eq. (9.33), e portanto, com a notação da Eq. (9.35), em que $V'(0) = \hbar^2\alpha^3/2m$,</p>
+                <p>$$ p(x) \approx \sqrt{2m\left(E - E - V'(0)\,x\right)} = \hbar\alpha^{3/2}\sqrt{-x}. \tag{9.39} $$</p>
+
+                <figure class="lecture-figure" id="fig-9-10">
+                    <svg viewBox="0 0 640 250" role="img" aria-label="Figura 9.10: o ponto de retorno no eixo x, com duas faixas sombreadas, as zonas de superposição 1 (à esquerda) e 2 (à direita). Cada solução WKB vem do seu lado até o fim da zona correspondente; a função de remendo psi_p cobre a região de remendo, que vai do início da zona 1 ao fim da zona 2.">
+<defs><marker id="arr-9-10" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<rect x="150" y="20" width="95" height="155" class="fig-band"/>
+<rect x="395" y="20" width="95" height="155" class="fig-band"/>
+<line x1="30" y1="175" x2="600" y2="175" class="fig-axis" marker-end="url(#arr-9-10)"/>
+<text x="606" y="180" class="fig-label fig-it">x</text>
+<line x1="320" y1="10" x2="320" y2="175" class="fig-guide"/>
+<circle cx="320" cy="175" r="4.5" class="fig-arrowhead"/>
+<line x1="30" y1="50" x2="245" y2="50" class="fig-axis" marker-end="url(#arr-9-10)"/>
+<text x="36" y="40" class="fig-label">ψ (WKB)</text>
+<line x1="600" y1="50" x2="395" y2="50" class="fig-axis" marker-end="url(#arr-9-10)"/>
+<text x="594" y="40" text-anchor="end" class="fig-label">ψ (WKB)</text>
+<line x1="320" y1="112" x2="150" y2="112" class="fig-axis" marker-end="url(#arr-9-10)"/>
+<line x1="320" y1="112" x2="490" y2="112" class="fig-axis" marker-end="url(#arr-9-10)"/>
+<text x="328" y="104" class="fig-label">ψₚ</text>
+<path d="M150,181 L150,187 L245,187 L245,181" class="fig-axis"/>
+<text x="197.5" y="205" text-anchor="middle" class="fig-label fig-small">Superposição 1</text>
+<path d="M395,181 L395,187 L490,187 L490,181" class="fig-axis"/>
+<text x="442.5" y="205" text-anchor="middle" class="fig-label fig-small">Superposição 2</text>
+<text x="320" y="205" text-anchor="middle" class="fig-label fig-small">Ponto de retorno</text>
+<path d="M150,217 L150,223 L490,223 L490,217" class="fig-axis"/>
+<text x="320" y="241" text-anchor="middle" class="fig-label fig-small">Região de remendo</text>
+</svg>
+                    <figcaption><strong>Figura 9.10.</strong> A região de remendo e as duas zonas de superposição. A função de remendo
+                        $\psi_p$ vale em toda a região de remendo; cada solução WKB vale do seu lado até dentro da zona de superposição
+                        correspondente, onde as duas descrições valem ao mesmo tempo e podem ser comparadas.</figcaption>
+                </figure>
+
+                <h3 id="zona-2">A zona de superposição 2</h3>
+
+                <p>Na zona 2 ($x \gt 0$), (9.39) dá $|p(x)| \approx \hbar\alpha^{3/2}\sqrt x$, e então</p>
+                <p>$$ \int_0^x|p(x')|\,dx' \approx \hbar\alpha^{3/2}\int_0^x\sqrt{x'}\,dx' = \hbar\alpha^{3/2}\,\frac23x^{3/2} = \frac23\hbar(\alpha x)^{3/2}, $$</p>
+                <p>enquanto $\sqrt{|p(x)|} \approx \sqrt\hbar\,\alpha^{3/4}x^{1/4}$. A função WKB (Eq. 9.32) pode então ser escrita
+                    como</p>
+                <p>$$ \psi(x) \approx \frac{D}{\sqrt\hbar\,\alpha^{3/4}x^{1/4}}\,e^{-\frac23(\alpha x)^{3/2}}. \tag{9.40} $$</p>
+                <p>Ao mesmo tempo, usando as formas assintóticas para $z$ grande da Tabela 9.1,<sup id="fnref:4"><a href="#fn:4"
+                    class="footnote-ref">4</a></sup> a função de remendo (Eq. 9.38) na zona 2 fica</p>
+                <p>$$ \psi_p(x) \approx \frac{a}{2\sqrt\pi\,(\alpha x)^{1/4}}\,e^{-\frac23(\alpha x)^{3/2}} + \frac{b}{\sqrt\pi\,(\alpha x)^{1/4}}\,e^{\frac23(\alpha x)^{3/2}}. \tag{9.41} $$</p>
+                <p>As duas expressões descrevem a mesma função na mesma zona, e $e^{\pm\frac23(\alpha x)^{3/2}}$ são funções
+                    independentes de $x$; logo os coeficientes de cada exponencial têm de coincidir. A (9.40) não tem exponencial
+                    crescente, o que dá $b = 0$; comparando os coeficientes da decrescente, e usando
+                    $(\alpha x)^{1/4} = \alpha^{1/4}x^{1/4}$,</p>
+                <p>$$ \frac{a}{2\sqrt\pi\,\alpha^{1/4}} = \frac{D}{\sqrt\hbar\,\alpha^{3/4}} \quad\Longrightarrow\quad a = \frac{2\sqrt\pi}{\sqrt{\hbar\alpha}}\,D. $$</p>
+                <p>Comparando as duas soluções, portanto,</p>
+                <p>$$ a = \sqrt{\frac{4\pi}{\alpha\hbar}}\,D \qquad \text{e} \qquad b = 0. \tag{9.42} $$</p>
+
+                <h3 id="zona-1">A zona de superposição 1</h3>
+
+                <p>Repetimos agora o procedimento na zona 1. De novo $p(x)$ é dado pela Eq. (9.39), mas agora $x$ é
+                    <em>negativo</em>, e $p = \hbar\alpha^{3/2}\sqrt{-x}$ é real. Trocando a variável de integração para $u = -x'$,</p>
+                <p>$$ \int_x^0p(x')\,dx' \approx \hbar\alpha^{3/2}\int_0^{-x}\sqrt u\,du = \frac23\hbar(-\alpha x)^{3/2}, \tag{9.43} $$</p>
+                <p>e, como $\sqrt{p(x)} \approx \sqrt\hbar\,\alpha^{3/4}(-x)^{1/4}$, a função WKB (Eq. 9.32) é</p>
+                <p>$$ \psi(x) \approx \frac{1}{\sqrt\hbar\,\alpha^{3/4}(-x)^{1/4}}\left[Be^{i\frac23(-\alpha x)^{3/2}} + Ce^{-i\frac23(-\alpha x)^{3/2}}\right]. \tag{9.44} $$</p>
+                <p>Ao mesmo tempo, usando a forma assintótica da função de Airy para $z$ grande e <em>negativo</em> (Tabela 9.1), a
+                    função de remendo (Eq. 9.38, com $b = 0$) fica, depois de escrever o seno em exponenciais com
+                    $\sin\theta = (e^{i\theta} - e^{-i\theta})/2i$ e $\theta = \frac23(-\alpha x)^{3/2} + \frac\pi4$,</p>
+                <p>$$ \begin{aligned} \psi_p(x) &\approx \frac{a}{\sqrt\pi\,(-\alpha x)^{1/4}}\sin\left[\frac23(-\alpha x)^{3/2} + \frac\pi4\right] \\ &= \frac{a}{\sqrt\pi\,(-\alpha x)^{1/4}}\,\frac{1}{2i}\Big[e^{i\pi/4}e^{i\frac23(-\alpha x)^{3/2}} \\ &\qquad\qquad - e^{-i\pi/4}e^{-i\frac23(-\alpha x)^{3/2}}\Big]. \end{aligned} \tag{9.45} $$</p>
+                <p>As duas funções têm o mesmo fator $(-x)^{-1/4}$; comparando os coeficientes de cada exponencial complexa em (9.44) e
+                    (9.45), e cancelando $(-x)^{-1/4}$ e um $\alpha^{-1/4}$ dos dois lados (o que deixa $\sqrt{\hbar\alpha}$ no
+                    denominador da WKB),</p>
+                <p>$$ \frac{a}{2i\sqrt\pi}\,e^{i\pi/4} = \frac{B}{\sqrt{\hbar\alpha}} \qquad \text{e} \qquad \frac{-a}{2i\sqrt\pi}\,e^{-i\pi/4} = \frac{C}{\sqrt{\hbar\alpha}}. $$</p>
+                <p>Levando a Eq. (9.42) para $a$, $a\sqrt{\hbar\alpha}/(2\sqrt\pi) = D$, e com $1/i = -i$,</p>
+                <p>$$ B = -ie^{i\pi/4}D \qquad \text{e} \qquad C = ie^{-i\pi/4}D. \tag{9.46} $$</p>
+                <p>Essas são as <strong>fórmulas de conexão</strong>: elas ligam as soluções WKB dos dois lados do ponto de retorno.
+                    A função de remendo cumpriu seu papel, que era só atravessar o vão, e não aparece mais. Resta escrever tudo em
+                    termos da única constante de normalização, $D$, e devolver o ponto de retorno da origem a um ponto qualquer $x_2$.</p>
+
+                <div class="definition-box" id="teo-formulas-de-conexao">
+                    <p><strong>Teorema (Fórmulas de conexão num ponto de retorno ascendente).</strong> Seja $x_2$ um ponto de retorno em
+                        que o potencial sobe ($V'(x_2) \gt 0$), com a região clássica à esquerda e $V \gt E$ em todo $x \gt x_2$. Se o
+                        potencial for aproximadamente linear numa região em torno de $x_2$ que contenha zonas de superposição dos dois
+                        lados, a solução WKB que decai à direita continua, à esquerda, como</p>
+                    <p>$$ \psi(x) \approx \begin{cases} \frac{2D}{\sqrt{p(x)}}\sin\left[\frac1\hbar\int_x^{x_2}p(x')dx' + \frac\pi4\right], & x \lt x_2; \\[1ex] \frac{D}{\sqrt{|p(x)|}}\exp\left[-\frac1\hbar\int_{x_2}^x|p(x')|dx'\right], & x \gt x_2. \end{cases} \tag{9.47} $$</p>
+                </div>
+                <p><em>Demonstração.</em> Com o ponto de retorno em $x = 0$, levamos (9.46) para (9.32). Chamando
+                    $\theta = \frac1\hbar\int_x^0p(x')\,dx'$, o colchete de $x \lt 0$ é</p>
+                <p>$$ \begin{aligned} Be^{i\theta} + Ce^{-i\theta} &= -iD\left[e^{i(\theta + \pi/4)} - e^{-i(\theta + \pi/4)}\right] \\ &= -iD\cdot2i\sin\left(\theta + \frac\pi4\right) = 2D\sin\left(\theta + \frac\pi4\right), \end{aligned} $$</p>
+                <p>e a linha de $x \gt 0$ não muda. Isso é (9.47) com $x_2 = 0$. Para um ponto de retorno em $x_2$, basta transladar:
+                    a equação de Schrödinger não muda com $x \to x - x_2$, e os limites $0$ das integrais viram $x_2$. As fórmulas
+                    (9.46) foram deduzidas nas zonas de superposição, mas (9.47) é a solução WKB de cada lado com essas constantes; vale,
+                    portanto, em toda a região clássica à esquerda e em toda a não clássica à direita, exceto na vizinhança imediata de
+                    $x_2$. $\blacksquare$</p>
+                <p>Duas coisas merecem destaque. Primeiro, o fator 2 na amplitude: a oscilação à esquerda tem o dobro da amplitude
+                    "natural" da exponencial à direita, como a $\mathrm{Ai}$ da Tabela 9.1 ($1/\sqrt\pi$ contra $1/2\sqrt\pi$). Segundo,
+                    e mais importante, a fase $\pi/4$: na região clássica o seno não se anula no ponto de retorno, como aconteceria
+                    numa parede vertical, mas "um oitavo de comprimento de onda depois", porque a função de onda penetra um pouco na
+                    região proibida. É essa fase que muda as regras de quantização.</p>
+
+
+                <h2 id="quantizacao">Regras de quantização</h2>
+
+                <p>A (9.47) é tudo o que é preciso para quantizar um poço cujas paredes não são verticais. Vejamos primeiro o caso em
+                    que só uma delas é inclinada; depois, o caso típico, em que as duas são.</p>
+
+                <div id="ex-9-3">
+                    <p><strong>Exemplo 9.3 (Poço com uma parede vertical).</strong> Imagine um poço de potencial com um lado vertical
+                        (em $x = 0$) e um lado inclinado (Figura 9.11), com $E \gt V$ em $0 \lt x \lt x_2$ e $E \lt V$ para $x \gt x_2$.</p>
+
+                    <figure class="lecture-figure" id="fig-9-11">
+                        <svg viewBox="0 0 640 290" role="img" aria-label="Figura 9.11: poço com parede vertical em x = 0 (faixa sombreada); a partir dela o potencial sobe, faz uma prateleira e volta a subir, cruzando o nível E no ponto de retorno x2.">
+<defs><marker id="arr-9-11" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<rect x="98" y="20" width="12" height="240" class="fig-band"/>
+<line x1="80" y1="260" x2="600" y2="260" class="fig-axis" marker-end="url(#arr-9-11)"/>
+<text x="606" y="265" class="fig-label fig-it">x</text>
+<line x1="110" y1="285" x2="110" y2="14" class="fig-axis" marker-end="url(#arr-9-11)"/>
+<text x="118" y="24" class="fig-label fig-it">V(x)</text>
+<line x1="110" y1="115" x2="470" y2="115" class="fig-guide"/>
+<text x="92" y="120" text-anchor="end" class="fig-label fig-it">E</text>
+<text x="106" y="280" text-anchor="end" class="fig-label">0</text>
+<path d="M110,233.9 L110,233.9 L113,233.8 L116,233.7 L119,233.5 L122,233.3 L125,233 L128,232.5 L131,231.9 L134,231.2 L137,230.3 L140,229.3 L143,227.9 L146,226.4 L149,224.5 L152,222.4 L155,219.9 L158,217.1 L161,214 L164,210.6 L167,206.9 L170,203 L173,198.9 L176,194.8 L179,190.8 L182,186.8 L185,183 L188,179.5 L191,176.2 L194,173.2 L197,170.6 L200,168.3 L203,166.2 L206,164.5 L209,163 L212,161.7 L215,160.6 L218,159.7 L221,158.9 L224,158.2 L227,157.6 L230,157.1 L233,156.6 L236,156.1 L239,155.7 L242,155.3 L245,154.9 L248,154.4 L251,154 L254,153.5 L257,153 L260,152.4 L263,151.8 L266,151.1 L269,150.3 L272,149.4 L275,148.5 L278,147.5 L281,146.4 L284,145.1 L287,143.8 L290,142.4 L293,140.8 L296,139.1 L299,137.4 L302,135.5 L305,133.5 L308,131.4 L311,129.2 L314,126.9 L317,124.5 L320,122.1 L323,119.6 L326,117.1 L329,114.6 L332,112.1 L335,109.5 L338,107 L341,104.6 L344,102.2 L347,99.8 L350,97.6 L353,95.4 L356,93.4 L359,91.4 L362,89.6 L365,87.8 L368,86.2 L371,84.7 L374,83.3 L377,82 L380,80.8 L383,79.8 L386,78.8 L389,77.9 L392,77.1 L395,76.4 L398,75.8 L401,75.2 L404,74.7 L407,74.3 L410,73.9 L413,73.6 L416,73.3 L419,73.1 L422,72.9 L425,72.8 L428,72.6 L431,72.5 L434,72.5 L437,72.4 L440,72.4 L443,72.4 L446,72.5 L449,72.5 L452,72.5 L455,72.6 L458,72.7 L461,72.8 L464,72.9 L467,73 L470,73.1 L473,73.2 L476,73.4 L479,73.5 L482,73.6 L485,73.8 L488,73.9 L491,74.1 L494,74.3 L497,74.4 L500,74.6" class="fig-curve"/>
+<line x1="328.5" y1="115" x2="328.5" y2="260" class="fig-guide fig-dashed"/>
+<circle cx="328.5" cy="115" r="3.5" class="fig-arrowhead"/>
+<text x="328.5" y="280" text-anchor="middle" class="fig-label fig-it">x₂</text>
+</svg>
+                        <figcaption><strong>Figura 9.11.</strong> Poço de potencial com uma parede vertical (em $x = 0$) e um lado
+                            inclinado, que encontra o nível $E$ no ponto de retorno $x_2$.</figcaption>
+                    </figure>
+
+                    <p>À direita, a função de onda decai, e a (9.47) diz como ela continua à esquerda de $x_2$, até a parede. Na parede,
+                        $\psi(0) = 0$; como $p(0) \ne 0$ e $D \ne 0$ (senão $\psi \equiv 0$), o seno de (9.47) tem de se anular em
+                        $x = 0$:</p>
+                    <p>$$ \frac1\hbar\int_0^{x_2}p(x)\,dx + \frac\pi4 = n\pi \qquad (n = 1, 2, 3, \dots). $$</p>
+                    <p>(Como $p \gt 0$ no interior, o lado esquerdo é maior que $\pi/4$, o que exclui $n \le 0$.) Ou seja,</p>
+                    <p>$$ \boxed{\int_0^{x_2}p(x)\,dx = \left(n - \frac14\right)\pi\hbar.} \tag{9.48} $$</p>
+                    <p>Considere, por exemplo, o "meio oscilador harmônico",</p>
+                    <p>$$ V(x) = \begin{cases} \frac12m\omega^2x^2, & x \gt 0, \\ \infty, & \text{nos demais casos}. \end{cases} \tag{9.49} $$</p>
+                    <p>Neste caso,</p>
+                    <p>$$ p(x) = \sqrt{2m\left[E - \tfrac12m\omega^2x^2\right]} = m\omega\sqrt{x_2^2 - x^2}, $$</p>
+                    <p>em que</p>
+                    <p>$$ x_2 = \frac1\omega\sqrt{\frac{2E}{m}} $$</p>
+                    <p>é o ponto de retorno (onde $\frac12m\omega^2x_2^2 = E$). Com a substituição $x = x_2\sin u$, $dx = x_2\cos u\,du$,
+                        a integral é a área de um quarto de círculo de raio $x_2$:</p>
+                    <p>$$ \int_0^{x_2}\sqrt{x_2^2 - x^2}\,dx = x_2^2\int_0^{\pi/2}\cos^2u\,du = \frac\pi4x_2^2. $$</p>
+                    <p>Assim,</p>
+                    <p>$$ \int_0^{x_2}p(x)\,dx = m\omega\,\frac\pi4x_2^2 = \frac\pi4m\omega\,\frac{2E}{m\omega^2} = \frac{\pi E}{2\omega}, $$</p>
+                    <p>e a condição de quantização (9.48), $\pi E/2\omega = (n - \frac14)\pi\hbar$, dá</p>
+                    <p>$$ E_n = \left(2n - \frac12\right)\hbar\omega = \left(\frac32, \frac72, \frac{11}2, \dots\right)\hbar\omega. \tag{9.50} $$</p>
+                    <p>Neste caso particular, a aproximação WKB dá exatamente as energias permitidas, que são precisamente as energias
+                        <em>ímpares</em> do oscilador harmônico completo, $\left(k + \frac12\right)\hbar\omega$ com $k = 1, 3, 5, \dots$
+                        (Griffiths, Seção 2.3). O livro deixa essa última afirmação como problema; o argumento é curto. Uma
+                        autofunção ímpar do oscilador completo se anula em $x = 0$ e satisfaz, para $x \gt 0$, a mesma equação que a do
+                        meio oscilador: é uma autofunção dele. Reciprocamente, se $\psi$ resolve o meio oscilador, sua extensão ímpar,
+                        $\psi(-x) = -\psi(x)$, é contínua em $0$ (porque $\psi(0) = 0$), tem derivada contínua (a derivada de uma função
+                        ímpar é par) e satisfaz a equação dos dois lados, já que $V$ é par: é uma autofunção ímpar do oscilador completo.
+                        Os dois espectros coincidem, e $k = 2n - 1$ leva $(k + \frac12)\hbar\omega$ em (9.50).</p>
+                </div>
+
+                <p>Para um poço sem paredes verticais, falta um ingrediente: a (9.47) conecta as funções WKB num ponto de retorno em
+                    que o potencial <em>sobe</em> (Figura 9.12(a)), mas o ponto de retorno da esquerda de um poço é um ponto em que o
+                    potencial <em>desce</em> (Figura 9.12(b)).</p>
+
+                <div id="ex-9-4">
+                    <p><strong>Exemplo 9.4 (Poço sem paredes verticais).</strong> O mesmo raciocínio que levou a (9.47), aplicado a um
+                        ponto de retorno descendente $x_1$, com a região proibida à esquerda e a clássica à direita, dá</p>
+                    <p>$$ \psi(x) \approx \begin{cases} \frac{D'}{\sqrt{|p(x)|}}\exp\left[-\frac1\hbar\int_x^{x_1}|p(x')|dx'\right], & x \lt x_1; \\[1ex] \frac{2D'}{\sqrt{p(x)}}\sin\left[\frac1\hbar\int_{x_1}^xp(x')dx' + \frac\pi4\right], & x \gt x_1. \end{cases} \tag{9.51} $$</p>
+                    <p>O livro deixa a dedução como problema; ela sai da (9.47) por uma reflexão, sem refazer o remendo. Sejam
+                        $u = -x$ e $\tilde V(u) = V(-u)$. A equação de Schrödinger só tem a derivada segunda, que não muda com
+                        $x \to -x$; então $\varphi(u) \equiv \psi(-u)$ resolve a equação com o potencial $\tilde V$. Em $u_1 = -x_1$,
+                        $\tilde V$ <em>sobe</em> ($\tilde V'(u_1) = -V'(x_1) \gt 0$), com a região clássica em $u \lt u_1$: é um ponto de
+                        retorno ascendente, e a (9.47) vale para $\varphi$, com $\tilde p(u) = p(-u)$ e uma constante $D'$. Resta
+                        voltar a $x$. Com $u' = -x'$,</p>
+                    <p>$$ \int_u^{u_1}\tilde p(u')\,du' = \int_{-x}^{-x_1}p(-u')\,du' = -\int_x^{x_1}p(x')\,dx' = \int_{x_1}^xp(x')\,dx', $$</p>
+                    <p>e do mesmo modo $\int_{u_1}^u|\tilde p(u')|\,du' = \int_x^{x_1}|p(x')|\,dx'$. Como $u \lt u_1$ equivale a $x \gt x_1$,
+                        a linha do seno de (9.47) vira a segunda linha de (9.51), e a da exponencial vira a primeira.</p>
+
+                    <figure class="lecture-figure" id="fig-9-12">
+                        <svg viewBox="0 0 640 220" role="img" aria-label="Figura 9.12: (a) o potencial sobe e cruza o nível E no ponto de retorno x2; (b) o potencial desce e cruza E em x1; (c) um poço de potencial, com um ponto de retorno descendente em x1 e um ascendente em x2.">
+<defs><marker id="arr-9-12" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="14" y1="190" x2="14" y2="15" class="fig-axis" marker-end="url(#arr-9-12)"/>
+<text x="22" y="22" class="fig-label fig-it">V(x)</text>
+<line x1="14" y1="190" x2="80" y2="190" class="fig-axis" marker-end="url(#arr-9-12)"/>
+<text x="86" y="195" class="fig-label fig-it">x</text>
+<line x1="60" y1="75" x2="200" y2="75" class="fig-guide"/>
+<text x="54" y="80" text-anchor="end" class="fig-label fig-it">E</text>
+<path d="M65,120 L67,120 L69,120 L71,120 L73,120 L75,120 L77,120 L79,120 L81,120 L83,119.8 L85,119.4 L87,118.9 L89,118.2 L91,117.3 L93,116.3 L95,115.1 L97,113.7 L99,112.2 L101,110.6 L103,108.8 L105,106.8 L107,104.8 L109,102.6 L111,100.3 L113,97.9 L115,95.4 L117,92.9 L119,90.2 L121,87.6 L123,84.8 L125,82 L127,79.2 L129,76.4 L131,73.6 L133,70.8 L135,68 L137,65.2 L139,62.4 L141,59.8 L143,57.1 L145,54.6 L147,52.1 L149,49.7 L151,47.4 L153,45.2 L155,43.2 L157,41.2 L159,39.4 L161,37.8 L163,36.3 L165,34.9 L167,33.7 L169,32.7 L171,31.8 L173,31.1 L175,30.6 L177,30.2 L179,30 L181,30 L183,30 L185,30 L187,30 L189,30 L191,30 L193,30 L195,30" class="fig-curve"/>
+<line x1="130" y1="22" x2="130" y2="160" class="fig-guide fig-dashed"/>
+<circle cx="130" cy="75" r="3" class="fig-arrowhead"/>
+<text x="130" y="178" text-anchor="middle" class="fig-label fig-it">x₂</text>
+<text x="130" y="206" text-anchor="middle" class="fig-label">(a)</text>
+<line x1="250" y1="75" x2="370" y2="75" class="fig-guide"/>
+<text x="244" y="80" text-anchor="end" class="fig-label fig-it">E</text>
+<path d="M255,30 L257,30 L259,30 L261,30 L263,30.2 L265,30.6 L267,31.1 L269,31.8 L271,32.7 L273,33.7 L275,34.9 L277,36.3 L279,37.8 L281,39.4 L283,41.2 L285,43.2 L287,45.2 L289,47.4 L291,49.7 L293,52.1 L295,54.6 L297,57.1 L299,59.8 L301,62.4 L303,65.2 L305,68 L307,70.8 L309,73.6 L311,76.4 L313,79.2 L315,82 L317,84.8 L319,87.6 L321,90.2 L323,92.9 L325,95.4 L327,97.9 L329,100.3 L331,102.6 L333,104.8 L335,106.8 L337,108.8 L339,110.6 L341,112.2 L343,113.7 L345,115.1 L347,116.3 L349,117.3 L351,118.2 L353,118.9 L355,119.4 L357,119.8 L359,120 L361,120 L363,120 L365,120" class="fig-curve"/>
+<line x1="310" y1="22" x2="310" y2="160" class="fig-guide fig-dashed"/>
+<circle cx="310" cy="75" r="3" class="fig-arrowhead"/>
+<text x="310" y="178" text-anchor="middle" class="fig-label fig-it">x₁</text>
+<text x="310" y="206" text-anchor="middle" class="fig-label">(b)</text>
+<line x1="420" y1="75" x2="615" y2="75" class="fig-guide"/>
+<text x="414" y="80" text-anchor="end" class="fig-label fig-it">E</text>
+<path d="M425,55.5 L427,57.3 L429,59.2 L431,61.1 L433,63 L435,65 L437,67 L439,69 L441,71 L443,73 L445,75 L447,77 L449,79 L451,81 L453,83 L455,85 L457,87 L459,88.9 L461,90.8 L463,92.7 L465,94.5 L467,96.3 L469,98.1 L471,99.8 L473,101.5 L475,103.1 L477,104.6 L479,106.1 L481,107.5 L483,108.9 L485,110.2 L487,111.4 L489,112.6 L491,113.6 L493,114.6 L495,115.5 L497,116.4 L499,117.1 L501,117.8 L503,118.4 L505,118.9 L507,119.3 L509,119.6 L511,119.8 L513,120 L515,120 L517,120 L519,119.8 L521,119.6 L523,119.3 L525,118.9 L527,118.4 L529,117.8 L531,117.1 L533,116.4 L535,115.5 L537,114.6 L539,113.6 L541,112.6 L543,111.4 L545,110.2 L547,108.9 L549,107.5 L551,106.1 L553,104.6 L555,103.1 L557,101.5 L559,99.8 L561,98.1 L563,96.3 L565,94.5 L567,92.7 L569,90.8 L571,88.9 L573,87 L575,85 L577,83 L579,81 L581,79 L583,77 L585,75 L587,73 L589,71 L591,69 L593,67 L595,65 L597,63 L599,61.1 L601,59.2 L603,57.3 L605,55.5 L607,53.7 L609,51.9" class="fig-curve"/>
+<line x1="445" y1="22" x2="445" y2="160" class="fig-guide fig-dashed"/>
+<circle cx="445" cy="75" r="3" class="fig-arrowhead"/>
+<text x="445" y="178" text-anchor="middle" class="fig-label fig-it">x₁</text>
+<line x1="585" y1="22" x2="585" y2="160" class="fig-guide fig-dashed"/>
+<circle cx="585" cy="75" r="3" class="fig-arrowhead"/>
+<text x="585" y="178" text-anchor="middle" class="fig-label fig-it">x₂</text>
+<text x="517.5" y="206" text-anchor="middle" class="fig-label">(c)</text>
+</svg>
+                        <figcaption><strong>Figura 9.12.</strong> Pontos de retorno ascendente e descendente: (a) o potencial sobe em
+                            $x_2$, com a região clássica à esquerda; (b) o potencial desce em $x_1$, com a região clássica à direita;
+                            (c) um poço tem um de cada.</figcaption>
+                    </figure>
+
+                    <p>Em particular, num <em>poço</em> de potencial (Figura 9.12(c)), a função de onda na região "interior"
+                        ($x_1 \lt x \lt x_2$) pode ser escrita <em>tanto</em> como</p>
+                    <p>$$ \psi(x) \approx \frac{2D}{\sqrt{p(x)}}\sin\theta_2(x), \qquad \text{com} \qquad \theta_2(x) \equiv \frac1\hbar\int_x^{x_2}p(x')\,dx' + \frac\pi4 $$</p>
+                    <p>(Eq. 9.47), <em>quanto</em> como</p>
+                    <p>$$ \psi(x) \approx \frac{-2D'}{\sqrt{p(x)}}\sin\theta_1(x), \qquad \text{com} \qquad \theta_1(x) \equiv -\frac1\hbar\int_{x_1}^xp(x')\,dx' - \frac\pi4 $$</p>
+                    <p>(Eq. 9.51, usando $\sin(-\theta) = -\sin\theta$). As duas expressões têm de ser a mesma função em todo o
+                        interior. Agora, a diferença</p>
+                    <p>$$ \begin{aligned} \theta_2(x) - \theta_1(x) &= \frac1\hbar\left[\int_x^{x_2}p\,dx' + \int_{x_1}^xp\,dx'\right] + \frac\pi2 \\ &= \frac1\hbar\int_{x_1}^{x_2}p(x')\,dx' + \frac\pi2 \equiv \Delta \end{aligned} $$</p>
+                    <p>não depende de $x$, enquanto $\theta_1(x)$ varia. Escrevendo
+                        $\sin\theta_2 = \sin\theta_1\cos\Delta + \cos\theta_1\sin\Delta$, a igualdade
+                        $D\sin\theta_2 = -D'\sin\theta_1$ para todo $x$ exige $\sin\Delta = 0$. Os argumentos dos senos têm de ser iguais,
+                        portanto, módulo $\pi$:<sup id="fnref:5"><a href="#fn:5" class="footnote-ref">5</a></sup>
+                        $\theta_2 = \theta_1 + n\pi$, e então $D' = (-1)^{n + 1}D$. Daí segue que</p>
+                    <p>$$ \int_{x_1}^{x_2}p(x)\,dx = \left(n - \frac12\right)\pi\hbar, \quad \text{com} \quad n = 1, 2, 3, \dots \tag{9.52} $$</p>
+                    <p>(Como a integral é positiva, $n \le 0$ está excluído.) Essa condição de quantização determina as energias
+                        permitidas no caso "típico" de um poço com dois lados inclinados. Repare que ela difere das fórmulas para duas
+                        paredes verticais (Eq. 9.17) e para uma parede vertical (Eq. 9.48) apenas no número que se subtrai de $n$: $0$,
+                        $1/4$ ou $1/2$.</p>
+                </div>
+
+                <p>Como a aproximação WKB funciona melhor no regime semiclássico ($n$ grande), a distinção é mais de aparência que de
+                    substância: o número subtraído pesa cada vez menos quando $n$ cresce. Em todo caso, o resultado é extraordinariamente
+                    poderoso, pois permite calcular energias permitidas (aproximadas) <em>sem nunca resolver a equação de
+                    Schrödinger</em>, só calculando uma integral. A própria função de onda saiu de cena. A regra é fácil de lembrar:
+                    cada parede vertical contribui com fase $0$, e cada ponto de retorno suave, com $\pi/4$; a soma das duas fases mais
+                    $\frac1\hbar\int p\,dx$ tem de valer $n\pi$ (<a href="#exr-9-3-5">Exercício 9.3-5</a>).</p>
+
+                <h2 id="conexao">Conexão com o experimento</h2>
+
+                <p>A seção do livro não traz medidas. O que ela oferece, e que se pode testar, é a qualidade das regras de quantização
+                    contra os espectros exatos. No meio oscilador do <a href="#ex-9-3">Exemplo 9.3</a>, a regra (9.48) dá exatamente os níveis verdadeiros, e
+                    no oscilador completo a (9.52) também (<a href="#exr-9-3-1">Exercício 9.3-1</a>). Nos outros casos, o erro cai depressa com $n$: no poço com uma
+                    parede vertical e um lado linear, ele vai de $0{,}76\%$ em $n = 1$ a $0{,}03\%$ em $n = 4$ (<a href="#exr-9-3-3">Exercício 9.3-3</a>); no poço
+                    quártico, de $18\%$ no estado fundamental a $0{,}12\%$ em $n = 6$ (<a href="#exr-9-3-6">Exercício 9.3-6</a>). É o comportamento previsto: a
+                    distinção entre as regras é "mais de aparência que de substância" justamente no regime de $n$ grande.</p>
+                <p>O poço com uma parede vertical e um lado linear não é só um exercício. É a "bola quicando" quântica, uma partícula
+                    no campo gravitacional sobre um piso refletor, que o livro propõe como problema; em nota, ele registra que o
+                    experimento foi de fato feito, com nêutrons, em 2002. O <a href="#exr-9-3-3">Exercício 9.3-3</a> mostra as escalas envolvidas: o nível
+                    fundamental de um nêutron fica em torno de $1{,}4$ peV, e a altura clássica máxima, em cerca de $14\ \mu\text{m}$.</p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p id="exr-9-3-1"><strong>Exercício 9.3-1.</strong> Use a regra (9.52) para obter os níveis do oscilador harmônico
+                    completo, $V(x) = \frac12m\omega^2x^2$, e compare com os níveis exatos. Como se traduz a numeração $n = 1, 2, 3,
+                    \dots$ do livro na numeração usual do oscilador?</p>
+                <p><em>Solução.</em> Os pontos de retorno são $\pm x_0$, com $x_0 = \sqrt{2E/m}/\omega$, e
+                    $p = m\omega\sqrt{x_0^2 - x^2}$. A integral entre eles é a área de meio círculo de raio $x_0$ vezes $m\omega$:</p>
+                <p>$$ \int_{-x_0}^{x_0}p(x)\,dx = m\omega\,\frac\pi2x_0^2 = \frac{\pi E}{\omega}. $$</p>
+                <p>A (9.52) dá $\pi E/\omega = (n - \frac12)\pi\hbar$, isto é, $E_n = (n - \frac12)\hbar\omega$, com $n = 1, 2, 3, \dots$.
+                    Chamando $n' = n - 1 = 0, 1, 2, \dots$, fica $E = (n' + \frac12)\hbar\omega$: os níveis exatos (Griffiths, Seção 2.3),
+                    todos eles, inclusive o fundamental. No livro, o $n$ da regra começa em 1 e conta os estados a partir do
+                    fundamental; $n - 1$ é o número de nós da função de onda. Os níveis pares em $n$ ($n = 2, 4, \dots$, isto é,
+                    $n' = 1, 3, \dots$) são os do meio oscilador, (9.50), como deve ser.</p>
+
+                <p id="exr-9-3-2"><strong>Exercício 9.3-2.</strong> Confira numericamente as formas assintóticas da Tabela 9.1 em
+                    $z = \pm5$, e veja como o erro muda com $|z|$. Que lição isso dá sobre a largura das zonas de superposição?</p>
+                <p><em>Solução.</em> Com $\frac23(5)^{3/2} = 7{,}4536$ e $5^{1/4} = 1{,}4953$, as formas assintóticas dão os valores da
+                    tabela abaixo, comparados com os exatos (calculados numericamente):</p>
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr><th>$z$</th><th>Função</th><th>Exato</th><th>Assintótico</th><th>Erro relativo</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>$+5$</td><td>$\mathrm{Ai}$</td><td>$1{,}0834\times10^{-4}$</td><td>$1{,}0930\times10^{-4}$</td><td>$+0{,}9\%$</td></tr>
+                            <tr><td>$+5$</td><td>$\mathrm{Bi}$</td><td>$657{,}79$</td><td>$651{,}21$</td><td>$-1{,}0\%$</td></tr>
+                            <tr><td>$-5$</td><td>$\mathrm{Ai}$</td><td>$0{,}35076$</td><td>$0{,}34968$</td><td>$-0{,}3\%$</td></tr>
+                            <tr><td>$-5$</td><td>$\mathrm{Bi}$</td><td>$-0{,}13837$</td><td>$-0{,}14169$</td><td>$+2{,}4\%$</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>O erro de $\mathrm{Bi}(-5)$ parece maior só porque o valor está perto de um nó do cosseno: em relação à amplitude da
+                    oscilação, $1/\sqrt\pi\,5^{1/4} = 0{,}377$, a diferença de $0{,}0033$ é de $0{,}9\%$, como nos outros casos. Em
+                    $z = \pm2$ os erros sobem para 3% a 5%, e em $z = 1$, para 7% a 9%. Eles caem como $|z|^{-3/2}$, que é exatamente o
+                    parâmetro $\hbar|p'|/p^2$ da WKB aplicada à equação de Airy (a <em>Ideia</em> do
+                    <a href="#prop-assintoticas-airy">Resultado citado (Formas assintóticas das funções de Airy)</a>): de $|z| = 2$ para $|z| = 5$, ele cai por $(5/2)^{3/2} \approx 4$, e o erro, de cerca de
+                    4% para cerca de 1%. A lição: para que as assintóticas valham a 1%, as zonas de superposição têm de começar a uns
+                    cinco "comprimentos de Airy" $1/\alpha$ do ponto de retorno, e o potencial ainda tem de ser quase linear lá. Num poço
+                    largo, ou para $n$ grande, as duas exigências cabem; no estado fundamental de um poço estreito, nem sempre.</p>
+
+                <p id="exr-9-3-3"><strong>Exercício 9.3-3.</strong> Uma partícula de massa $m$ está sujeita a $V(x) = Fx$ para
+                    $x \gt 0$ (com $F \gt 0$) e a uma parede impenetrável em $x = 0$. (a) Encontre os níveis WKB. (b) Resolva o problema
+                    exatamente em termos de $\mathrm{Ai}$ e compare os quatro primeiros níveis. (c) Estime o nível fundamental e a altura
+                    clássica máxima de um nêutron ($m = 1{,}675\times10^{-27}$ kg) sobre um piso, com $F = mg$ e $g = 9{,}80\ \text{m/s}^2$.</p>
+                <p><em>Solução.</em> (a) O ponto de retorno é $x_2 = E/F$, e</p>
+                <p>$$ \int_0^{x_2}\sqrt{2m(E - Fx)}\,dx = \sqrt{2m}\,\frac23\,\frac{E^{3/2}}{F}. $$</p>
+                <p>Com uma parede vertical e um lado inclinado, vale a (9.48): $\frac23\sqrt{2m}\,E^{3/2}/F = (n - \frac14)\pi\hbar$, ou</p>
+                <p>$$ E_n = \left[\frac{3\pi}{2}\left(n - \frac14\right)\right]^{2/3}\epsilon, \qquad \epsilon \equiv \left(\frac{\hbar^2F^2}{2m}\right)^{1/3}. $$</p>
+                <p>(b) Para $x \gt 0$, a equação de Schrödinger é $\psi'' = (2mF/\hbar^2)(x - x_2)\psi$: é a (9.34), com o ponto de
+                    retorno em $x_2$ e $\alpha = (2mF/\hbar^2)^{1/3}$. A solução que não explode é $\psi = \mathrm{Ai}(\alpha(x - x_2))$
+                    ($\mathrm{Bi}$ cresce sem limite). A parede exige $\mathrm{Ai}(-\alpha x_2) = 0$; chamando $a_n$ os zeros de
+                    $\mathrm{Ai}$ ($a_1 = -2{,}3381$, $a_2 = -4{,}0879$, …), $\alpha E_n/F = -a_n$, e como $F/\alpha = \epsilon$,
+                    $E_n = -a_n\,\epsilon$. Em unidades de $\epsilon$:</p>
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr><th>$n$</th><th>WKB (9.48)</th><th>Exato ($-a_n$)</th><th>Erro da WKB</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>$2{,}3203$</td><td>$2{,}3381$</td><td>$-0{,}76\%$</td></tr>
+                            <tr><td>2</td><td>$4{,}0818$</td><td>$4{,}0879$</td><td>$-0{,}15\%$</td></tr>
+                            <tr><td>3</td><td>$5{,}5172$</td><td>$5{,}5206$</td><td>$-0{,}06\%$</td></tr>
+                            <tr><td>4</td><td>$6{,}7845$</td><td>$6{,}7867$</td><td>$-0{,}03\%$</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>De quebra, a WKB dá uma fórmula aproximada para os zeros de $\mathrm{Ai}$:
+                    $a_n \approx -\left[\frac{3\pi}{2}\left(n - \frac14\right)\right]^{2/3}$, já boa a menos de 1% no primeiro.</p>
+                <p>(c) Com $F = mg$, $\epsilon = (\hbar^2mg^2/2)^{1/3} = 0{,}601$ peV ($1\ \text{peV} = 10^{-12}$ eV), e
+                    $E_1 = 2{,}338\,\epsilon = 1{,}41$ peV. A altura clássica máxima é $x_2 = E_1/mg = 2{,}338\,\ell$, com
+                    $\ell = \epsilon/mg = (\hbar^2/2m^2g)^{1/3} = 5{,}87\ \mu\text{m}$; portanto $x_2 \approx 13{,}7\ \mu\text{m}$. Energias
+                    minúsculas, mas alturas macroscópicas: é isso que torna o experimento possível.</p>
+
+                <p id="exr-9-3-4"><strong>Exercício 9.3-4.</strong> Considere agora o poço simétrico $V(x) = F|x|$, sem parede. (a)
+                    Encontre os níveis WKB. (b) Mostre que os estados exatos ímpares e pares correspondem aos zeros de $\mathrm{Ai}$ e de
+                    $\mathrm{Ai}'$, respectivamente, e compare os seis primeiros níveis. (c) Explique por que os níveis WKB de $n$ par
+                    coincidem com os do Exercício 9.3-3.</p>
+                <p><em>Solução.</em> (a) Os pontos de retorno são $\pm E/F$, e a integral é o dobro da do exercício anterior. Pela
+                    (9.52), $\frac43\sqrt{2m}\,E^{3/2}/F = (n - \frac12)\pi\hbar$, ou, com o mesmo $\epsilon$,</p>
+                <p>$$ E_n = \left[\frac{3\pi}{4}\left(n - \frac12\right)\right]^{2/3}\epsilon. $$</p>
+                <p>(b) Para $x \gt 0$ a solução que decai é $\mathrm{Ai}(\alpha(x - E/F))$, como antes. Como $V$ é par, os estados são
+                    pares ou ímpares. Os ímpares têm $\psi(0) = 0$: $\mathrm{Ai}(-E/\epsilon) = 0$, $E = -a_k\,\epsilon$. Os pares têm
+                    $\psi'(0) = 0$: $\mathrm{Ai}'(-E/\epsilon) = 0$, $E = -a_k'\,\epsilon$, com $a_1' = -1{,}0188$, $a_2' = -3{,}2482$, …
+                    Intercalando:</p>
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr><th>$n$</th><th>Paridade</th><th>WKB (9.52)</th><th>Exato</th><th>Erro da WKB</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>par</td><td>$1{,}1155$</td><td>$1{,}0188$</td><td>$+9{,}5\%$</td></tr>
+                            <tr><td>2</td><td>ímpar</td><td>$2{,}3203$</td><td>$2{,}3381$</td><td>$-0{,}76\%$</td></tr>
+                            <tr><td>3</td><td>par</td><td>$3{,}2616$</td><td>$3{,}2482$</td><td>$+0{,}41\%$</td></tr>
+                            <tr><td>4</td><td>ímpar</td><td>$4{,}0818$</td><td>$4{,}0879$</td><td>$-0{,}15\%$</td></tr>
+                            <tr><td>5</td><td>par</td><td>$4{,}8263$</td><td>$4{,}8201$</td><td>$+0{,}13\%$</td></tr>
+                            <tr><td>6</td><td>ímpar</td><td>$5{,}5172$</td><td>$5{,}5206$</td><td>$-0{,}06\%$</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>(c) Com $n = 2k$, $\frac{3\pi}{4}(2k - \frac12) = \frac{3\pi}{2}(k - \frac14)$: o $n$-ésimo nível WKB do poço
+                    simétrico é o $k$-ésimo do poço com parede. Os estados exatos também coincidem: os ímpares se anulam em $x = 0$ e,
+                    como no meio oscilador do <a href="#ex-9-3">Exemplo 9.3</a>, são os estados do poço com parede. A WKB respeita essa relação. O pior nível é
+                    o fundamental, par, em que a função de onda não tem nó e as zonas de superposição dos dois pontos de retorno quase se
+                    tocam.</p>
+
+                <p id="exr-9-3-5"><strong>Exercício 9.3-5.</strong> De onde vêm o $\frac14$ da (9.48) e o $\frac12$ da (9.52)? Dê uma
+                    interpretação em termos de fases e uma em termos de "largura efetiva" do poço.</p>
+                <p><em>Solução.</em> Numa parede vertical, $\psi$ se anula na própria parede: medida a partir dela, a fase do seno começa
+                    em $0$. Num ponto de retorno suave, a (9.47) e a (9.51) dizem que a fase, medida a partir do ponto de retorno, começa
+                    em $\pi/4$: a função de onda não precisa se anular ali, porque vaza para a região proibida. Para que as soluções que
+                    vêm de cada extremidade concordem no interior, a fase acumulada $\frac1\hbar\int p\,dx$ mais as fases das duas
+                    extremidades tem de ser um múltiplo de $\pi$: $0 + 0$ dá $n\pi$ (9.17), $0 + \frac\pi4$ dá
+                    $(n - \frac14)\pi$ (9.48) e $\frac\pi4 + \frac\pi4$ dá $(n - \frac12)\pi$ (9.52). Na outra leitura, uma fase de
+                    $\pi/4$ é um oitavo de comprimento de onda: um ponto de retorno suave funciona como uma parede vertical colocada
+                    $\lambda/8$ para dentro da região proibida. O poço "efetivo" é mais largo, e por isso as energias são um pouco
+                    menores do que se o poço terminasse no ponto de retorno. Para $n$ grande, $\lambda$ fica pequeno perto da largura do
+                    poço, e a correção pesa pouco, como diz o livro.</p>
+
+                <p id="exr-9-3-6"><strong>Exercício 9.3-6.</strong> Para o oscilador quártico, $V(x) = \beta x^4$, encontre os níveis
+                    WKB e compare-os com os exatos (numéricos), nas unidades $\hbar = 2m = \beta = 1$, em que a equação de Schrödinger é
+                    $-\psi'' + x^4\psi = E\psi$. Por que o erro no estado fundamental é tão maior que nos outros?</p>
+                <p><em>Solução.</em> Com $x_0 = (E/\beta)^{1/4}$ e $x = x_0u$,</p>
+                <p>$$ \int_{-x_0}^{x_0}\sqrt{2m(E - \beta x^4)}\,dx = 2\sqrt{2mE}\,x_0\,I, $$</p>
+                <p>com $I \equiv \int_0^1\sqrt{1 - u^4}\,du = 0{,}87402$ (calculada numericamente),</p>
+                <p>e a (9.52) dá $2\sqrt{2m}\,\beta^{-1/4}E^{3/4}I = (n - \frac12)\pi\hbar$. Nas unidades do enunciado,
+                    $E_n = \left[(n - \frac12)\pi/2I\right]^{4/3}$. Os níveis exatos vêm da diagonalização numérica do hamiltoniano
+                    discretizado (diferenças finitas):</p>
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr><th>$n$</th><th>WKB (9.52)</th><th>Exato</th><th>Erro da WKB</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>$0{,}8671$</td><td>$1{,}0604$</td><td>$-18\%$</td></tr>
+                            <tr><td>2</td><td>$3{,}7519$</td><td>$3{,}7997$</td><td>$-1{,}3\%$</td></tr>
+                            <tr><td>3</td><td>$7{,}4140$</td><td>$7{,}4557$</td><td>$-0{,}56\%$</td></tr>
+                            <tr><td>4</td><td>$11{,}612$</td><td>$11{,}645$</td><td>$-0{,}28\%$</td></tr>
+                            <tr><td>6</td><td>$21{,}214$</td><td>$21{,}238$</td><td>$-0{,}12\%$</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>No estado fundamental, $x_0 \approx 1$, e o "comprimento de Airy" no ponto de retorno,
+                    $1/\alpha = (\hbar^2/2mV'(x_0))^{1/3} = (4x_0^3)^{-1/3} \approx 0{,}63$, é comparável à distância entre os dois
+                    pontos de retorno. Não há lugar para zonas de superposição (o <a href="#exr-9-3-2">Exercício 9.3-2</a> pede uns cinco comprimentos de Airy), e o
+                    potencial está longe de linear na região de remendo. À medida que $n$ cresce, $x_0$ cresce, $1/\alpha$ diminui, e as
+                    zonas cabem: o erro cai rapidamente. O oscilador harmônico, em que a WKB é exata para todo $n$, é a exceção, não a
+                    regra.</p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <ul>
+                    <li>A equação de Airy (9.37) como a equação de Schrödinger perto de qualquer ponto de retorno em que o potencial é
+                        aproximadamente linear, com a escala $1/\alpha$ (9.35), e as funções de Airy, com suas formas assintóticas
+                        (Tabela 9.1, <a href="#prop-assintoticas-airy">Resultado citado (Formas assintóticas das funções de Airy)</a>).</li>
+                    <li>A técnica do remendo: casar a solução de Airy com as soluções WKB nas duas zonas de superposição (9.39–9.45), o
+                        que dá as fórmulas de conexão (9.46) e a função de onda (9.47) através de um ponto de retorno ascendente
+                        (<a href="#teo-formulas-de-conexao">Teorema (Fórmulas de conexão num ponto de retorno ascendente)</a>); por reflexão, a de um ponto descendente (9.51).</li>
+                    <li>As regras de quantização para poços com uma parede vertical, $\int p\,dx = (n - \frac14)\pi\hbar$ (9.48), e sem
+                        nenhuma, $\int p\,dx = (n - \frac12)\pi\hbar$ (9.52), que completam a (9.17) da 9.1. O meio oscilador (9.50) e o
+                        oscilador completo (<a href="#exr-9-3-1">Exercício 9.3-1</a>) saem exatos; nos demais casos o erro cai depressa com $n$.</li>
+                </ul>
+                <p>Com isso termina o capítulo 9 e, com ele, a parte destas notas dedicada aos métodos de aproximação para estados
+                    estacionários: a teoria de perturbação (capítulo 7), o princípio variacional (capítulo 8) e a aproximação WKB. O
+                    livro deixa como problemas o espalhamento por uma barreira de paredes inclinadas, que usa as mesmas fórmulas de
+                    conexão para refinar a (9.23), e o poço duplo simétrico. Para voltar ao sumário:
+                    <a href="../../index.html">Mecânica Quântica II</a>.</p>
+
+                <hr class="footnotes-sep">
+                <section class="footnotes">
+                    <ol>
+                        <li id="fn:1">
+                            <p>Atenção: o argumento a seguir é bastante técnico, e você pode querer pulá-lo numa primeira leitura. (Nota
+                                do livro.)<a href="#fnref:1" class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:2">
+                            <p>Classicamente, um potencial linear significa uma força constante e, portanto, uma aceleração constante: o
+                                movimento não trivial mais simples que existe, ponto de partida da mecânica elementar. É irônico que o
+                                mesmo potencial, na mecânica quântica, produza estados estacionários que são funções transcendentes pouco
+                                familiares e tenha um papel apenas periférico na teoria. Ainda assim, pacotes de onda nesse potencial podem
+                                ser razoavelmente simples (o livro remete a um problema do capítulo 2). (Nota do livro.)<a href="#fnref:2"
+                                class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:3">
+                            <p>Essa é uma restrição dupla delicada, e é possível inventar potenciais tão patológicos que nenhuma zona de
+                                superposição exista. Nas aplicações práticas, porém, isso raramente acontece; o livro deixa como problema
+                                a análise do caso do oscilador harmônico. (Nota do livro.)<a href="#fnref:3" class="footnote-backref"
+                                aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:4">
+                            <p>À primeira vista parece absurdo usar uma aproximação para $z$ grande nesta região, que afinal deve estar
+                                razoavelmente perto do ponto de retorno (para que a aproximação linear do potencial valha). Mas o
+                                argumento aqui é $\alpha x$, e, estudando a questão com cuidado, encontra-se (tipicamente) uma região em
+                                que $\alpha x$ é grande e, ao mesmo tempo, é razoável aproximar $V(x)$ por uma reta. Na verdade, as
+                                formas assintóticas das funções de Airy são precisamente as soluções WKB da equação de Airy, e, como já
+                                estamos usando $\psi_{WKB}$ na zona de superposição (Figura 9.10), não é realmente uma aproximação nova
+                                fazer o mesmo com $\psi_p$. (Nota do livro.)<a href="#fnref:4" class="footnote-backref"
+                                aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:5">
+                            <p>Não $2\pi$: um sinal global pode ser absorvido nos fatores de normalização $D$ e $D'$. (Nota do
+                                livro.)<a href="#fnref:5" class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                    </ol>
+                </section>
 
             </div>
         </main>
@@ -171,6 +821,19 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#formulas-de-conexao">As Fórmulas de Conexão</a></li>
+                    <li><a href="#ponto-de-retorno">O ponto de retorno</a></li>
+                    <li><a href="#funcoes-de-airy">As funções de Airy</a></li>
+                    <li>
+                        <a href="#casamento">As zonas de superposição</a>
+                        <ul>
+                            <li><a href="#zona-2">A zona de superposição 2</a></li>
+                            <li><a href="#zona-1">A zona de superposição 1</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#quantizacao">Regras de quantização</a></li>
+                    <li><a href="#conexao">Conexão com o experimento</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
                 </ul>
             </div>
         </aside>
