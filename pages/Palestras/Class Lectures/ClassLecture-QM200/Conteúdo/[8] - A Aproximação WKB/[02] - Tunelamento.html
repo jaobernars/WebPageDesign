@@ -159,9 +159,524 @@
             <div class="prose">
 
                 <h1 id="tunelamento">9.2 Tunelamento</h1>
-                <p class="lead">A aproximação WKB na região classicamente proibida: a probabilidade de transmissão através de uma barreira e a teoria de Gamow do decaimento alfa.</p>
+                <p class="lead">A aproximação WKB onde a energia é menor que o potencial: soluções exponenciais, a probabilidade
+                    $T \approx e^{-2\gamma}$ de atravessar uma barreira alta e larga e a teoria de Gamow do decaimento alfa.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>Um núcleo de urânio emite uma partícula alfa, embora a alfa, para sair, precise atravessar uma barreira de potencial
+                    mais alta que o dobro da sua energia. Classicamente, isso é impossível; quanticamente, a função de onda vaza pela
+                    barreira, e a probabilidade de atravessar é pequena, mas não nula. Mais impressionante: os tempos de vida dos
+                    emissores alfa variam por cerca de vinte e cinco ordens de grandeza de um núcleo para outro, enquanto as energias
+                    das alfas mudam pouco. Esta seção mostra que a aproximação WKB explica as duas coisas, com uma única fórmula para a
+                    probabilidade de tunelamento.</p>
+
+                <h2 id="regiao-proibida">A região proibida</h2>
+
+                <p>Até aqui supusemos que $E \gt V$, de modo que $p(x)$ é real. Mas é fácil escrever o resultado WKB correspondente na
+                    região <em>não</em> clássica ($E \lt V$): é o mesmo de antes (Eq. 9.10), só que agora $p(x)$ é
+                    <em>imaginário</em>.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref">1</a></sup> Vamos fazer a conta. Com
+                    $E \lt V$, a Eq. (9.2) dá $p(x) = i\,|p(x)|$, em que</p>
+                <p>$$ |p(x)| = \sqrt{2m\left[V(x) - E\right]}, $$</p>
+                <p>e a equação de Schrödinger (9.1) fica $\psi'' = \left(|p|^2/\hbar^2\right)\psi$: a solução não oscila, cresce ou
+                    decresce. Agora a função de onda pode ser tomada real, e no lugar de (9.3) escrevemos $\psi = A(x)\,e^{\sigma(x)}$,
+                    com $A$ e $\sigma$ reais. Derivando duas vezes, como na 9.1,</p>
+                <p>$$ \psi'' = \left[A'' + 2A'\sigma' + A\sigma'' + A\left(\sigma'\right)^2\right]e^{\sigma}, $$</p>
+                <p>e a equação de Schrödinger fica</p>
+                <p>$$ A'' + 2A'\sigma' + A\sigma'' + A\left(\sigma'\right)^2 = \frac{|p|^2}{\hbar^2}A. $$</p>
+                <p>Como tudo é real, não há uma parte imaginária para separar. Mas uma condição <em>suficiente</em> para que essa
+                    equação valha é que valham as duas análogas de (9.6) e (9.7):</p>
+                <p>$$ A'' = A\left[\frac{|p|^2}{\hbar^2} - \left(\sigma'\right)^2\right] \qquad \text{e} \qquad 2A'\sigma' + A\sigma'' = 0. $$</p>
+                <p>A segunda é $\left(A^2\sigma'\right)' = 0$ e dá $A = C/\sqrt{|\sigma'|}$, como (9.8). Na primeira, desprezando $A''$
+                    como antes, $\sigma' = \pm|p|/\hbar$, e então $A = C\sqrt{\hbar/|p|}$, com o $\sqrt\hbar$ absorvido em $C$.</p>
+
+                <div class="definition-box" id="teo-wkb-regiao-proibida">
+                    <p><strong>Teorema (Aproximação WKB na região proibida).</strong> Onde $E \lt V(x)$ e a amplitude varia devagar, as
+                        soluções da equação de Schrödinger são, aproximadamente,</p>
+                    <p>$$ \psi(x) \approx \frac{C}{\sqrt{|p(x)|}}\,e^{\pm\frac1\hbar\int|p(x)|\,dx}. \tag{9.18} $$</p>
+                </div>
+                <p><em>Demonstração.</em> Com $\psi = Ae^{\sigma}$, as duas equações acima garantem a equação de Schrödinger. A segunda
+                    dá $A = C/\sqrt{|\sigma'|}$ exatamente; desprezando $A''$ na primeira, $\sigma' = \pm|p|/\hbar$, isto é,
+                    $\sigma = \pm\frac1\hbar\int|p|\,dx$, e $A = C/\sqrt{|p|}$ (constantes absorvidas em $C$). Substituindo
+                    $A = C/\sqrt{|p|}$ e $\sigma' = \pm|p|/\hbar$ de volta, o lado esquerdo menos o direito sobra exatamente $A''e^\sigma$:
+                    o erro é o termo desprezado, como na região clássica. $\blacksquare$</p>
+                <p>A expressão (9.18) é a (9.10) com $p = i|p|$: o fator $e^{\pm\frac i\hbar\int p\,dx}$ vira
+                    $e^{\mp\frac1\hbar\int|p|\,dx}$, e $1/\sqrt p$ vira $1/\sqrt{|p|}$ a menos de uma fase constante, que vai para
+                    $C$. A condição de validade também é a mesma (<a href="[01] - A Região “Clássica”.html#obs-validade-wkb">Observação
+                    (Quando a aproximação é boa)</a>), com $|p|$ no lugar de $p$: a aproximação falha onde $|p| \to 0$, isto é, outra
+                    vez nos pontos de retorno.</p>
+
+                <h2 id="transmissao">A probabilidade de transmissão</h2>
+
+                <p>Considere, por exemplo, o problema do espalhamento por uma barreira retangular com topo irregular (Figura 9.3). À
+                    esquerda da barreira ($x \lt 0$),</p>
+                <p>$$ \psi(x) = Ae^{ikx} + Be^{-ikx}, \tag{9.19} $$</p>
+                <p>em que $A$ é a amplitude incidente, $B$ é a amplitude refletida e $k \equiv \sqrt{2mE}/\hbar$ (Griffiths, Seção
+                    2.5). À direita da barreira ($x \gt a$),</p>
+                <p>$$ \psi(x) = Fe^{ikx}, \tag{9.20} $$</p>
+                <p>em que $F$ é a amplitude transmitida. A probabilidade de transmissão é</p>
+                <p>$$ T = \frac{|F|^2}{|A|^2}. \tag{9.21} $$</p>
+                <p>(Como $V = 0$ dos dois lados, a onda transmitida e a incidente têm a mesma velocidade, e a razão entre as
+                    correntes de probabilidade é só a razão entre os módulos ao quadrado.) Na região de tunelamento ($0 \le x \le a$), a
+                    aproximação WKB, Eq. (9.18), com as duas soluções e com o limite inferior das integrais em $x = 0$, dá</p>
+                <p>$$ \psi(x) \approx \frac{C}{\sqrt{|p(x)|}}\,e^{\frac1\hbar\int_0^x|p(x')|\,dx'} + \frac{D}{\sqrt{|p(x)|}}\,e^{-\frac1\hbar\int_0^x|p(x')|\,dx'}. \tag{9.22} $$</p>
+
+                <figure class="lecture-figure" id="fig-9-3">
+                    <svg viewBox="0 0 640 280" role="img" aria-label="Figura 9.3: barreira de potencial entre x = 0 e x = a, com topo irregular acima do nível E. À esquerda, a onda incidente (amplitude A) e a refletida (B); à direita, a transmitida (F).">
+<defs><marker id="arr-9-3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="40" y1="250" x2="600" y2="250" class="fig-axis" marker-end="url(#arr-9-3)"/>
+<line x1="170" y1="268" x2="170" y2="20" class="fig-axis" marker-end="url(#arr-9-3)"/>
+<text x="162" y="30" text-anchor="end" class="fig-label fig-it">V(x)</text>
+<text x="606" y="255" class="fig-label fig-it">x</text>
+<text x="164" y="272" text-anchor="end" class="fig-label">0</text>
+<text x="430" y="272" text-anchor="middle" class="fig-label fig-it">a</text>
+<line x1="40" y1="175" x2="590" y2="175" class="fig-guide fig-dashed"/>
+<text x="162" y="167" text-anchor="end" class="fig-label fig-it">E</text>
+<path d="M170,250 L170,75.8 L170,75.8 L172.2,73.8 L174.3,72 L176.5,70.4 L178.7,69.1 L180.8,67.9 L183,67 L185.2,66.4 L187.3,66.1 L189.5,66.1 L191.7,66.4 L193.8,67 L196,67.8 L198.2,69 L200.3,70.3 L202.5,71.9 L204.7,73.6 L206.8,75.5 L209,77.5 L211.2,79.6 L213.3,81.7 L215.5,83.8 L217.7,85.9 L219.8,87.8 L222,89.7 L224.2,91.4 L226.3,92.9 L228.5,94.2 L230.7,95.2 L232.8,96 L235,96.5 L237.2,96.8 L239.3,96.8 L241.5,96.5 L243.7,95.9 L245.8,95.1 L248,94 L250.2,92.8 L252.3,91.3 L254.5,89.7 L256.7,88 L258.8,86.2 L261,84.3 L263.2,82.4 L265.3,80.5 L267.5,78.7 L269.7,77 L271.8,75.3 L274,73.8 L276.2,72.5 L278.3,71.4 L280.5,70.5 L282.7,69.8 L284.8,69.4 L287,69.2 L289.2,69.2 L291.3,69.5 L293.5,70 L295.7,70.7 L297.8,71.6 L300,72.7 L302.2,74 L304.3,75.3 L306.5,76.8 L308.7,78.4 L310.8,79.9 L313,81.5 L315.2,83.1 L317.3,84.6 L319.5,86.1 L321.7,87.5 L323.8,88.7 L326,89.8 L328.2,90.7 L330.3,91.4 L332.5,92 L334.7,92.4 L336.8,92.5 L339,92.5 L341.2,92.3 L343.3,91.9 L345.5,91.3 L347.7,90.6 L349.8,89.7 L352,88.7 L354.2,87.5 L356.3,86.3 L358.5,85.1 L360.7,83.8 L362.8,82.5 L365,81.2 L367.2,79.9 L369.3,78.7 L371.5,77.6 L373.7,76.6 L375.8,75.7 L378,74.9 L380.2,74.3 L382.3,73.8 L384.5,73.4 L386.7,73.3 L388.8,73.3 L391,73.4 L393.2,73.7 L395.3,74.2 L397.5,74.8 L399.7,75.5 L401.8,76.3 L404,77.2 L406.2,78.2 L408.3,79.3 L410.5,80.4 L412.7,81.5 L414.8,82.6 L417,83.7 L419.2,84.8 L421.3,85.8 L423.5,86.7 L425.7,87.5 L427.8,88.3 L430,88.9 L430,88.9 L430,250" class="fig-curve"/>
+<line x1="70" y1="205" x2="125" y2="205" class="fig-axis" marker-end="url(#arr-9-3)"/>
+<text x="133" y="210" class="fig-label fig-it">A</text>
+<line x1="125" y1="230" x2="70" y2="230" class="fig-axis" marker-end="url(#arr-9-3)"/>
+<text x="133" y="235" class="fig-label fig-it">B</text>
+<line x1="470" y1="230" x2="525" y2="230" class="fig-axis" marker-end="url(#arr-9-3)"/>
+<text x="533" y="235" class="fig-label fig-it">F</text>
+</svg>
+                    <figcaption><strong>Figura 9.3.</strong> Espalhamento por uma barreira retangular com topo irregular.</figcaption>
+                </figure>
+
+                <p>Se a barreira é muito alta e/ou muito larga (o que quer dizer que a probabilidade de tunelamento é pequena), então
+                    o coeficiente do termo exponencialmente <em>crescente</em> ($C$) precisa ser pequeno (na verdade, seria
+                    <em>zero</em> se a barreira fosse <em>infinitamente</em> larga), e a função de onda se parece com a da
+                    Figura 9.4.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref">2</a></sup></p>
+
+                <figure class="lecture-figure" id="fig-9-4">
+                    <svg viewBox="0 0 640 250" role="img" aria-label="Figura 9.4: a função de onda oscila à esquerda da barreira com amplitude da ordem de A, decai exponencialmente entre x = 0 e x = a e sai à direita oscilando com amplitude F, muito menor.">
+<defs><marker id="arr-9-4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="40" y1="125" x2="600" y2="125" class="fig-axis" marker-end="url(#arr-9-4)"/>
+<text x="606" y="130" class="fig-label fig-it">x</text>
+<line x1="250" y1="15" x2="250" y2="235" class="fig-guide fig-dashed"/>
+<line x1="470" y1="15" x2="470" y2="235" class="fig-guide fig-dashed"/>
+<text x="256" y="145" class="fig-label">0</text>
+<text x="476" y="145" class="fig-label fig-it">a</text>
+<line x1="52" y1="33" x2="290" y2="33" class="fig-guide fig-dashed"/>
+<text x="44" y="38" text-anchor="end" class="fig-label fig-it">A</text>
+<line x1="440" y1="109" x2="590" y2="109" class="fig-guide fig-dashed"/>
+<text x="596" y="105" class="fig-label fig-it">F</text>
+<path d="M60,196.9 L61,190.1 L62,182.4 L63,173.9 L64,164.9 L65,155.4 L66,145.5 L67,135.3 L68,125 L69,114.7 L70,104.5 L71,94.6 L72,85.1 L73,76.1 L74,67.6 L75,59.9 L76,53.1 L77,47.1 L78,42.1 L79,38.2 L80,35.3 L81,33.6 L82,33 L83,33.6 L84,35.3 L85,38.2 L86,42.1 L87,47.1 L88,53.1 L89,59.9 L90,67.6 L91,76.1 L92,85.1 L93,94.6 L94,104.5 L95,114.7 L96,125 L97,135.3 L98,145.5 L99,155.4 L100,164.9 L101,173.9 L102,182.4 L103,190.1 L104,196.9 L105,202.9 L106,207.9 L107,211.8 L108,214.7 L109,216.4 L110,217 L111,216.4 L112,214.7 L113,211.8 L114,207.9 L115,202.9 L116,196.9 L117,190.1 L118,182.4 L119,173.9 L120,164.9 L121,155.4 L122,145.5 L123,135.3 L124,125 L125,114.7 L126,104.5 L127,94.6 L128,85.1 L129,76.1 L130,67.6 L131,59.9 L132,53.1 L133,47.1 L134,42.1 L135,38.2 L136,35.3 L137,33.6 L138,33 L139,33.6 L140,35.3 L141,38.2 L142,42.1 L143,47.1 L144,53.1 L145,59.9 L146,67.6 L147,76.1 L148,85.1 L149,94.6 L150,104.5 L151,114.7 L152,125 L153,135.3 L154,145.5 L155,155.4 L156,164.9 L157,173.9 L158,182.4 L159,190.1 L160,196.9 L161,202.9 L162,207.9 L163,211.8 L164,214.7 L165,216.4 L166,217 L167,216.4 L168,214.7 L169,211.8 L170,207.9 L171,202.9 L172,196.9 L173,190.1 L174,182.4 L175,173.9 L176,164.9 L177,155.4 L178,145.5 L179,135.3 L180,125 L181,114.7 L182,104.5 L183,94.6 L184,85.1 L185,76.1 L186,67.6 L187,59.9 L188,53.1 L189,47.1 L190,42.1 L191,38.2 L192,35.3 L193,33.6 L194,33 L195,33.6 L196,35.3 L197,38.2 L198,42.1 L199,47.1 L200,53.1 L201,59.9 L202,67.6 L203,76.1 L204,85.1 L205,94.6 L206,104.5 L207,114.7 L208,125 L209,135.3 L210,145.5 L211,155.4 L212,164.9 L213,173.9 L214,182.4 L215,190.1 L216,196.9 L217,202.9 L218,207.9 L219,211.8 L220,214.7 L221,216.4 L222,217 L223,216.4 L224,214.7 L225,211.8 L226,207.9 L227,202.9 L228,196.9 L229,190.1 L230,182.4 L231,173.9 L232,164.9 L233,155.4 L234,145.5 L235,135.3 L236,125 L237,114.7 L238,104.5 L239,94.6 L240,85.1 L241,76.1 L242,67.6 L243,59.9 L244,53.1 L245,47.1 L246,42.1 L247,38.2 L248,35.3 L249,33.6 L250,33 L250,33 L252,34.5 L254,35.9 L256,37.3 L258,38.7 L260,40 L262,41.4 L264,42.7 L266,44 L268,45.3 L270,46.5 L272,47.8 L274,49 L276,50.2 L278,51.4 L280,52.5 L282,53.7 L284,54.8 L286,55.9 L288,57 L290,58.1 L292,59.1 L294,60.2 L296,61.2 L298,62.2 L300,63.2 L302,64.2 L304,65.1 L306,66.1 L308,67 L310,67.9 L312,68.8 L314,69.7 L316,70.6 L318,71.4 L320,72.3 L322,73.1 L324,73.9 L326,74.7 L328,75.5 L330,76.3 L332,77.1 L334,77.8 L336,78.6 L338,79.3 L340,80 L342,80.7 L344,81.4 L346,82.1 L348,82.8 L350,83.5 L352,84.1 L354,84.8 L356,85.4 L358,86 L360,86.6 L362,87.2 L364,87.8 L366,88.4 L368,89 L370,89.6 L372,90.1 L374,90.7 L376,91.2 L378,91.7 L380,92.3 L382,92.8 L384,93.3 L386,93.8 L388,94.3 L390,94.8 L392,95.3 L394,95.7 L396,96.2 L398,96.6 L400,97.1 L402,97.5 L404,98 L406,98.4 L408,98.8 L410,99.2 L412,99.6 L414,100 L416,100.4 L418,100.8 L420,101.2 L422,101.6 L424,101.9 L426,102.3 L428,102.7 L430,103 L432,103.4 L434,103.7 L436,104 L438,104.4 L440,104.7 L442,105 L444,105.3 L446,105.6 L448,105.9 L450,106.2 L452,106.5 L454,106.8 L456,107.1 L458,107.4 L460,107.7 L462,107.9 L464,108.2 L466,108.5 L468,108.7 L470,109 L470,109 L471,109.1 L472,109.4 L473,109.9 L474,110.6 L475,111.5 L476,112.5 L477,113.7 L478,115 L479,116.5 L480,118.1 L481,119.7 L482,121.4 L483,123.2 L484,125 L485,126.8 L486,128.6 L487,130.3 L488,131.9 L489,133.5 L490,135 L491,136.3 L492,137.5 L493,138.5 L494,139.4 L495,140.1 L496,140.6 L497,140.9 L498,141 L499,140.9 L500,140.6 L501,140.1 L502,139.4 L503,138.5 L504,137.5 L505,136.3 L506,135 L507,133.5 L508,131.9 L509,130.3 L510,128.6 L511,126.8 L512,125 L513,123.2 L514,121.4 L515,119.7 L516,118.1 L517,116.5 L518,115 L519,113.7 L520,112.5 L521,111.5 L522,110.6 L523,109.9 L524,109.4 L525,109.1 L526,109 L527,109.1 L528,109.4 L529,109.9 L530,110.6 L531,111.5 L532,112.5 L533,113.7 L534,115 L535,116.5 L536,118.1 L537,119.7 L538,121.4 L539,123.2 L540,125 L541,126.8 L542,128.6 L543,130.3 L544,131.9 L545,133.5 L546,135 L547,136.3 L548,137.5 L549,138.5 L550,139.4 L551,140.1 L552,140.6 L553,140.9 L554,141 L555,140.9 L556,140.6 L557,140.1 L558,139.4 L559,138.5 L560,137.5 L561,136.3 L562,135 L563,133.5 L564,131.9 L565,130.3 L566,128.6 L567,126.8 L568,125 L569,123.2 L570,121.4 L571,119.7 L572,118.1 L573,116.5 L574,115 L575,113.7 L576,112.5 L577,111.5 L578,110.6 L579,109.9 L580,109.4 L581,109.1 L582,109 L583,109.1 L584,109.4 L585,109.9 L586,110.6 L587,111.5 L588,112.5 L589,113.7 L590,115" class="fig-curve"/>
+</svg>
+                    <figcaption><strong>Figura 9.4.</strong> Estrutura qualitativa da função de onda no espalhamento por uma barreira
+                        alta e larga.</figcaption>
+                </figure>
+
+                <p>As amplitudes relativas das ondas incidente e transmitida são determinadas essencialmente pela queda total da
+                    exponencial ao longo da região não clássica:</p>
+                <p>$$ \frac{|F|}{|A|} \sim e^{-\frac1\hbar\int_0^a|p(x')|\,dx'}, $$</p>
+                <p>de modo que</p>
+
+                <div class="definition-box" id="teo-transmissao-wkb">
+                    <p><strong>Teorema (Probabilidade de transmissão WKB).</strong> Para uma barreira alta e larga
+                        ($\gamma \gg 1$), a probabilidade de transmissão é, aproximadamente,</p>
+                    <p>$$ T \approx e^{-2\gamma}, \qquad \text{com} \qquad \gamma \equiv \frac1\hbar\int_0^a|p(x)|\,dx. \tag{9.23} $$</p>
+                </div>
+                <p><em>Demonstração</em> (no nível do livro). Siga a função de onda da esquerda para a direita. Em $x = 0$, $\psi$ e
+                    $\psi'$ são contínuas; do lado de fora, (9.19) tem módulo da ordem de $|A|$; do lado de dentro, com $C \approx 0$,
+                    (9.22) vale $D/\sqrt{|p(0)|}$. Logo $|D|/\sqrt{|p(0)|}$ é da ordem de $|A|$. Ao longo da barreira, o termo que
+                    sobra perde o fator</p>
+                <p>$$ e^{-\frac1\hbar\int_0^a|p(x')|\,dx'} = e^{-\gamma}, $$</p>
+                <p>e em $x = a$, pela continuidade de $\psi$ e $\psi'$ com (9.20), $|F|$ é da ordem de
+                    $|D|e^{-\gamma}/\sqrt{|p(a)|}$. Juntando, $|F|/|A| \sim e^{-\gamma}$, e (9.21) dá $T \approx e^{-2\gamma}$. Os fatores
+                    que ficaram de fora (razões entre momentos nas bordas, fatores de casamento das derivadas) são de ordem 1, enquanto
+                    $e^{-2\gamma}$ é muito pequeno: num cálculo de $\ln T$, eles mudam um termo de ordem 1, e $2\gamma$ é grande.
+                    $\blacksquare$</p>
+                <p>O preço do "$\approx$" aparece quando se compara com casos exatos. Numa barreira retangular, as paredes verticais são
+                    exatamente o lugar em que a aproximação falha (o potencial salta, e $\hbar|p'|/p^2$ não é pequeno), e o resultado
+                    exato tem um prefator de ordem 1 na frente de $e^{-2\gamma}$ (<a href="#exr-9-2-1">Exercício 9.2-1</a>). Numa barreira suave, o prefator tende a 1
+                    à medida que $\gamma$ cresce (<a href="#exr-9-2-6">Exercício 9.2-6</a>). Em qualquer caso, o que decide a ordem de grandeza de $T$ é o expoente.</p>
+
+
+                <h2 id="decaimento-alfa">Decaimento alfa</h2>
+
+                <div id="ex-9-2">
+                    <p><strong>Exemplo 9.2 (A teoria de Gamow do decaimento alfa).</strong> Em 1928, George Gamow (e, independentemente,
+                        Condon e Gurney) usou a Eq. (9.23) para dar a primeira explicação bem-sucedida do decaimento alfa (a emissão
+                        espontânea de uma partícula alfa, dois prótons e dois nêutrons, por certos núcleos radioativos). Como a partícula
+                        alfa tem carga positiva ($2e$), ela é repelida eletricamente pelo núcleo que fica (carga $Ze$) assim que se afasta
+                        o bastante para escapar da força nuclear de ligação. Mas antes ela precisa atravessar uma barreira de potencial
+                        que já se sabia (no caso do urânio) ser mais que o dobro da energia da alfa emitida. Gamow aproximou a energia
+                        potencial por um poço quadrado finito (representando a força nuclear atrativa), que vai até $r_1$ (o raio do
+                        núcleo), emendado a uma cauda coulombiana repulsiva (Figura 9.5), e identificou o mecanismo de escape como
+                        tunelamento quântico (foi, aliás, a primeira vez que a mecânica quântica foi aplicada à física nuclear).</p>
+
+                    <figure class="lecture-figure" id="fig-9-5">
+                        <svg viewBox="0 0 640 320" role="img" aria-label="Figura 9.5: no modelo de Gamow, a energia potencial da alfa é um poço de profundidade V0 até o raio nuclear r1 (ligação nuclear), seguido da repulsão coulombiana, que decai com r. O nível E corta a cauda em r2.">
+<defs><marker id="arr-9-5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="90" y1="215" x2="610" y2="215" class="fig-axis" marker-end="url(#arr-9-5)"/>
+<line x1="90" y1="310" x2="90" y2="22" class="fig-axis" marker-end="url(#arr-9-5)"/>
+<text x="82" y="32" text-anchor="end" class="fig-label fig-it">V(r)</text>
+<text x="616" y="220" class="fig-label fig-it">r</text>
+<line x1="90" y1="181" x2="580" y2="181" class="fig-guide"/>
+<text x="82" y="186" text-anchor="end" class="fig-label fig-it">E</text>
+<text x="82" y="300" text-anchor="end" class="fig-label">−V₀</text>
+<text x="146" y="235" class="fig-label fig-it">r₁</text>
+<line x1="332.6" y1="171" x2="332.6" y2="221" class="fig-guide fig-dashed"/>
+<text x="332.6" y="237" text-anchor="middle" class="fig-label fig-it">r₂</text>
+<path d="M90,295 L140,295 L140,50 L140,50 L143,59.3 L146,67.7 L149,75.2 L152,81.9 L155,88.1 L158,93.7 L161,98.8 L164,103.5 L167,107.9 L170,111.9 L173,115.6 L176,119.1 L179,122.3 L182,125.3 L185,128.2 L188,130.8 L191,133.3 L194,135.7 L197,137.9 L200,140 L203,142 L206,143.9 L209,145.7 L212,147.4 L215,149 L218,150.5 L221,152 L224,153.4 L227,154.8 L230,156.1 L233,157.3 L236,158.5 L239,159.6 L242,160.7 L245,161.8 L248,162.8 L251,163.8 L254,164.7 L257,165.6 L260,166.5 L263,167.3 L266,168.1 L269,168.9 L272,169.7 L275,170.4 L278,171.1 L281,171.8 L284,172.5 L287,173.1 L290,173.8 L293,174.4 L296,175 L299,175.5 L302,176.1 L305,176.6 L308,177.2 L311,177.7 L314,178.2 L317,178.7 L320,179.1 L323,179.6 L326,180 L329,180.5 L332,180.9 L335,181.3 L338,181.7 L341,182.1 L344,182.5 L347,182.9 L350,183.3 L353,183.6 L356,184 L359,184.3 L362,184.7 L365,185 L368,185.3 L371,185.6 L374,186 L377,186.3 L380,186.6 L383,186.8 L386,187.1 L389,187.4 L392,187.7 L395,188 L398,188.2 L401,188.5 L404,188.7 L407,189 L410,189.2 L413,189.5 L416,189.7 L419,189.9 L422,190.2 L425,190.4 L428,190.6 L431,190.8 L434,191 L437,191.2 L440,191.4 L443,191.6 L446,191.8 L449,192 L452,192.2 L455,192.4 L458,192.6 L461,192.8 L464,192.9 L467,193.1 L470,193.3 L473,193.5 L476,193.6 L479,193.8 L482,194 L485,194.1 L488,194.3 L491,194.4 L494,194.6 L497,194.7 L500,194.9 L503,195 L506,195.2 L509,195.3 L512,195.5 L515,195.6 L518,195.7 L521,195.9 L524,196 L527,196.1 L530,196.2 L533,196.4 L536,196.5 L539,196.6 L542,196.7 L545,196.9 L548,197 L551,197.1 L554,197.2 L557,197.3 L560,197.4 L563,197.6 L566,197.7 L569,197.8 L572,197.9 L575,198 L578,198.1 L581,198.2 L584,198.3 L587,198.4 L590,198.5" class="fig-curve"/>
+<text x="300" y="85" class="fig-label fig-small">Repulsão coulombiana</text>
+<line x1="296" y1="88" x2="218" y2="154.5" class="fig-axis"/>
+<text x="205" y="272" class="fig-label fig-small">Ligação nuclear</text>
+<line x1="200" y1="268" x2="118" y2="291" class="fig-axis"/>
+</svg>
+                        <figcaption><strong>Figura 9.5.</strong> O modelo de Gamow para a energia potencial de uma partícula alfa num
+                            núcleo radioativo.</figcaption>
+                    </figure>
+
+                    <p>Se $E$ é a energia da alfa emitida, o ponto de retorno externo ($r_2$) é determinado por</p>
+                    <p>$$ \frac{1}{4\pi\epsilon_0}\frac{2Ze^2}{r_2} = E. \tag{9.24} $$</p>
+                    <p>O expoente $\gamma$ (Eq. 9.23) é, evidentemente,<sup id="fnref:3"><a href="#fn:3" class="footnote-ref">3</a></sup>
+                        a integral de $|p|$ entre os dois pontos de retorno, $r_1$ e $r_2$. Pela Eq. (9.24),
+                        $\frac{1}{4\pi\epsilon_0}\frac{2Ze^2}{r} = E\,\frac{r_2}{r}$, e então</p>
+                    <p>$$ \begin{aligned} \gamma &= \frac1\hbar\int_{r_1}^{r_2}\sqrt{2m\left(\frac{1}{4\pi\epsilon_0}\frac{2Ze^2}{r} - E\right)}\,dr \\ &= \frac{\sqrt{2mE}}{\hbar}\int_{r_1}^{r_2}\sqrt{\frac{r_2}{r} - 1}\,dr. \end{aligned} $$</p>
+                    <p>A integral se faz com a substituição $r \equiv r_2\sin^2u$. Então $dr = 2r_2\sin u\cos u\,du$ e
+                        $\sqrt{r_2/r - 1} = \sqrt{1/\sin^2u - 1} = \cos u/\sin u$ (com $0 \lt u \le \pi/2$), de modo que o integrando vira
+                        $2r_2\cos^2u\,du$. Os limites são $u_1 = \sin^{-1}\sqrt{r_1/r_2}$ e $u_2 = \pi/2$, e</p>
+                    <p>$$ \begin{aligned} \int_{u_1}^{\pi/2}2r_2\cos^2u\,du &= r_2\Big[u + \sin u\cos u\Big]_{u_1}^{\pi/2} \\ &= r_2\left(\frac\pi2 - u_1\right) - r_2\sin u_1\cos u_1. \end{aligned} $$</p>
+                    <p>Como $\sin u_1 = \sqrt{r_1/r_2}$ e $\cos u_1 = \sqrt{1 - r_1/r_2}$, o último termo é
+                        $r_2\sqrt{(r_1/r_2)(1 - r_1/r_2)} = \sqrt{r_1(r_2 - r_1)}$, e o resultado é</p>
+                    <p>$$ \gamma = \frac{\sqrt{2mE}}{\hbar}\left[r_2\left(\frac\pi2 - \sin^{-1}\sqrt{\frac{r_1}{r_2}}\right) - \sqrt{r_1(r_2 - r_1)}\right]. \tag{9.25} $$</p>
+                    <p>Tipicamente, $r_1 \ll r_2$, e podemos simplificar esse resultado usando a aproximação de ângulo pequeno
+                        ($\sin\epsilon \approx \epsilon$, logo $\sin^{-1}\epsilon \approx \epsilon$): $r_2\sin^{-1}\sqrt{r_1/r_2} \approx
+                        \sqrt{r_1r_2}$ e $\sqrt{r_1(r_2 - r_1)} \approx \sqrt{r_1r_2}$. Assim,</p>
+                    <p>$$ \gamma \cong \frac{\sqrt{2mE}}{\hbar}\left[\frac\pi2r_2 - 2\sqrt{r_1r_2}\right] = K_1\frac{Z}{\sqrt E} - K_2\sqrt{Zr_1}, \tag{9.26} $$</p>
+                    <p>em que, levando $r_2 = \frac{1}{4\pi\epsilon_0}\frac{2Ze^2}{E}$ aos dois termos (no primeiro,
+                        $\sqrt{E}\,r_2 \propto 1/\sqrt E$; no segundo, $\sqrt{E\,r_2}$ não depende de $E$),</p>
+                    <p>$$ K_1 \equiv \left(\frac{e^2}{4\pi\epsilon_0}\right)\frac{\pi\sqrt{2m}}{\hbar} = 1{,}980\ \text{MeV}^{1/2} \tag{9.27} $$</p>
+                    <p>e</p>
+                    <p>$$ K_2 \equiv \left(\frac{e^2}{4\pi\epsilon_0}\right)^{1/2}\frac{4\sqrt m}{\hbar} = 1{,}485\ \text{fm}^{-1/2}. \tag{9.28} $$</p>
+                    <p>Aqui $m$ é a massa da alfa. (Um fermi (fm) vale $10^{-15}$ m, que é mais ou menos o tamanho de um núcleo típico.)</p>
+                    <p>Se imaginarmos a partícula alfa chacoalhando dentro do núcleo com velocidade média $v$, o tempo entre "colisões"
+                        com a "parede" é cerca de $2r_1/v$, e a <em>frequência</em> das colisões é $v/2r_1$. A probabilidade de escapar em
+                        cada colisão é $e^{-2\gamma}$, de modo que a probabilidade de emissão por unidade de tempo é
+                        $(v/2r_1)\,e^{-2\gamma}$, e o <strong>tempo de vida</strong> do núcleo-pai é cerca de</p>
+                    <p>$$ \tau = \frac{2r_1}{v}\,e^{2\gamma}. \tag{9.29} $$</p>
+                    <p>Infelizmente, não conhecemos $v$, mas isso quase não importa: o fator exponencial varia numa faixa
+                        <em>fantástica</em> (vinte e cinco ordens de grandeza) de um núcleo radioativo para outro, e perto disso a variação
+                        de $v$ é insignificante. Em particular, se você traçar o <em>logaritmo</em> do tempo de vida medido
+                        experimentalmente contra $1/\sqrt E$, o resultado é uma bela reta (Figura 9.6), exatamente como se espera das
+                        Eqs. (9.26) e (9.29). De fato, tomando o logaritmo de (9.29) com (9.26),</p>
+                    <p>$$ \ln\tau = \ln\frac{2r_1}{v} + 2K_1\frac{Z}{\sqrt E} - 2K_2\sqrt{Zr_1}, $$</p>
+                    <p>e, para uma família de núcleos com o mesmo $Z$, o único termo que varia muito é o linear em $1/\sqrt E$.</p>
+
+                    <figure class="lecture-figure" id="fig-9-6">
+                        <svg viewBox="0 0 640 390" role="img" aria-label="Figura 9.6: logaritmo da meia-vida (em anos) contra 1/raiz de E, com as marcas do eixo rotuladas em E de 4 a 7 MeV. Os isótopos de urânio (238 a 228) e de tório (232 a 226) caem sobre duas retas paralelas que descem de cerca de 10 a cerca de −5.">
+<rect x="100" y="25" width="500" height="310" class="fig-frame"/>
+<text x="92" y="340" text-anchor="end" class="fig-label fig-small">−8</text>
+<line x1="100" y1="273" x2="600" y2="273" class="fig-guide"/>
+<text x="92" y="278" text-anchor="end" class="fig-label fig-small">−4</text>
+<line x1="100" y1="211" x2="600" y2="211" class="fig-guide"/>
+<text x="92" y="216" text-anchor="end" class="fig-label fig-small">0</text>
+<line x1="100" y1="149" x2="600" y2="149" class="fig-guide"/>
+<text x="92" y="154" text-anchor="end" class="fig-label fig-small">4</text>
+<line x1="100" y1="87" x2="600" y2="87" class="fig-guide"/>
+<text x="92" y="92" text-anchor="end" class="fig-label fig-small">8</text>
+<text x="92" y="30" text-anchor="end" class="fig-label fig-small">12</text>
+<line x1="100" y1="335" x2="100" y2="325" class="fig-axis"/>
+<text x="100" y="355" text-anchor="middle" class="fig-label fig-small">4</text>
+<line x1="149.4" y1="335" x2="149.4" y2="330" class="fig-axis"/>
+<line x1="195.3" y1="335" x2="195.3" y2="330" class="fig-axis"/>
+<line x1="238.3" y1="335" x2="238.3" y2="330" class="fig-axis"/>
+<line x1="278.5" y1="335" x2="278.5" y2="330" class="fig-axis"/>
+<line x1="316.3" y1="335" x2="316.3" y2="325" class="fig-axis"/>
+<text x="316.3" y="355" text-anchor="middle" class="fig-label fig-small">5</text>
+<line x1="351.9" y1="335" x2="351.9" y2="330" class="fig-axis"/>
+<line x1="385.4" y1="335" x2="385.4" y2="330" class="fig-axis"/>
+<line x1="417.2" y1="335" x2="417.2" y2="330" class="fig-axis"/>
+<line x1="447.3" y1="335" x2="447.3" y2="330" class="fig-axis"/>
+<line x1="475.9" y1="335" x2="475.9" y2="325" class="fig-axis"/>
+<text x="475.9" y="355" text-anchor="middle" class="fig-label fig-small">6</text>
+<line x1="503.1" y1="335" x2="503.1" y2="330" class="fig-axis"/>
+<line x1="529" y1="335" x2="529" y2="330" class="fig-axis"/>
+<line x1="553.8" y1="335" x2="553.8" y2="330" class="fig-axis"/>
+<line x1="577.4" y1="335" x2="577.4" y2="330" class="fig-axis"/>
+<line x1="600" y1="335" x2="600" y2="325" class="fig-axis"/>
+<text x="600" y="355" text-anchor="middle" class="fig-label fig-small">7</text>
+<text x="350" y="377" text-anchor="middle" class="fig-label fig-small">E (MeV)</text>
+<text x="92" y="17" class="fig-label fig-small">log₁₀ τ½ (anos)</text>
+<line x1="154.1" y1="43.7" x2="597.8" y2="291.1" class="fig-curve"/>
+<line x1="112.7" y1="39.5" x2="600" y2="311" class="fig-curve"/>
+<circle cx="173.9" cy="54.8" r="4.5" class="fig-shape"/>
+<text x="175.9" y="44.8" class="fig-label">U</text>
+<text x="187.9" y="36.8" class="fig-label fig-small">238</text>
+<circle cx="245.3" cy="94.4" r="4.5" class="fig-shape"/>
+<text x="252.3" y="86.4" class="fig-label fig-small">236</text>
+<circle cx="297.7" cy="123.6" r="4.5" class="fig-shape"/>
+<text x="304.7" y="115.6" class="fig-label fig-small">234</text>
+<circle cx="397.1" cy="179.4" r="4.5" class="fig-shape"/>
+<text x="404.1" y="171.4" class="fig-label fig-small">232</text>
+<circle cx="485.5" cy="228.4" r="4.5" class="fig-shape"/>
+<text x="492.5" y="220.4" class="fig-label fig-small">230</text>
+<circle cx="584.3" cy="283.5" r="4.5" class="fig-shape"/>
+<text x="580.3" y="273.5" text-anchor="end" class="fig-label fig-small">228</text>
+<circle cx="126.9" cy="47.3" r="4.5" class="fig-shape"/>
+<text x="106.9" y="89.3" class="fig-label">Th</text>
+<text x="125.9" y="81.3" class="fig-label fig-small">232</text>
+<circle cx="283.3" cy="134.7" r="4.5" class="fig-shape"/>
+<text x="281.3" y="156.7" text-anchor="middle" class="fig-label fig-small">230</text>
+<circle cx="412.9" cy="206.7" r="4.5" class="fig-shape"/>
+<text x="410.9" y="228.7" text-anchor="middle" class="fig-label fig-small">228</text>
+<circle cx="541.8" cy="278.6" r="4.5" class="fig-shape"/>
+<text x="539.8" y="300.6" text-anchor="middle" class="fig-label fig-small">226</text>
+</svg>
+                        <figcaption><strong>Figura 9.6.</strong> Logaritmo da meia-vida ($\tau_{1/2} = \tau\ln2$) contra $1/\sqrt E$ (em
+                            que $E$ é a energia da alfa emitida), para isótopos de urânio e tório. Redesenhada a partir da figura do
+                            livro, com os pontos lidos dela; o eixo horizontal é linear em $1/\sqrt E$, e as marcas mostram os valores
+                            de $E$.</figcaption>
+                    </figure>
+                </div>
+
+                <h3 id="numeros">Raio nuclear e energia da alfa</h3>
+
+                <p>Para pôr números nessas fórmulas, o livro dá (num problema) dois dados empíricos. Como a densidade da matéria
+                    nuclear é praticamente a mesma em todos os núcleos, $r_1^3$ é proporcional a $A$ (o número de nêutrons mais
+                    prótons); empiricamente,</p>
+                <p>$$ r_1 \cong (1{,}07\ \text{fm})\,A^{1/3}. \tag{9.30} $$</p>
+                <p>E a energia da alfa emitida sai da fórmula de Einstein ($E = mc^2$):</p>
+                <p>$$ E = m_pc^2 - m_dc^2 - m_\alpha c^2, \tag{9.31} $$</p>
+                <p>em que $m_p$ é a massa do núcleo-pai, $m_d$ a do núcleo-filho e $m_\alpha$ a da partícula alfa (o núcleo de He⁴).
+                    Como a alfa leva dois prótons e dois nêutrons, o filho tem $Z$ menor por 2 e $A$ menor por 4. O $Z$ das
+                    Eqs. (9.24)–(9.26) é o do filho: é a carga que repele a alfa. Para estimar $v$, pode-se usar
+                    $E = \frac12m_\alpha v^2$; isso ignora a energia potencial (negativa) dentro do núcleo e certamente subestima $v$.</p>
+                <p>Uma ordem de grandeza: para $Z = 90$, $E = 4{,}3$ MeV e $r_1 = 6{,}6$ fm ($A = 238$), a Eq. (9.24) dá
+                    $r_2 = 60$ fm, a barreira em $r_1$ tem $39$ MeV (nove vezes $E$), e $\gamma \approx 50$: a probabilidade de escapar
+                    em cada colisão com a parede é $e^{-2\gamma} \sim 10^{-44}$ (<a href="#exr-9-2-2">Exercício 9.2-2</a>).</p>
+
+                <h2 id="conexao">Conexão com o experimento</h2>
+
+                <p>A teoria de Gamow foi a primeira explicação bem-sucedida do decaimento alfa e a primeira aplicação da mecânica
+                    quântica à física nuclear. O teste está na Figura 9.6: o fator exponencial varia por cerca de vinte e cinco ordens de
+                    grandeza de um núcleo para outro, e o logaritmo da meia-vida medida, traçado contra $1/\sqrt E$, cai sobre retas,
+                    como preveem as Eqs. (9.26) e (9.29). O livro cita ainda os tempos de vida experimentais do U²³⁸,
+                    $6\times10^9$ anos, e do Po²¹², $0{,}5\ \mu$s: uma diferença de cerca de vinte e quatro ordens de grandeza
+                    ($1{,}9\times10^{17}$ s contra $5\times10^{-7}$ s). No <a href="#exr-9-2-5">Exercício 9.2-5</a>, as inclinações das retas da Figura 9.6 concordam
+                    com a previsão $2K_1Z/\ln10$ a menos de 5%, e a distância entre a reta do urânio e a do tório também sai da
+                    Eq. (9.26).</p>
+                <p>O livro aponta ainda uma aplicação em semicondutores, o <strong>tunelamento Zener</strong>. Um campo elétrico
+                    uniforme $\mathbf E = -E_0\,\hat\imath$, para o qual $H' = -eE_0x$, torna as bandas de energia dependentes da
+                    posição, como na Figura 9.7. Um elétron pode então tunelar da banda de valência (a de baixo) para a de condução (a
+                    de cima), atravessando o gap como uma barreira de potencial; esse fenômeno é a base do <strong>diodo
+                    Zener</strong>.</p>
+
+                <figure class="lecture-figure" id="fig-9-7">
+                    <svg viewBox="0 0 640 270" role="img" aria-label="Figura 9.7: (a) sem campo, as bandas de condução e de valência são horizontais, separadas pelo gap Eg. (b) Com um campo elétrico uniforme, as bordas das bandas descem com x, e um elétron do topo da banda de valência pode atravessar o gap na horizontal até a banda de condução.">
+<defs><marker id="arr-9-7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<rect x="40" y="25" width="220" height="60" class="fig-band"/>
+<rect x="40" y="135" width="220" height="75" class="fig-band"/>
+<line x1="260" y1="85" x2="320" y2="85" class="fig-guide fig-dashed"/>
+<line x1="260" y1="135" x2="320" y2="135" class="fig-guide fig-dashed"/>
+<line x1="300" y1="110" x2="300" y2="88" class="fig-axis" marker-end="url(#arr-9-7)"/>
+<line x1="300" y1="110" x2="300" y2="132" class="fig-axis" marker-end="url(#arr-9-7)"/>
+<text x="308" y="115" class="fig-label fig-it">Eg</text>
+<text x="150" y="60" text-anchor="middle" class="fig-label fig-small">banda de condução</text>
+<text x="150" y="177" text-anchor="middle" class="fig-label fig-small">banda de valência</text>
+<line x1="40" y1="235" x2="270" y2="235" class="fig-axis" marker-end="url(#arr-9-7)"/>
+<text x="276" y="240" class="fig-label fig-it">x</text>
+<text x="150" y="259" text-anchor="middle" class="fig-label">(a)</text>
+<path d="M370,25 L610,25 L610,145 L370,85 Z" class="fig-band"/>
+<path d="M370,135 L610,195 L610,210 L370,210 Z" class="fig-band"/>
+<line x1="386" y1="138" x2="580" y2="138" class="fig-curve" marker-end="url(#arr-9-7)"/>
+<line x1="370" y1="235" x2="610" y2="235" class="fig-axis" marker-end="url(#arr-9-7)"/>
+<text x="616" y="240" class="fig-label fig-it">x</text>
+<text x="490" y="259" text-anchor="middle" class="fig-label">(b)</text>
+</svg>
+                    <figcaption><strong>Figura 9.7.</strong> (a) As bandas de energia sem campo elétrico. (b) Na presença de um campo
+                        elétrico, um elétron pode tunelar entre as bandas.</figcaption>
+                </figure>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p id="exr-9-2-1"><strong>Exercício 9.2-1.</strong> Uma partícula de energia $E$ incide numa barreira retangular de
+                    altura $V_0 = 2E$ e largura $a$. Compare a Eq. (9.23) com a transmissão exata e explique a diferença.</p>
+                <p><em>Solução.</em> Com o topo plano, $|p| = \sqrt{2m(V_0 - E)} = \hbar\kappa$ é constante, $\gamma = \kappa a$ e a WKB
+                    dá $T \approx e^{-2\kappa a}$. A transmissão exata da barreira retangular (Mecânica Quântica I) é</p>
+                <p>$$ T^{-1} = 1 + \frac{V_0^2}{4E(V_0 - E)}\sinh^2(\kappa a). $$</p>
+                <p>Com $V_0 = 2E$, a fração vale $4E^2/4E^2 = 1$, e $T = 1/(1 + \sinh^2\kappa a) = 1/\cosh^2(\kappa a)$. Para
+                    $\kappa a$ grande, $\cosh\kappa a \approx e^{\kappa a}/2$, e $T \approx 4e^{-2\kappa a}$. Os números:</p>
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr><th>$\kappa a$</th><th>$T$ exato</th><th>$e^{-2\kappa a}$</th><th>Razão</th><th>$\ln T$ exato</th><th>$-2\kappa a$</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>$0{,}420$</td><td>$0{,}135$</td><td>$3{,}10$</td><td>$-0{,}87$</td><td>$-2$</td></tr>
+                            <tr><td>2</td><td>$7{,}07\times10^{-2}$</td><td>$1{,}83\times10^{-2}$</td><td>$3{,}86$</td><td>$-2{,}65$</td><td>$-4$</td></tr>
+                            <tr><td>3</td><td>$9{,}87\times10^{-3}$</td><td>$2{,}48\times10^{-3}$</td><td>$3{,}98$</td><td>$-4{,}62$</td><td>$-6$</td></tr>
+                            <tr><td>5</td><td>$1{,}82\times10^{-4}$</td><td>$4{,}54\times10^{-5}$</td><td>$4{,}00$</td><td>$-8{,}61$</td><td>$-10$</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>A WKB erra por um fator que tende a 4, e não melhora com a largura. Em $\ln T$, porém, o erro é fixo
+                    ($\ln4 \approx 1{,}4$), enquanto $2\kappa a$ cresce: o expoente está certo, o prefator não. Para $V_0$ qualquer, a
+                    mesma expansão dá $T \approx \left[16E(V_0 - E)/V_0^2\right]e^{-2\kappa a}$, e como $k^2 + \kappa^2 = 2mV_0/\hbar^2$ e
+                    $k\kappa = 2m\sqrt{E(V_0 - E)}/\hbar^2$,</p>
+                <p>$$ \frac{16E(V_0 - E)}{V_0^2} = \left(\frac{4k\kappa}{k^2 + \kappa^2}\right)^2. $$</p>
+                <p>É um fator $4k\kappa/(k^2 + \kappa^2)$ por parede: nas paredes verticais o potencial salta e a hipótese da WKB
+                    ($\hbar|p'|/p^2 \ll 1$) falha de vez. Com $V_0 = 2E$, $k = \kappa$ e cada parede contribui com 2. O <a href="#exr-9-2-4">Exercício 9.2-4</a> mostra o
+                    mesmo fator numa barreira com uma parede só.</p>
+
+                <p id="exr-9-2-2"><strong>Exercício 9.2-2.</strong> (a) Confira a Eq. (9.25) derivando-a em relação a $r_1$ e ache o
+                    próximo termo da expansão que leva a (9.26). (b) Para $Z = 90$, $E = 4{,}3$ MeV e $r_1$ dado por (9.30) com
+                    $A = 238$, compare os valores de $\gamma$ pelas Eqs. (9.25) e (9.26). Quanto isso muda o tempo de vida?</p>
+                <p><em>Solução.</em> (a) Seja $G(r_1)$ o colchete de (9.25). Com $\frac{d}{dr_1}\sin^{-1}\sqrt{r_1/r_2} =
+                    \frac{1}{2\sqrt{r_1(r_2 - r_1)}}$,</p>
+                <p>$$ \frac{dG}{dr_1} = -\frac{r_2}{2\sqrt{r_1(r_2 - r_1)}} - \frac{r_2 - 2r_1}{2\sqrt{r_1(r_2 - r_1)}} = -\sqrt{\frac{r_2}{r_1} - 1}, $$</p>
+                <p>que é a derivada de $\int_{r_1}^{r_2}\sqrt{r_2/r - 1}\,dr$ em relação ao limite inferior; e $G(r_2) = 0$, como a
+                    integral. Logo (9.25) está certa. Para a expansão, com $s = \sqrt{r_1/r_2}$, $\sin^{-1}s = s + s^3/6 + \cdots$ e
+                    $s\sqrt{1 - s^2} = s - s^3/2 + \cdots$, de modo que</p>
+                <p>$$ G = r_2\left[\frac\pi2 - 2\sqrt{\frac{r_1}{r_2}} + \frac13\left(\frac{r_1}{r_2}\right)^{3/2} + \cdots\right]. $$</p>
+                <p>(b) Com (9.30), $r_1 = 1{,}07\times238^{1/3} = 6{,}63$ fm; (9.24) dá $r_2 = 2Z(1{,}440\ \text{MeV fm})/E = 60{,}3$ fm e
+                    $r_1/r_2 = 0{,}110$. Pela (9.26), $\gamma = 85{,}91 - 36{,}28 = 49{,}63$; pela (9.25), $\gamma = 50{,}31$. A
+                    diferença, $0{,}68$, é quase toda o termo novo, $(\sqrt{2mE}/\hbar)\,r_2(r_1/r_2)^{3/2}/3 = 0{,}67$ (com
+                    $\sqrt{2mE}/\hbar = 0{,}907\ \text{fm}^{-1}$). No tempo de vida, $e^{2\times0{,}68} \approx 4$: a forma simplificada
+                    (9.26) subestima $\tau$ por um fator 4, nada perto das vinte e cinco ordens de grandeza da Figura 9.6. O fator de
+                    tunelamento é $e^{-2\gamma} = 2\times10^{-44}$.</p>
+
+                <p id="exr-9-2-3"><strong>Exercício 9.2-3.</strong> Dois emissores alfa têm o mesmo núcleo-filho ($Z = 90$) e quase o
+                    mesmo raio, mas um emite alfas de $4{,}5$ MeV e o outro de $5{,}5$ MeV (valores ilustrativos, escolhidos só para a
+                    conta). Estime a razão entre os tempos de vida.</p>
+                <p><em>Solução.</em> Pela Eq. (9.29) com (9.26), o termo $K_2\sqrt{Zr_1}$ se cancela na razão, e $v \propto \sqrt E$:</p>
+                <p>$$ \frac{\tau_1}{\tau_2} = \sqrt{\frac{E_2}{E_1}}\,\exp\left[2K_1Z\left(\frac{1}{\sqrt{E_1}} - \frac{1}{\sqrt{E_2}}\right)\right]. $$</p>
+                <p>O expoente é $2(1{,}980)(90)(0{,}4714 - 0{,}4264) = 16{,}0$, e $e^{16{,}0} = 9{,}2\times10^6$; com o fator
+                    $\sqrt{5{,}5/4{,}5} = 1{,}11$, $\tau_1/\tau_2 \approx 1\times10^7$. Uma energia 20% maior encurta a vida dez milhões de
+                    vezes. O fator das velocidades, que não conhecemos bem, mexe só nos 11%.</p>
+
+                <p id="exr-9-2-4"><strong>Exercício 9.2-4.</strong> Os elétrons de condução de um metal precisam de uma energia extra
+                    $W$ (a função trabalho) para sair. Com um campo elétrico intenso $F$ que os puxa para fora, a energia potencial de um
+                    elétron fora do metal, medida a partir da sua energia, fica $V(x) - E = W - eFx$ para $x \gt 0$ (a superfície está em
+                    $x = 0$). (a) Calcule $T$ pela Eq. (9.23). (b) Para $W = 4{,}5$ eV, ache $T$ em $F = 3$, $5$ e $10$ V/nm.
+                    (c) Integrando a equação de Schrödinger numericamente, com o elétron $5$ eV acima do fundo da banda dentro do metal,
+                    $T$ sai sempre o dobro do valor WKB. De onde vem esse fator 2?</p>
+                <p><em>Solução.</em> (a) O ponto de retorno externo é $x_r = W/eF$, e</p>
+                <p>$$ \gamma = \frac1\hbar\int_0^{W/eF}\sqrt{2m(W - eFx)}\,dx = \frac{\sqrt{2m}}{\hbar}\,\frac{2}{3}\frac{W^{3/2}}{eF}, $$</p>
+                <p>e, portanto,</p>
+                <p>$$ T \approx \exp\left[-\frac43\frac{\sqrt{2m}\,W^{3/2}}{\hbar eF}\right]. $$</p>
+                <p>A barreira é triangular: fica mais estreita quando $F$ cresce, e $T$ depende de $F$ como $e^{-b/F}$.
+                    (b) Com $\hbar^2/2m = 0{,}0381$ eV nm², $\sqrt{2m}/\hbar = 5{,}12\ \text{eV}^{-1/2}\,\text{nm}^{-1}$ e
+                    $b = \frac43(5{,}12)(4{,}5)^{3/2} = 65{,}2$ V/nm. Então $T \approx 3{,}6\times10^{-10}$, $2{,}2\times10^{-6}$ e
+                    $1{,}5\times10^{-3}$. Dobrar o campo de 5 para 10 V/nm multiplica $T$ por $e^{6{,}5} \approx 680$.
+                    (c) Os valores numéricos são $7{,}26\times10^{-10}$, $4{,}33\times10^{-6}$ e $2{,}95\times10^{-3}$. O fator 2 é o da
+                    parede vertical em $x = 0$ (<a href="#exr-9-2-1">Exercício 9.2-1</a>): dentro do metal, $\hbar^2k^2/2m = 5$ eV; logo depois da superfície,
+                    $\hbar^2\kappa^2/2m = W = 4{,}5$ eV; e $4k\kappa/(k^2 + \kappa^2) = 4\sqrt{5\times4{,}5}/9{,}5 = 2{,}00$. Do outro
+                    lado, a barreira termina num ponto de retorno suave, que não acrescenta fator nenhum. A Seção 9.3 trata desses
+                    pontos.</p>
+
+                <p id="exr-9-2-5"><strong>Exercício 9.2-5.</strong> Pelas Eqs. (9.26) e (9.29), $\log_{10}\tau_{1/2}$ deve ser linear em
+                    $1/\sqrt E$ dentro de uma família com o mesmo $Z$. (a) Calcule a inclinação prevista para os isótopos de urânio (o
+                    filho é tório, $Z = 90$) e de tório (o filho é rádio, $Z = 88$). (b) Compare com as retas da Figura 9.6. (c) Estime
+                    a distância vertical entre as duas retas em $E = 5{,}2$ MeV.</p>
+                <p><em>Solução.</em> (a) De $\ln\tau = \ln(2r_1/v) + 2K_1Z/\sqrt E - 2K_2\sqrt{Zr_1}$ e $\tau_{1/2} = \tau\ln2$,</p>
+                <p>$$ \log_{10}\tau_{1/2} = \frac{2K_1Z}{\ln10}\,\frac{1}{\sqrt E} + (\text{termos que variam devagar}), $$</p>
+                <p>e a inclinação é $2K_1Z/\ln10 = 154{,}7\ \text{MeV}^{1/2}$ para o urânio e $151{,}3\ \text{MeV}^{1/2}$ para o
+                    tório. (b) Os pontos lidos da figura do livro ($E$ em MeV, $\log_{10}\tau_{1/2}$ em anos):</p>
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr><th>Urânio</th><th>238</th><th>236</th><th>234</th><th>232</th><th>230</th><th>228</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>$E$</td><td>$4{,}31$</td><td>$4{,}63$</td><td>$4{,}90$</td><td>$5{,}47$</td><td>$6{,}07$</td><td>$6{,}86$</td></tr>
+                            <tr><td>$\log_{10}\tau_{1/2}$</td><td>$10{,}1$</td><td>$7{,}5$</td><td>$5{,}6$</td><td>$2{,}0$</td><td>$-1{,}1$</td><td>$-4{,}7$</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr><th>Tório</th><th>232</th><th>230</th><th>228</th><th>226</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>$E$</td><td>$4{,}11$</td><td>$4{,}83$</td><td>$5{,}57$</td><td>$6{,}50$</td></tr>
+                            <tr><td>$\log_{10}\tau_{1/2}$</td><td>$10{,}6$</td><td>$4{,}9$</td><td>$0{,}3$</td><td>$-4{,}4$</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>Ajustando uma reta a cada série contra $1/\sqrt E$, as inclinações são $147{,}4$ e $147{,}3\ \text{MeV}^{1/2}$:
+                    concordam com a previsão a menos de 5% (urânio) e 3% (tório). (c) Na mesma energia, a reta do urânio fica acima da do
+                    tório, porque a barreira de um filho com $Z$ maior é mais alta. Pela (9.26), a diferença $\Delta Z = 2$ no termo de
+                    $K_1$ dá $2K_1(2)/(\sqrt{5{,}2}\,\ln10) = 1{,}51$ década. O termo de $K_2$ puxa no outro sentido: com $r_1$ de (9.30)
+                    para $A \approx 233$ (urânio) e $229$ (tório), ele vale $-0{,}44$ década. A previsão é $1{,}07$ década; as retas da
+                    figura estão separadas por $1{,}21$.</p>
+
+                <p id="exr-9-2-6"><strong>Exercício 9.2-6.</strong> Uma barreira suave, $V(x) = V_0e^{-x^2/b^2}$, é atravessada por
+                    uma partícula com $E = V_0/2$. Em unidades com $\hbar = m = b = 1$, compare $e^{-2\gamma}$ com a transmissão exata
+                    (numérica) para $V_0$ de 2 a 64.</p>
+                <p><em>Solução.</em> Os pontos de retorno ficam em $x = \pm\sqrt{\ln2}$, e $\gamma = \int\sqrt{2(V_0e^{-x^2} - V_0/2)}\,dx$
+                    entre eles (quadratura numérica). A transmissão exata vem da integração numérica da equação de Schrödinger:</p>
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr><th>$V_0$</th><th>$\gamma$</th><th>$e^{-2\gamma}$</th><th>$T$ numérico</th><th>Razão</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>2</td><td>$1{,}77$</td><td>$2{,}92\times10^{-2}$</td><td>$4{,}28\times10^{-2}$</td><td>$1{,}47$</td></tr>
+                            <tr><td>4</td><td>$2{,}50$</td><td>$6{,}77\times10^{-3}$</td><td>$8{,}88\times10^{-3}$</td><td>$1{,}31$</td></tr>
+                            <tr><td>8</td><td>$3{,}53$</td><td>$8{,}54\times10^{-4}$</td><td>$1{,}04\times10^{-3}$</td><td>$1{,}21$</td></tr>
+                            <tr><td>16</td><td>$5{,}00$</td><td>$4{,}58\times10^{-5}$</td><td>$5{,}24\times10^{-5}$</td><td>$1{,}15$</td></tr>
+                            <tr><td>32</td><td>$7{,}07$</td><td>$7{,}30\times10^{-7}$</td><td>$8{,}03\times10^{-7}$</td><td>$1{,}10$</td></tr>
+                            <tr><td>64</td><td>$9{,}99$</td><td>$2{,}09\times10^{-9}$</td><td>$2{,}24\times10^{-9}$</td><td>$1{,}07$</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>A razão tende a 1, mais ou menos como $1 + 0{,}7/\gamma$, e não a 4 como na barreira retangular (<a href="#exr-9-2-1">Exercício 9.2-1</a>). Sem
+                    paredes, o potencial varia devagar em quase toda a barreira; o erro que sobra vem da vizinhança dos pontos de retorno,
+                    que pesa cada vez menos à medida que $\gamma$ cresce. É o regime semiclássico: quanto menor a transmissão, melhor a
+                    Eq. (9.23).</p>
+
+                <p id="exr-9-2-7"><strong>Exercício 9.2-7.</strong> Por que, numa barreira de topo plano, $T$ depende exponencialmente
+                    da largura, mas só da raiz quadrada da altura (acima de $E$)? Ilustre com um elétron diante de uma barreira 1 eV acima
+                    da sua energia e 1 nm de largura, e compare com um próton.</p>
+                <p><em>Solução.</em> Com o topo plano, $2\gamma = 2a\sqrt{2m(V_0 - E)}/\hbar$. A largura entra linearmente no
+                    <em>expoente</em> porque cada trecho de comprimento $1/\kappa$ multiplica a amplitude por $e^{-1}$, e esses fatores se
+                    compõem: dobrar a largura eleva $T$ ao quadrado. A altura entra pela raiz porque $\hbar\kappa = |p|$ é um momento, e a
+                    energia cinética é quadrática no momento. Para o elétron, $\kappa = 5{,}12\ \text{nm}^{-1}$, $2\gamma = 10{,}2$ e
+                    $T \approx 3{,}6\times10^{-5}$. Com 2 nm, $T \approx 1{,}3\times10^{-9}$, e o mesmo valor sai mantendo 1 nm e subindo a
+                    barreira para 4 eV acima de $E$: dobrar a largura equivale a quadruplicar a altura. A massa também entra pela raiz:
+                    o próton tem 1836 vezes a massa do elétron, então seu $\kappa$ é $\sqrt{1836} = 42{,}85$ vezes maior,
+                    $2\gamma \approx 439$ e $T \sim 10^{-191}$. O
+                    tunelamento é sensível, acima de tudo, a quem tunela e a quanto tem de atravessar.</p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <ul>
+                    <li>A solução WKB na região proibida (9.18), com exponenciais reais no lugar das oscilações, deduzida como a da
+                        região clássica.</li>
+                    <li>A probabilidade de transmissão por uma barreira alta e larga, $T \approx e^{-2\gamma}$ (9.23): o expoente é
+                        confiável; o prefator, de ordem 1, só é 1 em barreiras suaves (<a href="#exr-9-2-1">Exercício 9.2-1</a>, <a href="#exr-9-2-6">Exercício 9.2-6</a>).</li>
+                    <li>A teoria de Gamow do decaimento alfa: o expoente para a barreira coulombiana (9.25) e sua forma simplificada
+                        (9.26), o tempo de vida (9.29) e as retas de $\log\tau$ contra $1/\sqrt E$ (Figura 9.6).</li>
+                    <li>Aplicações do mesmo expoente: a emissão de campo por uma barreira triangular (<a href="#exr-9-2-4">Exercício 9.2-4</a>) e, segundo o livro, o
+                        tunelamento Zener.</li>
+                </ul>
+                <p>O argumento da transmissão foi heurístico: casamos as soluções nas bordas da barreira só em ordem de grandeza, e
+                    evitamos os pontos de retorno, onde a WKB falha. Tratá-los direito é o assunto da próxima seção:
+                    <a href="[03] - As Fórmulas de Conexão.html">9.3 As Fórmulas de Conexão</a>.</p>
+
+                <hr class="footnotes-sep">
+                <section class="footnotes">
+                    <ol>
+                        <li id="fn:1">
+                            <p>Neste caso a função de onda é <em>real</em>, e as análogas das Eqs. (9.6) e (9.7) não decorrem
+                                <em>necessariamente</em> da Eq. (9.5), embora sejam <em>suficientes</em>. (Se isso incomodar, há uma
+                                dedução alternativa, que o livro deixa como problema.) (Nota do livro.)<a href="#fnref:1"
+                                class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:2">
+                            <p>Esse argumento heurístico pode ser tornado mais rigoroso; o livro deixa isso como problema. (Nota do
+                                livro.)<a href="#fnref:2" class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:3">
+                            <p>Neste caso o potencial não cai a zero do lado esquerdo da barreira (e, além disso, este é na verdade um
+                                problema tridimensional), mas a ideia essencial, contida na Eq. (9.23), é tudo de que realmente
+                                precisamos. (Nota do livro.)<a href="#fnref:3" class="footnote-backref"
+                                aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                    </ol>
+                </section>
 
             </div>
         </main>
@@ -171,6 +686,17 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#tunelamento">Tunelamento</a></li>
+                    <li><a href="#regiao-proibida">A região proibida</a></li>
+                    <li><a href="#transmissao">A probabilidade de transmissão</a></li>
+                    <li>
+                        <a href="#decaimento-alfa">Decaimento alfa</a>
+                        <ul>
+                            <li><a href="#numeros">Raio nuclear e energia da alfa</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#conexao">Conexão com o experimento</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
                 </ul>
             </div>
         </aside>
