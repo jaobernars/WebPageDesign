@@ -1311,3 +1311,26 @@ sup {
 .lecture-figure .fig-small {
     font-size: 12px;
 }
+
+/* Listas de exercícios: separador, referência a capítulo e fim de resolução */
+.prose hr.resolucao-sep {
+    --sep-color: #3f3f46;
+    border: 0;
+    height: 2px;
+    background: repeating-linear-gradient(to right, var(--sep-color) 0 14px, transparent 14px 24px);
+    margin: 2rem 0;
+}
+
+[data-theme="light"] .prose hr.resolucao-sep {
+    --sep-color: #cbd5e1;
+}
+
+.prose a.ref-capitulo {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.prose .qed {
+    float: right;
+    margin-left: 1rem;
+}

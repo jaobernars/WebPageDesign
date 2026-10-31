@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3ª Lista de Exercícios | Mecânica Quântica II | The Journal of a Physicist</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../../assets/images/Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../../assets/images/Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../../assets/images/Favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="../../../../../assets/images/Favicon/favicon.ico">
+    <link rel="stylesheet" href="../../../../../assets/css/class-lecture.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                        <line x1="9" x2="9" y1="3" y2="21"></line>
+                    </svg>
+                </button>
+                <button id="theme-toggle" class="sidebar-toggle" aria-label="Toggle Theme">
+                    <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="breadcrumbs-header">
+                    <a href="../../../../../Páginas Principais/Lectures.html" class="breadcrumb-link">← Lectures</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <a href="../index.html" class="breadcrumb-link active">Mecânica Quântica II</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-category" class="breadcrumb-link">Início</span>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-current" class="breadcrumb-link active">3ª Lista de Exercícios</span>
+                </div>
+            </div>
+            <nav class="top-nav">
+                <a href="../../../../../Páginas Principais/Lectures.html">Lectures</a>
+                <a href="../../../../../index.html">Home</a>
+            </nav>
+        </div>
+
+        <script>
+            MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']]
+                }
+            };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    </header>
+
+    <div class="main-layout">
+        <aside class="left-sidebar" id="left-sidebar">
+            <div class="sidebar-content">
+
+                <button class="search-trigger" id="search-trigger">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                    </svg>
+                    <span>Search docs...</span>
+                </button>
+
+                <div class="sidebar-group">
+                    <h3>Início</h3>
+                    <ul>
+                        <li><a href="../index.html">Overview</a></li>
+                        <li><a href="[01] - 1ª Lista de Exercícios.html">1ª Lista de Exercícios</a></li>
+                        <li><a href="[02] - 2ª Lista de Exercícios.html">2ª Lista de Exercícios</a></li>
+                        <li><a href="[03] - 3ª Lista de Exercícios.html" class="active">3ª Lista de Exercícios</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Partículas Idênticas</h3>
+                    <ul>
+                        <li><a href="../Conteúdo/[4] - Partículas Idênticas/[01] - Sistemas de Duas Partículas.html">5.1 Sistemas de Duas Partículas</a></li>
+                        <li><a href="../Conteúdo/[4] - Partículas Idênticas/[02] - Átomos.html">5.2 Átomos</a></li>
+                        <li><a href="../Conteúdo/[4] - Partículas Idênticas/[03] - Sólidos.html">5.3 Sólidos</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Simetrias e Leis de Conservação</h3>
+                    <ul>
+                        <li><a href="../Conteúdo/[5] - Simetrias e Leis de Conservação/[01] - Introdução.html">6.1 Introdução</a></li>
+                        <li><a href="../Conteúdo/[5] - Simetrias e Leis de Conservação/[02] - O Operador de Translação.html">6.2 O Operador de Translação</a></li>
+                        <li><a href="../Conteúdo/[5] - Simetrias e Leis de Conservação/[03] - Leis de Conservação.html">6.3 Leis de Conservação</a></li>
+                        <li><a href="../Conteúdo/[5] - Simetrias e Leis de Conservação/[04] - Paridade.html">6.4 Paridade</a></li>
+                        <li><a href="../Conteúdo/[5] - Simetrias e Leis de Conservação/[05] - Simetrias de Rotação.html">6.5 Simetrias de Rotação</a></li>
+                        <li><a href="../Conteúdo/[5] - Simetrias e Leis de Conservação/[06] - Degenerescência.html">6.6 Degenerescência</a></li>
+                        <li><a href="../Conteúdo/[5] - Simetrias e Leis de Conservação/[07] - Regras de Seleção Rotacionais.html">6.7 Regras de Seleção Rotacionais</a></li>
+                        <li><a href="../Conteúdo/[5] - Simetrias e Leis de Conservação/[08] - Translações no Tempo.html">6.8 Translações no Tempo</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Teoria de Perturbação Independente do Tempo</h3>
+                    <ul>
+                        <li><a href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[01] - Teoria de Perturbação Não Degenerada.html">7.1 Teoria de Perturbação Não Degenerada</a></li>
+                        <li><a href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[02] - Teoria de Perturbação Degenerada.html">7.2 Teoria de Perturbação Degenerada</a></li>
+                        <li><a href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[03] - A Estrutura Fina do Hidrogênio.html">7.3 A Estrutura Fina do Hidrogênio</a></li>
+                        <li><a href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[04] - O Efeito Zeeman.html">7.4 O Efeito Zeeman</a></li>
+                        <li><a href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[05] - A Estrutura Hiperfina do Hidrogênio.html">7.5 A Estrutura Hiperfina do Hidrogênio</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>O Princípio Variacional</h3>
+                    <ul>
+                        <li><a href="../Conteúdo/[7] - O Princípio Variacional/[01] - Teoria.html">8.1 Teoria</a></li>
+                        <li><a href="../Conteúdo/[7] - O Princípio Variacional/[02] - O Estado Fundamental do Hélio.html">8.2 O Estado Fundamental do Hélio</a></li>
+                        <li><a href="../Conteúdo/[7] - O Princípio Variacional/[03] - O Íon da Molécula de Hidrogênio.html">8.3 O Íon da Molécula de Hidrogênio</a></li>
+                        <li><a href="../Conteúdo/[7] - O Princípio Variacional/[04] - A Molécula de Hidrogênio.html">8.4 A Molécula de Hidrogênio</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>A Aproximação WKB</h3>
+                    <ul>
+                        <li><a href="../Conteúdo/[8] - A Aproximação WKB/[01] - A Região “Clássica”.html">9.1 A Região “Clássica”</a></li>
+                        <li><a href="../Conteúdo/[8] - A Aproximação WKB/[02] - Tunelamento.html">9.2 Tunelamento</a></li>
+                        <li><a href="../Conteúdo/[8] - A Aproximação WKB/[03] - As Fórmulas de Conexão.html">9.3 As Fórmulas de Conexão</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="prose">
+
+                <h1 id="lista-3">3ª Lista de Exercícios</h1>
+                <p class="lead">Enunciados e soluções da terceira lista de exercícios da disciplina.</p>
+
+                <h2 id="exercicios">Exercícios</h2>
+
+                <h3 id="exercicio-1">Exercício 1</h3>
+                <p>Considere o hamiltoniano do oscilador anarmônico unidimensional
+                    $H = \frac{p^2}{2m} + \frac12m\omega^2x^2 + \epsilon x^4$, com $\epsilon \ll 1$.</p>
+                <ol type="a">
+                    <li>Encontre a correção de primeira ordem, $E_n^1$, do espectro de energia.</li>
+                    <li>Escreva a correção $\psi_n^1$ para um estado $\psi_n^0$ arbitrário.</li>
+                </ol>
+
+                <hr class="resolucao-sep">
+
+                <p><strong>Resolução - Exercício 1:</strong></p>
+                <p>Separamos o hamiltoniano em uma parte não perturbada e uma perturbação:</p>
+                <p>$$\begin{aligned}
+                H &= H^0 + H',\\
+                H^0 &= \frac{p^2}{2m} + \frac12 m\omega^2x^2,
+                \qquad H' = \epsilon x^4.
+                \end{aligned}$$</p>
+                <p>Os autoestados de $H^0$ são os do oscilador harmônico. Escrevemos
+                $|n\rangle \equiv |\psi_n^0\rangle$, com $n = 0, 1, 2, \ldots$, e</p>
+                <p>$$E_n^0 = \left(n + \frac12\right)\hbar\omega.$$</p>
+                <p>Como $H'$ já contém $\epsilon$, as correções $E_n^1$ e $\psi_n^1$ abaixo
+                também incluem esse fator.</p>
+
+                <p><strong>(a)</strong> Pela <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[01] - Teoria de Perturbação Não Degenerada.html#teo-correcao-primeira-ordem">Eq. 7.9</a> de Griffiths, a correção de primeira ordem é</p>
+                <p>$$\begin{aligned}
+                E_n^1 &= \langle\psi_n^0|H'|\psi_n^0\rangle\\
+                &= \epsilon\langle n|x^4|n\rangle.
+                \end{aligned}$$</p>
+                <p>Usamos os operadores de escada do capítulo 2:</p>
+                <p>$$\begin{aligned}
+                a_+|n\rangle &= \sqrt{n+1}\,|n+1\rangle,\\
+                a_-|n\rangle &= \sqrt{n}\,|n-1\rangle,\\
+                [a_-,a_+] &= 1,\qquad a_-|0\rangle = 0.
+                \end{aligned}$$</p>
+                <p>Em particular, definindo $Q \equiv a_+ + a_-$, temos</p>
+                <p>$$\begin{aligned}
+                x &= \sqrt{\frac{\hbar}{2m\omega}}\,(a_+ + a_-),\\
+                x^4 &= \left(\frac{\hbar}{2m\omega}\right)^2 Q^4.
+                \end{aligned}$$</p>
+                <p>Como $a_+$ e $a_-$ não comutam, precisamos conservar a ordem dos operadores.
+                A expansão completa contém os seguintes 16 termos:</p>
+                <p>$$\begin{aligned}
+                (a_+ + a_-)^4 ={}& a_+^4 + a_-^4\\
+                &+ a_+^3a_- + a_+^2a_-a_+\\
+                &+ a_+a_-a_+^2 + a_-a_+^3\\
+                &+ a_+^2a_-^2 + a_+a_-a_+a_-\\
+                &+ a_+a_-^2a_+ + a_-a_+^2a_-\\
+                &+ a_-a_+a_-a_+ + a_-^2a_+^2\\
+                &+ a_+a_-^3 + a_-a_+a_-^2\\
+                &+ a_-^2a_+a_- + a_-^3a_+.
+                \end{aligned}$$</p>
+                <p>No valor esperado em $|n\rangle$, só contribuem os seis termos que contêm
+                dois operadores $a_+$ e dois operadores $a_-$: eles conservam o número quântico.
+                Os demais produzem estados ortogonais a $|n\rangle$. Aplicando cada produto
+                da direita para a esquerda, obtemos</p>
+                <p>$$\begin{aligned}
+                \langle n|a_+^2a_-^2|n\rangle &= n(n-1),\\
+                \langle n|a_+a_-a_+a_-|n\rangle &= n^2,\\
+                \langle n|a_+a_-^2a_+|n\rangle &= n(n+1),\\
+                \langle n|a_-a_+^2a_-|n\rangle &= n(n+1),\\
+                \langle n|a_-a_+a_-a_+|n\rangle &= (n+1)^2,\\
+                \langle n|a_-^2a_+^2|n\rangle &= (n+1)(n+2).
+                \end{aligned}$$</p>
+                <p>Portanto,</p>
+                <p>$$\begin{aligned}
+                \langle n|Q^4|n\rangle
+                &= n(n-1) + n^2 + 2n(n+1)\\
+                &\quad + (n+1)^2 + (n+1)(n+2)\\
+                &= 6n^2 + 6n + 3,
+                \end{aligned}$$</p>
+                <p>$$\langle n|x^4|n\rangle
+                = \left(\frac{\hbar}{2m\omega}\right)^2(6n^2+6n+3).$$</p>
+                <p>Assim, a correção pedida é</p>
+                <p>$$E_n^1
+                = 3\epsilon\left(\frac{\hbar}{2m\omega}\right)^2(2n^2+2n+1),$$</p>
+                <p>e o espectro, até primeira ordem, fica</p>
+                <p>$$\begin{aligned}
+                E_n \simeq{}& \left(n+\frac12\right)\hbar\omega\\
+                &+ 3\epsilon\left(\frac{\hbar}{2m\omega}\right)^2
+                (2n^2+2n+1).
+                \end{aligned}$$</p>
+
+                <p><strong>(b)</strong> Pela <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[01] - Teoria de Perturbação Não Degenerada.html#teo-correcao-funcao-de-onda">Eq. 7.13</a> de Griffiths, a correção do autoestado é</p>
+                <p>$$\psi_n^1
+                = \sum_{m\ne n}
+                \frac{\langle\psi_m^0|H'|\psi_n^0\rangle}
+                {E_n^0-E_m^0}\,\psi_m^0.$$</p>
+                <p>A soma percorre os estados do oscilador com $m = 0, 1, 2, \ldots$,
+                excluindo $m=n$. Como cada fator de $Q$ altera o número quântico em uma unidade,
+                $Q^4$ só conecta $|n\rangle$ a estados com variações $0$, $\pm2$ e $\pm4$.
+                A contribuição diagonal já foi usada em (a) e não entra nesta soma.</p>
+                <p>Para calcular os elementos fora da diagonal, aplicamos $Q^2$ duas vezes.
+                Uma primeira aplicação fornece</p>
+                <p>$$\begin{aligned}
+                Q^2|n\rangle ={}& \sqrt{n(n-1)}\,|n-2\rangle\\
+                &+ (2n+1)|n\rangle\\
+                &+ \sqrt{(n+1)(n+2)}\,|n+2\rangle.
+                \end{aligned}$$</p>
+                <p>Na segunda aplicação, as transições para $n-2$ recebem contribuições
+                dos estados intermediários $n-2$ e $n$; para $n+2$, dos estados $n$ e $n+2$.
+                Logo,</p>
+                <p>$$\begin{aligned}
+                \langle n-2|Q^4|n\rangle
+                &= \bigl[(2n-3)+(2n+1)\bigr]\\
+                &\quad\times\sqrt{n(n-1)}\\
+                &= 2(2n-1)\sqrt{n(n-1)},\\[4pt]
+                \langle n+2|Q^4|n\rangle
+                &= \bigl[(2n+1)+(2n+5)\bigr]\\
+                &\quad\times\sqrt{(n+1)(n+2)}\\
+                &= 2(2n+3)\sqrt{(n+1)(n+2)}.
+                \end{aligned}$$</p>
+                <p>Para chegar a $n-4$ ou $n+4$, há apenas um estado intermediário,
+                respectivamente $n-2$ ou $n+2$. Multiplicando os dois fatores de escada
+                correspondentes e restaurando o fator de $x^4$, os quatro elementos são</p>
+                <p>$$\begin{aligned}
+                \langle n-4|x^4|n\rangle
+                &= \left(\frac{\hbar}{2m\omega}\right)^2\\
+                &\quad\times\sqrt{n(n-1)(n-2)(n-3)},\\[4pt]
+                \langle n-2|x^4|n\rangle
+                &= 2\left(\frac{\hbar}{2m\omega}\right)^2\\
+                &\quad\times(2n-1)\sqrt{n(n-1)},\\[4pt]
+                \langle n+2|x^4|n\rangle
+                &= 2\left(\frac{\hbar}{2m\omega}\right)^2\\
+                &\quad\times(2n+3)\sqrt{(n+1)(n+2)},\\[4pt]
+                \langle n+4|x^4|n\rangle
+                &= \left(\frac{\hbar}{2m\omega}\right)^2\\
+                &\quad\times\sqrt{(n+1)(n+2)(n+3)(n+4)}.
+                \end{aligned}$$</p>
+                <p>Os elementos de $H'$ são $\langle m|H'|n\rangle
+                = \epsilon\langle m|x^4|n\rangle$. Para os denominadores, usamos</p>
+                <p>$$E_n^0-E_m^0 = (n-m)\hbar\omega,$$</p>
+                <p>de modo que</p>
+                <p>$$\begin{aligned}
+                E_n^0-E_{n-4}^0 &= 4\hbar\omega,\\
+                E_n^0-E_{n-2}^0 &= 2\hbar\omega,\\
+                E_n^0-E_{n+2}^0 &= -2\hbar\omega,\\
+                E_n^0-E_{n+4}^0 &= -4\hbar\omega.
+                \end{aligned}$$</p>
+                <p>Substituindo esses resultados na soma e simplificando os fatores de 2,
+                encontramos explicitamente</p>
+                <p>$$\begin{aligned}
+                \psi_n^1 ={}& \frac{\epsilon}{\hbar\omega}
+                \left(\frac{\hbar}{2m\omega}\right)^2\\
+                &\times\Biggl[
+                \frac{\sqrt{n(n-1)(n-2)(n-3)}}{4}\,\psi_{n-4}^0\\
+                &\quad + (2n-1)\sqrt{n(n-1)}\,\psi_{n-2}^0\\
+                &\quad - (2n+3)\sqrt{(n+1)(n+2)}\,\psi_{n+2}^0\\
+                &\quad - \frac{\sqrt{(n+1)(n+2)(n+3)(n+4)}}{4}\,
+                \psi_{n+4}^0
+                \Biggr].
+                \end{aligned}$$</p>
+                <p>As fórmulas de descida são inicialmente calculadas para $n\ge2$ e $n\ge4$,
+                respectivamente. Para $n\lt2$, o fator $\sqrt{n(n-1)}$ se anula; para $n\lt4$,
+                o fator $\sqrt{n(n-1)(n-2)(n-3)}$ também se anula. Assim, os termos com índice
+                negativo são automaticamente omitidos, pois não há estados físicos com esses índices.</p>
+                <p>A escolha da <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[01] - Teoria de Perturbação Não Degenerada.html#teo-correcao-funcao-de-onda">Eq. 7.13</a> satisfaz
+                $\langle\psi_n^0|\psi_n^1\rangle=0$, preservando a normalização até primeira ordem.
+                O autoestado perturbado é $\psi_n \simeq \psi_n^0+\psi_n^1$.</p>
+                <p>Por fim, a correção de energia cresce como $n^2$. Para manter a correção
+                pequena em relação ao espaçamento entre os níveis, exigimos
+                $|E_n^1|\ll\hbar\omega$ (ou $E_n^1\ll\hbar\omega$, se $\epsilon\gt0$), isto é,</p>
+                <p>$$3|\epsilon|\left(\frac{\hbar}{2m\omega}\right)^2
+                (2n^2+2n+1)\ll\hbar\omega.$$</p>
+                <p>Portanto, mesmo uma perturbação pequena deixa de satisfazer esse critério
+                para números quânticos suficientemente grandes.<span class="qed" aria-label="Fim da resolução">&#x220E;</span></p>
+
+                <hr class="resolucao-sep">
+
+                <h3 id="exercicio-2">Exercício 2</h3>
+                <p>Considere uma partícula em um poço infinito unidimensional $x \in [0, a]$, perturbada pelo potencial
+                    $V_1(x) = \epsilon x$, com $\epsilon \ll 1$.</p>
+                <ol type="a">
+                    <li>Encontre a correção de primeira ordem, $E_n^1$, do espectro de energia.</li>
+                    <li>Escreva a correção $\psi_n^1$ para um estado $\psi_n^0$ arbitrário.</li>
+                </ol>
+
+                <hr class="resolucao-sep">
+
+                <p><strong>Resolução - Exercício 2:</strong></p>
+                <p>Separamos o hamiltoniano em uma parte não perturbada e uma perturbação:</p>
+                <p>$$\begin{aligned}
+                H &= H^0 + H',\\
+                H^0 &= -\frac{\hbar^2}{2m}\frac{d^2}{dx^2},
+                \qquad H' = V_1(x) = \epsilon x.
+                \end{aligned}$$</p>
+                <p>No interior do poço, $0\lt x\lt a$, os autoestados de $H^0$ e suas energias são</p>
+                <p>$$\begin{aligned}
+                \psi_n^0(x) &= \sqrt{\frac{2}{a}}\,
+                \sin\left(\frac{n\pi x}{a}\right),\\
+                E_n^0 &= \frac{n^2\pi^2\hbar^2}{2ma^2},
+                \qquad n = 1, 2, 3, \ldots.
+                \end{aligned}$$</p>
+                <p>As funções de onda se anulam nas paredes e fora do poço. O espectro é não degenerado.
+                Como $H'$ já contém $\epsilon$, as correções $E_n^1$ e $\psi_n^1$ abaixo
+                também incluem esse fator.</p>
+
+                <p><strong>(a)</strong> Pela <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[01] - Teoria de Perturbação Não Degenerada.html#teo-correcao-primeira-ordem">Eq. 7.9</a> de Griffiths, a correção de primeira ordem é</p>
+                <p>$$\begin{aligned}
+                E_n^1 &= \langle\psi_n^0|H'|\psi_n^0\rangle\\
+                &= \epsilon\langle x\rangle_n,\\
+                \langle x\rangle_n
+                &= \frac{2}{a}\int_0^a x\sin^2\left(\frac{n\pi x}{a}\right)dx.
+                \end{aligned}$$</p>
+                <p>Usando a identidade $\sin^2\theta = (1-\cos 2\theta)/2$, obtemos</p>
+                <p>$$\begin{aligned}
+                \langle x\rangle_n
+                &= \frac{1}{a}\int_0^a x\,dx\\
+                &\quad - \frac{1}{a}\int_0^a
+                x\cos\left(\frac{2n\pi x}{a}\right)dx.
+                \end{aligned}$$</p>
+                <p>A primeira integral vale $a^2/2$. Na segunda, fazemos integração por partes,
+                com $u=x$ e $dv=\cos(bx)\,dx$, onde $b=2n\pi/a$:</p>
+                <p>$$\begin{aligned}
+                \int_0^a x\cos(bx)\,dx
+                &= \left[\frac{x\sin(bx)}{b}\right]_0^a
+                - \frac{1}{b}\int_0^a\sin(bx)\,dx\\
+                &= \left[\frac{x\sin(bx)}{b}
+                + \frac{\cos(bx)}{b^2}\right]_0^a\\
+                &= \frac{a\sin(ba)}{b}
+                + \frac{\cos(ba)-1}{b^2}.
+                \end{aligned}$$</p>
+                <p>Como $ba=2n\pi$, temos $\sin(ba)=0$ e $\cos(ba)=1$; portanto,
+                a integral com o cosseno se anula. Assim,</p>
+                <p>$$\begin{aligned}
+                \langle x\rangle_n &= \frac{1}{a}\frac{a^2}{2}
+                = \frac{a}{2},\\
+                E_n^1 &= \frac{\epsilon a}{2},
+                \qquad n = 1, 2, 3, \ldots.
+                \end{aligned}$$</p>
+                <p>Até primeira ordem, o espectro fica</p>
+                <p>$$E_n \simeq \frac{n^2\pi^2\hbar^2}{2ma^2}
+                + \frac{\epsilon a}{2}.$$</p>
+                <p>A correção é um deslocamento uniforme de todos os níveis, igual ao valor do
+                potencial no centro do poço, $V_1(a/2)=\epsilon a/2$. Isso decorre da simetria
+                da densidade $|\psi_n^0(x)|^2$ em torno de $x=a/2$: sua posição média é sempre
+                $a/2$. Os espaçamentos entre os níveis permanecem iguais até esta ordem.</p>
+
+                <p><strong>(b)</strong> Pela <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[01] - Teoria de Perturbação Não Degenerada.html#teo-correcao-funcao-de-onda">Eq. 7.13</a> de Griffiths, a correção do autoestado é</p>
+                <p>$$\psi_n^1(x)
+                = \sum_{k\ne n}
+                \frac{\epsilon\langle\psi_k^0|x|\psi_n^0\rangle}
+                {E_n^0-E_k^0}\,\psi_k^0(x).$$</p>
+                <p>Usamos $k$ como índice da soma para não confundi-lo com a massa $m$.
+                A soma percorre $k=1,2,3,\ldots$, excluindo $k=n$. Precisamos calcular
+                os elementos de matriz fora da diagonal:</p>
+                <p>$$\begin{aligned}
+                X_{kn} &\equiv \langle\psi_k^0|x|\psi_n^0\rangle,\\
+                X_{kn} &= \frac{2}{a}\int_0^a x
+                \sin\left(\frac{k\pi x}{a}\right)
+                \sin\left(\frac{n\pi x}{a}\right)dx.
+                \end{aligned}$$</p>
+                <p>Transformamos o produto de senos em uma diferença de cossenos,
+                usando $2\sin\alpha\sin\beta=\cos(\alpha-\beta)-\cos(\alpha+\beta)$:</p>
+                <p>$$\begin{aligned}
+                X_{kn} &= \frac{1}{a}\int_0^a x\Biggl[
+                \cos\left(\frac{(k-n)\pi x}{a}\right)\\
+                &\hspace{60pt}
+                - \cos\left(\frac{(k+n)\pi x}{a}\right)\Biggr]dx.
+                \end{aligned}$$</p>
+                <p>A integração por partes feita em (a), agora com $b=j\pi/a$, fornece,
+                para qualquer inteiro $j\ne0$,</p>
+                <p>$$\begin{aligned}
+                I_j &\equiv \int_0^a x\cos\left(\frac{j\pi x}{a}\right)dx\\
+                &= \left[\frac{ax}{j\pi}\sin\left(\frac{j\pi x}{a}\right)
+                + \frac{a^2}{j^2\pi^2}\cos\left(\frac{j\pi x}{a}\right)\right]_0^a\\
+                &= \left(\frac{a}{j\pi}\right)^2
+                \bigl[(-1)^j-1\bigr].
+                \end{aligned}$$</p>
+                <p>Como $k\ne n$, podemos usar essa expressão tanto para $j=k-n$ quanto
+                para $j=k+n$. Logo,</p>
+                <p>$$\begin{aligned}
+                X_{kn} &= \frac{I_{k-n}-I_{k+n}}{a}\\
+                &= \frac{a}{\pi^2}\left[
+                \frac{(-1)^{k-n}-1}{(k-n)^2}
+                - \frac{(-1)^{k+n}-1}{(k+n)^2}\right].
+                \end{aligned}$$</p>
+                <p>Os inteiros $k-n$ e $k+n$ têm a mesma paridade, pois diferem por $2n$.
+                Se $k+n$ é par, os dois numeradores são nulos e $X_{kn}=0$.
+                Se $k+n$ é ímpar, ambos os numeradores valem $-2$, de modo que</p>
+                <p>$$\begin{aligned}
+                X_{kn} &= -\frac{2a}{\pi^2}\left[
+                \frac{1}{(k-n)^2}-\frac{1}{(k+n)^2}\right]\\
+                &= -\frac{2a}{\pi^2}
+                \frac{(k+n)^2-(k-n)^2}{(k^2-n^2)^2}\\
+                &= -\frac{8akn}{\pi^2(k^2-n^2)^2}.
+                \end{aligned}$$</p>
+                <p>Portanto, para $k\ne n$,</p>
+                <p>$$\langle\psi_k^0|x|\psi_n^0\rangle
+                = \begin{cases}
+                0, & k+n\text{ par},\\[4pt]
+                -\dfrac{8akn}{\pi^2(k^2-n^2)^2}, & k+n\text{ ímpar}.
+                \end{cases}$$</p>
+                <p>O denominador da correção da função de onda é</p>
+                <p>$$E_n^0-E_k^0
+                = \frac{\pi^2\hbar^2}{2ma^2}(n^2-k^2).$$</p>
+                <p>Para $k+n$ ímpar, substituímos o elemento de matriz e simplificamos:</p>
+                <p>$$\begin{aligned}
+                \frac{\epsilon X_{kn}}{E_n^0-E_k^0}
+                &= -\frac{8akn\epsilon}{\pi^2(k^2-n^2)^2}
+                \frac{2ma^2}{\pi^2\hbar^2(n^2-k^2)}\\
+                &= \frac{16ma^3\epsilon}{\pi^4\hbar^2}
+                \frac{kn}{(k^2-n^2)^3}.
+                \end{aligned}$$</p>
+                <p>O sinal negativo do elemento de matriz é compensado ao usar
+                $n^2-k^2=-(k^2-n^2)$ no denominador. Assim, o resultado pedido é</p>
+                <p>$$\psi_n^1(x)
+                = \frac{16ma^3\epsilon}{\pi^4\hbar^2}
+                \sum_{\substack{k=1\\ k\ne n\\ k+n\text{ ímpar}}}^{\infty}
+                \frac{kn}{(k^2-n^2)^3}\,\psi_k^0(x).$$</p>
+                <p>O sinal de cada coeficiente ainda depende de $k^2-n^2$: para
+                $\epsilon\gt0$, ele é positivo quando $k\gt n$ e negativo quando $k\lt n$.
+                A escolha da <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[01] - Teoria de Perturbação Não Degenerada.html#teo-correcao-funcao-de-onda">Eq. 7.13</a> satisfaz
+                $\langle\psi_n^0|\psi_n^1\rangle=0$, preservando a normalização até primeira ordem.
+                O autoestado perturbado é $\psi_n\simeq\psi_n^0+\psi_n^1$.</p>
+                <p>A regra de seleção pode ser entendida pela paridade em relação ao centro do poço:</p>
+                <p>$$\begin{aligned}
+                \psi_n^0(a-x) &= (-1)^{n+1}\psi_n^0(x),\\
+                H' &= \frac{\epsilon a}{2}
+                + \epsilon\left(x-\frac{a}{2}\right).
+                \end{aligned}$$</p>
+                <p>A parte constante só desloca as energias e não tem elementos fora da diagonal.
+                A parte proporcional a $x-a/2$ é ímpar em relação ao centro, de modo que só mistura
+                estados de paridades opostas. Isso exige que um dos índices $k,n$ seja par e o
+                outro ímpar, isto é, que $k+n$ seja ímpar.</p>
+                <p>Como ilustração, para $n=1$ contribuem apenas $k=2,4,6,\ldots$.
+                Os dois primeiros termos são</p>
+                <p>$$\begin{aligned}
+                \psi_1^1(x) ={}& \frac{16ma^3\epsilon}{\pi^4\hbar^2}\\
+                &\times\left[\frac{2}{27}\,\psi_2^0(x)
+                + \frac{4}{3375}\,\psi_4^0(x)+\cdots\right]\\
+                ={}& \frac{ma^3\epsilon}{\pi^4\hbar^2}\\
+                &\times\left[\frac{32}{27}\,\psi_2^0(x)
+                + \frac{64}{3375}\,\psi_4^0(x)+\cdots\right].
+                \end{aligned}$$</p>
+                <p>Por fim, conforme a <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[01] - Teoria de Perturbação Não Degenerada.html#obs-validade">observação de validade</a>,
+                os elementos de matriz da perturbação devem ser pequenos diante dos espaçamentos.
+                Para o estado fundamental, o nível mais próximo está a uma distância</p>
+                <p>$$E_2^0-E_1^0
+                = \frac{3\pi^2\hbar^2}{2ma^2}=3E_1^0.$$</p>
+                <p>Uma condição suficiente e conservadora é comparar a variação do potencial
+                no poço, $|\epsilon|a$, com a escala $E_1^0$:</p>
+                <p>$$|\epsilon|a\ll\frac{\pi^2\hbar^2}{2ma^2}.$$</p>
+                <p>Para $\epsilon\gt0$, escrevemos $\epsilon a\ll\pi^2\hbar^2/(2ma^2)$.
+                Esse critério também garante $|E_1^1|=|\epsilon|a/2\ll E_1^0$;
+                assim, a condição física de pequenez envolve uma razão entre energias,
+                e não apenas a afirmação formal $\epsilon\ll1$.<span class="qed" aria-label="Fim da resolução">&#x220E;</span></p>
+
+                <hr class="resolucao-sep">
+
+                <h3 id="exercicio-3">Exercício 3</h3>
+                <p>Uma partícula de massa $m$ e carga $q$ está presa em um poço unidimensional de largura $2L$, centrado em
+                    $x = 0$, quando um campo elétrico é ligado, dando origem ao potencial</p>
+                <p>$$ V(x) = -q\mathcal{E}x, $$</p>
+                <p>onde $\mathcal{E} \ll 1$ é o campo elétrico.</p>
+                <ol type="a">
+                    <li>Mostre que a solução não perturbada do problema é dada por
+                        $$ \psi_n^0 = \frac{1}{\sqrt{4L}}\left[e^{-in\pi x/2L} + (-1)^{n+1}e^{in\pi x/2L}\right], $$
+                        com $n = 1, 2, \ldots$.</li>
+                    <li>Mostre que a correção de primeira ordem para a energia do estado fundamental é nula, e explique a
+                        origem física deste resultado.</li>
+                    <li>Encontre a correção de segunda ordem para a energia do estado fundamental. (Dica: você irá precisar
+                        das séries $\sum_{p=1}^{\infty}\frac{1}{(4p^2-1)^r}$ para $r = 3, 4, 5$.) Resposta:
+                        $E_1^2 \approx -\frac{25}{243}\frac{8^3mL^4q^2\mathcal{E}^2}{\hbar^2\pi^6}$.</li>
+                    <li>Encontre a correção de primeira ordem para a função de onda do estado fundamental, $\psi_1^0$.</li>
+                    <li>Qual é a probabilidade de que a partícula no estado fundamental seja encontrada no primeiro estado
+                        excitado? Resposta: $P_{1\to2} = (11)^2\,(8/9)^4\left(mL^3q\mathcal{E}/\hbar^2\pi^4\right)^2$.</li>
+                </ol>
+
+                <hr class="resolucao-sep">
+
+                <p><strong>Resolução - Exercício 3:</strong></p>
+                <p>Separamos o hamiltoniano em uma parte não perturbada e uma perturbação:</p>
+                <p>$$\begin{aligned}
+                H &= H^0 + H',\\
+                H^0 &= -\frac{\hbar^2}{2m}\frac{d^2}{dx^2},
+                \qquad H' = -q\mathcal{E}x.
+                \end{aligned}$$</p>
+                <p>O operador $H^0$ atua no interior do poço, $-L\lt x\lt L$, com condições
+                de contorno $\psi(-L)=\psi(L)=0$. As funções de onda se anulam fora do poço.
+                Como $H'$ já contém $\mathcal{E}$, as correções abaixo também incluem
+                a potência correspondente do campo. Usamos $k$ como índice das somas
+                sobre estados, reservando $m$ para a massa.</p>
+
+                <p><strong>(a)</strong> No interior do poço, a equação de Schrödinger não perturbada é</p>
+                <p>$$\begin{aligned}
+                -\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2} &= E\psi,\\
+                \psi(x) &= A\cos(\kappa x)+B\sin(\kappa x),\\
+                \kappa^2 &= \frac{2mE}{\hbar^2}.
+                \end{aligned}$$</p>
+                <p>Impondo as duas condições de contorno, encontramos</p>
+                <p>$$\begin{aligned}
+                A\cos(\kappa L)+B\sin(\kappa L) &= 0,\\
+                A\cos(\kappa L)-B\sin(\kappa L) &= 0.
+                \end{aligned}$$</p>
+                <p>Somar e subtrair essas equações dá $A\cos(\kappa L)=0$ e
+                $B\sin(\kappa L)=0$. Uma solução não nula é um cosseno quando
+                $\cos(\kappa L)=0$, ou um seno quando $\sin(\kappa L)=0$.
+                O caso $\kappa=0$ só admite a solução trivial com essas condições de contorno.
+                Reunindo as duas famílias, obtemos</p>
+                <p>$$\begin{aligned}
+                \kappa_n &= \frac{n\pi}{2L},
+                \qquad n=1,2,3,\ldots,\\
+                E_n^0 &= \frac{\hbar^2\kappa_n^2}{2m}
+                = \frac{n^2\pi^2\hbar^2}{8mL^2}.
+                \end{aligned}$$</p>
+                <p>Os cossenos correspondem a $n$ ímpar e os senos a $n$ par.
+                Escolhendo as fases do enunciado, as autofunções normalizadas são</p>
+                <p>$$\psi_n^0(x)=
+                \begin{cases}
+                \dfrac{1}{\sqrt L}\cos\left(\dfrac{n\pi x}{2L}\right),
+                & n\text{ ímpar},\\[4pt]
+                -\dfrac{i}{\sqrt L}\sin\left(\dfrac{n\pi x}{2L}\right),
+                & n\text{ par}.
+                \end{cases}$$</p>
+                <p>De fato, para $n$ ímpar, $(-1)^{n+1}=1$ e a soma das exponenciais
+                é $2\cos(n\pi x/2L)$; para $n$ par, $(-1)^{n+1}=-1$ e a diferença
+                é $-2i\sin(n\pi x/2L)$. Portanto, a expressão acima equivale a</p>
+                <p>$$\begin{aligned}
+                \psi_n^0(x)
+                &= \frac{1}{\sqrt{4L}}\Bigl[
+                e^{-in\pi x/2L}\\
+                &\hspace{65pt}+(-1)^{n+1}e^{in\pi x/2L}\Bigr].
+                \end{aligned}$$</p>
+                <p>Nas paredes, $\cos(n\pi/2)=0$ para $n$ ímpar e
+                $\sin(n\pi/2)=0$ para $n$ par, verificando $\psi_n^0(\pm L)=0$.
+                Para conferir a normalização, usamos $2\kappa_nL=n\pi$:</p>
+                <p>$$\begin{aligned}
+                \int_{-L}^{L}\cos^2(\kappa_nx)\,dx
+                &=L+\frac{\sin(2\kappa_nL)}{2\kappa_n}=L,\\
+                \int_{-L}^{L}\sin^2(\kappa_nx)\,dx
+                &=L-\frac{\sin(2\kappa_nL)}{2\kappa_n}=L.
+                \end{aligned}$$</p>
+                <p>Logo, $\int_{-L}^{L}|\psi_n^0|^2\,dx=1$ em ambos os casos.
+                O fator $-i$ dos estados de índice par é apenas uma fase global de cada
+                autofunção e não altera resultados físicos. Vamos conservá-lo nos elementos
+                de matriz e nos coeficientes da expansão. O espectro é não degenerado e,
+                em particular, $\psi_1^0(x)=\cos(\pi x/2L)/\sqrt L$.</p>
+
+                <p><strong>(b)</strong> Pela <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[01] - Teoria de Perturbação Não Degenerada.html#teo-correcao-primeira-ordem">Eq. 7.9</a> de Griffiths,</p>
+                <p>$$\begin{aligned}
+                E_1^1 &= \langle\psi_1^0|H'|\psi_1^0\rangle
+                = -q\mathcal{E}\langle x\rangle_1,\\
+                \langle x\rangle_1
+                &= \frac1L\int_{-L}^{L}x\cos^2\left(\frac{\pi x}{2L}\right)dx
+                =0,\\
+                E_1^1 &= 0.
+                \end{aligned}$$</p>
+                <p>A densidade $|\psi_1^0(x)|^2$ é par, enquanto $x$ é ímpar;
+                por isso a integral em um intervalo simétrico se anula.
+                Fisicamente, o estado fundamental não perturbado não tem momento de dipolo
+                elétrico permanente: $q\langle x\rangle_1=0$. O campo induz um dipolo,
+                e a primeira alteração da energia é quadrática em $\mathcal{E}$,
+                associada à polarizabilidade do estado, como no efeito Stark quadrático.</p>
+
+                <p><strong>(c)</strong> Pela <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[01] - Teoria de Perturbação Não Degenerada.html#teo-correcao-segunda-ordem">Eq. 7.15</a> de Griffiths, a correção de segunda ordem é</p>
+                <p>$$E_1^2
+                =\sum_{k\ne1}
+                \frac{|\langle\psi_k^0|H'|\psi_1^0\rangle|^2}
+                {E_1^0-E_k^0}.$$</p>
+                <p>Precisamos dos elementos $X_{k1}\equiv\langle\psi_k^0|x|\psi_1^0\rangle$.
+                Para $k$ ímpar, $\psi_k^0$ e $\psi_1^0$ são pares, de modo que o integrando
+                é ímpar e $X_{k1}=0$. Para $k$ par, a conjugação de
+                $\psi_k^0=-i\sin(k\pi x/2L)/\sqrt L$ fornece</p>
+                <p>$$\begin{aligned}
+                X_{k1}
+                &=\frac{i}{L}\int_{-L}^{L}x
+                \sin\left(\frac{k\pi x}{2L}\right)
+                \cos\left(\frac{\pi x}{2L}\right)dx\\
+                &=\frac{i}{2L}\bigl[J(b_+)+J(b_-)\bigr],\\
+                b_\pm&=\frac{(k\pm1)\pi}{2L},\\
+                J(b)&\equiv\int_{-L}^{L}x\sin(bx)\,dx\\
+                &=-\frac{2L\cos(bL)}{b}+\frac{2\sin(bL)}{b^2}.
+                \end{aligned}$$</p>
+                <p>Na última igualdade fizemos integração por partes. Como $k$ é par,
+                $\cos(b_\pm L)=0$, $\sin(b_+L)=(-1)^{k/2}$ e
+                $\sin(b_-L)=(-1)^{k/2+1}$. Assim,</p>
+                <p>$$\begin{aligned}
+                X_{k1}
+                &=\frac{4iL}{\pi^2}(-1)^{k/2+1}
+                \left[\frac{1}{(k-1)^2}-\frac{1}{(k+1)^2}\right]\\
+                &=\frac{16iLk\,(-1)^{k/2+1}}
+                {\pi^2(k^2-1)^2},
+                \qquad k\text{ par}.
+                \end{aligned}$$</p>
+                <p>Portanto, com as fases do enunciado,</p>
+                <p>$$X_{k1}=
+                \begin{cases}
+                0,& k\text{ ímpar},\\[4pt]
+                \dfrac{16iLk\,(-1)^{k/2+1}}{\pi^2(k^2-1)^2},
+                & k\text{ par}.
+                \end{cases}$$</p>
+                <p>Por exemplo, $X_{21}=32iL/(9\pi^2)$ e $X_{41}=-64iL/(225\pi^2)$.
+                Os elementos imaginários resultam da escolha de fase; o módulo ao quadrado
+                que entra na energia é independente dessa escolha:</p>
+                <p>$$\begin{aligned}
+                |X_{k1}|^2&=\frac{256L^2k^2}{\pi^4(k^2-1)^4},
+                \qquad k\text{ par},\\
+                E_1^0-E_k^0
+                &=-\frac{(k^2-1)\pi^2\hbar^2}{8mL^2}.
+                \end{aligned}$$</p>
+                <p>Substituindo $H'=-q\mathcal{E}x$, obtemos</p>
+                <p>$$\begin{aligned}
+                E_1^2
+                &=-\frac{2048mL^4q^2\mathcal{E}^2}{\hbar^2\pi^6}
+                \sum_{\substack{k=2\\ k\text{ par}}}^{\infty}
+                \frac{k^2}{(k^2-1)^5}\\
+                &=-\frac{2048mL^4q^2\mathcal{E}^2}{\hbar^2\pi^6}
+                \sum_{p=1}^{\infty}\frac{4p^2}{(4p^2-1)^5}.
+                \end{aligned}$$</p>
+                <p>Na segunda linha reindexamos os estados pares como $k=2p$.
+                A decomposição do numerador é</p>
+                <p>$$\frac{4p^2}{(4p^2-1)^5}
+                =\frac{1}{(4p^2-1)^4}+\frac{1}{(4p^2-1)^5}.$$</p>
+                <p>Definindo $S_r=\sum_{p=1}^{\infty}(4p^2-1)^{-r}$, basta,
+                portanto, conhecer $S_4$ e $S_5$; a série $S_3$ da dica não é necessária
+                nesta decomposição. Podemos obter as três a partir da expansão em frações
+                parciais da cotangente e de diferenciações sucessivas:</p>
+                <p>$$\begin{aligned}
+                T_1(a)&=\sum_{p=1}^{\infty}\frac{1}{p^2-a^2}\\
+                &=\frac{1}{2a^2}-\frac{\pi}{2a}\cot(\pi a),\\
+                T_{r+1}(a)&=\frac{1}{2ra}\frac{dT_r(a)}{da},\\
+                S_r&=4^{-r}T_r\left(\frac12\right).
+                \end{aligned}$$</p>
+                <p>A identidade é usada em torno de $a=1/2$, longe dos polos.
+                Os valores fechados e suas aproximações numéricas são</p>
+                <p>$$\begin{aligned}
+                S_3&=\frac{32-3\pi^2}{64}
+                \simeq0{,}037362293699,\\
+                S_4&=\frac{\pi^4+30\pi^2-384}{768}
+                \simeq0{,}012366175868,\\
+                S_5&=\frac{1536-105\pi^2-5\pi^4}{3072}
+                \simeq0{,}004116563384.
+                \end{aligned}$$</p>
+                <p>Em particular,</p>
+                <p>$$S_4+S_5=\frac{\pi^2(15-\pi^2)}{3072}.$$</p>
+                <p>Substituindo na energia e simplificando, encontramos o resultado exato
+                em segunda ordem:</p>
+                <p>$$\begin{aligned}
+                E_1^2
+                &=-\frac{2\pi^2(15-\pi^2)}{3}
+                \frac{mL^4q^2\mathcal{E}^2}{\hbar^2\pi^6}\\
+                &=-\frac{2(15-\pi^2)}{3\pi^4}
+                \frac{mL^4q^2\mathcal{E}^2}{\hbar^2}.
+                \end{aligned}$$</p>
+                <p>O sinal é negativo, como deve ocorrer para o estado fundamental:
+                todos os denominadores da soma são negativos.
+                Se conservarmos apenas o termo dominante, $k=2$, teremos</p>
+                <p>$$\begin{aligned}
+                E_1^2\big|_{k=2}
+                &=-\frac{8192}{243}
+                \frac{mL^4q^2\mathcal{E}^2}{\hbar^2\pi^6}\\
+                &=-\frac{16}{243}
+                \frac{8^3mL^4q^2\mathcal{E}^2}{\hbar^2\pi^6}.
+                \end{aligned}$$</p>
+                <p><em>Observação sobre a resposta indicada.</em> O coeficiente positivo que
+                multiplica $-mL^4q^2\mathcal{E}^2/(\hbar^2\pi^6)$ é
+                $33{,}756650$ na soma completa e $33{,}711934$ no termo $k=2$,
+                enquanto $(25/243)8^3=52{,}674897$, cerca de $56{,}0\%$ maior que o valor exato.
+                A diferença não se explica por truncar a série nem por fases globais;
+                trocar a largura $2L$ por $L$ daria um fator $16$, que também não corresponde
+                à discrepância. O fator $25$ pode ser um erro algébrico ou de digitação no
+                lugar do $16$ do termo dominante, mas sua origem não pode ser determinada
+                apenas pelo enunciado.</p>
+
+                <p><strong>(d)</strong> O enunciado escreve $\psi_1^0$, mas a correção
+                solicitada é $\psi_1^1$. Pela <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[01] - Teoria de Perturbação Não Degenerada.html#teo-correcao-funcao-de-onda">Eq. 7.13</a> de Griffiths,</p>
+                <p>$$\begin{aligned}
+                \psi_1^1(x)&=\sum_{k\ne1}c_k\,\psi_k^0(x),\\
+                c_k&=\frac{\langle\psi_k^0|H'|\psi_1^0\rangle}
+                {E_1^0-E_k^0}.
+                \end{aligned}$$</p>
+                <p>Os coeficientes com $k$ ímpar se anulam. Para $k$ par, usando
+                os elementos de matriz calculados em (c),</p>
+                <p>$$\begin{aligned}
+                c_k
+                &=\frac{-q\mathcal{E}}{E_1^0-E_k^0}
+                \frac{16iLk\,(-1)^{k/2+1}}{\pi^2(k^2-1)^2}\\
+                &=\frac{128i\,mL^3q\mathcal{E}}{\hbar^2\pi^4}
+                \frac{(-1)^{k/2+1}k}{(k^2-1)^3}.
+                \end{aligned}$$</p>
+                <p>Logo, a correção pedida é</p>
+                <p>$$\begin{aligned}
+                \psi_1^1(x)
+                &=\frac{128i\,mL^3q\mathcal{E}}{\hbar^2\pi^4}\\
+                &\quad\times\sum_{\substack{k=2\\ k\text{ par}}}^{\infty}
+                \frac{(-1)^{k/2+1}k}{(k^2-1)^3}\,\psi_k^0(x).
+                \end{aligned}$$</p>
+                <p>Os dois primeiros coeficientes e os termos correspondentes são</p>
+                <p>$$\begin{aligned}
+                c_2&=\frac{256i}{27}
+                \frac{mL^3q\mathcal{E}}{\hbar^2\pi^4},\\
+                c_4&=-\frac{512i}{3375}
+                \frac{mL^3q\mathcal{E}}{\hbar^2\pi^4},\\
+                \psi_1^1(x)&=\frac{i\,mL^3q\mathcal{E}}{\hbar^2\pi^4}\\
+                &\quad\times\left[
+                \frac{256}{27}\psi_2^0(x)
+                -\frac{512}{3375}\psi_4^0(x)+\cdots\right].
+                \end{aligned}$$</p>
+                <p>Embora os coeficientes sejam imaginários nessa convenção,
+                $\psi_k^0$ também contém $-i$ para $k$ par; assim, a correção
+                $\psi_1^1(x)$ é real. A soma contém apenas estados ortogonais a
+                $\psi_1^0$, de modo que $\langle\psi_1^0|\psi_1^1\rangle=0$.
+                Portanto, $\psi_1\simeq\psi_1^0+\psi_1^1$ está normalizada até primeira
+                ordem, com $\langle\psi_1|\psi_1\rangle=1+O(\mathcal{E}^2)$.</p>
+
+                <p><strong>(e)</strong> Interpretamos a pergunta como a probabilidade de
+                projetar o estado fundamental perturbado sobre o primeiro excitado
+                não perturbado, $\psi_2^0$. A amplitude, na aproximação de primeira ordem
+                para o estado, é</p>
+                <p>$$\begin{aligned}
+                \langle\psi_2^0|\psi_1\rangle
+                &\simeq\langle\psi_2^0|\psi_1^1\rangle=c_2\\
+                &=\frac{256i}{27}
+                \frac{mL^3q\mathcal{E}}{\hbar^2\pi^4}.
+                \end{aligned}$$</p>
+                <p>A normalização está correta até essa ordem; normalizar exatamente
+                a aproximação $\psi_1^0+\psi_1^1$ só altera a probabilidade em ordem
+                $\mathcal{E}^4$. Assim, na ordem dominante,</p>
+                <p>$$\begin{aligned}
+                P_{1\to2}&\simeq|c_2|^2\\
+                &=\left(\frac{256}{27}\right)^2
+                \left(\frac{mL^3q\mathcal{E}}{\hbar^2\pi^4}\right)^2\\
+                &=12^2\left(\frac89\right)^4
+                \left(\frac{mL^3q\mathcal{E}}{\hbar^2\pi^4}\right)^2.
+                \end{aligned}$$</p>
+                <p><em>Observação sobre a resposta indicada.</em> O coeficiente correto
+                é $(256/27)^2=89{,}898491$, enquanto o indicado na lista é
+                $11^2(8/9)^4=75{,}539704$. A razão entre eles é $144/121$:
+                o coeficiente correto é cerca de $19{,}0\%$ maior.
+                O resultado obtido coincide com a forma indicada se substituirmos
+                $11^2$ por $12^2$, sugerindo um possível erro de digitação.</p>
+                <p>Por fim, conforme a <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[01] - Teoria de Perturbação Não Degenerada.html#obs-validade">observação de validade</a>,
+                os elementos de matriz de $H'$ devem ser pequenos em comparação com os
+                espaçamentos de energia. Uma condição suficiente para o estado fundamental é</p>
+                <p>$$\begin{aligned}
+                |q\mathcal{E}|L&\ll E_2^0-E_1^0,\\
+                E_2^0-E_1^0&=\frac{3\pi^2\hbar^2}{8mL^2}.
+                \end{aligned}$$</p>
+                <p>Essa condição garante, em particular, $|c_2|\ll1$ e uma mistura pequena
+                com os estados excitados. A afirmação formal $\mathcal{E}\ll1$ deve,
+                portanto, ser entendida como uma condição sobre essa razão entre
+                energias.<span class="qed" aria-label="Fim da resolução">&#x220E;</span></p>
+
+                <hr class="resolucao-sep">
+
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="toc-container">
+                <h4>Nesta página</h4>
+                <ul>
+                    <li><a href="#lista-3">3ª Lista de Exercícios</a></li>
+                    <li>
+                        <a href="#exercicios">Exercícios</a>
+                        <ul>
+                            <li><a href="#exercicio-1">Exercício 1</a></li>
+                            <li><a href="#exercicio-2">Exercício 2</a></li>
+                            <li><a href="#exercicio-3">Exercício 3</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Search Modal Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-modal">
+            <div class="search-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search documentation..." autocomplete="off">
+            </div>
+            <div class="search-results" id="search-results"></div>
+            <div class="search-footer">
+                <div class="search-commands">
+                    <span class="cmd-key">↑</span>
+                    <span class="cmd-key">↓</span>
+                    <span class="cmd-label">navigate</span>
+                    <span class="cmd-key">↵</span>
+                    <span class="cmd-label">select</span>
+                </div>
+                <div class="search-commands">
+                    <span class="cmd-key">esc</span>
+                    <span class="cmd-label">close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../../assets/js/class-lecture.js"></script>
+</body>
+
+</html>
