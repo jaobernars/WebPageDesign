@@ -820,7 +820,1395 @@
 
                 <hr class="resolucao-sep">
 
-                <!-- SOLUCAO-EXERCICIO-4 -->
+                <p><strong>Resolução - Exercício 4:</strong></p>
+                <p>Consideramos partículas sem spin (ou, quando há spin, ambas no mesmo estado
+                de spin), como no <a class="ref-capitulo" href="../Conteúdo/[4] - Partículas Idênticas/[01] - Sistemas de Duas Partículas.html#exemplo-poco-infinito">exemplo do poço infinito com duas partículas</a> de Griffiths.
+                Assim, pela <a class="ref-capitulo" href="../Conteúdo/[4] - Partículas Idênticas/[01] - Sistemas de Duas Partículas.html#bosons-e-fermions">Eq. 5.17</a>,
+                a função de onda espacial deve ser simétrica para bósons e antissimétrica para
+                férmions sob a troca $x_1\leftrightarrow x_2$.</p>
+                <p>Separamos o hamiltoniano em uma parte não perturbada e uma perturbação:</p>
+                <p>$$\begin{aligned}
+                H &= H^0+H',\\
+                H^0 &= -\frac{\hbar^2}{2m}\left(
+                \frac{\partial^2}{\partial x_1^2}
+                +\frac{\partial^2}{\partial x_2^2}\right),\\
+                H' &= -\alpha\,\delta(x_1-x_2).
+                \end{aligned}$$</p>
+                <p>Cada coordenada pertence a $[0,a]$, e a função de onda se anula nas
+                paredes e fora do poço. Os orbitais normalizados de uma partícula são</p>
+                <p>$$\begin{aligned}
+                \psi_n(x) &= \sqrt{\frac{2}{a}}\,
+                \sin\left(\frac{n\pi x}{a}\right),\\
+                E_n &= n^2K,\qquad
+                K=\frac{\pi^2\hbar^2}{2ma^2},
+                \end{aligned}$$</p>
+                <p>com $n=1,2,3,\ldots$. Sem interação, as energias se somam:
+                $E_{n_1n_2}^0=(n_1^2+n_2^2)K$. Usaremos os índices $0$ e $1$ para o estado
+                fundamental e o primeiro excitado de duas partículas, respectivamente.</p>
+                <p>Pela <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[01] - Teoria de Perturbação Não Degenerada.html#teo-correcao-primeira-ordem">Eq. 7.9</a>,
+                a correção de primeira ordem é o valor esperado de $H'$ no estado não
+                perturbado normalizado $\psi^0$:</p>
+                <p>$$\begin{aligned}
+                E^1 &= \langle\psi^0|H'|\psi^0\rangle\\
+                &= -\alpha\int_0^a dx_1\int_0^a dx_2\\
+                &\quad\times|\psi^0(x_1,x_2)|^2
+                \delta(x_1-x_2)\\
+                &= -\alpha\int_0^a|\psi^0(x,x)|^2\,dx.
+                \end{aligned}$$</p>
+                <p>Na última passagem, a delta de Dirac colapsa a integral em $x_2$,
+                impondo $x_2=x_1$; em seguida, renomeamos $x_1$ como $x$. Portanto,
+                só precisamos conhecer a função de onda na linha de coincidência das posições.
+                Como $H'$ já contém $\alpha$, as correções abaixo também incluem esse fator.</p>
+
+                <p><strong>Bósons.</strong> Os dois bósons podem ocupar o mesmo orbital.
+                O estado fundamental não perturbado é</p>
+                <p>$$\begin{aligned}
+                \psi_{\mathrm{B},0}^0
+                &= \psi_1(x_1)\psi_1(x_2),\\
+                E_{\mathrm{B},0}^0 &= 2K.
+                \end{aligned}$$</p>
+                <p>Para o primeiro excitado, um bóson ocupa $n=1$ e o outro $n=2$.
+                A combinação simétrica normalizada é</p>
+                <p>$$\begin{aligned}
+                \psi_{\mathrm{B},1}^0
+                &= \frac{1}{\sqrt2}\Bigl[
+                \psi_1(x_1)\psi_2(x_2)\\
+                &\quad+\psi_2(x_1)\psi_1(x_2)\Bigr],\\
+                E_{\mathrm{B},1}^0 &= 5K.
+                \end{aligned}$$</p>
+                <p>O fator $1/\sqrt2$ decorre da ortonormalidade dos orbitais.
+                Os produtos $\psi_1(x_1)\psi_2(x_2)$ e $\psi_2(x_1)\psi_1(x_2)$ são
+                degenerados, mas apenas a combinação simétrica é permitida para esses bósons.
+                Logo, dentro do subespaço simétrico, o primeiro excitado é não degenerado,
+                e a teoria não degenerada da Eq. 7.9 se aplica aos dois níveis.
+                Na linguagem da <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[02] - Teoria de Perturbação Degenerada.html#teo-estados-bons">Seção 7.2</a>,
+                as combinações de simetria definida são estados bons, pois a troca das
+                partículas comuta com $H^0$ e com $H'$.</p>
+                <p>No estado fundamental, a função de onda na diagonal é</p>
+                <p>$$\begin{aligned}
+                \psi_{\mathrm{B},0}^0(x,x)
+                &= \psi_1^2(x)\\
+                &= \frac{2}{a}\sin^2\left(\frac{\pi x}{a}\right).
+                \end{aligned}$$</p>
+                <p>Consequentemente,</p>
+                <p>$$E_{\mathrm{B},0}^1
+                = -\alpha\frac{4}{a^2}
+                \int_0^a\sin^4\left(\frac{\pi x}{a}\right)dx.$$</p>
+                <p>Para calcular a integral, seguindo a dica, fazemos $u=\pi x/a$
+                e usamos redução de potências:</p>
+                <p>$$\begin{aligned}
+                \sin^4u
+                &= \frac14\left(1-2\cos2u+\cos^22u\right)\\
+                &= \frac38-\frac12\cos2u+\frac18\cos4u.
+                \end{aligned}$$</p>
+                <p>Assim, denotando a integral por $I_4$,</p>
+                <p>$$\begin{aligned}
+                I_4 &= \frac{a}{\pi}\int_0^\pi\sin^4u\,du\\
+                &= \frac{a}{\pi}\left[
+                \frac{3u}{8}-\frac{\sin2u}{4}
+                +\frac{\sin4u}{32}\right]_0^\pi\\
+                &= \frac{3a}{8},
+                \end{aligned}$$</p>
+                <p>pois os senos se anulam nos dois extremos. Portanto,</p>
+                <p>$$\begin{aligned}
+                E_{\mathrm{B},0}^1
+                &= -\alpha\frac{4}{a^2}\frac{3a}{8}\\
+                &= -\frac{3\alpha}{2a}.
+                \end{aligned}$$</p>
+                <p>No primeiro excitado, as duas parcelas da função simétrica se somam
+                quando $x_1=x_2=x$:</p>
+                <p>$$\begin{aligned}
+                \psi_{\mathrm{B},1}^0(x,x)
+                &= \sqrt2\,\psi_1(x)\psi_2(x),\\
+                |\psi_{\mathrm{B},1}^0(x,x)|^2
+                &= 2|\psi_1(x)|^2|\psi_2(x)|^2.
+                \end{aligned}$$</p>
+                <p>Esse fator $2$ é essencial. Substituindo os orbitais, obtemos</p>
+                <p>$$\begin{aligned}
+                E_{\mathrm{B},1}^1
+                &= -2\alpha\frac{4}{a^2}\int_0^a
+                \sin^2\left(\frac{\pi x}{a}\right)\\
+                &\hspace{72pt}\times
+                \sin^2\left(\frac{2\pi x}{a}\right)dx.
+                \end{aligned}$$</p>
+                <p>Novamente fazemos $u=\pi x/a$. Usando
+                $\sin^2\theta=(1-\cos2\theta)/2$ e a identidade
+                $\cos2u\cos4u=[\cos2u+\cos6u]/2$, encontramos</p>
+                <p>$$\begin{aligned}
+                \sin^2u\sin^2(2u)
+                &= \frac14(1-\cos2u)(1-\cos4u)\\
+                &= \frac14-\frac14\cos2u-\frac14\cos4u\\
+                &\quad+\frac14\cos2u\cos4u\\
+                &= \frac14-\frac18\cos2u-\frac14\cos4u\\
+                &\quad+\frac18\cos6u.
+                \end{aligned}$$</p>
+                <p>Logo, a segunda integral vale</p>
+                <p>$$\begin{aligned}
+                I_{12}
+                &\equiv \int_0^a
+                \sin^2\left(\frac{\pi x}{a}\right)
+                \sin^2\left(\frac{2\pi x}{a}\right)dx\\
+                &= \frac{a}{\pi}\int_0^\pi
+                \sin^2u\sin^2(2u)\,du\\
+                &= \frac{a}{\pi}\Bigl[
+                \frac{u}{4}-\frac{\sin2u}{16}\\
+                &\quad-\frac{\sin4u}{16}
+                +\frac{\sin6u}{48}\Bigr]_0^\pi\\
+                &= \frac{a}{4}.
+                \end{aligned}$$</p>
+                <p>Os termos oscilatórios também se anulam nos extremos. Assim,</p>
+                <p>$$\begin{aligned}
+                E_{\mathrm{B},1}^1
+                &= -2\alpha\frac{4}{a^2}\frac{a}{4}\\
+                &= -\frac{2\alpha}{a}.
+                \end{aligned}$$</p>
+                <p>Para $\alpha\gt0$, a interação é atrativa e ambas as correções são
+                negativas: as energias bosônicas diminuem. Até primeira ordem,</p>
+                <p>$$\begin{aligned}
+                E_{\mathrm{B},0} &\simeq 2K-\frac{3\alpha}{2a},\\
+                E_{\mathrm{B},1} &\simeq 5K-\frac{2\alpha}{a}.
+                \end{aligned}$$</p>
+
+                <p><strong>Férmions.</strong> Para partículas sem spin, ou no mesmo
+                estado de spin, a parte espacial é antissimétrica. Pelo
+                <a class="ref-capitulo" href="../Conteúdo/[4] - Partículas Idênticas/[01] - Sistemas de Duas Partículas.html#principio-de-exclusao-de-pauli">princípio de exclusão de Pauli</a>,
+                os dois férmions não podem ocupar o mesmo orbital. O estado fundamental
+                ocupa $n=1$ e $n=2$:</p>
+                <p>$$\begin{aligned}
+                \psi_{\mathrm{F},0}^0
+                &= \frac{1}{\sqrt2}\Bigl[
+                \psi_1(x_1)\psi_2(x_2)\\
+                &\quad-\psi_2(x_1)\psi_1(x_2)\Bigr],\\
+                E_{\mathrm{F},0}^0 &= 5K.
+                \end{aligned}$$</p>
+                <p>O primeiro excitado ocupa $n=1$ e $n=3$, pois a próxima soma
+                permitida de energias é $(1^2+3^2)K=10K$:</p>
+                <p>$$\begin{aligned}
+                \psi_{\mathrm{F},1}^0
+                &= \frac{1}{\sqrt2}\Bigl[
+                \psi_1(x_1)\psi_3(x_2)\\
+                &\quad-\psi_3(x_1)\psi_1(x_2)\Bigr],\\
+                E_{\mathrm{F},1}^0 &= 10K.
+                \end{aligned}$$</p>
+                <p>Esses níveis são não degenerados no subespaço antissimétrico.
+                Na linha $x_1=x_2=x$, as duas parcelas de cada estado se cancelam:</p>
+                <p>$$\begin{aligned}
+                \psi_{\mathrm{F},0}^0(x,x) &= 0,\\
+                \psi_{\mathrm{F},1}^0(x,x) &= 0.
+                \end{aligned}$$</p>
+                <p>Substituindo na expressão da correção, encontramos</p>
+                <p>$$\begin{aligned}
+                E_{\mathrm{F},0}^1
+                &= -\alpha\int_0^a 0\,dx=0,\\
+                E_{\mathrm{F},1}^1
+                &= -\alpha\int_0^a 0\,dx=0.
+                \end{aligned}$$</p>
+                <p>De fato, qualquer função espacial antissimétrica satisfaz
+                $\psi^0(x,x)=-\psi^0(x,x)$ e, portanto, $\psi^0(x,x)=0$.
+                Assim, a correção é nula para qualquer estado desse subespaço.</p>
+                <p>Fisicamente, férmions idênticos no mesmo estado de spin nunca estão no
+                mesmo ponto e, por isso, não sentem essa interação de contato.
+                Bósons tendem a se aglomerar: para orbitais distintos, a simetrização
+                duplica a densidade de coincidência em relação ao produto de partículas
+                distinguíveis, como vimos no primeiro excitado. Essa diferença decorre
+                da simetria de troca, conforme a discussão de
+                <a class="ref-capitulo" href="../Conteúdo/[4] - Partículas Idênticas/[01] - Sistemas de Duas Partículas.html#forcas-de-troca">forças de troca</a>
+                do capítulo 5.</p>
+                <p>Para férmions de spin $1/2$ num singleto de spin, a parte espacial seria
+                simétrica, e as correções coincidiriam com as bosônicas para os mesmos orbitais.</p>
+                <p>Por fim, conforme a
+                <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[01] - Teoria de Perturbação Não Degenerada.html#obs-validade">observação de validade</a>,
+                as correções e os elementos de matriz relevantes devem ser pequenos frente
+                aos espaçamentos de energia. A escala da perturbação é $\alpha/a$ e o
+                espaçamento entre os dois níveis bosônicos considerados é $5K-2K=3K$;
+                para $\alpha\gt0$, um critério de interação fraca é</p>
+                <p>$$\frac{\alpha}{a}\ll3K.$$</p>
+                <p>Nesse regime, $|E^1|$ é pequeno em comparação com esse espaçamento,
+                e a aproximação de primeira ordem é consistente.<span class="qed" aria-label="Fim da resolução">&#x220E;</span></p>
+
+                <hr class="resolucao-sep">
+
+                <h3 id="exercicio-5">Exercício 5</h3>
+                <p>Um rotor simétrico é constituído por duas partículas de massas distintas, separadas por uma distância fixa
+                    $a$, que giram em torno do centro de massa do sistema. O hamiltoniano do sistema é dado por
+                    $H = L^2/2I$, onde $I = \mu a^2$ é o momento de inércia ($\mu$ é a massa reduzida) e $L^2$ é o quadrado
+                    do operador de momento angular total.</p>
+                <ol type="a">
+                    <li>Verifique que os estados estacionários são dados pelos harmônicos esféricos e encontre o espectro de
+                        energia do sistema. O sistema é degenerado?</li>
+                    <li>Um pequeno campo elétrico é ligado, gerando uma perturbação da forma $H' = \lambda\cos\theta$.
+                        Encontre as correções para a energia e o estado estacionário para o caso $\ell = 1$. Dê uma
+                        explicação física para o seu resultado.</li>
+                    <li>Encontre a correção de segunda ordem para a energia no caso $\ell = 1$. (Resposta:
+                        $E_{m=0}^2 = \frac{I\lambda^2}{5\hbar^2}$ e $E_{m=\pm1}^2 = -\frac{I\lambda^2}{10\hbar^2}$.)</li>
+                </ol>
+
+                <hr class="resolucao-sep">
+
+                <p><strong>Resolução - Exercício 5:</strong></p>
+                <p>Chamamos o hamiltoniano do rotor livre de $H^0$ e escrevemos</p>
+                <p>$$\begin{aligned}
+                H &= H^0+H',\\
+                H^0 &= \frac{L^2}{2I},\qquad
+                H'=\lambda\cos\theta,\\
+                I &= \mu a^2,\qquad
+                \mu=\frac{m_1m_2}{m_1+m_2}.
+                \end{aligned}$$</p>
+                <p>Como a distância entre as partículas é fixa, a configuração interna
+                do rotor é descrita apenas pelos ângulos $\theta$ e $\phi$ da orientação
+                do eixo que as une. Não há grau de liberdade radial. Usamos $m$ para o
+                número quântico magnético, distinguindo-o das massas $m_1$ e $m_2$.
+                Como $H'$ já contém $\lambda$, as correções abaixo também incluem
+                a potência correspondente desse parâmetro.</p>
+
+                <p><strong>(a)</strong> Os harmônicos esféricos normalizados são
+                autofunções simultâneas de $L^2$ e de $L_z$:</p>
+                <p>$$\begin{aligned}
+                L^2Y_\ell^m &= \hbar^2\ell(\ell+1)Y_\ell^m,\\
+                L_zY_\ell^m &= m\hbar Y_\ell^m.
+                \end{aligned}$$</p>
+                <p>Portanto, aplicar o hamiltoniano não perturbado fornece</p>
+                <p>$$\begin{aligned}
+                H^0Y_\ell^m
+                &= \frac{1}{2I}L^2Y_\ell^m\\
+                &= \frac{\hbar^2\ell(\ell+1)}{2I}Y_\ell^m.
+                \end{aligned}$$</p>
+                <p>Assim, podemos escolher os autoestados e o espectro como</p>
+                <p>$$\begin{aligned}
+                \psi_{\ell m}^0(\theta,\phi) &= Y_\ell^m(\theta,\phi),\\
+                E_\ell^0 &= \frac{\hbar^2\ell(\ell+1)}{2I},\\
+                \ell &= 0,1,2,\ldots,\qquad
+                m=-\ell,\ldots,\ell.
+                \end{aligned}$$</p>
+                <p>A dependência temporal de um estado estacionário é apenas uma fase:</p>
+                <p>$$\Psi_{\ell m}^0(\theta,\phi,t)
+                =Y_\ell^m(\theta,\phi)e^{-iE_\ell^0t/\hbar}.$$</p>
+                <p>A energia não depende de $m$, de modo que cada nível tem
+                degenerescência $g_\ell=2\ell+1$. Apenas $\ell=0$ é não degenerado.
+                Essa degenerescência decorre da simetria de rotação do rotor livre:
+                $H^0$ comuta com todas as componentes de $\mathbf L$, em particular
+                com $L_z$, e as rotações relacionam os estados de mesmo $\ell$ e
+                diferentes $m$. Como as partículas têm massas distintas, não há uma
+                restrição de simetria de troca que elimine valores de $\ell$.</p>
+
+                <p><strong>(b)</strong> Para $\ell=1$, os estados
+                $|1m\rangle\equiv|Y_1^m\rangle$, com $m=-1,0,1$, têm a mesma energia
+                $E_1^0=\hbar^2/I$. Precisamos começar pela
+                <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[02] - Teoria de Perturbação Degenerada.html#perturbacao-degenerada">teoria de perturbação degenerada da Seção 7.2</a>.
+                Na base ordenada $|1,-1\rangle$, $|1,0\rangle$, $|1,1\rangle$, os
+                elementos da
+                <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[02] - Teoria de Perturbação Degenerada.html#a-matriz-w">matriz $W$</a>
+                são</p>
+                <p>$$\begin{aligned}
+                W_{mm'} &= \langle1m|H'|1m'\rangle\\
+                &= \lambda\langle1m|\cos\theta|1m'\rangle\\
+                &= \lambda\int d\Omega\,
+                (Y_1^m)^*\cos\theta\,Y_1^{m'},\\
+                d\Omega &= \sin\theta\,d\theta\,d\phi.
+                \end{aligned}$$</p>
+                <p>Primeiro, $\cos\theta$ não depende de $\phi$, de modo que
+                $[L_z,\cos\theta]=0$. Consequentemente, o elemento de matriz se anula
+                quando $m\ne m'$: a perturbação conserva $m$, conforme a
+                <a class="ref-capitulo" href="../Conteúdo/[5] - Simetrias e Leis de Conservação/[07] - Regras de Seleção Rotacionais.html#vetorial-m">regra de seleção para a componente $z$</a>.
+                Isso também segue diretamente da integral azimutal de
+                $e^{i(m'-m)\phi}$.</p>
+                <p>Para os elementos diagonais, usamos a
+                <a class="ref-capitulo" href="../Conteúdo/[5] - Simetrias e Leis de Conservação/[04] - Paridade.html#paridade-harmonicos">paridade dos harmônicos esféricos</a>:
+                $\mathcal{P}Y_\ell^m=(-1)^\ell Y_\ell^m$.
+                Sob paridade, $\theta$ passa a $\pi-\theta$, e $\cos\theta$ muda de
+                sinal. Como os dois estados têm $\ell=1$, obtemos</p>
+                <p>$$\begin{aligned}
+                \langle1m|\cos\theta|1m\rangle
+                &=-\langle1m|\cos\theta|1m\rangle\\
+                &=0.
+                \end{aligned}$$</p>
+                <p>Portanto, a matriz inteira é nula:</p>
+                <p>$$W=\begin{pmatrix}
+                0&0&0\\
+                0&0&0\\
+                0&0&0
+                \end{pmatrix}.$$</p>
+                <p>Pela
+                <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[02] - Teoria de Perturbação Degenerada.html#degenerescencia-maior">generalização para degenerescência tripla</a>,
+                as correções de primeira ordem são os autovalores de $W$. Logo,</p>
+                <p>$$E_{1m}^1=0,\qquad m=0,\pm1.$$</p>
+                <p>A matriz nula não seleciona uma base, mas $L_z$ comuta tanto com
+                $H^0$ quanto com $H'$ e tem autovalores distintos $-\hbar,0,\hbar$
+                nesse nível. Pelo
+                <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[02] - Teoria de Perturbação Degenerada.html#teo-estados-bons">teorema dos estados bons</a>,
+                os próprios $|1m\rangle$ são estados bons. Em cada subespaço de $m$
+                fixo, o nível é não degenerado, e podemos usar as fórmulas usuais sem
+                denominadores nulos.</p>
+                <p>Pela
+                <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[01] - Teoria de Perturbação Não Degenerada.html#teo-correcao-funcao-de-onda">Eq. 7.13</a>
+                de Griffiths, a correção do estado é</p>
+                <p>$$\psi_{1m}^1
+                =\sum_{\substack{\ell'\ge|m|\\ \ell'\ne1}}
+                \frac{\lambda\langle\ell'm|\cos\theta|1m\rangle}
+                {E_1^0-E_{\ell'}^0}\,Y_{\ell'}^m.$$</p>
+                <p>O operador $\cos\theta=\hat r_z$ é a componente $z$ do
+                <a class="ref-capitulo" href="../Conteúdo/[5] - Simetrias e Leis de Conservação/[07] - Regras de Seleção Rotacionais.html#operadores-vetoriais">operador vetorial $\hat{\mathbf r}=\mathbf r/a$</a>.
+                A
+                <a class="ref-capitulo" href="../Conteúdo/[5] - Simetrias e Leis de Conservação/[07] - Regras de Seleção Rotacionais.html#vetorial-l">regra de seleção vetorial para $\ell$</a>
+                permite $\Delta\ell=0,\pm1$, mas a
+                <a class="ref-capitulo" href="../Conteúdo/[5] - Simetrias e Leis de Conservação/[04] - Paridade.html#regras-de-selecao">paridade ímpar</a>
+                de $\cos\theta$ exclui $\Delta\ell=0$. Assim, neste problema,</p>
+                <p>$$\Delta\ell=\pm1,\qquad\Delta m=0.$$</p>
+                <p>Para $\ell=1$, só entram $\ell'=0$ e $\ell'=2$; o primeiro só
+                existe para $m=0$. Os coeficientes são dados pela identidade</p>
+                <p>$$\begin{aligned}
+                \cos\theta\,Y_\ell^m
+                &=A_{\ell m}Y_{\ell+1}^m
+                +B_{\ell m}Y_{\ell-1}^m,\\
+                A_{\ell m}
+                &=\sqrt{\frac{(\ell+1)^2-m^2}{(2\ell+1)(2\ell+3)}},\\
+                B_{\ell m}
+                &=\sqrt{\frac{\ell^2-m^2}{(2\ell-1)(2\ell+1)}}.
+                \end{aligned}$$</p>
+                <p>Verificamos os casos necessários com as formas explícitas,
+                na convenção de fases de Griffiths:</p>
+                <p>$$\begin{aligned}
+                Y_0^0&=\frac{1}{\sqrt{4\pi}},\\
+                Y_1^0&=\sqrt{\frac{3}{4\pi}}\cos\theta,\\
+                Y_1^{\pm1}&=\mp\sqrt{\frac{3}{8\pi}}\,
+                \sin\theta\,e^{\pm i\phi},\\
+                Y_2^0&=\sqrt{\frac{5}{16\pi}}\,(3\cos^2\theta-1),\\
+                Y_2^{\pm1}&=\mp\sqrt{\frac{15}{8\pi}}\,
+                \sin\theta\cos\theta\,e^{\pm i\phi}.
+                \end{aligned}$$</p>
+                <p>Multiplicar $Y_1^m$ por $\cos\theta$ e comparar os termos fornece</p>
+                <p>$$\begin{aligned}
+                \cos\theta\,Y_1^0
+                &=\frac{1}{\sqrt3}Y_0^0+\frac{2}{\sqrt{15}}Y_2^0,\\
+                \cos\theta\,Y_1^{\pm1}
+                &=\frac{1}{\sqrt5}Y_2^{\pm1}.
+                \end{aligned}$$</p>
+                <p>Por ortonormalidade, esses são os elementos de matriz procurados.
+                Podemos conferi-los também por integração direta. Fazendo
+                $u=\cos\theta$ e integrando em $\phi$, obtemos</p>
+                <p>$$\begin{aligned}
+                &\langle0,0|\cos\theta|1,0\rangle\\
+                &\quad=\frac{\sqrt3}{2}\int_{-1}^{1}u^2\,du
+                =\frac{1}{\sqrt3},\\[4pt]
+                &\langle2,0|\cos\theta|1,0\rangle\\
+                &\quad=\frac{\sqrt{15}}{4}\int_{-1}^{1}
+                u^2(3u^2-1)\,du\\
+                &\quad=\frac{2}{\sqrt{15}},\\[4pt]
+                &\langle2,\pm1|\cos\theta|1,\pm1\rangle\\
+                &\quad=\frac{3\sqrt5}{4}\int_{-1}^{1}
+                u^2(1-u^2)\,du\\
+                &\quad=\frac{1}{\sqrt5}.
+                \end{aligned}$$</p>
+                <p>Já $\langle0,0|\cos\theta|1,\pm1\rangle=0$ pela integral
+                azimutal. Os denominadores são</p>
+                <p>$$\begin{aligned}
+                E_1^0-E_0^0
+                &=\frac{\hbar^2}{I},\\
+                E_1^0-E_2^0
+                &=\frac{\hbar^2}{I}-\frac{3\hbar^2}{I}
+                =-\frac{2\hbar^2}{I}.
+                \end{aligned}$$</p>
+                <p>Para $m=0$, substituímos as duas contribuições na Eq. 7.13:</p>
+                <p>$$\begin{aligned}
+                \psi_{10}^1
+                &=\frac{\lambda/\sqrt3}{\hbar^2/I}\,Y_0^0
+                +\frac{2\lambda/\sqrt{15}}{-2\hbar^2/I}\,Y_2^0\\
+                &=\frac{I\lambda}{\hbar^2}
+                \left(\frac{Y_0^0}{\sqrt3}
+                -\frac{Y_2^0}{\sqrt{15}}\right).
+                \end{aligned}$$</p>
+                <p>Para $m=\pm1$, há apenas a contribuição de $\ell'=2$:</p>
+                <p>$$\begin{aligned}
+                \psi_{1,\pm1}^1
+                &=\frac{\lambda/\sqrt5}{-2\hbar^2/I}\,Y_2^{\pm1}\\
+                &=-\frac{I\lambda}{2\sqrt5\,\hbar^2}Y_2^{\pm1}.
+                \end{aligned}$$</p>
+                <p>Portanto, os autoestados perturbados, até primeira ordem, são</p>
+                <p>$$\begin{aligned}
+                \psi_{10}
+                &\simeq Y_1^0+\frac{I\lambda}{\hbar^2}
+                \left(\frac{Y_0^0}{\sqrt3}
+                -\frac{Y_2^0}{\sqrt{15}}\right),\\
+                \psi_{1,\pm1}
+                &\simeq Y_1^{\pm1}
+                -\frac{I\lambda}{2\sqrt5\,\hbar^2}Y_2^{\pm1}.
+                \end{aligned}$$</p>
+                <p>As correções contêm apenas harmônicos ortogonais a $Y_1^m$,
+                de modo que $\langle\psi_{1m}^0|\psi_{1m}^1\rangle=0$.
+                A normalização é preservada até primeira ordem.</p>
+                <p>Fisicamente, um estado de $\ell$ definido tem paridade definida
+                e não possui momento de dipolo elétrico permanente no referencial
+                do laboratório: $\langle\hat{\mathbf r}\rangle=0$, em particular
+                $\langle\cos\theta\rangle=0$. Por isso, não há efeito Stark linear.
+                O campo polariza o rotor, misturando estados de paridades opostas:
+                $\ell=1$ com $\ell=0,2$ para $m=0$, e com $\ell=2$ para $m=\pm1$.
+                A função de onda muda em primeira ordem, mas a primeira alteração
+                da energia é de segunda ordem, o efeito Stark quadrático.</p>
+
+                <p><strong>(c)</strong> Como $m$ é conservado e já escolhemos estados
+                bons, aplicamos a
+                <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[01] - Teoria de Perturbação Não Degenerada.html#teo-correcao-segunda-ordem">Eq. 7.15</a>
+                em cada subespaço de $m$ fixo:</p>
+                <p>$$\begin{aligned}
+                E_{1m}^2
+                &=\sum_{\substack{\ell'\ge|m|\\ \ell'\ne1}}
+                \frac{|\langle\ell'm|H'|1m\rangle|^2}
+                {E_1^0-E_{\ell'}^0}\\
+                &=\lambda^2
+                \sum_{\substack{\ell'\ge|m|\\ \ell'\ne1}}
+                \frac{|\langle\ell'm|\cos\theta|1m\rangle|^2}
+                {E_1^0-E_{\ell'}^0}.
+                \end{aligned}$$</p>
+                <p>Para $m=0$, os dois estados intermediários contribuem:</p>
+                <p>$$\begin{aligned}
+                E_{10}^2
+                &=\frac{\lambda^2(1/\sqrt3)^2}{\hbar^2/I}
+                +\frac{\lambda^2(2/\sqrt{15})^2}{-2\hbar^2/I}\\
+                &=\frac{I\lambda^2}{\hbar^2}
+                \left(\frac13-\frac{2}{15}\right)\\
+                &=\frac{I\lambda^2}{5\hbar^2}.
+                \end{aligned}$$</p>
+                <p>Para $m=\pm1$, só há acoplamento com $|2,\pm1\rangle$:</p>
+                <p>$$\begin{aligned}
+                E_{1,\pm1}^2
+                &=\frac{\lambda^2(1/\sqrt5)^2}{-2\hbar^2/I}\\
+                &=-\frac{I\lambda^2}{10\hbar^2}.
+                \end{aligned}$$</p>
+                <p>Os dois resultados coincidem com as respostas indicadas no
+                enunciado. Como $E_{1m}^1=0$, as energias até segunda ordem são</p>
+                <p>$$\begin{aligned}
+                E_{10}
+                &\simeq\frac{\hbar^2}{I}
+                +\frac{I\lambda^2}{5\hbar^2},\\
+                E_{1,\pm1}
+                &\simeq\frac{\hbar^2}{I}
+                -\frac{I\lambda^2}{10\hbar^2}.
+                \end{aligned}$$</p>
+                <p>O sinal de cada termo reflete a posição do nível intermediário.
+                Para $m=0$, o acoplamento com $\ell'=0$, abaixo de $\ell=1$,
+                produz uma contribuição positiva $I\lambda^2/(3\hbar^2)$,
+                que domina a contribuição negativa de $\ell'=2$.
+                Para $m=\pm1$, só existe o acoplamento com $\ell'=2$, acima de
+                $\ell=1$, e a energia diminui.</p>
+                <p>A degenerescência tripla é parcialmente levantada: o estado
+                $m=0$ se separa do par $m=\pm1$. O campo preserva as rotações em
+                torno de $z$, mantendo $m$ como número quântico. Além disso, a
+                reflexão $\phi\mapsto-\phi$ deixa $H$ inalterado e troca $m$ por
+                $-m$; por isso, os estados $m=1$ e $m=-1$ continuam degenerados.</p>
+                <p>Por fim, conforme a
+                <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[01] - Teoria de Perturbação Não Degenerada.html#obs-validade">observação de validade</a>,
+                os elementos de matriz de $H'$ devem ser pequenos frente aos
+                espaçamentos dos níveis acoplados. Uma condição suficiente é</p>
+                <p>$$|\lambda|\ll\frac{\hbar^2}{I}.$$</p>
+                <p>Nesse regime, os coeficientes de mistura são pequenos e as
+                correções quadráticas da energia permanecem pequenas em comparação
+                com os espaçamentos não perturbados.<span class="qed" aria-label="Fim da resolução">&#x220E;</span></p>
+
+                <hr class="resolucao-sep">
+
+                <h3 id="exercicio-6">Exercício 6</h3>
+                <p>Um elétron se move no campo de Coulomb de um próton centrado na origem. Desprezando o spin e as correções
+                    relativísticas, o primeiro nível excitado ($n = 2$) tem degenerescência de ordem 4: $\ell = 0, m_\ell = 0$;
+                    $\ell = 1, m_\ell = 1, 0, -1$. Encontre as correções para a energia $E_2$ na presença de uma perturbação
+                    $H' = \alpha xy$, usando teoria de perturbação degenerada de primeira ordem. Essa perturbação consegue
+                    quebrar completamente a degenerescência do nível $n = 2$?</p>
+
+                <hr class="resolucao-sep">
+
+                <p><strong>Resolução - Exercício 6:</strong></p>
+                <p>Separamos o hamiltoniano em uma parte não perturbada e uma perturbação:</p>
+                <p>$$\begin{aligned}
+                H&=H^0+H',\\
+                H^0&=-\frac{\hbar^2}{2m_e}\nabla^2
+                -\frac{e^2}{4\pi\epsilon_0r},\\
+                H'&=\alpha xy,\qquad \alpha\in\mathbb R.
+                \end{aligned}$$</p>
+                <p>Usamos $m_e$ para a massa do elétron e $m$ para o número quântico
+                magnético. Com $a$ igual ao raio de Bohr, as energias não perturbadas são</p>
+                <p>$$\begin{aligned}
+                E_n^0&=-\frac{\hbar^2}{2m_ea^2n^2},\\
+                E_2^0&\equiv E_2=-\frac{\hbar^2}{8m_ea^2}.
+                \end{aligned}$$</p>
+                <p>Como $H'$ já contém $\alpha$, as correções de primeira ordem abaixo
+                também incluem esse fator. No nível $n=2$, escolhemos a base ortonormal
+                na ordem do enunciado:</p>
+                <p>$$\mathcal B=
+                \bigl(\psi_{200},\psi_{211},\psi_{210},\psi_{21,-1}\bigr).$$</p>
+                <p>Escrevemos $|n\ell m\rangle\equiv|\psi_{n\ell m}\rangle$. As funções
+                de onda do hidrogênio se separam em uma parte radial e uma angular:</p>
+                <p>$$\begin{aligned}
+                \psi_{200}&=R_{20}(r)Y_0^0(\theta,\phi),\\
+                \psi_{21m}&=R_{21}(r)Y_1^m(\theta,\phi),\\
+                R_{20}(r)&=\frac{1}{2\sqrt2\,a^{3/2}}
+                \left(2-\frac ra\right)e^{-r/(2a)},\\
+                R_{21}(r)&=\frac{1}{2\sqrt6\,a^{3/2}}
+                \frac ra\,e^{-r/(2a)}.
+                \end{aligned}$$</p>
+                <p>Na convenção de fases de Griffiths, usada também no Exercício 5,</p>
+                <p>$$\begin{aligned}
+                Y_0^0&=\frac{1}{\sqrt{4\pi}},\\
+                Y_1^0&=\sqrt{\frac{3}{4\pi}}\cos\theta,\\
+                Y_1^{\pm1}&=\mp\sqrt{\frac{3}{8\pi}}\,
+                \sin\theta\,e^{\pm i\phi}.
+                \end{aligned}$$</p>
+
+                <p><strong>A matriz $W$.</strong> Como os quatro estados têm a mesma
+                energia $E_2$, começamos pela
+                <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[02] - Teoria de Perturbação Degenerada.html#perturbacao-degenerada">teoria de perturbação degenerada da Seção 7.2</a>.
+                Na base $\mathcal B$, os elementos da
+                <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[02] - Teoria de Perturbação Degenerada.html#a-matriz-w">matriz $W$</a>
+                são</p>
+                <p>$$\begin{aligned}
+                W_{ij}&=\langle\psi_i^0|H'|\psi_j^0\rangle\\
+                &=\alpha\langle\psi_i^0|xy|\psi_j^0\rangle,
+                \qquad i,j=1,2,3,4.
+                \end{aligned}$$</p>
+                <p>Aqui, $\psi_i^0$ designa o $i$-ésimo estado da base $\mathcal B$.
+                Pelo
+                <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[02] - Teoria de Perturbação Degenerada.html#teo-degenerescencia-n">teorema para degenerescência de ordem maior</a>,
+                as correções $E^1$ são os autovalores de $W$, e seus autovetores
+                fornecem os coeficientes dos estados bons:</p>
+                <p>$$\begin{aligned}
+                W\mathbf c&=E^1\mathbf c,\\
+                \psi^0&=\sum_{j=1}^4c_j\psi_j^0.
+                \end{aligned}$$</p>
+                <p>Antes de integrar, identificamos os elementos que se anulam.
+                Em coordenadas esféricas,</p>
+                <p>$$\begin{aligned}
+                xy&=r^2\sin^2\theta\cos\phi\sin\phi\\
+                &=\frac{r^2\sin^2\theta}{4i}
+                \left(e^{2i\phi}-e^{-2i\phi}\right).
+                \end{aligned}$$</p>
+                <p>Primeiro, $xy$ é par sob a inversão espacial: $(-x)(-y)=xy$.
+                Pela
+                <a class="ref-capitulo" href="../Conteúdo/[5] - Simetrias e Leis de Conservação/[04] - Paridade.html#paridade-harmonicos">paridade dos harmônicos esféricos</a>,
+                $\psi_{200}$ é par e todos os $\psi_{21m}$ são ímpares.
+                Assim, pela
+                <a class="ref-capitulo" href="../Conteúdo/[5] - Simetrias e Leis de Conservação/[04] - Paridade.html#regras-de-selecao">regra de seleção por paridade</a>,
+                o integrando que mistura esses estados é ímpar, e</p>
+                <p>$$\langle200|xy|21m\rangle=0,
+                \qquad m=0,\pm1.$$</p>
+                <p>Os elementos conjugados também se anulam. Portanto, $\psi_{200}$
+                não se mistura com nenhum dos três estados de $\ell=1$.</p>
+                <p>Segundo, a dependência azimutal de um elemento entre estados com
+                números magnéticos $m$ e $m'$ contém apenas as integrais</p>
+                <p>$$\begin{aligned}
+                &\int_0^{2\pi}e^{i(m'-m+q)\phi}\,d\phi\\
+                &\qquad=2\pi\,\delta_{m,m'+q},
+                \qquad q=\pm2.
+                \end{aligned}$$</p>
+                <p>Logo, $xy$ só conecta estados com $m-m'=\pm2$.
+                No bloco $\ell=1$, isso permite apenas
+                $\langle211|xy|21,-1\rangle$ e seu conjugado.
+                Os elementos entre $m=0$ e $m=\pm1$ têm $|m-m'|=1$ e se anulam.
+                Todos os elementos diagonais têm $m=m'$ e também se anulam, pois</p>
+                <p>$$\int_0^{2\pi}\cos\phi\sin\phi\,d\phi=0.$$</p>
+                <p>Isso inclui $\langle200|xy|200\rangle=0$, que não seria excluído
+                apenas pela paridade, e $\langle210|xy|210\rangle=0$.
+                Assim, cada zero da matriz está justificado.</p>
+
+                <p><strong>O elemento não nulo.</strong> Separamos o elemento restante
+                em uma parte radial e uma angular:</p>
+                <p>$$\begin{aligned}
+                \langle211|xy|21,-1\rangle&=\mathcal R\,\mathcal A,\\
+                \mathcal R&=\int_0^\infty R_{21}^2(r)\,r^4\,dr,\\
+                \mathcal A&=\int d\Omega\,(Y_1^1)^*\\
+                &\quad\times\sin^2\theta\cos\phi\sin\phi\,Y_1^{-1},\\
+                d\Omega&=\sin\theta\,d\theta\,d\phi.
+                \end{aligned}$$</p>
+                <p>O fator $r^4$ vem de $r^2$ em $xy$ e de $r^2$ no elemento de volume.
+                Substituindo $R_{21}$ e fazendo $u=r/a$, obtemos</p>
+                <p>$$\begin{aligned}
+                \mathcal R
+                &=\frac{1}{24a^5}\int_0^\infty r^6e^{-r/a}\,dr\\
+                &=\frac{a^2}{24}\int_0^\infty u^6e^{-u}\,du\\
+                &=\frac{a^2}{24}\,6!=30a^2.
+                \end{aligned}$$</p>
+                <p>Na parte angular, a conjugação de $Y_1^1$ deve conservar o sinal
+                negativo da convenção de Griffiths:</p>
+                <p>$$\begin{aligned}
+                (Y_1^1)^*Y_1^{-1}
+                &=-\frac{3}{8\pi}\sin^2\theta\,e^{-2i\phi},\\
+                \mathcal A&=-\frac{3}{8\pi}J_\theta J_\phi,\\
+                J_\theta&=\int_0^\pi\sin^5\theta\,d\theta,\\
+                J_\phi&=\int_0^{2\pi}e^{-2i\phi}
+                \cos\phi\sin\phi\,d\phi.
+                \end{aligned}$$</p>
+                <p>Fazendo $u=\cos\theta$ na primeira integral,</p>
+                <p>$$\begin{aligned}
+                J_\theta
+                &=\int_{-1}^1(1-u^2)^2\,du\\
+                &=\left[u-\frac{2u^3}{3}+\frac{u^5}{5}\right]_{-1}^1\\
+                &=\frac{16}{15}.
+                \end{aligned}$$</p>
+                <p>Na integral azimutal, usamos a forma exponencial de
+                $\cos\phi\sin\phi$:</p>
+                <p>$$\begin{aligned}
+                J_\phi
+                &=\frac{1}{4i}\int_0^{2\pi}
+                \left(1-e^{-4i\phi}\right)d\phi\\
+                &=\frac{2\pi}{4i}=-\frac{i\pi}{2}.
+                \end{aligned}$$</p>
+                <p>Portanto,</p>
+                <p>$$\begin{aligned}
+                \mathcal A
+                &=-\frac{3}{8\pi}\frac{16}{15}
+                \left(-\frac{i\pi}{2}\right)=\frac{i}{5},\\
+                \langle211|xy|21,-1\rangle
+                &=30a^2\frac{i}{5}=6ia^2.
+                \end{aligned}$$</p>
+                <p>Como $xy$ é hermitiano, o elemento na posição transposta é o
+                complexo conjugado:</p>
+                <p>$$\langle21,-1|xy|211\rangle=-6ia^2.$$</p>
+                <p>Na ordem $\mathcal B=(\psi_{200},\psi_{211},\psi_{210},\psi_{21,-1})$,
+                a matriz completa é, portanto,</p>
+                <p>$$W=6\alpha a^2
+                \begin{pmatrix}
+                0&0&0&0\\
+                0&0&0&i\\
+                0&0&0&0\\
+                0&-i&0&0
+                \end{pmatrix}.$$</p>
+                <p>Os elementos imaginários resultam da convenção de fases dos
+                harmônicos; a matriz continua hermitiana, $W^\dagger=W$.</p>
+
+                <p><strong>Autovalores e estados bons.</strong> A equação característica é</p>
+                <p>$$\begin{aligned}
+                0&=\det(W-E^1\mathbf 1)\\
+                &=(E^1)^2\left[(E^1)^2-(6\alpha a^2)^2\right].
+                \end{aligned}$$</p>
+                <p>Assim, as quatro correções de primeira ordem são</p>
+                <p>$$E^1=0,\quad0,\quad+6\alpha a^2,\quad-6\alpha a^2.$$</p>
+                <p>Para a correção nula, escolhemos os autovetores normalizados</p>
+                <p>$$\mathbf c_s=
+                \begin{pmatrix}
+                1\\
+                0\\
+                0\\
+                0
+                \end{pmatrix},
+                \qquad
+                \mathbf c_z=
+                \begin{pmatrix}
+                0\\
+                0\\
+                1\\
+                0
+                \end{pmatrix}.$$</p>
+                <p>Eles correspondem aos estados bons</p>
+                <p>$$\begin{aligned}
+                \psi_s^0&=\psi_{200},\qquad \psi_z^0=\psi_{210},\\
+                E_s^1&=E_z^1=0.
+                \end{aligned}$$</p>
+                <p>No bloco dos estados $m=\pm1$, a equação de autovalores fornece</p>
+                <p>$$\begin{aligned}
+                6i\alpha a^2c_4&=E^1c_2,\\
+                -6i\alpha a^2c_2&=E^1c_4.
+                \end{aligned}$$</p>
+                <p>Para $E^1=\pm6\alpha a^2$, temos $c_4=\mp ic_2$.
+                Escolhendo $c_2=1/\sqrt2$, encontramos</p>
+                <p>$$\mathbf c_\pm=\frac{1}{\sqrt2}
+                \begin{pmatrix}
+                0\\
+                1\\
+                0\\
+                \mp i
+                \end{pmatrix}.$$</p>
+                <p>Logo, os outros dois estados bons e suas correções são</p>
+                <p>$$\begin{aligned}
+                \psi_+^0&=\frac{\psi_{211}-i\psi_{21,-1}}{\sqrt2},\\
+                E_+^1&=+6\alpha a^2,\\[4pt]
+                \psi_-^0&=\frac{\psi_{211}+i\psi_{21,-1}}{\sqrt2},\\
+                E_-^1&=-6\alpha a^2.
+                \end{aligned}$$</p>
+                <p>A ortonormalidade da base original garante que esses quatro estados
+                também são ortonormais. São as combinações de ordem zero adequadas
+                para iniciar a expansão perturbativa.</p>
+
+                <p><strong>Interpretação dos estados.</strong> Multiplicando os fatores
+                angulares por $r$, usamos $r\sin\theta\,e^{\pm i\phi}=x\pm iy$.
+                Com o fator radial comum</p>
+                <p>$$C(r)=\frac{e^{-r/(2a)}}{8\sqrt\pi\,a^{5/2}},$$</p>
+                <p>as funções de onda dos estados com $\ell=1$ ficam</p>
+                <p>$$\begin{aligned}
+                \psi_{211}&=-C(r)(x+iy),\\
+                \psi_{21,-1}&=C(r)(x-iy),\\
+                \psi_{210}&=\sqrt2\,C(r)z.
+                \end{aligned}$$</p>
+                <p>Substituindo nas combinações encontradas,</p>
+                <p>$$\begin{aligned}
+                \psi_+^0
+                &=-\frac{1+i}{\sqrt2}\,C(r)(x+y)\\
+                &=-e^{i\pi/4}C(r)(x+y),\\[4pt]
+                \psi_-^0
+                &=-\frac{1-i}{\sqrt2}\,C(r)(x-y)\\
+                &=-e^{-i\pi/4}C(r)(x-y).
+                \end{aligned}$$</p>
+                <p>A menos das fases globais, são orbitais $p$ orientados ao longo
+                das diagonais $x+y$ e $x-y$, respectivamente: seus eixos são as retas
+                $x=y$ e $x=-y$ no plano $z=0$.
+                Para $\alpha\gt0$, $xy$ é positivo ao longo de $x=y$ e negativo ao
+                longo de $x=-y$. Por isso, o orbital ao longo de $x+y$ sobe de energia
+                por $+6\alpha a^2$, enquanto o orbital ao longo de $x-y$ desce por
+                $-6\alpha a^2$, de acordo com os valores
+                $\langle xy\rangle_\pm=\pm6a^2$.</p>
+
+                <p><strong>A degenerescência é quebrada?</strong> Não completamente.
+                Até primeira ordem, o nível original se separa em</p>
+                <p>$$\begin{aligned}
+                E_+&\simeq E_2+6\alpha a^2,\\
+                E_-&\simeq E_2-6\alpha a^2,\\
+                E_{s,z}&\simeq E_2\qquad\text{(duas vezes)}.
+                \end{aligned}$$</p>
+                <p>Restam $\psi_{200}$ e $\psi_{210}$ degenerados em primeira ordem.
+                Dentro do subespaço $n=2$, $xy$ não acopla esses estados entre si nem
+                com os outros: a paridade exclui a mistura de $\psi_{200}$ com os
+                estados $p$, e a regra azimutal $\Delta m=\pm2$ exclui a mistura de
+                $\psi_{210}$ com os estados $m=\pm1$. Os dois elementos diagonais
+                também se anulam pela integral em $\phi$.</p>
+                <p>A reflexão $z\mapsto-z$ deixa $H^0$ e $H'$ inalterados, mas
+                $\psi_{210}$ é ímpar sob essa reflexão, enquanto os outros três
+                estados da base são pares. Ela também impede a mistura de
+                $\psi_{210}$ com eles. A paridade distingue $\psi_{200}$ de
+                $\psi_{210}$; como comuta com $H^0$ e com $H'$, permite escolhê-los
+                separadamente no subespaço de correção nula, conforme o
+                <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[02] - Teoria de Perturbação Degenerada.html#teo-estados-bons">teorema dos estados bons</a>.
+                A igualdade das energias desses dois estados não é garantida em
+                ordens superiores.</p>
+                <p>Por fim, conforme a
+                <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[01] - Teoria de Perturbação Não Degenerada.html#obs-validade">observação de validade</a>,
+                a escala $|\alpha|a^2$ deve ser pequena frente às separações até
+                $n=1$ e $n=3$. Um critério de escala, incluindo o fator dos
+                deslocamentos encontrados, é</p>
+                <p>$$\begin{aligned}
+                6|\alpha|a^2&\ll E_2^0-E_1^0,\\
+                6|\alpha|a^2&\ll E_3^0-E_2^0.
+                \end{aligned}$$</p>
+                <p>Nesse regime, os deslocamentos e os elementos de matriz relevantes
+                permanecem pequenos em comparação com os espaçamentos não
+                perturbados, e a aproximação de primeira ordem é consistente.<span class="qed" aria-label="Fim da resolução">&#x220E;</span></p>
+
+                <hr class="resolucao-sep">
+
+                <h3 id="exercicio-7">Exercício 7</h3>
+                <p>Um próton e um elétron são descritos por um hamiltoniano não perturbado $H^0$ que não depende dos spins.
+                    Em seguida, uma perturbação $H' = A\,\mathbf{S}_p\cdot\mathbf{S}_e$ ($A$ constante) é ligada, acoplando
+                    as partículas.</p>
+                <ol type="a">
+                    <li>Qual é a degenerescência de spin do hamiltoniano não perturbado? Escreva a base $\{|\chi_i\rangle\}$
+                        dos estados degenerados, usando a convenção
+                        $|\uparrow\uparrow\rangle = |\uparrow\rangle_p|\uparrow\rangle_e$,
+                        $|\uparrow\downarrow\rangle = |\uparrow\rangle_p|\downarrow\rangle_e$, etc.</li>
+                    <li>Mostre que
+                        $\mathbf{S}_p\cdot\mathbf{S}_e = S_{pz}S_{ez} + \frac{1}{2}\left(S_p^+S_e^- + S_p^-S_e^+\right)$
+                        e construa a matriz $W_{ij} = \langle\chi_i|H'|\chi_j\rangle$ nessa base e verifique que ela não é
+                        diagonal.</li>
+                    <li>Obtenha os autovalores e os autovetores de $W$.</li>
+                    <li>Mostre que os autovetores encontrados no item anterior são autoestados de $S^2$, com
+                        $\mathbf{S} \equiv \mathbf{S}_e + \mathbf{S}_p$, e identifique o spin total de cada um. Explique por
+                        que a fórmula $E^1 = \langle\chi|H'|\chi\rangle$ fornece o resultado errado se aplicada a
+                        $|\uparrow\downarrow\rangle$, mas o resultado correto se aplicada aos autovetores obtidos
+                        acima.</li>
+                </ol>
+
+                <hr class="resolucao-sep">
+
+                <p><strong>Resolução - Exercício 7:</strong></p>
+                <p><strong>(a)</strong> O próton e o elétron têm spin
+                $s_p=s_e=1/2$. Como $H^0$ não depende dos spins, as duas orientações
+                de cada partícula têm a mesma energia. Portanto, a degenerescência
+                de spin é $2\times2=4$. Se o nível espacial já tiver degenerescência
+                $g$, a degenerescência total será $4g$; daqui em diante, supomos um
+                nível espacial não degenerado, de energia $E^0$.</p>
+                <p>Omitindo o fator espacial comum, escolhemos a base ortonormal
+                na ordem indicada no enunciado:</p>
+                <p>$$\begin{aligned}
+                |\chi_1\rangle&=|\uparrow\uparrow\rangle =|\uparrow\rangle_p|\uparrow\rangle_e,\\
+                |\chi_2\rangle&=|\uparrow\downarrow\rangle =|\uparrow\rangle_p|\downarrow\rangle_e,\\
+                |\chi_3\rangle&=|\downarrow\uparrow\rangle =|\downarrow\rangle_p|\uparrow\rangle_e,\\
+                |\chi_4\rangle&=|\downarrow\downarrow\rangle =|\downarrow\rangle_p|\downarrow\rangle_e.\\
+                \end{aligned}$$</p>
+                <p>Os quatro estados satisfazem $H^0|\chi_i\rangle=E^0|\chi_i\rangle$,
+                ficando subentendido o estado espacial. A perturbação
+                $H'=A\,\mathbf S_p\cdot\mathbf S_e$, com $A$ real, atua apenas
+                sobre esses fatores de spin.</p>
+
+                <p><strong>(b)</strong> Para cada partícula, definimos os operadores
+                de levantamento e abaixamento e invertemos as relações:</p>
+                <p>$$\begin{aligned}
+                S^\pm&=S_x\pm iS_y,\\
+                S_x&=\frac{S^++S^-}{2},\\
+                S_y&=\frac{S^+-S^-}{2i}.\\
+                \end{aligned}$$</p>
+                <p>Substituindo as duas últimas expressões nos produtos cartesianos,</p>
+                <p>$$\begin{aligned}
+                S_{px}S_{ex} &=\frac14(S_p^++S_p^-)(S_e^++S_e^-),\\
+                S_{py}S_{ey} &=-\frac14(S_p^+-S_p^-)(S_e^+-S_e^-).\\
+                \end{aligned}$$</p>
+                <p>Ao somar, os termos $S_p^+S_e^+$ e $S_p^-S_e^-$ se cancelam,
+                enquanto os dois termos cruzados se somam. Logo,</p>
+                <p>$$\begin{aligned}
+                S_{px}S_{ex}+S_{py}S_{ey} &=\frac12(S_p^+S_e^-+S_p^-S_e^+),\\
+                \mathbf S_p\cdot\mathbf S_e &=S_{pz}S_{ez}\\
+                &\quad+\frac12(S_p^+S_e^-+S_p^-S_e^+).\\
+                \end{aligned}$$</p>
+                <p>Os operadores de partículas diferentes comutam. Para qualquer
+                um dos dois spins $1/2$, suas ações são</p>
+                <p>$$\begin{aligned}
+                S_z|\uparrow\rangle&=\frac{\hbar}{2}|\uparrow\rangle,\\
+                S_z|\downarrow\rangle&=-\frac{\hbar}{2}|\downarrow\rangle,\\
+                S^+|\downarrow\rangle&=\hbar|\uparrow\rangle,\\
+                S^-|\uparrow\rangle&=\hbar|\downarrow\rangle,\\
+                S^+|\uparrow\rangle&=S^-|\downarrow\rangle=0.\\
+                \end{aligned}$$</p>
+                <p>Em particular, no estado de spins opostos,</p>
+                <p>$$\begin{aligned}
+                S_{pz}|\uparrow\downarrow\rangle &=\frac{\hbar}{2}|\uparrow\downarrow\rangle,\\
+                S_{ez}|\uparrow\downarrow\rangle &=-\frac{\hbar}{2}|\uparrow\downarrow\rangle.\\
+                \end{aligned}$$</p>
+                <p>Assim, $S_{pz}S_{ez}$ fornece $+\hbar^2/4$ para spins paralelos
+                e $-\hbar^2/4$ para spins opostos. Os termos com $S^\pm$ trocam
+                $|\uparrow\downarrow\rangle$ e $|\downarrow\uparrow\rangle$,
+                cada troca com coeficiente $\hbar^2/2$. Aplicando $H'$ a cada
+                vetor da base, obtemos</p>
+                <p>$$\begin{aligned}
+                H'|\uparrow\uparrow\rangle &=\frac{A\hbar^2}{4}|\uparrow\uparrow\rangle,\\
+                H'|\uparrow\downarrow\rangle &=\frac{A\hbar^2}{4} \bigl(-|\uparrow\downarrow\rangle+2|\downarrow\uparrow\rangle\bigr),\\
+                H'|\downarrow\uparrow\rangle &=\frac{A\hbar^2}{4} \bigl(2|\uparrow\downarrow\rangle-|\downarrow\uparrow\rangle\bigr),\\
+                H'|\downarrow\downarrow\rangle &=\frac{A\hbar^2}{4}|\downarrow\downarrow\rangle.\\
+                \end{aligned}$$</p>
+                <p>Por definição, os elementos da
+                <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[02] - Teoria de Perturbação Degenerada.html#a-matriz-w">matriz $W$</a>
+                são $W_{ij}=\langle\chi_i|H'|\chi_j\rangle$.
+                Lendo os coeficientes acima como as colunas de $W$, na ordem
+                $(\uparrow\uparrow,\uparrow\downarrow,\downarrow\uparrow,
+                \downarrow\downarrow)$, encontramos</p>
+                <p>$$W=\frac{A\hbar^2}{4}
+                \begin{pmatrix}
+                1&0&0&0\\
+                0&-1&2&0\\
+                0&2&-1&0\\
+                0&0&0&1\\
+                \end{pmatrix}.$$</p>
+                <p>A matriz é hermitiana, mas, para $A\ne0$, não é diagonal:
+                por exemplo,</p>
+                <p>$$\begin{aligned}
+                \langle\uparrow\downarrow|H'|\downarrow\uparrow\rangle &=\frac{A\hbar^2}{2},\\
+                \langle\downarrow\uparrow|H'|\uparrow\downarrow\rangle &=\frac{A\hbar^2}{2}.\\
+                \end{aligned}$$</p>
+                <p>Portanto, os estados de spins opostos se misturam, e precisamos
+                diagonalizar $W$ dentro do subespaço degenerado.</p>
+
+                <p><strong>(c)</strong> Pelo
+                <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[02] - Teoria de Perturbação Degenerada.html#teo-degenerescencia-n">teorema para degenerescência de ordem $n$ da Seção 7.2</a>,
+                as correções de primeira ordem são os autovalores de $W$.
+                Os estados $|\uparrow\uparrow\rangle$ e
+                $|\downarrow\downarrow\rangle$ já são autovetores, ambos com
+                $E^1=A\hbar^2/4$.</p>
+                <p>Resta o bloco que atua sobre
+                $(|\uparrow\downarrow\rangle,|\downarrow\uparrow\rangle)$:</p>
+                <p>$$W_{\mathrm{op}}=\frac{A\hbar^2}{4}B,
+                \qquad B=\begin{pmatrix}
+                -1&2\\
+                2&-1\\
+                \end{pmatrix}.$$</p>
+                <p>Calculamos primeiro os autovalores adimensionais $\lambda$ de $B$:</p>
+                <p>$$\begin{aligned}
+                \det(B-\lambda\mathbf1) &=(-1-\lambda)^2-4\\
+                &=(\lambda-1)(\lambda+3)=0.\\
+                \end{aligned}$$</p>
+                <p>Para um autovetor com componentes $(u,v)$, a primeira linha
+                fornece $2v=(1+\lambda)u$. Portanto, $\lambda=1$ implica $v=u$,
+                enquanto $\lambda=-3$ implica $v=-u$. Normalizando,</p>
+                <p>$$\begin{aligned}
+                |\chi_+\rangle &=\frac{|\uparrow\downarrow\rangle+ |\downarrow\uparrow\rangle}{\sqrt2},\\
+                E_+^1&=\frac{A\hbar^2}{4},\\
+                |\chi_-\rangle &=\frac{|\uparrow\downarrow\rangle- |\downarrow\uparrow\rangle}{\sqrt2},\\
+                E_-^1&=-\frac{3A\hbar^2}{4}.\\
+                \end{aligned}$$</p>
+                <p>Os quatro autovetores normalizados podem, assim, ser escritos
+                na notação $|s,m\rangle$, cuja identificação verificaremos em (d):</p>
+                <p>$$\begin{aligned}
+                |1,1\rangle&=|\uparrow\uparrow\rangle,\\
+                |1,0\rangle&=|\chi_+\rangle,\\
+                |1,-1\rangle&=|\downarrow\downarrow\rangle,\\
+                |0,0\rangle&=|\chi_-\rangle.\\
+                \end{aligned}$$</p>
+                <p>Seus coeficientes na base $\{|\chi_i\rangle\}$ são os autovetores
+                de $W$. A ortonormalidade dos estados produto garante a
+                ortonormalidade dessas quatro combinações. O espectro é</p>
+                <p>$$\begin{aligned}
+                E^1&=\frac{A\hbar^2}{4}\qquad\text{(três vezes)},\\
+                E^1&=-\frac{3A\hbar^2}{4}\qquad\text{(uma vez)}.\\
+                \end{aligned}$$</p>
+                <p>As energias perturbadas são $E\simeq E^0+E^1$.
+                Para $A\ne0$, o nível se divide em um tripleto e um singleto;
+                para $A=0$, todos os deslocamentos se anulam.</p>
+
+                <p><strong>(d)</strong> Definimos o spin total
+                $\mathbf S=\mathbf S_e+\mathbf S_p$.
+                Como os operadores das duas partículas comutam,</p>
+                <p>$$\begin{aligned}
+                S^2&=S_p^2+S_e^2+2\,\mathbf S_p\cdot\mathbf S_e,\\
+                S_p^2&=S_e^2=\frac34\hbar^2,\\
+                \mathbf S_p\cdot\mathbf S_e &=\frac12(S^2-S_p^2-S_e^2)\\
+                &=\frac12S^2-\frac34\hbar^2.\\
+                \end{aligned}$$</p>
+                <p>Na mesma base produto de (a), a identidade anterior e a
+                matriz de (b) dão diretamente</p>
+                <p>$$S^2=\hbar^2
+                \begin{pmatrix}
+                2&0&0&0\\
+                0&1&1&0\\
+                0&1&1&0\\
+                0&0&0&2\\
+                \end{pmatrix}.$$</p>
+                <p>Multiplicando essa matriz pelos quatro autovetores encontrados,</p>
+                <p>$$\begin{aligned}
+                S^2|1,1\rangle&=2\hbar^2|1,1\rangle,\\
+                S^2|1,0\rangle&=2\hbar^2|1,0\rangle,\\
+                S^2|1,-1\rangle&=2\hbar^2|1,-1\rangle,\\
+                S^2|0,0\rangle&=0.\\
+                \end{aligned}$$</p>
+                <p>Em particular, o bloco central transforma a soma simétrica
+                em duas vezes ela mesma e anula a diferença antissimétrica.
+                Comparando com $S^2|s,m\rangle=\hbar^2s(s+1)|s,m\rangle$,
+                identificamos $s=1$ para os três primeiros estados e $s=0$
+                para o último. Além disso, com $S_z=S_{pz}+S_{ez}$,</p>
+                <p>$$\begin{aligned}
+                S_z|1,m\rangle&=m\hbar|1,m\rangle, \qquad m=1,0,-1,\\
+                S_z|0,0\rangle&=0.\\
+                \end{aligned}$$</p>
+                <p>Logo, o tripleto tem spin total $s=1$ e projeções
+                $m=1,0,-1$, enquanto o singleto tem $s=0$ e $m=0$.
+                Em um autoestado de spin total,</p>
+                <p>$$\begin{aligned}
+                \mathbf S_p\cdot\mathbf S_e &\longrightarrow \frac{\hbar^2}{2}\left[s(s+1)-\frac32\right],\\
+                E^1&=\frac{A\hbar^2}{2} \left[s(s+1)-\frac32\right],\\
+                E_{s=1}^1&=\frac{A\hbar^2}{4},\\
+                E_{s=0}^1&=-\frac{3A\hbar^2}{4}.\\
+                \end{aligned}$$</p>
+                <p>Isso reproduz os autovalores de (c). Para entender o uso da
+                <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[01] - Teoria de Perturbação Não Degenerada.html#teo-correcao-primeira-ordem">fórmula da correção de primeira ordem, Eq. 7.9</a>,
+                calculemos o valor esperado no estado produto:</p>
+                <p>$$\langle\uparrow\downarrow|H'|
+                \uparrow\downarrow\rangle=-\frac{A\hbar^2}{4}.$$</p>
+                <p>Para $A\ne0$, esse número não é um autovalor de $W$.
+                O estado $|\uparrow\downarrow\rangle$ não é um
+                <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[02] - Teoria de Perturbação Degenerada.html#def-estados-bons">estado bom</a>:
+                $H'$ o mistura com $|\downarrow\uparrow\rangle$, como mostram
+                os elementos fora da diagonal de $W$. No caso degenerado,
+                a fórmula não degenerada fornece as correções de energia quando
+                aplicada às combinações de ordem zero que diagonalizam $W$.</p>
+                <p>Os autovetores de (c) são estados bons porque $S^2$ comuta
+                com $H^0$, que independe dos spins, e com $H'$, que é função
+                de $S^2$. Seus autovalores $2\hbar^2$ e $0$ distinguem os setores
+                tripleto e singleto. Dentro do tripleto, $H'$ é proporcional à
+                identidade; podemos usar também $S_z$, que comuta com ambos os
+                hamiltonianos, para distinguir os três valores de $m$.
+                Assim, o par $(S^2,S_z)$ distingue os quatro estados,
+                de acordo com o
+                <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[02] - Teoria de Perturbação Degenerada.html#teo-estados-bons">teorema dos estados bons</a>.
+                Para cada um deles, $W|\chi\rangle=E^1|\chi\rangle$ e a
+                normalização garante $\langle\chi|H'|\chi\rangle=E^1$.</p>
+                <p>Já o estado produto é uma superposição de pesos iguais dos
+                dois estados com $m=0$:</p>
+                <p>$$|\uparrow\downarrow\rangle
+                =\frac{|1,0\rangle+|0,0\rangle}{\sqrt2}.$$</p>
+                <p>Como $H'$ é diagonal nessa base, seu valor esperado é a
+                média ponderada dos dois deslocamentos verdadeiros:</p>
+                <p>$$\begin{aligned}
+                \langle\uparrow\downarrow|H'|\uparrow\downarrow\rangle &=\frac12\left(\frac{A\hbar^2}{4}\right) +\frac12\left(-\frac{3A\hbar^2}{4}\right)\\
+                &=-\frac{A\hbar^2}{4}.\\
+                \end{aligned}$$</p>
+                <p>Essa
+                <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[05] - A Estrutura Hiperfina do Hidrogênio.html#interacao-spin-spin">interação spin-spin</a>
+                produz exatamente a estrutura hiperfina do
+                <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[05] - A Estrutura Hiperfina do Hidrogênio.html#estado-fundamental">estado fundamental do hidrogênio</a>,
+                conforme a
+                <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[05] - A Estrutura Hiperfina do Hidrogênio.html#teo-estrutura-hiperfina">Eq. 7.96 da Seção 7.5</a>.
+                Para $A\gt0$, o tripleto fica acima do singleto, com separação
+                $\Delta E=A\hbar^2$.<span class="qed" aria-label="Fim da resolução">&#x220E;</span></p>
+
+                <hr class="resolucao-sep">
+
+                <h3 id="exercicio-8">Exercício 8</h3>
+                <p>Considere um sistema quântico com apenas três estados linearmente independentes, cujo hamiltoniano, em
+                    forma matricial, é</p>
+                <p>$$H = V_0\begin{pmatrix}
+                (1-\epsilon) & 0 & 0\\
+                0 & 1 & \epsilon\\
+                0 & \epsilon & 2
+                \end{pmatrix},$$</p>
+                <p>onde $V_0$ é uma constante e $\epsilon\ll1$.</p>
+                <ol type="a">
+                    <li>Escreva os autovalores e autovetores do hamiltoniano não perturbado ($\epsilon = 0$).</li>
+                    <li>Obtenha os autovalores exatos de $H$ e expanda cada um deles em série de potências de $\epsilon$,
+                        até segunda ordem.</li>
+                    <li>Use teoria de perturbação não degenerada de primeira e segunda ordem para obter o autovalor
+                        aproximado do estado que se origina do autovetor não degenerado do hamiltoniano não perturbado.
+                        Compare com o resultado exato.</li>
+                    <li>Use teoria de perturbação degenerada para obter a correção de primeira ordem aos dois autovalores
+                        inicialmente degenerados. Compare com os resultados exatos.</li>
+                </ol>
+
+                <hr class="resolucao-sep">
+
+                <p><strong>Resolução - Exercício 8:</strong></p>
+                <p><strong>(a)</strong> Separando o hamiltoniano em
+                $H=H^0+H'$, identificamos</p>
+                <p>$$H^0=V_0\begin{pmatrix}
+                1&0&0\\
+                0&1&0\\
+                0&0&2
+                \end{pmatrix},$$</p>
+                <p>$$H'=\epsilon V_0\begin{pmatrix}
+                -1&0&0\\
+                0&0&1\\
+                0&1&0
+                \end{pmatrix}.$$</p>
+                <p>Como $H'$ já contém $\epsilon$, as correções $E_n^1$ e
+                $E_n^2$ abaixo incluem, respectivamente, os fatores $\epsilon$
+                e $\epsilon^2$. Para $V_0\ne0$, a matriz diagonal $H^0$ tem
+                os seguintes autovalores e autovetores normalizados:</p>
+                <p>$$\begin{aligned}
+                E_1^0&=V_0, & |e_1\rangle&=(1,0,0)^{\mathsf T},\\
+                E_2^0&=V_0, & |e_2\rangle&=(0,1,0)^{\mathsf T},\\
+                E_3^0&=2V_0, & |e_3\rangle&=(0,0,1)^{\mathsf T}.
+                \end{aligned}$$</p>
+                <p>O nível $V_0$ é duplamente degenerado: qualquer combinação
+                não nula $a|e_1\rangle+b|e_2\rangle$ também é autovetor com
+                esse autovalor, sendo normalizada quando $|a|^2+|b|^2=1$.
+                O nível $2V_0$ é não degenerado, e seu autoestado é
+                $|e_3\rangle$, a menos de uma fase global. Usaremos também
+                a notação abreviada $|i\rangle\equiv|e_i\rangle$.</p>
+
+                <p><strong>(b)</strong> A primeira linha e a primeira coluna
+                mostram que $|e_1\rangle$ permanece desacoplado dos outros estados.
+                Portanto,</p>
+                <p>$$\begin{aligned}
+                H|e_1\rangle&=V_0(1-\epsilon)|e_1\rangle,\\
+                E_1&=V_0(1-\epsilon)
+                \end{aligned}$$</p>
+                <p>é um resultado exato. Para os dois autovalores restantes,
+                basta diagonalizar o bloco que atua sobre
+                $\{|e_2\rangle,|e_3\rangle\}$:</p>
+                <p>$$H_{\{2,3\}}=V_0B,\qquad
+                B=\begin{pmatrix}
+                1&\epsilon\\
+                \epsilon&2
+                \end{pmatrix}.$$</p>
+                <p>Definindo $x=E/V_0$, a equação característica desse bloco é</p>
+                <p>$$\begin{aligned}
+                0&=\det(B-x\mathbf1)\\
+                &=(1-x)(2-x)-\epsilon^2\\
+                &=x^2-3x+2-\epsilon^2.
+                \end{aligned}$$</p>
+                <p>Aplicando a fórmula da equação do segundo grau, obtemos</p>
+                <p>$$E_\pm=\frac{V_0}{2}
+                \left[3\pm\sqrt{1+4\epsilon^2}\right].$$</p>
+                <p>Para $|\epsilon|\ll1$, usamos a expansão binomial:</p>
+                <p>$$\begin{aligned}
+                \sqrt{1+4\epsilon^2}&=1+2\epsilon^2-2\epsilon^4\\
+                &\quad+\mathcal O(\epsilon^6).
+                \end{aligned}$$</p>
+                <p>Assim, até segunda ordem, os três autovalores são</p>
+                <p>$$\begin{aligned}
+                E_1&=V_0(1-\epsilon)\qquad\text{(exato)},\\
+                E_+&=V_0\left[2+\epsilon^2+\mathcal O(\epsilon^4)\right],\\
+                E_-&=V_0\left[1-\epsilon^2+\mathcal O(\epsilon^4)\right].
+                \end{aligned}$$</p>
+                <p>Os próximos termos são $-V_0\epsilon^4$ em $E_+$ e
+                $+V_0\epsilon^4$ em $E_-$. No limite $\epsilon\to0$,
+                $E_+$ tende a $2V_0$, enquanto $E_1$ e $E_-$ tendem a $V_0$.</p>
+
+                <p><strong>(c)</strong> O estado de ordem zero não degenerado
+                é $|3\rangle=|e_3\rangle$, com energia $E_3^0=2V_0$.
+                Pela
+                <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[01] - Teoria de Perturbação Não Degenerada.html#teo-correcao-primeira-ordem">fórmula da correção de primeira ordem, Eq. 7.9</a>,</p>
+                <p>$$E_3^1=\langle3|H'|3\rangle=0.$$</p>
+                <p>Isso ocorre porque o elemento diagonal $(3,3)$ de $H'$ é
+                nulo. Para a segunda ordem, usamos a
+                <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[01] - Teoria de Perturbação Não Degenerada.html#teo-correcao-segunda-ordem">Eq. 7.15</a>:</p>
+                <p>$$E_3^2=\sum_{m=1}^{2}
+                \frac{|\langle m|H'|3\rangle|^2}{E_3^0-E_m^0}.$$</p>
+                <p>A terceira coluna da perturbação fornece
+                $H'|3\rangle=\epsilon V_0|2\rangle$. Logo,</p>
+                <p>$$\begin{aligned}
+                \langle1|H'|3\rangle&=0,\\
+                \langle2|H'|3\rangle&=\epsilon V_0.
+                \end{aligned}$$</p>
+                <p>Substituindo os dois elementos de matriz e as energias
+                não perturbadas, encontramos</p>
+                <p>$$\begin{aligned}
+                E_3^2&=\frac{0}{2V_0-V_0}+\frac{(\epsilon V_0)^2}{2V_0-V_0}\\
+                &=\epsilon^2V_0.
+                \end{aligned}$$</p>
+                <p>A soma envolve os dois estados do nível degenerado $V_0$,
+                mas ambos os denominadores são $E_3^0-E_m^0=V_0\ne0$.
+                A degenerescência entre os estados intermediários não impede
+                a aplicação da teoria não degenerada ao nível isolado $2V_0$.
+                Além disso, a razão entre o acoplamento não nulo e o espaçamento
+                de energia é $|\epsilon|\ll1$, satisfazendo o
+                <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[01] - Teoria de Perturbação Não Degenerada.html#obs-validade">critério de validade relativo aos denominadores</a>.</p>
+                <p>Somando as contribuições até segunda ordem,</p>
+                <p>$$\begin{aligned}
+                E_3&\simeq E_3^0+E_3^1+E_3^2\\
+                &=V_0(2+\epsilon^2).
+                \end{aligned}$$</p>
+                <p>Esse é precisamente o desenvolvimento de $E_+$ obtido em
+                (b) até segunda ordem. A comparação com a solução exata mostra
+                que o primeiro termo omitido é $-V_0\epsilon^4$.</p>
+
+                <p><strong>(d)</strong> Para o nível duplamente degenerado
+                $E^0=V_0$, construímos a
+                <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[02] - Teoria de Perturbação Degenerada.html#a-matriz-w">matriz $W$</a>
+                apenas no subespaço $\{|e_1\rangle,|e_2\rangle\}$.
+                Seus elementos são $W_{ij}=\langle e_i|H'|e_j\rangle$,
+                com $i,j=1,2$, de modo que</p>
+                <p>$$W=\epsilon V_0\begin{pmatrix}
+                -1&0\\
+                0&0
+                \end{pmatrix}.$$</p>
+                <p>A matriz já é diagonal: $|e_1\rangle$ não se acopla a
+                nenhum outro estado, enquanto $|e_2\rangle$ só se acopla a
+                $|e_3\rangle$, que está fora do subespaço degenerado.
+                Portanto, $W_{12}=W_{21}=0$; o acoplamento entre os estados
+                2 e 3 não é um elemento de $W$.</p>
+                <p>Pelo
+                <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[02] - Teoria de Perturbação Degenerada.html#teo-degenerescencia-dupla">teorema para degenerescência dupla da Seção 7.2</a>,
+                as correções de primeira ordem são os autovalores de $W$.
+                A equação secular é</p>
+                <p>$$\begin{aligned}
+                0&=\det(W-E^1\mathbf1)\\
+                &=(-\epsilon V_0-E^1)(-E^1).
+                \end{aligned}$$</p>
+                <p>Suas raízes e os estados correspondentes são</p>
+                <p>$$\begin{aligned}
+                E_1^1&=-\epsilon V_0&\quad&\text{para }|e_1\rangle,\\
+                E_2^1&=0&&\text{para }|e_2\rangle.
+                \end{aligned}$$</p>
+                <p>Como esses vetores já diagonalizam $W$, eles são os
+                <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[02] - Teoria de Perturbação Degenerada.html#def-estados-bons">estados bons</a>
+                de ordem zero: não precisamos tomar novas combinações lineares.
+                Isso não significa que $|e_2\rangle$ seja um autoestado exato
+                de $H$, pois ele se mistura com $|e_3\rangle$ quando a
+                perturbação é ligada.</p>
+                <p>Até primeira ordem, as energias são, portanto,</p>
+                <p>$$\begin{aligned}
+                E_1&\simeq V_0-\epsilon V_0,\\
+                E_2&\simeq V_0.
+                \end{aligned}$$</p>
+                <p>Para $|e_1\rangle$, o resultado $V_0(1-\epsilon)$ já é
+                exato, porque esse estado permanece desacoplado. Para o estado
+                que nasce de $|e_2\rangle$, o resultado exato é $E_-$, cuja
+                expansão começa com $V_0(1-\epsilon^2)$. A ausência de termo
+                linear concorda com $E_2^1=0$. O deslocamento de segunda ordem
+                vem do acoplamento com o estado externo $|e_3\rangle$:</p>
+                <p>$$\begin{aligned}
+                E_2^2&=\frac{|\langle3|H'|2\rangle|^2}{V_0-2V_0}\\
+                &=-\epsilon^2V_0.
+                \end{aligned}$$</p>
+                <p>Assim, para $\epsilon\ne0$ pequeno, a degenerescência é
+                quebrada já em primeira ordem: um estado recebe o deslocamento
+                $-\epsilon V_0$ e o outro tem correção linear nula.
+                Os deslocamentos quadráticos dos estados vindos de
+                $|e_2\rangle$ e $|e_3\rangle$ são opostos,
+                $-\epsilon^2V_0$ e $+\epsilon^2V_0$, reproduzindo as expansões
+                exatas de $E_-$ e $E_+$ encontradas em (b).<span class="qed" aria-label="Fim da resolução">&#x220E;</span></p>
+
+                <hr class="resolucao-sep">
+
+                <h3 id="exercicio-9">Exercício 9</h3>
+                <p>Encontre a correção relativística de ordem mais baixa para os níveis de energia do oscilador harmônico
+                    unidimensional, tratando</p>
+                <p>$$H' = -\frac{p^4}{8m^3c^2}$$</p>
+                <p>como uma perturbação. (Dica: escreva o momento em termos dos operadores de levantamento e abaixamento,
+                    $p = i\sqrt{\hbar m\omega/2}\,(a_+ - a_-)$, com $a_+|n\rangle = \sqrt{n+1}\,|n+1\rangle$ e
+                    $a_-|n\rangle = \sqrt{n}\,|n-1\rangle$, e expanda $(a_+ - a_-)^4$; apenas os termos contendo o mesmo
+                    número de operadores $a_+$ e $a_-$ contribuem para $\langle n|p^4|n\rangle$.)</p>
+
+                <hr class="resolucao-sep">
+
+                <p><strong>Resolução - Exercício 9:</strong></p>
+                <p>Separamos o hamiltoniano em $H=H^0+H'$, com</p>
+                <p>$$\begin{aligned}
+                H^0&=\frac{p^2}{2m}+\frac12m\omega^2x^2,\\
+                H'&=-\frac{p^4}{8m^3c^2}.
+                \end{aligned}$$</p>
+                <p>A perturbação vem da expansão da energia cinética relativística
+                em potências de $p/(mc)$: é a
+                <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[03] - A Estrutura Fina do Hidrogênio.html#correcao-relativistica">correção relativística da Eq. 7.51, Seção 7.3</a>.
+                Usamos os autoestados não perturbados $|n\rangle\equiv|\psi_n^0\rangle$, com</p>
+                <p>$$E_n^0=\left(n+\frac12\right)\hbar\omega,
+                \qquad n=0,1,2,\ldots.$$</p>
+                <p>O espectro do oscilador unidimensional é não degenerado;
+                não precisamos escolher combinações de estados em um subespaço degenerado
+                (veja a
+                <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[03] - A Estrutura Fina do Hidrogênio.html#estados-bons-relativistica">discussão sobre por que a teoria não degenerada basta</a>).
+                Pela
+                <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[01] - Teoria de Perturbação Não Degenerada.html#teo-correcao-primeira-ordem">fórmula da correção de primeira ordem, Eq. 7.9</a>,</p>
+                <p>$$\begin{aligned}
+                E_n^1&=\langle n|H'|n\rangle\\
+                &=-\frac{1}{8m^3c^2}\langle n|p^4|n\rangle.
+                \end{aligned}$$</p>
+                <p>O fator $1/c^2$ já está incluído em $H'$ e, portanto, em $E_n^1$.</p>
+
+                <p><strong>O operador $p^4$.</strong> Usamos os mesmos operadores
+                de escada do <a href="#exercicio-1">Exercício 1</a>:</p>
+                <p>$$\begin{aligned}
+                p&=i\sqrt{\frac{\hbar m\omega}{2}}\,(a_+-a_-),\\
+                a_+|n\rangle&=\sqrt{n+1}\,|n+1\rangle,\\
+                a_-|n\rangle&=\sqrt{n}\,|n-1\rangle,\\
+                [a_-,a_+]&=1,\qquad a_-|0\rangle=0.
+                \end{aligned}$$</p>
+                <p>Ao elevar $p$ à quarta potência, o fator imaginário desaparece,
+                pois $i^4=1$:</p>
+                <p>$$\begin{aligned}
+                p^4&=i^4\left(\frac{\hbar m\omega}{2}\right)^2(a_+-a_-)^4\\
+                &=\left(\frac{\hbar m\omega}{2}\right)^2(a_+-a_-)^4.
+                \end{aligned}$$</p>
+                <p>Como os operadores não comutam, conservamos a ordem de cada
+                produto ao expandir os 16 termos:</p>
+                <p>$$\begin{aligned}
+                (a_+-a_-)^4={}&a_+^4+a_-^4\\
+                &-a_+^3a_--a_+^2a_-a_+\\
+                &-a_+a_-a_+^2-a_-a_+^3\\
+                &+a_+^2a_-^2+a_+a_-a_+a_-\\
+                &+a_+a_-^2a_++a_-a_+^2a_-\\
+                &+a_-a_+a_-a_++a_-^2a_+^2\\
+                &-a_+a_-^3-a_-a_+a_-^2\\
+                &-a_-^2a_+a_--a_-^3a_+.
+                \end{aligned}$$</p>
+                <p>No valor esperado em $|n\rangle$, só contribuem os seis produtos
+                com dois operadores $a_+$ e dois operadores $a_-$, pois conservam
+                o número quântico; os demais levam a estados ortogonais a $|n\rangle$
+                ou se anulam. Os seis termos que contribuem têm sinal
+                $(-1)^2=+1$.</p>
+                <p>Aplicamos cada produto da direita para a esquerda.
+                Por exemplo, $a_-^2a_+^2$ percorre os estados com índices
+                $n\to n+1\to n+2\to n+1\to n$, fornecendo</p>
+                <p>$$\begin{aligned}
+                a_-^2a_+^2|n\rangle&=\sqrt{(n+1)(n+2)}\,a_-^2|n+2\rangle\\
+                &=(n+1)(n+2)|n\rangle.
+                \end{aligned}$$</p>
+                <p>Já $a_+a_-a_+a_-$ percorre
+                $n\to n-1\to n\to n-1\to n$: cada passo fornece
+                $\sqrt n$, e o produto é $n^2$.
+                Calculando os seis valores esperados nessa ordem, obtemos</p>
+                <p>$$\begin{aligned}
+                \langle n|a_+a_+a_-a_-|n\rangle&=n(n-1),\\
+                \langle n|a_+a_-a_+a_-|n\rangle&=n^2,\\
+                \langle n|a_+a_-a_-a_+|n\rangle&=n(n+1),\\
+                \langle n|a_-a_+a_+a_-|n\rangle&=(n+1)n,\\
+                \langle n|a_-a_+a_-a_+|n\rangle&=(n+1)^2,\\
+                \langle n|a_-a_-a_+a_+|n\rangle&=(n+1)(n+2).
+                \end{aligned}$$</p>
+                <p>Quando uma sequência tenta abaixar o estado fundamental,
+                $a_-|0\rangle=0$ encerra a ação; assim, essas fórmulas também valem
+                para $n=0$ e $n=1$, sem introduzir estados de índice negativo.
+                Somando as seis contribuições,</p>
+                <p>$$\begin{aligned}
+                \langle n|(a_+-a_-)^4|n\rangle&=n(n-1)+n^2\\
+                &\quad+n(n+1)+(n+1)n\\
+                &\quad+(n+1)^2+(n+1)(n+2)\\
+                &=6n^2+6n+3\\
+                &=3(2n^2+2n+1).
+                \end{aligned}$$</p>
+                <p>Restaurando o fator dimensional de $p^4$, encontramos</p>
+                <p>$$\begin{aligned}
+                \langle n|p^4|n\rangle&=\left(\frac{\hbar m\omega}{2}\right)^2\\
+                &\quad\times3(2n^2+2n+1).
+                \end{aligned}$$</p>
+
+                <p><strong>A correção da energia.</strong> Substituindo esse valor
+                esperado na expressão de primeira ordem,</p>
+                <p>$$\begin{aligned}
+                E_n^1&=-\frac{1}{8m^3c^2}\left(\frac{\hbar m\omega}{2}\right)^2\\
+                &\quad\times3(2n^2+2n+1)\\
+                &=-\frac{3(\hbar\omega)^2}{32mc^2}(2n^2+2n+1).
+                \end{aligned}$$</p>
+                <p>Portanto, os níveis de energia, até a ordem relativística
+                mais baixa, são</p>
+                <p>$$\begin{aligned}
+                E_n&\simeq E_n^0+E_n^1\\
+                &=\left(n+\frac12\right)\hbar\omega\\
+                &\quad-\frac{3(\hbar\omega)^2}{32mc^2}(2n^2+2n+1).
+                \end{aligned}$$</p>
+                <p>A correção é sempre negativa, como exige o sinal de $H'$.
+                Em particular, para o estado fundamental,</p>
+                <p>$$\begin{aligned}
+                E_0^1&=-\frac{3(\hbar\omega)^2}{32mc^2},\\
+                E_0&\simeq\frac12\hbar\omega-\frac{3(\hbar\omega)^2}{32mc^2}.
+                \end{aligned}$$</p>
+
+                <p><strong>Verificação pelo teorema do virial.</strong>
+                Como no cálculo para o hidrogênio, a equação de Schrödinger
+                não perturbada, com $V=\frac12m\omega^2x^2$, fornece</p>
+                <p>$$p^2\psi_n^0=2m(E_n^0-V)\psi_n^0.$$</p>
+                <p>Definindo $\langle A\rangle_n\equiv\langle n|A|n\rangle$
+                e usando a hermiticidade de $p^2$, obtemos o quadrado da norma
+                de $p^2\psi_n^0$:</p>
+                <p>$$\begin{aligned}
+                \langle p^4\rangle_n&=\langle p^2\psi_n^0|p^2\psi_n^0\rangle\\
+                &=4m^2\bigl[(E_n^0)^2\\
+                &\quad-2E_n^0\langle V\rangle_n+\langle V^2\rangle_n\bigr].
+                \end{aligned}$$</p>
+                <p>O teorema do virial para o potencial quadrático dá
+                $\langle T\rangle_n=\langle V\rangle_n=E_n^0/2$;
+                portanto, os dois primeiros termos do colchete se cancelam:</p>
+                <p>$$\begin{aligned}
+                \langle p^4\rangle_n&=4m^2\langle V^2\rangle_n\\
+                &=m^4\omega^4\langle x^4\rangle_n.
+                \end{aligned}$$</p>
+                <p>Usando o valor de $\langle x^4\rangle_n$ calculado no
+                <a href="#exercicio-1">Exercício 1</a>, segue que</p>
+                <p>$$\begin{aligned}
+                \langle p^4\rangle_n&=m^4\omega^4\left(\frac{\hbar}{2m\omega}\right)^2\\
+                &\quad\times(6n^2+6n+3)\\
+                &=\left(\frac{\hbar m\omega}{2}\right)^2\\
+                &\quad\times3(2n^2+2n+1),
+                \end{aligned}$$</p>
+                <p>reproduzindo o resultado dos operadores de escada e, consequentemente,
+                a mesma correção $E_n^1$.</p>
+
+                <p><strong>Validade.</strong> A razão entre a correção e a energia
+                não perturbada é</p>
+                <p>$$\begin{aligned}
+                \frac{E_n^1}{E_n^0}&=-\frac{3\hbar\omega}{32mc^2}\frac{2n^2+2n+1}{n+\frac12}\\
+                &\sim-\frac{3}{16}\frac{\hbar\omega}{mc^2}\,n\qquad(n\gg1).
+                \end{aligned}$$</p>
+                <p>Para os níveis de energia, a correção permanece pequena enquanto
+                $(n+\frac12)\hbar\omega\ll mc^2$ (para $n\gg1$,
+                $n\hbar\omega\ll mc^2$), pois a energia cinética média
+                $\langle T\rangle_n=E_n^0/2$ deve estar no regime não relativístico.
+                A aproximação dos autoestados requer ainda o
+                <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[01] - Teoria de Perturbação Não Degenerada.html#obs-validade">critério de pequenos acoplamentos em relação aos espaçamentos</a>.<span class="qed" aria-label="Fim da resolução">&#x220E;</span></p>
+
+                <hr class="resolucao-sep">
+
+                <h3 id="exercicio-10">Exercício 10</h3>
+                <p>Quando um átomo é colocado em um campo elétrico externo uniforme $\mathcal{E}_{\text{ext}}$, seus níveis de
+                    energia são deslocados, fenômeno conhecido como efeito Stark (o análogo elétrico do efeito Zeeman).
+                    Considere o átomo de hidrogênio, descrito pelo hamiltoniano de Coulomb não perturbado, e tome o campo na
+                    direção $z$, de modo que a energia potencial do elétron seja</p>
+                <p>$$H'_S = e\mathcal{E}_{\text{ext}}z = e\mathcal{E}_{\text{ext}}r\cos\theta,$$</p>
+                <p>tratada como uma perturbação. (O spin é irrelevante aqui; ignore-o, assim como a estrutura fina.)</p>
+                <ol type="a">
+                    <li>Mostre que a energia do estado fundamental não é afetada por esta perturbação, em primeira
+                        ordem.</li>
+                    <li>O primeiro estado excitado é quadruplamente degenerado: $\psi_{200}$, $\psi_{211}$, $\psi_{210}$,
+                        $\psi_{21,-1}$. Usando teoria de perturbação degenerada, determine as correções de primeira ordem
+                        para a energia. Em quantos níveis $E_2$ se desdobra?</li>
+                    <li>Quais são as “boas” funções de onda do item anterior? Encontre o valor esperado do momento de
+                        dipolo elétrico $\mathbf{p}_e = -e\mathbf{r}$ em cada um desses estados. Note que os resultados
+                        independem do campo aplicado, ou seja, o hidrogênio em seu primeiro estado excitado pode carregar
+                        um momento de dipolo elétrico permanente.</li>
+                </ol>
+
+                <hr class="resolucao-sep">
+
+                <!-- SOLUCAO-EXERCICIO-10 -->
 
             </div>
         </main>
@@ -837,6 +2225,12 @@
                             <li><a href="#exercicio-2">Exercício 2</a></li>
                             <li><a href="#exercicio-3">Exercício 3</a></li>
                             <li><a href="#exercicio-4">Exercício 4</a></li>
+                            <li><a href="#exercicio-5">Exercício 5</a></li>
+                            <li><a href="#exercicio-6">Exercício 6</a></li>
+                            <li><a href="#exercicio-7">Exercício 7</a></li>
+                            <li><a href="#exercicio-8">Exercício 8</a></li>
+                            <li><a href="#exercicio-9">Exercício 9</a></li>
+                            <li><a href="#exercicio-10">Exercício 10</a></li>
                         </ul>
                     </li>
                 </ul>
