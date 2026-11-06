@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistemas de Dois Níveis | Mecânica Quântica II | The Journal of a Physicist</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../../../assets/images/Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../../../assets/images/Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../../../assets/images/Favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="../../../../../../assets/images/Favicon/favicon.ico">
+    <link rel="stylesheet" href="../../../../../../assets/css/class-lecture.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                        <line x1="9" x2="9" y1="3" y2="21"></line>
+                    </svg>
+                </button>
+                <button id="theme-toggle" class="sidebar-toggle" aria-label="Toggle Theme">
+                    <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="breadcrumbs-header">
+                    <a href="../../../../../../Páginas Principais/Lectures.html" class="breadcrumb-link">← Lectures</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <a href="../../index.html" class="breadcrumb-link active">Mecânica Quântica II</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-category" class="breadcrumb-link">Dinâmica Quântica</span>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-current" class="breadcrumb-link active">11.1 Sistemas de Dois Níveis</span>
+                </div>
+            </div>
+            <nav class="top-nav">
+                <a href="../../../../../../Páginas Principais/Lectures.html">Lectures</a>
+                <a href="../../../../../../index.html">Home</a>
+            </nav>
+        </div>
+
+        <script>
+            MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']]
+                }
+            };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    </header>
+
+    <div class="main-layout">
+        <aside class="left-sidebar" id="left-sidebar">
+            <div class="sidebar-content">
+
+                <button class="search-trigger" id="search-trigger">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                    </svg>
+                    <span>Search docs...</span>
+                </button>
+
+                <div class="sidebar-group">
+                    <h3>Início</h3>
+                    <ul>
+                        <li><a href="../../index.html">Overview</a></li>
+                        <li><a href="../../Listas de Exercícios/[01] - 1ª Lista de Exercícios.html">1ª Lista de Exercícios</a></li>
+                        <li><a href="../../Listas de Exercícios/[02] - 2ª Lista de Exercícios.html">2ª Lista de Exercícios</a></li>
+                        <li><a href="../../Listas de Exercícios/[03] - 3ª Lista de Exercícios.html">3ª Lista de Exercícios</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Partículas Idênticas</h3>
+                    <ul>
+                        <li><a href="../[4] - Partículas Idênticas/[01] - Sistemas de Duas Partículas.html">5.1 Sistemas de Duas Partículas</a></li>
+                        <li><a href="../[4] - Partículas Idênticas/[02] - Átomos.html">5.2 Átomos</a></li>
+                        <li><a href="../[4] - Partículas Idênticas/[03] - Sólidos.html">5.3 Sólidos</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Simetrias e Leis de Conservação</h3>
+                    <ul>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[01] - Introdução.html">6.1 Introdução</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[02] - O Operador de Translação.html">6.2 O Operador de Translação</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[03] - Leis de Conservação.html">6.3 Leis de Conservação</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[04] - Paridade.html">6.4 Paridade</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[05] - Simetrias de Rotação.html">6.5 Simetrias de Rotação</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[06] - Degenerescência.html">6.6 Degenerescência</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[07] - Regras de Seleção Rotacionais.html">6.7 Regras de Seleção Rotacionais</a></li>
+                        <li><a href="../[5] - Simetrias e Leis de Conservação/[08] - Translações no Tempo.html">6.8 Translações no Tempo</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Teoria de Perturbação Independente do Tempo</h3>
+                    <ul>
+                        <li><a href="../[6] - Teoria de Perturbação Independente do Tempo/[01] - Teoria de Perturbação Não Degenerada.html">7.1 Teoria de Perturbação Não Degenerada</a></li>
+                        <li><a href="../[6] - Teoria de Perturbação Independente do Tempo/[02] - Teoria de Perturbação Degenerada.html">7.2 Teoria de Perturbação Degenerada</a></li>
+                        <li><a href="../[6] - Teoria de Perturbação Independente do Tempo/[03] - A Estrutura Fina do Hidrogênio.html">7.3 A Estrutura Fina do Hidrogênio</a></li>
+                        <li><a href="../[6] - Teoria de Perturbação Independente do Tempo/[04] - O Efeito Zeeman.html">7.4 O Efeito Zeeman</a></li>
+                        <li><a href="../[6] - Teoria de Perturbação Independente do Tempo/[05] - A Estrutura Hiperfina do Hidrogênio.html">7.5 A Estrutura Hiperfina do Hidrogênio</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>O Princípio Variacional</h3>
+                    <ul>
+                        <li><a href="../[7] - O Princípio Variacional/[01] - Teoria.html">8.1 Teoria</a></li>
+                        <li><a href="../[7] - O Princípio Variacional/[02] - O Estado Fundamental do Hélio.html">8.2 O Estado Fundamental do Hélio</a></li>
+                        <li><a href="../[7] - O Princípio Variacional/[03] - O Íon da Molécula de Hidrogênio.html">8.3 O Íon da Molécula de Hidrogênio</a></li>
+                        <li><a href="../[7] - O Princípio Variacional/[04] - A Molécula de Hidrogênio.html">8.4 A Molécula de Hidrogênio</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>A Aproximação WKB</h3>
+                    <ul>
+                        <li><a href="../[8] - A Aproximação WKB/[01] - A Região “Clássica”.html">9.1 A Região “Clássica”</a></li>
+                        <li><a href="../[8] - A Aproximação WKB/[02] - Tunelamento.html">9.2 Tunelamento</a></li>
+                        <li><a href="../[8] - A Aproximação WKB/[03] - As Fórmulas de Conexão.html">9.3 As Fórmulas de Conexão</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Dinâmica Quântica</h3>
+                    <ul>
+                        <li><a href="[01] - Sistemas de Dois Níveis.html" class="active">11.1 Sistemas de Dois Níveis</a></li>
+                        <li><a href="[02] - Emissão e Absorção de Radiação.html">11.2 Emissão e Absorção de Radiação</a></li>
+                        <li><a href="[03] - Emissão Espontânea.html">11.3 Emissão Espontânea</a></li>
+                        <li><a href="[04] - A Regra de Ouro de Fermi.html">11.4 A Regra de Ouro de Fermi</a></li>
+                        <li><a href="[05] - A Aproximação Adiabática.html">11.5 A Aproximação Adiabática</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="prose">
+
+                <h1 id="sistemas-de-dois-niveis">11.1 Sistemas de Dois Níveis</h1>
+                <p class="lead">Da estática à dinâmica quântica: as equações exatas de um sistema de dois níveis sob uma
+                    perturbação dependente do tempo, a teoria de perturbação que as resolve por aproximações sucessivas e a
+                    probabilidade de transição para uma perturbação senoidal, com a ressonância e as oscilações de Rabi.</p>
+
+                <p>Praticamente tudo o que fizemos até aqui pertence ao que se poderia chamar, com propriedade, de
+                    <strong>estática quântica</strong>: a energia potencial <em>não depende do tempo</em>,
+                    $V(\mathbf r, t) = V(\mathbf r)$. Nesse caso a equação de Schrödinger (dependente do tempo),</p>
+                <p>$$ i\hbar\frac{\partial\Psi}{\partial t} = H\Psi, \tag{11.1} $$</p>
+                <p>pode ser resolvida por separação de variáveis,</p>
+                <p>$$ \Psi(\mathbf r, t) = \psi(\mathbf r)\,e^{-iEt/\hbar}, \tag{11.2} $$</p>
+                <p>em que $\psi(\mathbf r)$ satisfaz a equação de Schrödinger <em>in</em>dependente do tempo,</p>
+                <p>$$ H\psi = E\psi. \tag{11.3} $$</p>
+                <p>Como a dependência temporal das soluções separáveis está toda no fator exponencial $e^{-iEt/\hbar}$, que
+                    se cancela quando formamos a grandeza fisicamente relevante $|\Psi|^2$, todas as probabilidades e todos
+                    os valores esperados nesses estados são constantes no tempo. Formando <em>combinações lineares</em>
+                    desses estados estacionários obtemos funções de onda com dependência temporal mais interessante,</p>
+                <p>$$ \Psi(\mathbf r, t) = \sum c_n\,\psi_n(\mathbf r)\,e^{-iE_nt/\hbar}, \tag{11.4} $$</p>
+                <p>mas, mesmo assim, os valores possíveis da energia ($E_n$) e as probabilidades de cada um
+                    ($|c_n|^2$) são constantes.</p>
+                <p>Se quisermos permitir <strong>transições</strong> (os <strong>saltos quânticos</strong>, como às vezes
+                    são chamados) de um nível de energia para outro, precisamos de um potencial <em>dependente</em> do
+                    tempo: é a <strong>dinâmica quântica</strong>. Há pouquíssimos problemas exatamente solúveis em dinâmica
+                    quântica. Mas, se a parte do hamiltoniano que depende do tempo for <em>pequena</em> diante da parte
+                    independente, ela pode ser tratada como perturbação. O propósito principal deste capítulo é desenvolver a
+                    <strong>teoria de perturbação dependente do tempo</strong> e estudar a sua aplicação mais importante: a
+                    emissão e a absorção de radiação por um átomo.</p>
+                <p>Vale notar por que o problema não é trivial. A Eq. (11.1) é de primeira ordem no tempo, e a equação
+                    $df/dt = k(t)f$ se resolve por $f(t) = f(0)\exp\left[\int_0^tk(t')\,dt'\right]$. A tentação é escrever
+                    $\Psi(t) = e^{-(i/\hbar)\int_0^tH(t')\,dt'}\Psi(0)$, mas isso em geral está <em>errado</em>: quando os
+                    hamiltonianos de instantes diferentes não comutam, a ordem em que eles agem importa, e a exponencial de
+                    uma soma não é o produto das exponenciais (<a href="#exr-11-1-1">Exercício 11.1-1</a>). Para um
+                    hamiltoniano constante, a evolução é dada pelo operador $e^{-iHt/\hbar}$ da
+                    <a href="../[5] - Simetrias e Leis de Conservação/[08] - Translações no Tempo.html#operador-evolucao">Seção 6.8</a>;
+                    com $H(t)$, é preciso outro caminho, e esta seção o constrói para o caso mais simples possível: um
+                    sistema com apenas dois estados.</p>
+
+                <h2 id="dois-niveis">O sistema de dois níveis</h2>
+
+                <p>Para começar, suponhamos que o sistema (não perturbado) tenha apenas <em>dois</em> estados, $\psi_a$ e
+                    $\psi_b$, autoestados do hamiltoniano não perturbado $H^0$,</p>
+                <p>$$ H^0\psi_a = E_a\psi_a \qquad \text{e} \qquad H^0\psi_b = E_b\psi_b, \tag{11.5} $$</p>
+                <p>e ortonormais,</p>
+                <p>$$ \langle\psi_i|\psi_j\rangle = \delta_{ij} \qquad (i, j = a, b). \tag{11.6} $$</p>
+                <p>Qualquer estado pode ser escrito como combinação linear deles; em particular,</p>
+                <p>$$ \Psi(0) = c_a\psi_a + c_b\psi_b. \tag{11.7} $$</p>
+
+                <div class="definition-box" id="def-sistema-de-dois-niveis" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição (Sistema de dois níveis).</strong> Um <em>sistema de dois níveis</em> é um sistema
+                        quântico cujo espaço de estados é gerado por dois autoestados ortonormais $\psi_a$, $\psi_b$ do
+                        hamiltoniano não perturbado, Eqs. (11.5) e (11.6). Os estados podem ser funções de onda no espaço
+                        de posições, espinores ou algo mais exótico: só a dependência temporal interessa aqui, e
+                        $\Psi(t)$ denota simplesmente o estado do sistema no instante $t$.</p>
+                </div>
+
+                <p>Na ausência de perturbação, cada componente evolui com o seu "fator de oscilação" característico,</p>
+                <p>$$ \Psi(t) = c_a\psi_ae^{-iE_at/\hbar} + c_b\psi_be^{-iE_bt/\hbar}. \tag{11.8} $$</p>
+                <p>Informalmente, dizemos que $|c_a|^2$ é a "probabilidade de a partícula estar no estado $\psi_a$", e o
+                    que queremos dizer, <em>de fato</em>, é a probabilidade de uma medida da energia dar o valor $E_a$. A
+                    normalização de $\Psi$ exige, naturalmente,</p>
+                <p>$$ |c_a|^2 + |c_b|^2 = 1. \tag{11.9} $$</p>
+                <p>Com $H^0$ apenas, $|c_a|^2$ e $|c_b|^2$ ficam constantes para sempre: é a estática da Eq. (11.4) com
+                    dois termos. Tudo o que segue é a resposta à pergunta: o que muda quando se liga uma perturbação que
+                    depende do tempo?</p>
+
+                <h2 id="sistema-perturbado">O sistema perturbado</h2>
+
+                <p>Ligamos agora uma perturbação dependente do tempo, $H'(t)$. Como $\psi_a$ e $\psi_b$ formam um conjunto
+                    completo, a função de onda $\Psi(t)$ ainda pode ser escrita como combinação linear deles. A única
+                    diferença é que $c_a$ e $c_b$ passam a ser <em>funções de $t$</em>:</p>
+                <p>$$ \Psi(t) = c_a(t)\,\psi_ae^{-iE_at/\hbar} + c_b(t)\,\psi_be^{-iE_bt/\hbar}. \tag{11.10} $$</p>
+                <p>Poderíamos absorver os fatores exponenciais em $c_a(t)$ e $c_b(t)$, e há quem prefira fazer assim; mas é
+                    melhor deixar à vista a parte da dependência temporal que existiria mesmo <em>sem</em> a perturbação:
+                    toda a variação de $c_a$ e $c_b$ passa então a ser obra de $H'$. O problema inteiro é determinar $c_a$
+                    e $c_b$ como funções do tempo. Se, por exemplo, a partícula começa no estado $\psi_a$
+                    ($c_a(0) = 1$, $c_b(0) = 0$) e num instante posterior $t_1$ encontramos $c_a(t_1) = 0$,
+                    $c_b(t_1) = 1$, diremos que o sistema sofreu uma <strong>transição</strong> de $\psi_a$ para $\psi_b$.</p>
+                <p>Determinamos $c_a(t)$ e $c_b(t)$ exigindo que $\Psi(t)$ satisfaça a equação de Schrödinger dependente
+                    do tempo,</p>
+                <p>$$ H\Psi = i\hbar\frac{\partial\Psi}{\partial t}, \qquad \text{em que} \qquad H = H^0 + H'(t). \tag{11.11} $$</p>
+                <p>Substituindo (11.10) em (11.11), o lado esquerdo tem quatro termos ($H^0$ e $H'$ agindo em cada
+                    componente) e o lado direito, pela regra do produto, outros quatro (a derivada de cada coeficiente e a
+                    de cada exponencial):</p>
+                <p>$$ \begin{aligned}
+                    &c_a\left(H^0\psi_a\right)e^{-iE_at/\hbar} + c_b\left(H^0\psi_b\right)e^{-iE_bt/\hbar} \\
+                    &\qquad + c_a\left(H'\psi_a\right)e^{-iE_at/\hbar} + c_b\left(H'\psi_b\right)e^{-iE_bt/\hbar} \\
+                    &= i\hbar\left[\dot c_a\psi_ae^{-iE_at/\hbar} + \dot c_b\psi_be^{-iE_bt/\hbar}\right. \\
+                    &\qquad \left. + c_a\psi_a\left(-\frac{iE_a}{\hbar}\right)e^{-iE_at/\hbar} + c_b\psi_b\left(-\frac{iE_b}{\hbar}\right)e^{-iE_bt/\hbar}\right].
+                    \end{aligned} $$</p>
+                <p>Pela Eq. (11.5), $H^0\psi_a = E_a\psi_a$, de modo que o primeiro termo do lado esquerdo vale
+                    $c_aE_a\psi_ae^{-iE_at/\hbar}$; e o terceiro termo dentro do colchete, multiplicado por $i\hbar$, também
+                    vale $i\hbar(-iE_a/\hbar)c_a\psi_ae^{-iE_at/\hbar} = c_aE_a\psi_ae^{-iE_at/\hbar}$. O mesmo vale para $b$.
+                    Os dois primeiros termos da esquerda cancelam os dois últimos da direita, e sobra</p>
+                <p>$$ \begin{aligned}
+                    &c_a\left(H'\psi_a\right)e^{-iE_at/\hbar} + c_b\left(H'\psi_b\right)e^{-iE_bt/\hbar} \\
+                    &\qquad = i\hbar\left(\dot c_a\psi_ae^{-iE_at/\hbar} + \dot c_b\psi_be^{-iE_bt/\hbar}\right).
+                    \end{aligned} \tag{11.12} $$</p>
+                <p>O cancelamento é o motivo de termos deixado os fatores $e^{-iEt/\hbar}$ fora dos coeficientes: o que
+                    resta envolve só $H'$. Para isolar $\dot c_a$ usamos o truque de sempre: tomamos o produto interno com
+                    $\psi_a$ e aproveitamos a ortogonalidade de $\psi_a$ e $\psi_b$ (Eq. 11.6):</p>
+                <p>$$ c_a\langle\psi_a|H'|\psi_a\rangle e^{-iE_at/\hbar} + c_b\langle\psi_a|H'|\psi_b\rangle e^{-iE_bt/\hbar} = i\hbar\,\dot c_ae^{-iE_at/\hbar}. $$</p>
+                <p>Abreviamos os elementos de matriz por</p>
+                <p>$$ H'_{ij} \equiv \langle\psi_i|H'|\psi_j\rangle; \tag{11.13} $$</p>
+                <p>a hermiticidade de $H'$ implica $H'_{ji} = \left(H'_{ij}\right)^*$. Multiplicando a equação acima por
+                    $-(i/\hbar)\,e^{iE_at/\hbar}$, concluímos que</p>
+                <p>$$ \dot c_a = -\frac{i}{\hbar}\left[c_aH'_{aa} + c_bH'_{ab}e^{-i(E_b - E_a)t/\hbar}\right]. \tag{11.14} $$</p>
+                <p>Do mesmo modo, o produto interno com $\psi_b$ seleciona $\dot c_b$,</p>
+                <p>$$ c_a\langle\psi_b|H'|\psi_a\rangle e^{-iE_at/\hbar} + c_b\langle\psi_b|H'|\psi_b\rangle e^{-iE_bt/\hbar} = i\hbar\,\dot c_be^{-iE_bt/\hbar}, $$</p>
+                <p>e, multiplicando por $-(i/\hbar)\,e^{iE_bt/\hbar}$,</p>
+                <p>$$ \dot c_b = -\frac{i}{\hbar}\left[c_bH'_{bb} + c_aH'_{ba}e^{i(E_b - E_a)t/\hbar}\right]. \tag{11.15} $$</p>
+                <p>As Eqs. (11.14) e (11.15) determinam $c_a(t)$ e $c_b(t)$; juntas, são <em>completamente equivalentes</em>
+                    à equação de Schrödinger dependente do tempo para um sistema de dois níveis: nenhuma aproximação foi
+                    feita. Tipicamente, os elementos diagonais de $H'$ se anulam (o caso geral está no
+                    <a href="#exr-11-1-7">Exercício 11.1-7</a>):</p>
+                <p>$$ H'_{aa} = H'_{bb} = 0. \tag{11.16} $$</p>
+                <p>Isso acontece, por exemplo, sempre que $H'$ é ímpar sob paridade e os estados têm paridade definida
+                    (o caso do átomo num campo elétrico, que veremos na 11.2). Nesse caso as equações se simplificam:</p>
+
+                <div class="definition-box" id="teo-equacoes-dos-coeficientes">
+                    <p><strong>Teorema (Equações exatas de um sistema de dois níveis).</strong> Se $H = H^0 + H'(t)$, com
+                        $\psi_a$, $\psi_b$ como nas Eqs. (11.5)–(11.6) e $H'_{aa} = H'_{bb} = 0$, os coeficientes da
+                        Eq. (11.10) obedecem a</p>
+                    <p>$$ \dot c_a = -\frac{i}{\hbar}H'_{ab}e^{-i\omega_0t}c_b, \qquad \dot c_b = -\frac{i}{\hbar}H'_{ba}e^{i\omega_0t}c_a, \tag{11.17} $$</p>
+                    <p>em que</p>
+                    <p>$$ \omega_0 \equiv \frac{E_b - E_a}{\hbar}. \tag{11.18} $$</p>
+                </div>
+                <p>Vamos supor sempre $E_b \ge E_a$, de modo que $\omega_0 \ge 0$: $\psi_a$ é o estado "de baixo" e $\psi_b$
+                    o "de cima".</p>
+
+                <p id="obs-conservacao-exata"><strong>Observação (A norma se conserva exatamente).</strong> As Eqs. (11.17)
+                    preservam a Eq. (11.9), como devem, pois a evolução de Schrödinger é unitária. De fato,</p>
+                <p>$$ \begin{aligned}
+                    \frac{d}{dt}\left(|c_a|^2 + |c_b|^2\right) &= 2\,\mathrm{Re}\left(c_a^*\dot c_a + c_b^*\dot c_b\right) \\
+                    &= \frac{2}{\hbar}\,\mathrm{Im}\left(c_a^*H'_{ab}e^{-i\omega_0t}c_b + c_b^*H'_{ba}e^{i\omega_0t}c_a\right) = 0,
+                    \end{aligned} $$</p>
+                <p>porque, com $H'_{ba} = (H'_{ab})^*$, o segundo termo dentro do parêntese é o complexo conjugado do
+                    primeiro, e a soma é real. Qualquer aproximação que violar $|c_a|^2 + |c_b|^2 = 1$ estará mostrando o
+                    tamanho do próprio erro.</p>
+
+                <p id="obs-o-que-e-transicao"><strong>Observação (O que conta como transição).</strong> Uma perturbação
+                    <em>constante</em> também faz $|c_b|^2$ oscilar (<a href="#exr-11-1-3">Exercício 11.1-3</a>). Isso não
+                    contradiz a afirmação de que sem dependência temporal não há transições: nesse caso $\psi_a$ e $\psi_b$
+                    não são, nem nunca foram, autoestados do hamiltoniano completo, e uma medida da energia <em>nunca</em>
+                    dá $E_a$ ou $E_b$. Na teoria de perturbação dependente do tempo imaginamos a perturbação ligada por um
+                    tempo e depois desligada, para examinar o sistema. No começo e no fim, $\psi_a$ e $\psi_b$ são
+                    autoestados do hamiltoniano exato, e só nesse contexto faz sentido dizer que o sistema passou de um
+                    para o outro. Assim, "perturbação constante" deve ser lida como "ligada em $t = 0$ e desligada num
+                    instante $T$": as contas não mudam, e a interpretação fica sensata.</p>
+
+                <h2 id="perturbacao-dependente">Teoria de perturbação dependente do tempo</h2>
+
+                <p>Até aqui tudo é <em>exato</em>: não fizemos hipótese nenhuma sobre o tamanho da perturbação. Mas, se
+                    $H'$ for "pequeno", podemos resolver a Eq. (11.17) por aproximações sucessivas. Suponha que a partícula
+                    comece no estado de baixo:</p>
+                <p>$$ c_a(0) = 1, \qquad c_b(0) = 0. \tag{11.19} $$</p>
+                <p>Se não houvesse perturbação nenhuma, ela ficaria assim para sempre:</p>
+                <p><strong>Ordem zero:</strong></p>
+                <p>$$ c_a^{(0)}(t) = 1, \qquad c_b^{(0)}(t) = 0. \tag{11.20} $$</p>
+                <p>(O índice entre parênteses indica a ordem da aproximação.) Para obter a primeira ordem, inserimos os
+                    valores de ordem zero no lado direito da Eq. (11.17) e integramos de $0$ a $t$, usando as condições
+                    iniciais (11.19):</p>
+                <p><strong>Primeira ordem:</strong></p>
+                <p>$$ \begin{aligned}
+                    &\frac{dc_a^{(1)}}{dt} = 0 \;\Rightarrow\; c_a^{(1)}(t) = 1; \\
+                    &\frac{dc_b^{(1)}}{dt} = -\frac{i}{\hbar}H'_{ba}e^{i\omega_0t} \;\Rightarrow \\
+                    &c_b^{(1)}(t) = -\frac{i}{\hbar}\int_0^tH'_{ba}(t')\,e^{i\omega_0t'}\,dt'.
+                    \end{aligned} \tag{11.21} $$</p>
+                <p>Agora inserimos <em>essas</em> expressões no lado direito da Eq. (11.17) para obter a segunda ordem:</p>
+                <p><strong>Segunda ordem:</strong></p>
+                <p>$$ \begin{aligned}
+                    \frac{dc_a^{(2)}}{dt} &= -\frac{i}{\hbar}H'_{ab}e^{-i\omega_0t}\left(-\frac{i}{\hbar}\right) \\
+                    &\qquad \times\int_0^tH'_{ba}(t')\,e^{i\omega_0t'}\,dt' \quad\Rightarrow \\
+                    c_a^{(2)}(t) &= 1 - \frac{1}{\hbar^2}\int_0^tH'_{ab}(t')\,e^{-i\omega_0t'} \\
+                    &\qquad \times\left[\int_0^{t'}H'_{ba}(t'')\,e^{i\omega_0t''}\,dt''\right]dt',
+                    \end{aligned} \tag{11.22} $$</p>
+                <p>enquanto $c_b$ não muda: $c_b^{(2)}(t) = c_b^{(1)}(t)$, porque o lado direito da equação de $\dot c_b$
+                    envolve $c_a$, e $c_a^{(1)} = c_a^{(0)} = 1$. (Note que $c_a^{(2)}(t)$ <em>inclui</em> o termo de ordem
+                    zero; a <em>correção</em> de segunda ordem seria só a parte com a integral.)</p>
+                <p>Em princípio poderíamos continuar esse ritual indefinidamente, sempre inserindo a aproximação de ordem
+                    $n$ no lado direito da Eq. (11.17) e resolvendo para a ordem $(n + 1)$. A ordem zero não tem nenhum
+                    fator de $H'$, a correção de primeira ordem tem <em>um</em>, a de segunda ordem tem <em>dois</em>, e
+                    assim por diante.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref">1</a></sup> O erro da primeira
+                    ordem fica evidente no fato de que $\left|c_a^{(1)}(t)\right|^2 + \left|c_b^{(1)}(t)\right|^2 \ne 1$ (os
+                    coeficientes exatos têm de obedecer à Eq. 11.9). A proposição a seguir mostra que o erro é, em cada
+                    caso, da ordem que se deixou de calcular.</p>
+
+                <div class="definition-box" id="prop-normalizacao-por-ordem">
+                    <p><strong>Proposição (Normalização ordem a ordem).</strong> Com as condições iniciais (11.19),</p>
+                    <p>$$ \left|c_a^{(1)}\right|^2 + \left|c_b^{(1)}\right|^2 = 1 + O\!\left(H'^2\right), \qquad \left|c_a^{(2)}\right|^2 + \left|c_b^{(2)}\right|^2 = 1 + O\!\left(H'^4\right). $$</p>
+                    <p>Em particular, a soma é igual a 1 <em>até primeira ordem em $H'$</em> na primeira aproximação e até a
+                        terceira ordem na segunda: é tudo o que se pode esperar de cada uma.</p>
+                </div>
+                <p><em>Demonstração.</em> Na primeira ordem, $c_a^{(1)} = 1$ e $c_b^{(1)}$ é de primeira ordem em $H'$, de
+                    modo que a soma vale $1 + \left|c_b^{(1)}\right|^2 = 1 + O(H'^2)$. Na segunda ordem, escrevemos
+                    $f(t') \equiv H'_{ba}(t')\,e^{i\omega_0t'}$; então $f^*(t') = H'_{ab}(t')\,e^{-i\omega_0t'}$ e, pela
+                    Eq. (11.22), $c_a^{(2)} = 1 + X$ com</p>
+                <p>$$ X = -\frac{1}{\hbar^2}\int_0^tdt'\int_0^{t'}dt''\,f^*(t')\,f(t''), \qquad c_b^{(2)} = c_b^{(1)} = -\frac{i}{\hbar}\int_0^tf(t')\,dt'. $$</p>
+                <p>A integral dupla em $X$ cobre o triângulo $t'' \lt t'$ do quadrado $[0, t]^2$. Trocando o nome das
+                    variáveis, a integral de $f^*(t'')f(t')$ sobre o mesmo triângulo é o complexo conjugado; e as duas juntas
+                    cobrem o quadrado inteiro, onde o integrando se fatora:</p>
+                <p>$$ \begin{aligned}
+                    2\,\mathrm{Re}\,X &= -\frac{1}{\hbar^2}\int_0^t\!\!\int_0^tf^*(t')\,f(t'')\,dt''\,dt' \\
+                    &= -\frac{1}{\hbar^2}\left|\int_0^tf(t')\,dt'\right|^2 = -\left|c_b^{(1)}\right|^2.
+                    \end{aligned} $$</p>
+                <p>Logo $\left|c_a^{(2)}\right|^2 + \left|c_b^{(2)}\right|^2 = 1 + 2\,\mathrm{Re}\,X + |X|^2 + \left|c_b^{(1)}\right|^2 = 1 + |X|^2$,
+                    e $|X|^2$ é de quarta ordem em $H'$. $\blacksquare$</p>
+
+                <h3 id="diagramas">A leitura em diagramas</h3>
+
+                <p>A Eq. (11.21) pode ser escrita na forma</p>
+                <p>$$ \begin{aligned}
+                    c_b^{(1)}(t)\,e^{-iE_bt/\hbar} &= -\frac{i}{\hbar}\int_0^te^{-iE_b(t - t')/\hbar} \\
+                    &\qquad \times H'_{ba}(t')\,e^{-iE_at'/\hbar}\,dt',
+                    \end{aligned} \tag{11.23} $$</p>
+                <p>em que devolvemos a exponencial fatorada na Eq. (11.10): basta notar que
+                    $e^{-iE_bt/\hbar}\,e^{i\omega_0t'} = e^{-iE_bt/\hbar}\,e^{i(E_b - E_a)t'/\hbar} = e^{-iE_b(t - t')/\hbar}\,e^{-iE_at'/\hbar}$.
+                    Isso sugere uma interpretação pictórica simpática. Lendo da direita para a esquerda, o sistema fica no
+                    estado $a$ do instante $0$ ao instante $t'$ (acumulando o fator de oscilação $e^{-iE_at'/\hbar}$), faz a
+                    transição de $a$ para $b$ no instante $t'$ e fica em $b$ até o instante $t$ (acumulando o fator
+                    $e^{-iE_b(t - t')/\hbar}$). Esse processo está representado na Figura 11.1. (Não leve a figura ao pé da
+                    letra: não há transição brusca entre os estados; na verdade, integramos sobre todos os instantes $t'$
+                    em que a transição pode ocorrer.)</p>
+
+                <figure class="lecture-figure" id="fig-11-1">
+                    <svg viewBox="0 0 640 230" role="img" aria-label="Uma linha ondulada percorre o tempo da esquerda para a direita, sobre um eixo horizontal marcado 0, t′ e t. De 0 até t′ ela ondula num nível mais baixo, rotulado a, com ondas longas; em t′ sobe verticalmente, onde a perturbação H′ age, para um nível mais alto, rotulado b, e daí até t ondula com ondas mais curtas, pois a energia é maior.">
+<defs><marker id="arr-11-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="300" y1="196" x2="300" y2="66" class="fig-guide fig-dashed"/>
+<line x1="300" y1="192" x2="300" y2="200" class="fig-axis"/>
+<text x="300" y="214" text-anchor="middle" class="fig-label fig-small">t′</text>
+<path d="M70,150 L72,147.8 L74,146 L76,144.6 L78,144 L80,144.2 L82,145.2 L84,146.8 L86,148.9 L88,151.1 L90,153.2 L92,154.8 L94,155.8 L96,156 L98,155.4 L100,154 L102,152.2 L104,150 L106,147.8 L108,146 L110,144.6 L112,144 L114,144.2 L116,145.2 L118,146.8 L120,148.9 L122,151.1 L124,153.2 L126,154.8 L128,155.8 L130,156 L132,155.4 L134,154 L136,152.2 L138,150 L140,147.8 L142,146 L144,144.6 L146,144 L148,144.2 L150,145.2 L152,146.8 L154,148.9 L156,151.1 L158,153.2 L160,154.8 L162,155.8 L164,156 L166,155.4 L168,154 L170,152.2 L172,150 L174,147.8 L176,146 L178,144.6 L180,144 L182,144.2 L184,145.2 L186,146.8 L188,148.9 L190,151.1 L192,153.2 L194,154.8 L196,155.8 L198,156 L200,155.4 L202,154 L204,152.2 L206,150 L208,147.8 L210,146 L212,144.6 L214,144 L216,144.2 L218,145.2 L220,146.8 L222,148.9 L224,151.1 L226,153.2 L228,154.8 L230,155.8 L232,156 L234,155.4 L236,154 L238,152.2 L240,150 L242,147.8 L244,146 L246,144.6 L248,144 L250,144.2 L252,145.2 L254,146.8 L256,148.9 L258,151.1 L260,153.2 L262,154.8 L264,155.8 L266,156 L268,155.4 L270,154 L272,152.2 L274,150 L276,147.8 L278,146 L280,144.6 L282,144 L284,144.2 L286,145.2 L288,146.8 L290,148.9 L292,151.1 L294,153.2 L296,154.8 L298,155.8 L300,156 L300,80 L300,80 L302,76.3 L304,74.2 L306,74.5 L308,77.1 L310,81 L312,84.4 L314,86 L316,85 L318,81.9 L320,78.1 L322,75 L324,74 L326,75.6 L328,79 L330,82.9 L332,85.5 L334,85.8 L336,83.7 L338,80 L340,76.3 L342,74.2 L344,74.5 L346,77.1 L348,81 L350,84.4 L352,86 L354,85 L356,81.9 L358,78.1 L360,75 L362,74 L364,75.6 L366,79 L368,82.9 L370,85.5 L372,85.8 L374,83.7 L376,80 L378,76.3 L380,74.2 L382,74.5 L384,77.1 L386,81 L388,84.4 L390,86 L392,85 L394,81.9 L396,78.1 L398,75 L400,74 L402,75.6 L404,79 L406,82.9 L408,85.5 L410,85.8 L412,83.7 L414,80 L416,76.3 L418,74.2 L420,74.5 L422,77.1 L424,81 L426,84.4 L428,86 L430,85 L432,81.9 L434,78.1 L436,75 L438,74 L440,75.6 L442,79 L444,82.9 L446,85.5 L448,85.8 L450,83.7 L452,80 L454,76.3 L456,74.2 L458,74.5 L460,77.1 L462,81 L464,84.4 L466,86 L468,85 L470,81.9 L472,78.1 L474,75 L476,74 L478,75.6 L480,79 L482,82.9 L484,85.5 L486,85.8 L488,83.7 L490,80 L492,76.3 L494,74.2 L496,74.5 L498,77.1 L500,81 L502,84.4 L504,86 L506,85 L508,81.9 L510,78.1 L512,75 L514,74 L516,75.6 L518,79 L520,82.9" class="fig-curve"/>
+<line x1="50" y1="196" x2="560" y2="196" class="fig-axis" marker-end="url(#arr-11-1)"/>
+<text x="566" y="200" class="fig-label fig-small">tempo</text>
+<text x="64" y="214" text-anchor="middle" class="fig-label fig-small">0</text>
+<line x1="520" y1="192" x2="520" y2="200" class="fig-axis"/>
+<text x="520" y="214" text-anchor="middle" class="fig-label fig-small fig-it">t</text>
+<text x="185" y="176" text-anchor="middle" class="fig-label fig-it">a</text>
+<text x="410" y="64" text-anchor="middle" class="fig-label fig-it">b</text>
+<text x="308" y="119" class="fig-label fig-small">H′ age em t′</text>
+</svg>
+                    <figcaption><strong>Figura 11.1.</strong> Representação pictórica da Eq. (11.23): o sistema oscila em $a$
+                        até $t'$, a perturbação o leva para $b$ e ele oscila em $b$ até $t$. A frequência da oscilação em cada
+                        trecho é $E/\hbar$ do nível, maior em $b$; a amplitude total soma todos os $t'$ entre $0$ e $t$.</figcaption>
+                </figure>
+
+                <p>Essa interpretação da série de perturbação é especialmente esclarecedora nas ordens mais altas e em
+                    sistemas de muitos níveis, onde as expressões ficam complicadas. Considere a Eq. (11.22). Multiplicando-a
+                    por $e^{-iE_at/\hbar}$ e reescrevendo as exponenciais como acima,
+                    $e^{-iE_at/\hbar}\,e^{-i\omega_0t'}\,e^{i\omega_0t''} = e^{-iE_a(t - t')/\hbar}\,e^{-iE_b(t' - t'')/\hbar}\,e^{-iE_at''/\hbar}$
+                    (some os expoentes para conferir), ela fica</p>
+                <p>$$ \begin{aligned}
+                    c_a^{(2)}(t)\,e^{-iE_at/\hbar} &= e^{-iE_at/\hbar} \\
+                    &\quad + \left(-\frac{i}{\hbar}\right)^2\int_0^t\!\!\int_0^{t'}e^{-iE_a(t - t')/\hbar} \\
+                    &\qquad \times H'_{ab}(t')\,e^{-iE_b(t' - t'')/\hbar}\,H'_{ba}(t'') \\
+                    &\qquad \times e^{-iE_at''/\hbar}\,dt''\,dt'.
+                    \end{aligned} \tag{11.24} $$</p>
+                <p>Os dois termos descrevem um processo em que o sistema fica no estado $a$ o tempo todo e um segundo
+                    processo em que ele passa de $a$ para $b$ no instante $t''$ e volta de $b$ para $a$ no instante $t'$.
+                    Graficamente, isso aparece na Figura 11.2.</p>
+
+                <figure class="lecture-figure" id="fig-11-2">
+                    <svg viewBox="0 0 640 232" role="img" aria-label="Dois diagramas somados. À esquerda, uma linha ondulada que fica o tempo todo no nível a. À direita, a linha começa em a, sobe para o nível b no instante t″, ondula em b com ondas mais curtas e volta para a no instante t′. O tempo corre da esquerda para a direita nos dois.">
+<defs><marker id="arr-11-2a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<defs><marker id="arr-11-2b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<path d="M30,150 L32,147.8 L34,146 L36,144.6 L38,144 L40,144.2 L42,145.2 L44,146.8 L46,148.9 L48,151.1 L50,153.2 L52,154.8 L54,155.8 L56,156 L58,155.4 L60,154 L62,152.2 L64,150 L66,147.8 L68,146 L70,144.6 L72,144 L74,144.2 L76,145.2 L78,146.8 L80,148.9 L82,151.1 L84,153.2 L86,154.8 L88,155.8 L90,156 L92,155.4 L94,154 L96,152.2 L98,150 L100,147.8 L102,146 L104,144.6 L106,144 L108,144.2 L110,145.2 L112,146.8 L114,148.9 L116,151.1 L118,153.2 L120,154.8 L122,155.8 L124,156 L126,155.4 L128,154 L130,152.2 L132,150 L134,147.8 L136,146 L138,144.6 L140,144 L142,144.2 L144,145.2 L146,146.8 L148,148.9 L150,151.1 L152,153.2 L154,154.8 L156,155.8 L158,156 L160,155.4 L162,154 L164,152.2 L166,150 L168,147.8 L170,146 L172,144.6 L174,144 L176,144.2 L178,145.2 L180,146.8 L182,148.9 L184,151.1 L186,153.2 L188,154.8 L190,155.8 L192,156 L194,155.4 L196,154 L198,152.2 L200,150 L202,147.8 L204,146 L206,144.6 L208,144 L210,144.2 L212,145.2 L214,146.8 L216,148.9 L218,151.1 L220,153.2 L222,154.8 L224,155.8 L226,156 L228,155.4 L230,154 L232,152.2 L234,150 L236,147.8 L238,146 L240,144.6 L242,144 L244,144.2 L246,145.2 L248,146.8 L250,148.9 L252,151.1 L254,153.2 L256,154.8 L258,155.8 L260,156 L262,155.4 L264,154 L266,152.2 L268,150 L270,147.8 L272,146 L274,144.6 L276,144 L278,144.2 L280,145.2" class="fig-curve"/>
+<line x1="20" y1="196" x2="286" y2="196" class="fig-axis" marker-end="url(#arr-11-2a)"/>
+<text x="292" y="200" class="fig-label fig-small"></text>
+<text x="155" y="176" text-anchor="middle" class="fig-label fig-it">a</text>
+<text x="312" y="154" text-anchor="middle" class="fig-label">+</text>
+<line x1="410" y1="196" x2="410" y2="72" class="fig-guide fig-dashed"/>
+<line x1="410" y1="192" x2="410" y2="200" class="fig-axis"/>
+<text x="410" y="214" text-anchor="middle" class="fig-label fig-small">t″</text>
+<line x1="520" y1="196" x2="520" y2="72" class="fig-guide fig-dashed"/>
+<line x1="520" y1="192" x2="520" y2="200" class="fig-axis"/>
+<text x="520" y="214" text-anchor="middle" class="fig-label fig-small">t′</text>
+<path d="M340,150 L342,147.8 L344,146 L346,144.6 L348,144 L350,144.2 L352,145.2 L354,146.8 L356,148.9 L358,151.1 L360,153.2 L362,154.8 L364,155.8 L366,156 L368,155.4 L370,154 L372,152.2 L374,150 L376,147.8 L378,146 L380,144.6 L382,144 L384,144.2 L386,145.2 L388,146.8 L390,148.9 L392,151.1 L394,153.2 L396,154.8 L398,155.8 L400,156 L402,155.4 L404,154 L406,152.2 L408,150 L410,147.8 L410,84 L410,84 L412,80.3 L414,78.2 L416,78.5 L418,81.1 L420,85 L422,88.4 L424,90 L426,89 L428,85.9 L430,82.1 L432,79 L434,78 L436,79.6 L438,83 L440,86.9 L442,89.5 L444,89.8 L446,87.7 L448,84 L450,80.3 L452,78.2 L454,78.5 L456,81.1 L458,85 L460,88.4 L462,90 L464,89 L466,85.9 L468,82.1 L470,79 L472,78 L474,79.6 L476,83 L478,86.9 L480,89.5 L482,89.8 L484,87.7 L486,84 L488,80.3 L490,78.2 L492,78.5 L494,81.1 L496,85 L498,88.4 L500,90 L502,89 L504,85.9 L506,82.1 L508,79 L510,78 L512,79.6 L514,83 L516,86.9 L518,89.5 L520,89.8 L520,150 L520,150 L522,147.8 L524,146 L526,144.6 L528,144 L530,144.2 L532,145.2 L534,146.8 L536,148.9 L538,151.1 L540,153.2 L542,154.8 L544,155.8 L546,156 L548,155.4 L550,154 L552,152.2 L554,150 L556,147.8 L558,146 L560,144.6 L562,144 L564,144.2 L566,145.2 L568,146.8 L570,148.9 L572,151.1 L574,153.2 L576,154.8 L578,155.8 L580,156 L582,155.4 L584,154 L586,152.2 L588,150 L590,147.8 L592,146 L594,144.6 L596,144 L598,144.2 L600,145.2 L602,146.8 L604,148.9 L606,151.1 L608,153.2 L610,154.8" class="fig-curve"/>
+<line x1="334" y1="196" x2="616" y2="196" class="fig-axis" marker-end="url(#arr-11-2b)"/>
+<text x="622" y="200" class="fig-label fig-small"></text>
+<text x="375" y="176" text-anchor="middle" class="fig-label fig-it">a</text>
+<text x="465" y="66" text-anchor="middle" class="fig-label fig-it">b</text>
+<text x="566" y="176" text-anchor="middle" class="fig-label fig-it">a</text>
+<text x="320" y="222" text-anchor="middle" class="fig-label fig-small">tempo →</text>
+</svg>
+                    <figcaption><strong>Figura 11.2.</strong> Representação pictórica da Eq. (11.24): o termo de ordem zero
+                        (o sistema fica em $a$) mais o de segunda ordem (sobe para $b$ em $t''$ e volta para $a$ em $t'$, com
+                        $t'' \lt t'$).</figcaption>
+                </figure>
+
+                <h3 id="muitos-niveis">Sistemas de muitos níveis</h3>
+
+                <p>Com a intuição dada pelas figuras, é fácil escrever o resultado geral para um sistema de muitos
+                    níveis.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref">2</a></sup> Para não ficar só na intuição,
+                    vamos deduzi-lo.</p>
+
+                <div class="definition-box" id="teo-serie-muitos-niveis">
+                    <p><strong>Teorema (Série de perturbação para muitos níveis).</strong> Seja $\{\psi_n\}$ uma base
+                        ortonormal de autoestados de $H^0$, $H^0\psi_n = E_n\psi_n$, e
+                        $\Psi(t) = \sum_nc_n(t)\,\psi_ne^{-iE_nt/\hbar}$ a solução de $i\hbar\,\partial_t\Psi = (H^0 + H')\Psi$
+                        que parte do estado $\psi_i$, ou seja, $c_n(0) = \delta_{ni}$. Então, até a segunda ordem em $H'$,</p>
+                    <p>$$ \begin{aligned}
+                        c_n^{(2)}(t)\,e^{-iE_nt/\hbar} &= \delta_{ni}\,e^{-iE_it/\hbar} \\
+                        &\quad + \left(\frac{-i}{\hbar}\right)\int_0^te^{-iE_n(t - t')/\hbar}\,H'_{ni}(t') \\
+                        &\qquad \times e^{-iE_it'/\hbar}\,dt' \\
+                        &\quad + \sum_m\left(-\frac{i}{\hbar}\right)^2\int_0^t\!\!\int_0^{t'}e^{-iE_n(t - t')/\hbar} \\
+                        &\qquad \times H'_{nm}(t')\,e^{-iE_m(t' - t'')/\hbar}\,H'_{mi}(t'') \\
+                        &\qquad \times e^{-iE_it''/\hbar}\,dt''\,dt'.
+                        \end{aligned} \tag{11.25} $$</p>
+                </div>
+                <p><em>Demonstração.</em> <strong>Passo 1 (equações exatas).</strong> Substituindo a expansão na equação de
+                    Schrödinger, os termos com $H^0$ cancelam como na Eq. (11.12), e sobra
+                    $\sum_mc_m\,(H'\psi_m)\,e^{-iE_mt/\hbar} = i\hbar\sum_m\dot c_m\psi_me^{-iE_mt/\hbar}$. O produto interno
+                    com $\psi_n$ dá</p>
+                <p>$$ \dot c_n = -\frac{i}{\hbar}\sum_mH'_{nm}(t)\,e^{i(E_n - E_m)t/\hbar}\,c_m, $$</p>
+                <p>que generaliza as Eqs. (11.14)–(11.15) (aqui os termos diagonais $m = n$ ficam incluídos).
+                    <strong>Passo 2 (iteração).</strong> Em ordem zero, $c_m^{(0)} = \delta_{mi}$. Inserindo no lado direito e
+                    integrando de $0$ a $t$,</p>
+                <p>$$ c_n^{(1)}(t) = \delta_{ni} - \frac{i}{\hbar}\int_0^tH'_{ni}(t')\,e^{i(E_n - E_i)t'/\hbar}\,dt'. $$</p>
+                <p>Inserindo $c_m^{(1)}(t')$ no lado direito, a parte $\delta_{mi}$ reproduz o termo de primeira ordem, e a
+                    parte com a integral dá o termo novo:</p>
+                <p>$$ \begin{aligned}
+                    c_n^{(2)}(t) = c_n^{(1)}(t) &+ \left(-\frac{i}{\hbar}\right)^2\sum_m\int_0^t\!\!\int_0^{t'}H'_{nm}(t')\,e^{i(E_n - E_m)t'/\hbar} \\
+                    &\qquad \times H'_{mi}(t'')\,e^{i(E_m - E_i)t''/\hbar}\,dt''\,dt'.
+                    \end{aligned} $$</p>
+                <p><strong>Passo 3 (exponenciais).</strong> Multiplicamos tudo por $e^{-iE_nt/\hbar}$. No termo de primeira
+                    ordem, $e^{-iE_nt/\hbar}e^{i(E_n - E_i)t'/\hbar} = e^{-iE_n(t - t')/\hbar}e^{-iE_it'/\hbar}$; no de segunda,
+                    $e^{-iE_nt/\hbar}e^{i(E_n - E_m)t'/\hbar}e^{i(E_m - E_i)t''/\hbar} = e^{-iE_n(t - t')/\hbar}\,e^{-iE_m(t' - t'')/\hbar}\,e^{-iE_it''/\hbar}$,
+                    como se confere somando os expoentes. E $\delta_{ni}e^{-iE_nt/\hbar} = \delta_{ni}e^{-iE_it/\hbar}$. Isso é a
+                    Eq. (11.25). $\blacksquare$</p>
+                <p>Com dois níveis, $i = n = a$, e a soma em $m$ só tem o termo $m = b$ (pois $H'_{aa} = 0$): a Eq. (11.25)
+                    reproduz a (11.24).<sup id="fnref:3"><a href="#fn:3" class="footnote-ref">3</a></sup> Para $n \ne i$, ela é
+                    representada pelo diagrama da Figura 11.3. O termo de primeira ordem descreve uma transição direta de $i$
+                    para $n$; o de segunda ordem, um processo em que a transição passa por um <strong>estado
+                    intermediário</strong> (ou "<strong>virtual</strong>") $m$. O estado intermediário não precisa ter energia
+                    entre $E_i$ e $E_n$, nem a energia precisa se conservar em cada salto: a soma corre sobre todos os $m$, e
+                    cada salto é pesado pelo elemento de matriz e pelas fases.</p>
+
+                <figure class="lecture-figure" id="fig-11-3">
+                    <svg viewBox="0 0 640 248" role="img" aria-label="Dois diagramas somados. À esquerda, a linha ondulada começa no nível i e sobe direto para o nível n no instante t′. À direita, ela sobe de i para um nível intermediário m, mais alto que n, no instante t″, e desce de m para n no instante t′. Níveis mais altos têm ondas mais curtas.">
+<defs><marker id="arr-11-3a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<defs><marker id="arr-11-3b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="130" y1="212" x2="130" y2="100" class="fig-guide fig-dashed"/>
+<line x1="130" y1="208" x2="130" y2="216" class="fig-axis"/>
+<text x="130" y="230" text-anchor="middle" class="fig-label fig-small">t′</text>
+<path d="M30,170 L32,167.8 L34,166 L36,164.6 L38,164 L40,164.2 L42,165.2 L44,166.8 L46,168.9 L48,171.1 L50,173.2 L52,174.8 L54,175.8 L56,176 L58,175.4 L60,174 L62,172.2 L64,170 L66,167.8 L68,166 L70,164.6 L72,164 L74,164.2 L76,165.2 L78,166.8 L80,168.9 L82,171.1 L84,173.2 L86,174.8 L88,175.8 L90,176 L92,175.4 L94,174 L96,172.2 L98,170 L100,167.8 L102,166 L104,164.6 L106,164 L108,164.2 L110,165.2 L112,166.8 L114,168.9 L116,171.1 L118,173.2 L120,174.8 L122,175.8 L124,176 L126,175.4 L128,174 L130,172.2 L130,112 L130,112 L132,109.1 L134,106.9 L136,106 L138,106.6 L140,108.5 L142,111.2 L144,114.2 L146,116.6 L148,117.9 L150,117.7 L152,116.1 L154,113.5 L156,110.5 L158,107.9 L160,106.3 L162,106.1 L164,107.4 L166,109.8 L168,112.8 L170,115.5 L172,117.4 L174,118 L176,117.1 L178,114.9 L180,112 L182,109.1 L184,106.9 L186,106 L188,106.6 L190,108.5 L192,111.2 L194,114.2 L196,116.6 L198,117.9 L200,117.7 L202,116.1 L204,113.5 L206,110.5 L208,107.9 L210,106.3 L212,106.1 L214,107.4 L216,109.8 L218,112.8 L220,115.5 L222,117.4 L224,118 L226,117.1 L228,114.9 L230,112 L232,109.1 L234,106.9 L236,106 L238,106.6 L240,108.5 L242,111.2 L244,114.2 L246,116.6 L248,117.9 L250,117.7 L252,116.1 L254,113.5 L256,110.5 L258,107.9 L260,106.3 L262,106.1 L264,107.4 L266,109.8 L268,112.8 L270,115.5 L272,117.4 L274,118 L276,117.1 L278,114.9 L280,112" class="fig-curve"/>
+<line x1="20" y1="212" x2="286" y2="212" class="fig-axis" marker-end="url(#arr-11-3a)"/>
+<text x="292" y="216" class="fig-label fig-small"></text>
+<text x="80" y="196" text-anchor="middle" class="fig-label fig-it">i</text>
+<text x="205" y="94" text-anchor="middle" class="fig-label fig-it">n</text>
+<text x="312" y="141" text-anchor="middle" class="fig-label">+</text>
+<line x1="410" y1="212" x2="410" y2="48" class="fig-guide fig-dashed"/>
+<line x1="410" y1="208" x2="410" y2="216" class="fig-axis"/>
+<text x="410" y="230" text-anchor="middle" class="fig-label fig-small">t″</text>
+<line x1="500" y1="212" x2="500" y2="48" class="fig-guide fig-dashed"/>
+<line x1="500" y1="208" x2="500" y2="216" class="fig-axis"/>
+<text x="500" y="230" text-anchor="middle" class="fig-label fig-small">t′</text>
+<path d="M340,170 L342,167.8 L344,166 L346,164.6 L348,164 L350,164.2 L352,165.2 L354,166.8 L356,168.9 L358,171.1 L360,173.2 L362,174.8 L364,175.8 L366,176 L368,175.4 L370,174 L372,172.2 L374,170 L376,167.8 L378,166 L380,164.6 L382,164 L384,164.2 L386,165.2 L388,166.8 L390,168.9 L392,171.1 L394,173.2 L396,174.8 L398,175.8 L400,176 L402,175.4 L404,174 L406,172.2 L408,170 L410,167.8 L410,60 L410,60 L412,55.5 L414,54 L416,56.5 L418,61.2 L420,65.2 L422,65.7 L424,62.4 L426,57.6 L428,54.3 L430,54.8 L432,58.8 L434,63.5 L436,66 L438,64.5 L440,60 L442,55.5 L444,54 L446,56.5 L448,61.2 L450,65.2 L452,65.7 L454,62.4 L456,57.6 L458,54.3 L460,54.8 L462,58.8 L464,63.5 L466,66 L468,64.5 L470,60 L472,55.5 L474,54 L476,56.5 L478,61.2 L480,65.2 L482,65.7 L484,62.4 L486,57.6 L488,54.3 L490,54.8 L492,58.8 L494,63.5 L496,66 L498,64.5 L500,60 L500,112 L500,112 L502,109.1 L504,106.9 L506,106 L508,106.6 L510,108.5 L512,111.2 L514,114.2 L516,116.6 L518,117.9 L520,117.7 L522,116.1 L524,113.5 L526,110.5 L528,107.9 L530,106.3 L532,106.1 L534,107.4 L536,109.8 L538,112.8 L540,115.5 L542,117.4 L544,118 L546,117.1 L548,114.9 L550,112 L552,109.1 L554,106.9 L556,106 L558,106.6 L560,108.5 L562,111.2 L564,114.2 L566,116.6 L568,117.9 L570,117.7 L572,116.1 L574,113.5 L576,110.5 L578,107.9 L580,106.3 L582,106.1 L584,107.4 L586,109.8 L588,112.8 L590,115.5 L592,117.4 L594,118 L596,117.1 L598,114.9 L600,112 L602,109.1 L604,106.9 L606,106 L608,106.6 L610,108.5" class="fig-curve"/>
+<line x1="334" y1="212" x2="616" y2="212" class="fig-axis" marker-end="url(#arr-11-3b)"/>
+<text x="622" y="216" class="fig-label fig-small"></text>
+<text x="375" y="196" text-anchor="middle" class="fig-label fig-it">i</text>
+<text x="455" y="42" text-anchor="middle" class="fig-label fig-it">m</text>
+<text x="556" y="94" text-anchor="middle" class="fig-label fig-it">n</text>
+<text x="320" y="238" text-anchor="middle" class="fig-label fig-small">tempo →</text>
+</svg>
+                    <figcaption><strong>Figura 11.3.</strong> Representação pictórica da Eq. (11.25) para $n \ne i$: a
+                        transição direta de $i$ para $n$ (primeira ordem) mais a transição que passa pelo estado intermediário
+                        $m$ (segunda ordem, somada sobre todos os $m$).</figcaption>
+                </figure>
+
+                <p id="obs-comparacao-independente"><strong>Observação (Comparação com o caso independente do tempo).</strong>
+                    Na <a href="../[6] - Teoria de Perturbação Independente do Tempo/[01] - Teoria de Perturbação Não Degenerada.html">Seção 7.1</a>
+                    a perturbação corrigia as <em>energias</em> e os <em>estados</em>, e os elementos $H'_{nm}$ apareciam
+                    divididos por diferenças de energia. Aqui as energias de $H^0$ ficam onde estão e o que a perturbação faz
+                    é transferir <em>probabilidade</em> de um estado para outro; as diferenças de energia aparecem nas fases
+                    $e^{i(E_n - E_m)t/\hbar}$, e é a interferência entre essas fases que, na próxima subseção, produz a
+                    ressonância.</p>
+
+                <h2 id="perturbacao-senoidal">Perturbações senoidais</h2>
+
+                <p>Suponha que a perturbação dependa do tempo de forma senoidal,</p>
+                <p>$$ H'(\mathbf r, t) = V(\mathbf r)\cos(\omega t), \tag{11.29} $$</p>
+                <p>de modo que</p>
+                <p>$$ H'_{ab} = V_{ab}\cos(\omega t), \tag{11.30} $$</p>
+                <p>em que</p>
+                <p>$$ V_{ab} \equiv \langle\psi_a|V|\psi_b\rangle. \tag{11.31} $$</p>
+                <p>Como antes, supomos que os elementos diagonais se anulem, o que quase sempre acontece na prática. Em
+                    primeira ordem (daqui em diante trabalharemos <em>só</em> em primeira ordem e dispensaremos os índices
+                    superiores), a Eq. (11.21) dá, escrevendo $\cos(\omega t') = \tfrac12\left(e^{i\omega t'} + e^{-i\omega t'}\right)$
+                    e integrando cada exponencial,</p>
+                <p>$$ \begin{aligned}
+                    c_b(t) &\approx -\frac{i}{\hbar}V_{ba}\int_0^t\cos(\omega t')\,e^{i\omega_0t'}\,dt' \\
+                    &= -\frac{iV_{ba}}{2\hbar}\int_0^t\left[e^{i(\omega_0 + \omega)t'} + e^{i(\omega_0 - \omega)t'}\right]dt' \\
+                    &= -\frac{V_{ba}}{2\hbar}\left[\frac{e^{i(\omega_0 + \omega)t} - 1}{\omega_0 + \omega} + \frac{e^{i(\omega_0 - \omega)t} - 1}{\omega_0 - \omega}\right].
+                    \end{aligned} \tag{11.32} $$</p>
+                <p>(Na segunda linha usamos $-\tfrac{i}{2\hbar}\cdot\tfrac{1}{i\Omega} = -\tfrac{1}{2\hbar\Omega}$ para cada
+                    frequência $\Omega = \omega_0 \pm \omega$.) Essa é a resposta, mas é um pouco incômoda de manejar. As
+                    coisas simplificam muito se nos restringirmos a frequências de excitação $\omega$ muito próximas da
+                    frequência de transição $\omega_0$, de modo que o segundo termo do colchete domine; mais precisamente,
+                    supomos</p>
+                <p>$$ \omega_0 + \omega \gg |\omega_0 - \omega|. \tag{11.33} $$</p>
+                <p>Isso não é uma grande limitação, porque perturbações em <em>outras</em> frequências têm, de qualquer
+                    modo, probabilidade desprezível de provocar uma transição: o primeiro termo de (11.32) tem módulo no
+                    máximo $|V_{ab}|/[\hbar(\omega_0 + \omega)]$, que é pequeno se $|V_{ab}| \ll \hbar\omega_0$. Desprezando o
+                    primeiro termo e pondo $e^{i(\omega_0 - \omega)t/2}$ em evidência no segundo,</p>
+                <p>$$ \begin{aligned}
+                    c_b(t) &\approx -\frac{V_{ba}}{2\hbar}\,\frac{e^{i(\omega_0 - \omega)t/2}}{\omega_0 - \omega}\left[e^{i(\omega_0 - \omega)t/2} - e^{-i(\omega_0 - \omega)t/2}\right] \\
+                    &= -i\,\frac{V_{ba}}{\hbar}\,\frac{\sin\left[(\omega_0 - \omega)t/2\right]}{\omega_0 - \omega}\,e^{i(\omega_0 - \omega)t/2},
+                    \end{aligned} \tag{11.34} $$</p>
+                <p>em que usamos $e^{ix} - e^{-ix} = 2i\sin x$. A <strong>probabilidade de transição</strong> (a
+                    probabilidade de que uma partícula que começou no estado $\psi_a$ seja encontrada, no instante $t$, no
+                    estado $\psi_b$) é o módulo ao quadrado, e a fase $e^{i(\omega_0 - \omega)t/2}$ some:</p>
+
+                <div class="definition-box" id="teo-probabilidade-senoidal">
+                    <p><strong>Teorema (Probabilidade de transição sob perturbação senoidal).</strong> Em primeira ordem, com
+                        $c_a(0) = 1$, $c_b(0) = 0$, $H'_{aa} = H'_{bb} = 0$ e $\omega$ perto da ressonância (Eq. 11.33),</p>
+                    <p>$$ P_{a\to b}(t) = |c_b(t)|^2 \approx \frac{|V_{ab}|^2}{\hbar^2}\,\frac{\sin^2\left[(\omega_0 - \omega)t/2\right]}{(\omega_0 - \omega)^2}. \tag{11.35} $$</p>
+                    <p>O resultado só é confiável enquanto $P_{a\to b} \ll 1$.</p>
+                </div>
+
+                <p>O traço mais notável desse resultado é que, como função do tempo, a probabilidade de transição
+                    <em>oscila</em> senoidalmente (Figura 11.4). Depois de subir até o máximo
+                    $|V_{ab}|^2/\left[\hbar^2(\omega_0 - \omega)^2\right]$, necessariamente muito menor que 1, senão a
+                    hipótese de perturbação "pequena" não valeria, ela <em>volta a zero</em>! Nos instantes
+                    $t_n = 2n\pi/|\omega_0 - \omega|$, com $n = 1, 2, 3, \dots$, a partícula está <em>com certeza</em> de volta
+                    ao estado de baixo. Se você quer maximizar a chance de provocar uma transição, <em>não</em> deve deixar a
+                    perturbação ligada por muito tempo: é melhor <em>desligá-la</em> depois de um tempo
+                    $\pi/|\omega_0 - \omega|$ e torcer para "pegar" o sistema no estado de cima. Esse "vaivém" não é um
+                    artefato da teoria de perturbação: ele aparece também na solução exata, que construímos logo abaixo,
+                    embora com frequência um pouco modificada.</p>
+
+                <figure class="lecture-figure" id="fig-11-4">
+                    <svg viewBox="0 0 640 280" role="img" aria-label="Gráfico da probabilidade de transição P de a para b em função do tempo t. A curva parte de zero, sobe até o valor máximo P_máx, marcado por uma linha horizontal tracejada, e volta a zero, repetindo-se periodicamente; os zeros ficam em t igual a 2π, 4π e 6π divididos por |ω₀ − ω|.">
+<defs><marker id="arr-11-4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="70" y1="240" x2="590" y2="240" class="fig-axis" marker-end="url(#arr-11-4)"/>
+<line x1="70" y1="240" x2="70" y2="30" class="fig-axis" marker-end="url(#arr-11-4)"/>
+<line x1="70" y1="60" x2="570" y2="60" class="fig-guide fig-dashed"/>
+<text x="62" y="64" text-anchor="end" class="fig-label fig-small">P_máx</text>
+<text x="62" y="244" text-anchor="end" class="fig-label fig-small">0</text>
+<line x1="202.4" y1="240" x2="202.4" y2="245" class="fig-axis"/>
+<text x="202.4" y="260" text-anchor="middle" class="fig-label fig-small">2π/|ω₀ − ω|</text>
+<line x1="334.9" y1="240" x2="334.9" y2="245" class="fig-axis"/>
+<text x="334.9" y="260" text-anchor="middle" class="fig-label fig-small">4π/|ω₀ − ω|</text>
+<line x1="467.3" y1="240" x2="467.3" y2="245" class="fig-axis"/>
+<text x="467.3" y="260" text-anchor="middle" class="fig-label fig-small">6π/|ω₀ − ω|</text>
+<path d="M70,240 L70.8,239.9 L71.6,239.7 L72.5,239.4 L73.3,238.9 L74.1,238.3 L74.9,237.6 L75.7,236.7 L76.5,235.7 L77.3,234.6 L78.2,233.3 L79,231.9 L79.8,230.4 L80.6,228.8 L81.4,227.1 L82.2,225.2 L83.1,223.3 L83.9,221.2 L84.7,219 L85.5,216.7 L86.3,214.3 L87.2,211.8 L88,209.2 L88.8,206.6 L89.6,203.8 L90.4,201 L91.2,198.1 L92,195.1 L92.9,192 L93.7,188.9 L94.5,185.7 L95.3,182.5 L96.1,179.2 L97,175.9 L97.8,172.6 L98.6,169.2 L99.4,165.8 L100.2,162.3 L101,158.8 L101.9,155.4 L102.7,151.9 L103.5,148.4 L104.3,144.9 L105.1,141.4 L105.9,138 L106.8,134.5 L107.6,131.1 L108.4,127.7 L109.2,124.3 L110,121 L110.8,117.7 L111.7,114.5 L112.5,111.3 L113.3,108.2 L114.1,105.2 L114.9,102.2 L115.7,99.3 L116.6,96.4 L117.4,93.7 L118.2,91 L119,88.4 L119.8,85.9 L120.6,83.5 L121.4,81.2 L122.3,79 L123.1,76.9 L123.9,74.9 L124.7,73.1 L125.5,71.3 L126.3,69.7 L127.2,68.2 L128,66.8 L128.8,65.5 L129.6,64.4 L130.4,63.4 L131.2,62.5 L132.1,61.7 L132.9,61.1 L133.7,60.6 L134.5,60.3 L135.3,60.1 L136.2,60 L137,60.1 L137.8,60.2 L138.6,60.6 L139.4,61 L140.2,61.6 L141.1,62.4 L141.9,63.2 L142.7,64.2 L143.5,65.3 L144.3,66.6 L145.1,67.9 L145.9,69.4 L146.8,71 L147.6,72.8 L148.4,74.6 L149.2,76.6 L150,78.7 L150.8,80.8 L151.7,83.1 L152.5,85.5 L153.3,88 L154.1,90.6 L154.9,93.2 L155.8,96 L156.6,98.8 L157.4,101.7 L158.2,104.7 L159,107.7 L159.8,110.8 L160.7,114 L161.5,117.2 L162.3,120.5 L163.1,123.8 L163.9,127.2 L164.7,130.6 L165.6,134 L166.4,137.4 L167.2,140.9 L168,144.3 L168.8,147.8 L169.6,151.3 L170.4,154.8 L171.3,158.3 L172.1,161.7 L172.9,165.2 L173.7,168.6 L174.5,172 L175.3,175.4 L176.2,178.7 L177,182 L177.8,185.2 L178.6,188.4 L179.4,191.5 L180.2,194.6 L181.1,197.6 L181.9,200.5 L182.7,203.4 L183.5,206.1 L184.3,208.8 L185.1,211.4 L186,213.9 L186.8,216.3 L187.6,218.6 L188.4,220.8 L189.2,222.9 L190.1,224.9 L190.9,226.8 L191.7,228.5 L192.5,230.2 L193.3,231.7 L194.1,233.1 L194.9,234.4 L195.8,235.5 L196.6,236.6 L197.4,237.4 L198.2,238.2 L199,238.8 L199.9,239.3 L200.7,239.7 L201.5,239.9 L202.3,240 L203.1,240 L203.9,239.8 L204.8,239.5 L205.6,239 L206.4,238.4 L207.2,237.7 L208,236.9 L208.8,235.9 L209.7,234.8 L210.5,233.5 L211.3,232.2 L212.1,230.7 L212.9,229.1 L213.7,227.4 L214.6,225.5 L215.4,223.6 L216.2,221.5 L217,219.3 L217.8,217.1 L218.6,214.7 L219.5,212.2 L220.3,209.7 L221.1,207 L221.9,204.3 L222.7,201.4 L223.5,198.5 L224.3,195.6 L225.2,192.5 L226,189.4 L226.8,186.3 L227.6,183 L228.4,179.8 L229.2,176.5 L230.1,173.1 L230.9,169.7 L231.7,166.3 L232.5,162.9 L233.3,159.4 L234.2,155.9 L235,152.5 L235.8,149 L236.6,145.5 L237.4,142 L238.2,138.5 L239.1,135.1 L239.9,131.7 L240.7,128.3 L241.5,124.9 L242.3,121.6 L243.1,118.3 L243.9,115 L244.8,111.9 L245.6,108.7 L246.4,105.7 L247.2,102.7 L248,99.7 L248.9,96.9 L249.7,94.1 L250.5,91.4 L251.3,88.8 L252.1,86.3 L252.9,83.9 L253.7,81.6 L254.6,79.4 L255.4,77.2 L256.2,75.2 L257,73.4 L257.8,71.6 L258.6,69.9 L259.5,68.4 L260.3,67 L261.1,65.7 L261.9,64.6 L262.7,63.5 L263.5,62.6 L264.4,61.9 L265.2,61.2 L266,60.7 L266.8,60.3 L267.6,60.1 L268.4,60 L269.3,60 L270.1,60.2 L270.9,60.5 L271.7,61 L272.5,61.5 L273.3,62.2 L274.2,63.1 L275,64 L275.8,65.1 L276.6,66.4 L277.4,67.7 L278.2,69.2 L279.1,70.8 L279.9,72.5 L280.7,74.3 L281.5,76.3 L282.3,78.3 L283.1,80.5 L284,82.7 L284.8,85.1 L285.6,87.6 L286.4,90.1 L287.2,92.8 L288.1,95.5 L288.9,98.3 L289.7,101.2 L290.5,104.2 L291.3,107.2 L292.1,110.3 L293,113.5 L293.8,116.7 L294.6,120 L295.4,123.3 L296.2,126.6 L297,130 L297.9,133.4 L298.7,136.9 L299.5,140.3 L300.3,143.8 L301.1,147.3 L301.9,150.8 L302.8,154.2 L303.6,157.7 L304.4,161.2 L305.2,164.6 L306,168.1 L306.8,171.5 L307.6,174.8 L308.5,178.2 L309.3,181.5 L310.1,184.7 L310.9,187.9 L311.7,191 L312.5,194.1 L313.4,197.1 L314.2,200 L315,202.9 L315.8,205.7 L316.6,208.4 L317.4,211 L318.3,213.5 L319.1,215.9 L319.9,218.3 L320.7,220.5 L321.5,222.6 L322.4,224.6 L323.2,226.5 L324,228.3 L324.8,229.9 L325.6,231.5 L326.4,232.9 L327.2,234.2 L328.1,235.4 L328.9,236.4 L329.7,237.3 L330.5,238.1 L331.3,238.7 L332.1,239.3 L333,239.6 L333.8,239.9 L334.6,240 L335.4,240 L336.2,239.8 L337,239.5 L337.9,239.1 L338.7,238.5 L339.5,237.8 L340.3,237 L341.1,236 L341.9,235 L342.8,233.7 L343.6,232.4 L344.4,230.9 L345.2,229.4 L346,227.7 L346.9,225.8 L347.7,223.9 L348.5,221.9 L349.3,219.7 L350.1,217.4 L350.9,215.1 L351.8,212.6 L352.6,210.1 L353.4,207.4 L354.2,204.7 L355,201.9 L355.8,199 L356.7,196.1 L357.5,193 L358.3,189.9 L359.1,186.8 L359.9,183.6 L360.7,180.3 L361.5,177 L362.4,173.7 L363.2,170.3 L364,166.9 L364.8,163.4 L365.6,160 L366.5,156.5 L367.3,153 L368.1,149.5 L368.9,146 L369.7,142.6 L370.5,139.1 L371.3,135.6 L372.2,132.2 L373,128.8 L373.8,125.4 L374.6,122.1 L375.4,118.8 L376.2,115.6 L377.1,112.4 L377.9,109.2 L378.7,106.1 L379.5,103.1 L380.3,100.2 L381.1,97.3 L382,94.5 L382.8,91.8 L383.6,89.2 L384.4,86.7 L385.2,84.3 L386.1,81.9 L386.9,79.7 L387.7,77.6 L388.5,75.6 L389.3,73.7 L390.1,71.9 L391,70.2 L391.8,68.6 L392.6,67.2 L393.4,65.9 L394.2,64.7 L395,63.7 L395.9,62.8 L396.7,62 L397.5,61.3 L398.3,60.8 L399.1,60.4 L399.9,60.1 L400.8,60 L401.6,60 L402.4,60.2 L403.2,60.5 L404,60.9 L404.8,61.4 L405.6,62.1 L406.5,62.9 L407.3,63.9 L408.1,64.9 L408.9,66.1 L409.7,67.5 L410.6,68.9 L411.4,70.5 L412.2,72.2 L413,74 L413.8,75.9 L414.6,78 L415.4,80.1 L416.3,82.4 L417.1,84.7 L417.9,87.2 L418.7,89.7 L419.5,92.3 L420.4,95.1 L421.2,97.9 L422,100.7 L422.8,103.7 L423.6,106.7 L424.4,109.8 L425.2,113 L426.1,116.2 L426.9,119.4 L427.7,122.7 L428.5,126.1 L429.3,129.4 L430.2,132.9 L431,136.3 L431.8,139.7 L432.6,143.2 L433.4,146.7 L434.2,150.2 L435,153.7 L435.9,157.2 L436.7,160.6 L437.5,164.1 L438.3,167.5 L439.1,170.9 L440,174.3 L440.8,177.6 L441.6,180.9 L442.4,184.2 L443.2,187.4 L444,190.5 L444.8,193.6 L445.7,196.6 L446.5,199.6 L447.3,202.4 L448.1,205.2 L448.9,207.9 L449.7,210.6 L450.6,213.1 L451.4,215.5 L452.2,217.9 L453,220.1 L453.8,222.3 L454.6,224.3 L455.5,226.2 L456.3,228 L457.1,229.7 L457.9,231.2 L458.7,232.7 L459.5,234 L460.4,235.2 L461.2,236.2 L462,237.2 L462.8,238 L463.6,238.6 L464.4,239.2 L465.3,239.6 L466.1,239.9 L466.9,240 L467.7,240 L468.5,239.8 L469.3,239.6 L470.2,239.2 L471,238.6 L471.8,238 L472.6,237.1 L473.4,236.2 L474.3,235.1 L475.1,234 L475.9,232.6 L476.7,231.2 L477.5,229.6 L478.3,227.9 L479.1,226.1 L480,224.2 L480.8,222.2 L481.6,220.1 L482.4,217.8 L483.2,215.5 L484.1,213 L484.9,210.5 L485.7,207.9 L486.5,205.2 L487.3,202.4 L488.1,199.5 L488.9,196.5 L489.8,193.5 L490.6,190.4 L491.4,187.3 L492.2,184.1 L493,180.8 L493.9,177.5 L494.7,174.2 L495.5,170.8 L496.3,167.4 L497.1,164 L497.9,160.5 L498.7,157.1 L499.6,153.6 L500.4,150.1 L501.2,146.6 L502,143.1 L502.8,139.7 L503.7,136.2 L504.5,132.8 L505.3,129.4 L506.1,126 L506.9,122.6 L507.7,119.3 L508.5,116.1 L509.4,112.9 L510.2,109.7 L511,106.6 L511.8,103.6 L512.6,100.7 L513.5,97.8 L514.3,95 L515.1,92.3 L515.9,89.6 L516.7,87.1 L517.5,84.7 L518.4,82.3 L519.2,80.1 L520,77.9 L520.8,75.9 L521.6,74 L522.4,72.2 L523.2,70.5 L524.1,68.9 L524.9,67.4 L525.7,66.1 L526.5,64.9 L527.3,63.8 L528.2,62.9 L529,62.1 L529.8,61.4 L530.6,60.9 L531.4,60.4 L532.2,60.2 L533,60 L533.9,60 L534.7,60.1 L535.5,60.4 L536.3,60.8 L537.1,61.3 L538,62 L538.8,62.8 L539.6,63.7 L540.4,64.8 L541.2,65.9 L542,67.3 L542.8,68.7 L543.7,70.2 L544.5,71.9 L545.3,73.7 L546.1,75.6 L546.9,77.6 L547.8,79.8 L548.6,82 L549.4,84.3 L550.2,86.8 L551,89.3 L551.8,91.9 L552.6,94.6 L553.5,97.4 L554.3,100.3 L555.1,103.2 L555.9,106.2 L556.7,109.3 L557.6,112.4 L558.4,115.6 L559.2,118.9 L560,122.2" class="fig-curve"/>
+<text x="594" y="244" class="fig-label fig-it">t</text>
+<text x="78" y="34" class="fig-label fig-it">P(a→b)</text>
+</svg>
+                    <figcaption><strong>Figura 11.4.</strong> Probabilidade de transição em função do tempo para uma
+                        perturbação senoidal, Eq. (11.35). O máximo é
+                        $P_{\text{máx}} = \left[|V_{ab}|/\hbar(\omega_0 - \omega)\right]^2$, e a probabilidade se anula de novo a
+                        cada $2\pi/|\omega_0 - \omega|$.</figcaption>
+                </figure>
+
+                <p>Como notamos antes, a probabilidade de transição é maior quando a frequência de excitação está perto
+                    da frequência "natural" $\omega_0$.<sup id="fnref:4"><a href="#fn:4" class="footnote-ref">4</a></sup> Isso
+                    está ilustrado na Figura 11.5, em que $P_{a\to b}$ aparece como função de $\omega$. Fazendo
+                    $\omega \to \omega_0$ em (11.35), com $\sin x \approx x$, o pico tem altura
+                    $\left(|V_{ab}|t/2\hbar\right)^2$; os primeiros zeros de cada lado estão onde
+                    $(\omega_0 - \omega)t/2 = \pm\pi$, isto é, em $\omega = \omega_0 \pm 2\pi/t$, e a largura entre eles é
+                    $4\pi/t$. O pico fica mais alto e mais estreito com o passar do tempo. (Aparentemente, o máximo cresce sem
+                    limite; mas a hipótese de perturbação deixa de valer antes que ele chegue perto de 1, de modo que só
+                    podemos acreditar no resultado para $t$ relativamente pequeno. A solução exata, abaixo, nunca passa de 1.)</p>
+
+                <figure class="lecture-figure" id="fig-11-5">
+                    <svg viewBox="0 0 640 270" role="img" aria-label="Gráfico da probabilidade de transição P de a para b em função da frequência ω da perturbação, num tempo t fixo. Há um pico estreito e alto centrado em ω₀, de altura (|V_ab| t / 2ħ) ao quadrado, que se anula em ω₀ − 2π/t e em ω₀ + 2π/t; fora dele, lóbulos laterais bem menores que decrescem com a distância a ω₀.">
+<defs><marker id="arr-11-5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="60" y1="230" x2="612" y2="230" class="fig-axis" marker-end="url(#arr-11-5)"/>
+<line x1="60" y1="230" x2="60" y2="24" class="fig-axis" marker-end="url(#arr-11-5)"/>
+<line x1="55" y1="50" x2="60" y2="50" class="fig-axis"/>
+<text x="66" y="44" class="fig-label fig-small">(|V_ab| t / 2ħ)²</text>
+<line x1="60" y1="50" x2="325" y2="50" class="fig-guide fig-dashed"/>
+<path d="M60,229.5 L60.7,229.5 L61.3,229.6 L62,229.6 L62.6,229.6 L63.3,229.7 L64,229.7 L64.6,229.7 L65.3,229.7 L66,229.8 L66.6,229.8 L67.3,229.8 L68,229.8 L68.6,229.9 L69.3,229.9 L69.9,229.9 L70.6,229.9 L71.3,229.9 L71.9,230 L72.6,230 L73.2,230 L73.9,230 L74.6,230 L75.2,230 L75.9,230 L76.6,230 L77.2,230 L77.9,230 L78.5,230 L79.2,230 L79.9,229.9 L80.5,229.9 L81.2,229.9 L81.9,229.9 L82.5,229.9 L83.2,229.8 L83.9,229.8 L84.5,229.8 L85.2,229.7 L85.8,229.7 L86.5,229.7 L87.2,229.6 L87.8,229.6 L88.5,229.5 L89.1,229.5 L89.8,229.4 L90.5,229.4 L91.1,229.4 L91.8,229.3 L92.5,229.3 L93.1,229.2 L93.8,229.2 L94.4,229.1 L95.1,229.1 L95.8,229 L96.4,229 L97.1,228.9 L97.8,228.9 L98.4,228.8 L99.1,228.8 L99.8,228.8 L100.4,228.7 L101.1,228.7 L101.7,228.7 L102.4,228.6 L103.1,228.6 L103.7,228.6 L104.4,228.6 L105.1,228.5 L105.7,228.5 L106.4,228.5 L107,228.5 L107.7,228.5 L108.4,228.5 L109,228.5 L109.7,228.5 L110.4,228.5 L111,228.5 L111.7,228.5 L112.3,228.6 L113,228.6 L113.7,228.6 L114.3,228.6 L115,228.7 L115.7,228.7 L116.3,228.7 L117,228.8 L117.6,228.8 L118.3,228.8 L119,228.9 L119.6,228.9 L120.3,229 L120.9,229 L121.6,229.1 L122.3,229.1 L122.9,229.2 L123.6,229.2 L124.3,229.3 L124.9,229.3 L125.6,229.4 L126.2,229.4 L126.9,229.5 L127.6,229.5 L128.2,229.6 L128.9,229.6 L129.6,229.7 L130.2,229.7 L130.9,229.8 L131.6,229.8 L132.2,229.8 L132.9,229.9 L133.5,229.9 L134.2,229.9 L134.9,230 L135.5,230 L136.2,230 L136.8,230 L137.5,230 L138.2,230 L138.8,230 L139.5,230 L140.2,230 L140.8,230 L141.5,229.9 L142.2,229.9 L142.8,229.9 L143.5,229.8 L144.1,229.8 L144.8,229.7 L145.5,229.7 L146.1,229.6 L146.8,229.6 L147.4,229.5 L148.1,229.5 L148.8,229.4 L149.4,229.3 L150.1,229.2 L150.8,229.2 L151.4,229.1 L152.1,229 L152.7,228.9 L153.4,228.8 L154.1,228.7 L154.7,228.6 L155.4,228.5 L156.1,228.4 L156.7,228.4 L157.4,228.3 L158.1,228.2 L158.7,228.1 L159.4,228 L160,227.9 L160.7,227.8 L161.4,227.7 L162,227.7 L162.7,227.6 L163.4,227.5 L164,227.4 L164.7,227.4 L165.3,227.3 L166,227.3 L166.7,227.2 L167.3,227.2 L168,227.1 L168.7,227.1 L169.3,227.1 L170,227.1 L170.6,227 L171.3,227 L172,227 L172.6,227 L173.3,227.1 L173.9,227.1 L174.6,227.1 L175.3,227.1 L175.9,227.2 L176.6,227.2 L177.3,227.3 L177.9,227.3 L178.6,227.4 L179.3,227.5 L179.9,227.5 L180.6,227.6 L181.2,227.7 L181.9,227.8 L182.6,227.9 L183.2,228 L183.9,228.1 L184.6,228.2 L185.2,228.3 L185.9,228.4 L186.5,228.5 L187.2,228.6 L187.9,228.7 L188.5,228.8 L189.2,228.9 L189.8,229 L190.5,229.1 L191.2,229.2 L191.8,229.3 L192.5,229.4 L193.2,229.5 L193.8,229.6 L194.5,229.7 L195.2,229.7 L195.8,229.8 L196.5,229.8 L197.1,229.9 L197.8,229.9 L198.5,230 L199.1,230 L199.8,230 L200.4,230 L201.1,230 L201.8,230 L202.4,229.9 L203.1,229.9 L203.8,229.9 L204.4,229.8 L205.1,229.7 L205.8,229.6 L206.4,229.5 L207.1,229.4 L207.7,229.3 L208.4,229.2 L209.1,229 L209.7,228.9 L210.4,228.7 L211,228.5 L211.7,228.4 L212.4,228.2 L213,228 L213.7,227.8 L214.4,227.5 L215,227.3 L215.7,227.1 L216.4,226.9 L217,226.6 L217.7,226.4 L218.3,226.1 L219,225.9 L219.7,225.6 L220.3,225.4 L221,225.1 L221.7,224.9 L222.3,224.6 L223,224.4 L223.6,224.1 L224.3,223.9 L225,223.6 L225.6,223.4 L226.3,223.2 L226.9,223 L227.6,222.8 L228.3,222.6 L228.9,222.4 L229.6,222.3 L230.3,222.1 L230.9,222 L231.6,221.9 L232.2,221.8 L232.9,221.7 L233.6,221.6 L234.2,221.6 L234.9,221.5 L235.6,221.5 L236.2,221.5 L236.9,221.5 L237.6,221.6 L238.2,221.6 L238.9,221.7 L239.5,221.8 L240.2,221.9 L240.9,222.1 L241.5,222.2 L242.2,222.4 L242.8,222.6 L243.5,222.8 L244.2,223 L244.8,223.3 L245.5,223.5 L246.2,223.8 L246.8,224.1 L247.5,224.4 L248.2,224.7 L248.8,225 L249.5,225.3 L250.1,225.6 L250.8,225.9 L251.5,226.3 L252.1,226.6 L252.8,226.9 L253.4,227.2 L254.1,227.5 L254.8,227.9 L255.4,228.2 L256.1,228.4 L256.8,228.7 L257.4,228.9 L258.1,229.2 L258.8,229.4 L259.4,229.6 L260.1,229.7 L260.7,229.8 L261.4,229.9 L262.1,230 L262.7,230 L263.4,230 L264.1,229.9 L264.7,229.8 L265.4,229.6 L266,229.4 L266.7,229.1 L267.4,228.8 L268,228.4 L268.7,228 L269.3,227.5 L270,226.9 L270.7,226.3 L271.3,225.6 L272,224.8 L272.7,223.9 L273.3,223 L274,222 L274.6,221 L275.3,219.8 L276,218.6 L276.6,217.3 L277.3,215.9 L278,214.4 L278.6,212.9 L279.3,211.2 L279.9,209.5 L280.6,207.7 L281.3,205.9 L281.9,203.9 L282.6,201.9 L283.3,199.8 L283.9,197.6 L284.6,195.3 L285.2,193 L285.9,190.6 L286.6,188.1 L287.2,185.6 L287.9,182.9 L288.6,180.3 L289.2,177.5 L289.9,174.7 L290.6,171.9 L291.2,169 L291.9,166 L292.5,163 L293.2,160 L293.9,156.9 L294.5,153.7 L295.2,150.6 L295.9,147.4 L296.5,144.2 L297.2,141 L297.8,137.8 L298.5,134.5 L299.2,131.3 L299.8,128 L300.5,124.8 L301.1,121.6 L301.8,118.4 L302.5,115.2 L303.1,112 L303.8,108.8 L304.5,105.7 L305.1,102.7 L305.8,99.6 L306.4,96.7 L307.1,93.8 L307.8,90.9 L308.4,88.1 L309.1,85.4 L309.8,82.7 L310.4,80.1 L311.1,77.6 L311.8,75.2 L312.4,72.9 L313.1,70.6 L313.7,68.5 L314.4,66.5 L315.1,64.5 L315.7,62.7 L316.4,61 L317.1,59.4 L317.7,57.9 L318.4,56.6 L319,55.4 L319.7,54.2 L320.4,53.3 L321,52.4 L321.7,51.7 L322.4,51.1 L323,50.6 L323.7,50.3 L324.3,50.1 L325,50 L325.7,50.1 L326.3,50.3 L327,50.6 L327.7,51.1 L328.3,51.7 L329,52.4 L329.6,53.3 L330.3,54.2 L331,55.4 L331.6,56.6 L332.3,57.9 L332.9,59.4 L333.6,61 L334.3,62.7 L334.9,64.5 L335.6,66.5 L336.3,68.5 L336.9,70.6 L337.6,72.9 L338.2,75.2 L338.9,77.6 L339.6,80.1 L340.2,82.7 L340.9,85.4 L341.6,88.1 L342.2,90.9 L342.9,93.8 L343.6,96.7 L344.2,99.6 L344.9,102.7 L345.5,105.7 L346.2,108.8 L346.9,112 L347.5,115.2 L348.2,118.4 L348.8,121.6 L349.5,124.8 L350.2,128 L350.8,131.3 L351.5,134.5 L352.2,137.8 L352.8,141 L353.5,144.2 L354.1,147.4 L354.8,150.6 L355.5,153.7 L356.1,156.9 L356.8,160 L357.5,163 L358.1,166 L358.8,169 L359.5,171.9 L360.1,174.7 L360.8,177.5 L361.4,180.3 L362.1,182.9 L362.8,185.6 L363.4,188.1 L364.1,190.6 L364.8,193 L365.4,195.3 L366.1,197.6 L366.7,199.8 L367.4,201.9 L368.1,203.9 L368.7,205.9 L369.4,207.7 L370.1,209.5 L370.7,211.2 L371.4,212.9 L372,214.4 L372.7,215.9 L373.4,217.3 L374,218.6 L374.7,219.8 L375.4,221 L376,222 L376.7,223 L377.3,223.9 L378,224.8 L378.7,225.6 L379.3,226.3 L380,226.9 L380.7,227.5 L381.3,228 L382,228.4 L382.6,228.8 L383.3,229.1 L384,229.4 L384.6,229.6 L385.3,229.8 L385.9,229.9 L386.6,230 L387.3,230 L387.9,230 L388.6,229.9 L389.3,229.8 L389.9,229.7 L390.6,229.6 L391.3,229.4 L391.9,229.2 L392.6,228.9 L393.2,228.7 L393.9,228.4 L394.6,228.2 L395.2,227.9 L395.9,227.5 L396.5,227.2 L397.2,226.9 L397.9,226.6 L398.5,226.3 L399.2,225.9 L399.9,225.6 L400.5,225.3 L401.2,225 L401.9,224.7 L402.5,224.4 L403.2,224.1 L403.8,223.8 L404.5,223.5 L405.2,223.3 L405.8,223 L406.5,222.8 L407.1,222.6 L407.8,222.4 L408.5,222.2 L409.1,222.1 L409.8,221.9 L410.5,221.8 L411.1,221.7 L411.8,221.6 L412.4,221.6 L413.1,221.5 L413.8,221.5 L414.4,221.5 L415.1,221.5 L415.8,221.6 L416.4,221.6 L417.1,221.7 L417.8,221.8 L418.4,221.9 L419.1,222 L419.7,222.1 L420.4,222.3 L421.1,222.4 L421.7,222.6 L422.4,222.8 L423,223 L423.7,223.2 L424.4,223.4 L425,223.6 L425.7,223.9 L426.4,224.1 L427,224.4 L427.7,224.6 L428.3,224.9 L429,225.1 L429.7,225.4 L430.3,225.6 L431,225.9 L431.7,226.1 L432.3,226.4 L433,226.6 L433.7,226.9 L434.3,227.1 L435,227.3 L435.6,227.5 L436.3,227.8 L437,228 L437.6,228.2 L438.3,228.4 L439,228.5 L439.6,228.7 L440.3,228.9 L440.9,229 L441.6,229.2 L442.3,229.3 L442.9,229.4 L443.6,229.5 L444.2,229.6 L444.9,229.7 L445.6,229.8 L446.2,229.9 L446.9,229.9 L447.6,229.9 L448.2,230 L448.9,230 L449.5,230 L450.2,230 L450.9,230 L451.5,230 L452.2,229.9 L452.9,229.9 L453.5,229.8 L454.2,229.8 L454.8,229.7 L455.5,229.7 L456.2,229.6 L456.8,229.5 L457.5,229.4 L458.2,229.3 L458.8,229.2 L459.5,229.1 L460.2,229 L460.8,228.9 L461.5,228.8 L462.1,228.7 L462.8,228.6 L463.5,228.5 L464.1,228.4 L464.8,228.3 L465.5,228.2 L466.1,228.1 L466.8,228 L467.4,227.9 L468.1,227.8 L468.8,227.7 L469.4,227.6 L470.1,227.5 L470.8,227.5 L471.4,227.4 L472.1,227.3 L472.7,227.3 L473.4,227.2 L474.1,227.2 L474.7,227.1 L475.4,227.1 L476.1,227.1 L476.7,227.1 L477.4,227 L478,227 L478.7,227 L479.4,227 L480,227.1 L480.7,227.1 L481.4,227.1 L482,227.1 L482.7,227.2 L483.3,227.2 L484,227.3 L484.7,227.3 L485.3,227.4 L486,227.4 L486.6,227.5 L487.3,227.6 L488,227.7 L488.6,227.7 L489.3,227.8 L490,227.9 L490.6,228 L491.3,228.1 L492,228.2 L492.6,228.3 L493.3,228.4 L493.9,228.4 L494.6,228.5 L495.3,228.6 L495.9,228.7 L496.6,228.8 L497.2,228.9 L497.9,229 L498.6,229.1 L499.2,229.2 L499.9,229.2 L500.6,229.3 L501.2,229.4 L501.9,229.5 L502.6,229.5 L503.2,229.6 L503.9,229.6 L504.5,229.7 L505.2,229.7 L505.9,229.8 L506.5,229.8 L507.2,229.9 L507.9,229.9 L508.5,229.9 L509.2,230 L509.8,230 L510.5,230 L511.2,230 L511.8,230 L512.5,230 L513.1,230 L513.8,230 L514.5,230 L515.1,230 L515.8,229.9 L516.5,229.9 L517.1,229.9 L517.8,229.8 L518.4,229.8 L519.1,229.8 L519.8,229.7 L520.4,229.7 L521.1,229.6 L521.8,229.6 L522.4,229.5 L523.1,229.5 L523.8,229.4 L524.4,229.4 L525.1,229.3 L525.7,229.3 L526.4,229.2 L527.1,229.2 L527.7,229.1 L528.4,229.1 L529,229 L529.7,229 L530.4,228.9 L531,228.9 L531.7,228.8 L532.4,228.8 L533,228.8 L533.7,228.7 L534.4,228.7 L535,228.7 L535.7,228.6 L536.3,228.6 L537,228.6 L537.7,228.6 L538.3,228.5 L539,228.5 L539.6,228.5 L540.3,228.5 L541,228.5 L541.6,228.5 L542.3,228.5 L543,228.5 L543.6,228.5 L544.3,228.5 L544.9,228.5 L545.6,228.6 L546.3,228.6 L546.9,228.6 L547.6,228.6 L548.3,228.7 L548.9,228.7 L549.6,228.7 L550.2,228.8 L550.9,228.8 L551.6,228.8 L552.2,228.9 L552.9,228.9 L553.6,229 L554.2,229 L554.9,229.1 L555.6,229.1 L556.2,229.2 L556.9,229.2 L557.5,229.3 L558.2,229.3 L558.9,229.4 L559.5,229.4 L560.2,229.4 L560.9,229.5 L561.5,229.5 L562.2,229.6 L562.8,229.6 L563.5,229.7 L564.2,229.7 L564.8,229.7 L565.5,229.8 L566.2,229.8 L566.8,229.8 L567.5,229.9 L568.1,229.9 L568.8,229.9 L569.5,229.9 L570.1,229.9 L570.8,230 L571.4,230 L572.1,230 L572.8,230 L573.4,230 L574.1,230 L574.8,230 L575.4,230 L576.1,230 L576.8,230 L577.4,230 L578.1,230 L578.7,229.9 L579.4,229.9 L580.1,229.9 L580.7,229.9 L581.4,229.9 L582,229.8 L582.7,229.8 L583.4,229.8 L584,229.8 L584.7,229.7 L585.4,229.7 L586,229.7 L586.7,229.7 L587.4,229.6 L588,229.6 L588.7,229.6 L589.3,229.5 L590,229.5" class="fig-curve"/>
+<line x1="262.6" y1="230" x2="262.6" y2="235" class="fig-axis"/>
+<text x="260.6" y="250" text-anchor="end" class="fig-label fig-small">ω₀ − 2π/t</text>
+<line x1="325" y1="230" x2="325" y2="235" class="fig-axis"/>
+<text x="325" y="250" text-anchor="middle" class="fig-label fig-small">ω₀</text>
+<line x1="387.4" y1="230" x2="387.4" y2="235" class="fig-axis"/>
+<text x="389.4" y="250" class="fig-label fig-small">ω₀ + 2π/t</text>
+<text x="616" y="234" class="fig-label fig-it">ω</text>
+<text x="68" y="28" class="fig-label fig-it">P(a→b)</text>
+</svg>
+                    <figcaption><strong>Figura 11.5.</strong> Probabilidade de transição em função da frequência de
+                        excitação, Eq. (11.35), num instante $t$ fixo: um pico de altura $(|V_{ab}|t/2\hbar)^2$ em $\omega_0$,
+                        com zeros em $\omega_0 \pm 2\pi/t$. A área sob o pico cresce como $t$; esse fato será a chave das
+                        Seções 11.2.3 e 11.4.</figcaption>
+                </figure>
+
+                <h3 id="rabi">Oscilações de Rabi</h3>
+
+                <p>O primeiro termo da Eq. (11.32) vem da parte $e^{i\omega t}/2$ de $\cos(\omega t)$, e o segundo, da parte
+                    $e^{-i\omega t}/2$. Desprezar o primeiro termo equivale, formalmente, a escrever
+                    $H' = (V/2)\,e^{-i\omega t}$, isto é,</p>
+                <p>$$ H'_{ba} = \frac{V_{ba}}{2}e^{-i\omega t}, \qquad H'_{ab} = \frac{V_{ab}}{2}e^{i\omega t}. \tag{11.36} $$</p>
+                <p>(A segunda expressão é exigida para que a matriz do hamiltoniano seja hermitiana; ou, se preferir, para
+                    selecionar o termo dominante na fórmula análoga à (11.32) para $c_a(t)$.) Rabi percebeu que, adotando
+                    essa <strong>aproximação de onda girante</strong> desde o <em>início</em> da conta, a Eq. (11.17) pode ser
+                    resolvida exatamente, sem teoria de perturbação e sem hipótese nenhuma sobre a intensidade do campo. O
+                    nome vem do caso de um spin num campo magnético: $\cos(\omega t)$ é a soma de dois campos que giram em
+                    sentidos opostos, e só o que gira junto com o spin (perto da ressonância) importa.</p>
+
+                <div class="definition-box" id="teo-oscilacoes-de-rabi">
+                    <p><strong>Teorema (Oscilações de Rabi).</strong> Na aproximação de onda girante (11.36), com
+                        $c_a(0) = 1$, $c_b(0) = 0$, a solução exata da Eq. (11.17) é</p>
+                    <p>$$ \begin{aligned}
+                        c_a(t) &= e^{i(\omega - \omega_0)t/2}\left[\cos(\omega_rt) + i\,\frac{\omega_0 - \omega}{2\omega_r}\sin(\omega_rt)\right], \\
+                        c_b(t) &= -\frac{i\,V_{ba}}{2\hbar\omega_r}\,e^{i(\omega_0 - \omega)t/2}\sin(\omega_rt),
+                        \end{aligned} $$</p>
+                    <p>em termos da <strong>frequência de Rabi</strong></p>
+                    <p>$$ \omega_r \equiv \frac12\sqrt{(\omega - \omega_0)^2 + \left(|V_{ab}|/\hbar\right)^2}. \tag{11.37} $$</p>
+                    <p>A probabilidade de transição é</p>
+                    <p>$$ P_{a\to b}(t) = \left(\frac{|V_{ab}|}{2\hbar\omega_r}\right)^2\sin^2(\omega_rt) \le 1. $$</p>
+                </div>
+                <p><em>Demonstração.</em> Com (11.36), as Eqs. (11.17) ficam, pondo $\delta \equiv \omega - \omega_0$,</p>
+                <p>$$ \dot c_a = -\frac{iV_{ab}}{2\hbar}\,e^{i\delta t}c_b, \qquad \dot c_b = -\frac{iV_{ba}}{2\hbar}\,e^{-i\delta t}c_a. $$</p>
+                <p>Derivando a segunda e usando a primeira para eliminar $\dot c_a$,</p>
+                <p>$$ \ddot c_b = -i\delta\,\dot c_b - \frac{iV_{ba}}{2\hbar}e^{-i\delta t}\left(-\frac{iV_{ab}}{2\hbar}e^{i\delta t}c_b\right) = -i\delta\,\dot c_b - \frac{|V_{ab}|^2}{4\hbar^2}\,c_b, $$</p>
+                <p>uma equação linear com coeficientes constantes. Com $c_b = e^{st}$, $s^2 + i\delta s + |V_{ab}|^2/4\hbar^2 = 0$,
+                    cujas raízes são $s = -i\delta/2 \pm i\omega_r$, com $\omega_r$ da Eq. (11.37). A combinação que se anula em
+                    $t = 0$ é $c_b = Ce^{-i\delta t/2}\sin(\omega_rt)$. A condição $c_a(0) = 1$ entra pela segunda equação em
+                    $t = 0$: $\dot c_b(0) = C\omega_r = -iV_{ba}/2\hbar$, o que fixa $C$ e dá o $c_b$ do enunciado. Por fim,
+                    $c_a = (2i\hbar/V_{ba})\,e^{i\delta t}\dot c_b$, e</p>
+                <p>$$ \begin{aligned}
+                    \dot c_b &= Ce^{-i\delta t/2}\left[\omega_r\cos(\omega_rt) - \frac{i\delta}{2}\sin(\omega_rt)\right] \quad\Rightarrow \\
+                    c_a &= e^{i\delta t/2}\left[\cos(\omega_rt) - \frac{i\delta}{2\omega_r}\sin(\omega_rt)\right],
+                    \end{aligned} $$</p>
+                <p>que é o $c_a$ do enunciado, pois $-\delta = \omega_0 - \omega$. A probabilidade é
+                    $|c_b|^2 = |V_{ab}|^2\sin^2(\omega_rt)/(4\hbar^2\omega_r^2)$; como
+                    $4\hbar^2\omega_r^2 = \hbar^2(\omega - \omega_0)^2 + |V_{ab}|^2 \ge |V_{ab}|^2$, ela nunca passa de 1. E a
+                    normalização é exata:</p>
+                <p>$$ |c_a|^2 + |c_b|^2 = \cos^2(\omega_rt) + \frac{\delta^2/4 + |V_{ab}|^2/4\hbar^2}{\omega_r^2}\sin^2(\omega_rt) = 1. \qquad \blacksquare $$</p>
+
+                <p>Três consequências merecem destaque.</p>
+                <ul>
+                    <li><strong>Campo fraco.</strong> Se $|V_{ab}| \ll \hbar|\omega_0 - \omega|$, então
+                        $\omega_r \approx |\omega_0 - \omega|/2$, e $P_{a\to b}$ se reduz exatamente à Eq. (11.35). É isso que
+                        "pequeno" significa aqui: o elemento de matriz da perturbação comparado com $\hbar$ vezes a
+                        dessintonia. Perto da ressonância a condição falha, por menor que seja $V$, e a primeira ordem só vale
+                        para $t \ll \hbar/|V_{ab}|$.</li>
+                    <li><strong>Ressonância.</strong> Em $\omega = \omega_0$, $\omega_r = |V_{ab}|/2\hbar$ e
+                        $P_{a\to b} = \sin^2\left(|V_{ab}|t/2\hbar\right)$: o sistema vai <em>inteiro</em> para o estado de cima
+                        em $t = \pi\hbar/|V_{ab}|$ (o chamado "pulso $\pi$") e volta. A primeira ordem, $(|V_{ab}|t/2\hbar)^2$,
+                        é só o começo dessa senoide (Figura 11.4-A).</li>
+                    <li><strong>Retorno.</strong> O sistema volta pela primeira vez ao estado inicial ($|c_a| = 1$) quando
+                        $\sin(\omega_rt) = 0$ pela primeira vez, isto é, em $t = \pi/\omega_r$. Fora da ressonância, a
+                        primeira ordem prevê $2\pi/|\omega_0 - \omega|$, que é o limite de $\pi/\omega_r$ para campo fraco:
+                        a frequência do vaivém muda, como dissemos.</li>
+                </ul>
+
+                <figure class="lecture-figure" id="fig-11-4-a">
+                    <svg viewBox="0 0 640 282" role="img" aria-label="Dois painéis comparando a probabilidade de transição exata da aproximação de onda girante (curva cheia) com a de primeira ordem (curva tracejada); uma linha horizontal tracejada marca P = 1. Painel (a), na ressonância, em função de |V_ab| t / ħ: a curva exata oscila entre 0 e 1 e vale 1 em t = π ħ / |V_ab|; a de primeira ordem é uma parábola que passa de 1 e sai do gráfico. Painel (b), fora da ressonância com |V_ab|/ħ = |ω₀ − ω|, em função de |ω₀ − ω| t: a de primeira ordem oscila até 1 com zeros em 2π e 4π, enquanto a exata oscila só até 1/2, com período diferente.">
+<line x1="62" y1="230" x2="306" y2="230" class="fig-axis"/>
+<line x1="62" y1="230" x2="62" y2="44" class="fig-axis"/>
+<line x1="62" y1="86" x2="300" y2="86" class="fig-guide fig-dashed"/>
+<text x="56" y="90" text-anchor="end" class="fig-label fig-small">1</text>
+<text x="56" y="234" text-anchor="end" class="fig-label fig-small">0</text>
+<text x="298" y="40" text-anchor="end" class="fig-label">(a)</text>
+<text x="68" y="40" class="fig-label fig-it">P(a→b)</text>
+<line x1="372" y1="230" x2="616" y2="230" class="fig-axis"/>
+<line x1="372" y1="230" x2="372" y2="44" class="fig-axis"/>
+<line x1="372" y1="86" x2="610" y2="86" class="fig-guide fig-dashed"/>
+<text x="366" y="90" text-anchor="end" class="fig-label fig-small">1</text>
+<text x="366" y="234" text-anchor="end" class="fig-label fig-small">0</text>
+<text x="608" y="40" text-anchor="end" class="fig-label">(b)</text>
+<text x="378" y="40" class="fig-label fig-it">P(a→b)</text>
+<path d="M62,230 L62.5,230 L63,230 L63.4,229.9 L63.9,229.9 L64.4,229.8 L64.9,229.8 L65.3,229.7 L65.8,229.6 L66.3,229.4 L66.8,229.3 L67.2,229.2 L67.7,229 L68.2,228.8 L68.7,228.7 L69.1,228.5 L69.6,228.2 L70.1,228 L70.6,227.8 L71,227.5 L71.5,227.3 L72,227 L72.5,226.7 L72.9,226.4 L73.4,226.1 L73.9,225.7 L74.4,225.4 L74.9,225 L75.3,224.7 L75.8,224.3 L76.3,223.9 L76.8,223.5 L77.2,223.1 L77.7,222.6 L78.2,222.2 L78.7,221.7 L79.1,221.3 L79.6,220.8 L80.1,220.3 L80.6,219.8 L81,219.3 L81.5,218.7 L82,218.2 L82.5,217.7 L82.9,217.1 L83.4,216.5 L83.9,215.9 L84.4,215.3 L84.8,214.7 L85.3,214.1 L85.8,213.5 L86.3,212.8 L86.8,212.2 L87.2,211.5 L87.7,210.9 L88.2,210.2 L88.7,209.5 L89.1,208.8 L89.6,208.1 L90.1,207.4 L90.6,206.6 L91,205.9 L91.5,205.1 L92,204.4 L92.5,203.6 L92.9,202.8 L93.4,202.1 L93.9,201.3 L94.4,200.5 L94.8,199.7 L95.3,198.8 L95.8,198 L96.3,197.2 L96.7,196.4 L97.2,195.5 L97.7,194.7 L98.2,193.8 L98.7,192.9 L99.1,192.1 L99.6,191.2 L100.1,190.3 L100.6,189.4 L101,188.5 L101.5,187.6 L102,186.7 L102.5,185.8 L102.9,184.8 L103.4,183.9 L103.9,183 L104.4,182 L104.8,181.1 L105.3,180.2 L105.8,179.2 L106.3,178.3 L106.7,177.3 L107.2,176.3 L107.7,175.4 L108.2,174.4 L108.6,173.4 L109.1,172.5 L109.6,171.5 L110.1,170.5 L110.6,169.5 L111,168.5 L111.5,167.6 L112,166.6 L112.5,165.6 L112.9,164.6 L113.4,163.6 L113.9,162.6 L114.4,161.6 L114.8,160.6 L115.3,159.6 L115.8,158.6 L116.3,157.6 L116.7,156.6 L117.2,155.6 L117.7,154.7 L118.2,153.7 L118.6,152.7 L119.1,151.7 L119.6,150.7 L120.1,149.7 L120.5,148.7 L121,147.7 L121.5,146.7 L122,145.8 L122.5,144.8 L122.9,143.8 L123.4,142.8 L123.9,141.9 L124.4,140.9 L124.8,139.9 L125.3,139 L125.8,138 L126.3,137 L126.7,136.1 L127.2,135.1 L127.7,134.2 L128.2,133.3 L128.6,132.3 L129.1,131.4 L129.6,130.5 L130.1,129.6 L130.5,128.7 L131,127.8 L131.5,126.9 L132,126 L132.4,125.1 L132.9,124.2 L133.4,123.3 L133.9,122.4 L134.4,121.6 L134.8,120.7 L135.3,119.9 L135.8,119 L136.3,118.2 L136.7,117.4 L137.2,116.6 L137.7,115.8 L138.2,115 L138.6,114.2 L139.1,113.4 L139.6,112.6 L140.1,111.8 L140.5,111.1 L141,110.3 L141.5,109.6 L142,108.8 L142.4,108.1 L142.9,107.4 L143.4,106.7 L143.9,106 L144.3,105.3 L144.8,104.7 L145.3,104 L145.8,103.3 L146.3,102.7 L146.7,102.1 L147.2,101.4 L147.7,100.8 L148.2,100.2 L148.6,99.6 L149.1,99.1 L149.6,98.5 L150.1,97.9 L150.5,97.4 L151,96.9 L151.5,96.4 L152,95.8 L152.4,95.3 L152.9,94.9 L153.4,94.4 L153.9,93.9 L154.3,93.5 L154.8,93 L155.3,92.6 L155.8,92.2 L156.2,91.8 L156.7,91.4 L157.2,91.1 L157.7,90.7 L158.2,90.3 L158.6,90 L159.1,89.7 L159.6,89.4 L160.1,89.1 L160.5,88.8 L161,88.5 L161.5,88.3 L162,88 L162.4,87.8 L162.9,87.6 L163.4,87.4 L163.9,87.2 L164.3,87 L164.8,86.9 L165.3,86.7 L165.8,86.6 L166.2,86.5 L166.7,86.4 L167.2,86.3 L167.7,86.2 L168.1,86.1 L168.6,86.1 L169.1,86 L169.6,86 L170.1,86 L170.5,86 L171,86 L171.5,86.1 L172,86.1 L172.4,86.2 L172.9,86.2 L173.4,86.3 L173.9,86.4 L174.3,86.5 L174.8,86.6 L175.3,86.8 L175.8,86.9 L176.2,87.1 L176.7,87.3 L177.2,87.5 L177.7,87.7 L178.1,87.9 L178.6,88.2 L179.1,88.4 L179.6,88.7 L180,88.9 L180.5,89.2 L181,89.5 L181.5,89.8 L182,90.2 L182.4,90.5 L182.9,90.9 L183.4,91.2 L183.9,91.6 L184.3,92 L184.8,92.4 L185.3,92.8 L185.8,93.2 L186.2,93.7 L186.7,94.1 L187.2,94.6 L187.7,95.1 L188.1,95.6 L188.6,96.1 L189.1,96.6 L189.6,97.1 L190,97.6 L190.5,98.2 L191,98.8 L191.5,99.3 L191.9,99.9 L192.4,100.5 L192.9,101.1 L193.4,101.7 L193.9,102.4 L194.3,103 L194.8,103.6 L195.3,104.3 L195.8,105 L196.2,105.6 L196.7,106.3 L197.2,107 L197.7,107.7 L198.1,108.4 L198.6,109.2 L199.1,109.9 L199.6,110.7 L200,111.4 L200.5,112.2 L201,112.9 L201.5,113.7 L201.9,114.5 L202.4,115.3 L202.9,116.1 L203.4,116.9 L203.8,117.8 L204.3,118.6 L204.8,119.4 L205.3,120.3 L205.8,121.1 L206.2,122 L206.7,122.8 L207.2,123.7 L207.7,124.6 L208.1,125.5 L208.6,126.4 L209.1,127.3 L209.6,128.2 L210,129.1 L210.5,130 L211,130.9 L211.5,131.8 L211.9,132.8 L212.4,133.7 L212.9,134.6 L213.4,135.6 L213.8,136.5 L214.3,137.5 L214.8,138.4 L215.3,139.4 L215.7,140.4 L216.2,141.3 L216.7,142.3 L217.2,143.3 L217.7,144.2 L218.1,145.2 L218.6,146.2 L219.1,147.2 L219.6,148.2 L220,149.2 L220.5,150.1 L221,151.1 L221.5,152.1 L221.9,153.1 L222.4,154.1 L222.9,155.1 L223.4,156.1 L223.8,157.1 L224.3,158.1 L224.8,159.1 L225.3,160.1 L225.7,161.1 L226.2,162.1 L226.7,163.1 L227.2,164.1 L227.6,165 L228.1,166 L228.6,167 L229.1,168 L229.6,169 L230,170 L230.5,171 L231,171.9 L231.5,172.9 L231.9,173.9 L232.4,174.9 L232.9,175.8 L233.4,176.8 L233.8,177.7 L234.3,178.7 L234.8,179.6 L235.3,180.6 L235.7,181.5 L236.2,182.5 L236.7,183.4 L237.2,184.3 L237.6,185.3 L238.1,186.2 L238.6,187.1 L239.1,188 L239.5,188.9 L240,189.8 L240.5,190.7 L241,191.6 L241.5,192.4 L241.9,193.3 L242.4,194.2 L242.9,195 L243.4,195.9 L243.8,196.7 L244.3,197.6 L244.8,198.4 L245.3,199.2 L245.7,200 L246.2,200.8 L246.7,201.6 L247.2,202.4 L247.6,203.2 L248.1,204 L248.6,204.7 L249.1,205.5 L249.5,206.2 L250,207 L250.5,207.7 L251,208.4 L251.4,209.1 L251.9,209.8 L252.4,210.5 L252.9,211.2 L253.4,211.8 L253.8,212.5 L254.3,213.1 L254.8,213.8 L255.3,214.4 L255.7,215 L256.2,215.6 L256.7,216.2 L257.2,216.8 L257.6,217.3 L258.1,217.9 L258.6,218.4 L259.1,219 L259.5,219.5 L260,220 L260.5,220.5 L261,221 L261.4,221.5 L261.9,221.9 L262.4,222.4 L262.9,222.8 L263.3,223.3 L263.8,223.7 L264.3,224.1 L264.8,224.5 L265.3,224.8 L265.7,225.2 L266.2,225.6 L266.7,225.9 L267.2,226.2 L267.6,226.5 L268.1,226.8 L268.6,227.1 L269.1,227.4 L269.5,227.6 L270,227.9 L270.5,228.1 L271,228.3 L271.4,228.5 L271.9,228.7 L272.4,228.9 L272.9,229.1 L273.3,229.2 L273.8,229.4 L274.3,229.5 L274.8,229.6 L275.2,229.7 L275.7,229.8 L276.2,229.9 L276.7,229.9 L277.2,230 L277.6,230 L278.1,230 L278.6,230 L279.1,230 L279.5,230 L280,229.9 L280.5,229.9 L281,229.8 L281.4,229.7 L281.9,229.6 L282.4,229.5 L282.9,229.4 L283.3,229.2 L283.8,229.1 L284.3,228.9 L284.8,228.8 L285.2,228.6 L285.7,228.4 L286.2,228.1 L286.7,227.9 L287.1,227.7 L287.6,227.4 L288.1,227.1 L288.6,226.9 L289.1,226.6 L289.5,226.2 L290,225.9 L290.5,225.6 L291,225.2 L291.4,224.9 L291.9,224.5 L292.4,224.1 L292.9,223.7 L293.3,223.3 L293.8,222.9 L294.3,222.4 L294.8,222 L295.2,221.5 L295.7,221.1 L296.2,220.6 L296.7,220.1 L297.1,219.6 L297.6,219 L298.1,218.5 L298.6,218 L299,217.4 L299.5,216.8 L300,216.2" class="fig-curve"/>
+<path d="M62,230 L62.5,230 L63,230 L63.4,229.9 L63.9,229.9 L64.4,229.8 L64.9,229.8 L65.3,229.7 L65.8,229.6 L66.3,229.4 L66.8,229.3 L67.2,229.2 L67.7,229 L68.2,228.8 L68.7,228.7 L69.1,228.5 L69.6,228.2 L70.1,228 L70.6,227.8 L71,227.5 L71.5,227.2 L72,227 L72.5,226.7 L72.9,226.4 L73.4,226 L73.9,225.7 L74.4,225.3 L74.9,225 L75.3,224.6 L75.8,224.2 L76.3,223.8 L76.8,223.4 L77.2,223 L77.7,222.5 L78.2,222 L78.7,221.6 L79.1,221.1 L79.6,220.6 L80.1,220.1 L80.6,219.5 L81,219 L81.5,218.4 L82,217.9 L82.5,217.3 L82.9,216.7 L83.4,216.1 L83.9,215.4 L84.4,214.8 L84.8,214.2 L85.3,213.5 L85.8,212.8 L86.3,212.1 L86.8,211.4 L87.2,210.7 L87.7,209.9 L88.2,209.2 L88.7,208.4 L89.1,207.7 L89.6,206.9 L90.1,206.1 L90.6,205.2 L91,204.4 L91.5,203.6 L92,202.7 L92.5,201.8 L92.9,200.9 L93.4,200 L93.9,199.1 L94.4,198.2 L94.8,197.3 L95.3,196.3 L95.8,195.3 L96.3,194.3 L96.7,193.3 L97.2,192.3 L97.7,191.3 L98.2,190.3 L98.7,189.2 L99.1,188.1 L99.6,187.1 L100.1,186 L100.6,184.9 L101,183.7 L101.5,182.6 L102,181.5 L102.5,180.3 L102.9,179.1 L103.4,177.9 L103.9,176.7 L104.4,175.5 L104.8,174.3 L105.3,173 L105.8,171.8 L106.3,170.5 L106.7,169.2 L107.2,167.9 L107.7,166.6 L108.2,165.3 L108.6,163.9 L109.1,162.6 L109.6,161.2 L110.1,159.8 L110.6,158.4 L111,157 L111.5,155.6 L112,154.2 L112.5,152.7 L112.9,151.2 L113.4,149.8 L113.9,148.3 L114.4,146.8 L114.8,145.2 L115.3,143.7 L115.8,142.2 L116.3,140.6 L116.7,139 L117.2,137.4 L117.7,135.8 L118.2,134.2 L118.6,132.6 L119.1,130.9 L119.6,129.3 L120.1,127.6 L120.5,125.9 L121,124.2 L121.5,122.5 L122,120.8 L122.5,119.1 L122.9,117.3 L123.4,115.5 L123.9,113.7 L124.4,112 L124.8,110.1 L125.3,108.3 L125.8,106.5 L126.3,104.6 L126.7,102.8 L127.2,100.9 L127.7,99 L128.2,97.1 L128.6,95.2 L129.1,93.2 L129.6,91.3 L130.1,89.3 L130.5,87.4 L131,85.4 L131.5,83.4 L132,81.4 L132.4,79.3 L132.9,77.3 L133.4,75.2 L133.9,73.2 L134.4,71.1 L134.8,69 L135.3,66.9 L135.8,64.7 L136.3,62.6 L136.7,60.4 L137.2,58.3 L137.7,56.1 L138.2,53.9 L138.6,51.7" class="fig-curve fig-dashed"/>
+<line x1="170.2" y1="230" x2="170.2" y2="235" class="fig-axis"/>
+<text x="170.2" y="249" text-anchor="middle" class="fig-label fig-small">π</text>
+<line x1="278.4" y1="230" x2="278.4" y2="235" class="fig-axis"/>
+<text x="278.4" y="249" text-anchor="middle" class="fig-label fig-small">2π</text>
+<text x="181" y="268" text-anchor="middle" class="fig-label fig-it">|V_ab| t / ħ</text>
+<path d="M372,230 L372.5,230 L373,229.9 L373.4,229.8 L373.9,229.6 L374.4,229.3 L374.9,229 L375.3,228.7 L375.8,228.3 L376.3,227.8 L376.8,227.3 L377.2,226.7 L377.7,226.1 L378.2,225.4 L378.7,224.7 L379.1,224 L379.6,223.2 L380.1,222.3 L380.6,221.4 L381,220.5 L381.5,219.5 L382,218.5 L382.5,217.5 L382.9,216.4 L383.4,215.3 L383.9,214.1 L384.4,212.9 L384.9,211.7 L385.3,210.5 L385.8,209.2 L386.3,207.9 L386.8,206.6 L387.2,205.3 L387.7,204 L388.2,202.6 L388.7,201.2 L389.1,199.9 L389.6,198.5 L390.1,197.1 L390.6,195.7 L391,194.2 L391.5,192.8 L392,191.4 L392.5,190 L392.9,188.6 L393.4,187.3 L393.9,185.9 L394.4,184.5 L394.8,183.2 L395.3,181.8 L395.8,180.5 L396.3,179.2 L396.8,177.9 L397.2,176.7 L397.7,175.5 L398.2,174.3 L398.7,173.1 L399.1,172 L399.6,170.9 L400.1,169.8 L400.6,168.8 L401,167.8 L401.5,166.9 L402,166 L402.5,165.1 L402.9,164.3 L403.4,163.5 L403.9,162.8 L404.4,162.1 L404.8,161.5 L405.3,160.9 L405.8,160.4 L406.3,159.9 L406.7,159.5 L407.2,159.1 L407.7,158.8 L408.2,158.5 L408.7,158.3 L409.1,158.2 L409.6,158.1 L410.1,158 L410.6,158 L411,158.1 L411.5,158.2 L412,158.4 L412.5,158.6 L412.9,158.9 L413.4,159.2 L413.9,159.6 L414.4,160 L414.8,160.5 L415.3,161.1 L415.8,161.7 L416.3,162.3 L416.7,163 L417.2,163.7 L417.7,164.5 L418.2,165.4 L418.6,166.2 L419.1,167.2 L419.6,168.1 L420.1,169.1 L420.6,170.1 L421,171.2 L421.5,172.3 L422,173.5 L422.5,174.6 L422.9,175.8 L423.4,177.1 L423.9,178.3 L424.4,179.6 L424.8,180.9 L425.3,182.2 L425.8,183.6 L426.3,184.9 L426.7,186.3 L427.2,187.7 L427.7,189 L428.2,190.4 L428.6,191.8 L429.1,193.3 L429.6,194.7 L430.1,196.1 L430.5,197.5 L431,198.9 L431.5,200.3 L432,201.6 L432.5,203 L432.9,204.4 L433.4,205.7 L433.9,207 L434.4,208.3 L434.8,209.6 L435.3,210.9 L435.8,212.1 L436.3,213.3 L436.7,214.5 L437.2,215.6 L437.7,216.7 L438.2,217.8 L438.6,218.8 L439.1,219.8 L439.6,220.8 L440.1,221.7 L440.5,222.6 L441,223.4 L441.5,224.2 L442,225 L442.4,225.6 L442.9,226.3 L443.4,226.9 L443.9,227.4 L444.4,227.9 L444.8,228.4 L445.3,228.8 L445.8,229.1 L446.3,229.4 L446.7,229.6 L447.2,229.8 L447.7,229.9 L448.2,230 L448.6,230 L449.1,230 L449.6,229.9 L450.1,229.7 L450.5,229.5 L451,229.2 L451.5,228.9 L452,228.5 L452.4,228.1 L452.9,227.6 L453.4,227.1 L453.9,226.5 L454.3,225.9 L454.8,225.2 L455.3,224.5 L455.8,223.8 L456.3,222.9 L456.7,222.1 L457.2,221.2 L457.7,220.2 L458.2,219.3 L458.6,218.2 L459.1,217.2 L459.6,216.1 L460.1,214.9 L460.5,213.8 L461,212.6 L461.5,211.4 L462,210.1 L462.4,208.9 L462.9,207.6 L463.4,206.3 L463.9,204.9 L464.3,203.6 L464.8,202.2 L465.3,200.8 L465.8,199.4 L466.2,198 L466.7,196.6 L467.2,195.2 L467.7,193.8 L468.2,192.4 L468.6,191 L469.1,189.6 L469.6,188.2 L470.1,186.8 L470.5,185.5 L471,184.1 L471.5,182.8 L472,181.4 L472.4,180.1 L472.9,178.8 L473.4,177.6 L473.9,176.3 L474.3,175.1 L474.8,173.9 L475.3,172.8 L475.8,171.7 L476.2,170.6 L476.7,169.5 L477.2,168.5 L477.7,167.5 L478.1,166.6 L478.6,165.7 L479.1,164.9 L479.6,164.1 L480.1,163.3 L480.5,162.6 L481,161.9 L481.5,161.3 L482,160.7 L482.4,160.2 L482.9,159.8 L483.4,159.4 L483.9,159 L484.3,158.7 L484.8,158.5 L485.3,158.3 L485.8,158.1 L486.2,158 L486.7,158 L487.2,158 L487.7,158.1 L488.1,158.2 L488.6,158.4 L489.1,158.7 L489.6,159 L490,159.3 L490.5,159.7 L491,160.2 L491.5,160.7 L492,161.2 L492.4,161.9 L492.9,162.5 L493.4,163.2 L493.9,164 L494.3,164.8 L494.8,165.6 L495.3,166.5 L495.8,167.4 L496.2,168.4 L496.7,169.4 L497.2,170.5 L497.7,171.5 L498.1,172.7 L498.6,173.8 L499.1,175 L499.6,176.2 L500,177.4 L500.5,178.7 L501,180 L501.5,181.3 L501.9,182.6 L502.4,184 L502.9,185.3 L503.4,186.7 L503.9,188.1 L504.3,189.5 L504.8,190.9 L505.3,192.3 L505.8,193.7 L506.2,195.1 L506.7,196.5 L507.2,197.9 L507.7,199.3 L508.1,200.7 L508.6,202 L509.1,203.4 L509.6,204.8 L510,206.1 L510.5,207.4 L511,208.7 L511.5,210 L511.9,211.2 L512.4,212.5 L512.9,213.6 L513.4,214.8 L513.8,215.9 L514.3,217 L514.8,218.1 L515.3,219.1 L515.8,220.1 L516.2,221.1 L516.7,222 L517.2,222.8 L517.7,223.7 L518.1,224.4 L518.6,225.2 L519.1,225.8 L519.6,226.5 L520,227.1 L520.5,227.6 L521,228.1 L521.5,228.5 L521.9,228.9 L522.4,229.2 L522.9,229.5 L523.4,229.7 L523.8,229.8 L524.3,229.9 L524.8,230 L525.3,230 L525.7,229.9 L526.2,229.8 L526.7,229.6 L527.2,229.4 L527.7,229.1 L528.1,228.8 L528.6,228.4 L529.1,228 L529.6,227.5 L530,227 L530.5,226.4 L531,225.7 L531.5,225 L531.9,224.3 L532.4,223.5 L532.9,222.7 L533.4,221.8 L533.8,220.9 L534.3,219.9 L534.8,219 L535.3,217.9 L535.7,216.9 L536.2,215.7 L536.7,214.6 L537.2,213.4 L537.6,212.2 L538.1,211 L538.6,209.8 L539.1,208.5 L539.6,207.2 L540,205.9 L540.5,204.5 L541,203.2 L541.5,201.8 L541.9,200.4 L542.4,199 L542.9,197.6 L543.4,196.2 L543.8,194.8 L544.3,193.4 L544.8,192 L545.3,190.6 L545.7,189.2 L546.2,187.8 L546.7,186.4 L547.2,185.1 L547.6,183.7 L548.1,182.4 L548.6,181.1 L549.1,179.7 L549.5,178.5 L550,177.2 L550.5,176 L551,174.8 L551.5,173.6 L551.9,172.5 L552.4,171.3 L552.9,170.3 L553.4,169.2 L553.8,168.2 L554.3,167.3 L554.8,166.3 L555.3,165.5 L555.7,164.6 L556.2,163.8 L556.7,163.1 L557.2,162.4 L557.6,161.7 L558.1,161.1 L558.6,160.6 L559.1,160.1 L559.5,159.6 L560,159.3 L560.5,158.9 L561,158.6 L561.4,158.4 L561.9,158.2 L562.4,158.1 L562.9,158 L563.4,158 L563.8,158 L564.3,158.1 L564.8,158.3 L565.3,158.5 L565.7,158.8 L566.2,159.1 L566.7,159.4 L567.2,159.8 L567.6,160.3 L568.1,160.8 L568.6,161.4 L569.1,162 L569.5,162.7 L570,163.4 L570.5,164.2 L571,165 L571.4,165.9 L571.9,166.8 L572.4,167.7 L572.9,168.7 L573.3,169.7 L573.8,170.8 L574.3,171.9 L574.8,173 L575.3,174.1 L575.7,175.3 L576.2,176.6 L576.7,177.8 L577.2,179.1 L577.6,180.4 L578.1,181.7 L578.6,183 L579.1,184.3 L579.5,185.7 L580,187.1 L580.5,188.5 L581,189.9 L581.4,191.3 L581.9,192.7 L582.4,194.1 L582.9,195.5 L583.3,196.9 L583.8,198.3 L584.3,199.7 L584.8,201.1 L585.2,202.4 L585.7,203.8 L586.2,205.2 L586.7,206.5 L587.2,207.8 L587.6,209.1 L588.1,210.4 L588.6,211.6 L589.1,212.8 L589.5,214 L590,215.1 L590.5,216.3 L591,217.4 L591.4,218.4 L591.9,219.4 L592.4,220.4 L592.9,221.3 L593.3,222.2 L593.8,223.1 L594.3,223.9 L594.8,224.7 L595.2,225.4 L595.7,226 L596.2,226.7 L596.7,227.2 L597.1,227.7 L597.6,228.2 L598.1,228.6 L598.6,229 L599.1,229.3 L599.5,229.5 L600,229.7 L600.5,229.9 L601,230 L601.4,230 L601.9,230 L602.4,229.9 L602.9,229.8 L603.3,229.6 L603.8,229.3 L604.3,229.1 L604.8,228.7 L605.2,228.3 L605.7,227.9 L606.2,227.3 L606.7,226.8 L607.1,226.2 L607.6,225.5 L608.1,224.8 L608.6,224.1 L609,223.3 L609.5,222.4 L610,221.6" class="fig-curve"/>
+<path d="M372,230 L372.5,230 L373,229.9 L373.4,229.8 L373.9,229.6 L374.4,229.3 L374.9,229 L375.3,228.7 L375.8,228.2 L376.3,227.8 L376.8,227.3 L377.2,226.7 L377.7,226.1 L378.2,225.4 L378.7,224.7 L379.1,223.9 L379.6,223.1 L380.1,222.2 L380.6,221.3 L381,220.3 L381.5,219.3 L382,218.2 L382.5,217.1 L382.9,215.9 L383.4,214.7 L383.9,213.5 L384.4,212.2 L384.9,210.9 L385.3,209.5 L385.8,208.1 L386.3,206.6 L386.8,205.1 L387.2,203.6 L387.7,202.1 L388.2,200.5 L388.7,198.8 L389.1,197.2 L389.6,195.5 L390.1,193.8 L390.6,192.1 L391,190.3 L391.5,188.5 L392,186.7 L392.5,184.8 L392.9,183 L393.4,181.1 L393.9,179.2 L394.4,177.3 L394.8,175.4 L395.3,173.4 L395.8,171.5 L396.3,169.5 L396.8,167.6 L397.2,165.6 L397.7,163.6 L398.2,161.6 L398.7,159.6 L399.1,157.6 L399.6,155.6 L400.1,153.7 L400.6,151.7 L401,149.7 L401.5,147.7 L402,145.8 L402.5,143.8 L402.9,141.9 L403.4,139.9 L403.9,138 L404.4,136.1 L404.8,134.2 L405.3,132.3 L405.8,130.5 L406.3,128.7 L406.7,126.9 L407.2,125.1 L407.7,123.3 L408.2,121.6 L408.7,119.9 L409.1,118.2 L409.6,116.6 L410.1,115 L410.6,113.4 L411,111.8 L411.5,110.3 L412,108.8 L412.5,107.4 L412.9,106 L413.4,104.7 L413.9,103.3 L414.4,102.1 L414.8,100.8 L415.3,99.6 L415.8,98.5 L416.3,97.4 L416.7,96.4 L417.2,95.3 L417.7,94.4 L418.2,93.5 L418.6,92.6 L419.1,91.8 L419.6,91.1 L420.1,90.3 L420.6,89.7 L421,89.1 L421.5,88.5 L422,88 L422.5,87.6 L422.9,87.2 L423.4,86.9 L423.9,86.6 L424.4,86.4 L424.8,86.2 L425.3,86.1 L425.8,86 L426.3,86 L426.7,86.1 L427.2,86.2 L427.7,86.3 L428.2,86.5 L428.6,86.8 L429.1,87.1 L429.6,87.5 L430.1,87.9 L430.5,88.4 L431,88.9 L431.5,89.5 L432,90.2 L432.5,90.9 L432.9,91.6 L433.4,92.4 L433.9,93.2 L434.4,94.1 L434.8,95.1 L435.3,96.1 L435.8,97.1 L436.3,98.2 L436.7,99.3 L437.2,100.5 L437.7,101.7 L438.2,103 L438.6,104.3 L439.1,105.6 L439.6,107 L440.1,108.4 L440.5,109.9 L441,111.4 L441.5,112.9 L442,114.5 L442.4,116.1 L442.9,117.8 L443.4,119.4 L443.9,121.1 L444.4,122.8 L444.8,124.6 L445.3,126.4 L445.8,128.2 L446.3,130 L446.7,131.8 L447.2,133.7 L447.7,135.6 L448.2,137.5 L448.6,139.4 L449.1,141.3 L449.6,143.3 L450.1,145.2 L450.5,147.2 L451,149.2 L451.5,151.1 L452,153.1 L452.4,155.1 L452.9,157.1 L453.4,159.1 L453.9,161.1 L454.3,163.1 L454.8,165 L455.3,167 L455.8,169 L456.3,171 L456.7,172.9 L457.2,174.9 L457.7,176.8 L458.2,178.7 L458.6,180.6 L459.1,182.5 L459.6,184.3 L460.1,186.2 L460.5,188 L461,189.8 L461.5,191.6 L462,193.3 L462.4,195 L462.9,196.7 L463.4,198.4 L463.9,200 L464.3,201.6 L464.8,203.2 L465.3,204.7 L465.8,206.2 L466.2,207.7 L466.7,209.1 L467.2,210.5 L467.7,211.8 L468.2,213.1 L468.6,214.4 L469.1,215.6 L469.6,216.8 L470.1,217.9 L470.5,219 L471,220 L471.5,221 L472,221.9 L472.4,222.8 L472.9,223.7 L473.4,224.5 L473.9,225.2 L474.3,225.9 L474.8,226.5 L475.3,227.1 L475.8,227.6 L476.2,228.1 L476.7,228.5 L477.2,228.9 L477.7,229.2 L478.1,229.5 L478.6,229.7 L479.1,229.9 L479.6,230 L480.1,230 L480.5,230 L481,229.9 L481.5,229.8 L482,229.6 L482.4,229.4 L482.9,229.1 L483.4,228.8 L483.9,228.4 L484.3,227.9 L484.8,227.4 L485.3,226.9 L485.8,226.2 L486.2,225.6 L486.7,224.9 L487.2,224.1 L487.7,223.3 L488.1,222.4 L488.6,221.5 L489.1,220.6 L489.6,219.6 L490,218.5 L490.5,217.4 L491,216.2 L491.5,215.1 L492,213.8 L492.4,212.5 L492.9,211.2 L493.4,209.9 L493.9,208.5 L494.3,207 L494.8,205.5 L495.3,204 L495.8,202.5 L496.2,200.9 L496.7,199.3 L497.2,197.6 L497.7,196 L498.1,194.3 L498.6,192.5 L499.1,190.8 L499.6,189 L500,187.2 L500.5,185.3 L501,183.5 L501.5,181.6 L501.9,179.7 L502.4,177.8 L502.9,175.9 L503.4,174 L503.9,172 L504.3,170.1 L504.8,168.1 L505.3,166.1 L505.8,164.1 L506.2,162.2 L506.7,160.2 L507.2,158.2 L507.7,156.2 L508.1,154.2 L508.6,152.2 L509.1,150.2 L509.6,148.3 L510,146.3 L510.5,144.3 L511,142.4 L511.5,140.4 L511.9,138.5 L512.4,136.6 L512.9,134.7 L513.4,132.8 L513.8,131 L514.3,129.2 L514.8,127.3 L515.3,125.6 L515.8,123.8 L516.2,122.1 L516.7,120.3 L517.2,118.7 L517.7,117 L518.1,115.4 L518.6,113.8 L519.1,112.2 L519.6,110.7 L520,109.2 L520.5,107.8 L521,106.4 L521.5,105 L521.9,103.7 L522.4,102.4 L522.9,101.2 L523.4,100 L523.8,98.8 L524.3,97.7 L524.8,96.6 L525.3,95.6 L525.7,94.6 L526.2,93.7 L526.7,92.9 L527.2,92 L527.7,91.3 L528.1,90.5 L528.6,89.9 L529.1,89.2 L529.6,88.7 L530,88.2 L530.5,87.7 L531,87.3 L531.5,87 L531.9,86.7 L532.4,86.4 L532.9,86.2 L533.4,86.1 L533.8,86 L534.3,86 L534.8,86 L535.3,86.1 L535.7,86.3 L536.2,86.5 L536.7,86.7 L537.2,87 L537.6,87.4 L538.1,87.8 L538.6,88.3 L539.1,88.8 L539.6,89.4 L540,90 L540.5,90.7 L541,91.4 L541.5,92.2 L541.9,93 L542.4,93.9 L542.9,94.8 L543.4,95.8 L543.8,96.8 L544.3,97.9 L544.8,99 L545.3,100.2 L545.7,101.4 L546.2,102.6 L546.7,103.9 L547.2,105.3 L547.6,106.6 L548.1,108.1 L548.6,109.5 L549.1,111 L549.5,112.5 L550,114.1 L550.5,115.7 L551,117.3 L551.5,119 L551.9,120.7 L552.4,122.4 L552.9,124.1 L553.4,125.9 L553.8,127.7 L554.3,129.5 L554.8,131.3 L555.3,133.2 L555.7,135.1 L556.2,137 L556.7,138.9 L557.2,140.8 L557.6,142.7 L558.1,144.7 L558.6,146.6 L559.1,148.6 L559.5,150.6 L560,152.6 L560.5,154.6 L561,156.6 L561.4,158.5 L561.9,160.5 L562.4,162.5 L562.9,164.5 L563.4,166.5 L563.8,168.5 L564.3,170.4 L564.8,172.4 L565.3,174.3 L565.7,176.3 L566.2,178.2 L566.7,180.1 L567.2,182 L567.6,183.8 L568.1,185.7 L568.6,187.5 L569.1,189.3 L569.5,191.1 L570,192.8 L570.5,194.6 L571,196.3 L571.4,197.9 L571.9,199.6 L572.4,201.2 L572.9,202.8 L573.3,204.3 L573.8,205.8 L574.3,207.3 L574.8,208.7 L575.3,210.1 L575.7,211.5 L576.2,212.8 L576.7,214 L577.2,215.3 L577.6,216.5 L578.1,217.6 L578.6,218.7 L579.1,219.7 L579.5,220.7 L580,221.7 L580.5,222.6 L581,223.5 L581.4,224.3 L581.9,225 L582.4,225.7 L582.9,226.4 L583.3,227 L583.8,227.5 L584.3,228 L584.8,228.4 L585.2,228.8 L585.7,229.2 L586.2,229.4 L586.7,229.7 L587.2,229.8 L587.6,229.9 L588.1,230 L588.6,230 L589.1,229.9 L589.5,229.8 L590,229.7 L590.5,229.5 L591,229.2 L591.4,228.9 L591.9,228.5 L592.4,228 L592.9,227.6 L593.3,227 L593.8,226.4 L594.3,225.8 L594.8,225.1 L595.2,224.3 L595.7,223.5 L596.2,222.7 L596.7,221.8 L597.1,220.8 L597.6,219.8 L598.1,218.8 L598.6,217.7 L599.1,216.6 L599.5,215.4 L600,214.2 L600.5,212.9 L601,211.6 L601.4,210.2 L601.9,208.8 L602.4,207.4 L602.9,206 L603.3,204.4 L603.8,202.9 L604.3,201.3 L604.8,199.7 L605.2,198.1 L605.7,196.4 L606.2,194.7 L606.7,193 L607.1,191.3 L607.6,189.5 L608.1,187.7 L608.6,185.8 L609,184 L609.5,182.1 L610,180.2" class="fig-curve fig-dashed"/>
+<line x1="480.2" y1="230" x2="480.2" y2="235" class="fig-axis"/>
+<text x="480.2" y="249" text-anchor="middle" class="fig-label fig-small">2π</text>
+<line x1="588.4" y1="230" x2="588.4" y2="235" class="fig-axis"/>
+<text x="588.4" y="249" text-anchor="middle" class="fig-label fig-small">4π</text>
+<text x="491" y="268" text-anchor="middle" class="fig-label fig-it">|ω₀ − ω| t</text>
+</svg>
+                    <figcaption><strong>Figura 11.4-A.</strong> Solução exata de Rabi (curva cheia) e primeira ordem, Eq. (11.35)
+                        (tracejada). (a) Na ressonância: a exata oscila entre 0 e 1; a de primeira ordem, $(|V_{ab}|t/2\hbar)^2$,
+                        acompanha só o começo e passa de 1. (b) Fora da ressonância, com $|V_{ab}|/\hbar = |\omega_0 - \omega|$
+                        (campo nada fraco): a exata oscila até $\tfrac12$ com frequência $\omega_r = |\omega_0 - \omega|/\sqrt2$,
+                        enquanto a primeira ordem prevê amplitude 1 e período $2\pi/|\omega_0 - \omega|$.</figcaption>
+                </figure>
+
+                <h2 id="conexao">Conexão com o experimento</h2>
+
+                <p>O sistema de dois níveis sob um campo oscilante é uma das situações mais bem controladas da física
+                    experimental, e as previsões desta seção são vistas quase literalmente.</p>
+                <ul>
+                    <li><strong>Ressonância magnética.</strong> O método de feixes moleculares de Rabi (fim da década de 1930)
+                        mede momentos magnéticos nucleares assim: um spin num campo estático tem dois níveis separados por
+                        $\hbar\omega_0$, um campo de radiofrequência faz o papel de $V\cos(\omega t)$, e varre-se $\omega$ até
+                        aparecer o pico da Figura 11.5. A ressonância magnética nuclear e a imagem por ressonância magnética
+                        usam o mesmo princípio, com pulsos de duração escolhida para fazer o spin dar meia volta (o "pulso
+                        $\pi$" da solução de Rabi) ou um quarto de volta.</li>
+                    <li><strong>Oscilações de Rabi diretas.</strong> Em átomos e íons aprisionados, e em qubits
+                        supercondutores, mede-se a população do nível de cima em função da duração do pulso e vê-se a senoide
+                        $\sin^2(\omega_rt)$, com a frequência crescendo com a amplitude do campo e com a dessintonia, como na
+                        Eq. (11.37). É assim que se calibram as portas lógicas de um computador quântico.</li>
+                    <li><strong>Largura da linha e tempo de observação.</strong> A largura $4\pi/t$ do pico da Figura 11.5 é a
+                        versão desta seção de uma relação geral: para distinguir duas frequências é preciso observar por um
+                        tempo da ordem do inverso da diferença entre elas.</li>
+                </ul>
+                <p>Onde o modelo falha: átomos reais têm mais de dois níveis (a Eq. 11.25 mostra como os outros entram, via
+                    estados intermediários), e o estado de cima decai sozinho, por emissão espontânea, com um tempo de vida
+                    finito que amortece as oscilações de Rabi. Esse decaimento não está no hamiltoniano desta seção; ele é o
+                    assunto da <a href="[03] - Emissão Espontânea.html">Seção 11.3</a>.</p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p id="exr-11-1-1"><strong>Exercício 11.1-1.</strong> (a) Resolva $df/dt = kf$ com $k$ constante. (b) E se
+                    $k = k(t)$? (c) Por que não fazer o mesmo com a equação de Schrödinger com hamiltoniano dependente do
+                    tempo? Considere $H(t) = H_1$ para $0 \lt t \lt \tau$ e $H(t) = H_2$ para $t \gt \tau$, com $H_1$ e $H_2$
+                    constantes, e compare $e^{-i[H_1\tau + H_2(t - \tau)]/\hbar}\Psi(0)$ com
+                    $e^{-iH_2(t - \tau)/\hbar}e^{-iH_1\tau/\hbar}\Psi(0)$.</p>
+                <p><em>Solução.</em> (a) $f(t) = f(0)\,e^{kt}$. (b) $f(t) = f(0)\exp\left[K(t)\right]$ com
+                    $K(t) = \int_0^tk(t')\,dt'$: derivando, $\dot f = \dot K\,e^{K}f(0) = k(t)f$, e a conta funciona porque
+                    $K(t)$ é um número, que comuta com a sua derivada. (c) Para operadores, a derivada de $e^{K(t)}$ só é
+                    $\dot K\,e^{K}$ se $\dot K$ comutar com $K$, isto é, se $H(t)$ comutar com $\int_0^tH(t')\,dt'$. No
+                    exemplo, a segunda expressão está certa: de $0$ a $\tau$ o hamiltoniano é constante e a evolução é
+                    $e^{-iH_1\tau/\hbar}$; a partir daí, aplica-se $e^{-iH_2(t - \tau)/\hbar}$ ao estado em $\tau$. A primeira
+                    só coincide com ela se $[H_1, H_2] = 0$. Para ver a diferença, expanda até a segunda ordem, com
+                    $A = -iH_2(t - \tau)/\hbar$ e $B = -iH_1\tau/\hbar$:</p>
+                <p>$$ \begin{aligned}
+                    e^Ae^B &= 1 + A + B + \tfrac12A^2 + AB + \tfrac12B^2 + \cdots, \\
+                    e^{A + B} &= 1 + A + B + \tfrac12\left(A^2 + AB + BA + B^2\right) + \cdots,
+                    \end{aligned} $$</p>
+                <p>de modo que $e^Ae^B - e^{A + B} = \tfrac12[A, B] + \cdots = -\dfrac{\tau(t - \tau)}{2\hbar^2}[H_2, H_1] + \cdots$,
+                    que não se anula se os hamiltonianos não comutam (por exemplo, $H_1 \propto \sigma_x$ e
+                    $H_2 \propto \sigma_z$ para um spin). A solução geral é uma exponencial "ordenada no tempo", e é a ela
+                    que a série de perturbação da Eq. (11.25) dá aproximações sucessivas.</p>
+
+                <p id="exr-11-1-2"><strong>Exercício 11.1-2.</strong> Um átomo de hidrogênio é posto num campo elétrico
+                    dependente do tempo $\mathbf E = E(t)\,\hat k$, de modo que $H' = eE(t)\,z$. Calcule os quatro elementos de
+                    matriz $H'_{ij}$ entre o estado fundamental ($n = 1$) e os quatro estados $n = 2$, e mostre que
+                    $H'_{ii} = 0$ para os cinco estados.</p>
+                <p><em>Solução.</em> Use a paridade em $z$ (a reflexão $z \to -z$, isto é, $\theta \to \pi - \theta$). O
+                    estado $\psi_{100}$ e o estado $\psi_{200}$ são pares; $\psi_{21\pm1} \propto \sin\theta\,e^{\pm i\phi}$
+                    também é par sob $\theta \to \pi - \theta$; só $\psi_{210} \propto \cos\theta$ é ímpar. Como $z$ é ímpar, o
+                    integrando $\psi_{100}^*\,z\,\psi_{2\ell m}$ é ímpar (e integra a zero) para $\psi_{200}$ e $\psi_{21\pm1}$;
+                    pelo mesmo motivo $H'_{ii} \propto \int z|\psi_i|^2\,d^3r = 0$ para os cinco estados, pois $|\psi_i|^2$ é
+                    par. Sobra uma única integral. Com $\psi_{100} = e^{-r/a}/\sqrt{\pi a^3}$ e
+                    $\psi_{210} = (r/a)\,e^{-r/2a}\cos\theta/\sqrt{32\pi a^3}$,</p>
+                <p>$$ \begin{aligned}
+                    \langle\psi_{100}|z|\psi_{210}\rangle &= \frac{2\pi}{\sqrt{32}\,\pi a^4}\int_0^\infty r^4e^{-3r/2a}\,dr\int_0^\pi\cos^2\theta\sin\theta\,d\theta \\
+                    &= \frac{2}{\sqrt{32}\,a^4}\cdot4!\left(\frac{2a}{3}\right)^5\cdot\frac23 = \frac{2^7\sqrt2}{3^5}\,a,
+                    \end{aligned} $$</p>
+                <p>isto é, $H'_{100,210} = H'_{210,100} = \dfrac{2^7\sqrt2}{3^5}\,eaE(t) \approx 0{,}745\,eaE(t)$, e os outros três
+                    elementos são nulos. Só $\psi_{210}$ é "acessível" a partir do fundamental com essa perturbação, de modo
+                    que o átomo funciona como um sistema de dois níveis, desde que se possam ignorar as transições para
+                    estados mais altos.</p>
+
+                <p id="exr-11-1-3"><strong>Exercício 11.1-3.</strong> Resolva a Eq. (11.17) para uma perturbação
+                    independente do tempo, $H'_{ab} = V_{ab}$ constante (ligada em $t = 0$), com $c_a(0) = 1$ e $c_b(0) = 0$.
+                    Confira que $|c_a|^2 + |c_b|^2 = 1$.</p>
+                <p><em>Solução.</em> As equações $\dot c_a = -(i/\hbar)V_{ab}e^{-i\omega_0t}c_b$,
+                    $\dot c_b = -(i/\hbar)V_{ba}e^{i\omega_0t}c_a$ são as de Rabi com $\delta = \omega - \omega_0$ trocado por
+                    $-\omega_0$ e $V/2$ trocado por $V$ (uma perturbação constante é uma "senoidal de frequência zero" sem o
+                    fator $\tfrac12$). A solução do <a href="#teo-oscilacoes-de-rabi">teorema de Rabi</a> dá, então,</p>
+                <p>$$ \begin{aligned}
+                    c_a(t) &= e^{-i\omega_0t/2}\left[\cos(\Omega t) + i\frac{\omega_0}{2\Omega}\sin(\Omega t)\right], \\
+                    c_b(t) &= -\frac{iV_{ba}}{\hbar\Omega}\,e^{i\omega_0t/2}\sin(\Omega t),
+                    \end{aligned} $$</p>
+                <p>com $\Omega = \sqrt{\omega_0^2/4 + |V_{ab}|^2/\hbar^2}$; a normalização sai como no teorema, de
+                    $\omega_0^2/4 + |V_{ab}|^2/\hbar^2 = \Omega^2$. O sistema oscila entre "$\psi_a$ puro" e "um pouco de
+                    $\psi_b$", com $|c_b|^2$ no máximo $4|V_{ab}|^2/(\hbar^2\omega_0^2 + 4|V_{ab}|^2)$. Como explicado na
+                    <a href="#obs-o-que-e-transicao">observação sobre o que conta como transição</a>, isso não é uma transição
+                    entre autoestados do hamiltoniano completo: é a decomposição de $\psi_a$ nos autoestados de
+                    $H^0 + H'$, que oscilam com frequências diferentes. Se a perturbação for desligada em $T$, a probabilidade
+                    de encontrar $E_b$ é $|c_b(T)|^2$.</p>
+
+                <p id="exr-11-1-4"><strong>Exercício 11.1-4.</strong> A perturbação é um impulso, $H' = U\,\delta(t)$, com
+                    $U_{aa} = U_{bb} = 0$ e $U_{ab} = U_{ba}^* \equiv \alpha$. Se $c_a(-\infty) = 1$ e $c_b(-\infty) = 0$, ache
+                    $c_a(t)$ e $c_b(t)$, confira a normalização e calcule a probabilidade de transição para $t \to \infty$.</p>
+                <p><em>Solução.</em> Não dá para "integrar o delta" ingenuamente: a equação de $\dot c_b$ envolve
+                    $\delta(t)\,c_a(t)$, e $c_a$ é justamente descontínuo em $t = 0$. Tratamos o delta como limite de
+                    retângulos de altura $U/\varepsilon$ em $0 \lt t \lt \varepsilon$. Fora do retângulo $H' = 0$ e os
+                    coeficientes são constantes. Dentro, como $\varepsilon \to 0$, os fatores $e^{\pm i\omega_0t}$ valem 1, e,
+                    com $\alpha = |\alpha|e^{i\varphi}$,</p>
+                <p>$$ \dot c_a = -\frac{i\alpha}{\hbar\varepsilon}\,c_b, \qquad \dot c_b = -\frac{i\alpha^*}{\hbar\varepsilon}\,c_a \quad\Rightarrow\quad \ddot c_a = -\frac{|\alpha|^2}{\hbar^2\varepsilon^2}\,c_a. $$</p>
+                <p>Com $c_a(0) = 1$ e $\dot c_a(0) = 0$ (pois $c_b(0) = 0$), $c_a = \cos(|\alpha|s/\hbar\varepsilon)$ e
+                    $c_b = (i\hbar\varepsilon/\alpha)\,\dot c_a = -ie^{-i\varphi}\sin(|\alpha|s/\hbar\varepsilon)$ para
+                    $0 \le s \le \varepsilon$. Em $s = \varepsilon$, e portanto para todo $t \gt 0$ no limite,</p>
+                <p>$$ c_a(t) = \cos\left(\frac{|\alpha|}{\hbar}\right), \qquad c_b(t) = -ie^{-i\varphi}\sin\left(\frac{|\alpha|}{\hbar}\right) \qquad (t \gt 0), $$</p>
+                <p>com $|c_a|^2 + |c_b|^2 = 1$, e $P_{a\to b} = \sin^2(|\alpha|/\hbar)$. A primeira ordem daria
+                    $|\alpha|^2/\hbar^2$, que é o primeiro termo da série de $\sin^2$: certa para $|\alpha| \ll \hbar$.</p>
+
+                <p id="exr-11-1-5"><strong>Exercício 11.1-5.</strong> Para a perturbação constante do
+                    <a href="#exr-11-1-3">Exercício 11.1-3</a>, calcule $c_a(t)$ e $c_b(t)$ até a segunda ordem e compare com
+                    o resultado exato.</p>
+                <p><em>Solução.</em> Pela Eq. (11.21), $c_b^{(2)} = c_b^{(1)} = -\dfrac{i}{\hbar}V_{ba}\displaystyle\int_0^te^{i\omega_0t'}dt' = -\dfrac{V_{ba}}{\hbar\omega_0}\left(e^{i\omega_0t} - 1\right)$.
+                    Pela Eq. (11.22), a integral interna é $(e^{i\omega_0t'} - 1)/i\omega_0$, e</p>
+                <p>$$ c_a^{(2)} = 1 - \frac{|V_{ab}|^2}{\hbar^2}\int_0^t\frac{1 - e^{-i\omega_0t'}}{i\omega_0}\,dt' = 1 + \frac{i|V_{ab}|^2}{\hbar^2\omega_0}\,t + \frac{|V_{ab}|^2}{\hbar^2\omega_0^2}\left(e^{-i\omega_0t} - 1\right). $$</p>
+                <p>No exato, $\Omega = \sqrt{\omega_0^2/4 + |V_{ab}|^2/\hbar^2} \approx \omega_0/2 + \eta$, com
+                    $\eta = |V_{ab}|^2/(\hbar^2\omega_0)$. Em ordem zero em $\eta$, $c_a = e^{-i\omega_0t/2}e^{i\omega_0t/2} = 1$.
+                    Derivando o colchete de $c_a$ em relação a $\Omega$ em $\Omega = \omega_0/2$,</p>
+                <p>$$ \frac{\partial}{\partial\Omega}\left[\cos\Omega t + \frac{i\omega_0}{2\Omega}\sin\Omega t\right]_{\Omega = \omega_0/2} = it\,e^{i\omega_0t/2} - \frac{2i}{\omega_0}\sin\frac{\omega_0t}{2}, $$</p>
+                <p>e, multiplicando por $\eta\,e^{-i\omega_0t/2}$ e usando $e^{-ix}\sin x = (1 - e^{-2ix})/2i$,
+                    $c_a \approx 1 + \eta\left[it - (1 - e^{-i\omega_0t})/\omega_0\right]$: exatamente $c_a^{(2)}$. Para $c_b$, a
+                    ordem mais baixa do exato é $-\dfrac{2iV_{ba}}{\hbar\omega_0}e^{i\omega_0t/2}\sin\dfrac{\omega_0t}{2} = -\dfrac{V_{ba}}{\hbar\omega_0}(e^{i\omega_0t} - 1)$,
+                    igual a $c_b^{(1)}$, e a correção seguinte já é de terceira ordem em $V$, o que explica por que $c_b$ não
+                    muda na segunda ordem. Note o termo $it|V_{ab}|^2/\hbar^2\omega_0$, que cresce com $t$: é o começo da
+                    expansão da fase $e^{i(\Omega - \omega_0/2)t} = 1 + i\eta t + \cdots$, e mostra que a série vale só para tempos limitados.</p>
+
+                <p id="exr-11-1-6"><strong>Exercício 11.1-6.</strong> Uma perturbação de dois níveis tem
+                    $H'_{ab} = H'_{ba} = \dfrac{\alpha}{\sqrt\pi\,\tau}\,e^{-(t/\tau)^2}$ e $H'_{aa} = H'_{bb} = 0$, com $\alpha$ e
+                    $\tau$ positivos. (a) Em primeira ordem, se o sistema começa em $a$ em $t = -\infty$, qual a probabilidade
+                    de encontrá-lo em $b$ em $t = +\infty$? (b) Tome o limite $\tau \to 0$ e compare com o
+                    <a href="#exr-11-1-4">Exercício 11.1-4</a>. (c) E o limite oposto, $\omega_0\tau \gg 1$?</p>
+                <p><em>Solução.</em> (a) Pela Eq. (11.21), agora com o limite inferior em $-\infty$, e completando o
+                    quadrado, $-t^2/\tau^2 + i\omega_0t = -(t - i\omega_0\tau^2/2)^2/\tau^2 - \omega_0^2\tau^2/4$:</p>
+                <p>$$ \begin{aligned}
+                    c_b(\infty) &= -\frac{i}{\hbar}\frac{\alpha}{\sqrt\pi\,\tau}\int_{-\infty}^{\infty}e^{-t^2/\tau^2 + i\omega_0t}\,dt \\
+                    &= -\frac{i\alpha}{\hbar}\,e^{-\omega_0^2\tau^2/4}, \\
+                    P_{a\to b} &= \frac{\alpha^2}{\hbar^2}\,e^{-\omega_0^2\tau^2/2}.
+                    \end{aligned} $$</p>
+                <p>(b) A gaussiana tem área $\alpha$, de modo que, para $\tau \to 0$, $H'_{ab} \to \alpha\,\delta(t)$, e
+                    $P \to \alpha^2/\hbar^2$: o resultado de primeira ordem do impulso, que concorda com o exato
+                    $\sin^2(\alpha/\hbar)$ quando $\alpha \ll \hbar$. (c) Para $\omega_0\tau \gg 1$ a probabilidade cai a zero
+                    exponencialmente: uma perturbação que liga e desliga <em>devagar</em> em comparação com o período interno
+                    $2\pi/\omega_0$ não provoca transição, por maior que seja o seu efeito enquanto age. É um exemplo do
+                    teorema adiabático, que veremos na <a href="[05] - A Aproximação Adiabática.html">Seção 11.5</a>.</p>
+
+                <p id="exr-11-1-7"><strong>Exercício 11.1-7.</strong> Não suponha $H'_{aa} = H'_{bb} = 0$. (a) Ache $c_a$ e
+                    $c_b$ em primeira ordem, com $c_a(0) = 1$, $c_b(0) = 0$, e mostre que $|c_a|^2 + |c_b|^2 = 1$ até a primeira
+                    ordem. (b) Mostre que as variáveis</p>
+                <p>$$ d_a \equiv e^{\frac{i}{\hbar}\int_0^tH'_{aa}(t')\,dt'}c_a, \qquad d_b \equiv e^{\frac{i}{\hbar}\int_0^tH'_{bb}(t')\,dt'}c_b \tag{11.26} $$</p>
+                <p>obedecem a</p>
+                <p>$$ \dot d_a = -\frac{i}{\hbar}e^{i\phi}H'_{ab}e^{-i\omega_0t}d_b, \qquad \dot d_b = -\frac{i}{\hbar}e^{-i\phi}H'_{ba}e^{i\omega_0t}d_a, \tag{11.27} $$</p>
+                <p>com</p>
+                <p>$$ \phi(t) \equiv \frac{1}{\hbar}\int_0^t\left[H'_{aa}(t') - H'_{bb}(t')\right]dt'. \tag{11.28} $$</p>
+                <p>(c) Use (b) para obter $c_a$ e $c_b$ em primeira ordem e compare com (a).</p>
+                <p><em>Solução.</em> (a) Inserindo $c_a = 1$, $c_b = 0$ no lado direito de (11.14) e (11.15),
+                    $c_a = 1 - \dfrac{i}{\hbar}\displaystyle\int_0^tH'_{aa}\,dt'$ e $c_b = -\dfrac{i}{\hbar}\displaystyle\int_0^tH'_{ba}e^{i\omega_0t'}dt'$.
+                    Como $H'_{aa}$ é real, $|c_a|^2 = 1 + \left(\tfrac1\hbar\int H'_{aa}\right)^2$, e a soma é
+                    $1 + O(H'^2)$. (b) Derivando $d_a$ e usando (11.14),
+                    $\dot d_a = \tfrac{i}{\hbar}H'_{aa}d_a + e^{\frac i\hbar\int H'_{aa}}\left(-\tfrac{i}{\hbar}\right)\left[c_aH'_{aa} + c_bH'_{ab}e^{-i\omega_0t}\right]$:
+                    o termo com $H'_{aa}$ se cancela, e sobra
+                    $-\tfrac{i}{\hbar}H'_{ab}e^{-i\omega_0t}\,e^{\frac i\hbar\int H'_{aa}}c_b = -\tfrac{i}{\hbar}H'_{ab}e^{-i\omega_0t}\,e^{\frac i\hbar\int(H'_{aa} - H'_{bb})}d_b$,
+                    que é a primeira das (11.27). A segunda sai igual. As equações têm a mesma estrutura da (11.17), com um
+                    fator $e^{\pm i\phi}$ a mais em $H'$: os termos diagonais viram fases. (c) Em primeira ordem,
+                    $d_a = 1$ e $d_b = -\tfrac{i}{\hbar}\int_0^te^{-i\phi}H'_{ba}e^{i\omega_0t'}dt'$; logo
+                    $c_a = e^{-\frac i\hbar\int H'_{aa}}$ e $c_b = e^{-\frac i\hbar\int H'_{bb}}d_b$. Expandindo as exponenciais
+                    até a primeira ordem em $H'$, recuperamos (a). A diferença está nas ordens superiores: em (c),
+                    $|c_a| = 1$ exatamente, de modo que o erro de normalização fica só em $|c_b|^2$; o método (b) soma
+                    automaticamente todas as ordens dos termos diagonais, que em (a) eram tratados como pequenos.</p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <ul>
+                    <li>A passagem da estática à dinâmica quântica: com $H$ constante as probabilidades não mudam
+                        (Eqs. 11.1–11.4); transições exigem $H'(t)$, e a solução ingênua por exponencial falha quando os
+                        hamiltonianos não comutam (<a href="#exr-11-1-1">Exercício 11.1-1</a>).</li>
+                    <li>As equações exatas de um sistema de dois níveis, (11.14)–(11.15), e a sua forma (11.17) quando os
+                        elementos diagonais se anulam; os termos diagonais viram fases (<a href="#exr-11-1-7">Exercício 11.1-7</a>).</li>
+                    <li>A teoria de perturbação dependente do tempo: ordens zero, um e dois, (11.20)–(11.22), com a normalização
+                        correta até a ordem calculada (<a href="#prop-normalizacao-por-ordem">proposição</a>); a leitura em
+                        diagramas (11.23)–(11.24) e a fórmula de muitos níveis (11.25), deduzida, com os estados
+                        intermediários virtuais.</li>
+                    <li>A probabilidade de transição para uma perturbação senoidal, (11.35): oscila no tempo e tem um pico de
+                        altura $\propto t^2$ e largura $\propto 1/t$ em torno da ressonância $\omega = \omega_0$.</li>
+                    <li>A solução exata de Rabi na aproximação de onda girante, com a frequência (11.37): nunca passa de 1,
+                        recupera (11.35) para campo fraco e leva o sistema inteiro ao estado de cima na ressonância.</li>
+                    <li>Casos-limite: perturbação constante, impulso, pulso gaussiano; um pulso lento não provoca transição
+                        (<a href="#exr-11-1-6">Exercício 11.1-6</a>), o que será retomado na Seção 11.5.</li>
+                </ul>
+                <p>Falta dizer <em>que</em> perturbação um átomo sente quando é iluminado: um campo elétrico oscilante, que,
+                    na aproximação de dipolo, é exatamente uma perturbação senoidal com $V_{ba} = -\wp E_0$. É o assunto da
+                    próxima seção: <a href="[02] - Emissão e Absorção de Radiação.html">11.2 Emissão e Absorção de Radiação</a>.</p>
+
+                <hr class="footnotes-sep">
+                <section class="footnotes">
+                    <ol>
+                        <li id="fn:1">
+                            <p>Note que $c_a$ é modificado em toda ordem par, e $c_b$ em toda ordem ímpar; isso não seria verdade
+                                se a perturbação tivesse termos diagonais, ou se o sistema começasse numa combinação linear dos
+                                dois estados. (Nota do livro.)<a href="#fnref:1" class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:2">
+                            <p>O livro trata a teoria de perturbação para sistemas de muitos níveis num problema do fim do
+                                capítulo; aqui a fórmula é deduzida logo em seguida. (Adaptado de nota do livro.)<a href="#fnref:2"
+                                class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:3">
+                            <p>Na Eq. (11.25) o livro escreve os elementos de matriz sem a linha, $H_{ni}$, $H_{nm}$, $H_{mi}$;
+                                trata-se, como na dedução acima, dos elementos da perturbação $H'$, pois os de $H^0$ são
+                                diagonais e já estão nas fases.<a href="#fnref:3" class="footnote-backref"
+                                aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:4">
+                            <p>Para $t$ muito pequeno, $P_{a\to b}$ não depende de $\omega$: o sistema precisa de alguns ciclos
+                                para "perceber" que a perturbação é periódica. (Nota do livro.) De fato, para
+                                $|\omega_0 - \omega|\,t \ll 1$, a Eq. (11.35) dá $P_{a\to b} \approx (|V_{ab}|t/2\hbar)^2$, sem
+                                $\omega$.<a href="#fnref:4" class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                    </ol>
+                </section>
+
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="toc-container">
+                <h4>Nesta página</h4>
+                <ul>
+                    <li><a href="#sistemas-de-dois-niveis">Sistemas de Dois Níveis</a></li>
+                    <li><a href="#dois-niveis">O sistema de dois níveis</a></li>
+                    <li><a href="#sistema-perturbado">O sistema perturbado</a></li>
+                    <li>
+                        <a href="#perturbacao-dependente">Perturbação dependente do tempo</a>
+                        <ul>
+                            <li><a href="#diagramas">Leitura em diagramas</a></li>
+                            <li><a href="#muitos-niveis">Muitos níveis</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#perturbacao-senoidal">Perturbações senoidais</a>
+                        <ul>
+                            <li><a href="#rabi">Oscilações de Rabi</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#conexao">Conexão com o experimento</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Search Modal Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-modal">
+            <div class="search-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search documentation..." autocomplete="off">
+            </div>
+            <div class="search-results" id="search-results"></div>
+            <div class="search-footer">
+                <div class="search-commands">
+                    <span class="cmd-key">↑</span>
+                    <span class="cmd-key">↓</span>
+                    <span class="cmd-label">navigate</span>
+                    <span class="cmd-key">↵</span>
+                    <span class="cmd-label">select</span>
+                </div>
+                <div class="search-commands">
+                    <span class="cmd-key">esc</span>
+                    <span class="cmd-label">close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../../../assets/js/class-lecture.js"></script>
+</body>
+
+</html>
