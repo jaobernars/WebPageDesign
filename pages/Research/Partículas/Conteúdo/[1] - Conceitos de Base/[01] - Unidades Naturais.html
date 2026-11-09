@@ -371,21 +371,172 @@
             <div class="prose">
 
                 <h1 id="unidades-naturais">2.1 Unidades Naturais</h1>
-                <p class="lead rev-revisar">Tópico 2.1 do estudo preparatório, em preparação.</p>
+                <p class="lead rev-revisar">Fazemos $\hbar = c = 1$ e medimos tudo em potências do GeV. Este tópico mostra por que essa escolha não perde informação, como recuperar os fatores de $\hbar$ e $c$ no fim de uma conta e por que a física de partículas também fixa $\varepsilon_0 = 1$, o que deixa $\alpha = e^2/4\pi$.</p>
 
-                <p class="rev-reescrever">Texto que precisa ser desenvolvido.</p>
+                <p class="rev-revisar">No <a class="ref-capitulo" href="../[0] - Introdução/[02] - Partículas, Interações e Escalas.html#res-1-2-1">Resultado 1.2.1</a> usamos $\bar\lambda = \hbar c/E$ para ligar a energia de uma sonda à distância que ela resolve, e toda conta daquele tópico carregou fatores de $\hbar$ e $c$. Nas fórmulas que vêm a seguir (amplitudes, taxas de decaimento, seções de choque) esses fatores apareceriam em toda parte sem acrescentar nada. A pergunta deste tópico é prática: <em>que sistema de unidades deixa as equações da física de partículas mais simples, e como se volta dele aos metros, segundos e barns que os experimentos publicam?</em></p>
 
-                <!-- <h2 id="o-que-se-mede">O que se mede</h2> -->
+                <p class="rev-revisar">A resposta tem duas partes. A primeira são as <em>unidades naturais</em> (<em>natural units</em>), em que $\hbar$ e $c$ valem 1 e sobra uma só unidade, a de energia. A segunda são as unidades de <em>Heaviside-Lorentz</em> para o eletromagnetismo, em que também $\varepsilon_0 = 1$. As duas são as do livro de Thomson e as de todo o estudo (<a class="ref-capitulo" href="../[0] - Introdução/[01] - Introdução ao Modelo Padrão.html">tópico 1.1</a>, notação).</p>
 
-                <!-- <div class="definition-box majorana rev-revisar" id="maj-2-1"><p><strong>Rumo a Majorana.</strong> …</p></div> -->
+                <h2 id="hbar-c-1">Fazer ħ = c = 1</h2>
+
+                <p class="rev-revisar">O SI mede massa, comprimento e tempo em quilogramas, metros e segundos, escalas feitas para objetos do dia a dia. A massa do elétron vale $9{,}1\times10^{-31}$ kg e o tamanho de um próton $10^{-15}$ m: no SI as contas da física de partículas vivem cheias de expoentes. Thomson propõe trocar a base $[\text{kg}, \text{m}, \text{s}]$ por $[\hbar, c, \text{GeV}]$: a unidade de ação da mecânica quântica, a velocidade da luz e uma unidade de energia próxima da energia de repouso do próton.</p>
+
+                <div class="definition-box rev-revisar" id="def-2-1-1" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 2.1.1 (Unidades naturais).</strong> Nas <em>unidades naturais</em> da física de partículas escolhemos</p>
+                    <p>$$ \hbar = c = 1 $$</p>
+                    <p>e exprimimos toda grandeza como uma potência da unidade de energia, o GeV ($1\ \text{GeV} = 10^9\ \text{eV}$, com $1\ \text{eV} = 1{,}602\,176\,634\times10^{-19}$ J exato). Massa, energia e momento passam a ter a dimensão de energia; comprimento e tempo, a dimensão de energia$^{-1}$.</p>
+                </div>
+
+                <p class="rev-revisar">As atribuições de dimensão saem direto das duas escolhas. Com $c = 1$ (uma velocidade, comprimento sobre tempo) comprimento e tempo têm a mesma dimensão. Com $\hbar = 1$ (uma ação, energia vezes tempo) energia e tempo são inversos um do outro. Juntando, $[E] = [T]^{-1} = [L]^{-1}$; e como $E = mc^2$ e $E = pc$ para um fóton, massa e momento têm a dimensão de energia. A tabela abaixo é a Tabela 2.1 de Thomson, com a coluna de fatores que a próxima regra justifica.</p>
+
+                <div class="rev-revisar" style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr><th>Grandeza</th><th>SI</th><th>$[\hbar, c, \text{GeV}]$</th><th>$\hbar = c = 1$</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>energia</td><td>kg m² s⁻²</td><td>GeV</td><td>GeV</td></tr>
+                            <tr><td>momento</td><td>kg m s⁻¹</td><td>GeV$/c$</td><td>GeV</td></tr>
+                            <tr><td>massa</td><td>kg</td><td>GeV$/c^2$</td><td>GeV</td></tr>
+                            <tr><td>tempo</td><td>s</td><td>$(\text{GeV}/\hbar)^{-1}$</td><td>GeV⁻¹</td></tr>
+                            <tr><td>comprimento</td><td>m</td><td>$(\text{GeV}/\hbar c)^{-1}$</td><td>GeV⁻¹</td></tr>
+                            <tr><td>área</td><td>m²</td><td>$(\text{GeV}/\hbar c)^{-2}$</td><td>GeV⁻²</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="rev-revisar">À primeira vista parece que, ao fazer $\hbar = c = 1$, jogamos informação fora. Não jogamos: os fatores de $\hbar$ e $c$ continuam escondidos na dimensão do resultado, e há uma única maneira de recolocá-los.</p>
+
+                <div class="definition-box rev-revisar" id="res-2-1-2">
+                    <p><strong>Resultado 2.1.2 (Reinserção de ħ e c).</strong> Seja $Q$ uma grandeza cuja dimensão no SI é $\mathsf M^{a}\mathsf L^{b}\mathsf T^{k}$. Em unidades naturais $Q$ tem dimensão $\text{GeV}^{\,n}$ com $n = a - b - k$, e um resultado $Q = q\ \text{GeV}^{\,n}$ corresponde, no SI, a</p>
+                    <p>$$ Q = q\ (\text{GeV})^{a-b-k}\ \hbar^{\,b+k}\ c^{\,b-2a}. \tag{2.1.1} $$</p>
+                    <p>Os expoentes são únicos.</p>
+                </div>
+
+                <p class="rev-revisar"><em>Dedução.</em> <strong>Passo 1 (dimensões da base).</strong> Em termos de massa, comprimento e tempo, a energia tem dimensão $\mathsf M\mathsf L^2\mathsf T^{-2}$, a constante de Planck reduzida $\mathsf M\mathsf L^2\mathsf T^{-1}$ (energia vezes tempo) e a velocidade da luz $\mathsf L\mathsf T^{-1}$.</p>
+
+                <p class="rev-revisar"><strong>Passo 2 (igualar expoentes).</strong> Procuramos $n$, $x$, $y$ tais que $E^{n}\hbar^{x}c^{y}$ tenha a dimensão $\mathsf M^{a}\mathsf L^{b}\mathsf T^{k}$. Igualando os expoentes de $\mathsf M$, $\mathsf L$ e $\mathsf T$:</p>
+
+                <p class="rev-revisar">$$ \begin{aligned} a &amp;= n + x, \\ b &amp;= 2n + 2x + y, \\ k &amp;= -2n - x - y. \end{aligned} $$</p>
+
+                <p class="rev-revisar"><strong>Passo 3 (resolver).</strong> A primeira equação dá $x = a - n$. Substituindo na segunda, $b = 2n + 2a - 2n + y$, logo $y = b - 2a$. Substituindo $x$ e $y$ na terceira,</p>
+
+                <p class="rev-revisar">$$ k = -2n - (a - n) - (b - 2a) = a - b - n, $$</p>
+
+                <p class="rev-revisar">logo $n = a - b - k$ e, voltando à primeira, $x = a - n = b + k$. Isso é a Equação (2.1.1).</p>
+
+                <p class="rev-revisar"><strong>Passo 4 (unicidade).</strong> O sistema do Passo 2 é linear em $(n, x, y)$, e a matriz dos coeficientes, cujas colunas são as dimensões de $E$, $\hbar$ e $c$, tem determinante</p>
+
+                <p class="rev-revisar">$$ \det\begin{pmatrix} 1 &amp; 1 &amp; 0 \\ 2 &amp; 2 &amp; 1 \\ -2 &amp; -1 &amp; -1 \end{pmatrix} = -1 \neq 0, $$</p>
+
+                <p class="rev-revisar">de modo que a solução existe e é única para quaisquer $a$, $b$, $k$: energia, $\hbar$ e $c$ formam uma base de dimensões tão boa quanto massa, comprimento e tempo. $\blacksquare$</p>
+
+                <p class="rev-revisar">Os casos que usaremos o tempo todo (conferidos em <code>verif/t2_1.py</code>): um comprimento ($a = 0$, $b = 1$, $k = 0$) tem $n = -1$ e se converte multiplicando por $\hbar c$; um tempo ($k = 1$) tem $n = -1$ e leva $\hbar$; uma massa ($a = 1$) tem $n = 1$ e leva $1/c^2$; um momento leva $1/c$; uma área ($b = 2$) tem $n = -2$ e leva $(\hbar c)^2$. Na prática, a regra é: <em>descubra a dimensão que o resultado deve ter e multiplique pela única combinação de $\hbar$ e $c$ que a produz</em>.</p>
+
+                <h2 id="conversoes">Conversões</h2>
+
+                <p class="rev-revisar">Pela regra anterior, só dois números são necessários para voltar ao SI: $\hbar c$, para comprimentos, e $\hbar$, para tempos. Para áreas, que é como se medem as seções de choque, usa-se $(\hbar c)^2$ e o <em>barn</em>, $1\ \text{b} = 10^{-28}\ \text{m}^2$, com os submúltiplos mb, μb, nb, pb e fb ($1\ \text{fb} = 10^{-15}$ b).</p>
+
+                <div class="definition-box rev-revisar" id="res-2-1-3">
+                    <p><strong>Resultado 2.1.3 (As constantes de conversão).</strong> Exatamente, no SI de 2019,</p>
+                    <p>$$ \hbar c = 197{,}326\,980\,4\ \text{MeV fm}, \tag{2.1.2} $$</p>
+                    <p>$$ (\hbar c)^2 = 0{,}389\,379\,372\,1\ \text{GeV}^2\ \text{mb}. \tag{2.1.3} $$</p>
+                    <p>Logo $1\ \text{GeV}^{-1} = 0{,}1973$ fm e $1\ \text{GeV}^{-2} = 0{,}3894$ mb.</p>
+                </div>
+
+                <p class="rev-revisar"><em>Dedução.</em> No SI de 2019, $\hbar = 1{,}054\,571\,817\ldots\times10^{-34}$ J s, $c = 299\,792\,458$ m/s e a carga elementar $e = 1{,}602\,176\,634\times10^{-19}$ C são exatos (PDG 2026, Tabela 1.1). O produto é</p>
+
+                <p class="rev-revisar">$$ \begin{aligned} \hbar c &amp;= 1{,}054\,571\,817\times10^{-34}\ \text{J s}\times 299\,792\,458\ \text{m s}^{-1} \\ &amp;= 3{,}161\,526\,772\times10^{-26}\ \text{J m}. \end{aligned} $$</p>
+
+                <p class="rev-revisar">Como $1$ eV $= 1{,}602\,176\,634\times10^{-19}$ J (a energia ganha pela carga $e$ numa diferença de potencial de 1 V), dividimos por esse número:</p>
+
+                <p class="rev-revisar">$$ \begin{aligned} \hbar c &amp;= 1{,}973\,269\,804\times10^{-7}\ \text{eV m} \\ &amp;= 1{,}973\,269\,804\times10^{-7}\times10^{-6}\ \text{MeV}\times10^{15}\ \text{fm} \\ &amp;= 197{,}326\,980\,4\ \text{MeV fm}, \end{aligned} $$</p>
+
+                <p class="rev-revisar">que é a Equação (2.1.2). Em GeV, $\hbar c = 0{,}197\,326\,980\,4$ GeV fm, e o quadrado é $(\hbar c)^2 = 0{,}038\,937\,937\,21\ \text{GeV}^2\ \text{fm}^2$. Por fim $1\ \text{fm}^2 = 10^{-30}\ \text{m}^2 = 10^{-2}\ \text{b} = 10$ mb, e multiplicando por 10 obtemos a Equação (2.1.3). $\blacksquare$</p>
+
+                <p class="rev-revisar">A tabela reúne as conversões de uso diário. Todas saem de (2.1.2), (2.1.3) e de $\hbar = 6{,}582\,119\,569\times10^{-22}$ MeV s (PDG 2026, Tabela 1.1), e estão conferidas em <code>verif/t2_1.py</code>.</p>
+
+                <div class="rev-revisar" style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr><th>Em unidades naturais</th><th>No SI</th><th>Fator usado</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1 GeV⁻¹ (comprimento)</td><td>0,1973 fm</td><td>$\hbar c$</td></tr>
+                            <tr><td>5,068 GeV⁻¹</td><td>1 fm</td><td>$1/\hbar c$</td></tr>
+                            <tr><td>1 GeV⁻¹ (tempo)</td><td>$6{,}582\times10^{-25}$ s</td><td>$\hbar$</td></tr>
+                            <tr><td>1 GeV⁻² (área)</td><td>0,3894 mb</td><td>$(\hbar c)^2$</td></tr>
+                            <tr><td>largura $\Gamma = 1$ MeV</td><td>vida média $\tau = \hbar/\Gamma = 6{,}582\times10^{-22}$ s</td><td>$\hbar$</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p id="ex-2-1-4" class="rev-revisar"><strong>Exemplo 2.1.4 (Do GeV⁻¹ ao femtômetro e do GeV⁻² ao nanobarn).</strong> (a) Thomson imagina uma conta em unidades naturais que dá o raio quadrático médio de carga do próton, $\langle r^2\rangle^{1/2} = 4{,}1\ \text{GeV}^{-1}$. Um comprimento leva $\hbar c$: $4{,}1\times0{,}1973$ fm $= 0{,}81$ fm. (b) A seção de choque de $e^+e^- \to \mu^+\mu^-$, que deduziremos no <a class="ref-capitulo" href="../[8] - Aniquilação Elétron-Pósitron/[01] - e⁺e⁻ → μ⁺μ⁻ por Helicidade.html">tópico 9.1</a>, é $\sigma = 4\pi\alpha^2/3s$, com $s$ o quadrado da energia total no centro de massa (<a class="ref-capitulo" href="[02] - Relatividade Especial e Invariantes.html">tópico 2.2</a>). Com $\alpha$ do PDG 2026, $4\pi\alpha^2/3 = 2{,}2306\times10^{-4}$; uma área leva $(\hbar c)^2$, e $2{,}2306\times10^{-4}\times0{,}389\,38$ mb $= 86{,}85$ nb. Portanto $\sigma = 86{,}85\ \text{nb}/s[\text{GeV}^2]$: em $\sqrt s = 10$ GeV, $\sigma = 0{,}87$ nb. (c) Uma ressonância que decai pela interação forte tem largura típica de 100 MeV e vive $\hbar/\Gamma \approx 7\times10^{-24}$ s; nesse tempo a luz percorre $c\tau \approx 2$ fm, mais ou menos o diâmetro de um próton.</p>
+
+                <h2 id="heaviside-lorentz">Heaviside-Lorentz e a constante de estrutura fina</h2>
+
+                <p class="rev-revisar">Falta fixar a unidade de carga. No SI a força de Coulomb entre duas cargas $e$ a uma distância $r$ é $F = e^2/4\pi\varepsilon_0 r^2$, com a permissividade do vácuo $\varepsilon_0$. Três sistemas aparecem nos livros que usamos, e cada um põe o $4\pi$ num lugar diferente.</p>
+
+                <div class="definition-box rev-revisar" id="def-2-1-5" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 2.1.5 (Unidades de Heaviside-Lorentz).</strong> Nas unidades de <em>Heaviside-Lorentz</em> fazemos $\varepsilon_0 = 1$. Como $\varepsilon_0\mu_0 = 1/c^2$, junto com $c = 1$ isso dá também $\mu_0 = 1$. O sistema da física de partículas é a combinação</p>
+                    <p>$$ \hbar = c = \varepsilon_0 = \mu_0 = 1, $$</p>
+                    <p>em que a força de Coulomb fica $F = e^2/4\pi r^2$ e as equações de Maxwell não têm nem $4\pi$ nem $\varepsilon_0$:</p>
+                    <p>$$ \begin{aligned} \nabla\cdot\mathbf E &amp;= \rho, &amp; \nabla\times\mathbf B - \partial_t\mathbf E &amp;= \mathbf J, \\ \nabla\cdot\mathbf B &amp;= 0, &amp; \nabla\times\mathbf E + \partial_t\mathbf B &amp;= 0. \end{aligned} $$</p>
+                </div>
+
+                <p class="rev-revisar">As equações de Maxwell saem das do SI ($\nabla\cdot\mathbf E = \rho/\varepsilon_0$, $\nabla\times\mathbf B - \mu_0\varepsilon_0\,\partial_t\mathbf E = \mu_0\mathbf J$ e as duas homogêneas) fazendo $\varepsilon_0 = \mu_0 = 1$. A vantagem é que o $4\pi$ aparece só nas soluções, como na lei de Coulomb, e não na Lagrangiana do eletromagnetismo que escreveremos no <a class="ref-capitulo" href="../[4] - Campos Clássicos e Simetrias/[01] - Lagrangianas de Campo.html">tópico 5.1</a>, nem no vértice da QED do <a class="ref-capitulo" href="../[7] - Troca de Partículas e QED/[03] - Regras de Feynman da QED.html">tópico 8.3</a>.</p>
+
+                <div class="definition-box rev-revisar" id="res-2-1-6">
+                    <p><strong>Resultado 2.1.6 (A constante de estrutura fina).</strong> A combinação $\alpha = e^2/4\pi\varepsilon_0\hbar c$ é adimensional, tem o mesmo valor em qualquer sistema de unidades, $\alpha = 1/137{,}035\,999\,177(21)$ (PDG 2026), e nas unidades de Heaviside-Lorentz naturais vale</p>
+                    <p>$$ \alpha = \frac{e^2}{4\pi}, \qquad e = \sqrt{4\pi\alpha} = 0{,}302\,82. \tag{2.1.4} $$</p>
+                </div>
+
+                <p class="rev-revisar"><em>Dedução.</em> A energia potencial de duas cargas $e$ a uma distância $r$ é $U = e^2/4\pi\varepsilon_0 r$, logo $e^2/4\pi\varepsilon_0 = Ur$ tem a dimensão de energia vezes comprimento, J m. A combinação $\hbar c$ também tem essa dimensão: $[\hbar c] = \text{J s}\times\text{m s}^{-1} = \text{J m}$. A razão $\alpha = (e^2/4\pi\varepsilon_0)/\hbar c$ é portanto um número puro, e um número puro não muda quando mudamos de unidades. Numericamente, $e^2/4\pi\varepsilon_0 = \alpha\,\hbar c = 2{,}307\times10^{-28}$ J m. Nas unidades da Definição 2.1.5, $\varepsilon_0 = \hbar = c = 1$ e a definição se reduz a $\alpha = e^2/4\pi$; resolvendo para $e$, $e = \sqrt{4\pi/137{,}036} = 0{,}302\,82$. $\blacksquare$</p>
+
+                <p class="rev-revisar">Duas consequências. Em unidades naturais a carga elementar é um número puro e <em>medido</em>, ao contrário do SI, em que $e$ é exato por definição (o PDG faz essa observação na própria Tabela 1.1). E a energia potencial de Coulomb entre duas cargas unitárias fica simplesmente $V(r) = \alpha/r$, a forma que usaremos para o átomo de hidrogênio logo abaixo.</p>
+
+                <p id="obs-2-1-7" class="rev-revisar"><strong>Observação 2.1.7 (Convenções das fontes).</strong> Thomson (Seção 2.1) e Schwartz (seção de notação e convenções, conf.) usam Heaviside-Lorentz com $\hbar = c = 1$, como este estudo. O Griffiths do PDF (1ª ed., 1987, Introdução, "Units") usa unidades <strong>gaussianas</strong>, com $F = e_G^2/r^2$ e $\alpha = e_G^2/\hbar c$, e mantém os $\hbar$ e $c$ explícitos. O Bettini (Seção 1.5) usa o SI para a carga, com $\varepsilon_0$ explícito. As cargas se relacionam por $e_{HL} = \sqrt{4\pi}\,e_G = e_{SI}/\sqrt{\varepsilon_0}$; numericamente $e_G = \sqrt\alpha = 0{,}085\,42$ e $e_{HL} = 0{,}302\,82$. Ao comparar uma fórmula do Griffiths com uma deste estudo, troque $e^2 \to e^2/4\pi$.</p>
+
+                <h2 id="ordens-de-grandeza">Ordens de grandeza</h2>
+
+                <p class="rev-revisar">Em unidades naturais uma escala de física vira uma massa, e as razões entre escalas viram números puros. O exemplo mais limpo é o átomo de hidrogênio, em que só entram $m_e$ e $\alpha$.</p>
+
+                <p id="ex-2-1-8" class="rev-revisar"><strong>Exemplo 2.1.8 (O átomo de hidrogênio em uma linha).</strong> Um elétron confinado numa região de tamanho $r$ tem, pelo princípio da incerteza, momento $p \sim 1/r$ e energia cinética $\sim 1/2m_e r^2$; a energia potencial é $-\alpha/r$. A energia total estimada,</p>
+
+                <p class="rev-revisar">$$ E(r) = \frac{1}{2m_e r^2} - \frac{\alpha}{r}, $$</p>
+
+                <p class="rev-revisar">é mínima onde $\mathrm dE/\mathrm dr = -1/m_e r^3 + \alpha/r^2 = 0$, isto é, em $r_0 = 1/\alpha m_e$, e lá vale $E(r_0) = \alpha^2 m_e/2 - \alpha^2 m_e = -\alpha^2 m_e/2$. Com os valores do PDG 2026, $1/\alpha m_e = 137{,}036/0{,}510\,999$ MeV $= 268{,}2$ MeV⁻¹; um comprimento leva $\hbar c$, e $r_0 = 268{,}2\times197{,}33$ fm $= 52\,918$ fm $= 0{,}529$ Å. A energia é $\alpha^2 m_e/2 = 13{,}606$ eV. A estimativa reproduz o raio de Bohr e a energia de Rydberg da Tabela 1.1 do PDG (a coincidência exata é sorte do hidrogênio; o que importa é a dependência). A lição: as escalas atômicas são potências de $\alpha$ vezes $m_e$, com $\bar\lambda_e = 1/m_e = 386$ fm, $a_0 = \bar\lambda_e/\alpha$ e $E_R = \alpha^2 m_e/2$.</p>
+
+                <p class="rev-revisar">A mesma leitura vale para as escalas de todo o estudo. A tabela vai do elétron à gravitação quântica; a coluna de comprimentos é $\hbar c/E$ (conferida em <code>verif/t2_1.py</code>).</p>
+
+                <div class="rev-revisar" style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr><th>Escala</th><th>Energia</th><th>Comprimento $\hbar c/E$</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>massa do elétron $m_e$</td><td>0,511 MeV</td><td>386 fm</td></tr>
+                            <tr><td>massa do próton $m_p$</td><td>938,3 MeV</td><td>0,210 fm</td></tr>
+                            <tr><td>escala eletrofraca $v = (\sqrt2 G_F)^{-1/2}$</td><td>246,2 GeV</td><td>$8{,}0\times10^{-4}$ fm</td></tr>
+                            <tr><td>massa de Planck $M_P = G_N^{-1/2}$</td><td>$1{,}221\times10^{19}$ GeV</td><td>$1{,}6\times10^{-35}$ m</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p id="obs-2-1-9" class="rev-revisar"><strong>Observação 2.1.9 (Constantes com dimensão anunciam uma escala).</strong> $\alpha$ é adimensional, mas as constantes da interação fraca e da gravitação não são. A constante de Fermi $G_F = 1{,}166\times10^{-5}\ \text{GeV}^{-2}$ tem dimensão de energia$^{-2}$, de modo que a intensidade efetiva da interação fraca a uma energia $E$ é o número puro $G_F E^2$, que cresce com $E$ e chega a 1 perto de $G_F^{-1/2} \approx 293$ GeV. É o sinal de que a teoria de contato de Fermi deixa de valer antes disso; de fato, os bósons $W$ e $Z$ e a escala $v = 246$ GeV estão ali (<a class="ref-capitulo" href="../[13] - A Interação Fraca/[03] - O Propagador do W e a Teoria de Fermi.html">tópico 14.3</a> e <a class="ref-capitulo" href="../[19] - O Bóson de Higgs/[03] - O Higgs no Modelo Padrão.html">tópico 20.3</a>). Do mesmo modo, $G_N = 6{,}709\times10^{-39}\ \text{GeV}^{-2}$ (PDG 2026) define a massa de Planck $M_P = G_N^{-1/2} = 1{,}22\times10^{19}$ GeV, onde a gravitação ficaria forte, e $G_N m_p^2 = 5{,}9\times10^{-39}$ é o número que comparamos com $\alpha$ no <a class="ref-capitulo" href="../[0] - Introdução/[02] - Partículas, Interações e Escalas.html#quatro-forcas">tópico 1.2</a>. A razão $v/M_P \approx 2\times10^{-17}$ é o chamado problema da hierarquia, que fica fora deste estudo.</p>
 
                 <h2 id="o-que-construimos">O que construímos</h2>
 
-                <p class="rev-reescrever">Texto que precisa ser desenvolvido.</p>
+                <p class="rev-revisar">Passamos a trabalhar com $\hbar = c = \varepsilon_0 = \mu_0 = 1$ e uma única unidade, o GeV. A Equação (2.1.1) diz como devolver $\hbar$ e $c$ a qualquer resultado, as Equações (2.1.2) e (2.1.3) dão os dois fatores de conversão que bastam na prática, e a Equação (2.1.4) fixa $\alpha = e^2/4\pi$, a convenção de todas as regras de Feynman do estudo. Falta a outra metade da linguagem de trabalho: a relatividade restrita escrita com quadrivetores, de onde vêm $E^2 = p^2 + m^2$, a massa invariante e as variáveis $s$, $t$, $u$ que já usamos no Exemplo 2.1.4. É o <a class="ref-capitulo" href="[02] - Relatividade Especial e Invariantes.html">próximo tópico</a>.</p>
 
                 <h2 id="leituras">Leituras</h2>
 
-                <p class="rev-reescrever">Texto que precisa ser desenvolvido.</p>
+                <ul class="rev-revisar">
+                    <li>THOMSON, Seção 2.1 (Units in particle physics), com a Subseção 2.1.1 (Natural units) e a parte "Heaviside-Lorentz units".</li>
+                    <li>BETTINI, Seção 1.5 (Natural units): tabela de conversões e os Exemplos 1.7 e 1.8 (largura e vida média; comprimento de Compton do próton). Usa o SI para a carga.</li>
+                    <li>GRIFFITHS (1ª ed., 1987), Introdução, "Units": o eV, $\hbar = c = 1$ e a comparação entre SI, gaussiano e Heaviside-Lorentz. Usa unidades gaussianas (Observação 2.1.7).</li>
+                    <li>PARTICLE DATA GROUP. Review of Particle Physics. Int. J. Mod. Phys. A, v. 41, 2630011, 2026: Physical Constants (Tabela 1.1).</li>
+                </ul>
 
             </div>
         </main>
@@ -395,6 +546,10 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#unidades-naturais">Unidades Naturais</a></li>
+                    <li><a href="#hbar-c-1">Fazer ħ = c = 1</a></li>
+                    <li><a href="#conversoes">Conversões</a></li>
+                    <li><a href="#heaviside-lorentz">Heaviside-Lorentz e α</a></li>
+                    <li><a href="#ordens-de-grandeza">Ordens de grandeza</a></li>
                     <li><a href="#o-que-construimos">O que construímos</a></li>
                     <li><a href="#leituras">Leituras</a></li>
                 </ul>
