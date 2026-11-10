@@ -173,15 +173,708 @@
             <div class="prose">
 
                 <h1 id="emissao-espontanea">11.3 Emissão Espontânea</h1>
-                <p class="lead">Os coeficientes A e B de Einstein, a taxa de emissão espontânea, o tempo de vida de um estado excitado e as regras de seleção do dipolo elétrico.</p>
+                <p class="lead">O argumento de Einstein para os coeficientes $A$ e $B$, a taxa de emissão espontânea, o tempo de
+                    vida de um estado excitado (com o oscilador carregado comparado à radiação clássica) e as regras de seleção
+                    do dipolo elétrico.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>Na <a href="[02] - Emissão e Absorção de Radiação.html#perturbacoes-incoerentes">Seção 11.2.3</a> obtivemos a taxa de emissão estimulada sob radiação
+                    incoerente e isotrópica, <a href="[02] - Emissão e Absorção de Radiação.html#teo-taxa-emissao-estimulada">Eq. (11.54)</a>, e vimos que a de absorção é igual.
+                    Falta o terceiro processo da <a href="[02] - Emissão e Absorção de Radiação.html#fig-11-7">Figura 11.7</a>: a <strong>emissão espontânea</strong>, que
+                    acontece no escuro e é responsável pelo decaimento de todo estado atômico excitado. Calculá-la
+                    "honestamente" exige quantizar o campo eletromagnético, mas Einstein, em 1917, encontrou um atalho: num gás
+                    de átomos em equilíbrio com a radiação térmica, os três processos têm de se compensar, e a fórmula de
+                    Planck amarra a taxa espontânea às estimuladas, que já conhecemos.</p>
+                <p>Com a taxa espontânea em mãos, a seção tira duas consequências. A primeira é o <strong>tempo de
+                    vida</strong> de um estado excitado, calculado para um oscilador carregado (Exemplo 11.1), em que o resultado
+                    quântico pode ser comparado com a radiação clássica de Larmor. A segunda é a lista das transições que
+                    <em>podem</em> ocorrer: as <strong>regras de seleção</strong>, que reduzem a poucos os elementos de matriz
+                    $\langle\psi_b|\mathbf r|\psi_a\rangle$ que é preciso calcular. Elas decorrem dos resultados da
+                    <a href="../[5] - Simetrias e Leis de Conservação/[07] - Regras de Seleção Rotacionais.html#operadores-vetoriais">Seção 6.7</a>
+                    sobre operadores vetoriais e da
+                    <a href="../[5] - Simetrias e Leis de Conservação/[04] - Paridade.html#regras-de-selecao">Seção 6.4</a>
+                    sobre paridade, e aqui são também deduzidas do zero, só com comutadores.</p>
+
+                <h2 id="coeficientes-de-einstein">Os coeficientes A e B de Einstein</h2>
+
+                <p>Imagine um recipiente de átomos, $N_a$ deles no estado de baixo ($\psi_a$) e $N_b$ no estado de cima
+                    ($\psi_b$). Seja $A$ a taxa de emissão espontânea,<sup id="fnref:1"><a href="#fn:1"
+                    class="footnote-ref">1</a></sup> de modo que o número de partículas que deixam o estado de cima por esse
+                    processo, por unidade de tempo, é $N_bA$.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref">2</a></sup>
+                    A taxa de transição por emissão estimulada, como vimos (Eq. 11.54), é proporcional à densidade de energia
+                    do campo eletromagnético: $B_{ba}\rho(\omega_0)$, em que $B_{ba} = \pi|\boldsymbol\wp|^2/3\epsilon_0\hbar^2$; o
+                    número de partículas que deixam o estado de cima por esse mecanismo, por unidade de tempo, é
+                    $N_bB_{ba}\rho(\omega_0)$. A taxa de absorção também é proporcional a $\rho(\omega_0)$; chamemo-la
+                    $B_{ab}\rho(\omega_0)$. O número de partículas por unidade de tempo que <em>entram</em> no nível de cima é,
+                    portanto, $N_aB_{ab}\rho(\omega_0)$. Ao todo, então,</p>
+                <p>$$ \frac{dN_b}{dt} = -N_bA - N_bB_{ba}\rho(\omega_0) + N_aB_{ab}\rho(\omega_0). \tag{11.55} $$</p>
+                <p>Os <strong>coeficientes de Einstein</strong> $A$, $B_{ab}$ e $B_{ba}$ são propriedades do par de estados do
+                    átomo; não dependem da temperatura nem do campo de radiação, que entra só por $\rho(\omega_0)$. É essa
+                    separação que torna o argumento seguinte possível.</p>
+                <p>Suponha que esses átomos estejam em equilíbrio térmico com o campo ambiente, de modo que o número de
+                    partículas em cada nível seja <em>constante</em>. Nesse caso $dN_b/dt = 0$, e segue que</p>
+                <p>$$ \rho(\omega_0) = \frac{A}{(N_a/N_b)B_{ab} - B_{ba}}. \tag{11.56} $$</p>
+                <p>Por outro lado, sabemos da mecânica estatística<sup id="fnref:3"><a href="#fn:3"
+                    class="footnote-ref">3</a></sup> que o número de partículas com energia $E$, em equilíbrio térmico à
+                    temperatura $T$, é proporcional ao <strong>fator de Boltzmann</strong>, $\exp(-E/k_BT)$.</p>
+
+                <div class="definition-box" id="prop-fator-de-boltzmann">
+                    <p><strong>Proposição (Fator de Boltzmann).</strong> Um sistema em equilíbrio térmico com um reservatório à
+                        temperatura $T$ é encontrado num estado particular de energia $E$ com probabilidade proporcional a
+                        $e^{-E/k_BT}$, em que $k_B$ é a constante de Boltzmann.</p>
+                </div>
+                <p><em>Ideia da demonstração.</em> Com o sistema num estado de energia $E$, o reservatório fica com energia
+                    $U - E$, e a probabilidade é proporcional ao número de estados do reservatório,
+                    $\Omega_R(U - E) = e^{S_R(U - E)/k_B}$. Como $E \ll U$, $S_R(U - E) \approx S_R(U) - E\,\partial S_R/\partial U = S_R(U) - E/T$,
+                    o que dá o fator $e^{-E/k_BT}$. (Schroeder, Seção 6.1.)</p>
+
+                <p>Para os dois estados do nosso átomo, então,</p>
+                <p>$$ \frac{N_a}{N_b} = \frac{e^{-E_a/k_BT}}{e^{-E_b/k_BT}} = e^{\hbar\omega_0/k_BT}, \tag{11.57} $$</p>
+                <p>e, portanto,</p>
+                <p>$$ \rho(\omega_0) = \frac{A}{e^{\hbar\omega_0/k_BT}B_{ab} - B_{ba}}. \tag{11.58} $$</p>
+                <p>Mas a fórmula de Planck para o corpo negro<sup id="fnref:4"><a href="#fn:4" class="footnote-ref">4</a></sup>
+                    nos diz qual é a densidade de energia da radiação térmica.</p>
+
+                <div class="definition-box" id="teo-formula-de-planck">
+                    <p><strong>Teorema (Fórmula de Planck).</strong> A densidade espectral de energia da radiação em equilíbrio
+                        térmico à temperatura $T$ (radiação de corpo negro) é</p>
+                    <p>$$ \rho(\omega) = \frac{\hbar}{\pi^2c^3}\,\frac{\omega^3}{e^{\hbar\omega/k_BT} - 1}. \tag{11.59} $$</p>
+                </div>
+                <p><em>Ideia da demonstração.</em> Numa cavidade, os modos do campo com frequência entre $\omega$ e
+                    $\omega + d\omega$ são, por unidade de volume, $\omega^2\,d\omega/\pi^2c^3$ (contando as duas polarizações;
+                    a contagem está feita no <a href="#exr-11-3-4">Exercício 11.3-4</a>). Cada modo é um oscilador harmônico cujos níveis
+                    acima do fundamental são $n\hbar\omega$, e a média de Boltzmann, com $y \equiv \hbar\omega/k_BT$, dá</p>
+                <p>$$ \langle E\rangle = \frac{\sum_nn\hbar\omega\,e^{-ny}}{\sum_ne^{-ny}} = -\hbar\omega\frac{d}{dy}\ln\frac{1}{1 - e^{-y}} = \frac{\hbar\omega}{e^{y} - 1}. $$</p>
+                <p>O produto dos dois fatores é (11.59). (Schroeder, Seção 7.4.)</p>
+
+                <p>Comparando as duas expressões, concluímos que</p>
+
+                <div class="definition-box" id="teo-relacoes-de-einstein">
+                    <p><strong>Teorema (Relações de Einstein).</strong> Os coeficientes de Einstein de um par de estados
+                        satisfazem</p>
+                    <p>$$ B_{ab} = B_{ba} \tag{11.60} $$</p>
+                    <p>e</p>
+                    <p>$$ A = \frac{\omega_0^3\hbar}{\pi^2c^3}B_{ba}. \tag{11.61} $$</p>
+                </div>
+                <p><em>Demonstração.</em> Pondo $x \equiv \hbar\omega_0/k_BT$ e $C \equiv \hbar\omega_0^3/\pi^2c^3$, as
+                    Eqs. (11.58) e (11.59) em $\omega = \omega_0$ dizem que $A/(e^xB_{ab} - B_{ba}) = C/(e^x - 1)$. Multiplicando
+                    em cruz e reagrupando,</p>
+                <p>$$ \left(A - CB_{ab}\right)e^x = A - CB_{ba}. $$</p>
+                <p>Os coeficientes $A$, $B_{ab}$, $B_{ba}$ e $C$ não dependem da temperatura, e a igualdade tem de valer para
+                    <em>toda</em> temperatura, isto é, para todo $x \gt 0$. O lado direito é constante; o esquerdo só é
+                    constante se o coeficiente de $e^x$ for nulo. Logo $A = CB_{ab}$, e então o lado direito também se anula:
+                    $A = CB_{ba}$. Juntas, as duas igualdades dão $B_{ab} = B_{ba}$ e $A = CB_{ba}$, que são (11.60) e
+                    (11.61). $\blacksquare$</p>
+
+                <p>A Eq. (11.60) confirma o que já sabíamos: a taxa de transição por emissão estimulada é a mesma que a de
+                    absorção. Mas foi um resultado espantoso em 1917; na verdade, Einstein foi <em>forçado</em> a "inventar" a
+                    emissão estimulada para reproduzir a fórmula de Planck. De fato, sem ela ($B_{ba} = 0$) a Eq. (11.58) daria
+                    $\rho(\omega_0) = (A/B_{ab})\,e^{-\hbar\omega_0/k_BT}$, a lei de Wien, que só concorda com Planck no limite
+                    $\hbar\omega \gg k_BT$. A nossa atenção, porém, está na Eq. (11.61), que dá a taxa de emissão espontânea
+                    ($A$), aquilo que procuramos, em termos da taxa de emissão estimulada ($B_{ba}\rho(\omega_0)$), que já
+                    conhecemos. Da Eq. (11.54) lemos</p>
+                <p>$$ B_{ba} = \frac{\pi}{3\epsilon_0\hbar^2}|\boldsymbol\wp|^2, \tag{11.62} $$</p>
+                <p>e segue o resultado central da seção.</p>
+
+                <div class="definition-box" id="teo-taxa-emissao-espontanea">
+                    <p><strong>Teorema (Taxa de emissão espontânea).</strong> A taxa de emissão espontânea do estado $\psi_b$
+                        para o estado $\psi_a$, de energia mais baixa, é</p>
+                    <p>$$ A = \frac{\omega_0^3|\boldsymbol\wp|^2}{3\pi\epsilon_0\hbar c^3}, \tag{11.63} $$</p>
+                    <p>com $\omega_0 = (E_b - E_a)/\hbar$ e $\boldsymbol\wp = q\langle\psi_b|\mathbf r|\psi_a\rangle$
+                        (Eq. 11.51).</p>
+                </div>
+                <p><em>Demonstração.</em> Basta substituir (11.62) em (11.61):</p>
+                <p>$$ A = \frac{\omega_0^3\hbar}{\pi^2c^3}\cdot\frac{\pi|\boldsymbol\wp|^2}{3\epsilon_0\hbar^2} = \frac{\omega_0^3|\boldsymbol\wp|^2}{3\pi\epsilon_0\hbar c^3}. \qquad \blacksquare $$</p>
+                <p>Teste de dimensão, com $[\epsilon_0] = \mathrm{C^2J^{-1}m^{-1}}$:</p>
+                <p>$$ \left[\frac{\omega_0^3|\boldsymbol\wp|^2}{\epsilon_0\hbar c^3}\right] = \frac{\mathrm{s^{-3}}\cdot\mathrm{C^2m^2}}{\mathrm{C^2J^{-1}m^{-1}}\cdot\mathrm{J\,s}\cdot\mathrm{m^3s^{-3}}} = \mathrm{s^{-1}}. $$</p>
+                <p>Ordem de grandeza: com $|\boldsymbol\wp| \sim ea$ e $\hbar\omega_0 \sim 10\ \mathrm{eV}$, $A \sim 10^9\ \mathrm{s^{-1}}$;
+                    o cálculo exato para os estados $2p$ do hidrogênio (<a href="#exr-11-3-3">Exercício 11.3-3</a>) dá
+                    $6{,}3\times10^8\ \mathrm{s^{-1}}$. A taxa cresce como $\omega_0^3$: transições de frequência alta decaem
+                    muito mais depressa.</p>
+
+                <p id="obs-o-que-einstein-usa"><strong>Observação (O que o argumento usa e o que não usa).</strong> O argumento
+                    de Einstein não identifica o <em>mecanismo</em> da emissão espontânea; ele usa só três coisas: que $A$,
+                    $B_{ab}$ e $B_{ba}$ são propriedades do átomo, independentes da temperatura e do campo; que, em equilíbrio,
+                    as populações seguem Boltzmann e a radiação segue Planck; e a taxa estimulada de primeira ordem,
+                    Eq. (11.54). O equilíbrio é só um artifício para <em>calcular</em> $A$: como $A$ é uma propriedade do átomo,
+                    a Eq. (11.63) vale também fora do equilíbrio, por exemplo para um átomo excitado no escuro. A eletrodinâmica
+                    quântica entra disfarçada, pela fórmula de Planck; o <a href="#exr-11-3-4">Exercício 11.3-4</a> mostra o mesmo
+                    resultado como emissão estimulada pelo campo de ponto zero.</p>
+
+                <h2 id="tempo-de-vida">O tempo de vida de um estado excitado</h2>
+
+                <p>A Eq. (11.63) é o nosso resultado fundamental: ela dá a taxa de transição por emissão espontânea. Suponha,
+                    agora, que você tenha de algum modo bombeado um grande número de átomos para o estado excitado. Por causa da
+                    emissão espontânea, esse número diminui com o tempo; especificamente, num intervalo $dt$ você perde uma
+                    fração $A\,dt$ deles:</p>
+                <p>$$ dN_b = -AN_b\,dt \tag{11.64} $$</p>
+                <p>(supondo que não haja mecanismo nenhum para repor o estoque).<sup id="fnref:5"><a href="#fn:5"
+                    class="footnote-ref">5</a></sup> Separando as variáveis, $dN_b/N_b = -A\,dt$, e integrando de $0$ a $t$,
+                    $\ln[N_b(t)/N_b(0)] = -At$:</p>
+                <p>$$ N_b(t) = N_b(0)\,e^{-At}; \tag{11.65} $$</p>
+                <p>evidentemente, o número de átomos que restam no estado excitado decresce exponencialmente, com uma constante
+                    de tempo que recebe nome próprio.</p>
+
+                <div class="definition-box" id="def-tempo-de-vida" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição (Tempo de vida).</strong> O <em>tempo de vida</em> de um estado excitado que decai com
+                        taxa total $A$ é</p>
+                    <p>$$ \tau = \frac1A. \tag{11.66} $$</p>
+                    <p>É o tempo que $N_b(t)$ leva para cair a $1/e \approx 0{,}368$ do valor inicial.</p>
+                </div>
+                <p>O tempo de vida é também o tempo <em>médio</em> que um átomo passa no estado excitado: a fração dos átomos
+                    que decai entre $t$ e $t + dt$ é $Ae^{-At}\,dt$, e $\int_0^\infty t\,Ae^{-At}\,dt = 1/A = \tau$.</p>
+
+                <p>Supusemos o tempo todo que o sistema tem apenas <em>dois</em> estados, mas isso foi só por simplicidade de
+                    notação: a fórmula da emissão espontânea (Eq. 11.63) dá a taxa de transição $\psi_b \to \psi_a$
+                    independentemente dos outros estados acessíveis.</p>
+
+                <div class="definition-box" id="prop-canais-independentes">
+                    <p><strong>Proposição (Cada canal só depende do seu par de estados).</strong> Num átomo com muitos níveis, a
+                        taxa de emissão estimulada $\psi_b \to \psi_a$, Eq. (11.54), e a taxa de emissão espontânea, Eq. (11.63),
+                        dependem apenas de $\boldsymbol\wp = q\langle\psi_b|\mathbf r|\psi_a\rangle$ e de
+                        $\omega_0 = (E_b - E_a)/\hbar$, e não dos demais estados.</p>
+                </div>
+                <p><em>Demonstração.</em> Pela <a href="[01] - Sistemas de Dois Níveis.html#teo-serie-muitos-niveis">fórmula de muitos níveis (11.25)</a>, com o sistema
+                    começando no estado $\psi_i = \psi_b$, o coeficiente de primeira ordem de um estado final $\psi_n$ é</p>
+                <p>$$ c_n^{(1)}(t) = -\frac{i}{\hbar}\int_0^tH'_{ni}(t')\,e^{i\omega_{ni}t'}\,dt', \qquad \omega_{ni} = \frac{E_n - E_i}{\hbar}. $$</p>
+                <p>Ele envolve só o elemento $H'_{ni}$ e a frequência $\omega_{ni}$ do par, exatamente como no sistema de dois
+                    níveis; os outros estados só aparecem a partir da segunda ordem, como estados intermediários, com
+                    contribuições de ordem $(H')^2$. Toda a cadeia (11.32)–(11.54) vale, então, para cada par em separado, e
+                    $B_{ba}$ é uma propriedade do par. Quanto a $A$: a emissão espontânea é emissão estimulada pelo campo de
+                    ponto zero (Seção 11.2.2), e, pelo mesmo motivo, em primeira ordem também só depende do par. Assim, $A$
+                    pode ser calculado num átomo fictício de dois níveis com os mesmos $\boldsymbol\wp$ e $\omega_0$, para o qual
+                    o argumento de Einstein vale tal como está. $\blacksquare$</p>
+
+                <p>Tipicamente, um átomo excitado tem muitos <strong>canais de decaimento</strong> diferentes (isto é,
+                    $\psi_b$ pode decair para muitos estados de energia mais baixa, $\psi_{a_1}$, $\psi_{a_2}$, $\psi_{a_3}$,
+                    …). Cada canal contribui com a sua taxa $A_j$, dada por (11.63) para o par $(b, a_j)$; a Eq. (11.64) vira
+                    $dN_b = -(A_1 + A_2 + A_3 + \cdots)N_b\,dt$, de modo que as taxas de transição <em>se somam</em>, e o tempo
+                    de vida líquido é</p>
+                <p>$$ \tau = \frac{1}{A_1 + A_2 + A_3 + \cdots}. \tag{11.67} $$</p>
+                <p>A fração dos átomos que decai por um canal particular, a <strong>razão de ramificação</strong>, é
+                    $A_j/(A_1 + A_2 + \cdots)$.</p>
+
+                <p id="ex-11-1"><strong>Exemplo 11.1 (Emissão espontânea de um oscilador carregado).</strong> Suponha que
+                    uma carga $q$ esteja presa a uma mola e restrita a oscilar ao longo do eixo $x$. Digamos que ela comece no
+                    estado $|n\rangle$ (Griffiths, Eq. 2.68) e decaia por emissão espontânea para o estado $|n'\rangle$. Ache a
+                    taxa de transição, o tempo de vida do $n$-ésimo estado estacionário e a potência irradiada, e compare com a
+                    de um oscilador <em>clássico</em> de mesma energia.</p>
+                <p><em>Solução.</em> Pela Eq. (11.51),
+                    $\boldsymbol\wp = q\langle n|x|n'\rangle\,\hat\imath$. Os elementos de matriz de $x$ saem dos operadores
+                    escada: $x = \sqrt{\hbar/2m\omega}\,(a_+ + a_-)$, com $a_+|n'\rangle = \sqrt{n' + 1}\,|n' + 1\rangle$ e
+                    $a_-|n'\rangle = \sqrt{n'}\,|n' - 1\rangle$, de modo que</p>
+                <p>$$ \langle n|x|n'\rangle = \sqrt{\frac{\hbar}{2m\omega}}\left(\sqrt{n'}\,\delta_{n,n'-1} + \sqrt n\,\delta_{n',n-1}\right), $$</p>
+                <p>em que $\omega$ é a frequência natural do oscilador (não precisamos mais dessa letra para a frequência da
+                    radiação estimulante). Mas estamos falando de <em>emissão</em>, então $n'$ tem de ser <em>menor</em> que
+                    $n$; para os nossos fins, portanto,</p>
+                <p>$$ \boldsymbol\wp = q\sqrt{\frac{n\hbar}{2m\omega}}\,\delta_{n',n-1}\,\hat\imath. \tag{11.68} $$</p>
+                <p>As transições só ocorrem para o estado um degrau abaixo na "escada", e a frequência do fóton emitido é</p>
+                <p>$$ \begin{aligned}
+                    \omega_0 &= \frac{E_n - E_{n'}}{\hbar} = \frac{(n + 1/2)\hbar\omega - (n' + 1/2)\hbar\omega}{\hbar} \\
+                    &= (n - n')\,\omega = \omega.
+                    \end{aligned} \tag{11.69} $$</p>
+                <p>Não surpreende que o sistema irradie na frequência clássica do oscilador. Com
+                    $|\boldsymbol\wp|^2 = q^2n\hbar/2m\omega$, a taxa de transição (Eq. 11.63) é</p>
+                <p>$$ A = \frac{\omega^3}{3\pi\epsilon_0\hbar c^3}\cdot\frac{q^2n\hbar}{2m\omega} = \frac{nq^2\omega^2}{6\pi\epsilon_0mc^3}, \tag{11.70} $$</p>
+                <p>e o tempo de vida do $n$-ésimo estado estacionário é</p>
+                <p>$$ \tau_n = \frac{6\pi\epsilon_0mc^3}{nq^2\omega^2}. \tag{11.71} $$</p>
+                <p>Enquanto isso, cada fóton irradiado leva a energia $\hbar\omega$, de modo que a <em>potência</em> irradiada é
+                    $A\hbar\omega$:</p>
+                <p>$$ P = \frac{q^2\omega^2}{6\pi\epsilon_0mc^3}(n\hbar\omega), $$</p>
+                <p>ou, como a energia de um oscilador no $n$-ésimo estado é $E = (n + 1/2)\hbar\omega$,</p>
+                <p>$$ P = \frac{q^2\omega^2}{6\pi\epsilon_0mc^3}\left(E - \frac12\hbar\omega\right). \tag{11.72} $$</p>
+                <p>Essa é a potência média irradiada por um oscilador quântico com energia (inicial) $E$.</p>
+                <p>Para comparação, vamos determinar a potência média irradiada por um oscilador <em>clássico</em> com a mesma
+                    energia. Pela eletrodinâmica clássica, a potência irradiada por uma carga acelerada $q$ é dada pela
+                    <strong>fórmula de Larmor</strong>.<sup id="fnref:6"><a href="#fn:6" class="footnote-ref">6</a></sup></p>
+
+                <div class="definition-box" id="teo-formula-de-larmor">
+                    <p><strong>Teorema (Fórmula de Larmor).</strong> Uma carga pontual $q$ com aceleração $a$ e velocidade muito
+                        menor que $c$ irradia a potência</p>
+                    <p>$$ P = \frac{q^2a^2}{6\pi\epsilon_0c^3} \tag{11.73} $$</p>
+                    <p>(aqui, e só no restante deste exemplo, $a$ é a aceleração, e não o raio de Bohr).</p>
+                </div>
+                <p><em>Ideia da demonstração.</em> Longe da carga, o campo de radiação é
+                    $\mathbf E_{\text{rad}} = (q/4\pi\epsilon_0c^2r)\,\hat{\mathbf r}\times(\hat{\mathbf r}\times\mathbf a)$, de
+                    módulo $(q a\sin\theta/4\pi\epsilon_0c^2r)$, e o vetor de Poynting é radial, com módulo
+                    $\epsilon_0cE_{\text{rad}}^2$. Integrando numa esfera de raio $r$, $\int\sin^2\theta\,d\Omega = 8\pi/3$, e o
+                    $r^2$ da área cancela o $1/r^2$ do fluxo, o que dá (11.73). (Griffiths, <em>Introduction to
+                    Electrodynamics</em>, Seção 11.2.1.)</p>
+
+                <p>Para um oscilador harmônico de amplitude $x_0$, $x(t) = x_0\cos(\omega t)$, e a aceleração é
+                    $a = -x_0\omega^2\cos(\omega t)$. Fazendo a média sobre um ciclo completo ($\langle\cos^2\rangle = \tfrac12$),
+                    então,</p>
+                <p>$$ P = \frac{q^2x_0^2\omega^4}{12\pi\epsilon_0c^3}. $$</p>
+                <p>Mas a <em>energia</em> do oscilador é $E = (1/2)m\omega^2x_0^2$, de modo que $x_0^2 = 2E/m\omega^2$, e
+                    então</p>
+                <p>$$ P = \frac{q^2\omega^2}{6\pi\epsilon_0mc^3}E. \tag{11.74} $$</p>
+                <p>Essa é a potência média irradiada por um oscilador <em>clássico</em> com energia $E$. No limite clássico
+                    ($\hbar \to 0$), as fórmulas clássica e quântica concordam;<sup id="fnref:7"><a href="#fn:7"
+                    class="footnote-ref">7</a></sup> mas a fórmula quântica (Eq. 11.72) protege o estado fundamental: se
+                    $E = (1/2)\hbar\omega$, o oscilador não irradia.</p>
+                <p>A concordância é, na verdade, mais que assintótica. A energia que um oscilador pode perder é a que está
+                    <em>acima</em> do estado fundamental: $E' = E - \tfrac12\hbar\omega$ no caso quântico e $E' = E$ no clássico,
+                    cujo estado fundamental (repouso) tem energia zero. Em termos de $E'$, (11.72) e (11.74) são a mesma
+                    fórmula, $P = q^2\omega^2E'/6\pi\epsilon_0mc^3$. E a dinâmica também coincide: classicamente,
+                    $dE/dt = -P = -\gamma E$ com $\gamma = q^2\omega^2/6\pi\epsilon_0mc^3$, e a energia decai com o tempo
+                    $1/\gamma$, que é exatamente $\tau_1$, o tempo de vida do primeiro estado excitado; quanticamente, pela
+                    Eq. (11.70) a taxa no nível $n$ é $n\gamma$, e o número médio de quanta $\langle n\rangle$ decai como
+                    $e^{-\gamma t}$, com a mesma constante.</p>
+
+                <h2 id="regras-de-selecao">Regras de seleção</h2>
+
+                <p>O cálculo das taxas de emissão espontânea ficou reduzido a avaliar elementos de matriz da forma</p>
+                <p>$$ \langle\psi_b|\mathbf r|\psi_a\rangle. $$</p>
+                <p>Como você descobre fazendo o <a href="#exr-11-3-3">Exercício 11.3-3</a>, essas grandezas são muitas vezes
+                    <em>nulas</em>, e seria útil saber de antemão quando isso vai acontecer, para não perder tempo com integrais
+                    desnecessárias. Suponha que nos interessem sistemas como o hidrogênio, cujo hamiltoniano tem simetria
+                    esférica. Nesse caso, podemos especificar os estados pelos números quânticos usuais $n$, $\ell$ e $m$, e os
+                    elementos de matriz são</p>
+                <p>$$ \langle n'\ell'm'|\mathbf r|n\ell m\rangle. $$</p>
+                <p>Ora, $\mathbf r$ é um operador vetorial, e podemos invocar os resultados do Capítulo 6 para obter as
+                    regras de seleção.<sup id="fnref:8"><a href="#fn:8" class="footnote-ref">8</a></sup></p>
+
+                <div class="definition-box" id="teo-regras-de-selecao">
+                    <p><strong>Teorema (Regras de seleção do dipolo elétrico).</strong> Para um hamiltoniano com simetria
+                        esférica, $\langle n'\ell'm'|\mathbf r|n\ell m\rangle = \mathbf 0$ a menos que</p>
+                    <p>$$ \Delta\ell \equiv \ell' - \ell = \pm1, \qquad \Delta m \equiv m' - m = 0, \pm1. \tag{11.75} $$</p>
+                </div>
+                <p><em>Demonstração.</em> Pela
+                    <a href="../[5] - Simetrias e Leis de Conservação/[07] - Regras de Seleção Rotacionais.html#vetorial-l">Eq. (6.62)</a>,
+                    os elementos de matriz de qualquer componente de um operador vetorial só podem ser não nulos se
+                    $\Delta\ell = 0, \pm1$ e $\Delta m = 0, \pm1$. Pela regra de Laporte,
+                    <a href="../[5] - Simetrias e Leis de Conservação/[04] - Paridade.html#regras-de-selecao">Eq. (6.26)</a>,
+                    os elementos de matriz do operador ímpar $\mathbf r$ se anulam quando $\ell + \ell'$ é par; para
+                    $\Delta\ell = 0$, $\ell + \ell' = 2\ell$ é par. Sobra $\Delta\ell = \pm1$. $\blacksquare$</p>
+
+                <p>Essas condições decorrem só da simetria. Se elas <em>não</em> forem satisfeitas, o elemento de matriz é
+                    zero, e a transição se diz <strong>proibida</strong>. Além disso, das
+                    <a href="../[5] - Simetrias e Leis de Conservação/[07] - Regras de Seleção Rotacionais.html#vetorial-m">Eqs. (6.56)–(6.58)</a>
+                    segue que, abreviando $\langle Q\rangle \equiv \langle n'\ell'm'|Q|n\ell m\rangle$,</p>
+                <p>$$ \begin{cases}
+                    \text{se } m' = m, & \text{então } \langle x\rangle = \langle y\rangle = 0, \\
+                    \text{se } m' = m \pm 1, & \text{então } \langle x\rangle = \pm i\langle y\rangle \ \text{ e } \ \langle z\rangle = 0.
+                    \end{cases} \tag{11.76} $$</p>
+                <p>De fato, com $V_\pm = x \pm iy$, temos $x = \tfrac12(V_+ + V_-)$ e $y = \tfrac i2(V_- - V_+)$. Se $m' = m$,
+                    os elementos de $V_+$ e $V_-$ se anulam pelas Eqs. (6.56) e (6.58), e com eles os de $x$ e $y$. Se
+                    $m' = m + 1$, só $V_+$ sobrevive: $\langle x\rangle = \tfrac12\langle V_+\rangle$ e
+                    $\langle y\rangle = -\tfrac i2\langle V_+\rangle$, de modo que $\langle x\rangle = i\langle y\rangle$, e
+                    $\langle z\rangle = 0$ pela Eq. (6.57). Se $m' = m - 1$, só $V_-$ sobrevive, e
+                    $\langle x\rangle = -i\langle y\rangle$. Assim, nunca é preciso calcular os elementos de matriz de $x$
+                    <em>e</em> de $y$; um sempre se obtém do outro.</p>
+
+                <p>Evidentemente, nem toda transição para um estado de energia mais baixa pode ocorrer por radiação de dipolo
+                    elétrico; a maioria é proibida pelas regras de seleção. O esquema das transições permitidas para os quatro
+                    primeiros níveis de Bohr do hidrogênio está na Figura 11.9. Note que o estado $2s$ ($\psi_{200}$) está
+                    "preso": ele não pode decair, porque não há estado de energia mais baixa com $\ell = 1$. Ele é chamado
+                    <strong>metaestável</strong>, e o seu tempo de vida é de fato muito maior que o dos estados $2p$
+                    ($\psi_{211}$, $\psi_{210}$ e $\psi_{21-1}$), por exemplo. Estados metaestáveis acabam decaindo, por colisões,
+                    por transições "proibidas" (<a href="[02] - Emissão e Absorção de Radiação.html#exr-11-2-6">Exercício 11.2-6</a>) ou pela emissão de vários fótons.</p>
+
+                <figure class="lecture-figure" id="fig-11-9">
+                    <svg viewBox="0 0 640 330" role="img" aria-label="Diagrama de níveis do hidrogênio de n = 1 a n = 4, com os estados em quatro colunas, ℓ = 0 (s), 1 (p), 2 (d) e 3 (f). Catorze setas ligam cada estado a estados de n menor numa coluna vizinha: 2p para 1s; 3s para 2p; 3p para 2s e 1s; 3d para 2p; 4s para 3p e 2p; 4p para 3s, 3d, 2s e 1s; 4d para 3p e 2p; 4f para 3d. Nenhuma seta sai do 2s, marcado como metaestável.">
+<defs><marker id="arr-11-9" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<text x="70" y="305" text-anchor="end" class="fig-label fig-small">n = 1</text>
+<line x1="78" y1="300" x2="124" y2="300" class="fig-guide fig-dashed"/>
+<line x1="132" y1="300" x2="224" y2="300" class="fig-curve"/>
+<text x="70" y="201" text-anchor="end" class="fig-label fig-small">n = 2</text>
+<line x1="78" y1="196" x2="124" y2="196" class="fig-guide fig-dashed"/>
+<line x1="132" y1="196" x2="224" y2="196" class="fig-curve"/>
+<line x1="254" y1="196" x2="346" y2="196" class="fig-curve"/>
+<text x="70" y="117" text-anchor="end" class="fig-label fig-small">n = 3</text>
+<line x1="78" y1="112" x2="124" y2="112" class="fig-guide fig-dashed"/>
+<line x1="132" y1="112" x2="224" y2="112" class="fig-curve"/>
+<line x1="254" y1="112" x2="346" y2="112" class="fig-curve"/>
+<line x1="376" y1="112" x2="468" y2="112" class="fig-curve"/>
+<text x="70" y="57" text-anchor="end" class="fig-label fig-small">n = 4</text>
+<line x1="78" y1="52" x2="124" y2="52" class="fig-guide fig-dashed"/>
+<line x1="132" y1="52" x2="224" y2="52" class="fig-curve"/>
+<line x1="254" y1="52" x2="346" y2="52" class="fig-curve"/>
+<line x1="376" y1="52" x2="468" y2="52" class="fig-curve"/>
+<line x1="498" y1="52" x2="590" y2="52" class="fig-curve"/>
+<text x="178" y="24" text-anchor="middle" class="fig-label fig-small">ℓ = 0 (s)</text>
+<text x="300" y="24" text-anchor="middle" class="fig-label fig-small">ℓ = 1 (p)</text>
+<text x="422" y="24" text-anchor="middle" class="fig-label fig-small">ℓ = 2 (d)</text>
+<text x="544" y="24" text-anchor="middle" class="fig-label fig-small">ℓ = 3 (f)</text>
+<text x="178" y="214" text-anchor="middle" class="fig-label fig-small">2s metaestável</text>
+<line x1="290" y1="196" x2="188" y2="298" class="fig-axis" marker-end="url(#arr-11-9)"/>
+<line x1="188" y1="112" x2="290" y2="194" class="fig-axis" marker-end="url(#arr-11-9)"/>
+<line x1="290" y1="112" x2="199" y2="298" class="fig-axis" marker-end="url(#arr-11-9)"/>
+<line x1="279" y1="112" x2="188" y2="194" class="fig-axis" marker-end="url(#arr-11-9)"/>
+<line x1="412" y1="112" x2="310" y2="194" class="fig-axis" marker-end="url(#arr-11-9)"/>
+<line x1="188" y1="52" x2="279" y2="194" class="fig-axis" marker-end="url(#arr-11-9)"/>
+<line x1="199" y1="52" x2="290" y2="110" class="fig-axis" marker-end="url(#arr-11-9)"/>
+<line x1="290" y1="52" x2="210" y2="298" class="fig-axis" marker-end="url(#arr-11-9)"/>
+<line x1="279" y1="52" x2="199" y2="194" class="fig-axis" marker-end="url(#arr-11-9)"/>
+<line x1="268" y1="52" x2="188" y2="110" class="fig-axis" marker-end="url(#arr-11-9)"/>
+<line x1="310" y1="52" x2="412" y2="110" class="fig-axis" marker-end="url(#arr-11-9)"/>
+<line x1="412" y1="52" x2="321" y2="194" class="fig-axis" marker-end="url(#arr-11-9)"/>
+<line x1="401" y1="52" x2="310" y2="110" class="fig-axis" marker-end="url(#arr-11-9)"/>
+<line x1="534" y1="52" x2="432" y2="110" class="fig-axis" marker-end="url(#arr-11-9)"/>
+</svg>
+                    <figcaption><strong>Figura 11.9.</strong> Decaimentos permitidos (por dipolo elétrico) para os quatro
+                        primeiros níveis de Bohr do hidrogênio, com os estados separados em colunas de $\ell$; as energias, que
+                        só dependem de $n$, não estão em escala. Toda seta muda $\ell$ de uma unidade, Eq. (11.75). O estado
+                        $2s$ não tem seta saindo: é metaestável.</figcaption>
+                </figure>
+
+                <h3 id="regras-do-zero">As regras de seleção a partir dos comutadores</h3>
+
+                <p>As regras (11.75) e a relação (11.76) também podem ser obtidas sem a maquinaria de Clebsch–Gordan, só com
+                    comutadores de momento angular. O livro propõe o caminho em dois problemas; aqui as contas são feitas por
+                    inteiro.</p>
+                <p><strong>A regra para $m$.</strong> Com $L_z = xp_y - yp_x$ e $[x, p_x] = [y, p_y] = i\hbar$, temos
+                    $[L_z, x] = -y[p_x, x] = i\hbar y$, $[L_z, y] = x[p_y, y] = -i\hbar x$ e, como $L_z$ não contém $z$ nem
+                    $p_z$, $[L_z, z] = 0$:</p>
+                <p>$$ [L_z, x] = i\hbar y, \qquad [L_z, y] = -i\hbar x, \qquad [L_z, z] = 0. \tag{11.77} $$</p>
+                <p>Ensanduichamos cada comutador entre $\langle n'\ell'm'|$ e $|n\ell m\rangle$ e usamos
+                    $L_z|n\ell m\rangle = m\hbar|n\ell m\rangle$ (e o mesmo à esquerda), com a abreviação
+                    $\langle Q\rangle \equiv \langle n'\ell'm'|Q|n\ell m\rangle$ de (11.76):</p>
+                <p>$$ (m' - m)\langle z\rangle = 0, \qquad (m' - m)\langle x\rangle = i\langle y\rangle, \qquad (m' - m)\langle y\rangle = -i\langle x\rangle. $$</p>
+                <p>A primeira diz que $\langle z\rangle = 0$ a menos que $m' = m$. Combinando as outras duas,
+                    $(m' - m)^2\langle x\rangle = i(m' - m)\langle y\rangle = \langle x\rangle$, isto é,
+                    $\left[(m' - m)^2 - 1\right]\langle x\rangle = 0$: $\langle x\rangle = 0$ (e então também
+                    $\langle y\rangle = 0$) a menos que $m' = m \pm 1$, caso em que $\langle x\rangle = \pm i\langle y\rangle$.
+                    Juntando: se $\Delta m = 0$, só $z$ contribui; se $\Delta m = \pm1$, só $x$ e $y$, ligados pela
+                    Eq. (11.76); qualquer outro $\Delta m$ anula as três componentes.</p>
+
+                <p><strong>A regra para $\ell$.</strong> Ela decorre de uma identidade de comutadores.</p>
+
+                <div class="definition-box" id="teo-identidade-l2">
+                    <p><strong>Teorema (Comutador duplo com $L^2$).</strong> Para o operador posição,</p>
+                    <p>$$ \left[L^2, \left[L^2, \mathbf r\right]\right] = 2\hbar^2\left(\mathbf rL^2 + L^2\mathbf r\right). \tag{11.78} $$</p>
+                </div>
+                <p><em>Demonstração.</em> Basta provar a componente $z$; as outras seguem pela permutação cíclica
+                    $x \to y \to z \to x$, que preserva todas as relações de comutação usadas. Usaremos
+                    $[L_x, z] = -i\hbar y$, $[L_y, z] = i\hbar x$, $[L_y, x] = -i\hbar z$, $[L_x, y] = i\hbar z$ (contas iguais às
+                    de (11.77)), o fato de $L^2$ comutar com cada $L_i$, e $[L_z, L_x] = i\hbar L_y$, $[L_z, L_y] = -i\hbar L_x$.</p>
+                <p><strong>Passo 1.</strong> Como $[L_z, z] = 0$,
+                    $[L^2, z] = [L_x^2, z] + [L_y^2, z] = L_x[L_x, z] + [L_x, z]L_x + L_y[L_y, z] + [L_y, z]L_y$, ou</p>
+                <p>$$ [L^2, z] = i\hbar\left(L_yx + xL_y - L_xy - yL_x\right). $$</p>
+                <p>Trocando a ordem com $L_yx = xL_y - i\hbar z$ e $L_xy = yL_x + i\hbar z$,</p>
+                <p>$$ [L^2, z] = 2i\hbar\left(xL_y - yL_x - i\hbar z\right). $$</p>
+                <p><strong>Passo 2.</strong> Chamemos $C \equiv [L^2, z]$. Como $L^2$ comuta com $L_x$ e $L_y$,</p>
+                <p>$$ [L^2, C] = 2i\hbar\left([L^2, x]L_y - [L^2, y]L_x - i\hbar C\right), $$</p>
+                <p>e, pela permutação cíclica do Passo 1, $[L^2, x] = 2i\hbar(yL_z - zL_y - i\hbar x)$ e
+                    $[L^2, y] = 2i\hbar(zL_x - xL_z - i\hbar y)$. Então</p>
+                <p>$$ \begin{aligned}
+                    {}[L^2, x]L_y - [L^2, y]L_x &= 2i\hbar\left[yL_zL_y + xL_zL_x - z\left(L_x^2 + L_y^2\right)\right. \\
+                    &\qquad\left. - \,i\hbar\left(xL_y - yL_x\right)\right].
+                    \end{aligned} $$</p>
+                <p><strong>Passo 3.</strong> Agora entra $\mathbf r\cdot\mathbf L = \mathbf r\cdot(\mathbf r\times\mathbf p) = 0$
+                    (as componentes de $\mathbf r$ comutam entre si, e $\epsilon_{ijk}r_ir_j = 0$). Com $L_zL_y = L_yL_z - i\hbar L_x$
+                    e $L_zL_x = L_xL_z + i\hbar L_y,$</p>
+                <p>$$ \begin{aligned}
+                    yL_zL_y + xL_zL_x &= (xL_x + yL_y)L_z + i\hbar(xL_y - yL_x) \\
+                    &= -zL_z^2 + i\hbar(xL_y - yL_x),
+                    \end{aligned} $$</p>
+                <p>pois $xL_x + yL_y = -zL_z$. Substituindo no colchete do Passo 2, os termos em $i\hbar(xL_y - yL_x)$ se
+                    cancelam, e $-zL_z^2 - z(L_x^2 + L_y^2) = -zL^2$: o colchete inteiro vale $-zL^2$. Portanto
+                    $[L^2, x]L_y - [L^2, y]L_x = -2i\hbar\,zL^2$ e</p>
+                <p>$$ \begin{aligned}
+                    {}[L^2, C] &= 2i\hbar\left(-2i\hbar\,zL^2 - i\hbar C\right) = 4\hbar^2zL^2 + 2\hbar^2\left(L^2z - zL^2\right) \\
+                    &= 2\hbar^2\left(zL^2 + L^2z\right). \qquad \blacksquare
+                    \end{aligned} $$</p>
+
+                <p>Agora ensanduichamos (11.78) entre $\langle n'\ell'm'|$ e $|n\ell m\rangle$, com
+                    $L^2|n\ell m\rangle = \hbar^2\ell(\ell + 1)|n\ell m\rangle$. O comutador interno dá
+                    $\hbar^2[\ell'(\ell' + 1) - \ell(\ell + 1)]\langle\mathbf r\rangle$, e o externo repete o fator:</p>
+                <p>$$ \hbar^4\left[\ell'(\ell' + 1) - \ell(\ell + 1)\right]^2\langle\mathbf r\rangle = 2\hbar^4\left[\ell(\ell + 1) + \ell'(\ell' + 1)\right]\langle\mathbf r\rangle. $$</p>
+                <p>Ou $\langle\mathbf r\rangle = \mathbf 0$, ou os colchetes casam. Com $\ell'(\ell' + 1) - \ell(\ell + 1) = (\ell' - \ell)(\ell' + \ell + 1)$
+                    e $2[\ell(\ell + 1) + \ell'(\ell' + 1)] = (\ell' + \ell + 1)^2 + (\ell' - \ell)^2 - 1$, a condição fica</p>
+                <p>$$ \left[(\ell' + \ell + 1)^2 - 1\right]\left[(\ell' - \ell)^2 - 1\right] = 0. $$</p>
+                <p>O primeiro fator só se anula para $\ell' + \ell = 0$, isto é, $\ell = \ell' = 0$; mas aí os dois estados têm
+                    simetria esférica e $\langle n'00|\mathbf r|n00\rangle$ é a média de um vetor sobre todas as direções, que é
+                    zero. Sobra o segundo: $\ell' = \ell \pm 1$. É a regra $\Delta\ell = \pm1$ de (11.75), obtida desta vez sem
+                    paridade e sem Clebsch–Gordan, em acordo com a Seção 6.7, onde $\Delta\ell = 0$ só caía com a ajuda da regra
+                    de Laporte.</p>
 
                 <h2 id="conexao">Conexão com o experimento</h2>
 
+                <p>A taxa (11.63) e as regras de seleção (11.75) são testadas diretamente na espectroscopia atômica.</p>
+                <ul>
+                    <li><strong>Tempo de vida e largura natural.</strong> Os estados $2p$ do hidrogênio vivem
+                        $1{,}6\times10^{-9}\ \mathrm{s}$ (dado do livro, reobtido no <a href="#exr-11-3-3">Exercício 11.3-3</a>). Um
+                        estado que decai não tem energia perfeitamente definida: a amplitude cai como $e^{-t/2\tau}$, e a linha
+                        emitida tem uma largura em frequência da ordem de $1/\tau$, a <strong>largura natural</strong>, o que é a
+                        versão espectroscópica de $\Delta E\,\tau \sim \hbar$. Para a linha Lyman $\alpha$ ($2p \to 1s$),
+                        $1/2\pi\tau \approx 100\ \mathrm{MHz}$, cerca de quatro partes em $10^8$ da frequência da linha.</li>
+                    <li><strong>Metaestabilidade do $2s$.</strong> Sem canal de dipolo elétrico (Figura 11.9) nem de dipolo
+                        magnético ou quadrupolo elétrico (<a href="[02] - Emissão e Absorção de Radiação.html#exr-11-2-6">Exercício 11.2-6</a>), o $2s$ isolado decai emitindo dois
+                        fótons, com vida de cerca de um décimo de segundo, segundo o livro: dezenas de milhões de vezes mais que
+                        o $2p$.
+                        Num gás, colisões que o misturam com o $2p$ o esvaziam antes. A linha $1s \to 2s$, excitada por absorção
+                        de dois fótons, é extremamente estreita por causa dessa vida longa, e está entre as frequências mais bem
+                        medidas da física.</li>
+                    <li><strong>A linha de 21 cm.</strong> A transição entre os níveis hiperfinos do estado fundamental
+                        (<a href="../[6] - Teoria de Perturbação Independente do Tempo/[05] - A Estrutura Hiperfina do Hidrogênio.html#estado-fundamental">Seção 7.5</a>)
+                        é de dipolo magnético e tem frequência baixíssima; com o $\omega_0^3$ de (11.63), o tempo de vida chega a
+                        cerca de $10^7$ anos (<a href="#exr-11-3-7">Exercício 11.3-7</a>). Mesmo assim a linha é a mais observada da
+                        radioastronomia, porque há hidrogênio de sobra na Galáxia e, no meio interestelar rarefeito, as colisões
+                        são raras.</li>
+                </ul>
+                <p>Onde o modelo é aproximado: o decaimento exponencial vem da taxa constante, que vale na janela de tempos
+                    discutida na <a href="[02] - Emissão e Absorção de Radiação.html#obs-validade-da-taxa">Seção 11.2.3</a>; em tempos extremamente curtos, ou muito longos, há
+                    desvios pequenos. E a taxa (11.63) é de primeira ordem no acoplamento com o campo; os efeitos de ordem
+                    superior desse acoplamento (como o desvio de Lamb, que desloca os próprios níveis) exigem a eletrodinâmica
+                    quântica de fato. A taxa de transição para um
+                    <em>contínuo</em> de estados finais, em vez de um contínuo de frequências, é o assunto da
+                    <a href="[04] - A Regra de Ouro de Fermi.html#continuo">Seção 11.4</a>.</p>
+
                 <h2 id="exercicios">Exercícios Resolvidos</h2>
 
+                <p id="exr-11-3-1"><strong>Exercício 11.3-1.</strong> A <strong>meia-vida</strong> $t_{1/2}$ de um estado
+                    excitado é o tempo que metade dos átomos de uma amostra grande leva para fazer a transição. Ache a relação
+                    entre $t_{1/2}$ e $\tau$ (o "tempo de vida" do estado).</p>
+                <p><em>Solução.</em> Pela Eq. (11.65), $N_b(t_{1/2}) = N_b(0)e^{-t_{1/2}/\tau} = \tfrac12N_b(0)$, isto é,
+                    $t_{1/2}/\tau = \ln2$: $t_{1/2} = \tau\ln2 \approx 0{,}693\,\tau$. A meia-vida é um pouco menor que o tempo
+                    de vida porque, em $t = \tau$, já decaiu a fração $1 - 1/e \approx 63\%$.</p>
+
+                <p id="exr-11-3-2"><strong>Exercício 11.3-2.</strong> Como mecanismo de transições para baixo, a emissão
+                    espontânea compete com a emissão estimulada <em>térmica</em> (estimulada pela radiação de corpo negro).
+                    Mostre que, à temperatura ambiente ($T = 300\ \mathrm{K}$), a estimulação térmica domina para frequências bem
+                    abaixo de alguns $10^{12}\ \mathrm{Hz}$, e a emissão espontânea para frequências bem acima. Qual mecanismo
+                    domina para a luz visível?</p>
+                <p><em>Solução.</em> A razão entre as duas taxas é, por (11.59) e (11.61),</p>
+                <p>$$ \frac{B_{ba}\rho(\omega_0)}{A} = \frac{\pi^2c^3}{\hbar\omega_0^3}\,\rho(\omega_0) = \frac{1}{e^{\hbar\omega_0/k_BT} - 1}. $$</p>
+                <p>Ela vale 1 quando $e^{h\nu/k_BT} = 2$, isto é, em</p>
+                <p>$$ \nu_\times = \frac{k_BT\ln2}{h} = \frac{(1{,}381\times10^{-23})(300)(0{,}693)}{6{,}626\times10^{-34}}\ \mathrm{Hz} = 4{,}3\times10^{12}\ \mathrm{Hz}, $$</p>
+                <p>no infravermelho distante. Bem abaixo de $\nu_\times$ a razão é $\approx k_BT/h\nu \gg 1$ (a térmica domina);
+                    bem acima, ela é $\approx e^{-h\nu/k_BT} \ll 1$ (a espontânea domina). Para a luz visível,
+                    $\nu \approx 5\times10^{14}\ \mathrm{Hz}$, $h\nu/k_BT \approx 80$ e a razão é $\sim 10^{-35}$: a emissão
+                    estimulada térmica é totalmente irrelevante, e o visível de um objeto à temperatura ambiente é só o que ele
+                    reflete. A razão $1/(e^{x} - 1)$ é o número médio de fótons por modo na radiação térmica: a emissão
+                    estimulada está para a espontânea como o número de fótons presentes está para um
+                    (<a href="#exr-11-3-4">Exercício 11.3-4</a>).</p>
+
+                <p id="exr-11-3-3"><strong>Exercício 11.3-3.</strong> Calcule o tempo de vida (em segundos) de cada um dos
+                    quatro estados $n = 2$ do hidrogênio.</p>
+                <p><em>Solução.</em> O único estado de energia mais baixa é $\psi_{100}$, e pelas regras (11.75) só os estados
+                    com $\ell = 1$ podem decair para ele. Para $\psi_{200}$, todos os elementos $\langle100|\mathbf r|200\rangle$
+                    são nulos ($\Delta\ell = 0$): o tempo de vida é infinito (na aproximação de dipolo elétrico). Para
+                    $\psi_{210}$, $\Delta m = 0$ e só $z$ contribui, com o valor do <a href="[01] - Sistemas de Dois Níveis.html#exr-11-1-2">Exercício 11.1-2</a>,
+                    $\langle100|z|210\rangle = (2^7\sqrt2/3^5)\,a$. Para $\psi_{211}$, $\Delta m = -1$, $\langle z\rangle = 0$ e,
+                    com $\psi_{211} = -(64\pi a^3)^{-1/2}(r/a)e^{-r/2a}\sin\theta\,e^{i\phi}$ e $x = r\sin\theta\cos\phi$,</p>
+                <p>$$ \begin{aligned}
+                    \langle100|x|211\rangle &= -\frac{1}{8\pi a^4}\int_0^\infty r^4e^{-3r/2a}\,dr\int_0^\pi\sin^3\theta\,d\theta\int_0^{2\pi}\cos\phi\,e^{i\phi}\,d\phi \\
+                    &= -\frac{1}{8\pi a^4}\cdot4!\left(\frac{2a}{3}\right)^5\cdot\frac43\cdot\pi = -\frac{2^7}{3^5}\,a,
+                    \end{aligned} $$</p>
+                <p>e, pela Eq. (11.76) com $m' - m = -1$, $\langle100|y|211\rangle = i\langle100|x|211\rangle = -i(2^7/3^5)\,a$
+                    (confira: $\int\sin\phi\,e^{i\phi}d\phi = i\pi$). O caso $\psi_{21-1}$ é o complexo conjugado deste. Nos três
+                    estados $2p$, então,</p>
+                <p>$$ |\boldsymbol\wp|^2 = e^2\left(|\langle x\rangle|^2 + |\langle y\rangle|^2 + |\langle z\rangle|^2\right) = \frac{2^{15}}{3^{10}}\,e^2a^2 \approx 0{,}555\,e^2a^2, $$</p>
+                <p>o mesmo para os três, como tem de ser: a taxa total não pode depender da orientação do átomo. Com
+                    $\hbar\omega_0 = E_2 - E_1 = \tfrac34(13{,}6\ \mathrm{eV}) = 10{,}2\ \mathrm{eV}$, isto é,
+                    $\omega_0 = 1{,}55\times10^{16}\ \mathrm{s^{-1}}$, a Eq. (11.63) dá</p>
+                <p>$$ A = \frac{\omega_0^3|\boldsymbol\wp|^2}{3\pi\epsilon_0\hbar c^3} = 6{,}27\times10^8\ \mathrm{s^{-1}}, \qquad \tau = \frac1A = 1{,}60\times10^{-9}\ \mathrm{s} $$</p>
+                <p>para $\psi_{211}$, $\psi_{210}$ e $\psi_{21-1}$, e $\tau = \infty$ para $\psi_{200}$.</p>
+
+                <p id="exr-11-3-4"><strong>Exercício 11.3-4.</strong> Seria possível obter a taxa de emissão espontânea
+                    (11.63) sem o desvio pelos coeficientes de Einstein, se conhecêssemos a densidade de energia do campo
+                    eletromagnético no estado fundamental, $\rho_0(\omega)$: seria simplesmente um caso de emissão estimulada,
+                    Eq. (11.54). Fazer isso honestamente exige eletrodinâmica quântica, mas, se você aceitar que o estado
+                    fundamental tem <em>um fóton em cada modo clássico</em>, a dedução é simples. (a) Para obter os modos
+                    clássicos, considere uma caixa cúbica vazia de lado $l$, com um canto na origem. Os campos satisfazem a
+                    equação de onda clássica $\left(\tfrac{1}{c^2}\partial_t^2 - \nabla^2\right)f = 0$, em que $f$ é qualquer
+                    componente de $\mathbf E$ ou $\mathbf B$ (Griffiths, <em>Introduction to Electrodynamics</em>, Seção 9.2.1).
+                    Mostre que separação de variáveis com $f = 0$ nas seis faces dá ondas estacionárias
+                    $f = A\cos(\omega t)\sin(n_x\pi x/l)\sin(n_y\pi y/l)\sin(n_z\pi z/l)$ com
+                    $\omega = (\pi c/l)\sqrt{n_x^2 + n_y^2 + n_z^2}$; há dois modos (duas polarizações) para cada trio de inteiros
+                    positivos. (b) Se cada modo tem um fóton, de energia $\hbar\omega$, qual é a energia por unidade de volume na
+                    faixa $d\omega$? Escreva-a como $\rho_0(\omega)\,d\omega$. (c) Use o resultado e a Eq. (11.54) para obter a
+                    taxa de emissão espontânea, e compare com (11.63).</p>
+                <p><em>Solução.</em> (a) Com $f = T(t)X(x)Y(y)Z(z)$, a equação se separa em $X'' = -k_x^2X$ (e o mesmo para
+                    $Y$, $Z$) e $T'' = -c^2(k_x^2 + k_y^2 + k_z^2)T$. As condições $X(0) = X(l) = 0$ exigem
+                    $X \propto \sin(k_xx)$ com $k_x = n_x\pi/l$, $n_x = 1, 2, 3, \dots$, e o mesmo nas outras direções; então
+                    $T \propto \cos(\omega t)$ com $\omega = c|\mathbf k| = (\pi c/l)\sqrt{n_x^2 + n_y^2 + n_z^2}$.</p>
+                <p>(b) Os modos são os pontos de coordenadas inteiras positivas no espaço $(n_x, n_y, n_z)$, um por unidade de
+                    volume desse espaço (a mesma ideia do
+                    <a href="../[4] - Partículas Idênticas/[03] - Sólidos.html#espaco-k">espaço-$k$ da Seção 5.3</a>). Os de
+                    frequência menor que $\omega$ estão num oitavo de esfera de raio $R = l\omega/\pi c$; contando as duas
+                    polarizações, o seu número (para $R \gg 1$) é</p>
+                <p>$$ N(\omega) = 2\cdot\frac18\cdot\frac{4\pi}{3}\left(\frac{l\omega}{\pi c}\right)^3 = \frac{l^3\omega^3}{3\pi^2c^3}, \qquad dN = \frac{l^3\omega^2}{\pi^2c^3}\,d\omega. $$</p>
+                <p>Com um fóton por modo, $dE = \hbar\omega\,dN$, e</p>
+                <p>$$ \frac{1}{l^3}\,dE = \frac{\hbar\omega^3}{\pi^2c^3}\,d\omega \quad\Rightarrow\quad \rho_0(\omega) = \frac{\hbar\omega^3}{\pi^2c^3}. $$</p>
+                <p>(c) Pela Eq. (11.54) com $\rho_0(\omega_0)$,</p>
+                <p>$$ R = \frac{\pi|\boldsymbol\wp|^2}{3\epsilon_0\hbar^2}\cdot\frac{\hbar\omega_0^3}{\pi^2c^3} = \frac{\omega_0^3|\boldsymbol\wp|^2}{3\pi\epsilon_0\hbar c^3}, $$</p>
+                <p>exatamente a Eq. (11.63). Três comentários. (i) Se cada modo tiver, em vez de um fóton, a energia térmica
+                    média $\hbar\omega/(e^{\hbar\omega/k_BT} - 1)$, a mesma contagem dá a fórmula de Planck (11.59): é a ideia da
+                    demonstração citada lá. Assim, $\rho = \bar n\,\rho_0$, com $\bar n$ o número médio de fótons por modo, e a
+                    relação de Einstein (11.61), $A = B_{ba}\rho_0(\omega_0)$, diz que a emissão espontânea é a estimulada por
+                    "um fóton por modo". (ii) A condição $f = 0$ em todas as faces é uma simplificação (as condições de contorno
+                    corretas num condutor variam com a componente), mas a contagem de modos para $R \gg 1$ não muda. (iii) O
+                    estado fundamental de cada modo tem, na verdade, energia $\hbar\omega/2$, e não $\hbar\omega$; com ela se
+                    obteria $A/2$. Na eletrodinâmica quântica a outra metade vem da reação do átomo ao seu próprio campo de
+                    radiação (J. Dalibard, J. Dupont-Roc e C. Cohen-Tannoudji, <em>J. Physique</em> <strong>43</strong>, 1617,
+                    1982). A prescrição "um fóton por modo" acerta o resultado total, mas não deve ser lida ao pé da letra.</p>
+
+                <p id="exr-11-3-5"><strong>Exercício 11.3-5.</strong> Um elétron no estado $n = 3$, $\ell = 0$, $m = 0$ do
+                    hidrogênio decai por uma sequência de transições (de dipolo elétrico) até o estado fundamental. (a) Que rotas
+                    de decaimento estão abertas? Escreva-as na forma
+                    $|300\rangle \to |n\ell m\rangle \to |n'\ell'm'\rangle \to \cdots \to |100\rangle$. (b) Numa garrafa cheia de
+                    átomos nesse estado, que fração decai por cada rota? (c) Qual é o tempo de vida desse estado?</p>
+                <p><em>Solução.</em> (a) Partindo de $\ell = 0$, a regra $\Delta\ell = \pm1$ só permite $\ell' = 1$. Os estados
+                    $\ell = 1$ de energia mais baixa que $n = 3$ são os $2p$ (os $3p$ têm a mesma energia no hidrogênio e não são
+                    destino de decaimento). Dos $2p$, só se pode ir a $1s$ (o $2s$ tem $\Delta\ell = 0$). As rotas são três:</p>
+                <p>$$ |300\rangle \to |21m\rangle \to |100\rangle, \qquad m = 1, 0, -1. $$</p>
+                <p>(b) Pela Eq. (11.67), a fração de cada rota é a razão de ramificação do primeiro passo; o segundo passo é
+                    certo. Como $\psi_{300}$ tem simetria esférica, nenhuma direção é privilegiada, e os três valores de
+                    $|\langle21m|\mathbf r|300\rangle|^2$ são iguais (a conta direta confirma). Cada rota recebe $1/3$.</p>
+                <p>(c) Só o primeiro passo conta para o tempo de vida do $|300\rangle$. A parte angular se resolve sem
+                    integrais: $\psi_{300} = R_{30}(r)/\sqrt{4\pi}$, e
+                    $\sum_m|\langle21m|\mathbf r|300\rangle|^2 = I^2\sum_m\sum_i|\langle Y_1^m|\hat r_i|Y_0^0\rangle|^2$, com
+                    $I = \int_0^\infty r^3R_{30}R_{21}\,dr$. Pela completeza dos harmônicos esféricos, a soma sobre <em>todos</em>
+                    os $(\ell', m')$ de $\sum_i|\langle Y_{\ell'}^{m'}|\hat r_i|Y_0^0\rangle|^2$ é
+                    $\langle Y_0^0|\hat{\mathbf r}\cdot\hat{\mathbf r}|Y_0^0\rangle = 1$, e só $\ell' = 1$ contribui; logo a soma
+                    angular vale 1. Com
+                    $R_{30} = \tfrac{2}{\sqrt{27}}a^{-3/2}\left(1 - \tfrac{2r}{3a} + \tfrac{2r^2}{27a^2}\right)e^{-r/3a}$ e
+                    $R_{21} = \tfrac{1}{\sqrt{24}}a^{-3/2}\tfrac ra\,e^{-r/2a}$, e $\int_0^\infty r^ke^{-\beta r}dr = k!/\beta^{k+1}$
+                    com $\beta = 5/6a$,</p>
+                <p>$$ \begin{aligned}
+                    I &= \frac{2}{\sqrt{648}\,a^4}\int_0^\infty r^4\left(1 - \frac{2r}{3a} + \frac{2r^2}{27a^2}\right)e^{-5r/6a}\,dr \\
+                    &= \frac{2^7\cdot3^4\sqrt2}{5^6}\,a \approx 0{,}938\,a.
+                    \end{aligned} $$</p>
+                <p>Com $\hbar\omega_0 = E_3 - E_2 = \tfrac{5}{36}(13{,}6\ \mathrm{eV}) = 1{,}89\ \mathrm{eV}$ e
+                    $|\boldsymbol\wp|^2 = e^2I^2$ (somado sobre os três destinos), a Eq. (11.63) dá
+                    $A = 6{,}3\times10^6\ \mathrm{s^{-1}}$, e $\tau = 1{,}6\times10^{-7}\ \mathrm{s}$: cem vezes mais que o $2p$,
+                    principalmente pelo fator $\omega_0^3$, que é $(5/27)^3 \approx 1/160$ do da linha Lyman $\alpha$.</p>
+
+                <p id="exr-11-3-6"><strong>Exercício 11.3-6.</strong> No hidrogênio, o estado <em>circular</em>
+                    $|n, \ell = n - 1, m = n - 1\rangle$ é o análogo quântico da órbita circular de Bohr. (a) Mostre que ele só pode
+                    decair para um único estado. (b) Calcule a taxa em forma fechada. (c) Confira com o
+                    <a href="#exr-11-3-3">Exercício 11.3-3</a> para $n = 2$. (d) Mostre que, para $n$ grande,
+                    $A_n \to 2\alpha^4c/3an^5$, e compare com a fórmula de Larmor para um elétron numa órbita circular clássica de
+                    raio $n^2a$.</p>
+                <p><em>Solução.</em> (a) O destino tem $\ell' = \ell \pm 1$ e energia menor, isto é, $n' \lt n$; como
+                    $\ell' \le n' - 1 \le n - 2 = \ell - 1$, só resta $\ell' = n - 2$ e $n' = n - 1$. E, como $m' \le \ell' = n - 2$ e
+                    $|\Delta m| \le 1$, $m' = n - 2$. O único destino é $|n - 1, n - 2, n - 2\rangle$, com $\Delta m = -1$.</p>
+                <p>(b) Parte radial: $R_{n,n-1} = N_nr^{n-1}e^{-r/na}$, com $N_n = (2/na)^{n + 1/2}/\sqrt{(2n)!}$ (normalização
+                    pela integral $\int r^{2n}e^{-2r/na}dr$). Com $\beta = \tfrac{1}{na} + \tfrac{1}{(n-1)a} = \tfrac{2n - 1}{n(n - 1)a}$,</p>
+                <p>$$ \begin{aligned}
+                    I_n &= \int_0^\infty r^3R_{n,n-1}R_{n-1,n-2}\,dr = N_nN_{n-1}\frac{(2n)!}{\beta^{2n+1}} \\
+                    &= \frac{2^{2n+1/2}\,n^{n+1}(n - 1)^{n+3/2}}{(2n - 1)^{2n+1/2}}\,a.
+                    \end{aligned} $$</p>
+                <p>Parte angular: com $Y_\ell^\ell = c_\ell\sin^\ell\theta\,e^{i\ell\phi}$,
+                    $|c_\ell|^2 = (2\ell + 1)!/(4\pi\,4^\ell(\ell!)^2)$, e $x - iy = r\sin\theta\,e^{-i\phi}$,</p>
+                <p>$$ \left|\langle Y_{\ell-1}^{\ell-1}|\sin\theta\,e^{-i\phi}|Y_\ell^\ell\rangle\right| = |c_{\ell-1}c_\ell|\cdot2\pi\int_0^\pi\sin^{2\ell+1}\theta\,d\theta = \sqrt{\frac{2\ell}{2\ell + 1}}, $$</p>
+                <p>usando $\int_0^\pi\sin^{2\ell+1}\theta\,d\theta = 2\,4^\ell(\ell!)^2/(2\ell + 1)!$. Pela Eq. (11.76) com
+                    $\Delta m = -1,$ $\langle z\rangle = 0$ e $\langle y\rangle = i\langle x\rangle$, de modo que
+                    $\langle x - iy\rangle = 2\langle x\rangle$ e $|\langle\mathbf r\rangle|^2 = 2|\langle x\rangle|^2 = \tfrac12|\langle x - iy\rangle|^2$.
+                    Logo $|\langle\mathbf r\rangle|^2 = I_n^2\,\ell/(2\ell + 1) = I_n^2(n - 1)/(2n - 1)$. (O fator $\ell/(2\ell + 1)$ não
+                    depende de $m$: somada sobre os destinos, $\sum_{m'}|\langle n'\ell'm'|\mathbf r|n\ell m\rangle|^2$ é o valor
+                    esperado de um operador escalar, independente de $m$ pela
+                    <a href="../[5] - Simetrias e Leis de Conservação/[07] - Regras de Seleção Rotacionais.html#escalar-independencia">Seção 6.7</a>.)
+                    Com $\hbar\omega_0 = \tfrac{\alpha\hbar c}{2a}\left[\tfrac{1}{(n - 1)^2} - \tfrac{1}{n^2}\right] = \tfrac{\alpha\hbar c}{2a}\,\tfrac{2n - 1}{n^2(n - 1)^2}$
+                    e $e^2/4\pi\epsilon_0 = \alpha\hbar c$, a Eq. (11.63) dá, depois de juntar as potências,</p>
+                <p>$$ A_n = \frac{\alpha^4c}{3a}\,\frac{2^{4n}\,n^{2n-4}(n - 1)^{2n-2}}{(2n - 1)^{4n-1}}. $$</p>
+                <p>(c) Para $n = 2$: $A_2 = (\alpha^4c/3a)(2^8/3^7) = 6{,}27\times10^8\ \mathrm{s^{-1}}$, a taxa do $2p$ do
+                    Exercício 11.3-3. (E $|\langle\mathbf r\rangle|^2 = I_2^2/3 = 2^{15}a^2/3^{10}$, o mesmo valor de lá.)</p>
+                <p>(d) Para $n$ grande, $(1 - 1/n)^{2n-2} \to e^{-2}$ e $(1 - 1/2n)^{4n-1} \to e^{-2}$, e a fração tende a
+                    $(2n)^{4n}n^{-6}/(2n)^{4n-1} = 2/n^5$: $A_n \to 2\alpha^4c/3an^5$. Classicamente, numa órbita circular de raio
+                    $r = n^2a$ a velocidade é $v = \alpha c/n$, a frequência angular $\omega = v/r = \alpha c/n^3a$ e a aceleração
+                    $v^2/r = \alpha^2c^2/n^4a$. A fórmula de Larmor (11.73), com $e^2/6\pi\epsilon_0 = \tfrac23\alpha\hbar c$, dá
+                    $P = \tfrac23\alpha^5\hbar c^2/n^8a^2$, e o número de fótons de energia $\hbar\omega$ emitidos por unidade de
+                    tempo é $P/\hbar\omega = 2\alpha^4c/3an^5$: exatamente o limite de $A_n$. Numericamente, a razão
+                    $A_n\hbar\omega_0/P$ vale $1{,}30$ para $n = 10$, $1{,}05$ para $n = 50$ e $1{,}01$ para $n = 200$, outro
+                    exemplo do princípio da correspondência.</p>
+
+                <p id="exr-11-3-7"><strong>Exercício 11.3-7.</strong> A taxa de emissão espontânea da linha de 21&nbsp;cm do
+                    hidrogênio (<a href="../[6] - Teoria de Perturbação Independente do Tempo/[05] - A Estrutura Hiperfina do Hidrogênio.html#estado-fundamental">Seção 7.5</a>)
+                    pode ser obtida da Eq. (11.63), exceto que esta é uma transição de dipolo <em>magnético</em>, não elétrico:
+                    troca-se $\boldsymbol\wp \to \tfrac1c\mathbf M = \tfrac1c\langle1|(\boldsymbol\mu_e + \boldsymbol\mu_p)|0\rangle$, com
+                    $\boldsymbol\mu_e = -(e/m_e)\mathbf S_e$, $\boldsymbol\mu_p = (5{,}59\,e/2m_p)\mathbf S_p$ e $|0\rangle$, $|1\rangle$
+                    os estados singleto e tripleto. (O fator $1/c$ aparece porque momentos de dipolo elétrico e magnético têm
+                    unidades diferentes.) Como $m_p \gg m_e$, a contribuição do próton é desprezível. Calcule
+                    $|\langle1|\mathbf S_e|0\rangle|^2$, a taxa e o tempo de vida do estado tripleto.</p>
+                <p><em>Solução.</em> Com o próton desprezado,
+                    $A = \omega_0^3e^2|\langle1|\mathbf S_e|0\rangle|^2/(3\pi\epsilon_0\hbar c^5m_e^2)$. Para o tripleto
+                    $|1, 0\rangle = (\uparrow\downarrow + \downarrow\uparrow)/\sqrt2$ e o singleto
+                    $|0\rangle = (\uparrow\downarrow - \downarrow\uparrow)/\sqrt2$ (primeira seta: elétron), $S_{ez}|0\rangle = \tfrac\hbar2|1, 0\rangle$,
+                    enquanto $S_{ex}|0\rangle = \tfrac\hbar2(\downarrow\downarrow - \uparrow\uparrow)/\sqrt2$ e
+                    $S_{ey}|0\rangle = \tfrac{i\hbar}{2}(\downarrow\downarrow + \uparrow\uparrow)/\sqrt2$ são ortogonais a
+                    $|1, 0\rangle$. Logo $\langle1, 0|\mathbf S_e|0\rangle = (0, 0, \hbar/2)$ e $|\langle1|\mathbf S_e|0\rangle|^2 = \hbar^2/4$.
+                    (Para $|1, 1\rangle = \uparrow\uparrow$, as componentes $x$ e $y$ dão $\hbar^2/8$ cada: a mesma soma, como deve
+                    ser.) Então</p>
+                <p>$$ A = \frac{\omega_0^3e^2\hbar}{12\pi\epsilon_0c^5m_e^2}. $$</p>
+                <p>Com $\nu = 1420\ \mathrm{MHz}$, $\omega_0 = 2\pi\nu = 8{,}92\times10^9\ \mathrm{s^{-1}}$, e
+                    $A = 2{,}9\times10^{-15}\ \mathrm{s^{-1}}$: o tempo de vida é $\tau = 3{,}5\times10^{14}\ \mathrm{s} \approx 1{,}1\times10^7$
+                    anos. Comparado com o $2p$, o fator $\omega_0^3$ cai por $(10{,}2\ \mathrm{eV}/5{,}9\ \mu\mathrm{eV})^3 \sim 10^{18}$, e o
+                    elemento de dipolo magnético, $\hbar e/2m_ec$, é $\alpha/2$ vezes menor que $ea$: daí os $10^{23}$ de diferença
+                    entre os dois tempos de vida.</p>
+
                 <h2 id="o-que-construimos">O que construímos</h2>
+
+                <ul>
+                    <li>A equação de taxas de Einstein, (11.55), e, do equilíbrio com Boltzmann e Planck, as
+                        <a href="#teo-relacoes-de-einstein">relações (11.60)–(11.61)</a>: $B_{ab} = B_{ba}$ e
+                        $A = \hbar\omega_0^3B_{ba}/\pi^2c^3$; sem emissão estimulada, sairia a lei de Wien.</li>
+                    <li>A taxa de emissão espontânea,
+                        <a href="#teo-taxa-emissao-espontanea">$A = \omega_0^3|\boldsymbol\wp|^2/3\pi\epsilon_0\hbar c^3$, Eq. (11.63)</a>,
+                        válida também fora do equilíbrio e, pela <a href="#prop-canais-independentes">proposição</a> sobre os
+                        canais, num átomo com qualquer número de níveis.</li>
+                    <li>O decaimento exponencial, o tempo de vida $\tau = 1/A$ e a soma das taxas de vários canais,
+                        (11.64)–(11.67).</li>
+                    <li>O oscilador carregado (<a href="#ex-11-1">Exemplo 11.1</a>): transições só para o degrau de baixo, e a
+                        potência irradiada igual à de Larmor em termos da energia acima do fundamental; o estado fundamental não
+                        irradia.</li>
+                    <li>As <a href="#teo-regras-de-selecao">regras de seleção</a> $\Delta\ell = \pm1$, $\Delta m = 0, \pm1$,
+                        Eq. (11.75), pelos resultados do Cap. 6 e, do zero, pelos comutadores (11.77) e pela
+                        <a href="#teo-identidade-l2">identidade (11.78)</a>; a relação (11.76) entre os elementos de $x$ e $y$; o
+                        estado $2s$ metaestável.</li>
+                    <li>Números: $\tau = 1{,}6\ \mathrm{ns}$ para os $2p$ do hidrogênio, $160\ \mathrm{ns}$ para o $3s$,
+                        $A_n \propto n^{-5}$ nos estados circulares (com o limite clássico de Larmor) e $10^7$ anos para a linha de
+                        21&nbsp;cm.</li>
+                </ul>
+                <p>Até aqui o estado final de uma transição era um nível discreto, e a integral que tornou a taxa constante foi
+                    sobre um espectro <em>contínuo de frequências</em> da radiação. Na próxima seção, o contínuo passa para o
+                    lado do sistema: transições para um <em>contínuo de estados finais</em> (como no efeito fotoelétrico ou no
+                    espalhamento), sob uma perturbação de frequência bem definida, dão a Regra de Ouro de Fermi:
+                    <a href="[04] - A Regra de Ouro de Fermi.html">11.4 A Regra de Ouro de Fermi</a>.</p>
+
+                <hr class="footnotes-sep">
+                <section class="footnotes">
+                    <ol>
+                        <li id="fn:1">
+                            <p>Normalmente usaríamos $R$ para uma taxa de transição, mas, por deferência ao <em>der Alte</em>,
+                                todo mundo segue a notação de Einstein neste contexto. (Nota do livro.)<a href="#fnref:1"
+                                class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:2">
+                            <p>Supomos $N_a$ e $N_b$ muito grandes, de modo que possam ser tratados como funções contínuas do
+                                tempo, ignorando as flutuações estatísticas. (Nota do livro.)<a href="#fnref:2"
+                                class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:3">
+                            <p>Veja, por exemplo, Daniel Schroeder, <em>An Introduction to Thermal Physics</em> (Pearson, Upper
+                                Saddle River, NJ, 2000), Seção 6.1. (Nota do livro.)<a href="#fnref:3" class="footnote-backref"
+                                aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:4">
+                            <p>Schroeder (nota 3), Seção 7.4. (Nota do livro.)<a href="#fnref:4" class="footnote-backref"
+                                aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:5">
+                            <p>Esta situação não deve ser confundida com a de equilíbrio térmico, considerada na seção anterior.
+                                Supomos aqui que os átomos foram tirados do equilíbrio e estão no processo de descer em cascata de
+                                volta aos seus níveis de equilíbrio. (Nota do livro.)<a href="#fnref:5" class="footnote-backref"
+                                aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:6">
+                            <p>Veja, por exemplo, David J. Griffiths, <em>Introduction to Electrodynamics</em>, 4. ed. (Cambridge
+                                University Press, 2017), Seção 11.2.1. (Nota do livro.)<a href="#fnref:6" class="footnote-backref"
+                                aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:7">
+                            <p>É um exemplo do <strong>princípio da correspondência</strong> de Bohr. Na verdade, se expressarmos
+                                $P$ em termos da energia <em>acima do estado fundamental</em>, as duas fórmulas são idênticas.
+                                (Nota do livro.)<a href="#fnref:7" class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:8">
+                            <p>Veja a Eq. (6.62) (a Eq. 6.26 elimina $\Delta\ell = 0$), ou deduza as regras do zero a partir dos
+                                comutadores, como fazemos <a href="#regras-do-zero">adiante</a>. (Adaptado de nota do
+                                livro.)<a href="#fnref:8" class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                    </ol>
+                </section>
 
             </div>
         </main>
@@ -191,6 +884,14 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#emissao-espontanea">Emissão Espontânea</a></li>
+                    <li><a href="#coeficientes-de-einstein">Coeficientes A e B de Einstein</a></li>
+                    <li><a href="#tempo-de-vida">Tempo de vida</a></li>
+                    <li>
+                        <a href="#regras-de-selecao">Regras de seleção</a>
+                        <ul>
+                            <li><a href="#regras-do-zero">A partir dos comutadores</a></li>
+                        </ul>
+                    </li>
                     <li><a href="#conexao">Conexão com o experimento</a></li>
                     <li><a href="#exercicios">Exercícios Resolvidos</a></li>
                     <li><a href="#o-que-construimos">O que construímos</a></li>

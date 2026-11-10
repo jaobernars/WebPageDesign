@@ -173,15 +173,768 @@
             <div class="prose">
 
                 <h1 id="emissao-e-absorcao">11.2 Emissão e Absorção de Radiação</h1>
-                <p class="lead">A luz como perturbação senoidal na aproximação de dipolo: absorção e emissão estimulada com a mesma probabilidade, e a taxa de transição sob radiação incoerente, isotrópica e não polarizada.</p>
+                <p class="lead">A luz como perturbação senoidal na aproximação de dipolo: absorção e emissão estimulada com a
+                    mesma probabilidade, e uma taxa de transição constante sob radiação incoerente, isotrópica e não
+                    polarizada.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>Na <a href="[01] - Sistemas de Dois Níveis.html#perturbacao-senoidal">Seção 11.1.3</a> resolvemos, em primeira ordem, o problema de um sistema
+                    de dois níveis sujeito a uma perturbação $V(\mathbf r)\cos(\omega t)$: a probabilidade de transição é a
+                    <a href="[01] - Sistemas de Dois Níveis.html#teo-probabilidade-senoidal">Eq. (11.35)</a>, que oscila no tempo e tem, como função de $\omega$, um pico
+                    estreito em torno da frequência de transição $\omega_0$. Esta seção mostra que é exatamente isso que
+                    acontece quando um átomo é iluminado. Na aproximação de dipolo, uma onda eletromagnética é uma
+                    perturbação senoidal, e o trabalho que sobra é identificar o elemento de matriz $V_{ba}$.</p>
+                <p>Duas novidades aparecem pelo caminho. A primeira é uma simetria surpreendente: a luz provoca transições
+                    para <em>baixo</em> com a mesma probabilidade com que provoca transições para cima (a
+                    <strong>emissão estimulada</strong>, base do laser). A segunda é o que acontece quando a luz não é
+                    monocromática nem polarizada, como a de uma lâmpada ou a radiação térmica: a soma sobre as frequências
+                    usa a área sob o pico da <a href="[01] - Sistemas de Dois Níveis.html#fig-11-5">Figura 11.5</a>, e o vaivém da Eq. (11.35) dá lugar a uma
+                    <strong>taxa de transição</strong> constante, a Eq. (11.54). É dela que parte a
+                    <a href="[03] - Emissão Espontânea.html#emissao-espontanea">Seção 11.3</a>, onde a emissão espontânea é finalmente calculada.</p>
+
+                <h2 id="ondas-eletromagneticas">Ondas eletromagnéticas</h2>
+
+                <p>Uma onda eletromagnética (que vamos chamar de "luz", embora possa ser infravermelho, ultravioleta,
+                    micro-ondas, raios X etc.; elas diferem apenas na frequência) consiste em campos elétrico e magnético
+                    oscilantes, transversais à direção de propagação e perpendiculares entre si (Figura 11.6). Um átomo, na
+                    presença de uma onda de luz que passa, responde principalmente à componente <em>elétrica</em>. (Numa onda
+                    plana $|\mathbf B| = |\mathbf E|/c$, de modo que a força magnética $q\mathbf v\times\mathbf B$ sobre um
+                    elétron está para a elétrica $q\mathbf E$ como $v/c$; no hidrogênio, $v/c \sim \alpha \approx 1/137$.) Se o
+                    comprimento de onda for longo comparado ao tamanho do átomo, podemos ignorar a variação
+                    <em>espacial</em> do campo;<sup id="fnref:1"><a href="#fn:1" class="footnote-ref">1</a></sup> o átomo fica
+                    então exposto a um campo elétrico que oscila senoidalmente,</p>
+                <p>$$ \mathbf E = E_0\cos(\omega t)\,\hat z \tag{11.38} $$</p>
+                <p>(por enquanto supomos a luz monocromática e polarizada na direção $z$; o livro escreve o versor de $z$
+                    como $\hat k$, mas aqui reservamos $\hat k$ para a direção de propagação, que aparece na
+                    Seção 11.2.3). Um campo uniforme é menos o
+                    gradiente do potencial $\varphi = -E_0z\cos(\omega t)$, e a energia de uma carga $q$ nesse potencial dá o
+                    hamiltoniano de perturbação<sup id="fnref:2"><a href="#fn:2" class="footnote-ref">2</a></sup></p>
+                <p>$$ H' = -qE_0z\cos(\omega t), \tag{11.39} $$</p>
+                <p>em que $q$ é a carga do elétron.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref">3</a></sup> Os
+                    elementos de matriz entre os dois estados são, evidentemente,<sup id="fnref:4"><a href="#fn:4"
+                    class="footnote-ref">4</a></sup></p>
+                <p>$$ H'_{ba} = -\wp E_0\cos(\omega t), \qquad \text{em que} \qquad \wp \equiv q\langle\psi_b|z|\psi_a\rangle. \tag{11.40} $$</p>
+                <p>O sinal da carga ($q = -e$ para o elétron) fica dentro de $\wp$: ele desaparece das grandezas físicas,
+                    que só envolvem $|\wp|^2$, mas não dos elementos de matriz, e convém não perdê-lo de vista em contas
+                    intermediárias.</p>
+
+                <p id="obs-laporte-diagonais"><strong>Observação (Elementos diagonais e regra de Laporte).</strong>
+                    Tipicamente, $\psi$ é uma função par ou ímpar de $z$ (para o hidrogênio, $\psi_{n\ell m}$ tem paridade
+                    $(-1)^\ell$); em qualquer dos casos $|\psi|^2$ é par, $z|\psi|^2$ é ímpar e integra a zero:
+                    $H'_{aa} = -qE_0\cos(\omega t)\int z|\psi_a|^2\,d^3\mathbf r = 0$, e o mesmo para $H'_{bb}$. É a
+                    <a href="../[5] - Simetrias e Leis de Conservação/[04] - Paridade.html#regras-de-selecao">regra de
+                    Laporte (Seção 6.4.3)</a>; o <a href="[01] - Sistemas de Dois Níveis.html#exr-11-1-2">Exercício 11.1-2</a> mostra exemplos no hidrogênio. Isso
+                    justifica a hipótese habitual, Eq. (11.16), de que os elementos diagonais de $H'$ se anulam.</p>
+
+                <p>Assim, a interação da luz com a matéria é governada precisamente pelo tipo de perturbação oscilatória
+                    que estudamos na Seção 11.1.3, com</p>
+                <p>$$ V_{ba} = -\wp E_0. \tag{11.41} $$</p>
+                <p>Pela hermiticidade, $V_{ab} = V_{ba}^* = -\wp^*E_0$, de modo que $|V_{ab}| = |V_{ba}| = |\wp|E_0$: é só
+                    isso que entra nas probabilidades.</p>
+
+                <figure class="lecture-figure" id="fig-11-6">
+                    <svg viewBox="0 0 640 300" role="img" aria-label="Esboço em perspectiva de uma onda eletromagnética plana. O eixo y é horizontal e é a direção de propagação; o eixo z é vertical; o eixo x sai do papel, desenhado em diagonal para baixo e para a esquerda. O campo elétrico é uma senoide no plano vertical yz, desenhada com setas verticais que sobem e descem; o campo magnético é uma senoide do mesmo comprimento de onda no plano horizontal xy, desenhada com hachuras oblíquas. Os dois campos estão em fase e são perpendiculares entre si e à direção de propagação.">
+<defs><marker id="arr-11-6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="96" y1="158" x2="622" y2="158" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="96" y1="158" x2="96" y2="40" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="96" y1="158" x2="12" y2="221" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<text x="620" y="148" text-anchor="end" class="fig-label fig-it">y</text>
+<text x="86" y="46" text-anchor="end" class="fig-label fig-it">z</text>
+<text x="6" y="237" text-anchor="middle" class="fig-label fig-it">x</text>
+<line x1="96" y1="158" x2="44.5" y2="196.6" class="fig-axis"/>
+<line x1="102.3" y1="158" x2="52.3" y2="195.6" class="fig-axis"/>
+<line x1="108.7" y1="158" x2="62.8" y2="192.4" class="fig-axis"/>
+<line x1="115" y1="158" x2="75.9" y2="187.3" class="fig-axis"/>
+<line x1="121.3" y1="158" x2="91.3" y2="180.6" class="fig-axis"/>
+<line x1="127.7" y1="158" x2="108.2" y2="172.6" class="fig-axis"/>
+<line x1="134" y1="158" x2="126.3" y2="163.8" class="fig-axis"/>
+<line x1="140.3" y1="158" x2="144.8" y2="154.6" class="fig-axis"/>
+<line x1="146.7" y1="158" x2="163.1" y2="145.7" class="fig-axis"/>
+<line x1="153" y1="158" x2="180.4" y2="137.4" class="fig-axis"/>
+<line x1="159.3" y1="158" x2="196.2" y2="130.3" class="fig-axis"/>
+<line x1="165.7" y1="158" x2="210" y2="124.8" class="fig-axis"/>
+<line x1="172" y1="158" x2="221.2" y2="121.1" class="fig-axis"/>
+<line x1="178.3" y1="158" x2="229.8" y2="119.4" class="fig-axis"/>
+<line x1="184.7" y1="158" x2="235.4" y2="119.9" class="fig-axis"/>
+<line x1="191" y1="158" x2="238.2" y2="122.6" class="fig-axis"/>
+<line x1="197.3" y1="158" x2="238.4" y2="127.2" class="fig-axis"/>
+<line x1="203.7" y1="158" x2="236.3" y2="133.5" class="fig-axis"/>
+<line x1="210" y1="158" x2="232.4" y2="141.2" class="fig-axis"/>
+<line x1="216.3" y1="158" x2="227.2" y2="149.9" class="fig-axis"/>
+<line x1="229" y1="158" x2="215.7" y2="168" class="fig-axis"/>
+<line x1="235.3" y1="158" x2="210.7" y2="176.5" class="fig-axis"/>
+<line x1="241.7" y1="158" x2="207.1" y2="183.9" class="fig-axis"/>
+<line x1="248" y1="158" x2="205.4" y2="189.9" class="fig-axis"/>
+<line x1="254.3" y1="158" x2="206.1" y2="194.1" class="fig-axis"/>
+<line x1="260.7" y1="158" x2="209.5" y2="196.3" class="fig-axis"/>
+<line x1="267" y1="158" x2="215.8" y2="196.4" class="fig-axis"/>
+<line x1="273.3" y1="158" x2="224.9" y2="194.3" class="fig-axis"/>
+<line x1="279.7" y1="158" x2="236.7" y2="190.2" class="fig-axis"/>
+<line x1="286" y1="158" x2="251" y2="184.3" class="fig-axis"/>
+<line x1="292.3" y1="158" x2="267.1" y2="176.9" class="fig-axis"/>
+<line x1="298.7" y1="158" x2="284.7" y2="168.5" class="fig-axis"/>
+<line x1="311.3" y1="158" x2="321.5" y2="150.3" class="fig-axis"/>
+<line x1="317.7" y1="158" x2="339.4" y2="141.7" class="fig-axis"/>
+<line x1="324" y1="158" x2="356.1" y2="133.9" class="fig-axis"/>
+<line x1="330.3" y1="158" x2="371" y2="127.5" class="fig-axis"/>
+<line x1="336.7" y1="158" x2="383.6" y2="122.8" class="fig-axis"/>
+<line x1="343" y1="158" x2="393.6" y2="120" class="fig-axis"/>
+<line x1="349.3" y1="158" x2="400.8" y2="119.4" class="fig-axis"/>
+<line x1="355.7" y1="158" x2="405.1" y2="120.9" class="fig-axis"/>
+<line x1="362" y1="158" x2="406.6" y2="124.5" class="fig-axis"/>
+<line x1="368.3" y1="158" x2="405.7" y2="130" class="fig-axis"/>
+<line x1="374.7" y1="158" x2="402.6" y2="137" class="fig-axis"/>
+<line x1="381" y1="158" x2="398" y2="145.2" class="fig-axis"/>
+<line x1="387.3" y1="158" x2="392.5" y2="154.2" class="fig-axis"/>
+<line x1="393.7" y1="158" x2="386.6" y2="163.3" class="fig-axis"/>
+<line x1="400" y1="158" x2="381.2" y2="172.1" class="fig-axis"/>
+<line x1="406.3" y1="158" x2="376.8" y2="180.2" class="fig-axis"/>
+<line x1="412.7" y1="158" x2="374" y2="187" class="fig-axis"/>
+<line x1="419" y1="158" x2="373.5" y2="192.2" class="fig-axis"/>
+<line x1="425.3" y1="158" x2="375.4" y2="195.4" class="fig-axis"/>
+<line x1="431.7" y1="158" x2="380.2" y2="196.6" class="fig-axis"/>
+<line x1="438" y1="158" x2="387.8" y2="195.7" class="fig-axis"/>
+<line x1="444.3" y1="158" x2="398.2" y2="192.6" class="fig-axis"/>
+<line x1="450.7" y1="158" x2="411.2" y2="187.6" class="fig-axis"/>
+<line x1="457" y1="158" x2="426.4" y2="180.9" class="fig-axis"/>
+<line x1="463.3" y1="158" x2="443.3" y2="173" class="fig-axis"/>
+<line x1="469.7" y1="158" x2="461.4" y2="164.2" class="fig-axis"/>
+<line x1="476" y1="158" x2="479.9" y2="155.1" class="fig-axis"/>
+<line x1="482.3" y1="158" x2="498.1" y2="146.2" class="fig-axis"/>
+<line x1="488.7" y1="158" x2="515.5" y2="137.9" class="fig-axis"/>
+<line x1="495" y1="158" x2="531.4" y2="130.7" class="fig-axis"/>
+<line x1="501.3" y1="158" x2="545.3" y2="125" class="fig-axis"/>
+<line x1="507.7" y1="158" x2="556.7" y2="121.2" class="fig-axis"/>
+<line x1="514" y1="158" x2="565.4" y2="119.5" class="fig-axis"/>
+<line x1="520.3" y1="158" x2="571.2" y2="119.9" class="fig-axis"/>
+<line x1="526.7" y1="158" x2="574.1" y2="122.4" class="fig-axis"/>
+<line x1="533" y1="158" x2="574.5" y2="126.9" class="fig-axis"/>
+<line x1="539.3" y1="158" x2="572.4" y2="133.2" class="fig-axis"/>
+<line x1="545.7" y1="158" x2="568.6" y2="140.8" class="fig-axis"/>
+<line x1="552" y1="158" x2="563.5" y2="149.4" class="fig-axis"/>
+<path d="M44.5,196.6 L45.3,196.6 L46.1,196.6 L46.9,196.5 L47.9,196.4 L48.8,196.3 L49.8,196.1 L50.8,195.9 L51.9,195.6 L53,195.4 L54.1,195.1 L55.3,194.8 L56.6,194.4 L57.8,194 L59.1,193.6 L60.5,193.2 L61.9,192.7 L63.3,192.2 L64.8,191.7 L66.3,191.1 L67.8,190.6 L69.3,190 L70.9,189.3 L72.6,188.7 L74.2,188 L75.9,187.3 L77.7,186.6 L79.4,185.8 L81.2,185 L83.1,184.2 L84.9,183.4 L86.8,182.6 L88.7,181.7 L90.6,180.9 L92.6,180 L94.5,179 L96.5,178.1 L98.6,177.2 L100.6,176.2 L102.7,175.2 L104.7,174.2 L106.8,173.2 L109,172.2 L111.1,171.2 L113.2,170.2 L115.4,169.1 L117.6,168.1 L119.7,167 L121.9,165.9 L124.1,164.8 L126.3,163.8 L128.5,162.7 L130.7,161.6 L133,160.5 L135.2,159.4 L137.4,158.3 L139.6,157.2 L141.9,156.1 L144.1,155 L146.3,153.9 L148.5,152.8 L150.7,151.7 L152.9,150.6 L155.1,149.6 L157.3,148.5 L159.5,147.4 L161.6,146.4 L163.8,145.3 L165.9,144.3 L168,143.3 L170.2,142.3 L172.2,141.3 L174.3,140.3 L176.4,139.3 L178.4,138.4 L180.4,137.4 L182.4,136.5 L184.4,135.6 L186.3,134.7 L188.2,133.9 L190.1,133 L192,132.2 L193.8,131.4 L195.6,130.6 L197.4,129.8 L199.1,129.1 L200.9,128.4 L202.5,127.7 L204.2,127 L205.8,126.4 L207.4,125.8 L208.9,125.2 L210.5,124.6 L211.9,124.1 L213.4,123.5 L214.8,123.1 L216.2,122.6 L217.5,122.2 L218.8,121.8 L220,121.4 L221.2,121.1 L222.4,120.8 L223.5,120.5 L224.6,120.2 L225.7,120 L226.7,119.8 L227.7,119.7 L228.6,119.6 L229.5,119.5 L230.3,119.4 L231.1,119.4 L231.9,119.4 L232.6,119.4 L233.3,119.5 L233.9,119.5 L234.5,119.7 L235.1,119.8 L235.6,120 L236,120.2 L236.5,120.5 L236.9,120.8 L237.2,121.1 L237.5,121.4 L237.8,121.8 L238,122.2 L238.2,122.6 L238.4,123 L238.5,123.5 L238.6,124 L238.6,124.6 L238.6,125.1 L238.6,125.7 L238.5,126.3 L238.4,127 L238.3,127.6 L238.1,128.3 L238,129.1 L237.7,129.8 L237.5,130.6 L237.2,131.3 L236.9,132.1 L236.5,133 L236.2,133.8 L235.8,134.7 L235.3,135.6 L234.9,136.5 L234.4,137.4 L233.9,138.3 L233.4,139.3 L232.9,140.3 L232.4,141.2 L231.8,142.2 L231.2,143.2 L230.6,144.3 L230,145.3 L229.4,146.3 L228.7,147.4 L228.1,148.4 L227.4,149.5 L226.7,150.6 L226,151.7 L225.4,152.8 L224.7,153.8 L224,154.9 L223.3,156 L222.6,157.1 L221.9,158.2 L221.1,159.3 L220.4,160.4 L219.7,161.5 L219,162.6 L218.4,163.7 L217.7,164.8 L217,165.9 L216.3,166.9 L215.7,168 L215,169.1 L214.4,170.1 L213.8,171.1 L213.1,172.2 L212.6,173.2 L212,174.2 L211.4,175.2 L210.9,176.2 L210.3,177.1 L209.8,178.1 L209.4,179 L208.9,179.9 L208.5,180.8 L208.1,181.7 L207.7,182.5 L207.3,183.4 L207,184.2 L206.7,185 L206.4,185.8 L206.2,186.5 L206,187.3 L205.8,188 L205.6,188.6 L205.5,189.3 L205.4,189.9 L205.4,190.5 L205.4,191.1 L205.4,191.7 L205.5,192.2 L205.6,192.7 L205.7,193.2 L205.9,193.6 L206.1,194 L206.3,194.4 L206.6,194.7 L206.9,195.1 L207.3,195.4 L207.7,195.6 L208.2,195.9 L208.6,196.1 L209.2,196.2 L209.7,196.4 L210.4,196.5 L211,196.6 L211.7,196.6 L212.4,196.6 L213.2,196.6 L214,196.6 L214.9,196.5 L215.8,196.4 L216.7,196.3 L217.7,196.1 L218.8,195.9 L219.8,195.7 L220.9,195.4 L222.1,195.1 L223.3,194.8 L224.5,194.4 L225.8,194.1 L227.1,193.6 L228.4,193.2 L229.8,192.7 L231.2,192.2 L232.7,191.7 L234.2,191.2 L235.7,190.6 L237.3,190 L238.9,189.4 L240.5,188.7 L242.2,188 L243.9,187.3 L245.6,186.6 L247.3,185.8 L249.1,185.1 L251,184.3 L252.8,183.5 L254.7,182.6 L256.6,181.8 L258.5,180.9 L260.5,180 L262.4,179.1 L264.4,178.2 L266.5,177.2 L268.5,176.3 L270.6,175.3 L272.6,174.3 L274.7,173.3 L276.8,172.3 L279,171.3 L281.1,170.2 L283.3,169.2 L285.4,168.1 L287.6,167 L289.8,166 L292,164.9 L294.2,163.8 L296.4,162.7 L298.6,161.6 L300.9,160.5 L303.1,159.4 L305.3,158.3 L307.5,157.2 L309.7,156.2 L312,155.1 L314.2,154 L316.4,152.9 L318.6,151.8 L320.8,150.7 L323,149.6 L325.2,148.6 L327.4,147.5 L329.5,146.4 L331.7,145.4 L333.8,144.4 L335.9,143.3 L338,142.3 L340.1,141.3 L342.2,140.4 L344.3,139.4 L346.3,138.4 L348.3,137.5 L350.3,136.6 L352.3,135.7 L354.2,134.8 L356.1,133.9 L358,133.1 L359.9,132.2 L361.7,131.4 L363.5,130.6 L365.3,129.9 L367.1,129.1 L368.8,128.4 L370.5,127.7 L372.1,127 L373.7,126.4 L375.3,125.8 L376.9,125.2 L378.4,124.6 L379.9,124.1 L381.3,123.6 L382.7,123.1 L384.1,122.6 L385.4,122.2 L386.7,121.8 L388,121.4 L389.2,121.1 L390.3,120.8 L391.5,120.5 L392.6,120.3 L393.6,120 L394.6,119.8 L395.6,119.7 L396.5,119.6 L397.4,119.5 L398.3,119.4 L399.1,119.4 L399.8,119.4 L400.6,119.4 L401.2,119.5 L401.9,119.5 L402.5,119.7 L403,119.8 L403.5,120 L404,120.2 L404.5,120.5 L404.8,120.7 L405.2,121 L405.5,121.4 L405.8,121.7 L406,122.1 L406.2,122.6 L406.4,123 L406.5,123.5 L406.6,124 L406.6,124.5 L406.6,125.1 L406.6,125.7 L406.5,126.3 L406.4,126.9 L406.3,127.6 L406.2,128.3 L406,129 L405.7,129.8 L405.5,130.5 L405.2,131.3 L404.9,132.1 L404.6,132.9 L404.2,133.8 L403.8,134.6 L403.4,135.5 L402.9,136.4 L402.5,137.3 L402,138.3 L401.5,139.2 L400.9,140.2 L400.4,141.2 L399.8,142.2 L399.2,143.2 L398.6,144.2 L398,145.2 L397.4,146.3 L396.7,147.3 L396.1,148.4 L395.4,149.5 L394.8,150.5 L394.1,151.6 L393.4,152.7 L392.7,153.8 L392,154.9 L391.3,156 L390.6,157.1 L389.9,158.2 L389.2,159.3 L388.5,160.4 L387.8,161.5 L387.1,162.6 L386.4,163.6 L385.7,164.7 L385,165.8 L384.4,166.9 L383.7,167.9 L383.1,169 L382.4,170.1 L381.8,171.1 L381.2,172.1 L380.6,173.1 L380,174.1 L379.4,175.1 L378.9,176.1 L378.4,177.1 L377.9,178 L377.4,178.9 L376.9,179.9 L376.5,180.8 L376.1,181.6 L375.7,182.5 L375.3,183.3 L375,184.2 L374.7,185 L374.4,185.7 L374.2,186.5 L374,187.2 L373.8,187.9 L373.6,188.6 L373.5,189.3 L373.4,189.9 L373.4,190.5 L373.4,191.1 L373.4,191.6 L373.5,192.2 L373.5,192.7 L373.7,193.1 L373.8,193.6 L374.1,194 L374.3,194.4 L374.6,194.7 L374.9,195.1 L375.3,195.4 L375.7,195.6 L376.1,195.9 L376.6,196.1 L377.1,196.2 L377.7,196.4 L378.3,196.5 L379,196.6 L379.7,196.6 L380.4,196.6 L381.2,196.6 L382,196.6 L382.9,196.5 L383.8,196.4 L384.7,196.3 L385.7,196.1 L386.7,195.9 L387.8,195.7 L388.9,195.4 L390,195.1 L391.2,194.8 L392.4,194.5 L393.7,194.1 L395,193.7 L396.3,193.2 L397.7,192.8 L399.1,192.3 L400.6,191.7 L402.1,191.2 L403.6,190.6 L405.2,190 L406.8,189.4 L408.4,188.7 L410.1,188.1 L411.8,187.4 L413.5,186.6 L415.3,185.9 L417,185.1 L418.9,184.3 L420.7,183.5 L422.6,182.7 L424.5,181.8 L426.4,180.9 L428.4,180.1 L430.3,179.1 L432.3,178.2 L434.3,177.3 L436.4,176.3 L438.4,175.3 L440.5,174.3 L442.6,173.3 L444.7,172.3 L446.9,171.3 L449,170.3 L451.2,169.2 L453.3,168.2 L455.5,167.1 L457.7,166 L459.9,165 L462.1,163.9 L464.3,162.8 L466.5,161.7 L468.7,160.6 L471,159.5 L473.2,158.4 L475.4,157.3 L477.6,156.2 L479.9,155.1 L482.1,154 L484.3,152.9 L486.5,151.8 L488.7,150.8 L490.9,149.7 L493.1,148.6 L495.2,147.6 L497.4,146.5 L499.6,145.5 L501.7,144.4 L503.8,143.4 L505.9,142.4 L508,141.4 L510.1,140.4 L512.2,139.4 L514.2,138.5 L516.2,137.5 L518.2,136.6 L520.2,135.7 L522.1,134.8 L524,134 L525.9,133.1 L527.8,132.3 L529.6,131.5 L531.4,130.7 L533.2,129.9 L535,129.2 L536.7,128.4 L538.4,127.8 L540,127.1 L541.6,126.4 L543.2,125.8 L544.8,125.2 L546.3,124.7 L547.8,124.1 L549.2,123.6 L550.6,123.1 L552,122.7 L553.3,122.2 L554.6,121.8 L555.9,121.5 L557.1,121.1 L558.3,120.8 L559.4,120.5 L560.5,120.3 L561.6,120 L562.6,119.9 L563.6,119.7 L564.5,119.6 L565.4,119.5 L566.2,119.4 L567,119.4 L567.8,119.4 L568.5,119.4 L569.2,119.4 L569.8,119.5 L570.4,119.7 L571,119.8 L571.5,120 L572,120.2 L572.4,120.4 L572.8,120.7 L573.2,121 L573.5,121.4 L573.8,121.7 L574,122.1 L574.2,122.5 L574.4,123 L574.5,123.5 L574.6,124 L574.6,124.5 L574.6,125.1 L574.6,125.7 L574.5,126.3 L574.5,126.9 L574.3,127.6 L574.2,128.3 L574,129 L573.8,129.7 L573.5,130.5 L573.2,131.3 L572.9,132.1 L572.6,132.9 L572.2,133.7 L571.8,134.6 L571.4,135.5 L571,136.4 L570.5,137.3 L570,138.2 L569.5,139.2 L569,140.1 L568.4,141.1 L567.8,142.1 L567.3,143.1 L566.7,144.2 L566,145.2 L565.4,146.2 L564.8,147.3 L564.1,148.3 L563.5,149.4" class="fig-shape"/>
+<line x1="96" y1="158" x2="96" y2="87" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="105.5" y1="158" x2="105.5" y2="91.6" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="115" y1="158" x2="115" y2="104.9" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="124.5" y1="158" x2="124.5" y2="125.2" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="143.5" y1="158" x2="143.5" y2="170.1" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="153" y1="158" x2="153" y2="194.4" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="162.5" y1="158" x2="162.5" y2="213.7" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="172" y1="158" x2="172" y2="225.7" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="181.5" y1="158" x2="181.5" y2="228.9" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="191" y1="158" x2="191" y2="222.8" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="200.5" y1="158" x2="200.5" y2="208.3" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="210" y1="158" x2="210" y2="187.1" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="229" y1="158" x2="229" y2="141.8" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="238.5" y1="158" x2="238.5" y2="118.2" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="248" y1="158" x2="248" y2="99.9" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="257.5" y1="158" x2="257.5" y2="89.2" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="267" y1="158" x2="267" y2="87.5" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="276.5" y1="158" x2="276.5" y2="94.9" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="286" y1="158" x2="286" y2="110.7" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="295.5" y1="158" x2="295.5" y2="132.7" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="314.5" y1="158" x2="314.5" y2="178.1" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="324" y1="158" x2="324" y2="201.1" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="333.5" y1="158" x2="333.5" y2="218.4" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="343" y1="158" x2="343" y2="227.7" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="352.5" y1="158" x2="352.5" y2="228" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="362" y1="158" x2="362" y2="219.1" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="371.5" y1="158" x2="371.5" y2="202.2" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="381" y1="158" x2="381" y2="179.4" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="400" y1="158" x2="400" y2="134" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="409.5" y1="158" x2="409.5" y2="111.7" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="419" y1="158" x2="419" y2="95.6" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="428.5" y1="158" x2="428.5" y2="87.6" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="438" y1="158" x2="438" y2="88.9" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="447.5" y1="158" x2="447.5" y2="99.1" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="457" y1="158" x2="457" y2="117.1" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="466.5" y1="158" x2="466.5" y2="140.5" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="485.5" y1="158" x2="485.5" y2="185.9" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="495" y1="158" x2="495" y2="207.3" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="504.5" y1="158" x2="504.5" y2="222.3" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="514" y1="158" x2="514" y2="228.8" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="523.5" y1="158" x2="523.5" y2="226.1" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="533" y1="158" x2="533" y2="214.5" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="542.5" y1="158" x2="542.5" y2="195.5" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<line x1="552" y1="158" x2="552" y2="171.5" class="fig-axis" marker-end="url(#arr-11-6)"/>
+<path d="M96,84 L96.8,84 L97.5,84.1 L98.3,84.3 L99,84.5 L99.8,84.7 L100.6,85.1 L101.3,85.5 L102.1,85.9 L102.8,86.4 L103.6,87 L104.4,87.6 L105.1,88.3 L105.9,89 L106.6,89.8 L107.4,90.6 L108.2,91.5 L108.9,92.5 L109.7,93.5 L110.4,94.5 L111.2,95.6 L112,96.8 L112.7,98 L113.5,99.3 L114.2,100.6 L115,101.9 L115.8,103.3 L116.5,104.7 L117.3,106.2 L118,107.7 L118.8,109.3 L119.6,110.9 L120.3,112.6 L121.1,114.2 L121.8,115.9 L122.6,117.7 L123.4,119.5 L124.1,121.3 L124.9,123.1 L125.6,125 L126.4,126.9 L127.2,128.8 L127.9,130.8 L128.7,132.7 L129.4,134.7 L130.2,136.7 L131,138.7 L131.7,140.8 L132.5,142.8 L133.2,144.9 L134,147 L134.8,149.1 L135.5,151.1 L136.3,153.2 L137,155.3 L137.8,157.4 L138.6,159.5 L139.3,161.7 L140.1,163.8 L140.8,165.8 L141.6,167.9 L142.4,170 L143.1,172.1 L143.9,174.1 L144.6,176.2 L145.4,178.2 L146.2,180.2 L146.9,182.2 L147.7,184.2 L148.4,186.2 L149.2,188.1 L150,190 L150.7,191.9 L151.5,193.7 L152.2,195.6 L153,197.4 L153.8,199.1 L154.5,200.9 L155.3,202.6 L156,204.2 L156.8,205.8 L157.6,207.4 L158.3,209 L159.1,210.5 L159.8,211.9 L160.6,213.4 L161.4,214.7 L162.1,216.1 L162.9,217.3 L163.6,218.6 L164.4,219.8 L165.2,220.9 L165.9,222 L166.7,223 L167.4,224 L168.2,224.9 L169,225.8 L169.7,226.6 L170.5,227.4 L171.2,228.1 L172,228.7 L172.8,229.3 L173.5,229.8 L174.3,230.3 L175,230.7 L175.8,231.1 L176.6,231.4 L177.3,231.6 L178.1,231.8 L178.8,231.9 L179.6,232 L180.4,232 L181.1,231.9 L181.9,231.8 L182.6,231.6 L183.4,231.4 L184.2,231.1 L184.9,230.8 L185.7,230.3 L186.4,229.9 L187.2,229.3 L188,228.7 L188.7,228.1 L189.5,227.4 L190.2,226.6 L191,225.8 L191.8,225 L192.5,224 L193.3,223.1 L194,222 L194.8,221 L195.6,219.8 L196.3,218.6 L197.1,217.4 L197.8,216.1 L198.6,214.8 L199.4,213.4 L200.1,212 L200.9,210.6 L201.6,209.1 L202.4,207.5 L203.2,205.9 L203.9,204.3 L204.7,202.7 L205.4,201 L206.2,199.2 L207,197.5 L207.7,195.7 L208.5,193.8 L209.2,192 L210,190.1 L210.8,188.2 L211.5,186.3 L212.3,184.3 L213,182.3 L213.8,180.3 L214.6,178.3 L215.3,176.3 L216.1,174.3 L216.8,172.2 L217.6,170.1 L218.4,168 L219.1,166 L219.9,163.9 L220.6,161.8 L221.4,159.7 L222.2,157.6 L222.9,155.5 L223.7,153.4 L224.4,151.3 L225.2,149.2 L226,147.1 L226.7,145 L227.5,142.9 L228.2,140.9 L229,138.8 L229.8,136.8 L230.5,134.8 L231.3,132.8 L232,130.9 L232.8,128.9 L233.6,127 L234.3,125.1 L235.1,123.2 L235.8,121.4 L236.6,119.6 L237.4,117.8 L238.1,116 L238.9,114.3 L239.6,112.6 L240.4,111 L241.2,109.4 L241.9,107.8 L242.7,106.3 L243.4,104.8 L244.2,103.4 L245,102 L245.7,100.6 L246.5,99.3 L247.2,98.1 L248,96.9 L248.8,95.7 L249.5,94.6 L250.3,93.5 L251,92.5 L251.8,91.6 L252.6,90.7 L253.3,89.8 L254.1,89 L254.8,88.3 L255.6,87.6 L256.4,87 L257.1,86.4 L257.9,85.9 L258.6,85.5 L259.4,85.1 L260.2,84.8 L260.9,84.5 L261.7,84.3 L262.4,84.1 L263.2,84 L264,84 L264.7,84 L265.5,84.1 L266.2,84.3 L267,84.5 L267.8,84.7 L268.5,85.1 L269.3,85.4 L270,85.9 L270.8,86.4 L271.6,86.9 L272.3,87.6 L273.1,88.2 L273.8,89 L274.6,89.7 L275.4,90.6 L276.1,91.5 L276.9,92.4 L277.6,93.4 L278.4,94.5 L279.2,95.6 L279.9,96.7 L280.7,97.9 L281.4,99.2 L282.2,100.5 L283,101.8 L283.7,103.2 L284.5,104.7 L285.2,106.1 L286,107.7 L286.8,109.2 L287.5,110.8 L288.3,112.5 L289,114.1 L289.8,115.9 L290.6,117.6 L291.3,119.4 L292.1,121.2 L292.8,123 L293.6,124.9 L294.4,126.8 L295.1,128.7 L295.9,130.7 L296.6,132.6 L297.4,134.6 L298.2,136.6 L298.9,138.6 L299.7,140.7 L300.4,142.7 L301.2,144.8 L302,146.9 L302.7,148.9 L303.5,151 L304.2,153.1 L305,155.2 L305.8,157.3 L306.5,159.4 L307.3,161.5 L308,163.6 L308.8,165.7 L309.6,167.8 L310.3,169.9 L311.1,172 L311.8,174 L312.6,176.1 L313.4,178.1 L314.1,180.1 L314.9,182.1 L315.6,184.1 L316.4,186.1 L317.2,188 L317.9,189.9 L318.7,191.8 L319.4,193.6 L320.2,195.5 L321,197.3 L321.7,199 L322.5,200.8 L323.2,202.5 L324,204.1 L324.8,205.8 L325.5,207.4 L326.3,208.9 L327,210.4 L327.8,211.9 L328.6,213.3 L329.3,214.7 L330.1,216 L330.8,217.3 L331.6,218.5 L332.4,219.7 L333.1,220.8 L333.9,221.9 L334.6,223 L335.4,223.9 L336.2,224.9 L336.9,225.7 L337.7,226.6 L338.4,227.3 L339.2,228 L340,228.7 L340.7,229.3 L341.5,229.8 L342.2,230.3 L343,230.7 L343.8,231.1 L344.5,231.4 L345.3,231.6 L346,231.8 L346.8,231.9 L347.6,232 L348.3,232 L349.1,231.9 L349.8,231.8 L350.6,231.7 L351.4,231.4 L352.1,231.1 L352.9,230.8 L353.6,230.4 L354.4,229.9 L355.2,229.4 L355.9,228.8 L356.7,228.1 L357.4,227.4 L358.2,226.7 L359,225.9 L359.7,225 L360.5,224.1 L361.2,223.1 L362,222.1 L362.8,221 L363.5,219.9 L364.3,218.7 L365,217.5 L365.8,216.2 L366.6,214.9 L367.3,213.5 L368.1,212.1 L368.8,210.6 L369.6,209.1 L370.4,207.6 L371.1,206 L371.9,204.4 L372.6,202.7 L373.4,201 L374.2,199.3 L374.9,197.6 L375.7,195.8 L376.4,193.9 L377.2,192.1 L378,190.2 L378.7,188.3 L379.5,186.4 L380.2,184.4 L381,182.4 L381.8,180.4 L382.5,178.4 L383.3,176.4 L384,174.4 L384.8,172.3 L385.6,170.2 L386.3,168.2 L387.1,166.1 L387.8,164 L388.6,161.9 L389.4,159.8 L390.1,157.7 L390.9,155.6 L391.6,153.5 L392.4,151.4 L393.2,149.3 L393.9,147.2 L394.7,145.1 L395.4,143 L396.2,141 L397,139 L397.7,136.9 L398.5,134.9 L399.2,132.9 L400,131 L400.8,129 L401.5,127.1 L402.3,125.2 L403,123.3 L403.8,121.5 L404.6,119.7 L405.3,117.9 L406.1,116.1 L406.8,114.4 L407.6,112.7 L408.4,111.1 L409.1,109.5 L409.9,107.9 L410.6,106.4 L411.4,104.9 L412.2,103.5 L412.9,102.1 L413.7,100.7 L414.4,99.4 L415.2,98.1 L416,96.9 L416.7,95.8 L417.5,94.6 L418.2,93.6 L419,92.6 L419.8,91.6 L420.5,90.7 L421.3,89.9 L422,89.1 L422.8,88.3 L423.6,87.7 L424.3,87 L425.1,86.5 L425.8,86 L426.6,85.5 L427.4,85.1 L428.1,84.8 L428.9,84.5 L429.6,84.3 L430.4,84.1 L431.2,84 L431.9,84 L432.7,84 L433.4,84.1 L434.2,84.3 L435,84.5 L435.7,84.7 L436.5,85 L437.2,85.4 L438,85.9 L438.8,86.4 L439.5,86.9 L440.3,87.5 L441,88.2 L441.8,88.9 L442.6,89.7 L443.3,90.5 L444.1,91.4 L444.8,92.4 L445.6,93.4 L446.4,94.4 L447.1,95.5 L447.9,96.7 L448.6,97.9 L449.4,99.1 L450.2,100.4 L450.9,101.8 L451.7,103.2 L452.4,104.6 L453.2,106.1 L454,107.6 L454.7,109.1 L455.5,110.7 L456.2,112.4 L457,114.1 L457.8,115.8 L458.5,117.5 L459.3,119.3 L460,121.1 L460.8,122.9 L461.6,124.8 L462.3,126.7 L463.1,128.6 L463.8,130.6 L464.6,132.5 L465.4,134.5 L466.1,136.5 L466.9,138.5 L467.6,140.6 L468.4,142.6 L469.2,144.7 L469.9,146.8 L470.7,148.8 L471.4,150.9 L472.2,153 L473,155.1 L473.7,157.2 L474.5,159.3 L475.2,161.4 L476,163.5 L476.8,165.6 L477.5,167.7 L478.3,169.8 L479,171.9 L479.8,173.9 L480.6,176 L481.3,178 L482.1,180 L482.8,182 L483.6,184 L484.4,186 L485.1,187.9 L485.9,189.8 L486.6,191.7 L487.4,193.6 L488.2,195.4 L488.9,197.2 L489.7,199 L490.4,200.7 L491.2,202.4 L492,204.1 L492.7,205.7 L493.5,207.3 L494.2,208.8 L495,210.3 L495.8,211.8 L496.5,213.2 L497.3,214.6 L498,215.9 L498.8,217.2 L499.6,218.4 L500.3,219.6 L501.1,220.8 L501.8,221.9 L502.6,222.9 L503.4,223.9 L504.1,224.8 L504.9,225.7 L505.6,226.5 L506.4,227.3 L507.2,228 L507.9,228.6 L508.7,229.2 L509.4,229.8 L510.2,230.3 L511,230.7 L511.7,231.1 L512.5,231.4 L513.2,231.6 L514,231.8 L514.8,231.9 L515.5,232 L516.3,232 L517,231.9 L517.8,231.8 L518.6,231.7 L519.3,231.4 L520.1,231.1 L520.8,230.8 L521.6,230.4 L522.4,229.9 L523.1,229.4 L523.9,228.8 L524.6,228.2 L525.4,227.5 L526.2,226.7 L526.9,225.9 L527.7,225.1 L528.4,224.1 L529.2,223.2 L530,222.1 L530.7,221.1 L531.5,219.9 L532.2,218.8 L533,217.5 L533.8,216.3 L534.5,214.9 L535.3,213.6 L536,212.2 L536.8,210.7 L537.6,209.2 L538.3,207.7 L539.1,206.1 L539.8,204.5 L540.6,202.8 L541.4,201.1 L542.1,199.4 L542.9,197.7 L543.6,195.9 L544.4,194 L545.2,192.2 L545.9,190.3 L546.7,188.4 L547.4,186.5 L548.2,184.5 L549,182.5 L549.7,180.6 L550.5,178.5 L551.2,176.5 L552,174.5" class="fig-curve"/>
+<line x1="462" y1="54" x2="436" y2="80" class="fig-guide"/>
+<text x="466" y="50" class="fig-label">Campo elétrico E</text>
+<line x1="192.5" y1="236.6" x2="209.5" y2="200.6" class="fig-guide"/>
+<text x="188.5" y="250.6" text-anchor="middle" class="fig-label">Campo magnético B</text>
+<text x="624" y="180" text-anchor="end" class="fig-label fig-small">propagação</text>
+</svg>
+                    <figcaption><strong>Figura 11.6.</strong> Uma onda eletromagnética plana que se propaga na direção $y$: o
+                        campo elétrico oscila na direção $z$ e o magnético na direção $x$, em fase e perpendiculares entre si.
+                        Na aproximação de dipolo, o átomo (muito menor que o comprimento de onda) só sente o campo elétrico
+                        no ponto onde está, $E_0\cos(\omega t)\,\hat z$.</figcaption>
+                </figure>
+
+                <h2 id="tres-processos">Absorção, emissão estimulada e emissão espontânea</h2>
+
+                <p>Se um átomo começa no estado "de baixo" $\psi_a$ e você o ilumina com um feixe monocromático polarizado, a
+                    probabilidade de transição para o estado "de cima" $\psi_b$ é dada pela Eq. (11.35), que, em vista da
+                    Eq. (11.41), toma a forma</p>
+                <p>$$ P_{a\to b}(t) = \left(\frac{|\wp|E_0}{\hbar}\right)^2\frac{\sin^2\left[(\omega_0 - \omega)t/2\right]}{(\omega_0 - \omega)^2}. \tag{11.42} $$</p>
+                <p>Nesse processo o átomo absorve a energia $E_b - E_a = \hbar\omega_0$ do campo eletromagnético, e por isso
+                    ele se chama <strong>absorção</strong>. (Informalmente, dizemos que o átomo "absorveu um fóton",
+                    Figura 11.7(a). Tecnicamente, a palavra "fóton" pertence à <strong>eletrodinâmica quântica</strong>, a
+                    teoria quântica do campo eletromagnético, enquanto aqui tratamos o próprio campo de modo
+                    <em>clássico</em>. Mas essa linguagem é conveniente, desde que não se leia demais nela.)</p>
+
+                <figure class="lecture-figure" id="fig-11-7">
+                    <svg viewBox="0 0 640 200" role="img" aria-label="Três painéis lado a lado, cada um com dois níveis horizontais: b em cima e a embaixo. (a) Absorção: uma linha ondulada, o fóton, chega da esquerda, e uma seta leva o átomo do nível a ao nível b. (b) Emissão estimulada: um fóton chega da esquerda, uma seta leva o átomo de b para a, e saem pela direita duas linhas onduladas paralelas. (c) Emissão espontânea: nenhum fóton chega; uma seta leva o átomo de b para a, e sai pela direita um único fóton.">
+<defs><marker id="arr-11-7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="26" y1="50" x2="194" y2="50" class="fig-axis"/>
+<line x1="26" y1="128" x2="194" y2="128" class="fig-axis"/>
+<text x="20" y="55" text-anchor="end" class="fig-label fig-it">b</text>
+<text x="20" y="133" text-anchor="end" class="fig-label fig-it">a</text>
+<text x="110" y="168" text-anchor="middle" class="fig-label">(a) Absorção</text>
+<line x1="236" y1="50" x2="404" y2="50" class="fig-axis"/>
+<line x1="236" y1="128" x2="404" y2="128" class="fig-axis"/>
+<text x="230" y="55" text-anchor="end" class="fig-label fig-it">b</text>
+<text x="230" y="133" text-anchor="end" class="fig-label fig-it">a</text>
+<text x="320" y="168" text-anchor="middle" class="fig-label">(b) Emissão estimulada</text>
+<line x1="446" y1="50" x2="614" y2="50" class="fig-axis"/>
+<line x1="446" y1="128" x2="614" y2="128" class="fig-axis"/>
+<text x="440" y="55" text-anchor="end" class="fig-label fig-it">b</text>
+<text x="440" y="133" text-anchor="end" class="fig-label fig-it">a</text>
+<text x="530" y="168" text-anchor="middle" class="fig-label">(c) Emissão espontânea</text>
+<path d="M28,102 L29.5,105.8 L31,106.9 L32.5,104.7 L34,100.6 L35.5,97.5 L37,97.5 L38.5,100.6 L40,104.7 L41.5,106.9 L43,105.8 L44.5,102 L46,98.2 L47.5,97.1 L49,99.3 L50.5,103.4 L52,106.5 L53.5,106.5 L55,103.4 L56.5,99.3 L58,97.1 L59.5,98.2 L61,102 L62.5,105.8 L64,106.9 L65.5,104.7 L67,100.6 L68.5,97.5 L70,97.5 L71.5,100.6 L73,104.4 L74.5,105.7 L76,104.3 L77.5,102 L79,100.9 L80.5,101.3 L82,102 L83.5,102 L85,102 L86.5,102 L88,102" class="fig-shape" marker-end="url(#arr-11-7)"/>
+<line x1="98" y1="128" x2="140" y2="53" class="fig-curve" marker-end="url(#arr-11-7)"/>
+<circle cx="98" cy="128" r="3.5" class="fig-arrowhead"/>
+<path d="M238,89 L239.5,92.8 L241.1,93.9 L242.6,91.5 L244.1,87.3 L245.6,84.3 L247.2,84.7 L248.7,88.2 L250.2,92.2 L251.8,94 L253.3,92.2 L254.8,88.1 L256.4,84.6 L257.9,84.3 L259.4,87.4 L260.9,91.6 L262.5,93.9 L264,92.8 L265.5,88.9 L267.1,85.1 L268.6,84.1 L270.1,86.6 L271.6,90.8 L273.2,93.7 L274.7,93 L276.2,89.6 L277.8,86.9 L279.3,86.6 L280.8,88 L282.4,89.2 L283.9,89.1 L285.4,89 L286.9,89 L288.5,89 L290,89" class="fig-shape" marker-end="url(#arr-11-7)"/>
+<line x1="302" y1="50" x2="344" y2="125" class="fig-curve" marker-end="url(#arr-11-7)"/>
+<circle cx="302" cy="50" r="3.5" class="fig-arrowhead"/>
+<path d="M350,77 L351.5,80.8 L353,81.9 L354.5,79.7 L356,75.6 L357.5,72.5 L359,72.5 L360.5,75.6 L362,79.7 L363.5,81.9 L365,80.8 L366.5,77 L368,73.2 L369.5,72.1 L371,74.3 L372.5,78.4 L374,81.5 L375.5,81.5 L377,78.4 L378.5,74.3 L380,72.1 L381.5,73.2 L383,77 L384.5,80.8 L386,81.9 L387.5,79.7 L389,75.7 L390.5,73.6 L392,74.3 L393.5,76.4 L395,77.8 L396.5,77.7 L398,77 L399.5,77 L401,77 L402.5,77 L404,77" class="fig-shape" marker-end="url(#arr-11-7)"/>
+<path d="M350,101 L351.5,104.8 L353,105.9 L354.5,103.7 L356,99.6 L357.5,96.5 L359,96.5 L360.5,99.6 L362,103.7 L363.5,105.9 L365,104.8 L366.5,101 L368,97.2 L369.5,96.1 L371,98.3 L372.5,102.4 L374,105.5 L375.5,105.5 L377,102.4 L378.5,98.3 L380,96.1 L381.5,97.2 L383,101 L384.5,104.8 L386,105.9 L387.5,103.7 L389,99.7 L390.5,97.6 L392,98.3 L393.5,100.4 L395,101.8 L396.5,101.7 L398,101 L399.5,101 L401,101 L402.5,101 L404,101" class="fig-shape" marker-end="url(#arr-11-7)"/>
+<line x1="512" y1="50" x2="554" y2="125" class="fig-curve" marker-end="url(#arr-11-7)"/>
+<circle cx="512" cy="50" r="3.5" class="fig-arrowhead"/>
+<path d="M560,89 L561.5,92.8 L563,93.9 L564.5,91.7 L566,87.6 L567.5,84.5 L569,84.5 L570.5,87.6 L572,91.7 L573.5,93.9 L575,92.8 L576.5,89 L578,85.2 L579.5,84.1 L581,86.3 L582.5,90.4 L584,93.5 L585.5,93.5 L587,90.4 L588.5,86.3 L590,84.1 L591.5,85.2 L593,89 L594.5,92.8 L596,93.9 L597.5,91.7 L599,87.7 L600.5,85.6 L602,86.3 L603.5,88.4 L605,89.8 L606.5,89.7 L608,89 L609.5,89 L611,89 L612.5,89 L614,89" class="fig-shape" marker-end="url(#arr-11-7)"/>
+</svg>
+                    <figcaption><strong>Figura 11.7.</strong> Três maneiras de a luz interagir com um átomo de dois níveis:
+                        (a) absorção, em que um fóton entra e o átomo sobe de $a$ para $b$; (b) emissão estimulada, em que um
+                        fóton entra, o átomo desce de $b$ para $a$ e saem dois fótons idênticos; (c) emissão espontânea, em que
+                        o átomo desce sem que nenhuma radiação tenha sido aplicada.</figcaption>
+                </figure>
+
+                <p>Poderíamos, é claro, refazer a dedução inteira para um sistema que começa no estado de <em>cima</em>,
+                    $c_a(0) = 0$ e $c_b(0) = 1$. O livro sugere que o leitor a faça, se quiser; vamos fazê-la, porque o
+                    resultado é espantoso.</p>
+
+                <div class="definition-box" id="teo-emissao-estimulada">
+                    <p><strong>Teorema (Emissão estimulada).</strong> Em primeira ordem, com $c_a(0) = 0$, $c_b(0) = 1$,
+                        elementos diagonais nulos e $\omega$ perto da ressonância (Eq. 11.33), a probabilidade
+                        $P_{b\to a}(t) = |c_a(t)|^2$ de uma transição para o nível de <em>baixo</em> é</p>
+                    <p>$$ P_{b\to a}(t) = \left(\frac{|\wp|E_0}{\hbar}\right)^2\frac{\sin^2\left[(\omega_0 - \omega)t/2\right]}{(\omega_0 - \omega)^2}, \tag{11.43} $$</p>
+                    <p>exatamente igual à probabilidade de absorção, Eq. (11.42).</p>
+                </div>
+                <p><em>Demonstração.</em> Agora a ordem zero é $c_a^{(0)} = 0$, $c_b^{(0)} = 1$. A primeira das
+                    <a href="[01] - Sistemas de Dois Níveis.html#teo-equacoes-dos-coeficientes">Eqs. (11.17)</a>, $\dot c_a = -(i/\hbar)H'_{ab}e^{-i\omega_0t}c_b$, com
+                    $c_b \to 1$ no lado direito, dá em primeira ordem</p>
+                <p>$$ c_a(t) \approx -\frac{i}{\hbar}\int_0^tH'_{ab}(t')\,e^{-i\omega_0t'}\,dt', $$</p>
+                <p>que é a Eq. (11.21) com os papéis de $a$ e $b$ trocados; como $\omega_0 = (E_b - E_a)/\hbar$, a troca
+                    $a \leftrightarrow b$ equivale a $\omega_0 \to -\omega_0$. Com $H'_{ab} = V_{ab}\cos(\omega t')$ e
+                    $\int_0^te^{-i\Omega t'}dt' = (e^{-i\Omega t} - 1)/(-i\Omega)$,</p>
+                <p>$$ \begin{aligned}
+                    c_a(t) &\approx -\frac{iV_{ab}}{2\hbar}\int_0^t\left[e^{-i(\omega_0 + \omega)t'} + e^{-i(\omega_0 - \omega)t'}\right]dt' \\
+                    &= \frac{V_{ab}}{2\hbar}\left[\frac{e^{-i(\omega_0 + \omega)t} - 1}{\omega_0 + \omega} + \frac{e^{-i(\omega_0 - \omega)t} - 1}{\omega_0 - \omega}\right].
+                    \end{aligned} $$</p>
+                <p>É a Eq. (11.32) com $\omega_0 \to -\omega_0$ (e $V_{ba} \to V_{ab}$): o termo que lá tinha $\omega_0 + \omega$
+                    no denominador passa a ter $-\omega_0 + \omega$, e é <em>ele</em> que fica ressonante. Perto da ressonância,
+                    Eq. (11.33), o termo com $\omega_0 + \omega$ no denominador é desprezível pela mesma razão de antes, e,
+                    pondo $e^{-i(\omega_0 - \omega)t/2}$ em evidência no outro,</p>
+                <p>$$ \begin{aligned}
+                    c_a(t) &\approx \frac{V_{ab}}{2\hbar}\,\frac{e^{-i(\omega_0 - \omega)t/2}}{\omega_0 - \omega}\left[e^{-i(\omega_0 - \omega)t/2} - e^{i(\omega_0 - \omega)t/2}\right] \\
+                    &= -i\,\frac{V_{ab}}{\hbar}\,\frac{\sin\left[(\omega_0 - \omega)t/2\right]}{\omega_0 - \omega}\,e^{-i(\omega_0 - \omega)t/2}.
+                    \end{aligned} $$</p>
+                <p>O módulo ao quadrado é $|V_{ab}|^2\sin^2[(\omega_0 - \omega)t/2]/[\hbar^2(\omega_0 - \omega)^2]$, e como
+                    $|V_{ab}| = |\wp|E_0$ chegamos à Eq. (11.43). $\blacksquare$</p>
+
+                <p>Repare <em>qual</em> metade de $\cos(\omega t) = \tfrac12\left(e^{i\omega t} + e^{-i\omega t}\right)$
+                    responde por cada processo. Na absorção, o termo ressonante $e^{i(\omega_0 - \omega)t}$ de (11.32) vem de
+                    $e^{-i\omega t}e^{i\omega_0t}$; na emissão, o termo ressonante $e^{-i(\omega_0 - \omega)t}$ vem de
+                    $e^{+i\omega t}e^{-i\omega_0t}$. As duas metades do campo oscilante fazem papéis simétricos: uma leva o
+                    átomo para cima, a outra para baixo, com a mesma intensidade $|V_{ab}| = |V_{ba}|$.</p>
+
+                <p id="obs-igualdade-exata"><strong>Observação (A igualdade é exata).</strong> A igualdade
+                    $P_{a\to b} = P_{b\to a}$ não é um acidente da primeira ordem. Num sistema de dois níveis, a evolução de
+                    $0$ a $t$ é dada por uma matriz unitária $2\times2$, $U$, e $P_{a\to b} = |U_{ba}|^2$, $P_{b\to a} = |U_{ab}|^2$.
+                    Mas as colunas e as linhas de uma matriz unitária são vetores unitários:
+                    $|U_{aa}|^2 + |U_{ba}|^2 = 1 = |U_{aa}|^2 + |U_{ab}|^2$, de onde $|U_{ba}| = |U_{ab}|$. Para a mesma
+                    perturbação, a probabilidade de subir é igual à de descer em <em>qualquer</em> ordem, inclusive na
+                    solução exata de <a href="[01] - Sistemas de Dois Níveis.html#teo-oscilacoes-de-rabi">Rabi</a>.</p>
+
+                <p>Pensando bem, é um resultado absolutamente espantoso: se a partícula está no estado de cima e você a
+                    ilumina, ela pode fazer uma transição para o estado de <em>baixo</em>, e a probabilidade dessa transição é
+                    exatamente a mesma de uma transição para <em>cima</em> a partir do estado de baixo. Esse processo, previsto
+                    pela primeira vez por Einstein, chama-se <strong>emissão estimulada</strong>.</p>
+                <p>Na emissão estimulada, o campo eletromagnético <em>ganha</em> a energia $\hbar\omega_0$ do átomo; dizemos
+                    que um fóton entrou e <em>dois</em> fótons saíram: o original, que provocou a transição, e outro, vindo da
+                    própria transição (Figura 11.7(b)). Isso abre a possibilidade de <em>amplificação</em>: se tivéssemos uma
+                    garrafa de átomos, todos no estado de cima, e a disparássemos com um único fóton incidente, haveria uma
+                    reação em cadeia, com o primeiro fóton produzindo dois, esses dois produzindo quatro, e assim por diante.
+                    Teríamos um número enorme de fótons saindo, todos com a mesma frequência e praticamente no mesmo instante.
+                    É o princípio do <strong>laser</strong> (<em>light amplification by stimulated emission of radiation</em>,
+                    amplificação de luz por emissão estimulada de radiação). Note que é essencial, para a ação laser, levar a
+                    <em>maioria</em> dos átomos ao estado de cima (a chamada <strong>inversão de população</strong>), porque a
+                    absorção (que <em>gasta</em> um fóton) compete com a emissão estimulada (que <em>cria</em> um); se você
+                    começasse com uma mistura igual dos dois estados, não haveria amplificação nenhuma.</p>
+
+                <p>Há um terceiro mecanismo (além da absorção e da emissão estimulada) pelo qual a radiação interage com a
+                    matéria: a <strong>emissão espontânea</strong>. Nela, um átomo no estado excitado faz uma transição para
+                    baixo, com a liberação de um fóton, <em>sem</em> que nenhum campo eletromagnético aplicado inicie o processo
+                    (Figura 11.7(c)). É o mecanismo responsável pelo decaimento normal de um estado atômico excitado. À
+                    primeira vista, não está nada claro por que a emissão espontânea deveria ocorrer. Se o átomo está num estado
+                    estacionário (ainda que excitado) e não há perturbação externa nenhuma, ele deveria ficar ali para sempre.
+                    E ficaria, se estivesse <em>realmente</em> livre de toda perturbação externa. Acontece que, na
+                    eletrodinâmica quântica, os campos não são nulos nem mesmo no estado fundamental, assim como o oscilador
+                    harmônico tem energia não nula ($\hbar\omega/2$) no seu estado fundamental. Você pode apagar todas as luzes
+                    e esfriar a sala até o zero absoluto, e ainda assim haverá alguma radiação eletromagnética presente: é essa
+                    radiação de "ponto zero" que catalisa a emissão espontânea. No fundo, não existe emissão verdadeiramente
+                    espontânea; é tudo emissão estimulada. A única distinção é se o campo que estimula foi posto ali por você
+                    ou por Deus. Nesse sentido, a situação é exatamente o inverso do processo radiativo clássico, em que tudo é
+                    espontâneo e não existe emissão estimulada.</p>
+                <p>A eletrodinâmica quântica está fora do alcance deste curso,<sup id="fnref:5"><a href="#fn:5"
+                    class="footnote-ref">5</a></sup> mas há um belo argumento de Einstein<sup id="fnref:6"><a href="#fn:6"
+                    class="footnote-ref">6</a></sup> que relaciona os três processos (absorção, emissão estimulada e emissão
+                    espontânea). Einstein não identificou o mecanismo da emissão espontânea (a perturbação pelo campo
+                    eletromagnético do estado fundamental), mas os seus resultados permitem calcular a taxa de emissão
+                    espontânea e, a partir dela, o tempo de vida natural de um estado atômico excitado.<sup id="fnref:7"><a
+                    href="#fn:7" class="footnote-ref">7</a></sup> Antes disso, porém, precisamos considerar a resposta de um
+                    átomo a ondas eletromagnéticas não monocromáticas, não polarizadas e incoerentes, vindas de todas as
+                    direções, como as que ele encontraria, por exemplo, mergulhado em radiação térmica.</p>
+
+                <h2 id="perturbacoes-incoerentes">Perturbações incoerentes</h2>
+
+                <p>A densidade de energia numa onda eletromagnética é<sup id="fnref:8"><a href="#fn:8"
+                    class="footnote-ref">8</a></sup></p>
+                <p>$$ u = \frac{\epsilon_0}{2}E_0^2, \tag{11.44} $$</p>
+                <p>em que $E_0$ é, como antes, a amplitude do campo elétrico. A conta é curta. Em geral, a energia por unidade
+                    de volume nos campos é $\tfrac{\epsilon_0}{2}E^2 + \tfrac{1}{2\mu_0}B^2$. Numa onda plana $B = E/c$, e, como
+                    $\mu_0\epsilon_0 = 1/c^2$, as duas parcelas são iguais: $u = \epsilon_0E^2 = \epsilon_0E_0^2\cos^2(\omega t)$.
+                    A média sobre um período $T = 2\pi/\omega$ é</p>
+                <p>$$ \frac1T\int_0^T\cos^2(\omega t)\,dt = \frac1T\int_0^T\frac{1 + \cos(2\omega t)}{2}\,dt = \frac12, $$</p>
+                <p>o que dá (11.44). Assim, a probabilidade de transição, Eq. (11.43), é (sem surpresa) proporcional à
+                    densidade de energia dos campos: pondo $E_0^2 = 2u/\epsilon_0$,</p>
+                <p>$$ P_{b\to a}(t) = \frac{2u}{\epsilon_0\hbar^2}|\wp|^2\frac{\sin^2\left[(\omega_0 - \omega)t/2\right]}{(\omega_0 - \omega)^2}. \tag{11.45} $$</p>
+                <p>Mas isso vale para uma onda <strong>monocromática</strong>, de frequência única $\omega$. Em muitas
+                    aplicações, o sistema está exposto a ondas eletromagnéticas numa <em>faixa</em> inteira de frequências.</p>
+
+                <div class="definition-box" id="def-densidade-espectral" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição (Densidade espectral de energia).</strong> A <em>densidade espectral de energia</em>
+                        $\rho(\omega)$ de um campo de radiação é a energia por unidade de volume e por unidade de frequência
+                        angular: $\rho(\omega)\,d\omega$ é a energia por unidade de volume carregada pelas componentes com
+                        frequência entre $\omega$ e $\omega + d\omega$. A densidade de energia total é
+                        $u = \int_0^\infty\rho(\omega)\,d\omega$. No SI, $\rho$ se mede em $\mathrm{J\,s/m^3}$.</p>
+                </div>
+
+                <p>Para um espectro contínuo, $u \to \rho(\omega)\,d\omega$ em (11.45), e a probabilidade de transição total
+                    toma a forma de uma integral:<sup id="fnref:9"><a href="#fn:9" class="footnote-ref">9</a></sup></p>
+                <p>$$ P_{b\to a}(t) = \frac{2|\wp|^2}{\epsilon_0\hbar^2}\int_0^\infty\rho(\omega)\left\{\frac{\sin^2\left[(\omega_0 - \omega)t/2\right]}{(\omega_0 - \omega)^2}\right\}d\omega. \tag{11.46} $$</p>
+                <p>O termo entre chaves tem um pico agudo em $\omega_0$ (<a href="[01] - Sistemas de Dois Níveis.html#fig-11-5">Figura 11.5</a>), de largura da ordem de
+                    $4\pi/t$, enquanto $\rho(\omega)$ costuma ser bem largo; podemos então trocar $\rho(\omega)$ por
+                    $\rho(\omega_0)$ e tirá-lo da integral:</p>
+                <p>$$ P_{b\to a}(t) \approx \frac{2|\wp|^2}{\epsilon_0\hbar^2}\rho(\omega_0)\int_0^\infty\frac{\sin^2\left[(\omega_0 - \omega)t/2\right]}{(\omega_0 - \omega)^2}\,d\omega. \tag{11.47} $$</p>
+                <p>Mudamos a variável para $x \equiv (\omega_0 - \omega)t/2$. Então $d\omega = -(2/t)\,dx$,
+                    $(\omega_0 - \omega)^2 = 4x^2/t^2$, e os limites $\omega = 0$ e $\omega \to \infty$ passam a
+                    $x = \omega_0t/2$ e $x \to -\infty$:</p>
+                <p>$$ \int_0^\infty\frac{\sin^2\left[(\omega_0 - \omega)t/2\right]}{(\omega_0 - \omega)^2}\,d\omega = \frac t2\int_{-\infty}^{\omega_0t/2}\frac{\sin^2x}{x^2}\,dx. $$</p>
+                <p>Como o átomo vê muitos ciclos da onda ($\omega_0t \gg 1$), estendemos o limite superior a $+\infty$ (o
+                    integrando já é essencialmente nulo ali; a parte desprezada é menor que $2/\omega_0t$) e usamos a integral
+                    definida</p>
+
+                <div class="definition-box" id="lema-integral-seno-quadrado">
+                    <p><strong>Lema (Integral do seno cardinal ao quadrado).</strong></p>
+                    <p>$$ \int_{-\infty}^\infty\frac{\sin^2x}{x^2}\,dx = \pi. \tag{11.48} $$</p>
+                </div>
+                <p><em>Demonstração.</em> <strong>Passo 1 (partes).</strong> O integrando é contínuo (vale 1 em $x = 0$) e
+                    decai como $1/x^2$, de modo que a integral converge. Integrando por partes com $u = \sin^2x$ e
+                    $dv = dx/x^2$ ($v = -1/x$), e notando que $\sin^2x/x \to 0$ em $\pm\infty$ e em $0$,</p>
+                <p>$$ \begin{aligned}
+                    \int_{-\infty}^\infty\frac{\sin^2x}{x^2}\,dx &= \left[-\frac{\sin^2x}{x}\right]_{-\infty}^{\infty} + \int_{-\infty}^\infty\frac{2\sin x\cos x}{x}\,dx \\
+                    &= \int_{-\infty}^\infty\frac{\sin 2x}{x}\,dx = 2\int_0^\infty\frac{\sin y}{y}\,dy,
+                    \end{aligned} $$</p>
+                <p>com $y = 2x$ e a paridade do integrando no último passo. Falta mostrar que a <em>integral de Dirichlet</em>
+                    $\int_0^\infty(\sin y/y)\,dy$ vale $\pi/2$.</p>
+                <p><strong>Passo 2 (Dirichlet).</strong> Para $s \ge 0$, seja $J(s) = \int_0^\infty e^{-sy}\,(\sin y/y)\,dy$.
+                    Para $s \gt 0$ podemos derivar sob o sinal de integração (o integrando derivado é dominado por $e^{-sy}$), e
+                    duas integrações por partes dão</p>
+                <p>$$ J'(s) = -\int_0^\infty e^{-sy}\sin y\,dy = -\frac{1}{1 + s^2}. $$</p>
+                <p>Como $|J(s)| \le \int_0^\infty e^{-sy}\,dy = 1/s \to 0$ quando $s \to \infty$, integrando de $s$ a $\infty$
+                    obtemos $J(s) = \pi/2 - \arctan s$. Resta passar ao limite $s \to 0^+$. A função $e^{-sy}/y$ é positiva e
+                    decrescente em $y$; pelo segundo teorema do valor médio, $\left|\int_Y^\infty e^{-sy}(\sin y/y)\,dy\right| \le 2/Y$
+                    para <em>todo</em> $s \ge 0$. Logo $J(s)$ difere de $\int_0^Ye^{-sy}(\sin y/y)\,dy$ por menos de $2/Y$,
+                    uniformemente em $s$, e esta última é contínua em $s = 0$. Assim $J(0) = \lim_{s\to0^+}J(s) = \pi/2$, e a
+                    integral do enunciado vale $2\cdot\pi/2 = \pi$. $\blacksquare$</p>
+
+                <p>Com (11.48), a integral em (11.47) vale $\pi t/2$, e encontramos</p>
+                <p>$$ P_{b\to a}(t) \approx \frac{\pi|\wp|^2}{\epsilon_0\hbar^2}\rho(\omega_0)\,t. \tag{11.49} $$</p>
+                <p>Desta vez, a probabilidade de transição é proporcional a $t$. O bizarro vaivém característico de uma
+                    perturbação monocromática é "lavado" quando atingimos o sistema com um espalhamento incoerente de
+                    frequências. A razão está na Figura 11.5: o pico tem altura proporcional a $t^2$ e largura proporcional a
+                    $1/t$, de modo que a sua <em>área</em>, que é o que a integral sobre o espectro mede, cresce como $t$. Em
+                    particular, a <strong>taxa de transição</strong> ($R \equiv dP/dt$) agora é <em>constante</em>:</p>
+                <p>$$ R_{b\to a} = \frac{\pi}{\epsilon_0\hbar^2}|\wp|^2\rho(\omega_0). \tag{11.50} $$</p>
+
+                <p id="obs-validade-da-taxa"><strong>Observação (Quando a taxa é constante).</strong> A Eq. (11.50) vale numa
+                    janela de tempos. Por baixo, $t$ precisa ser grande o bastante para que o pico, de largura $\sim 4\pi/t$,
+                    seja muito mais estreito que a escala em que $\rho(\omega)$ varia (e para que $\omega_0t \gg 1$). Por cima,
+                    $t$ precisa ser pequeno o bastante para que $P_{b\to a} \ll 1$, senão a primeira ordem deixa de valer. Para
+                    um espectro largo e fraco, como o da radiação térmica, essa janela é enorme. A mesma estrutura, com o
+                    contínuo de frequências trocado por um contínuo de estados finais, é a da
+                    <a href="[04] - A Regra de Ouro de Fermi.html#teo-regra-de-ouro">Regra de Ouro de Fermi (Seção 11.4)</a>.</p>
+
+                <p>Até aqui supusemos que a onda perturbadora chega pela direção $y$ (Figura 11.6) e é polarizada na direção
+                    $z$. Mas o que nos interessa é um átomo banhado em radiação vinda de <em>todas</em> as direções e com
+                    todas as polarizações possíveis; a energia dos campos ($\rho(\omega)$) se reparte igualmente entre esses
+                    diferentes modos. O que precisamos, no lugar de $|\wp|^2$, é da <em>média</em> de
+                    $|\boldsymbol\wp\cdot\hat n|^2$, em que $\hat n$ é a direção de polarização e</p>
+                <p>$$ \boldsymbol\wp \equiv q\langle\psi_b|\mathbf r|\psi_a\rangle \tag{11.51} $$</p>
+                <p>(o que generaliza a Eq. 11.40: para $\hat n = \hat z$, $\boldsymbol\wp\cdot\hat n = \wp$), e a média é
+                    tomada sobre todas as polarizações e todas as direções de incidência.</p>
+                <p>A média pode ser feita assim. Escolhemos coordenadas esféricas tais que a direção de propagação
+                    ($\hat k$) esteja ao longo de $x$, a polarização ($\hat n$) ao longo de $z$, e o vetor $\boldsymbol\wp$ defina
+                    os ângulos esféricos $\theta$ e $\phi$ (Figura 11.8).<sup id="fnref:10"><a href="#fn:10"
+                    class="footnote-ref">10</a></sup> (Na verdade, $\boldsymbol\wp$ é que está fixo, e queremos a média sobre
+                    todos os $\hat k$ e $\hat n$ compatíveis com $\hat k\perp\hat n$, isto é, sobre todos os $\theta$ e $\phi$.
+                    Mas dá no mesmo integrar sobre todas as direções de $\boldsymbol\wp$ mantendo $\hat k$ e $\hat n$ fixos: só
+                    o ângulo <em>relativo</em> importa.) Então</p>
+                <p>$$ \boldsymbol\wp\cdot\hat n = \wp\cos\theta, \tag{11.52} $$</p>
+                <p>em que agora $\wp = |\boldsymbol\wp|$, e</p>
+                <p>$$ \begin{aligned}
+                    \left|\boldsymbol\wp\cdot\hat n\right|^2_{\text{méd}} &= \frac{1}{4\pi}\int|\boldsymbol\wp|^2\cos^2\theta\,\sin\theta\,d\theta\,d\phi \\
+                    &= \frac{|\boldsymbol\wp|^2}{4\pi}\left(-\frac{\cos^3\theta}{3}\right)\Bigg|_0^\pi(2\pi) = \frac13|\boldsymbol\wp|^2.
+                    \end{aligned} \tag{11.53} $$</p>
+                <p>(A integral em $\theta$ é imediata com $w = \cos\theta$: $\int_0^\pi\cos^2\theta\sin\theta\,d\theta = \int_{-1}^1w^2\,dw = \tfrac23$;
+                    vezes $2\pi$ da integral em $\phi$ e dividido por $4\pi$, dá $\tfrac13$.)</p>
+
+                <figure class="lecture-figure" id="fig-11-8">
+                    <svg viewBox="0 0 640 320" role="img" aria-label="Três eixos cartesianos em perspectiva: z vertical, y horizontal para a direita, x saindo do papel em diagonal para baixo e para a esquerda. Ao longo de z está o versor de polarização n̂; ao longo de x, o versor de propagação k̂. Um vetor ℘ parte da origem para cima e para a direita, fazendo o ângulo polar θ com o eixo z; linhas tracejadas mostram a sua projeção no plano xy, e o ângulo azimutal φ é medido no plano xy, do eixo x até essa projeção.">
+<defs><marker id="arr-11-8" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="250" y1="196" x2="580" y2="196" class="fig-axis" marker-end="url(#arr-11-8)"/>
+<line x1="250" y1="196" x2="250" y2="21" class="fig-axis" marker-end="url(#arr-11-8)"/>
+<line x1="250" y1="196" x2="107.4" y2="311" class="fig-axis" marker-end="url(#arr-11-8)"/>
+<text x="584" y="214" text-anchor="end" class="fig-label fig-it">y</text>
+<text x="240" y="29" text-anchor="end" class="fig-label fig-it">z</text>
+<text x="103.4" y="329" text-anchor="middle" class="fig-label fig-it">x</text>
+<line x1="250" y1="196" x2="250" y2="126" class="fig-curve" marker-end="url(#arr-11-8)"/>
+<text x="240" y="134" text-anchor="end" class="fig-label">n̂</text>
+<line x1="250" y1="196" x2="178.7" y2="253.5" class="fig-curve" marker-end="url(#arr-11-8)"/>
+<text x="168.6" y="250" text-anchor="end" class="fig-label">k̂</text>
+<line x1="250" y1="196" x2="366.6" y2="88.3" class="fig-curve" marker-end="url(#arr-11-8)"/>
+<text x="316.3" y="119.2" text-anchor="end" class="fig-label fig-it">℘</text>
+<line x1="366.6" y1="88.3" x2="366.6" y2="242.2" class="fig-guide fig-dashed"/>
+<line x1="250" y1="196" x2="366.6" y2="242.2" class="fig-guide fig-dashed"/>
+<path d="M250,144 L250.7,144.3 L251.4,144.6 L252.1,145 L252.8,145.3 L253.5,145.7 L254.2,146.1 L254.9,146.6 L255.6,147.1 L256.2,147.6 L256.9,148.1 L257.6,148.6 L258.3,149.2 L258.9,149.8 L259.6,150.4 L260.3,151.1 L260.9,151.7 L261.6,152.4 L262.2,153.1 L262.9,153.9 L263.5,154.6 L264.1,155.4 L264.7,156.2 L265.3,157 L265.9,157.8 L266.5,158.7 L267.1,159.6 L267.7,160.5 L268.3,161.4 L268.8,162.3 L269.4,163.3 L269.9,164.2 L270.4,165.2 L271,166.2 L271.5,167.2 L272,168.3 L272.4,169.3 L272.9,170.4 L273.4,171.4 L273.8,172.5 L274.3,173.6" class="fig-axis"/>
+<text x="272.9" y="146.3" class="fig-label fig-it">θ</text>
+<path d="M206.6,231 L208.5,231 L210.4,230.9 L212.4,230.9 L214.4,230.8 L216.4,230.7 L218.5,230.5 L220.6,230.4 L222.6,230.2 L224.8,230 L226.9,229.7 L229,229.5 L231.2,229.2 L233.4,228.9 L235.6,228.5 L237.8,228.2 L240,227.8 L242.2,227.4 L244.4,226.9 L246.6,226.5 L248.9,226 L251.1,225.5 L253.3,225 L255.5,224.4 L257.8,223.9 L260,223.3 L262.2,222.7 L264.4,222.1 L266.6,221.4 L268.7,220.8 L270.9,220.1 L273,219.4 L275.2,218.7 L277.3,218 L279.4,217.2 L281.5,216.4 L283.5,215.7 L285.5,214.9 L287.5,214.1 L289.5,213.3 L291.4,212.4" class="fig-axis"/>
+<text x="248.6" y="246.6" text-anchor="middle" class="fig-label fig-it">φ</text>
+</svg>
+                    <figcaption><strong>Figura 11.8.</strong> Eixos para a média de $|\boldsymbol\wp\cdot\hat n|^2$: a onda se
+                        propaga ao longo de $x$ ($\hat k$) e é polarizada ao longo de $z$ ($\hat n$); o vetor $\boldsymbol\wp$ faz
+                        o ângulo polar $\theta$ com $\hat n$ e tem azimute $\phi$ medido a partir de $\hat k$. Só
+                        $\boldsymbol\wp\cdot\hat n = \wp\cos\theta$ entra na probabilidade.</figcaption>
+                </figure>
+
+                <p>Há um modo mais curto de ver o mesmo resultado, que também cuida de um $\boldsymbol\wp$ complexo. Para
+                    radiação isotrópica e não polarizada, $\hat k$ é uniforme na esfera e, para cada $\hat k$, $\hat n$ é
+                    uniforme no círculo perpendicular a ele; a distribuição resultante de $\hat n$ é invariante por rotações,
+                    isto é, uniforme na esfera, e a
+                    média $\langle n_in_j\rangle$ é um tensor invariante por rotações com traço
+                    $\langle\hat n\cdot\hat n\rangle = 1$; o único tal tensor é $\langle n_in_j\rangle = \tfrac13\delta_{ij}$.
+                    Logo</p>
+                <p>$$ \left\langle|\boldsymbol\wp\cdot\hat n|^2\right\rangle = \sum_{i,j}\wp_i^*\wp_j\langle n_in_j\rangle = \frac13\left(|\wp_x|^2 + |\wp_y|^2 + |\wp_z|^2\right) = \frac13|\boldsymbol\wp|^2. $$</p>
+
+                <p><em>Conclusão:</em> trocando $|\wp|^2$ por $\tfrac13|\boldsymbol\wp|^2$ em (11.50),</p>
+
+                <div class="definition-box" id="teo-taxa-emissao-estimulada">
+                    <p><strong>Teorema (Taxa de emissão estimulada sob radiação incoerente).</strong> A taxa de transição para a
+                        emissão estimulada do estado $b$ para o estado $a$, sob a influência de luz incoerente, não polarizada,
+                        incidente de todas as direções, é</p>
+                    <p>$$ R_{b\to a} = \frac{\pi}{3\epsilon_0\hbar^2}|\boldsymbol\wp|^2\rho(\omega_0), \tag{11.54} $$</p>
+                    <p>em que $\boldsymbol\wp$ é o elemento de matriz do momento de dipolo elétrico entre os dois estados
+                        (Eq. 11.51) e $\rho(\omega_0)$ é a densidade de energia dos campos, por unidade de frequência, calculada em
+                        $\omega_0 = (E_b - E_a)/\hbar$. A taxa de absorção $R_{a\to b}$ é a mesma.</p>
+                </div>
+
+                <p>A demonstração é a sequência (11.43)–(11.53); a afirmação sobre a absorção sai da mesma conta a partir de
+                    (11.42), pois $|\boldsymbol\wp_{ab}| = |\boldsymbol\wp_{ba}|$. Dois testes de sanidade. Dimensão:
+                    $[|\boldsymbol\wp|^2\rho/\epsilon_0\hbar^2] = \mathrm{C^2m^2}\cdot\mathrm{J\,s\,m^{-3}}/(\mathrm{C^2J^{-1}m^{-1}}\cdot\mathrm{J^2s^2}) = \mathrm{s^{-1}}$,
+                    como deve ser uma taxa. E o fator $\pi$ é a área $\int\sin^2x/x^2 = \pi$, enquanto o $\tfrac13$ é a fração
+                    média da intensidade que "vê" a direção do dipolo.</p>
 
                 <h2 id="conexao">Conexão com o experimento</h2>
 
+                <p>Os três ingredientes desta seção (o elemento de matriz de dipolo, a igualdade entre absorção e emissão
+                    estimulada e a taxa sob luz incoerente) aparecem diretamente no laboratório.</p>
+                <ul>
+                    <li><strong>Espectroscopia de absorção.</strong> Luz de espectro largo atravessa um gás e sai com linhas
+                        escuras nas frequências $\omega_0 = (E_b - E_a)/\hbar$. Pela Eq. (11.54), a intensidade de cada linha é
+                        proporcional a $|\boldsymbol\wp|^2$: linhas fortes são transições com elemento de dipolo grande, e
+                        transições com $\boldsymbol\wp = \mathbf 0$ simplesmente não aparecem (é a regra de Laporte da
+                        Seção 6.4.3 agindo; as regras completas estão na
+                        <a href="[03] - Emissão Espontânea.html#regras-de-selecao">Seção 11.3.3</a>).</li>
+                    <li><strong>Lasers e masers.</strong> A emissão estimulada produz fótons na mesma frequência, direção e
+                        fase do fóton que a provocou, e por isso amplifica a luz de modo coerente. O obstáculo é a inversão de
+                        população. Num sistema de dois níveis bombeado por radiação incoerente, as taxas de subida e de descida
+                        são iguais (Eq. 11.54 e a observação sobre a igualdade exata), e o melhor que se consegue é igualar as
+                        populações, nunca invertê-las. Os lasers reais usam três ou quatro níveis: bombeia-se para um nível
+                        alto, que decai depressa para um nível de vida longa, e a inversão se forma entre este e um nível de
+                        baixo que se esvazia rapidamente. O primeiro dispositivo do gênero foi o maser de amônia, em
+                        micro-ondas, nos anos 1950; o primeiro laser óptico, de rubi, veio em 1960.</li>
+                    <li><strong>Onde a aproximação de dipolo falha.</strong> Ela pressupõe $\lambda \gg$ tamanho do átomo. Para
+                        raios X, com $\lambda$ comparável a 1&nbsp;Å, isso deixa de valer. E, mesmo na luz visível, quando
+                        $\boldsymbol\wp = \mathbf 0$ por simetria, a transição ainda pode ocorrer pelos termos seguintes da
+                        expansão do campo, as transições de <strong>dipolo magnético</strong> e de <strong>quadrupolo
+                        elétrico</strong>, que são "proibidas" no sentido de serem mais lentas por um fator da ordem de
+                        $(ka)^2 \sim 10^{-5}$ (<a href="#exr-11-2-6">Exercício 11.2-6</a>). A linha de 21&nbsp;cm do hidrogênio
+                        (<a href="../[6] - Teoria de Perturbação Independente do Tempo/[05] - A Estrutura Hiperfina do Hidrogênio.html#estado-fundamental">Seção 7.5</a>)
+                        é uma transição de dipolo magnético, e a sua taxa é calculada na Seção 11.3.</li>
+                </ul>
+                <p>O que falta no quadro desta seção é a emissão espontânea: um átomo excitado no escuro decai, coisa que um
+                    campo clássico nulo não explica. O argumento de Einstein, na próxima seção, contorna a eletrodinâmica
+                    quântica e obtém a taxa espontânea a partir da Eq. (11.54).</p>
+
                 <h2 id="exercicios">Exercícios Resolvidos</h2>
 
+                <p id="exr-11-2-1"><strong>Exercício 11.2-1.</strong> Um laser contínuo entrega $1\ \mathrm{mW}$ por
+                    $\mathrm{mm}^2$. Estime a amplitude $E_0$ do seu campo elétrico e compare-a com o campo coulombiano do próton
+                    a uma distância $a$ (raio de Bohr). Se esse laser estivesse sintonizado na transição $1s \to 2p_0$ do
+                    hidrogênio, quanto valeria $|V_{ba}|$ comparado com $\hbar\omega_0$?</p>
+                <p><em>Solução.</em> A intensidade (energia por área por tempo) de uma onda é a densidade de energia vezes a
+                    velocidade com que ela flui: $I = cu = \tfrac12c\epsilon_0E_0^2$, pela Eq. (11.44). Com
+                    $I = 10^{-3}\ \mathrm{W}/10^{-6}\ \mathrm{m^2} = 10^3\ \mathrm{W/m^2}$,</p>
+                <p>$$ E_0 = \sqrt{\frac{2I}{c\epsilon_0}} = \sqrt{\frac{2\times10^3}{(3{,}00\times10^8)(8{,}85\times10^{-12})}}\ \mathrm{V/m} \approx 870\ \mathrm{V/m}. $$</p>
+                <p>O campo do próton em $r = a$ é $e/(4\pi\epsilon_0a^2) \approx 5{,}1\times10^{11}\ \mathrm{V/m}$, de modo que
+                    $E_0$ é cerca de $1{,}7\times10^{-9}$ do campo que segura o elétron. Para $1s \to 2p_0$, o
+                    <a href="[01] - Sistemas de Dois Níveis.html#exr-11-1-2">Exercício 11.1-2</a> dá $|\wp| = e\,|\langle100|z|210\rangle| = (2^7\sqrt2/3^5)\,ea \approx 0{,}745\,ea$,
+                    e então $|V_{ba}| = |\wp|E_0 \approx 3{,}4\times10^{-8}\ \mathrm{eV}$, contra
+                    $\hbar\omega_0 = \tfrac34(13{,}6\ \mathrm{eV}) = 10{,}2\ \mathrm{eV}$: razão de $3\times10^{-9}$. A perturbação é
+                    minúscula diante das energias atômicas, e a condição (11.33) para desprezar o termo não ressonante folga
+                    enormemente. Mas, na ressonância, a primeira ordem só vale para $t \ll \hbar/|V_{ba}| \approx 2\times10^{-8}\ \mathrm{s}$
+                    (<a href="[01] - Sistemas de Dois Níveis.html#teo-oscilacoes-de-rabi">oscilações de Rabi</a>, com $|V_{ba}|/\hbar \approx 5\times10^7\ \mathrm{s^{-1}}$).
+                    Na Seção 11.3 veremos que o estado $2p$ decai espontaneamente em $1{,}6\ \mathrm{ns}$, antes de completar
+                    uma oscilação: com essa intensidade, a emissão espontânea domina.</p>
+
+                <p id="exr-11-2-2"><strong>Exercício 11.2-2.</strong> Repita a média (11.52)–(11.53) para luz não polarizada
+                    que chega de <em>uma única</em> direção $\hat k$. Mostre que, para $\boldsymbol\wp$ real fazendo um ângulo
+                    $\theta$ com $\hat k$, o fator $\tfrac13$ é trocado por $\tfrac12\sin^2\theta$, e confira que a média desse
+                    fator sobre todas as direções de incidência devolve $\tfrac13$.</p>
+                <p><em>Solução.</em> Agora $\hat k$ está fixo e $\hat n$ percorre, uniformemente, o círculo de vetores unitários
+                    perpendiculares a $\hat k$. Tome $\hat k = \hat z$, $\hat n = (\cos\chi, \sin\chi, 0)$ e
+                    $\boldsymbol\wp = |\boldsymbol\wp|(\sin\theta, 0, \cos\theta)$. Então
+                    $\boldsymbol\wp\cdot\hat n = |\boldsymbol\wp|\sin\theta\cos\chi$, e a média sobre $\chi$ dá</p>
+                <p>$$ \left\langle|\boldsymbol\wp\cdot\hat n|^2\right\rangle_\chi = |\boldsymbol\wp|^2\sin^2\theta\,\frac{1}{2\pi}\int_0^{2\pi}\cos^2\chi\,d\chi = \frac12|\boldsymbol\wp|^2\sin^2\theta. $$</p>
+                <p>A taxa é, portanto, $R_{b\to a} = \pi|\boldsymbol\wp|^2\sin^2\theta\,\rho(\omega_0)/(2\epsilon_0\hbar^2)$. Em forma
+                    tensorial, $\langle n_in_j\rangle_\chi = \tfrac12(\delta_{ij} - k_ik_j)$, o que dá
+                    $\tfrac12\left(|\boldsymbol\wp|^2 - |\hat k\cdot\boldsymbol\wp|^2\right)$ e vale também para $\boldsymbol\wp$
+                    complexo. Note que um dipolo alinhado com o feixe ($\theta = 0$) não absorve nada: a luz é transversal.
+                    Por fim, a média de $\tfrac12\sin^2\theta$ sobre a esfera é
+                    $\tfrac12\cdot\tfrac{1}{4\pi}\int\sin^2\theta\,d\Omega = \tfrac12\left(1 - \tfrac13\right) = \tfrac13$, como na Eq. (11.53).</p>
+
+                <p id="exr-11-2-3"><strong>Exercício 11.2-3.</strong> Que fração da integral (11.48) vem do lóbulo central,
+                    $|x| \le \pi$? Qual é a largura total a meia altura do pico da Figura 11.5? O que isso diz sobre a hipótese
+                    "$\rho(\omega)$ é largo" usada na Eq. (11.47)?</p>
+                <p><em>Solução.</em> Numericamente, $\int_{-\pi}^{\pi}(\sin^2x/x^2)\,dx = 2{,}836$, isto é, $0{,}903\,\pi$: cerca de
+                    90% da área está no lóbulo central, e os lóbulos laterais, que decaem como $1/x^2$, somam os 10% restantes.
+                    (A cauda converge devagar: $\int_X^\infty\sin^2x/x^2\,dx \approx 1/2X$ para $X$ grande, pois a média de
+                    $\sin^2$ é $\tfrac12$.) A meia altura, $\sin^2x/x^2 = \tfrac12$, ocorre em $x = \pm1{,}392$; como
+                    $x = (\omega_0 - \omega)t/2$, a largura total a meia altura em $\omega$ é $4(1{,}392)/t \approx 5{,}57/t$,
+                    contra $4\pi/t \approx 12{,}6/t$ entre os primeiros zeros. Portanto, praticamente todas as transições vêm de
+                    componentes com $|\omega - \omega_0| \lesssim 2\pi/t$, e a Eq. (11.47) é boa desde que $\rho(\omega)$ varie
+                    pouco numa faixa de alguns $1/t$ em torno de $\omega_0$. Para a radiação térmica, que varia na escala
+                    $k_BT/\hbar \sim 10^{13}\ \mathrm{s^{-1}}$ à temperatura ambiente, basta $t \gg 10^{-13}\ \mathrm{s}$.</p>
+
+                <p id="exr-11-2-4"><strong>Exercício 11.2-4.</strong> Encontramos emissão estimulada, absorção (estimulada) e
+                    emissão espontânea. Por que não existe <em>absorção espontânea</em>?</p>
+                <p><em>Solução.</em> Pelo quadro da página, a emissão espontânea é emissão estimulada pelo campo de ponto zero.
+                    Um átomo excitado pode ceder $\hbar\omega_0$ a esse campo, levando-o do estado fundamental a um estado com
+                    um fóton: a energia total se conserva. A absorção espontânea exigiria o contrário, o campo <em>ceder</em>
+                    $\hbar\omega_0$ ao átomo; mas o campo já está no seu estado de energia mais baixa, e não há estado com
+                    energia $\hbar\omega_0$ abaixo do fundamental para onde ele possa ir. Sem fótons presentes, só se pode
+                    descer. O mesmo se vê nas populações: se houvesse uma taxa espontânea de subida $A'$, a $T = 0$
+                    ($\rho = 0$) o equilíbrio exigiria $N_bA = N_aA'$, isto é, uma fração $A'/A$ dos átomos excitada no zero
+                    absoluto, em contradição com o fator de Boltzmann $e^{-\hbar\omega_0/k_BT} \to 0$.</p>
+
+                <p id="exr-11-2-5"><strong>Exercício 11.2-5.</strong> Recupere os resultados da Seção 11.2.1 a partir do
+                    hamiltoniano de uma partícula carregada num campo eletromagnético,
+                    $H = (\mathbf p - q\mathbf A)^2/2m + q\varphi + V(r)$. A onda é descrita pelos potenciais
+                    $\mathbf A = (\mathbf E_0/\omega)\sin(\mathbf k\cdot\mathbf r - \omega t)$ e $\varphi = 0$, com
+                    $\mathbf E_0\cdot\mathbf k = 0$ e $\omega = c|\mathbf k|$. (a) Ache $\mathbf E$ e $\mathbf B$. (b) Mostre que,
+                    desprezando o termo em $E_0^2$,
+                    $H' = -\dfrac{qE_0}{2im\omega}\left[e^{i\mathbf k\cdot\mathbf r}(\hat n\cdot\mathbf p)\,e^{-i\omega t} - e^{-i\mathbf k\cdot\mathbf r}(\hat n\cdot\mathbf p)\,e^{i\omega t}\right]$,
+                    com $\mathbf E_0 = E_0\hat n$. (c) Na aproximação de dipolo, $e^{i\mathbf k\cdot\mathbf r} \approx 1$, e com
+                    polarização em $z$, mostre que o elemento de matriz para a absorção é $V_{ba} = -(\omega_0/\omega)\,\wp E_0$
+                    e compare com a Eq. (11.41).</p>
+                <p><em>Solução.</em> (a) $\mathbf E = -\nabla\varphi - \partial\mathbf A/\partial t = \mathbf E_0\cos(\mathbf k\cdot\mathbf r - \omega t)$
+                    e $\mathbf B = \nabla\times\mathbf A = (1/\omega)\,\mathbf k\times\mathbf E_0\cos(\mathbf k\cdot\mathbf r - \omega t)$,
+                    uma onda plana com $|\mathbf B| = |\mathbf E|/c$, como na Figura 11.6.</p>
+                <p>(b) Expandindo o quadrado, $(\mathbf p - q\mathbf A)^2 = p^2 - q(\mathbf p\cdot\mathbf A + \mathbf A\cdot\mathbf p) + q^2A^2$.
+                    Como $\mathbf p\cdot(\mathbf Af) = -i\hbar(\nabla\cdot\mathbf A)f + \mathbf A\cdot\mathbf pf$ e
+                    $\nabla\cdot\mathbf A = (\mathbf k\cdot\mathbf E_0/\omega)\cos(\cdots) = 0$, os dois termos lineares são
+                    iguais, e $H' = -(q/m)\,\mathbf A\cdot\mathbf p$. Escrevendo $\sin\vartheta = (e^{i\vartheta} - e^{-i\vartheta})/2i$
+                    sai a expressão do enunciado. (A ordem entre $e^{\pm i\mathbf k\cdot\mathbf r}$ e $\hat n\cdot\mathbf p$ não
+                    importa: $[\hat n\cdot\mathbf p, e^{i\mathbf k\cdot\mathbf r}] = \hbar(\hat n\cdot\mathbf k)e^{i\mathbf k\cdot\mathbf r} = 0$.)
+                    O primeiro termo, com $e^{-i\omega t}$, é o da absorção, e o segundo o da emissão, pela discussão que segue
+                    a Eq. (11.43).</p>
+                <p>(c) Na forma de onda girante (11.36), o coeficiente de $e^{-i\omega t}$ em $H'_{ba}$ é $V_{ba}/2$, de modo que
+                    $V_{ba} = -\dfrac{qE_0}{im\omega}\langle\psi_b|p_z|\psi_a\rangle$. Para trocar $p_z$ por $z$, note que
+                    $[p^2, z] = p_z[p_z, z] + [p_z, z]p_z = -2i\hbar p_z$ e que $V(r)$ comuta com $z$; logo
+                    $[H^0, z] = -i\hbar p_z/m$ (ou, vetorialmente, $im[H^0, \mathbf r] = \hbar\mathbf p$), e</p>
+                <p>$$ \begin{aligned}
+                    \langle\psi_b|p_z|\psi_a\rangle &= \frac{im}{\hbar}\langle\psi_b|[H^0, z]|\psi_a\rangle \\
+                    &= \frac{im}{\hbar}(E_b - E_a)\langle\psi_b|z|\psi_a\rangle = im\omega_0\langle\psi_b|z|\psi_a\rangle.
+                    \end{aligned} $$</p>
+                <p>Então $V_{ba} = -(\omega_0/\omega)\,qE_0\langle\psi_b|z|\psi_a\rangle = -(\omega_0/\omega)\,\wp E_0$. A diferença
+                    em relação a (11.41) é o fator $\omega_0/\omega$, que vale 1 na ressonância. Nas Seções 11.2.3 e 11.3 isso
+                    não muda nada: a integral sobre o espectro só recebe contribuições de $|\omega - \omega_0| \lesssim 1/t$
+                    (<a href="#exr-11-2-3">Exercício 11.2-3</a>), onde $\omega_0/\omega = 1$. Muda, sim, quando $\omega$ fica
+                    longe de $\omega_0$, como no efeito fotoelétrico, em que o estado final está no contínuo; é o que corrige o
+                    fator 4 do cálculo do efeito fotoelétrico na Seção 11.4 (<a href="[04] - A Regra de Ouro de Fermi.html#exr-11-4-6">Exercício 11.4-6</a>).</p>
+
+                <p id="exr-11-2-6"><strong>Exercício 11.2-6.</strong> Vá além da aproximação de dipolo: mantenha o termo de
+                    primeira ordem em $e^{i\mathbf k\cdot\mathbf r} \approx 1 + i\mathbf k\cdot\mathbf r$ no termo de absorção do
+                    exercício anterior. Mostre que o operador $(\hat k\cdot\mathbf r)(\hat n\cdot\mathbf p)$ se separa numa parte
+                    de <strong>dipolo magnético</strong>, proporcional a $(\hat k\times\hat n)\cdot\mathbf L$, e numa de
+                    <strong>quadrupolo elétrico</strong>, proporcional a $[H^0, (\hat k\cdot\mathbf r)(\hat n\cdot\mathbf r)]$. Que
+                    regras de seleção cada uma obedece, e quão mais lentas são essas transições? Por que a transição
+                    $2s \to 1s$ do hidrogênio continua impossível?</p>
+                <p><em>Solução.</em> Some e subtraia o termo trocado:</p>
+                <p>$$ \begin{aligned}
+                    (\hat k\cdot\mathbf r)(\hat n\cdot\mathbf p) &= \tfrac12\left[(\hat k\cdot\mathbf r)(\hat n\cdot\mathbf p) - (\hat n\cdot\mathbf r)(\hat k\cdot\mathbf p)\right] \\
+                    &\quad + \tfrac12\left[(\hat k\cdot\mathbf r)(\hat n\cdot\mathbf p) + (\hat n\cdot\mathbf r)(\hat k\cdot\mathbf p)\right].
+                    \end{aligned} $$</p>
+                <p>Pela identidade $(\mathbf a\times\mathbf b)\cdot(\mathbf c\times\mathbf d) = (\mathbf a\cdot\mathbf c)(\mathbf b\cdot\mathbf d) - (\mathbf a\cdot\mathbf d)(\mathbf b\cdot\mathbf c)$,
+                    válida aqui porque $\hat k\perp\hat n$ faz comutarem os fatores envolvidos, o primeiro colchete é
+                    $(\hat k\times\hat n)\cdot(\mathbf r\times\mathbf p) = (\hat k\times\hat n)\cdot\mathbf L$. Para o segundo, em
+                    componentes, $k_in_j(r_ip_j + r_jp_i) = k_in_j(r_ip_j + p_ir_j)$ (o comutador $[r_j, p_i] = i\hbar\delta_{ij}$
+                    contribui $i\hbar\,\hat k\cdot\hat n = 0$), e $[H^0, r_ir_j] = -(i\hbar/m)(p_ir_j + r_ip_j)$ dá</p>
+                <p>$$ (\hat k\cdot\mathbf r)(\hat n\cdot\mathbf p) = \frac12(\hat k\times\hat n)\cdot\mathbf L + \frac{im}{2\hbar}\left[H^0, (\hat k\cdot\mathbf r)(\hat n\cdot\mathbf r)\right]. $$</p>
+                <p>O termo de primeira ordem no coeficiente de $e^{-i\omega t}$ é $-(qE_0k/2m\omega)(\hat k\cdot\mathbf r)(\hat n\cdot\mathbf p)$.
+                    Como $\hat k\times\hat n$ é a direção de $\mathbf B$ e $kE_0/\omega = B_0$, a primeira parte dá (lembrando que
+                    esse coeficiente é $V_{ba}/2$) $V_{ba} = -\langle\psi_b|\boldsymbol\mu|\psi_a\rangle\cdot\mathbf B_0$, com
+                    $\boldsymbol\mu = (q/2m)\mathbf L$ o momento magnético orbital: é a interação de <strong>dipolo
+                    magnético</strong>, o análogo exato de $V_{ba} = -\wp E_0$ (com spin, $\mathbf L \to \mathbf L + 2\mathbf S$). A
+                    segunda, entre autoestados de $H^0$, vale $(im\omega_0/2)\langle\psi_b|(\hat k\cdot\mathbf r)(\hat n\cdot\mathbf r)|\psi_a\rangle$:
+                    é a interação do <strong>quadrupolo elétrico</strong> $q\,r_ir_j$ com o gradiente do campo. As regras de
+                    seleção vêm do caráter de cada operador:</p>
+                <ul>
+                    <li>dipolo magnético: $\mathbf L$ é um vetor <em>par</em> por paridade; não muda a paridade, e, como comuta
+                        com $L^2$ e só age nos ângulos, exige $\Delta\ell = 0$, $\Delta m = 0, \pm1$ e (no hidrogênio sem spin) o
+                        mesmo $n$: só conecta subníveis de um mesmo nível, como os da estrutura fina e hiperfina;</li>
+                    <li>quadrupolo elétrico: $r_ir_j$ é par; como $k_in_j\delta_{ij} = 0$, só a parte de traço nulo (posto 2)
+                        contribui, e pelas regras de Clebsch–Gordan da
+                        <a href="../[5] - Simetrias e Leis de Conservação/[07] - Regras de Seleção Rotacionais.html#vetorial-l">Seção 6.7</a>
+                        (com posto 2 em vez de 1) vale $\Delta\ell = 0, \pm2$ (exceto $0 \to 0$), $|\Delta m| \le 2$, sem
+                        mudança de paridade.</li>
+                </ul>
+                <p>Comparadas com o dipolo elétrico, essas amplitudes têm um fator $ka = 2\pi a/\lambda$ a mais; para a linha
+                    Lyman $\alpha$ ($\lambda = 121{,}6\ \mathrm{nm}$), $ka \approx 2{,}7\times10^{-3}$, e as taxas ficam menores por
+                    $(ka)^2 \sim 10^{-5}$. Daí o nome de transições "proibidas": não são impossíveis, só muito lentas. Para
+                    $2s \to 1s$, porém, nada funciona: o dipolo elétrico é proibido pela paridade, o dipolo magnético dá
+                    $\mathbf L\psi_{100} = 0$, e o quadrupolo exige $\Delta\ell = \pm2$ ou $0 \to 0$ excluído. (Na teoria não
+                    relativista o mesmo acontece com todos os multipolos superiores; o $2s$ decai emitindo dois fótons, com
+                    tempo de vida de cerca de um décimo de segundo, segundo o livro.)</p>
+
                 <h2 id="o-que-construimos">O que construímos</h2>
+
+                <ul>
+                    <li>A luz como perturbação: na aproximação de dipolo, um átomo sob uma onda eletromagnética sente
+                        $H' = -qE_0z\cos(\omega t)$, Eq. (11.39), uma perturbação senoidal com $V_{ba} = -\wp E_0$, Eq. (11.41); os
+                        elementos diagonais se anulam pela regra de Laporte.</li>
+                    <li>Absorção, Eq. (11.42), e emissão estimulada, Eq. (11.43), deduzida, com a mesma probabilidade; a
+                        igualdade vale em qualquer ordem num sistema de dois níveis (<a href="#obs-igualdade-exata">observação</a>).
+                        A emissão estimulada explica a amplificação de luz e o laser, desde que haja inversão de população.</li>
+                    <li>A integral $\int\sin^2x/x^2\,dx = \pi$, Eq. (11.48), <a href="#lema-integral-seno-quadrado">provada</a>; com
+                        ela, sob radiação incoerente, a probabilidade cresce linearmente no tempo e a taxa de transição é
+                        constante, Eq. (11.50).</li>
+                    <li>A média sobre direções e polarizações, $\tfrac13|\boldsymbol\wp|^2$, Eq. (11.53), e a taxa de emissão
+                        estimulada (e de absorção) sob radiação isotrópica e não polarizada,
+                        $R_{b\to a} = \pi|\boldsymbol\wp|^2\rho(\omega_0)/3\epsilon_0\hbar^2$,
+                        <a href="#teo-taxa-emissao-estimulada">Eq. (11.54)</a>.</li>
+                    <li>O hamiltoniano $\mathbf A\cdot\mathbf p$ e o fator $\omega_0/\omega$
+                        (<a href="#exr-11-2-5">Exercício 11.2-5</a>), e as transições "proibidas" de dipolo magnético e
+                        quadrupolo elétrico (<a href="#exr-11-2-6">Exercício 11.2-6</a>).</li>
+                </ul>
+                <p>Falta a emissão espontânea, que o campo clássico não produz. O argumento de Einstein a obtém das
+                    taxas desta seção e da fórmula de Planck, e com ela vêm o tempo de vida dos estados excitados e as regras de
+                    seleção. É o assunto da próxima seção:
+                    <a href="[03] - Emissão Espontânea.html">11.3 Emissão Espontânea</a>.</p>
+
+                <hr class="footnotes-sep">
+                <section class="footnotes">
+                    <ol>
+                        <li id="fn:1">
+                            <p>Para a luz visível, $\lambda \sim 5000$&nbsp;Å, enquanto o diâmetro de um átomo é da ordem de
+                                1&nbsp;Å, de modo que a aproximação é razoável; mas não seria para raios X. O efeito da variação
+                                espacial do campo é explorado no <a href="#exr-11-2-6">Exercício 11.2-6</a>. (Adaptado de nota do
+                                livro.)<a href="#fnref:1" class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:2">
+                            <p>A energia de uma carga $q$ num campo estático $\mathbf E$ é $-q\int\mathbf E\cdot d\mathbf r$. Você
+                                pode muito bem objetar ao uso de uma fórmula <em>eletrostática</em> para um campo que depende
+                                manifestamente do tempo. Estamos supondo, implicitamente, que o período de oscilação é longo
+                                comparado ao tempo que a carga leva para se mover (dentro do átomo). (Nota do livro.) O
+                                <a href="#exr-11-2-5">Exercício 11.2-5</a> chega ao mesmo elemento de matriz, na ressonância, a
+                                partir do hamiltoniano completo.<a href="#fnref:2" class="footnote-backref"
+                                aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:3">
+                            <p>Como de costume, supomos o núcleo pesado e parado; é a função de onda do <em>elétron</em> que nos
+                                interessa. (Nota do livro.)<a href="#fnref:3" class="footnote-backref"
+                                aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:4">
+                            <p>A letra $\wp$ deve lembrar o <strong>momento de dipolo elétrico</strong> (para o qual, em
+                                eletrodinâmica, costuma-se usar a letra $p$; aqui ela é escrita em forma rebuscada para não ser
+                                confundida com o momento linear). Na verdade, $\wp$ é o elemento de matriz fora da diagonal da
+                                componente $z$ do operador momento de dipolo, $q\mathbf r$. Por causa dessa associação, a radiação
+                                governada pela Eq. (11.40) se chama <strong>radiação de dipolo elétrico</strong>; ela é, de longe,
+                                o tipo dominante, ao menos na região visível. Generalizações e terminologia no
+                                <a href="#exr-11-2-6">Exercício 11.2-6</a>. (Adaptado de nota do livro.)<a href="#fnref:4"
+                                class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:5">
+                            <p>Para um tratamento acessível, veja Rodney Loudon, <em>The Quantum Theory of Light</em>, 2. ed.
+                                (Clarendon Press, Oxford, 1983). (Nota do livro.)<a href="#fnref:5" class="footnote-backref"
+                                aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:6">
+                            <p>O artigo de Einstein foi publicado em 1917, bem antes da equação de Schrödinger. A eletrodinâmica
+                                quântica entra no argumento através da fórmula de Planck para o corpo negro, que data de 1900.
+                                (Nota do livro.)<a href="#fnref:6" class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:7">
+                            <p>Para uma dedução alternativa usando eletrodinâmica quântica "de improviso", veja o
+                                <a href="[03] - Emissão Espontânea.html#exr-11-3-4">Exercício 11.3-4</a>. (Adaptado de nota do livro.)<a href="#fnref:7"
+                                class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:8">
+                            <p>David J. Griffiths, <em>Introduction to Electrodynamics</em>, 4. ed. (Cambridge University Press,
+                                Cambridge, 2017), Seção 9.2.3. A conta da média está logo abaixo da Eq. (11.44). (Adaptado de nota
+                                do livro.)<a href="#fnref:8" class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:9">
+                            <p>A Eq. (11.46) supõe que as perturbações em frequências diferentes sejam <em>independentes</em>, de
+                                modo que a probabilidade de transição total seja a soma das probabilidades individuais. Se as
+                                diferentes componentes forem <strong>coerentes</strong> (com fases correlacionadas), devemos somar
+                                <em>amplitudes</em> ($c_b(t)$), e não <em>probabilidades</em> ($|c_b(t)|^2$), e aparecem termos
+                                cruzados. Nas aplicações que vamos considerar, as perturbações são sempre incoerentes. (Nota do
+                                livro.) Com fases aleatórias e independentes, os termos cruzados têm média nula, e é isso que
+                                justifica somar as probabilidades.<a href="#fnref:9" class="footnote-backref"
+                                aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                        <li id="fn:10">
+                            <p>Vamos tratar $\boldsymbol\wp$ como se fosse real, embora em geral seja complexo. Como, para $\hat n$
+                                real,
+                                $|\boldsymbol\wp\cdot\hat n|^2 = |\mathrm{Re}(\boldsymbol\wp)\cdot\hat n + i\,\mathrm{Im}(\boldsymbol\wp)\cdot\hat n|^2 = |\mathrm{Re}(\boldsymbol\wp)\cdot\hat n|^2 + |\mathrm{Im}(\boldsymbol\wp)\cdot\hat n|^2$,
+                                podemos fazer a conta separadamente para as partes real e imaginária e somar os resultados. Na
+                                Eq. (11.54), as barras de valor absoluto denotam <em>ao mesmo tempo</em> o módulo do vetor e o da
+                                amplitude complexa: $|\boldsymbol\wp|^2 = |\wp_x|^2 + |\wp_y|^2 + |\wp_z|^2$. (Nota do
+                                livro.)<a href="#fnref:10" class="footnote-backref" aria-label="Voltar ao texto">&#x21A9;</a></p>
+                        </li>
+                    </ol>
+                </section>
 
             </div>
         </main>
@@ -191,6 +944,9 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#emissao-e-absorcao">Emissão e Absorção de Radiação</a></li>
+                    <li><a href="#ondas-eletromagneticas">Ondas eletromagnéticas</a></li>
+                    <li><a href="#tres-processos">Absorção e emissão</a></li>
+                    <li><a href="#perturbacoes-incoerentes">Perturbações incoerentes</a></li>
                     <li><a href="#conexao">Conexão com o experimento</a></li>
                     <li><a href="#exercicios">Exercícios Resolvidos</a></li>
                     <li><a href="#o-que-construimos">O que construímos</a></li>
