@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Lema de Poincaré | Relatividade Geral | The Journal of a Physicist</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../../../assets/images/Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../../../assets/images/Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../../../assets/images/Favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="../../../../../../assets/images/Favicon/favicon.ico">
+    <link rel="stylesheet" href="../../../../../../assets/css/class-lecture.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                        <line x1="9" x2="9" y1="3" y2="21"></line>
+                    </svg>
+                </button>
+                <button id="theme-toggle" class="sidebar-toggle" aria-label="Toggle Theme">
+                    <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="breadcrumbs-header">
+                    <a href="../../../../../../Páginas Principais/Lectures.html" class="breadcrumb-link">← Lectures</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <a href="../../index.html" class="breadcrumb-link active">Relatividade Geral</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-category" class="breadcrumb-link">Eletromagnetismo e a Geometria do Espaço-Tempo</span>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-current" class="breadcrumb-link active">4.2 O Lema de Poincaré</span>
+                </div>
+            </div>
+            <nav class="top-nav">
+                <a href="../../../../../../Páginas Principais/Lectures.html">Lectures</a>
+                <a href="../../../../../../index.html">Home</a>
+            </nav>
+        </div>
+
+        <script>
+            MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']]
+                }
+            };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    </header>
+
+    <div class="main-layout">
+        <aside class="left-sidebar" id="left-sidebar">
+            <div class="sidebar-content">
+
+                <button class="search-trigger" id="search-trigger">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                    </svg>
+                    <span>Search docs...</span>
+                </button>
+
+                <div class="sidebar-group">
+                    <h3>Início</h3>
+                    <ul>
+                        <li><a href="../../index.html">Overview</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Introdução a Simetrias em Mecânica Clássica</h3>
+                    <ul>
+                        <li><a href="../[0] - Introdução a Simetrias em Mecânica Clássica/1-HistoricalIntroduction.html">Introdução Histórica</a></li>
+                        <li><a href="../[0] - Introdução a Simetrias em Mecânica Clássica/1-TR.html">Teoria da Relatividade</a></li>
+                        <li><a href="../[0] - Introdução a Simetrias em Mecânica Clássica/1-Galilean-Relativity.html">Relatividade Galileana</a></li>
+                        <li><a href="../[0] - Introdução a Simetrias em Mecânica Clássica/1-Classical-Electromagnetism.html">Eletromagnetismo Clássico</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Introdução a Simetrias em Mecânica Relativística</h3>
+                    <ul>
+                        <li><a href="../[1] - Introdução a Simetrias em Mecânica Relativística/Tópico 1.html">Tópico 1</a></li>
+                        <li><a href="../[1] - Introdução a Simetrias em Mecânica Relativística/Tópico 2.html">Tópico 2</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Cálculo em Variedades Diferenciáveis</h3>
+                    <ul>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[01] - Motivação e Roteiro.html">3.1 Motivação e Roteiro</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[02] - Preliminares de Topologia e Cálculo.html">3.2 Preliminares de Topologia e Cálculo</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[03] - Variedades Diferenciáveis.html">3.3 Variedades Diferenciáveis</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[04] - Funções e Aplicações Suaves.html">3.4 Funções e Aplicações Suaves</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[05] - Vetores Tangentes.html">3.5 Vetores Tangentes</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[06] - Subvariedades.html">3.6 Subvariedades</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[07] - Fibrado Tangente e Campos Vetoriais.html">3.7 Fibrado Tangente e Campos Vetoriais</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[08] - Fluxos e Derivada de Lie.html">3.8 Fluxos e Derivada de Lie</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[09] - Covetores e 1-Formas.html">3.9 Covetores e 1-Formas</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[10] - Álgebra Multilinear e Tensores.html">3.10 Álgebra Multilinear e Tensores</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[11] - Produto Exterior.html">3.11 Produto Exterior</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[12] - Formas Diferenciais.html">3.12 Formas Diferenciais</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[13] - Derivada Exterior.html">3.13 Derivada Exterior</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[14] - Fórmula de Cartan.html">3.14 Fórmula de Cartan</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[15] - Orientação.html">3.15 Orientação</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[16] - Variedades com Bordo.html">3.16 Variedades com Bordo</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[17] - Integração de Formas.html">3.17 Integração de Formas</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[18] - Teorema de Stokes Geral.html">3.18 Teorema de Stokes Geral</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[19] - Teoremas Clássicos.html">3.19 Teoremas Clássicos</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Eletromagnetismo e a Geometria do Espaço-Tempo</h3>
+                    <ul>
+                        <li><a href="[01] - Motivação e Roteiro.html">4.1 Motivação e Roteiro</a></li>
+                        <li><a href="[02] - O Lema de Poincaré.html" class="active">4.2 O Lema de Poincaré</a></li>
+                        <li><a href="[03] - Métricas e Volume Invariante.html">4.3 Métricas e Volume Invariante</a></li>
+                        <li><a href="[04] - O Operador Estrela de Hodge.html">4.4 O Operador Estrela de Hodge</a></li>
+                        <li><a href="[05] - Maxwell em 3D com Formas.html">4.5 Maxwell em 3D com Formas</a></li>
+                        <li><a href="[06] - Meios Materiais e Métrica Induzida.html">4.6 Meios Materiais e Métrica Induzida</a></li>
+                        <li><a href="[07] - Equações Homogêneas em 4D.html">4.7 Equações Homogêneas em 4D</a></li>
+                        <li><a href="[08] - Inomogêneas e a Métrica de Minkowski.html">4.8 Inomogêneas e a Métrica de Minkowski</a></li>
+                        <li><a href="[09] - Carga, Monopolos e Correntes.html">4.9 Carga, Monopolos e Correntes</a></li>
+                        <li><a href="[10] - Comprimento e Energia de Curvas.html">4.10 Comprimento e Energia de Curvas</a></li>
+                        <li><a href="[11] - Massa, Velocidade Limite e Causalidade.html">4.11 Massa, Velocidade Limite e Causalidade</a></li>
+                        <li><a href="[12] - O Princípio Variacional.html">4.12 O Princípio Variacional</a></li>
+                        <li><a href="[13] - Mecânica Relativística.html">4.13 Mecânica Relativística</a></li>
+                        <li><a href="[14] - Acoplamento e Força de Lorentz.html">4.14 Acoplamento e Força de Lorentz</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="prose">
+
+                <h1 id="lema-de-poincare">4.2 O Lema de Poincaré</h1>
+                <p class="lead">Abertos estrelados, o operador de homotopia e a demonstração do lema de Poincaré; potenciais, o que falha fora dos abertos estrelados e uma primeira notícia da cohomologia de de Rham.</p>
+
+                <p>
+                    Toda forma exata é fechada, porque $d\circ d = 0$ (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[13] - Derivada Exterior.html#prop-3-13-20">Proposição 3.13.20</a>). A recíproca é falsa em
+                    geral: $d\theta$ é fechada e não é exata em $\mathbb{R}^2\setminus\{0\}$ (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[09] - Covetores e 1-Formas.html#ex-3-9-42">Exemplo 3.9.42</a>). O lema
+                    de Poincaré diz que a recíproca vale quando o domínio é bom o bastante. O capítulo 3 provou
+                    o caso das $1$-formas (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[09] - Covetores e 1-Formas.html#prop-3-9-43">Proposição 3.9.43</a>) e enunciou o caso geral sem prova (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[13] - Derivada Exterior.html#teo-3-13-22">Teorema 3.13.22</a>).
+                    Este tópico demonstra o caso geral para abertos estrelados.
+                </p>
+
+                <p>
+                    O lema é usado várias vezes neste capítulo, e as aulas o invocam sempre do mesmo modo:
+                    uma equação de Maxwell diz que uma forma é fechada, e o lema dá um potencial. Assim
+                    $dB = 0$ dá $B = dA$ no espaço (tópico <a href="[05] - Maxwell em 3D com Formas.html">4.5</a>),
+                    $dF = 0$ dá $F = dA$ no espaço-tempo (tópico
+                    <a href="[07] - Equações Homogêneas em 4D.html">4.7</a>), e uma corrente conservada vira a
+                    derivada de uma $2$-forma (tópico <a href="[09] - Carga, Monopolos e Correntes.html">4.9</a>).
+                    A hipótese sobre o domínio não é um detalhe técnico: sem ela aparecem as cargas pontuais e
+                    os monopolos magnéticos, e o fim do tópico mostra por quê.
+                </p>
+
+                <h2 id="estrelados">Abertos estrelados</h2>
+
+                <div class="definition-box" id="def-4-2-1" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.2.1 (Aberto estrelado).</strong> Um aberto $U \subset \mathbb{R}^n$ é
+                        <strong>estrelado em relação a</strong> $p \in U$ se, para todo $x \in U$, o segmento
+                        $\{p + t(x - p) : t \in [0,1]\}$ está contido em $U$.</p>
+                </div>
+
+                <p id="ex-4-2-2"><strong>Exemplo 4.2.2 (Abertos estrelados e não estrelados).</strong>
+                </p>
+
+                <ul>
+                    <li>Todo aberto convexo é estrelado em relação a qualquer um de seus pontos: bolas, cubos
+                        abertos, o próprio $\mathbb{R}^n$.</li>
+                    <li>O plano menos a semirreta $\{(x,0) : x \le 0\}$ é estrelado em relação a qualquer ponto
+                        $p = (a,0)$ com $a \gt 0$. Se $x$ não está no eixo horizontal, a reta por $p$ e $x$ corta
+                        esse eixo só em $p$, que fica fora da semirreta; se $x = (b,0)$ está no eixo, então
+                        $b \gt 0$ e o segmento fica no semieixo positivo
+                        (<a href="#fig-4-2-1">Figura 4.2.1</a>a).</li>
+                    <li>Em $\mathbb{R}^3$, o aberto $U_N = \mathbb{R}^3\setminus\{(0,0,z) : z \le 0\}$, o espaço
+                        menos o semieixo $z$ negativo fechado, é estrelado em relação a $p = (0,0,a)$, para todo
+                        $a \gt 0$. Se $x \in U_N$ não está no eixo $z$, a reta por $p$ e $x$ não é o eixo e o
+                        encontra só em $p$, cuja altura $a$ é positiva; se $x = (0,0,z_x)$ está no eixo, então
+                        $z_x \gt 0$ e o segmento fica em $z \gt 0$. Do mesmo modo,
+                        $U_S = \mathbb{R}^3\setminus\{(0,0,z) : z \ge 0\}$ é estrelado em relação a
+                        $(0,0,-a)$.</li>
+                    <li>O anel $\{1 \lt \lvert x\rvert \lt 2\}$ do plano não é estrelado em relação a nenhum
+                        ponto: o segmento de $p$ ao ponto $-p$, que também está no anel, passa pela origem, fora
+                        do anel (<a href="#fig-4-2-1">Figura 4.2.1</a>b). Pelo mesmo argumento,
+                        $\mathbb{R}^n\setminus\{0\}$ não é estrelado.</li>
+                </ul>
+
+                <figure class="lecture-figure" id="fig-4-2-1">
+                    <svg viewBox="0 0 640 262" role="img" aria-label="Dois painéis. (a) Uma região retangular do plano da qual foi retirada a semirreta que sai da origem para a esquerda; de um ponto p à direita da origem, sobre a reta da semirreta, partem segmentos em todas as direções, e nenhum toca a semirreta: a região é estrelada em relação a p. (b) Um anel, com o buraco central; o segmento que liga um ponto p do lado esquerdo a um ponto x do lado direito atravessa o buraco, logo o anel não é estrelado em relação a p, nem a nenhum outro ponto.">
+<defs><marker id="arr-4-2-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<rect x="20" y="26" width="280" height="210" rx="6" class="fig-band"/>
+<line x1="20" y1="131" x2="150" y2="131" class="fig-curve"/>
+<circle cx="150" cy="131" r="3.5" class="fig-shape"/>
+<line x1="205" y1="131" x2="294" y2="148.7" class="fig-guide"/>
+<line x1="205" y1="131" x2="294" y2="190.5" class="fig-guide"/>
+<line x1="205" y1="131" x2="271.1" y2="230" class="fig-guide"/>
+<line x1="205" y1="131" x2="224.7" y2="230" class="fig-guide"/>
+<line x1="205" y1="131" x2="185.3" y2="230" class="fig-guide"/>
+<line x1="205" y1="131" x2="138.9" y2="230" class="fig-guide"/>
+<line x1="205" y1="131" x2="56.8" y2="230" class="fig-guide"/>
+<line x1="205" y1="131" x2="26" y2="166.6" class="fig-guide"/>
+<line x1="205" y1="131" x2="26" y2="95.4" class="fig-guide"/>
+<line x1="205" y1="131" x2="56.8" y2="32" class="fig-guide"/>
+<line x1="205" y1="131" x2="138.9" y2="32" class="fig-guide"/>
+<line x1="205" y1="131" x2="185.3" y2="32" class="fig-guide"/>
+<line x1="205" y1="131" x2="224.7" y2="32" class="fig-guide"/>
+<line x1="205" y1="131" x2="271.1" y2="32" class="fig-guide"/>
+<line x1="205" y1="131" x2="294" y2="71.5" class="fig-guide"/>
+<line x1="205" y1="131" x2="294" y2="113.3" class="fig-guide"/>
+<circle cx="205" cy="131" r="3.5" class="fig-arrowhead"/>
+<text x="211" y="123" class="fig-label fig-it">p</text>
+<text x="144" y="149" text-anchor="end" class="fig-label fig-small">0</text>
+<text x="28" y="123" class="fig-label fig-small">semirreta retirada</text>
+<text x="160" y="252" text-anchor="middle" class="fig-label fig-small">(a) estrelado em relação a p</text>
+<path d="M579.0,131.0 A104.0,104.0 0 1 0 371.0,131.0 A104.0,104.0 0 1 0 579.0,131.0 Z M515.0,131.0 A40.0,40.0 0 1 0 435.0,131.0 A40.0,40.0 0 1 0 515.0,131.0 Z" class="fig-band" fill-rule="evenodd"/>
+<circle cx="475" cy="131" r="104" class="fig-shape"/>
+<circle cx="475" cy="131" r="40" class="fig-shape"/>
+<line x1="403" y1="141" x2="547" y2="121" class="fig-curve fig-dashed"/>
+<circle cx="403" cy="141" r="3.5" class="fig-arrowhead"/>
+<circle cx="547" cy="121" r="3.5" class="fig-arrowhead"/>
+<text x="397" y="159" text-anchor="end" class="fig-label fig-it">p</text>
+<text x="551" y="113" class="fig-label fig-it">x</text>
+<text x="475" y="157" text-anchor="middle" class="fig-label fig-small">buraco</text>
+<text x="475" y="252" text-anchor="middle" class="fig-label fig-small">(b) o segmento de p a x sai do anel</text>
+</svg>
+                    <figcaption><strong>Figura 4.2.1.</strong> (a) O plano sem a semirreta horizontal que sai da
+                        origem para a esquerda: os segmentos que partem de $p$ não tocam a semirreta, e o aberto é
+                        estrelado em relação a $p$. (b) No anel, o segmento de $p$ a $x$ atravessa o buraco: o anel
+                        não é estrelado.</figcaption>
+                </figure>
+
+                <p id="obs-4-2-3"><strong>Observação 4.2.3 (Basta tratar $p = 0$).</strong> Se $U$ é estrelado
+                    em relação a $p$, a translação $\tau(x) = x + p$ leva $U - p$, que é estrelado em relação a
+                    $0$, em $U$. Como o <em>pullback</em>, ou retrocesso, comuta com $d$ (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[13] - Derivada Exterior.html#teo-3-13-7">Teorema 3.13.7</a>), uma forma
+                    $\omega$ é fechada (ou exata) em $U$ se, e só se, $\tau^*\omega$ é fechada (ou exata) em
+                    $U - p$. Daqui em diante, os abertos estrelados são estrelados em relação à origem.</p>
+
+                <h2 id="operador-de-homotopia">O operador de homotopia</h2>
+
+                <p>
+                    A prova da <a href="../[2] - Cálculo em Variedades Diferenciáveis/[09] - Covetores e 1-Formas.html#prop-3-9-43">Proposição 3.9.43</a> construiu o potencial de uma $1$-forma fechada integrando ao longo
+                    dos raios que saem da origem. A mesma ideia funciona em qualquer grau. Seja
+                    $X = x^i\,\partial_i$ o <strong>campo radial</strong> de $\mathbb{R}^n$.
+                </p>
+
+                <div class="definition-box" id="def-4-2-4" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.2.4 (Operador de homotopia).</strong> Seja $U \subset \mathbb{R}^n$ um
+                        aberto estrelado em relação à origem. Para $k \ge 1$, o <strong>operador de
+                            homotopia</strong> $h: \Omega^k(U) \to \Omega^{k-1}(U)$ é definido, para
+                        $\omega = \sideset{}{'}\sum_I\omega_I\,dx^I$, por</p>
+                    <p>$$ h\omega = \sideset{}{'}\sum_I\Big(\int_0^1 t^{k-1}\,\omega_I(tx)\,dt\Big)\,
+                        i_X\big(dx^I\big). \tag{4.2.1} $$</p>
+                </div>
+
+                <p>
+                    Como $U$ é estrelado, $tx \in U$ para $t \in [0,1]$, e o integrando é suave em $(t,x)$. Pela
+                    derivação sob o sinal de integral (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[02] - Preliminares de Topologia e Cálculo.html#teo-3-2-66">Teorema 3.2.66</a>), os coeficientes de $h\omega$ são suaves:
+                    $h\omega$ é de fato uma $(k-1)$-forma. Os $i_X(dx^I)$ têm coeficientes lineares nas
+                    coordenadas; por exemplo, em $\mathbb{R}^3$,
+                    $i_X(dx\wedge dy) = x\,dy - y\,dx$ (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[14] - Fórmula de Cartan.html#prop-3-14-13">Proposição 3.14.13</a>). Para $k = 1$, a Equação (4.2.1) dá
+                    $h(\omega_i\,dx^i) = \int_0^1\omega_i(tx)\,x^i\,dt$, que é o potencial (3.9.7) da
+                    <a href="../[2] - Cálculo em Variedades Diferenciáveis/[09] - Covetores e 1-Formas.html#prop-3-9-43">Proposição 3.9.43</a>.
+                </p>
+
+                <p>
+                    A demonstração da fórmula principal usa a fórmula de Cartan e uma propriedade simples do
+                    campo radial.
+                </p>
+
+                <div class="definition-box" id="lema-4-2-5">
+                    <p><strong>Lema 4.2.5 (O campo radial).</strong> Para $f \in C^\infty(U)$ e um multi-índice
+                        $I$ de comprimento $k$,
+                        $\mathcal{L}_X\big(f\,dx^I\big) = \big(Xf + k\,f\big)\,dx^I$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela <a href="../[2] - Cálculo em Variedades Diferenciáveis/[14] - Fórmula de Cartan.html#prop-3-14-12">Proposição 3.14.12</a>(d), $\mathcal{L}_X(dx^i) = d(Xx^i) = d(x^i) = dx^i$,
+                    porque $Xx^i = x^j\,\partial_jx^i = x^i$. Como $\mathcal{L}_X$ é uma derivação de grau zero
+                    (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[14] - Fórmula de Cartan.html#prop-3-14-12">Proposição 3.14.12</a>(b)), aplicada a $f\,dx^{i_1}\wedge\dots\wedge dx^{i_k}$ ela dá
+                    $(\mathcal{L}_Xf)\,dx^I$ mais $k$ parcelas, cada uma com um $dx^{i_a}$ trocado por
+                    $\mathcal{L}_X dx^{i_a} = dx^{i_a}$. Cada parcela é $f\,dx^I$, e $\mathcal{L}_Xf = Xf$.
+                    $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="teo-4-2-6">
+                    <p><strong>Teorema 4.2.6 (Fórmula de homotopia).</strong> Seja $U \subset \mathbb{R}^n$ um aberto
+                        estrelado em relação à origem. Para toda $\omega \in \Omega^k(U)$ com $k \ge 1$,</p>
+                    <p>$$ \omega = d(h\omega) + h(d\omega), \tag{4.2.2} $$</p>
+                    <p>e, para toda $f \in C^\infty(U)$, $f = f(0) + h(df)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Comecemos pelo caso $k = 0$. Pela regra da cadeia,
+                    $f(x) - f(0) = \int_0^1\frac{d}{dt}f(tx)\,dt = \int_0^1 x^j\,(\partial_jf)(tx)\,dt$, que é
+                    $h(df)$ pela Equação (4.2.1) com $k = 1$.
+                </p>
+
+                <p>
+                    Seja agora $k \ge 1$ e $\omega = \sideset{}{'}\sum_I\omega_I\,dx^I$. Para $t \in [0,1]$, a
+                    aplicação $\rho_t(x) = tx$ leva $U$ em $U$. Pela fórmula do <em>pullback</em>
+                    (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[12] - Formas Diferenciais.html#teo-3-12-12">Teorema 3.12.12</a>), $\rho_t^*(dx^i) = d(tx^i) = t\,dx^i$, e então
+                </p>
+
+                <p>
+                    $$ \rho_t^*\omega = t^k\,\eta_t, \qquad
+                    \eta_t = \sideset{}{'}\sum_I\big(\omega_I\circ\rho_t\big)\,dx^I. $$
+                </p>
+
+                <p>
+                    <strong>Passo 1: a derivada em $t$.</strong> Os coeficientes de $\rho_t^*\omega$ são
+                    $t^k\omega_I(tx)$, suaves em $(t,x)$. Derivando,
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    &\frac{\partial}{\partial t}\big[t^k\omega_I(tx)\big]\\
+                    &\quad= t^{k-1}\Big[k\,\omega_I(tx) + x^j\,t\,(\partial_j\omega_I)(tx)\Big]\\
+                    &\quad= t^{k-1}\Big[k\,(\omega_I\circ\rho_t) + X(\omega_I\circ\rho_t)\Big](x),
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    porque $X(\omega_I\circ\rho_t)(x) = x^j\,\partial_j[\omega_I(tx)] = x^j\,t\,(\partial_j\omega_I)(tx)$.
+                    Pelo <a href="#lema-4-2-5">Lema 4.2.5</a>, a forma de coeficientes $k(\omega_I\circ\rho_t) + X(\omega_I\circ\rho_t)$ é
+                    $\mathcal{L}_X\eta_t$, e pela fórmula de Cartan (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[14] - Fórmula de Cartan.html#teo-3-14-15">Teorema 3.14.15</a>),
+                </p>
+
+                <p>
+                    $$ \frac{\partial}{\partial t}\rho_t^*\omega = t^{k-1}\mathcal{L}_X\eta_t
+                    = t^{k-1}\big(d\,i_X\eta_t + i_X\,d\eta_t\big). $$
+                </p>
+
+                <p>
+                    <strong>Passo 2: a derivada exterior de $\eta_t$.</strong> Pela naturalidade de $d$
+                    (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[13] - Derivada Exterior.html#teo-3-13-7">Teorema 3.13.7</a>), $d(\rho_t^*\omega) = \rho_t^*(d\omega)$. O lado esquerdo é $t^k\,d\eta_t$. O
+                    lado direito, aplicado à $(k+1)$-forma $d\omega$, é $t^{k+1}\tilde\eta_t$, com
+                    $\tilde\eta_t = \sideset{}{'}\sum_J\big((d\omega)_J\circ\rho_t\big)\,dx^J$. Logo
+                    $d\eta_t = t\,\tilde\eta_t$ para $t \gt 0$, e também para $t = 0$, porque $\eta_0$ tem
+                    coeficientes constantes. Substituindo no passo 1,
+                </p>
+
+                <p>
+                    $$ \frac{\partial}{\partial t}\rho_t^*\omega
+                    = d\big(t^{k-1}\,i_X\eta_t\big) + t^k\,i_X\tilde\eta_t. $$
+                </p>
+
+                <p>
+                    <strong>Passo 3: integrar de $0$ a $1$.</strong> Em cada ponto, coeficiente por coeficiente, o
+                    teorema fundamental do cálculo dá
+                    $\rho_1^*\omega - \rho_0^*\omega = \int_0^1\frac{\partial}{\partial t}\rho_t^*\omega\,dt$. Como
+                    $\rho_1$ é a identidade, $\rho_1^*\omega = \omega$; como $k \ge 1$, o fator $t^k$ anula
+                    $\rho_0^*\omega$. Pela derivação sob o sinal de integral (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[02] - Preliminares de Topologia e Cálculo.html#teo-3-2-66">Teorema 3.2.66</a>), a integral comuta
+                    com $d$, e
+                </p>
+
+                <p>
+                    $$ \omega = d\Big(\int_0^1 t^{k-1}\,i_X\eta_t\,dt\Big) + \int_0^1 t^k\,i_X\tilde\eta_t\,dt. $$
+                </p>
+
+                <p>
+                    Como $i_X$ é linear e os coeficientes de $i_X(dx^I)$ não dependem de $t$, a primeira integral
+                    é $\sideset{}{'}\sum_I\big(\int_0^1t^{k-1}\omega_I(tx)\,dt\big)\,i_X(dx^I) = h\omega$. A
+                    segunda é $h(d\omega)$, pela Equação (4.2.1) aplicada à forma $d\omega$, de grau $k+1$, cujo
+                    expoente é $(k+1) - 1 = k$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="cor-4-2-7">
+                    <p><strong>Corolário 4.2.7 (Lema de Poincaré).</strong> Em um aberto estrelado de
+                        $\mathbb{R}^n$, toda $k$-forma fechada, com $k \ge 1$, é exata. Um potencial é
+                        $h\omega$: se $d\omega = 0$, então $\omega = d(h\omega)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela <a href="#obs-4-2-3">Observação 4.2.3</a> podemos supor o aberto estrelado em relação à origem.
+                    Se $d\omega = 0$, a Equação (4.2.2) se reduz a $\omega = d(h\omega)$. $\blacksquare$
+                </p>
+
+                <p>
+                    O corolário demonstra o <a href="../[2] - Cálculo em Variedades Diferenciáveis/[13] - Derivada Exterior.html#teo-3-13-22">Teorema 3.13.22</a> para abertos estrelados. A segunda afirmação daquele
+                    teorema, a versão local em variedades, sai agora com uma carta.
+                </p>
+
+                <div class="definition-box" id="cor-4-2-8">
+                    <p><strong>Corolário 4.2.8 (Fechada implica localmente exata).</strong> Seja $M$ uma variedade
+                        e $\omega \in \Omega^k(M)$ fechada, $k \ge 1$. Todo ponto de $M$ tem uma vizinhança $W$ em
+                        que $\omega\vert_W = d\alpha$ para alguma $\alpha \in \Omega^{k-1}(W)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Dado $p \in M$, tome uma carta $(V,\psi)$ em torno de $p$ e uma bola
+                    aberta $B \subset \psi(V)$ centrada em $\psi(p)$, e seja $W = \psi^{-1}(B)$. A forma
+                    $\beta = (\psi^{-1})^*\omega$ em $B$ é fechada, porque $d\beta = (\psi^{-1})^*d\omega = 0$
+                    (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[13] - Derivada Exterior.html#teo-3-13-7">Teorema 3.13.7</a>). A bola é convexa, logo estrelada, e o <a href="#cor-4-2-7">Corolário 4.2.7</a> dá $\beta = d\gamma$ em $B$.
+                    Então $\omega\vert_W = \psi^*\beta = \psi^*d\gamma = d(\psi^*\gamma)$. $\blacksquare$
+                </p>
+
+                <p id="obs-4-2-9"><strong>Observação 4.2.9 (Potenciais não são únicos).</strong> Se $d\alpha = \omega$
+                    e $d\alpha' = \omega$, a diferença $\alpha' - \alpha$ é fechada; em um aberto estrelado, e para
+                    $k \ge 2$, ela é exata, e então $\alpha' = \alpha + d\lambda$ para alguma $(k-2)$-forma
+                    $\lambda$. Para $k = 1$, a diferença é uma função com diferencial nula, constante em cada
+                    componente conexa. Na física, a troca $A \mapsto A + d\lambda$ de um potencial é a
+                    <strong>transformação de calibre</strong> (tópicos 4.5 e 4.7).</p>
+
+                <h2 id="potenciais">Potenciais explícitos</h2>
+
+                <p id="ex-4-2-10"><strong>Exemplo 4.2.10 (Campo magnético uniforme).</strong> Em $\mathbb{R}^3$, a
+                    $2$-forma $B = B_0\,dx\wedge dy$, que corresponde a $\mathbf{B} = B_0\,\hat{\mathbf{z}}$, é
+                    fechada (coeficiente constante). Com $k = 2$, a Equação (4.2.1) dá
+                    $\int_0^1 t\,B_0\,dt = B_0/2$ e $i_X(dx\wedge dy) = x\,dy - y\,dx$, logo</p>
+
+                <p>
+                    $$ \begin{aligned}
+                    &hB = \frac{B_0}{2}\,(x\,dy - y\,dx),\\
+                    &d(hB) = \frac{B_0}{2}\,(dx\wedge dy - dy\wedge dx) = B_0\,dx\wedge dy.
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    Em linguagem vetorial, $\mathbf{A} = \tfrac{B_0}{2}(-y,x,0) = \tfrac12\mathbf{B}\times\mathbf{x}$, o
+                    calibre simétrico. Outro potencial é $B_0x\,dy$ (o calibre de Landau), e a diferença é exata,
+                    como diz a <a href="#obs-4-2-9">Observação 4.2.9</a>:
+                    $B_0x\,dy - hB = \tfrac{B_0}{2}(x\,dy + y\,dx) = d\big(\tfrac{B_0}{2}xy\big)$.
+                </p>
+
+                <p id="ex-4-2-11"><strong>Exemplo 4.2.11 (Os potenciais do monopolo).</strong> A forma do ângulo
+                    sólido do <a href="../[2] - Cálculo em Variedades Diferenciáveis/[13] - Derivada Exterior.html#ex-3-13-21">Exemplo 3.13.21</a>,</p>
+
+                <p>
+                    $$ \beta = \frac{x\,dy\wedge dz + y\,dz\wedge dx + z\,dx\wedge dy}{r^3},
+                    \qquad r = \sqrt{x^2+y^2+z^2}, $$
+                </p>
+
+                <p>
+                    é fechada em $\mathbb{R}^3\setminus\{0\}$. O aberto $U_N$, o espaço sem o semieixo $z$ negativo,
+                    é estrelado (<a href="#ex-4-2-2">Exemplo 4.2.2</a>) e não contém a origem; pelo <a href="#cor-4-2-7">Corolário 4.2.7</a>, $\beta$ é exata em $U_N$. Um
+                    potencial é
+                </p>
+
+                <p>
+                    $$ \alpha_N = \frac{x\,dy - y\,dx}{r\,(r+z)} = (1 - \cos\theta)\,d\phi, \tag{4.2.3} $$
+                </p>
+
+                <p>
+                    em que a segunda expressão usa coordenadas esféricas. A primeira mostra que $\alpha_N$ é suave
+                    em todo $U_N$: o denominador $r(r+z)$ só se anula onde $r = -z$, isto é, no semieixo $z$
+                    negativo. A segunda dá a conta de $d\alpha_N$ sem esforço:
+                    $d\alpha_N = \sin\theta\,d\theta\wedge d\phi$, que é $\beta$ escrita em esféricas (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[12] - Formas Diferenciais.html#ex-3-12-19">Exemplo 3.12.19</a> e
+                    <a href="../[2] - Cálculo em Variedades Diferenciáveis/[15] - Orientação.html#cor-3-15-17">Corolário 3.15.17</a>). Note que $d\phi$ sozinho não está definido no eixo $z$, mas o fator
+                    $1 - \cos\theta$ se anula no semieixo positivo e compensa. Do mesmo modo, em $U_S$ (sem o
+                    semieixo positivo), $\alpha_S = -\dfrac{x\,dy - y\,dx}{r\,(r-z)} = -(1 + \cos\theta)\,d\phi$ é um
+                    potencial. Na interseção $U_N\cap U_S$, que é o espaço sem o eixo $z$,
+                </p>
+
+                <p>
+                    $$ \alpha_N - \alpha_S = 2\,d\phi. \tag{4.2.4} $$
+                </p>
+
+                <p>
+                    Os dois potenciais diferem por uma forma fechada, como na <a href="#obs-4-2-9">Observação 4.2.9</a>, mas a diferença não é
+                    exata no espaço sem o eixo: a integral de $2\,d\phi$ em um círculo horizontal em torno do eixo
+                    é $4\pi \ne 0$ (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[09] - Covetores e 1-Formas.html#teo-3-9-39">Teorema 3.9.39</a>). A semirreta retirada é a <strong>corda de Dirac</strong>
+                    (<a href="#fig-4-2-2">Figura 4.2.2</a>), à qual o tópico
+                    <a href="[09] - Carga, Monopolos e Correntes.html">4.9</a> volta.
+                </p>
+
+                <figure class="lecture-figure" id="fig-4-2-2">
+                    <svg viewBox="0 0 640 290" role="img" aria-label="Dois painéis com a carga magnética na origem e linhas de campo radiais. No painel da esquerda, o semieixo z negativo está tracejado e marcado como corda: é a semirreta retirada para formar a região U_N, onde vale o potencial alfa N igual a um menos cosseno de teta vezes d fi. No painel da direita, a corda é o semieixo z positivo, e na região U_S vale alfa S igual a menos um mais cosseno de teta vezes d fi.">
+<defs><marker id="arr-4-2-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="170" y1="10" x2="170" y2="234" class="fig-guide"/>
+<line x1="183.5" y1="125.6" x2="237.6" y2="140.1" class="fig-axis" marker-end="url(#arr-4-2-2)"/>
+<line x1="179.9" y1="131.9" x2="219.5" y2="171.5" class="fig-axis" marker-end="url(#arr-4-2-2)"/>
+<line x1="173.6" y1="135.5" x2="188.1" y2="189.6" class="fig-axis" marker-end="url(#arr-4-2-2)"/>
+<line x1="166.4" y1="135.5" x2="151.9" y2="189.6" class="fig-axis" marker-end="url(#arr-4-2-2)"/>
+<line x1="160.1" y1="131.9" x2="120.5" y2="171.5" class="fig-axis" marker-end="url(#arr-4-2-2)"/>
+<line x1="156.5" y1="125.6" x2="102.4" y2="140.1" class="fig-axis" marker-end="url(#arr-4-2-2)"/>
+<line x1="156.5" y1="118.4" x2="102.4" y2="103.9" class="fig-axis" marker-end="url(#arr-4-2-2)"/>
+<line x1="160.1" y1="112.1" x2="120.5" y2="72.5" class="fig-axis" marker-end="url(#arr-4-2-2)"/>
+<line x1="166.4" y1="108.5" x2="151.9" y2="54.4" class="fig-axis" marker-end="url(#arr-4-2-2)"/>
+<line x1="173.6" y1="108.5" x2="188.1" y2="54.4" class="fig-axis" marker-end="url(#arr-4-2-2)"/>
+<line x1="179.9" y1="112.1" x2="219.5" y2="72.5" class="fig-axis" marker-end="url(#arr-4-2-2)"/>
+<line x1="183.5" y1="118.4" x2="237.6" y2="103.9" class="fig-axis" marker-end="url(#arr-4-2-2)"/>
+<line x1="170" y1="122" x2="170" y2="234" class="fig-curve fig-dashed"/>
+<circle cx="170" cy="122" r="4.5" class="fig-arrowhead"/>
+<text x="178" y="218" class="fig-label fig-small">corda</text>
+<text x="178" y="18" class="fig-label fig-it">z</text>
+<text x="170" y="262" text-anchor="middle" class="fig-label">U_N: sem o semieixo z ≤ 0</text>
+<text x="170" y="280" text-anchor="middle" class="fig-label fig-small">α_N = (1 − cos θ) dφ</text>
+<line x1="470" y1="10" x2="470" y2="234" class="fig-guide"/>
+<line x1="483.5" y1="125.6" x2="537.6" y2="140.1" class="fig-axis" marker-end="url(#arr-4-2-2)"/>
+<line x1="479.9" y1="131.9" x2="519.5" y2="171.5" class="fig-axis" marker-end="url(#arr-4-2-2)"/>
+<line x1="473.6" y1="135.5" x2="488.1" y2="189.6" class="fig-axis" marker-end="url(#arr-4-2-2)"/>
+<line x1="466.4" y1="135.5" x2="451.9" y2="189.6" class="fig-axis" marker-end="url(#arr-4-2-2)"/>
+<line x1="460.1" y1="131.9" x2="420.5" y2="171.5" class="fig-axis" marker-end="url(#arr-4-2-2)"/>
+<line x1="456.5" y1="125.6" x2="402.4" y2="140.1" class="fig-axis" marker-end="url(#arr-4-2-2)"/>
+<line x1="456.5" y1="118.4" x2="402.4" y2="103.9" class="fig-axis" marker-end="url(#arr-4-2-2)"/>
+<line x1="460.1" y1="112.1" x2="420.5" y2="72.5" class="fig-axis" marker-end="url(#arr-4-2-2)"/>
+<line x1="466.4" y1="108.5" x2="451.9" y2="54.4" class="fig-axis" marker-end="url(#arr-4-2-2)"/>
+<line x1="473.6" y1="108.5" x2="488.1" y2="54.4" class="fig-axis" marker-end="url(#arr-4-2-2)"/>
+<line x1="479.9" y1="112.1" x2="519.5" y2="72.5" class="fig-axis" marker-end="url(#arr-4-2-2)"/>
+<line x1="483.5" y1="118.4" x2="537.6" y2="103.9" class="fig-axis" marker-end="url(#arr-4-2-2)"/>
+<line x1="470" y1="122" x2="470" y2="10" class="fig-curve fig-dashed"/>
+<circle cx="470" cy="122" r="4.5" class="fig-arrowhead"/>
+<text x="478" y="32" class="fig-label fig-small">corda</text>
+<text x="478" y="230" class="fig-label fig-it">z</text>
+<text x="470" y="262" text-anchor="middle" class="fig-label">U_S: sem o semieixo z ≥ 0</text>
+<text x="470" y="280" text-anchor="middle" class="fig-label fig-small">α_S = −(1 + cos θ) dφ</text>
+</svg>
+                    <figcaption><strong>Figura 4.2.2.</strong> O monopolo na origem e suas linhas de campo radiais.
+                        Retirando o semieixo $z$ negativo (à esquerda) ou o positivo (à direita), sobra um aberto
+                        estrelado, em que $\beta$ tem potencial: $\alpha_N$ ou $\alpha_S$. A semirreta retirada é a
+                        corda de Dirac.</figcaption>
+                </figure>
+
+                <h2 id="quando-falha">Quando o lema falha</h2>
+
+                <p>
+                    O espaço sem a origem não é estrelado, e lá a forma do monopolo deixa de ser exata. O
+                    <a href="../[2] - Cálculo em Variedades Diferenciáveis/[13] - Derivada Exterior.html#ex-3-13-21">Exemplo 3.13.21</a> anunciou este resultado e adiou a prova para o Teorema de Stokes; a demonstração
+                    abaixo usa o teorema pelo seu enunciado (tópico
+                    <a href="../[2] - Cálculo em Variedades Diferenciáveis/[18] - Teorema de Stokes Geral.html">3.18</a>).
+                </p>
+
+                <div class="definition-box" id="prop-4-2-12">
+                    <p><strong>Proposição 4.2.12 (O monopolo não tem potencial global).</strong> A forma $\beta$ do
+                        <a href="#ex-4-2-11">Exemplo 4.2.11</a> é fechada e não é exata em $\mathbb{R}^3\setminus\{0\}$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Seja $\iota: S^2 \hookrightarrow \mathbb{R}^3\setminus\{0\}$ a inclusão da
+                    esfera unitária, orientada como no <a href="../[2] - Cálculo em Variedades Diferenciáveis/[15] - Orientação.html#cor-3-15-17">Corolário 3.15.17</a>. Lá $\iota^*\beta = \sin\theta\,d\theta\wedge d\phi$,
+                    e a integral, calculada pela parametrização $(\theta,\phi)$ como no tópico
+                    <a href="../[2] - Cálculo em Variedades Diferenciáveis/[17] - Integração de Formas.html">3.17</a>,
+                    é $\int_0^{2\pi}\!\int_0^\pi\sin\theta\,d\theta\,d\phi = 4\pi$. Se fosse $\beta = d\alpha$, teríamos
+                    $\iota^*\beta = d(\iota^*\alpha)$ (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[13] - Derivada Exterior.html#teo-3-13-7">Teorema 3.13.7</a>), e o Teorema de Stokes na esfera, que é compacta
+                    e não tem bordo, daria $\int_{S^2}d(\iota^*\alpha) = \int_{\partial S^2}\iota^*\alpha = 0$. Como
+                    $4\pi \ne 0$, $\beta$ não é exata. $\blacksquare$
+                </p>
+
+                <p>
+                    Não há contradição com o <a href="#ex-4-2-11">Exemplo 4.2.11</a>: a esfera unitária não cabe em $U_N$, porque passa pelo
+                    ponto $(0,0,-1)$ do semieixo retirado. Um potencial definido fora de uma corda não pode ser
+                    integrado sobre uma esfera que envolve o monopolo. A situação é a mesma de $d\theta$ em
+                    $\mathbb{R}^2\setminus\{0\}$ (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[09] - Covetores e 1-Formas.html#ex-3-9-42">Exemplo 3.9.42</a>), um grau acima: lá a obstrução é medida por uma curva
+                    fechada, aqui por uma superfície fechada. A teoria que organiza essas obstruções é a
+                    cohomologia de de Rham (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[13] - Derivada Exterior.html#obs-3-13-23">Observação 3.13.23</a>).
+                </p>
+
+                <div class="definition-box" id="teo-4-2-13">
+                    <p><strong>Teorema 4.2.13 (Cohomologia de de Rham; citado).</strong> Seja $H^k(M)$ o quociente
+                        do espaço vetorial das $k$-formas fechadas em $M$ pelo subespaço das $k$-formas exatas.</p>
+                    <ol type="a">
+                        <li>Se $M$ é contrátil (por exemplo, um aberto estrelado), $H^k(M) = 0$ para $k \ge 1$. Mais
+                            geralmente, variedades homotopicamente equivalentes têm a mesma cohomologia.</li>
+                        <li>$H^{n-1}(\mathbb{R}^n\setminus\{0\}) \cong \mathbb{R}$, gerado pela forma do ângulo sólido:
+                            $d\theta$ para $n = 2$, $\beta$ para $n = 3$. Uma $(n-1)$-forma fechada é exata se, e só
+                            se, sua integral na esfera unitária é nula.</li>
+                        <li>Para o espaço sem uma reta, $\mathbb{R}^3\setminus\{\text{eixo } z\}$:
+                            $H^1 \cong \mathbb{R}$, gerado por $d\phi$, e $H^2 = 0$.</li>
+                    </ol>
+                </div>
+
+                <p>
+                    <em>Ideia da demonstração.</em> O operador $h$ é um caso particular de um operador associado a
+                    qualquer homotopia: se $F_t$ deforma $F_0$ em $F_1$, existe $h$ com
+                    $F_1^*\omega - F_0^*\omega = d(h\omega) + h(d\omega)$, e então $F_0^*$ e $F_1^*$ coincidem em
+                    formas fechadas a menos de formas exatas. O espaço sem a origem se deforma na esfera
+                    $S^{n-1}$, e o espaço sem uma reta se deforma no círculo; a cohomologia das esferas se calcula
+                    com a integral. Referência: Lee, <i>Introduction to Smooth Manifolds</i>, capítulo 17.
+                </p>
+
+                <p id="obs-4-2-14"><strong>Observação 4.2.14 (Laços, esferas e o grau da forma).</strong> A
+                    obstrução que impede uma forma fechada de ser exata depende do grau. Para uma $1$-forma, ela é
+                    medida em <strong>curvas</strong> fechadas (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[09] - Covetores e 1-Formas.html#teo-3-9-39">Teorema 3.9.39</a>), e o que prende uma curva é um
+                    obstáculo de codimensão $2$: um ponto no plano, uma reta no espaço. Para uma $2$-forma, ela é
+                    medida em <strong>superfícies</strong> fechadas, e o que prende uma esfera é um obstáculo de
+                    codimensão $3$: um ponto no espaço ou, no espaço-tempo, a linha de mundo de uma partícula.
+                    Por isso $\mathbb{R}^3\setminus\{0\}$, em que toda curva fechada se contrai a um ponto (o espaço
+                    é simplesmente conexo), ainda tem $H^2 \ne 0$; e por isso retirar uma semirreta inteira, e não
+                    apenas a origem, torna a forma do monopolo exata. É a topologia de esferas, e não a de laços,
+                    que explica o monopolo e as cargas pontuais.</p>
+
+                <h2 id="fisica">Ponte com a física</h2>
+
+                <p>
+                    <strong>Por que existem potenciais.</strong> A ausência de monopolos, $\nabla\cdot\mathbf{B} = 0$,
+                    é a afirmação $dB = 0$; em $\mathbb{R}^3$, que é estrelado, o <a href="#cor-4-2-7">Corolário 4.2.7</a> dá $B = dA$, o potencial
+                    vetor. Na eletrostática, $\nabla\times\mathbf{E} = 0$ é $dE = 0$, e o lema dá $E = -d\phi$, o
+                    potencial escalar. No espaço-tempo $\mathbb{R}^4$, também estrelado, as duas equações
+                    homogêneas juntas dizem que a $2$-forma de Faraday é fechada, e o lema dá o quadripotencial,
+                    $F = dA$ (tópico <a href="[07] - Equações Homogêneas em 4D.html">4.7</a>). Nos três casos o
+                    potencial existe por uma razão topológica, a forma do domínio, e não por uma propriedade
+                    especial dos campos.
+                </p>
+
+                <p>
+                    <strong>Quando a topologia aparece.</strong> Fora de um solenoide longo e fino, o campo
+                    magnético é nulo, mas o potencial não é: em coordenadas cilíndricas,
+                    $A = \frac{\Phi}{2\pi}\,d\phi$, em que $\Phi$ é o fluxo dentro do solenoide. A forma $A$ é
+                    fechada fora do solenoide e não é exata, porque $\oint A = \Phi$ em um círculo que o envolve
+                    (Exercício 4.2.6). Na mecânica clássica isso não tem efeito, porque só $\mathbf{B}$ entra na força.
+                    Na mecânica quântica, a fase $\frac{q}{\hbar}\oint A$ é observável por interferência: é o efeito
+                    Aharonov–Bohm, uma manifestação direta de $H^1 \ne 0$ para o espaço sem uma reta.
+                </p>
+
+                <p>
+                    <strong>Monopolos.</strong> Um monopolo magnético de carga $g$ teria $B = g\,\beta$, fechada e não
+                    exata no espaço sem a origem. Os potenciais $g\alpha_N$ e $g\alpha_S$ existem fora das cordas
+                    e diferem por $2g\,d\phi$. O tópico <a href="[09] - Carga, Monopolos e Correntes.html">4.9</a>
+                    usa essa descrição para entender por que a carga elétrica e a magnética se comportam de modo
+                    diferente quando o tempo é separado do espaço.
+                </p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p id="exr-4-2-1"><strong>Exercício 4.2.1.</strong> Para $\omega = x\,dy\wedge dz$ em $\mathbb{R}^3$, que não é
+                    fechada, calcule $h\omega$, $h(d\omega)$ e $d(h\omega)$, e confira a fórmula de homotopia
+                    (4.2.2) termo a termo.</p>
+
+                <p>
+                    <em>Solução.</em> Com $k = 2$: $\int_0^1 t\cdot tx\,dt = x/3$ e $i_X(dy\wedge dz) = y\,dz - z\,dy$,
+                    logo $h\omega = \tfrac{x}{3}(y\,dz - z\,dy)$. Como $d\omega = dx\wedge dy\wedge dz$, com $k = 3$:
+                    $\int_0^1t^2\,dt = 1/3$ e
+                    $i_X(dx\wedge dy\wedge dz) = x\,dy\wedge dz - y\,dx\wedge dz + z\,dx\wedge dy$, logo
+                </p>
+
+                <p>
+                    $$ h(d\omega) = \tfrac13\big(x\,dy\wedge dz - y\,dx\wedge dz + z\,dx\wedge dy\big). $$
+                </p>
+
+                <p>
+                    Por outro lado,
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    d(h\omega) &= \tfrac13\big[d(xy)\wedge dz - d(xz)\wedge dy\big]\\
+                    &= \tfrac13\big(2x\,dy\wedge dz + y\,dx\wedge dz - z\,dx\wedge dy\big).
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    Somando, os termos em $dx\wedge dz$ e $dx\wedge dy$ se cancelam e sobra
+                    $\tfrac13(2x + x)\,dy\wedge dz = x\,dy\wedge dz = \omega$.
+                </p>
+
+                <p id="exr-4-2-2"><strong>Exercício 4.2.2.</strong> Encontre, pelo operador $h$, um potencial para
+                    $B = 2\,dx\wedge dy + 3\,dy\wedge dz$ e compare com o potencial $2x\,dy + 3y\,dz$, encontrado "no
+                    olho".</p>
+
+                <p>
+                    <em>Solução.</em> Os coeficientes são constantes, então $\int_0^1t\,c\,dt = c/2$ e
+                    $hB = (x\,dy - y\,dx) + \tfrac32(y\,dz - z\,dy)$. Os dois potenciais têm $d = B$, e a diferença é
+                    exata, como prevê a <a href="#obs-4-2-9">Observação 4.2.9</a>:
+                </p>
+
+                <p>
+                    $$ (2x\,dy + 3y\,dz) - hB = x\,dy + y\,dx + \tfrac32(y\,dz + z\,dy)
+                    = d\Big(xy + \tfrac32\,yz\Big). $$
+                </p>
+
+                <p id="exr-4-2-3"><strong>Exercício 4.2.3.</strong> Mostre que
+                    $U_N = \mathbb{R}^3\setminus\{(0,0,z) : z \le 0\}$ não é estrelado em relação a nenhum ponto fora
+                    do eixo $z$. Conclua que os pontos em relação aos quais $U_N$ é estrelado são exatamente os
+                    $(0,0,a)$ com $a \gt 0$.</p>
+
+                <p>
+                    <em>Solução.</em> Seja $p = (p_1,p_2,p_3)$ com $(p_1,p_2) \ne (0,0)$, e seja $q = (0,0,-1)$, um
+                    ponto do semieixo retirado. Tome $x = q + (q - p) = (-p_1,-p_2,-2-p_3)$. Como $(p_1,p_2) \ne (0,0)$,
+                    $x$ não está no eixo $z$, logo $x \in U_N$, e o ponto médio do segmento de $p$ a $x$ é $q$, que não
+                    está em $U_N$. Para $p = (1,0,0)$, por exemplo, $x = (-1,0,-2)$. Os pontos do eixo $z$ com altura
+                    $a \le 0$ não estão em $U_N$, e os de altura $a \gt 0$ são centros de estrela pelo <a href="#ex-4-2-2">Exemplo 4.2.2</a>.
+                </p>
+
+                <p id="exr-4-2-4"><strong>Exercício 4.2.4.</strong> Verifique a Equação (4.2.4),
+                    $\alpha_N - \alpha_S = 2\,d\phi$, e mostre que $2\,d\phi$ não é exata no espaço sem o eixo $z$.</p>
+
+                <p>
+                    <em>Solução.</em> Em esféricas, $\alpha_N - \alpha_S = (1 - \cos\theta)\,d\phi + (1 + \cos\theta)\,d\phi = 2\,d\phi$.
+                    Em cartesianas, com $r^2 - z^2 = x^2 + y^2$,
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    &\frac{1}{r(r+z)} + \frac{1}{r(r-z)} = \frac{2r}{r(r^2 - z^2)} = \frac{2}{x^2+y^2},\\
+                    &\alpha_N - \alpha_S = 2\,\frac{x\,dy - y\,dx}{x^2+y^2} = 2\,d\phi.
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    No círculo $\gamma(t) = (\cos t,\sin t,1)$, $t \in [0,2\pi]$, o <em>pullback</em> de $d\phi$ é $dt$, e
+                    $\int_\gamma 2\,d\phi = 4\pi \ne 0$. Pelo <a href="../[2] - Cálculo em Variedades Diferenciáveis/[09] - Covetores e 1-Formas.html#teo-3-9-39">Teorema 3.9.39</a>, uma $1$-forma exata tem integral nula em
+                    toda curva fechada; logo $2\,d\phi$ não é exata.
+                </p>
+
+                <p id="exr-4-2-5"><strong>Exercício 4.2.5.</strong> Mostre que, para $f \in C^\infty(U)$, o operador
+                    de homotopia dá $h(df) = f - f(0)$, e que, para uma $1$-forma fechada $\omega$, $h\omega$ é o
+                    potencial (3.9.7) da <a href="../[2] - Cálculo em Variedades Diferenciáveis/[09] - Covetores e 1-Formas.html#prop-3-9-43">Proposição 3.9.43</a>.</p>
+
+                <p>
+                    <em>Solução.</em> Para $\omega = \omega_i\,dx^i$, com $k = 1$, o fator $t^{k-1}$ é $1$ e
+                    $i_X(dx^i) = x^i$, logo $h\omega(x) = \int_0^1\omega_i(tx)\,x^i\,dt$, que é exatamente (3.9.7). Para
+                    $\omega = df$, $\omega_i(tx)\,x^i = x^i(\partial_if)(tx) = \frac{d}{dt}f(tx)$, e a integral é
+                    $f(x) - f(0)$. A fórmula de homotopia generaliza, portanto, a prova do capítulo 3.
+                </p>
+
+                <p id="exr-4-2-6"><strong>Exercício 4.2.6.</strong> Fora de um solenoide ideal ao longo do eixo $z$,
+                    com fluxo $\Phi$, o potencial é $A = \frac{\Phi}{2\pi}\,d\phi$. Mostre que $dA = 0$ fora do eixo e
+                    que $\oint A = \Phi$ em todo círculo horizontal centrado no eixo.</p>
+
+                <p>
+                    <em>Solução.</em> $A = \frac{\Phi}{2\pi}\,\frac{x\,dy - y\,dx}{x^2+y^2}$ é um múltiplo de $d\phi$, que é
+                    fechada (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[09] - Covetores e 1-Formas.html#ex-3-9-42">Exemplo 3.9.42</a>); logo $dA = 0$, isto é, $\mathbf{B} = 0$ fora do solenoide. No círculo
+                    $\gamma(t) = (a\cos t, a\sin t, z_0)$, o <em>pullback</em> de $d\phi$ é $dt$ (o raio $a$ se cancela),
+                    e $\oint_\gamma A = \frac{\Phi}{2\pi}\cdot2\pi = \Phi$. Pelo <a href="../[2] - Cálculo em Variedades Diferenciáveis/[09] - Covetores e 1-Formas.html#teo-3-9-39">Teorema 3.9.39</a>, $A$ não é exata fora do
+                    eixo: o campo é nulo, mas o potencial guarda o fluxo de dentro.
+                </p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <ul>
+                    <li>Abertos estrelados (<a href="#def-4-2-1">Definição 4.2.1</a>), com os exemplos do espaço sem uma semirreta.</li>
+                    <li>O operador de homotopia $h$ (<a href="#def-4-2-4">Definição 4.2.4</a>) e a fórmula $\omega = d(h\omega) + h(d\omega)$
+                        (<a href="#teo-4-2-6">Teorema 4.2.6</a>), demonstrada pela fórmula de Cartan.</li>
+                    <li>O lema de Poincaré em abertos estrelados (<a href="#cor-4-2-7">Corolário 4.2.7</a>), com o potencial explícito $h\omega$,
+                        e a versão local em variedades (<a href="#cor-4-2-8">Corolário 4.2.8</a>). Fica demonstrado o que o <a href="../[2] - Cálculo em Variedades Diferenciáveis/[13] - Derivada Exterior.html#teo-3-13-22">Teorema 3.13.22</a> tinha
+                        apenas enunciado.</li>
+                    <li>A não unicidade dos potenciais, origem da liberdade de calibre (<a href="#obs-4-2-9">Observação 4.2.9</a>).</li>
+                    <li>Os potenciais do monopolo fora de uma corda e a prova de que não há potencial global
+                        (<a href="#ex-4-2-11">Exemplo 4.2.11</a> e <a href="#prop-4-2-12">Proposição 4.2.12</a>); a cohomologia de de Rham, citada (<a href="#teo-4-2-13">Teorema 4.2.13</a>), e a
+                        diferença entre obstruções de laços e de esferas (<a href="#obs-4-2-14">Observação 4.2.14</a>).</li>
+                </ul>
+
+                <p>
+                    As formas fechadas já têm potenciais. Falta medir: abaixar e levantar índices, comparar formas
+                    entre si e definir o elemento de volume. É o próximo tópico:
+                    <a href="[03] - Métricas e Volume Invariante.html">4.3 Métricas e Volume Invariante</a>.
+                </p>
+
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="toc-container">
+                <h4>Nesta página</h4>
+                <ul>
+                    <li><a href="#lema-de-poincare">O Lema de Poincaré</a></li>
+                    <li><a href="#estrelados">Abertos estrelados</a></li>
+                    <li><a href="#operador-de-homotopia">O operador de homotopia</a></li>
+                    <li><a href="#potenciais">Potenciais explícitos</a></li>
+                    <li><a href="#quando-falha">Quando o lema falha</a></li>
+                    <li><a href="#fisica">Ponte com a física</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Search Modal Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-modal">
+            <div class="search-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search documentation..." autocomplete="off">
+            </div>
+            <div class="search-results" id="search-results"></div>
+            <div class="search-footer">
+                <div class="search-commands">
+                    <span class="cmd-key">↑</span>
+                    <span class="cmd-key">↓</span>
+                    <span class="cmd-label">navigate</span>
+                    <span class="cmd-key">↵</span>
+                    <span class="cmd-label">select</span>
+                </div>
+                <div class="search-commands">
+                    <span class="cmd-key">esc</span>
+                    <span class="cmd-label">close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../../../assets/js/class-lecture.js"></script>
+</body>
+
+</html>

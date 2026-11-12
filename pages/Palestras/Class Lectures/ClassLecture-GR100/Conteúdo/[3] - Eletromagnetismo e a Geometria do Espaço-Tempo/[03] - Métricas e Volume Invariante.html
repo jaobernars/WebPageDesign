@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Métricas, Isomorfismos Musicais e o Volume Invariante | Relatividade Geral | The Journal of a Physicist</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../../../assets/images/Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../../../assets/images/Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../../../assets/images/Favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="../../../../../../assets/images/Favicon/favicon.ico">
+    <link rel="stylesheet" href="../../../../../../assets/css/class-lecture.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                        <line x1="9" x2="9" y1="3" y2="21"></line>
+                    </svg>
+                </button>
+                <button id="theme-toggle" class="sidebar-toggle" aria-label="Toggle Theme">
+                    <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="breadcrumbs-header">
+                    <a href="../../../../../../Páginas Principais/Lectures.html" class="breadcrumb-link">← Lectures</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <a href="../../index.html" class="breadcrumb-link active">Relatividade Geral</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-category" class="breadcrumb-link">Eletromagnetismo e a Geometria do Espaço-Tempo</span>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-current" class="breadcrumb-link active">4.3 Métricas e Volume Invariante</span>
+                </div>
+            </div>
+            <nav class="top-nav">
+                <a href="../../../../../../Páginas Principais/Lectures.html">Lectures</a>
+                <a href="../../../../../../index.html">Home</a>
+            </nav>
+        </div>
+
+        <script>
+            MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']]
+                }
+            };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    </header>
+
+    <div class="main-layout">
+        <aside class="left-sidebar" id="left-sidebar">
+            <div class="sidebar-content">
+
+                <button class="search-trigger" id="search-trigger">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                    </svg>
+                    <span>Search docs...</span>
+                </button>
+
+                <div class="sidebar-group">
+                    <h3>Início</h3>
+                    <ul>
+                        <li><a href="../../index.html">Overview</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Introdução a Simetrias em Mecânica Clássica</h3>
+                    <ul>
+                        <li><a href="../[0] - Introdução a Simetrias em Mecânica Clássica/1-HistoricalIntroduction.html">Introdução Histórica</a></li>
+                        <li><a href="../[0] - Introdução a Simetrias em Mecânica Clássica/1-TR.html">Teoria da Relatividade</a></li>
+                        <li><a href="../[0] - Introdução a Simetrias em Mecânica Clássica/1-Galilean-Relativity.html">Relatividade Galileana</a></li>
+                        <li><a href="../[0] - Introdução a Simetrias em Mecânica Clássica/1-Classical-Electromagnetism.html">Eletromagnetismo Clássico</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Introdução a Simetrias em Mecânica Relativística</h3>
+                    <ul>
+                        <li><a href="../[1] - Introdução a Simetrias em Mecânica Relativística/Tópico 1.html">Tópico 1</a></li>
+                        <li><a href="../[1] - Introdução a Simetrias em Mecânica Relativística/Tópico 2.html">Tópico 2</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Cálculo em Variedades Diferenciáveis</h3>
+                    <ul>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[01] - Motivação e Roteiro.html">3.1 Motivação e Roteiro</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[02] - Preliminares de Topologia e Cálculo.html">3.2 Preliminares de Topologia e Cálculo</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[03] - Variedades Diferenciáveis.html">3.3 Variedades Diferenciáveis</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[04] - Funções e Aplicações Suaves.html">3.4 Funções e Aplicações Suaves</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[05] - Vetores Tangentes.html">3.5 Vetores Tangentes</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[06] - Subvariedades.html">3.6 Subvariedades</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[07] - Fibrado Tangente e Campos Vetoriais.html">3.7 Fibrado Tangente e Campos Vetoriais</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[08] - Fluxos e Derivada de Lie.html">3.8 Fluxos e Derivada de Lie</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[09] - Covetores e 1-Formas.html">3.9 Covetores e 1-Formas</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[10] - Álgebra Multilinear e Tensores.html">3.10 Álgebra Multilinear e Tensores</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[11] - Produto Exterior.html">3.11 Produto Exterior</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[12] - Formas Diferenciais.html">3.12 Formas Diferenciais</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[13] - Derivada Exterior.html">3.13 Derivada Exterior</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[14] - Fórmula de Cartan.html">3.14 Fórmula de Cartan</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[15] - Orientação.html">3.15 Orientação</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[16] - Variedades com Bordo.html">3.16 Variedades com Bordo</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[17] - Integração de Formas.html">3.17 Integração de Formas</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[18] - Teorema de Stokes Geral.html">3.18 Teorema de Stokes Geral</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[19] - Teoremas Clássicos.html">3.19 Teoremas Clássicos</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Eletromagnetismo e a Geometria do Espaço-Tempo</h3>
+                    <ul>
+                        <li><a href="[01] - Motivação e Roteiro.html">4.1 Motivação e Roteiro</a></li>
+                        <li><a href="[02] - O Lema de Poincaré.html">4.2 O Lema de Poincaré</a></li>
+                        <li><a href="[03] - Métricas e Volume Invariante.html" class="active">4.3 Métricas e Volume Invariante</a></li>
+                        <li><a href="[04] - O Operador Estrela de Hodge.html">4.4 O Operador Estrela de Hodge</a></li>
+                        <li><a href="[05] - Maxwell em 3D com Formas.html">4.5 Maxwell em 3D com Formas</a></li>
+                        <li><a href="[06] - Meios Materiais e Métrica Induzida.html">4.6 Meios Materiais e Métrica Induzida</a></li>
+                        <li><a href="[07] - Equações Homogêneas em 4D.html">4.7 Equações Homogêneas em 4D</a></li>
+                        <li><a href="[08] - Inomogêneas e a Métrica de Minkowski.html">4.8 Inomogêneas e a Métrica de Minkowski</a></li>
+                        <li><a href="[09] - Carga, Monopolos e Correntes.html">4.9 Carga, Monopolos e Correntes</a></li>
+                        <li><a href="[10] - Comprimento e Energia de Curvas.html">4.10 Comprimento e Energia de Curvas</a></li>
+                        <li><a href="[11] - Massa, Velocidade Limite e Causalidade.html">4.11 Massa, Velocidade Limite e Causalidade</a></li>
+                        <li><a href="[12] - O Princípio Variacional.html">4.12 O Princípio Variacional</a></li>
+                        <li><a href="[13] - Mecânica Relativística.html">4.13 Mecânica Relativística</a></li>
+                        <li><a href="[14] - Acoplamento e Força de Lorentz.html">4.14 Acoplamento e Força de Lorentz</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="prose">
+
+                <h1 id="metricas-e-volume">4.3 Métricas, Isomorfismos Musicais e o Volume Invariante</h1>
+                <p class="lead">Métricas pseudo-riemannianas, abaixar e levantar índices, o produto interno de formas, o elemento de volume invariante, o tensor de Levi-Civita e as densidades tensoriais.</p>
+
+                <p>
+                    No capítulo 3 a métrica foi só um exemplo de campo tensorial (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[10] - Álgebra Multilinear e Tensores.html#def-3-10-38">Definição 3.10.38</a>), e a única
+                    estrutura geométrica que ela forneceu foi o isomorfismo entre vetores e covetores
+                    (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[10] - Álgebra Multilinear e Tensores.html#obs-3-10-42">Observação 3.10.42</a>). Neste capítulo ela passa a ser estrutura: é com ela que a estrela de Hodge
+                    do tópico <a href="[04] - O Operador Estrela de Hodge.html">4.4</a> transforma $1$-formas em
+                    $2$-formas, e é ela que o eletromagnetismo vai determinar nos tópicos 4.6 e 4.8.
+                </p>
+
+                <p>
+                    Este tópico reúne tudo o que a estrela precisa. Primeiro, a assinatura de uma métrica que
+                    não é positiva definida. Depois, abaixar e levantar índices e o produto interno de formas
+                    de qualquer grau. Por fim, o elemento de volume invariante
+                    $\sqrt{\lvert g\rvert}\,dx^1\wedge\dots\wedge dx^n$, prometido na
+                    <a href="../[2] - Cálculo em Variedades Diferenciáveis/[15] - Orientação.html#fisica">ponte com a
+                        física do tópico 3.15</a>, o tensor de Levi-Civita, que é a mesma forma escrita em componentes,
+                    e as densidades tensoriais, que explicam por que o símbolo de Levi-Civita sozinho não é um
+                    tensor. As aulas chegam a esses objetos depois da estrela; aqui eles vêm antes, porque a
+                    definição invariante da estrela depende deles.
+                </p>
+
+                <h2 id="metricas">Métricas pseudo-riemannianas</h2>
+
+                <p>
+                    Uma métrica pseudo-riemanniana em $M$ é um campo tensorial $g$ simétrico e não degenerado em
+                    cada ponto (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[10] - Álgebra Multilinear e Tensores.html#def-3-10-38">Definição 3.10.38</a>). Quando $g_p(v,v) \gt 0$ para todo $v \ne 0$, ela é riemanniana; a
+                    de Minkowski não é. Para métricas que não são positivas definidas, a primeira pergunta é
+                    quantos sinais negativos elas têm. A resposta vem da álgebra linear.
+                </p>
+
+                <div class="definition-box" id="teo-4-3-1">
+                    <p><strong>Teorema 4.3.1 (Bases ortonormais e lei da inércia; citado).</strong> Seja $b$ uma
+                        forma bilinear simétrica não degenerada em um espaço vetorial real $V$ de dimensão $n$.</p>
+                    <ol type="a">
+                        <li>Existe uma base $(e_1,\dots,e_n)$ de $V$ com $b(e_i,e_j) = 0$ para $i \ne j$ e
+                            $b(e_i,e_i) = \pm1$, uma <strong>base ortonormal</strong>.</li>
+                        <li>(Lei da inércia de Sylvester.) O número $s$ de índices com $b(e_i,e_i) = -1$ é o mesmo
+                            para todas as bases ortonormais. Ele é a maior dimensão de um subespaço em que $b$ é
+                            negativa definida, e $n - s$ é a maior dimensão de um subespaço em que $b$ é positiva
+                            definida.</li>
+                    </ol>
+                </div>
+
+                <p>
+                    <em>Ideia da demonstração.</em> (a) Como $b$ é não degenerada e simétrica, existe $v$ com
+                    $b(v,v) \ne 0$ (senão a identidade de polarização daria $b = 0$); normaliza-se $v$ e repete-se o
+                    argumento no complemento $b$-ortogonal de $v$, onde $b$ continua não degenerada. (b) Se $W$ fosse
+                    negativo definido com $\dim W \gt s$, ele cortaria o subespaço gerado pelos $n - s$ vetores
+                    $e_i$ com $b(e_i,e_i) = +1$, em que $b$ é positiva definida, num vetor não nulo, o que é
+                    impossível. Referência: Lee, <i>Introduction to Smooth Manifolds</i>, capítulo 13.
+                </p>
+
+                <div class="definition-box" id="def-4-3-2" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.3.2 (Índice e sinal de uma métrica).</strong> O <strong>índice</strong>
+                        de $g$ em $p$ é o número $s(p)$ do <a href="#teo-4-3-1">Teorema 4.3.1</a> para $b = g_p$. O <strong>sinal</strong> de $g$
+                        é $\operatorname{sign}(g) = (-1)^{s}$. Uma métrica é riemanniana quando $s = 0$ e lorentziana
+                        quando $s = 1$, de acordo com a <a href="../[2] - Cálculo em Variedades Diferenciáveis/[10] - Álgebra Multilinear e Tensores.html#def-3-10-38">Definição 3.10.38</a>.</p>
+                </div>
+
+                <div class="definition-box" id="prop-4-3-3">
+                    <p><strong>Proposição 4.3.3 (Índice, sinal e determinante).</strong></p>
+                    <ol type="a">
+                        <li>Em qualquer carta, $\det(g_{ij}(p)) \ne 0$, e seu sinal é $(-1)^{s(p)}$.</li>
+                        <li>O índice é localmente constante; em uma variedade conexa, é constante.</li>
+                    </ol>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Seja $G = (g_{ij}(p))$ a matriz de $g_p$ na base coordenada, e seja
+                    $e_a = P^i{}_a\,\partial_i$ uma base ortonormal, com $P$ invertível. A matriz de $g_p$ na base
+                    $(e_a)$ é $P^{\mathsf{T}}GP = \operatorname{diag}(\pm1)$, de determinante $(-1)^{s(p)}$. Logo
+                    $\det G\,(\det P)^2 = (-1)^{s(p)}$, e $\det G$ tem o sinal de $(-1)^{s(p)}$.
+                </p>
+
+                <p>
+                    (b) Sejam $e_1,\dots,e_s$ os vetores de uma base ortonormal de $T_pM$ com $g_p(e_a,e_a) = -1$.
+                    Em uma carta em torno de $p$, sejam $E_a$ os campos de componentes constantes que valem $e_a$ em
+                    $p$. A matriz simétrica $\big(g_q(E_a,E_b)\big)_{a,b\le s}$ depende continuamente de $q$ e é
+                    negativa definida em $q = p$; como ser negativa definida é uma condição aberta (por exemplo,
+                    pelo critério dos menores principais), ela continua negativa definida perto de $p$. Então
+                    $T_qM$ tem um subespaço negativo definido de dimensão $s(p)$, e o <a href="#teo-4-3-1">Teorema 4.3.1</a>(b) dá
+                    $s(q) \ge s(p)$. O mesmo argumento com os $n - s(p)$ vetores positivos dá
+                    $n - s(q) \ge n - s(p)$. Logo $s(q) = s(p)$ perto de $p$. Uma função localmente constante com
+                    valores inteiros em uma variedade conexa é constante. $\blacksquare$
+                </p>
+
+                <p id="ex-4-3-4"><strong>Exemplo 4.3.4 (Índices dos exemplos).</strong> A métrica euclidiana,
+                    em cartesianas, polares ou esféricas (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[10] - Álgebra Multilinear e Tensores.html#ex-3-10-39">Exemplo 3.10.39</a>), tem índice $0$. A de Minkowski
+                    (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[10] - Álgebra Multilinear e Tensores.html#ex-3-10-41">Exemplo 3.10.41</a>) tem índice $1$ e sinal $-1$. Se $g$ é riemanniana, a métrica induzida em uma
+                    subvariedade também é (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[10] - Álgebra Multilinear e Tensores.html#ex-3-10-40">Exemplo 3.10.40</a>). Em Minkowski, porém, a métrica induzida depende da
+                    subvariedade: na fatia $x^0 = 0$ ela é a euclidiana de $\mathbb{R}^3$; no hiperplano
+                    $x^1 = 0$, a de Minkowski em dimensão $3$; e no hiperplano $x^0 = x^1$, parametrizado por
+                    $(u,y,z) \mapsto (u,u,y,z)$, ela é $-du^2 + du^2 + dy^2 + dz^2 = dy^2 + dz^2$, que é degenerada
+                    e não é uma métrica. O tópico <a href="[10] - Comprimento e Energia de Curvas.html">4.10</a>
+                    volta a esse cuidado no caso das curvas.</p>
+
+                <h2 id="musicais">Abaixar e levantar índices</h2>
+
+                <p>
+                    A <a href="../[2] - Cálculo em Variedades Diferenciáveis/[10] - Álgebra Multilinear e Tensores.html#obs-3-10-42">Observação 3.10.42</a> já definiu o isomorfismo $\flat: T_pM \to T_p^*M$, $v^\flat = g_p(v,\cdot)$, de
+                    componentes $v_i = g_{ij}\,v^j$ ("abaixar o índice"), e observou que o inverso usa a matriz inversa
+                    $(g^{ij})$. Chamamos esse inverso de $\sharp$: para um covetor $\alpha$, $\alpha^\sharp$ tem
+                    componentes $\alpha^i = g^{ij}\alpha_j$. Os nomes vêm da música, em que o bemol ($\flat$) abaixa e o
+                    sustenido ($\sharp$) levanta a nota. Falta verificar que os $g^{ij}$ formam um campo tensorial.
+                </p>
+
+                <div class="definition-box" id="prop-4-3-5">
+                    <p><strong>Proposição 4.3.5 (A métrica inversa).</strong> Em cada carta, as entradas $g^{ij}$ da
+                        matriz inversa de $(g_{ij})$ são funções suaves e são as componentes de um campo tensorial
+                        simétrico de tipo $(2,0)$, a <strong>métrica inversa</strong> $g^{-1}$. Para covetores,
+                        $g^{-1}(\alpha,\beta) = g^{ij}\alpha_i\beta_j = g(\alpha^\sharp,\beta^\sharp)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela regra de Cramer, cada $g^{ij}$ é um cofator dividido por
+                    $\det(g_{ij})$, que é suave e não se anula; logo $g^{ij}$ é suave. Em outra carta, com
+                    $J^i{}_a = \partial x^i/\partial\tilde x^a$, a lei de transformação de $g$ é
+                    $\tilde g_{ab} = J^i{}_a J^j{}_b\,g_{ij}$, isto é, $\tilde G = J^{\mathsf{T}}GJ$ em matrizes. Então
+                    $\tilde G^{-1} = J^{-1}G^{-1}(J^{-1})^{\mathsf{T}}$, e como $(J^{-1})^a{}_i = \partial\tilde x^a/\partial x^i$,
+                </p>
+
+                <p>
+                    $$ \tilde g^{ab} = \frac{\partial\tilde x^a}{\partial x^i}\,\frac{\partial\tilde x^b}{\partial x^j}\,g^{ij}, $$
+                </p>
+
+                <p>
+                    que é a lei de transformação de um tensor duas vezes contravariante. A simetria vem da de $G$.
+                    Por fim, $g(\alpha^\sharp,\beta^\sharp) = g_{ij}\,g^{ik}\alpha_k\,g^{jl}\beta_l = \delta^k{}_j\,g^{jl}\alpha_k\beta_l = g^{kl}\alpha_k\beta_l$.
+                    $\blacksquare$
+                </p>
+
+                <p>
+                    O mesmo vale para qualquer tensor: cada índice embaixo sobe com $g^{ij}$, e cada índice em cima
+                    desce com $g_{ij}$. A letra continua a mesma; a posição dos índices diz qual versão é. Por
+                    exemplo, para um tensor $F_{\mu\nu}$, $F^{\mu\nu} = g^{\mu\alpha}g^{\nu\beta}F_{\alpha\beta}$ e
+                    $F^\mu{}_\nu = g^{\mu\alpha}F_{\alpha\nu}$.
+                </p>
+
+                <p id="ex-4-3-6"><strong>Exemplo 4.3.6 (Índices em Minkowski e em polares).</strong> Em Minkowski,
+                    $\eta^{\mu\nu}$ e $\eta_{\mu\nu}$ têm as mesmas entradas, $\operatorname{diag}(-1,1,1,1)$, e abaixar
+                    um índice só troca o sinal da componente temporal: $v_0 = -v^0$ e $v_i = v^i$. O quadripotencial
+                    do eletromagnetismo é o vetor $A^\mu = (\phi/c,\mathbf{A})$; a $1$-forma correspondente, que é
+                    a que aparece em $F = dA$ (tópico <a href="[07] - Equações Homogêneas em 4D.html">4.7</a>), tem
+                    componentes $A_\mu = (-\phi/c,\mathbf{A})$. Em polares no plano, $g^{rr} = 1$ e
+                    $g^{\theta\theta} = 1/r^2$, e o gradiente $(df)^\sharp$ é
+                    $\partial_rf\,\partial_r + r^{-2}\,\partial_\theta f\,\partial_\theta$: as componentes de $df$ não são
+                    as do gradiente.</p>
+
+                <h2 id="produto-interno-de-formas">O produto interno de formas</h2>
+
+                <p>
+                    A métrica inversa mede covetores: $\langle\alpha,\beta\rangle = g^{ij}\alpha_i\beta_j$. Para formas de
+                    grau maior, a regra natural é a do determinante, a mesma que define o produto exterior.
+                </p>
+
+                <div class="definition-box" id="def-4-3-7" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.3.7 (Produto interno de formas).</strong> Em cada ponto, o
+                        <strong>produto interno</strong> de $k$-covetores é a forma bilinear
+                        $\langle\cdot,\cdot\rangle$ em $\Lambda^k(T_p^*M)$ tal que, para covetores $\alpha^a$ e
+                        $\beta^b$,</p>
+                    <p>$$ \big\langle\alpha^1\wedge\dots\wedge\alpha^k,\ \beta^1\wedge\dots\wedge\beta^k\big\rangle
+                        = \det\big(\langle\alpha^a,\beta^b\rangle\big)_{a,b=1}^{k}, \tag{4.3.1} $$</p>
+                    <p>com $\langle\alpha,\beta\rangle = g^{ij}\alpha_i\beta_j$ para $k = 1$ e o produto de números
+                        para $k = 0$.</p>
+                </div>
+
+                <div class="definition-box" id="prop-4-3-8">
+                    <p><strong>Proposição 4.3.8 (Existência e propriedades).</strong> Existe uma única forma
+                        bilinear em $\Lambda^k(T_p^*M)$ que satisfaz (4.3.1). Ela é simétrica, é dada em componentes
+                        por</p>
+                    <p>$$ \langle\alpha,\beta\rangle = \frac{1}{k!}\,\alpha_{i_1\dots i_k}\,\beta^{i_1\dots i_k},
+                        \tag{4.3.2} $$</p>
+                    <p>e, se $(\theta^i)$ é um coreferencial ortonormal, com $\langle\theta^i,\theta^j\rangle = \epsilon_i\,\delta^{ij}$ e
+                        $\epsilon_i = \pm1$, então os $\theta^I$, com $I$ crescente, formam uma base ortonormal de
+                        $\Lambda^k$, com $\langle\theta^I,\theta^I\rangle = \prod_{i\in I}\epsilon_i$. Em particular, o produto
+                        interno é não degenerado.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Seja $B(\alpha,\beta)$ o lado direito de (4.3.2), em que os índices de
+                    $\beta$ sobem com $g^{ij}$. $B$ é bilinear e simétrica, porque $g^{-1}$ é simétrica. Basta
+                    mostrar que $B$ satisfaz (4.3.1): os produtos $dx^{i_1}\wedge\dots\wedge dx^{i_k}$ geram
+                    $\Lambda^k$, e então (4.3.1) determina a forma bilinear, o que dá a unicidade.
+                </p>
+
+                <p>
+                    Pela convenção do determinante, as componentes de $\alpha = \alpha^1\wedge\dots\wedge\alpha^k$ são
+                    $\alpha_{i_1\dots i_k} = \det\big(\alpha^a{}_{i_b}\big) = \sum_{\sigma\in S_k}\operatorname{sgn}\sigma\,\prod_b\alpha^{\sigma(b)}{}_{i_b}$,
+                    e do mesmo modo $\beta^{i_1\dots i_k} = \sum_{\tau}\operatorname{sgn}\tau\,\prod_b\beta^{\tau(b)\,i_b}$. Somando
+                    em cada $i_b$ separadamente,
+                </p>
+
+                <p>
+                    $$ B(\alpha,\beta) = \frac{1}{k!}\sum_{\sigma,\tau\in S_k}\operatorname{sgn}\sigma\,\operatorname{sgn}\tau\,
+                    \prod_{b=1}^{k}\big\langle\alpha^{\sigma(b)},\beta^{\tau(b)}\big\rangle. $$
+                </p>
+
+                <p>
+                    Para $\sigma$ fixo, reindexe o produto por $a = \sigma(b)$ e escreva $\pi = \tau\sigma^{-1}$:
+                    o produto fica $\prod_a\langle\alpha^a,\beta^{\pi(a)}\rangle$ e $\operatorname{sgn}\sigma\,\operatorname{sgn}\tau = \operatorname{sgn}\pi$.
+                    A soma em $\tau$ vira a soma em $\pi$, que é $\det(\langle\alpha^a,\beta^b\rangle)$. Cada um dos
+                    $k!$ valores de $\sigma$ contribui com esse determinante, e o fator $\tfrac{1}{k!}$ dá (4.3.1).
+                </p>
+
+                <p>
+                    Para a base ortonormal, (4.3.1) dá
+                    $\langle\theta^I,\theta^J\rangle = \det\big(\epsilon_{i_a}\delta^{i_aj_b}\big)$. Se $I \ne J$ (ambos crescentes),
+                    algum $i_a$ não está em $J$ e a linha correspondente é nula; se $I = J$, a matriz é diagonal com
+                    entradas $\epsilon_{i_a}$. Uma forma bilinear com uma base ortonormal de entradas $\pm1$ é não
+                    degenerada. $\blacksquare$
+                </p>
+
+                <p id="ex-4-3-9"><strong>Exemplo 4.3.9 (Formas em Minkowski).</strong> Com
+                    $\eta = \operatorname{diag}(-1,1,1,1)$, o coreferencial $dx^\mu$ é ortonormal com
+                    $\epsilon_0 = -1$. Então $\langle dx^0,dx^0\rangle = -1$,
+                    $\langle dx^0\wedge dx^i,dx^0\wedge dx^i\rangle = -1$ e
+                    $\langle dx^i\wedge dx^j,dx^i\wedge dx^j\rangle = +1$ para $i \ne j$ espaciais. Para a $2$-forma de
+                    Faraday $F = \tfrac1cE\wedge dx^0 + B$ (tópico <a href="[07] - Equações Homogêneas em 4D.html">4.7</a>),
+                    cujas componentes são $F_{i0} = E_i/c$ e $F_{ij} = \tilde\varepsilon_{ijk}B^k$, a base ortonormal dá</p>
+
+                <p>
+                    $$ \langle F,F\rangle = -\sum_i\frac{E_i^2}{c^2} + \sum_{i\lt j}F_{ij}^2
+                    = \lvert\mathbf{B}\rvert^2 - \frac{\lvert\mathbf{E}\rvert^2}{c^2}. \tag{4.3.3} $$
+                </p>
+
+                <p>
+                    Pela (4.3.2), isso é também $\tfrac12F_{\mu\nu}F^{\mu\nu}$, um dos invariantes do campo que
+                    reaparecem no tópico <a href="[14] - Acoplamento e Força de Lorentz.html">4.14</a>.
+                </p>
+
+                <h2 id="volume">O elemento de volume invariante</h2>
+
+                <p>
+                    O elemento de volume $d^nx = dx^1\cdots dx^n$ de uma integral múltipla não é invariante: numa
+                    mudança de coordenadas ele ganha o jacobiano. A métrica corrige isso. Sejam $(x^i)$ e
+                    $(\tilde x^a)$ coordenadas, $J^i{}_a = \partial x^i/\partial\tilde x^a$ e
+                    $\lvert g\rvert = \lvert\det(g_{ij})\rvert$.
+                </p>
+
+                <div class="definition-box" id="prop-4-3-10">
+                    <p><strong>Proposição 4.3.10 (Como $\sqrt{\lvert g\rvert}$ muda).</strong>
+                        $\lvert\tilde g\rvert = (\det J)^2\,\lvert g\rvert$, isto é,
+                        $\sqrt{\lvert\tilde g\rvert} = \lvert\det J\rvert\,\sqrt{\lvert g\rvert}$. Em consequência,
+                        $\sqrt{\lvert g\rvert}\,d^nx = \sqrt{\lvert\tilde g\rvert}\,d^n\tilde x$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela demonstração da <a href="#prop-4-3-5">Proposição 4.3.5</a>, $\tilde G = J^{\mathsf{T}}GJ$, e então
+                    $\det\tilde G = (\det J)^2\det G$. Na integral, a mudança de variáveis (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[02] - Preliminares de Topologia e Cálculo.html#teo-3-2-64">Teorema 3.2.64</a>) troca
+                    $d^nx$ por $\lvert\det J\rvert\,d^n\tilde x$, e os dois fatores $\lvert\det J\rvert$ se
+                    compensam. $\blacksquare$
+                </p>
+
+                <p>
+                    O produto $\sqrt{\lvert g\rvert}\,d^nx$ é, portanto, o mesmo em todas as coordenadas. Como
+                    objeto, ele é uma $n$-forma.
+                </p>
+
+                <div class="definition-box" id="teo-4-3-11">
+                    <p><strong>Teorema 4.3.11 (A forma de volume da métrica).</strong> Seja $(M,g)$ uma variedade
+                        pseudo-riemanniana orientada de dimensão $n$. Existe uma única $n$-forma
+                        $\operatorname{vol}_g$ com $\operatorname{vol}_g(E_1,\dots,E_n) = 1$ para toda base ortonormal
+                        positiva $(E_1,\dots,E_n)$ de todo $T_pM$. Em uma carta positiva,</p>
+                    <p>$$ \operatorname{vol}_g = \sqrt{\lvert g\rvert}\;dx^1\wedge\dots\wedge dx^n. \tag{4.3.4} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> <strong>Passo 1: duas bases ortonormais positivas diferem por
+                        determinante $1$.</strong> Se $(E_a)$ e $(E'_a)$ são bases ortonormais de $T_pM$, com
+                    $E'_b = P^a{}_bE_a$, as matrizes de $g_p$ nas duas bases são $D = \operatorname{diag}(\pm1)$ e
+                    $D' = P^{\mathsf{T}}DP$, ambas com determinante $(-1)^s$ pela lei da inércia (<a href="#teo-4-3-1">Teorema 4.3.1</a>). Logo
+                    $(\det P)^2 = 1$, e, como as duas bases são positivas, $\det P = 1$.
+                </p>
+
+                <p>
+                    <strong>Passo 2: unicidade.</strong> Pela <a href="../[2] - Cálculo em Variedades Diferenciáveis/[11] - Produto Exterior.html#prop-3-11-14">Proposição 3.11.14</a>, uma $n$-forma $\omega$ satisfaz
+                    $\omega(E'_1,\dots,E'_n) = (\det P)\,\omega(E_1,\dots,E_n)$, e o passo 1 mostra que a condição
+                    "vale $1$ em toda base ortonormal positiva" é coerente. Como $\Lambda^n(T_p^*M)$ tem dimensão
+                    $1$, uma $n$-forma fica determinada pelo seu valor em uma base; logo existe no máximo uma
+                    $\operatorname{vol}_g$.
+                </p>
+
+                <p>
+                    <strong>Passo 3: existência e fórmula.</strong> Em uma carta positiva, seja
+                    $\mu = \sqrt{\lvert g\rvert}\,dx^1\wedge\dots\wedge dx^n$, que é suave. Seja $(E_a)$ uma base
+                    ortonormal positiva de $T_pM$, $E_a = P^i{}_a\,\partial_i$, com $\det P \gt 0$ (ela existe pelo
+                    <a href="#teo-4-3-1">Teorema 4.3.1</a>, trocando o sinal de um vetor se for preciso). Pela convenção do determinante,
+                    $\mu(E_1,\dots,E_n) = \sqrt{\lvert g\rvert}\,\det P$. Como em (a) da <a href="#prop-4-3-3">Proposição 4.3.3</a>,
+                    $\det(g_{ij})\,(\det P)^2 = (-1)^s$, logo $\lvert g\rvert\,(\det P)^2 = 1$ e
+                    $\det P = 1/\sqrt{\lvert g\rvert}$. Então $\mu(E_1,\dots,E_n) = 1$. Pela unicidade, as formas
+                    $\mu$ de cartas positivas diferentes coincidem onde as cartas se sobrepõem, e definem
+                    juntas uma $n$-forma global $\operatorname{vol}_g$. $\blacksquare$
+                </p>
+
+                <p>
+                    A forma $\operatorname{vol}_g$ não se anula; é, portanto, uma forma de orientação
+                    (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[15] - Orientação.html#def-3-15-10">Definição 3.15.10</a>), e uma forma de volume no sentido de <a href="../[2] - Cálculo em Variedades Diferenciáveis/[14] - Fórmula de Cartan.html#def-3-14-25">Definição 3.14.25</a>.
+                </p>
+
+                <p id="obs-4-3-12"><strong>Observação 4.3.12 (Forma e medida).</strong> A $n$-forma
+                    $\operatorname{vol}_g$ e a expressão $\sqrt{\lvert g\rvert}\,d^nx$ não são a mesma coisa. A
+                    forma depende da orientação: numa carta que inverte a orientação, $dx^1\wedge\dots\wedge dx^n$ muda
+                    de sinal, e (4.3.4) ganharia um sinal negativo. A medida $\sqrt{\lvert g\rvert}\,d^nx$ usa o módulo
+                    do jacobiano e não vê orientação. Elas se encontram na integral: em cartas positivas,
+                    $\int_M\operatorname{vol}_g = \int\sqrt{\lvert g\rvert}\,dx^1\cdots dx^n$ (tópico
+                    <a href="../[2] - Cálculo em Variedades Diferenciáveis/[17] - Integração de Formas.html">3.17</a>).
+                    Os físicos costumam escrever uma pela outra, o que é inofensivo enquanto a orientação está
+                    fixa; quando ela muda, aparece o sinal que torna o tensor de Levi-Civita um pseudotensor
+                    (seção seguinte).</p>
+
+                <p id="ex-4-3-13"><strong>Exemplo 4.3.13 (Elementos de volume).</strong> Em polares,
+                    $g = dr^2 + r^2\,d\theta^2$, $\sqrt{\lvert g\rvert} = r$ e $\operatorname{vol}_g = r\,dr\wedge d\theta$
+                    (<a href="#fig-4-3-1">Figura 4.3.1</a>). Em esféricas,
+                    $\sqrt{\lvert g\rvert} = r^2\sin\theta$ e $\operatorname{vol}_g = r^2\sin\theta\,dr\wedge d\theta\wedge d\phi$.
+                    Em Minkowski, $\sqrt{\lvert\eta\rvert} = 1$ e $\operatorname{vol}_\eta = dx^0\wedge dx^1\wedge dx^2\wedge dx^3$.
+                    Na esfera $S^2$ com a métrica induzida $d\theta^2 + \sin^2\theta\,d\phi^2$ (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[10] - Álgebra Multilinear e Tensores.html#ex-3-10-40">Exemplo 3.10.40</a>),
+                    $\operatorname{vol} = \sin\theta\,d\theta\wedge d\phi$, que é a forma de orientação do <a href="../[2] - Cálculo em Variedades Diferenciáveis/[15] - Orientação.html#cor-3-15-17">Corolário 3.15.17</a>.
+                    Numa curva $\gamma$, a métrica induzida é $g(\gamma',\gamma')\,dt^2$ e, quando
+                    $g(\gamma',\gamma') \ne 0$, $\operatorname{vol} = \sqrt{\lvert g(\gamma',\gamma')\rvert}\,dt$: é o
+                    elemento de comprimento do tópico <a href="[10] - Comprimento e Energia de Curvas.html">4.10</a>.</p>
+
+                <figure class="lecture-figure" id="fig-4-3-1">
+                    <svg viewBox="0 0 640 272" role="img" aria-label="Dois painéis. (a) Uma grade cartesiana com uma célula destacada, de lados dx e dy. (b) Uma grade polar, com arcos de círculo centrados na origem e raios, e uma célula destacada entre os raios r e r + dr e os ângulos teta e teta + d teta: um lado radial de comprimento dr e um lado em arco de comprimento r d teta, de modo que a área é r dr d teta.">
+<defs><marker id="arr-4-3-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="40" y1="30" x2="40" y2="230" class="fig-guide"/>
+<line x1="40" y1="30" x2="240" y2="30" class="fig-guide"/>
+<line x1="65" y1="30" x2="65" y2="230" class="fig-guide"/>
+<line x1="40" y1="55" x2="240" y2="55" class="fig-guide"/>
+<line x1="90" y1="30" x2="90" y2="230" class="fig-guide"/>
+<line x1="40" y1="80" x2="240" y2="80" class="fig-guide"/>
+<line x1="115" y1="30" x2="115" y2="230" class="fig-guide"/>
+<line x1="40" y1="105" x2="240" y2="105" class="fig-guide"/>
+<line x1="140" y1="30" x2="140" y2="230" class="fig-guide"/>
+<line x1="40" y1="130" x2="240" y2="130" class="fig-guide"/>
+<line x1="165" y1="30" x2="165" y2="230" class="fig-guide"/>
+<line x1="40" y1="155" x2="240" y2="155" class="fig-guide"/>
+<line x1="190" y1="30" x2="190" y2="230" class="fig-guide"/>
+<line x1="40" y1="180" x2="240" y2="180" class="fig-guide"/>
+<line x1="215" y1="30" x2="215" y2="230" class="fig-guide"/>
+<line x1="40" y1="205" x2="240" y2="205" class="fig-guide"/>
+<line x1="240" y1="30" x2="240" y2="230" class="fig-guide"/>
+<line x1="40" y1="230" x2="240" y2="230" class="fig-guide"/>
+<rect x="165" y="80" width="25" height="25" class="fig-band"/>
+<rect x="165" y="80" width="25" height="25" class="fig-shape"/>
+<text x="177.5" y="74" text-anchor="middle" class="fig-label fig-it">dx</text>
+<text x="196" y="97.5" class="fig-label fig-it">dy</text>
+<text x="140" y="262" text-anchor="middle" class="fig-label fig-small">(a) área dx dy</text>
+<path d="M386.9,238 A26.9,26.9 0 0 0 360,211.1" class="fig-guide"/>
+<path d="M413.8,238 A53.8,53.8 0 0 0 360,184.2" class="fig-guide"/>
+<path d="M440.6,238 A80.6,80.6 0 0 0 360,157.4" class="fig-guide"/>
+<path d="M467.5,238 A107.5,107.5 0 0 0 360,130.5" class="fig-guide"/>
+<path d="M494.4,238 A134.4,134.4 0 0 0 360,103.6" class="fig-guide"/>
+<path d="M521.2,238 A161.2,161.2 0 0 0 360,76.8" class="fig-guide"/>
+<path d="M548.1,238 A188.1,188.1 0 0 0 360,49.9" class="fig-guide"/>
+<path d="M575,238 A215,215 0 0 0 360,23" class="fig-guide"/>
+<line x1="360" y1="238" x2="575" y2="238" class="fig-guide"/>
+<line x1="360" y1="238" x2="571.7" y2="200.7" class="fig-guide"/>
+<line x1="360" y1="238" x2="562" y2="164.5" class="fig-guide"/>
+<line x1="360" y1="238" x2="546.2" y2="130.5" class="fig-guide"/>
+<line x1="360" y1="238" x2="524.7" y2="99.8" class="fig-guide"/>
+<line x1="360" y1="238" x2="498.2" y2="73.3" class="fig-guide"/>
+<line x1="360" y1="238" x2="467.5" y2="51.8" class="fig-guide"/>
+<line x1="360" y1="238" x2="433.5" y2="36" class="fig-guide"/>
+<line x1="360" y1="238" x2="397.3" y2="26.3" class="fig-guide"/>
+<line x1="360" y1="238" x2="360" y2="23" class="fig-guide"/>
+<path d="M476.4,170.8 L499.6,157.4 A161.2,161.2 0 0 0 483.5,134.4 L462.9,151.6 A134.4,134.4 0 0 1 476.4,170.8 Z" class="fig-band"/>
+<path d="M476.4,170.8 L499.6,157.4 A161.2,161.2 0 0 0 483.5,134.4 L462.9,151.6 A134.4,134.4 0 0 1 476.4,170.8 Z" class="fig-shape"/>
+<circle cx="360" cy="238" r="3.5" class="fig-arrowhead"/>
+<text x="354" y="254" text-anchor="end" class="fig-label fig-small">0</text>
+<text x="496" y="178.1" class="fig-label fig-it">dr</text>
+<text x="500.1" y="143.5" class="fig-label fig-it">r dθ</text>
+<text x="470" y="262" text-anchor="middle" class="fig-label fig-small">(b) área dr · r dθ</text>
+</svg>
+                    <figcaption><strong>Figura 4.3.1.</strong> O elemento de área em cartesianas e em polares. Em
+                        (b), a célula entre $r$ e $r + dr$ e entre $\theta$ e $\theta + d\theta$ tem um lado radial de
+                        comprimento $dr$ e um lado em arco de comprimento $r\,d\theta$: sua área é
+                        $r\,dr\,d\theta$, e o fator $r$ é $\sqrt{\lvert g\rvert}$.</figcaption>
+                </figure>
+
+                <h2 id="levi-civita">O tensor de Levi-Civita</h2>
+
+                <p>
+                    Em componentes, a forma de volume é escrita com o símbolo de Levi-Civita, que já apareceu no
+                    produto vetorial do capítulo 3.
+                </p>
+
+                <div class="definition-box" id="def-4-3-14" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.3.14 (Símbolo de Levi-Civita).</strong> Para índices
+                        $i_1,\dots,i_n \in \{1,\dots,n\}$, o <strong>símbolo</strong>
+                        $\tilde\varepsilon_{i_1\dots i_n}$ vale $\operatorname{sgn}\sigma$ se $(i_1,\dots,i_n)$ é a permutação
+                        $\sigma$ de $(1,\dots,n)$, e $0$ se há índices repetidos. Ele tem os mesmos valores em todas as
+                        cartas, e $\tilde\varepsilon^{\,i_1\dots i_n}$ designa os mesmos números com os índices em
+                        cima.</p>
+                </div>
+
+                <div class="definition-box" id="prop-4-3-15">
+                    <p><strong>Proposição 4.3.15 (O símbolo e o determinante).</strong> Para toda matriz
+                        $M = (M^i{}_k)$ de ordem $n$,</p>
+                    <p>$$ M^{i_1}{}_{k_1}\cdots M^{i_n}{}_{k_n}\,\tilde\varepsilon_{i_1\dots i_n}
+                        = \det(M)\,\tilde\varepsilon_{k_1\dots k_n}. \tag{4.3.5} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> O lado esquerdo, como função de $(k_1,\dots,k_n)$, troca de sinal quando dois
+                    $k$'s são trocados (troque também os dois índices mudos correspondentes, o que muda o sinal de
+                    $\tilde\varepsilon$), e se anula quando dois $k$'s coincidem. Logo é um múltiplo de
+                    $\tilde\varepsilon_{k_1\dots k_n}$, e o múltiplo é o valor em $(1,\dots,n)$:
+                    $\sum_\sigma\operatorname{sgn}\sigma\,M^{\sigma(1)}{}_1\cdots M^{\sigma(n)}{}_n = \det M$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="teo-4-3-16">
+                    <p><strong>Teorema 4.3.16 (O tensor de Levi-Civita).</strong> Em uma variedade
+                        pseudo-riemanniana orientada, as funções
+                        $\varepsilon_{i_1\dots i_n} = \sqrt{\lvert g\rvert}\,\tilde\varepsilon_{i_1\dots i_n}$, definidas em
+                        cada carta positiva, são as componentes de um campo tensorial covariante de ordem $n$: o
+                        <strong>tensor de Levi-Civita</strong>. Ele é a forma de volume,</p>
+                    <p>$$ \operatorname{vol}_g = \frac{1}{n!}\,\varepsilon_{i_1\dots i_n}\,dx^{i_1}\wedge\dots\wedge dx^{i_n}. \tag{4.3.6} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> As componentes de $\operatorname{vol}_g$ são
+                    $\operatorname{vol}_g(\partial_{i_1},\dots,\partial_{i_n}) = \sqrt{\lvert g\rvert}\,(dx^1\wedge\dots\wedge dx^n)(\partial_{i_1},\dots,\partial_{i_n})$,
+                    e, pela convenção do determinante, $(dx^1\wedge\dots\wedge dx^n)(\partial_{i_1},\dots,\partial_{i_n}) = \det(\delta^a{}_{i_b}) = \tilde\varepsilon_{i_1\dots i_n}$.
+                    Logo os $\varepsilon_{i_1\dots i_n}$ são as componentes de um campo tensorial, $\operatorname{vol}_g$,
+                    e (4.3.6) é a expressão de uma forma pelas suas componentes. $\blacksquare$
+                </p>
+
+                <p>
+                    A demonstração das aulas segue o caminho inverso, e vale a pena vê-lo. Com
+                    $M = \partial x/\partial\tilde x$, a <a href="#prop-4-3-15">Proposição 4.3.15</a> diz que o símbolo, que tem os mesmos valores em todas
+                    as cartas, satisfaz a lei de um tensor covariante <em>a menos do fator</em>
+                    $\det(\partial x/\partial\tilde x)$; a <a href="#prop-4-3-10">Proposição 4.3.10</a> diz que $\sqrt{\lvert g\rvert}$ produz exatamente o
+                    fator inverso. O produto se transforma como um tensor. Numa mudança que inverte a orientação, os
+                    dois fatores não se cancelam, e sobra um sinal: por isso $\varepsilon$ é chamado de
+                    <strong>pseudotensor</strong> quando se insiste em usar a mesma fórmula em todas as cartas.
+                </p>
+
+                <div class="definition-box" id="prop-4-3-17">
+                    <p><strong>Proposição 4.3.17 (Índices levantados).</strong> Levantando todos os índices com
+                        $g^{-1}$,
+                        $\varepsilon^{i_1\dots i_n} = \operatorname{sign}(g)\,\tilde\varepsilon^{\,i_1\dots i_n}/\sqrt{\lvert g\rvert}$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela (4.3.5) com $M = g^{-1}$, que é simétrica,
+                    $g^{i_1j_1}\cdots g^{i_nj_n}\,\tilde\varepsilon_{j_1\dots j_n} = \det(g^{-1})\,\tilde\varepsilon^{\,i_1\dots i_n}$.
+                    Multiplicando por $\sqrt{\lvert g\rvert}$ e usando $\det(g^{-1}) = 1/\det(g_{ij}) = \operatorname{sign}(g)/\lvert g\rvert$
+                    (<a href="#prop-4-3-3">Proposição 4.3.3</a>), sai o enunciado. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="prop-4-3-18">
+                    <p><strong>Proposição 4.3.18 (Contrações do tensor de Levi-Civita).</strong> Para
+                        $0 \le k \le n$, contraindo os últimos $n-k$ índices,</p>
+                    <p>$$ \begin{aligned}
+                        &\varepsilon^{i_1\dots i_k m_1\dots m_{n-k}}\,\varepsilon_{j_1\dots j_k m_1\dots m_{n-k}}\\
+                        &\quad= \operatorname{sign}(g)\,(n-k)!\sum_{\sigma\in S_k}\operatorname{sgn}\sigma\;
+                        \delta^{i_1}{}_{j_{\sigma(1)}}\cdots\delta^{i_k}{}_{j_{\sigma(k)}}.
+                        \end{aligned} \tag{4.3.7} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela <a href="#prop-4-3-17">Proposição 4.3.17</a>, o lado esquerdo é $\operatorname{sign}(g)$ vezes
+                    $\sum_m\tilde\varepsilon^{\,I m}\tilde\varepsilon_{J m}$, em que $I = (i_1,\dots,i_k)$, $J = (j_1,\dots,j_k)$
+                    e $m = (m_1,\dots,m_{n-k})$, porque os fatores $\sqrt{\lvert g\rvert}$ se cancelam. Uma parcela é não
+                    nula só se os índices de $(I,m)$ são distintos e os de $(J,m)$ também; então $I$ e $J$ têm os mesmos
+                    elementos, o complemento dos de $m$. Se isso falha, os dois lados de (4.3.7) são nulos. Se vale,
+                    seja $\rho$ a permutação com $j_b = i_{\rho(b)}$: cada uma das $(n-k)!$ ordenações $m$ do
+                    complemento contribui com $\tilde\varepsilon^{\,Im}\tilde\varepsilon_{Jm} = \operatorname{sgn}\rho$, e do lado
+                    direito só a parcela $\sigma = \rho^{-1}$ é não nula, valendo $\operatorname{sgn}\rho$. $\blacksquare$
+                </p>
+
+                <p>
+                    Exemplos: em $\mathbb{R}^3$, $\varepsilon^{imn}\varepsilon_{jmn} = 2\,\delta^i{}_j$ e
+                    $\varepsilon^{ijm}\varepsilon_{klm} = \delta^i{}_k\delta^j{}_l - \delta^i{}_l\delta^j{}_k$; em Minkowski, com
+                    $k = 0$, $\varepsilon^{\mu\nu\rho\sigma}\varepsilon_{\mu\nu\rho\sigma} = -4! = -24$. A <a href="#prop-4-3-18">Proposição 4.3.18</a> é a
+                    ferramenta da prova de $\star\star$ no tópico <a href="[04] - O Operador Estrela de Hodge.html">4.4</a>.
+                </p>
+
+                <h2 id="densidades">Densidades tensoriais</h2>
+
+                <p>
+                    O símbolo $\tilde\varepsilon$ e a raiz $\sqrt{\lvert g\rvert}$ não são tensores, mas se transformam de
+                    um jeito controlado: como tensores, a menos de uma potência do jacobiano. Essas grandezas têm
+                    nome próprio.
+                </p>
+
+                <div class="definition-box" id="def-4-3-19" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.3.19 (Densidade tensorial).</strong> Uma <strong>densidade tensorial de
+                        peso $w$</strong> é uma atribuição de componentes $T^{i\dots}{}_{j\dots}$ a cada carta positiva
+                        tal que, numa mudança de coordenadas $x \mapsto \tilde x$ entre cartas positivas,</p>
+                    <p>$$ \tilde T^{a\dots}{}_{b\dots}
+                        = \Big(\det\frac{\partial\tilde x}{\partial x}\Big)^{w}\,
+                        \frac{\partial\tilde x^a}{\partial x^i}\cdots\frac{\partial x^j}{\partial\tilde x^b}\cdots\,
+                        T^{i\dots}{}_{j\dots}. \tag{4.3.8} $$</p>
+                    <p>Os tensores são as densidades de peso $0$.</p>
+                </div>
+
+                <p id="ex-4-3-20"><strong>Exemplo 4.3.20 (Pesos).</strong></p>
+
+                <ul>
+                    <li>O símbolo $\tilde\varepsilon_{i_1\dots i_n}$ tem peso $+1$. Pela (4.3.5) com
+                        $M = \partial x/\partial\tilde x$,
+                        $\tilde\varepsilon_{k_1\dots k_n} = \det\big(\tfrac{\partial\tilde x}{\partial x}\big)\,
+                        \tfrac{\partial x^{i_1}}{\partial\tilde x^{k_1}}\cdots\tfrac{\partial x^{i_n}}{\partial\tilde x^{k_n}}\,\tilde\varepsilon_{i_1\dots i_n}$,
+                        porque $\det(\partial x/\partial\tilde x) = \det(\partial\tilde x/\partial x)^{-1}$.</li>
+                    <li>$\lvert g\rvert$ tem peso $-2$ e $\sqrt{\lvert g\rvert}$ tem peso $-1$, pela <a href="#prop-4-3-10">Proposição 4.3.10</a>.</li>
+                    <li>O produto $\varepsilon = \sqrt{\lvert g\rvert}\,\tilde\varepsilon$ tem peso $(-1) + 1 = 0$: é um tensor,
+                        como no <a href="#teo-4-3-16">Teorema 4.3.16</a>.</li>
+                    <li>Uma densidade de carga. Se $\varrho = \rho\,dx^1\wedge\dots\wedge dx^n$ é uma $n$-forma, a mudança de
+                        coordenadas dá $\tilde\rho = \det(\partial x/\partial\tilde x)\,\rho$: o coeficiente $\rho$ tem peso
+                        $-1$, como $\sqrt{\lvert g\rvert}$. O quociente $\rho/\sqrt{\lvert g\rvert}$ é então uma função
+                        escalar, a densidade medida por unidade de volume próprio, e
+                        $\varrho = \big(\rho/\sqrt{\lvert g\rvert}\big)\operatorname{vol}_g$.</li>
+                </ul>
+
+                <p id="obs-4-3-21"><strong>Observação 4.3.21 (Convenções de peso).</strong> Usamos a convenção de
+                    Carroll (capítulo 2), em que o símbolo tem peso $+1$. Há textos que usam o expoente com o sinal
+                    oposto e dizem, por exemplo, que $\sqrt{\lvert g\rvert}$ tem peso $+1$. A troca é só de nome: o que
+                    importa é que o produto de $\sqrt{\lvert g\rvert}$ pelo símbolo seja um tensor, e isso vale nas
+                    duas convenções.</p>
+
+                <h2 id="fisica">Ponte com a física</h2>
+
+                <p>
+                    <strong>Grandezas que todos os observadores concordam.</strong> A carga contida numa região, a
+                    massa de um corpo, o número de partículas são integrais de $n$-formas: não dependem das
+                    coordenadas de quem calcula. O que depende das coordenadas é o coeficiente, a "densidade" que
+                    se lê numa tabela, e a seção anterior mostra exatamente como: com peso $-1$, como
+                    $\sqrt{\lvert g\rvert}$. A densidade física, por unidade de volume medido com a métrica, é o
+                    escalar $\rho/\sqrt{\lvert g\rvert}$.
+                </p>
+
+                <p>
+                    <strong>Ações.</strong> As teorias de campo se escrevem como integrais de uma função escalar
+                    contra a forma de volume. A do campo eletromagnético no vácuo, que não usaremos neste capítulo
+                    mas vale ver agora, é
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    S &= -\frac{1}{2\mu_0c}\int\langle F,F\rangle\operatorname{vol}_\eta\\
+                    &= \int\frac{1}{2}\Big(\varepsilon_0\lvert\mathbf{E}\rvert^2 - \frac{1}{\mu_0}\lvert\mathbf{B}\rvert^2\Big)\,dt\,d^3x,
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    pela Equação (4.3.3), por $\varepsilon_0\mu_0c^2 = 1$ e porque $\operatorname{vol}_\eta = dx^0\wedge d^3x$ com
+                    $x^0 = ct$ dá o fator $c\,dt$, que cancela o $c$ do denominador. Em
+                    Relatividade Geral a métrica deixa de ser $\eta$, e a ação de Einstein–Hilbert é a integral da
+                    curvatura escalar contra $\operatorname{vol}_g$, escrita nos livros como $\int R\,\sqrt{-g}\,d^4x$. O
+                    $\sqrt{-g}$ desses livros é o nosso $\sqrt{\lvert g\rvert}$: em assinatura lorentziana,
+                    $\det(g_{\mu\nu}) \lt 0$ (<a href="#prop-4-3-3">Proposição 4.3.3</a>).
+                </p>
+
+                <p>
+                    <strong>O volume depende da métrica.</strong> Uma mesma região do espaço tem volumes diferentes
+                    para métricas diferentes. No tópico <a href="[06] - Meios Materiais e Métrica Induzida.html">4.6</a>
+                    um meio material vai induzir uma métrica efetiva, e em Relatividade Geral a métrica, e com ela o
+                    volume de uma região, é determinada pela matéria.
+                </p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p id="exr-4-3-1"><strong>Exercício 4.3.1 (das notas de aula).</strong> Considere o plano euclidiano.
+                    Determine o elemento de área em coordenadas polares de dois modos: por um argumento geométrico,
+                    desenhando o elemento, e pelo jacobiano da mudança de coordenadas.</p>
+
+                <p>
+                    <em>Solução.</em> Geometricamente (<a href="#fig-4-3-1">Figura 4.3.1</a>b), a região
+                    $r \le r' \le r + dr$, $\theta \le \theta' \le \theta + d\theta$ é, em primeira ordem, um retângulo com
+                    um lado radial de comprimento $dr$ e um lado em arco de comprimento $r\,d\theta$: área
+                    $r\,dr\,d\theta$. Pelo jacobiano, $x = r\cos\theta$, $y = r\sin\theta$ e
+                </p>
+
+                <p>
+                    $$ \det\frac{\partial(x,y)}{\partial(r,\theta)} =
+                    \det\begin{pmatrix}\cos\theta & -r\sin\theta\\ \sin\theta & r\cos\theta\end{pmatrix} = r, $$
+                </p>
+
+                <p>
+                    de modo que $dx\,dy = r\,dr\,d\theta$. É o fator $\sqrt{\lvert g\rvert} = r$ da métrica em polares, como
+                    diz a <a href="#prop-4-3-10">Proposição 4.3.10</a>.
+                </p>
+
+                <p id="exr-4-3-2"><strong>Exercício 4.3.2 (das notas de aula).</strong> Em dimensão $2$, mostre que,
+                    por uma mudança de variáveis $(x^1,x^2) \mapsto (y^1,y^2)$, o elemento de área orientado se
+                    transforma por $dx^1\wedge dx^2 = J\,dy^1\wedge dy^2$, em que $J$ é o jacobiano. Compare com a integral
+                    dupla não orientada em $dx^1dx^2$.</p>
+
+                <p>
+                    <em>Solução.</em> Com $x^i = x^i(y^1,y^2)$, $dx^i = \frac{\partial x^i}{\partial y^a}dy^a$, e então
+                </p>
+
+                <p>
+                    $$ dx^1\wedge dx^2 = \Big(\frac{\partial x^1}{\partial y^1}\frac{\partial x^2}{\partial y^2}
+                    - \frac{\partial x^1}{\partial y^2}\frac{\partial x^2}{\partial y^1}\Big)\,dy^1\wedge dy^2
+                    = J\,dy^1\wedge dy^2, $$
+                </p>
+
+                <p>
+                    porque $dy^1\wedge dy^1 = dy^2\wedge dy^2 = 0$ e $dy^2\wedge dy^1 = -dy^1\wedge dy^2$. A regra veio só da
+                    antissimetria, sem nenhuma geometria. Na integral dupla não orientada, a mudança de variáveis
+                    (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[02] - Preliminares de Topologia e Cálculo.html#teo-3-2-64">Teorema 3.2.64</a>) usa $\lvert J\rvert$: se a mudança inverte a orientação, $J \lt 0$, a forma muda de sinal
+                    e a medida não. É a diferença da <a href="#obs-4-3-12">Observação 4.3.12</a>.
+                </p>
+
+                <p id="exr-4-3-3"><strong>Exercício 4.3.3.</strong> Verifique a <a href="#prop-4-3-10">Proposição 4.3.10</a> para as coordenadas
+                    parabólicas $x = \tfrac12(u^2 - v^2)$, $y = uv$, com $u, v \gt 0$.</p>
+
+                <p>
+                    <em>Solução.</em> $dx = u\,du - v\,dv$ e $dy = v\,du + u\,dv$. A métrica é
+                    $dx^2 + dy^2 = (u^2 + v^2)(du^2 + dv^2)$: os termos cruzados se cancelam. Então
+                    $\lvert g\rvert = (u^2+v^2)^2$ e $\sqrt{\lvert g\rvert} = u^2 + v^2$. O jacobiano é
+                    $\det\begin{pmatrix}u & -v\\ v & u\end{pmatrix} = u^2 + v^2$, o mesmo valor, como devia.
+                </p>
+
+                <p id="exr-4-3-4"><strong>Exercício 4.3.4.</strong> Em Minkowski $1+1$, use as coordenadas do cone
+                    de luz $u = x^0 - x^1$, $v = x^0 + x^1$. Escreva a métrica, calcule $\sqrt{\lvert g\rvert}$ e verifique
+                    a (4.3.4).</p>
+
+                <p>
+                    <em>Solução.</em> $-(dx^0)^2 + (dx^1)^2 = -(dx^0 - dx^1)(dx^0 + dx^1) = -du\,dv$, com o produto
+                    simétrico de <a href="../[2] - Cálculo em Variedades Diferenciáveis/[10] - Álgebra Multilinear e Tensores.html#def-3-10-18">Definição 3.10.18</a>. As componentes são $g_{uu} = g_{vv} = 0$ e $g_{uv} = g_{vu} = -\tfrac12$;
+                    logo $\det g = -\tfrac14$, o índice é $1$ e $\sqrt{\lvert g\rvert} = \tfrac12$. Como
+                    $du\wedge dv = (dx^0 - dx^1)\wedge(dx^0 + dx^1) = 2\,dx^0\wedge dx^1$, as coordenadas $(u,v)$ são
+                    positivas e $\operatorname{vol}_\eta = dx^0\wedge dx^1 = \tfrac12\,du\wedge dv = \sqrt{\lvert g\rvert}\,du\wedge dv$.
+                    A fórmula (4.3.4) vale em qualquer carta positiva, mesmo quando nenhum vetor coordenado é
+                    ortonormal; aqui $\partial_u$ e $\partial_v$ são até vetores nulos ($g_{uu} = g_{vv} = 0$).
+                </p>
+
+                <p id="exr-4-3-5"><strong>Exercício 4.3.5.</strong> Use a <a href="#prop-4-3-18">Proposição 4.3.18</a> para obter
+                    $\varepsilon^{ijm}\varepsilon_{klm} = \delta^i{}_k\delta^j{}_l - \delta^i{}_l\delta^j{}_k$ em $\mathbb{R}^3$ e
+                    $\varepsilon^{\mu\nu\rho\sigma}\varepsilon_{\mu\nu\rho\sigma} = -24$ em Minkowski. Deduza a identidade
+                    $\mathbf{a}\times(\mathbf{b}\times\mathbf{c}) = \mathbf{b}\,(\mathbf{a}\cdot\mathbf{c}) - \mathbf{c}\,(\mathbf{a}\cdot\mathbf{b})$.</p>
+
+                <p>
+                    <em>Solução.</em> Em $\mathbb{R}^3$, $n = 3$, $k = 2$ e $\operatorname{sign}(g) = 1$; a soma em $S_2$ tem a
+                    identidade e a transposição, o que dá $1!\,(\delta^i{}_k\delta^j{}_l - \delta^i{}_l\delta^j{}_k)$. Em
+                    Minkowski, $k = 0$: a soma em $S_0$ vale $1$, e (4.3.7) dá $\operatorname{sign}(\eta)\cdot4! = -24$. Para o
+                    produto vetorial, em cartesianas $(\mathbf{b}\times\mathbf{c})^m = \varepsilon^{mkl}b_kc_l$ e
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    &\big(\mathbf{a}\times(\mathbf{b}\times\mathbf{c})\big)^i = \varepsilon^{ijm}a_j\,\varepsilon_{mkl}b^kc^l
+                    = \varepsilon^{ijm}\varepsilon_{klm}\,a_jb^kc^l\\
+                    &\qquad= (\delta^i{}_k\delta^j{}_l - \delta^i{}_l\delta^j{}_k)\,a_jb^kc^l
+                    = b^i(\mathbf{a}\cdot\mathbf{c}) - c^i(\mathbf{a}\cdot\mathbf{b}),
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    usando $\varepsilon_{mkl} = \varepsilon_{klm}$ (permutação cíclica).
+                </p>
+
+                <p id="exr-4-3-6"><strong>Exercício 4.3.6.</strong> Para a $2$-forma de Faraday, verifique que
+                    $\tfrac12F_{\mu\nu}F^{\mu\nu} = \lvert\mathbf{B}\rvert^2 - \lvert\mathbf{E}\rvert^2/c^2$, de acordo com a (4.3.3).</p>
+
+                <p>
+                    <em>Solução.</em> Com $\eta$, $F^{0i} = \eta^{00}\eta^{ii}F_{0i} = -F_{0i}$ e $F^{ij} = F_{ij}$. Como
+                    $F_{0i} = -E_i/c$, cada par $(0,i)$ contribui $F_{0i}F^{0i} = -E_i^2/c^2$, e o mesmo para $(i,0)$. Os
+                    pares espaciais contribuem $\sum_{i\ne j}F_{ij}^2 = 2\lvert\mathbf{B}\rvert^2$. Somando e dividindo por $2$,
+                    $\tfrac12F_{\mu\nu}F^{\mu\nu} = -\lvert\mathbf{E}\rvert^2/c^2 + \lvert\mathbf{B}\rvert^2$.
+                </p>
+
+                <p id="exr-4-3-7"><strong>Exercício 4.3.7.</strong> Calcule a métrica induzida no cilindro de raio
+                    $R$ em $\mathbb{R}^3$, sua forma de área e a área de um trecho de altura $h$.</p>
+
+                <p>
+                    <em>Solução.</em> Pela parametrização $(\phi,z) \mapsto (R\cos\phi, R\sin\phi, z)$, a (3.10.6) dá
+                    $R^2\,d\phi^2 + dz^2$. Então $\sqrt{\lvert g\rvert} = R$, a forma de área é $R\,d\phi\wedge dz$, e a área
+                    é $\int_0^h\!\int_0^{2\pi}R\,d\phi\,dz = 2\pi Rh$. O cilindro é "plano": em $(R\phi,z)$ a métrica é a
+                    euclidiana, o que explica por que o rótulo de uma lata se desenrola sem rasgar.
+                </p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <ul>
+                    <li>O índice e o sinal de uma métrica (<a href="#def-4-3-2">Definição 4.3.2</a>), com a relação ao sinal de $\det(g_{ij})$
+                        (<a href="#prop-4-3-3">Proposição 4.3.3</a>).</li>
+                    <li>A métrica inversa como campo tensorial e a regra de abaixar e levantar índices
+                        (<a href="#prop-4-3-5">Proposição 4.3.5</a>).</li>
+                    <li>O produto interno de formas de qualquer grau (<a href="#def-4-3-7">Definição 4.3.7</a> e <a href="#prop-4-3-8">Proposição 4.3.8</a>), com o invariante
+                        $\langle F,F\rangle = \lvert\mathbf{B}\rvert^2 - \lvert\mathbf{E}\rvert^2/c^2$.</li>
+                    <li>A forma de volume $\operatorname{vol}_g = \sqrt{\lvert g\rvert}\,dx^1\wedge\dots\wedge dx^n$
+                        (<a href="#teo-4-3-11">Teorema 4.3.11</a>), que cumpre a promessa da ponte com a física do tópico 3.15.</li>
+                    <li>O tensor de Levi-Civita (<a href="#teo-4-3-16">Teorema 4.3.16</a>), seus índices levantados e suas contrações
+                        (<a href="#prop-4-3-17">Proposição 4.3.17</a> e <a href="#prop-4-3-18">Proposição 4.3.18</a>).</li>
+                    <li>As densidades tensoriais e seus pesos (<a href="#def-4-3-19">Definição 4.3.19</a>).</li>
+                </ul>
+
+                <p>
+                    Com o produto interno e a forma de volume, a estrela de Hodge pode ser definida sem
+                    componentes, por $\alpha\wedge\star\beta = \langle\alpha,\beta\rangle\operatorname{vol}_g$. É o próximo
+                    tópico: <a href="[04] - O Operador Estrela de Hodge.html">4.4 O Operador Estrela de Hodge</a>.
+                </p>
+
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="toc-container">
+                <h4>Nesta página</h4>
+                <ul>
+                    <li><a href="#metricas-e-volume">Métricas, Isomorfismos Musicais e o Volume Invariante</a></li>
+                    <li><a href="#metricas">Métricas pseudo-riemannianas</a></li>
+                    <li><a href="#musicais">Abaixar e levantar índices</a></li>
+                    <li><a href="#produto-interno-de-formas">O produto interno de formas</a></li>
+                    <li><a href="#volume">O elemento de volume invariante</a></li>
+                    <li><a href="#levi-civita">O tensor de Levi-Civita</a></li>
+                    <li><a href="#densidades">Densidades tensoriais</a></li>
+                    <li><a href="#fisica">Ponte com a física</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Search Modal Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-modal">
+            <div class="search-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search documentation..." autocomplete="off">
+            </div>
+            <div class="search-results" id="search-results"></div>
+            <div class="search-footer">
+                <div class="search-commands">
+                    <span class="cmd-key">↑</span>
+                    <span class="cmd-key">↓</span>
+                    <span class="cmd-label">navigate</span>
+                    <span class="cmd-key">↵</span>
+                    <span class="cmd-label">select</span>
+                </div>
+                <div class="search-commands">
+                    <span class="cmd-key">esc</span>
+                    <span class="cmd-label">close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../../../assets/js/class-lecture.js"></script>
+</body>
+
+</html>
