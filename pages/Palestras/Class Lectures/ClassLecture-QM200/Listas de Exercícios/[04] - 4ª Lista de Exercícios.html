@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4ª Lista de Exercícios | Mecânica Quântica II | The Journal of a Physicist</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../../assets/images/Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../../assets/images/Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../../assets/images/Favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="../../../../../assets/images/Favicon/favicon.ico">
+    <link rel="stylesheet" href="../../../../../assets/css/class-lecture.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                        <line x1="9" x2="9" y1="3" y2="21"></line>
+                    </svg>
+                </button>
+                <button id="theme-toggle" class="sidebar-toggle" aria-label="Toggle Theme">
+                    <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="breadcrumbs-header">
+                    <a href="../../../../../Páginas Principais/Lectures.html" class="breadcrumb-link">← Lectures</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <a href="../index.html" class="breadcrumb-link active">Mecânica Quântica II</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-category" class="breadcrumb-link">Início</span>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-current" class="breadcrumb-link active">4ª Lista de Exercícios</span>
+                </div>
+            </div>
+            <nav class="top-nav">
+                <a href="../../../../../Páginas Principais/Lectures.html">Lectures</a>
+                <a href="../../../../../index.html">Home</a>
+            </nav>
+        </div>
+
+        <script>
+            MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']]
+                }
+            };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    </header>
+
+    <div class="main-layout">
+        <aside class="left-sidebar" id="left-sidebar">
+            <div class="sidebar-content">
+
+                <button class="search-trigger" id="search-trigger">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                    </svg>
+                    <span>Search docs...</span>
+                </button>
+
+                <div class="sidebar-group">
+                    <h3>Início</h3>
+                    <ul>
+                        <li><a href="../index.html">Overview</a></li>
+                        <li><a href="[01] - 1ª Lista de Exercícios.html">1ª Lista de Exercícios</a></li>
+                        <li><a href="[02] - 2ª Lista de Exercícios.html">2ª Lista de Exercícios</a></li>
+                        <li><a href="[03] - 3ª Lista de Exercícios.html">3ª Lista de Exercícios</a></li>
+                        <li><a href="[04] - 4ª Lista de Exercícios.html" class="active">4ª Lista de Exercícios</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Partículas Idênticas</h3>
+                    <ul>
+                        <li><a href="../Conteúdo/[4] - Partículas Idênticas/[01] - Sistemas de Duas Partículas.html">5.1 Sistemas de Duas Partículas</a></li>
+                        <li><a href="../Conteúdo/[4] - Partículas Idênticas/[02] - Átomos.html">5.2 Átomos</a></li>
+                        <li><a href="../Conteúdo/[4] - Partículas Idênticas/[03] - Sólidos.html">5.3 Sólidos</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Simetrias e Leis de Conservação</h3>
+                    <ul>
+                        <li><a href="../Conteúdo/[5] - Simetrias e Leis de Conservação/[01] - Introdução.html">6.1 Introdução</a></li>
+                        <li><a href="../Conteúdo/[5] - Simetrias e Leis de Conservação/[02] - O Operador de Translação.html">6.2 O Operador de Translação</a></li>
+                        <li><a href="../Conteúdo/[5] - Simetrias e Leis de Conservação/[03] - Leis de Conservação.html">6.3 Leis de Conservação</a></li>
+                        <li><a href="../Conteúdo/[5] - Simetrias e Leis de Conservação/[04] - Paridade.html">6.4 Paridade</a></li>
+                        <li><a href="../Conteúdo/[5] - Simetrias e Leis de Conservação/[05] - Simetrias de Rotação.html">6.5 Simetrias de Rotação</a></li>
+                        <li><a href="../Conteúdo/[5] - Simetrias e Leis de Conservação/[06] - Degenerescência.html">6.6 Degenerescência</a></li>
+                        <li><a href="../Conteúdo/[5] - Simetrias e Leis de Conservação/[07] - Regras de Seleção Rotacionais.html">6.7 Regras de Seleção Rotacionais</a></li>
+                        <li><a href="../Conteúdo/[5] - Simetrias e Leis de Conservação/[08] - Translações no Tempo.html">6.8 Translações no Tempo</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Teoria de Perturbação Independente do Tempo</h3>
+                    <ul>
+                        <li><a href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[01] - Teoria de Perturbação Não Degenerada.html">7.1 Teoria de Perturbação Não Degenerada</a></li>
+                        <li><a href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[02] - Teoria de Perturbação Degenerada.html">7.2 Teoria de Perturbação Degenerada</a></li>
+                        <li><a href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[03] - A Estrutura Fina do Hidrogênio.html">7.3 A Estrutura Fina do Hidrogênio</a></li>
+                        <li><a href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[04] - O Efeito Zeeman.html">7.4 O Efeito Zeeman</a></li>
+                        <li><a href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[05] - A Estrutura Hiperfina do Hidrogênio.html">7.5 A Estrutura Hiperfina do Hidrogênio</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>O Princípio Variacional</h3>
+                    <ul>
+                        <li><a href="../Conteúdo/[7] - O Princípio Variacional/[01] - Teoria.html">8.1 Teoria</a></li>
+                        <li><a href="../Conteúdo/[7] - O Princípio Variacional/[02] - O Estado Fundamental do Hélio.html">8.2 O Estado Fundamental do Hélio</a></li>
+                        <li><a href="../Conteúdo/[7] - O Princípio Variacional/[03] - O Íon da Molécula de Hidrogênio.html">8.3 O Íon da Molécula de Hidrogênio</a></li>
+                        <li><a href="../Conteúdo/[7] - O Princípio Variacional/[04] - A Molécula de Hidrogênio.html">8.4 A Molécula de Hidrogênio</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>A Aproximação WKB</h3>
+                    <ul>
+                        <li><a href="../Conteúdo/[8] - A Aproximação WKB/[01] - A Região “Clássica”.html">9.1 A Região “Clássica”</a></li>
+                        <li><a href="../Conteúdo/[8] - A Aproximação WKB/[02] - Tunelamento.html">9.2 Tunelamento</a></li>
+                        <li><a href="../Conteúdo/[8] - A Aproximação WKB/[03] - As Fórmulas de Conexão.html">9.3 As Fórmulas de Conexão</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Dinâmica Quântica</h3>
+                    <ul>
+                        <li><a href="../Conteúdo/[10] - Dinâmica Quântica/[01] - Sistemas de Dois Níveis.html">11.1 Sistemas de Dois Níveis</a></li>
+                        <li><a href="../Conteúdo/[10] - Dinâmica Quântica/[02] - Emissão e Absorção de Radiação.html">11.2 Emissão e Absorção de Radiação</a></li>
+                        <li><a href="../Conteúdo/[10] - Dinâmica Quântica/[03] - Emissão Espontânea.html">11.3 Emissão Espontânea</a></li>
+                        <li><a href="../Conteúdo/[10] - Dinâmica Quântica/[04] - A Regra de Ouro de Fermi.html">11.4 A Regra de Ouro de Fermi</a></li>
+                        <li><a href="../Conteúdo/[10] - Dinâmica Quântica/[05] - A Aproximação Adiabática.html">11.5 A Aproximação Adiabática</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="prose">
+
+                <h1 id="lista-4">4ª Lista de Exercícios</h1>
+                <p class="lead">Enunciados e soluções da quarta lista de exercícios da disciplina.</p>
+
+                <h2 id="exercicios">Exercícios</h2>
+
+                <h3 id="exercicio-1">Exercício 1</h3>
+                <p>Em sala, tratamos o problema das perturbações dependentes do tempo considerando um sistema de dois
+                    níveis como exemplo, além de uma aproximação (desnecessária) de que a matriz da perturbação não possui
+                    elementos na diagonal. Neste exercício iremos tratar o caso geral. Seja $H = H^0 + \lambda V(t)$, com
+                    $|\lambda| \ll 1$, tal que $H^0\psi_n = E_n^0\psi_n$. Postulando uma solução da forma (e omitindo, por
+                    conveniência, a dependência espacial)</p>
+                <p>$$ \Psi(t) = \sum_n c_n(t)\,e^{-iE_n^0t/\hbar}\,\psi_n, $$</p>
+                <p>mostre que $c_n(t)$ obedece à equação</p>
+                <p>$$ i\hbar\frac{d}{dt}c_n(t) = \lambda\sum_j c_j(t)\,e^{i(E_n^0 - E_j^0)t/\hbar}
+                    \langle\psi_n|V(t)|\psi_j\rangle. $$</p>
+
+                <hr class="resolucao-sep">
+
+                <!-- SOLUCAO-EXERCICIO-1 -->
+
+                <h3 id="exercicio-2">Exercício 2</h3>
+                <p>Considere uma perturbação tal que $\tilde{H}_{ab} = V_{ab}e^{i\omega t}/2$, sendo que
+                    $\tilde{H}_{ba} = \tilde{H}_{ab}^*$, e defina a chamada frequência de Rabi:</p>
+                <p>$$ \omega_r \equiv \frac12\sqrt{(\omega - \omega_0)^2 + \frac{|V_{ab}|^2}{\hbar^2}}. $$</p>
+                <ol type="a">
+                    <li>Usando as condições iniciais tais que $c_a(0) = 1$ e $c_b(0) = 0$, mostre que $c_a(t)$ e $c_b(t)$
+                        podem ser encontrados exatamente, ou seja, sem aproximação perturbativa.</li>
+                    <li>Calcule a probabilidade de uma transição do estado $\psi_a$ para o estado $\psi_b$ e mostre que ela
+                        jamais excede 1. Mostre que $|c_a(t)|^2 + |c_b(t)|^2 = 1$.</li>
+                </ol>
+
+                <hr class="resolucao-sep">
+
+                <!-- SOLUCAO-EXERCICIO-2 -->
+
+                <h3 id="exercicio-3">Exercício 3</h3>
+                <p>Considere um elétron em um poço infinito unidimensional de largura $0 \le x \le 1\,\text{Å}$. Em $t = 0$
+                    o elétron se encontra no estado fundamental do poço quando um potencial de amplitude
+                    $V_0 = -10^4\,\text{eV}$ e largura $b = 10^{-12}\,\text{cm}$ é aplicado no ponto $x = a/2$,
+                    permanecendo ligado por $\Delta t = 5\times10^{-8}\,\text{s}$. Uma vez desligado o potencial, encontre
+                    as probabilidades, em primeira ordem em teoria de perturbação, de encontrar o elétron nos estados
+                    $n = 2$, $3$, $4$ e $5$.</p>
+                <p>(Dicas: i. $\hbar = 6{,}582\times10^{-16}\,\text{eV}\cdot\text{s}$; ii. para calcular $\tilde{H}_{nm}$,
+                    note que $b \ll a$ e aproxime a integral por um retângulo. Resposta parcial: $P_{1\to2} = 0$,
+                    $P_{1\to3} = \frac{16}{\hbar^2\omega_{31}^2}\sin^2\left(\omega_{31}\Delta t/2\right) = 1{,}47\times10^{-4}$.)</p>
+
+                <hr class="resolucao-sep">
+
+                <!-- SOLUCAO-EXERCICIO-3 -->
+
+                <h3 id="exercicio-4">Exercício 4</h3>
+                <p>Um átomo de hidrogênio se encontra no seu estado fundamental quando, em $t = 0$, um campo elétrico da
+                    forma $\mathbf{E}(t) = E_0e^{-t/\tau}\hat{\mathbf{z}}$ começa a agir sobre o átomo. Mostre que a
+                    probabilidade de transição do estado $1s$ ($|1,0,0\rangle$) para o estado $2p$ ($|2,1,m\rangle$), no
+                    limite $t \gg \tau$, é dada por</p>
+                <p>$$ P_{1s\to2p} = \delta_{m0}\frac{q^2E_0^2a^2}{\hbar^2}\left(\frac{256}{243\sqrt2}\right)^2
+                    \frac{\tau^2}{1 + (\omega\tau)^2},
+                    \qquad \omega \equiv \frac{E_2 - E_1}{\hbar} = \frac{3q^2}{8\hbar a}. $$</p>
+
+                <hr class="resolucao-sep">
+
+                <!-- SOLUCAO-EXERCICIO-4 -->
+
+                <h3 id="exercicio-5">Exercício 5</h3>
+                <p>Uma partícula de massa $m$ está presa ao poço infinito de largura $a$. Porém, o poço agora sofre uma
+                    perturbação da forma</p>
+                <p>$$ V(x,t) = \lambda\left(x - \frac{a}{2}\right)e^{-\epsilon t}\sin\omega t, $$</p>
+                <p>sendo $a$ e $\epsilon$ constantes positivas. Suponha que a perturbação age entre
+                    $t \in [0, \infty)$.</p>
+                <ol type="a">
+                    <li>Encontre a probabilidade de que uma partícula no estado fundamental salte para o primeiro estado
+                        excitado.</li>
+                    <li>Qual é a probabilidade de que a mesma partícula salte diretamente para o segundo estado
+                        excitado?</li>
+                    <li>O que acontece com seus resultados no limite $\omega \to 0$?</li>
+                </ol>
+
+                <hr class="resolucao-sep">
+
+                <!-- SOLUCAO-EXERCICIO-5 -->
+
+                <h3 id="exercicio-6">Exercício 6</h3>
+                <p>Considere uma partícula de massa $m$ e carga $q$ no estado fundamental do poço infinito simétrico de
+                    largura $L$, sujeita a uma perturbação dependente do tempo da forma</p>
+                <p>$$ \hat{H}'(t) = (-q\mathcal{E}_0x)\,e^{-|t|/\tau}. $$</p>
+                <p>Encontre a probabilidade de que a partícula seja excitada para o primeiro estado excitado se a
+                    perturbação agir no intervalo de tempo $(-\infty, +\infty)$. Repita para a probabilidade de que ela
+                    seja excitada para o segundo estado excitado.</p>
+
+                <hr class="resolucao-sep">
+
+                <!-- SOLUCAO-EXERCICIO-6 -->
+
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="toc-container">
+                <h4>Nesta página</h4>
+                <ul>
+                    <li><a href="#lista-4">4ª Lista de Exercícios</a></li>
+                    <li>
+                        <a href="#exercicios">Exercícios</a>
+                        <ul>
+                            <li><a href="#exercicio-1">Exercício 1</a></li>
+                            <li><a href="#exercicio-2">Exercício 2</a></li>
+                            <li><a href="#exercicio-3">Exercício 3</a></li>
+                            <li><a href="#exercicio-4">Exercício 4</a></li>
+                            <li><a href="#exercicio-5">Exercício 5</a></li>
+                            <li><a href="#exercicio-6">Exercício 6</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Search Modal Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-modal">
+            <div class="search-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search documentation..." autocomplete="off">
+            </div>
+            <div class="search-results" id="search-results"></div>
+            <div class="search-footer">
+                <div class="search-commands">
+                    <span class="cmd-key">↑</span>
+                    <span class="cmd-key">↓</span>
+                    <span class="cmd-label">navigate</span>
+                    <span class="cmd-key">↵</span>
+                    <span class="cmd-label">select</span>
+                </div>
+                <div class="search-commands">
+                    <span class="cmd-key">esc</span>
+                    <span class="cmd-label">close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../../assets/js/class-lecture.js"></script>
+</body>
+
+</html>
