@@ -2668,3 +2668,630 @@ body.light-theme .globe-place { color: #a21caf; }
         box-shadow: 4px 0 24px rgba(0, 0, 0, 0.12);
     }
 }
+/* =========================================================
+   CATÁLOGO DE LECTURES (Página Principal)
+   Tabela no estilo "All news": título, descrição, categoria,
+   data e um botão "⋯" que abre as primeiras páginas da lecture.
+   ========================================================= */
+.lecture-catalog {
+    --lc-fg: #e2e8f0;
+    --lc-muted: #9ca3af;
+    --lc-faint: #6b7280;
+    --lc-line: #2a2a2a;
+    --lc-hover: #121212;
+    --lc-panel: #161616;
+    --lc-card: #1d1d1d;
+    --lc-card-hover: #242424;
+    --lc-control: #111111;
+    --lc-pill: #e2e8f0;
+    --lc-pill-fg: #000000;
+    --lc-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+    width: 100%;
+    max-width: 2100px;
+    margin: 4rem auto 3rem;
+    padding: 0 1rem;
+    color: var(--lc-fg);
+}
+
+body.light-theme .lecture-catalog {
+    --lc-fg: #111111;
+    --lc-muted: #4b5563;
+    --lc-faint: #6b7280;
+    --lc-line: #e5e7eb;
+    --lc-hover: #f9fafb;
+    --lc-panel: #f3f2ee;
+    --lc-card: #fbfaf7;
+    --lc-card-hover: #ffffff;
+    --lc-control: #ffffff;
+    --lc-pill: #111111;
+    --lc-pill-fg: #ffffff;
+}
+
+.lc-visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+/* Só neste título: a linha do contador logo abaixo já faz a separação */
+.lecture-catalog .section-title {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0.6rem;
+}
+
+.lc-count {
+    font-family: var(--lc-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--lc-faint);
+    padding-bottom: 1.4rem;
+    border-bottom: 1px solid var(--lc-line);
+}
+
+.lc-count [data-lc-count] {
+    color: var(--lc-fg);
+}
+
+/* ---- Barra de filtro / ordenação / busca ---- */
+.lc-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin: 1.4rem 0 2.6rem;
+}
+
+.lc-toolbar__right {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.lc-select select,
+.lc-search input {
+    font: inherit;
+    font-size: 0.82rem;
+    color: var(--lc-fg);
+    background-color: var(--lc-control);
+    border: 1px solid var(--lc-line);
+    border-radius: 6px;
+    height: 2.1rem;
+}
+
+.lc-select select {
+    appearance: none;
+    -webkit-appearance: none;
+    padding: 0 2rem 0 0.8rem;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.6rem center;
+    background-size: 0.9rem;
+}
+
+.lc-select select option {
+    background: var(--lc-control);
+    color: var(--lc-fg);
+}
+
+.lc-search {
+    position: relative;
+    display: block;
+}
+
+.lc-search input {
+    width: 15rem;
+    max-width: 100%;
+    padding: 0 2rem 0 0.8rem;
+}
+
+.lc-search input::placeholder {
+    color: var(--lc-faint);
+}
+
+.lc-search svg {
+    position: absolute;
+    right: 0.65rem;
+    top: 50%;
+    width: 0.9rem;
+    height: 0.9rem;
+    transform: translateY(-50%);
+    fill: none;
+    stroke: var(--lc-muted);
+    stroke-width: 2;
+    pointer-events: none;
+}
+
+.lc-select select:focus-visible,
+.lc-search input:focus-visible,
+.lc-row__toggle:focus-visible,
+.lc-row__title:focus-visible,
+.lc-card:focus-visible,
+.lc-related__all:focus-visible {
+    outline: 2px solid #93c5fd;
+    outline-offset: 2px;
+}
+
+/* ---- Grade das colunas (cabeçalho e linhas) ---- */
+.lc-head,
+.lc-row__main {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2.7fr) minmax(0, 1.25fr) minmax(0, 1fr) 2.6rem;
+    column-gap: 1.25rem;
+    align-items: center;
+}
+
+.lc-head {
+    font-family: var(--lc-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--lc-faint);
+    padding: 0 0.9rem 0.9rem;
+    border-bottom: 1px solid var(--lc-line);
+}
+
+.lc-head__icon {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.lc-head__icon svg {
+    width: 1.3rem;
+    height: 1.3rem;
+    fill: var(--lc-muted);
+}
+
+.lc-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.lc-row {
+    position: relative;
+    border-radius: 0;
+    /* a borda só ganha espessura quando a lecture abre */
+    border: 0 solid var(--lc-line);
+}
+
+/* Separador entre lectures */
+.lc-row::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: var(--lc-line);
+    pointer-events: none;
+}
+
+.lc-row__main {
+    position: relative;
+    padding: 0.95rem 0.9rem;
+    min-height: 3.2rem;
+}
+
+.lc-row:not(.is-open):hover {
+    background-color: var(--lc-hover);
+}
+
+.lc-row__title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--lc-fg);
+    text-decoration: none;
+}
+
+/* A linha inteira leva à lecture; o botão "⋯" fica por cima */
+.lc-row__title::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.lc-row__title:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.lc-row__desc {
+    margin: 0;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--lc-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, #000 82%, transparent);
+    mask-image: linear-gradient(to right, #000 82%, transparent);
+}
+
+.lc-row__cat,
+.lc-row__date {
+    font-size: 0.85rem;
+    color: var(--lc-fg);
+}
+
+/* Categoria como etiqueta colorida (mesmas cores da página Lectures) */
+.lc-row__cat {
+    justify-self: start;
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+}
+
+.lc-row[data-category="lecture"] .lc-row__cat {
+    background-color: rgba(59, 130, 246, 0.15);
+    color: #3b82f6;
+    border-color: rgba(59, 130, 246, 0.3);
+}
+
+.lc-row[data-category="class-lecture"] .lc-row__cat {
+    background-color: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+    border-color: rgba(34, 197, 94, 0.3);
+}
+
+.lc-row[data-category="tec-lecture"] .lc-row__cat {
+    background-color: #e8f0fe;
+    color: #1a73e8;
+}
+
+.lc-row__date {
+    font-variant-numeric: tabular-nums;
+}
+
+.lc-row__toggle {
+    position: relative;
+    z-index: 2;
+    justify-self: end;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.1rem;
+    height: 1.25rem;
+    padding: 0;
+    border: 1px solid var(--lc-line);
+    border-radius: 999px;
+    background: var(--lc-control);
+    color: var(--lc-fg);
+    cursor: pointer;
+}
+
+.lc-row__toggle:hover {
+    border-color: var(--lc-faint);
+}
+
+.lc-dots {
+    display: inline-flex;
+    gap: 3px;
+}
+
+.lc-dots i {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.lc-x {
+    display: none;
+    width: 0.8rem;
+    height: 0.8rem;
+    stroke: currentColor;
+    stroke-width: 2.6;
+    stroke-linecap: round;
+}
+
+/* ---- Estado aberto ---- */
+.lc-row.is-open {
+    background-color: var(--lc-panel);
+    border-radius: 12px;
+    /* A linha de separação vira a borda do bloco aberto:
+       - avança para os lados o tamanho do arredondamento, então as linhas
+         retas terminam exatamente onde começa a curva;
+       - sobe 1px para a borda de cima ficar em cima da linha anterior. */
+    border-width: 1px;
+    margin: -1px -12px 0;
+}
+
+/* a borda de baixo do bloco substitui a linha da própria lecture */
+.lc-row.is-open::after {
+    display: none;
+}
+
+.lc-row.is-open .lc-row__main {
+    align-items: start;
+    padding-inline: calc(0.9rem + 11px);
+}
+
+.lc-row.is-open .lc-row__desc {
+    white-space: normal;
+    -webkit-mask-image: none;
+    mask-image: none;
+    color: var(--lc-fg);
+}
+
+.lc-row.is-open .lc-row__toggle {
+    background: var(--lc-pill);
+    border-color: var(--lc-pill);
+    color: var(--lc-pill-fg);
+}
+
+.lc-row.is-open .lc-dots {
+    display: none;
+}
+
+.lc-row.is-open .lc-x {
+    display: block;
+}
+
+.lc-row__panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s ease;
+}
+
+.lc-row.is-open .lc-row__panel {
+    grid-template-rows: 1fr;
+}
+
+.lc-row__panel-inner {
+    overflow: hidden;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2.7fr) minmax(0, 1.25fr) minmax(0, 1fr) 2.6rem;
+    column-gap: 1.25rem;
+    padding: 0 0.9rem;
+}
+
+.lc-related {
+    grid-column: 2 / -1;
+}
+
+.lc-row.is-open .lc-row__panel-inner {
+    padding: 0 calc(0.9rem + 11px) 1.6rem;
+}
+
+/* ---- Visual: grafo da lecture e das suas páginas ---- */
+.lc-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 11rem;
+}
+
+.lc-visual svg {
+    width: 100%;
+    max-width: 22rem;
+    height: auto;
+    overflow: visible;
+}
+
+.lc-visual .lc-edge {
+    stroke: var(--lc-fg);
+    stroke-width: 1.6;
+    transition: stroke-width 0.2s ease;
+}
+
+.lc-visual .lc-node {
+    transition: transform 0.25s ease;
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+.lc-visual .lc-node.is-active {
+    transform: scale(1.25);
+}
+
+.lc-visual .lc-edge.is-active {
+    stroke-width: 2.6;
+}
+
+.lc-visual .lc-node-ring,
+.lc-visual .lc-hub-ring {
+    fill: none;
+    stroke: var(--lc-fg);
+    stroke-width: 1.6;
+}
+
+.lc-visual .lc-node-ring {
+    stroke-width: 0.8;
+    opacity: 0.5;
+}
+
+.lc-visual .lc-hub-fill {
+    fill: var(--lc-card);
+}
+
+.lc-visual .lc-hub-label {
+    font-family: var(--lc-mono);
+    font-size: 6.5px;
+    letter-spacing: 0.04em;
+    fill: var(--lc-fg);
+    text-anchor: middle;
+    dominant-baseline: central;
+}
+
+.lc-visual .lc-orbit {
+    fill: none;
+    stroke: var(--lc-faint);
+    stroke-dasharray: 3 4;
+}
+
+/* ---- Primeiras páginas ---- */
+.lc-related__title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 1.8rem 0 0.8rem;
+    color: var(--lc-fg);
+}
+
+.lc-related__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.6rem;
+}
+
+.lc-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    padding: 0.9rem 1rem 1rem;
+    min-height: 5.4rem;
+    border-radius: 8px;
+    border: 1px solid var(--lc-line);
+    background: var(--lc-card);
+    color: var(--lc-fg);
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.lc-card:hover {
+    background: var(--lc-card-hover);
+    border-color: var(--lc-faint);
+    transform: translateY(-2px);
+}
+
+.lc-card__meta {
+    display: flex;
+    gap: 0.9rem;
+    font-size: 0.7rem;
+    color: var(--lc-faint);
+}
+
+.lc-card__title {
+    font-size: 0.85rem;
+    line-height: 1.45;
+}
+
+.lc-related__empty {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--lc-muted);
+}
+
+/* Botão branco "Abrir o sumário de ..." */
+.lc-related__all {
+    display: inline-block;
+    margin-top: 1.1rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #111111;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.lc-related__all:hover {
+    background-color: #e5e7eb;
+    border-color: #e5e7eb;
+    transform: translateY(-1px);
+}
+
+/* no tema claro o botão continua branco, com contorno para não sumir no painel */
+body.light-theme .lc-related__all {
+    border-color: #d1d5db;
+}
+
+body.light-theme .lc-related__all:hover {
+    background-color: #f3f4f6;
+    border-color: #9ca3af;
+}
+
+.lc-empty {
+    padding: 2rem 0.9rem;
+    font-size: 0.9rem;
+    color: var(--lc-muted);
+}
+
+/* ---- Responsivo ---- */
+@media (max-width: 1100px) {
+    .lc-related__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 900px) {
+    .lc-head,
+    .lc-row__main {
+        grid-template-columns: minmax(0, 1fr) auto 2.6rem;
+    }
+
+    .lc-col-desc,
+    .lc-col-cat,
+    .lc-row__cat,
+    .lc-row__desc {
+        display: none;
+    }
+
+    .lc-row.is-open .lc-row__desc {
+        display: block;
+        grid-column: 1 / -1;
+        grid-row: 2;
+        margin-top: 0.6rem;
+    }
+
+    .lc-row__panel-inner {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .lc-related {
+        grid-column: 1;
+    }
+
+    .lc-visual {
+        min-height: 0;
+        padding-top: 0.6rem;
+    }
+
+    .lc-visual svg {
+        max-width: 15rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .lc-toolbar,
+    .lc-toolbar__right {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .lc-select select,
+    .lc-search input {
+        width: 100%;
+    }
+
+    .lc-related__grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .lc-row__date {
+        font-size: 0.78rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .lc-row__panel,
+    .lc-card,
+    .lc-visual .lc-node {
+        transition: none;
+    }
+}

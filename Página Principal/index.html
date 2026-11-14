@@ -136,11 +136,13 @@
                 </div>
 
     
-                
-                
-                 <div class="hero-image">
-                    <canvas class="fracture-lattice-canvas" aria-hidden="true"></canvas>
+                <div class="hero-image">
+                    <img src="../assets/images/Capa Inicial.png" alt="João Henrique">
                 </div>
+                
+                 <!--<div class="hero-image">
+                    <canvas class="fracture-lattice-canvas" aria-hidden="true"></canvas>
+                </div> -->
             
             
             
@@ -346,6 +348,430 @@
                 </div>
             
             </div><!-- /.posts-section -->
+
+            <!-- ===== Catálogo de Lectures =====
+                 Cada <li class="lc-row"> é uma lecture. Para atualizar: mude data-date (AAAA-MM-DD)
+                 e o texto de <time>; as "primeiras páginas" ficam em .lc-related. O script
+                 ../assets/js/lecture-catalog.js cuida de filtro, ordenação, busca e do painel "⋯". -->
+            <section class="lecture-catalog" id="catalogo-lectures" aria-labelledby="lc-heading">
+                <h2 class="section-title" id="lc-heading">Catálogo de Lectures</h2>
+
+                <p class="lc-count"><span data-lc-count>12</span> <span data-lc-count-label>lectures</span></p>
+
+                <div class="lc-toolbar">
+                    <label class="lc-select">
+                        <span class="lc-visually-hidden">Filtrar por categoria</span>
+                        <select data-lc-filter>
+                            <option value="all">Filtro: todas</option>
+                            <option value="class-lecture">Class Lectures</option>
+                            <option value="lecture">Lectures</option>
+                            <option value="tec-lecture">Technology Lectures</option>
+                        </select>
+                    </label>
+                    <div class="lc-toolbar__right">
+                        <label class="lc-select">
+                            <span class="lc-visually-hidden">Ordenar</span>
+                            <select data-lc-sort>
+                                <option value="recent">Mais recentes</option>
+                                <option value="oldest">Mais antigas</option>
+                                <option value="az">Título (A–Z)</option>
+                            </select>
+                        </label>
+                        <label class="lc-search">
+                            <span class="lc-visually-hidden">Buscar lecture</span>
+                            <input type="search" placeholder="Buscar..." data-lc-search autocomplete="off">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="lc-head" aria-hidden="true">
+                    <span>Título</span>
+                    <span class="lc-col-desc">Descrição</span>
+                    <span class="lc-col-cat">Categoria</span>
+                    <span>Atualização</span>
+                    <span class="lc-head__icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.6"/><circle cx="4" cy="13" r="1.5"/><circle cx="19.5" cy="8" r="1.5"/><circle cx="9" cy="5" r="1.2"/><circle cx="16" cy="18" r="1.2"/><circle cx="21.5" cy="12" r="1"/></svg></span>
+                </div>
+
+                <ul class="lc-list" data-lc-list>
+                    <li class="lc-row" data-category="class-lecture" data-date="2026-11-12">
+                        <div class="lc-row__main">
+                            <a class="lc-row__title" href="../pages/Palestras/Class Lectures/ClassLecture-GR100/index.html">Relatividade Geral</a>
+                            <p class="lc-row__desc">Anotações das aulas de Relatividade Geral do curso de Física da UEL.</p>
+                            <span class="lc-row__cat">Class Lecture</span>
+                            <time class="lc-row__date" datetime="2026-11-12">12 Nov 2026</time>
+                            <button type="button" class="lc-row__toggle" aria-expanded="false" aria-controls="lc-panel-gr100" aria-label="Mostrar as primeiras páginas de Relatividade Geral">
+                                <span class="lc-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                                <svg class="lc-x" viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="7" x2="17" y2="17"/><line x1="17" y1="7" x2="7" y2="17"/></svg>
+                            </button>
+                        </div>
+                        <div class="lc-row__panel" id="lc-panel-gr100" inert>
+                            <div class="lc-row__panel-inner">
+                                <div class="lc-visual" data-code="GR100" aria-hidden="true"></div>
+                                <div class="lc-related">
+                                    <h4 class="lc-related__title">Primeiras páginas</h4>
+                                    <div class="lc-related__grid">
+                                        <a class="lc-card" href="../pages/Palestras/Class Lectures/ClassLecture-GR100/Conteúdo/[0] - Introdução a Simetrias em Mecânica Clássica/1-HistoricalIntroduction.html">
+                                            <span class="lc-card__meta"><span>GR100</span><span>Cap. 1</span></span>
+                                            <span class="lc-card__title">Introdução Histórica</span>
+                                        </a>
+                                        <a class="lc-card" href="../pages/Palestras/Class Lectures/ClassLecture-GR100/Conteúdo/[0] - Introdução a Simetrias em Mecânica Clássica/1-TR.html">
+                                            <span class="lc-card__meta"><span>GR100</span><span>Cap. 1</span></span>
+                                            <span class="lc-card__title">Teoria da Relatividade</span>
+                                        </a>
+                                        <a class="lc-card" href="../pages/Palestras/Class Lectures/ClassLecture-GR100/Conteúdo/[0] - Introdução a Simetrias em Mecânica Clássica/1-Galilean-Relativity.html">
+                                            <span class="lc-card__meta"><span>GR100</span><span>Cap. 1</span></span>
+                                            <span class="lc-card__title">Relatividade Galileana</span>
+                                        </a>
+                                        <a class="lc-card" href="../pages/Palestras/Class Lectures/ClassLecture-GR100/Conteúdo/[0] - Introdução a Simetrias em Mecânica Clássica/1-Classical-Electromagnetism.html">
+                                            <span class="lc-card__meta"><span>GR100</span><span>Cap. 1</span></span>
+                                            <span class="lc-card__title">Eletromagnetismo Clássico</span>
+                                        </a>
+                                    </div>
+                                    <a class="lc-related__all" href="../pages/Palestras/Class Lectures/ClassLecture-GR100/index.html">Abrir o sumário de GR100</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="lc-row" data-category="class-lecture" data-date="2026-11-10">
+                        <div class="lc-row__main">
+                            <a class="lc-row__title" href="../pages/Palestras/Class Lectures/ClassLecture-QM200/index.html">Mecânica Quântica II</a>
+                            <p class="lc-row__desc">Anotações das aulas de Mecânica Quântica II do curso de Física da UEL.</p>
+                            <span class="lc-row__cat">Class Lecture</span>
+                            <time class="lc-row__date" datetime="2026-11-10">10 Nov 2026</time>
+                            <button type="button" class="lc-row__toggle" aria-expanded="false" aria-controls="lc-panel-qm200" aria-label="Mostrar as primeiras páginas de Mecânica Quântica II">
+                                <span class="lc-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                                <svg class="lc-x" viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="7" x2="17" y2="17"/><line x1="17" y1="7" x2="7" y2="17"/></svg>
+                            </button>
+                        </div>
+                        <div class="lc-row__panel" id="lc-panel-qm200" inert>
+                            <div class="lc-row__panel-inner">
+                                <div class="lc-visual" data-code="QM200" aria-hidden="true"></div>
+                                <div class="lc-related">
+                                    <h4 class="lc-related__title">Primeiras páginas</h4>
+                                    <div class="lc-related__grid">
+                                        <a class="lc-card" href="../pages/Palestras/Class Lectures/ClassLecture-QM200/Conteúdo/[4] - Partículas Idênticas/[01] - Sistemas de Duas Partículas.html">
+                                            <span class="lc-card__meta"><span>QM200</span><span>Cap. 5</span></span>
+                                            <span class="lc-card__title">5.1 Sistemas de Duas Partículas</span>
+                                        </a>
+                                        <a class="lc-card" href="../pages/Palestras/Class Lectures/ClassLecture-QM200/Conteúdo/[4] - Partículas Idênticas/[02] - Átomos.html">
+                                            <span class="lc-card__meta"><span>QM200</span><span>Cap. 5</span></span>
+                                            <span class="lc-card__title">5.2 Átomos</span>
+                                        </a>
+                                        <a class="lc-card" href="../pages/Palestras/Class Lectures/ClassLecture-QM200/Conteúdo/[4] - Partículas Idênticas/[03] - Sólidos.html">
+                                            <span class="lc-card__meta"><span>QM200</span><span>Cap. 5</span></span>
+                                            <span class="lc-card__title">5.3 Sólidos</span>
+                                        </a>
+                                        <a class="lc-card" href="../pages/Palestras/Class Lectures/ClassLecture-QM200/Conteúdo/[5] - Simetrias e Leis de Conservação/[01] - Introdução.html">
+                                            <span class="lc-card__meta"><span>QM200</span><span>Cap. 6</span></span>
+                                            <span class="lc-card__title">6.1 Simetrias e Leis de Conservação: Introdução</span>
+                                        </a>
+                                    </div>
+                                    <a class="lc-related__all" href="../pages/Palestras/Class Lectures/ClassLecture-QM200/index.html">Abrir o sumário de QM200</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="lc-row" data-category="lecture" data-date="2026-10-19">
+                        <div class="lc-row__main">
+                            <a class="lc-row__title" href="../pages/Palestras/Lectures/Lecture-AIML100/index.html">Introdução ao Aprendizado de Máquina</a>
+                            <p class="lc-row__desc">Introdução nos fundamentos teóricos e práticos do aprendizado de máquina. Exploração de algoritmos clássicos, redes neurais e a matemática por trás da capacidade de generalização dos modelos.</p>
+                            <span class="lc-row__cat">Lecture</span>
+                            <time class="lc-row__date" datetime="2026-10-19">19 Out 2026</time>
+                            <button type="button" class="lc-row__toggle" aria-expanded="false" aria-controls="lc-panel-aiml100" aria-label="Mostrar as primeiras páginas de Introdução ao Aprendizado de Máquina">
+                                <span class="lc-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                                <svg class="lc-x" viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="7" x2="17" y2="17"/><line x1="17" y1="7" x2="7" y2="17"/></svg>
+                            </button>
+                        </div>
+                        <div class="lc-row__panel" id="lc-panel-aiml100" inert>
+                            <div class="lc-row__panel-inner">
+                                <div class="lc-visual" data-code="AIML100" aria-hidden="true"></div>
+                                <div class="lc-related">
+                                    <h4 class="lc-related__title">Primeiras páginas</h4>
+                                    <div class="lc-related__grid">
+                                        <a class="lc-card" href="../pages/Palestras/Lectures/Lecture-AIML100/Conteúdo/[0] - Introdução/[01] - Introdução.html">
+                                            <span class="lc-card__meta"><span>AIML100</span><span>Cap. 1</span></span>
+                                            <span class="lc-card__title">1.1 Introdução</span>
+                                        </a>
+                                        <a class="lc-card" href="../pages/Palestras/Lectures/Lecture-AIML100/Conteúdo/[0] - Introdução/[02] - Tipos de Aprendizado e Aplicações.html">
+                                            <span class="lc-card__meta"><span>AIML100</span><span>Cap. 1</span></span>
+                                            <span class="lc-card__title">1.2 Tipos de Aprendizado e Aplicações</span>
+                                        </a>
+                                        <a class="lc-card" href="../pages/Palestras/Lectures/Lecture-AIML100/Conteúdo/[1] - Fundamentos Matemáticos/[01] - Vetores, Matrizes e Sistemas Lineares.html">
+                                            <span class="lc-card__meta"><span>AIML100</span><span>Cap. 2</span></span>
+                                            <span class="lc-card__title">2.1 Vetores, Matrizes e Sistemas Lineares</span>
+                                        </a>
+                                        <a class="lc-card" href="../pages/Palestras/Lectures/Lecture-AIML100/Conteúdo/[1] - Fundamentos Matemáticos/[02] - Autovalores, Matrizes Positivas Definidas e Decomposições.html">
+                                            <span class="lc-card__meta"><span>AIML100</span><span>Cap. 2</span></span>
+                                            <span class="lc-card__title">2.2 Autovalores, Matrizes Positivas Definidas e Decomposições</span>
+                                        </a>
+                                    </div>
+                                    <a class="lc-related__all" href="../pages/Palestras/Lectures/Lecture-AIML100/index.html">Abrir o sumário de AIML100</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="lc-row" data-category="class-lecture" data-date="2026-10-14">
+                        <div class="lc-row__main">
+                            <a class="lc-row__title" href="../pages/Palestras/Class Lectures/ClassLecture-AQC100/index.html">Introdução à Mecânica Estatística</a>
+                            <p class="lc-row__desc">Anotações das aulas de Mecânica Estatística do curso de Física da UEL.</p>
+                            <span class="lc-row__cat">Class Lecture</span>
+                            <time class="lc-row__date" datetime="2026-10-14">14 Out 2026</time>
+                            <button type="button" class="lc-row__toggle" aria-expanded="false" aria-controls="lc-panel-aqc100" aria-label="Mostrar as primeiras páginas de Introdução à Mecânica Estatística">
+                                <span class="lc-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                                <svg class="lc-x" viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="7" x2="17" y2="17"/><line x1="17" y1="7" x2="7" y2="17"/></svg>
+                            </button>
+                        </div>
+                        <div class="lc-row__panel" id="lc-panel-aqc100" inert>
+                            <div class="lc-row__panel-inner">
+                                <div class="lc-visual" data-code="AQC100" aria-hidden="true"></div>
+                                <div class="lc-related">
+                                    <h4 class="lc-related__title">Primeiras páginas</h4>
+                                    <div class="lc-related__grid">
+                                        <a class="lc-card" href="../pages/Palestras/Class Lectures/ClassLecture-AQC100/Conteúdo/[0] - Introdução aos Métodos Estatísticos/[01] - Introdução.html">
+                                            <span class="lc-card__meta"><span>AQC100</span><span>Cap. 1</span></span>
+                                            <span class="lc-card__title">Introdução</span>
+                                        </a>
+                                        <a class="lc-card" href="../pages/Palestras/Class Lectures/ClassLecture-AQC100/Conteúdo/[0] - Introdução aos Métodos Estatísticos/[02] - Problema do Caminho Aleatório.html">
+                                            <span class="lc-card__meta"><span>AQC100</span><span>Cap. 1</span></span>
+                                            <span class="lc-card__title">Problema do Caminho Aleatório</span>
+                                        </a>
+                                        <a class="lc-card" href="../pages/Palestras/Class Lectures/ClassLecture-AQC100/Conteúdo/[0] - Introdução aos Métodos Estatísticos/[03] - Valores Médios e Desvio Padrão.html">
+                                            <span class="lc-card__meta"><span>AQC100</span><span>Cap. 1</span></span>
+                                            <span class="lc-card__title">Valores Médios e Desvio Padrão</span>
+                                        </a>
+                                        <a class="lc-card" href="../pages/Palestras/Class Lectures/ClassLecture-AQC100/Conteúdo/[1] - Descrição Estatística de um Sistema Físico/[01] - Visão Geral.html">
+                                            <span class="lc-card__meta"><span>AQC100</span><span>Cap. 2</span></span>
+                                            <span class="lc-card__title">Descrição Estatística de um Sistema Físico: Visão Geral</span>
+                                        </a>
+                                    </div>
+                                    <a class="lc-related__all" href="../pages/Palestras/Class Lectures/ClassLecture-AQC100/index.html">Abrir o sumário de AQC100</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="lc-row" data-category="lecture" data-date="2026-09-13">
+                        <div class="lc-row__main">
+                            <a class="lc-row__title" href="../pages/Palestras/Lectures/Lecture-Logic100/index.html">Introdução à Lógica</a>
+                            <p class="lc-row__desc">Anotações e material de apoio para uma Introdução à Lógica, cobrindo os fundamentos essenciais do pensamento lógico e formal.</p>
+                            <span class="lc-row__cat">Lecture</span>
+                            <time class="lc-row__date" datetime="2026-09-13">13 Set 2026</time>
+                            <button type="button" class="lc-row__toggle" aria-expanded="false" aria-controls="lc-panel-logic100" aria-label="Mostrar as primeiras páginas de Introdução à Lógica">
+                                <span class="lc-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                                <svg class="lc-x" viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="7" x2="17" y2="17"/><line x1="17" y1="7" x2="7" y2="17"/></svg>
+                            </button>
+                        </div>
+                        <div class="lc-row__panel" id="lc-panel-logic100" inert>
+                            <div class="lc-row__panel-inner">
+                                <div class="lc-visual" data-code="LOGIC100" aria-hidden="true"></div>
+                                <div class="lc-related">
+                                    <h4 class="lc-related__title">Primeiras páginas</h4>
+                                    <p class="lc-related__empty">As primeiras páginas desta lecture ainda estão em preparação.</p>
+                                    <a class="lc-related__all" href="../pages/Palestras/Lectures/Lecture-Logic100/index.html">Abrir o sumário de LOGIC100</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="lc-row" data-category="lecture" data-date="2026-09-13">
+                        <div class="lc-row__main">
+                            <a class="lc-row__title" href="../pages/Palestras/Lectures/Lecture-ALP100/index.html">Introdução a Algoritmos e Lógica de Programação</a>
+                            <p class="lc-row__desc">Introdução aos fundamentos do pensamento computacional. Da definição de algoritmo e pseudocódigo até estruturas condicionais, de repetição e estruturas de dados básicas.</p>
+                            <span class="lc-row__cat">Lecture</span>
+                            <time class="lc-row__date" datetime="2026-09-13">13 Set 2026</time>
+                            <button type="button" class="lc-row__toggle" aria-expanded="false" aria-controls="lc-panel-alp100" aria-label="Mostrar as primeiras páginas de Introdução a Algoritmos e Lógica de Programação">
+                                <span class="lc-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                                <svg class="lc-x" viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="7" x2="17" y2="17"/><line x1="17" y1="7" x2="7" y2="17"/></svg>
+                            </button>
+                        </div>
+                        <div class="lc-row__panel" id="lc-panel-alp100" inert>
+                            <div class="lc-row__panel-inner">
+                                <div class="lc-visual" data-code="ALP100" aria-hidden="true"></div>
+                                <div class="lc-related">
+                                    <h4 class="lc-related__title">Primeiras páginas</h4>
+                                    <p class="lc-related__empty">As primeiras páginas desta lecture ainda estão em preparação.</p>
+                                    <a class="lc-related__all" href="../pages/Palestras/Lectures/Lecture-ALP100/index.html">Abrir o sumário de ALP100</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="lc-row" data-category="tec-lecture" data-date="2026-09-08">
+                        <div class="lc-row__main">
+                            <a class="lc-row__title" href="../pages/Palestras/Tech Lectures/TecLecture-VehicleMechanics/index.html">Mecânica de Autoveículos</a>
+                            <p class="lc-row__desc">Engenharia Mecânica - Ciclo específico: Mecânica e de Automóveis. Objetivo: Proporcionar os fundamentos da dinâmica veicular aplicados à tração e à frenagem de autoveículos, o estudo dos sistemas responsáveis por essas funções e suas funções de transferência, culminando na elaboração de um programa de simulação computacional para análise de desempenho de um veículo exemplo.</p>
+                            <span class="lc-row__cat">Technology Lecture</span>
+                            <time class="lc-row__date" datetime="2026-09-08">08 Set 2026</time>
+                            <button type="button" class="lc-row__toggle" aria-expanded="false" aria-controls="lc-panel-tec102" aria-label="Mostrar as primeiras páginas de Mecânica de Autoveículos">
+                                <span class="lc-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                                <svg class="lc-x" viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="7" x2="17" y2="17"/><line x1="17" y1="7" x2="7" y2="17"/></svg>
+                            </button>
+                        </div>
+                        <div class="lc-row__panel" id="lc-panel-tec102" inert>
+                            <div class="lc-row__panel-inner">
+                                <div class="lc-visual" data-code="TEC102" aria-hidden="true"></div>
+                                <div class="lc-related">
+                                    <h4 class="lc-related__title">Primeiras páginas</h4>
+                                    <p class="lc-related__empty">As primeiras páginas desta lecture ainda estão em preparação.</p>
+                                    <a class="lc-related__all" href="../pages/Palestras/Tech Lectures/TecLecture-VehicleMechanics/index.html">Abrir o sumário de TEC102</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="lc-row" data-category="class-lecture" data-date="2026-08-15">
+                        <div class="lc-row__main">
+                            <a class="lc-row__title" href="../pages/Palestras/Class Lectures/ClassLecture-SSP100/index.html">Introdução à Física do Estado Sólido</a>
+                            <p class="lc-row__desc">Anotações das aulas de Introdução à Física do Estado Sólido do curso de Física da UEL.</p>
+                            <span class="lc-row__cat">Class Lecture</span>
+                            <time class="lc-row__date" datetime="2026-08-15">15 Ago 2026</time>
+                            <button type="button" class="lc-row__toggle" aria-expanded="false" aria-controls="lc-panel-ssp100" aria-label="Mostrar as primeiras páginas de Introdução à Física do Estado Sólido">
+                                <span class="lc-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                                <svg class="lc-x" viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="7" x2="17" y2="17"/><line x1="17" y1="7" x2="7" y2="17"/></svg>
+                            </button>
+                        </div>
+                        <div class="lc-row__panel" id="lc-panel-ssp100" inert>
+                            <div class="lc-row__panel-inner">
+                                <div class="lc-visual" data-code="SSP100" aria-hidden="true"></div>
+                                <div class="lc-related">
+                                    <h4 class="lc-related__title">Primeiras páginas</h4>
+                                    <div class="lc-related__grid">
+                                        <a class="lc-card" href="../pages/Palestras/Class Lectures/ClassLecture-SSP100/Conteúdo/[0] - Capítulo 1/Tópico 1.html">
+                                            <span class="lc-card__meta"><span>SSP100</span><span>Cap. 1</span></span>
+                                            <span class="lc-card__title">Tópico 1</span>
+                                        </a>
+                                        <a class="lc-card" href="../pages/Palestras/Class Lectures/ClassLecture-SSP100/Conteúdo/[0] - Capítulo 1/Tópico 2.html">
+                                            <span class="lc-card__meta"><span>SSP100</span><span>Cap. 1</span></span>
+                                            <span class="lc-card__title">Tópico 2</span>
+                                        </a>
+                                        <a class="lc-card" href="../pages/Palestras/Class Lectures/ClassLecture-SSP100/Conteúdo/[1] - Capítulo 2/Tópico 1.html">
+                                            <span class="lc-card__meta"><span>SSP100</span><span>Cap. 2</span></span>
+                                            <span class="lc-card__title">Tópico 1</span>
+                                        </a>
+                                        <a class="lc-card" href="../pages/Palestras/Class Lectures/ClassLecture-SSP100/Conteúdo/[1] - Capítulo 2/Tópico 2.html">
+                                            <span class="lc-card__meta"><span>SSP100</span><span>Cap. 2</span></span>
+                                            <span class="lc-card__title">Tópico 2</span>
+                                        </a>
+                                    </div>
+                                    <a class="lc-related__all" href="../pages/Palestras/Class Lectures/ClassLecture-SSP100/index.html">Abrir o sumário de SSP100</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="lc-row" data-category="lecture" data-date="2026-08-15">
+                        <div class="lc-row__main">
+                            <a class="lc-row__title" href="../pages/Palestras/Lectures/Lecture-Python100/index.html">Introdução a Python</a>
+                            <p class="lc-row__desc">Introdução prática à linguagem Python, focada em análise de dados, computação científica e automação. Do básico da sintaxe até as principais bibliotecas da área matemática.</p>
+                            <span class="lc-row__cat">Lecture</span>
+                            <time class="lc-row__date" datetime="2026-08-15">15 Ago 2026</time>
+                            <button type="button" class="lc-row__toggle" aria-expanded="false" aria-controls="lc-panel-py100" aria-label="Mostrar as primeiras páginas de Introdução a Python">
+                                <span class="lc-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                                <svg class="lc-x" viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="7" x2="17" y2="17"/><line x1="17" y1="7" x2="7" y2="17"/></svg>
+                            </button>
+                        </div>
+                        <div class="lc-row__panel" id="lc-panel-py100" inert>
+                            <div class="lc-row__panel-inner">
+                                <div class="lc-visual" data-code="PY100" aria-hidden="true"></div>
+                                <div class="lc-related">
+                                    <h4 class="lc-related__title">Primeiras páginas</h4>
+                                    <div class="lc-related__grid">
+                                        <a class="lc-card" href="../pages/Palestras/Lectures/Lecture-Python100/Primeiros Passos e Fundamentos/[1] - Instalação do Python e configuração do ambiente.html">
+                                            <span class="lc-card__meta"><span>PY100</span><span>Primeiros Passos</span></span>
+                                            <span class="lc-card__title">Instalação do Python e configuração do ambiente</span>
+                                        </a>
+                                        <a class="lc-card" href="../pages/Palestras/Lectures/Lecture-Python100/Primeiros Passos e Fundamentos/[3] - Executando os primeiros programas e scripts (Hello World).html">
+                                            <span class="lc-card__meta"><span>PY100</span><span>Primeiros Passos</span></span>
+                                            <span class="lc-card__title">Executando os primeiros programas e scripts (Hello World)</span>
+                                        </a>
+                                    </div>
+                                    <a class="lc-related__all" href="../pages/Palestras/Lectures/Lecture-Python100/index.html">Abrir o sumário de PY100</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="lc-row" data-category="tec-lecture" data-date="2026-08-15">
+                        <div class="lc-row__main">
+                            <a class="lc-row__title" href="../pages/Palestras/Tech Lectures/TecLecture-AutomotiveMechanics/index.html">Introdução à Mecânica Automobilística</a>
+                            <p class="lc-row__desc">Engenharia Mecânica - Ciclo específico: Mecânica e de Automóveis. Objetivo: Proporcionar uma visão sistêmica da indústria automotiva, abordando os principais sistemas e componentes de um automóvel, bem como os fundamentos da mecânica automotiva, incluindo motores de combustão interna, transmissão, suspensão, freios e direção. O curso também visa discutir as tendências atuais e futuras da indústria automotiva, como veículos elétricos, híbridos e autônomos.</p>
+                            <span class="lc-row__cat">Technology Lecture</span>
+                            <time class="lc-row__date" datetime="2026-08-15">15 Ago 2026</time>
+                            <button type="button" class="lc-row__toggle" aria-expanded="false" aria-controls="lc-panel-tec100" aria-label="Mostrar as primeiras páginas de Introdução à Mecânica Automobilística">
+                                <span class="lc-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                                <svg class="lc-x" viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="7" x2="17" y2="17"/><line x1="17" y1="7" x2="7" y2="17"/></svg>
+                            </button>
+                        </div>
+                        <div class="lc-row__panel" id="lc-panel-tec100" inert>
+                            <div class="lc-row__panel-inner">
+                                <div class="lc-visual" data-code="TEC100" aria-hidden="true"></div>
+                                <div class="lc-related">
+                                    <h4 class="lc-related__title">Primeiras páginas</h4>
+                                    <div class="lc-related__grid">
+                                        <a class="lc-card" href="../pages/Palestras/Tech Lectures/TecLecture-AutomotiveMechanics/VeiculosAutomotores/exigencias-para-veiculos.html">
+                                            <span class="lc-card__meta"><span>TEC100</span><span>Veículos Automotores</span></span>
+                                            <span class="lc-card__title">Exigências para Veículos Automotores</span>
+                                        </a>
+                                        <a class="lc-card" href="../pages/Palestras/Tech Lectures/TecLecture-AutomotiveMechanics/VeiculosAutomotores/consumo-de-combustivel.html">
+                                            <span class="lc-card__meta"><span>TEC100</span><span>Veículos Automotores</span></span>
+                                            <span class="lc-card__title">Consumo de Combustível</span>
+                                        </a>
+                                        <a class="lc-card" href="../pages/Palestras/Tech Lectures/TecLecture-AutomotiveMechanics/VeiculosAutomotores/dinamica-do-veiculo-automotor.html">
+                                            <span class="lc-card__meta"><span>TEC100</span><span>Veículos Automotores</span></span>
+                                            <span class="lc-card__title">Dinâmica do Veículo Automotor</span>
+                                        </a>
+                                        <a class="lc-card" href="../pages/Palestras/Tech Lectures/TecLecture-AutomotiveMechanics/MotoresDeCombustaoInterna/motor-de-combustao.html">
+                                            <span class="lc-card__meta"><span>TEC100</span><span>Motores</span></span>
+                                            <span class="lc-card__title">Motor de Combustão</span>
+                                        </a>
+                                    </div>
+                                    <a class="lc-related__all" href="../pages/Palestras/Tech Lectures/TecLecture-AutomotiveMechanics/index.html">Abrir o sumário de TEC100</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="lc-row" data-category="lecture" data-date="2026-07-20">
+                        <div class="lc-row__main">
+                            <a class="lc-row__title" href="../pages/Palestras/Lectures/Lecture-QC100/index.html">Introdução à Computação Quântica</a>
+                            <p class="lc-row__desc">Os pilares da computação quântica, abrangendo os conceitos de qubits, portas lógicas quânticas, superposição, emaranhamento e introdução aos primeiros algoritmos quânticos.</p>
+                            <span class="lc-row__cat">Lecture</span>
+                            <time class="lc-row__date" datetime="2026-07-20">20 Jul 2026</time>
+                            <button type="button" class="lc-row__toggle" aria-expanded="false" aria-controls="lc-panel-qc100" aria-label="Mostrar as primeiras páginas de Introdução à Computação Quântica">
+                                <span class="lc-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                                <svg class="lc-x" viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="7" x2="17" y2="17"/><line x1="17" y1="7" x2="7" y2="17"/></svg>
+                            </button>
+                        </div>
+                        <div class="lc-row__panel" id="lc-panel-qc100" inert>
+                            <div class="lc-row__panel-inner">
+                                <div class="lc-visual" data-code="QC100" aria-hidden="true"></div>
+                                <div class="lc-related">
+                                    <h4 class="lc-related__title">Primeiras páginas</h4>
+                                    <p class="lc-related__empty">As primeiras páginas desta lecture ainda estão em preparação.</p>
+                                    <a class="lc-related__all" href="../pages/Palestras/Lectures/Lecture-QC100/index.html">Abrir o sumário de QC100</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="lc-row" data-category="tec-lecture" data-date="2026-05-02">
+                        <div class="lc-row__main">
+                            <a class="lc-row__title" href="../pages/Palestras/Tech Lectures/TecLecture-AutomotiveSystems/index.html">Introdução à Sistemas Automotivos</a>
+                            <p class="lc-row__desc">Engenharia Mecânica - Ciclo específico: Mecânica e de Automóveis. Objetivo: Proporcionar uma visão sistêmica de um sistema automotivo, incluindo motor, unidades eletrônicas de gerenciamento, rede de comunicação, sistemas de assistência ao motorista, condução autônoma, veículos elétricos e híbridos.</p>
+                            <span class="lc-row__cat">Technology Lecture</span>
+                            <time class="lc-row__date" datetime="2026-05-02">02 Mai 2026</time>
+                            <button type="button" class="lc-row__toggle" aria-expanded="false" aria-controls="lc-panel-tec101" aria-label="Mostrar as primeiras páginas de Introdução à Sistemas Automotivos">
+                                <span class="lc-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                                <svg class="lc-x" viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="7" x2="17" y2="17"/><line x1="17" y1="7" x2="7" y2="17"/></svg>
+                            </button>
+                        </div>
+                        <div class="lc-row__panel" id="lc-panel-tec101" inert>
+                            <div class="lc-row__panel-inner">
+                                <div class="lc-visual" data-code="TEC101" aria-hidden="true"></div>
+                                <div class="lc-related">
+                                    <h4 class="lc-related__title">Primeiras páginas</h4>
+                                    <p class="lc-related__empty">As primeiras páginas desta lecture ainda estão em preparação.</p>
+                                    <a class="lc-related__all" href="../pages/Palestras/Tech Lectures/TecLecture-AutomotiveSystems/index.html">Abrir o sumário de TEC101</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <p class="lc-empty" data-lc-empty hidden>Nenhuma lecture encontrada.</p>
+            </section><!-- /.lecture-catalog -->
 
             <!-- Lectures Section -->
             <!-- <section class="lectures-section">
@@ -730,6 +1156,7 @@
     </script>
 
     <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/lecture-catalog.js"></script>
     <script src="../assets/js/hero-fracture-lattice.js"></script>
 </body>
 
