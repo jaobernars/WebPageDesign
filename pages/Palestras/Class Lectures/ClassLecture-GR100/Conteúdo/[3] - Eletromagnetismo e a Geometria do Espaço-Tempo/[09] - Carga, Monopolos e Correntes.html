@@ -166,7 +166,835 @@
                 <h1 id="carga-e-monopolos">4.9 Carga, Monopolos e Correntes Conservadas</h1>
                 <p class="lead">A estrutura geral da teoria, a carga como fluxo, cargas pontuais, monopolos magnéticos e cordas de Dirac, a dualidade elétrico-magnética e a carga de uma corrente conservada.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>
+                    O tópico <a href="[08] - Inomogêneas e a Métrica de Minkowski.html">4.8</a> chegou às equações de Maxwell na
+                    forma $dF = 0$, $d\star F = \mu_0j$, com a métrica de Minkowski deduzida no caminho. Neste tópico perguntamos o que,
+                    nesse desenvolvimento, é completamente geral, isto é, não depende de nenhum experimento. A resposta é: quase tudo.
+                    Basta postular uma $2$-forma fechada $\omega$ numa variedade de dimensão 4 com métrica. A corrente, a sua conservação e
+                    a carga como fluxo saem daí, e a lei de Gauss deixa de ser uma lei para ser a definição de carga. O que sobra para a
+                    experiência é identificar na natureza as grandezas que essas formas representam.
+                </p>
+
+                <p>
+                    Com a estrutura geral em mãos tratamos três assuntos em que a topologia é decisiva. As cargas pontuais, em que a forma
+                    é singular e o Teorema de Stokes precisa ser aplicado numa região oca. Os monopolos magnéticos, em que a $2$-forma
+                    continua fechada mas deixa de ser exata, e o potencial precisa das cordas de Dirac. E as correntes conservadas em
+                    geral: toda corrente conservada tem uma carga, e é assim que a Relatividade Geral define a massa.
+                </p>
+
+                <p>
+                    Usamos o lema de Poincaré e a cohomologia de de Rham do tópico <a href="[02] - O Lema de Poincaré.html">4.2</a>
+                    (<a href="[02] - O Lema de Poincaré.html#cor-4-2-7">Corolário 4.2.7</a>, <a href="[02] - O Lema de Poincaré.html#prop-4-2-12">Proposição 4.2.12</a>, <a href="[02] - O Lema de Poincaré.html#teo-4-2-13">Teorema 4.2.13</a>), a forma de volume do tópico
+                    <a href="[03] - Métricas e Volume Invariante.html">4.3</a>, a estrela de Hodge e a estrela dupla do tópico
+                    <a href="[04] - O Operador Estrela de Hodge.html">4.4</a> (<a href="[04] - O Operador Estrela de Hodge.html#prop-4-4-5">Proposição 4.4.5</a>, <a href="[04] - O Operador Estrela de Hodge.html#teo-4-4-15">Teorema 4.4.15</a>, <a href="[04] - O Operador Estrela de Hodge.html#prop-4-4-23">Proposição 4.4.23</a>) e o Teorema de
+                    Stokes, pelo seu enunciado (tópico
+                    <a href="../[2] - Cálculo em Variedades Diferenciáveis/[18] - Teorema de Stokes Geral.html">3.18</a>). Este é o último
+                    tópico da Parte I.
+                </p>
+
+                <h2 id="estrutura-geral">A teoria a partir de uma 2-forma fechada</h2>
+
+                <p>
+                    O tópico 4.7 mostrou que as equações homogêneas dizem que uma $2$-forma é fechada, e o 4.8 que as com fontes definem
+                    uma corrente pelo dual dessa forma. Invertemos a ordem: tomamos isso como ponto de partida.
+                </p>
+
+                <div class="definition-box" id="def-4-9-1" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.9.1 (A teoria geral).</strong> Seja $(M, g)$ uma variedade pseudo-riemanniana orientada de
+                        dimensão 4, de índice $s$, e seja $\omega \in \Omega^2(M)$ uma $2$-forma <strong>fechada</strong>, $d\omega = 0$. A
+                        <strong>corrente</strong> de $\omega$ é a $3$-forma</p>
+                    <p>$$ j_\omega = d\star\omega. \tag{4.9.1} $$</p>
+                </div>
+
+                <p>
+                    No eletromagnetismo, $M = \mathbb{R}^4$ com $g = \eta$ e $\omega = F$; pela (4.8.9), $j_F = d\star F = \mu_0j$, a corrente do
+                    tópico 4.8 multiplicada por $\mu_0$. A teoria geral não tem constantes; elas aparecem quando se escolhem as unidades das
+                    grandezas físicas. Em qualquer aberto estrelado, $d\omega = 0$ dá um potencial, $\omega = dA$ (<a href="[02] - O Lema de Poincaré.html#cor-4-2-7">Corolário 4.2.7</a>), e a liberdade
+                    $A \mapsto A + df$ vem junto. As equações $d\omega = 0$ e (4.9.1) são as homogêneas e as com fontes da teoria.
+                </p>
+
+                <div class="definition-box" id="cor-4-9-2">
+                    <p><strong>Corolário 4.9.2 (A corrente se conserva).</strong> $dj_\omega = 0$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> $dj_\omega = d(d\star\omega) = 0$ (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[13] - Derivada Exterior.html#teo-3-13-5">Teorema 3.13.5</a>(iii)). $\blacksquare$
+                </p>
+
+                <p>
+                    Nenhuma propriedade de $\omega$ foi usada: a conservação vale para a corrente de qualquer $2$-forma, fechada ou não. O
+                    ponto é que (4.9.1) já é uma afirmação sobre a forma da corrente, que é sempre uma derivada exterior.
+                </p>
+
+                <p>
+                    Em componentes, a corrente é a divergência de $\omega$. Como $j_\omega$ é uma $3$-forma, é mais cômodo olhar para a
+                    $1$-forma $\star j_\omega = \star d\star\omega$.
+                </p>
+
+                <div class="definition-box" id="prop-4-9-3">
+                    <p><strong>Proposição 4.9.3 ($\star d\star$ em $2$-formas).</strong> Sejam $(x^\mu)$ coordenadas em que a métrica é
+                        constante e diagonal, $g = \operatorname{diag}(\epsilon_0, \epsilon_1, \epsilon_2, \epsilon_3)$ com $\epsilon_\mu = \pm1$,
+                        e com $dx^0\wedge dx^1\wedge dx^2\wedge dx^3$ positiva. Para toda $2$-forma $\omega = \frac12\omega_{\mu\nu}\,dx^\mu\wedge dx^\nu$,</p>
+                    <p>$$ \star d\star\omega = (-1)^{s+1}\,\big(\partial^\nu\omega_{\mu\nu}\big)\,dx^\mu, \qquad \partial^\nu = g^{\nu\nu}\partial_\nu. \tag{4.9.2} $$</p>
+                    <p>Em Minkowski ($s = 1$), $\star d\star\omega = (\partial^\nu\omega_{\mu\nu})\,dx^\mu$; em $\mathbb{R}^4$ euclidiano ($s = 0$),
+                        $\star d\star\omega = (\partial^\nu\omega_{\nu\mu})\,dx^\mu$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Por linearidade, basta tratar $\omega = f\,dx^\mu\wedge dx^\nu$ com $\mu \lt \nu$ fixos. Sejam
+                    $\kappa \lt \lambda$ os outros dois índices e $\sigma = \sigma(\mu\nu\kappa\lambda)$ o sinal da permutação. Os $dx^\alpha$ são
+                    ortonormais com sinais $\epsilon_\alpha$, e pela <a href="[04] - O Operador Estrela de Hodge.html#prop-4-4-5">Proposição 4.4.5</a>,
+                    $\star(dx^\mu\wedge dx^\nu) = \epsilon_\mu\epsilon_\nu\,\sigma\,dx^\kappa\wedge dx^\lambda$. Então
+                </p>
+
+                <p>
+                    $$ d\star\omega = \epsilon_\mu\epsilon_\nu\,\sigma\,\big(\partial_\mu f\,dx^\mu\wedge dx^\kappa\wedge dx^\lambda
+                    + \partial_\nu f\,dx^\nu\wedge dx^\kappa\wedge dx^\lambda\big), $$
+                </p>
+
+                <p>
+                    porque os termos com $dx^\kappa$ ou $dx^\lambda$ repetidos se anulam. De novo pela <a href="[04] - O Operador Estrela de Hodge.html#prop-4-4-5">Proposição 4.4.5</a>,
+                    $\star(dx^\mu\wedge dx^\kappa\wedge dx^\lambda) = \epsilon_\mu\epsilon_\kappa\epsilon_\lambda\,\sigma(\mu\kappa\lambda\nu)\,dx^\nu$ e
+                    $\star(dx^\nu\wedge dx^\kappa\wedge dx^\lambda) = \epsilon_\nu\epsilon_\kappa\epsilon_\lambda\,\sigma(\nu\kappa\lambda\mu)\,dx^\mu$. A
+                    sequência $(\mu,\kappa,\lambda,\nu)$ se obtém de $(\mu,\nu,\kappa,\lambda)$ levando $\nu$ duas casas para a direita, e tem o
+                    mesmo sinal $\sigma$; a sequência $(\nu,\kappa,\lambda,\mu)$ é um ciclo de comprimento 4 aplicado a $(\mu,\nu,\kappa,\lambda)$, e
+                    tem sinal $-\sigma$. Usando $\sigma^2 = 1$, $\epsilon_\alpha^2 = 1$ e
+                    $\epsilon_0\epsilon_1\epsilon_2\epsilon_3 = (-1)^s$ (logo $\epsilon_\nu\epsilon_\kappa\epsilon_\lambda = (-1)^s\epsilon_\mu$ e
+                    $\epsilon_\mu\epsilon_\kappa\epsilon_\lambda = (-1)^s\epsilon_\nu$),
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    \star d\star\big(f\,dx^\mu\wedge dx^\nu\big) &= (-1)^s\big(\epsilon_\mu\partial_\mu f\,dx^\nu - \epsilon_\nu\partial_\nu f\,dx^\mu\big)\\
+                    &= (-1)^s\big(\partial^\mu f\,dx^\nu - \partial^\nu f\,dx^\mu\big).
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    Do outro lado, as componentes não nulas de $\omega$ são $\omega_{\mu\nu} = f$ e $\omega_{\nu\mu} = -f$, e
+                    $\sum_{\alpha,\beta}(\partial^\beta\omega_{\alpha\beta})\,dx^\alpha = \partial^\nu f\,dx^\mu - \partial^\mu f\,dx^\nu$. Multiplicando por
+                    $(-1)^{s+1}$, obtemos a mesma expressão. $\blacksquare$
+                </p>
+
+                <p>
+                    Em Minkowski, com $\omega = F$, (4.9.2) é $\star d\star F = (\partial^\nu F_{\mu\nu})\,dx^\mu$, e com
+                    $\star(\mu_0j) = \mu_0J^\flat$ (<a href="[08] - Inomogêneas e a Métrica de Minkowski.html#prop-4-8-21">Proposição 4.8.21</a>) reencontramos $\partial^\nu F_{\mu\nu} = \mu_0J_\mu$, que é a (4.8.11) com os índices
+                    na outra posição. O sinal $(-1)^{s+1}$ é o que distingue a geometria riemanniana da lorentziana nesta conta; ele foi
+                    conferido em sympy nos dois casos. A versão em $\mathbb{R}^3$ está no <a href="#exr-4-9-1">Exercício 4.9.1</a>.
+                </p>
+
+                <h2 id="decomposicao">Escolhendo um tempo</h2>
+
+                <p>
+                    Até aqui nenhuma coordenada teve papel especial. Escolher uma delas, $x^0$, como "tempo" decompõe a $2$-forma em duas
+                    partes que, no espaço complementar, são objetos de tipos diferentes. A partir daqui, $M = \mathbb{R}^4$ com $g = \eta$, e a
+                    decomposição é a da <a href="[07] - Equações Homogêneas em 4D.html#prop-4-7-2">Proposição 4.7.2</a>:
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    &\omega = E\wedge dx^0 + B,\\
+                    &E = \omega_{i0}\,dx^i, \qquad B = \tfrac12\,\omega_{ki}\,dx^k\wedge dx^i.
+                    \end{aligned} \tag{4.9.3} $$
+                </p>
+
+                <p>
+                    Para $\omega = F$, a parte "elétrica" é $E = \mathbf{E}/c$ (a teoria geral não tem o fator $c$) e $B$ é a do tópico 4.7.
+                </p>
+
+                <div class="definition-box" id="prop-4-9-4">
+                    <p><strong>Proposição 4.9.4 (As partes de $\omega$ sob rotações espaciais).</strong> Seja $r$ uma matriz ortogonal
+                        $3\times3$ e considere as coordenadas novas $\tilde x^0 = x^0$, $\tilde x^i = r_{ik}x^k$, isto é, a mudança dada por
+                        $R = \operatorname{diag}(1, r)$. Escrevendo a mesma $\omega$ nas coordenadas novas,
+                        $\omega = \tilde E\wedge d\tilde x^0 + \tilde B$, vale</p>
+                    <p>$$ \tilde E_i = r_{ik}\,E_k, \qquad \tilde B_{ki} = r_{km}\,r_{in}\,B_{mn}: $$</p>
+                    <p>$E$ se transforma como um vetor (uma $1$-forma) do espaço complementar e $B$ como um tensor antissimétrico (uma
+                        $2$-forma); as duas partes não se misturam.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Como $r^{-1} = r^T$, $x^k = r_{ik}\tilde x^i$ e $dx^k = r_{ik}\,d\tilde x^i$; e $dx^0 = d\tilde x^0$. Então
+                    $E\wedge dx^0 = E_k\,r_{ik}\,d\tilde x^i\wedge d\tilde x^0$, de onde $\tilde E_i = r_{ik}E_k$, e
+                    $B = \frac12B_{mn}\,r_{km}r_{in}\,d\tilde x^k\wedge d\tilde x^i$, de onde $\tilde B_{ki} = r_{km}r_{in}B_{mn}$. Nenhum termo de
+                    $E\wedge dx^0$ vira espacial, nem vice-versa, porque $dx^0$ não muda. $\blacksquare$
+                </p>
+
+                <p>
+                    Compare com o <em>boost</em> do <a href="[08] - Inomogêneas e a Métrica de Minkowski.html#ex-4-8-19">Exemplo 4.8.19</a>, que mistura $x^0$ com $x^1$ e por isso mistura $E$ com $B$: a separação em
+                    campo "elétrico" e "magnético" é preservada exatamente pelas transformações que preservam a coordenada escolhida como
+                    tempo. Com $r$ uma rotação ($\det r = 1$), $R$ está em $SO^+(3,1)$.
+                </p>
+
+                <div class="definition-box" id="prop-4-9-5">
+                    <p><strong>Proposição 4.9.5 (O dual de $\omega$ numa fatia).</strong> Em Minkowski, com $\omega$ como em (4.9.3),</p>
+                    <p>$$ \star\omega = \ast E - (\ast B)\wedge dx^0, $$</p>
+                    <p>e, se $\iota$ é a inclusão de uma fatia $\{x^0 = \text{const}\}$, $\iota^*\star\omega = \ast E$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> A fórmula é a do <a href="[08] - Inomogêneas e a Métrica de Minkowski.html#exr-4-8-2">Exercício 4.8.2</a> (ou a (4.8.7) com $a = -1$) com $\frac1c\mathbf{E}$ trocado por $E$. Na
+                    fatia, $\iota^*dx^0 = 0$ (<a href="[07] - Equações Homogêneas em 4D.html#prop-4-7-7">Proposição 4.7.7</a>), e sobra $\ast E$, cujas componentes são as de $E$ no instante da fatia.
+                    $\blacksquare$
+                </p>
+
+                <p>
+                    O dual em $\mathbb{R}^3$ que aparece aqui é sempre $\ast$, a estrela de três dimensões. Chamando, como no 4.8,
+                    $D_\omega = \ast E$ e $H_\omega = \ast B$, a proposição diz $\star\omega = D_\omega - H_\omega\wedge dx^0$: a teoria geral
+                    reproduz a estrutura da excitação $\mathcal{M}$, sem constantes. Para $\omega = F$,
+                    $\star F = \mu_0\mathcal{M} = \mu_0(cD - H\wedge dx^0)$ e $\iota^*\star F = \mu_0c\,D$.
+                </p>
+
+                <h2 id="carga">A carga como fluxo</h2>
+
+                <p>
+                    A escolha de um tempo permite falar em carga "dentro de uma região num instante". Em todas as integrais desta seção e das
+                    próximas a forma é restrita (por <em>pullback</em>, ou retrocesso) à superfície ou à região sobre a qual se integra, e
+                    não escrevemos a inclusão quando não houver ambiguidade.
+                </p>
+
+                <div class="definition-box" id="def-4-9-6" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.9.6 (Carga).</strong> Seja $V$ uma região compacta com bordo contida numa fatia
+                        $\{x^0 = \text{const}\}$, orientada por $dx^1\wedge dx^2\wedge dx^3$, com $\partial V$ orientado como bordo. A
+                        <strong>carga</strong> de $\omega$ em $V$ é</p>
+                    <p>$$ Q_\omega[\partial V] = \int_{\partial V}\star\omega. \tag{4.9.4} $$</p>
+                </div>
+
+                <div class="definition-box" id="prop-4-9-7">
+                    <p><strong>Proposição 4.9.7 (A lei de Gauss como definição).</strong> Se $\omega$ é suave numa vizinhança de $V$,</p>
+                    <p>$$ Q_\omega[\partial V] = \int_{\partial V}\ast E = \int_Vj_\omega. $$</p>
+                    <p>Para $\omega = F$ no eletromagnetismo, $Q_F[\partial V] = \mu_0c\oint_{\partial V}D = \mu_0c\int_V\varrho$: a menos da constante
+                        $\mu_0c$, é a carga elétrica em $V$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Seja $\iota: N \to \mathbb{R}^4$ a inclusão da fatia que contém $V$. O <em>pullback</em> a $\partial V$ passa
+                    pelo da fatia, e pela <a href="#prop-4-9-5">Proposição 4.9.5</a> é o de $\ast E$: isso dá a primeira igualdade. Pelo Teorema de Stokes em $V$ (tópico
+                    <a href="../[2] - Cálculo em Variedades Diferenciáveis/[18] - Teorema de Stokes Geral.html">3.18</a>) e pela naturalidade de
+                    $d$ (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[13] - Derivada Exterior.html#teo-3-13-7">Teorema 3.13.7</a>),
+                    $\int_{\partial V}\iota^*\star\omega = \int_Vd(\iota^*\star\omega) = \int_V\iota^*(d\star\omega) = \int_Vj_\omega$. Para $\omega = F$,
+                    $\iota^*\star F = \mu_0c\,D$ (<a href="#prop-4-9-5">Proposição 4.9.5</a>), e pela <a href="[08] - Inomogêneas e a Métrica de Minkowski.html#prop-4-8-3">Proposição 4.8.3</a>(a) $\int_Vj_F = \mu_0\int_Vj = \mu_0c\int_V\varrho$. $\blacksquare$
+                </p>
+
+                <p>
+                    No eletromagnetismo usual, $\oint_{\partial V}D = \int_V\varrho$ é a lei de Gauss, um fato experimental. Na teoria geral, a
+                    mesma igualdade é um teorema (Stokes) e o seu conteúdo é a <em>definição</em> de carga: a carga numa região é o fluxo de
+                    $\star\omega$ pelo seu bordo, e a $3$-forma $j_\omega$ é a sua densidade.
+                </p>
+
+                <p id="obs-4-9-8"><strong>Observação 4.9.8 (A carga como fluxo de um quadrivetor).</strong> Em Minkowski, $\star\star = 1$ em
+                    $1$-formas, e toda $3$-forma é o dual de uma $1$-forma: $j_\omega = \star(J_\omega^\flat)$ com $J_\omega^\flat = \star j_\omega$
+                    (<a href="[08] - Inomogêneas e a Métrica de Minkowski.html#prop-4-8-21">Proposição 4.8.21</a>). Pelo <a href="[04] - O Operador Estrela de Hodge.html#cor-4-4-9">Corolário 4.4.9</a>, $j_\omega = i_{J_\omega}\operatorname{vol}_\eta$, e a carga</p>
+
+                <p>
+                    $$ Q_\omega = \int_Vi_{J_\omega}\operatorname{vol}_\eta $$
+                </p>
+
+                <p>
+                    é o fluxo do campo vetorial $J_\omega$ através da hipersuperfície $V$ (a integral de $i_X\mu$ sobre uma hipersuperfície é o
+                    fluxo de $X$, como no teorema da divergência do tópico 3.14). Numa fatia, só a componente $J_\omega^0$ contribui, porque
+                    $\iota^*(i_J\operatorname{vol}_\eta) = J^0\,dx^1\wedge dx^2\wedge dx^3$: a carga é a integral da densidade.
+                </p>
+
+                <h2 id="carga-pontual">Cargas pontuais</h2>
+
+                <p>
+                    A <a href="#prop-4-9-7">Proposição 4.9.7</a> supõe $\omega$ suave em toda a região $V$. Para uma carga pontual isso falha: o campo de Coulomb, e com
+                    ele $\star\omega$, não está definido na posição da carga, e o Teorema de Stokes exige uma forma suave em toda a região de
+                    integração. O obstáculo não é a conexidade simples: $\mathbb{R}^3\setminus\{0\}$ é simplesmente conexo, e o que impede
+                    $\ast E$ de ter "carga zero" é que ela é uma $2$-forma fechada e não exata nesse espaço, isto é,
+                    $H^2(\mathbb{R}^3\setminus\{0\}) \ne 0$ (<a href="[02] - O Lema de Poincaré.html#teo-4-2-13">Teorema 4.2.13</a>, <a href="[02] - O Lema de Poincaré.html#obs-4-2-14">Observação 4.2.14</a>).
+                </p>
+
+                <p>
+                    Há duas saídas. A primeira é trocar a densidade de carga, que deixaria de ser uma função, por uma distribuição
+                    concentrada no ponto (a "função delta" de Dirac); as componentes de $j_\omega$ passam a ser distribuições, e a integral
+                    de $j_\omega$ deixa de ser uma integral comum. É o caminho usual dos livros de física (Jackson, cap. 1), e não o
+                    seguimos. A segunda mantém tudo suave: integra-se numa região <em>oca</em>, que não contém a carga.
+                </p>
+
+                <figure class="lecture-figure" id="fig-4-9-1" style="overflow-x: auto; overflow-y: hidden;">
+                    <svg viewBox="0 0 640 270" role="img" style="min-width: 560px;" aria-label="Dois painéis, cada um com uma carga pontual q no centro e uma região sombreada V que a envolve sem contê-la. No painel a, V é uma casca entre um círculo interno S i e um círculo externo S f. No painel b, o bordo externo S tem forma irregular. Setas indicam a normal exterior de V: no bordo externo apontam para fora, e no bordo interno S i apontam para a carga.">
+<defs><marker id="arr-4-9-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<path d="M252,128 L251.9,124.8 L251.8,121.6 L251.5,118.4 L251.1,115.2 L250.6,112 L250,108.9 L249.3,105.7 L248.4,102.6 L247.5,99.6 L246.5,96.5 L245.3,93.5 L244,90.6 L242.7,87.7 L241.2,84.8 L239.7,82 L238,79.2 L236.3,76.6 L234.4,73.9 L232.5,71.4 L230.5,68.9 L228.4,66.4 L226.2,64.1 L223.9,61.8 L221.6,59.6 L219.1,57.5 L216.6,55.5 L214.1,53.6 L211.4,51.7 L208.8,50 L206,48.3 L203.2,46.8 L200.3,45.3 L197.4,44 L194.5,42.7 L191.5,41.5 L188.4,40.5 L185.4,39.6 L182.3,38.7 L179.1,38 L176,37.4 L172.8,36.9 L169.6,36.5 L166.4,36.2 L163.2,36.1 L160,36 L156.8,36.1 L153.6,36.2 L150.4,36.5 L147.2,36.9 L144,37.4 L140.9,38 L137.7,38.7 L134.6,39.6 L131.6,40.5 L128.5,41.5 L125.5,42.7 L122.6,44 L119.7,45.3 L116.8,46.8 L114,48.3 L111.2,50 L108.6,51.7 L105.9,53.6 L103.4,55.5 L100.9,57.5 L98.4,59.6 L96.1,61.8 L93.8,64.1 L91.6,66.4 L89.5,68.9 L87.5,71.4 L85.6,73.9 L83.7,76.6 L82,79.2 L80.3,82 L78.8,84.8 L77.3,87.7 L76,90.6 L74.7,93.5 L73.5,96.5 L72.5,99.6 L71.6,102.6 L70.7,105.7 L70,108.9 L69.4,112 L68.9,115.2 L68.5,118.4 L68.2,121.6 L68.1,124.8 L68,128 L68.1,131.2 L68.2,134.4 L68.5,137.6 L68.9,140.8 L69.4,144 L70,147.1 L70.7,150.3 L71.6,153.4 L72.5,156.4 L73.5,159.5 L74.7,162.5 L76,165.4 L77.3,168.3 L78.8,171.2 L80.3,174 L82,176.8 L83.7,179.4 L85.6,182.1 L87.5,184.6 L89.5,187.1 L91.6,189.6 L93.8,191.9 L96.1,194.2 L98.4,196.4 L100.9,198.5 L103.4,200.5 L105.9,202.4 L108.6,204.3 L111.2,206 L114,207.7 L116.8,209.2 L119.7,210.7 L122.6,212 L125.5,213.3 L128.5,214.5 L131.6,215.5 L134.6,216.4 L137.7,217.3 L140.9,218 L144,218.6 L147.2,219.1 L150.4,219.5 L153.6,219.8 L156.8,219.9 L160,220 L163.2,219.9 L166.4,219.8 L169.6,219.5 L172.8,219.1 L176,218.6 L179.1,218 L182.3,217.3 L185.4,216.4 L188.4,215.5 L191.5,214.5 L194.5,213.3 L197.4,212 L200.3,210.7 L203.2,209.2 L206,207.7 L208.8,206 L211.4,204.3 L214.1,202.4 L216.6,200.5 L219.1,198.5 L221.6,196.4 L223.9,194.2 L226.2,191.9 L228.4,189.6 L230.5,187.1 L232.5,184.6 L234.4,182.1 L236.3,179.4 L238,176.8 L239.7,174 L241.2,171.2 L242.7,168.3 L244,165.4 L245.3,162.5 L246.5,159.5 L247.5,156.4 L248.4,153.4 L249.3,150.3 L250,147.1 L250.6,144 L251.1,140.8 L251.5,137.6 L251.8,134.4 L251.9,131.2 Z M190,128 L190,127 L189.9,125.9 L189.8,124.9 L189.7,123.8 L189.5,122.8 L189.3,121.8 L189.1,120.7 L188.8,119.7 L188.5,118.7 L188.2,117.7 L187.8,116.8 L187.4,115.8 L187,114.8 L186.5,113.9 L186,113 L185.4,112.1 L184.9,111.2 L184.3,110.4 L183.6,109.5 L183,108.7 L182.3,107.9 L181.6,107.2 L180.8,106.4 L180.1,105.7 L179.3,105 L178.5,104.4 L177.6,103.7 L176.8,103.1 L175.9,102.6 L175,102 L174.1,101.5 L173.2,101 L172.2,100.6 L171.2,100.2 L170.3,99.8 L169.3,99.5 L168.3,99.2 L167.3,98.9 L166.2,98.7 L165.2,98.5 L164.2,98.3 L163.1,98.2 L162.1,98.1 L161,98 L160,98 L159,98 L157.9,98.1 L156.9,98.2 L155.8,98.3 L154.8,98.5 L153.8,98.7 L152.7,98.9 L151.7,99.2 L150.7,99.5 L149.7,99.8 L148.8,100.2 L147.8,100.6 L146.8,101 L145.9,101.5 L145,102 L144.1,102.6 L143.2,103.1 L142.4,103.7 L141.5,104.4 L140.7,105 L139.9,105.7 L139.2,106.4 L138.4,107.2 L137.7,107.9 L137,108.7 L136.4,109.5 L135.7,110.4 L135.1,111.2 L134.6,112.1 L134,113 L133.5,113.9 L133,114.8 L132.6,115.8 L132.2,116.8 L131.8,117.7 L131.5,118.7 L131.2,119.7 L130.9,120.7 L130.7,121.8 L130.5,122.8 L130.3,123.8 L130.2,124.9 L130.1,125.9 L130,127 L130,128 L130,129 L130.1,130.1 L130.2,131.1 L130.3,132.2 L130.5,133.2 L130.7,134.2 L130.9,135.3 L131.2,136.3 L131.5,137.3 L131.8,138.3 L132.2,139.2 L132.6,140.2 L133,141.2 L133.5,142.1 L134,143 L134.6,143.9 L135.1,144.8 L135.7,145.6 L136.4,146.5 L137,147.3 L137.7,148.1 L138.4,148.8 L139.2,149.6 L139.9,150.3 L140.7,151 L141.5,151.6 L142.4,152.3 L143.2,152.9 L144.1,153.4 L145,154 L145.9,154.5 L146.8,155 L147.8,155.4 L148.8,155.8 L149.7,156.2 L150.7,156.5 L151.7,156.8 L152.7,157.1 L153.8,157.3 L154.8,157.5 L155.8,157.7 L156.9,157.8 L157.9,157.9 L159,158 L160,158 L161,158 L162.1,157.9 L163.1,157.8 L164.2,157.7 L165.2,157.5 L166.2,157.3 L167.3,157.1 L168.3,156.8 L169.3,156.5 L170.3,156.2 L171.2,155.8 L172.2,155.4 L173.2,155 L174.1,154.5 L175,154 L175.9,153.4 L176.8,152.9 L177.6,152.3 L178.5,151.6 L179.3,151 L180.1,150.3 L180.8,149.6 L181.6,148.8 L182.3,148.1 L183,147.3 L183.6,146.5 L184.3,145.6 L184.9,144.8 L185.4,143.9 L186,143 L186.5,142.1 L187,141.2 L187.4,140.2 L187.8,139.2 L188.2,138.3 L188.5,137.3 L188.8,136.3 L189.1,135.3 L189.3,134.2 L189.5,133.2 L189.7,132.2 L189.8,131.1 L189.9,130.1 L190,129 Z" class="fig-band" fill-rule="evenodd"/>
+<path d="M252,128 L251.9,124.8 L251.8,121.6 L251.5,118.4 L251.1,115.2 L250.6,112 L250,108.9 L249.3,105.7 L248.4,102.6 L247.5,99.6 L246.5,96.5 L245.3,93.5 L244,90.6 L242.7,87.7 L241.2,84.8 L239.7,82 L238,79.2 L236.3,76.6 L234.4,73.9 L232.5,71.4 L230.5,68.9 L228.4,66.4 L226.2,64.1 L223.9,61.8 L221.6,59.6 L219.1,57.5 L216.6,55.5 L214.1,53.6 L211.4,51.7 L208.8,50 L206,48.3 L203.2,46.8 L200.3,45.3 L197.4,44 L194.5,42.7 L191.5,41.5 L188.4,40.5 L185.4,39.6 L182.3,38.7 L179.1,38 L176,37.4 L172.8,36.9 L169.6,36.5 L166.4,36.2 L163.2,36.1 L160,36 L156.8,36.1 L153.6,36.2 L150.4,36.5 L147.2,36.9 L144,37.4 L140.9,38 L137.7,38.7 L134.6,39.6 L131.6,40.5 L128.5,41.5 L125.5,42.7 L122.6,44 L119.7,45.3 L116.8,46.8 L114,48.3 L111.2,50 L108.6,51.7 L105.9,53.6 L103.4,55.5 L100.9,57.5 L98.4,59.6 L96.1,61.8 L93.8,64.1 L91.6,66.4 L89.5,68.9 L87.5,71.4 L85.6,73.9 L83.7,76.6 L82,79.2 L80.3,82 L78.8,84.8 L77.3,87.7 L76,90.6 L74.7,93.5 L73.5,96.5 L72.5,99.6 L71.6,102.6 L70.7,105.7 L70,108.9 L69.4,112 L68.9,115.2 L68.5,118.4 L68.2,121.6 L68.1,124.8 L68,128 L68.1,131.2 L68.2,134.4 L68.5,137.6 L68.9,140.8 L69.4,144 L70,147.1 L70.7,150.3 L71.6,153.4 L72.5,156.4 L73.5,159.5 L74.7,162.5 L76,165.4 L77.3,168.3 L78.8,171.2 L80.3,174 L82,176.8 L83.7,179.4 L85.6,182.1 L87.5,184.6 L89.5,187.1 L91.6,189.6 L93.8,191.9 L96.1,194.2 L98.4,196.4 L100.9,198.5 L103.4,200.5 L105.9,202.4 L108.6,204.3 L111.2,206 L114,207.7 L116.8,209.2 L119.7,210.7 L122.6,212 L125.5,213.3 L128.5,214.5 L131.6,215.5 L134.6,216.4 L137.7,217.3 L140.9,218 L144,218.6 L147.2,219.1 L150.4,219.5 L153.6,219.8 L156.8,219.9 L160,220 L163.2,219.9 L166.4,219.8 L169.6,219.5 L172.8,219.1 L176,218.6 L179.1,218 L182.3,217.3 L185.4,216.4 L188.4,215.5 L191.5,214.5 L194.5,213.3 L197.4,212 L200.3,210.7 L203.2,209.2 L206,207.7 L208.8,206 L211.4,204.3 L214.1,202.4 L216.6,200.5 L219.1,198.5 L221.6,196.4 L223.9,194.2 L226.2,191.9 L228.4,189.6 L230.5,187.1 L232.5,184.6 L234.4,182.1 L236.3,179.4 L238,176.8 L239.7,174 L241.2,171.2 L242.7,168.3 L244,165.4 L245.3,162.5 L246.5,159.5 L247.5,156.4 L248.4,153.4 L249.3,150.3 L250,147.1 L250.6,144 L251.1,140.8 L251.5,137.6 L251.8,134.4 L251.9,131.2 L252,128" class="fig-curve"/>
+<path d="M190,128 L190,127 L189.9,125.9 L189.8,124.9 L189.7,123.8 L189.5,122.8 L189.3,121.8 L189.1,120.7 L188.8,119.7 L188.5,118.7 L188.2,117.7 L187.8,116.8 L187.4,115.8 L187,114.8 L186.5,113.9 L186,113 L185.4,112.1 L184.9,111.2 L184.3,110.4 L183.6,109.5 L183,108.7 L182.3,107.9 L181.6,107.2 L180.8,106.4 L180.1,105.7 L179.3,105 L178.5,104.4 L177.6,103.7 L176.8,103.1 L175.9,102.6 L175,102 L174.1,101.5 L173.2,101 L172.2,100.6 L171.2,100.2 L170.3,99.8 L169.3,99.5 L168.3,99.2 L167.3,98.9 L166.2,98.7 L165.2,98.5 L164.2,98.3 L163.1,98.2 L162.1,98.1 L161,98 L160,98 L159,98 L157.9,98.1 L156.9,98.2 L155.8,98.3 L154.8,98.5 L153.8,98.7 L152.7,98.9 L151.7,99.2 L150.7,99.5 L149.7,99.8 L148.8,100.2 L147.8,100.6 L146.8,101 L145.9,101.5 L145,102 L144.1,102.6 L143.2,103.1 L142.4,103.7 L141.5,104.4 L140.7,105 L139.9,105.7 L139.2,106.4 L138.4,107.2 L137.7,107.9 L137,108.7 L136.4,109.5 L135.7,110.4 L135.1,111.2 L134.6,112.1 L134,113 L133.5,113.9 L133,114.8 L132.6,115.8 L132.2,116.8 L131.8,117.7 L131.5,118.7 L131.2,119.7 L130.9,120.7 L130.7,121.8 L130.5,122.8 L130.3,123.8 L130.2,124.9 L130.1,125.9 L130,127 L130,128 L130,129 L130.1,130.1 L130.2,131.1 L130.3,132.2 L130.5,133.2 L130.7,134.2 L130.9,135.3 L131.2,136.3 L131.5,137.3 L131.8,138.3 L132.2,139.2 L132.6,140.2 L133,141.2 L133.5,142.1 L134,143 L134.6,143.9 L135.1,144.8 L135.7,145.6 L136.4,146.5 L137,147.3 L137.7,148.1 L138.4,148.8 L139.2,149.6 L139.9,150.3 L140.7,151 L141.5,151.6 L142.4,152.3 L143.2,152.9 L144.1,153.4 L145,154 L145.9,154.5 L146.8,155 L147.8,155.4 L148.8,155.8 L149.7,156.2 L150.7,156.5 L151.7,156.8 L152.7,157.1 L153.8,157.3 L154.8,157.5 L155.8,157.7 L156.9,157.8 L157.9,157.9 L159,158 L160,158 L161,158 L162.1,157.9 L163.1,157.8 L164.2,157.7 L165.2,157.5 L166.2,157.3 L167.3,157.1 L168.3,156.8 L169.3,156.5 L170.3,156.2 L171.2,155.8 L172.2,155.4 L173.2,155 L174.1,154.5 L175,154 L175.9,153.4 L176.8,152.9 L177.6,152.3 L178.5,151.6 L179.3,151 L180.1,150.3 L180.8,149.6 L181.6,148.8 L182.3,148.1 L183,147.3 L183.6,146.5 L184.3,145.6 L184.9,144.8 L185.4,143.9 L186,143 L186.5,142.1 L187,141.2 L187.4,140.2 L187.8,139.2 L188.2,138.3 L188.5,137.3 L188.8,136.3 L189.1,135.3 L189.3,134.2 L189.5,133.2 L189.7,132.2 L189.8,131.1 L189.9,130.1 L190,129 L190,128" class="fig-curve"/>
+<line x1="239.7" y1="82" x2="258.7" y2="71" class="fig-axis" marker-end="url(#arr-4-9-1)"/>
+<line x1="160" y1="36" x2="160" y2="14" class="fig-axis" marker-end="url(#arr-4-9-1)"/>
+<line x1="80.3" y1="82" x2="61.3" y2="71" class="fig-axis" marker-end="url(#arr-4-9-1)"/>
+<line x1="80.3" y1="174" x2="61.3" y2="185" class="fig-axis" marker-end="url(#arr-4-9-1)"/>
+<line x1="160" y1="220" x2="160" y2="242" class="fig-axis" marker-end="url(#arr-4-9-1)"/>
+<line x1="239.7" y1="174" x2="258.7" y2="185" class="fig-axis" marker-end="url(#arr-4-9-1)"/>
+<line x1="181.2" y1="106.8" x2="170.6" y2="117.4" class="fig-axis" marker-end="url(#arr-4-9-1)"/>
+<line x1="138.8" y1="106.8" x2="149.4" y2="117.4" class="fig-axis" marker-end="url(#arr-4-9-1)"/>
+<line x1="138.8" y1="149.2" x2="149.4" y2="138.6" class="fig-axis" marker-end="url(#arr-4-9-1)"/>
+<line x1="181.2" y1="149.2" x2="170.6" y2="138.6" class="fig-axis" marker-end="url(#arr-4-9-1)"/>
+<circle cx="160" cy="128" r="4" class="fig-arrowhead"/>
+<text x="166" y="132" class="fig-label fig-it">q</text>
+<text x="126" y="132" text-anchor="end" class="fig-label fig-it">S_i</text>
+<text x="269.4" y="176.9" class="fig-label fig-it">S_f</text>
+<text x="108" y="172" text-anchor="middle" class="fig-label fig-it">V</text>
+<text x="160" y="262" text-anchor="middle" class="fig-label fig-small">(a) casca entre duas esferas</text>
+<path d="M566,128 L567.4,124.6 L568.6,121.1 L569.6,117.5 L570.4,113.9 L571,110.2 L571.3,106.5 L571.3,102.7 L571.1,99 L570.6,95.3 L569.8,91.7 L568.8,88.1 L567.4,84.6 L565.8,81.3 L563.9,78 L561.8,75 L559.4,72.1 L556.8,69.5 L554,67 L550.9,64.8 L547.8,62.7 L544.4,61 L541,59.4 L537.4,58.2 L533.8,57.1 L530.2,56.3 L526.5,55.7 L522.8,55.3 L519.2,55.1 L515.5,55.1 L512,55.3 L508.5,55.5 L505.1,55.9 L501.9,56.5 L498.7,57 L495.6,57.6 L492.7,58.3 L489.8,58.9 L487.1,59.6 L484.4,60.2 L481.9,60.7 L479.4,61.1 L477,61.5 L474.6,61.8 L472.3,61.9 L470,62 L467.7,61.9 L465.4,61.8 L463,61.5 L460.6,61.1 L458.1,60.7 L455.6,60.2 L452.9,59.6 L450.2,58.9 L447.3,58.3 L444.4,57.6 L441.3,57 L438.1,56.5 L434.9,55.9 L431.5,55.5 L428,55.3 L424.5,55.1 L420.8,55.1 L417.2,55.3 L413.5,55.7 L409.8,56.3 L406.2,57.1 L402.6,58.2 L399,59.4 L395.6,61 L392.2,62.7 L389.1,64.8 L386,67 L383.2,69.5 L380.6,72.1 L378.2,75 L376.1,78 L374.2,81.3 L372.6,84.6 L371.2,88.1 L370.2,91.7 L369.4,95.3 L368.9,99 L368.7,102.7 L368.7,106.5 L369,110.2 L369.6,113.9 L370.4,117.5 L371.4,121.1 L372.6,124.6 L374,128 L375.5,131.3 L377.2,134.5 L379,137.6 L380.9,140.5 L382.8,143.4 L384.8,146.1 L386.8,148.7 L388.9,151.3 L390.9,153.7 L392.9,156 L394.9,158.3 L396.9,160.6 L398.8,162.7 L400.6,164.9 L402.5,167 L404.2,169.1 L405.9,171.2 L407.6,173.4 L409.2,175.5 L410.8,177.7 L412.4,179.9 L414,182.1 L415.6,184.4 L417.2,186.7 L418.8,189 L420.5,191.3 L422.3,193.7 L424.1,196.1 L426,198.4 L428,200.7 L430.1,203 L432.3,205.3 L434.6,207.5 L437.1,209.5 L439.6,211.5 L442.3,213.4 L445,215.1 L447.9,216.6 L450.9,218 L453.9,219.2 L457,220.2 L460.2,221 L463.5,221.5 L466.7,221.9 L470,222 L473.3,221.9 L476.5,221.5 L479.8,221 L483,220.2 L486.1,219.2 L489.1,218 L492.1,216.6 L495,215.1 L497.7,213.4 L500.4,211.5 L502.9,209.5 L505.4,207.5 L507.7,205.3 L509.9,203 L512,200.7 L514,198.4 L515.9,196.1 L517.7,193.7 L519.5,191.3 L521.2,189 L522.8,186.7 L524.4,184.4 L526,182.1 L527.6,179.9 L529.2,177.7 L530.8,175.5 L532.4,173.4 L534.1,171.2 L535.8,169.1 L537.5,167 L539.4,164.9 L541.2,162.7 L543.1,160.6 L545.1,158.3 L547.1,156 L549.1,153.7 L551.1,151.3 L553.2,148.7 L555.2,146.1 L557.2,143.4 L559.1,140.5 L561,137.6 L562.8,134.5 L564.5,131.3 Z M498,128 L498,127 L497.9,126 L497.8,125.1 L497.7,124.1 L497.6,123.1 L497.4,122.2 L497.2,121.2 L496.9,120.3 L496.6,119.3 L496.3,118.4 L496,117.5 L495.6,116.6 L495.2,115.7 L494.7,114.9 L494.2,114 L493.7,113.2 L493.2,112.3 L492.7,111.5 L492.1,110.8 L491.4,110 L490.8,109.3 L490.1,108.5 L489.5,107.9 L488.7,107.2 L488,106.6 L487.2,105.9 L486.5,105.3 L485.7,104.8 L484.8,104.3 L484,103.8 L483.1,103.3 L482.3,102.8 L481.4,102.4 L480.5,102 L479.6,101.7 L478.7,101.4 L477.7,101.1 L476.8,100.8 L475.8,100.6 L474.9,100.4 L473.9,100.3 L472.9,100.2 L472,100.1 L471,100 L470,100 L469,100 L468,100.1 L467.1,100.2 L466.1,100.3 L465.1,100.4 L464.2,100.6 L463.2,100.8 L462.3,101.1 L461.3,101.4 L460.4,101.7 L459.5,102 L458.6,102.4 L457.7,102.8 L456.9,103.3 L456,103.8 L455.2,104.3 L454.3,104.8 L453.5,105.3 L452.8,105.9 L452,106.6 L451.3,107.2 L450.5,107.9 L449.9,108.5 L449.2,109.3 L448.6,110 L447.9,110.8 L447.3,111.5 L446.8,112.3 L446.3,113.2 L445.8,114 L445.3,114.9 L444.8,115.7 L444.4,116.6 L444,117.5 L443.7,118.4 L443.4,119.3 L443.1,120.3 L442.8,121.2 L442.6,122.2 L442.4,123.1 L442.3,124.1 L442.2,125.1 L442.1,126 L442,127 L442,128 L442,129 L442.1,130 L442.2,130.9 L442.3,131.9 L442.4,132.9 L442.6,133.8 L442.8,134.8 L443.1,135.7 L443.4,136.7 L443.7,137.6 L444,138.5 L444.4,139.4 L444.8,140.3 L445.3,141.1 L445.8,142 L446.3,142.8 L446.8,143.7 L447.3,144.5 L447.9,145.2 L448.6,146 L449.2,146.7 L449.9,147.5 L450.5,148.1 L451.3,148.8 L452,149.4 L452.8,150.1 L453.5,150.7 L454.3,151.2 L455.2,151.7 L456,152.2 L456.9,152.7 L457.7,153.2 L458.6,153.6 L459.5,154 L460.4,154.3 L461.3,154.6 L462.3,154.9 L463.2,155.2 L464.2,155.4 L465.1,155.6 L466.1,155.7 L467.1,155.8 L468,155.9 L469,156 L470,156 L471,156 L472,155.9 L472.9,155.8 L473.9,155.7 L474.9,155.6 L475.8,155.4 L476.8,155.2 L477.7,154.9 L478.7,154.6 L479.6,154.3 L480.5,154 L481.4,153.6 L482.3,153.2 L483.1,152.7 L484,152.2 L484.8,151.7 L485.7,151.2 L486.5,150.7 L487.2,150.1 L488,149.4 L488.7,148.8 L489.5,148.1 L490.1,147.5 L490.8,146.7 L491.4,146 L492.1,145.2 L492.7,144.5 L493.2,143.7 L493.7,142.8 L494.2,142 L494.7,141.1 L495.2,140.3 L495.6,139.4 L496,138.5 L496.3,137.6 L496.6,136.7 L496.9,135.7 L497.2,134.8 L497.4,133.8 L497.6,132.9 L497.7,131.9 L497.8,130.9 L497.9,130 L498,129 Z" class="fig-band" fill-rule="evenodd"/>
+<path d="M566,128 L567.4,124.6 L568.6,121.1 L569.6,117.5 L570.4,113.9 L571,110.2 L571.3,106.5 L571.3,102.7 L571.1,99 L570.6,95.3 L569.8,91.7 L568.8,88.1 L567.4,84.6 L565.8,81.3 L563.9,78 L561.8,75 L559.4,72.1 L556.8,69.5 L554,67 L550.9,64.8 L547.8,62.7 L544.4,61 L541,59.4 L537.4,58.2 L533.8,57.1 L530.2,56.3 L526.5,55.7 L522.8,55.3 L519.2,55.1 L515.5,55.1 L512,55.3 L508.5,55.5 L505.1,55.9 L501.9,56.5 L498.7,57 L495.6,57.6 L492.7,58.3 L489.8,58.9 L487.1,59.6 L484.4,60.2 L481.9,60.7 L479.4,61.1 L477,61.5 L474.6,61.8 L472.3,61.9 L470,62 L467.7,61.9 L465.4,61.8 L463,61.5 L460.6,61.1 L458.1,60.7 L455.6,60.2 L452.9,59.6 L450.2,58.9 L447.3,58.3 L444.4,57.6 L441.3,57 L438.1,56.5 L434.9,55.9 L431.5,55.5 L428,55.3 L424.5,55.1 L420.8,55.1 L417.2,55.3 L413.5,55.7 L409.8,56.3 L406.2,57.1 L402.6,58.2 L399,59.4 L395.6,61 L392.2,62.7 L389.1,64.8 L386,67 L383.2,69.5 L380.6,72.1 L378.2,75 L376.1,78 L374.2,81.3 L372.6,84.6 L371.2,88.1 L370.2,91.7 L369.4,95.3 L368.9,99 L368.7,102.7 L368.7,106.5 L369,110.2 L369.6,113.9 L370.4,117.5 L371.4,121.1 L372.6,124.6 L374,128 L375.5,131.3 L377.2,134.5 L379,137.6 L380.9,140.5 L382.8,143.4 L384.8,146.1 L386.8,148.7 L388.9,151.3 L390.9,153.7 L392.9,156 L394.9,158.3 L396.9,160.6 L398.8,162.7 L400.6,164.9 L402.5,167 L404.2,169.1 L405.9,171.2 L407.6,173.4 L409.2,175.5 L410.8,177.7 L412.4,179.9 L414,182.1 L415.6,184.4 L417.2,186.7 L418.8,189 L420.5,191.3 L422.3,193.7 L424.1,196.1 L426,198.4 L428,200.7 L430.1,203 L432.3,205.3 L434.6,207.5 L437.1,209.5 L439.6,211.5 L442.3,213.4 L445,215.1 L447.9,216.6 L450.9,218 L453.9,219.2 L457,220.2 L460.2,221 L463.5,221.5 L466.7,221.9 L470,222 L473.3,221.9 L476.5,221.5 L479.8,221 L483,220.2 L486.1,219.2 L489.1,218 L492.1,216.6 L495,215.1 L497.7,213.4 L500.4,211.5 L502.9,209.5 L505.4,207.5 L507.7,205.3 L509.9,203 L512,200.7 L514,198.4 L515.9,196.1 L517.7,193.7 L519.5,191.3 L521.2,189 L522.8,186.7 L524.4,184.4 L526,182.1 L527.6,179.9 L529.2,177.7 L530.8,175.5 L532.4,173.4 L534.1,171.2 L535.8,169.1 L537.5,167 L539.4,164.9 L541.2,162.7 L543.1,160.6 L545.1,158.3 L547.1,156 L549.1,153.7 L551.1,151.3 L553.2,148.7 L555.2,146.1 L557.2,143.4 L559.1,140.5 L561,137.6 L562.8,134.5 L564.5,131.3 L566,128" class="fig-curve"/>
+<path d="M498,128 L498,127 L497.9,126 L497.8,125.1 L497.7,124.1 L497.6,123.1 L497.4,122.2 L497.2,121.2 L496.9,120.3 L496.6,119.3 L496.3,118.4 L496,117.5 L495.6,116.6 L495.2,115.7 L494.7,114.9 L494.2,114 L493.7,113.2 L493.2,112.3 L492.7,111.5 L492.1,110.8 L491.4,110 L490.8,109.3 L490.1,108.5 L489.5,107.9 L488.7,107.2 L488,106.6 L487.2,105.9 L486.5,105.3 L485.7,104.8 L484.8,104.3 L484,103.8 L483.1,103.3 L482.3,102.8 L481.4,102.4 L480.5,102 L479.6,101.7 L478.7,101.4 L477.7,101.1 L476.8,100.8 L475.8,100.6 L474.9,100.4 L473.9,100.3 L472.9,100.2 L472,100.1 L471,100 L470,100 L469,100 L468,100.1 L467.1,100.2 L466.1,100.3 L465.1,100.4 L464.2,100.6 L463.2,100.8 L462.3,101.1 L461.3,101.4 L460.4,101.7 L459.5,102 L458.6,102.4 L457.7,102.8 L456.9,103.3 L456,103.8 L455.2,104.3 L454.3,104.8 L453.5,105.3 L452.8,105.9 L452,106.6 L451.3,107.2 L450.5,107.9 L449.9,108.5 L449.2,109.3 L448.6,110 L447.9,110.8 L447.3,111.5 L446.8,112.3 L446.3,113.2 L445.8,114 L445.3,114.9 L444.8,115.7 L444.4,116.6 L444,117.5 L443.7,118.4 L443.4,119.3 L443.1,120.3 L442.8,121.2 L442.6,122.2 L442.4,123.1 L442.3,124.1 L442.2,125.1 L442.1,126 L442,127 L442,128 L442,129 L442.1,130 L442.2,130.9 L442.3,131.9 L442.4,132.9 L442.6,133.8 L442.8,134.8 L443.1,135.7 L443.4,136.7 L443.7,137.6 L444,138.5 L444.4,139.4 L444.8,140.3 L445.3,141.1 L445.8,142 L446.3,142.8 L446.8,143.7 L447.3,144.5 L447.9,145.2 L448.6,146 L449.2,146.7 L449.9,147.5 L450.5,148.1 L451.3,148.8 L452,149.4 L452.8,150.1 L453.5,150.7 L454.3,151.2 L455.2,151.7 L456,152.2 L456.9,152.7 L457.7,153.2 L458.6,153.6 L459.5,154 L460.4,154.3 L461.3,154.6 L462.3,154.9 L463.2,155.2 L464.2,155.4 L465.1,155.6 L466.1,155.7 L467.1,155.8 L468,155.9 L469,156 L470,156 L471,156 L472,155.9 L472.9,155.8 L473.9,155.7 L474.9,155.6 L475.8,155.4 L476.8,155.2 L477.7,154.9 L478.7,154.6 L479.6,154.3 L480.5,154 L481.4,153.6 L482.3,153.2 L483.1,152.7 L484,152.2 L484.8,151.7 L485.7,151.2 L486.5,150.7 L487.2,150.1 L488,149.4 L488.7,148.8 L489.5,148.1 L490.1,147.5 L490.8,146.7 L491.4,146 L492.1,145.2 L492.7,144.5 L493.2,143.7 L493.7,142.8 L494.2,142 L494.7,141.1 L495.2,140.3 L495.6,139.4 L496,138.5 L496.3,137.6 L496.6,136.7 L496.9,135.7 L497.2,134.8 L497.4,133.8 L497.6,132.9 L497.7,131.9 L497.8,130.9 L497.9,130 L498,129 L498,128" class="fig-curve"/>
+<line x1="561.8" y1="75" x2="580.9" y2="64" class="fig-axis" marker-end="url(#arr-4-9-1)"/>
+<line x1="470" y1="62" x2="470" y2="40" class="fig-axis" marker-end="url(#arr-4-9-1)"/>
+<line x1="378.2" y1="75" x2="359.1" y2="64" class="fig-axis" marker-end="url(#arr-4-9-1)"/>
+<line x1="402.5" y1="167" x2="383.4" y2="178" class="fig-axis" marker-end="url(#arr-4-9-1)"/>
+<line x1="470" y1="222" x2="470" y2="244" class="fig-axis" marker-end="url(#arr-4-9-1)"/>
+<line x1="537.5" y1="167" x2="556.6" y2="178" class="fig-axis" marker-end="url(#arr-4-9-1)"/>
+<line x1="489.8" y1="108.2" x2="479.2" y2="118.8" class="fig-axis" marker-end="url(#arr-4-9-1)"/>
+<line x1="450.2" y1="108.2" x2="460.8" y2="118.8" class="fig-axis" marker-end="url(#arr-4-9-1)"/>
+<line x1="450.2" y1="147.8" x2="460.8" y2="137.2" class="fig-axis" marker-end="url(#arr-4-9-1)"/>
+<line x1="489.8" y1="147.8" x2="479.2" y2="137.2" class="fig-axis" marker-end="url(#arr-4-9-1)"/>
+<circle cx="470" cy="128" r="4" class="fig-arrowhead"/>
+<text x="476" y="132" class="fig-label fig-it">q</text>
+<text x="438" y="132" text-anchor="end" class="fig-label fig-it">S_i</text>
+<text x="568.2" y="171.6" class="fig-label fig-it">S</text>
+<text x="418" y="172" text-anchor="middle" class="fig-label fig-it">V</text>
+<text x="470" y="262" text-anchor="middle" class="fig-label fig-small">(b) superfície externa qualquer</text>
+</svg>
+                    <figcaption><strong>Figura 4.9.1.</strong> A região oca $V$ (sombreada) numa fatia espacial, com uma dimensão suprimida.
+                        (a) Uma casca esférica entre $S_i$ e $S_f$ em volta da carga $q$. A normal exterior de $V$ aponta para fora em
+                        $S_f$ e <em>para a carga</em> em $S_i$: como bordo de $V$, $S_i$ tem a orientação oposta à usual. (b) O mesmo com uma
+                        superfície externa $S$ de forma qualquer. Nos dois casos $V$ não contém cargas, e o fluxo de $\star\omega$ por
+                        $S_f$ (ou $S$) é igual ao fluxo por $S_i$.</figcaption>
+                </figure>
+
+                <div class="definition-box" id="teo-4-9-9">
+                    <p><strong>Teorema 4.9.9 (A carga não depende da superfície).</strong> Seja $N$ uma fatia $\{x^0 = \text{const}\}$ e
+                        $K \subset N$ compacto. Suponha que $\omega$ é suave numa vizinhança de $N\setminus K$ e que não há cargas fora de $K$:
+                        $\iota^*j_\omega = 0$ em $N\setminus K$. Sejam $S_i$ e $S_f$ superfícies fechadas orientadas em $N\setminus K$ tais que
+                        existe uma região compacta $V \subset N\setminus K$ com $\partial V = S_f \cup S_i$, em que $S_f$ tem a orientação de
+                        bordo de $V$ e $S_i$ a orientação oposta. Então</p>
+                    <p>$$ \int_{S_f}\star\omega = \int_{S_i}\star\omega. $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Em $V$ a forma $\iota^*\star\omega$ é suave e $d(\iota^*\star\omega) = \iota^*d\star\omega = \iota^*j_\omega = 0$. Pelo
+                    Teorema de Stokes em $V$, com $\partial V$ formado por $S_f$ (orientação de bordo) e por $S_i$ com a orientação de bordo,
+                    que é a oposta à dada,
+                </p>
+
+                <p>
+                    $$ 0 = \int_Vd(\iota^*\star\omega) = \int_{\partial V}\star\omega = \int_{S_f}\star\omega - \int_{S_i}\star\omega. \qquad\blacksquare $$
+                </p>
+
+                <p>
+                    No caso típico, $K$ é a posição da carga, $S_i$ é uma esfera pequena em volta dela e $S_f$ é qualquer superfície que a
+                    envolve, ambas orientadas pela normal "para longe da carga". Como bordo da região oca entre elas, $S_i$ tem a normal
+                    apontando para a carga (Figura 4.9.1), e é daí o sinal de menos. O teorema diz que o número
+                </p>
+
+                <p>
+                    $$ Q_\omega = \int_{S_f}\star\omega $$
+                </p>
+
+                <p>
+                    é o mesmo para toda superfície que envolve a carga: ele é uma característica da carga, e não da superfície. Isso
+                    cumpre, sem distribuições, a promessa do <a href="[01] - Motivação e Roteiro.html#exr-4-1-3">Exercício 4.1.3</a>.
+                </p>
+
+                <p id="ex-4-9-10"><strong>Exemplo 4.9.10 (A carga de Coulomb).</strong> Para uma carga $q$ em repouso na origem, $\omega = F$
+                    com $\mathbf{B} = 0$ e $\mathbf{E} = \frac{q}{4\pi\varepsilon_0r^2}\hat{\mathbf{r}}$. Na fatia, $\iota^*\star F = \mu_0c\,D$ com
+                    $D = \varepsilon_0\ast E$, e pelo <a href="[05] - Maxwell em 3D com Formas.html#exr-4-5-3">Exercício 4.5.3</a>, nas coordenadas esféricas de uma esfera de raio $R$,
+                    $D = \frac{q}{4\pi}\sin\theta\,d\theta\wedge d\phi$, que não depende de $R$. Logo $\int_{S_R}\star F = \mu_0c\,q$ para todo
+                    $R$, e pelo <a href="#teo-4-9-9">Teorema 4.9.9</a> o mesmo valor vale para qualquer superfície que envolva a origem. A carga em unidades SI é
+                    $q = \frac{1}{\mu_0c}\int_S\star F$.</p>
+
+                <p id="obs-4-9-11"><strong>Observação 4.9.11 (A carga é topológica).</strong> Fora das cargas, $\iota^*\star\omega$ é uma
+                    $2$-forma fechada na fatia. Em $\mathbb{R}^3\setminus\{0\}$, pelo <a href="[02] - O Lema de Poincaré.html#teo-4-2-13">Teorema 4.2.13</a>, $H^2 \cong \mathbb{R}$, e a classe de
+                    $\iota^*\star\omega$ é determinada por um número: a integral numa esfera em volta da origem, que é a carga. Duas formas
+                    fechadas com a mesma carga diferem por uma forma exata; uma forma fechada com carga $Q \ne 0$ não é exata (pelo mesmo
+                    argumento da <a href="[02] - O Lema de Poincaré.html#prop-4-2-12">Proposição 4.2.12</a>). A carga é, assim, um invariante topológico do campo fora da carga: nenhuma deformação suave
+                    de $\omega$ que mantenha $d\star\omega = 0$ fora da origem a altera.</p>
+
+                <h2 id="monopolos">Monopolos magnéticos</h2>
+
+                <p>
+                    A carga elétrica é o fluxo de $\star\omega$. O análogo com $\omega$ no lugar de $\star\omega$ seria uma carga magnética,
+                    mas, para $\omega$ suave em $V$, ela é sempre zero:
+                </p>
+
+                <p>
+                    $$ Q_B[\partial V] = \int_{\partial V}\omega = \int_{\partial V}B = \int_Vd\omega = 0, \tag{4.9.5} $$
+                </p>
+
+                <p>
+                    pela <a href="[07] - Equações Homogêneas em 4D.html#prop-4-7-11">Proposição 4.7.11</a> (na fatia, $\omega$ se reduz a $B$) e pelo Teorema de Stokes. É a lei $\nabla\cdot\mathbf{B} = 0$: não há
+                    monopolos magnéticos. Para admiti-los, há dois caminhos.
+                </p>
+
+                <p id="obs-4-9-12"><strong>Observação 4.9.12 (Primeiro caminho: abrir mão de $d\omega = 0$).</strong> Pode-se trocar
+                    $d\omega = 0$ por $d\omega = k$, com $k$ uma $3$-forma de corrente magnética. Pelo mesmo argumento do <a href="#cor-4-9-2">Corolário 4.9.2</a>,
+                    $dk = d^2\omega = 0$: a carga magnética também se conserva. As equações ficam simétricas, $d\omega = k$ e $d\star\omega = j_\omega$,
+                    e o monopolo é aceito como uma partícula pontual fundamental, como o elétron, com as leis ajustadas para ela (as
+                    equações vetoriais estão no <a href="#exr-4-9-5">Exercício 4.9.5</a>). O preço é que $\omega$ deixa de ser localmente exata: não há mais potencial
+                    $A$ em nenhuma região que contenha corrente magnética.</p>
+
+                <p>
+                    O segundo caminho mantém $d\omega = 0$ e tira o monopolo da variedade. A anulação em (4.9.5) vem do Teorema de Stokes,
+                    que exige $\omega$ suave em toda a região $V$; se a linha de universo do monopolo não faz parte do espaço-tempo, uma
+                    região que a contém não está disponível, e o fluxo de $B$ por uma esfera em volta dele pode ser diferente de zero.
+                </p>
+
+                <div class="definition-box" id="prop-4-9-13">
+                    <p><strong>Proposição 4.9.13 (O monopolo e as cordas de Dirac).</strong> Seja $M = \mathbb{R}\times(\mathbb{R}^3\setminus\{0\})$,
+                        com a coordenada $x^0$ no primeiro fator, e seja $\omega = g\,\beta$, com $g \gt 0$ constante e $\beta$ a forma do ângulo
+                        sólido do <a href="[02] - O Lema de Poincaré.html#ex-4-2-11">Exemplo 4.2.11</a> (puxada de volta pela projeção $M \to \mathbb{R}^3\setminus\{0\}$): o campo de um monopolo
+                        magnético parado na origem, com $E = 0$ e fluxo $4\pi g$.</p>
+                    <ol type="a">
+                        <li>$\omega$ é fechada e não é exata em $M$.</li>
+                        <li>Em $M_N = \mathbb{R}\times U_N$, com $U_N = \mathbb{R}^3\setminus\{(0,0,z) : z \le 0\}$, vale $\omega = dA_N$ com
+                            $$ A_N = g\,\frac{x\,dy - y\,dx}{r(r + z)} = g\,(1 - \cos\theta)\,d\phi; \tag{4.9.6} $$
+                            em $M_S = \mathbb{R}\times U_S$, com o semieixo $z \ge 0$ retirado, $\omega = dA_S$ com $A_S = -g\,(1 + \cos\theta)\,d\phi$.</li>
+                        <li>Na interseção $M_N\cap M_S$, $A_N - A_S = 2g\,d\phi$, uma transformação de calibre (localmente $d(2g\phi)$).</li>
+                    </ol>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) $d\beta = 0$ (<a href="[02] - O Lema de Poincaré.html#ex-4-2-11">Exemplo 4.2.11</a>) e o <em>pullback</em> comuta com $d$, logo $d\omega = 0$. Se fosse
+                    $\omega = dA$ em $M$, o <em>pullback</em> pela inclusão $p \mapsto (0, p)$ de $\mathbb{R}^3\setminus\{0\}$ em $M$ daria
+                    $g\beta = d(\iota^*A)$, isto é, $\beta$ exata em $\mathbb{R}^3\setminus\{0\}$, contra a <a href="[02] - O Lema de Poincaré.html#prop-4-2-12">Proposição 4.2.12</a>. (b) e (c) Pelo
+                    <a href="[02] - O Lema de Poincaré.html#ex-4-2-11">Exemplo 4.2.11</a>, $\alpha_N = \frac{x\,dy - y\,dx}{r(r+z)} = (1 - \cos\theta)\,d\phi$ satisfaz $d\alpha_N = \beta$ em $U_N$, e
+                    $\alpha_S = -(1 + \cos\theta)\,d\phi$ satisfaz $d\alpha_S = \beta$ em $U_S$, com $\alpha_N - \alpha_S = 2\,d\phi$ (4.2.4).
+                    Multiplicando por $g$ e puxando de volta pela projeção, obtemos $A_N$, $A_S$ e a diferença. As contas foram refeitas em
+                    sympy. $\blacksquare$
+                </p>
+
+                <p>
+                    Os conjuntos $U_N$ e $U_S$ são estrelados (<a href="[02] - O Lema de Poincaré.html#exr-4-2-3">Exercício 4.2.3</a>), e $M_N$, $M_S$ também: $M_N$ é estrelado em relação a
+                    $(0, (0,0,1))$. É por isso que o lema de Poincaré (<a href="[02] - O Lema de Poincaré.html#cor-4-2-7">Corolário 4.2.7</a>) dá potenciais neles. A semirreta retirada é a
+                    <strong>corda de Dirac</strong> (no espaço-tempo, uma folha de dimensão 2). Nenhum potencial cobre a esfera inteira: a
+                    corda é o preço de descrever o monopolo por um potencial, e ela pode ser posta em qualquer direção trocando o
+                    potencial por outro que difere por uma transformação de calibre.
+                </p>
+
+                <p>
+                    Há uma imagem física da corda (Figura 4.9.2). Integre $A_N$ num círculo $\theta = \theta_0$ em volta do semieixo $z$
+                    negativo: $\oint A_N = 2\pi g(1 - \cos\theta_0)$, que tende a $4\pi g$ quando o círculo se fecha sobre a corda
+                    ($\theta_0 \to \pi$). Se $A_N$ fosse suave ali, o Teorema de Stokes daria $\oint A_N \to 0$, porque o pequeno disco que o
+                    círculo limita tem área tendendo a zero. A diferença, $4\pi g$, é o fluxo que "entra pela corda": como se a corda fosse
+                    um solenoide infinitamente fino trazendo para o monopolo exatamente o fluxo $4\pi g$ que ele espalha radialmente.
+                </p>
+
+                <figure class="lecture-figure" id="fig-4-9-2" style="overflow-x: auto; overflow-y: hidden;">
+                    <svg viewBox="0 0 640 300" role="img" style="min-width: 560px;" aria-label="Corte por um plano que contém o eixo z. Um monopolo de intensidade g na origem, com doze linhas de campo saindo radialmente e o contorno de uma esfera. O semieixo z negativo, abaixo do monopolo, está tracejado e marcado como a corda de Dirac do potencial A N, com setas apontando para cima, para o monopolo: o fluxo 4 pi g entra pela corda. Perto do polo sul da esfera, uma pequena elipse representa o círculo teta igual a teta zero em volta da corda, em que a integral de A N vale 2 pi g vezes um menos cosseno de teta zero, e tende a 4 pi g quando teta zero tende a pi.">
+<defs><marker id="arr-4-9-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="230" y1="6" x2="230" y2="128" class="fig-guide"/>
+<text x="238" y="16" class="fig-label fig-it">z</text>
+<circle cx="230" cy="132" r="92" class="fig-guide"/>
+<line x1="241.6" y1="135.1" x2="344" y2="162.5" class="fig-axis" marker-end="url(#arr-4-9-2)"/>
+<line x1="238.5" y1="140.5" x2="313.4" y2="215.4" class="fig-axis" marker-end="url(#arr-4-9-2)"/>
+<line x1="233.1" y1="143.6" x2="260.5" y2="246" class="fig-axis" marker-end="url(#arr-4-9-2)"/>
+<line x1="226.9" y1="143.6" x2="199.5" y2="246" class="fig-axis" marker-end="url(#arr-4-9-2)"/>
+<line x1="221.5" y1="140.5" x2="146.6" y2="215.4" class="fig-axis" marker-end="url(#arr-4-9-2)"/>
+<line x1="218.4" y1="135.1" x2="116" y2="162.5" class="fig-axis" marker-end="url(#arr-4-9-2)"/>
+<line x1="218.4" y1="128.9" x2="116" y2="101.5" class="fig-axis" marker-end="url(#arr-4-9-2)"/>
+<line x1="221.5" y1="123.5" x2="146.6" y2="48.6" class="fig-axis" marker-end="url(#arr-4-9-2)"/>
+<line x1="226.9" y1="120.4" x2="199.5" y2="18" class="fig-axis" marker-end="url(#arr-4-9-2)"/>
+<line x1="233.1" y1="120.4" x2="260.5" y2="18" class="fig-axis" marker-end="url(#arr-4-9-2)"/>
+<line x1="238.5" y1="123.5" x2="313.4" y2="48.6" class="fig-axis" marker-end="url(#arr-4-9-2)"/>
+<line x1="241.6" y1="128.9" x2="344" y2="101.5" class="fig-axis" marker-end="url(#arr-4-9-2)"/>
+<line x1="230" y1="136" x2="230" y2="296" class="fig-curve fig-dashed"/>
+<line x1="230" y1="282" x2="230" y2="256" class="fig-axis" marker-end="url(#arr-4-9-2)"/>
+<line x1="230" y1="242" x2="230" y2="216" class="fig-axis" marker-end="url(#arr-4-9-2)"/>
+<line x1="230" y1="202" x2="230" y2="176" class="fig-axis" marker-end="url(#arr-4-9-2)"/>
+<circle cx="230" cy="132" r="4.5" class="fig-arrowhead"/>
+<text x="220" y="124" text-anchor="end" class="fig-label fig-it">g</text>
+<path d="M264.5,217.3 L264.4,217.9 L264,218.4 L263.5,218.9 L262.8,219.5 L261.8,220 L260.7,220.5 L259.4,221 L257.9,221.4 L256.2,221.8 L254.4,222.3 L252.4,222.6 L250.3,223 L248,223.3 L245.6,223.5 L243.2,223.8 L240.6,224 L238,224.1 L235.4,224.2 L232.7,224.3 L230,224.3 L227.3,224.3 L224.6,224.2 L222,224.1 L219.4,224 L216.8,223.8 L214.4,223.5 L212,223.3 L209.7,223 L207.6,222.6 L205.6,222.3 L203.8,221.8 L202.1,221.4 L200.6,221 L199.3,220.5 L198.2,220 L197.2,219.5 L196.5,218.9 L196,218.4 L195.6,217.9 L195.5,217.3 L195.6,216.8 L196,216.2 L196.5,215.7 L197.2,215.1 L198.2,214.6 L199.3,214.1 L200.6,213.6 L202.1,213.2 L203.8,212.8 L205.6,212.4 L207.6,212 L209.7,211.6 L212,211.3 L214.4,211.1 L216.8,210.8 L219.4,210.6 L222,210.5 L224.6,210.4 L227.3,210.3 L230,210.3 L232.7,210.3 L235.4,210.4 L238,210.5 L240.6,210.6 L243.2,210.8 L245.6,211.1 L248,211.3 L250.3,211.6 L252.4,212 L254.4,212.4 L256.2,212.8 L257.9,213.2 L259.4,213.6 L260.7,214.1 L261.8,214.6 L262.8,215.1 L263.5,215.7 L264,216.2 L264.4,216.8 L264.5,217.3" class="fig-curve"/>
+<line x1="268.5" y1="217.3" x2="400" y2="211.3" class="fig-guide"/>
+<text x="404" y="203.3" class="fig-label fig-small">círculo θ = θ₀:</text>
+<text x="404" y="219.3" class="fig-label fig-small">∮ A_N = 2πg (1 − cos θ₀)</text>
+<text x="404" y="235.3" class="fig-label fig-small">→ 4πg quando θ₀ → π</text>
+<line x1="234" y1="262" x2="400" y2="268" class="fig-guide"/>
+<text x="404" y="266" class="fig-label fig-small">corda de Dirac de A_N:</text>
+<text x="404" y="282" class="fig-label fig-small">o fluxo 4πg entra por ela</text>
+<text x="404" y="60" class="fig-label fig-small">fluxo 4πg sai</text>
+<text x="404" y="76" class="fig-label fig-small">radialmente: B = g β</text>
+<line x1="293" y1="29.8" x2="400" y2="66" class="fig-guide"/>
+</svg>
+                    <figcaption><strong>Figura 4.9.2.</strong> O monopolo na origem e a corda de Dirac do potencial $A_N$ (corte num plano que
+                        contém o eixo $z$). As linhas do campo $B = g\beta$ saem radialmente, com fluxo total $4\pi g$. O potencial $A_N$ é
+                        singular no semieixo $z$ negativo (tracejado): um círculo $\theta = \theta_0$ em volta dele tem
+                        $\oint A_N = 2\pi g(1 - \cos\theta_0) \to 4\pi g$ quando $\theta_0 \to \pi$, como se o fluxo $4\pi g$ entrasse pela corda
+                        (setas sobre o eixo). Com $A_S$, a corda fica no semieixo positivo.</figcaption>
+                </figure>
+
+                <p id="obs-4-9-14"><strong>Observação 4.9.14 (A quantização de Dirac).</strong> A diferença entre os dois potenciais,
+                    $A_N - A_S = 2g\,d\phi$, é uma transformação de calibre, invisível na física clássica. Na mecânica quântica, uma
+                    transformação de calibre $A \mapsto A + d\lambda$ multiplica a função de onda de uma partícula de carga $q$ pela fase
+                    $e^{iq\lambda/\hbar}$, e essa fase tem de ser uma função bem definida. Com $\lambda = 2g\phi$, que não volta ao mesmo valor
+                    depois de uma volta ($\phi \mapsto \phi + 2\pi$), isso exige $e^{iq\,4\pi g/\hbar} = 1$, isto é,</p>
+
+                <p>
+                    $$ q\cdot4\pi g = 2\pi\hbar\,n, \qquad n \in \mathbb{Z}: $$
+                </p>
+
+                <p>
+                    o produto da carga elétrica pelo fluxo magnético do monopolo é quantizado. Se existir um único monopolo no universo,
+                    toda carga elétrica é um múltiplo inteiro de uma carga fundamental. É o argumento de Dirac (1931); ver Jackson, cap. 6,
+                    na seção sobre monopolos magnéticos. Não o desenvolvemos: ele usa a mecânica quântica, fora do escopo do capítulo.
+                </p>
+
+                <p>
+                    <strong>Dois tipos de monopolo.</strong> A tabela abaixo compara o monopolo de Dirac, uma partícula pontual acrescentada às equações de Maxwell, com o monopolo de 't Hooft e Polyakov, uma solução
+                    topológica de teorias de grande unificação (GUT). É um resumo qualitativo, não um resultado do capítulo; as afirmações
+                    foram ajustadas às revisões de Preskill ("Magnetic Monopoles", <em>Annual Review of Nuclear and Particle Science</em>,
+                    1984) e de Milton ("Theoretical and experimental status of magnetic monopoles", <em>Reports on Progress in Physics</em>,
+                    2006).
+                </p>
+
+                <div style="overflow-x: auto;">
+                <table>
+                    <tr><th>Característica</th><th>Monopolo de Dirac (Maxwell modificada)</th><th>Monopolo de 't Hooft–Polyakov (topológico)</th></tr>
+                    <tr><td>Massa</td><td>Não é fixada pela teoria; teria de ser medida.</td><td>Da ordem da escala de unificação dividida pela
+                        constante de acoplamento: $10^{16}$ GeV ou mais. Só $10^{16}$ GeV já são cerca de $1{,}8\times10^{-8}$ g, perto de dez mil
+                        vezes a massa de uma bactéria típica ($\sim10^{-12}$ g), concentrados numa partícula.</td></tr>
+                    <tr><td>Estrutura</td><td>Pontual, sem estrutura interna, como o elétron.</td><td>Tem tamanho e estrutura: um caroço em que a
+                        simetria de grande unificação não está quebrada, cercado por camadas de campos de calibre e de Higgs.</td></tr>
+                    <tr><td>Produção em laboratório</td><td>Possível em colisores, aos pares, se a massa for pequena o bastante; o experimento
+                        MoEDAL, no LHC, procura monopolos assim.</td><td>Fora do alcance de qualquer acelerador, por muitas ordens de
+                        grandeza.</td></tr>
+                    <tr><td>Origem cósmica</td><td>Nada fixa a sua abundância.</td><td>Produzidos nas transições de fase do universo primitivo; a
+                        abundância prevista, muito maior do que os limites observados, foi uma das motivações da inflação cósmica.</td></tr>
+                    <tr><td>Catálise</td><td>Interage com a matéria pela sua carga magnética.</td><td>Pode catalisar o decaimento do próton com
+                        seção de choque de interação forte (efeito Rubakov–Callan).</td></tr>
+                </table>
+                </div>
+
+                <p>
+                    A carga magnética dos dois satisfaz a condição de Dirac. Até hoje nenhum monopolo foi observado.
+                </p>
+
+                <h2 id="dualidade">Dualidade elétrico-magnética</h2>
+
+                <p>
+                    Se excluirmos da variedade todas as regiões com cargas, sejam elas quais forem, sobram as equações do vácuo,
+                </p>
+
+                <p>
+                    $$ d\omega = 0, \qquad d\star\omega = 0, $$
+                </p>
+
+                <p>
+                    e elas tratam $\omega$ e $\star\omega$ do mesmo modo.
+                </p>
+
+                <div class="definition-box" id="prop-4-9-15">
+                    <p><strong>Proposição 4.9.15 (Dualidade).</strong> Em Minkowski, se $\omega$ satisfaz as equações do vácuo, então
+                        $\omega_\alpha = \cos\alpha\,\omega + \sin\alpha\,\star\omega$ também satisfaz, para todo $\alpha \in \mathbb{R}$. Em
+                        particular, $\star\omega$ e $-\star\omega$ são soluções. Em termos de campos, com $\omega = F$, $\star F$ é a $2$-forma de
+                        Faraday de $\mathbf{E}' = -c\mathbf{B}$, $\mathbf{B}' = \mathbf{E}/c$, e $-\star F$ a de $\mathbf{E}' = c\mathbf{B}$,
+                        $\mathbf{B}' = -\mathbf{E}/c$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pelo <a href="[04] - O Operador Estrela de Hodge.html#teo-4-4-15">Teorema 4.4.15</a>, em $2$-formas de Minkowski $\star\star = \operatorname{sign}(\eta)(-1)^{2\cdot2} = -1$.
+                    Então $\star\omega_\alpha = \cos\alpha\,\star\omega - \sin\alpha\,\omega$, e
+                    $d\omega_\alpha = \cos\alpha\,d\omega + \sin\alpha\,d\star\omega = 0$,
+                    $d\star\omega_\alpha = \cos\alpha\,d\star\omega - \sin\alpha\,d\omega = 0$. A leitura em campos é o <a href="[08] - Inomogêneas e a Métrica de Minkowski.html#exr-4-8-2">Exercício 4.8.2</a>. $\blacksquare$
+                </p>
+
+                <p>
+                    Com $c = 1$, a troca $\mathbf{E} \mapsto \mathbf{B}$, $\mathbf{B} \mapsto -\mathbf{E}$ é a de $-\star$, e a de $\star$ é a
+                    inversa; as duas são rotações de $90°$ no par $(\mathbf{E}, \mathbf{B})$. No vácuo a teoria não distingue um campo
+                    "elétrico" de um "magnético": eles são manifestações duais de uma mesma $2$-forma. O que quebra a simetria são as
+                    fontes. Só há fontes em $d\star\omega = j_\omega$, e não em $d\omega = 0$: a carga elétrica aparece como uma singularidade de
+                    $\star\omega$, e o monopolo, que seria uma singularidade de $\omega$, exige o primeiro ou o segundo caminho da seção
+                    anterior.
+                </p>
+
+                <p id="obs-4-9-16"><strong>Observação 4.9.16 (O potencial magnético).</strong> Onde $d\star\omega = 0$, $\star\omega$ é fechada, e
+                    localmente $\star\omega = dC$ (<a href="[02] - O Lema de Poincaré.html#cor-4-2-8">Corolário 4.2.8</a>) para uma $1$-forma $C$, o <strong>potencial magnético</strong>. Ele tem com
+                    $\star\omega$ a mesma relação que $A$ tem com $\omega$, mas não existe globalmente fora das cargas: em volta de uma carga
+                    elétrica, $\iota^*\star\omega$ tem fluxo $Q_\omega \ne 0$ e não é exata (<a href="#obs-4-9-11">Observação 4.9.11</a>), exatamente como $\omega$ em volta de um
+                    monopolo. Descrita por $C$, a carga elétrica precisaria de cordas de Dirac. A diferença entre uma carga "pontual" e um
+                    monopolo "com corda" não está na teoria do vácuo; ela vem de usarmos o potencial $A$ de $\omega$, e não o de $\star\omega$,
+                    para descrever o campo.</p>
+
+                <p id="obs-4-9-17"><strong>Observação 4.9.17 (Obstáculos e codimensão).</strong> Um subconjunto de dimensão $k$ em
+                    $\mathbb{R}^n$ tem codimensão $n - k$. Laços (curvas fechadas) ficam presos em obstáculos de codimensão 2, e esferas de
+                    dimensão 2, em obstáculos de codimensão 3 (<a href="[02] - O Lema de Poincaré.html#obs-4-2-14">Observação 4.2.14</a>). A linha de universo de uma carga, ou de um monopolo, é uma
+                    curva em $\mathbb{R}^4$: tem codimensão 3. Por isso $\mathbb{R}^4$ menos essa linha continua simplesmente conexo (todo laço
+                    pode ser contraído), mas não tem $H^2$ nulo (ele tem o tipo de homotopia de $S^2$, e $H^2 \cong \mathbb{R}$ pelo
+                    <a href="[02] - O Lema de Poincaré.html#teo-4-2-13">Teorema 4.2.13</a>): a carga é medida por esferas, não por laços. Laços ficam presos na folha de dimensão 2 que uma corda de
+                    Dirac varre no espaço-tempo (codimensão 2), e é por isso que a fase em volta da corda aparece na quantização de Dirac;
+                    o mesmo mecanismo, com um solenoide real, é o efeito Aharonov–Bohm.</p>
+
+                <h2 id="correntes-conservadas">A carga de uma corrente conservada</h2>
+
+                <p>
+                    Até aqui a forma $\omega$ veio primeiro e a corrente depois. Podemos inverter a ordem: postular uma corrente conservada,
+                    por exemplo uma corrente associada a uma simetria, e perguntar se ela tem uma carga. Seja $(M, g)$ como na <a href="#def-4-9-1">Definição 4.9.1</a>
+                    e $J$ um campo vetorial em $M$.
+                </p>
+
+                <div class="definition-box" id="prop-4-9-18">
+                    <p><strong>Proposição 4.9.18 (Conservação como forma fechada).</strong> Para todo campo vetorial $J$,</p>
+                    <p>$$ \begin{aligned}
+                        &d\star(J^\flat) = (\nabla_\mu J^\mu)\,\operatorname{vol}_g,\\
+                        &\nabla_\mu J^\mu = \frac{1}{\sqrt{\lvert g\rvert}}\,\partial_\mu\big(\sqrt{\lvert g\rvert}\,J^\mu\big).
+                        \end{aligned} \tag{4.9.7} $$</p>
+                    <p>Logo $J$ é conservado, $\nabla_\mu J^\mu = 0$, se, e somente se, a $3$-forma $\star J^\flat$ é fechada.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> É a <a href="[04] - O Operador Estrela de Hodge.html#prop-4-4-23">Proposição 4.4.23</a> com $\alpha = J^\flat$, para o qual $\alpha^\sharp = J$:
+                    $d\star J^\flat = (\operatorname{div}_{\operatorname{vol}_g}J)\operatorname{vol}_g$, e a divergência relativa a uma forma de volume
+                    (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[14] - Fórmula de Cartan.html#def-3-14-25">Definição 3.14.25</a>) tem, numa carta positiva em que $\operatorname{vol}_g = \sqrt{\lvert g\rvert}\,dx^0\wedge\dots\wedge dx^3$, a
+                    expressão de (4.9.7) (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[14] - Fórmula de Cartan.html#prop-3-14-26">Proposição 3.14.26</a>). Como $\operatorname{vol}_g$ não se anula, $d\star J^\flat = 0$ se, e só se,
+                    $\nabla_\mu J^\mu = 0$. $\blacksquare$
+                </p>
+
+                <p>
+                    Em Minkowski cartesiano, $\sqrt{\lvert\eta\rvert} = 1$ e $\nabla_\mu J^\mu = \partial_\mu J^\mu$; em coordenadas curvilíneas o fator
+                    $\sqrt{\lvert g\rvert}$ faz a diferença (<a href="#exr-4-9-6">Exercício 4.9.6</a>). A notação $\nabla_\mu J^\mu$ antecipa a derivada covariante do próximo
+                    capítulo; aqui ela é só um nome para a expressão (4.9.7).
+                </p>
+
+                <div class="definition-box" id="prop-4-9-19">
+                    <p><strong>Proposição 4.9.19 (Toda corrente conservada tem uma carga).</strong> Seja $U \subset M$ um aberto difeomorfo a
+                        um aberto estrelado e $J$ um campo vetorial conservado em $U$. Então existe uma $2$-forma $\omega$ em $U$ com</p>
+                    <p>$$ \star J^\flat = d\star\omega, $$</p>
+                    <p>e, para toda região $V$ como na <a href="#def-4-9-6">Definição 4.9.6</a> contida em $U$, a carga $Q = \int_V\star J^\flat$ é o fluxo
+                        $Q = \int_{\partial V}\star\omega$. A forma $\omega$ não precisa ser fechada.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela <a href="#prop-4-9-18">Proposição 4.9.18</a>, $\star J^\flat$ é uma $3$-forma fechada em $U$, e pelo lema de Poincaré
+                    (<a href="[02] - O Lema de Poincaré.html#cor-4-2-7">Corolário 4.2.7</a>, transportado pelo difeomorfismo) existe uma $2$-forma $\theta$ com $d\theta = \star J^\flat$. Pela estrela dupla
+                    (<a href="[04] - O Operador Estrela de Hodge.html#teo-4-4-15">Teorema 4.4.15</a>), $\star\star = \operatorname{sign}(g)$ em $2$-formas de dimensão 4, e $\omega = \operatorname{sign}(g)\star\theta$
+                    satisfaz $\star\omega = \operatorname{sign}(g)^2\theta = \theta$; logo $d\star\omega = \star J^\flat$. A igualdade das cargas é o Teorema
+                    de Stokes em $V$, como na <a href="#prop-4-9-7">Proposição 4.9.7</a>. $\blacksquare$
+                </p>
+
+                <p>
+                    Poderíamos ter escrito simplesmente $\star J^\flat = d\theta$; escrever $\theta$ como $\star\omega$ só serve para manter a forma
+                    das equações anteriores, em que a corrente é $d\star\omega$. A diferença com a teoria eletromagnética é que agora $\omega$ não
+                    é necessariamente fechada: só a conservação de $J$ foi postulada. O resultado vale para qualquer corrente conservada:
+                    <strong>a toda corrente conservada está associada uma carga</strong>, e a carga numa região é um fluxo pelo seu bordo. Pelo
+                    <a href="#teo-4-9-9">Teorema 4.9.9</a> (que só usou $d\star\omega = 0$ fora das cargas), esse fluxo não depende da superfície, desde que ela envolva
+                    as regiões em que $J \ne 0$ e que $\omega$ seja definida entre elas.
+                </p>
+
+                <p id="obs-4-9-20"><strong>Observação 4.9.20 (A massa em Relatividade Geral).</strong> É nesse sentido que a Relatividade
+                    Geral define a massa de um sistema isolado. Se o espaço-tempo tem um campo de Killing $K$ (uma simetria da métrica, no
+                    sentido do <a href="../[2] - Cálculo em Variedades Diferenciáveis/[14] - Fórmula de Cartan.html#cor-3-14-24">Corolário 3.14.24</a>), por exemplo o que gera as translações no tempo de uma estrela estática, a $2$-forma
+                    $\omega = dK^\flat$ é exata, e as equações de Einstein dão $d\star dK^\flat = 0$ fora da matéria. A integral de
+                    $\star dK^\flat$ sobre uma superfície que envolve a matéria, normalizada por uma constante, é a <strong>integral de
+                    Komar</strong>; pelo mesmo argumento do <a href="#teo-4-9-9">Teorema 4.9.9</a>, ela não depende da superfície, e para um buraco negro ela é calculada numa superfície fora
+                    do horizonte de eventos. Ver Wald, <em>General Relativity</em>, cap. 11. Tudo isso pertence ao capítulo sobre a
+                    gravitação; aqui basta notar que a estrutura é a mesma da carga elétrica.</p>
+
+                <h2 id="fisica">Ponte com a física: o que sobra para a experiência</h2>
+
+                <p>
+                    Os resultados deste tópico mostram que todo o eletromagnetismo, na forma $d\omega = 0$, $d\star\omega = j_\omega$, é
+                    consequência da existência de uma $2$-forma fechada numa variedade com métrica. A conservação da carga, a lei de Gauss
+                    como definição de carga, a independência da superfície, o potencial e a liberdade de calibre, a dualidade no vácuo:
+                    nada disso tem conteúdo experimental próprio. O que a experiência decide é outra coisa:
+                </p>
+
+                <ul>
+                    <li><strong>que grandezas físicas a forma representa.</strong> Identificar $\omega$ com os campos medidos, $\mathbf{E}$ e
+                        $\mathbf{B}$, por meio da força sobre cargas (tópico 4.14);</li>
+                    <li><strong>a métrica.</strong> Que a relação constitutiva do vácuo é a estrela de $\eta$, com as constantes
+                        $\varepsilon_0$ e $\mu_0$ (tópico 4.8);</li>
+                    <li><strong>a topologia e as fontes.</strong> Se o espaço-tempo tem buracos (monopolos, cordas) e que cargas existem.</li>
+                </ul>
+
+                <p>
+                    O último item é aberto. Monopolos magnéticos vêm sendo procurados em raios cósmicos, em materiais antigos, em
+                    detectores subterrâneos e em colisores (o experimento MoEDAL, no LHC); nenhum foi encontrado, e os limites sobre a sua
+                    abundância são muito restritivos (ver a revisão de Milton citada na seção sobre monopolos). Se um for encontrado, a
+                    quantização de Dirac explicará por que todas as cargas observadas são múltiplos da carga do elétron; se não, a pergunta
+                    continua sem resposta dentro do eletromagnetismo clássico.
+                </p>
+
+                <p>
+                    A mesma estrutura, uma corrente conservada cuja carga é um fluxo, reaparece fora do eletromagnetismo: no teorema de
+                    Noether, em que cada simetria contínua de uma ação dá uma corrente conservada, e na integral de Komar (<a href="#obs-4-9-20">Observação 4.9.20</a>).
+                </p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p>
+                    As contas foram conferidas em sympy. Nos exercícios em $\mathbb{R}^3$ euclidiano, com coordenadas cartesianas, a posição dos
+                    índices latinos é indiferente ($\partial^n = \partial_n$, $\omega^{nk} = \omega_{nk}$).
+                </p>
+
+                <p id="exr-4-9-1"><strong>Exercício 4.9.1 (das notas de aula).</strong> Seja $\omega = \frac12\omega_{ik}\,dx^i\wedge dx^k$ uma
+                    $2$-forma em $\mathbb{R}^3$ euclidiano. Mostre que</p>
+
+                <p>
+                    $$ \begin{aligned}
+                    d\ast\omega &= \tfrac12\big(\partial_p\omega_{pk}\big)\,\tilde\varepsilon_{knm}\,dx^m\wedge dx^n,\\
+                    \ast d\ast\omega &= \big(\partial_n\omega_{kn}\big)\,dx^k = -\big(\partial_n\omega_{nk}\big)\,dx^k.
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    <em>Solução.</em> Pela fórmula de componentes (4.4.4) com $\sqrt{\lvert g\rvert} = 1$, $\ast\omega = v_m\,dx^m$ com
+                    $v_m = \frac12\omega_{ij}\tilde\varepsilon_{ijm}$. Então $d\ast\omega = \partial_nv_m\,dx^n\wedge dx^m$, uma $2$-forma, e em $\mathbb{R}^3$
+                    $\ast\ast = 1$ em todos os graus (<a href="[04] - O Operador Estrela de Hodge.html#teo-4-4-15">Teorema 4.4.15</a>), de modo que $d\ast\omega = \ast(\ast d\ast\omega)$. Basta calcular a $1$-forma
+                    $u = \ast d\ast\omega$. Pela mesma fórmula, $u_k = \frac12(d\ast\omega)_{nm}\tilde\varepsilon_{nmk}$ com
+                    $(d\ast\omega)_{nm} = \partial_nv_m - \partial_mv_n$, e
+                </p>
+
+                <p>
+                    $$ u_k = \tilde\varepsilon_{nmk}\,\partial_nv_m = \tfrac12\,\tilde\varepsilon_{nmk}\,\tilde\varepsilon_{ijm}\,\partial_n\omega_{ij}
+                    = \tfrac12\big(\delta_{ki}\delta_{nj} - \delta_{kj}\delta_{ni}\big)\partial_n\omega_{ij} = \partial_n\omega_{kn}, $$
+                </p>
+
+                <p>
+                    usando $\tilde\varepsilon_{nmk}\tilde\varepsilon_{ijm} = \tilde\varepsilon_{knm}\tilde\varepsilon_{ijm} = \delta_{ki}\delta_{nj} - \delta_{kj}\delta_{ni}$ e
+                    a antissimetria de $\omega$. Como $\omega_{kn} = -\omega_{nk}$, $u_k = -\partial_n\omega_{nk}$. Para a primeira fórmula,
+                    $d\ast\omega = \ast u = \frac12u_k\,\tilde\varepsilon_{kmn}\,dx^m\wedge dx^n$; com $u_k = -\partial_p\omega_{pk}$ e
+                    $\tilde\varepsilon_{kmn} = -\tilde\varepsilon_{knm}$, sai $d\ast\omega = \frac12(\partial_p\omega_{pk})\tilde\varepsilon_{knm}\,dx^m\wedge dx^n$.
+                    O índice de soma da derivada precisa de um nome próprio ($p$), distinto do $n$ do produto exterior. Um caso simples confirma o
+                    sinal: para $\omega = f\,dx^1\wedge dx^2$, $\ast\omega = f\,dx^3$,
+                    $d\ast\omega = \partial_1f\,dx^1\wedge dx^3 + \partial_2f\,dx^2\wedge dx^3$ e $\ast d\ast\omega = \partial_2f\,dx^1 - \partial_1f\,dx^2$; a
+                    fórmula dá $u_1 = \partial_2\omega_{12} = \partial_2f$ e $u_2 = \partial_1\omega_{21} = -\partial_1f$. Compare com a (4.9.2): em
+                    $\mathbb{R}^3$ o sinal é o oposto do de Minkowski em dimensão 4.
+                </p>
+
+                <p id="exr-4-9-2"><strong>Exercício 4.9.2.</strong> Para a carga pontual do <a href="#ex-4-9-10">Exemplo 4.9.10</a>, calcule $\int\star F$ sobre as esferas de
+                    raios $R_1 \lt R_2$ e verifique o <a href="#teo-4-9-9">Teorema 4.9.9</a> na casca $V = \{R_1 \le r \le R_2\}$, prestando atenção às orientações.</p>
+
+                <p>
+                    <em>Solução.</em> Na fatia, $\iota^*\star F = \mu_0c\,D$ e, nas coordenadas $(\theta, \phi)$ de uma esfera de raio $R$ (positivas
+                    para a normal que aponta para fora, <a href="../[2] - Cálculo em Variedades Diferenciáveis/[15] - Orientação.html#cor-3-15-17">Corolário 3.15.17</a>), $D = \frac{q}{4\pi}\sin\theta\,d\theta\wedge d\phi$. A integral é
+                    $\mu_0c\,\frac{q}{4\pi}\int_0^{2\pi}\!\!\int_0^\pi\sin\theta\,d\theta\,d\phi = \mu_0c\,q$, para $R = R_1$ e $R = R_2$. Na casca, a
+                    normal exterior aponta para fora em $S_{R_2}$ e para a origem em $S_{R_1}$; como bordo de $V$, $\partial V = S_{R_2} - S_{R_1}$, e
+                    $\int_{\partial V}\star F = \mu_0cq - \mu_0cq = 0 = \int_Vj_F$, porque não há carga em $V$. Se $S_{R_1}$ fosse tomada com a
+                    orientação usual, a soma daria $2\mu_0cq$, contradizendo Stokes: é a armadilha das orientações.
+                </p>
+
+                <p id="exr-4-9-3"><strong>Exercício 4.9.3.</strong> Verifique as afirmações da <a href="#prop-4-9-13">Proposição 4.9.13</a> em coordenadas: $dA_N = dA_S = g\beta$,
+                    com $g\beta = g\sin\theta\,d\theta\wedge d\phi$ numa esfera; $A_N - A_S = 2g\,d\phi$; o fluxo total é $4\pi g$; e o fluxo pelo
+                    hemisfério norte é $\oint A_N$ no equador.</p>
+
+                <p>
+                    <em>Solução.</em> Em esféricas, $A_N = g(1 - \cos\theta)\,d\phi$ e $dA_N = g\sin\theta\,d\theta\wedge d\phi$; $A_S = -g(1 + \cos\theta)\,d\phi$ e
+                    $dA_S = g\sin\theta\,d\theta\wedge d\phi$ também. A diferença é $g(1 - \cos\theta + 1 + \cos\theta)\,d\phi = 2g\,d\phi$. Numa esfera,
+                    $\int g\sin\theta\,d\theta\,d\phi = 4\pi g$. O hemisfério norte $\{\theta \le \pi/2\}$ está em $U_N$, onde $A_N$ é suave, e o seu bordo
+                    é o equador; por Stokes, o fluxo é $\oint A_N = \int_0^{2\pi}g(1 - \cos\tfrac\pi2)\,d\phi = 2\pi g$, e de fato
+                    $\int_0^{2\pi}\!\int_0^{\pi/2}g\sin\theta\,d\theta\,d\phi = 2\pi g$. Do mesmo modo, com $A_S$ no hemisfério sul (bordo: o equador com a
+                    orientação oposta), o fluxo é $-\oint A_S = 2\pi g$. A soma $\oint(A_N - A_S) = \oint 2g\,d\phi = 4\pi g$ recupera o fluxo total: o
+                    fluxo do monopolo está todo na diferença de calibre entre os dois potenciais. As identidades em coordenadas cartesianas
+                    (as de (4.9.6)) foram conferidas em sympy.
+                </p>
+
+                <p id="exr-4-9-4"><strong>Exercício 4.9.4.</strong> Seja $\omega_\alpha = \cos\alpha\,\omega + \sin\alpha\star\omega$ em Minkowski, e sejam
+                    $X = \langle\omega,\omega\rangle$ e $Q$ definido por $\omega\wedge\omega = Q\operatorname{vol}_\eta$. Mostre que $(X, Q)$ gira de
+                    $2\alpha$ e que $X^2 + Q^2$ é invariante. Para $\omega = F$, escreva $X$ e $Q$ em termos de $\mathbf{E}$ e $\mathbf{B}$.</p>
+
+                <p>
+                    <em>Solução.</em> Pelo <a href="[04] - O Operador Estrela de Hodge.html#cor-4-4-17">Corolário 4.4.17</a>, $\langle\star\omega, \star\omega\rangle = \operatorname{sign}(\eta)\langle\omega,\omega\rangle = -X$. Pela
+                    definição da estrela, $\omega\wedge\star\omega = X\operatorname{vol}_\eta$, e
+                    $\langle\omega, \star\omega\rangle\operatorname{vol}_\eta = \omega\wedge\star\star\omega = -\omega\wedge\omega$, logo $\langle\omega,\star\omega\rangle = -Q$. Também
+                    $\star\omega\wedge\star\omega = \langle\star\omega, \omega\rangle\operatorname{vol}_\eta = -Q\operatorname{vol}_\eta$ (com $\star\omega = \star\beta$ para
+                    $\beta = \omega$). Então, com $C = \cos\alpha$ e $S = \sin\alpha$,
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    \langle\omega_\alpha,\omega_\alpha\rangle &= C^2X + 2CS(-Q) + S^2(-X)\\
+                    &= \cos2\alpha\,X - \sin2\alpha\,Q,\\
+                    \omega_\alpha\wedge\omega_\alpha &= \big(C^2Q + 2CS\,X + S^2(-Q)\big)\operatorname{vol}_\eta\\
+                    &= \big(\sin2\alpha\,X + \cos2\alpha\,Q\big)\operatorname{vol}_\eta.
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    É uma rotação de ângulo $2\alpha$ no plano $(X, Q)$, que preserva $X^2 + Q^2$. Para $\omega = F$,
+                    $X = \lvert\mathbf{B}\rvert^2 - \lvert\mathbf{E}\rvert^2/c^2$ (4.3.3) e $Q = -\frac2c\,\mathbf{E}\cdot\mathbf{B}$ (conferido em sympy). Os dois
+                    invariantes de Lorentz do campo (<a href="[08] - Inomogêneas e a Métrica de Minkowski.html#exr-4-8-6">Exercício 4.8.6</a>) não são invariantes de dualidade; só a combinação $X^2 + Q^2$ é. Uma onda plana
+                    tem $X = Q = 0$ e continua assim depois de qualquer rotação de dualidade.
+                </p>
+
+                <p id="exr-4-9-5"><strong>Exercício 4.9.5.</strong> No eletromagnetismo com monopolos, $dF = \frac{\mu_0}{c}j_m$, com
+                    $j_m = c\varrho_m - J_m\wedge dx^0$ (o mesmo formato de $j$). Mostre que $j_m$ se conserva e escreva as quatro equações de Maxwell
+                    vetoriais.</p>
+
+                <p>
+                    <em>Solução.</em> $dj_m = \frac{c}{\mu_0}\,d^2F = 0$; pela (4.8.6) com $\varrho_m$ e $J_m$, isso é
+                    $\partial_t\rho_m + \nabla\cdot\mathbf{J}_m = 0$. Pela (4.7.1),
+                    $dF = d_sB + \frac1c\big(d_sE + \partial_tB\big)\wedge dx^0 = (\nabla\cdot\mathbf{B})\,dV + \frac1c\,\Phi_{\nabla\times\mathbf{E} + \partial_t\mathbf{B}}\wedge dx^0$,
+                    e $\frac{\mu_0}{c}j_m = \mu_0\rho_m\,dV - \frac{\mu_0}{c}\,\Phi_{\mathbf{J}_m}\wedge dx^0$. Igualando as partes, e juntando com o
+                    <a href="[08] - Inomogêneas e a Métrica de Minkowski.html#exr-4-8-3">Exercício 4.8.3</a>,
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    \nabla\cdot\mathbf{E} &= \rho/\varepsilon_0, &\qquad \nabla\times\mathbf{B} &= \mu_0\mathbf{J} + \tfrac{1}{c^2}\partial_t\mathbf{E},\\
+                    \nabla\cdot\mathbf{B} &= \mu_0\rho_m, &\qquad -\nabla\times\mathbf{E} &= \mu_0\mathbf{J}_m + \partial_t\mathbf{B}.
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    As equações ficam simétricas sob a troca $\mathbf{E} \mapsto c\mathbf{B}$, $c\mathbf{B} \mapsto -\mathbf{E}$, acompanhada de
+                    $c\rho \mapsto \rho_m$, $\rho_m \mapsto -c\rho$ e o mesmo para as correntes (confira substituindo). A unidade de $\rho_m$ é uma
+                    escolha: com esta, a carga magnética tem a unidade de carga elétrica vezes velocidade.
+                </p>
+
+                <p id="exr-4-9-6"><strong>Exercício 4.9.6.</strong> Escreva a condição de conservação $d\star J^\flat = 0$ em Minkowski com
+                    coordenadas cartesianas e com coordenadas esféricas espaciais, $\eta = -dt^2 + dr^2 + r^2d\theta^2 + r^2\sin^2\theta\,d\phi^2$
+                    ($c = 1$).</p>
+
+                <p>
+                    <em>Solução.</em> Pela (4.9.7). Em cartesianas, $\sqrt{\lvert\eta\rvert} = 1$ e $\nabla_\mu J^\mu = \partial_tJ^t + \partial_xJ^x + \partial_yJ^y + \partial_zJ^z$.
+                    Em esféricas, $\det(g_{\mu\nu}) = -r^4\sin^2\theta$, $\sqrt{\lvert g\rvert} = r^2\sin\theta$ e
+                </p>
+
+                <p>
+                    $$ \nabla_\mu J^\mu = \partial_tJ^t + \frac{1}{r^2}\partial_r\big(r^2J^r\big) + \frac{1}{\sin\theta}\partial_\theta\big(\sin\theta\,J^\theta\big) + \partial_\phi J^\phi, $$
+                </p>
+
+                <p>
+                    com $J^\mu$ as componentes na base coordenada $(\partial_t, \partial_r, \partial_\theta, \partial_\phi)$ (não as componentes
+                    "físicas" ortonormais, que diferem por fatores $r$ e $r\sin\theta$). A conta direta de $d\star J^\flat$ pela fórmula de componentes,
+                    com $\sqrt{\lvert g\rvert} = r^2\sin\theta$, dá o mesmo (conferido em sympy). Para uma corrente estática radial,
+                    $J^r = f(r)$, a conservação diz $r^2f = $ constante: o fluxo por esferas não depende do raio.
+                </p>
+
+                <p id="exr-4-9-7"><strong>Exercício 4.9.7.</strong> Converta $10^{16}$ GeV$/c^2$ em gramas e compare com a massa de uma bactéria
+                    típica ($\sim1$ pg).</p>
+
+                <p>
+                    <em>Solução.</em> $1$ GeV$/c^2 = 1{,}783\times10^{-27}$ kg $= 1{,}783\times10^{-24}$ g. Logo $10^{16}$ GeV$/c^2 \approx 1{,}8\times10^{-8}$ g.
+                    Uma bactéria como a <em>E. coli</em> tem massa da ordem de $1$ pg $= 10^{-12}$ g, e a razão é cerca de $1{,}8\times10^4$: um monopolo
+                    de grande unificação teria a massa de umas dez mil bactérias, concentrada numa partícula, e não "a massa de uma bactéria".
+                    Em energia, $10^{16}$ GeV é cerca de $10^{12}$ vezes a energia de colisão do LHC (da ordem de $10^4$ GeV).
+                </p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <ul>
+                    <li>A teoria geral a partir de uma $2$-forma fechada $\omega$ numa variedade de dimensão 4 com métrica: a corrente
+                        $j_\omega = d\star\omega$ (<a href="#def-4-9-1">Definição 4.9.1</a>), a sua conservação (<a href="#cor-4-9-2">Corolário 4.9.2</a>) e a expressão $\star d\star\omega = (-1)^{s+1}(\partial^\nu\omega_{\mu\nu})\,dx^\mu$
+                        (<a href="#prop-4-9-3">Proposição 4.9.3</a>).</li>
+                    <li>A escolha de um tempo: as partes $E$ e $B$ de $\omega$ e o seu comportamento sob rotações espaciais (<a href="#prop-4-9-4">Proposição 4.9.4</a>), e o
+                        dual de $\omega$ numa fatia (<a href="#prop-4-9-5">Proposição 4.9.5</a>).</li>
+                    <li>A carga como fluxo de $\star\omega$ (<a href="#def-4-9-6">Definição 4.9.6</a>), com a lei de Gauss como definição (<a href="#prop-4-9-7">Proposição 4.9.7</a>) e como fluxo de um
+                        quadrivetor (<a href="#obs-4-9-8">Observação 4.9.8</a>); a independência da superfície pela região oca (<a href="#teo-4-9-9">Teorema 4.9.9</a>), a carga de Coulomb
+                        (<a href="#ex-4-9-10">Exemplo 4.9.10</a>) e a carga como invariante topológico (<a href="#obs-4-9-11">Observação 4.9.11</a>).</li>
+                    <li>Os monopolos magnéticos: a corrente magnética (<a href="#obs-4-9-12">Observação 4.9.12</a>), o monopolo topológico, os potenciais $A_N$, $A_S$ e as
+                        cordas de Dirac (<a href="#prop-4-9-13">Proposição 4.9.13</a>), a quantização de Dirac (<a href="#obs-4-9-14">Observação 4.9.14</a>) e a comparação dos dois tipos de monopolo.</li>
+                    <li>A dualidade elétrico-magnética no vácuo (<a href="#prop-4-9-15">Proposição 4.9.15</a>), o potencial magnético (<a href="#obs-4-9-16">Observação 4.9.16</a>) e o papel da codimensão
+                        (<a href="#obs-4-9-17">Observação 4.9.17</a>).</li>
+                    <li>A conservação como forma fechada, $d\star J^\flat = (\nabla_\mu J^\mu)\operatorname{vol}_g$ (<a href="#prop-4-9-18">Proposição 4.9.18</a>), e a carga de toda
+                        corrente conservada (<a href="#prop-4-9-19">Proposição 4.9.19</a>), com a integral de Komar como exemplo (<a href="#obs-4-9-20">Observação 4.9.20</a>).</li>
+                </ul>
+
+                <p>
+                    Isso fecha a Parte I do capítulo: o eletromagnetismo é a teoria de uma $2$-forma fechada, e a sua parte com fontes exige uma
+                    métrica, que é a de Minkowski. A Parte II faz a pergunta inversa: dada uma métrica, como ela determina o movimento? O
+                    primeiro passo é medir curvas. O comprimento de uma curva e a sua "energia" são dois funcionais que a métrica define, e
+                    eles são o ponto de partida da dinâmica de uma partícula livre:
+                    <a href="[10] - Comprimento e Energia de Curvas.html">4.10 Comprimento e Energia de uma Curva</a>.
+                </p>
 
             </div>
         </main>
@@ -176,6 +1004,16 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#carga-e-monopolos">Carga, Monopolos e Correntes Conservadas</a></li>
+                    <li><a href="#estrutura-geral">A teoria geral</a></li>
+                    <li><a href="#decomposicao">Escolhendo um tempo</a></li>
+                    <li><a href="#carga">A carga como fluxo</a></li>
+                    <li><a href="#carga-pontual">Cargas pontuais</a></li>
+                    <li><a href="#monopolos">Monopolos magnéticos</a></li>
+                    <li><a href="#dualidade">Dualidade</a></li>
+                    <li><a href="#correntes-conservadas">Correntes conservadas</a></li>
+                    <li><a href="#fisica">Ponte com a física</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
                 </ul>
             </div>
         </aside>

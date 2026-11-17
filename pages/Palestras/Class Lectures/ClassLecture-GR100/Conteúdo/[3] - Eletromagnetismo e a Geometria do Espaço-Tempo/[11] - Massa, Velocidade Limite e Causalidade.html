@@ -164,9 +164,477 @@
             <div class="prose">
 
                 <h1 id="massa-e-causalidade">4.11 Dinâmica Geométrica: Massa, Velocidade Limite e Causalidade</h1>
-                <p class="lead">A dinâmica livre como extremo do comprimento, a massa como fator de escala, as curvas tipo tempo de uma métrica lorentziana, a velocidade limite e a estrutura causal.</p>
+                <p class="lead">O movimento livre como extremo do comprimento, a massa como fator de escala, os dois tipos de descrição numa métrica lorentziana, a velocidade limite e a estrutura causal.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>
+                    O tópico <a href="[10] - Comprimento e Energia de Curvas.html">4.10</a> mostrou que a métrica atribui a cada curva um
+                    número que não depende da parametrização: o comprimento. Até aqui, ele é o único invariante que temos para uma curva.
+                    Para os físicos, a forma mais natural de introduzir dinâmica numa variedade com métrica é um princípio de extremo
+                    para esse invariante: entre dois eventos, uma partícula livre segue uma curva que torna o comprimento estacionário.
+                </p>
+
+                <p>
+                    Este tópico é, em grande parte, argumentação física, e as hipóteses são ditas antes das conclusões. Ele tira do
+                    princípio de extremo três consequências. A primeira: partículas diferentes podem medir comprimentos que diferem por um
+                    fator constante, e esse fator é a massa. A segunda: numa métrica lorentziana o comprimento só faz sentido num tipo
+                    causal fixo, e escolher as curvas tipo tempo impõe uma velocidade limite, que é a constante $c$ do eletromagnetismo. A
+                    terceira: essa escolha dá uma estrutura causal, e em Minkowski não há curvas tipo tempo fechadas. Duas afirmações
+                    matemáticas pequenas sustentam o argumento e são demonstradas: o tipo causal de uma curva não muda, e a coordenada $x^0$
+                    cresce ao longo de uma curva tipo tempo dirigida ao futuro.
+                </p>
+
+                <p>
+                    O princípio é enunciado aqui de modo informal. A formulação precisa, com as equações de Euler–Lagrange, é o tópico 4.12,
+                    e a mecânica que sai dele, o 4.13.
+                </p>
+
+                <h2 id="principio-de-extremo">O movimento livre como extremo do comprimento</h2>
+
+                <div class="definition-box" id="def-4-11-1" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.11.1 (Curva estacionária).</strong> Seja $\Phi$ um funcional que associa um número a cada curva
+                        $\gamma: [a,b] \to M$. Uma <strong>variação</strong> de $\gamma$ com extremos fixos é uma aplicação suave
+                        $\Gamma: (-\epsilon_0, \epsilon_0)\times[a,b] \to M$ com $\Gamma(0, t) = \gamma(t)$, $\Gamma(\epsilon, a) = \gamma(a)$ e
+                        $\Gamma(\epsilon, b) = \gamma(b)$; escrevemos $\gamma_\epsilon = \Gamma(\epsilon, \cdot)$. A curva $\gamma$ é
+                        <strong>estacionária</strong> para $\Phi$ se, para toda variação com extremos fixos,</p>
+                    <p>$$ \frac{d}{d\epsilon}\Big\vert_{\epsilon=0}\Phi[\gamma_\epsilon] = 0. $$</p>
+                </div>
+
+                <p>
+                    A letra $\epsilon$ (e não $\varepsilon$, que é a permissividade) é o parâmetro da variação. Mínimos e máximos são
+                    estacionários; o recíproco é falso. A condição pressupõe que $\epsilon \mapsto \Phi[\gamma_\epsilon]$ seja derivável; para o
+                    comprimento isso vale quando $g(\gamma',\gamma') \ne 0$ ao longo de $\gamma$ (a raiz é suave longe de zero, e a derivada passa
+                    para dentro da integral).
+                </p>
+
+                <p>
+                    O postulado é um <strong>argumento físico</strong>, não um teorema. <em>Hipótese:</em> a trajetória de uma partícula livre
+                    entre dois eventos $P_1$ e $P_2$ é uma curva estacionária para o comprimento,
+                </p>
+
+                <p>
+                    $$ \frac{d}{d\epsilon}\Big\vert_{0}\,\int_{\gamma_\epsilon}dl = 0, \qquad \text{abreviado} \qquad \delta\!\int_{P_1}^{P_2}dl = 0. \tag{4.11.1} $$
+                </p>
+
+                <p>
+                    O modelo é a óptica geométrica. O princípio de Fermat diz que a luz, num meio de índice de refração $n$, segue as
+                    curvas que tornam estacionário o tempo de percurso $\frac1c\int n\,dl_{\text{eucl}}$, isto é, o comprimento na métrica óptica
+                    $n^2\delta$ (<a href="[06] - Meios Materiais e Métrica Induzida.html#exr-4-6-6">Exercício 4.6.6</a>). Em $\mathbb{R}^n$ euclidiano as curvas estacionárias do comprimento são os segmentos de reta (tópico
+                    4.12): a partícula livre da mecânica newtoniana. O postulado (4.11.1) diz que o espaço-tempo com a sua métrica faz o papel do
+                    meio óptico.
+                </p>
+
+                <div class="definition-box" id="prop-4-11-2">
+                    <p><strong>Proposição 4.11.2 (Fator de escala constante).</strong> Para $\alpha \gt 0$ constante, $\int\alpha\,dl$ e
+                        $\int dl$ têm as mesmas curvas estacionárias.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Para toda variação, $\int_{\gamma_\epsilon}\alpha\,dl = \alpha\,L[\gamma_\epsilon]$, e
+                    $\frac{d}{d\epsilon}\big(\alpha L[\gamma_\epsilon]\big) = \alpha\,\frac{d}{d\epsilon}L[\gamma_\epsilon]$, que se anula em $\epsilon = 0$ se, e só se,
+                    $\frac{d}{d\epsilon}L[\gamma_\epsilon]$ se anula. $\blacksquare$
+                </p>
+
+                <p>
+                    A proposição é trivial, mas a sua leitura física não é.
+                </p>
+
+                <p id="obs-4-11-3"><strong>Observação 4.11.3 (A massa como escala).</strong> Suponha que (i) nem todas as entidades se
+                    movem do mesmo modo, e que na linguagem geométrica isso significa que elas medem comprimentos com métricas diferentes,
+                    $\tilde g$ e $g$; (ii) mas todas concordam sobre as isometrias, isto é, as simetrias do espaço-tempo são as mesmas para todas
+                    elas. Em Minkowski, uma forma bilinear simétrica invariante por todo o grupo de Lorentz próprio é um múltiplo constante de
+                    $\eta$ (é o lema de Schur aplicado à representação de $SO^+(3,1)$ em $\mathbb{R}^4$, que é irredutível; ver a <a href="[04] - O Operador Estrela de Hodge.html#obs-4-4-21">Observação 4.4.21</a>), e
+                    a invariância por translações faz o múltiplo ser o mesmo em todo ponto. Então $\tilde g = \alpha^2g$ e</p>
+
+                <p>
+                    $$ d\tilde l = \alpha\,dl, \qquad \alpha \gt 0 \text{ constante}: \tag{4.11.2} $$
+                </p>
+
+                <p>
+                    um "alongamento" que não depende da direção nem do sentido. Pela <a href="#prop-4-11-2">Proposição 4.11.2</a>, a dinâmica livre é a mesma, mas o
+                    funcional $\int d\tilde l = \alpha\int dl$ não é. As entidades se dividem em classes, rotuladas pelo valor de $\alpha$, e para a
+                    partícula livre esse rótulo é, a menos de uma constante que acerte as unidades, a <strong>massa</strong>: $\alpha = m \gt 0$. O
+                    funcional $m\int dl$ só se distingue de $\int dl$ quando a partícula interage com outra coisa, por exemplo quando a ação
+                    ganha um termo de acoplamento com o campo eletromagnético (tópico 4.14): aí a razão entre os dois termos depende de $m$.
+                    No tópico 4.13, a ação $S = -mc\int dl$ dá o momento e a energia relativísticos.
+                </p>
+
+                <p id="obs-4-11-4"><strong>Observação 4.11.4 (Fator variável: o princípio de Jacobi–Maupertuis).</strong> Se $\alpha$
+                    depende do ponto, os extremais mudam (<a href="#exr-4-11-1">Exercício 4.11.1</a>). O exemplo clássico está em $\mathbb{R}^3$, com o tempo como parâmetro
+                    externo: para uma partícula de massa $m$ num potencial $U$, as trajetórias de energia total $\mathcal{E}$ fixa, vistas como
+                    curvas (sem parametrização), são as curvas estacionárias de</p>
+
+                <p>
+                    $$ \int\sqrt{2m\big(\mathcal{E} - U(\mathbf{x})\big)}\;dl, $$
+                </p>
+
+                <p>
+                    com $dl$ o elemento euclidiano. Aqui $\alpha = \sqrt{2m(\mathcal{E} - U)}$ é, a menos de constante, a raiz da energia cinética
+                    <em>como função da posição</em>, $K(\mathbf{x}) = \mathcal{E} - U(\mathbf{x})$, e não a energia cinética como função da velocidade:
+                    é a energia fixa que permite trocar uma pela outra. É o princípio de Maupertuis, na forma de Jacobi; não o demonstramos
+                    (ver Arnold, <em>Mathematical Methods of Classical Mechanics</em>, a seção sobre o princípio de Maupertuis). Ele diz que o
+                    movimento num potencial é o movimento livre numa métrica $2m(\mathcal{E} - U)\,\delta$, como a luz na métrica óptica. Neste
+                    capítulo ficamos com o caso livre, $\alpha$ constante.
+                </p>
+
+                <h2 id="pseudo-metrica">Comprimento numa métrica lorentziana</h2>
+
+                <p>
+                    Numa métrica riemanniana, $dl^2 = \gamma^*g$ é positivo para toda curva regular. Numa métrica lorentziana não é
+                    (<a href="[10] - Comprimento e Energia de Curvas.html#obs-4-10-3">Observação 4.10.3</a>), e o postulado (4.11.1) exige um cuidado. Para que $\int dl$ seja derivável e a teoria trate todas as curvas
+                    admissíveis do mesmo modo, impomos que, ao longo das curvas que descrevem partículas, $\gamma^*g$ tenha <strong>sinal fixo e
+                    nunca se anule</strong>. Em Minkowski 1+1, com $\eta = -(dx^0)^2 + (dx)^2$ e uma curva parametrizada por $x^0$,
+                </p>
+
+                <p>
+                    $$ dl = \sqrt{\pm\big(-(dx^0)^2 + (dx)^2\big)} = dx^0\sqrt{\pm\Big(-1 + \Big(\frac{dx}{dx^0}\Big)^2\Big)}, \tag{4.11.3} $$
+                </p>
+
+                <p>
+                    no sentido da <a href="[10] - Comprimento e Energia de Curvas.html#obs-4-10-8">Observação 4.10.8</a>: o radicando é o coeficiente de $\pm\gamma^*\eta$. O sinal precisa ser escolhido, e há duas
+                    descrições possíveis, que correspondem aos dois tipos causais da <a href="[10] - Comprimento e Energia de Curvas.html#def-4-10-14">Definição 4.10.14</a>:
+                </p>
+
+                <p>
+                    $$ (+):\ \Big\lvert\frac{dx}{dx^0}\Big\rvert \gt 1\quad\text{(tipo espaço)}, \qquad
+                    (-):\ \Big\lvert\frac{dx}{dx^0}\Big\rvert \lt 1\quad\text{(tipo tempo)}. $$
+                </p>
+
+                <p>
+                    As duas descrições são disjuntas: uma curva não pode passar de uma à outra sem atravessar $\lvert dx/dx^0\rvert = 1$, onde
+                    $dl$ se anula. Esse é o conteúdo da proposição seguinte, que vale para qualquer métrica.
+                </p>
+
+                <div class="definition-box" id="prop-4-11-5">
+                    <p><strong>Proposição 4.11.5 (O tipo causal é constante).</strong> Seja $g$ uma métrica qualquer e $\gamma: I \to M$ uma
+                        curva, com $I$ um intervalo, tal que $g(\gamma'(t),\gamma'(t)) \ne 0$ para todo $t$. Então $g(\gamma',\gamma')$ tem o mesmo sinal
+                        em todo $I$: a curva é inteira tipo tempo ou inteira tipo espaço.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> A função $f(t) = g(\gamma'(t),\gamma'(t))$ é contínua, porque em coordenadas é
+                    $g_{ab}(\gamma(t))\,\dot x^a(t)\dot x^b(t)$. Se $f(t_1) \lt 0 \lt f(t_2)$ para $t_1, t_2 \in I$, o teorema do valor intermediário
+                    no intervalo entre eles (contido em $I$, que é um intervalo) dá um $t$ com $f(t) = 0$, contra a hipótese. $\blacksquare$
+                </p>
+
+                <p>
+                    Na figura, isso quer dizer que uma curva tipo tempo fica, em cada ponto, dentro do cone de luz desse ponto, e não pode
+                    escapar para fora dele sem que a sua velocidade fique, em algum instante, sobre o cone (Figura 4.11.1).
+                </p>
+
+                <figure class="lecture-figure" id="fig-4-11-1" style="overflow-x: auto; overflow-y: hidden;">
+                    <svg viewBox="0 0 640 280" role="img" style="min-width: 560px;" aria-label="Dois painéis. No painel a, os eixos x e x zero e as duas retas a quarenta e cinco graus pela origem; as regiões acima e abaixo, entre as retas, estão sombreadas e rotuladas módulo de dx sobre dx zero menor que 1, descrição menos, tipo tempo; as regiões laterais são rotuladas módulo maior que 1, descrição mais, tipo espaço. No painel b, uma curva ondulada quase vertical com três pontos marcados; em cada um, um pequeno cone sombreado e a seta tangente à curva, sempre dentro do cone.">
+<defs><marker id="arr-4-11-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<path d="M150,140 L55,45 L245,45 Z" class="fig-band"/>
+<path d="M150,140 L55,235 L245,235 Z" class="fig-band"/>
+<line x1="55" y1="45" x2="245" y2="235" class="fig-guide fig-dashed"/>
+<line x1="55" y1="235" x2="245" y2="45" class="fig-guide fig-dashed"/>
+<line x1="35" y1="140" x2="265" y2="140" class="fig-axis" marker-end="url(#arr-4-11-1)"/>
+<text x="267" y="156" class="fig-label fig-it">x</text>
+<line x1="150" y1="245" x2="150" y2="25" class="fig-axis" marker-end="url(#arr-4-11-1)"/>
+<text x="156" y="33" class="fig-label fig-it">x⁰</text>
+<text x="150" y="82" text-anchor="middle" class="fig-label fig-small">|dx/dx⁰| &lt; 1</text>
+<text x="150" y="96" text-anchor="middle" class="fig-label fig-small">(−): tipo tempo</text>
+<text x="190" y="126" class="fig-label fig-small">|dx/dx⁰| &gt; 1</text>
+<text x="194" y="162" class="fig-label fig-small">(+): tipo espaço</text>
+<text x="150" y="266" text-anchor="middle" class="fig-label fig-small">(a) as direções num ponto</text>
+<path d="M470,245 L471.5,243 L473,241 L474.5,239 L476,237 L477.4,235 L478.9,233 L480.3,231 L481.7,229 L483,227 L484.4,225 L485.7,223 L486.9,221 L488.2,219 L489.3,217 L490.4,215 L491.5,213 L492.5,211 L493.5,209 L494.4,207 L495.2,205 L496,203 L496.7,201 L497.4,199 L498,197 L498.5,195 L498.9,193 L499.3,191 L499.6,189 L499.8,187 L499.9,185 L500,183 L500,181 L499.9,179 L499.7,177 L499.5,175 L499.2,173 L498.8,171 L498.4,169 L497.9,167 L497.3,165 L496.6,163 L495.9,161 L495.1,159 L494.3,157 L493.3,155 L492.4,153 L491.3,151 L490.3,149 L489.1,147 L488,145 L486.7,143 L485.5,141 L484.2,139 L482.8,137 L481.4,135 L480,133 L478.6,131 L477.2,129 L475.7,127 L474.2,125 L472.7,123 L471.2,121 L469.7,119 L468.2,117 L466.8,115 L465.3,113 L463.8,111 L462.3,109 L460.9,107 L459.5,105 L458.1,103 L456.7,101 L455.4,99 L454.1,97 L452.9,95 L451.6,93 L450.5,91 L449.4,89 L448.3,87 L447.3,85 L446.3,83 L445.5,81 L444.6,79 L443.9,77 L443.2,75 L442.5,73 L441.9,71 L441.5,69 L441,67 L440.7,65 L440.4,63 L440.2,61 L440.1,59 L440,57 L440,55 L440.1,53 L440.3,51 L440.5,49 L440.8,47 L441.2,45 L441.7,43 L442.2,41 L442.8,39 L443.5,37 L444.2,35" class="fig-curve"/>
+<path d="M495.2,205 L469.2,179 L521.2,179 Z" class="fig-band"/>
+<line x1="469.2" y1="179" x2="521.2" y2="231" class="fig-guide fig-dashed"/>
+<line x1="469.2" y1="231" x2="521.2" y2="179" class="fig-guide fig-dashed"/>
+<line x1="495.2" y1="205" x2="503.5" y2="184.6" class="fig-axis" marker-end="url(#arr-4-11-1)"/>
+<circle cx="495.2" cy="205" r="3" class="fig-arrowhead"/>
+<path d="M481.4,135 L455.4,109 L507.4,109 Z" class="fig-band"/>
+<line x1="455.4" y1="109" x2="507.4" y2="161" class="fig-guide fig-dashed"/>
+<line x1="455.4" y1="161" x2="507.4" y2="109" class="fig-guide fig-dashed"/>
+<line x1="481.4" y1="135" x2="468.9" y2="116.9" class="fig-axis" marker-end="url(#arr-4-11-1)"/>
+<circle cx="481.4" cy="135" r="3" class="fig-arrowhead"/>
+<path d="M440.7,65 L414.7,39 L466.7,39 Z" class="fig-band"/>
+<line x1="414.7" y1="39" x2="466.7" y2="91" class="fig-guide fig-dashed"/>
+<line x1="414.7" y1="91" x2="466.7" y2="39" class="fig-guide fig-dashed"/>
+<line x1="440.7" y1="65" x2="437.2" y2="43.3" class="fig-axis" marker-end="url(#arr-4-11-1)"/>
+<circle cx="440.7" cy="65" r="3" class="fig-arrowhead"/>
+<line x1="350" y1="245" x2="590" y2="245" class="fig-axis" marker-end="url(#arr-4-11-1)"/>
+<text x="592" y="261" class="fig-label fig-it">x</text>
+<line x1="350" y1="245" x2="350" y2="25" class="fig-axis" marker-end="url(#arr-4-11-1)"/>
+<text x="356" y="33" class="fig-label fig-it">x⁰</text>
+<text x="514" y="95" class="fig-label fig-small">curva tipo tempo</text>
+<text x="470" y="266" text-anchor="middle" class="fig-label fig-small">(b) uma curva tipo tempo</text>
+</svg>
+                    <figcaption><strong>Figura 4.11.1.</strong> As duas descrições no plano $(x, x^0)$. Em cada ponto, as direções com
+                        $\lvert dx/dx^0\rvert \lt 1$ (sombreadas) são tipo tempo e as com $\lvert dx/dx^0\rvert \gt 1$ são tipo espaço; as retas
+                        $\lvert dx/dx^0\rvert = 1$ são o cone de luz. Uma curva tipo tempo (contínua) tem a velocidade dentro do cone em cada um dos seus
+                        pontos; os pequenos cones mostram isso em três pontos.</figcaption>
+                </figure>
+
+                <h2 id="velocidade-limite">A velocidade limite</h2>
+
+                <p>
+                    Escolhemos a descrição $(-)$: as histórias das partículas são curvas tipo tempo. Suponha agora que a coordenada $x^0$ seja
+                    medida com um instrumento diferente do que mede $x$, um relógio em vez de uma régua. Então é preciso um fator de conversão
+                    entre as duas unidades, $x^0 = ct$, e para a curva $x(t)$, com $v = dx/dt$,
+                </p>
+
+                <p>
+                    $$ dl = c\,dt\sqrt{1 - \Big(\frac1c\frac{dx}{dt}\Big)^2} = c\,dt\sqrt{1 - \frac{v^2}{c^2}}, \tag{4.11.4} $$
+                </p>
+
+                <p>
+                    e a exigência de que o radicando seja positivo é
+                </p>
+
+                <p>
+                    $$ 1 - \frac{v^2}{c^2} \gt 0 \quad\Longleftrightarrow\quad v^2 \lt c^2. \tag{4.11.5} $$
+                </p>
+
+                <p>
+                    A teoria tem uma <strong>velocidade limite</strong>: nenhuma partícula descrita por uma curva tipo tempo atinge a velocidade
+                    $c$, em nenhum referencial (o tipo causal não depende do referencial, <a href="[10] - Comprimento e Energia de Curvas.html#def-4-10-14">Definição 4.10.14</a>). Em três dimensões espaciais a conta é a
+                    mesma com $v = \lvert\mathbf{v}\rvert$ (<a href="[10] - Comprimento e Energia de Curvas.html#ex-4-10-15">Exemplo 4.10.15</a>).
+                </p>
+
+                <p id="obs-4-11-6"><strong>Observação 4.11.6 (Que $c$ é esse).</strong> No argumento acima, $c$ é só um fator de conversão
+                    entre unidades de tempo e de comprimento. O tópico 4.8 mostrou de onde ele vem: com $t$ como coordenada, a métrica que o
+                    eletromagnetismo exige é $-dt^2/(\varepsilon_0\mu_0) + d\mathbf{x}^2$ (<a href="[08] - Inomogêneas e a Métrica de Minkowski.html#obs-4-8-13">Observação 4.8.13</a> e <a href="[08] - Inomogêneas e a Métrica de Minkowski.html#exr-4-8-4">Exercício 4.8.4</a>), e o fator é
+                    $c = 1/\sqrt{\varepsilon_0\mu_0}$, a velocidade das ondas eletromagnéticas (<a href="[04] - O Operador Estrela de Hodge.html#ex-4-4-24">Exemplo 4.4.24</a>). A velocidade limite das partículas e a
+                    velocidade da luz são a mesma constante porque as duas vêm da mesma métrica.</p>
+
+                <p>
+                    O responsável pela velocidade limite é a assinatura. A métrica é <strong>lorentziana</strong>, com um sinal diferente dos
+                    outros, e é esse sinal que põe o $-$ dentro da raiz de (4.11.4). Numa métrica riemanniana em quatro dimensões, a mesma conta
+                    daria $dl = c\,dt\sqrt{1 + v^2/c^2}$, positivo para todo $v$, sem limite algum; e o <a href="[08] - Inomogêneas e a Métrica de Minkowski.html#exr-4-8-5">Exercício 4.8.5</a> mostrou que essa métrica também
+                    não tem ondas.
+                </p>
+
+                <h2 id="causalidade">Estrutura causal</h2>
+
+                <p>
+                    Quando $t$ é uma medida de tempo no sentido usual, a escolha da descrição $(-)$ introduz uma relação de causa e efeito: um
+                    evento só pode influenciar, por meio de partículas, os eventos que alcança com curvas tipo tempo. Para tornar isso
+                    preciso, falta escolher qual metade do cone é o futuro.
+                </p>
+
+                <div class="definition-box" id="def-4-11-7" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.11.7 (Orientação temporal em Minkowski).</strong> Um vetor tipo tempo ou tipo luz $v$ de
+                        $(\mathbb{R}^4, \eta)$ é <strong>dirigido ao futuro</strong> se $v^0 \gt 0$ e <strong>ao passado</strong> se $v^0 \lt 0$. O
+                        conjunto dos vetores tipo tempo dirigidos ao futuro é o <strong>cone futuro</strong>. Uma curva tipo tempo é dirigida ao
+                        futuro se todos os seus vetores velocidade o são.</p>
+                </div>
+
+                <p>
+                    A definição faz sentido porque um vetor tipo tempo ou nulo nunca tem $v^0 = 0$: se $\eta(v,v) \le 0$ e $v \ne 0$, então
+                    $(v^0)^2 \ge \lvert\mathbf{v}\rvert^2$, e $v^0 = 0$ forçaria $\mathbf{v} = 0$. A escolha "$v^0 \gt 0$ é futuro" é uma convenção, mas
+                    as transformações de $SO^+(3,1)$, com $\Lambda^0{}_0 \ge 1$ (<a href="[08] - Inomogêneas e a Métrica de Minkowski.html#def-4-8-16">Definição 4.8.16</a>), a preservam: é por isso que esse é o grupo dos
+                    referenciais inerciais que concordam sobre o sentido do tempo.
+                </p>
+
+                <div class="definition-box" id="prop-4-11-8">
+                    <p><strong>Proposição 4.11.8 (Não há curvas tipo tempo fechadas em Minkowski).</strong> Seja $\gamma: I \to \mathbb{R}^4$ uma
+                        curva tipo tempo em Minkowski. Então $(\gamma^0)'$ nunca se anula e tem sinal constante: a curva é inteira dirigida ao futuro
+                        ou inteira ao passado. Se ela é dirigida ao futuro, $x^0\circ\gamma$ é estritamente crescente; em particular $\gamma$ é
+                        injetiva, e não existe curva tipo tempo fechada, isto é, com $\gamma(t_1) = \gamma(t_2)$ para $t_1 \ne t_2$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pelo parágrafo anterior, $(\gamma^0)'(t) \ne 0$ para todo $t$. A função $(\gamma^0)'$ é contínua, e pelo
+                    teorema do valor intermediário (como na <a href="#prop-4-11-5">Proposição 4.11.5</a>) tem sinal constante em $I$. Se ela é positiva, $x^0\circ\gamma = \gamma^0$
+                    tem derivada positiva e é estritamente crescente (teorema do valor médio). Então $t_1 \lt t_2$ implica
+                    $\gamma^0(t_1) \lt \gamma^0(t_2)$, logo $\gamma(t_1) \ne \gamma(t_2)$. Se for negativa, troque $t$ por $-t$. $\blacksquare$
+                </p>
+
+                <p>
+                    O mesmo argumento vale para curvas tipo tempo suaves por partes, desde que em cada vértice as duas velocidades fiquem no
+                    mesmo cone (<a href="#exr-4-11-5">Exercício 4.11.5</a>).
+                </p>
+
+                <p id="obs-4-11-9"><strong>Observação 4.11.9 (Por que não a descrição $(+)$).</strong> Curvas tipo espaço podem ser fechadas:
+                    o círculo $\{x^0 = 0,\ (x^1)^2 + (x^2)^2 = R^2\}$ é tipo espaço (<a href="[10] - Comprimento e Energia de Curvas.html#exr-4-10-6">Exercício 4.10.6</a>). Se as histórias das partículas fossem curvas tipo
+                    espaço, uma partícula poderia voltar ao mesmo evento, e não haveria um sentido de "antes" e "depois" ao longo dela. A
+                    estrutura causal usual é a exigência de que <strong>não existam curvas tipo tempo fechadas</strong>: as histórias são tipo
+                    tempo, e nenhuma história volta ao seu passado. Em Minkowski isso é o teorema acima, uma consequência da geometria de fundo.
+                    Quando a métrica não é dada de antemão, como em Relatividade Geral, essa exigência é uma condição sobre a variedade e a
+                    métrica: há espaços-tempo, localmente idênticos a Minkowski, que têm curvas tipo tempo fechadas.</p>
+
+                <p id="ex-4-11-10"><strong>Exemplo 4.11.10 (Tempo periódico).</strong> Seja $M = S^1\times\mathbb{R}$, com a coordenada $t$ no
+                    círculo (isto é, $t \sim t + T$) e $x$ na reta, e a métrica $-dt^2 + dx^2$. Localmente $M$ é Minkowski 1+1: a métrica tem
+                    as mesmas componentes. Mas a curva $\gamma(s) = (s \bmod T, 0)$, $s \in [0, T]$, tem $\gamma' = \partial_t$, é tipo tempo, dirigida
+                    ao futuro, e fecha: $\gamma(T) = \gamma(0)$ (Figura 4.11.2). A <a href="#prop-4-11-8">Proposição 4.11.8</a> falha porque $t$ não é uma função global em $M$, e o
+                    argumento "a coordenada temporal cresce" não pode ser aplicado. A ausência de curvas tipo tempo fechadas não é uma
+                    propriedade local da métrica; ela depende da topologia.</p>
+
+                <figure class="lecture-figure" id="fig-4-11-2" style="overflow-x: auto; overflow-y: hidden;">
+                    <svg viewBox="0 0 640 260" role="img" style="min-width: 560px;" aria-label="Um cilindro deitado, com o eixo na horizontal, que é a direção espacial x; as voltas em torno do eixo são o tempo periódico, t equivalente a t mais T. No meio do cilindro, uma seção transversal em x igual a zero está desenhada com traço grosso na frente e tracejado atrás, com uma seta indicando t crescente: é uma curva tipo tempo fechada. Três pequenos cones sombreados ao longo dela se abrem no sentido de t crescente.">
+<defs><marker id="arr-4-11-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="120" y1="50" x2="520" y2="50" class="fig-curve"/>
+<line x1="120" y1="210" x2="520" y2="210" class="fig-curve"/>
+<path d="M148,130 L148,125.8 L147.8,121.6 L147.7,117.5 L147.4,113.4 L147,109.3 L146.6,105.3 L146.1,101.3 L145.6,97.5 L144.9,93.7 L144.2,90 L143.5,86.4 L142.7,83 L141.8,79.7 L140.8,76.5 L139.8,73.4 L138.7,70.5 L137.6,67.8 L136.5,65.3 L135.2,62.9 L134,60.7 L132.7,58.7 L131.4,56.9 L130,55.3 L128.7,53.9 L127.2,52.7 L125.8,51.7 L124.4,51 L122.9,50.4 L121.5,50.1 L120,50 L118.5,50.1 L117.1,50.4 L115.6,51 L114.2,51.7 L112.8,52.7 L111.3,53.9 L110,55.3 L108.6,56.9 L107.3,58.7 L106,60.7 L104.8,62.9 L103.5,65.3 L102.4,67.8 L101.3,70.5 L100.2,73.4 L99.2,76.5 L98.2,79.7 L97.3,83 L96.5,86.4 L95.8,90 L95.1,93.7 L94.4,97.5 L93.9,101.3 L93.4,105.3 L93,109.3 L92.6,113.4 L92.3,117.5 L92.2,121.6 L92,125.8 L92,130 L92,134.2 L92.2,138.4 L92.3,142.5 L92.6,146.6 L93,150.7 L93.4,154.7 L93.9,158.7 L94.4,162.5 L95.1,166.3 L95.8,170 L96.5,173.6 L97.3,177 L98.2,180.3 L99.2,183.5 L100.2,186.6 L101.3,189.5 L102.4,192.2 L103.5,194.7 L104.8,197.1 L106,199.3 L107.3,201.3 L108.6,203.1 L110,204.7 L111.3,206.1 L112.8,207.3 L114.2,208.3 L115.6,209 L117.1,209.6 L118.5,209.9 L120,210 L121.5,209.9 L122.9,209.6 L124.4,209 L125.8,208.3 L127.2,207.3 L128.7,206.1 L130,204.7 L131.4,203.1 L132.7,201.3 L134,199.3 L135.2,197.1 L136.5,194.7 L137.6,192.2 L138.7,189.5 L139.8,186.6 L140.8,183.5 L141.8,180.3 L142.7,177 L143.5,173.6 L144.2,170 L144.9,166.3 L145.6,162.5 L146.1,158.7 L146.6,154.7 L147,150.7 L147.4,146.6 L147.7,142.5 L147.8,138.4 L148,134.2 L148,130" class="fig-curve"/>
+<path d="M520,210 L520.7,210 L521.5,209.9 L522.2,209.8 L522.9,209.6 L523.7,209.3 L524.4,209 L525.1,208.7 L525.8,208.3 L526.5,207.8 L527.2,207.3 L528,206.7 L528.7,206.1 L529.3,205.4 L530,204.7 L530.7,203.9 L531.4,203.1 L532.1,202.2 L532.7,201.3 L533.4,200.3 L534,199.3 L534.6,198.2 L535.2,197.1 L535.9,195.9 L536.5,194.7 L537,193.5 L537.6,192.2 L538.2,190.8 L538.7,189.5 L539.3,188 L539.8,186.6 L540.3,185.1 L540.8,183.5 L541.3,182 L541.8,180.3 L542.2,178.7 L542.7,177 L543.1,175.3 L543.5,173.6 L543.9,171.8 L544.2,170 L544.6,168.2 L544.9,166.3 L545.3,164.4 L545.6,162.5 L545.9,160.6 L546.1,158.7 L546.4,156.7 L546.6,154.7 L546.8,152.7 L547,150.7 L547.2,148.7 L547.4,146.6 L547.5,144.6 L547.7,142.5 L547.8,140.4 L547.8,138.4 L547.9,136.3 L548,134.2 L548,132.1 L548,130 L548,127.9 L548,125.8 L547.9,123.7 L547.8,121.6 L547.8,119.6 L547.7,117.5 L547.5,115.4 L547.4,113.4 L547.2,111.3 L547,109.3 L546.8,107.3 L546.6,105.3 L546.4,103.3 L546.1,101.3 L545.9,99.4 L545.6,97.5 L545.3,95.6 L544.9,93.7 L544.6,91.8 L544.2,90 L543.9,88.2 L543.5,86.4 L543.1,84.7 L542.7,83 L542.2,81.3 L541.8,79.7 L541.3,78 L540.8,76.5 L540.3,74.9 L539.8,73.4 L539.3,72 L538.7,70.5 L538.2,69.2 L537.6,67.8 L537,66.5 L536.5,65.3 L535.9,64.1 L535.2,62.9 L534.6,61.8 L534,60.7 L533.4,59.7 L532.7,58.7 L532.1,57.8 L531.4,56.9 L530.7,56.1 L530,55.3 L529.3,54.6 L528.7,53.9 L528,53.3 L527.2,52.7 L526.5,52.2 L525.8,51.7 L525.1,51.3 L524.4,51 L523.7,50.7 L522.9,50.4 L522.2,50.2 L521.5,50.1 L520.7,50 L520,50" class="fig-curve"/>
+<path d="M520,50 L519.3,50 L518.5,50.1 L517.8,50.2 L517.1,50.4 L516.3,50.7 L515.6,51 L514.9,51.3 L514.2,51.7 L513.5,52.2 L512.8,52.7 L512,53.3 L511.3,53.9 L510.7,54.6 L510,55.3 L509.3,56.1 L508.6,56.9 L507.9,57.8 L507.3,58.7 L506.6,59.7 L506,60.7 L505.4,61.8 L504.8,62.9 L504.1,64.1 L503.5,65.3 L503,66.5 L502.4,67.8 L501.8,69.2 L501.3,70.5 L500.7,72 L500.2,73.4 L499.7,74.9 L499.2,76.5 L498.7,78 L498.2,79.7 L497.8,81.3 L497.3,83 L496.9,84.7 L496.5,86.4 L496.1,88.2 L495.8,90 L495.4,91.8 L495.1,93.7 L494.7,95.6 L494.4,97.5 L494.1,99.4 L493.9,101.3 L493.6,103.3 L493.4,105.3 L493.2,107.3 L493,109.3 L492.8,111.3 L492.6,113.4 L492.5,115.4 L492.3,117.5 L492.2,119.6 L492.2,121.6 L492.1,123.7 L492,125.8 L492,127.9 L492,130 L492,132.1 L492,134.2 L492.1,136.3 L492.2,138.4 L492.2,140.4 L492.3,142.5 L492.5,144.6 L492.6,146.6 L492.8,148.7 L493,150.7 L493.2,152.7 L493.4,154.7 L493.6,156.7 L493.9,158.7 L494.1,160.6 L494.4,162.5 L494.7,164.4 L495.1,166.3 L495.4,168.2 L495.8,170 L496.1,171.8 L496.5,173.6 L496.9,175.3 L497.3,177 L497.8,178.7 L498.2,180.3 L498.7,182 L499.2,183.5 L499.7,185.1 L500.2,186.6 L500.7,188 L501.3,189.5 L501.8,190.8 L502.4,192.2 L503,193.5 L503.5,194.7 L504.1,195.9 L504.8,197.1 L505.4,198.2 L506,199.3 L506.6,200.3 L507.3,201.3 L507.9,202.2 L508.6,203.1 L509.3,203.9 L510,204.7 L510.7,205.4 L511.3,206.1 L512,206.7 L512.8,207.3 L513.5,207.8 L514.2,208.3 L514.9,208.7 L515.6,209 L516.3,209.3 L517.1,209.6 L517.8,209.8 L518.5,209.9 L519.3,210 L520,210" class="fig-guide fig-dashed"/>
+<path d="M320,210 L320.7,210 L321.5,209.9 L322.2,209.8 L322.9,209.6 L323.7,209.3 L324.4,209 L325.1,208.7 L325.8,208.3 L326.5,207.8 L327.2,207.3 L328,206.7 L328.7,206.1 L329.3,205.4 L330,204.7 L330.7,203.9 L331.4,203.1 L332.1,202.2 L332.7,201.3 L333.4,200.3 L334,199.3 L334.6,198.2 L335.2,197.1 L335.9,195.9 L336.5,194.7 L337,193.5 L337.6,192.2 L338.2,190.8 L338.7,189.5 L339.3,188 L339.8,186.6 L340.3,185.1 L340.8,183.5 L341.3,182 L341.8,180.3 L342.2,178.7 L342.7,177 L343.1,175.3 L343.5,173.6 L343.9,171.8 L344.2,170 L344.6,168.2 L344.9,166.3 L345.3,164.4 L345.6,162.5 L345.9,160.6 L346.1,158.7 L346.4,156.7 L346.6,154.7 L346.8,152.7 L347,150.7 L347.2,148.7 L347.4,146.6 L347.5,144.6 L347.7,142.5 L347.8,140.4 L347.8,138.4 L347.9,136.3 L348,134.2 L348,132.1 L348,130 L348,127.9 L348,125.8 L347.9,123.7 L347.8,121.6 L347.8,119.6 L347.7,117.5 L347.5,115.4 L347.4,113.4 L347.2,111.3 L347,109.3 L346.8,107.3 L346.6,105.3 L346.4,103.3 L346.1,101.3 L345.9,99.4 L345.6,97.5 L345.3,95.6 L344.9,93.7 L344.6,91.8 L344.2,90 L343.9,88.2 L343.5,86.4 L343.1,84.7 L342.7,83 L342.2,81.3 L341.8,79.7 L341.3,78 L340.8,76.5 L340.3,74.9 L339.8,73.4 L339.3,72 L338.7,70.5 L338.2,69.2 L337.6,67.8 L337,66.5 L336.5,65.3 L335.9,64.1 L335.2,62.9 L334.6,61.8 L334,60.7 L333.4,59.7 L332.7,58.7 L332.1,57.8 L331.4,56.9 L330.7,56.1 L330,55.3 L329.3,54.6 L328.7,53.9 L328,53.3 L327.2,52.7 L326.5,52.2 L325.8,51.7 L325.1,51.3 L324.4,51 L323.7,50.7 L322.9,50.4 L322.2,50.2 L321.5,50.1 L320.7,50 L320,50" class="fig-curve" style="stroke-width:3"/>
+<path d="M320,50 L319.3,50 L318.5,50.1 L317.8,50.2 L317.1,50.4 L316.3,50.7 L315.6,51 L314.9,51.3 L314.2,51.7 L313.5,52.2 L312.8,52.7 L312,53.3 L311.3,53.9 L310.7,54.6 L310,55.3 L309.3,56.1 L308.6,56.9 L307.9,57.8 L307.3,58.7 L306.6,59.7 L306,60.7 L305.4,61.8 L304.8,62.9 L304.1,64.1 L303.5,65.3 L303,66.5 L302.4,67.8 L301.8,69.2 L301.3,70.5 L300.7,72 L300.2,73.4 L299.7,74.9 L299.2,76.5 L298.7,78 L298.2,79.7 L297.8,81.3 L297.3,83 L296.9,84.7 L296.5,86.4 L296.1,88.2 L295.8,90 L295.4,91.8 L295.1,93.7 L294.7,95.6 L294.4,97.5 L294.1,99.4 L293.9,101.3 L293.6,103.3 L293.4,105.3 L293.2,107.3 L293,109.3 L292.8,111.3 L292.6,113.4 L292.5,115.4 L292.3,117.5 L292.2,119.6 L292.2,121.6 L292.1,123.7 L292,125.8 L292,127.9 L292,130 L292,132.1 L292,134.2 L292.1,136.3 L292.2,138.4 L292.2,140.4 L292.3,142.5 L292.5,144.6 L292.6,146.6 L292.8,148.7 L293,150.7 L293.2,152.7 L293.4,154.7 L293.6,156.7 L293.9,158.7 L294.1,160.6 L294.4,162.5 L294.7,164.4 L295.1,166.3 L295.4,168.2 L295.8,170 L296.1,171.8 L296.5,173.6 L296.9,175.3 L297.3,177 L297.8,178.7 L298.2,180.3 L298.7,182 L299.2,183.5 L299.7,185.1 L300.2,186.6 L300.7,188 L301.3,189.5 L301.8,190.8 L302.4,192.2 L303,193.5 L303.5,194.7 L304.1,195.9 L304.8,197.1 L305.4,198.2 L306,199.3 L306.6,200.3 L307.3,201.3 L307.9,202.2 L308.6,203.1 L309.3,203.9 L310,204.7 L310.7,205.4 L311.3,206.1 L312,206.7 L312.8,207.3 L313.5,207.8 L314.2,208.3 L314.9,208.7 L315.6,209 L316.3,209.3 L317.1,209.6 L317.8,209.8 L318.5,209.9 L319.3,210 L320,210" class="fig-curve fig-dashed"/>
+<line x1="347.4" y1="145.9" x2="347.4" y2="114.1" class="fig-axis" marker-end="url(#arr-4-11-2)"/>
+<path d="M337.4,192.7 L367.2,173.3 L324.8,173.3 Z" class="fig-band"/>
+<circle cx="337.4" cy="192.7" r="2.5" class="fig-arrowhead"/>
+<path d="M348,130 L369.2,108.8 L326.8,108.8 Z" class="fig-band"/>
+<circle cx="348" cy="130" r="2.5" class="fig-arrowhead"/>
+<path d="M337.4,67.3 L350.1,47.9 L307.6,47.9 Z" class="fig-band"/>
+<circle cx="337.4" cy="67.3" r="2.5" class="fig-arrowhead"/>
+<line x1="110" y1="236" x2="550" y2="236" class="fig-axis" marker-end="url(#arr-4-11-2)"/>
+<text x="554" y="240" class="fig-label fig-it">x</text>
+<text x="358" y="96" class="fig-label fig-small">x = 0: curva tipo tempo fechada</text>
+<text x="84" y="134" text-anchor="end" class="fig-label fig-small">t ~ t + T</text>
+<text x="360" y="136" class="fig-label fig-small">t crescente</text>
+</svg>
+                    <figcaption><strong>Figura 4.11.2.</strong> O cilindro $S^1\times\mathbb{R}$ com o tempo periódico, $t \sim t + T$, em projeção
+                        oblíqua: o eixo do cilindro é a direção espacial $x$, e as voltas em torno dele são o tempo. A curva $x = 0$, percorrida no
+                        sentido de $t$ crescente, é tipo tempo e fechada; os pequenos cones de luz ao longo dela mostram a sua velocidade dentro do
+                        cone futuro.</figcaption>
+                </figure>
+
+                <p>
+                    <strong>Sem coordenadas.</strong> Numa variedade abstrata não faz sentido chamar $dx/dx^0$ de velocidade: não há coordenada
+                    temporal privilegiada. Mas toda a descrição continua válida em termos intrínsecos. O tipo causal de um vetor tangente é o
+                    sinal de $g(v,v)$, que não depende de coordenadas; partículas com massa seguem curvas tipo tempo, a <a href="#prop-4-11-5">Proposição 4.11.5</a> vale para
+                    qualquer métrica, e uma orientação temporal é uma escolha contínua de cone futuro em cada ponto. A velocidade limite é a
+                    afirmação de que as velocidades das partículas ficam dentro do cone de luz.
+                </p>
+
+                <h2 id="fisica">Ponte com a física: partículas sem massa e táquions</h2>
+
+                <p>
+                    <strong>Partículas sem massa.</strong> A luz não segue curvas tipo tempo: as frentes de onda do tópico 4.8 se propagam sobre
+                    o cone de luz, e os raios de luz são curvas tipo luz (<a href="#exr-4-11-4">Exercício 4.11.4</a>). Para elas o funcional $m\int dl$ degenera duas vezes: a
+                    massa é zero e o comprimento também. O postulado (4.11.1) não serve para partículas sem massa. O funcional que sobrevive é a
+                    energia da curva (<a href="[10] - Comprimento e Energia de Curvas.html#def-4-10-10">Definição 4.10.10</a>), que não tem raiz e continua bem definida quando $g(\gamma',\gamma') = 0$; o tópico 4.12
+                    mostra que as suas curvas estacionárias incluem as do comprimento e também as curvas nulas, e o 4.13 usa isso para tratar
+                    partículas com e sem massa do mesmo modo.
+                </p>
+
+                <p>
+                    <strong>Táquions.</strong> Partículas que seguissem curvas tipo espaço teriam $v \gt c$ em todo referencial e,
+                    pela <a href="#obs-4-11-9">Observação 4.11.9</a>, poderiam ser usadas para enviar sinais ao passado de alguns referenciais. A descrição $(-)$ as exclui por
+                    escolha, e nenhum táquion foi observado. Que as partículas conhecidas obedecem à velocidade limite é um fato experimental: a
+                    energia de um elétron acelerado cresce sem limite enquanto a sua velocidade se aproxima de $c$ (tópico 4.13).
+                </p>
+
+                <p>
+                    <strong>Máquinas do tempo.</strong> O <a href="#ex-4-11-10">Exemplo 4.11.10</a> não é só um brinquedo. Algumas soluções das equações de Einstein, como o
+                    universo de Gödel, têm curvas tipo tempo fechadas, e a pergunta "as leis da física impedem que elas se formem?" (a "conjectura
+                    de proteção da cronologia" de Hawking) continua aberta. Em Minkowski, a resposta é a <a href="#prop-4-11-8">Proposição 4.11.8</a>.
+                </p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p>
+                    As notas não atribuem exercícios a este tópico; todos os abaixo são extras. As contas foram conferidas em sympy.
+                </p>
+
+                <p id="exr-4-11-1"><strong>Exercício 4.11.1.</strong> Em $\mathbb{R}^2$ euclidiano, com coordenadas $(x, y)$, mostre que o
+                    segmento $y = 1$, $x \in [-1, 1]$, é estacionário para $\int dl$ na variação $y_\epsilon = 1 + \epsilon(1 - x^2)$, mas não para
+                    $\int y\,dl$. Conclua que, com $\alpha(x,y) = y$ variável, os extremais mudam.</p>
+
+                <p>
+                    <em>Solução.</em> Parametrize por $x$: $dl = \sqrt{1 + y'^2}\,dx$, e com $h = 1 - x^2$, $y_\epsilon' = \epsilon h' = -2\epsilon x$. Então
+                    $L[\epsilon] = \int_{-1}^1\sqrt{1 + 4\epsilon^2x^2}\,dx$, e derivando sob a integral (os integrandos são suaves em $(\epsilon, x)$),
+                    $\frac{dL}{d\epsilon}\big\vert_0 = \int_{-1}^1\frac{4\epsilon x^2}{\sqrt{1 + 4\epsilon^2x^2}}\Big\vert_{\epsilon=0}dx = 0$. Para o outro funcional,
+                    $\Phi[\epsilon] = \int_{-1}^1(1 + \epsilon h)\sqrt{1 + 4\epsilon^2x^2}\,dx$, e pela regra do produto, com a derivada da raiz nula em
+                    $\epsilon = 0$,
+                </p>
+
+                <p>
+                    $$ \frac{d\Phi}{d\epsilon}\Big\vert_0 = \int_{-1}^1h\,dx = \int_{-1}^1(1 - x^2)\,dx = \frac43 \ne 0. $$
+                </p>
+
+                <p>
+                    O segmento, que é estacionário para o comprimento (e o é para toda variação, pelo tópico 4.12), não é estacionário para
+                    $\int y\,dl$: subir a curva aumenta o funcional em primeira ordem. As curvas estacionárias de $\int y\,dl$ são catenárias,
+                    $y = a\cosh\big((x - b)/a\big)$; a dedução usa a equação de Euler–Lagrange do tópico 4.12 (conferida em sympy).
+                </p>
+
+                <p id="exr-4-11-2"><strong>Exercício 4.11.2.</strong> Para o oscilador harmônico em uma dimensão, $U = \frac12kx^2$, com energia
+                    $\mathcal{E} = \frac12kA^2$, escreva o funcional de Jacobi–Maupertuis e recupere $x(t)$ pela conservação da energia.</p>
+
+                <p>
+                    <em>Solução.</em> O funcional é $\int\sqrt{2m(\mathcal{E} - \frac12kx^2)}\,\lvert dx\rvert$, definido para $\lvert x\rvert \le A$. Em uma
+                    dimensão o traço da trajetória entre dois pontos é sempre o segmento entre eles, e o princípio não escolhe nada: o seu
+                    conteúdo é a parametrização, que vem da energia. Com $\frac12m\dot x^2 + \frac12kx^2 = \mathcal{E}$,
+                    $\dot x = \pm\omega\sqrt{A^2 - x^2}$ com $\omega = \sqrt{k/m}$, e, partindo de $x(0) = 0$ com $\dot x \gt 0$,
+                    $t = \int_0^x\frac{du}{\omega\sqrt{A^2 - u^2}} = \frac1\omega\arcsin\frac xA$, isto é, $x(t) = A\sin\omega t$. Ao longo dela,
+                    $\sqrt{2m(\mathcal{E} - U)} = m\lvert\dot x\rvert$: o fator de escala de Maupertuis é o módulo do momento, e
+                    $\int\sqrt{2m(\mathcal{E} - U)}\,\lvert dx\rvert = \int m\dot x^2\,dt$ é a ação reduzida. Em duas dimensões o princípio passa a escolher
+                    o traço, e as órbitas elípticas do oscilador isotrópico são as curvas estacionárias.
+                </p>
+
+                <p id="exr-4-11-3"><strong>Exercício 4.11.3.</strong> Dê um exemplo de curva em Minkowski 1+1 que é tipo tempo numa parte e
+                    tipo espaço noutra, e localize os pontos que a <a href="#prop-4-11-5">Proposição 4.11.5</a> obriga a existir.</p>
+
+                <p>
+                    <em>Solução.</em> Seja $\gamma(t) = (t, t^2)$, $t \in [0, 1]$, nas coordenadas $(x^0, x)$. Então $\gamma' = (1, 2t)$ e
+                    $\eta(\gamma',\gamma') = -1 + 4t^2$, negativo para $t \lt \frac12$ e positivo para $t \gt \frac12$. A curva é tipo tempo no começo e tipo
+                    espaço no fim, e no ponto $t = \frac12$, em que $\lvert dx/dx^0\rvert = 1$, a velocidade está sobre o cone de luz: é a passagem que
+                    a proposição exige. Uma curva assim não descreve uma partícula com massa: ela teria de atingir a velocidade da luz em
+                    $t = \frac12$.
+                </p>
+
+                <p id="exr-4-11-4"><strong>Exercício 4.11.4.</strong> Mostre que uma curva tipo luz em Minkowski 1+1 pode ser parametrizada por
+                    $t = x^0/c$ e tem $\lvert dx/dt\rvert = c$.</p>
+
+                <p>
+                    <em>Solução.</em> Se $v = (v^0, v^1) \ne 0$ e $-(v^0)^2 + (v^1)^2 = 0$, então $\lvert v^0\rvert = \lvert v^1\rvert \ne 0$. Logo
+                    $(\gamma^0)'$ nunca se anula, e $\gamma^0$ é estritamente monótona (como na <a href="#prop-4-11-8">Proposição 4.11.8</a>); ela é um difeomorfismo sobre a sua
+                    imagem e pode ser usada como parâmetro. Com $x^0 = ct$, $\gamma(t) = (ct, x(t))$, e
+                    $\eta(\gamma',\gamma') = -c^2 + \dot x^2 = 0$, isto é, $\lvert dx/dt\rvert = c$. Em 1+1 as curvas tipo luz são as retas
+                    $x = \pm ct + \text{const}$: as linhas de universo dos raios de luz.
+                </p>
+
+                <p id="exr-4-11-5"><strong>Exercício 4.11.5.</strong> Mostre que não existe curva tipo tempo fechada em Minkowski, mesmo
+                    suave por partes, desde que ela seja dirigida ao futuro em cada pedaço.</p>
+
+                <p>
+                    <em>Solução.</em> Seja $\gamma: [a,b] \to \mathbb{R}^4$ contínua, com $a = t_0 \lt t_1 \lt \dots \lt t_k = b$ e $\gamma$ suave e tipo tempo
+                    dirigida ao futuro em cada $[t_{j-1}, t_j]$. Pela <a href="#prop-4-11-8">Proposição 4.11.8</a> aplicada a cada pedaço, $\gamma^0$ é estritamente crescente em cada
+                    $[t_{j-1}, t_j]$ e, por transitividade, em $[a,b]$; logo a curva não passa duas vezes pelo mesmo evento, e em particular
+                    $\gamma(a) \ne \gamma(b)$. Sem a hipótese "dirigida ao futuro em cada pedaço" o resultado é falso: um pedaço para o futuro seguido
+                    de um para o passado volta ao ponto de partida. É por isso que a orientação temporal faz parte da estrutura causal.
+                </p>
+
+                <p id="exr-4-11-6"><strong>Exercício 4.11.6.</strong> No cilindro do <a href="#ex-4-11-10">Exemplo 4.11.10</a>, com $t \sim t + T$, mostre que as curvas
+                    $\gamma_\epsilon(s) = \big(s,\ \epsilon\sin(2\pi s/T)\big)$, $s \in [0, T]$, são fechadas e tipo tempo para
+                    $\lvert\epsilon\rvert \lt T/(2\pi)$, e calcule o comprimento de $\gamma_0$.</p>
+
+                <p>
+                    <em>Solução.</em> $\gamma_\epsilon(T) = (T, 0) \sim (0, 0) = \gamma_\epsilon(0)$, e a velocidade também volta ao mesmo valor: a curva fecha
+                    de modo suave. Como $\gamma_\epsilon' = \big(1,\ \frac{2\pi\epsilon}{T}\cos\frac{2\pi s}{T}\big)$,
+                </p>
+
+                <p>
+                    $$ \eta(\gamma_\epsilon',\gamma_\epsilon') = -1 + \Big(\frac{2\pi\epsilon}{T}\Big)^2\cos^2\frac{2\pi s}{T} \le -1 + \Big(\frac{2\pi\epsilon}{T}\Big)^2 \lt 0. $$
+                </p>
+
+                <p>
+                    Para $\epsilon = 0$, $\lvert\eta(\gamma_0',\gamma_0')\rvert = 1$ e $L = T$: o observador parado em $x = 0$ volta ao mesmo evento depois
+                    de um tempo próprio $T$. Há infinitas curvas tipo tempo fechadas, e não só uma.
+                </p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <ul>
+                    <li>As curvas estacionárias de um funcional (<a href="#def-4-11-1">Definição 4.11.1</a>) e o postulado do movimento livre como extremo do comprimento,
+                        (4.11.1), com a analogia de Fermat.</li>
+                    <li>A massa como fator de escala constante do comprimento (<a href="#prop-4-11-2">Proposição 4.11.2</a>, <a href="#obs-4-11-3">Observação 4.11.3</a>) e o caso variável, o princípio de
+                        Jacobi–Maupertuis (<a href="#obs-4-11-4">Observação 4.11.4</a>).</li>
+                    <li>As duas descrições numa métrica lorentziana e a constância do tipo causal (<a href="#prop-4-11-5">Proposição 4.11.5</a>).</li>
+                    <li>A velocidade limite, $v^2 \lt c^2$ (4.11.5), com $c$ o fator da métrica do eletromagnetismo (<a href="#obs-4-11-6">Observação 4.11.6</a>).</li>
+                    <li>A orientação temporal (<a href="#def-4-11-7">Definição 4.11.7</a>), a ausência de curvas tipo tempo fechadas em Minkowski (<a href="#prop-4-11-8">Proposição 4.11.8</a>), a escolha
+                        da descrição tipo tempo (<a href="#obs-4-11-9">Observação 4.11.9</a>) e um espaço-tempo localmente igual a Minkowski com curvas tipo tempo fechadas
+                        (<a href="#ex-4-11-10">Exemplo 4.11.10</a>).</li>
+                </ul>
+
+                <p>
+                    O postulado (4.11.1) foi usado até aqui só pelas suas consequências qualitativas. Para tirar dele as equações do movimento
+                    falta o cálculo variacional: que equação uma curva estacionária satisfaz? A resposta são as equações de Euler–Lagrange, e
+                    com elas vem a relação entre o comprimento e a energia:
+                    <a href="[12] - O Princípio Variacional.html">4.12 O Princípio Variacional</a>.
+                </p>
 
             </div>
         </main>
@@ -175,7 +643,14 @@
             <div class="toc-container">
                 <h4>Nesta página</h4>
                 <ul>
-                    <li><a href="#massa-e-causalidade">Dinâmica Geométrica: Massa, Velocidade Limite e Causalidade</a></li>
+                    <li><a href="#massa-e-causalidade">Massa, Velocidade Limite e Causalidade</a></li>
+                    <li><a href="#principio-de-extremo">O princípio de extremo</a></li>
+                    <li><a href="#pseudo-metrica">Comprimento em Lorentz</a></li>
+                    <li><a href="#velocidade-limite">A velocidade limite</a></li>
+                    <li><a href="#causalidade">Estrutura causal</a></li>
+                    <li><a href="#fisica">Ponte com a física</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
                 </ul>
             </div>
         </aside>

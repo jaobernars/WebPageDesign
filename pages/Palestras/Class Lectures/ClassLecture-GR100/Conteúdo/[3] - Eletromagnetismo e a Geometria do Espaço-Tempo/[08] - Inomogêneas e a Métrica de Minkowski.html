@@ -166,7 +166,1018 @@
                 <h1 id="inomogeneas-e-minkowski">4.8 As Equações Inomogêneas e a Métrica de Minkowski</h1>
                 <p class="lead">A 2-forma de excitação e a 3-forma de corrente, o operador estrela em quatro dimensões e a dedução de que a métrica do espaço-tempo é a de Minkowski; conservação da carga e o grupo de Lorentz.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>
+                    O tópico <a href="[07] - Equações Homogêneas em 4D.html">4.7</a> mostrou que metade das equações de Maxwell é
+                    topologia: a lei de Faraday e a ausência de monopolos dizem que a $2$-forma de Faraday é fechada, $dF = 0$, e
+                    nada disso usa métrica. Neste tópico fazemos o mesmo com a outra metade, a lei de Gauss e a de Ampère–Maxwell.
+                    Repetindo o argumento do cilindro com $D$ e $H$ no lugar de $B$ e $E$, elas se tornam $d\mathcal{M} = j$, para
+                    uma $2$-forma de excitação $\mathcal{M}$ e uma $3$-forma de corrente $j$. De novo não há métrica, e a conservação
+                    da carga, $dj = 0$, sai de graça de $d^2 = 0$.
+                </p>
+
+                <p>
+                    A métrica entra quando perguntamos como $\mathcal{M}$ depende de $F$. As regras de geometrização do tópico
+                    <a href="[06] - Meios Materiais e Métrica Induzida.html">4.6</a> (<a href="[06] - Meios Materiais e Métrica Induzida.html#obs-4-6-17">Observação 4.6.17</a>) pedem que a interação com as fontes
+                    passe pelo dual de Hodge do tópico <a href="[04] - O Operador Estrela de Hodge.html">4.4</a>. Exigimos então que
+                    $\mathcal{M}$ seja proporcional a $\star F$. Com hipóteses explícitas sobre o vácuo (o espaço é euclidiano e o
+                    tempo não tem direção espacial privilegiada), essa exigência só pode ser cumprida por uma métrica: a de Minkowski,
+                    $\eta = \operatorname{diag}(-1,1,1,1)$. O sinal de menos do tempo não é postulado; ele é o preço de fazer o dual de
+                    $F$ coincidir com a excitação. As equações de Maxwell ficam $dF = 0$ e $d\star F = \mu_0 j$, e as isometrias de
+                    $\eta$, o grupo de Lorentz, aparecem como as simetrias da teoria.
+                </p>
+
+                <p>
+                    Usamos a decomposição 3+1 e o cilindro do tópico 4.7 (<a href="[07] - Equações Homogêneas em 4D.html#prop-4-7-3">Proposição 4.7.3</a>, <a href="[07] - Equações Homogêneas em 4D.html#def-4-7-5">Definição 4.7.5</a>, <a href="[07] - Equações Homogêneas em 4D.html#prop-4-7-6">Proposição 4.7.6</a>, <a href="[07] - Equações Homogêneas em 4D.html#prop-4-7-7">Proposição 4.7.7</a>),
+                    Stokes em variedades com cantos (<a href="[07] - Equações Homogêneas em 4D.html#teo-4-7-9">Teorema 4.7.9</a>), as equações de Maxwell em 3D do tópico
+                    <a href="[05] - Maxwell em 3D com Formas.html">4.5</a> e a estrela de Hodge com a sua fórmula de componentes
+                    (<a href="[04] - O Operador Estrela de Hodge.html#teo-4-4-7">Teorema 4.4.7</a>). É o resultado central da Parte I do capítulo: o eletromagnetismo dá a métrica.
+                </p>
+
+                <h2 id="excitacao">As equações com fontes em 4D</h2>
+
+                <p>
+                    Seguimos o roteiro do tópico 4.7, agora com a lei de Ampère–Maxwell. Sejam $\Sigma \subset \mathbb{R}^3$ uma
+                    superfície compacta e orientada, com bordo orientado pela regra "normal exterior primeiro", e $D$, $H$, $J$, $\varrho$
+                    os campos do tópico 4.5 (<a href="[05] - Maxwell em 3D com Formas.html#def-4-5-1">Definição 4.5.1</a>), vistos como formas espaciais em $\mathbb{R}^4$ (<a href="[07] - Equações Homogêneas em 4D.html#def-4-7-1">Definição 4.7.1</a>): $H$ de grau 1,
+                    $D$ e $J$ de grau 2, $\varrho$ de grau 3. Na forma (4.5.2), a lei de Ampère–Maxwell é
+                    $\oint_{\partial\Sigma}H = \int_\Sigma J + \frac{d}{dt}\int_\Sigma D$. Escrevendo $\Psi(t) = \int_\Sigma D(t)$ e integrando
+                    de $t = a$ a $t = b$,
+                </p>
+
+                <p>
+                    $$ \int_a^b\Big(\oint_{\partial\Sigma}H(t)\Big)\,dt = \int_a^b\Big(\int_\Sigma J(t)\Big)\,dt + \Psi(b) - \Psi(a). $$
+                </p>
+
+                <p>
+                    Os três termos são integrais sobre pedaços do cilindro $S = \Sigma\times[a,b]$ da <a href="[07] - Equações Homogêneas em 4D.html#def-4-7-5">Definição 4.7.5</a>: a lateral $L$, o
+                    próprio $S$ e as tampas $C_b$, $C_a$.
+                </p>
+
+                <div class="definition-box" id="prop-4-8-1">
+                    <p><strong>Proposição 4.8.1 (Ampère–Maxwell no cilindro).</strong> Sejam $D$, $H$, $J$ formas espaciais suaves em
+                        $\mathbb{R}^4$, de graus $2$, $1$, $2$, e $S = \Sigma\times[a,b]$ com a orientação "tempo primeiro". Se a lei de
+                        Ampère–Maxwell vale para $\Sigma$ em todo $t \in [a,b]$, então</p>
+                    <p>$$ c\int_{C_b}D - c\int_{C_a}D - \int_LH\wedge dx^0 = -\int_SJ\wedge dx^0, \tag{4.8.1} $$</p>
+                    <p>e, equivalentemente,</p>
+                    <p>$$ \oint_{\partial S}\big(cD - H\wedge dx^0\big) = -\int_SJ\wedge dx^0. \tag{4.8.2} $$</p>
+                    <p>Reciprocamente, se (4.8.1) vale para todo intervalo $[a,b]$, a lei de Ampère–Maxwell vale para $\Sigma$ em todo $t$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> <strong>A lateral.</strong> É a conta da <a href="[07] - Equações Homogêneas em 4D.html#prop-4-7-8">Proposição 4.7.8</a> com $H$ no lugar de $E$: com a
+                    parametrização positiva $\psi(s, x^0) = (x^0, \gamma(s))$ de $L$ (<a href="[07] - Equações Homogêneas em 4D.html#prop-4-7-6">Proposição 4.7.6</a>),
+                    $\int_LH\wedge dx^0 = \int_{ca}^{cb}\oint_{\partial\Sigma}H\,dx^0 = c\int_a^b\oint_{\partial\Sigma}H(t)\,dt$.
+                </p>
+
+                <p>
+                    <strong>O interior.</strong> Seja $\sigma(u,v)$ uma parametrização positiva de (um pedaço de) $\Sigma$. Então
+                    $\Psi(x^0, u, v) = (x^0, \sigma(u,v))$ parametriza $S$, e é positiva: leva $(\partial_{x^0}, \partial_u, \partial_v)$ em
+                    $(\partial_0, \sigma_u, \sigma_v)$, positiva pela <a href="[07] - Equações Homogêneas em 4D.html#def-4-7-5">Definição 4.7.5</a>. Como $J$ tem grau 2, $J\wedge dx^0 = dx^0\wedge J$, e
+                </p>
+
+                <p>
+                    $$ (dx^0\wedge J)(\partial_0, \sigma_u, \sigma_v) = dx^0(\partial_0)\,J(\sigma_u,\sigma_v) = J(\sigma_u,\sigma_v), $$
+                </p>
+
+                <p>
+                    porque $dx^0(\sigma_u) = dx^0(\sigma_v) = 0$ (os outros termos da expansão do determinante se anulam). Logo
+                    $\int_SJ\wedge dx^0 = \int_{ca}^{cb}\int_\Sigma J\,dx^0 = c\int_a^b\int_\Sigma J(t)\,dt$.
+                </p>
+
+                <p>
+                    <strong>As tampas.</strong> Orientadas como $\Sigma$, $\int_{C_b}D = \Psi(b)$ e $\int_{C_a}D = \Psi(a)$. Multiplicando
+                    a lei integrada por $c$ e substituindo as três identidades,
+                    $\int_LH\wedge dx^0 = \int_SJ\wedge dx^0 + c\int_{C_b}D - c\int_{C_a}D$, que é (4.8.1).
+                </p>
+
+                <p>
+                    Para (4.8.2), pela <a href="[07] - Equações Homogêneas em 4D.html#prop-4-7-6">Proposição 4.7.6</a>, $\oint_{\partial S} = \int_{C_b} - \int_{C_a} + \int_L$, e pela <a href="[07] - Equações Homogêneas em 4D.html#prop-4-7-7">Proposição 4.7.7</a> o
+                    <em>pullback</em> (ou retrocesso) de $H\wedge dx^0$ às tampas é nulo e o de $D$ à lateral também. Sobra exatamente o
+                    lado esquerdo de (4.8.1). A recíproca é a da <a href="[07] - Equações Homogêneas em 4D.html#prop-4-7-8">Proposição 4.7.8</a>: fixe $a$, derive em $b$ e use a <a href="[05] - Maxwell em 3D com Formas.html#prop-4-5-4">Proposição 4.5.4</a> para a derivada
+                    de $\Psi$. $\blacksquare$
+                </p>
+
+                <p>
+                    O integrando do lado esquerdo de (4.8.2) é, de novo, uma única $2$-forma em $\mathbb{R}^4$.
+                </p>
+
+                <div class="definition-box" id="def-4-8-2" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.8.2 (A $2$-forma de excitação).</strong> Para $D$ e $H$ formas espaciais de graus $2$ e $1$
+                        em $\mathbb{R}^4$, a <strong>$2$-forma de excitação</strong> é</p>
+                    <p>$$ \mathcal{M} = cD - H\wedge dx^0. \tag{4.8.3} $$</p>
+                    <p>Pela <a href="[07] - Equações Homogêneas em 4D.html#prop-4-7-2">Proposição 4.7.2</a>, $\mathcal{M}$ determina $D$ e $H$: $cD$ é a sua parte espacial e $-H$ é a forma que multiplica
+                        $dx^0$.</p>
+                </div>
+
+                <p>
+                    Com ela, (4.8.2) diz $\oint_{\partial S}\mathcal{M} = -\int_SJ\wedge dx^0$ para todo cilindro. Falta a segunda equação com
+                    fontes, a lei de Gauss, e para ela precisamos de regiões que não se estendem no tempo. É aqui que o lado direito tem de
+                    ser corrigido.
+                </p>
+
+                <div class="definition-box" id="prop-4-8-3">
+                    <p><strong>Proposição 4.8.3 (O que cada tipo de região vê).</strong> Sejam $\iota$ as inclusões.</p>
+                    <ol type="a">
+                        <li>Numa região espacial $R$ contida na fatia $\{x^0 = ct_*\}$, orientada por $dx^1\wedge dx^2\wedge dx^3$,
+                            $\oint_{\partial R}\mathcal{M} = c\oint_{\partial R}D(t_*)$ e $\int_RJ\wedge dx^0 = 0$.</li>
+                        <li>Em todo cilindro $S$, o <em>pullback</em> de uma $3$-forma espacial é nulo; em particular
+                            $\int_S\varrho = 0$.</li>
+                    </ol>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Pela <a href="[07] - Equações Homogêneas em 4D.html#prop-4-7-7">Proposição 4.7.7</a>(a), $\iota^*dx^0 = 0$ em $R$ e em $\partial R$, de modo que $H\wedge dx^0$
+                    e $J\wedge dx^0$ têm <em>pullback</em> nulo. (b) Na parametrização $\Psi(x^0,u,v) = (x^0,\sigma(u,v))$ de $S$,
+                    $\Psi^*dx^i = \partial_u\sigma^i\,du + \partial_v\sigma^i\,dv$ para $i = 1, 2, 3$: três $1$-formas no espaço gerado por
+                    $du$ e $dv$, cujo produto exterior é zero. Logo $\Psi^*(f\,dx^1\wedge dx^2\wedge dx^3) = 0$. $\blacksquare$
+                </p>
+
+                <p>
+                    Pela parte (a), a equação $\oint_{\partial S}\mathcal{M} = -\int_SJ\wedge dx^0$, aplicada a uma região espacial, daria
+                    $c\oint_{\partial R}D = 0$. Mas a lei de Gauss diz $\oint_{\partial R}D = \int_R\varrho$, que em geral não é zero. A
+                    correção é acrescentar ao lado direito um termo que só as regiões espaciais vejam, e a parte (b) diz qual: uma
+                    $3$-forma espacial, que os cilindros não enxergam.
+                </p>
+
+                <div class="definition-box" id="def-4-8-4" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.8.4 (A $3$-forma de corrente).</strong> Para $\varrho$ e $J$ formas espaciais de graus $3$ e
+                        $2$ em $\mathbb{R}^4$, a <strong>$3$-forma de corrente</strong> é</p>
+                    <p>$$ j = c\varrho - J\wedge dx^0. \tag{4.8.4} $$</p>
+                </div>
+
+                <p>
+                    Nos cilindros, $\int_Sj = -\int_SJ\wedge dx^0$ (parte (b)); nas regiões espaciais, $\int_Rj = c\int_R\varrho$ (parte (a)).
+                    As duas leis com fontes se tornam a mesma afirmação, $\oint\mathcal{M} = \int j$, sobre os dois tipos de região, e o
+                    lema de localização a transforma numa equação diferencial.
+                </p>
+
+                <div class="definition-box" id="teo-4-8-5">
+                    <p><strong>Teorema 4.8.5 (As equações com fontes no espaço-tempo).</strong> Sejam $D$, $H$, $J$, $\varrho$ formas
+                        espaciais suaves em $\mathbb{R}^4$, e $\mathcal{M}$ e $j$ como em (4.8.3) e (4.8.4). São equivalentes:</p>
+                    <ol type="a">
+                        <li>para todo $t$, a lei de Gauss $\oint_{\partial V}D(t) = \int_V\varrho(t)$ vale para toda região $V$ e a de
+                            Ampère–Maxwell para toda superfície $\Sigma$ (compactas, orientadas, com bordo, admitindo cantos);</li>
+                        <li>$\oint_{\partial S}\mathcal{M} = \int_Sj$ para todo cilindro $S$ e $\oint_{\partial R}\mathcal{M} = \int_Rj$ para toda
+                            região espacial $R$;</li>
+                        <li>$d\mathcal{M} = j$.</li>
+                    </ol>
+                    <p>Na decomposição 3+1,</p>
+                    <p>$$ d\mathcal{M} = c\,d_sD + \big(\partial_tD - d_sH\big)\wedge dx^0. \tag{4.8.5} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> <strong>A fórmula (4.8.5).</strong> É a <a href="[07] - Equações Homogêneas em 4D.html#prop-4-7-3">Proposição 4.7.3</a> com $\alpha = cD$ ($k = 2$) e $\beta = -H$:
+                    $d\mathcal{M} = c\,d_sD + \big((-1)^2c\,\partial_0D - d_sH\big)\wedge dx^0$, e $c\,\partial_0 = \partial_t$.
+                </p>
+
+                <p>
+                    <strong>(a) ⇒ (b).</strong> Para um cilindro, (4.8.2) e a <a href="#prop-4-8-3">Proposição 4.8.3</a>(b) dão
+                    $\oint_{\partial S}\mathcal{M} = -\int_SJ\wedge dx^0 = \int_S\big(c\varrho - J\wedge dx^0\big)$. Para uma região espacial
+                    $R$ na fatia $x^0 = ct_*$, a <a href="#prop-4-8-3">Proposição 4.8.3</a>(a) e a lei de Gauss dão
+                    $\oint_{\partial R}\mathcal{M} = c\oint_{\partial R}D(t_*) = c\int_R\varrho(t_*) = \int_Rj$.
+                </p>
+
+                <p>
+                    <strong>(b) ⇒ (c).</strong> Exatamente como no <a href="[07] - Equações Homogêneas em 4D.html#teo-4-7-12">Teorema 4.7.12</a>: os cubos coordenados de dimensão 3 em $\mathbb{R}^4$ são
+                    cilindros sobre quadrados (os de índices $(0,i,j)$) ou regiões espaciais (o de índices $(1,2,3)$). Para cada um, pelo
+                    <a href="[07] - Equações Homogêneas em 4D.html#teo-4-7-9">Teorema 4.7.9</a> e por (b), $\int_Q(d\mathcal{M} - j) = \oint_{\partial Q}\mathcal{M} - \int_Qj = 0$. A $3$-forma $d\mathcal{M} - j$ é
+                    contínua, e o <a href="[05] - Maxwell em 3D com Formas.html#lema-4-5-6">Lema 4.5.6</a> dá $d\mathcal{M} = j$.
+                </p>
+
+                <p>
+                    <strong>(c) ⇒ (a).</strong> Por (4.8.5) e pela unicidade da decomposição (<a href="[07] - Equações Homogêneas em 4D.html#prop-4-7-2">Proposição 4.7.2</a>), $d\mathcal{M} = j$ equivale a
+                    $c\,d_sD = c\varrho$ e $\partial_tD - d_sH = -J$, isto é, em cada instante, $dD = \varrho$ e $dH = J + \partial_tD$. São as
+                    equações diferenciais do tópico 4.5, e pelo <a href="[05] - Maxwell em 3D com Formas.html#teo-4-5-7">Teorema 4.5.7</a> elas implicam as leis integrais. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="cor-4-8-6">
+                    <p><strong>Corolário 4.8.6 (Conservação da carga).</strong> Se $d\mathcal{M} = j$, então $dj = 0$. Na decomposição 3+1,</p>
+                    <p>$$ dj = -\big(\partial_t\varrho + d_sJ\big)\wedge dx^0, \tag{4.8.6} $$</p>
+                    <p>e $dj = 0$ é a equação de continuidade (4.5.6), $\partial_t\rho + \nabla\cdot\mathbf{J} = 0$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> $dj = d(d\mathcal{M}) = 0$ (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[13] - Derivada Exterior.html#teo-3-13-4">Teorema 3.13.4</a>(c)). Para (4.8.6), a <a href="[07] - Equações Homogêneas em 4D.html#prop-4-7-3">Proposição 4.7.3</a> com $\alpha = c\varrho$
+                    ($k = 3$) e $\beta = -J$ dá $dj = c\,d_s\varrho + \big((-1)^3c\,\partial_0\varrho - d_sJ\big)\wedge dx^0$; o primeiro termo é
+                    uma $4$-forma espacial, nula em $\mathbb{R}^3$ (só há três diferenciais espaciais). Pela <a href="[05] - Maxwell em 3D com Formas.html#prop-4-5-12">Proposição 4.5.12</a>, $dJ + \partial_t\varrho = 0$
+                    é a continuidade. $\blacksquare$
+                </p>
+
+                <p>
+                    A conservação da carga não é uma lei a mais: ela é a identidade $d^2 = 0$ aplicada à equação $d\mathcal{M} = j$. É a
+                    versão em quatro dimensões do <a href="[05] - Maxwell em 3D com Formas.html#exr-4-5-2">Exercício 4.5.2</a>, em que a mesma lei foi escrita com formas de $\mathbb{R}^3$.
+                </p>
+
+                <p id="obs-4-8-7"><strong>Observação 4.8.7 (Ainda sem métrica, e ainda incompleto).</strong> Tudo até aqui usou só $d$,
+                    <em>pullbacks</em> e uma orientação; nenhuma métrica. As equações de Maxwell ficaram</p>
+
+                <p>
+                    $$ dF = 0, \qquad d\mathcal{M} = j, $$
+                </p>
+
+                <p>
+                    com as $2$-formas $F = \frac1cE\wedge dx^0 + B$ e $\mathcal{M} = cD - H\wedge dx^0$. Contando: $F$ e $\mathcal{M}$ têm
+                    seis componentes cada, e as equações de evolução (as partes de $dF = 0$ e $d\mathcal{M} = j$ com $dx^0$) são seis. Como
+                    na <a href="[06] - Meios Materiais e Métrica Induzida.html#obs-4-6-4">Observação 4.6.4</a>, sem uma relação que dê $\mathcal{M}$ em termos de $F$ as equações não determinam a dinâmica. Essa relação é a relação constitutiva, e é nela, e só nela, que a métrica vai entrar.
+                </p>
+
+                <h2 id="rotacoes-sem-metrica">"Rotações" antes da métrica</h2>
+
+                <p>
+                    Sem métrica ainda não há transformações de Lorentz, nem mesmo rotações no sentido usual: "rotação" pressupõe
+                    comprimentos e ângulos. O que se pode fazer é trocar eixos de modo a preservar a orientação. As notas dão dois
+                    exemplos, que deixam $x^0$ fixo.
+                </p>
+
+                <p id="ex-4-8-8"><strong>Exemplo 4.8.8 (Trocas de eixos que preservam a orientação).</strong> (a) A substituição
+                    $x^1 \mapsto x^2$, $x^2 \mapsto -x^1$, $x^3 \mapsto x^3$ leva $dx^1\wedge dx^2\wedge dx^3$ em
+                    $dx^2\wedge(-dx^1)\wedge dx^3 = dx^1\wedge dx^2\wedge dx^3$. (b) A substituição $x^1 \mapsto x^3$, $x^2 \mapsto -x^1$,
+                    $x^3 \mapsto -x^2$ (duas trocas em sequência) leva $dx^1\wedge dx^2\wedge dx^3$ em
+                    $dx^3\wedge(-dx^1)\wedge(-dx^2) = dx^3\wedge dx^1\wedge dx^2 = dx^1\wedge dx^2\wedge dx^3$, porque a permutação
+                    cíclica tem sinal $+1$. Em ambos os casos $dx^0\wedge dx^1\wedge dx^2\wedge dx^3$ também é preservada. São permutações
+                    das coordenadas espaciais com sinais e determinante $+1$; quando houver métrica, serão rotações de $90°$.</p>
+
+                <p>
+                    Esses são os "movimentos" usados como critério de invariância até aqui (no tópico 4.4, por exemplo, para dizer que
+                    a estrela não depende da escolha dos eixos). Mas as equações $dF = 0$ e $d\mathcal{M} = j$ admitem muito mais.
+                </p>
+
+                <div class="definition-box" id="prop-4-8-9">
+                    <p><strong>Proposição 4.8.9 (As equações sem métrica são invariantes por difeomorfismos).</strong> Sejam $U$, $U'$
+                        abertos de $\mathbb{R}^4$ e $\varphi: U' \to U$ um difeomorfismo. Se $F$, $\mathcal{M}$ e $j$ satisfazem
+                        $dF = 0$ e $d\mathcal{M} = j$ em $U$, então $\varphi^*F$, $\varphi^*\mathcal{M}$ e $\varphi^*j$ satisfazem as
+                        mesmas equações em $U'$. Se $\varphi$ preserva a orientação, as integrais também se transportam:
+                        $\int_{\varphi^{-1}(N)}\varphi^*\omega = \int_N\omega$ para toda região $N$ e toda forma $\omega$ do grau certo.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela naturalidade de $d$ (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[13] - Derivada Exterior.html#teo-3-13-7">Teorema 3.13.7</a>), $d(\varphi^*F) = \varphi^*(dF) = 0$ e
+                    $d(\varphi^*\mathcal{M}) = \varphi^*(d\mathcal{M}) = \varphi^*j$. A afirmação sobre integrais é a invariância da integral
+                    por difeomorfismos que preservam a orientação (tópico
+                    <a href="../[2] - Cálculo em Variedades Diferenciáveis/[17] - Integração de Formas.html">3.17</a>). $\blacksquare$
+                </p>
+
+                <p id="obs-4-8-10"><strong>Observação 4.8.10 (Onde está a restrição).</strong> A <a href="#prop-4-8-9">Proposição 4.8.9</a> parece dizer que a teoria
+                    tem simetria demais: qualquer mudança de coordenadas leva soluções em soluções. O que um difeomorfismo arbitrário
+                    não preserva é a <em>leitura</em> das formas em termos de campos. Primeiro, a decomposição 3+1 depende das coordenadas
+                    (<a href="[07] - Equações Homogêneas em 4D.html#obs-4-7-4">Observação 4.7.4</a>): depois de uma mudança que mistura $x^0$ com $x^i$, a parte espacial de $\varphi^*F$ não é mais o
+                    "$B$" de antes, e $\mathbf{E}$ e $\mathbf{B}$ se misturam. Segundo, e mais importante, falta a relação constitutiva
+                    (<a href="#obs-4-8-7">Observação 4.8.7</a>). Se ela for dada por uma estrutura extra no espaço-tempo, os difeomorfismos que a preservam são as
+                    simetrias da teoria completa. A próxima seção mostra que essa estrutura é uma métrica, e a última que as simetrias
+                    são o grupo de Lorentz (com as translações). Os exemplos das notas (<a href="#ex-4-8-8">Exemplo 4.8.8</a>) estarão entre elas.</p>
+
+                <h2 id="estrela-4d">A estrela em quatro dimensões</h2>
+
+                <p>
+                    A notação do capítulo já separa os dois operadores (<a href="[04] - O Operador Estrela de Hodge.html#def-4-4-4">Definição 4.4.4</a>): $\ast$ é a estrela de $\mathbb{R}^3$ euclidiano,
+                    $\ast: \Omega^k(\mathbb{R}^3) \to \Omega^{3-k}(\mathbb{R}^3)$, e $\star$ é a estrela em dimensão 4,
+                    $\star: \Omega^k(\mathbb{R}^4) \to \Omega^{4-k}(\mathbb{R}^4)$. A distinção não é só de nome: a fórmula de componentes
+                    (<a href="[04] - O Operador Estrela de Hodge.html#teo-4-4-7">Teorema 4.4.7</a>) depende da dimensão pelo número de índices do tensor de Levi-Civita, e também da métrica. Aplicada a
+                    formas espaciais, $\ast$ age só nos índices espaciais (por exemplo, $\ast dx^1 = dx^2\wedge dx^3$), com as componentes
+                    dependendo de $x^0$ como parâmetro.
+                </p>
+
+                <p>
+                    Queremos saber que métrica $g$ em $\mathbb{R}^4$ torna $\mathcal{M}$ proporcional a $\star F$. Não procuramos entre
+                    todas as métricas. O que segue é um <strong>argumento físico</strong>, e as hipóteses vêm antes:
+                </p>
+
+                <ol type="i">
+                    <li><strong>A parte espacial é euclidiana.</strong> Os campos $\mathbf{E}$ e $\mathbf{B}$ são os medidos no vácuo, e o
+                        vácuo é homogêneo e isotrópico; pela terceira regra de geometrização (<a href="[06] - Meios Materiais e Métrica Induzida.html#obs-4-6-17">Observação 4.6.17</a> e <a href="[06] - Meios Materiais e Métrica Induzida.html#ex-4-6-12">Exemplo 4.6.12</a>), a métrica
+                        espacial do vácuo é $\delta_{ij}$. As equações devem continuar descrevendo a eletrostática e a magnetostática, com
+                        $D = \varepsilon_0\ast E$ e $H = \ast B/\mu_0$, e isso não seria verdade se a parte espacial deixasse de ser
+                        euclidiana.</li>
+                    <li><strong>O tempo é ortogonal ao espaço:</strong> $g^{0i} = 0$. Um termo $g^{0i} \ne 0$ escolheria uma direção espacial
+                        (o vetor $(g^{01}, g^{02}, g^{03})$), contra a isotropia.</li>
+                    <li><strong>$g^{00} = a$</strong>, uma constante não nula a determinar (constante pela homogeneidade).</li>
+                </ol>
+
+                <p>
+                    A hipótese (ii) é uma hipótese, não um fato geométrico: sem métrica, "ortogonal" não quer dizer nada, e é a própria
+                    métrica que estamos procurando. Sob (i)–(iii), as componentes da inversa e da métrica são
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    &g^{\mu\nu} = \operatorname{diag}(a,1,1,1), \qquad g_{\mu\nu} = \operatorname{diag}(1/a,1,1,1),\\
+                    &\sqrt{\lvert g\rvert} = \sqrt{\lvert\det(g_{\mu\nu})\rvert} = \lvert a\rvert^{-1/2}.
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    O determinante que entra na forma de volume (<a href="[03] - Métricas e Volume Invariante.html#teo-4-3-11">Teorema 4.3.11</a>) é o das componentes $g_{\mu\nu}$, não o da inversa; por isso
+                    o fator é $\lvert a\rvert^{-1/2}$. O sinal de $a$ dá o índice da métrica: $s = 0$ se $a \gt 0$ e $s = 1$ se $a \lt 0$.
+                </p>
+
+                <div class="definition-box" id="prop-4-8-11">
+                    <p><strong>Proposição 4.8.11 (A estrela de $F$ com $g^{00} = a$).</strong> Com a métrica acima e a orientação
+                        $dx^0\wedge dx^1\wedge dx^2\wedge dx^3$, para $E$ e $B$ formas espaciais de graus $1$ e $2$,</p>
+                    <p>$$ \star\Big(\frac1c\,E\wedge dx^0\Big) = -\frac{a}{c}\,\lvert a\rvert^{-1/2}\ast E, \qquad
+                        \star B = -\lvert a\rvert^{-1/2}\,(\ast B)\wedge dx^0, $$</p>
+                    <p>e portanto, para $F = \frac1cE\wedge dx^0 + B$,</p>
+                    <p>$$ \star F = -\lvert a\rvert^{-1/2}\Big(\frac{a}{c}\ast E + (\ast B)\wedge dx^0\Big). \tag{4.8.7} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Usamos a <a href="[04] - O Operador Estrela de Hodge.html#prop-4-4-5">Proposição 4.4.5</a> com um correferencial ortonormal. Como
+                    $\langle dx^0, dx^0\rangle = g^{00} = a$, os covetores $\theta^0 = \lvert a\rvert^{-1/2}dx^0$ e $\theta^i = dx^i$ são
+                    ortonormais, com sinais $\epsilon_0 = \operatorname{sign}(a)$ e $\epsilon_i = 1$, e
+                    $\theta^0\wedge\theta^1\wedge\theta^2\wedge\theta^3 = \lvert a\rvert^{-1/2}dx^0\wedge dx^1\wedge dx^2\wedge dx^3$ é positiva.
+                    Pela (4.4.3), $\star\theta^I = \epsilon_I\,\sigma(I)\,\theta^{I^c}$, com $\sigma(I)$ o sinal da permutação $(I, I^c)$.
+                </p>
+
+                <p>
+                    <strong>Os termos com $dx^0$.</strong> As permutações $(0,1,2,3)$ e $(0,3,1,2)$ são pares e $(0,2,1,3)$ é ímpar, logo
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    \star(\theta^0\wedge\theta^1) &= \epsilon_0\,\theta^2\wedge\theta^3, \qquad
+                    \star(\theta^0\wedge\theta^2) = -\epsilon_0\,\theta^1\wedge\theta^3 = \epsilon_0\,\theta^3\wedge\theta^1,\\
+                    \star(\theta^0\wedge\theta^3) &= \epsilon_0\,\theta^1\wedge\theta^2,
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    isto é, $\star(\theta^0\wedge dx^i) = \epsilon_0\ast dx^i$ pela tabela (4.4.1) de $\mathbb{R}^3$. Como
+                    $dx^i\wedge dx^0 = -\lvert a\rvert^{1/2}\,\theta^0\wedge dx^i$ e $\lvert a\rvert^{1/2}\operatorname{sign}(a) = a\,\lvert a\rvert^{-1/2}$,
+                </p>
+
+                <p>
+                    $$ \star(dx^i\wedge dx^0) = -a\,\lvert a\rvert^{-1/2}\ast dx^i. $$
+                </p>
+
+                <p>
+                    Somando com os coeficientes $E_i/c$, sai a primeira fórmula.
+                </p>
+
+                <p>
+                    <strong>Os termos espaciais.</strong> As permutações $(2,3,0,1)$ e $(1,2,0,3)$ são pares e $(1,3,0,2)$ é ímpar (é um ciclo
+                    de comprimento 4). Com $\epsilon_I = 1$,
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    \star(dx^2\wedge dx^3) &= \theta^0\wedge\theta^1 = \lvert a\rvert^{-1/2}\,dx^0\wedge dx^1,\\
+                    \star(dx^1\wedge dx^3) &= -\theta^0\wedge\theta^2 = -\lvert a\rvert^{-1/2}\,dx^0\wedge dx^2,\\
+                    \star(dx^1\wedge dx^2) &= \theta^0\wedge\theta^3 = \lvert a\rvert^{-1/2}\,dx^0\wedge dx^3.
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    Como $\ast(dx^2\wedge dx^3) = dx^1$, $\ast(dx^1\wedge dx^3) = -dx^2$ e $\ast(dx^1\wedge dx^2) = dx^3$, as três fórmulas são
+                    $\star\beta = \lvert a\rvert^{-1/2}\,dx^0\wedge\ast\beta = -\lvert a\rvert^{-1/2}(\ast\beta)\wedge dx^0$ para os elementos de base
+                    $\beta$ de grau 2; por linearidade (nas componentes, que são funções), vale para $B$. A conta foi refeita em sympy pela
+                    fórmula de componentes (4.4.4), com $a$ simbólico. $\blacksquare$
+                </p>
+
+                <p>
+                    Os dois casos conhecidos conferem com a tabela do <a href="[04] - O Operador Estrela de Hodge.html#ex-4-4-13">Exemplo 4.4.13</a>: com $a = -1$,
+                    $\star(dx^1\wedge dx^0) = dx^2\wedge dx^3$, isto é, $\star(dx^0\wedge dx^1) = -dx^2\wedge dx^3$; e
+                    $\star(dx^1\wedge dx^2) = dx^0\wedge dx^3$.
+                </p>
+
+                <h2 id="minkowski">A métrica que o eletromagnetismo exige</h2>
+
+                <p>
+                    Agora usamos as relações constitutivas do vácuo do tópico 4.5 (<a href="[05] - Maxwell em 3D com Formas.html#def-4-5-1">Definição 4.5.1</a>), $D = \varepsilon_0\ast E$ e
+                    $H = \ast B/\mu_0$, isto é, $\ast E = D/\varepsilon_0$ e $\ast B = \mu_0H$. Como $\varepsilon_0\mu_0c^2 = 1$,
+                    $\frac{1}{c\,\varepsilon_0} = \mu_0c$, e (4.8.7) fica
+                </p>
+
+                <p>
+                    $$ \star F = -\mu_0\,\lvert a\rvert^{-1/2}\big(a\,cD + H\wedge dx^0\big). \tag{4.8.8} $$
+                </p>
+
+                <p>
+                    Compare com $\mathcal{M} = cD - H\wedge dx^0$: os dois termos aparecem, mas com uma combinação de sinais que depende de $a$.
+                </p>
+
+                <div class="definition-box" id="prop-4-8-12">
+                    <p><strong>Proposição 4.8.12 ($\star F \propto \mathcal{M}$ se, e só se, $a = -1$).</strong> Sob as hipóteses
+                        (i)–(iii), existe uma função $\lambda$ (que não depende dos campos) com $\star F = \lambda\,\mathcal{M}$ para todos os
+                        campos $E$, $B$ se, e somente se, $a = -1$. Nesse caso $\lambda = \mu_0$:</p>
+                    <p>$$ \star F = \mu_0\,\mathcal{M}. $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Fixe um ponto. Se $\star F = \lambda\mathcal{M}$ para todos os campos, tome primeiro $B = 0$ e
+                    $E \ne 0$ no ponto ($H = 0$, $D \ne 0$): (4.8.8) dá $-\mu_0\lvert a\rvert^{-1/2}a\,cD = \lambda\,cD$, logo
+                    $\lambda = -\mu_0\,a\,\lvert a\rvert^{-1/2}$. Tome agora $E = 0$ e $B \ne 0$ ($D = 0$, $H \ne 0$):
+                    $-\mu_0\lvert a\rvert^{-1/2}H\wedge dx^0 = -\lambda\,H\wedge dx^0$, e como $H\wedge dx^0 \ne 0$ quando $H \ne 0$,
+                    $\lambda = \mu_0\lvert a\rvert^{-1/2}$. Igualando, $-a = 1$, isto é, $a = -1$, e então $\lambda = \mu_0$. Reciprocamente, com
+                    $a = -1$, (4.8.8) é $\star F = -\mu_0(-cD + H\wedge dx^0) = \mu_0(cD - H\wedge dx^0) = \mu_0\mathcal{M}$. $\blacksquare$
+                </p>
+
+                <p>
+                    A proposição é matemática. O passo seguinte é físico, e depende das hipóteses (i)–(iii) e da segunda regra de
+                    geometrização (<a href="[06] - Meios Materiais e Métrica Induzida.html#obs-4-6-17">Observação 4.6.17</a>): a excitação, que acopla os campos às fontes, é o dual dos campos. <strong>Sob essas
+                    hipóteses, a métrica do espaço-tempo tem $g^{00} = -1$</strong>, isto é,
+                </p>
+
+                <p>
+                    $$ g = \eta = \operatorname{diag}(-1,1,1,1), \qquad \eta = -(dx^0)^2 + (dx^1)^2 + (dx^2)^2 + (dx^3)^2, $$
+                </p>
+
+                <p>
+                    a <strong>métrica de Minkowski</strong>, de índice $s = 1$ (lorentziana). Com ela, $\mathcal{M} = \star F/\mu_0$, e o
+                    <a href="[07] - Equações Homogêneas em 4D.html#teo-4-7-12">Teorema 4.7.12</a> e o <a href="#teo-4-8-5">Teorema 4.8.5</a> dão as equações de Maxwell na forma
+                </p>
+
+                <p>
+                    $$ dF = 0, \qquad d\star F = \mu_0\,j, \tag{4.8.9} $$
+                </p>
+
+                <p>
+                    e daí $dj = \frac{1}{\mu_0}\,d^2\star F = 0$.
+                </p>
+
+                <p>
+                    A Figura 4.8.1 resume a estrutura: é o diagrama da Figura 4.1.1, agora com a métrica escrita.
+                </p>
+
+                <figure class="lecture-figure" id="fig-4-8-1" style="overflow-x: auto; overflow-y: hidden;">
+                    <svg viewBox="0 0 640 260" role="img" style="min-width: 560px;" aria-label="Diagrama das equações de Maxwell no espaço-tempo. Quatro caixas em linha: A, o potencial, 1-forma; F, a 2-forma de Faraday; ℳ, a 2-forma de excitação; j, a 3-forma de corrente. Setas: de A para F, rotulada d; de F para ℳ, rotulada estrela dividida por mu zero, sobre uma faixa com a métrica eta igual a diag(menos 1, 1, 1, 1); de ℳ para j, rotulada d. De F e de j descem setas rotuladas d até 0: dF = 0 e dj = 0. Só a seta da estrela usa a métrica.">
+<defs><marker id="arr-4-8-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<rect x="288" y="74" width="64" height="112" rx="8" class="fig-band"/>
+<text x="320" y="48" text-anchor="middle" class="fig-label fig-small">métrica η =</text>
+<text x="320" y="64" text-anchor="middle" class="fig-label fig-small">diag(−1, 1, 1, 1)</text>
+<rect x="24" y="96" width="92" height="50" rx="6" class="fig-frame"/>
+<text x="70" y="118" text-anchor="middle" class="fig-label fig-it">A</text>
+<text x="70" y="136" text-anchor="middle" class="fig-label fig-small">1-forma</text>
+<text x="70" y="164" text-anchor="middle" class="fig-label fig-small">potencial</text>
+<rect x="190" y="96" width="92" height="50" rx="6" class="fig-frame"/>
+<text x="236" y="118" text-anchor="middle" class="fig-label fig-it">F</text>
+<text x="236" y="136" text-anchor="middle" class="fig-label fig-small">2-forma</text>
+<text x="236" y="164" text-anchor="middle" class="fig-label fig-small">Faraday</text>
+<rect x="358" y="96" width="92" height="50" rx="6" class="fig-frame"/>
+<text x="404" y="118" text-anchor="middle" class="fig-label fig-it">ℳ</text>
+<text x="404" y="136" text-anchor="middle" class="fig-label fig-small">2-forma</text>
+<text x="404" y="164" text-anchor="middle" class="fig-label fig-small">excitação</text>
+<rect x="524" y="96" width="92" height="50" rx="6" class="fig-frame"/>
+<text x="570" y="118" text-anchor="middle" class="fig-label fig-it">j</text>
+<text x="570" y="136" text-anchor="middle" class="fig-label fig-small">3-forma</text>
+<text x="570" y="164" text-anchor="middle" class="fig-label fig-small">corrente</text>
+<line x1="120" y1="121" x2="186" y2="121" class="fig-axis" marker-end="url(#arr-4-8-1)"/>
+<text x="153" y="113" text-anchor="middle" class="fig-label fig-it">d</text>
+<line x1="286" y1="121" x2="354" y2="121" class="fig-axis" marker-end="url(#arr-4-8-1)"/>
+<text x="320" y="113" text-anchor="middle" class="fig-label fig-it">⋆ / μ₀</text>
+<line x1="454" y1="121" x2="520" y2="121" class="fig-axis" marker-end="url(#arr-4-8-1)"/>
+<text x="487" y="113" text-anchor="middle" class="fig-label fig-it">d</text>
+<line x1="236" y1="172" x2="236" y2="212" class="fig-axis" marker-end="url(#arr-4-8-1)"/>
+<text x="244" y="196" class="fig-label fig-it">d</text>
+<text x="236" y="230" text-anchor="middle" class="fig-label">0</text>
+<text x="236" y="248" text-anchor="middle" class="fig-label fig-small">dF = 0</text>
+<line x1="570" y1="172" x2="570" y2="212" class="fig-axis" marker-end="url(#arr-4-8-1)"/>
+<text x="578" y="196" class="fig-label fig-it">d</text>
+<text x="570" y="230" text-anchor="middle" class="fig-label">0</text>
+<text x="570" y="248" text-anchor="middle" class="fig-label fig-small">dj = 0</text>
+<text x="24" y="30" class="fig-label fig-small">sem métrica: só d</text>
+<text x="616" y="30" text-anchor="end" class="fig-label fig-small">sem métrica: só d</text>
+</svg>
+                    <figcaption><strong>Figura 4.8.1.</strong> A estrutura das equações de Maxwell no espaço-tempo. O potencial $A$ dá
+                        $F = dA$; a estrela da métrica de Minkowski, dividida por $\mu_0$, dá a excitação $\mathcal{M} = \star F/\mu_0$; e
+                        $d\mathcal{M} = j$ é a corrente. As duas setas verticais são $dF = 0$ e $dj = 0$, ambas consequências de $d^2 = 0$. Só a
+                        seta do meio usa a métrica, e é por ela que $\eta$ é determinada.</figcaption>
+                </figure>
+
+                <p>
+                    Escrita como forma quadrática, $\eta(v,v) = -(v^0)^2 + \lvert\mathbf{v}\rvert^2$: os vetores com $\eta(v,v) \lt 0$ (tipo
+                    tempo), $= 0$ (tipo luz, ou nulos) e $\gt 0$ (tipo espaço) são de natureza diferente, e o conjunto dos nulos é o cone de
+                    luz. O que isso significa para partículas é o assunto da Parte II (tópicos 4.10 e 4.11); para ondas, ver a
+                    <a href="#fisica">ponte com a física</a>.
+                </p>
+
+                <p id="obs-4-8-13"><strong>Observação 4.8.13 (O papel de $c$).</strong> O resultado $g^{00} = -1$ depende da escolha
+                    $x^0 = ct$. Com $t$ como coordenada, $F = E\wedge dt + B$ e a excitação natural é $D - H\wedge dt$ ($= \mathcal{M}/c$); a
+                    mesma conta dá $\star F \propto D - H\wedge dt$ se, e só se, $g^{tt} = -\varepsilon_0\mu_0 = -1/c^2$ (<a href="#exr-4-8-4">Exercício 4.8.4</a>). A métrica é
+                    a mesma, $-c^2dt^2 + d\mathbf{x}^2 = -(dx^0)^2 + d\mathbf{x}^2$, só escrita em outra coordenada. A velocidade da luz entra na
+                    geometria do espaço-tempo pelas duas constantes do eletromagnetismo, $\varepsilon_0$ e $\mu_0$, que medem a resposta do
+                    vácuo nas relações constitutivas.</p>
+
+                <p id="obs-4-8-14"><strong>Observação 4.8.14 (Por que $A_0 = -\phi/c$).</strong> No tópico 4.7 o quadripotencial apareceu
+                    sem métrica, de $F = dA$, e as suas componentes saíram $A_\mu = (-\phi/c, \mathbf{A})$ (<a href="[07] - Equações Homogêneas em 4D.html#prop-4-7-16">Proposição 4.7.16</a>). Nos livros, o
+                    quadripotencial costuma ser dado como o vetor $A^\mu = (\phi/c, \mathbf{A})$. As duas descrições coincidem exatamente com a
+                    métrica que acabamos de deduzir: subir o índice com $\eta$ troca o sinal da componente $0$ e preserva as outras,
+                    $A^\mu = \eta^{\mu\nu}A_\nu = (\phi/c, \mathbf{A})$ (<a href="[03] - Métricas e Volume Invariante.html#ex-4-3-6">Exemplo 4.3.6</a>). O sinal de menos em $A_0$ não é uma convenção arbitrária: é
+                    o mesmo sinal de menos de $\eta_{00}$.</p>
+
+                <h2 id="unicidade">Por que a estrela</h2>
+
+                <p>
+                    A dedução acima supôs que $\mathcal{M}$ é proporcional a $\star F$. A justificativa é física, e vale a pena dizer qual é.
+                </p>
+
+                <p id="obs-4-8-15"><strong>Observação 4.8.15 (A relação constitutiva do vácuo).</strong> Suponha que (i) no vácuo não
+                    existem outros campos além de $\mathbf{E}$ e $\mathbf{B}$, de modo que $\mathcal{M}$ tem de ser uma função de $F$ (senão as
+                    equações de Maxwell não determinam a dinâmica, <a href="#obs-4-8-7">Observação 4.8.7</a>); (ii) essa função é linear e local (o valor de $\mathcal{M}$
+                    num ponto só depende do valor de $F$ no mesmo ponto); (iii) ela é invariante pelas simetrias do vácuo. A
+                    <a href="[04] - O Operador Estrela de Hodge.html#obs-4-4-21">Observação 4.4.21</a> diz quais são as aplicações lineares $\Lambda^2 \to \Lambda^2$ em dimensão 4 que comutam com as rotações
+                    (e, em Minkowski, com o grupo de Lorentz próprio): não só os múltiplos de $\star$, mas as combinações</p>
+
+                <p>
+                    $$ \mathcal{M} = \alpha\,\star F + \beta\,F, $$
+                </p>
+
+                <p>
+                    porque em dimensão $n = 2k$ a identidade também comuta com tudo. O dual não é, portanto, a única $2$-forma
+                    invariante construída linearmente com $F$; o que é verdade é que o termo $\beta F$ não muda nada. De fato, se
+                    $\alpha$ e $\beta$ são constantes,
+                </p>
+
+                <p>
+                    $$ d\mathcal{M} = \alpha\,d\star F + \beta\,dF = \alpha\,d\star F, $$
+                </p>
+
+                <p>
+                    porque $dF = 0$: as equações $d\mathcal{M} = j$ são as mesmas com ou sem o termo $\beta F$, que não pode ser detectado
+                    pelas cargas e correntes. Com $\beta$ variável no espaço-tempo, $d(\beta F) = d\beta\wedge F$ deixa de ser zero; é assim
+                    que entra o acoplamento de um campo de áxion, que não discutimos. A constante $\alpha$ não é fixada pela invariância;
+                    ela é fixada pelos limites estáticos, em que $D = \varepsilon_0\ast E$ e $H = \ast B/\mu_0$, e por isso a dedução acima
+                    usa essas relações e obtém $\alpha = 1/\mu_0$.
+                </p>
+
+                <p>
+                    Há uma sutileza de ordem lógica. A <a href="[04] - O Operador Estrela de Hodge.html#obs-4-4-21">Observação 4.4.21</a> fala de aplicações invariantes por um grupo, e o grupo de Lorentz
+                    pressupõe a métrica que estamos deduzindo. O argumento não é circular se for lido assim: postulamos que a relação
+                    constitutiva do vácuo é a estrela de <em>alguma</em> métrica (a segunda regra de geometrização) e usamos as hipóteses
+                    (i)–(iii) da seção anterior para restringir as métricas candidatas; a <a href="#prop-4-8-12">Proposição 4.8.12</a> escolhe uma delas. A invariância
+                    vem depois, como consequência (próxima seção).
+                </p>
+
+                <h2 id="grupo-de-lorentz">O grupo de Lorentz nasce do eletromagnetismo</h2>
+
+                <p>
+                    Com a métrica em mãos, a pergunta da <a href="#obs-4-8-10">Observação 4.8.10</a> tem resposta: as mudanças de coordenadas que preservam a teoria
+                    inteira, inclusive a relação $\mathcal{M} = \star F/\mu_0$, são as que preservam $\eta$ e a orientação.
+                </p>
+
+                <div class="definition-box" id="def-4-8-16" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.8.16 (O grupo de Lorentz).</strong> O <strong>grupo de Lorentz</strong> é</p>
+                    <p>$$ O(3,1) = \{\Lambda \in GL(4,\mathbb{R}) : \Lambda^T\eta\Lambda = \eta\}, $$</p>
+                    <p>e os seus elementos são as <strong>transformações de Lorentz</strong>. O <strong>grupo de Lorentz próprio
+                        ortócrono</strong> é $SO^+(3,1) = \{\Lambda \in O(3,1) : \det\Lambda = 1,\ \Lambda^0{}_0 \ge 1\}$. As aplicações
+                        $x \mapsto \Lambda x + b$, com $\Lambda \in O(3,1)$ e $b \in \mathbb{R}^4$, formam o grupo de Poincaré.</p>
+                </div>
+
+                <div class="definition-box" id="prop-4-8-17">
+                    <p><strong>Proposição 4.8.17 (Propriedades).</strong></p>
+                    <ol type="a">
+                        <li>$O(3,1)$ é um grupo, e $\det\Lambda = \pm1$ para todo $\Lambda \in O(3,1)$;</li>
+                        <li>$(\Lambda^0{}_0)^2 = 1 + \sum_i(\Lambda^i{}_0)^2 \ge 1$, de modo que $\Lambda^0{}_0 \ge 1$ ou $\Lambda^0{}_0 \le -1$;</li>
+                        <li>a aplicação $\varphi(x) = \Lambda x + b$ satisfaz $\varphi^*\eta = \eta$ se, e somente se, $\Lambda \in O(3,1)$; ela
+                            preserva a orientação se, e somente se, $\det\Lambda = 1$.</li>
+                    </ol>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Se $\Lambda, \Lambda' \in O(3,1)$, então
+                    $(\Lambda\Lambda')^T\eta(\Lambda\Lambda') = \Lambda'^T(\Lambda^T\eta\Lambda)\Lambda' = \Lambda'^T\eta\Lambda' = \eta$. Tomando o
+                    determinante em $\Lambda^T\eta\Lambda = \eta$, $(\det\Lambda)^2\det\eta = \det\eta$, e como $\det\eta = -1 \ne 0$,
+                    $\det\Lambda = \pm1$; em particular $\Lambda$ é invertível, e multiplicando $\Lambda^T\eta\Lambda = \eta$ por
+                    $(\Lambda^{-1})^T$ à esquerda e por $\Lambda^{-1}$ à direita, $\eta = (\Lambda^{-1})^T\eta\Lambda^{-1}$. A identidade está
+                    em $O(3,1)$. (b) A entrada $(0,0)$ de $\Lambda^T\eta\Lambda = \eta$ é
+                    $\sum_{\alpha,\beta}\Lambda^\alpha{}_0\,\eta_{\alpha\beta}\,\Lambda^\beta{}_0 = -(\Lambda^0{}_0)^2 + \sum_i(\Lambda^i{}_0)^2 = -1$.
+                    (c) As componentes de $\varphi^*\eta$ são
+                    $(\varphi^*\eta)_{\mu\nu} = \eta_{\alpha\beta}\,\partial_\mu\varphi^\alpha\,\partial_\nu\varphi^\beta = \Lambda^\alpha{}_\mu\,\eta_{\alpha\beta}\,\Lambda^\beta{}_\nu = (\Lambda^T\eta\Lambda)_{\mu\nu}$,
+                    e $\varphi^*(dx^0\wedge\dots\wedge dx^3) = \det\Lambda\;dx^0\wedge\dots\wedge dx^3$ (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[12] - Formas Diferenciais.html#teo-3-12-14">Teorema 3.12.14</a>). $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="teo-4-8-18">
+                    <p><strong>Teorema 4.8.18 (Invariância das equações de Maxwell).</strong> Sejam $\Lambda \in O(3,1)$ com
+                        $\det\Lambda = 1$, $b \in \mathbb{R}^4$ e $\varphi(x) = \Lambda x + b$. Se $F$ e $j$ satisfazem $dF = 0$ e
+                        $d\star F = \mu_0j$, então $F' = \varphi^*F$ e $j' = \varphi^*j$ satisfazem $dF' = 0$ e $d\star F' = \mu_0j'$. Além
+                        disso, $\varphi^*\mathcal{M} = \star F'/\mu_0$: a relação constitutiva do vácuo também é preservada.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela <a href="#prop-4-8-17">Proposição 4.8.17</a>(c), $\varphi$ é uma isometria de $\eta$ que preserva a orientação, e a
+                    <a href="[04] - O Operador Estrela de Hodge.html#prop-4-4-19">Proposição 4.4.19</a> dá $\varphi^*\star = \star\varphi^*$. Pela naturalidade de $d$, $dF' = \varphi^*dF = 0$ e
+                    $d\star F' = d\varphi^*\star F = \varphi^*d\star F = \mu_0\varphi^*j = \mu_0j'$. Por fim,
+                    $\varphi^*\mathcal{M} = \varphi^*\star F/\mu_0 = \star\varphi^*F/\mu_0$. $\blacksquare$
+                </p>
+
+                <p>
+                    Esta é a leitura do resultado: <strong>os referenciais inerciais da teoria são os ligados por transformações que
+                    preservam $\eta$</strong>. Não é preciso postular a relatividade restrita; a métrica que o eletromagnetismo exige já
+                    contém o seu grupo de simetrias. As trocas de eixos do <a href="#ex-4-8-8">Exemplo 4.8.8</a> estão em $SO^+(3,1)$ (fixam $x^0$, são isometrias da
+                    parte espacial e têm determinante $1$). O exemplo novo, que mistura espaço e tempo, é o seguinte.
+                </p>
+
+                <p id="ex-4-8-19"><strong>Exemplo 4.8.19 (Um <em>boost</em>).</strong> Para $\beta = v/c$ com $\lvert v\rvert \lt c$ e
+                    $\gamma = (1 - \beta^2)^{-1/2}$, a matriz</p>
+
+                <p>
+                    $$ \Lambda = \begin{pmatrix} \gamma & -\gamma\beta & 0 & 0\\ -\gamma\beta & \gamma & 0 & 0\\ 0 & 0 & 1 & 0\\ 0 & 0 & 0 & 1 \end{pmatrix}, $$
+                </p>
+
+                <p>
+                    isto é, $x'^0 = \gamma(x^0 - \beta x^1)$, $x'^1 = \gamma(x^1 - \beta x^0)$, $x'^2 = x^2$, $x'^3 = x^3$, está em $SO^+(3,1)$: o bloco $2\times2$ satisfaz $-\gamma^2 + \gamma^2\beta^2 = -1$, $\gamma^2 - \gamma^2\beta^2 = 1$ e o termo
+                    misto $\gamma^2\beta - \gamma^2\beta = 0$; $\det\Lambda = \gamma^2(1 - \beta^2) = 1$ e $\Lambda^0{}_0 = \gamma \ge 1$. Escrita nas
+                    coordenadas $x'$, a mesma $2$-forma $F$ tem componentes novas, e o campo elétrico e o magnético se misturam: por exemplo,
+                    $E'_2 = \gamma(E_2 - vB_3)$ e $B'_3 = \gamma(B_3 - vE_2/c^2)$ (a conta completa está no <a href="#exr-4-8-6">Exercício 4.8.6</a>). A separação de $F$ em
+                    "elétrico" e "magnético" depende do referencial (<a href="[07] - Equações Homogêneas em 4D.html#obs-4-7-4">Observação 4.7.4</a>); a $2$-forma não.
+                </p>
+
+                <p id="obs-4-8-20"><strong>Observação 4.8.20 (Inversões).</strong> A paridade $P = \operatorname{diag}(1,-1,-1,-1)$ e a
+                    inversão temporal $T = \operatorname{diag}(-1,1,1,1)$ estão em $O(3,1)$ com $\det = -1$: são isometrias que invertem a
+                    orientação, e a <a href="[04] - O Operador Estrela de Hodge.html#prop-4-4-19">Proposição 4.4.19</a> dá $\varphi^*\star = -\star\varphi^*$. Então $d\star(\varphi^*F) = -\mu_0\varphi^*j$, e as
+                    equações só são preservadas se a corrente se transformar com um sinal a mais, $j' = -\varphi^*j$. É a mesma
+                    observação do tópico 4.5 sobre paridade (<a href="[05] - Maxwell em 3D com Formas.html#exr-4-5-7">Exercício 4.5.7</a>): a excitação e a corrente se comportam como formas
+                    torcidas, que mudam de sinal com a orientação. Como no resto do capítulo, fixamos a orientação e usamos formas comuns;
+                    as simetrias contínuas, que são as que importam para os referenciais inerciais, ficam em $SO^+(3,1)$.</p>
+
+                <h2 id="corrente">A corrente como vetor</h2>
+
+                <p>
+                    Nos livros de relatividade restrita a carga e a corrente formam um quadrivetor, $J^\mu = (c\rho, \mathbf{J})$. Aqui
+                    elas formam a $3$-forma $j = c\varrho - J\wedge dx^0$. Com a métrica, as duas descrições são a mesma.
+                </p>
+
+                <div class="definition-box" id="prop-4-8-21">
+                    <p><strong>Proposição 4.8.21 (A corrente é o dual do quadrivetor).</strong> Seja $J^\mu = (c\rho, J^1, J^2, J^3)$ e
+                        $J^\flat = J_\mu dx^\mu$, com $J_\mu = \eta_{\mu\nu}J^\nu = (-c\rho, J^1, J^2, J^3)$. Então</p>
+                    <p>$$ j = \star(J^\flat), \qquad J^\flat = \star j, \tag{4.8.10} $$</p>
+                    <p>e, em componentes, $j_{\nu\lambda\kappa} = J^\mu\,\tilde\varepsilon_{\mu\nu\lambda\kappa}$:
+                        $j_{123} = c\rho$, $j_{023} = -J^1$, $j_{013} = J^2$, $j_{012} = -J^3$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pelo <a href="[04] - O Operador Estrela de Hodge.html#cor-4-4-9">Corolário 4.4.9</a>, $\star\alpha = i_{\alpha^\sharp}\operatorname{vol}_\eta$, e aqui
+                    $(J^\flat)^\sharp = J^\mu\partial_\mu$ e $\operatorname{vol}_\eta = dx^0\wedge dx^1\wedge dx^2\wedge dx^3$. O produto interior
+                    tira um fator de cada vez, com sinais alternados:
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    &i_J\big(dx^0\wedge dx^1\wedge dx^2\wedge dx^3\big)\\
+                    &\qquad = J^0\,dx^1\wedge dx^2\wedge dx^3 - J^1\,dx^0\wedge dx^2\wedge dx^3\\
+                    &\qquad\qquad + J^2\,dx^0\wedge dx^1\wedge dx^3 - J^3\,dx^0\wedge dx^1\wedge dx^2.
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    Do outro lado, com $J = J^1dx^2\wedge dx^3 + J^2dx^3\wedge dx^1 + J^3dx^1\wedge dx^2$ e passando $dx^0$ para a frente
+                    (duas trocas, sinal $+$),
+                    $J\wedge dx^0 = J^1\,dx^0\wedge dx^2\wedge dx^3 - J^2\,dx^0\wedge dx^1\wedge dx^3 + J^3\,dx^0\wedge dx^1\wedge dx^2$, porque
+                    $dx^0\wedge dx^3\wedge dx^1 = -dx^0\wedge dx^1\wedge dx^3$. Logo $c\varrho - J\wedge dx^0$ é exatamente a expressão acima, com
+                    $J^0 = c\rho$. A segunda igualdade vem do <a href="[04] - O Operador Estrela de Hodge.html#teo-4-4-15">Teorema 4.4.15</a>: em $1$-formas de Minkowski,
+                    $\star\star = \operatorname{sign}(\eta)(-1)^{1\cdot3} = (-1)(-1) = 1$, e $\star j = \star\star J^\flat = J^\flat$. A fórmula de
+                    componentes é a (4.4.4) com $\sqrt{\lvert\eta\rvert} = 1$, contraída no primeiro índice. $\blacksquare$
+                </p>
+
+                <p>
+                    Assim as equações com fontes ficam $d\star F = \mu_0\star J^\flat$. Elas também podem ser escritas como equações para as
+                    componentes, que é a forma usual nos livros. Os sinais dependem das convenções, e por isso os conferimos.
+                </p>
+
+                <div class="definition-box" id="prop-4-8-22">
+                    <p><strong>Proposição 4.8.22 (Maxwell em componentes).</strong> Com $F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu$,
+                        $F_{i0} = E_i/c$ e $F^{\mu\nu} = \eta^{\mu\alpha}\eta^{\nu\beta}F_{\alpha\beta}$,</p>
+                    <ol type="a">
+                        <li>$d\star F = \mu_0j$ se, e somente se,
+                            $$ \partial_\mu F^{\mu\nu} = -\mu_0\,J^\nu; \tag{4.8.11} $$</li>
+                        <li>$dj = (\partial_\mu J^\mu)\,dx^0\wedge dx^1\wedge dx^2\wedge dx^3$; logo $dj = 0$ se, e somente se, $\partial_\mu J^\mu = 0$.</li>
+                    </ol>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Pela <a href="#prop-4-8-12">Proposição 4.8.12</a>, $d\star F = \mu_0j$ é $d\mathcal{M} = j$ com $D = \varepsilon_0\ast E$,
+                    $H = \ast B/\mu_0$, e pelo <a href="#teo-4-8-5">Teorema 4.8.5</a> isso equivale às leis de Gauss e de Ampère–Maxwell no vácuo,
+                    $\nabla\cdot\mathbf{E} = \rho/\varepsilon_0$ e $\nabla\times\mathbf{B} = \mu_0\mathbf{J} + \frac{1}{c^2}\partial_t\mathbf{E}$. Vamos
+                    mostrar que (4.8.11) é o mesmo par de equações. Subir os dois índices com $\eta$ troca o sinal das componentes com
+                    exatamente um índice $0$: $F^{i0} = -F_{i0} = -E_i/c$, $F^{0i} = E_i/c$ e $F^{ij} = F_{ij} = \tilde\varepsilon_{ijk}B^k$ (4.7.5).
+                    Para $\nu = 0$, $\partial_\mu F^{\mu0} = \partial_iF^{i0} = -\frac1c\nabla\cdot\mathbf{E}$, e (4.8.11) diz
+                    $\nabla\cdot\mathbf{E} = \mu_0c^2\rho = \rho/\varepsilon_0$. Para $\nu = j$,
+                </p>
+
+                <p>
+                    $$ \partial_\mu F^{\mu j} = \partial_0F^{0j} + \partial_iF^{ij} = \frac{1}{c^2}\,\partial_tE_j + \tilde\varepsilon_{ijk}\,\partial_iB^k
+                    = \frac{1}{c^2}\,\partial_tE_j - (\nabla\times\mathbf{B})_j, $$
+                </p>
+
+                <p>
+                    porque $(\nabla\times\mathbf{B})_j = \tilde\varepsilon_{jik}\partial_iB^k = -\tilde\varepsilon_{ijk}\partial_iB^k$; e (4.8.11) diz
+                    $\nabla\times\mathbf{B} = \mu_0\mathbf{J} + \frac1{c^2}\partial_t\mathbf{E}$. (b) Por (4.8.6),
+                    $dj = -(\partial_t\rho + \nabla\cdot\mathbf{J})\,dx^1\wedge dx^2\wedge dx^3\wedge dx^0 = (\partial_t\rho + \nabla\cdot\mathbf{J})\,dx^0\wedge\dots\wedge dx^3$
+                    (passar $dx^0$ por três covetores), e $\partial_\mu J^\mu = \partial_0(c\rho) + \partial_iJ^i = \partial_t\rho + \nabla\cdot\mathbf{J}$.
+                    $\blacksquare$
+                </p>
+
+                <p>
+                    Livros com outras convenções (a assinatura $(+,-,-,-)$, ou a ordem $F^{\nu\mu}$) escrevem a mesma equação como
+                    $\partial_\mu F^{\nu\mu} = \mu_0J^\nu$ ou com outro sinal; o conteúdo físico é o que conferimos acima. A parte (b) também
+                    é a <a href="[04] - O Operador Estrela de Hodge.html#prop-4-4-23">Proposição 4.4.23</a>: $d\star J^\flat = (\operatorname{div}J)\operatorname{vol}_\eta$, com $\operatorname{div}J = \partial_\mu J^\mu$.
+                    Em componentes, $dF = 0$ é a identidade de Bianchi (<a href="[07] - Equações Homogêneas em 4D.html#prop-4-7-14">Proposição 4.7.14</a>), e as duas metades de Maxwell ficam
+                    $\partial_{[\lambda}F_{\mu\nu]} = 0$ e $\partial_\mu F^{\mu\nu} = -\mu_0J^\nu$.
+                </p>
+
+                <h2 id="fisica">Ponte com a física: ondas, o cone de luz e 1905</h2>
+
+                <p>
+                    <strong>A equação de onda.</strong> Com $F = dA$ (<a href="[07] - Equações Homogêneas em 4D.html#teo-4-7-15">Teorema 4.7.15</a>), as equações com fontes viram uma equação para o
+                    potencial. Em componentes, $F^{\mu\nu} = \partial^\mu A^\nu - \partial^\nu A^\mu$ (índices levantados com $\eta$), e
+                </p>
+
+                <p>
+                    $$ \partial_\mu F^{\mu\nu} = \Box A^\nu - \partial^\nu\big(\partial_\mu A^\mu\big), \qquad
+                    \Box = \eta^{\mu\nu}\partial_\mu\partial_\nu = -\frac{1}{c^2}\frac{\partial^2}{\partial t^2} + \nabla^2. $$
+                </p>
+
+                <p>
+                    A liberdade de calibre $A \mapsto A + df$ (<a href="[07] - Equações Homogêneas em 4D.html#prop-4-7-17">Proposição 4.7.17</a>) permite impor o <strong>calibre de Lorenz</strong>,
+                    $\partial_\mu A^\mu = 0$ (escolhendo $f$ com $\Box f = -\partial_\mu A^\mu$, uma equação de onda com fonte que sempre tem
+                    solução; ver Jackson, cap. 6). Em formas, pela <a href="[04] - O Operador Estrela de Hodge.html#prop-4-4-23">Proposição 4.4.23</a>, $d\star A = (\partial_\mu A^\mu)\operatorname{vol}_\eta$, e o
+                    calibre de Lorenz é $d\star A = 0$; com $A^\mu = (\phi/c, \mathbf{A})$ (<a href="#obs-4-8-14">Observação 4.8.14</a>), ele é
+                    $\frac{1}{c^2}\partial_t\phi + \nabla\cdot\mathbf{A} = 0$. Nesse calibre, (4.8.11) fica
+                </p>
+
+                <p>
+                    $$ \Box A^\mu = -\mu_0\,J^\mu: \tag{4.8.12} $$
+                </p>
+
+                <p>
+                    cada componente do potencial satisfaz uma equação de onda com velocidade $c$. Para $\mu = 0$, com $A^0 = \phi/c$ e
+                    $J^0 = c\rho$, é $\nabla^2\phi - \frac{1}{c^2}\partial_t^2\phi = -\rho/\varepsilon_0$, que na estática é a equação de Poisson.
+                    Este é o sinal certo na convenção do capítulo; ele foi conferido em sympy e no limite estático, em que o potencial de uma
+                    carga positiva é positivo. Era a promessa do tópico 4.4 (<a href="[04] - O Operador Estrela de Hodge.html#ex-4-4-24">Exemplo 4.4.24</a>): $\star d\star df = -\Box f$ é o operador de onda, e
+                    agora sabemos de onde ele vem.
+                </p>
+
+                <p>
+                    <strong>O cone de luz.</strong> O operador $\Box$ é o "laplaciano" da métrica $\eta$, e o sinal de menos do tempo é o
+                    que o torna hiperbólico em vez de elíptico (<a href="#exr-4-8-5">Exercício 4.8.5</a>). As soluções no vácuo, como $f(x^3 - x^0)$, são constantes ao
+                    longo de direções nulas, $\eta(v,v) = 0$; uma perturbação que parte de um evento se propaga sobre o cone de luz desse
+                    evento (Figura 4.8.2). A geometria do espaço-tempo e a propagação das ondas eletromagnéticas são a mesma informação.
+                </p>
+
+                <figure class="lecture-figure" id="fig-4-8-2" style="overflow-x: auto; overflow-y: hidden;">
+                    <svg viewBox="0 0 640 330" role="img" style="min-width: 560px;" aria-label="Cone de luz de um evento p em um espaço-tempo com duas dimensões espaciais, em projeção oblíqua. O eixo x zero aponta para cima e os eixos x um e x dois ficam no plano horizontal. Duas folhas de cone com vértice em p, a do futuro e a do passado, limitadas por elipses que representam círculos. Uma fatia horizontal sombreada em x zero igual a ct corta a folha do futuro num círculo tracejado, rotulado frente de onda. Três setas saem de p: uma dentro do cone, rotulada tipo tempo; uma ao longo do cone, rotulada tipo luz; e uma fora do cone, rotulada tipo espaço.">
+<defs><marker id="arr-4-8-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<path d="M119.6,132.7 L375.6,132.7 L480.4,59.3 L224.4,59.3 Z" class="fig-band"/>
+<text x="381.6" y="136.7" class="fig-label fig-small">fatia x⁰ = ct</text>
+<line x1="300" y1="306" x2="300" y2="22" class="fig-axis" marker-end="url(#arr-4-8-2)"/>
+<text x="306" y="26" class="fig-label fig-it">x⁰</text>
+<line x1="150" y1="168" x2="460" y2="168" class="fig-guide"/>
+<line x1="460" y1="168" x2="472" y2="168" class="fig-axis" marker-end="url(#arr-4-8-2)"/>
+<text x="476" y="184" class="fig-label fig-it">x¹</text>
+<line x1="234.5" y1="213.9" x2="365.5" y2="122.1" class="fig-guide"/>
+<line x1="365.5" y1="122.1" x2="373.7" y2="116.4" class="fig-axis" marker-end="url(#arr-4-8-2)"/>
+<text x="379.7" y="116.4" class="fig-label fig-it">x²</text>
+<path d="M420,48 L422.4,46.2 L424.5,44.4 L426.2,42.6 L427.6,40.8 L428.6,39.1 L429.3,37.4 L429.6,35.7 L429.6,34 L429.2,32.4 L428.5,30.8 L427.4,29.3 L426,27.8 L424.2,26.3 L422.1,25 L419.6,23.7 L416.8,22.4 L413.7,21.3 L410.3,20.2 L406.6,19.1 L402.6,18.2 L398.3,17.3 L393.7,16.6 L388.9,15.9 L383.8,15.3 L378.5,14.8 L373,14.3 L367.3,14 L361.4,13.8 L355.4,13.6 L349.1,13.6 L342.8,13.6 L336.3,13.8 L329.8,14 L323.1,14.3 L316.4,14.8 L309.7,15.3 L302.9,15.9 L296.1,16.6 L289.3,17.3 L282.6,18.2 L275.9,19.1 L269.2,20.2 L262.7,21.3 L256.2,22.4 L249.9,23.7 L243.7,25 L237.7,26.3 L231.8,27.8 L226.1,29.3 L220.7,30.8 L215.4,32.4 L210.4,34 L205.6,35.7 L201.1,37.4 L196.8,39.1 L192.8,40.8 L189.2,42.6 L185.8,44.4 L182.7,46.2 L180,48 L177.6,49.8 L175.5,51.6 L173.8,53.4 L172.4,55.2 L171.4,56.9 L170.7,58.6 L170.4,60.3 L170.4,62 L170.8,63.6 L171.5,65.2 L172.6,66.7 L174,68.2 L175.8,69.7 L177.9,71 L180.4,72.3 L183.2,73.6 L186.3,74.7 L189.7,75.8 L193.4,76.9 L197.4,77.8 L201.7,78.7 L206.3,79.4 L211.1,80.1 L216.2,80.7 L221.5,81.2 L227,81.7 L232.7,82 L238.6,82.2 L244.6,82.4 L250.9,82.4 L257.2,82.4 L263.7,82.2 L270.2,82 L276.9,81.7 L283.6,81.2 L290.3,80.7 L297.1,80.1 L303.9,79.4 L310.7,78.7 L317.4,77.8 L324.1,76.9 L330.8,75.8 L337.3,74.7 L343.8,73.6 L350.1,72.3 L356.3,71 L362.3,69.7 L368.2,68.2 L373.9,66.7 L379.3,65.2 L384.6,63.6 L389.6,62 L394.4,60.3 L398.9,58.6 L403.2,56.9 L407.2,55.2 L410.8,53.4 L414.2,51.6 L417.3,49.8 L420,48" class="fig-curve"/>
+<path d="M420,288 L422.4,286.2 L424.5,284.4 L426.2,282.6 L427.6,280.8 L428.6,279.1 L429.3,277.4 L429.6,275.7 L429.6,274 L429.2,272.4 L428.5,270.8 L427.4,269.3 L426,267.8 L424.2,266.3 L422.1,265 L419.6,263.7 L416.8,262.4 L413.7,261.3 L410.3,260.2 L406.6,259.1 L402.6,258.2 L398.3,257.3 L393.7,256.6 L388.9,255.9 L383.8,255.3 L378.5,254.8 L373,254.3 L367.3,254 L361.4,253.8 L355.4,253.6 L349.1,253.6 L342.8,253.6 L336.3,253.8 L329.8,254 L323.1,254.3 L316.4,254.8 L309.7,255.3 L302.9,255.9 L296.1,256.6 L289.3,257.3 L282.6,258.2 L275.9,259.1 L269.2,260.2 L262.7,261.3 L256.2,262.4 L249.9,263.7 L243.7,265 L237.7,266.3 L231.8,267.8 L226.1,269.3 L220.7,270.8 L215.4,272.4 L210.4,274 L205.6,275.7 L201.1,277.4 L196.8,279.1 L192.8,280.8 L189.2,282.6 L185.8,284.4 L182.7,286.2 L180,288 L177.6,289.8 L175.5,291.6 L173.8,293.4 L172.4,295.2 L171.4,296.9 L170.7,298.6 L170.4,300.3 L170.4,302 L170.8,303.6 L171.5,305.2 L172.6,306.7 L174,308.2 L175.8,309.7 L177.9,311 L180.4,312.3 L183.2,313.6 L186.3,314.7 L189.7,315.8 L193.4,316.9 L197.4,317.8 L201.7,318.7 L206.3,319.4 L211.1,320.1 L216.2,320.7 L221.5,321.2 L227,321.7 L232.7,322 L238.6,322.2 L244.6,322.4 L250.9,322.4 L257.2,322.4 L263.7,322.2 L270.2,322 L276.9,321.7 L283.6,321.2 L290.3,320.7 L297.1,320.1 L303.9,319.4 L310.7,318.7 L317.4,317.8 L324.1,316.9 L330.8,315.8 L337.3,314.7 L343.8,313.6 L350.1,312.3 L356.3,311 L362.3,309.7 L368.2,308.2 L373.9,306.7 L379.3,305.2 L384.6,303.6 L389.6,302 L394.4,300.3 L398.9,298.6 L403.2,296.9 L407.2,295.2 L410.8,293.4 L414.2,291.6 L417.3,289.8 L420,288" class="fig-curve"/>
+<line x1="300" y1="168" x2="174.9" y2="69" class="fig-curve"/>
+<line x1="300" y1="168" x2="425.1" y2="43.8" class="fig-curve"/>
+<line x1="300" y1="168" x2="425.1" y2="267" class="fig-curve"/>
+<line x1="300" y1="168" x2="174.9" y2="292.2" class="fig-curve"/>
+<path d="M372,96 L373.4,94.9 L374.7,93.8 L375.7,92.8 L376.6,91.7 L377.2,90.7 L377.6,89.6 L377.8,88.6 L377.8,87.6 L377.5,86.6 L377.1,85.7 L376.4,84.8 L375.6,83.9 L374.5,83 L373.2,82.2 L371.8,81.4 L370.1,80.7 L368.2,80 L366.2,79.3 L363.9,78.7 L361.5,78.1 L359,77.6 L356.2,77.1 L353.3,76.7 L350.3,76.4 L347.1,76.1 L343.8,75.8 L340.4,75.6 L336.9,75.5 L333.2,75.4 L329.5,75.4 L325.7,75.4 L321.8,75.5 L317.9,75.6 L313.9,75.8 L309.8,76.1 L305.8,76.4 L301.7,76.7 L297.7,77.1 L293.6,77.6 L289.5,78.1 L285.5,78.7 L281.5,79.3 L277.6,80 L273.7,80.7 L269.9,81.4 L266.2,82.2 L262.6,83 L259.1,83.9 L255.7,84.8 L252.4,85.7 L249.2,86.6 L246.2,87.6 L243.4,88.6 L240.6,89.6 L238.1,90.7 L235.7,91.7 L233.5,92.8 L231.5,93.8 L229.6,94.9 L228,96 L226.6,97.1 L225.3,98.2 L224.3,99.2 L223.4,100.3 L222.8,101.3 L222.4,102.4 L222.2,103.4 L222.2,104.4 L222.5,105.4 L222.9,106.3 L223.6,107.2 L224.4,108.1 L225.5,109 L226.8,109.8 L228.2,110.6 L229.9,111.3 L231.8,112 L233.8,112.7 L236.1,113.3 L238.5,113.9 L241,114.4 L243.8,114.9 L246.7,115.3 L249.7,115.6 L252.9,115.9 L256.2,116.2 L259.6,116.4 L263.1,116.5 L266.8,116.6 L270.5,116.6 L274.3,116.6 L278.2,116.5 L282.1,116.4 L286.1,116.2 L290.2,115.9 L294.2,115.6 L298.3,115.3 L302.3,114.9 L306.4,114.4 L310.5,113.9 L314.5,113.3 L318.5,112.7 L322.4,112 L326.3,111.3 L330.1,110.6 L333.8,109.8 L337.4,109 L340.9,108.1 L344.3,107.2 L347.6,106.3 L350.8,105.4 L353.8,104.4 L356.6,103.4 L359.4,102.4 L361.9,101.3 L364.3,100.3 L366.5,99.2 L368.5,98.2 L370.4,97.1 L372,96" class="fig-curve fig-dashed"/>
+<line x1="374" y1="96" x2="522" y2="102" class="fig-guide"/>
+<text x="526" y="106" class="fig-label fig-small">frente de onda</text>
+<line x1="300" y1="168" x2="286" y2="234" class="fig-axis" marker-end="url(#arr-4-8-2)"/>
+<text x="294" y="238" class="fig-label fig-small">tipo tempo</text>
+<line x1="300" y1="168" x2="222" y2="246" class="fig-axis" marker-end="url(#arr-4-8-2)"/>
+<text x="216" y="250" text-anchor="end" class="fig-label fig-small">tipo luz</text>
+<line x1="300" y1="168" x2="182" y2="198" class="fig-axis" marker-end="url(#arr-4-8-2)"/>
+<text x="176" y="202" text-anchor="end" class="fig-label fig-small">tipo espaço</text>
+<circle cx="300" cy="168" r="3.5" class="fig-arrowhead"/>
+<text x="308" y="184" class="fig-label fig-it">p</text>
+<text x="430" y="52" class="fig-label fig-small">futuro</text>
+<text x="430" y="292" class="fig-label fig-small">passado</text>
+</svg>
+                    <figcaption><strong>Figura 4.8.2.</strong> O cone de luz de um evento $p$ na métrica de Minkowski, num espaço-tempo com
+                        duas dimensões espaciais (projeção oblíqua). Os vetores nulos, $-(v^0)^2 + (v^1)^2 + (v^2)^2 = 0$, formam o cone; os
+                        tipo tempo ficam dentro e os tipo espaço, fora. Uma onda emitida em $p$ ocupa, no instante $x^0 = ct$, o círculo de raio
+                        $ct$ (tracejado): a frente de onda é a interseção do cone com a fatia.</figcaption>
+                </figure>
+
+                <p>
+                    <strong>1905.</strong> O artigo em que Einstein apresentou a relatividade restrita se chama "Sobre a eletrodinâmica dos
+                    corpos em movimento". O argumento deste tópico refaz essa história com outra ordem lógica: a relatividade restrita sai
+                    do eletromagnetismo. As equações homogêneas e as com fontes não usam métrica; exigir que a excitação seja o dual dos
+                    campos fixa a métrica de Minkowski; e as isometrias dessa métrica são as transformações entre referenciais inerciais.
+                    Aqui a métrica ainda é uma <em>geometria de fundo</em>: ela é a mesma em todo lugar e não responde à matéria. O passo da
+                    Relatividade Geral é o que o tópico 4.6 chamou de geometria dinâmica (seção
+                    <a href="[06] - Meios Materiais e Métrica Induzida.html#geometria-dinamica">Geometria dinâmica</a>): a métrica passa a ser um
+                    campo, determinado pela própria matéria. Antes disso, a Parte II do capítulo mostra que a mesma métrica $\eta$ determina
+                    o movimento das partículas livres.
+                </p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p>
+                    Em todos, $\eta = \operatorname{diag}(-1,1,1,1)$, a orientação é $dx^0\wedge dx^1\wedge dx^2\wedge dx^3$ e $x^0 = ct$. As contas
+                    foram conferidas em sympy.
+                </p>
+
+                <p id="exr-4-8-1"><strong>Exercício 4.8.1 (das notas de aula).</strong> A teoria tem uma $3$-forma
+                    $j = c\varrho - J\wedge dx^0$ e, na linguagem dos livros de relatividade, um quadrivetor $J^\mu = (c\rho, \mathbf{J})$. Qual
+                    a relação entre as componentes de $j$ e as de $J^\mu$?</p>
+
+                <p>
+                    <em>Solução.</em> Escrevendo $j = \sideset{}{'}\sum_I j_I\,dx^I$, os quatro multi-índices crescentes de comprimento 3 são
+                    $(1,2,3)$, $(0,2,3)$, $(0,1,3)$ e $(0,1,2)$. A parte espacial é $c\varrho = c\rho\,dx^1\wedge dx^2\wedge dx^3$, logo
+                    $j_{123} = c\rho$. Para a outra parte, $J\wedge dx^0 = dx^0\wedge J$ ($J$ tem grau 2), e
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    dx^0\wedge J &= J^1\,dx^0\wedge dx^2\wedge dx^3 + J^2\,dx^0\wedge dx^3\wedge dx^1\\
+                    &\qquad + J^3\,dx^0\wedge dx^1\wedge dx^2,
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    com $dx^0\wedge dx^3\wedge dx^1 = -dx^0\wedge dx^1\wedge dx^3$. Então $j_{023} = -J^1$, $j_{013} = J^2$, $j_{012} = -J^3$. As
+                    quatro relações são $j_{\nu\lambda\kappa} = J^\mu\,\tilde\varepsilon_{\mu\nu\lambda\kappa}$: por exemplo,
+                    $j_{023} = J^1\tilde\varepsilon_{1023} = -J^1$. Isso é a fórmula de componentes (4.4.4) para $\star(J^\flat)$, com
+                    $\sqrt{\lvert\eta\rvert} = 1$ e o índice de $J^\flat$ levantado de volta, $(J^\flat)^\mu = J^\mu$: a relação é $j = \star(J^\flat)$
+                    (<a href="#prop-4-8-21">Proposição 4.8.21</a>). Ela se inverte por $J^\flat = \star j$, ou seja, $J^0 = j_{123}$, $J^1 = -j_{023}$, $J^2 = j_{013}$,
+                    $J^3 = -j_{012}$. Observe que é o quadrivetor $J^\mu$ (índice em cima) que aparece com a componente $c\rho$ positiva; a
+                    $1$-forma $J^\flat$ tem $J_0 = -c\rho$.
+                </p>
+
+                <p id="exr-4-8-2"><strong>Exercício 4.8.2.</strong> Mostre que $\star F = \frac1c\ast E - (\ast B)\wedge dx^0$ e que, portanto,
+                    $\star F$ é a $2$-forma de Faraday dos campos $\mathbf{E}' = -c\,\mathbf{B}$ e $\mathbf{B}' = \mathbf{E}/c$. Escreva as componentes de
+                    $\star F$ e confira que $\star\star F = -F$.</p>
+
+                <p>
+                    <em>Solução.</em> É a (4.8.7) com $a = -1$, $\lvert a\rvert = 1$:
+                    $\star F = -\big(-\frac1c\ast E + (\ast B)\wedge dx^0\big) = \frac1c\ast E - (\ast B)\wedge dx^0$. Compare com
+                    $F' = \frac1cE'\wedge dx^0 + B'$: a parte espacial dá $B' = \frac1c\ast E$, isto é, $\mathbf{B}' = \mathbf{E}/c$ (a $2$-forma
+                    $\ast E = \Phi_{\mathbf{E}}$ é a forma de fluxo de $\mathbf{E}$); a parte com $dx^0$ dá $\frac1cE' = -\ast B$, e como $\ast B$ é a
+                    $1$-forma $B_i\,dx^i$, $\mathbf{E}' = -c\,\mathbf{B}$. Em componentes, $(\star F)_{i0} = E'_i/c = -B_i$ e
+                    $(\star F)_{ij} = \tilde\varepsilon_{ijk}B'^k = \tilde\varepsilon_{ijk}E_k/c$. Aplicando de novo, $\mathbf{E}'' = -c\mathbf{B}' = -\mathbf{E}$
+                    e $\mathbf{B}'' = \mathbf{E}'/c = -\mathbf{B}$: $\star\star F = -F$, como diz a (4.4.6) para $2$-formas em dimensão 4 com
+                    $\operatorname{sign}(\eta) = -1$. A estrela gira o par $(\mathbf{E}/c, \mathbf{B})$ de $90°$; o tópico 4.9 usa isso para a
+                    dualidade elétrico-magnética.
+                </p>
+
+                <p id="exr-4-8-3"><strong>Exercício 4.8.3.</strong> Usando a decomposição 3+1, verifique diretamente que $d\star F = \mu_0j$
+                    é o par formado pela lei de Gauss e pela de Ampère–Maxwell no vácuo.</p>
+
+                <p>
+                    <em>Solução.</em> Pelo exercício anterior, $\star F = \alpha + \beta\wedge dx^0$ com $\alpha = \frac1c\ast E$ ($k = 2$) e
+                    $\beta = -\ast B$. Pela (4.7.1),
+                    $d\star F = \frac1c\,d_s\!\ast E + \big(\frac1c\,\partial_0\!\ast E - d_s\!\ast B\big)\wedge dx^0$. Pela <a href="[04] - O Operador Estrela de Hodge.html#prop-4-4-22">Proposição 4.4.22</a>,
+                    $d_s\!\ast E = (\nabla\cdot\mathbf{E})\,dV$ e $d_s\!\ast B = d_s(B_i\,dx^i) = \Phi_{\nabla\times\mathbf{B}}$; e
+                    $\partial_0 = \frac1c\partial_t$. Logo
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    d\star F &= \frac1c(\nabla\cdot\mathbf{E})\,dV + \Phi_{\frac{1}{c^2}\partial_t\mathbf{E} - \nabla\times\mathbf{B}}\wedge dx^0,\\
+                    \mu_0j &= \mu_0c\rho\,dV - \Phi_{\mu_0\mathbf{J}}\wedge dx^0.
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    Igualando as partes (<a href="[07] - Equações Homogêneas em 4D.html#prop-4-7-2">Proposição 4.7.2</a>): $\nabla\cdot\mathbf{E} = \mu_0c^2\rho = \rho/\varepsilon_0$ e
+                    $\frac{1}{c^2}\partial_t\mathbf{E} - \nabla\times\mathbf{B} = -\mu_0\mathbf{J}$, isto é,
+                    $\nabla\times\mathbf{B} = \mu_0\mathbf{J} + \frac{1}{c^2}\partial_t\mathbf{E}$.
+                </p>
+
+                <p id="exr-4-8-4"><strong>Exercício 4.8.4.</strong> Refaça a dedução da métrica com a coordenada $t$ no lugar de $x^0 = ct$:
+                    $F = E\wedge dt + B$, a excitação $D - H\wedge dt$ e $g^{tt} = a'$, $g^{ij} = \delta^{ij}$, $g^{ti} = 0$. Mostre que
+                    $\star F$ é proporcional a $D - H\wedge dt$ se, e só se, $a' = -1/c^2$, e escreva a métrica.</p>
+
+                <p>
+                    <em>Solução.</em> A <a href="#prop-4-8-11">Proposição 4.8.11</a> não usou nada de específico de $x^0$: com $t$ e sem o fator $\frac1c$,
+                    $\star F = -\lvert a'\rvert^{-1/2}\big(a'\ast E + (\ast B)\wedge dt\big)$. Com $\ast E = D/\varepsilon_0$ e $\ast B = \mu_0H$,
+                </p>
+
+                <p>
+                    $$ \star F = -\lvert a'\rvert^{-1/2}\Big(\frac{a'}{\varepsilon_0}D + \mu_0H\wedge dt\Big)
+                    = -\mu_0\lvert a'\rvert^{-1/2}\big(a'c^2D + H\wedge dt\big), $$
+                </p>
+
+                <p>
+                    usando $1/\varepsilon_0 = \mu_0c^2$. Repetindo a prova da <a href="#prop-4-8-12">Proposição 4.8.12</a> (campos só elétricos e só magnéticos),
+                    $\star F = \lambda(D - H\wedge dt)$ exige $\lambda = -\mu_0\lvert a'\rvert^{-1/2}a'c^2 = \mu_0\lvert a'\rvert^{-1/2}$, isto é,
+                    $a'c^2 = -1$. Então $\lambda = \mu_0c$ e $\star F = \mu_0c(D - H\wedge dt) = \mu_0(cD - H\wedge dx^0) = \mu_0\mathcal{M}$, a mesma
+                    relação de antes. A métrica tem $g_{tt} = 1/a' = -c^2$: $g = -c^2\,dt^2 + (dx^1)^2 + (dx^2)^2 + (dx^3)^2$, que é $\eta$ escrita
+                    na coordenada $t$. O valor numérico de $g^{tt}$ é $-\varepsilon_0\mu_0$: a métrica é medida pelas constantes do vácuo.
+                </p>
+
+                <p id="exr-4-8-5"><strong>Exercício 4.8.5.</strong> Suponha $a = +1$ (métrica euclidiana em $\mathbb{R}^4$). (a) Mostre que
+                    $\star F$ não é proporcional a $\mathcal{M}$. (b) Mostre que nenhuma equação $d\star F = \lambda j$, com $\lambda$ constante,
+                    reproduz ao mesmo tempo a lei de Gauss e a de Ampère–Maxwell. (c) No vácuo, mostre que a equação resultante para
+                    $\mathbf{E}$ é elíptica: não há ondas.</p>
+
+                <p>
+                    <em>Solução.</em> (a) Por (4.8.8) com $a = 1$, $\star F = -\mu_0(cD + H\wedge dx^0)$: o sinal relativo entre os dois termos
+                    é o oposto do de $\mathcal{M}$, e a <a href="#prop-4-8-12">Proposição 4.8.12</a> diz que não há proporcionalidade. (b) Agora
+                    $\star F = -\frac1c\ast E - (\ast B)\wedge dx^0$ e, pela (4.7.1),
+                    $d\star F = -\frac1c(\nabla\cdot\mathbf{E})\,dV + \Phi_{-\frac{1}{c^2}\partial_t\mathbf{E} - \nabla\times\mathbf{B}}\wedge dx^0$. Igualando a
+                    $\lambda(c\rho\,dV - \Phi_{\mathbf{J}}\wedge dx^0)$: a lei de Gauss exige $\lambda = -\mu_0$, e então a outra equação é
+                    $\nabla\times\mathbf{B} = -\mu_0\mathbf{J} - \frac{1}{c^2}\partial_t\mathbf{E}$, com o sinal errado na magnetostática (o campo de um fio
+                    giraria ao contrário). Com $\lambda = \mu_0$ a magnetostática fica certa, mas a lei de Gauss e a corrente de deslocamento
+                    trocam de sinal. (c) No vácuo, com qualquer $\lambda$, $\nabla\times\mathbf{B} = -\frac{1}{c^2}\partial_t\mathbf{E}$. Com
+                    $\nabla\times\mathbf{E} = -\partial_t\mathbf{B}$ (que não muda: é $dF = 0$) e $\nabla\cdot\mathbf{E} = 0$,
+                    $-\nabla^2\mathbf{E} = \nabla\times(\nabla\times\mathbf{E}) = -\partial_t\nabla\times\mathbf{B} = \frac{1}{c^2}\partial_t^2\mathbf{E}$, isto é,
+                </p>
+
+                <p>
+                    $$ \nabla^2\mathbf{E} + \frac{1}{c^2}\frac{\partial^2\mathbf{E}}{\partial t^2} = 0, $$
+                </p>
+
+                <p>
+                    a equação de Laplace em $\mathbb{R}^4$. Suas soluções limitadas em todo o espaço-tempo são constantes, e não há
+                    propagação: o sinal de $\eta_{00}$ é o que faz da luz uma onda.
+                </p>
+
+                <p id="exr-4-8-6"><strong>Exercício 4.8.6.</strong> Para o <em>boost</em> do <a href="#ex-4-8-19">Exemplo 4.8.19</a>, escreva $F$ nas coordenadas $x'$ e
+                    obtenha os campos $\mathbf{E}'$, $\mathbf{B}'$. Confira que $\lvert\mathbf{B}\rvert^2 - \lvert\mathbf{E}\rvert^2/c^2$ e
+                    $\mathbf{E}\cdot\mathbf{B}$ não mudam.</p>
+
+                <p>
+                    <em>Solução.</em> Invertendo, $x^0 = \gamma(x'^0 + \beta x'^1)$ e $x^1 = \gamma(x'^1 + \beta x'^0)$, logo
+                    $dx^0 = \gamma(dx'^0 + \beta\,dx'^1)$, $dx^1 = \gamma(dx'^1 + \beta\,dx'^0)$, e $dx^2$, $dx^3$ não mudam. Substituímos em
+                    $F = \frac1c E_i\,dx^i\wedge dx^0 + B_1\,dx^2\wedge dx^3 + B_2\,dx^3\wedge dx^1 + B_3\,dx^1\wedge dx^2$. Primeiro,
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    dx^1\wedge dx^0 &= \gamma^2(dx'^1 + \beta\,dx'^0)\wedge(dx'^0 + \beta\,dx'^1)\\
+                    &= \gamma^2(1 - \beta^2)\,dx'^1\wedge dx'^0 = dx'^1\wedge dx'^0,
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    logo $E'_1 = E_1$. O termo $B_1\,dx^2\wedge dx^3$ não muda: $B'_1 = B_1$. Os termos com $dx^2$ são
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    \frac{E_2}{c}\,dx^2\wedge dx^0 + B_3\,dx^1\wedge dx^2
+                    &= \gamma\Big(\frac{E_2}{c} - \beta B_3\Big)dx^2\wedge dx'^0\\
+                    &\qquad + \gamma\Big(B_3 - \beta\frac{E_2}{c}\Big)dx'^1\wedge dx^2,
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    de onde $E'_2 = \gamma(E_2 - vB_3)$ e $B'_3 = \gamma(B_3 - vE_2/c^2)$. Da mesma forma, os termos com $dx^3$ dão
+                    $\gamma\big(\frac{E_3}{c} + \beta B_2\big)dx^3\wedge dx'^0 + \gamma\big(B_2 + \beta\frac{E_3}{c}\big)dx^3\wedge dx'^1$, isto é,
+                    $E'_3 = \gamma(E_3 + vB_2)$ e $B'_2 = \gamma(B_2 + vE_3/c^2)$. Para os invariantes, as componentes $1$ não mudam, e nas
+                    outras os termos cruzados se cancelam:
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    (B'_2)^2 + (B'_3)^2 - \frac{(E'_2)^2 + (E'_3)^2}{c^2} &= \gamma^2(1 - \beta^2)\Big(B_2^2 + B_3^2 - \frac{E_2^2 + E_3^2}{c^2}\Big),\\
+                    E'_2B'_2 + E'_3B'_3 &= \gamma^2(1 - \beta^2)\,(E_2B_2 + E_3B_3),
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    e $\gamma^2(1 - \beta^2) = 1$. Os
+                    dois invariantes são, a menos de constantes, $\langle F, F\rangle$ (4.3.3) e $\star(F\wedge F)$; que eles não mudem é o
+                    <a href="#teo-4-8-18">Teorema 4.8.18</a> aplicado a escalares.
+                </p>
+
+                <p id="exr-4-8-7"><strong>Exercício 4.8.7.</strong> Mostre que $\partial_\mu F^{\mu\nu} = \Box A^\nu - \partial^\nu(\partial_\mu A^\mu)$ e
+                    deduza a equação de onda (4.8.12) no calibre de Lorenz. Confira o sinal com o potencial de Coulomb e verifique que
+                    $A = f(x^3 - x^0)\,dx^1$ é solução no vácuo, no calibre de Lorenz.</p>
+
+                <p>
+                    <em>Solução.</em> Com índices levantados por $\eta$ (constante), $F^{\mu\nu} = \partial^\mu A^\nu - \partial^\nu A^\mu$, e
+                    $\partial_\mu F^{\mu\nu} = \partial_\mu\partial^\mu A^\nu - \partial^\nu\partial_\mu A^\mu = \Box A^\nu - \partial^\nu(\partial_\mu A^\mu)$,
+                    trocando a ordem das derivadas (Schwarz). Se $\partial_\mu A^\mu = 0$, (4.8.11) dá $\Box A^\nu = -\mu_0J^\nu$. Para uma carga
+                    pontual parada, $\phi = q/(4\pi\varepsilon_0r)$ e $\mathbf{A} = 0$ satisfazem o calibre de Lorenz ($\partial_t\phi = 0$); fora da
+                    origem $\nabla^2\phi = 0$, e o fluxo de $-\nabla\phi$ por uma esfera é $q/\varepsilon_0$, de modo que $\nabla^2\phi = -\rho/\varepsilon_0$
+                    no sentido da lei de Gauss: é a componente $\nu = 0$ de (4.8.12), com $\Box(\phi/c) = -\mu_0c\rho$ e $\mu_0c^2 = 1/\varepsilon_0$. Para
+                    $A = f(u)\,dx^1$, $u = x^3 - x^0$: $A^\mu = (0, f(u), 0, 0)$, $\partial_\mu A^\mu = \partial_1f = 0$, e
+                    $\Box f = -\partial_0^2f + \partial_3^2f = -f'' + f'' = 0$. É a onda plana do <a href="[07] - Equações Homogêneas em 4D.html#exr-4-7-3">Exercício 4.7.3</a>, agora vista como solução das
+                    equações completas: ela se propaga na direção nula $\partial_0 + \partial_3$.
+                </p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <ul>
+                    <li>A lei de Ampère–Maxwell integrada no tempo sobre o cilindro (<a href="#prop-4-8-1">Proposição 4.8.1</a>), a $2$-forma de excitação
+                        $\mathcal{M} = cD - H\wedge dx^0$ (<a href="#def-4-8-2">Definição 4.8.2</a>) e a $3$-forma de corrente $j = c\varrho - J\wedge dx^0$ (<a href="#def-4-8-4">Definição 4.8.4</a>), com
+                        o termo $c\varrho$ que só as regiões espaciais veem (<a href="#prop-4-8-3">Proposição 4.8.3</a>).</li>
+                    <li>As equações com fontes como $d\mathcal{M} = j$, equivalentes às leis integrais (<a href="#teo-4-8-5">Teorema 4.8.5</a>), e a conservação da carga
+                        $dj = 0$ como consequência de $d^2 = 0$ (<a href="#cor-4-8-6">Corolário 4.8.6</a>); tudo sem métrica, e invariante por qualquer difeomorfismo
+                        (<a href="#prop-4-8-9">Proposição 4.8.9</a>).</li>
+                    <li>A estrela de $F$ para uma métrica com $g^{00} = a$ (<a href="#prop-4-8-11">Proposição 4.8.11</a>) e a proposição $\star F \propto \mathcal{M}$ se, e só
+                        se, $a = -1$ (<a href="#prop-4-8-12">Proposição 4.8.12</a>). Com as hipóteses físicas listadas, a métrica do espaço-tempo é a de Minkowski, e Maxwell é
+                        $dF = 0$, $d\star F = \mu_0j$ (4.8.9).</li>
+                    <li>O papel de $c$ na métrica (<a href="#obs-4-8-13">Observação 4.8.13</a>), o sinal de $A_0$ (<a href="#obs-4-8-14">Observação 4.8.14</a>) e a forma geral $\alpha\star F + \beta F$ da
+                        relação constitutiva (<a href="#obs-4-8-15">Observação 4.8.15</a>).</li>
+                    <li>O grupo de Lorentz (<a href="#def-4-8-16">Definição 4.8.16</a>, <a href="#prop-4-8-17">Proposição 4.8.17</a>) e a invariância das equações de Maxwell por $SO^+(3,1)$ e pelas
+                        translações (<a href="#teo-4-8-18">Teorema 4.8.18</a>), com o <em>boost</em> (<a href="#ex-4-8-19">Exemplo 4.8.19</a>) e as inversões (<a href="#obs-4-8-20">Observação 4.8.20</a>).</li>
+                    <li>A corrente como dual do quadrivetor, $j = \star J^\flat$ (<a href="#prop-4-8-21">Proposição 4.8.21</a>), Maxwell em componentes,
+                        $\partial_\mu F^{\mu\nu} = -\mu_0J^\nu$ (<a href="#prop-4-8-22">Proposição 4.8.22</a>), e a equação de onda $\Box A^\mu = -\mu_0J^\mu$ no calibre de Lorenz.</li>
+                </ul>
+
+                <p>
+                    Isso termina o argumento "o eletromagnetismo dá a métrica". Falta separar, no que foi feito, o que é estrutura geral e o
+                    que é escolha experimental. O próximo tópico parte só de uma $2$-forma fechada numa variedade com métrica e mostra que a
+                    corrente, a sua conservação e a carga como fluxo saem daí; trata as cargas pontuais e os monopolos magnéticos com a
+                    topologia correta e mostra que toda corrente conservada tem uma carga:
+                    <a href="[09] - Carga, Monopolos e Correntes.html">4.9 Carga, Monopolos e Correntes Conservadas</a>.
+                </p>
 
             </div>
         </main>
@@ -176,6 +1187,16 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#inomogeneas-e-minkowski">As Equações Inomogêneas e a Métrica de Minkowski</a></li>
+                    <li><a href="#excitacao">As equações com fontes</a></li>
+                    <li><a href="#rotacoes-sem-metrica">"Rotações" sem métrica</a></li>
+                    <li><a href="#estrela-4d">A estrela em 4D</a></li>
+                    <li><a href="#minkowski">A métrica de Minkowski</a></li>
+                    <li><a href="#unicidade">Por que a estrela</a></li>
+                    <li><a href="#grupo-de-lorentz">O grupo de Lorentz</a></li>
+                    <li><a href="#corrente">A corrente como vetor</a></li>
+                    <li><a href="#fisica">Ponte com a física</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
                 </ul>
             </div>
         </aside>
