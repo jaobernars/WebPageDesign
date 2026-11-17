@@ -166,7 +166,712 @@
                 <h1 id="meios-materiais">4.6 Meios Materiais e a Métrica Induzida</h1>
                 <p class="lead">As relações constitutivas como operador estrela de uma métrica efetiva, a métrica euclidiana do vácuo, meios anisotrópicos, análogos gravitacionais e o que um vácuo não trivial significaria.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>
+                    No tópico <a href="[05] - Maxwell em 3D com Formas.html">4.5</a> a métrica euclidiana de $\mathbb{R}^3$ entrou
+                    num único lugar, nas relações $D = \varepsilon_0\ast E$ e $H = \ast B/\mu_0$ da <a href="[05] - Maxwell em 3D com Formas.html#def-4-5-1">Definição 4.5.1</a>. Ela entrou "por
+                    construção": escolhemos a estrela euclidiana porque é ela que reproduz as leis do vácuo. Num meio material essas
+                    relações mudam. A pergunta deste tópico é se a nova relação entre $D$ e $E$ ainda é uma estrela de Hodge, agora
+                    de outra métrica. Para meios lineares a resposta é sim: o meio define uma <strong>métrica efetiva</strong>, que
+                    pode ser lida medindo cargas e campos, isto é, pela eletrostática.
+                </p>
+
+                <p>
+                    Usamos a estrela com métrica qualquer do tópico <a href="[04] - O Operador Estrela de Hodge.html">4.4</a>,
+                    em particular a fórmula de $\star dx^i$ em dimensão 3 do <a href="[04] - O Operador Estrela de Hodge.html#cor-4-4-9">Corolário 4.4.9</a>, e o fator $\sqrt{\lvert g\rvert}$ do
+                    tópico <a href="[03] - Métricas e Volume Invariante.html">4.3</a>. A única peça matemática nova é a
+                    <a href="#prop-4-6-8">Proposição 4.6.8</a>, que recupera a métrica a partir do tensor de permissividade. O resto é física: as hipóteses
+                    sobre o meio e sobre o vácuo são listadas antes de cada conclusão, e nenhuma delas é um teorema.
+                </p>
+
+                <p>
+                    No argumento do capítulo este tópico faz duas coisas. Mostra, em três dimensões e num caso que se pode
+                    medir em laboratório, o mecanismo "o eletromagnetismo dá a métrica": a métrica é aquilo que torna a relação
+                    constitutiva uma estrela. E isola as regras de geometrização que o tópico 4.8 aplica ao espaço-tempo, onde a
+                    mesma pergunta terá como resposta a métrica de Minkowski.
+                </p>
+
+                <h2 id="meios">Maxwell em meios materiais</h2>
+
+                <p>
+                    Num material, as cargas se dividem em dois tipos. As <em>livres</em> podem ser deslocadas de um lugar a outro
+                    (os elétrons de condução, os íons de uma solução, a carga que pomos num capacitor). As <em>ligadas</em> ficam
+                    presas a átomos e moléculas: um campo aplicado só as desloca um pouco, formando dipolos elétricos, e o
+                    movimento orbital e o spin dos elétrons formam dipolos magnéticos. Em escala macroscópica, os dipolos
+                    elétricos por unidade de volume formam o campo de <strong>polarização</strong> $\mathbf{P}$, e os magnéticos,
+                    o de <strong>magnetização</strong> $\mathbf{M}$.
+                </p>
+
+                <p>
+                    Os campos $\mathbf{E}$ e $\mathbf{B}$ do tópico 4.5 continuam sendo os que agem sobre uma carga de prova (pela
+                    força de Lorentz), agora entendidos como médias macroscópicas dos campos microscópicos. Eles obedecem às leis
+                    do vácuo com a carga e a corrente <em>totais</em>. O fato físico de que partimos, como em Jackson, cap. 6, é
+                    que as cargas e correntes ligadas são dadas por $\mathbf{P}$ e $\mathbf{M}$:
+                </p>
+
+                <p>
+                    $$ \rho = \rho_{\text{livre}} - \nabla\cdot\mathbf{P}, \qquad
+                    \mathbf{J} = \mathbf{J}_{\text{livre}} + \partial_t\mathbf{P} + \nabla\times\mathbf{M}. $$
+                </p>
+
+                <p>
+                    A polarização que varia de ponto a ponto deixa carga ligada onde os dipolos não se compensam
+                    ($-\nabla\cdot\mathbf{P}$); a polarização que varia no tempo é uma corrente de cargas ligadas
+                    ($\partial_t\mathbf{P}$); e as correntes atômicas dos dipolos magnéticos, somadas, deixam uma corrente
+                    líquida $\nabla\times\mathbf{M}$, embora nenhuma carga saia do seu átomo.
+                </p>
+
+                <div class="definition-box" id="def-4-6-1" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.6.1 (Deslocamento e campo magnético num meio).</strong> Num meio com polarização
+                        $\mathbf{P}$ e magnetização $\mathbf{M}$, o deslocamento elétrico e o campo magnético são</p>
+                    <p>$$ \mathbf{D} = \varepsilon_0\mathbf{E} + \mathbf{P}, \qquad \mathbf{H} = \frac{1}{\mu_0}\,\mathbf{B} - \mathbf{M}. \tag{4.6.1} $$</p>
+                    <p>Como formas: $D = \varepsilon_0\ast E + \Phi_{\mathbf{P}}$ e $H = \ast B/\mu_0 - \omega_{\mathbf{M}}$, com
+                        $\Phi_{\mathbf{P}}$ e $\omega_{\mathbf{M}}$ as formas de fluxo e de trabalho de $\mathbf{P}$ e $\mathbf{M}$
+                        (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[12] - Formas Diferenciais.html#prop-3-12-9">Proposição 3.12.9</a>). No vácuo, $\mathbf{P} = \mathbf{M} = 0$ e voltamos à <a href="[05] - Maxwell em 3D com Formas.html#def-4-5-1">Definição 4.5.1</a>.</p>
+                </div>
+
+                <div class="definition-box" id="prop-4-6-2">
+                    <p><strong>Proposição 4.6.2 (As equações num meio).</strong> Sejam $\varrho = \varrho_{\text{livre}} - d\Phi_{\mathbf{P}}$
+                        e $J = J_{\text{livre}} + \partial_t\Phi_{\mathbf{P}} + d\omega_{\mathbf{M}}$ (a tradução em formas das
+                        fórmulas acima). Então as equações (4.5.3) com as fontes totais $\varrho$, $J$ e com
+                        $D_{\text{vácuo}} = \varepsilon_0\ast E$, $H_{\text{vácuo}} = \ast B/\mu_0$ equivalem a</p>
+                    <p>$$ \begin{aligned}
+                        &dB = 0, \quad dE + \partial_tB = 0,\\
+                        &dD = \varrho_{\text{livre}}, \quad dH = J_{\text{livre}} + \partial_tD,
+                        \end{aligned} \tag{4.6.2} $$</p>
+                    <p>com $D$ e $H$ da <a href="#def-4-6-1">Definição 4.6.1</a>.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> As duas primeiras equações não envolvem $D$, $H$, $\varrho$ nem $J$, e são as mesmas
+                    nos dois sistemas. Para a terceira,
+                    $d(\varepsilon_0\ast E) - \varrho = d(\varepsilon_0\ast E) + d\Phi_{\mathbf{P}} - \varrho_{\text{livre}} = dD - \varrho_{\text{livre}}$.
+                    Para a quarta, usando que $\partial_t$ é linear,
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    &d\Big(\frac{\ast B}{\mu_0}\Big) - J - \partial_t(\varepsilon_0\ast E)\\
+                    &\qquad= dH + d\omega_{\mathbf{M}} - J_{\text{livre}} - \partial_t\Phi_{\mathbf{P}} - d\omega_{\mathbf{M}} - \partial_t(D - \Phi_{\mathbf{P}})\\
+                    &\qquad= dH - J_{\text{livre}} - \partial_tD.
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    Cada equação de um sistema é, portanto, a mesma igualdade que a equação correspondente do outro. $\blacksquare$
+                </p>
+
+                <p>
+                    Esta é a observação central da aula: <strong>as equações homogêneas não sabem do meio</strong>, e as
+                    inomogêneas só sabem por meio de $D$ e $H$. Toda a informação sobre o material fica guardada na relação entre
+                    $(E, B)$ e $(D, H)$. Em forma integral, (4.6.2) diz que o fluxo de $D$ por uma superfície fechada é a carga
+                    livre interna, e que a circulação de $H$ é a corrente livre mais a variação do fluxo de $D$.
+                </p>
+
+                <p id="obs-4-6-3"><strong>Observação 4.6.3 (O que cada campo mede).</strong> É comum ler $\mathbf{E}$ como "o campo
+                    aplicado, que teríamos sem o material" e $\mathbf{D}$ como "o campo dentro do material". Essa leitura não está
+                    certa, e convém fixar a correta antes de geometrizar. (i) $\mathbf{E}$ é o campo macroscópico <em>total</em> no
+                    meio: inclui o campo das cargas de polarização e é ele que age sobre uma carga de prova. Em geral é diferente
+                    do campo que existiria sem o material, porque os dipolos induzidos criam cargas ligadas que alteram o campo.
+                    (ii) $\mathbf{D}$ é a <em>excitação</em>: pela (4.6.2), suas fontes são só as cargas livres, e o seu fluxo
+                    pode ser calculado sem conhecer o material. (iii) Do mesmo modo, $\mathbf{B}$ é o campo magnético total, que
+                    age sobre cargas em movimento, e $\mathbf{H}$, o <strong>campo magnético</strong> (ou excitação magnética),
+                    tem como fontes só as correntes livres e $\partial_t\mathbf{D}$. A magnetização é $\mathbf{M}$, não
+                    $\mathbf{H}$. A divisão em "intensidades" $(E, B)$ e "excitações" $(D, H)$ é a mesma da ponte com a física do
+                    tópico 4.5.</p>
+
+                <p id="obs-4-6-4"><strong>Observação 4.6.4 (Por que é preciso uma relação constitutiva).</strong> As equações
+                    (4.6.2) têm doze incógnitas (as componentes de $\mathbf{E}$, $\mathbf{B}$, $\mathbf{D}$, $\mathbf{H}$) e só seis
+                    equações de evolução (as de Faraday e de Ampère–Maxwell, que dão $\partial_t\mathbf{B}$ e $\partial_t\mathbf{D}$);
+                    as outras duas são vínculos, que a evolução preserva (<a href="#exr-4-6-5">Exercício 4.6.5</a>). Sem uma relação que dê $\mathbf{D}$ em termos
+                    de $\mathbf{E}$ e $\mathbf{H}$ em termos de $\mathbf{B}$, as equações de Maxwell não determinam a dinâmica dos
+                    campos. Essa relação, a <strong>relação constitutiva</strong>, depende do material e é o assunto do resto da
+                    página.</p>
+
+                <h2 id="relacoes-constitutivas">Meios lineares</h2>
+
+                <p>
+                    Num meio dielétrico, para campos não muito intensos, a polarização é proporcional ao campo. Num cristal, porém,
+                    a constante de proporcionalidade depende da direção: um campo ao longo de um eixo pode induzir polarização
+                    também em outra direção. A forma mais geral de uma dependência linear (e local, e instantânea) é dada por uma
+                    matriz.
+                </p>
+
+                <div class="definition-box" id="def-4-6-5" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.6.5 (Meio linear; tensor de permissividade).</strong> Um meio é <em>linear</em> se
+                        $P^i = \varepsilon_0\chi^{ij}E_j$ para uma matriz $\chi^{ij}(x)$, a <em>susceptibilidade elétrica</em>. Então</p>
+                    <p>$$ D^i = \varepsilon^{ij}E_j, \qquad \varepsilon^{ij} = \varepsilon_0\big(\delta^{ij} + \chi^{ij}\big), \tag{4.6.3} $$</p>
+                    <p>e $\varepsilon^{ij}$ é o <strong>tensor de permissividade</strong> do meio. O meio é <em>isotrópico</em> se
+                        $\varepsilon^{ij} = \varepsilon\,\delta^{ij}$ (a resposta não depende da direção do campo) e
+                        <em>homogêneo</em> se $\varepsilon^{ij}$ não depende do ponto. Escrevemos $\varepsilon = \varepsilon_r\varepsilon_0$,
+                        com $\varepsilon_r$ a permissividade relativa, e
+                        $$ K^{ij} = \frac{\varepsilon^{ij}}{\varepsilon_0} $$
+                        para a permissividade relativa de um meio anisotrópico.</p>
+                </div>
+
+                <p>
+                    As duas propriedades são independentes: um vidro comum é isotrópico e homogêneo; um cristal de quartzo é
+                    anisotrópico e homogêneo; uma fibra óptica de índice gradual é isotrópica e inomogênea. Não se deve confundir
+                    $\varepsilon^{ij}$, com dois índices, com o símbolo de Levi-Civita $\tilde\varepsilon_{ijk}$, que tem três.
+                </p>
+
+                <p>
+                    Os índices estão em posições diferentes dos dois lados de (4.6.3), e isso tem significado. $E_j$ são as
+                    componentes da $1$-forma $E = E_j\,dx^j$; $D^i$ são as três componentes da $2$-forma
+                    $D = D^1\,dx^2\wedge dx^3 + D^2\,dx^3\wedge dx^1 + D^3\,dx^1\wedge dx^2 = \tfrac12D^i\,\tilde\varepsilon_{ijk}\,dx^j\wedge dx^k$.
+                    O tensor $\varepsilon^{ij}$ leva componentes com índice embaixo em componentes com índice em cima, como uma
+                    métrica inversa. Em coordenadas cartesianas de $\mathbb{R}^3$ euclidiano a posição dos índices é indiferente;
+                    é justamente essa distinção, invisível no vácuo, que a próxima seção vai explorar.
+                </p>
+
+                <p>
+                    Para meios sem perdas (sem dissipação de energia) e campos estáticos, $\varepsilon^{ij}$ é <strong>simétrico</strong>
+                    e <strong>positivo definido</strong>. A simetria vem da conservação da energia, e a positividade, da
+                    estabilidade do meio: a energia armazenada $\tfrac12\varepsilon^{ij}E_iE_j$ não pode ser negativa (Landau e
+                    Lifshitz, <em>Eletrodinâmica dos Meios Contínuos</em>, capítulo sobre a eletrostática dos dielétricos; Jackson,
+                    cap. 4). Tomamos as duas propriedades como hipóteses físicas sobre o meio. A positividade vai garantir que a
+                    métrica efetiva seja riemanniana.
+                </p>
+
+                <h2 id="metrica-efetiva">A relação constitutiva como estrela</h2>
+
+                <p>
+                    No vácuo, $D = \varepsilon_0\ast E$, com $\ast$ a estrela da métrica euclidiana. Num meio linear, $D^i = \varepsilon^{ij}E_j$.
+                    Será que esta segunda relação também é $\varepsilon_0$ vezes uma estrela, só que de outra métrica $g$ em
+                    $\mathbb{R}^3$? Primeiro calculamos o que $\varepsilon_0\star_gE$ vale em componentes.
+                </p>
+
+                <div class="definition-box" id="prop-4-6-6">
+                    <p><strong>Proposição 4.6.6 ($\varepsilon_0\star_gE$ em componentes).</strong> Sejam $U \subset \mathbb{R}^3$ aberto,
+                        com a orientação $dx^1\wedge dx^2\wedge dx^3$, $g$ uma métrica riemanniana em $U$ e $\star_g$ a sua estrela.
+                        Para uma $1$-forma $E = E_i\,dx^i$,</p>
+                    <p>$$ \varepsilon_0\star_gE = \tfrac12\,D^j\,\tilde\varepsilon_{jmn}\,dx^m\wedge dx^n, \qquad
+                        D^j = \varepsilon_0\sqrt{\lvert g\rvert}\,g^{ij}E_i. $$</p>
+                    <p>Consequentemente, a relação (4.6.3) é $D = \varepsilon_0\star_gE$ para todo $E$ se, e somente se,</p>
+                    <p>$$ \sqrt{\lvert g\rvert}\,g^{ij} = K^{ij} \quad\text{em todo ponto de } U. \tag{4.6.4} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pelo <a href="[04] - O Operador Estrela de Hodge.html#cor-4-4-9">Corolário 4.4.9</a>, $\star_gdx^i = \sqrt{\lvert g\rvert}\,g^{ij}\,\tfrac12\tilde\varepsilon_{jmn}\,dx^m\wedge dx^n$.
+                    Como $\star_g$ é linear sobre funções (ele age ponto a ponto), $\varepsilon_0\star_gE = \varepsilon_0E_i\star_gdx^i$, que
+                    é a fórmula do enunciado. As três $2$-formas $\tfrac12\tilde\varepsilon_{jmn}\,dx^m\wedge dx^n$ ($j = 1, 2, 3$) são
+                    $dx^2\wedge dx^3$, $dx^3\wedge dx^1$ e $dx^1\wedge dx^2$, uma base de $\Lambda^2$; logo $D = \varepsilon_0\star_gE$
+                    se, e só se, $\varepsilon^{ji}E_i = \varepsilon_0\sqrt{\lvert g\rvert}\,g^{ij}E_i$ para $j = 1, 2, 3$. Valer para todo
+                    $E$ (em particular para $E = dx^i$) equivale a $\varepsilon^{ji} = \varepsilon_0\sqrt{\lvert g\rvert}\,g^{ij}$, e como
+                    $g^{ij}$ é simétrica, a (4.6.4). Se $\varepsilon^{ij}$ não for simétrico, nenhuma métrica serve. $\blacksquare$
+                </p>
+
+                <p id="obs-4-6-7"><strong>Observação 4.6.7 (O que é hipótese e o que é teorema).</strong> Não há nenhuma lei física
+                    que obrigue a relação constitutiva a ser uma estrela. A proposta é <em>geometrizar</em>: suponha que (i) o meio
+                    é linear, com $\varepsilon^{ij}$ simétrico e positivo definido, e (ii) queremos descrever o meio exatamente como
+                    descrevemos o vácuo, por $D = \varepsilon_0\star_gE$, trocando só a métrica. A pergunta passa a ser matemática:
+                    dada $K$, existe uma métrica $g$ com (4.6.4), e ela é única? A resposta, em dimensão 3, é a proposição
+                    seguinte. A equação (4.6.4) não é uma fórmula para $g$, porque o lado esquerdo depende de $g$ também por
+                    $\lvert g\rvert = \det(g_{ij})$; é preciso resolvê-la.</p>
+
+                <div class="definition-box" id="prop-4-6-8">
+                    <p><strong>Proposição 4.6.8 (A métrica a partir da permissividade).</strong> Seja $K = (K^{ij})$ uma matriz
+                        $3\times3$ simétrica e positiva definida. Existe uma única matriz simétrica invertível $g = (g_{ij})$ com
+                        $\sqrt{\lvert\det g\rvert}\,(g^{-1})^{ij} = K^{ij}$, a saber</p>
+                    <p>$$ \begin{aligned}
+                        \sqrt{\lvert g\rvert} &= \det K,\\
+                        g^{ij} &= K^{ij}/\det K,\\
+                        g_{ij} &= (\det K)\,(K^{-1})_{ij},
+                        \end{aligned} \tag{4.6.5} $$</p>
+                    <p>e ela é positiva definida. Se $K$ depende suavemente do ponto, $g$ também, e (4.6.5) define uma métrica
+                        riemanniana.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> <strong>Unicidade.</strong> Suponha $\sqrt{\lvert g\rvert}\,g^{-1} = K$, com
+                    $\lvert g\rvert = \lvert\det g\rvert$. Tomando o determinante de matrizes $3\times3$,
+                </p>
+
+                <p>
+                    $$ \det K = \big(\sqrt{\lvert g\rvert}\big)^3\det(g^{-1}) = \lvert g\rvert^{3/2}\,\frac{1}{\det g}. $$
+                </p>
+
+                <p>
+                    Como $\det K \gt 0$, $\det g \gt 0$, logo $\det g = \lvert g\rvert$ e $\det K = \lvert g\rvert^{1/2}$. Então
+                    $\sqrt{\lvert g\rvert} = \det K$ e $g^{-1} = K/\sqrt{\lvert g\rvert} = K/\det K$, isto é, $g = (\det K)\,K^{-1}$: $g$ está
+                    determinada por $K$.
+                </p>
+
+                <p>
+                    <strong>Existência.</strong> Seja $g = (\det K)\,K^{-1}$. É simétrica (inversa de simétrica) e positiva definida
+                    ($K^{-1}$ é positiva definida e $\det K \gt 0$). Seu determinante é $(\det K)^3\det(K^{-1}) = (\det K)^2$, logo
+                    $\sqrt{\lvert g\rvert} = \det K$ e $\sqrt{\lvert g\rvert}\,g^{-1} = (\det K)\,\frac{K}{\det K} = K$. A suavidade segue de
+                    $\det$ e da inversão serem funções racionais das entradas, com denominador $\det K \gt 0$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="def-4-6-9" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.6.9 (Métrica efetiva de um meio).</strong> A <strong>métrica efetiva</strong> (ou
+                        métrica induzida) de um meio linear com permissividade $\varepsilon^{ij}$ simétrica e positiva definida é a
+                        métrica riemanniana $g_{ij} = (\det K)\,(K^{-1})_{ij}$, $K = \varepsilon/\varepsilon_0$. Com ela, a relação
+                        constitutiva é $D = \varepsilon_0\star_gE$.</p>
+                </div>
+
+                <p>
+                    O resultado é que a medida do tensor de permissividade, isto é, um experimento de eletrostática com o meio,
+                    <em>determina</em> uma geometria. A métrica não foi postulada: foi lida da relação entre $E$ e $D$.
+                </p>
+
+                <p id="obs-4-6-10"><strong>Observação 4.6.10 (A dimensão importa).</strong> A mesma conta em dimensão $n$ dá
+                    $\det\big(\sqrt{\lvert g\rvert}\,g^{-1}\big) = \lvert g\rvert^{n/2}\lvert g\rvert^{-1} = \lvert g\rvert^{(n-2)/2}$.
+                    Para $n \ne 2$ isso determina $\lvert g\rvert = (\det K)^{2/(n-2)}$, e depois $g$, como acima. Para $n = 2$ o
+                    determinante é sempre $1$: só matrizes $K$ com $\det K = 1$ vêm de uma métrica, e a métrica não é única, pois
+                    $\sqrt{\lvert g\rvert}\,g^{ij}$ não muda quando $g$ é trocada por $\Omega^2g$, para qualquer função
+                    $\Omega \gt 0$ (<a href="#exr-4-6-3">Exercício 4.6.3</a>). Em duas dimensões, a estrela de $1$-formas só enxerga a <em>classe conforme</em> da
+                    métrica (os ângulos, não os comprimentos). Em dimensão 3 não há essa ambiguidade: $\sqrt{\lvert g\rvert}\,g^{ij}$ é
+                    multiplicada por $\Omega$, e por isso o meio fixa a métrica inteira.</p>
+
+                <p id="ex-4-6-11"><strong>Exemplo 4.6.11 (Meio isotrópico e cristal uniaxial).</strong> Num meio isotrópico,
+                    $K = \varepsilon_r\,\delta$, $\det K = \varepsilon_r^3$ e $K^{-1} = \delta/\varepsilon_r$, logo
+                    $g = \varepsilon_r^2\,\delta$: a métrica euclidiana com todos os comprimentos multiplicados por $\varepsilon_r$.
+                    Conferindo, $\sqrt{\lvert g\rvert} = \varepsilon_r^3$ e $\sqrt{\lvert g\rvert}\,g^{ij} = \varepsilon_r^3\,\varepsilon_r^{-2}\delta^{ij} = \varepsilon_r\delta^{ij}$.
+                    Num cristal uniaxial, com eixo óptico ao longo de $x^3$,
+                    $K = \operatorname{diag}(\varepsilon_\perp, \varepsilon_\perp, \varepsilon_\parallel)$, temos
+                    $\det K = \varepsilon_\perp^2\varepsilon_\parallel$ e</p>
+
+                <p>
+                    $$ g = \operatorname{diag}\big(\varepsilon_\perp\varepsilon_\parallel,\ \varepsilon_\perp\varepsilon_\parallel,\ \varepsilon_\perp^2\big),
+                    \qquad \sqrt{\lvert g\rvert} = \varepsilon_\perp^2\varepsilon_\parallel. $$
+                </p>
+
+                <p>
+                    O cristal é um espaço euclidiano "esticado" de modo diferente na direção do eixo e nas direções transversais.
+                </p>
+
+                <p id="ex-4-6-12"><strong>Exemplo 4.6.12 (O vácuo).</strong> No vácuo, $\varepsilon^{ij} = \varepsilon_0\delta^{ij}$, logo
+                    $K = \delta$, $\det K = 1$ e $g = \delta$: <strong>a métrica efetiva do vácuo é a euclidiana</strong>. É preciso
+                    dizer de onde vem esse resultado. Ele não é uma descoberta experimental sobre o vácuo, e sim consequência de
+                    termos definido, por princípio, $\mathbf{E}$ e $\mathbf{B}$ como os campos medidos no vácuo e
+                    $\varepsilon_0$ como a constante da relação do vácuo. Tirando o meio, $K$ volta a ser $\delta$ por construção. O
+                    valor $\varepsilon_0 \ne 1$ também não tem conteúdo geométrico: é uma escolha de unidades (no sistema gaussiano
+                    a relação do vácuo é $\mathbf{D} = \mathbf{E}$), absorvida no fator $\varepsilon_0$ que deixamos fora de $K$. O que
+                    tem conteúdo é a hipótese de que o vácuo é homogêneo e isotrópico: isso faz $K$ ser um múltiplo constante de
+                    $\delta$, e a métrica, euclidiana (a menos de escala).</p>
+
+                <p id="obs-4-6-13"><strong>Observação 4.6.13 (A posição dos índices).</strong> Começamos com vetores num espaço plano,
+                    em que $D^i = \varepsilon^{ij}E_j$ parecia uma relação entre dois vetores com índices em posições trocadas sem
+                    motivo. Na leitura geométrica, $D^i = \varepsilon_0\sqrt{\lvert g\rvert}\,g^{ij}E_j$: a relação constitutiva é
+                    "subir o índice" de $E$ com a métrica efetiva, multiplicado pelo fator $\sqrt{\lvert g\rvert}$, que transforma o
+                    vetor $E^\sharp$ nas componentes de uma $2$-forma (é a densidade de peso $-1$ do <a href="[03] - Métricas e Volume Invariante.html#ex-4-3-20">Exemplo 4.3.20</a>). Em termos do
+                    <a href="[04] - O Operador Estrela de Hodge.html#cor-4-4-9">Corolário 4.4.9</a>, $\star_gE = i_{E^\sharp}\operatorname{vol}_g$: $D$ é o fluxo, medido com o volume de $g$, do vetor
+                    $\varepsilon_0E^\sharp$.</p>
+
+                <p>
+                    A geometria efetiva também reescreve a eletrostática. Num meio, com campos estáticos, $dE = 0$ e (num aberto
+                    estrelado) $E = -d\phi$; a lei de Gauss $dD = \varrho_{\text{livre}}$ vira uma equação para $\phi$.
+                </p>
+
+                <div class="definition-box" id="prop-4-6-14">
+                    <p><strong>Proposição 4.6.14 (Lei de Gauss no meio).</strong> Sejam $g$ uma métrica riemanniana num aberto
+                        $U \subset \mathbb{R}^3$, $\phi \in C^\infty(U)$ e $D = -\varepsilon_0\star_gd\phi$. Então
+                        $dD = -\varepsilon_0\,\partial_i\big(\sqrt{\lvert g\rvert}\,g^{ij}\partial_j\phi\big)\,dx^1\wedge dx^2\wedge dx^3$, e a
+                        lei de Gauss $dD = \rho_{\text{livre}}\,dx^1\wedge dx^2\wedge dx^3$ é, com $K^{ij} = \sqrt{\lvert g\rvert}\,g^{ij}$,</p>
+                    <p>$$ \partial_i\big(K^{ij}\partial_j\phi\big) = -\frac{\rho_{\text{livre}}}{\varepsilon_0}. \tag{4.6.6} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela <a href="#prop-4-6-6">Proposição 4.6.6</a> com $E = d\phi$, $\star_gd\phi = \tfrac12V^j\tilde\varepsilon_{jmn}\,dx^m\wedge dx^n = \Phi_{\mathbf{V}}$,
+                    com $V^j = \sqrt{\lvert g\rvert}\,g^{ij}\partial_i\phi$. Pela <a href="[04] - O Operador Estrela de Hodge.html#prop-4-4-22">Proposição 4.4.22</a>, $d\Phi_{\mathbf{V}} = (\partial_jV^j)\,dV$. Com
+                    $\sqrt{\lvert g\rvert}\,g^{ij} = K^{ij}$ (<a href="#def-4-6-9">Definição 4.6.9</a>) obtemos (4.6.6). $\blacksquare$
+                </p>
+
+                <p>
+                    Dividindo (4.6.6) por $\sqrt{\lvert g\rvert}$,
+                </p>
+
+                <p>
+                    $$ \frac{1}{\sqrt{\lvert g\rvert}}\,\partial_i\big(\sqrt{\lvert g\rvert}\,g^{ij}\partial_j\phi\big)
+                    = -\frac{\rho_{\text{livre}}}{\varepsilon_0\sqrt{\lvert g\rvert}}. $$
+                </p>
+
+                <p>
+                    O lado esquerdo é o laplaciano da métrica $g$ (o operador $\star d\star d$ da
+                    <a href="[04] - O Operador Estrela de Hodge.html#prop-4-4-23">Proposição 4.4.23</a>, com $\operatorname{sign}(g) = 1$), e o lado direito é a densidade de carga medida com o volume de
+                    $g$: como $\varrho = \rho\,dx^1\wedge dx^2\wedge dx^3 = (\rho/\sqrt{\lvert g\rvert})\operatorname{vol}_g$, a carga por
+                    unidade de volume de $g$ é $\rho/\sqrt{\lvert g\rvert}$. A eletrostática do meio é a eletrostática do vácuo
+                    escrita na métrica efetiva.
+                </p>
+
+                <p id="ex-4-6-15"><strong>Exemplo 4.6.15 (Carga pontual num meio anisotrópico).</strong> Seja $K$ constante,
+                    simétrica e positiva definida, e $g = (\det K)K^{-1}$, também constante. Seja
+                    $r_g(x) = \sqrt{g_{ij}x^ix^j}$ a distância de $x$ à origem medida pela métrica $g$. Afirmamos que</p>
+
+                <p>
+                    $$ \phi(x) = \frac{q}{4\pi\varepsilon_0\,r_g(x)} = \frac{q}{4\pi\varepsilon_0\sqrt{\det K}}\,\big(x^{\mathsf T}K^{-1}x\big)^{-1/2} \tag{4.6.7} $$
+                </p>
+
+                <p>
+                    é o potencial de uma carga $q$ na origem: satisfaz (4.6.6) com $\rho_{\text{livre}} = 0$ fora da origem, e o fluxo
+                    de $D = -\varepsilon_0\star_gd\phi$ por qualquer superfície fechada que envolva a origem é $q$. A segunda
+                    igualdade vem de $r_g^2 = (\det K)\,x^{\mathsf T}K^{-1}x$. Para provar a afirmação, seja $L$ uma matriz com
+                    $\det L \gt 0$ e $L^{\mathsf T}L = g$ (por exemplo, $L = g^{1/2}$) e $y = Lx$. Nas coordenadas $y$, a métrica $g$ é a
+                    euclidiana: $g_{ij}\,dx^i\,dx^j = \delta_{ab}\,dy^a\,dy^b$. Logo $r_g = \lvert y\rvert$ e $\phi = q/(4\pi\varepsilon_0\lvert y\rvert)$,
+                    que é o potencial de Coulomb do vácuo nas coordenadas $y$. Como $x \mapsto y$ é uma isometria de $(\mathbb{R}^3, g)$
+                    em $(\mathbb{R}^3,\delta)$ que preserva a orientação, ela leva $\star_g$ em $\ast$ (<a href="[04] - O Operador Estrela de Hodge.html#prop-4-4-19">Proposição 4.4.19</a>): nas coordenadas
+                    $y$, $D$ é o deslocamento de Coulomb do vácuo, $D = \frac{q}{4\pi}\sin\theta\,d\theta\wedge d\varphi$ em coordenadas
+                    esféricas de $y$ (<a href="[05] - Maxwell em 3D com Formas.html#exr-4-5-3">Exercício 4.5.3</a>), cuja derivada exterior é zero fora da origem e cujo fluxo por uma superfície
+                    fechada em torno dela é $q$ (a integral não depende das coordenadas usadas para calculá-la,
+                    <a href="../[2] - Cálculo em Variedades Diferenciáveis/[17] - Integração de Formas.html">tópico 3.17</a>). A
+                    conta direta de $\partial_i(K^{ij}\partial_j\phi) = 0$ também pode ser feita derivando (4.6.7) duas vezes.
+                </p>
+
+                <p>
+                    As equipotenciais são os elipsoides $x^{\mathsf T}K^{-1}x = \text{const}$, que são as esferas da métrica efetiva.
+                    No cristal uniaxial são elipsoides de revolução alongados na direção em que a permissividade é maior
+                    (Figura 4.6.1). O campo $D^i = -\varepsilon_0K^{ij}\partial_j\phi$ é proporcional a $K K^{-1}x = x$: as linhas de
+                    $D$ continuam radiais. Já $E = -d\phi$ tem componentes proporcionais a $(K^{-1}x)_i$, e as suas linhas se curvam
+                    (<a href="#exr-4-6-4">Exercício 4.6.4</a>).
+                </p>
+
+                <figure class="lecture-figure" id="fig-4-6-1" style="overflow-x: auto; overflow-y: hidden;">
+                    <svg viewBox="0 0 640 300" role="img" style="min-width: 560px;" aria-label="Dois painéis com uma carga pontual q no centro. No painel a, o vácuo: equipotenciais circulares e linhas de campo radiais. No painel b, um meio uniaxial com permissividade maior ao longo do eixo z: as equipotenciais são elipses alongadas na direção z, as linhas do campo E são curvas que saem da carga cortando as elipses em ângulo reto, e as linhas de D, tracejadas, continuam retas e radiais.">
+<defs><marker id="arr-4-6-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<path d="M191.4,160 L191.4,158.6 L191.3,157.2 L191.1,155.9 L190.8,154.5 L190.5,153.2 L190.1,151.8 L189.6,150.5 L189.1,149.3 L188.5,148 L187.9,146.8 L187.1,145.6 L186.4,144.5 L185.5,143.4 L184.6,142.3 L183.7,141.3 L182.7,140.4 L181.6,139.5 L180.5,138.6 L179.4,137.9 L178.2,137.1 L177,136.5 L175.7,135.9 L174.5,135.4 L173.2,134.9 L171.8,134.5 L170.5,134.2 L169.1,133.9 L167.8,133.7 L166.4,133.6 L165,133.6 L163.6,133.6 L162.2,133.7 L160.9,133.9 L159.5,134.2 L158.2,134.5 L156.8,134.9 L155.5,135.4 L154.3,135.9 L153,136.5 L151.8,137.1 L150.6,137.9 L149.5,138.6 L148.4,139.5 L147.3,140.4 L146.3,141.3 L145.4,142.3 L144.5,143.4 L143.6,144.5 L142.9,145.6 L142.1,146.8 L141.5,148 L140.9,149.3 L140.4,150.5 L139.9,151.8 L139.5,153.2 L139.2,154.5 L138.9,155.9 L138.7,157.2 L138.6,158.6 L138.6,160 L138.6,161.4 L138.7,162.8 L138.9,164.1 L139.2,165.5 L139.5,166.8 L139.9,168.2 L140.4,169.5 L140.9,170.7 L141.5,172 L142.1,173.2 L142.9,174.4 L143.6,175.5 L144.5,176.6 L145.4,177.7 L146.3,178.7 L147.3,179.6 L148.4,180.5 L149.5,181.4 L150.6,182.1 L151.8,182.9 L153,183.5 L154.3,184.1 L155.5,184.6 L156.8,185.1 L158.2,185.5 L159.5,185.8 L160.9,186.1 L162.2,186.3 L163.6,186.4 L165,186.4 L166.4,186.4 L167.8,186.3 L169.1,186.1 L170.5,185.8 L171.8,185.5 L173.2,185.1 L174.5,184.6 L175.7,184.1 L177,183.5 L178.2,182.9 L179.4,182.1 L180.5,181.4 L181.6,180.5 L182.7,179.6 L183.7,178.7 L184.6,177.7 L185.5,176.6 L186.4,175.5 L187.1,174.4 L187.9,173.2 L188.5,172 L189.1,170.7 L189.6,169.5 L190.1,168.2 L190.5,166.8 L190.8,165.5 L191.1,164.1 L191.3,162.8 L191.4,161.4 L191.4,160 Z" class="fig-curve"/>
+<path d="M217.8,160 L217.7,157.2 L217.5,154.5 L217.1,151.7 L216.6,149 L216,146.3 L215.2,143.7 L214.3,141.1 L213.2,138.5 L212,136 L210.7,133.6 L209.3,131.2 L207.7,129 L206,126.8 L204.2,124.7 L202.3,122.7 L200.3,120.8 L198.2,119 L196,117.3 L193.8,115.7 L191.4,114.3 L189,113 L186.5,111.8 L183.9,110.7 L181.3,109.8 L178.7,109 L176,108.4 L173.3,107.9 L170.5,107.5 L167.8,107.3 L165,107.2 L162.2,107.3 L159.5,107.5 L156.7,107.9 L154,108.4 L151.3,109 L148.7,109.8 L146.1,110.7 L143.5,111.8 L141,113 L138.6,114.3 L136.2,115.7 L134,117.3 L131.8,119 L129.7,120.8 L127.7,122.7 L125.8,124.7 L124,126.8 L122.3,129 L120.7,131.2 L119.3,133.6 L118,136 L116.8,138.5 L115.7,141.1 L114.8,143.7 L114,146.3 L113.4,149 L112.9,151.7 L112.5,154.5 L112.3,157.2 L112.2,160 L112.3,162.8 L112.5,165.5 L112.9,168.3 L113.4,171 L114,173.7 L114.8,176.3 L115.7,178.9 L116.8,181.5 L118,184 L119.3,186.4 L120.7,188.8 L122.3,191 L124,193.2 L125.8,195.3 L127.7,197.3 L129.7,199.2 L131.8,201 L134,202.7 L136.2,204.3 L138.6,205.7 L141,207 L143.5,208.2 L146.1,209.3 L148.7,210.2 L151.3,211 L154,211.6 L156.7,212.1 L159.5,212.5 L162.2,212.7 L165,212.8 L167.8,212.7 L170.5,212.5 L173.3,212.1 L176,211.6 L178.7,211 L181.3,210.2 L183.9,209.3 L186.5,208.2 L189,207 L191.4,205.7 L193.8,204.3 L196,202.7 L198.2,201 L200.3,199.2 L202.3,197.3 L204.2,195.3 L206,193.2 L207.7,191 L209.3,188.8 L210.7,186.4 L212,184 L213.2,181.5 L214.3,178.9 L215.2,176.3 L216,173.7 L216.6,171 L217.1,168.3 L217.5,165.5 L217.7,162.8 L217.8,160 Z" class="fig-curve"/>
+<path d="M244.2,160 L244.1,155.9 L243.8,151.7 L243.2,147.6 L242.5,143.5 L241.5,139.5 L240.3,135.5 L238.9,131.6 L237.4,127.8 L235.6,124 L233.6,120.4 L231.4,116.9 L229.1,113.4 L226.5,110.2 L223.9,107 L221,104 L218,101.1 L214.8,98.5 L211.6,95.9 L208.1,93.6 L204.6,91.4 L201,89.4 L197.2,87.6 L193.4,86.1 L189.5,84.7 L185.5,83.5 L181.5,82.5 L177.4,81.8 L173.3,81.2 L169.1,80.9 L165,80.8 L160.9,80.9 L156.7,81.2 L152.6,81.8 L148.5,82.5 L144.5,83.5 L140.5,84.7 L136.6,86.1 L132.8,87.6 L129,89.4 L125.4,91.4 L121.9,93.6 L118.4,95.9 L115.2,98.5 L112,101.1 L109,104 L106.1,107 L103.5,110.2 L100.9,113.4 L98.6,116.9 L96.4,120.4 L94.4,124 L92.6,127.8 L91.1,131.6 L89.7,135.5 L88.5,139.5 L87.5,143.5 L86.8,147.6 L86.2,151.7 L85.9,155.9 L85.8,160 L85.9,164.1 L86.2,168.3 L86.8,172.4 L87.5,176.5 L88.5,180.5 L89.7,184.5 L91.1,188.4 L92.6,192.2 L94.4,196 L96.4,199.6 L98.6,203.1 L100.9,206.6 L103.5,209.8 L106.1,213 L109,216 L112,218.9 L115.2,221.5 L118.4,224.1 L121.9,226.4 L125.4,228.6 L129,230.6 L132.8,232.4 L136.6,233.9 L140.5,235.3 L144.5,236.5 L148.5,237.5 L152.6,238.2 L156.7,238.8 L160.9,239.1 L165,239.2 L169.1,239.1 L173.3,238.8 L177.4,238.2 L181.5,237.5 L185.5,236.5 L189.5,235.3 L193.4,233.9 L197.2,232.4 L201,230.6 L204.6,228.6 L208.1,226.4 L211.6,224.1 L214.8,221.5 L218,218.9 L221,216 L223.9,213 L226.5,209.8 L229.1,206.6 L231.4,203.1 L233.6,199.6 L235.6,196 L237.4,192.2 L238.9,188.4 L240.3,184.5 L241.5,180.5 L242.5,176.5 L243.2,172.4 L243.8,168.3 L244.1,164.1 L244.2,160 Z" class="fig-curve"/>
+<line x1="172.1" y1="157.1" x2="258.5" y2="121.3" class="fig-guide" marker-end="url(#arr-4-6-1)"/>
+<line x1="167.9" y1="152.9" x2="203.7" y2="66.5" class="fig-guide" marker-end="url(#arr-4-6-1)"/>
+<line x1="162.1" y1="152.9" x2="126.3" y2="66.5" class="fig-guide" marker-end="url(#arr-4-6-1)"/>
+<line x1="157.9" y1="157.1" x2="71.5" y2="121.3" class="fig-guide" marker-end="url(#arr-4-6-1)"/>
+<line x1="157.9" y1="162.9" x2="71.5" y2="198.7" class="fig-guide" marker-end="url(#arr-4-6-1)"/>
+<line x1="162.1" y1="167.1" x2="126.3" y2="253.5" class="fig-guide" marker-end="url(#arr-4-6-1)"/>
+<line x1="167.9" y1="167.1" x2="203.7" y2="253.5" class="fig-guide" marker-end="url(#arr-4-6-1)"/>
+<line x1="172.1" y1="162.9" x2="258.5" y2="198.7" class="fig-guide" marker-end="url(#arr-4-6-1)"/>
+<circle cx="165" cy="160" r="3.5" class="fig-arrowhead"/>
+<text x="172" y="153" class="fig-label fig-it">q</text>
+<text x="165" y="18" text-anchor="middle" class="fig-label">(a) vácuo</text>
+<path d="M497,160 L497,158.5 L496.9,157 L496.8,155.5 L496.7,154 L496.6,152.6 L496.4,151.1 L496.2,149.7 L495.9,148.2 L495.6,146.8 L495.3,145.4 L495,144 L494.6,142.7 L494.2,141.4 L493.8,140.1 L493.3,138.8 L492.8,137.6 L492.3,136.4 L491.7,135.3 L491.2,134.1 L490.6,133.1 L489.9,132 L489.3,131 L488.6,130.1 L487.9,129.2 L487.2,128.3 L486.5,127.5 L485.7,126.8 L485,126 L484.2,125.4 L483.4,124.8 L482.6,124.3 L481.8,123.8 L481,123.3 L480.1,122.9 L479.3,122.6 L478.4,122.4 L477.6,122.2 L476.7,122 L475.9,121.9 L475,121.9 L474.1,121.9 L473.3,122 L472.4,122.2 L471.6,122.4 L470.7,122.6 L469.9,122.9 L469,123.3 L468.2,123.8 L467.4,124.3 L466.6,124.8 L465.8,125.4 L465,126 L464.3,126.8 L463.5,127.5 L462.8,128.3 L462.1,129.2 L461.4,130.1 L460.7,131 L460.1,132 L459.4,133.1 L458.8,134.1 L458.3,135.3 L457.7,136.4 L457.2,137.6 L456.7,138.8 L456.2,140.1 L455.8,141.4 L455.4,142.7 L455,144 L454.7,145.4 L454.4,146.8 L454.1,148.2 L453.8,149.7 L453.6,151.1 L453.4,152.6 L453.3,154 L453.2,155.5 L453.1,157 L453,158.5 L453,160 L453,161.5 L453.1,163 L453.2,164.5 L453.3,166 L453.4,167.4 L453.6,168.9 L453.8,170.3 L454.1,171.8 L454.4,173.2 L454.7,174.6 L455,176 L455.4,177.3 L455.8,178.6 L456.2,179.9 L456.7,181.2 L457.2,182.4 L457.7,183.6 L458.3,184.7 L458.8,185.9 L459.4,186.9 L460.1,188 L460.7,189 L461.4,189.9 L462.1,190.8 L462.8,191.7 L463.5,192.5 L464.3,193.2 L465,194 L465.8,194.6 L466.6,195.2 L467.4,195.7 L468.2,196.2 L469,196.7 L469.9,197.1 L470.7,197.4 L471.6,197.6 L472.4,197.8 L473.3,198 L474.1,198.1 L475,198.1 L475.9,198.1 L476.7,198 L477.6,197.8 L478.4,197.6 L479.3,197.4 L480.1,197.1 L481,196.7 L481.8,196.2 L482.6,195.7 L483.4,195.2 L484.2,194.6 L485,194 L485.7,193.2 L486.5,192.5 L487.2,191.7 L487.9,190.8 L488.6,189.9 L489.3,189 L489.9,188 L490.6,186.9 L491.2,185.9 L491.7,184.7 L492.3,183.6 L492.8,182.4 L493.3,181.2 L493.8,179.9 L494.2,178.6 L494.6,177.3 L495,176 L495.3,174.6 L495.6,173.2 L495.9,171.8 L496.2,170.3 L496.4,168.9 L496.6,167.4 L496.7,166 L496.8,164.5 L496.9,163 L497,161.5 L497,160 Z" class="fig-curve"/>
+<path d="M516.8,160 L516.8,157.2 L516.7,154.3 L516.5,151.5 L516.3,148.7 L516,145.9 L515.6,143.1 L515.2,140.3 L514.8,137.6 L514.2,134.9 L513.6,132.3 L513,129.7 L512.2,127.1 L511.5,124.6 L510.6,122.2 L509.8,119.8 L508.8,117.4 L507.8,115.2 L506.8,113 L505.7,110.9 L504.6,108.8 L503.4,106.8 L502.1,104.9 L500.9,103.1 L499.6,101.4 L498.2,99.8 L496.8,98.3 L495.4,96.8 L494,95.5 L492.5,94.3 L491,93.1 L489.5,92.1 L487.9,91.1 L486.3,90.3 L484.8,89.6 L483.2,89 L481.5,88.5 L479.9,88.1 L478.3,87.8 L476.6,87.7 L475,87.6 L473.4,87.7 L471.7,87.8 L470.1,88.1 L468.5,88.5 L466.8,89 L465.2,89.6 L463.7,90.3 L462.1,91.1 L460.5,92.1 L459,93.1 L457.5,94.3 L456,95.5 L454.6,96.8 L453.2,98.3 L451.8,99.8 L450.4,101.4 L449.1,103.1 L447.9,104.9 L446.6,106.8 L445.4,108.8 L444.3,110.9 L443.2,113 L442.2,115.2 L441.2,117.4 L440.2,119.8 L439.4,122.2 L438.5,124.6 L437.8,127.1 L437,129.7 L436.4,132.3 L435.8,134.9 L435.2,137.6 L434.8,140.3 L434.4,143.1 L434,145.9 L433.7,148.7 L433.5,151.5 L433.3,154.3 L433.2,157.2 L433.2,160 L433.2,162.8 L433.3,165.7 L433.5,168.5 L433.7,171.3 L434,174.1 L434.4,176.9 L434.8,179.7 L435.2,182.4 L435.8,185.1 L436.4,187.7 L437,190.3 L437.8,192.9 L438.5,195.4 L439.4,197.8 L440.2,200.2 L441.2,202.6 L442.2,204.8 L443.2,207 L444.3,209.1 L445.4,211.2 L446.6,213.2 L447.9,215.1 L449.1,216.9 L450.4,218.6 L451.8,220.2 L453.2,221.7 L454.6,223.2 L456,224.5 L457.5,225.7 L459,226.9 L460.5,227.9 L462.1,228.9 L463.7,229.7 L465.2,230.4 L466.8,231 L468.5,231.5 L470.1,231.9 L471.7,232.2 L473.4,232.3 L475,232.4 L476.6,232.3 L478.3,232.2 L479.9,231.9 L481.5,231.5 L483.2,231 L484.8,230.4 L486.3,229.7 L487.9,228.9 L489.5,227.9 L491,226.9 L492.5,225.7 L494,224.5 L495.4,223.2 L496.8,221.7 L498.2,220.2 L499.6,218.6 L500.9,216.9 L502.1,215.1 L503.4,213.2 L504.6,211.2 L505.7,209.1 L506.8,207 L507.8,204.8 L508.8,202.6 L509.8,200.2 L510.6,197.8 L511.5,195.4 L512.2,192.9 L513,190.3 L513.6,187.7 L514.2,185.1 L514.8,182.4 L515.2,179.7 L515.6,176.9 L516,174.1 L516.3,171.3 L516.5,168.5 L516.7,165.7 L516.8,162.8 L516.8,160 Z" class="fig-curve"/>
+<path d="M536.6,160 L536.6,155.8 L536.4,151.6 L536.2,147.5 L535.8,143.3 L535.4,139.2 L534.9,135.1 L534.3,131 L533.6,127 L532.8,123.1 L531.9,119.2 L530.9,115.3 L529.9,111.6 L528.7,107.9 L527.5,104.3 L526.2,100.7 L524.8,97.3 L523.4,93.9 L521.8,90.7 L520.2,87.6 L518.6,84.6 L516.8,81.7 L515,78.9 L513.1,76.2 L511.2,73.7 L509.2,71.3 L507.2,69 L505.1,66.9 L503,64.9 L500.8,63.1 L498.6,61.4 L496.3,59.9 L494,58.5 L491.7,57.3 L489.4,56.3 L487,55.4 L484.6,54.6 L482.2,54 L479.8,53.6 L477.4,53.4 L475,53.3 L472.6,53.4 L470.2,53.6 L467.8,54 L465.4,54.6 L463,55.4 L460.6,56.3 L458.3,57.3 L456,58.5 L453.7,59.9 L451.4,61.4 L449.2,63.1 L447,64.9 L444.9,66.9 L442.8,69 L440.8,71.3 L438.8,73.7 L436.9,76.2 L435,78.9 L433.2,81.7 L431.4,84.6 L429.8,87.6 L428.2,90.7 L426.6,93.9 L425.2,97.3 L423.8,100.7 L422.5,104.3 L421.3,107.9 L420.1,111.6 L419.1,115.3 L418.1,119.2 L417.2,123.1 L416.4,127 L415.7,131 L415.1,135.1 L414.6,139.2 L414.2,143.3 L413.8,147.5 L413.6,151.6 L413.4,155.8 L413.4,160 L413.4,164.2 L413.6,168.4 L413.8,172.5 L414.2,176.7 L414.6,180.8 L415.1,184.9 L415.7,189 L416.4,193 L417.2,196.9 L418.1,200.8 L419.1,204.7 L420.1,208.4 L421.3,212.1 L422.5,215.7 L423.8,219.3 L425.2,222.7 L426.6,226.1 L428.2,229.3 L429.8,232.4 L431.4,235.4 L433.2,238.3 L435,241.1 L436.9,243.8 L438.8,246.3 L440.8,248.7 L442.8,251 L444.9,253.1 L447,255.1 L449.2,256.9 L451.4,258.6 L453.7,260.1 L456,261.5 L458.3,262.7 L460.6,263.7 L463,264.6 L465.4,265.4 L467.8,266 L470.2,266.4 L472.6,266.6 L475,266.7 L477.4,266.6 L479.8,266.4 L482.2,266 L484.6,265.4 L487,264.6 L489.4,263.7 L491.7,262.7 L494,261.5 L496.3,260.1 L498.6,258.6 L500.8,256.9 L503,255.1 L505.1,253.1 L507.2,251 L509.2,248.7 L511.2,246.3 L513.1,243.8 L515,241.1 L516.8,238.3 L518.6,235.4 L520.2,232.4 L521.8,229.3 L523.4,226.1 L524.8,222.7 L526.2,219.3 L527.5,215.7 L528.7,212.1 L529.9,208.4 L530.9,204.7 L531.9,200.8 L532.8,196.9 L533.6,193 L534.3,189 L534.9,184.9 L535.4,180.8 L535.8,176.7 L536.2,172.5 L536.4,168.4 L536.6,164.2 L536.6,160 Z" class="fig-curve"/>
+<line x1="481.1" y1="157.5" x2="542.4" y2="132.1" class="fig-guide fig-dashed"/>
+<line x1="477.5" y1="153.9" x2="515.4" y2="62.5" class="fig-guide fig-dashed"/>
+<line x1="472.5" y1="153.9" x2="434.6" y2="62.5" class="fig-guide fig-dashed"/>
+<line x1="468.9" y1="157.5" x2="407.6" y2="132.1" class="fig-guide fig-dashed"/>
+<line x1="468.9" y1="162.5" x2="407.6" y2="187.9" class="fig-guide fig-dashed"/>
+<line x1="472.5" y1="166.1" x2="434.6" y2="257.5" class="fig-guide fig-dashed"/>
+<line x1="477.5" y1="166.1" x2="515.4" y2="257.5" class="fig-guide fig-dashed"/>
+<line x1="481.1" y1="162.5" x2="542.4" y2="187.9" class="fig-guide fig-dashed"/>
+<path d="M479.3,148.5 L479.7,148.2 L480.1,147.9 L480.5,147.5 L480.9,147.2 L481.4,146.9 L481.9,146.5 L482.4,146.2 L482.9,145.9 L483.5,145.6 L484,145.3 L484.6,145 L485.2,144.7 L485.8,144.4 L486.4,144.1 L487,143.8 L487.7,143.5 L488.4,143.2 L489.1,142.9 L489.8,142.7 L490.5,142.4 L491.3,142.1 L492,141.8 L492.8,141.5 L493.6,141.3 L494.4,141 L495.3,140.7 L496.1,140.5 L497,140.2 L497.9,139.9 L498.8,139.7 L499.7,139.4 L500.7,139.2 L501.6,138.9 L502.6,138.6 L503.6,138.4 L504.6,138.1 L505.6,137.9 L506.7,137.6 L507.7,137.4 L508.8,137.1 L509.9,136.9 L511,136.7 L512.2,136.4 L513.3,136.2 L514.5,135.9 L515.7,135.7 L516.9,135.5 L518.1,135.2 L519.4,135 L520.6,134.8 L521.9,134.5 L523.2,134.3 L524.5,134.1 L525.8,133.8 L527.2,133.6 L528.5,133.4 L529.9,133.1 L531.3,132.9 L532.7,132.7 L534.2,132.5 L535.6,132.2 L537.1,132 L538.6,131.8 L540.1,131.6" class="fig-curve"/>
+<line x1="540.1" y1="131.6" x2="541.6" y2="131.4" class="fig-curve" marker-end="url(#arr-4-6-1)"/>
+<path d="M479.3,171.5 L479.7,171.8 L480.1,172.1 L480.5,172.5 L480.9,172.8 L481.4,173.1 L481.9,173.5 L482.4,173.8 L482.9,174.1 L483.5,174.4 L484,174.7 L484.6,175 L485.2,175.3 L485.8,175.6 L486.4,175.9 L487,176.2 L487.7,176.5 L488.4,176.8 L489.1,177.1 L489.8,177.3 L490.5,177.6 L491.3,177.9 L492,178.2 L492.8,178.5 L493.6,178.7 L494.4,179 L495.3,179.3 L496.1,179.5 L497,179.8 L497.9,180.1 L498.8,180.3 L499.7,180.6 L500.7,180.8 L501.6,181.1 L502.6,181.4 L503.6,181.6 L504.6,181.9 L505.6,182.1 L506.7,182.4 L507.7,182.6 L508.8,182.9 L509.9,183.1 L511,183.3 L512.2,183.6 L513.3,183.8 L514.5,184.1 L515.7,184.3 L516.9,184.5 L518.1,184.8 L519.4,185 L520.6,185.2 L521.9,185.5 L523.2,185.7 L524.5,185.9 L525.8,186.2 L527.2,186.4 L528.5,186.6 L529.9,186.9 L531.3,187.1 L532.7,187.3 L534.2,187.5 L535.6,187.8 L537.1,188 L538.6,188.2 L540.1,188.4" class="fig-curve"/>
+<line x1="540.1" y1="188.4" x2="541.6" y2="188.6" class="fig-curve" marker-end="url(#arr-4-6-1)"/>
+<path d="M470.7,148.5 L470.3,148.2 L469.9,147.9 L469.5,147.5 L469.1,147.2 L468.6,146.9 L468.1,146.5 L467.6,146.2 L467.1,145.9 L466.5,145.6 L466,145.3 L465.4,145 L464.8,144.7 L464.2,144.4 L463.6,144.1 L463,143.8 L462.3,143.5 L461.6,143.2 L460.9,142.9 L460.2,142.7 L459.5,142.4 L458.7,142.1 L458,141.8 L457.2,141.5 L456.4,141.3 L455.6,141 L454.7,140.7 L453.9,140.5 L453,140.2 L452.1,139.9 L451.2,139.7 L450.3,139.4 L449.3,139.2 L448.4,138.9 L447.4,138.6 L446.4,138.4 L445.4,138.1 L444.4,137.9 L443.3,137.6 L442.3,137.4 L441.2,137.1 L440.1,136.9 L439,136.7 L437.8,136.4 L436.7,136.2 L435.5,135.9 L434.3,135.7 L433.1,135.5 L431.9,135.2 L430.6,135 L429.4,134.8 L428.1,134.5 L426.8,134.3 L425.5,134.1 L424.2,133.8 L422.8,133.6 L421.5,133.4 L420.1,133.1 L418.7,132.9 L417.3,132.7 L415.8,132.5 L414.4,132.2 L412.9,132 L411.4,131.8 L409.9,131.6" class="fig-curve"/>
+<line x1="409.9" y1="131.6" x2="408.4" y2="131.4" class="fig-curve" marker-end="url(#arr-4-6-1)"/>
+<path d="M470.7,171.5 L470.3,171.8 L469.9,172.1 L469.5,172.5 L469.1,172.8 L468.6,173.1 L468.1,173.5 L467.6,173.8 L467.1,174.1 L466.5,174.4 L466,174.7 L465.4,175 L464.8,175.3 L464.2,175.6 L463.6,175.9 L463,176.2 L462.3,176.5 L461.6,176.8 L460.9,177.1 L460.2,177.3 L459.5,177.6 L458.7,177.9 L458,178.2 L457.2,178.5 L456.4,178.7 L455.6,179 L454.7,179.3 L453.9,179.5 L453,179.8 L452.1,180.1 L451.2,180.3 L450.3,180.6 L449.3,180.8 L448.4,181.1 L447.4,181.4 L446.4,181.6 L445.4,181.9 L444.4,182.1 L443.3,182.4 L442.3,182.6 L441.2,182.9 L440.1,183.1 L439,183.3 L437.8,183.6 L436.7,183.8 L435.5,184.1 L434.3,184.3 L433.1,184.5 L431.9,184.8 L430.6,185 L429.4,185.2 L428.1,185.5 L426.8,185.7 L425.5,185.9 L424.2,186.2 L422.8,186.4 L421.5,186.6 L420.1,186.9 L418.7,187.1 L417.3,187.3 L415.8,187.5 L414.4,187.8 L412.9,188 L411.4,188.2 L409.9,188.4" class="fig-curve"/>
+<line x1="409.9" y1="188.4" x2="408.4" y2="188.6" class="fig-curve" marker-end="url(#arr-4-6-1)"/>
+<path d="M475.4,146.4 L475.6,145.1 L475.7,143.9 L475.9,142.7 L476.1,141.6 L476.3,140.5 L476.5,139.4 L476.7,138.3 L477,137.3 L477.3,136.3 L477.5,135.4 L477.9,134.4 L478.2,133.5 L478.5,132.5 L478.9,131.6 L479.3,130.7 L479.7,129.8 L480.1,129 L480.5,128.1 L480.9,127.3 L481.4,126.4 L481.9,125.6 L482.4,124.8 L482.9,124 L483.5,123.2 L484,122.4 L484.6,121.6 L485.2,120.9 L485.8,120.1 L486.4,119.4 L487,118.6 L487.7,117.9 L488.4,117.1 L489.1,116.4 L489.8,115.7 L490.5,115 L491.3,114.2 L492,113.5 L492.8,112.8 L493.6,112.1 L494.4,111.4 L495.3,110.8 L496.1,110.1 L497,109.4 L497.9,108.7 L498.8,108.1 L499.7,107.4 L500.7,106.7 L501.6,106.1 L502.6,105.4 L503.6,104.8 L504.6,104.1 L505.6,103.5 L506.7,102.9 L507.7,102.2 L508.8,101.6 L509.9,101 L511,100.3 L512.2,99.7 L513.3,99.1 L514.5,98.5 L515.7,97.9 L516.9,97.3 L518.1,96.7 L519.4,96.1 L520.6,95.5 L521.9,94.9 L523.2,94.3 L524.5,93.7 L525.8,93.1 L527.2,92.5 L528.5,91.9 L529.9,91.4" class="fig-curve"/>
+<line x1="529.9" y1="91.4" x2="531.3" y2="90.8" class="fig-curve" marker-end="url(#arr-4-6-1)"/>
+<path d="M475.4,173.6 L475.6,174.9 L475.7,176.1 L475.9,177.3 L476.1,178.4 L476.3,179.5 L476.5,180.6 L476.7,181.7 L477,182.7 L477.3,183.7 L477.5,184.6 L477.9,185.6 L478.2,186.5 L478.5,187.5 L478.9,188.4 L479.3,189.3 L479.7,190.2 L480.1,191 L480.5,191.9 L480.9,192.7 L481.4,193.6 L481.9,194.4 L482.4,195.2 L482.9,196 L483.5,196.8 L484,197.6 L484.6,198.4 L485.2,199.1 L485.8,199.9 L486.4,200.6 L487,201.4 L487.7,202.1 L488.4,202.9 L489.1,203.6 L489.8,204.3 L490.5,205 L491.3,205.8 L492,206.5 L492.8,207.2 L493.6,207.9 L494.4,208.6 L495.3,209.2 L496.1,209.9 L497,210.6 L497.9,211.3 L498.8,211.9 L499.7,212.6 L500.7,213.3 L501.6,213.9 L502.6,214.6 L503.6,215.2 L504.6,215.9 L505.6,216.5 L506.7,217.1 L507.7,217.8 L508.8,218.4 L509.9,219 L511,219.7 L512.2,220.3 L513.3,220.9 L514.5,221.5 L515.7,222.1 L516.9,222.7 L518.1,223.3 L519.4,223.9 L520.6,224.5 L521.9,225.1 L523.2,225.7 L524.5,226.3 L525.8,226.9 L527.2,227.5 L528.5,228.1 L529.9,228.6" class="fig-curve"/>
+<line x1="529.9" y1="228.6" x2="531.3" y2="229.2" class="fig-curve" marker-end="url(#arr-4-6-1)"/>
+<path d="M474.6,146.4 L474.4,145.1 L474.3,143.9 L474.1,142.7 L473.9,141.6 L473.7,140.5 L473.5,139.4 L473.3,138.3 L473,137.3 L472.7,136.3 L472.5,135.4 L472.1,134.4 L471.8,133.5 L471.5,132.5 L471.1,131.6 L470.7,130.7 L470.3,129.8 L469.9,129 L469.5,128.1 L469.1,127.3 L468.6,126.4 L468.1,125.6 L467.6,124.8 L467.1,124 L466.5,123.2 L466,122.4 L465.4,121.6 L464.8,120.9 L464.2,120.1 L463.6,119.4 L463,118.6 L462.3,117.9 L461.6,117.1 L460.9,116.4 L460.2,115.7 L459.5,115 L458.7,114.2 L458,113.5 L457.2,112.8 L456.4,112.1 L455.6,111.4 L454.7,110.8 L453.9,110.1 L453,109.4 L452.1,108.7 L451.2,108.1 L450.3,107.4 L449.3,106.7 L448.4,106.1 L447.4,105.4 L446.4,104.8 L445.4,104.1 L444.4,103.5 L443.3,102.9 L442.3,102.2 L441.2,101.6 L440.1,101 L439,100.3 L437.8,99.7 L436.7,99.1 L435.5,98.5 L434.3,97.9 L433.1,97.3 L431.9,96.7 L430.6,96.1 L429.4,95.5 L428.1,94.9 L426.8,94.3 L425.5,93.7 L424.2,93.1 L422.8,92.5 L421.5,91.9 L420.1,91.4" class="fig-curve"/>
+<line x1="420.1" y1="91.4" x2="418.7" y2="90.8" class="fig-curve" marker-end="url(#arr-4-6-1)"/>
+<path d="M474.6,173.6 L474.4,174.9 L474.3,176.1 L474.1,177.3 L473.9,178.4 L473.7,179.5 L473.5,180.6 L473.3,181.7 L473,182.7 L472.7,183.7 L472.5,184.6 L472.1,185.6 L471.8,186.5 L471.5,187.5 L471.1,188.4 L470.7,189.3 L470.3,190.2 L469.9,191 L469.5,191.9 L469.1,192.7 L468.6,193.6 L468.1,194.4 L467.6,195.2 L467.1,196 L466.5,196.8 L466,197.6 L465.4,198.4 L464.8,199.1 L464.2,199.9 L463.6,200.6 L463,201.4 L462.3,202.1 L461.6,202.9 L460.9,203.6 L460.2,204.3 L459.5,205 L458.7,205.8 L458,206.5 L457.2,207.2 L456.4,207.9 L455.6,208.6 L454.7,209.2 L453.9,209.9 L453,210.6 L452.1,211.3 L451.2,211.9 L450.3,212.6 L449.3,213.3 L448.4,213.9 L447.4,214.6 L446.4,215.2 L445.4,215.9 L444.4,216.5 L443.3,217.1 L442.3,217.8 L441.2,218.4 L440.1,219 L439,219.7 L437.8,220.3 L436.7,220.9 L435.5,221.5 L434.3,222.1 L433.1,222.7 L431.9,223.3 L430.6,223.9 L429.4,224.5 L428.1,225.1 L426.8,225.7 L425.5,226.3 L424.2,226.9 L422.8,227.5 L421.5,228.1 L420.1,228.6" class="fig-curve"/>
+<line x1="420.1" y1="228.6" x2="418.7" y2="229.2" class="fig-curve" marker-end="url(#arr-4-6-1)"/>
+<line x1="482.7" y1="160" x2="544.3" y2="160" class="fig-curve" marker-end="url(#arr-4-6-1)"/>
+<line x1="467.3" y1="160" x2="405.7" y2="160" class="fig-curve" marker-end="url(#arr-4-6-1)"/>
+<line x1="475" y1="152.3" x2="475" y2="40" class="fig-curve" marker-end="url(#arr-4-6-1)"/>
+<line x1="475" y1="167.7" x2="475" y2="280" class="fig-curve" marker-end="url(#arr-4-6-1)"/>
+<circle cx="475" cy="160" r="3.5" class="fig-arrowhead"/>
+<text x="483" y="151" class="fig-label fig-it">q</text>
+<text x="484" y="48" class="fig-label fig-small">z (ε∥)</text>
+<text x="550.3" y="165" class="fig-label fig-small">x (ε⊥)</text>
+<text x="475" y="18" text-anchor="middle" class="fig-label">(b) meio uniaxial</text>
+</svg>
+                    <figcaption><strong>Figura 4.6.1.</strong> Carga pontual, num corte pelo plano $x^1x^3$ ($x = x^1$ na horizontal, $z = x^3$ na vertical). (a) No vácuo, as
+                        equipotenciais são círculos e as linhas de campo, radiais. (b) Num cristal uniaxial com
+                        $\varepsilon_\parallel = 3\varepsilon_\perp$: as equipotenciais são as elipses $x^2/\varepsilon_\perp + z^2/\varepsilon_\parallel = \text{const}$,
+                        que são círculos da métrica efetiva; as linhas de $E$ (cheias) saem da carga cortando as elipses em ângulo
+                        reto e se curvam para longe do eixo $z$, isto é, para as direções em que a permissividade é menor; as linhas
+                        de $D$ (tracejadas) continuam retas.</figcaption>
+                </figure>
+
+                <p id="obs-4-6-16"><strong>Observação 4.6.16 (O caso magnético e a óptica de transformação).</strong> Tudo se repete
+                    para $H$ e $B$. Num meio magnético linear, $B^i = \mu^{ij}H_j$ com $\mu^{ij}$ o tensor de <em>permeabilidade</em>;
+                    com $M^{ij} = \mu^{ij}/\mu_0$ simétrico e positivo definido, a <a href="#prop-4-6-8">Proposição 4.6.8</a> dá uma métrica $g'$ com
+                    $B = \mu_0\star_{g'}H$. Em geral $g \ne g'$: um meio tem duas métricas efetivas, uma elétrica e uma magnética. Elas
+                    coincidem quando $\varepsilon^{ij}/\varepsilon_0 = \mu^{ij}/\mu_0$, um meio de <em>impedância casada</em> com a do
+                    vácuo. É o caso explorado pela óptica de transformação: escolhe-se uma métrica $g$ e projeta-se um material
+                    (em geral um metamaterial, com estrutura menor que o comprimento de onda) com
+                    $\varepsilon^{ij}/\varepsilon_0 = \mu^{ij}/\mu_0 = \sqrt{\lvert g\rvert}\,g^{ij}$; nele a luz se propaga como se o
+                    espaço tivesse a geometria $g$ (Leonhardt e Philbin, <em>Geometry and Light: The Science of Invisibility</em>). O
+                    artigo de R. T. Thompson, "General Relativistic Contributions in Transformation Optics", <em>J. Opt.</em> 14,
+                    015102 (2012), arXiv:1102.1512, desenvolve essa correspondência de forma covariante em quatro dimensões e estima
+                    como a curvatura do espaço-tempo afeta dispositivos desse tipo em órbita.</p>
+
+                <h2 id="geometria-dinamica">Quando a geometria deixa de ser fundo</h2>
+
+                <p>
+                    Até aqui o meio estava dado: $\varepsilon^{ij}(x)$ é uma propriedade do material, fixa antes de qualquer campo, e a
+                    métrica efetiva é uma <em>geometria de fundo</em>, sobre a qual os campos evoluem sem afetá-la. Considere agora
+                    uma esfera dielétrica deformável, por exemplo de um gel ou de um elastômero, com permissividade determinada pela
+                    sua estrutura interna. Ao aplicarmos um campo, a esfera se polariza e também se deforma mecanicamente: as forças
+                    elétricas sobre as cargas ligadas esticam o material. A deformação cria tensões que mudam a estrutura interna e,
+                    com ela, o tensor $\varepsilon^{ij}$. Então a métrica efetiva passa a depender do próprio campo.
+                </p>
+
+                <p>
+                    Nesse caso não há mais uma geometria de fundo: os campos determinam a geometria, e a geometria determina como os
+                    campos se propagam. As equações deixam de ser lineares nos campos, porque a métrica que aparece na estrela
+                    depende deles. Esta é, em miniatura, a situação da Relatividade Geral, em que a métrica do espaço-tempo é ela
+                    mesma um campo dinâmico, determinado pela matéria e pela energia que se movem nele.
+                </p>
+
+                <p id="obs-4-6-17"><strong>Observação 4.6.17 (As regras de geometrização).</strong> O que foi feito neste tópico pode
+                    ser resumido em três regras, que o tópico 4.8 aplica ao espaço-tempo. Elas são escolhas e hipóteses físicas, no
+                    mesmo sentido em que as regras de quantização de um sistema clássico são escolhas.</p>
+                <ol>
+                    <li><strong>Os campos são dados pelas equações homogêneas</strong> ($dB = 0$, $dE + \partial_tB = 0$), que, por
+                        princípio, não sofrem influência da geometria: elas só usam $d$.</li>
+                    <li><strong>A interação dos campos com as cargas e as correntes</strong>, isto é, as equações inomogêneas
+                        ($dD = \varrho_{\text{livre}}$, $dH = J_{\text{livre}} + \partial_tD$), <strong>passa pelo dual</strong> dos campos:
+                        $D = \varepsilon_0\star_gE$, $H = \star_{g'}B/\mu_0$. Se for possível escrever a relação constitutiva assim, a
+                        teoria foi geometrizada, e a métrica é a que torna isso possível.</li>
+                    <li><strong>A métrica do vácuo é fixada pelas hipóteses sobre o vácuo.</strong> Admitindo que os campos da
+                        teoria são os medidos no vácuo e que o vácuo é homogêneo e isotrópico, a parte espacial da métrica do vácuo é
+                        euclidiana e, por construção, diagonal (<a href="#ex-4-6-12">Exemplo 4.6.12</a>).</li>
+                </ol>
+
+                <p id="obs-4-6-18"><strong>Observação 4.6.18 (Por que uma estrela).</strong> A relação entre $E$ e $D$ no vácuo é uma
+                    estrela por uma razão de simetria. Uma relação linear $D = T(E)$ de $1$-formas em $2$-formas que comute com todas
+                    as rotações (isotropia) é um múltiplo de $\ast$: é a <a href="[04] - O Operador Estrela de Hodge.html#obs-4-4-21">Observação 4.4.21</a> com $n = 3$ e $k = 1$, caso em que $n \ne 2k$ e a
+                    estrela é, a menos de constante, a única aplicação invariante. Isso explica o vácuo e os meios isotrópicos
+                    ($D = \varepsilon\ast E$). Num meio anisotrópico as rotações deixam de ser simetrias, e a relação passa a ser a
+                    estrela de outra métrica, cujas isometrias são as simetrias que restaram ao meio (no cristal uniaxial, as
+                    rotações em torno do eixo óptico).</p>
+
+                <p>
+                    A anisotropia e a inomogeneidade do meio desviam as linhas de campo, como na Figura 4.6.1, e desviam também os
+                    raios de luz, que num meio isotrópico inomogêneo seguem as curvas de menor comprimento na métrica
+                    $n(x)^2\,\delta$ (<a href="#exr-4-6-6">Exercício 4.6.6</a>). É o mesmo efeito que a gravidade produz sobre a luz, aqui por meio de um material.
+                    Por isso é possível construir estruturas artificiais, os metamateriais, projetadas na escala microscópica para
+                    reproduzir geometrias escolhidas e, com elas, análogos de efeitos gravitacionais, entre eles análogos de buracos
+                    negros (<a href="#obs-4-6-16">Observação 4.6.16</a>). Esses análogos
+                    reproduzem a propagação da luz numa geometria dada; não reproduzem a dinâmica da geometria, que no material é
+                    fixada pelo projeto.
+                </p>
+
+                <h2 id="fisica">Ponte com a física: coisas escuras e torcidas</h2>
+
+                <p>
+                    Esta seção é uma discussão física e especulativa. Ela segue as notas de aula e apresenta uma leitura possível de
+                    problemas em aberto, não resultados estabelecidos.
+                </p>
+
+                <p>
+                    A relação $\varepsilon^{ij} = \varepsilon_0\delta^{ij}$ do vácuo é, como vimos no <a href="#ex-4-6-12">Exemplo 4.6.12</a>, quase uma trivialidade:
+                    definimos $\mathbf{E}$ como o campo na ausência de matéria, e então tirar o meio devolve $\mathbf{E}$. Mas isso
+                    sugere uma pergunta: <em>e se aquilo que chamamos de vácuo for, na verdade, um meio que não percebemos?</em>
+                </p>
+
+                <ul>
+                    <li><strong>Meio linear, homogêneo e isotrópico, com geometria de fundo.</strong> Provavelmente não haveria
+                        efeito mensurável. Todos os observadores concordariam sobre os valores dos campos no suposto vácuo, e uma
+                        constante $\varepsilon_r$ seria absorvida na definição de $\varepsilon_0$, como uma mudança de unidades.</li>
+                    <li><strong>O mesmo meio, sem geometria de fundo.</strong> Se a geometria for dinâmica, como na seção anterior, a
+                        própria presença do meio pode ter efeitos mensuráveis, por exemplo mudando o conteúdo de energia do espaço e,
+                        com ele, a dinâmica das partículas.</li>
+                    <li><strong>Meio inomogêneo ou anisotrópico.</strong> Observadores em lugares diferentes, ou com orientações
+                        diferentes, mediriam campos diferentes. Se a inomogeneidade for fraca, os efeitos só apareceriam em escalas
+                        muito grandes, e seriam atribuídos a algo invisível na teoria: "coisas escuras". Se essas coisas pareceriam
+                        matéria ou energia dependeria da geometria da inomogeneidade.</li>
+                    <li><strong>Meio não linear.</strong> Mesmo com o vácuo certo, o meio pode ter resposta não linear, como a
+                        histerese ou o efeito Kerr (uma mudança do índice de refração proporcional ao quadrado do campo). Nesse caso
+                        nenhuma métrica descreve o meio, porque a relação constitutiva deixa de ser linear.</li>
+                </ul>
+
+                <p>
+                    Uma descrição desses meios, se eles existirem, pode seguir dois caminhos: modificar a teoria (as equações de campo)
+                    ou acrescentar à geometria estruturas que não vêm da métrica, como a <em>torção</em>. São, em linhas gerais, as
+                    duas propostas para as discrepâncias atuais entre as observações e a teoria de Einstein: postular componentes
+                    invisíveis, como no problema da <strong>matéria escura</strong>, ou mudar a dinâmica da geometria, como nas
+                    <strong>teorias modificadas</strong> da gravitação (gravitação modificada). O paralelo é heurístico: a gravitação
+                    não é um meio eletromagnético, e o que ele ilustra é só a alternativa entre "acrescentar coisas" e "mudar as
+                    regras".
+                </p>
+
+                <p>
+                    Há também uma ligação técnica com o tópico 4.5. Lá vimos que a relação $D = \varepsilon_0\ast E$ não sobrevive a
+                    uma reflexão se $D$ for uma forma comum, e que a saída de Hehl e Obukhov é tratar as excitações como formas
+                    torcidas. Na mesma linha (Hehl e Obukhov, <em>Foundations of Classical Electrodynamics</em>), a relação
+                    constitutiva do vácuo é o lugar onde toda a geometria entra na eletrodinâmica, e relações constitutivas mais
+                    gerais que a estrela de uma métrica descrevem meios, ou vácuos, com outras estruturas geométricas.
+                </p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p>
+                    As notas de aula não atribuem exercícios a este tópico; os seis abaixo são extras. As contas estão conferidas em
+                    sympy.
+                </p>
+
+                <p id="exr-4-6-1"><strong>Exercício 4.6.1.</strong> Num meio isotrópico com $\varepsilon = \varepsilon_r\varepsilon_0$,
+                    a <a href="#prop-4-6-8">Proposição 4.6.8</a> dá $g = \varepsilon_r^2\delta$. Verifique, pela fórmula do <a href="[04] - O Operador Estrela de Hodge.html#cor-4-4-9">Corolário 4.4.9</a>, que
+                    $\varepsilon_0\star_gE = \varepsilon\ast E$, e explique por que a estrela de $1$-formas foi multiplicada por
+                    $\varepsilon_r$ e não por $\varepsilon_r^2$.</p>
+
+                <p>
+                    <em>Solução.</em> Com $g_{ij} = \varepsilon_r^2\delta_{ij}$, $\sqrt{\lvert g\rvert} = \varepsilon_r^3$ e
+                    $g^{ij} = \varepsilon_r^{-2}\delta^{ij}$. Então $\star_gdx^i = \varepsilon_r^3\varepsilon_r^{-2}\,\tfrac12\tilde\varepsilon_{imn}\,dx^m\wedge dx^n = \varepsilon_r\ast dx^i$,
+                    e por linearidade $\varepsilon_0\star_gE = \varepsilon_0\varepsilon_r\ast E = \varepsilon\ast E$: em componentes,
+                    $D^i = \varepsilon E_i$. Em geral, se $g = \lambda^2\delta$ em $\mathbb{R}^n$, então $\sqrt{\lvert g\rvert} = \lambda^n$ e cada
+                    índice levantado traz $\lambda^{-2}$; numa $k$-forma são $k$ índices, e $\star_g = \lambda^{n-2k}\ast$. Com $n = 3$ e
+                    $k = 1$, o fator é $\lambda = \varepsilon_r$. A escala dos comprimentos é $\varepsilon_r$, e a relação constitutiva
+                    sente a primeira potência dela.
+                </p>
+
+                <p id="exr-4-6-2"><strong>Exercício 4.6.2.</strong> Para o cristal uniaxial
+                    $K = \operatorname{diag}(\varepsilon_\perp,\varepsilon_\perp,\varepsilon_\parallel)$, calcule $g_{ij}$, $g^{ij}$ e
+                    $\sqrt{\lvert g\rvert}$ e verifique em componentes que $\varepsilon_0\star_gE$ tem $D^i = \varepsilon^{ij}E_j$.</p>
+
+                <p>
+                    <em>Solução.</em> $\det K = \varepsilon_\perp^2\varepsilon_\parallel$ e
+                    $K^{-1} = \operatorname{diag}(1/\varepsilon_\perp, 1/\varepsilon_\perp, 1/\varepsilon_\parallel)$, logo
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    g_{ij} &= \operatorname{diag}\big(\varepsilon_\perp\varepsilon_\parallel,\ \varepsilon_\perp\varepsilon_\parallel,\ \varepsilon_\perp^2\big),\\
+                    g^{ij} &= \operatorname{diag}\Big(\frac{1}{\varepsilon_\perp\varepsilon_\parallel},\ \frac{1}{\varepsilon_\perp\varepsilon_\parallel},\ \frac{1}{\varepsilon_\perp^2}\Big),
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    e $\det g = \varepsilon_\perp^4\varepsilon_\parallel^2$, $\sqrt{\lvert g\rvert} = \varepsilon_\perp^2\varepsilon_\parallel = \det K$. Pelo
+                    <a href="[04] - O Operador Estrela de Hodge.html#cor-4-4-9">Corolário 4.4.9</a>, como $g$ é diagonal, $\star_gdx^1 = \sqrt{\lvert g\rvert}\,g^{11}\,dx^2\wedge dx^3 = \varepsilon_\perp\,dx^2\wedge dx^3$,
+                    $\star_gdx^2 = \varepsilon_\perp\,dx^3\wedge dx^1$ e $\star_gdx^3 = \sqrt{\lvert g\rvert}\,g^{33}\,dx^1\wedge dx^2 = \varepsilon_\parallel\,dx^1\wedge dx^2$.
+                    Assim
+                </p>
+
+                <p>
+                    $$ \varepsilon_0\star_gE = \varepsilon_0\big(\varepsilon_\perp E_1\,dx^2\wedge dx^3 + \varepsilon_\perp E_2\,dx^3\wedge dx^1
+                    + \varepsilon_\parallel E_3\,dx^1\wedge dx^2\big), $$
+                </p>
+
+                <p>
+                    isto é, $D^1 = \varepsilon_0\varepsilon_\perp E_1$, $D^2 = \varepsilon_0\varepsilon_\perp E_2$ e
+                    $D^3 = \varepsilon_0\varepsilon_\parallel E_3$, que é $D^i = \varepsilon^{ij}E_j$.
+                </p>
+
+                <p id="exr-4-6-3"><strong>Exercício 4.6.3.</strong> Mostre que em dimensão $2$ a matriz $\sqrt{\lvert g\rvert}\,g^{ij}$
+                    não muda quando $g$ é trocada por $\Omega^2g$ ($\Omega \gt 0$ uma função), e que em dimensão $3$ ela é multiplicada
+                    por $\Omega$. Conclua que em dimensão $2$ a relação $D = \varepsilon_0\star_gE$ não determina $g$.</p>
+
+                <p>
+                    <em>Solução.</em> Em dimensão $n$, $\det(\Omega^2g) = \Omega^{2n}\det g$, logo $\sqrt{\lvert\Omega^2g\rvert} = \Omega^n\sqrt{\lvert g\rvert}$,
+                    e $(\Omega^2g)^{-1} = \Omega^{-2}g^{-1}$. O produto é $\Omega^{n-2}\sqrt{\lvert g\rvert}\,g^{ij}$: o fator é $1$ para
+                    $n = 2$ e $\Omega$ para $n = 3$. Em dimensão $2$, pela mesma conta da <a href="#prop-4-6-6">Proposição 4.6.6</a> (com $\star_gdx^i = \sqrt{\lvert g\rvert}\,g^{ij}\tilde\varepsilon_{jm}\,dx^m$),
+                    a relação $D = \varepsilon_0\star_gE$ só depende de $\sqrt{\lvert g\rvert}\,g^{ij}$; então $g$ e $\Omega^2g$ dão a mesma relação
+                    para todo $\Omega$, e o meio não distingue entre elas. Em dimensão $3$, se $g$ e $\Omega^2g$ dessem a mesma relação,
+                    teríamos $\Omega = 1$.
+                </p>
+
+                <p id="exr-4-6-4"><strong>Exercício 4.6.4.</strong> Para a carga pontual do <a href="#ex-4-6-15">Exemplo 4.6.15</a> no cristal uniaxial, no plano
+                    $x^2 = 0$ (escreva $x = x^1$, $z = x^3$), mostre que as linhas de $D$ são retas pela origem e que as linhas de $E$ são as
+                    curvas $z = C\lvert x\rvert^{\varepsilon_\perp/\varepsilon_\parallel}$ (e os dois eixos). Mostre ainda que o vetor $E^\sharp$
+                    obtido com a métrica efetiva é radial.</p>
+
+                <p>
+                    <em>Solução.</em> Com $\phi = C_0\,(x^{\mathsf T}K^{-1}x)^{-1/2}$, $C_0 = q/(4\pi\varepsilon_0\sqrt{\det K})$, temos
+                    $\partial_j\phi = -C_0\,(x^{\mathsf T}K^{-1}x)^{-3/2}\,(K^{-1}x)_j$ (porque $K^{-1}$ é simétrica). Logo
+                    $E_j = -\partial_j\phi$ é um múltiplo positivo de $(K^{-1}x)_j$ e $D^i = \varepsilon_0K^{ij}E_j$ é um múltiplo positivo de
+                    $(KK^{-1}x)^i = x^i$: as linhas de $D$ são as semirretas que saem da origem. No plano $x^2 = 0$, $E$ tem a direção de
+                    $(x/\varepsilon_\perp,\ z/\varepsilon_\parallel)$, e as linhas de $E$ resolvem
+                    $\frac{dz}{dx} = \frac{z/\varepsilon_\parallel}{x/\varepsilon_\perp} = \frac{\varepsilon_\perp}{\varepsilon_\parallel}\,\frac{z}{x}$.
+                    Separando variáveis, $\ln\lvert z\rvert = \frac{\varepsilon_\perp}{\varepsilon_\parallel}\ln\lvert x\rvert + \text{const}$, isto é,
+                    $z = C\lvert x\rvert^{\varepsilon_\perp/\varepsilon_\parallel}$; os eixos $x = 0$ e $z = 0$ também são linhas. Na Figura 4.6.1,
+                    $\varepsilon_\perp/\varepsilon_\parallel = 1/3$. Por fim,
+                    $(E^\sharp)^i = g^{ij}E_j = \frac{K^{ij}}{\det K}E_j$, que é proporcional a $(KK^{-1}x)^i = x^i$: na métrica efetiva o campo é
+                    radial, e as elipses são esferas. As linhas curvas de $E$ só aparecem quando a $1$-forma $E$ é desenhada como vetor
+                    com a métrica euclidiana, que não é a métrica do meio.
+                </p>
+
+                <p id="exr-4-6-5"><strong>Exercício 4.6.5.</strong> Conte as incógnitas e as equações de (4.6.2). Mostre que as duas
+                    equações sem derivada temporal ($dB = 0$ e $dD = \varrho_{\text{livre}}$) são preservadas pela evolução das outras duas,
+                    desde que valha a continuidade $dJ_{\text{livre}} + \partial_t\varrho_{\text{livre}} = 0$, e conclua que é preciso uma
+                    relação constitutiva.</p>
+
+                <p>
+                    <em>Solução.</em> As incógnitas são as componentes de $E$, $B$, $D$, $H$: $3 \times 4 = 12$. As equações têm
+                    $1 + 3 + 1 + 3 = 8$ componentes ($dB$ e $dD$ são $3$-formas, com uma componente; $dE + \partial_tB$ e
+                    $dH - \partial_tD$ são $2$-formas, com três). Só as de Faraday e de Ampère–Maxwell contêm derivadas temporais, e dão
+                    $\partial_tB = -dE$ e $\partial_tD = dH - J_{\text{livre}}$. As outras duas são vínculos, e a evolução os preserva: como
+                    $\partial_t$ comuta com $d$ (<a href="[05] - Maxwell em 3D com Formas.html#def-4-5-3">Definição 4.5.3</a>),
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    \partial_t(dB) &= d(\partial_tB) = -d\,dE = 0,\\
+                    \partial_t(dD - \varrho_{\text{livre}}) &= d(dH - J_{\text{livre}}) - \partial_t\varrho_{\text{livre}}
+                    = -\big(dJ_{\text{livre}} + \partial_t\varrho_{\text{livre}}\big) = 0.
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    Se os vínculos valem num instante, valem sempre. Restam seis equações de evolução para doze incógnitas. Uma
+                    relação constitutiva $D = D(E)$, $H = H(B)$ fornece as seis relações que faltam: com ela, as incógnitas passam a ser
+                    $E$ e $B$, e as seis equações de evolução as determinam a partir dos dados iniciais. Sem ela, $D$ e $H$ ficam livres e
+                    a dinâmica não está determinada (<a href="#obs-4-6-4">Observação 4.6.4</a>).
+                </p>
+
+                <p id="exr-4-6-6"><strong>Exercício 4.6.6 (Física).</strong> Num meio isotrópico, possivelmente inomogêneo, de índice de
+                    refração $n(x) = \sqrt{\varepsilon_r(x)\mu_r(x)}$, a luz percorre o caminho óptico
+                    $\int n\,dl$. (a) Mostre que o caminho óptico de uma curva $\gamma$ é o seu comprimento na métrica $n^2\delta$.
+                    (b) Para dois meios homogêneos separados por um plano, mostre que o caminho óptico estacionário satisfaz a lei de
+                    Snell. (c) Compare $n^2\delta$ com a métrica elétrica do <a href="#exr-4-6-1">Exercício 4.6.1</a>.</p>
+
+                <p>
+                    <em>Solução.</em> (a) Com $g = n^2\delta$, $\sqrt{g(\gamma',\gamma')} = n(\gamma)\,\lvert\gamma'\rvert$, e o comprimento de $\gamma$ na
+                    métrica $g$ é $\int n(\gamma(t))\,\lvert\gamma'(t)\rvert\,dt = \int n\,dl$. O princípio de Fermat (os raios tornam
+                    estacionário o caminho óptico) diz, então, que os raios são as curvas de comprimento estacionário da métrica
+                    $n^2\delta$. O funcional de comprimento é o assunto do tópico
+                    <a href="[10] - Comprimento e Energia de Curvas.html">4.10</a>, e as suas curvas estacionárias, do tópico
+                    <a href="[12] - O Princípio Variacional.html">4.12</a>. (b) Um raio vai de $(0, a)$, no meio de índice $n_1$, a
+                    $(L, -b)$, no meio de índice $n_2$, cruzando a interface $z = 0$ em $(s, 0)$. Em cada meio o raio é reto (em métrica
+                    constante as curvas de menor comprimento são segmentos), e o caminho óptico é
+                    $T(s) = n_1\sqrt{a^2 + s^2} + n_2\sqrt{b^2 + (L - s)^2}$. Derivando,
+                </p>
+
+                <p>
+                    $$ T'(s) = n_1\frac{s}{\sqrt{a^2 + s^2}} - n_2\frac{L - s}{\sqrt{b^2 + (L - s)^2}} = n_1\sin\theta_1 - n_2\sin\theta_2, $$
+                </p>
+
+                <p>
+                    com $\theta_1$, $\theta_2$ os ângulos com a normal; $T'(s) = 0$ é a lei de Snell $n_1\sin\theta_1 = n_2\sin\theta_2$.
+                    (c) A métrica elétrica é $\varepsilon_r^2\delta$ e a óptica é $n^2\delta = \varepsilon_r\mu_r\delta$. Elas coincidem se, e só
+                    se, $\varepsilon_r = \mu_r$, a condição de impedância casada da <a href="#obs-4-6-16">Observação 4.6.16</a>. Num vidro comum ($\mu_r \approx 1$) as duas
+                    são diferentes: os raios não "veem" a métrica efetiva da eletrostática, e sim uma combinação das métricas elétrica e
+                    magnética.
+                </p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <ul>
+                    <li>As equações de Maxwell num meio (<a href="#prop-4-6-2">Proposição 4.6.2</a>): as homogêneas não mudam; as inomogêneas só veem o meio por
+                        $D = \varepsilon_0\ast E + \Phi_{\mathbf{P}}$ e $H = \ast B/\mu_0 - \omega_{\mathbf{M}}$, com as leituras corretas de cada
+                        campo (<a href="#obs-4-6-3">Observação 4.6.3</a>) e a necessidade de uma relação constitutiva (<a href="#obs-4-6-4">Observação 4.6.4</a>).</li>
+                    <li>O tensor de permissividade $\varepsilon^{ij}$ de um meio linear (<a href="#def-4-6-5">Definição 4.6.5</a>), com as noções de isotrópico e
+                        homogêneo.</li>
+                    <li>A relação constitutiva como estrela: $D = \varepsilon_0\star_gE$ se, e só se, $\sqrt{\lvert g\rvert}\,g^{ij} = K^{ij}$
+                        (<a href="#prop-4-6-6">Proposição 4.6.6</a>), e em dimensão 3 essa equação tem uma única solução, $g = (\det K)\,K^{-1}$ (<a href="#prop-4-6-8">Proposição 4.6.8</a>): a
+                        <strong>métrica efetiva</strong> do meio (<a href="#def-4-6-9">Definição 4.6.9</a>). Em dimensão 2 só a classe conforme é determinada
+                        (<a href="#obs-4-6-10">Observação 4.6.10</a>).</li>
+                    <li>A métrica do vácuo é a euclidiana, como consequência das hipóteses sobre o vácuo (<a href="#ex-4-6-12">Exemplo 4.6.12</a>), e a
+                        eletrostática de um meio é a do vácuo na métrica efetiva (<a href="#prop-4-6-14">Proposição 4.6.14</a>, <a href="#ex-4-6-15">Exemplo 4.6.15</a>).</li>
+                    <li>As regras de geometrização (<a href="#obs-4-6-17">Observação 4.6.17</a>): campos pelas homogêneas, interação pelo dual, métrica do vácuo pelas
+                        hipóteses de homogeneidade e isotropia.</li>
+                </ul>
+
+                <p>
+                    Falta pôr o tempo nessa geometria. O tópico seguinte faz isso com as equações homogêneas, que, pela primeira regra,
+                    não usam métrica nenhuma: integradas no tempo, a lei de Faraday e a ausência de monopolos se tornam uma única
+                    equação $dF = 0$ no espaço-tempo $\mathbb{R}^4$, e a $2$-forma de Faraday ganha um potencial:
+                    <a href="[07] - Equações Homogêneas em 4D.html">4.7 As Equações Homogêneas no Espaço-Tempo</a>. Depois, no tópico
+                    4.8, a segunda e a terceira regras, aplicadas às equações inomogêneas em quatro dimensões, determinam a métrica de
+                    Minkowski.
+                </p>
 
             </div>
         </main>
@@ -176,6 +881,13 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#meios-materiais">Meios Materiais e a Métrica Induzida</a></li>
+                    <li><a href="#meios">Maxwell em meios</a></li>
+                    <li><a href="#relacoes-constitutivas">Meios lineares</a></li>
+                    <li><a href="#metrica-efetiva">A métrica efetiva</a></li>
+                    <li><a href="#geometria-dinamica">Geometria dinâmica</a></li>
+                    <li><a href="#fisica">Coisas escuras e torcidas</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
                 </ul>
             </div>
         </aside>

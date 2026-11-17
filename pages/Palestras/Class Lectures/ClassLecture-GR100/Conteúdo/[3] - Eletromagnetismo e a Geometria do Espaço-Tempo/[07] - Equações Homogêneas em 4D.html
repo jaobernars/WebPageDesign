@@ -164,9 +164,815 @@
             <div class="prose">
 
                 <h1 id="homogeneas-4d">4.7 As Equações Homogêneas no Espaço-Tempo</h1>
-                <p class="lead">A lei de Faraday e a ausência de monopolos integradas sobre regiões do espaço-tempo, a 2-forma de Faraday, dF = 0, o potencial e a liberdade de calibre, sem usar métrica.</p>
+                <p class="lead">A lei de Faraday e a ausência de monopolos integradas sobre regiões do espaço-tempo, a 2-forma de Faraday, $dF = 0$, o potencial e a liberdade de calibre, sem usar métrica.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>
+                    No tópico <a href="[05] - Maxwell em 3D com Formas.html">4.5</a> o tempo era um parâmetro: as formas viviam em
+                    $\mathbb{R}^3$ e as suas componentes dependiam de $t$, e a derivada $\partial_tB$ teve de ser definida à parte
+                    (<a href="[05] - Maxwell em 3D com Formas.html#def-4-5-3">Definição 4.5.3</a>). Essa descrição esconde que a lei de Faraday mistura duas formas de graus diferentes, $E$ e $B$, por
+                    meio de uma derivada temporal. Neste tópico o tempo vira coordenada: $x^0 = ct$, e o palco é $\mathbb{R}^4$ com as
+                    coordenadas $(x^0,x^1,x^2,x^3)$ e a orientação $dx^0\wedge dx^1\wedge dx^2\wedge dx^3$.
+                </p>
+
+                <p>
+                    Seguimos o argumento das notas. Integrar a lei de Faraday num intervalo de tempo transforma-a numa afirmação sobre
+                    o bordo de um cilindro $\Sigma\times[a,b]$ no espaço-tempo; junto com a ausência de monopolos, o resultado é que a
+                    integral de uma única $2$-forma, a $2$-forma de Faraday $F$, se anula sobre o bordo de toda região de dimensão 3.
+                    Pelo Teorema de Stokes, $dF = 0$; pelo lema de Poincaré do tópico
+                    <a href="[02] - O Lema de Poincaré.html">4.2</a>, $F = dA$. Usamos o <em>pullback</em> (ou retrocesso) e a derivada
+                    exterior do capítulo 3 (tópicos <a href="../[2] - Cálculo em Variedades Diferenciáveis/[12] - Formas Diferenciais.html">3.12</a>
+                    e <a href="../[2] - Cálculo em Variedades Diferenciáveis/[13] - Derivada Exterior.html">3.13</a>), a orientação
+                    (tópico <a href="../[2] - Cálculo em Variedades Diferenciáveis/[15] - Orientação.html">3.15</a>) e o lema de
+                    localização do 4.5 (<a href="[05] - Maxwell em 3D com Formas.html#lema-4-5-6">Lema 4.5.6</a>).
+                </p>
+
+                <p>
+                    <strong>Nenhuma métrica é usada nesta página.</strong> Só entram a estrutura diferenciável de $\mathbb{R}^4$, uma
+                    orientação e a topologia (para o lema de Poincaré). As figuras desenham o eixo do tempo "perpendicular" ao espaço,
+                    mas isso é só um desenho: nada do que segue depende de ângulos ou comprimentos. É a primeira regra de geometrização
+                    do tópico <a href="[06] - Meios Materiais e Métrica Induzida.html">4.6</a> (<a href="[06] - Meios Materiais e Métrica Induzida.html#obs-4-6-17">Observação 4.6.17</a>): os campos são dados
+                    pelas equações homogêneas, que não veem a geometria. A métrica do espaço-tempo só aparece no tópico 4.8, nas
+                    equações com fontes.
+                </p>
+
+                <h2 id="decomposicao-3-mais-1">Formas em $\mathbb{R}^4$ separadas em espaço e tempo</h2>
+
+                <p>
+                    Os índices latinos $i, j, k$ variam em $\{1,2,3\}$ (espaço) e os gregos $\mu, \nu, \dots$ em $\{0,1,2,3\}$
+                    (espaço-tempo), como na seção 7 das convenções do capítulo. Seja $U \subset \mathbb{R}^4$ aberto.
+                </p>
+
+                <div class="definition-box" id="def-4-7-1" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.7.1 (Formas espaciais; $d_s$ e $\partial_0$).</strong> Uma $k$-forma em $U$ é
+                        <em>espacial</em> se é da forma $\alpha = \sideset{}{'}\sum_{I}\alpha_I\,dx^I$ com todos os multi-índices
+                        $I \subset \{1,2,3\}$, isto é, sem $dx^0$; as componentes $\alpha_I$ podem depender de todas as coordenadas, $x^0$
+                        inclusive. Para $\alpha$ espacial definimos as formas espaciais</p>
+                    <p>$$ d_s\alpha = \sideset{}{'}\sum_I\sum_{i=1}^3\partial_i\alpha_I\,dx^i\wedge dx^I, \qquad
+                        \partial_0\alpha = \sideset{}{'}\sum_I\partial_0\alpha_I\,dx^I, $$</p>
+                    <p>a <em>derivada exterior espacial</em> e a derivada das componentes em relação a $x^0$.</p>
+                </div>
+
+                <p>
+                    Uma família $\alpha(t)$ de $k$-formas em $\mathbb{R}^3$ que depende suavemente de $t$, como os campos do tópico 4.5,
+                    é a mesma coisa que uma $k$-forma espacial em $\mathbb{R}^4$: as componentes passam a ser funções de $(x^0, x)$, com
+                    $x^0 = ct$. Nessa leitura, a derivada exterior do tópico 4.5 (só nas variáveis espaciais) é $d_s$, e a derivada
+                    temporal da <a href="[05] - Maxwell em 3D com Formas.html#def-4-5-3">Definição 4.5.3</a> é $\partial_t\alpha = c\,\partial_0\alpha$.
+                </p>
+
+                <div class="definition-box" id="prop-4-7-2">
+                    <p><strong>Proposição 4.7.2 (Decomposição 3+1).</strong> Toda $k$-forma $\omega$ em $U$, $k \ge 1$, se escreve de
+                        modo único como</p>
+                    <p>$$ \omega = \alpha + \beta\wedge dx^0, $$</p>
+                    <p>com $\alpha$ uma $k$-forma espacial e $\beta$ uma $(k-1)$-forma espacial.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Escreva $\omega = \sideset{}{'}\sum_I\omega_I\,dx^I$ e separe os multi-índices crescentes em
+                    dois grupos: os que não contêm $0$ e os que contêm. Os primeiros dão $\alpha$. Um multi-índice crescente que contém
+                    $0$ é $(0, J)$ com $J \subset \{1,2,3\}$ crescente de comprimento $k-1$, e
+                    $dx^0\wedge dx^J = (-1)^{k-1}dx^J\wedge dx^0$ (passar $dx^0$ por $k-1$ covetores). Logo os segundos dão
+                    $\beta\wedge dx^0$ com $\beta = (-1)^{k-1}\sideset{}{'}\sum_J\omega_{0J}\,dx^J$. Para a unicidade, se
+                    $\alpha + \beta\wedge dx^0 = 0$, os termos de $\alpha$ e os de $\beta\wedge dx^0$ usam elementos de base distintos
+                    (com e sem $dx^0$), que são linearmente independentes; então $\alpha = 0$ e $\beta\wedge dx^0 = 0$, e como
+                    $dx^J\wedge dx^0 = \pm dx^{(0,J)}$ são linearmente independentes para $J$ distintos, $\beta = 0$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="prop-4-7-3">
+                    <p><strong>Proposição 4.7.3 (A derivada exterior na decomposição).</strong> Se $\omega = \alpha + \beta\wedge dx^0$
+                        como na <a href="#prop-4-7-2">Proposição 4.7.2</a>, com $\alpha$ de grau $k$, então</p>
+                    <p>$$ d\omega = d_s\alpha + \big((-1)^k\,\partial_0\alpha + d_s\beta\big)\wedge dx^0. \tag{4.7.1} $$</p>
+                    <p>A parte espacial de $d\omega$ é $d_s\alpha$ e a parte com $dx^0$ é $(-1)^k\partial_0\alpha + d_s\beta$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela <a href="../[2] - Cálculo em Variedades Diferenciáveis/[13] - Derivada Exterior.html#def-3-13-1">Definição 3.13.1</a>, $d(\alpha_I\,dx^I) = d\alpha_I\wedge dx^I$, e
+                    $d\alpha_I = \partial_0\alpha_I\,dx^0 + \sum_{i=1}^3\partial_i\alpha_I\,dx^i$. Somando em $I$,
+                    $d\alpha = d_s\alpha + dx^0\wedge\partial_0\alpha$. Passar $dx^0$ para a direita de uma $k$-forma custa $(-1)^k$:
+                    $dx^0\wedge\partial_0\alpha = (-1)^k\,\partial_0\alpha\wedge dx^0$. Para o segundo termo, pela regra de Leibniz e
+                    $d(dx^0) = 0$, $d(\beta\wedge dx^0) = d\beta\wedge dx^0 = \big(d_s\beta + dx^0\wedge\partial_0\beta\big)\wedge dx^0 = d_s\beta\wedge dx^0$,
+                    porque $dx^0\wedge dx^0 = 0$. Somando as duas partes obtemos (4.7.1). $\blacksquare$
+                </p>
+
+                <p>
+                    O sinal $(-1)^k$ é a parte delicada: para uma $1$-forma espacial, $d\alpha$ contém $-\partial_0\alpha\wedge dx^0$; para uma
+                    $2$-forma espacial, $+\partial_0\alpha\wedge dx^0$ (<a href="#exr-4-7-2">Exercício 4.7.2</a>). A fórmula foi conferida em sympy para formas genéricas
+                    de graus $1$, $2$ e $3$.
+                </p>
+
+                <p id="obs-4-7-4"><strong>Observação 4.7.4 (A decomposição depende das coordenadas).</strong> Ser espacial é uma
+                    propriedade relativa a uma carta: depende da função $x^0$ (que diz quais pontos são simultâneos) e também das
+                    coordenadas espaciais (que dizem qual é a direção $\partial_0$ em que se deriva). Uma mudança como
+                    $\tilde x^0 = x^0 + v\,x^1/c$ muda $dx^0$, e a parte espacial de uma forma deixa de ser a mesma. Por isso a separação de
+                    $F$ em "campo elétrico" e "campo magnético", que vamos fazer, depende do sistema de coordenadas usado; a forma $F$ não
+                    depende. Quais mudanças de coordenadas são as fisicamente permitidas é uma pergunta sobre a métrica, respondida no
+                    tópico 4.8.</p>
+
+                <h2 id="cilindro">A lei de Faraday integrada no tempo</h2>
+
+                <p>
+                    Seja $\Sigma \subset \mathbb{R}^3$ uma superfície compacta, orientada, com bordo $\partial\Sigma$ (orientado pela regra
+                    "normal exterior primeiro"), e sejam $E$, $B$ como no tópico 4.5, agora vistos como formas espaciais em $\mathbb{R}^4$.
+                    Escrevemos $\Phi(t) = \int_\Sigma B(t)$ para o fluxo magnético por $\Sigma$ no instante $t$. A lei de Faraday diz
+                    $\oint_{\partial\Sigma}E(t) = -\Phi'(t)$ para todo $t$. Integrando de $t = a$ a $t = b$,
+                </p>
+
+                <p>
+                    $$ \int_a^b\Big(\oint_{\partial\Sigma}E(t)\Big)\,dt = -\big(\Phi(b) - \Phi(a)\big)
+                    = -\int_\Sigma B(b) + \int_\Sigma B(a). $$
+                </p>
+
+                <p>
+                    O lado direito envolve $\Sigma$ em dois instantes; o esquerdo, o bordo de $\Sigma$ durante todo o intervalo. Com o
+                    tempo como coordenada, os três conjuntos são pedaços do bordo de uma única região de $\mathbb{R}^4$.
+                </p>
+
+                <div class="definition-box" id="def-4-7-5" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.7.5 (O cilindro no espaço-tempo).</strong> Para $a \lt b$, o <em>cilindro</em> sobre $\Sigma$ é</p>
+                    <p>$$ S = \Sigma\times[a,b] = \big\{(x^0, p) \in \mathbb{R}^4 : ca \le x^0 \le cb,\ p \in \Sigma\big\}, $$</p>
+                    <p>com as <em>tampas</em> $C_a = \{ca\}\times\Sigma$ e $C_b = \{cb\}\times\Sigma$ e a <em>lateral</em>
+                        $L = \{(x^0, p) : ca \le x^0 \le cb,\ p \in \partial\Sigma\}$. Orientamos $S$ pondo o tempo primeiro: uma base
+                        $(\partial_0, E_1, E_2)$ de $T_{(x^0,p)}S$, com $E_1, E_2$ tangentes a $\Sigma$, é positiva se, e só se, $(E_1, E_2)$
+                        é positiva em $T_p\Sigma$. As tampas são orientadas como cópias de $\Sigma$ pela aplicação $p \mapsto (x^0, p)$.</p>
+                </div>
+
+                <p>
+                    $S$ é uma variedade de dimensão 3 com bordo e com <em>cantos</em>: as arestas $\{ca\}\times\partial\Sigma$ e
+                    $\{cb\}\times\partial\Sigma$, onde as tampas encontram a lateral. A Figura 4.7.1 mostra o cilindro com uma dimensão
+                    espacial suprimida.
+                </p>
+
+                <figure class="lecture-figure" id="fig-4-7-1" style="overflow-x: auto; overflow-y: hidden;">
+                    <svg viewBox="0 0 640 300" role="img" style="min-width: 560px;" aria-label="O cilindro Sigma vezes o intervalo de a a b no espaço-tempo, com uma dimensão espacial suprimida. O eixo vertical é x zero, com as marcas c a e c b. No plano espacial, embaixo, está a superfície Sigma com o bordo orientado. Acima dela, o cilindro: a tampa de cima C b, com a normal para fora apontando para cima, a tampa de baixo C a, com a normal para fora apontando para baixo, e a lateral L, com a normal para fora n, horizontal.">
+<defs><marker id="arr-4-7-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<path d="M70,292 L520,292 L590,236 L140,236 Z" class="fig-guide"/>
+<text x="578" y="286" text-anchor="end" class="fig-label fig-small">espaço</text>
+<line x1="150" y1="276" x2="150" y2="34" class="fig-axis" marker-end="url(#arr-4-7-1)"/>
+<text x="140" y="40" text-anchor="end" class="fig-label fig-it">x⁰</text>
+<line x1="145" y1="196" x2="155" y2="196" class="fig-axis"/>
+<text x="140" y="201" text-anchor="end" class="fig-label fig-it">ca</text>
+<line x1="158" y1="196" x2="282" y2="196" class="fig-guide fig-dashed"/>
+<line x1="145" y1="82" x2="155" y2="82" class="fig-axis"/>
+<text x="140" y="87" text-anchor="end" class="fig-label fig-it">cb</text>
+<line x1="158" y1="82" x2="282" y2="82" class="fig-guide fig-dashed"/>
+<path d="M430,262 L429.9,260.9 L429.4,259.7 L428.8,258.6 L427.8,257.5 L426.6,256.4 L425.1,255.4 L423.3,254.3 L421.3,253.3 L419.1,252.4 L416.6,251.4 L413.9,250.5 L411,249.7 L407.9,248.9 L404.6,248.1 L401.1,247.4 L397.5,246.8 L393.7,246.2 L389.8,245.7 L385.8,245.3 L381.6,244.9 L377.4,244.6 L373.1,244.3 L368.8,244.1 L364.4,244 L360,244 L355.6,244 L351.2,244.1 L346.9,244.3 L342.6,244.6 L338.4,244.9 L334.2,245.3 L330.2,245.7 L326.3,246.2 L322.5,246.8 L318.9,247.4 L315.4,248.1 L312.1,248.9 L309,249.7 L306.1,250.5 L303.4,251.4 L300.9,252.4 L298.7,253.3 L296.7,254.3 L294.9,255.4 L293.4,256.4 L292.2,257.5 L291.2,258.6 L290.6,259.7 L290.1,260.9 L290,262 L290.1,263.1 L290.6,264.3 L291.2,265.4 L292.2,266.5 L293.4,267.6 L294.9,268.6 L296.7,269.7 L298.7,270.7 L300.9,271.6 L303.4,272.6 L306.1,273.5 L309,274.3 L312.1,275.1 L315.4,275.9 L318.9,276.6 L322.5,277.2 L326.3,277.8 L330.2,278.3 L334.2,278.7 L338.4,279.1 L342.6,279.4 L346.9,279.7 L351.2,279.9 L355.6,280 L360,280 L364.4,280 L368.8,279.9 L373.1,279.7 L377.4,279.4 L381.6,279.1 L385.8,278.7 L389.8,278.3 L393.7,277.8 L397.5,277.2 L401.1,276.6 L404.6,275.9 L407.9,275.1 L411,274.3 L413.9,273.5 L416.6,272.6 L419.1,271.6 L421.3,270.7 L423.3,269.7 L425.1,268.6 L426.6,267.6 L427.8,266.5 L428.8,265.4 L429.4,264.3 L429.9,263.1 L430,262 Z" class="fig-band"/>
+<path d="M430,262 L429.8,260.6 L429.1,259.2 L428.1,257.8 L426.6,256.4 L424.7,255.1 L422.4,253.8 L419.7,252.6 L416.6,251.4 L413.2,250.3 L409.5,249.3 L405.5,248.3 L401.1,247.4 L396.6,246.7 L391.8,246 L386.8,245.4 L381.6,244.9 L376.3,244.5 L371,244.2 L365.5,244.1 L360,244 L354.5,244.1 L349,244.2 L343.7,244.5 L338.4,244.9 L333.2,245.4 L328.2,246 L323.4,246.7 L318.9,247.4 L314.5,248.3 L310.5,249.3 L306.8,250.3 L303.4,251.4 L300.3,252.6 L297.6,253.8 L295.3,255.1 L293.4,256.4 L291.9,257.8 L290.9,259.2 L290.2,260.6 L290,262 L290.2,263.4 L290.9,264.8 L291.9,266.2 L293.4,267.6 L295.3,268.9 L297.6,270.2 L300.3,271.4 L303.4,272.6 L306.8,273.7 L310.5,274.7 L314.5,275.7 L318.9,276.6 L323.4,277.3 L328.2,278 L333.2,278.6 L338.4,279.1 L343.7,279.5 L349,279.8 L354.5,279.9 L360,280 L365.5,279.9 L371,279.8 L376.3,279.5 L381.6,279.1 L386.8,278.6 L391.8,278 L396.6,277.3 L401.1,276.6 L405.5,275.7 L409.5,274.7 L413.2,273.7 L416.6,272.6 L419.7,271.4 L422.4,270.2 L424.7,268.9 L426.6,267.6 L428.1,266.2 L429.1,264.8 L429.8,263.4 L430,262" class="fig-curve"/>
+<text x="280" y="267" text-anchor="end" class="fig-label fig-it">Σ</text>
+<line x1="430" y1="262" x2="430" y2="196" class="fig-guide fig-dashed"/>
+<line x1="290" y1="262" x2="290" y2="196" class="fig-guide fig-dashed"/>
+<line x1="290" y1="82" x2="290" y2="196" class="fig-curve"/>
+<line x1="430" y1="82" x2="430" y2="196" class="fig-curve"/>
+<path d="M430,196 L429.9,195.3 L429.8,194.6 L429.5,193.9 L429.1,193.2 L428.7,192.5 L428.1,191.8 L427.4,191.1 L426.6,190.4 L425.7,189.8 L424.7,189.1 L423.6,188.5 L422.4,187.8 L421.1,187.2 L419.7,186.6 L418.2,186 L416.6,185.4 L415,184.9 L413.2,184.3 L411.4,183.8 L409.5,183.3 L407.5,182.8 L405.5,182.3 L403.3,181.9 L401.1,181.4 L398.9,181 L396.6,180.7 L394.2,180.3 L391.8,180 L389.3,179.7 L386.8,179.4 L384.2,179.1 L381.6,178.9 L379,178.7 L376.3,178.5 L373.7,178.3 L371,178.2 L368.2,178.1 L365.5,178.1 L362.7,178 L360,178 L357.3,178 L354.5,178.1 L351.8,178.1 L349,178.2 L346.3,178.3 L343.7,178.5 L341,178.7 L338.4,178.9 L335.8,179.1 L333.2,179.4 L330.7,179.7 L328.2,180 L325.8,180.3 L323.4,180.7 L321.1,181 L318.9,181.4 L316.7,181.9 L314.5,182.3 L312.5,182.8 L310.5,183.3 L308.6,183.8 L306.8,184.3 L305,184.9 L303.4,185.4 L301.8,186 L300.3,186.6 L298.9,187.2 L297.6,187.8 L296.4,188.5 L295.3,189.1 L294.3,189.8 L293.4,190.4 L292.6,191.1 L291.9,191.8 L291.3,192.5 L290.9,193.2 L290.5,193.9 L290.2,194.6 L290.1,195.3 L290,196" class="fig-curve fig-dashed"/>
+<path d="M290,196 L290.1,196.7 L290.2,197.4 L290.5,198.1 L290.9,198.8 L291.3,199.5 L291.9,200.2 L292.6,200.9 L293.4,201.6 L294.3,202.2 L295.3,202.9 L296.4,203.5 L297.6,204.2 L298.9,204.8 L300.3,205.4 L301.8,206 L303.4,206.6 L305,207.1 L306.8,207.7 L308.6,208.2 L310.5,208.7 L312.5,209.2 L314.5,209.7 L316.7,210.1 L318.9,210.6 L321.1,211 L323.4,211.3 L325.8,211.7 L328.2,212 L330.7,212.3 L333.2,212.6 L335.8,212.9 L338.4,213.1 L341,213.3 L343.7,213.5 L346.3,213.7 L349,213.8 L351.8,213.9 L354.5,213.9 L357.3,214 L360,214 L362.7,214 L365.5,213.9 L368.2,213.9 L371,213.8 L373.7,213.7 L376.3,213.5 L379,213.3 L381.6,213.1 L384.2,212.9 L386.8,212.6 L389.3,212.3 L391.8,212 L394.2,211.7 L396.6,211.3 L398.9,211 L401.1,210.6 L403.3,210.1 L405.5,209.7 L407.5,209.2 L409.5,208.7 L411.4,208.2 L413.2,207.7 L415,207.1 L416.6,206.6 L418.2,206 L419.7,205.4 L421.1,204.8 L422.4,204.2 L423.6,203.5 L424.7,202.9 L425.7,202.2 L426.6,201.6 L427.4,200.9 L428.1,200.2 L428.7,199.5 L429.1,198.8 L429.5,198.1 L429.8,197.4 L429.9,196.7 L430,196" class="fig-curve"/>
+<path d="M430,82 L429.9,80.9 L429.4,79.7 L428.8,78.6 L427.8,77.5 L426.6,76.4 L425.1,75.4 L423.3,74.3 L421.3,73.3 L419.1,72.4 L416.6,71.4 L413.9,70.5 L411,69.7 L407.9,68.9 L404.6,68.1 L401.1,67.4 L397.5,66.8 L393.7,66.2 L389.8,65.7 L385.8,65.3 L381.6,64.9 L377.4,64.6 L373.1,64.3 L368.8,64.1 L364.4,64 L360,64 L355.6,64 L351.2,64.1 L346.9,64.3 L342.6,64.6 L338.4,64.9 L334.2,65.3 L330.2,65.7 L326.3,66.2 L322.5,66.8 L318.9,67.4 L315.4,68.1 L312.1,68.9 L309,69.7 L306.1,70.5 L303.4,71.4 L300.9,72.4 L298.7,73.3 L296.7,74.3 L294.9,75.4 L293.4,76.4 L292.2,77.5 L291.2,78.6 L290.6,79.7 L290.1,80.9 L290,82 L290.1,83.1 L290.6,84.3 L291.2,85.4 L292.2,86.5 L293.4,87.6 L294.9,88.6 L296.7,89.7 L298.7,90.7 L300.9,91.6 L303.4,92.6 L306.1,93.5 L309,94.3 L312.1,95.1 L315.4,95.9 L318.9,96.6 L322.5,97.2 L326.3,97.8 L330.2,98.3 L334.2,98.7 L338.4,99.1 L342.6,99.4 L346.9,99.7 L351.2,99.9 L355.6,100 L360,100 L364.4,100 L368.8,99.9 L373.1,99.7 L377.4,99.4 L381.6,99.1 L385.8,98.7 L389.8,98.3 L393.7,97.8 L397.5,97.2 L401.1,96.6 L404.6,95.9 L407.9,95.1 L411,94.3 L413.9,93.5 L416.6,92.6 L419.1,91.6 L421.3,90.7 L423.3,89.7 L425.1,88.6 L426.6,87.6 L427.8,86.5 L428.8,85.4 L429.4,84.3 L429.9,83.1 L430,82 Z" class="fig-band"/>
+<path d="M430,82 L429.8,80.6 L429.1,79.2 L428.1,77.8 L426.6,76.4 L424.7,75.1 L422.4,73.8 L419.7,72.6 L416.6,71.4 L413.2,70.3 L409.5,69.3 L405.5,68.3 L401.1,67.4 L396.6,66.7 L391.8,66 L386.8,65.4 L381.6,64.9 L376.3,64.5 L371,64.2 L365.5,64.1 L360,64 L354.5,64.1 L349,64.2 L343.7,64.5 L338.4,64.9 L333.2,65.4 L328.2,66 L323.4,66.7 L318.9,67.4 L314.5,68.3 L310.5,69.3 L306.8,70.3 L303.4,71.4 L300.3,72.6 L297.6,73.8 L295.3,75.1 L293.4,76.4 L291.9,77.8 L290.9,79.2 L290.2,80.6 L290,82 L290.2,83.4 L290.9,84.8 L291.9,86.2 L293.4,87.6 L295.3,88.9 L297.6,90.2 L300.3,91.4 L303.4,92.6 L306.8,93.7 L310.5,94.7 L314.5,95.7 L318.9,96.6 L323.4,97.3 L328.2,98 L333.2,98.6 L338.4,99.1 L343.7,99.5 L349,99.8 L354.5,99.9 L360,100 L365.5,99.9 L371,99.8 L376.3,99.5 L381.6,99.1 L386.8,98.6 L391.8,98 L396.6,97.3 L401.1,96.6 L405.5,95.7 L409.5,94.7 L413.2,93.7 L416.6,92.6 L419.7,91.4 L422.4,90.2 L424.7,88.9 L426.6,87.6 L428.1,86.2 L429.1,84.8 L429.8,83.4 L430,82" class="fig-curve"/>
+<line x1="373.9" y1="99.6" x2="377.3" y2="99.4" class="fig-curve" marker-end="url(#arr-4-7-1)"/>
+<line x1="373.9" y1="279.6" x2="377.3" y2="279.4" class="fig-curve" marker-end="url(#arr-4-7-1)"/>
+<line x1="360" y1="82" x2="360" y2="34" class="fig-axis" marker-end="url(#arr-4-7-1)"/>
+<text x="368" y="46" class="fig-label fig-small">+∂₀</text>
+<line x1="390" y1="190" x2="390" y2="232" class="fig-axis" marker-end="url(#arr-4-7-1)"/>
+<text x="398" y="230" class="fig-label fig-small">−∂₀</text>
+<line x1="430" y1="139" x2="482" y2="139" class="fig-axis" marker-end="url(#arr-4-7-1)"/>
+<text x="486" y="144" class="fig-label fig-it">n</text>
+<text x="440" y="74" class="fig-label fig-it">Cb</text>
+<text x="280" y="216" text-anchor="end" class="fig-label fig-it">Ca</text>
+<text x="300" y="144" class="fig-label fig-it">L</text>
+</svg>
+                    <figcaption><strong>Figura 4.7.1.</strong> O cilindro $S = \Sigma\times[a,b]$ no espaço-tempo, com uma dimensão espacial
+                        suprimida ($\Sigma$ aparece como um disco do plano espacial). As tampas $C_b$ e $C_a$ ficam em $x^0 = cb$ e
+                        $x^0 = ca$, com as normais exteriores $+\partial_0$ e $-\partial_0$; a lateral $L$ tem a normal exterior $n$, a
+                        de $\Sigma$ no seu bordo. O desenho põe o tempo "perpendicular" ao espaço, mas nada no texto usa ângulos.
+                        Adaptada de Bamberg e Sternberg, v. 2 (lá a base é uma curva; aqui, uma superfície).</figcaption>
+                </figure>
+
+                <div class="definition-box" id="prop-4-7-6">
+                    <p><strong>Proposição 4.7.6 (A orientação do bordo do cilindro).</strong> Com a orientação induzida em $\partial S$
+                        pela regra "normal exterior primeiro":</p>
+                    <ol type="a">
+                        <li>$C_b$ tem a orientação de $\Sigma$ e $C_a$ tem a orientação oposta;</li>
+                        <li>em $L$, se $T$ é um vetor tangente a $\partial\Sigma$ positivamente orientado, a base $(T, \partial_0)$ é
+                            positiva (e $(\partial_0, T)$ é negativa).</li>
+                    </ol>
+                    <p>Assim, para toda $2$-forma $\omega$ contínua em $S$, com as tampas orientadas como $\Sigma$,</p>
+                    <p>$$ \oint_{\partial S}\omega = \int_{C_b}\omega - \int_{C_a}\omega + \int_L\omega. $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela regra (item 11 das convenções), uma base $(E_1, E_2)$ de um ponto do bordo é positiva se, e
+                    só se, $(\nu, E_1, E_2)$ é positiva em $S$, com $\nu$ apontando para fora. (a) Em $C_b$, $\nu = +\partial_0$, e
+                    $(\partial_0, E_1, E_2)$ é positiva em $S$ exatamente quando $(E_1, E_2)$ é positiva em $\Sigma$. Em $C_a$,
+                    $\nu = -\partial_0$, e $(-\partial_0, E_1, E_2)$ é positiva quando $(E_1, E_2)$ é <em>negativa</em> em $\Sigma$.
+                    (b) Num ponto $(x^0, q)$ de $L$, $q \in \partial\Sigma$, o vetor que aponta para fora de $S$ é $\nu = n$, o vetor de
+                    $T_q\Sigma$ que aponta para fora de $\Sigma$. Pela orientação de $\partial\Sigma$, $(n, T)$ é positiva em $\Sigma$, logo
+                    $(\partial_0, n, T)$ é positiva em $S$. A base $(n, T, \partial_0)$ é uma permutação cíclica de $(\partial_0, n, T)$, de
+                    sinal $+1$, e portanto é positiva: pela regra, $(T, \partial_0)$ é positiva em $L$. Já $(n, \partial_0, T)$ difere de
+                    $(\partial_0, n, T)$ por uma transposição, e $(\partial_0, T)$ é negativa. As arestas têm dimensão 1 e não contribuem
+                    para integrais de $2$-formas, e a fórmula das integrais segue de (a) e (b). $\blacksquare$
+                </p>
+
+                <p>
+                    Em termos de parametrizações: se $\gamma: [0, \ell] \to \partial\Sigma$ percorre (um pedaço de) $\partial\Sigma$ no sentido
+                    positivo, então $\psi(s, x^0) = (x^0, \gamma(s))$ é uma parametrização positiva de $L$ com a ordem $(s, x^0)$: primeiro o
+                    bordo de $\Sigma$, depois o tempo. A conta com um disco, em que todas as integrais foram calculadas em sympy, confirma
+                    os sinais: com a orientação $(T, \partial_0)$ em $L$ vale $\int_Sd\omega = \int_{C_b}\omega - \int_{C_a}\omega + \int_L\omega$
+                    para uma $2$-forma $\omega$ genérica, e com a orientação oposta a igualdade falha.
+                </p>
+
+                <div class="definition-box" id="prop-4-7-7">
+                    <p><strong>Proposição 4.7.7 (<em>Pullbacks</em> que se anulam).</strong> Sejam $\iota$ as inclusões.</p>
+                    <ol type="a">
+                        <li>Em cada tampa, e em qualquer subconjunto de uma fatia $\{x^0 = \text{const}\}$, $\iota^*dx^0 = 0$; logo
+                            $\iota^*(\beta\wedge dx^0) = 0$ para toda forma $\beta$.</li>
+                        <li>Na lateral $L$, $\iota^*\beta = 0$ para toda $2$-forma espacial $\beta$.</li>
+                    </ol>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) A função $x^0\circ\iota$ é constante, e pela naturalidade de $d$ (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[13] - Derivada Exterior.html#teo-3-13-7">Teorema 3.13.7</a>),
+                    $\iota^*dx^0 = d(x^0\circ\iota) = 0$; o <em>pullback</em> é multiplicativo (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[12] - Formas Diferenciais.html#teo-3-12-12">Teorema 3.12.12</a>), e
+                    $\iota^*(\beta\wedge dx^0) = \iota^*\beta\wedge0 = 0$. (b) Basta calcular numa parametrização local
+                    $\psi(s, x^0) = (x^0, \gamma(s))$ de $L$. Como $\psi^*dx^i = d(\gamma^i(s)) = (\gamma^i)'(s)\,ds$ para $i = 1, 2, 3$,
+                </p>
+
+                <p>
+                    $$ \psi^*(dx^i\wedge dx^j) = (\gamma^i)'(\gamma^j)'\,ds\wedge ds = 0, $$
+                </p>
+
+                <p>
+                    e $\psi^*\beta = \sum_{i\lt j}(\beta_{ij}\circ\psi)\,\psi^*(dx^i\wedge dx^j) = 0$. Em palavras: em $L$ só uma direção
+                    espacial é tangente, e uma $2$-forma espacial precisa de duas. $\blacksquare$
+                </p>
+
+                <p>
+                    Estes são os fatos que as notas exprimem como "$dt = 0$ nas tampas" e "$d\mathbf{a} = 0$ na lateral". Com eles, a lei de
+                    Faraday integrada no tempo vira uma integral sobre o bordo inteiro do cilindro.
+                </p>
+
+                <div class="definition-box" id="prop-4-7-8">
+                    <p><strong>Proposição 4.7.8 (Faraday no cilindro).</strong> Sejam $E$ e $B$ formas espaciais suaves de graus $1$ e $2$
+                        em $\mathbb{R}^4$ e $S = \Sigma\times[a,b]$. Se a lei de Faraday vale para $\Sigma$ em todo $t \in [a,b]$, então</p>
+                    <p>$$ \int_L\frac1c\,E\wedge dx^0 + \int_{C_b}B - \int_{C_a}B = 0, \tag{4.7.2} $$</p>
+                    <p>e, equivalentemente,</p>
+                    <p>$$ \oint_{\partial S}\Big(\frac1c\,E\wedge dx^0 + B\Big) = 0. \tag{4.7.3} $$</p>
+                    <p>Reciprocamente, se (4.7.2) vale para todo intervalo $[a,b]$, a lei de Faraday vale para $\Sigma$ em todo $t$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela <a href="#prop-4-7-6">Proposição 4.7.6</a>(b), $\psi(s, x^0) = (x^0, \gamma(s))$, $s \in [0,\ell]$, $x^0 \in [ca, cb]$, é uma
+                    parametrização positiva de $L$ (quando $\partial\Sigma$ tem várias componentes, somamos uma integral por componente).
+                    Como $\psi^*dx^0 = dx^0$ e $\psi^*E = E_i(x^0, \gamma(s))\,(\gamma^i)'(s)\,ds$,
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    \int_L\frac1c\,E\wedge dx^0 &= \int_{ca}^{cb}\!\!\int_0^\ell\frac1c\,E_i(x^0,\gamma(s))\,(\gamma^i)'(s)\,ds\,dx^0\\
+                    &= \int_a^b\Big(\oint_{\partial\Sigma}E(t)\Big)\,dt,
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    trocando $x^0 = ct$ (Fubini para a troca de ordem). As tampas, orientadas como $\Sigma$, dão
+                    $\int_{C_b}B = \Phi(b)$ e $\int_{C_a}B = \Phi(a)$. Logo o lado esquerdo de (4.7.2) é
+                    $\int_a^b\oint_{\partial\Sigma}E\,dt + \Phi(b) - \Phi(a)$, que é zero pela lei de Faraday integrada (a conta antes da
+                    <a href="#def-4-7-5">Definição 4.7.5</a>). Para (4.7.3), use a <a href="#prop-4-7-6">Proposição 4.7.6</a> e a <a href="#prop-4-7-7">Proposição 4.7.7</a>: nas tampas $\frac1cE\wedge dx^0$ tem <em>pullback</em>
+                    nulo, e na lateral $B$ tem <em>pullback</em> nulo, de modo que</p>
+
+                <p>
+                    $$ \oint_{\partial S}\Big(\frac1c\,E\wedge dx^0 + B\Big) = \int_L\frac1c\,E\wedge dx^0 + \int_{C_b}B - \int_{C_a}B. $$
+                </p>
+
+                <p>
+                    Reciprocamente, se (4.7.2) vale para todo $[a,b]$, fixe $a$ e derive em $b$: a função $t \mapsto \oint_{\partial\Sigma}E(t)$ é
+                    contínua, e o teorema fundamental do cálculo dá $\oint_{\partial\Sigma}E(b) + \Phi'(b) = 0$ para todo $b$ (a derivada de
+                    $\Phi$ existe pela <a href="[05] - Maxwell em 3D com Formas.html#prop-4-5-4">Proposição 4.5.4</a>). $\blacksquare$
+                </p>
+
+                <p>
+                    Para passar de integrais no bordo a uma equação diferencial, precisamos do Teorema de Stokes numa região com
+                    arestas. O Teorema de Stokes para variedades com bordo é o assunto do tópico
+                    <a href="../[2] - Cálculo em Variedades Diferenciáveis/[18] - Teorema de Stokes Geral.html">3.18</a>; a versão com
+                    cantos é um lema pesado, que citamos.
+                </p>
+
+                <div class="definition-box" id="teo-4-7-9">
+                    <p><strong>Teorema 4.7.9 (Stokes em variedades com cantos; citado).</strong> Seja $N$ uma variedade compacta orientada
+                        de dimensão $k$ com cantos (por exemplo, um cilindro $\Sigma\times[a,b]$ ou um cubo), e seja $\omega$ uma
+                        $(k-1)$-forma suave numa vizinhança de $N$. Então $\int_Nd\omega = \int_{\partial N}\omega$, onde $\partial N$ é a
+                        união das faces de $N$, cada uma com a orientação induzida ("normal exterior primeiro"); os cantos, de dimensão
+                        menor que $k-1$, não contribuem.</p>
+                </div>
+
+                <p>
+                    <em>Ideia da demonstração.</em> Uma partição da unidade reduz a integral a formas com suporte numa carta de canto,
+                    modelada em $[0,\infty)^m\times\mathbb{R}^{k-m}$. Ali $d\omega$ é uma soma de derivadas parciais, e o teorema
+                    fundamental do cálculo em cada variável transforma cada uma numa integral sobre a face $\{x^i = 0\}$, com o sinal
+                    que é exatamente o da orientação induzida; as interseções de faces têm medida nula nas faces. Outra saída seria
+                    arredondar as arestas do cilindro e usar o Stokes com bordo liso, passando ao limite; não fazemos isso aqui. Ver
+                    Lee, <em>Introduction to Smooth Manifolds</em>, cap. 16.
+                </p>
+
+                <h2 id="faraday-2-forma">A 2-forma de Faraday</h2>
+
+                <p>
+                    O integrando de (4.7.3) é uma única $2$-forma em $\mathbb{R}^4$, que junta o campo elétrico e o magnético.
+                </p>
+
+                <div class="definition-box" id="def-4-7-10" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.7.10 (A $2$-forma de Faraday).</strong> Para $E$ e $B$ formas espaciais de graus $1$ e $2$
+                        em $\mathbb{R}^4$, a <strong>$2$-forma de Faraday</strong> é</p>
+                    <p>$$ F = E\wedge dt + B = \frac1c\,E\wedge dx^0 + B, \tag{4.7.4} $$</p>
+                    <p>com $dt = dx^0/c$. Pela <a href="#prop-4-7-2">Proposição 4.7.2</a>, $F$ determina $E$ e $B$: $B$ é a sua parte espacial e $\frac1cE$ é a
+                        forma que multiplica $dx^0$.</p>
+                </div>
+
+                <p>
+                    A <a href="#prop-4-7-8">Proposição 4.7.8</a> diz que a lei de Faraday equivale a $\oint_{\partial S}F = 0$ para todo cilindro. Mas os cilindros não
+                    são as únicas regiões de dimensão 3 do espaço-tempo. Uma região $R$ contida numa fatia $\{x^0 = \text{const}\}$, isto
+                    é, uma região comum do espaço num instante fixo, não se estende no tempo (Figura 4.7.2). Para ela, o integrando muda.
+                </p>
+
+                <figure class="lecture-figure" id="fig-4-7-2" style="overflow-x: auto; overflow-y: hidden;">
+                    <svg viewBox="0 0 640 290" role="img" style="min-width: 560px;" aria-label="Dois painéis, cada um com o eixo vertical x zero e uma dimensão espacial suprimida. No painel a, um cilindro S igual a Sigma vezes o intervalo de a a b, que se estende na direção do tempo. No painel b, uma fatia horizontal x zero igual a t zero e, dentro dela, uma região espacial R com o bordo del R; a região não se estende no tempo.">
+<defs><marker id="arr-4-7-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="60" y1="268" x2="60" y2="40" class="fig-axis" marker-end="url(#arr-4-7-2)"/>
+<text x="52" y="46" text-anchor="end" class="fig-label fig-it">x⁰</text>
+<line x1="117" y1="92" x2="117" y2="212" class="fig-curve"/>
+<line x1="233" y1="92" x2="233" y2="212" class="fig-curve"/>
+<path d="M233,212 L233,211.4 L232.8,210.8 L232.6,210.2 L232.3,209.7 L231.9,209.1 L231.4,208.5 L230.8,207.9 L230.2,207.4 L229.4,206.8 L228.6,206.3 L227.7,205.7 L226.7,205.2 L225.6,204.7 L224.5,204.2 L223.2,203.7 L221.9,203.2 L220.5,202.7 L219.1,202.3 L217.6,201.8 L216,201.4 L214.4,201 L212.7,200.6 L210.9,200.2 L209.1,199.9 L207.2,199.5 L205.3,199.2 L203.3,198.9 L201.3,198.6 L199.3,198.4 L197.2,198.1 L195.1,197.9 L192.9,197.7 L190.7,197.6 L188.5,197.4 L186.3,197.3 L184.1,197.2 L181.8,197.1 L179.6,197 L177.3,197 L175,197 L172.7,197 L170.4,197 L168.2,197.1 L165.9,197.2 L163.7,197.3 L161.5,197.4 L159.3,197.6 L157.1,197.7 L154.9,197.9 L152.8,198.1 L150.7,198.4 L148.7,198.6 L146.7,198.9 L144.7,199.2 L142.8,199.5 L140.9,199.9 L139.1,200.2 L137.3,200.6 L135.6,201 L134,201.4 L132.4,201.8 L130.9,202.3 L129.5,202.7 L128.1,203.2 L126.8,203.7 L125.5,204.2 L124.4,204.7 L123.3,205.2 L122.3,205.7 L121.4,206.3 L120.6,206.8 L119.8,207.4 L119.2,207.9 L118.6,208.5 L118.1,209.1 L117.7,209.7 L117.4,210.2 L117.2,210.8 L117,211.4 L117,212" class="fig-curve fig-dashed"/>
+<path d="M117,212 L117,212.6 L117.2,213.2 L117.4,213.8 L117.7,214.3 L118.1,214.9 L118.6,215.5 L119.2,216.1 L119.8,216.6 L120.6,217.2 L121.4,217.7 L122.3,218.3 L123.3,218.8 L124.4,219.3 L125.5,219.8 L126.8,220.3 L128.1,220.8 L129.5,221.3 L130.9,221.7 L132.4,222.2 L134,222.6 L135.6,223 L137.3,223.4 L139.1,223.8 L140.9,224.1 L142.8,224.5 L144.7,224.8 L146.7,225.1 L148.7,225.4 L150.7,225.6 L152.8,225.9 L154.9,226.1 L157.1,226.3 L159.3,226.4 L161.5,226.6 L163.7,226.7 L165.9,226.8 L168.2,226.9 L170.4,227 L172.7,227 L175,227 L177.3,227 L179.6,227 L181.8,226.9 L184.1,226.8 L186.3,226.7 L188.5,226.6 L190.7,226.4 L192.9,226.3 L195.1,226.1 L197.2,225.9 L199.3,225.6 L201.3,225.4 L203.3,225.1 L205.3,224.8 L207.2,224.5 L209.1,224.1 L210.9,223.8 L212.7,223.4 L214.4,223 L216,222.6 L217.6,222.2 L219.1,221.7 L220.5,221.3 L221.9,220.8 L223.2,220.3 L224.5,219.8 L225.6,219.3 L226.7,218.8 L227.7,218.3 L228.6,217.7 L229.4,217.2 L230.2,216.6 L230.8,216.1 L231.4,215.5 L231.9,214.9 L232.3,214.3 L232.6,213.8 L232.8,213.2 L233,212.6 L233,212" class="fig-curve"/>
+<path d="M233,92 L232.8,90.8 L232.3,89.7 L231.4,88.5 L230.2,87.4 L228.6,86.3 L226.7,85.2 L224.5,84.2 L221.9,83.2 L219.1,82.3 L216,81.4 L212.7,80.6 L209.1,79.9 L205.3,79.2 L201.3,78.6 L197.2,78.1 L192.9,77.7 L188.5,77.4 L184.1,77.2 L179.6,77 L175,77 L170.4,77 L165.9,77.2 L161.5,77.4 L157.1,77.7 L152.8,78.1 L148.7,78.6 L144.7,79.2 L140.9,79.9 L137.3,80.6 L134,81.4 L130.9,82.3 L128.1,83.2 L125.5,84.2 L123.3,85.2 L121.4,86.3 L119.8,87.4 L118.6,88.5 L117.7,89.7 L117.2,90.8 L117,92 L117.2,93.2 L117.7,94.3 L118.6,95.5 L119.8,96.6 L121.4,97.7 L123.3,98.8 L125.5,99.8 L128.1,100.8 L130.9,101.7 L134,102.6 L137.3,103.4 L140.9,104.1 L144.7,104.8 L148.7,105.4 L152.8,105.9 L157.1,106.3 L161.5,106.6 L165.9,106.8 L170.4,107 L175,107 L179.6,107 L184.1,106.8 L188.5,106.6 L192.9,106.3 L197.2,105.9 L201.3,105.4 L205.3,104.8 L209.1,104.1 L212.7,103.4 L216,102.6 L219.1,101.7 L221.9,100.8 L224.5,99.8 L226.7,98.8 L228.6,97.7 L230.2,96.6 L231.4,95.5 L232.3,94.3 L232.8,93.2 L233,92 Z" class="fig-band"/>
+<path d="M233,92 L232.8,90.8 L232.3,89.7 L231.4,88.5 L230.2,87.4 L228.6,86.3 L226.7,85.2 L224.5,84.2 L221.9,83.2 L219.1,82.3 L216,81.4 L212.7,80.6 L209.1,79.9 L205.3,79.2 L201.3,78.6 L197.2,78.1 L192.9,77.7 L188.5,77.4 L184.1,77.2 L179.6,77 L175,77 L170.4,77 L165.9,77.2 L161.5,77.4 L157.1,77.7 L152.8,78.1 L148.7,78.6 L144.7,79.2 L140.9,79.9 L137.3,80.6 L134,81.4 L130.9,82.3 L128.1,83.2 L125.5,84.2 L123.3,85.2 L121.4,86.3 L119.8,87.4 L118.6,88.5 L117.7,89.7 L117.2,90.8 L117,92 L117.2,93.2 L117.7,94.3 L118.6,95.5 L119.8,96.6 L121.4,97.7 L123.3,98.8 L125.5,99.8 L128.1,100.8 L130.9,101.7 L134,102.6 L137.3,103.4 L140.9,104.1 L144.7,104.8 L148.7,105.4 L152.8,105.9 L157.1,106.3 L161.5,106.6 L165.9,106.8 L170.4,107 L175,107 L179.6,107 L184.1,106.8 L188.5,106.6 L192.9,106.3 L197.2,105.9 L201.3,105.4 L205.3,104.8 L209.1,104.1 L212.7,103.4 L216,102.6 L219.1,101.7 L221.9,100.8 L224.5,99.8 L226.7,98.8 L228.6,97.7 L230.2,96.6 L231.4,95.5 L232.3,94.3 L232.8,93.2 L233,92" class="fig-curve"/>
+<text x="175" y="157" text-anchor="middle" class="fig-label fig-it">S = Σ×[a,b]</text>
+<text x="175" y="30" text-anchor="middle" class="fig-label">(a) envolve o tempo</text>
+<line x1="370" y1="268" x2="370" y2="40" class="fig-axis" marker-end="url(#arr-4-7-2)"/>
+<text x="362" y="46" text-anchor="end" class="fig-label fig-it">x⁰</text>
+<path d="M330,194 L580,194 L620,130 L370,130 Z" class="fig-guide"/>
+<text x="612" y="122" text-anchor="end" class="fig-label fig-small">x⁰ = t₀</text>
+<path d="M558.2,162 L558.4,160.8 L558.2,159.5 L557.6,158.3 L556.4,157.1 L554.9,156 L553,154.9 L550.7,153.9 L548.2,152.9 L545.4,152.1 L542.4,151.3 L539.3,150.6 L536.2,150 L533,149.5 L529.9,149 L526.8,148.5 L523.7,148.1 L520.8,147.7 L518,147.4 L515.2,147 L512.6,146.6 L510,146.2 L507.4,145.8 L504.8,145.3 L502.3,144.9 L499.6,144.4 L496.9,143.9 L494.1,143.4 L491.2,142.9 L488.2,142.4 L485,142 L481.7,141.6 L478.3,141.3 L474.7,141.1 L471.2,141 L467.6,141 L464,141.1 L460.4,141.3 L457,141.7 L453.7,142.2 L450.6,142.8 L447.7,143.5 L445.1,144.3 L442.8,145.2 L440.8,146.2 L439.1,147.2 L437.7,148.3 L436.6,149.4 L435.9,150.5 L435.3,151.6 L435,152.7 L434.9,153.8 L434.9,154.8 L434.9,155.8 L435,156.8 L435.1,157.7 L435.2,158.6 L435.1,159.5 L434.9,160.3 L434.6,161.1 L434.2,162 L433.6,162.9 L432.9,163.8 L432.1,164.7 L431.2,165.7 L430.3,166.7 L429.5,167.8 L428.7,169 L428.1,170.2 L427.7,171.4 L427.6,172.7 L427.7,174 L428.2,175.3 L429.1,176.6 L430.4,177.9 L432.1,179.1 L434.2,180.2 L436.7,181.3 L439.5,182.2 L442.8,183 L446.3,183.6 L450,184.1 L454,184.5 L458,184.7 L462.2,184.7 L466.3,184.6 L470.3,184.3 L474.3,183.9 L478.1,183.3 L481.6,182.7 L485,182 L488.1,181.2 L491,180.5 L493.7,179.7 L496.1,178.9 L498.4,178.1 L500.5,177.4 L502.5,176.7 L504.4,176.1 L506.3,175.5 L508.3,175 L510.3,174.6 L512.4,174.2 L514.7,173.8 L517.1,173.5 L519.8,173.2 L522.5,172.9 L525.5,172.6 L528.6,172.2 L531.7,171.8 L535,171.3 L538.2,170.7 L541.4,170.1 L544.5,169.4 L547.4,168.5 L550.1,167.6 L552.5,166.6 L554.5,165.6 L556.2,164.4 L557.4,163.2 L558.2,162 Z" class="fig-band"/>
+<path d="M558.2,162 L558.4,160.8 L558.2,159.5 L557.6,158.3 L556.4,157.1 L554.9,156 L553,154.9 L550.7,153.9 L548.2,152.9 L545.4,152.1 L542.4,151.3 L539.3,150.6 L536.2,150 L533,149.5 L529.9,149 L526.8,148.5 L523.7,148.1 L520.8,147.7 L518,147.4 L515.2,147 L512.6,146.6 L510,146.2 L507.4,145.8 L504.8,145.3 L502.3,144.9 L499.6,144.4 L496.9,143.9 L494.1,143.4 L491.2,142.9 L488.2,142.4 L485,142 L481.7,141.6 L478.3,141.3 L474.7,141.1 L471.2,141 L467.6,141 L464,141.1 L460.4,141.3 L457,141.7 L453.7,142.2 L450.6,142.8 L447.7,143.5 L445.1,144.3 L442.8,145.2 L440.8,146.2 L439.1,147.2 L437.7,148.3 L436.6,149.4 L435.9,150.5 L435.3,151.6 L435,152.7 L434.9,153.8 L434.9,154.8 L434.9,155.8 L435,156.8 L435.1,157.7 L435.2,158.6 L435.1,159.5 L434.9,160.3 L434.6,161.1 L434.2,162 L433.6,162.9 L432.9,163.8 L432.1,164.7 L431.2,165.7 L430.3,166.7 L429.5,167.8 L428.7,169 L428.1,170.2 L427.7,171.4 L427.6,172.7 L427.7,174 L428.2,175.3 L429.1,176.6 L430.4,177.9 L432.1,179.1 L434.2,180.2 L436.7,181.3 L439.5,182.2 L442.8,183 L446.3,183.6 L450,184.1 L454,184.5 L458,184.7 L462.2,184.7 L466.3,184.6 L470.3,184.3 L474.3,183.9 L478.1,183.3 L481.6,182.7 L485,182 L488.1,181.2 L491,180.5 L493.7,179.7 L496.1,178.9 L498.4,178.1 L500.5,177.4 L502.5,176.7 L504.4,176.1 L506.3,175.5 L508.3,175 L510.3,174.6 L512.4,174.2 L514.7,173.8 L517.1,173.5 L519.8,173.2 L522.5,172.9 L525.5,172.6 L528.6,172.2 L531.7,171.8 L535,171.3 L538.2,170.7 L541.4,170.1 L544.5,169.4 L547.4,168.5 L550.1,167.6 L552.5,166.6 L554.5,165.6 L556.2,164.4 L557.4,163.2 L558.2,162 Z" class="fig-curve"/>
+<text x="485" y="167" text-anchor="middle" class="fig-label fig-it">R</text>
+<text x="560" y="186" class="fig-label fig-it">∂R</text>
+<text x="475" y="30" text-anchor="middle" class="fig-label">(b) não envolve o tempo</text>
+</svg>
+                    <figcaption><strong>Figura 4.7.2.</strong> Os dois tipos de regiões de dimensão 3 usados neste tópico, com uma dimensão
+                        espacial suprimida. (a) O cilindro $\Sigma\times[a,b]$, que se estende no tempo: no seu bordo $\oint F = 0$ é a lei
+                        de Faraday. (b) Uma região espacial $R$ dentro da fatia $x^0 = t_0$ (com a dimensão suprimida, aparece como uma
+                        região plana): no seu bordo $\oint F = 0$ é a ausência de monopolos.</figcaption>
+                </figure>
+
+                <div class="definition-box" id="prop-4-7-11">
+                    <p><strong>Proposição 4.7.11 (Regiões espaciais).</strong> Seja $R$ uma região compacta com bordo contida numa fatia
+                        $\{x^0 = x^0_*\}$, orientada por $dx^1\wedge dx^2\wedge dx^3$. Então $\oint_{\partial R}F = \oint_{\partial R}B(t_*)$, com
+                        $x^0_* = ct_*$. Em particular, a ausência de monopolos no instante $t_*$ equivale a $\oint_{\partial R}F = 0$ para toda
+                        tal região.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> $\partial R$ está contido na fatia, e pela <a href="#prop-4-7-7">Proposição 4.7.7</a>(a) o <em>pullback</em> de
+                    $\frac1cE\wedge dx^0$ a $\partial R$ é zero. Sobra o de $B$, cujas componentes, na fatia, são as de $B(t_*)$. $\blacksquare$
+                </p>
+
+                <p>
+                    As duas leis homogêneas se tornam a mesma afirmação, $\oint F = 0$, sobre os dois tipos de região. Pelo <a href="#teo-4-7-9">Teorema 4.7.9</a>
+                    essa afirmação é local, e é $dF = 0$.
+                </p>
+
+                <div class="definition-box" id="teo-4-7-12">
+                    <p><strong>Teorema 4.7.12 (As equações homogêneas no espaço-tempo).</strong> Sejam $E$ e $B$ formas espaciais suaves
+                        em $\mathbb{R}^4$ e $F$ a $2$-forma de Faraday. São equivalentes:</p>
+                    <ol type="a">
+                        <li>para todo $t$, a lei de Faraday vale para toda superfície $\Sigma$ e $\oint_{\partial V}B(t) = 0$ para toda região
+                            $V$ (compactas, orientadas, com bordo, admitindo cantos);</li>
+                        <li>$\oint_{\partial S}F = 0$ para todo cilindro $S = \Sigma\times[a,b]$ e $\oint_{\partial R}F = 0$ para toda região
+                            espacial $R$;</li>
+                        <li>$dF = 0$.</li>
+                    </ol>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> <strong>(a) ⇒ (b).</strong> É a <a href="#prop-4-7-8">Proposição 4.7.8</a> para os cilindros e a <a href="#prop-4-7-11">Proposição 4.7.11</a> para as
+                    regiões espaciais.
+                </p>
+
+                <p>
+                    <strong>(b) ⇒ (c).</strong> Usamos o <a href="[05] - Maxwell em 3D com Formas.html#lema-4-5-6">Lema 4.5.6</a> em $\mathbb{R}^4$ com $k = 3$. Os cubos coordenados de dimensão 3
+                    são de dois tipos. Se $I = (1,2,3)$, o cubo está numa fatia $\{x^0 = \text{const}\}$: é uma região espacial. Se
+                    $I = (0, i, j)$, o cubo é $\{x^0_p \le x^0 \le x^0_p + h\}\times Q$, com $Q$ um quadrado no plano $x^ix^j$: é um cilindro
+                    sobre $Q$, e a orientação do lema, $(\partial_0, \partial_i, \partial_j)$, é a da <a href="#def-4-7-5">Definição 4.7.5</a> com $Q$ orientado por
+                    $(\partial_i, \partial_j)$. Em ambos os casos, pelo <a href="#teo-4-7-9">Teorema 4.7.9</a> e por (b), $\int_{\text{cubo}}dF = \oint_{\partial\,\text{cubo}}F = 0$.
+                    Como $dF$ é uma $3$-forma contínua com integral nula em todo cubo coordenado, o lema dá $dF = 0$.
+                </p>
+
+                <p>
+                    <strong>(c) ⇒ (a).</strong> Pela <a href="#prop-4-7-3">Proposição 4.7.3</a> com $\alpha = B$ ($k = 2$) e $\beta = \frac1cE$, e com
+                    $\partial_t = c\,\partial_0$,
+                </p>
+
+                <p>
+                    $$ dF = d_sB + \Big(\partial_0B + \frac1c\,d_sE\Big)\wedge dx^0 = d_sB + \frac1c\big(d_sE + \partial_tB\big)\wedge dx^0. $$
+                </p>
+
+                <p>
+                    Pela unicidade da decomposição (<a href="#prop-4-7-2">Proposição 4.7.2</a>), $dF = 0$ se, e somente se, $d_sB = 0$ e $d_sE + \partial_tB = 0$. Em cada
+                    instante essas são as equações $dB = 0$ e $dE + \partial_tB = 0$ do tópico 4.5, e pelo <a href="[05] - Maxwell em 3D com Formas.html#teo-4-5-7">Teorema 4.5.7</a> elas implicam as leis
+                    integrais (a). $\blacksquare$
+                </p>
+
+                <p>
+                    A demonstração mostra para que serve cada família de regiões. Os cilindros sobre quadrados dos planos
+                    $x^ix^j$ detectam as três componentes $(dF)_{0ij}$, que são a lei de Faraday; só as regiões espaciais detectam a
+                    componente $(dF)_{123}$, que é $\operatorname{div}\mathbf{B}$. Os cilindros sozinhos não bastam, e o
+                    <a href="#exr-4-7-1">Exercício 4.7.1</a> (das notas de aula) dá um campo com $\oint_{\partial S}F = 0$ em todo cilindro e $dF \ne 0$. As duas leis
+                    homogêneas são necessárias para concluir que $F$ é fechada.
+                </p>
+
+                <p id="obs-4-7-13"><strong>Observação 4.7.13 (Qualquer região de dimensão 3).</strong> Uma vez provado $dF = 0$, o
+                    <a href="#teo-4-7-9">Teorema 4.7.9</a> dá $\oint_{\partial N}F = \int_NdF = 0$ para <em>toda</em> região compacta orientada $N$ de dimensão 3 do
+                    espaço-tempo, inclusive regiões inclinadas, que não são cilindros nem estão numa fatia (as que um observador em
+                    movimento usaria como "espaço num instante", tópico 4.8). Não é preciso pedir isso como hipótese: basta que as
+                    famílias de regiões usadas detectem todas as quatro componentes de $dF$, como os cilindros e as fatias detectam.</p>
+
+                <h2 id="componentes">O tensor de Faraday</h2>
+
+                <p>
+                    Como toda $2$-forma, $F = \tfrac12F_{\mu\nu}\,dx^\mu\wedge dx^\nu$ com $F_{\mu\nu} = F(\partial_\mu, \partial_\nu)$ antissimétrico
+                    (item 5 das convenções). Comparando com (4.7.4), em que $\frac1cE\wedge dx^0 = \frac1cE_i\,dx^i\wedge dx^0$ e
+                    $B = \tfrac12B_{ij}\,dx^i\wedge dx^j$ com $B_{ij} = \tilde\varepsilon_{ijk}B^k$ (<a href="[05] - Maxwell em 3D com Formas.html#def-4-5-1">Definição 4.5.1</a>),
+                </p>
+
+                <p>
+                    $$ F_{i0} = \frac{E_i}{c}, \qquad F_{0i} = -\frac{E_i}{c}, \qquad F_{ij} = \tilde\varepsilon_{ijk}B^k, $$
+                </p>
+
+                <p>
+                    isto é, $F_{12} = B^3$, $F_{23} = B^1$ e $F_{31} = B^2$. Na matriz, com a linha $\mu$ e a coluna $\nu$,
+                </p>
+
+                <p>
+                    $$ (F_{\mu\nu}) = \begin{pmatrix}
+                    0 & -E_1/c & -E_2/c & -E_3/c\\
+                    E_1/c & 0 & B^3 & -B^2\\
+                    E_2/c & -B^3 & 0 & B^1\\
+                    E_3/c & B^2 & -B^1 & 0
+                    \end{pmatrix}. \tag{4.7.5} $$
+                </p>
+
+                <p>
+                    São as componentes covariantes do tensor do campo eletromagnético: seis números, três do campo elétrico e três do
+                    magnético, organizados como uma forma de grau 2 em quatro dimensões. Com $c = 1$ é a $2$-forma de Faraday da ponte
+                    com a física do <a href="../[2] - Cálculo em Variedades Diferenciáveis/[13] - Derivada Exterior.html#fisica">tópico
+                    3.13</a>, que tinha $E_x\,dx\wedge dt$ e $F_{0i} = -E_i$.
+                </p>
+
+                <div class="definition-box" id="prop-4-7-14">
+                    <p><strong>Proposição 4.7.14 (Identidade de Bianchi).</strong> As componentes de $dF$ são</p>
+                    <p>$$ (dF)_{\lambda\mu\nu} = \partial_\lambda F_{\mu\nu} + \partial_\mu F_{\nu\lambda} + \partial_\nu F_{\lambda\mu}, \tag{4.7.6} $$</p>
+                    <p>e $dF = 0$ se, e só se, o lado direito se anula para todos os $\lambda, \mu, \nu$. As quatro componentes
+                        independentes são</p>
+                    <p>$$ \begin{aligned}
+                        (dF)_{123} &= \operatorname{div}\mathbf{B},\\
+                        (dF)_{0ij} &= \frac1c\,\tilde\varepsilon_{ijk}\big(\nabla\times\mathbf{E} + \partial_t\mathbf{B}\big)^k.
+                        \end{aligned} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela <a href="../[2] - Cálculo em Variedades Diferenciáveis/[13] - Derivada Exterior.html#prop-3-13-14">Proposição 3.13.14</a>, $(dF)_{\lambda\mu\nu} = 3\,\partial_{[\lambda}F_{\mu\nu]}$, a soma sobre as seis
+                    permutações de $(\lambda,\mu,\nu)$ com sinal, dividida por $2$. Como $F$ é antissimétrico, cada permutação ímpar dá o
+                    mesmo termo que uma par (por exemplo, $-\partial_\lambda F_{\nu\mu} = \partial_\lambda F_{\mu\nu}$), e sobram as três permutações
+                    cíclicas: é (4.7.6). Por ser antissimétrica nos três índices, a $3$-forma $dF$ em $\mathbb{R}^4$ tem
+                    $\binom43 = 4$ componentes independentes, uma para cada trio crescente. Para $(1,2,3)$:
+                    $\partial_1F_{23} + \partial_2F_{31} + \partial_3F_{12} = \partial_1B^1 + \partial_2B^2 + \partial_3B^3$. Para $(0,2,3)$:
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    \partial_0F_{23} + \partial_2F_{30} + \partial_3F_{02} &= \frac1c\big(\partial_tB^1 + \partial_2E_3 - \partial_3E_2\big)\\
+                    &= \frac1c\big(\nabla\times\mathbf{E} + \partial_t\mathbf{B}\big)^1,
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    e do mesmo modo $(dF)_{031} = \frac1c(\nabla\times\mathbf{E} + \partial_t\mathbf{B})^2$ e
+                    $(dF)_{012} = \frac1c(\nabla\times\mathbf{E} + \partial_t\mathbf{B})^3$, que é a fórmula do enunciado com
+                    $\tilde\varepsilon_{ijk}$. $\blacksquare$
+                </p>
+
+                <p>
+                    Em notação de índices, então, as quatro equações de Maxwell homogêneas são as quatro componentes de uma única
+                    identidade, $\partial_{[\lambda}F_{\mu\nu]} = 0$. O nome "identidade de Bianchi" vem da geometria diferencial, onde uma
+                    identidade com a mesma forma vale para a curvatura; aqui ela é uma equação para os campos, que vira identidade quando
+                    $F = dA$.
+                </p>
+
+                <h2 id="potencial-e-calibre">O quadripotencial e a liberdade de calibre</h2>
+
+                <p>
+                    $\mathbb{R}^4$ é estrelado (em relação à origem), e $F$ é fechada. O lema de Poincaré dá o resto.
+                </p>
+
+                <div class="definition-box" id="teo-4-7-15">
+                    <p><strong>Teorema 4.7.15 (O quadripotencial).</strong> Se $dF = 0$ em $\mathbb{R}^4$, existe uma $1$-forma
+                        $A = A_\mu\,dx^\mu$ com $F = dA$, por exemplo $A = hF$, com $h$ o operador de homotopia (<a href="[02] - O Lema de Poincaré.html#def-4-2-4">Definição 4.2.4</a>). Em
+                        componentes,</p>
+                    <p>$$ F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu. \tag{4.7.7} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> A existência é o <a href="[02] - O Lema de Poincaré.html#cor-4-2-7">Corolário 4.2.7</a>, com $U = \mathbb{R}^4$ estrelado. Para as componentes,
+                    $dA = \partial_\mu A_\nu\,dx^\mu\wedge dx^\nu = \tfrac12(\partial_\mu A_\nu - \partial_\nu A_\mu)\,dx^\mu\wedge dx^\nu$, e o coeficiente
+                    antissimétrico é $F_{\mu\nu}$ (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[13] - Derivada Exterior.html#prop-3-13-14">Proposição 3.13.14</a> com $k = 1$). $\blacksquare$
+                </p>
+
+                <p>
+                    A $1$-forma $A$ é o <strong>quadripotencial</strong>. Ela contém toda a informação das equações homogêneas: qualquer
+                    $F = dA$ satisfaz $dF = d\,dA = 0$, e, em $\mathbb{R}^4$, toda $F$ fechada é dessa forma. Para ler os potenciais do tópico 4.5,
+                    decompomos $A$ como na <a href="#prop-4-7-2">Proposição 4.7.2</a>.
+                </p>
+
+                <div class="definition-box" id="prop-4-7-16">
+                    <p><strong>Proposição 4.7.16 (Os potenciais escalar e vetor).</strong> Escreva $A = A_s - \phi\,dt$, isto é,
+                        $A_0 = -\phi/c$ e $A_s = A_i\,dx^i$ espacial, com $\mathbf{A} = (A_1, A_2, A_3)$. Então $F = dA$ equivale a</p>
+                    <p>$$ B = d_sA_s, \qquad E = -d_s\phi - \partial_tA_s, $$</p>
+                    <p>isto é, $\mathbf{B} = \nabla\times\mathbf{A}$ e $\mathbf{E} = -\nabla\phi - \partial_t\mathbf{A}$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> $A = A_s + \beta\wedge dx^0$ com $\beta = -\phi/c$, uma $0$-forma. Pela <a href="#prop-4-7-3">Proposição 4.7.3</a> com $k = 1$,
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    dA &= d_sA_s + \big(-\partial_0A_s + d_s\beta\big)\wedge dx^0\\
+                    &= d_sA_s + \frac1c\big(-\partial_tA_s - d_s\phi\big)\wedge dx^0.
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    Comparando com $F = B + \frac1cE\wedge dx^0$ e usando a unicidade da <a href="#prop-4-7-2">Proposição 4.7.2</a>, $F = dA$ equivale a $B = d_sA_s$ e
+                    $E = -d_s\phi - \partial_tA_s$. Pela <a href="[05] - Maxwell em 3D com Formas.html#prop-4-5-9">Proposição 4.5.9</a> e pela <a href="[05] - Maxwell em 3D com Formas.html#prop-4-5-10">Proposição 4.5.10</a>, essas são as fórmulas vetoriais do enunciado. $\blacksquare$
+                </p>
+
+                <p>
+                    O sinal de $A_0 = -\phi/c$ veio da exigência $\mathbf{E} = -\nabla\phi - \partial_t\mathbf{A}$, sem nenhuma métrica: $A_\mu$ são as
+                    componentes de uma $1$-forma, com o índice embaixo desde o começo. No <a href="[03] - Métricas e Volume Invariante.html#ex-4-3-6">Exemplo 4.3.6</a> o mesmo sinal apareceu de outro modo,
+                    ao abaixar o índice de $(\phi/c, \mathbf{A})$ com a métrica de Minkowski; a coincidência será explicada no tópico 4.8.
+                </p>
+
+                <div class="definition-box" id="prop-4-7-17">
+                    <p><strong>Proposição 4.7.17 (Liberdade de calibre).</strong> Se $F = dA$ e $f \in C^\infty(\mathbb{R}^4)$, então
+                        $A' = A + df$ também satisfaz $dA' = F$. Reciprocamente, se $dA' = dA$ em $\mathbb{R}^4$, então $A' = A + df$ para
+                        alguma função $f$. Em termos dos potenciais,</p>
+                    <p>$$ A' = A + df \iff \phi' = \phi - \partial_tf, \quad \mathbf{A}' = \mathbf{A} + \nabla f. \tag{4.7.8} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> $dA' = dA + d\,df = F$. Se $dA' = dA$, a $1$-forma $A' - A$ é fechada em $\mathbb{R}^4$, e pelo
+                    <a href="[02] - O Lema de Poincaré.html#cor-4-2-7">Corolário 4.2.7</a> é $df$ para alguma $f$. Para (4.7.8), $df = \partial_0f\,dx^0 + d_sf$: a componente $0$ dá
+                    $-\phi'/c = -\phi/c + \partial_0f$, isto é, $\phi' = \phi - c\,\partial_0f = \phi - \partial_tf$, e a parte espacial dá
+                    $A'_s = A_s + d_sf$. $\blacksquare$
+                </p>
+
+                <p>
+                    A equação (4.7.8) é a transformação de calibre completa do tópico 4.5 (<a href="[05] - Maxwell em 3D com Formas.html#prop-4-5-11">Proposição 4.5.11</a>), mas agora ela é uma só
+                    operação, $A \mapsto A + df$, com uma só função $f$ do espaço-tempo. Em três dimensões, a regra para $\phi$ tinha de
+                    ser acrescentada à mão para compensar a de $\mathbf{A}$; em quatro, as duas são partes da mesma derivada exterior. A
+                    liberdade de calibre é uma consequência de espaço e tempo participarem da mesma geometria diferencial.
+                </p>
+
+                <p id="obs-4-7-18"><strong>Observação 4.7.18 (A métrica não participa).</strong> Tudo o que foi feito nesta página usou
+                    só a derivada exterior, a orientação de $\mathbb{R}^4$ (para as integrais) e a topologia de $\mathbb{R}^4$ (para o lema de
+                    Poincaré). Em particular, $F_{\mu\nu}$ tem a mesma forma (4.7.5) qualquer que seja a métrica do espaço-tempo, e as
+                    equações $dF = 0$, $F = dA$ e a liberdade de calibre continuariam valendo se a métrica não fosse a de Minkowski. A
+                    topologia, ao contrário, importa: num espaço-tempo que não é estrelado, por exemplo $\mathbb{R}^4$ sem a linha de
+                    universo de um monopolo magnético, uma $F$ fechada pode não ser exata, e não há quadripotencial global (tópico 4.9,
+                    e o monopolo da <a href="[02] - O Lema de Poincaré.html#prop-4-2-12">Proposição 4.2.12</a>).</p>
+
+                <h2 id="fisica">Ponte com a física</h2>
+
+                <p>
+                    <strong>Eletrodinâmica pré-métrica.</strong> O resultado deste tópico é que as equações homogêneas são uma lei de
+                    conservação de natureza topológica: o "fluxo" de $F$ através do bordo de qualquer região de dimensão 3 do
+                    espaço-tempo é zero. Para uma região espacial, isso diz que nenhum fluxo magnético nasce nem morre dentro dela;
+                    para um cilindro, que o fluxo magnético por $\Sigma$ só muda por causa do que atravessa a lateral, isto é, da
+                    circulação de $E$ no bordo. Nenhuma das duas afirmações usa comprimentos, ângulos ou durações. Hehl e Obukhov
+                    (<em>Foundations of Classical Electrodynamics</em>) organizam a eletrodinâmica inteira dessa maneira: a conservação
+                    da carga e a conservação do fluxo magnético como axiomas sem métrica, e a métrica entrando só na relação
+                    constitutiva, como no tópico 4.6.
+                </p>
+
+                <p>
+                    <strong>A mesma equação do capítulo 3.</strong> Na ponte com a física do
+                    <a href="../[2] - Cálculo em Variedades Diferenciáveis/[13] - Derivada Exterior.html#fisica">tópico 3.13</a>, com
+                    $c = 1$, a $2$-forma $F = dA$ apareceu como um exemplo de forma exata, e $dF = 0$ foi expandida em
+                    $\operatorname{div}\mathbf{B} = 0$ e na lei de Faraday. Aqui fizemos o caminho contrário: partimos das leis
+                    integrais, que são o que se mede, e chegamos a $dF = 0$ e depois a $F = dA$. Com $c = 1$ as duas $2$-formas são
+                    iguais, componente a componente.
+                </p>
+
+                <p>
+                    <strong>Um só objeto, várias separações.</strong> A $2$-forma $F$ não depende de como separamos o espaço-tempo em
+                    espaço e tempo; os campos $\mathbf{E}$ e $\mathbf{B}$ dependem (<a href="#obs-4-7-4">Observação 4.7.4</a>). Dois observadores que usam fatias de
+                    simultaneidade diferentes atribuem a uma mesma $F$ campos elétricos e magnéticos diferentes: o que é puramente
+                    magnético para um tem parte elétrica para outro. Que fatias são permitidas, e como $\mathbf{E}$ e $\mathbf{B}$ se
+                    misturam, depende das transformações que preservam a métrica, e é o assunto do tópico 4.8.
+                </p>
+
+                <p>
+                    <strong>Monopolos.</strong> Se existissem cargas magnéticas, a ausência de monopolos falharia e $dF$ não seria zero:
+                    seria uma $3$-forma de corrente magnética, com a mesma estrutura da $3$-forma de corrente elétrica do tópico 4.8.
+                    Mesmo sem cargas magnéticas no espaço-tempo inteiro, a topologia pode impedir um potencial global, como no
+                    monopolo pontual retirado do espaço. Os dois casos são o assunto do tópico 4.9.
+                </p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p>
+                    O primeiro exercício é das notas de aula; os outros cinco são extras. Todas as contas estão conferidas em sympy,
+                    inclusive as integrais e os sinais do último.
+                </p>
+
+                <p id="exr-4-7-1"><strong>Exercício 4.7.1 (das notas de aula).</strong> Mostre que a condição $\oint_{\partial S}F = 0$
+                    só para os cilindros $S = \Sigma\times[a,b]$ não basta para concluir que $F$ é fechada, e portanto nem que é exata:
+                    exiba campos $E$, $B$ com $\oint_{\partial S}F = 0$ em todo cilindro e $dF \ne 0$.</p>
+
+                <p>
+                    <em>Solução.</em> Tome $E = 0$ e $B = x^1\,dx^2\wedge dx^3$, independente do tempo; em vetores, $\mathbf{E} = 0$ e
+                    $\mathbf{B} = x^1\,\hat{\mathbf{x}}$. A lei de Faraday na forma diferencial vale: $d_sE + \partial_tB = 0 + 0 = 0$. Então,
+                    pelo <a href="[05] - Maxwell em 3D com Formas.html#teo-4-5-7">Teorema 4.5.7</a>, ela vale na forma integral para toda superfície, e pela <a href="#prop-4-7-8">Proposição 4.7.8</a> $\oint_{\partial S}F = 0$ para todo
+                    cilindro. Mas $F = B$ e
+                </p>
+
+                <p>
+                    $$ dF = d_sB = dx^1\wedge dx^2\wedge dx^3 \ne 0, $$
+                </p>
+
+                <p>
+                    isto é, $\operatorname{div}\mathbf{B} = 1$: há uma densidade uniforme de carga magnética. Pelo <a href="#teo-4-7-9">Teorema 4.7.9</a>, o fluxo de $F$
+                    pelo bordo de um cubo espacial de lado $h$ é $h^3 \ne 0$. Como $dF \ne 0$, $F$ não pode ser exata ($F = dA$ daria
+                    $dF = d\,dA = 0$). O que falhou foi a família de regiões: os cilindros só detectam as componentes $(dF)_{0ij}$
+                    (demonstração do <a href="#teo-4-7-12">Teorema 4.7.12</a>), e a componente $(dF)_{123}$ só é vista pelas regiões espaciais. É preciso usar as
+                    duas equações homogêneas para concluir que $F$ é fechada.
+                </p>
+
+                <p id="exr-4-7-2"><strong>Exercício 4.7.2.</strong> Calcule $d\omega$ diretamente e pela fórmula (4.7.1) para
+                    (a) $\omega = x^0x^1\,dx^2 + (x^3)^2\,dx^0$ e (b) $\omega = x^0x^1\,dx^2\wedge dx^3 + (x^3)^2\,dx^1\wedge dx^0$, e
+                    observe o papel do sinal $(-1)^k$.</p>
+
+                <p>
+                    <em>Solução.</em> (a) Diretamente, $d(x^0x^1\,dx^2) = x^1\,dx^0\wedge dx^2 + x^0\,dx^1\wedge dx^2$ e
+                    $d\big((x^3)^2\,dx^0\big) = 2x^3\,dx^3\wedge dx^0$. Pela decomposição, $\alpha = x^0x^1\,dx^2$ ($k = 1$) e
+                    $\beta = (x^3)^2$; $d_s\alpha = x^0\,dx^1\wedge dx^2$, $\partial_0\alpha = x^1\,dx^2$, $d_s\beta = 2x^3\,dx^3$, e (4.7.1) dá
+                </p>
+
+                <p>
+                    $$ d\omega = x^0\,dx^1\wedge dx^2 + \big(-x^1\,dx^2 + 2x^3\,dx^3\big)\wedge dx^0, $$
+                </p>
+
+                <p>
+                    que é o mesmo, porque $x^1\,dx^0\wedge dx^2 = -x^1\,dx^2\wedge dx^0$. (b) Diretamente,
+                    $d(x^0x^1\,dx^2\wedge dx^3) = x^1\,dx^0\wedge dx^2\wedge dx^3 + x^0\,dx^1\wedge dx^2\wedge dx^3$ e
+                    $d\big((x^3)^2\,dx^1\wedge dx^0\big) = 2x^3\,dx^3\wedge dx^1\wedge dx^0$. Pela decomposição, $\alpha = x^0x^1\,dx^2\wedge dx^3$
+                    ($k = 2$) e $\beta = (x^3)^2\,dx^1$, e
+                </p>
+
+                <p>
+                    $$ d\omega = x^0\,dx^1\wedge dx^2\wedge dx^3 + \big(x^1\,dx^2\wedge dx^3 + 2x^3\,dx^3\wedge dx^1\big)\wedge dx^0, $$
+                </p>
+
+                <p>
+                    de novo o mesmo, agora porque $dx^0\wedge dx^2\wedge dx^3 = +dx^2\wedge dx^3\wedge dx^0$. O termo $\partial_0\alpha$ entra com
+                    sinal $-$ em (a) e $+$ em (b): passar $dx^0$ por uma $1$-forma troca o sinal; por uma $2$-forma, não.
+                </p>
+
+                <p id="exr-4-7-3"><strong>Exercício 4.7.3.</strong> A onda plana do <a href="[05] - Maxwell em 3D com Formas.html#exr-4-5-6">Exercício 4.5.6</a> tem
+                    $E = E_0\cos(kz - \omega t)\,dx$ e $B = \frac{k}{\omega}E_0\cos(kz - \omega t)\,dz\wedge dx$. Escreva $F$, verifique que
+                    $dF = 0$ para todo $\omega$ e encontre um quadripotencial. Escreva $F$ quando $\omega = ck$.</p>
+
+                <p>
+                    <em>Solução.</em> Com $x = x^1$, $z = x^3$ e $\omega t = (\omega/c)x^0$, seja $u = kx^3 - (\omega/c)x^0$. Então
+                </p>
+
+                <p>
+                    $$ F = \frac{E_0}{c}\cos u\;dx^1\wedge dx^0 + \frac{k}{\omega}E_0\cos u\;dx^3\wedge dx^1. $$
+                </p>
+
+                <p>
+                    Como $du = k\,dx^3 - \frac{\omega}{c}\,dx^0$,
+                    $dF = -E_0\sin u\,\big(\tfrac1c\,du\wedge dx^1\wedge dx^0 + \tfrac{k}{\omega}\,du\wedge dx^3\wedge dx^1\big)$; no primeiro termo só
+                    sobra $k\,dx^3$ de $du$, e no segundo só sobra $-\frac{\omega}{c}\,dx^0$, logo
+                </p>
+
+                <p>
+                    $$ dF = -E_0\sin u\,\Big(\frac{k}{c}\,dx^3\wedge dx^1\wedge dx^0 - \frac{k}{c}\,dx^0\wedge dx^3\wedge dx^1\Big) = 0, $$
+                </p>
+
+                <p>
+                    porque $dx^3\wedge dx^1\wedge dx^0 = dx^0\wedge dx^3\wedge dx^1$ (permutação cíclica). Isso vale para todo $\omega$: as
+                    equações homogêneas não fixam a velocidade da onda (ela veio, no 4.5, das equações com fontes e das constantes
+                    $\varepsilon_0$, $\mu_0$, que vivem na relação constitutiva). Um potencial é $A = \frac{E_0}{\omega}\sin u\;dx^1$, isto é,
+                    $\phi = 0$ e $\mathbf{A} = \frac{E_0}{\omega}\sin(kz - \omega t)\,\hat{\mathbf{x}}$: de fato
+                    $dA = \frac{E_0}{\omega}\cos u\,(k\,dx^3 - \frac{\omega}{c}\,dx^0)\wedge dx^1$, que é $F$. Com $\omega = ck$, $u = k(x^3 - x^0)$ e
+                </p>
+
+                <p>
+                    $$ F = \frac{E_0}{c}\cos\big(k(x^3 - x^0)\big)\;dx^1\wedge\big(dx^0 - dx^3\big). $$
+                </p>
+
+                <p>
+                    $F$ é o produto de $dx^1$ por $dx^0 - dx^3$, e só depende de $x^3 - x^0$: a onda anda na direção $x^3$.
+                </p>
+
+                <p id="exr-4-7-4"><strong>Exercício 4.7.4.</strong> Seja $F = \tfrac12F_{\mu\nu}\,dx^\mu\wedge dx^\nu$ com componentes constantes.
+                    Mostre que o potencial do <a href="#teo-4-7-15">Teorema 4.7.15</a> é $hF = \tfrac12x^\mu F_{\mu\nu}\,dx^\nu$. Para o campo elétrico uniforme
+                    $\mathbf{E} = E_0\hat{\mathbf{x}}$, compare com os dois potenciais do <a href="[05] - Maxwell em 3D com Formas.html#exr-4-5-5">Exercício 4.5.5</a>.</p>
+
+                <p>
+                    <em>Solução.</em> Pela <a href="[02] - O Lema de Poincaré.html#def-4-2-4">Definição 4.2.4</a>, para uma $2$-forma, $(hF)_x = \sideset{}{'}\sum_I\big(\int_0^1tF_I(tx)\,dt\big)\,i_Xdx^I$, com
+                    $X = x^\mu\partial_\mu$. Com $F_I$ constantes, $\int_0^1t\,dt = \tfrac12$, e $hF = \tfrac12i_XF$. Como
+                    $(i_XF)_\nu = F(X, \partial_\nu) = x^\mu F_{\mu\nu}$, vem $hF = \tfrac12x^\mu F_{\mu\nu}\,dx^\nu$. Conferindo,
+                    $d(hF) = \tfrac12F_{\mu\nu}\,dx^\mu\wedge dx^\nu = F$. Para o campo uniforme, $F = \frac{E_0}{c}\,dx^1\wedge dx^0$, isto é,
+                    $F_{10} = E_0/c = -F_{01}$, e
+                </p>
+
+                <p>
+                    $$ hF = \frac12\big(x^1F_{10}\,dx^0 + x^0F_{01}\,dx^1\big) = \frac{E_0}{2c}\big(x^1\,dx^0 - x^0\,dx^1\big). $$
+                </p>
+
+                <p>
+                    Pela <a href="#prop-4-7-16">Proposição 4.7.16</a>, $\phi = -cA_0 = -\tfrac12E_0x$ e $\mathbf{A} = -\tfrac12E_0t\,\hat{\mathbf{x}}$. Os dois potenciais do
+                    <a href="[05] - Maxwell em 3D com Formas.html#exr-4-5-5">Exercício 4.5.5</a> eram $(\phi, \mathbf{A}) = (-E_0x, 0)$ e $(0, -E_0t\,\hat{\mathbf{x}})$; o operador de homotopia dá a média
+                    deles, que é o análogo, no espaço-tempo, do calibre simétrico do <a href="[02] - O Lema de Poincaré.html#ex-4-2-10">Exemplo 4.2.10</a>.
+                </p>
+
+                <p id="exr-4-7-5"><strong>Exercício 4.7.5.</strong> Quantas componentes independentes têm $F$ e $dF$ em $\mathbb{R}^4$? Diga a
+                    que lei corresponde cada componente de $dF$. Repita a contagem num espaço-tempo com duas dimensões espaciais,
+                    $\mathbb{R}^3$ com coordenadas $(x^0, x^1, x^2)$, com $F = \frac1cE\wedge dx^0 + B\,dx^1\wedge dx^2$.</p>
+
+                <p>
+                    <em>Solução.</em> Em $\mathbb{R}^4$, uma $2$-forma tem $\binom42 = 6$ componentes (três de $\mathbf{E}$, três de
+                    $\mathbf{B}$) e uma $3$-forma tem $\binom43 = 4$. Pela <a href="#prop-4-7-14">Proposição 4.7.14</a>, $(dF)_{123}$ é a lei de Gauss magnética e
+                    $(dF)_{023}$, $(dF)_{031}$, $(dF)_{012}$ são as componentes $x$, $y$, $z$ da lei de Faraday. Com duas dimensões espaciais,
+                    $F$ tem $\binom32 = 3$ componentes: $E_1$, $E_2$ e um único número $B$ (o campo magnético é um escalar), e $dF$ tem
+                    $\binom33 = 1$ componente. Calculando,
+                </p>
+
+                <p>
+                    $$ dF = \frac1c\big(\partial_tB + \partial_1E_2 - \partial_2E_1\big)\,dx^0\wedge dx^1\wedge dx^2, $$
+                </p>
+
+                <p>
+                    usando $dx^2\wedge dx^1\wedge dx^0 = -dx^0\wedge dx^1\wedge dx^2$ e $dx^1\wedge dx^2\wedge dx^0 = dx^0\wedge dx^1\wedge dx^2$. Só sobra a lei
+                    de Faraday: não há lei de Gauss magnética, porque $dx^1\wedge dx^2$ não tem para onde crescer no espaço de dimensão 2.
+                </p>
+
+                <p id="exr-4-7-6"><strong>Exercício 4.7.6.</strong> Seja $\Sigma$ o disco unitário do plano $x^1x^2$ (com $x^3 = 0$),
+                    orientado por $dx^1\wedge dx^2$, e sejam $B = t\,dx^1\wedge dx^2$ e $E = \tfrac12(x^2\,dx^1 - x^1\,dx^2)$. Verifique a lei de
+                    Faraday na forma diferencial e calcule separadamente as integrais de $F$ sobre $C_a$, $C_b$ e $L$; confira que a soma,
+                    com as orientações da <a href="#prop-4-7-6">Proposição 4.7.6</a>, é zero.</p>
+
+                <p>
+                    <em>Solução.</em> $d_sE = \tfrac12(dx^2\wedge dx^1 - dx^1\wedge dx^2) = -dx^1\wedge dx^2$ e $\partial_tB = dx^1\wedge dx^2$:
+                    a soma é zero. Nas tampas, $F$ tem o <em>pullback</em> de $B$ (<a href="#prop-4-7-7">Proposição 4.7.7</a>), e com a orientação de $\Sigma$,
+                    $\int_{C_b}F = b\int_\Sigma dx^1\wedge dx^2 = \pi b$ e $\int_{C_a}F = \pi a$. Na lateral, com a parametrização
+                    $\psi(\theta, x^0) = (x^0, \cos\theta, \sin\theta, 0)$, positiva na ordem $(\theta, x^0)$ pela <a href="#prop-4-7-6">Proposição 4.7.6</a>,
+                    $\psi^*E = \tfrac12\big(\sin\theta\,(-\sin\theta) - \cos\theta\cos\theta\big)\,d\theta = -\tfrac12\,d\theta$, e o <em>pullback</em> de $B$ é
+                    zero. Então
+                </p>
+
+                <p>
+                    $$ \int_LF = \int_{ca}^{cb}\!\!\int_0^{2\pi}\frac1c\Big(-\frac12\Big)\,d\theta\,dx^0 = -\pi(b - a). $$
+                </p>
+
+                <p>
+                    A soma é $\int_{C_b}F - \int_{C_a}F + \int_LF = \pi b - \pi a - \pi(b - a) = 0$. Fisicamente: o fluxo magnético cresce
+                    à taxa $\pi$ por unidade de tempo, e a circulação de $\mathbf{E}$ na circunferência é $-\pi$, como exige a lei de
+                    Faraday. Se a lateral fosse orientada por $(\partial_0, T)$, o último termo trocaria de sinal e a soma daria
+                    $2\pi(b - a) \ne 0$.
+                </p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <ul>
+                    <li>A decomposição 3+1 das formas de $\mathbb{R}^4$ (<a href="#prop-4-7-2">Proposição 4.7.2</a>) e a derivada exterior nessa decomposição, com o sinal
+                        $(-1)^k$ (<a href="#prop-4-7-3">Proposição 4.7.3</a>); a separação depende das coordenadas (<a href="#obs-4-7-4">Observação 4.7.4</a>).</li>
+                    <li>O cilindro $\Sigma\times[a,b]$ no espaço-tempo, a orientação do seu bordo (<a href="#prop-4-7-6">Proposição 4.7.6</a>) e os <em>pullbacks</em> que
+                        se anulam nas tampas e na lateral (<a href="#prop-4-7-7">Proposição 4.7.7</a>); a lei de Faraday integrada no tempo como integral sobre o bordo
+                        do cilindro (<a href="#prop-4-7-8">Proposição 4.7.8</a>).</li>
+                    <li>A $2$-forma de Faraday $F = E\wedge dt + B$ (<a href="#def-4-7-10">Definição 4.7.10</a>) e a equivalência entre as leis integrais, a anulação de
+                        $\oint F$ em cilindros e regiões espaciais e $dF = 0$ (<a href="#teo-4-7-12">Teorema 4.7.12</a>), com Stokes em variedades com cantos
+                        (<a href="#teo-4-7-9">Teorema 4.7.9</a>).</li>
+                    <li>O tensor de Faraday (4.7.5) e a identidade de Bianchi (<a href="#prop-4-7-14">Proposição 4.7.14</a>).</li>
+                    <li>O quadripotencial $F = dA$ (<a href="#teo-4-7-15">Teorema 4.7.15</a>), com $A_0 = -\phi/c$ (<a href="#prop-4-7-16">Proposição 4.7.16</a>), e a liberdade de calibre
+                        $A \mapsto A + df$ como uma única operação no espaço-tempo (<a href="#prop-4-7-17">Proposição 4.7.17</a>).</li>
+                </ul>
+
+                <p>
+                    Tudo isso sem métrica (<a href="#obs-4-7-18">Observação 4.7.18</a>). Falta a outra metade de Maxwell: as equações com fontes, a lei de Gauss e a de
+                    Ampère–Maxwell. Repetindo o argumento do cilindro com $D$ e $H$, elas se tornam $d\mathcal{M} = j$ para uma
+                    $2$-forma de excitação $\mathcal{M}$ e uma $3$-forma de corrente $j$, ainda sem métrica. A métrica aparece quando
+                    exigimos, pelas regras de geometrização do tópico 4.6, que $\mathcal{M}$ seja a estrela de $F$; essa exigência só pode
+                    ser satisfeita com a métrica de Minkowski:
+                    <a href="[08] - Inomogêneas e a Métrica de Minkowski.html">4.8 As Equações Inomogêneas e a Métrica de Minkowski</a>.
+                </p>
 
             </div>
         </main>
@@ -176,6 +982,14 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#homogeneas-4d">As Equações Homogêneas no Espaço-Tempo</a></li>
+                    <li><a href="#decomposicao-3-mais-1">Espaço e tempo nas formas</a></li>
+                    <li><a href="#cilindro">Faraday integrada no tempo</a></li>
+                    <li><a href="#faraday-2-forma">A 2-forma de Faraday</a></li>
+                    <li><a href="#componentes">O tensor de Faraday</a></li>
+                    <li><a href="#potencial-e-calibre">Potencial e calibre</a></li>
+                    <li><a href="#fisica">Ponte com a física</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
                 </ul>
             </div>
         </aside>

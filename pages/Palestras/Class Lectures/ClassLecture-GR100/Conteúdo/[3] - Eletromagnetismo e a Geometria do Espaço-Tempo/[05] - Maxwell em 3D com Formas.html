@@ -166,7 +166,786 @@
                 <h1 id="maxwell-3d">4.5 As Equações de Maxwell em 3D na Linguagem de Formas</h1>
                 <p class="lead">Os campos elétrico e magnético, a corrente e a carga como formas de graus diferentes no espaço, as equações de Maxwell integrais e diferenciais, os potenciais e a volta à notação vetorial.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>
+                    O tópico <a href="[01] - Motivação e Roteiro.html#formas-de-graus-diferentes">4.1</a> anunciou que o
+                    campo elétrico é duas coisas: uma grandeza que se integra ao longo de curvas e outra que se integra
+                    sobre superfícies. Com as ferramentas dos tópicos 4.2 a 4.4 isso vira uma regra de leitura precisa.
+                    Cada grandeza do eletromagnetismo é uma forma diferencial em $\mathbb{R}^3$ cujo grau é a dimensão do
+                    objeto sobre o qual ela é integrada nas leis de Maxwell. As quatro leis integrais ligam formas do
+                    mesmo grau; o Teorema de Stokes as transforma em quatro equações diferenciais com a derivada exterior;
+                    e o lema de Poincaré (<a href="[02] - O Lema de Poincaré.html#cor-4-2-7">Corolário 4.2.7</a>) dá os potenciais.
+                </p>
+
+                <p>
+                    O resultado central é uma separação. As leis integrais e as equações diferenciais só usam $d$, que
+                    não depende de métrica nenhuma. A métrica de $\mathbb{R}^3$ entra num único lugar: nas relações
+                    $D = \varepsilon_0\ast E$ e $H = \ast B/\mu_0$, que ligam os campos que medem forças ($E$, $B$) aos
+                    campos que contam cargas e correntes ($D$, $H$), por meio da estrela de Hodge do tópico
+                    <a href="[04] - O Operador Estrela de Hodge.html">4.4</a>. É a primeira metade da tese do capítulo, "o
+                    eletromagnetismo dá a métrica": se a métrica só aparece aí, é só aí que se pode lê-la.
+                </p>
+
+                <p>
+                    Tudo neste tópico vale <strong>no vácuo</strong>: as relações $D = \varepsilon_0\ast E$ e
+                    $H = \ast B/\mu_0$ descrevem o espaço vazio, e em um meio material elas mudam (tópico 4.6). O tempo
+                    aparece só como um parâmetro do qual as componentes das formas dependem. Essa descrição é desajeitada,
+                    e o tópico 4.7 a substitui por formas no espaço-tempo; mas ela é o ponto de partida natural, porque é
+                    nela que as leis de Maxwell são enunciadas nos livros de física.
+                </p>
+
+                <h2 id="formas-de-cada-grau">Cada grandeza é uma forma de um grau</h2>
+
+                <p>
+                    No SI, para uma superfície orientada $\Sigma$ com bordo $\partial\Sigma$ e uma região compacta $V$ com
+                    bordo $\partial V$, as leis de Maxwell no vácuo são a lei de Faraday, as duas leis de Gauss e a lei de
+                    Ampère–Maxwell:
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    &\oint_{\partial\Sigma}\mathbf{E}\cdot d\mathbf{s} = -\frac{d}{dt}\int_\Sigma\mathbf{B}\cdot d\mathbf{a},
+                    \qquad \oint_{\partial V}\mathbf{B}\cdot d\mathbf{a} = 0,\\
+                    &\oint_{\partial V}\mathbf{E}\cdot d\mathbf{a} = \frac{1}{\varepsilon_0}\int_V\rho\,dV,\\
+                    &\oint_{\partial\Sigma}\mathbf{B}\cdot d\mathbf{s} = \mu_0\int_\Sigma\mathbf{J}\cdot d\mathbf{a}
+                    + \mu_0\varepsilon_0\frac{d}{dt}\int_\Sigma\mathbf{E}\cdot d\mathbf{a}.
+                    \end{aligned} \tag{4.5.1} $$
+                </p>
+
+                <p>
+                    O campo $\mathbf{E}$ aparece duas vezes, de dois modos: integrado ao longo de uma curva
+                    ($\mathbf{E}\cdot d\mathbf{s}$) e sobre uma superfície ($\mathbf{E}\cdot d\mathbf{a}$). O mesmo acontece com
+                    $\mathbf{B}$. Na linguagem de formas, o integrando de uma integral de linha é uma $1$-forma e o de uma
+                    integral de superfície é uma $2$-forma (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[12] - Formas Diferenciais.html#prop-3-12-9">Proposição 3.12.9</a>), e são objetos diferentes. Separamos os dois papéis
+                    em quatro formas diferentes.
+                </p>
+
+                <div class="definition-box" id="def-4-5-1" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.5.1 (Os campos como formas).</strong> Sejam $\mathbf{E}$, $\mathbf{B}$, $\mathbf{J}$
+                        campos e $\rho$ uma função em um aberto de $\mathbb{R}^3$, dependentes de um parâmetro $t$. Em cada
+                        instante, definimos</p>
+                    <ul>
+                        <li>o <strong>campo elétrico</strong> $E = E_i\,dx^i = \omega_{\mathbf{E}}$, uma $1$-forma;</li>
+                        <li>a <strong>indução magnética</strong> $B = \tfrac12B_{ij}\,dx^i\wedge dx^j$, com
+                            $B_{ij} = \tilde\varepsilon_{ijk}B^k$, uma $2$-forma; equivalentemente $B = \Phi_{\mathbf{B}}$ e
+                            $B^k = \tfrac12\tilde\varepsilon_{kij}B_{ij}$;</li>
+                        <li>o <strong>deslocamento elétrico</strong> $D = \varepsilon_0\ast E = \varepsilon_0\Phi_{\mathbf{E}}$,
+                            uma $2$-forma;</li>
+                        <li>o <strong>campo magnético</strong> (ou excitação magnética)
+                            $H = \tfrac{1}{\mu_0}\ast B = \tfrac{1}{\mu_0}\,\omega_{\mathbf{B}}$, uma $1$-forma;</li>
+                        <li>a <strong>corrente</strong> $J = \ast(J_i\,dx^i) = \Phi_{\mathbf{J}}$, uma $2$-forma;</li>
+                        <li>a <strong>carga</strong> $\varrho = \rho\,dx^1\wedge dx^2\wedge dx^3 = \rho\,dV$, uma $3$-forma.</li>
+                    </ul>
+                </div>
+
+                <p>
+                    As igualdades com o dicionário vêm da <a href="[04] - O Operador Estrela de Hodge.html#prop-4-4-22">Proposição 4.4.22</a>: $\ast\omega_{\mathbf{F}} = \Phi_{\mathbf{F}}$ e
+                    $\ast\Phi_{\mathbf{F}} = \omega_{\mathbf{F}}$. Em particular,
+                    $B_{12} = B^3$, $B_{23} = B^1$ e $B_{31} = B^2$, e a fórmula inversa
+                    $B^k = \tfrac12\tilde\varepsilon_{kij}B_{ij}$ precisa do $\tfrac12$: cada par $(i,j)$ aparece duas vezes na
+                    soma, como $(i,j)$ e $(j,i)$. A $2$-forma $D = \varepsilon_0\Phi_{\mathbf{E}}$ é a do <a href="[01] - Motivação e Roteiro.html#exr-4-1-3">Exercício 4.1.3</a>, agora
+                    escrita como $\varepsilon_0\ast E$. Usamos índices de $\mathbb{R}^3$ euclidiano em qualquer posição.
+                </p>
+
+                <p>
+                    O dicionário diz por que esses são os integrandos certos. O <em>pullback</em> (ou retrocesso) de uma
+                    forma de trabalho a uma curva e o de uma forma de fluxo a uma superfície parametrizada são, em
+                    coordenadas, os integrandos do cálculo vetorial.
+                </p>
+
+                <div class="definition-box" id="prop-4-5-2">
+                    <p><strong>Proposição 4.5.2 (Integrandos de linha e de superfície).</strong> Para uma curva
+                        $\gamma: [a,b] \to \mathbb{R}^3$ e uma parametrização $\varphi: W \to \mathbb{R}^3$ de uma
+                        superfície, com $W \subset \mathbb{R}^2$ e coordenadas $(u,v)$,</p>
+                    <p>$$ \begin{aligned}
+                        \gamma^*\omega_{\mathbf{F}} &= \mathbf{F}(\gamma(t))\cdot\gamma'(t)\,dt,\\
+                        \varphi^*\Phi_{\mathbf{F}} &= \mathbf{F}(\varphi)\cdot\big(\partial_u\varphi\times\partial_v\varphi\big)\,du\wedge dv.
+                        \end{aligned} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela fórmula do <em>pullback</em> (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[12] - Formas Diferenciais.html#teo-3-12-12">Teorema 3.12.12</a>),
+                    $\gamma^*dx^i = (\gamma^i)'\,dt$, e $\gamma^*\omega_{\mathbf{F}} = F_i(\gamma)(\gamma^i)'\,dt$. Para a
+                    superfície, $\varphi^*dx^i = \partial_u\varphi^i\,du + \partial_v\varphi^i\,dv$, logo
+                    $\varphi^*(dx^2\wedge dx^3) = (\partial_u\varphi^2\,\partial_v\varphi^3 - \partial_v\varphi^2\,\partial_u\varphi^3)\,du\wedge dv$,
+                    que é a primeira componente de $\partial_u\varphi\times\partial_v\varphi$ vezes $du\wedge dv$; as outras duas
+                    parcelas de $\Phi_{\mathbf{F}}$ dão, do mesmo modo, a segunda e a terceira componentes. $\blacksquare$
+                </p>
+
+                <p>
+                    Assim $\int_\gamma E = \int_a^b\mathbf{E}\cdot\gamma'\,dt = \int_\gamma\mathbf{E}\cdot d\mathbf{s}$ (é a
+                    integral de linha de <a href="../[2] - Cálculo em Variedades Diferenciáveis/[09] - Covetores e 1-Formas.html#def-3-9-31">Definição 3.9.31</a>) e, para uma parametrização que preserva a orientação,
+                    $\int_\Sigma B = \int_W\mathbf{B}\cdot(\partial_u\varphi\times\partial_v\varphi)\,du\,dv = \int_\Sigma\mathbf{B}\cdot\mathbf{n}\,dA$,
+                    em que $\mathbf{n}$ é a normal unitária do lado positivo. A integral de uma $2$-forma sobre uma superfície
+                    orientada é definida por parametrizações no tópico
+                    <a href="../[2] - Cálculo em Variedades Diferenciáveis/[17] - Integração de Formas.html">3.17</a> (Lee,
+                    cap. 16); aqui usamos só essa definição.
+                </p>
+
+                <figure class="lecture-figure" id="fig-4-5-1" style="overflow-x: auto; overflow-y: hidden;">
+                    <svg viewBox="0 0 640 280" role="img" style="min-width: 560px;" aria-label="Dois painéis. (a) Arcos de círculo paralelos, as superfícies equipotenciais phi igual a constante, e uma curva gama que os atravessa; pontos marcam as travessias. A integral da 1-forma E ao longo de gama conta, com sinal, quantas equipotenciais a curva atravessa. (b) Uma carga q no centro, de onde saem dezesseis tubos radiais, e uma superfície fechada S irregular em volta dela; pontos marcam onde os tubos furam S. A integral da 2-forma D sobre S conta os tubos, e o número é o mesmo para qualquer superfície que envolva a carga.">
+<defs><marker id="arr-4-5-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<path d="M26.6,63 L28.7,65.4 L30.7,67.8 L32.7,70.3 L34.6,72.9 L36.5,75.4 L38.3,78.1 L40,80.7 L41.7,83.4 L43.3,86.2 L44.8,89 L46.2,91.8 L47.6,94.6 L48.9,97.5 L50.2,100.5 L51.4,103.4 L52.5,106.4 L53.5,109.4 L54.5,112.4 L55.3,115.5 L56.1,118.6 L56.9,121.6 L57.5,124.7 L58.1,127.9 L58.6,131 L59,134.2 L59.4,137.3 L59.7,140.5 L59.8,143.6 L60,146.8 L60,150 L60,153.2 L59.8,156.4 L59.7,159.5 L59.4,162.7 L59,165.8 L58.6,169 L58.1,172.1 L57.5,175.3 L56.9,178.4 L56.1,181.4 L55.3,184.5 L54.5,187.6 L53.5,190.6 L52.5,193.6 L51.4,196.6 L50.2,199.5 L48.9,202.5 L47.6,205.4 L46.2,208.2 L44.8,211 L43.3,213.8 L41.7,216.6 L40,219.3 L38.3,221.9 L36.5,224.6 L34.6,227.1 L32.7,229.7 L30.7,232.2 L28.7,234.6 L26.6,237" class="fig-guide"/>
+<path d="M51.9,40.3 L54.5,43.3 L57.1,46.3 L59.6,49.5 L62,52.7 L64.3,55.9 L66.6,59.2 L68.8,62.6 L70.9,66 L72.9,69.5 L74.8,73 L76.6,76.6 L78.4,80.2 L80.1,83.8 L81.6,87.5 L83.1,91.2 L84.5,95 L85.8,98.8 L87,102.6 L88.1,106.4 L89.1,110.3 L90.1,114.2 L90.9,118.1 L91.6,122.1 L92.2,126 L92.8,130 L93.2,134 L93.6,138 L93.8,142 L94,146 L94,150 L94,154 L93.8,158 L93.6,162 L93.2,166 L92.8,170 L92.2,174 L91.6,177.9 L90.9,181.9 L90.1,185.8 L89.1,189.7 L88.1,193.6 L87,197.4 L85.8,201.2 L84.5,205 L83.1,208.8 L81.6,212.5 L80.1,216.2 L78.4,219.8 L76.6,223.4 L74.8,227 L72.9,230.5 L70.9,234 L68.8,237.4 L66.6,240.8 L64.3,244.1 L62,247.3" class="fig-guide"/>
+<path d="M80.3,21.1 L83.4,24.9 L86.5,28.6 L89.4,32.5 L92.2,36.4 L94.9,40.4 L97.5,44.5 L100.1,48.6 L102.5,52.8 L104.8,57 L107,61.3 L109.2,65.7 L111.2,70.1 L113.1,74.5 L114.8,79 L116.5,83.6 L118.1,88.2 L119.5,92.8 L120.9,97.4 L122.1,102.1 L123.2,106.8 L124.2,111.5 L125.1,116.3 L125.9,121.1 L126.5,125.9 L127.1,130.7 L127.5,135.5 L127.8,140.3 L127.9,145.2 L128,150 L127.9,154.8 L127.8,159.7 L127.5,164.5 L127.1,169.3 L126.5,174.1 L125.9,178.9 L125.1,183.7 L124.2,188.5 L123.2,193.2 L122.1,197.9 L120.9,202.6 L119.5,207.2 L118.1,211.8 L116.5,216.4 L114.8,221 L113.1,225.5 L111.2,229.9 L109.2,234.3 L107,238.7 L104.8,243 L102.5,247.2" class="fig-guide"/>
+<path d="M123.2,21.6 L126.3,26.4 L129.3,31.2 L132.1,36.1 L134.8,41.1 L137.4,46.1 L139.9,51.2 L142.3,56.4 L144.5,61.6 L146.6,66.9 L148.6,72.2 L150.4,77.5 L152.1,82.9 L153.7,88.4 L155.1,93.9 L156.4,99.4 L157.6,104.9 L158.6,110.5 L159.5,116.1 L160.3,121.7 L160.9,127.4 L161.4,133 L161.7,138.7 L161.9,144.3 L162,150 L161.9,155.7 L161.7,161.3 L161.4,167 L160.9,172.6 L160.3,178.3 L159.5,183.9 L158.6,189.5 L157.6,195.1 L156.4,200.6 L155.1,206.1 L153.7,211.6 L152.1,217.1 L150.4,222.5 L148.6,227.8 L146.6,233.1 L144.5,238.4 L142.3,243.6 L139.9,248.8" class="fig-guide"/>
+<path d="M161.7,19.4 L164.9,25.1 L167.8,30.9 L170.7,36.7 L173.4,42.7 L175.9,48.6 L178.3,54.7 L180.6,60.8 L182.7,66.9 L184.6,73.1 L186.4,79.4 L188.1,85.6 L189.6,92 L190.9,98.3 L192.1,104.7 L193.1,111.1 L194,117.6 L194.7,124 L195.3,130.5 L195.7,137 L195.9,143.5 L196,150 L195.9,156.5 L195.7,163 L195.3,169.5 L194.7,176 L194,182.4 L193.1,188.9 L192.1,195.3 L190.9,201.7 L189.6,208 L188.1,214.4 L186.4,220.6 L184.6,226.9 L182.7,233.1 L180.6,239.2 L178.3,245.3" class="fig-guide"/>
+<path d="M201.4,22.3 L204.5,28.9 L207.4,35.7 L210.1,42.5 L212.6,49.4 L215,56.3 L217.2,63.3 L219.2,70.3 L221.1,77.4 L222.8,84.6 L224.3,91.7 L225.6,98.9 L226.8,106.2 L227.8,113.4 L228.6,120.7 L229.2,128 L229.6,135.3 L229.9,142.7 L230,150 L229.9,157.3 L229.6,164.7 L229.2,172 L228.6,179.3 L227.8,186.6 L226.8,193.8 L225.6,201.1 L224.3,208.3 L222.8,215.4 L221.1,222.6 L219.2,229.7 L217.2,236.7 L215,243.7" class="fig-guide"/>
+<path d="M238.8,22.7 L241.8,30.3 L244.6,38 L247.3,45.7 L249.7,53.5 L252,61.3 L254.1,69.2 L256,77.1 L257.6,85.1 L259.1,93.2 L260.4,101.2 L261.5,109.3 L262.4,117.4 L263.1,125.5 L263.6,133.7 L263.9,141.8 L264,150 L263.9,158.2 L263.6,166.3 L263.1,174.5 L262.4,182.6 L261.5,190.7 L260.4,198.8 L259.1,206.8 L257.6,214.9 L256,222.9 L254.1,230.8 L252,238.7 L249.7,246.5" class="fig-guide"/>
+<text x="196.2" y="-52.3" text-anchor="end" class="fig-label fig-small">φ = const</text>
+<path d="M70,222 L72.6,221.9 L75.2,221.7 L77.9,221.5 L80.5,221.3 L83.1,221 L85.8,220.7 L88.4,220.4 L91,219.9 L93.6,219.4 L96.2,218.8 L98.9,218.1 L101.5,217.3 L104.1,216.4 L106.8,215.4 L109.4,214.2 L112,212.9 L114.6,211.5 L117.2,210 L119.9,208.3 L122.5,206.5 L125.1,204.6 L127.8,202.5 L130.4,200.3 L133,197.9 L135.6,195.5 L138.2,192.9 L140.9,190.1 L143.5,187.3 L146.1,184.4 L148.8,181.3 L151.4,178.2 L154,174.9 L156.6,171.6 L159.2,168.2 L161.9,164.8 L164.5,161.3 L167.1,157.8 L169.8,154.2 L172.4,150.6 L175,147 L177.6,143.4 L180.2,139.8 L182.9,136.2 L185.5,132.7 L188.1,129.2 L190.8,125.8 L193.4,122.4 L196,119.1 L198.6,115.8 L201.2,112.7 L203.9,109.6 L206.5,106.7 L209.1,103.9 L211.8,101.1 L214.4,98.5 L217,96.1 L219.6,93.7 L222.2,91.5 L224.9,89.4 L227.5,87.5 L230.1,85.7 L232.8,84 L235.4,82.5 L238,81.1 L240.6,79.8 L243.2,78.6 L245.9,77.6 L248.5,76.7 L251.1,75.9 L253.8,75.2 L256.4,74.6 L259,74.1 L261.6,73.6 L264.2,73.3 L266.9,73 L269.5,72.7 L272.1,72.5 L274.8,72.3 L277.4,72.1" class="fig-curve"/>
+<line x1="274.8" y1="72.3" x2="280" y2="72" class="fig-curve" marker-end="url(#arr-4-5-1)"/>
+<text x="62" y="226" text-anchor="end" class="fig-label fig-it">γ</text>
+<circle cx="77.6" cy="221.5" r="3.2" class="fig-arrowhead"/>
+<circle cx="119.1" cy="208.8" r="3.2" class="fig-arrowhead"/>
+<circle cx="161.5" cy="165.3" r="3.2" class="fig-arrowhead"/>
+<circle cx="194.4" cy="121.1" r="3.2" class="fig-arrowhead"/>
+<circle cx="224" cy="90.2" r="3.2" class="fig-arrowhead"/>
+<circle cx="255.4" cy="74.8" r="3.2" class="fig-arrowhead"/>
+<text x="160" y="270" text-anchor="middle" class="fig-label fig-small">(a) E: o trabalho conta travessias</text>
+<path d="M571.5,138 L572.5,133.1 L573,128.2 L572.9,123.3 L572.3,118.4 L571,113.6 L569.1,109 L566.7,104.7 L563.7,100.7 L560.3,97.1 L556.5,93.9 L552.2,91.1 L547.8,88.8 L543,86.9 L538.2,85.6 L533.3,84.7 L528.4,84.2 L523.6,84.1 L519,84.4 L514.5,84.9 L510.2,85.6 L506.3,86.5 L502.5,87.4 L499.1,88.3 L495.9,89.2 L492.9,89.9 L490.1,90.4 L487.5,90.8 L485,90.9 L482.5,90.7 L480,90.3 L477.5,89.6 L474.8,88.7 L472,87.6 L469,86.4 L465.8,85.1 L462.4,83.8 L458.7,82.5 L454.8,81.3 L450.6,80.3 L446.2,79.5 L441.7,79.1 L437.1,79 L432.4,79.3 L427.8,80 L423.2,81.2 L418.7,82.8 L414.5,84.9 L410.5,87.5 L406.8,90.5 L403.5,93.9 L400.7,97.6 L398.2,101.6 L396.3,105.9 L394.8,110.3 L393.8,114.9 L393.3,119.6 L393.2,124.3 L393.6,128.9 L394.4,133.5 L395.5,138 L397,142.4 L398.7,146.5 L400.7,150.6 L402.8,154.4 L405.1,158.1 L407.6,161.5 L410.1,164.8 L412.6,168 L415.3,171 L417.9,173.9 L420.6,176.6 L423.3,179.2 L426,181.8 L428.7,184.2 L431.5,186.5 L434.3,188.7 L437.2,190.9 L440.1,192.9 L443.2,194.7 L446.2,196.5 L449.4,198 L452.7,199.4 L456,200.5 L459.4,201.5 L462.8,202.2 L466.2,202.7 L469.7,203 L473.2,203 L476.6,202.7 L480,202.3 L483.3,201.6 L486.6,200.8 L489.8,199.8 L492.9,198.7 L495.9,197.4 L498.9,196.1 L501.8,194.7 L504.6,193.3 L507.4,191.8 L510.2,190.4 L513.1,188.9 L515.9,187.5 L518.9,186 L521.9,184.5 L525,183 L528.2,181.4 L531.6,179.8 L535,178 L538.5,176 L542.1,173.9 L545.7,171.5 L549.3,168.9 L552.9,166 L556.4,162.8 L559.7,159.3 L562.7,155.6 L565.5,151.5 L567.9,147.2 L570,142.7 L571.5,138 Z" class="fig-band"/>
+<line x1="490" y1="137" x2="597.4" y2="126.2" class="fig-curve" marker-end="url(#arr-4-5-1)"/>
+<line x1="488.8" y1="133.3" x2="584" y2="82.2" class="fig-curve" marker-end="url(#arr-4-5-1)"/>
+<line x1="486.3" y1="130.3" x2="554.7" y2="46.6" class="fig-curve" marker-end="url(#arr-4-5-1)"/>
+<line x1="482.9" y1="128.4" x2="514" y2="25" class="fig-curve" marker-end="url(#arr-4-5-1)"/>
+<line x1="479" y1="128" x2="468.2" y2="20.6" class="fig-curve" marker-end="url(#arr-4-5-1)"/>
+<line x1="475.3" y1="129.2" x2="424.2" y2="34" class="fig-curve" marker-end="url(#arr-4-5-1)"/>
+<line x1="472.3" y1="131.7" x2="388.6" y2="63.3" class="fig-curve" marker-end="url(#arr-4-5-1)"/>
+<line x1="470.4" y1="135.1" x2="367" y2="104" class="fig-curve" marker-end="url(#arr-4-5-1)"/>
+<line x1="470" y1="139" x2="362.6" y2="149.8" class="fig-curve" marker-end="url(#arr-4-5-1)"/>
+<line x1="471.2" y1="142.7" x2="376" y2="193.8" class="fig-curve" marker-end="url(#arr-4-5-1)"/>
+<line x1="473.7" y1="145.7" x2="405.3" y2="229.4" class="fig-curve" marker-end="url(#arr-4-5-1)"/>
+<line x1="477.1" y1="147.6" x2="446" y2="251" class="fig-curve" marker-end="url(#arr-4-5-1)"/>
+<line x1="481" y1="148" x2="491.8" y2="255.4" class="fig-curve" marker-end="url(#arr-4-5-1)"/>
+<line x1="484.7" y1="146.8" x2="535.8" y2="242" class="fig-curve" marker-end="url(#arr-4-5-1)"/>
+<line x1="487.7" y1="144.3" x2="571.4" y2="212.7" class="fig-curve" marker-end="url(#arr-4-5-1)"/>
+<line x1="489.6" y1="140.9" x2="593" y2="172" class="fig-curve" marker-end="url(#arr-4-5-1)"/>
+<path d="M571.5,138 L572.5,133.1 L573,128.2 L572.9,123.3 L572.3,118.4 L571,113.6 L569.1,109 L566.7,104.7 L563.7,100.7 L560.3,97.1 L556.5,93.9 L552.2,91.1 L547.8,88.8 L543,86.9 L538.2,85.6 L533.3,84.7 L528.4,84.2 L523.6,84.1 L519,84.4 L514.5,84.9 L510.2,85.6 L506.3,86.5 L502.5,87.4 L499.1,88.3 L495.9,89.2 L492.9,89.9 L490.1,90.4 L487.5,90.8 L485,90.9 L482.5,90.7 L480,90.3 L477.5,89.6 L474.8,88.7 L472,87.6 L469,86.4 L465.8,85.1 L462.4,83.8 L458.7,82.5 L454.8,81.3 L450.6,80.3 L446.2,79.5 L441.7,79.1 L437.1,79 L432.4,79.3 L427.8,80 L423.2,81.2 L418.7,82.8 L414.5,84.9 L410.5,87.5 L406.8,90.5 L403.5,93.9 L400.7,97.6 L398.2,101.6 L396.3,105.9 L394.8,110.3 L393.8,114.9 L393.3,119.6 L393.2,124.3 L393.6,128.9 L394.4,133.5 L395.5,138 L397,142.4 L398.7,146.5 L400.7,150.6 L402.8,154.4 L405.1,158.1 L407.6,161.5 L410.1,164.8 L412.6,168 L415.3,171 L417.9,173.9 L420.6,176.6 L423.3,179.2 L426,181.8 L428.7,184.2 L431.5,186.5 L434.3,188.7 L437.2,190.9 L440.1,192.9 L443.2,194.7 L446.2,196.5 L449.4,198 L452.7,199.4 L456,200.5 L459.4,201.5 L462.8,202.2 L466.2,202.7 L469.7,203 L473.2,203 L476.6,202.7 L480,202.3 L483.3,201.6 L486.6,200.8 L489.8,199.8 L492.9,198.7 L495.9,197.4 L498.9,196.1 L501.8,194.7 L504.6,193.3 L507.4,191.8 L510.2,190.4 L513.1,188.9 L515.9,187.5 L518.9,186 L521.9,184.5 L525,183 L528.2,181.4 L531.6,179.8 L535,178 L538.5,176 L542.1,173.9 L545.7,171.5 L549.3,168.9 L552.9,166 L556.4,162.8 L559.7,159.3 L562.7,155.6 L565.5,151.5 L567.9,147.2 L570,142.7 L571.5,138 Z" class="fig-shape"/>
+<circle cx="573" cy="128.7" r="3.2" class="fig-arrowhead"/>
+<circle cx="558.8" cy="95.7" r="3.2" class="fig-arrowhead"/>
+<circle cx="524" cy="84.1" r="3.2" class="fig-arrowhead"/>
+<circle cx="494.6" cy="89.5" r="3.2" class="fig-arrowhead"/>
+<circle cx="475.1" cy="88.8" r="3.2" class="fig-arrowhead"/>
+<circle cx="448.8" cy="80" r="3.2" class="fig-arrowhead"/>
+<circle cx="414.9" cy="84.7" r="3.2" class="fig-arrowhead"/>
+<circle cx="394.3" cy="112.2" r="3.2" class="fig-arrowhead"/>
+<circle cx="398.5" cy="146.2" r="3.2" class="fig-arrowhead"/>
+<circle cx="416.3" cy="172.2" r="3.2" class="fig-arrowhead"/>
+<circle cx="436.9" cy="190.7" r="3.2" class="fig-arrowhead"/>
+<circle cx="460.8" cy="201.8" r="3.2" class="fig-arrowhead"/>
+<circle cx="486.3" cy="200.9" r="3.2" class="fig-arrowhead"/>
+<circle cx="508.6" cy="191.2" r="3.2" class="fig-arrowhead"/>
+<circle cx="531.3" cy="179.9" r="3.2" class="fig-arrowhead"/>
+<circle cx="557.7" cy="161.4" r="3.2" class="fig-arrowhead"/>
+<circle cx="480" cy="138" r="4.5" class="fig-arrowhead"/>
+<text x="489" y="156" class="fig-label fig-it">q</text>
+<text x="548.6" y="81.3" class="fig-label fig-it">S</text>
+<text x="480" y="270" text-anchor="middle" class="fig-label fig-small">(b) D: o fluxo conta tubos</text>
+</svg>
+                    <figcaption><strong>Figura 4.5.1.</strong> (a) Na estática, $E = -d\phi$ é a pilha das superfícies
+                        equipotenciais, e $\int_\gamma E$ conta, com sinal, as equipotenciais que a curva $\gamma$ atravessa: é
+                        uma $1$-forma. (b) $D$ é uma família de tubos de fluxo, que nascem nas cargas; $\oint_SD$ conta os
+                        tubos que furam a superfície fechada $S$, e dá o mesmo número para qualquer $S$ em volta da carga: é
+                        uma $2$-forma.</figcaption>
+                </figure>
+
+                <p>
+                    A tabela reúne as seis grandezas, com o nome que usamos para cada uma e o tipo de integral em que
+                    aparecem. Seguindo Hehl e Obukhov, chamamos $E$ e $B$ de <strong>intensidades</strong> (medidas pela força
+                    sobre cargas de prova) e $D$ e $H$ de <strong>excitações</strong> (determinadas pelas cargas e correntes
+                    que as produzem).
+                </p>
+
+                <div style="overflow-x: auto;">
+                <table>
+                    <tr><th>Forma</th><th>Nome</th><th>Grau</th><th>Integrada sobre</th><th>Papel</th></tr>
+                    <tr><td>$E$</td><td>campo elétrico</td><td>$1$</td><td>curvas</td><td>intensidade</td></tr>
+                    <tr><td>$B$</td><td>indução magnética</td><td>$2$</td><td>superfícies</td><td>intensidade</td></tr>
+                    <tr><td>$D$</td><td>deslocamento elétrico</td><td>$2$</td><td>superfícies</td><td>excitação</td></tr>
+                    <tr><td>$H$</td><td>campo magnético</td><td>$1$</td><td>curvas</td><td>excitação</td></tr>
+                    <tr><td>$J$</td><td>corrente</td><td>$2$</td><td>superfícies</td><td>fonte</td></tr>
+                    <tr><td>$\varrho$</td><td>carga</td><td>$3$</td><td>volumes</td><td>fonte</td></tr>
+                </table>
+                </div>
+
+                <p>
+                    Falta dizer o que é a derivada no tempo de uma forma. Nesta descrição, as componentes dependem de
+                    $(x^1,x^2,x^3)$ e de um parâmetro $t$, que não é uma coordenada: $B_{ij} = B_{ij}(x^1,x^2,x^3;t)$.
+                </p>
+
+                <div class="definition-box" id="def-4-5-3" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.5.3 (Derivada temporal de uma forma).</strong> Se
+                        $\omega(t) = \sideset{}{'}\sum_I\omega_I(x,t)\,dx^I$ é uma família de $k$-formas cujas componentes
+                        são suaves em $(x,t)$, $\partial_t\omega$ é a $k$-forma de componentes $\partial_t\omega_I$.</p>
+                </div>
+
+                <p>
+                    Como as derivadas parciais comutam (teorema de Schwarz), $d(\partial_t\omega) = \partial_t(d\omega)$: a
+                    derivada exterior age só nas variáveis espaciais e comuta com $\partial_t$. A notação é desajeitada,
+                    porque o eletromagnetismo é uma teoria em $3 + 1$ dimensões e aqui o tempo ficou de fora da geometria.
+                    No tópico 4.7 o tempo vira a coordenada $x^0$, $\partial_t$ é absorvida pela derivada exterior em
+                    $\mathbb{R}^4$ e tudo fica mais limpo.
+                </p>
+
+                <h2 id="leis-integrais">As leis integrais em formas</h2>
+
+                <p>
+                    Com a <a href="#def-4-5-1">Definição 4.5.1</a> e a <a href="#prop-4-5-2">Proposição 4.5.2</a>, cada integral de (4.5.1) é a integral de uma forma do grau certo:
+                    $\int\mathbf{E}\cdot d\mathbf{s} = \int E$, $\int\mathbf{B}\cdot d\mathbf{a} = \int B$,
+                    $\varepsilon_0\int\mathbf{E}\cdot d\mathbf{a} = \int D$, $\tfrac1{\mu_0}\int\mathbf{B}\cdot d\mathbf{s} = \int H$,
+                    $\int\mathbf{J}\cdot d\mathbf{a} = \int J$ e $\int\rho\,dV = \int\varrho$. Multiplicando a lei de Gauss por
+                    $\varepsilon_0$ e a de Ampère–Maxwell por $1/\mu_0$, as quatro leis ficam
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    &\oint_{\partial\Sigma}E = -\frac{d}{dt}\int_\Sigma B, &&\oint_{\partial V}B = 0,\\
+                    &\oint_{\partial V}D = \int_V\varrho, &&\oint_{\partial\Sigma}H = \int_\Sigma J + \frac{d}{dt}\int_\Sigma D.
+                    \end{aligned} \tag{4.5.2} $$
+                </p>
+
+                <p>
+                    As constantes $\varepsilon_0$ e $\mu_0$ desapareceram: estão dentro de $D$ e de $H$. Em cada lei, os dois
+                    lados são integrais de formas do mesmo grau sobre objetos da mesma dimensão (<a href="#exr-4-5-1">Exercício 4.5.1</a>). As duas leis
+                    da primeira linha (Faraday e Gauss magnética) envolvem só as intensidades $E$ e $B$; as da segunda linha,
+                    só as excitações $D$, $H$ e as fontes. Nenhuma delas usa a métrica: só integrais de formas.
+                </p>
+
+                <p>
+                    Para passar às equações diferenciais, a derivada em $t$ precisa entrar na integral. Supomos sempre que
+                    as componentes dos campos são suaves em $(x,t)$.
+                </p>
+
+                <div class="definition-box" id="prop-4-5-4">
+                    <p><strong>Proposição 4.5.4 (Derivar sob a integral).</strong> Se $\Sigma$ é uma superfície orientada
+                        compacta, fixa (independente de $t$), e $B(t)$ é uma família de $2$-formas suave em $(x,t)$, então
+                        $\frac{d}{dt}\int_\Sigma B = \int_\Sigma\partial_tB$. O mesmo vale para $k$-formas sobre subvariedades
+                        compactas orientadas de dimensão $k$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela definição da integral por parametrizações e partições da unidade (tópico
+                    3.17), $\int_\Sigma B$ é uma soma finita de integrais
+                    $\int_W\psi\,B_{ij}(\varphi(u,v),t)\,\big(\partial_u\varphi^i\partial_v\varphi^j - \partial_v\varphi^i\partial_u\varphi^j\big)\,du\,dv$,
+                    com $i \lt j$, sobre compactos $W$, de funções suaves de $(u,v,t)$, em que $\psi$ é uma função da partição.
+                    A derivação sob o sinal de integral (lema citado no capítulo 3) troca $d/dt$ e $\int_W$, e a derivada de
+                    cada integrando é o integrando correspondente de $\partial_tB$, pois $\varphi$ e $\psi$ não dependem de
+                    $t$. $\blacksquare$
+                </p>
+
+                <p id="obs-4-5-5"><strong>Observação 4.5.5 (As orientações dos bordos).</strong> As leis (4.5.2) usam
+                    orientações. $\partial V$ recebe a orientação da normal exterior, e $\partial\Sigma$ a orientação induzida
+                    pela de $\Sigma$, com a convenção "normal exterior primeiro" (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[15] - Orientação.html#prop-3-15-15">Proposição 3.15.15</a> e tópico
+                    <a href="../[2] - Cálculo em Variedades Diferenciáveis/[16] - Variedades com Bordo.html">3.16</a>). Para uma
+                    superfície em $\mathbb{R}^3$ com normal $\mathbf{n}$, isso é a regra da mão direita
+                    (<a href="#fig-4-5-2">Figura 4.5.2</a>): com o polegar ao longo de $\mathbf{n}$, os dedos indicam o sentido
+                    de $\partial\Sigma$. Com essas escolhas, o Teorema de Stokes
+                    (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[18] - Teorema de Stokes Geral.html">tópico 3.18</a>;
+                    Lee, cap. 16) não tem sinal: $\int_{\partial M}\omega = \int_Md\omega$.</p>
+
+                <figure class="lecture-figure" id="fig-4-5-2">
+                    <svg viewBox="0 0 640 250" role="img" aria-label="Um disco Sigma visto em perspectiva, com o vetor normal n apontando para cima e linhas verticais do campo B atravessando o disco de baixo para cima. Setas sobre o bordo do disco indicam a orientação de del Sigma: na parte da frente para a direita e na parte de trás para a esquerda, isto é, no sentido anti-horário visto de cima, a regra da mão direita em relação a n.">
+<defs><marker id="arr-4-5-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="204.4" y1="252" x2="204.4" y2="160" class="fig-guide fig-dashed"/>
+<line x1="255.4" y1="272" x2="255.4" y2="180" class="fig-guide fig-dashed"/>
+<line x1="371" y1="252" x2="371" y2="160" class="fig-guide fig-dashed"/>
+<line x1="425.4" y1="272" x2="425.4" y2="180" class="fig-guide fig-dashed"/>
+<path d="M490,168 L489.8,165.3 L489.1,162.6 L487.9,159.9 L486.3,157.2 L484.2,154.5 L481.7,151.9 L478.7,149.4 L475.3,146.8 L471.5,144.4 L467.2,142 L462.6,139.7 L457.5,137.4 L452.1,135.3 L446.3,133.2 L440.2,131.2 L433.8,129.4 L427,127.6 L419.9,125.9 L412.6,124.4 L405,123 L397.2,121.7 L389.1,120.5 L380.9,119.5 L372.5,118.5 L364,117.8 L355.3,117.1 L346.6,116.6 L337.8,116.3 L328.9,116.1 L320,116 L311.1,116.1 L302.2,116.3 L293.4,116.6 L284.7,117.1 L276,117.8 L267.5,118.5 L259.1,119.5 L250.9,120.5 L242.8,121.7 L235,123 L227.4,124.4 L220.1,125.9 L213,127.6 L206.2,129.4 L199.8,131.2 L193.7,133.2 L187.9,135.3 L182.5,137.4 L177.4,139.7 L172.8,142 L168.5,144.4 L164.7,146.8 L161.3,149.4 L158.3,151.9 L155.8,154.5 L153.7,157.2 L152.1,159.9 L150.9,162.6 L150.2,165.3 L150,168 L150.2,170.7 L150.9,173.4 L152.1,176.1 L153.7,178.8 L155.8,181.5 L158.3,184.1 L161.3,186.6 L164.7,189.2 L168.5,191.6 L172.8,194 L177.4,196.3 L182.5,198.6 L187.9,200.7 L193.7,202.8 L199.8,204.8 L206.2,206.6 L213,208.4 L220.1,210.1 L227.4,211.6 L235,213 L242.8,214.3 L250.9,215.5 L259.1,216.5 L267.5,217.5 L276,218.2 L284.7,218.9 L293.4,219.4 L302.2,219.7 L311.1,219.9 L320,220 L328.9,219.9 L337.8,219.7 L346.6,219.4 L355.3,218.9 L364,218.2 L372.5,217.5 L380.9,216.5 L389.1,215.5 L397.2,214.3 L405,213 L412.6,211.6 L419.9,210.1 L427,208.4 L433.8,206.6 L440.2,204.8 L446.3,202.8 L452.1,200.7 L457.5,198.6 L462.6,196.3 L467.2,194 L471.5,191.6 L475.3,189.2 L478.7,186.6 L481.7,184.1 L484.2,181.5 L486.3,178.8 L487.9,176.1 L489.1,173.4 L489.8,170.7 L490,168 Z" class="fig-band"/>
+<path d="M490,168 L489.8,165.3 L489.1,162.6 L487.9,159.9 L486.3,157.2 L484.2,154.5 L481.7,151.9 L478.7,149.4 L475.3,146.8 L471.5,144.4 L467.2,142 L462.6,139.7 L457.5,137.4 L452.1,135.3 L446.3,133.2 L440.2,131.2 L433.8,129.4 L427,127.6 L419.9,125.9 L412.6,124.4 L405,123 L397.2,121.7 L389.1,120.5 L380.9,119.5 L372.5,118.5 L364,117.8 L355.3,117.1 L346.6,116.6 L337.8,116.3 L328.9,116.1 L320,116 L311.1,116.1 L302.2,116.3 L293.4,116.6 L284.7,117.1 L276,117.8 L267.5,118.5 L259.1,119.5 L250.9,120.5 L242.8,121.7 L235,123 L227.4,124.4 L220.1,125.9 L213,127.6 L206.2,129.4 L199.8,131.2 L193.7,133.2 L187.9,135.3 L182.5,137.4 L177.4,139.7 L172.8,142 L168.5,144.4 L164.7,146.8 L161.3,149.4 L158.3,151.9 L155.8,154.5 L153.7,157.2 L152.1,159.9 L150.9,162.6 L150.2,165.3 L150,168 L150.2,170.7 L150.9,173.4 L152.1,176.1 L153.7,178.8 L155.8,181.5 L158.3,184.1 L161.3,186.6 L164.7,189.2 L168.5,191.6 L172.8,194 L177.4,196.3 L182.5,198.6 L187.9,200.7 L193.7,202.8 L199.8,204.8 L206.2,206.6 L213,208.4 L220.1,210.1 L227.4,211.6 L235,213 L242.8,214.3 L250.9,215.5 L259.1,216.5 L267.5,217.5 L276,218.2 L284.7,218.9 L293.4,219.4 L302.2,219.7 L311.1,219.9 L320,220 L328.9,219.9 L337.8,219.7 L346.6,219.4 L355.3,218.9 L364,218.2 L372.5,217.5 L380.9,216.5 L389.1,215.5 L397.2,214.3 L405,213 L412.6,211.6 L419.9,210.1 L427,208.4 L433.8,206.6 L440.2,204.8 L446.3,202.8 L452.1,200.7 L457.5,198.6 L462.6,196.3 L467.2,194 L471.5,191.6 L475.3,189.2 L478.7,186.6 L481.7,184.1 L484.2,181.5 L486.3,178.8 L487.9,176.1 L489.1,173.4 L489.8,170.7 L490,168 Z" class="fig-curve"/>
+<line x1="204.4" y1="160" x2="204.4" y2="50" class="fig-curve" marker-end="url(#arr-4-5-2)"/>
+<line x1="255.4" y1="180" x2="255.4" y2="70" class="fig-curve" marker-end="url(#arr-4-5-2)"/>
+<line x1="371" y1="160" x2="371" y2="50" class="fig-curve" marker-end="url(#arr-4-5-2)"/>
+<line x1="425.4" y1="180" x2="425.4" y2="70" class="fig-curve" marker-end="url(#arr-4-5-2)"/>
+<text x="433.4" y="64" class="fig-label fig-it">B</text>
+<path d="M289.6,219.2 L294.6,219.4 L299.6,219.6 L304.7,219.8 L309.8,219.9 L314.9,220 L320,220 L325.1,220 L330.2,219.9 L335.3,219.8" class="fig-curve"/>
+<line x1="335.3" y1="219.8" x2="340.4" y2="219.6" class="fig-curve" marker-end="url(#arr-4-5-2)"/>
+<path d="M350.4,116.8 L345.4,116.6 L340.4,116.4 L335.3,116.2 L330.2,116.1 L325.1,116 L320,116 L314.9,116 L309.8,116.1 L304.7,116.2" class="fig-curve"/>
+<line x1="304.7" y1="116.2" x2="299.6" y2="116.4" class="fig-curve" marker-end="url(#arr-4-5-2)"/>
+<path d="M484.7,180.9 L485.9,179.3 L486.9,177.8 L487.8,176.3 L488.6,174.7 L489.2,173.2 L489.6,171.6 L489.9,170.1 L490,168.5 L490,167" class="fig-curve"/>
+<line x1="490" y1="167" x2="489.8" y2="165.4" class="fig-curve" marker-end="url(#arr-4-5-2)"/>
+<path d="M155.3,155.1 L154.1,156.7 L153.1,158.2 L152.2,159.7 L151.4,161.3 L150.8,162.8 L150.4,164.4 L150.1,165.9 L150,167.5 L150,169" class="fig-curve"/>
+<line x1="150" y1="169" x2="150.2" y2="170.6" class="fig-curve" marker-end="url(#arr-4-5-2)"/>
+<circle cx="320" cy="168" r="3" class="fig-arrowhead"/>
+<line x1="320" y1="168" x2="320" y2="48" class="fig-axis" marker-end="url(#arr-4-5-2)"/>
+<text x="330" y="60" class="fig-label fig-it">n</text>
+<text x="290" y="194" class="fig-label fig-it">Σ</text>
+<text x="221.1" y="232.3" text-anchor="end" class="fig-label fig-it">∂Σ</text>
+</svg>
+                    <figcaption><strong>Figura 4.5.2.</strong> A superfície $\Sigma$ da lei de Faraday, com a normal
+                        $\mathbf{n}$ e o bordo $\partial\Sigma$ orientado pela regra da mão direita (anti-horário visto do lado
+                        de $\mathbf{n}$). O fluxo $\int_\Sigma B$ conta as linhas de $\mathbf{B}$ que atravessam $\Sigma$ no
+                        sentido de $\mathbf{n}$; quando ele varia, aparece a circulação $\oint_{\partial\Sigma}E$, com o sinal
+                        de menos da lei de Lenz.</figcaption>
+                </figure>
+
+                <h2 id="leis-diferenciais">As leis diferenciais</h2>
+
+                <p>
+                    O Teorema de Stokes troca a integral sobre o bordo pela integral da derivada exterior no interior. Aplicado
+                    a (4.5.2), ele diz que certas formas têm integral nula sobre toda superfície (ou todo volume). Para concluir
+                    que essas formas são nulas, basta testá-las em quadrados e cubos pequenos.
+                </p>
+
+                <div class="definition-box" id="lema-4-5-6">
+                    <p><strong>Lema 4.5.6 (Localização).</strong> Sejam $U \subset \mathbb{R}^n$ aberto, $1 \le k \le n$ e
+                        $\eta$ uma $k$-forma contínua em $U$. Para $p \in U$, $h \gt 0$ e $I = (i_1 \lt \dots \lt i_k)$, seja
+                        $Q$ o cubo coordenado $\{p + t_1e_{i_1} + \dots + t_ke_{i_k} : t \in [0,h]^k\}$, orientado pela
+                        parametrização $\varphi(t) = p + \sum_at_ae_{i_a}$. Se $\int_Q\eta = 0$ para todo cubo coordenado
+                        $Q \subset U$, então $\eta = 0$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Como $\varphi^*dx^j = dt^a$ se $j = i_a$ e $\varphi^*dx^j = 0$ se $j \notin I$, o
+                    <em>pullback</em> mata todo $dx^J$ com $J \ne I$ e leva $dx^I$ a $dt^1\wedge\dots\wedge dt^k$. Logo
+                    $\int_Q\eta = \int_{[0,h]^k}\eta_I(\varphi(t))\,dt^1\cdots dt^k$. Dado $\epsilon \gt 0$, a continuidade de
+                    $\eta_I$ em $p$ dá $h$ tal que $\lvert\eta_I(\varphi(t)) - \eta_I(p)\rvert \lt \epsilon$ em $[0,h]^k$, e então
+                </p>
+
+                <p>
+                    $$ \lvert\eta_I(p)\rvert = \Big\lvert\eta_I(p) - \frac{1}{h^k}\int_Q\eta\Big\rvert
+                    \le \frac{1}{h^k}\int_{[0,h]^k}\lvert\eta_I(p) - \eta_I(\varphi(t))\rvert\,dt \le \epsilon. $$
+                </p>
+
+                <p>
+                    Como $\epsilon$ é arbitrário, $\eta_I(p) = 0$, para todo $p$ e todo $I$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="teo-4-5-7">
+                    <p><strong>Teorema 4.5.7 (Forma integral e forma diferencial).</strong> Sejam $U \subset \mathbb{R}^3$
+                        aberto e $E$, $B$, $D$, $H$, $J$, $\varrho$ como na <a href="#def-4-5-1">Definição 4.5.1</a>, com componentes suaves em $(x,t)$. As
+                        leis (4.5.2) valem para toda superfície orientada compacta com bordo $\Sigma \subset U$ e toda região
+                        compacta com bordo $V \subset U$ (admitindo cantos, como em quadrados e cubos) se, e somente se,</p>
+                    <p>$$ \begin{aligned}
+                        &dB = 0, &&dE + \partial_tB = 0,\\
+                        &dD = \varrho, &&dH = J + \partial_tD.
+                        \end{aligned} \tag{4.5.3} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Usamos o Teorema de Stokes, inclusive na versão para variedades com cantos (Lee,
+                    cap. 16), e a <a href="#prop-4-5-4">Proposição 4.5.4</a>.
+                </p>
+
+                <p>
+                    <strong>Diferencial implica integral.</strong> Se valem as (4.5.3),
+                    $\oint_{\partial\Sigma}E = \int_\Sigma dE = -\int_\Sigma\partial_tB = -\frac{d}{dt}\int_\Sigma B$;
+                    $\oint_{\partial V}B = \int_VdB = 0$; $\oint_{\partial V}D = \int_VdD = \int_V\varrho$; e
+                    $\oint_{\partial\Sigma}H = \int_\Sigma dH = \int_\Sigma J + \int_\Sigma\partial_tD = \int_\Sigma J + \frac{d}{dt}\int_\Sigma D$.
+                </p>
+
+                <p>
+                    <strong>Integral implica diferencial.</strong> Fixe $t$ e seja $\eta = dE + \partial_tB$. Para todo quadrado
+                    coordenado $Q \subset U$, Stokes e a lei de Faraday dão
+                    $\int_Q\eta = \oint_{\partial Q}E + \frac{d}{dt}\int_QB = 0$, e o <a href="#lema-4-5-6">Lema 4.5.6</a> com $k = 2$ dá $\eta = 0$. Do
+                    mesmo modo, $\int_QdB = \oint_{\partial Q}B = 0$ e $\int_Q(dD - \varrho) = \oint_{\partial Q}D - \int_Q\varrho = 0$
+                    para todo cubo $Q$ ($k = 3$), e $\int_Q(dH - J - \partial_tD) = 0$ para todo quadrado $Q$ ($k = 2$).
+                    $\blacksquare$
+                </p>
+
+                <p>
+                    A hipótese "para toda superfície" é essencial: a passagem da forma integral à diferencial é local, e só
+                    funciona onde os campos são suaves. Para uma carga pontual, a lei de Gauss integral vale para toda esfera em
+                    volta da carga, mas $D$ não é suave na origem, e a equação $dD = \varrho$ só faz sentido fora dela, onde
+                    diz $dD = 0$ (<a href="#exr-4-5-3">Exercício 4.5.3</a>). O tópico 4.9 volta a isso.
+                </p>
+
+                <div class="definition-box" id="prop-4-5-8">
+                    <p><strong>Proposição 4.5.8 (A forma vetorial).</strong> As equações (4.5.3) equivalem a</p>
+                    <p>$$ \begin{aligned}
+                        &\nabla\cdot\mathbf{B} = 0, &&\nabla\times\mathbf{E} + \frac{\partial\mathbf{B}}{\partial t} = 0,\\
+                        &\nabla\cdot\mathbf{E} = \frac{\rho}{\varepsilon_0}, &&
+                        \nabla\times\mathbf{B} = \mu_0\mathbf{J} + \mu_0\varepsilon_0\frac{\partial\mathbf{E}}{\partial t}.
+                        \end{aligned} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela <a href="[04] - O Operador Estrela de Hodge.html#prop-4-4-22">Proposição 4.4.22</a> e pelo <a href="../[2] - Cálculo em Variedades Diferenciáveis/[13] - Derivada Exterior.html#ex-3-13-3">Exemplo 3.13.3</a>:
+                    $dB = d\Phi_{\mathbf{B}} = (\nabla\cdot\mathbf{B})\,dV$;
+                    $dE + \partial_tB = \Phi_{\nabla\times\mathbf{E}} + \Phi_{\partial_t\mathbf{B}}$;
+                    $dD - \varrho = (\varepsilon_0\nabla\cdot\mathbf{E} - \rho)\,dV$; e
+                    $dH - J - \partial_tD = \Phi_{\nabla\times\mathbf{B}/\mu_0 - \mathbf{J} - \varepsilon_0\partial_t\mathbf{E}}$. Como
+                    $\mathbf{G} \mapsto \Phi_{\mathbf{G}}$ e $h \mapsto h\,dV$ são injetivas (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[12] - Formas Diferenciais.html#prop-3-12-9">Proposição 3.12.9</a>), cada forma se
+                    anula se, e só se, o campo ou a função correspondente se anula. $\blacksquare$
+                </p>
+
+                <p>
+                    As duas formulações dizem o mesmo, mas distribuem a geometria de modo diferente. Em (4.5.3) a métrica não
+                    aparece: só $d$ e $\partial_t$; ela está escondida nas definições $D = \varepsilon_0\ast E$ e
+                    $H = \ast B/\mu_0$. Na forma vetorial ela está espalhada por toda parte, dentro do divergente e do
+                    rotacional, que dependem do produto escalar e da orientação (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[12] - Formas Diferenciais.html#obs-3-12-10">Observação 3.12.10</a>).
+                </p>
+
+                <h2 id="potenciais">Potenciais e calibre</h2>
+
+                <p>
+                    As duas equações homogêneas, $dB = 0$ e $dE + \partial_tB = 0$, dizem que certas formas são fechadas. Em um
+                    aberto estrelado, o lema de Poincaré as torna exatas, e os potenciais aparecem. Nesta seção $U$ é um aberto
+                    estrelado de $\mathbb{R}^3$ (por exemplo, o próprio $\mathbb{R}^3$, ou uma bola).
+                </p>
+
+                <div class="definition-box" id="prop-4-5-9">
+                    <p><strong>Proposição 4.5.9 (O potencial vetor).</strong> Se $dB = 0$ em $U$, existe uma $1$-forma
+                        $A = A_i\,dx^i$, suave em $(x,t)$, com $B = dA$. Em componentes,
+                        $B_{ij} = \partial_iA_j - \partial_jA_i$, e o campo $\mathbf{A}$ de componentes $A_i$ (o
+                        <strong>potencial vetor</strong>) satisfaz $\mathbf{B} = \nabla\times\mathbf{A}$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Para cada $t$, o <a href="[02] - O Lema de Poincaré.html#cor-4-2-7">Corolário 4.2.7</a> dá $B(t) = d\big(hB(t)\big)$, com o operador de homotopia
+                    $h$ da <a href="[02] - O Lema de Poincaré.html#def-4-2-4">Definição 4.2.4</a>. Como $hB(t)$ é dada por integrais em $s \in [0,1]$ das componentes de $B$ calculadas em
+                    $(sx,t)$, ela é suave em $(x,t)$ (derivação sob o sinal de integral); pomos $A = hB$. Em componentes,
+                </p>
+
+                <p>
+                    $$ dA = \partial_kA_i\,dx^k\wedge dx^i = \tfrac12\big(\partial_kA_i - \partial_iA_k\big)\,dx^k\wedge dx^i, $$
+                </p>
+
+                <p>
+                    e, como as componentes de uma $2$-forma são as do tensor alternado, $B_{ki} = \partial_kA_i - \partial_iA_k$.
+                    Contraindo com $\tfrac12\tilde\varepsilon_{jki}$ e usando a <a href="#def-4-5-1">Definição 4.5.1</a>,
+                </p>
+
+                <p>
+                    $$ B^j = \tfrac12\,\tilde\varepsilon_{jki}B_{ki}
+                    = \tfrac12\,\tilde\varepsilon_{jki}\big(\partial_kA_i - \partial_iA_k\big)
+                    = \tilde\varepsilon_{jki}\,\partial_kA_i = (\nabla\times\mathbf{A})_j, $$
+                </p>
+
+                <p>
+                    porque a troca dos índices mudos $k \leftrightarrow i$ na segunda parcela muda o sinal de
+                    $\tilde\varepsilon$. $\blacksquare$
+                </p>
+
+                <p>
+                    O estrelado é necessário. Em $\mathbb{R}^3$ menos um ponto, a forma do monopolo é fechada e não tem
+                    potencial global (<a href="[02] - O Lema de Poincaré.html#prop-4-2-12">Proposição 4.2.12</a>); a ausência de cargas magnéticas é o que garante, na física, que $B$ é
+                    fechada em todo o espaço, e não só fora de alguns pontos.
+                </p>
+
+                <div class="definition-box" id="prop-4-5-10">
+                    <p><strong>Proposição 4.5.10 (O potencial escalar).</strong> Se $dB = 0$ e $dE + \partial_tB = 0$ em $U$, e
+                        $A$ é como na <a href="#prop-4-5-9">Proposição 4.5.9</a>, existe uma função $\phi$, suave em $(x,t)$, com</p>
+                    <p>$$ E = -d\phi - \partial_tA, \qquad\text{isto é,}\qquad
+                        \mathbf{E} = -\nabla\phi - \frac{\partial\mathbf{A}}{\partial t}. \tag{4.5.4} $$</p>
+                    <p>No caso estático ($\partial_tB = 0$), pode-se tomar $A$ independente de $t$, e então $E = -d\phi$,
+                        $\mathbf{E} = -\nabla\phi$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Como $d$ e $\partial_t$ comutam,
+                    $d(E + \partial_tA) = dE + \partial_t\,dA = dE + \partial_tB = 0$. Pelo <a href="[02] - O Lema de Poincaré.html#cor-4-2-7">Corolário 4.2.7</a> em grau $1$ (com o mesmo
+                    argumento de suavidade em $t$), $E + \partial_tA = d\psi$ para uma função $\psi$, e pomos $\phi = -\psi$. Em
+                    componentes, $E_i = -\partial_i\phi - \partial_tA_i$. No caso estático, $B$ não depende de $t$, $A = hB$ também
+                    não, e $dE = 0$ dá $E = -d\phi$ diretamente. $\blacksquare$
+                </p>
+
+                <p>
+                    O sinal de menos em $E = -d\phi$ é só uma convenção, escolhida para que a energia potencial de uma carga
+                    positiva seja $q\phi$ e o campo aponte do potencial alto para o baixo. Sem o tempo, $E = -d\phi$ só vale na
+                    estática; a forma geral (4.5.4) mistura $\phi$ e $\mathbf{A}$, e é um primeiro sinal de que os dois são partes
+                    de um mesmo objeto. No tópico 4.7 eles se juntam na $1$-forma $A_\mu\,dx^\mu$ do espaço-tempo, com
+                    $A_0 = -\phi/c$.
+                </p>
+
+                <div class="definition-box" id="prop-4-5-11">
+                    <p><strong>Proposição 4.5.11 (Liberdade de calibre).</strong> Se $(\phi,A)$ são potenciais para $(E,B)$ e
+                        $f$ é uma função suave em $(x,t)$, então</p>
+                    <p>$$ A' = A + df, \qquad \phi' = \phi - \partial_tf \tag{4.5.5} $$</p>
+                    <p>são potenciais para os mesmos $(E,B)$. Reciprocamente, em $U$ estrelado, dois pares de potenciais para os
+                        mesmos campos diferem por uma transformação (4.5.5), a menos de somar a $\phi'$ uma função só de $t$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> $dA' = dA + d^2f = dA = B$, e
+                    $-d\phi' - \partial_tA' = -d\phi + d(\partial_tf) - \partial_tA - \partial_t(df) = -d\phi - \partial_tA = E$, porque
+                    $d(\partial_tf) = \partial_t(df)$. Reciprocamente, se $dA' = dA$, a $1$-forma $A' - A$ é fechada, e a
+                    <a href="[02] - O Lema de Poincaré.html#obs-4-2-9">Observação 4.2.9</a> dá $A' - A = df$ para uma função $f$ (suave em $t$ pelo mesmo argumento). Então
+                    $-d\phi' - \partial_tA' = -d\phi - \partial_tA$ dá $d(\phi' - \phi + \partial_tf) = 0$, e
+                    $\phi' - \phi + \partial_tf$ é constante em $x$ ($U$ é conexo), isto é, uma função $c(t)$. $\blacksquare$
+                </p>
+
+                <p>
+                    A parte espacial, $A \mapsto A + df$ com $f$ independente de $t$, é a que a <a href="[02] - O Lema de Poincaré.html#obs-4-2-9">Observação 4.2.9</a> e o <a href="[02] - O Lema de Poincaré.html#ex-4-2-10">Exemplo 4.2.10</a>
+                    (campo magnético uniforme, calibres simétrico e de Landau) já mostraram. A transformação completa (4.5.5)
+                    precisa do tempo: no tópico 4.7 ela é simplesmente $A \mapsto A + df$ para a $1$-forma $A = A_\mu\,dx^\mu$
+                    de $\mathbb{R}^4$, porque a componente $dx^0$ de $df$ é $\partial_0f = \tfrac1c\partial_tf$ e
+                    $A_0 = -\phi/c$ muda para $-(\phi - \partial_tf)/c$.
+                </p>
+
+                <h2 id="conservacao">Conservação da carga</h2>
+
+                <p>
+                    As equações inomogêneas já contêm a conservação da carga. Ela não é uma lei a mais: é uma consequência de
+                    $d^2 = 0$.
+                </p>
+
+                <div class="definition-box" id="prop-4-5-12">
+                    <p><strong>Proposição 4.5.12 (Equação de continuidade).</strong> Se $dD = \varrho$ e $dH = J + \partial_tD$,
+                        então</p>
+                    <p>$$ dJ + \partial_t\varrho = 0, \qquad\text{isto é,}\qquad
+                        \frac{\partial\rho}{\partial t} + \nabla\cdot\mathbf{J} = 0. \tag{4.5.6} $$</p>
+                    <p>Na forma integral, para toda região compacta com bordo $V$ fixa,
+                        $\oint_{\partial V}J = -\frac{d}{dt}\int_V\varrho$: a corrente que sai de $V$ é a taxa com que a carga
+                        $Q = \int_V\varrho$ dentro de $V$ diminui.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Aplicando $d$ à segunda equação,
+                    $0 = d^2H = dJ + d(\partial_tD) = dJ + \partial_t(dD) = dJ + \partial_t\varrho$. Pela <a href="[04] - O Operador Estrela de Hodge.html#prop-4-4-22">Proposição 4.4.22</a>,
+                    $dJ = d\Phi_{\mathbf{J}} = (\nabla\cdot\mathbf{J})\,dV$ e $\partial_t\varrho = (\partial_t\rho)\,dV$. Para a forma
+                    integral, Stokes e a <a href="#prop-4-5-4">Proposição 4.5.4</a> dão
+                    $\oint_{\partial V}J = \int_VdJ = -\int_V\partial_t\varrho = -\frac{d}{dt}\int_V\varrho$. $\blacksquare$
+                </p>
+
+                <p>
+                    A conservação vem da corrente de deslocamento $\partial_tD$. Sem ela, a lei de Ampère $dH = J$ daria
+                    $dJ = 0$, isto é, $\nabla\cdot\mathbf{J} = 0$: nenhuma carga poderia se acumular em lugar nenhum, o que é
+                    falso para um capacitor que se carrega. Foi por esse argumento que Maxwell acrescentou o termo. No tópico
+                    4.8 a mesma conta, em quatro dimensões, fica $dj = 0$ para a $3$-forma de corrente
+                    $j = c\varrho - J\wedge dx^0$ de $\mathbb{R}^4$.
+                </p>
+
+                <h2 id="fisica">Ponte com a física: intensidades, excitações e paridade</h2>
+
+                <p>
+                    Por que $E$ é uma $1$-forma e $D$ uma $2$-forma? A resposta está em como cada grandeza é medida. O campo
+                    elétrico se mede pela força sobre uma carga de prova, e o que essa força faz ao longo de um caminho é um
+                    trabalho, uma integral de linha: a diferença de potencial entre dois pontos é $\int_\gamma E$. A indução
+                    magnética se mede pela força eletromotriz que aparece quando o seu fluxo por uma espira varia: o que se mede
+                    é $\int_\Sigma B$, uma integral de superfície. Já $D$ e $H$ se medem contando: o fluxo de $D$ por uma
+                    superfície fechada conta a carga dentro dela, e a circulação de $H$ em volta de uma espira conta a corrente
+                    que a atravessa. Hehl e Obukhov organizam o eletromagnetismo inteiro em torno dessa divisão: as leis de
+                    conservação da carga e do fluxo magnético são "contagens" e não precisam de métrica; a métrica entra só na
+                    relação constitutiva que liga as excitações $D$, $H$ às intensidades $E$, $B$.
+                </p>
+
+                <p>
+                    No vácuo essa relação é $D = \varepsilon_0\ast E$, $H = \ast B/\mu_0$. Os números $\varepsilon_0$ e $\mu_0$
+                    só convertem unidades (no SI, $\varepsilon_0\mu_0c^2 = 1$, <a href="[01] - Motivação e Roteiro.html#exr-4-1-4">Exercício 4.1.4</a>); o conteúdo geométrico é a estrela da
+                    métrica euclidiana. Num meio material a relação muda, por exemplo para $D^i = \varepsilon^{ij}E_j$ num cristal;
+                    o tópico 4.6 mostra que isso ainda é uma estrela, para outra métrica. A pergunta "qual é a métrica do espaço?"
+                    vira "qual estrela liga as excitações às intensidades?".
+                </p>
+
+                <p>
+                    A paridade $P(x) = -x$ mostra a mesma divisão de outro modo. Como formas, $E$ e $B$ se transformam pelo
+                    mesmo <em>pullback</em>, sem nenhuma regra especial. Lidas como vetores, elas se comportam de modo
+                    diferente: o campo transformado $P^*E$ corresponde a $\mathbf{E}'(x) = -\mathbf{E}(-x)$ (um vetor polar),
+                    enquanto $P^*B$ corresponde a $\mathbf{B}'(x) = +\mathbf{B}(-x)$ (um vetor axial). A diferença vem só da
+                    estrela usada para passar da $2$-forma $B$ ao vetor $\mathbf{B}$, que troca de sinal sob paridade
+                    (<a href="[04] - O Operador Estrela de Hodge.html#ex-4-4-20">Exemplo 4.4.20</a> e <a href="#exr-4-5-7">Exercício 4.5.7</a>). O mesmo sinal tem uma consequência menos óbvia: se $E$ é transformada por
+                    <em>pullback</em>, então $P^*(\varepsilon_0\ast E) = -\varepsilon_0\ast(P^*E)$, e a relação $D = \varepsilon_0\ast E$
+                    só sobrevive à paridade se $D$ ganhar um sinal extra sob inversões de orientação. O mesmo vale para $H$,
+                    $J$ e $\varrho$; para a carga isso é natural, porque a densidade $\rho$ não deve trocar de sinal quando o
+                    espaço é refletido, e $P^*(\rho\,dV) = -\rho(-x)\,dV$. Hehl e Obukhov chamam essas formas de
+                    <strong>formas torcidas</strong> (em inglês, <em>twisted forms</em>): são as que, como as densidades, levam
+                    em conta a orientação. Neste capítulo trabalhamos sempre com uma orientação fixa, e a distinção não aparece
+                    nas contas.
+                </p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p>
+                    Os dois primeiros são os das notas de aula; os demais são extras. Todas as contas foram conferidas em sympy.
+                </p>
+
+                <p id="exr-4-5-1"><strong>Exercício 4.5.1 (das notas de aula).</strong> Verifique que todas as equações deste
+                    tópico, integrais e diferenciais, envolvem formas de mesmo grau. Por que não se podem somar, nem igualar, formas
+                    de graus diferentes?</p>
+
+                <p>
+                    <em>Solução.</em> Nas leis integrais (4.5.2), uma $k$-forma é sempre integrada sobre um objeto de dimensão
+                    $k$: em Faraday, a $1$-forma $E$ sobre a curva $\partial\Sigma$ e a $2$-forma $B$ sobre a superfície $\Sigma$; em
+                    Gauss magnética, a $2$-forma $B$ sobre a superfície $\partial V$; em Gauss elétrica, a $2$-forma $D$ sobre
+                    $\partial V$ e a $3$-forma $\varrho$ sobre o volume $V$; em Ampère–Maxwell, a $1$-forma $H$ sobre $\partial\Sigma$
+                    e as $2$-formas $J$ e $D$ sobre $\Sigma$. Nas diferenciais (4.5.3), $d$ sobe o grau em uma unidade e
+                    $\partial_t$ o preserva:
+                </p>
+
+                <div style="overflow-x: auto;">
+                <table>
+                    <tr><th>Equação</th><th>Graus dos termos</th></tr>
+                    <tr><td>$dB = 0$</td><td>$dB$: $3$</td></tr>
+                    <tr><td>$dE + \partial_tB = 0$</td><td>$dE$: $2$; $\partial_tB$: $2$</td></tr>
+                    <tr><td>$dD = \varrho$</td><td>$dD$: $3$; $\varrho$: $3$</td></tr>
+                    <tr><td>$dH = J + \partial_tD$</td><td>$dH$: $2$; $J$: $2$; $\partial_tD$: $2$</td></tr>
+                    <tr><td>$dJ + \partial_t\varrho = 0$</td><td>$dJ$: $3$; $\partial_t\varrho$: $3$</td></tr>
+                </table>
+                </div>
+
+                <p>
+                    Formas de graus diferentes vivem em espaços vetoriais diferentes, $\Lambda^k$ e $\Lambda^l$, e a soma só está
+                    definida dentro de um mesmo espaço. Uma igualdade entre uma $1$-forma e uma $2$-forma também não teria
+                    conteúdo: elas comem números diferentes de vetores, e nenhuma integral as compara, porque cada uma só se
+                    integra sobre objetos da sua própria dimensão. A conta de graus é um teste de consistência, como a análise
+                    dimensional: uma equação que a viola está errada.
+                </p>
+
+                <p id="exr-4-5-2"><strong>Exercício 4.5.2 (das notas de aula).</strong> Escreva a conservação da carga,
+                    $\oint_{\partial V}\mathbf{J}\cdot d\mathbf{a} = -\frac{dQ}{dt}$, na linguagem de formas, dizendo o grau de cada
+                    forma e como as suas componentes se relacionam com o vetor $\mathbf{J}$ e a densidade $\rho$.</p>
+
+                <p>
+                    <em>Solução.</em> A superfície é o bordo de uma região: a conservação diz respeito à carga dentro de $V$, e a
+                    corrente que importa é a que atravessa a superfície fechada $\partial V$. O integrando
+                    $\mathbf{J}\cdot d\mathbf{a}$ é a $2$-forma
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    J = \Phi_{\mathbf{J}} &= J^1\,dx^2\wedge dx^3 + J^2\,dx^3\wedge dx^1 + J^3\,dx^1\wedge dx^2\\
+                    &= \tfrac12J_{ij}\,dx^i\wedge dx^j, \qquad J_{ij} = \tilde\varepsilon_{ijk}J^k,
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    isto é, $J = \ast(J_k\,dx^k)$. A carga $Q = \int_V\rho\,dV$ é a integral da $3$-forma
+                    $\varrho = \rho\,dx^1\wedge dx^2\wedge dx^3$, de componente $\varrho_{123} = \rho$. A lei fica
+                    $\oint_{\partial V}J = -\frac{d}{dt}\int_V\varrho$, uma igualdade entre uma integral de $2$-forma sobre uma
+                    superfície e a derivada de uma integral de $3$-forma sobre um volume. Por Stokes e pela <a href="#prop-4-5-4">Proposição 4.5.4</a>, ela
+                    equivale (para toda $V$, pelo <a href="#lema-4-5-6">Lema 4.5.6</a>) a $dJ + \partial_t\varrho = 0$, uma igualdade entre
+                    $3$-formas, e em componentes a $\partial_t\rho + \partial_kJ^k = 0$. É a <a href="#prop-4-5-12">Proposição 4.5.12</a>, lida ao contrário. No
+                    tópico 4.8 a mesma lei vira $dj = 0$ para a $3$-forma $j = c\varrho - J\wedge dx^0$ do espaço-tempo.
+                </p>
+
+                <p id="exr-4-5-3"><strong>Exercício 4.5.3.</strong> Uma carga pontual $q$ na origem produz
+                    $\mathbf{E} = \frac{q}{4\pi\varepsilon_0r^2}\hat{\mathbf{r}}$. Escreva $E$ e $D = \varepsilon_0\ast E$ em
+                    coordenadas esféricas, mostre que $\oint_{S_R}D = q$ para toda esfera $S_R$ centrada na origem e que $dD = 0$
+                    fora da origem.</p>
+
+                <p>
+                    <em>Solução.</em> A forma de trabalho de $f(r)\hat{\mathbf{r}}$ é $f(r)\,dr$, porque $\hat{\mathbf{r}}\cdot d\mathbf{s} = dr$;
+                    logo $E = \frac{q}{4\pi\varepsilon_0r^2}\,dr$. Pelo <a href="[04] - O Operador Estrela de Hodge.html#exr-4-4-9">Exercício 4.4.9</a>, $\ast dr = r^2\sin\theta\,d\theta\wedge d\phi$, e
+                </p>
+
+                <p>
+                    $$ D = \varepsilon_0\ast E = \frac{q}{4\pi\varepsilon_0r^2}\,\varepsilon_0\,r^2\sin\theta\,d\theta\wedge d\phi
+                    = \frac{q}{4\pi}\sin\theta\,d\theta\wedge d\phi. $$
+                </p>
+
+                <p>
+                    O fator $r^2$ se cancela: $D$ não depende de $r$. Na esfera $S_R$, parametrizada por $(\theta,\phi)$ com a
+                    orientação da normal exterior,
+                    $\oint_{S_R}D = \frac{q}{4\pi}\int_0^{2\pi}\!\!\int_0^\pi\sin\theta\,d\theta\,d\phi = q$, para todo $R$. E
+                    $dD = \frac{q}{4\pi}\,\partial_r(\sin\theta)\,dr\wedge d\theta\wedge d\phi = 0$ onde as coordenadas esféricas valem;
+                    em cartesianas, $D = \frac{q}{4\pi}\,\frac{x\,dy\wedge dz + y\,dz\wedge dx + z\,dx\wedge dy}{r^3}$ é $\tfrac{q}{4\pi}$
+                    vezes a forma do ângulo sólido do tópico 4.2, fechada em $\mathbb{R}^3\setminus\{0\}$. Esta é a $2$-forma do
+                    <a href="[01] - Motivação e Roteiro.html#exr-4-1-3">Exercício 4.1.3</a>, agora escrita como $\varepsilon_0\ast E$. A lei de Gauss integral vale para toda superfície em
+                    volta da carga, mas $dD = \varrho$ não faz sentido na origem, onde $D$ não é suave.
+                </p>
+
+                <p id="exr-4-5-4"><strong>Exercício 4.5.4.</strong> Um fio reto infinito ao longo do eixo $z$, de raio $a$,
+                    conduz uma corrente $I$ distribuída uniformemente na seção. Em coordenadas cilíndricas $(s,\phi,z)$, mostre que
+                    $H = \frac{I}{2\pi}\,\frac{s^2}{a^2}\,d\phi$ para $s \le a$ e $H = \frac{I}{2\pi}\,d\phi$ para $s \ge a$ satisfazem
+                    $dH = J$, e que $\oint H = I$ em toda circunferência em volta do fio de raio $s \ge a$. Por que $dH = 0$ fora do
+                    fio não contradiz $\oint H \ne 0$?</p>
+
+                <p>
+                    <em>Solução.</em> A densidade de corrente é $\mathbf{J} = \frac{I}{\pi a^2}\hat{\mathbf{z}}$ dentro do fio e $0$
+                    fora, isto é, $J = \frac{I}{\pi a^2}\,dx\wedge dy$ dentro. Pelo <em>pullback</em> para cilíndricas,
+                    $dx\wedge dy = s\,ds\wedge d\phi$. Dentro,
+                    $dH = \frac{I}{2\pi a^2}\,\partial_s(s^2)\,ds\wedge d\phi = \frac{I}{\pi a^2}\,s\,ds\wedge d\phi = J$; fora, o
+                    coeficiente de $d\phi$ é constante, e $dH = 0 = J$ (sem corrente de deslocamento: tudo é estacionário). As duas
+                    expressões coincidem em $s = a$. Numa circunferência $s = $ const, $z = $ const, orientada no sentido de
+                    $\phi$ crescente, $\oint H = \frac{I}{2\pi}\int_0^{2\pi}d\phi = I$ se $s \ge a$. Fora do fio, $H$ é $\tfrac{I}{2\pi}$
+                    vezes a forma $d\phi$, que, como a $d\theta$ do <a href="../[2] - Cálculo em Variedades Diferenciáveis/[09] - Covetores e 1-Formas.html#ex-3-9-42">Exemplo 3.9.42</a>, é fechada e não exata no complementar do eixo, que
+                    não é estrelado. A
+                    circunferência não é o bordo de nenhuma superfície contida na região sem corrente; o disco que ela cerca corta
+                    o fio, e é a corrente $I$ que o atravessa que a lei de Ampère mede. O $H$ do fio fino ideal ($a \to 0$) é o
+                    mesmo fora, e a corrente concentrada no eixo vira uma distribuição.
+                </p>
+
+                <p id="exr-4-5-5"><strong>Exercício 4.5.5.</strong> Um campo elétrico uniforme e constante,
+                    $\mathbf{E} = E_0\hat{\mathbf{x}}$, sem campo magnético, admite os potenciais $\phi = -E_0x$, $A = 0$. Mostre que
+                    $\phi' = 0$, $A' = -E_0t\,dx$ descrevem os mesmos campos e encontre a função $f$ de (4.5.5) que leva um par ao
+                    outro.</p>
+
+                <p>
+                    <em>Solução.</em> Para o primeiro par, $E = -d\phi = E_0\,dx$ e $B = dA = 0$. Para o segundo,
+                    $E = -d\phi' - \partial_tA' = E_0\,dx$ e $B = dA' = -E_0t\,d(dx) = 0$: os mesmos campos. Procuramos $f$ com
+                    $df = A' - A = -E_0t\,dx$ e $-\partial_tf = \phi' - \phi = E_0x$. A primeira dá $f = -E_0xt + g(t)$, e a segunda
+                    fica $E_0x - g'(t) = E_0x$, isto é, $g$ constante. Com $g = 0$, $f = -E_0xt$. O exemplo mostra que, com tempo, o
+                    potencial escalar não é determinado pelo campo elétrico: um campo estático pode ser descrito por um potencial
+                    vetor que cresce com o tempo.
+                </p>
+
+                <p id="exr-4-5-6"><strong>Exercício 4.5.6.</strong> No vácuo sem fontes, considere
+                    $E = E_0\cos(kz - \omega t)\,dx$, com $k, \omega \gt 0$. Encontre $B$ pela lei de Faraday, verifique $dB = 0$ e
+                    $dD = 0$, e mostre que $dH = \partial_tD$ exige $\omega = ck$, com $c^2 = 1/(\varepsilon_0\mu_0)$.</p>
+
+                <p>
+                    <em>Solução.</em> $dE = \partial_z\big(E_0\cos(kz - \omega t)\big)\,dz\wedge dx = -kE_0\sin(kz - \omega t)\,dz\wedge dx$. A lei
+                    $\partial_tB = -dE = kE_0\sin(kz - \omega t)\,dz\wedge dx$ se integra em $t$ (descartando uma parte estática, que
+                    seria um campo uniforme independente da onda):
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    B &= \frac{k}{\omega}\,E_0\cos(kz - \omega t)\,dz\wedge dx,\\
+                    \text{isto é,}\quad \mathbf{B} &= \frac{k}{\omega}\,E_0\cos(kz - \omega t)\,\hat{\mathbf{y}},
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    pois $dz\wedge dx = \Phi_{\hat{\mathbf{y}}}$. As componentes de $B$ e de
+                    $D = \varepsilon_0\ast E = \varepsilon_0E_0\cos(kz - \omega t)\,dy\wedge dz$ só dependem de $z$ e de $t$, e as duas
+                    formas já contêm $dz$; logo $dB = \partial_z(\cdot)\,dz\wedge dz\wedge dx = 0$ e
+                    $dD = \partial_z(\cdot)\,dz\wedge dy\wedge dz = 0$. Depois,
+                    $H = \ast B/\mu_0 = \frac{k}{\mu_0\omega}E_0\cos(kz - \omega t)\,dy$, e
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    dH &= \frac{k^2}{\mu_0\omega}\,E_0\sin(kz - \omega t)\,dy\wedge dz,\\
+                    \partial_tD &= \varepsilon_0\,\omega\,E_0\sin(kz - \omega t)\,dy\wedge dz.
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    A igualdade exige $k^2/(\mu_0\omega) = \varepsilon_0\omega$, isto é, $\omega^2 = k^2/(\varepsilon_0\mu_0) = c^2k^2$. A
+                    onda anda com velocidade de fase $\omega/k = c$: a velocidade da luz sai do produto $\varepsilon_0\mu_0$, que
+                    vive nas duas estrelas $D = \varepsilon_0\ast E$ e $H = \ast B/\mu_0$. Os vetores $\hat{\mathbf{x}}$ (de
+                    $\mathbf{E}$), $\hat{\mathbf{y}}$ (de $\mathbf{B}$) e $\hat{\mathbf{z}}$ (da propagação) formam um triedro positivo.
+                </p>
+
+                <p id="exr-4-5-7"><strong>Exercício 4.5.7.</strong> Seja $P(x) = -x$ a paridade em $\mathbb{R}^3$. Para
+                    $E = \omega_{\mathbf{E}}$ e $B = \Phi_{\mathbf{B}}$, calcule $P^*E$ e $P^*B$ e leia os campos vetoriais
+                    $\mathbf{E}'$, $\mathbf{B}'$ correspondentes. Mostre que $P^*(\varepsilon_0\ast E) = -\varepsilon_0\ast(P^*E)$.</p>
+
+                <p>
+                    <em>Solução.</em> Como $P^*dx^i = d(-x^i) = -dx^i$,
+                    $P^*E = E_i(-x)\,(-dx^i) = -E_i(-x)\,dx^i$, que é $\omega_{\mathbf{E}'}$ com $\mathbf{E}'(x) = -\mathbf{E}(-x)$:
+                    o vetor troca de sinal, como um vetor polar. Para a $2$-forma, os dois sinais se cancelam:
+                    $P^*B = \tfrac12B_{ij}(-x)\,(-dx^i)\wedge(-dx^j) = \tfrac12B_{ij}(-x)\,dx^i\wedge dx^j$, que é $\Phi_{\mathbf{B}'}$ com
+                    $\mathbf{B}'(x) = +\mathbf{B}(-x)$: um vetor axial. As duas formas se transformaram pela mesma regra; o
+                    comportamento diferente dos vetores vem de ler $\mathbf{B}$ a partir de $B$ pela estrela. Por fim, pela
+                    <a href="[04] - O Operador Estrela de Hodge.html#prop-4-4-19">Proposição 4.4.19</a> ($P$ é isometria que inverte a orientação), $P^*\ast = -\ast P^*$, e
+                    $P^*(\varepsilon_0\ast E) = -\varepsilon_0\ast(P^*E)$. Se $D$ fosse transformado por <em>pullback</em> como uma forma
+                    comum, a relação $D = \varepsilon_0\ast E$ não sobreviveria à paridade; daí as formas torcidas da ponte com a
+                    física.
+                </p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <ul>
+                    <li>As seis grandezas do eletromagnetismo como formas de graus determinados (<a href="#def-4-5-1">Definição 4.5.1</a>): $E$, $H$ de grau $1$;
+                        $B$, $D$, $J$ de grau $2$; $\varrho$ de grau $3$; e os integrandos de linha e de superfície do cálculo vetorial
+                        como <em>pullbacks</em> (<a href="#prop-4-5-2">Proposição 4.5.2</a>).</li>
+                    <li>As leis de Maxwell integrais em formas (4.5.2), sem métrica e sem constantes.</li>
+                    <li>O lema de localização (<a href="#lema-4-5-6">Lema 4.5.6</a>) e a equivalência entre a forma integral e a diferencial
+                        (<a href="#teo-4-5-7">Teorema 4.5.7</a>): $dB = 0$, $dE + \partial_tB = 0$, $dD = \varrho$, $dH = J + \partial_tD$, e a volta à notação
+                        vetorial (<a href="#prop-4-5-8">Proposição 4.5.8</a>).</li>
+                    <li>O potencial vetor e o potencial escalar (<a href="#prop-4-5-9">Proposição 4.5.9</a> e <a href="#prop-4-5-10">Proposição 4.5.10</a>), com $\mathbf{B} = \nabla\times\mathbf{A}$ e
+                        $\mathbf{E} = -\nabla\phi - \partial_t\mathbf{A}$, e a liberdade de calibre completa (<a href="#prop-4-5-11">Proposição 4.5.11</a>).</li>
+                    <li>A conservação da carga como consequência de $d^2 = 0$ (<a href="#prop-4-5-12">Proposição 4.5.12</a>).</li>
+                </ul>
+
+                <p>
+                    A métrica apareceu num único lugar: $D = \varepsilon_0\ast E$ e $H = \ast B/\mu_0$. O próximo passo é perguntar
+                    o que acontece quando essas relações mudam, como num meio material. A resposta é que elas continuam sendo uma
+                    estrela de Hodge, mas para uma métrica efetiva determinada pelo meio, e que a métrica euclidiana do vácuo é
+                    consequência de hipóteses físicas sobre o vácuo:
+                    <a href="[06] - Meios Materiais e Métrica Induzida.html">4.6 Meios Materiais e Métrica Induzida</a>.
+                </p>
 
             </div>
         </main>
@@ -175,7 +954,15 @@
             <div class="toc-container">
                 <h4>Nesta página</h4>
                 <ul>
-                    <li><a href="#maxwell-3d">As Equações de Maxwell em 3D na Linguagem de Formas</a></li>
+                    <li><a href="#maxwell-3d">Maxwell em 3D com Formas</a></li>
+                    <li><a href="#formas-de-cada-grau">Cada grandeza, um grau</a></li>
+                    <li><a href="#leis-integrais">As leis integrais</a></li>
+                    <li><a href="#leis-diferenciais">As leis diferenciais</a></li>
+                    <li><a href="#potenciais">Potenciais e calibre</a></li>
+                    <li><a href="#conservacao">Conservação da carga</a></li>
+                    <li><a href="#fisica">Ponte com a física</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
                 </ul>
             </div>
         </aside>

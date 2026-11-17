@@ -166,7 +166,1209 @@
                 <h1 id="estrela-de-hodge">4.4 O Operador Estrela de Hodge</h1>
                 <p class="lead">Definição invariante do operador estrela, a fórmula em componentes, os casos do plano, do espaço e de Minkowski, a estrela dupla e o cálculo vetorial escrito com d e a estrela.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>
+                    No tópico <a href="[01] - Motivação e Roteiro.html#formas-de-graus-diferentes">4.1</a> vimos que o
+                    campo elétrico aparece de dois modos nas leis de Maxwell: integrado ao longo de curvas, como uma
+                    $1$-forma, e integrado sobre superfícies, como uma $2$-forma. Em $\mathbb{R}^3$ a passagem de um modo
+                    ao outro é a regra $E_{12} = E_3$, $E_{31} = E_2$, $E_{23} = E_1$, que liga a $1$-forma
+                    $E_i\,dx^i$ à $2$-forma "$\mathbf{E}\cdot d\mathbf{a}$". Este tópico transforma essa regra em um
+                    operador, a <strong>estrela de Hodge</strong>, definido em qualquer grau, em qualquer dimensão e para
+                    qualquer métrica, sem escolher coordenadas.
+                </p>
+
+                <p>
+                    A definição usa as duas estruturas construídas no tópico
+                    <a href="[03] - Métricas e Volume Invariante.html">4.3</a>: o produto interno de formas e a forma de
+                    volume $\operatorname{vol}_g$. A estrela $\star\beta$ é a única forma de grau complementar tal que
+                    $\alpha\wedge\star\beta = \langle\alpha,\beta\rangle\operatorname{vol}_g$ para toda $\alpha$. Mostramos
+                    que essa definição dá exatamente a operação que as aulas constroem por componentes, com o símbolo de
+                    Levi-Civita, $\sqrt{\lvert g\rvert}$ e a métrica inversa, calculamos as tabelas de $\mathbb{R}^2$,
+                    $\mathbb{R}^3$, $\mathbb{R}^4$ e do espaço de Minkowski, provamos a fórmula da estrela dupla e
+                    reescrevemos o gradiente, o rotacional, o divergente e o laplaciano com $d$ e $\ast$.
+                </p>
+
+                <p>
+                    É a última ferramenta matemática da primeira parte do capítulo, e a mais importante para o argumento:
+                    a estrela é o único lugar das equações de Maxwell em que a métrica aparece. As equações
+                    $dF = 0$ e $d\mathcal{M} = j$ não a usam; a relação $\mathcal{M} = \star F/\mu_0$, sim. Saber o que a
+                    estrela faz é saber o que o eletromagnetismo diz sobre a geometria. Seguimos a convenção das aulas:
+                    $\ast$ é a estrela de $\mathbb{R}^3$ euclidiano e $\star$ a estrela em dimensão $4$ e no caso geral,
+                    porque a fórmula explícita depende da dimensão.
+                </p>
+
+                <h2 id="motivacao-r3">A estrela em $\mathbb{R}^3$, como nas aulas</h2>
+
+                <p>
+                    Em $\mathbb{R}^3$ com a métrica euclidiana, sejam $E = E_i\,dx^i$ uma $1$-forma e
+                    $\tfrac12 E_{ij}\,dx^i\wedge dx^j$ uma $2$-forma, com $E_{ij} = -E_{ji}$. O fluxo de um campo
+                    $\mathbf{E}$ através de uma superfície é, pela forma de fluxo do dicionário
+                    (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[12] - Formas Diferenciais.html#def-3-12-8">Definição 3.12.8</a>),
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    &E_1\,dx^2\wedge dx^3 + E_2\,dx^3\wedge dx^1 + E_3\,dx^1\wedge dx^2\\
+                    &\qquad= E_{23}\,dx^2\wedge dx^3 + E_{31}\,dx^3\wedge dx^1 + E_{12}\,dx^1\wedge dx^2,
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    isto é, $E_{23} = E_1$, $E_{31} = E_2$, $E_{12} = E_3$, ou, de uma vez,
+                    $E_{ij} = \tilde\varepsilon_{ijk}E_k$ (os índices latinos de $\mathbb{R}^3$ euclidiano são escritos em
+                    qualquer posição, como no capítulo 3). Queremos uma operação $\ast$ que leve a $1$-forma $E$ a essa
+                    $2$-forma e que, como o produto exterior, aja só nos elementos $dx^i$, não nas componentes:
+                    $\ast(E_i\,dx^i) = E_i\,\ast dx^i$. Escrevendo as duas formas por extenso,
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    &E_1\,\ast dx^1 + E_2\,\ast dx^2 + E_3\,\ast dx^3\\
+                    &\qquad= E_{12}\,dx^1\wedge dx^2 + E_{31}\,dx^3\wedge dx^1 + E_{23}\,dx^2\wedge dx^3\\
+                    &\qquad= E_3\,dx^1\wedge dx^2 + E_2\,dx^3\wedge dx^1 + E_1\,dx^2\wedge dx^3,
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    e, como isso vale para quaisquer $E_1,E_2,E_3$, a regra fica determinada:
+                </p>
+
+                <p>
+                    $$ \ast dx^1 = dx^2\wedge dx^3, \qquad \ast dx^2 = dx^3\wedge dx^1, \qquad \ast dx^3 = dx^1\wedge dx^2.
+                    \tag{4.4.1} $$
+                </p>
+
+                <p>
+                    Em componentes, $\ast(E_i\,dx^i) = \tfrac12\,\tilde\varepsilon_{ijk}E_k\,dx^i\wedge dx^j$. A regra é cíclica:
+                    passa de um $dx^i$ ao produto dos outros dois, na ordem que conserva a orientação. É isso que a torna
+                    independente de como os eixos foram girados.
+                </p>
+
+                <p id="ex-4-4-1"><strong>Exemplo 4.4.1 (Uma rotação de $90°$).</strong> A rotação de $90°$ em torno do eixo
+                    $x^1$ é a substituição $x^1 \mapsto x^1$, $x^2 \mapsto x^3$, $x^3 \mapsto -x^2$, isto é, o
+                    <em>pullback</em> (ou retrocesso) pela aplicação $R(x^1,x^2,x^3) = (x^1,x^3,-x^2)$, de determinante $1$.
+                    Ela leva $dx^1 \mapsto dx^1$, $dx^2 \mapsto dx^3$, $dx^3 \mapsto -dx^2$. Aplicando-a aos dois lados de
+                    cada linha de (4.4.1):
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    \ast dx^1 = dx^2\wedge dx^3 &\ \longmapsto\ \ast dx^1 = dx^3\wedge d(-x^2) = dx^2\wedge dx^3,\\
+                    \ast dx^2 = dx^3\wedge dx^1 &\ \longmapsto\ \ast dx^3 = -dx^2\wedge dx^1 = dx^1\wedge dx^2,\\
+                    \ast dx^3 = dx^1\wedge dx^2 &\ \longmapsto\ \ast(-dx^2) = dx^1\wedge dx^3 = -dx^3\wedge dx^1.
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    As três linhas transformadas são de novo a regra (4.4.1) (a terceira, multiplicada por $-1$). A rotação
+                    leva a regra nela mesma: $R^*(\ast\alpha) = \ast(R^*\alpha)$ para toda $1$-forma $\alpha$. O
+                    <a href="#exr-4-4-1">Exercício 4.4.1</a> faz o mesmo para os eixos $x^2$ e $x^3$, e a <a href="#prop-4-4-19">Proposição 4.4.19</a> prova o caso geral.
+                </p>
+
+                <p>
+                    A operação inversa vem das componentes. Uma $2$-forma $\tfrac12B_{mn}\,dx^m\wedge dx^n$ determina o
+                    vetor de componentes $B_k = \tfrac12\tilde\varepsilon_{kmn}B_{mn}$, e definimos
+                    $\ast\big(\tfrac12B_{mn}\,dx^m\wedge dx^n\big) = B_k\,dx^k$. Com $B_{23} = -B_{32} = 1$ e as demais
+                    componentes nulas, $B_1 = 1$ e $B_2 = B_3 = 0$: $\ast(dx^2\wedge dx^3) = dx^1$. Do mesmo modo
+                    $\ast(dx^3\wedge dx^1) = dx^2$ e $\ast(dx^1\wedge dx^2) = dx^3$ (<a href="#exr-4-4-2">Exercício 4.4.2</a>). Para a $3$-forma
+                    $\tfrac1{3!}B_{kmn}\,dx^k\wedge dx^m\wedge dx^n$ o resultado é o número
+                    $\tfrac1{3!}\tilde\varepsilon_{kmn}B_{kmn}$, e com $B_{123} = 1$ (e as permutações, com sinal) ele vale $1$:
+                    $\ast(dx^1\wedge dx^2\wedge dx^3) = 1$. Assim $\ast\ast = 1$ nos graus $1$ e $2$.
+                </p>
+
+                <p>
+                    Geometricamente (<a href="#fig-4-4-1">Figura 4.4.1</a>), a $1$-forma $dx^1$ é a pilha de planos
+                    $x^1 = \text{const}$ (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[09] - Covetores e 1-Formas.html#obs-3-9-7">Observação 3.9.7</a>): aplicada a um vetor, conta quantos planos ele atravessa. A
+                    $2$-forma $\ast dx^1 = dx^2\wedge dx^3$ é a família de tubos paralelos ao eixo $x^1$, perpendiculares
+                    àqueles planos: aplicada a dois vetores, conta quantos tubos atravessam o paralelogramo que eles
+                    formam. A estrela troca "contar travessias" por "contar fluxo", e para isso precisa de duas coisas
+                    que as formas sozinhas não têm: a noção de perpendicular (uma métrica) e o sentido de giro (uma
+                    orientação).
+                </p>
+
+                <figure class="lecture-figure" id="fig-4-4-1" style="overflow-x: auto; overflow-y: hidden;">
+                    <svg viewBox="0 0 640 272" role="img" style="min-width: 560px;" aria-label="Dois painéis em perspectiva, com os eixos x1 para a direita, x2 para trás e x3 para cima. (a) Cinco planos paralelos x1 igual a constante, igualmente espaçados, atravessados por um vetor v na direção de x1: dx1 de v conta quantos planos v atravessa. (b) Uma família de linhas paralelas ao eixo x1, os tubos da 2-forma dx2 wedge dx3, atravessando um paralelogramo do plano x2 x3 de lados u e w; os pontos marcam onde os tubos furam o paralelogramo, e dx2 wedge dx3 de u e w conta esses tubos. A estrela leva a pilha de planos aos tubos perpendiculares a ela.">
+<defs><marker id="arr-4-4-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="52" y1="222" x2="242.4" y2="222" class="fig-axis" marker-end="url(#arr-4-4-1)"/>
+<text x="246.4" y="236" class="fig-label fig-it">x¹</text>
+<line x1="52" y1="222" x2="127" y2="177" class="fig-axis" marker-end="url(#arr-4-4-1)"/>
+<text x="133" y="177" class="fig-label fig-it">x²</text>
+<line x1="52" y1="222" x2="52" y2="60" class="fig-axis" marker-end="url(#arr-4-4-1)"/>
+<text x="36" y="64" class="fig-label fig-it">x³</text>
+<path d="M68.2,209.4 L128.2,173.4 L128.2,44.4 L68.2,80.4 Z" class="fig-band"/>
+<path d="M68.2,209.4 L128.2,173.4 L128.2,44.4 L68.2,80.4 Z" class="fig-shape"/>
+<path d="M102.2,209.4 L162.2,173.4 L162.2,44.4 L102.2,80.4 Z" class="fig-band"/>
+<path d="M102.2,209.4 L162.2,173.4 L162.2,44.4 L102.2,80.4 Z" class="fig-shape"/>
+<path d="M136.2,209.4 L196.2,173.4 L196.2,44.4 L136.2,80.4 Z" class="fig-band"/>
+<path d="M136.2,209.4 L196.2,173.4 L196.2,44.4 L136.2,80.4 Z" class="fig-shape"/>
+<path d="M170.2,209.4 L230.2,173.4 L230.2,44.4 L170.2,80.4 Z" class="fig-band"/>
+<path d="M170.2,209.4 L230.2,173.4 L230.2,44.4 L170.2,80.4 Z" class="fig-shape"/>
+<path d="M204.2,209.4 L264.2,173.4 L264.2,44.4 L204.2,80.4 Z" class="fig-band"/>
+<path d="M204.2,209.4 L264.2,173.4 L264.2,44.4 L204.2,80.4 Z" class="fig-shape"/>
+<line x1="81.2" y1="128.4" x2="220.6" y2="128.4" class="fig-curve" marker-end="url(#arr-4-4-1)"/>
+<text x="224.6" y="122.4" class="fig-label fig-it">v</text>
+<text x="150" y="262" text-anchor="middle" class="fig-label fig-small">(a) dx¹: planos x¹ = const</text>
+<line x1="372" y1="222" x2="562.4" y2="222" class="fig-axis" marker-end="url(#arr-4-4-1)"/>
+<text x="566.4" y="236" class="fig-label fig-it">x¹</text>
+<line x1="372" y1="222" x2="447" y2="177" class="fig-axis" marker-end="url(#arr-4-4-1)"/>
+<text x="453" y="177" class="fig-label fig-it">x²</text>
+<line x1="372" y1="222" x2="372" y2="60" class="fig-axis" marker-end="url(#arr-4-4-1)"/>
+<text x="356" y="64" class="fig-label fig-it">x³</text>
+<line x1="384.8" y1="203.4" x2="456.2" y2="203.4" class="fig-guide"/>
+<line x1="384.8" y1="173.4" x2="456.2" y2="173.4" class="fig-guide"/>
+<line x1="384.8" y1="143.4" x2="456.2" y2="143.4" class="fig-guide"/>
+<line x1="384.8" y1="113.4" x2="456.2" y2="113.4" class="fig-guide"/>
+<line x1="384.8" y1="83.4" x2="456.2" y2="83.4" class="fig-guide"/>
+<line x1="399.8" y1="194.4" x2="471.2" y2="194.4" class="fig-guide"/>
+<line x1="399.8" y1="164.4" x2="471.2" y2="164.4" class="fig-guide"/>
+<line x1="399.8" y1="134.4" x2="471.2" y2="134.4" class="fig-guide"/>
+<line x1="399.8" y1="104.4" x2="471.2" y2="104.4" class="fig-guide"/>
+<line x1="399.8" y1="74.4" x2="471.2" y2="74.4" class="fig-guide"/>
+<line x1="414.8" y1="185.4" x2="486.2" y2="185.4" class="fig-guide"/>
+<line x1="414.8" y1="155.4" x2="486.2" y2="155.4" class="fig-guide"/>
+<line x1="414.8" y1="125.4" x2="486.2" y2="125.4" class="fig-guide"/>
+<line x1="414.8" y1="95.4" x2="486.2" y2="95.4" class="fig-guide"/>
+<line x1="414.8" y1="65.4" x2="486.2" y2="65.4" class="fig-guide"/>
+<line x1="429.8" y1="176.4" x2="501.2" y2="176.4" class="fig-guide"/>
+<line x1="429.8" y1="146.4" x2="501.2" y2="146.4" class="fig-guide"/>
+<line x1="429.8" y1="116.4" x2="501.2" y2="116.4" class="fig-guide"/>
+<line x1="429.8" y1="86.4" x2="501.2" y2="86.4" class="fig-guide"/>
+<line x1="429.8" y1="56.4" x2="501.2" y2="56.4" class="fig-guide"/>
+<line x1="444.8" y1="167.4" x2="516.2" y2="167.4" class="fig-guide"/>
+<line x1="444.8" y1="137.4" x2="516.2" y2="137.4" class="fig-guide"/>
+<line x1="444.8" y1="107.4" x2="516.2" y2="107.4" class="fig-guide"/>
+<line x1="444.8" y1="77.4" x2="516.2" y2="77.4" class="fig-guide"/>
+<line x1="444.8" y1="47.4" x2="516.2" y2="47.4" class="fig-guide"/>
+<path d="M463.7,183.9 L508.7,156.9 L508.7,66.9 L463.7,93.9 Z" class="fig-band"/>
+<path d="M463.7,183.9 L508.7,156.9 L508.7,66.9 L463.7,93.9 Z" class="fig-shape"/>
+<line x1="456.2" y1="203.4" x2="548" y2="203.4" class="fig-guide"/>
+<line x1="456.2" y1="173.4" x2="548" y2="173.4" class="fig-guide"/>
+<line x1="456.2" y1="143.4" x2="548" y2="143.4" class="fig-guide"/>
+<line x1="456.2" y1="113.4" x2="548" y2="113.4" class="fig-guide"/>
+<line x1="456.2" y1="83.4" x2="548" y2="83.4" class="fig-guide"/>
+<line x1="471.2" y1="194.4" x2="563" y2="194.4" class="fig-guide"/>
+<line x1="471.2" y1="164.4" x2="563" y2="164.4" class="fig-curve"/>
+<circle cx="471.2" cy="164.4" r="2.6" class="fig-arrowhead"/>
+<line x1="471.2" y1="134.4" x2="563" y2="134.4" class="fig-curve"/>
+<circle cx="471.2" cy="134.4" r="2.6" class="fig-arrowhead"/>
+<line x1="471.2" y1="104.4" x2="563" y2="104.4" class="fig-curve"/>
+<circle cx="471.2" cy="104.4" r="2.6" class="fig-arrowhead"/>
+<line x1="471.2" y1="74.4" x2="563" y2="74.4" class="fig-guide"/>
+<line x1="486.2" y1="185.4" x2="578" y2="185.4" class="fig-guide"/>
+<line x1="486.2" y1="155.4" x2="578" y2="155.4" class="fig-curve"/>
+<circle cx="486.2" cy="155.4" r="2.6" class="fig-arrowhead"/>
+<line x1="486.2" y1="125.4" x2="578" y2="125.4" class="fig-curve"/>
+<circle cx="486.2" cy="125.4" r="2.6" class="fig-arrowhead"/>
+<line x1="486.2" y1="95.4" x2="578" y2="95.4" class="fig-curve"/>
+<circle cx="486.2" cy="95.4" r="2.6" class="fig-arrowhead"/>
+<line x1="486.2" y1="65.4" x2="578" y2="65.4" class="fig-guide"/>
+<line x1="501.2" y1="176.4" x2="593" y2="176.4" class="fig-guide"/>
+<line x1="501.2" y1="146.4" x2="593" y2="146.4" class="fig-curve"/>
+<circle cx="501.2" cy="146.4" r="2.6" class="fig-arrowhead"/>
+<line x1="501.2" y1="116.4" x2="593" y2="116.4" class="fig-curve"/>
+<circle cx="501.2" cy="116.4" r="2.6" class="fig-arrowhead"/>
+<line x1="501.2" y1="86.4" x2="593" y2="86.4" class="fig-curve"/>
+<circle cx="501.2" cy="86.4" r="2.6" class="fig-arrowhead"/>
+<line x1="501.2" y1="56.4" x2="593" y2="56.4" class="fig-guide"/>
+<line x1="516.2" y1="167.4" x2="608" y2="167.4" class="fig-guide"/>
+<line x1="516.2" y1="137.4" x2="608" y2="137.4" class="fig-guide"/>
+<line x1="516.2" y1="107.4" x2="608" y2="107.4" class="fig-guide"/>
+<line x1="516.2" y1="77.4" x2="608" y2="77.4" class="fig-guide"/>
+<line x1="516.2" y1="47.4" x2="608" y2="47.4" class="fig-guide"/>
+<text x="492.2" y="199.9" text-anchor="middle" class="fig-label fig-it">u</text>
+<text x="455.7" y="138.9" text-anchor="end" class="fig-label fig-it">w</text>
+<text x="480" y="262" text-anchor="middle" class="fig-label fig-small">(b) ∗dx¹ = dx² ∧ dx³: tubos ao longo de x¹</text>
+</svg>
+                    <figcaption><strong>Figura 4.4.1.</strong> (a) A $1$-forma $dx^1$ como a pilha de planos
+                        $x^1 = \text{const}$; o número $dx^1(v)$ conta os planos que o vetor $v$ atravessa. (b) A $2$-forma
+                        $\ast dx^1 = dx^2\wedge dx^3$ como tubos paralelos ao eixo $x^1$; o número
+                        $(dx^2\wedge dx^3)(u,w)$ conta os tubos que furam o paralelogramo de lados $u$ e $w$ (os pontos).
+                        A estrela leva os planos aos tubos perpendiculares a eles.</figcaption>
+                </figure>
+
+                <p>
+                    Esse procedimento por componentes funciona em qualquer dimensão: em $\mathbb{R}^d$, o dual de um
+                    tensor antissimétrico de ordem $k$ tem as componentes
+                    $\tfrac1{k!}\,\tilde\varepsilon_{i_1\dots i_k i_{k+1}\dots i_d}B_{i_1\dots i_k}$, com $d - k$ índices livres.
+                    Mas ele deixa perguntas em aberto. Por que somar nos <em>primeiros</em> índices do símbolo e não nos
+                    últimos? O que muda se a métrica não for euclidiana? Em que sentido o resultado é a "única" escolha
+                    razoável? A definição invariante da próxima seção responde às três.
+                </p>
+
+                <h2 id="definicao">A definição invariante</h2>
+
+                <p>
+                    Toda a construção é pontual. Fixamos um espaço vetorial real $V$ de dimensão $n$ (no uso, $T_pM$) com
+                    um produto escalar $g$ (forma bilinear simétrica não degenerada, de índice $s$), uma orientação, o
+                    produto interno $\langle\cdot,\cdot\rangle$ induzido em cada $\Lambda^k(V^*)$ (<a href="[03] - Métricas e Volume Invariante.html#def-4-3-7">Definição 4.3.7</a>) e a forma de
+                    volume $\operatorname{vol}_g \in \Lambda^n(V^*)$ (<a href="[03] - Métricas e Volume Invariante.html#teo-4-3-11">Teorema 4.3.11</a>). Tudo o que segue usa uma base
+                    ortonormal positiva $(E_1,\dots,E_n)$ e a sua base dual $(\theta^1,\dots,\theta^n)$. Como
+                    $\theta^i(E_j) = \delta^i{}_j$ e $g(E_i,E_j) = \epsilon_i\,\delta_{ij}$, com $\epsilon_i = \pm1$, temos
+                    $(\theta^i)^\sharp = \epsilon_iE_i$, e portanto
+                    $\langle\theta^i,\theta^j\rangle = g(\epsilon_iE_i,\epsilon_jE_j) = \epsilon_i\,\delta^{ij}$: a base dual é
+                    ortonormal, com os mesmos sinais. Além disso,
+                    $(\theta^1\wedge\dots\wedge\theta^n)(E_1,\dots,E_n) = 1 = \operatorname{vol}_g(E_1,\dots,E_n)$, e, como
+                    $\Lambda^n(V^*)$ tem dimensão $1$, $\operatorname{vol}_g = \theta^1\wedge\dots\wedge\theta^n$.
+                </p>
+
+                <p>
+                    Para um multi-índice crescente $I = (i_1 \lt \dots \lt i_k)$, escrevemos $I^c$ para o multi-índice
+                    crescente formado pelos índices que não estão em $I$, $\epsilon_I = \prod_{i\in I}\epsilon_i$ e
+                    $\sigma(I) = \pm1$ para o sinal da permutação $(i_1,\dots,i_k,j_1,\dots,j_{n-k})$ de $(1,\dots,n)$,
+                    em que $I^c = (j_1,\dots,j_{n-k})$. Pela <a href="[03] - Métricas e Volume Invariante.html#prop-4-3-8">Proposição 4.3.8</a>, os $\theta^I$ formam uma base ortonormal de
+                    $\Lambda^k(V^*)$ com $\langle\theta^I,\theta^I\rangle = \epsilon_I$, e
+                </p>
+
+                <p>
+                    $$ \theta^I\wedge\theta^J = \begin{cases} \sigma(I)\operatorname{vol}_g, & J = I^c,\\ 0, & J \ne I^c,
+                    \end{cases} \qquad I, J \text{ crescentes},\ \lvert I\rvert = k,\ \lvert J\rvert = n - k, $$
+                </p>
+
+                <p>
+                    porque se $J \ne I^c$ algum índice aparece em $I$ e em $J$, e se $J = I^c$ reordenar
+                    $\theta^{i_1}\wedge\dots\wedge\theta^{j_{n-k}}$ até $\theta^1\wedge\dots\wedge\theta^n$ produz o sinal da
+                    permutação.
+                </p>
+
+                <div class="definition-box" id="lema-4-4-2">
+                    <p><strong>Lema 4.4.2 (O emparelhamento de graus complementares).</strong> Para $0 \le k \le n$, a
+                        aplicação $c: \Lambda^k(V^*)\times\Lambda^{n-k}(V^*) \to \mathbb{R}$ definida por
+                        $\alpha\wedge\gamma = c(\alpha,\gamma)\operatorname{vol}_g$ é bilinear e não degenerada: se
+                        $c(\alpha,\gamma) = 0$ para todo $\alpha$, então $\gamma = 0$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Como $\operatorname{vol}_g \ne 0$ gera $\Lambda^n(V^*)$, cada $n$-covetor é um
+                    múltiplo único de $\operatorname{vol}_g$, e $c$ está bem definida; é bilinear porque $\wedge$ é bilinear.
+                    Escreva $\gamma = \sideset{}{'}\sum_J \gamma_J\,\theta^J$. Para $\alpha = \theta^I$, pela tabela acima,
+                    $\theta^I\wedge\gamma = \sigma(I)\,\gamma_{I^c}\operatorname{vol}_g$, isto é,
+                    $c(\theta^I,\gamma) = \sigma(I)\,\gamma_{I^c}$. Se isso se anula para todo $I$, todas as componentes de
+                    $\gamma$ se anulam, porque $I \mapsto I^c$ é uma bijeção entre os multi-índices crescentes de
+                    comprimento $k$ e os de comprimento $n - k$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="teo-4-4-3">
+                    <p><strong>Teorema 4.4.3 (Existência e unicidade da estrela).</strong> Para cada $0 \le k \le n$ existe
+                        uma única aplicação linear $\star: \Lambda^k(V^*) \to \Lambda^{n-k}(V^*)$ tal que</p>
+                    <p>$$ \alpha\wedge\star\beta = \langle\alpha,\beta\rangle\operatorname{vol}_g
+                        \qquad\text{para todos } \alpha,\beta \in \Lambda^k(V^*). \tag{4.4.2} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Considere a aplicação linear
+                    $\Gamma: \Lambda^{n-k}(V^*) \to \big(\Lambda^k(V^*)\big)^*$, $\Gamma(\gamma) = c(\cdot,\gamma)$. Pelo
+                    <a href="#lema-4-4-2">Lema 4.4.2</a> ela é injetiva, e os dois espaços têm dimensão $\binom{n}{n-k} = \binom{n}{k}$ (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[11] - Produto Exterior.html#teo-3-11-13">Teorema 3.11.13</a>);
+                    logo $\Gamma$ é um isomorfismo. Para $\beta$ fixo, $\alpha \mapsto \langle\alpha,\beta\rangle$ é um
+                    funcional linear em $\Lambda^k(V^*)$, e existe um único $\gamma$ com $\Gamma(\gamma)$ igual a esse
+                    funcional, isto é, com $\alpha\wedge\gamma = \langle\alpha,\beta\rangle\operatorname{vol}_g$ para todo
+                    $\alpha$. Pomos $\star\beta = \gamma$, o que prova existência e unicidade de cada valor. A linearidade
+                    vem da unicidade: $\star(a\beta + b\beta')$ e $a\star\beta + b\star\beta'$ satisfazem as duas a (4.4.2)
+                    para o funcional $\alpha \mapsto \langle\alpha,a\beta + b\beta'\rangle$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="def-4-4-4" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.4.4 (Estrela de Hodge).</strong> Seja $(M,g)$ uma variedade pseudo-riemanniana
+                        orientada de dimensão $n$. O <strong>operador estrela de Hodge</strong> (ou <strong>dual de
+                        Hodge</strong>) é a aplicação $\star: \Omega^k(M) \to \Omega^{n-k}(M)$ dada ponto a ponto por
+                        $(\star\omega)_p = \star(\omega_p)$, com a estrela do <a href="#teo-4-4-3">Teorema 4.4.3</a> em $V = T_pM$. Em
+                        $\mathbb{R}^3$ com a métrica euclidiana e a orientação padrão, escrevemos $\ast$ em vez de $\star$.</p>
+                </div>
+
+                <p>
+                    Que $\star\omega$ é de fato suave (e não só uma seção qualquer de $\Lambda^{n-k}T^*M$) segue da fórmula
+                    em componentes do <a href="#teo-4-4-7">Teorema 4.4.7</a>, cujos coeficientes são funções suaves. A definição usa exatamente três
+                    dados: a métrica (no produto interno), a orientação e a forma de volume que as duas determinam. Trocar
+                    a orientação troca $\operatorname{vol}_g$ por $-\operatorname{vol}_g$ e, pela unicidade, troca $\star$ por
+                    $-\star$.
+                </p>
+
+                <div class="definition-box" id="prop-4-4-5">
+                    <p><strong>Proposição 4.4.5 (A estrela numa base ortonormal).</strong> Com as notações acima, para todo
+                        multi-índice crescente $I$,</p>
+                    <p>$$ \star\theta^I = \epsilon_I\,\sigma(I)\,\theta^{I^c}. \tag{4.4.3} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Basta ver que $\gamma = \epsilon_I\sigma(I)\theta^{I^c}$ satisfaz a (4.4.2) para
+                    $\beta = \theta^I$ e $\alpha = \theta^K$, com $K$ percorrendo a base, e usar a linearidade em $\alpha$ e a
+                    unicidade. Se $K = I$,
+                    $\theta^I\wedge\gamma = \epsilon_I\,\sigma(I)^2\operatorname{vol}_g = \epsilon_I\operatorname{vol}_g = \langle\theta^I,\theta^I\rangle\operatorname{vol}_g$.
+                    Se $K \ne I$, então $I^c \ne K^c$, $\theta^K\wedge\theta^{I^c} = 0$ e também
+                    $\langle\theta^K,\theta^I\rangle = 0$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="prop-4-4-6">
+                    <p><strong>Proposição 4.4.6 (A estrela de $1$ e da forma de volume).</strong> $\star1 = \operatorname{vol}_g$
+                        e $\star\operatorname{vol}_g = \operatorname{sign}(g)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Em grau $0$, $\Lambda^0 = \mathbb{R}$, $\wedge$ é o produto por número e
+                    $\langle a,b\rangle = ab$; a (4.4.2) com $\alpha = \beta = 1$ diz $\star1 = \operatorname{vol}_g$. Em grau $n$,
+                    a (4.4.3) com $I = (1,\dots,n)$, $I^c = \varnothing$, $\theta^\varnothing = 1$ e $\sigma(I) = 1$ dá
+                    $\star\operatorname{vol}_g = \epsilon_1\cdots\epsilon_n = (-1)^s = \operatorname{sign}(g)$
+                    (<a href="[03] - Métricas e Volume Invariante.html#def-4-3-2">Definição 4.3.2</a>). $\blacksquare$
+                </p>
+
+                <p>
+                    É por isso que as aulas escrevem a forma de volume como $\star1$: ela é literalmente a estrela da
+                    função constante $1$. Em $\mathbb{R}^3$ euclidiano com $\theta^i = dx^i$, a (4.4.3) reproduz a regra
+                    (4.4.1): $\sigma(1) = \operatorname{sgn}(1,2,3) = 1$, $\sigma(2) = \operatorname{sgn}(2,1,3) = -1$ e
+                    $\sigma(3) = \operatorname{sgn}(3,1,2) = 1$, de modo que $\ast dx^1 = dx^2\wedge dx^3$,
+                    $\ast dx^2 = -dx^1\wedge dx^3 = dx^3\wedge dx^1$ e $\ast dx^3 = dx^1\wedge dx^2$. A regra das aulas é a
+                    estrela da definição invariante.
+                </p>
+
+                <h2 id="componentes">A fórmula em componentes</h2>
+
+                <p>
+                    Em uma carta positiva $(x^\mu)$, com $g_{\mu\nu}$, a inversa $g^{\mu\nu}$ e o tensor de Levi-Civita
+                    $\varepsilon_{\mu_1\dots\mu_n} = \sqrt{\lvert g\rvert}\,\tilde\varepsilon_{\mu_1\dots\mu_n}$
+                    (<a href="[03] - Métricas e Volume Invariante.html#teo-4-3-16">Teorema 4.3.16</a>), a estrela é uma contração. Componentes de formas seguem a convenção
+                    $\omega = \tfrac1{k!}\,\omega_{\mu_1\dots\mu_k}\,dx^{\mu_1}\wedge\dots\wedge dx^{\mu_k}$, e
+                    $\beta^{\mu_1\dots\mu_k} = g^{\mu_1\rho_1}\cdots g^{\mu_k\rho_k}\beta_{\rho_1\dots\rho_k}$.
+                </p>
+
+                <div class="definition-box" id="teo-4-4-7">
+                    <p><strong>Teorema 4.4.7 (A estrela em componentes).</strong> Para $\beta \in \Omega^k(M)$,</p>
+                    <p>$$ (\star\beta)_{\nu_1\dots\nu_{n-k}} = \frac{1}{k!}\,\beta^{\mu_1\dots\mu_k}\,
+                        \varepsilon_{\mu_1\dots\mu_k\nu_1\dots\nu_{n-k}}. \tag{4.4.4} $$</p>
+                    <p>Equivalentemente, nos elementos da base,</p>
+                    <p>$$ \begin{aligned}
+                        &\star\big(dx^{\mu_1}\wedge\dots\wedge dx^{\mu_k}\big)\\
+                        &\quad= \frac{\sqrt{\lvert g\rvert}}{(n-k)!}\,g^{\mu_1\alpha_1}\cdots g^{\mu_k\alpha_k}\\
+                        &\qquad\times\tilde\varepsilon_{\alpha_1\dots\alpha_k\nu_1\dots\nu_{n-k}}\,dx^{\nu_1}\wedge\dots\wedge dx^{\nu_{n-k}}.
+                        \end{aligned} \tag{4.4.5} $$</p>
+                    <p>Em particular, $\star$ leva formas suaves em formas suaves.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> <strong>Passo 1 (o candidato).</strong> Seja $\gamma$ a $(n-k)$-forma de
+                    componentes dadas pelo lado direito de (4.4.4). Ela está bem definida: o lado direito é a contração dos
+                    tensores $\beta^\sharp$ (todos os índices levantados, <a href="[03] - Métricas e Volume Invariante.html#prop-4-3-5">Proposição 4.3.5</a>) e $\varepsilon$, logo é um tensor,
+                    alternado nos $\nu$ porque $\varepsilon$ é alternado. Suas componentes são suaves.
+                </p>
+
+                <p>
+                    <strong>Passo 2 (o produto exterior em componentes).</strong> Para uma $k$-forma $\alpha$, a
+                    multilinearidade de $\wedge$ e a convenção do determinante dão
+                    $dx^{\rho_1}\wedge\dots\wedge dx^{\rho_n} = \tilde\varepsilon^{\,\rho_1\dots\rho_n}\,dx^1\wedge\dots\wedge dx^n$ e
+                </p>
+
+                <p>
+                    $$ \alpha\wedge\gamma = \frac{1}{k!\,(n-k)!}\,\alpha_{\rho_1\dots\rho_k}\,\gamma_{\rho_{k+1}\dots\rho_n}\,
+                    \tilde\varepsilon^{\,\rho_1\dots\rho_n}\,dx^1\wedge\dots\wedge dx^n. $$
+                </p>
+
+                <p>
+                    Pela (4.3.4), $dx^1\wedge\dots\wedge dx^n = \operatorname{vol}_g/\sqrt{\lvert g\rvert}$, e pela
+                    <a href="[03] - Métricas e Volume Invariante.html#prop-4-3-17">Proposição 4.3.17</a>,
+                    $\tilde\varepsilon^{\,\rho_1\dots\rho_n}/\sqrt{\lvert g\rvert} = \operatorname{sign}(g)\,\varepsilon^{\rho_1\dots\rho_n}$.
+                </p>
+
+                <p>
+                    <strong>Passo 3 (a contração).</strong> Substituindo $\gamma$ e usando a (4.3.7), com os últimos
+                    $n - k$ índices contraídos,
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    \alpha\wedge\gamma
+                    &= \frac{\operatorname{sign}(g)}{k!\,k!\,(n-k)!}\,\alpha_{\rho_1\dots\rho_k}\,\beta^{\mu_1\dots\mu_k}\,
+                    \varepsilon^{\rho_1\dots\rho_k\rho_{k+1}\dots\rho_n}\,\varepsilon_{\mu_1\dots\mu_k\rho_{k+1}\dots\rho_n}\operatorname{vol}_g\\
+                    &= \frac{1}{k!\,k!}\sum_{\sigma\in S_k}\operatorname{sgn}\sigma\;
+                    \alpha_{\mu_{\sigma(1)}\dots\mu_{\sigma(k)}}\,\beta^{\mu_1\dots\mu_k}\operatorname{vol}_g
+                    = \frac{1}{k!}\,\alpha_{\mu_1\dots\mu_k}\,\beta^{\mu_1\dots\mu_k}\operatorname{vol}_g,
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    porque $\operatorname{sign}(g)^2 = 1$ e
+                    $\alpha_{\mu_{\sigma(1)}\dots\mu_{\sigma(k)}} = \operatorname{sgn}\sigma\,\alpha_{\mu_1\dots\mu_k}$, o que torna
+                    as $k!$ parcelas iguais. Pela (4.3.2) o resultado é $\langle\alpha,\beta\rangle\operatorname{vol}_g$. Pela
+                    unicidade do <a href="#teo-4-4-3">Teorema 4.4.3</a>, $\gamma = \star\beta$, e isso prova (4.4.4).
+                </p>
+
+                <p>
+                    <strong>Passo 4 (os elementos da base).</strong> Para
+                    $\beta = dx^{\mu_1}\wedge\dots\wedge dx^{\mu_k}$ com $\mu$'s distintos, as componentes são
+                    $\beta_{\rho_1\dots\rho_k} = \sum_{\tau\in S_k}\operatorname{sgn}\tau\,\delta^{\mu_{\tau(1)}}{}_{\rho_1}\cdots\delta^{\mu_{\tau(k)}}{}_{\rho_k}$
+                    (convenção do determinante), logo
+                    $\beta^{\alpha_1\dots\alpha_k} = \sum_\tau\operatorname{sgn}\tau\,g^{\alpha_1\mu_{\tau(1)}}\cdots g^{\alpha_k\mu_{\tau(k)}}$.
+                    Na (4.4.4), renomeando os índices mudos $\alpha$, cada uma das $k!$ parcelas dá o mesmo termo, porque
+                    $\varepsilon$ é alternado:
+                    $(\star\beta)_{\nu_1\dots\nu_{n-k}} = g^{\mu_1\alpha_1}\cdots g^{\mu_k\alpha_k}\,\varepsilon_{\alpha_1\dots\alpha_k\nu_1\dots\nu_{n-k}}$.
+                    Escrever $\star\beta = \frac1{(n-k)!}(\star\beta)_{\nu_1\dots\nu_{n-k}}\,dx^{\nu_1}\wedge\dots\wedge dx^{\nu_{n-k}}$
+                    e $\varepsilon = \sqrt{\lvert g\rvert}\,\tilde\varepsilon$ dá (4.4.5). $\blacksquare$
+                </p>
+
+                <p>
+                    A (4.4.5) é a fórmula com que as aulas definem a estrela para uma métrica qualquer, e a (4.4.4) é a
+                    mesma fórmula escrita com o tensor $\varepsilon$: o fator $\sqrt{\lvert g\rvert}$, a métrica inversa nos
+                    índices de $\beta$ e o $1/k!$ que elimina as repetições da soma sobre índices antissimétricos. Para a
+                    métrica euclidiana de $\mathbb{R}^d$, $\sqrt{\lvert g\rvert} = 1$ e $g^{\mu\nu} = \delta^{\mu\nu}$, e a (4.4.4)
+                    se reduz a $\tfrac1{k!}\tilde\varepsilon_{i_1\dots i_k i_{k+1}\dots i_d}B_{i_1\dots i_k}$, o procedimento da
+                    seção anterior. A definição invariante e a definição por componentes são a mesma estrela.
+                </p>
+
+                <p id="obs-4-4-8"><strong>Observação 4.4.8 (Primeiros ou últimos índices).</strong> Contrair $\beta$ nos
+                    <em>últimos</em> $k$ índices de $\varepsilon$, em vez dos primeiros, dá
+                    $\tfrac1{k!}\beta^{\mu_1\dots\mu_k}\varepsilon_{\nu_1\dots\nu_{n-k}\mu_1\dots\mu_k}$, e levar os $k$ índices
+                    $\mu$ para a frente, passando por cima dos $n - k$ índices $\nu$, custa $(-1)^{k(n-k)}$. Se $n$ é ímpar,
+                    $k(n-k)$ é sempre par e as duas escolhas coincidem; por isso em $\mathbb{R}^3$ é indiferente escrever
+                    $\tilde\varepsilon_{ijk}E_k$ ou $\tilde\varepsilon_{kij}E_k$. Se $n$ é par, elas diferem por um sinal nos
+                    graus ímpares: em $\mathbb{R}^4$, a soma nos últimos índices daria $\star dx^1 = -dx^2\wedge dx^3\wedge dx^4$.
+                    Só a contração nos primeiros índices satisfaz a (4.4.2), com $\alpha$ à esquerda de $\star\beta$; é a
+                    convenção das aulas e de Carroll (cap. 2), e a que seguimos.</p>
+
+                <div class="definition-box" id="cor-4-4-9">
+                    <p><strong>Corolário 4.4.9 (A estrela de $1$-formas).</strong> Para uma $1$-forma $\alpha$,
+                        $\star\alpha = i_{\alpha^\sharp}\operatorname{vol}_g$. Em uma carta,
+                        $\star dx^\mu = \frac{\sqrt{\lvert g\rvert}}{(n-1)!}\,g^{\mu\alpha}\,\tilde\varepsilon_{\alpha\nu_2\dots\nu_n}\,dx^{\nu_2}\wedge\dots\wedge dx^{\nu_n}$;
+                        em dimensão $3$,</p>
+                    <p>$$ \star dx^i = \frac{\sqrt{\lvert g\rvert}}{2}\,g^{ij}\,\tilde\varepsilon_{jmn}\,dx^m\wedge dx^n
+                        = \sqrt{\lvert g\rvert}\sum_{m\lt n}g^{ij}\,\tilde\varepsilon_{jmn}\,dx^m\wedge dx^n. $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Para $X = \alpha^\sharp$, de componentes $X^\mu = g^{\mu\rho}\alpha_\rho = \alpha^\mu$,
+                    $(i_X\operatorname{vol}_g)_{\nu_2\dots\nu_n} = \operatorname{vol}_g(X,\partial_{\nu_2},\dots,\partial_{\nu_n}) = \alpha^\mu\varepsilon_{\mu\nu_2\dots\nu_n}$,
+                    que é a (4.4.4) com $k = 1$. As fórmulas em carta são a (4.4.5) com $k = 1$; em dimensão $3$, as parcelas
+                    $(m,n)$ e $(n,m)$ são iguais, e somar só em $m \lt n$ absorve o $\tfrac12$. $\blacksquare$
+                </p>
+
+                <p>
+                    Em $\mathbb{R}^3$ euclidiano, o corolário é a parte (b) do dicionário (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[12] - Formas Diferenciais.html#prop-3-12-9">Proposição 3.12.9</a>):
+                    $\ast\omega_{\mathbf{F}} = i_{\mathbf{F}}\,dV = \Phi_{\mathbf{F}}$. A forma de fluxo de um campo é a
+                    estrela da sua forma de trabalho. O fator $\tfrac12$ da fórmula em dimensão $3$ não é opcional: sem ele,
+                    a soma sobre todos os pares $(m,n)$ conta cada elemento $dx^m\wedge dx^n$ duas vezes.
+                </p>
+
+                <h2 id="exemplos">As tabelas da estrela</h2>
+
+                <p>
+                    Nos exemplos abaixo a métrica é constante e diagonal nas coordenadas cartesianas, de modo que os
+                    $dx^\mu$ já formam uma base ortonormal positiva e a (4.4.3) dá cada entrada diretamente:
+                    $\star dx^I = \epsilon_I\,\sigma(I)\,dx^{I^c}$. A fórmula em componentes (4.4.5) dá o mesmo, e os
+                    exercícios mostram as duas contas.
+                </p>
+
+                <p id="ex-4-4-10"><strong>Exemplo 4.4.10 (O plano euclidiano).</strong> Em $\mathbb{R}^2$ com coordenadas
+                    $(x,y)$: $\star1 = dx\wedge dy$, $\star dx = dy$, $\star dy = -dx$ e $\star(dx\wedge dy) = 1$. Em
+                    $1$-formas, $\star(a\,dx + b\,dy) = -b\,dx + a\,dy$: a estrela é a rotação de $90°$ no sentido positivo, e
+                    $\star\star = -1$ em $1$-formas.</p>
+
+                <p id="ex-4-4-11"><strong>Exemplo 4.4.11 (O espaço euclidiano).</strong> Em $\mathbb{R}^3$, com $\ast$:</p>
+
+                <div style="overflow-x: auto;">
+                <table>
+                    <tr><th>Grau de $\beta$</th><th>$\beta$</th><th>$\ast\beta$</th></tr>
+                    <tr><td>$0$</td><td>$1$</td><td>$dx^1\wedge dx^2\wedge dx^3$</td></tr>
+                    <tr><td>$1$</td><td>$dx^1,\ dx^2,\ dx^3$</td><td>$dx^2\wedge dx^3,\ dx^3\wedge dx^1,\ dx^1\wedge dx^2$</td></tr>
+                    <tr><td>$2$</td><td>$dx^2\wedge dx^3,\ dx^3\wedge dx^1,\ dx^1\wedge dx^2$</td><td>$dx^1,\ dx^2,\ dx^3$</td></tr>
+                    <tr><td>$3$</td><td>$dx^1\wedge dx^2\wedge dx^3$</td><td>$1$</td></tr>
+                </table>
+                </div>
+
+                <p>
+                    Em particular $\ast(dx^1\wedge dx^3) = -dx^2$. Em todos os graus $\ast\ast = 1$. Em componentes:
+                    $\ast(E_i\,dx^i) = \tfrac12\tilde\varepsilon_{ijk}E_k\,dx^i\wedge dx^j$ e
+                    $\ast\big(\tfrac12B_{ij}\,dx^i\wedge dx^j\big) = \tfrac12\tilde\varepsilon_{kij}B_{ij}\,dx^k$.
+                </p>
+
+                <p id="ex-4-4-12"><strong>Exemplo 4.4.12 (O espaço euclidiano de dimensão quatro).</strong> Em
+                    $\mathbb{R}^4$, $\star dx^1 = dx^2\wedge dx^3\wedge dx^4$ e $\star dx^2 = -dx^1\wedge dx^3\wedge dx^4$
+                    ($\sigma(2) = \operatorname{sgn}(2,1,3,4) = -1$). Nas $2$-formas,</p>
+
+                <p>
+                    $$ \begin{aligned}
+                    \star(dx^1\wedge dx^2) &= dx^3\wedge dx^4, & \star(dx^3\wedge dx^4) &= dx^1\wedge dx^2,\\
+                    \star(dx^1\wedge dx^3) &= -dx^2\wedge dx^4, & \star(dx^2\wedge dx^4) &= -dx^1\wedge dx^3,\\
+                    \star(dx^1\wedge dx^4) &= dx^2\wedge dx^3, & \star(dx^2\wedge dx^3) &= dx^1\wedge dx^4.
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    A estrela troca os dois elementos de cada par, com o mesmo sinal: em $2$-formas de $\mathbb{R}^4$,
+                    $\star\star = 1$.
+                </p>
+
+                <p id="ex-4-4-13"><strong>Exemplo 4.4.13 (O espaço de Minkowski).</strong> Em $\mathbb{R}^4$ com coordenadas
+                    $(x^0,x^1,x^2,x^3)$, $\eta = \operatorname{diag}(-1,1,1,1)$ e a orientação de
+                    $dx^0\wedge dx^1\wedge dx^2\wedge dx^3$ ($\tilde\varepsilon_{0123} = 1$), a base $dx^\mu$ é ortonormal com
+                    $\epsilon_0 = -1$ e $\epsilon_i = 1$. Na (4.4.3), o sinal $\epsilon_I$ vale $-1$ exatamente quando
+                    $0 \in I$. Assim, por exemplo, $\star dx^0 = \epsilon_0\,\sigma(0)\,dx^1\wedge dx^2\wedge dx^3 = -dx^1\wedge dx^2\wedge dx^3$
+                    e $\star(dx^1\wedge dx^2) = \sigma(1,2)\,dx^0\wedge dx^3 = \operatorname{sgn}(1,2,0,3)\,dx^0\wedge dx^3 = dx^0\wedge dx^3$.
+                    Com $\ast$ a estrela de $\mathbb{R}^3$ nas variáveis espaciais (<a href="#ex-4-4-11">Exemplo 4.4.11</a>), a tabela inteira é:</p>
+
+                <div style="overflow-x: auto;">
+                <table>
+                    <tr><th>Grau</th><th>$\beta$</th><th>$\star\beta$</th></tr>
+                    <tr><td>$0$</td><td>$1$</td><td>$dx^0\wedge dx^1\wedge dx^2\wedge dx^3$</td></tr>
+                    <tr><td>$1$</td><td>$dx^0$</td><td>$-dx^1\wedge dx^2\wedge dx^3$</td></tr>
+                    <tr><td>$1$</td><td>$dx^i$</td><td>$-dx^0\wedge\ast dx^i$</td></tr>
+                    <tr><td>$2$</td><td>$dx^0\wedge dx^i$</td><td>$-\ast dx^i$</td></tr>
+                    <tr><td>$2$</td><td>$\ast dx^k = \tfrac12\tilde\varepsilon_{kij}\,dx^i\wedge dx^j$</td><td>$dx^0\wedge dx^k$</td></tr>
+                    <tr><td>$3$</td><td>$dx^1\wedge dx^2\wedge dx^3$</td><td>$-dx^0$</td></tr>
+                    <tr><td>$3$</td><td>$dx^0\wedge\ast dx^i$</td><td>$-dx^i$</td></tr>
+                    <tr><td>$4$</td><td>$dx^0\wedge dx^1\wedge dx^2\wedge dx^3$</td><td>$-1$</td></tr>
+                </table>
+                </div>
+
+                <p>
+                    Por extenso: $\star dx^1 = -dx^0\wedge dx^2\wedge dx^3$, $\star(dx^0\wedge dx^1) = -dx^2\wedge dx^3$,
+                    $\star(dx^2\wedge dx^3) = dx^0\wedge dx^1$, $\star(dx^0\wedge dx^2\wedge dx^3) = -dx^1$. A tabela traduz o
+                    que a estrela faz com a decomposição "tempo mais espaço": uma forma sem $dx^0$ ganha um $dx^0$, uma forma
+                    com $dx^0$ o perde, e a parte espacial passa pela estrela $\ast$ de $\mathbb{R}^3$. Os sinais têm duas
+                    origens. Se a forma contém $dx^0$, o sinal é o fator $\epsilon_0 = -1$. Se não contém, e tem grau $k$, o
+                    sinal é $(-1)^k$, o preço de levar o $dx^0$ do resultado para a frente dos $k$ índices espaciais: $-1$ nos
+                    graus $1$ e $3$, $+1$ no grau $2$. São essas linhas que o tópico 4.8 usa para calcular $\star F$.
+                </p>
+
+                <p id="ex-4-4-14"><strong>Exemplo 4.4.14 (Minkowski em dimensão dois).</strong> Em $\mathbb{R}^2$ com
+                    $\eta = \operatorname{diag}(-1,1)$ e $\tilde\varepsilon_{01} = 1$: $\star dx^0 = \epsilon_0\,dx^1 = -dx^1$ e
+                    $\star dx^1 = \sigma(1)\,dx^0 = -dx^0$. O covetor $dx^0$ é tipo tempo
+                    ($\langle dx^0,dx^0\rangle = -1$) e a sua estrela $-dx^1$ é tipo espaço; a estrela troca os dois tipos
+                    (<a href="#fig-4-4-2">Figura 4.4.2</a>). Os covetores nulos são autovetores:</p>
+
+                <p>
+                    $$ \star(dx^0 - dx^1) = -dx^1 + dx^0 = dx^0 - dx^1, \qquad \star(dx^0 + dx^1) = -(dx^0 + dx^1). $$
+                </p>
+
+                <p>
+                    Os autovalores $\pm1$ mostram que, aqui, $\star\star = 1$ em $1$-formas, ao contrário do plano
+                    euclidiano: o sinal da métrica entra na estrela dupla, como mostra a próxima seção.
+                </p>
+
+                <figure class="lecture-figure" id="fig-4-4-2" style="overflow-x: auto; overflow-y: hidden;">
+                    <svg viewBox="0 0 640 236" role="img" style="min-width: 560px;" aria-label="Três painéis do plano de Minkowski com eixos x1 horizontal e x0 vertical, e o cone de luz tracejado nas duas diagonais. (a) As retas de nível horizontais x0 igual a constante do covetor dx0, que é tipo tempo. (b) As retas de nível verticais x1 igual a constante de estrela de dx0, igual a menos dx1, que é tipo espaço: a estrela gira a família de retas, trocando tipo tempo por tipo espaço. (c) As retas de nível do covetor nulo dx0 menos dx1, paralelas ao raio de luz x0 igual a x1; a estrela deixa esse covetor fixo.">
+<defs><marker id="arr-4-4-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="32" y1="178" x2="188" y2="22" class="fig-guide fig-dashed"/>
+<line x1="32" y1="22" x2="188" y2="178" class="fig-guide fig-dashed"/>
+<line x1="26" y1="100" x2="196" y2="100" class="fig-axis" marker-end="url(#arr-4-4-2)"/>
+<line x1="110" y1="184" x2="110" y2="14" class="fig-axis" marker-end="url(#arr-4-4-2)"/>
+<text x="194" y="116" class="fig-label fig-it">x¹</text>
+<text x="117" y="18" class="fig-label fig-it">x⁰</text>
+<line x1="32" y1="178" x2="188" y2="178" class="fig-curve"/>
+<line x1="32" y1="152" x2="188" y2="152" class="fig-curve"/>
+<line x1="32" y1="126" x2="188" y2="126" class="fig-curve"/>
+<line x1="32" y1="74" x2="188" y2="74" class="fig-curve"/>
+<line x1="32" y1="48" x2="188" y2="48" class="fig-curve"/>
+<line x1="32" y1="22" x2="188" y2="22" class="fig-curve"/>
+<text x="110" y="208" text-anchor="middle" class="fig-label fig-small">(a) dx⁰ (tipo tempo):</text>
+<text x="110" y="224" text-anchor="middle" class="fig-label fig-small">níveis x⁰ = const</text>
+<line x1="242" y1="178" x2="398" y2="22" class="fig-guide fig-dashed"/>
+<line x1="242" y1="22" x2="398" y2="178" class="fig-guide fig-dashed"/>
+<line x1="236" y1="100" x2="406" y2="100" class="fig-axis" marker-end="url(#arr-4-4-2)"/>
+<line x1="320" y1="184" x2="320" y2="14" class="fig-axis" marker-end="url(#arr-4-4-2)"/>
+<text x="404" y="116" class="fig-label fig-it">x¹</text>
+<text x="327" y="18" class="fig-label fig-it">x⁰</text>
+<line x1="242" y1="178" x2="242" y2="22" class="fig-curve"/>
+<line x1="268" y1="178" x2="268" y2="22" class="fig-curve"/>
+<line x1="294" y1="178" x2="294" y2="22" class="fig-curve"/>
+<line x1="346" y1="178" x2="346" y2="22" class="fig-curve"/>
+<line x1="372" y1="178" x2="372" y2="22" class="fig-curve"/>
+<line x1="398" y1="178" x2="398" y2="22" class="fig-curve"/>
+<text x="320" y="208" text-anchor="middle" class="fig-label fig-small">(b) ⋆dx⁰ = −dx¹ (tipo espaço):</text>
+<text x="320" y="224" text-anchor="middle" class="fig-label fig-small">níveis x¹ = const</text>
+<line x1="452" y1="178" x2="608" y2="22" class="fig-guide fig-dashed"/>
+<line x1="452" y1="22" x2="608" y2="178" class="fig-guide fig-dashed"/>
+<line x1="446" y1="100" x2="616" y2="100" class="fig-axis" marker-end="url(#arr-4-4-2)"/>
+<line x1="530" y1="184" x2="530" y2="14" class="fig-axis" marker-end="url(#arr-4-4-2)"/>
+<text x="614" y="116" class="fig-label fig-it">x¹</text>
+<text x="537" y="18" class="fig-label fig-it">x⁰</text>
+<line x1="517" y1="178" x2="608" y2="87" class="fig-curve"/>
+<line x1="484.5" y1="178" x2="608" y2="54.5" class="fig-curve"/>
+<line x1="452" y1="145.5" x2="575.5" y2="22" class="fig-curve"/>
+<line x1="452" y1="113" x2="543" y2="22" class="fig-curve"/>
+<text x="530" y="208" text-anchor="middle" class="fig-label fig-small">(c) dx⁰ − dx¹ (nulo):</text>
+<text x="530" y="224" text-anchor="middle" class="fig-label fig-small">⋆(dx⁰ − dx¹) = dx⁰ − dx¹</text>
+</svg>
+                    <figcaption><strong>Figura 4.4.2.</strong> Minkowski em dimensão dois, com o cone de luz tracejado. Cada
+                        covetor é desenhado pelas suas retas de nível. (a) $dx^0$, tipo tempo, tem retas de nível
+                        $x^0 = \text{const}$. (b) $\star dx^0 = -dx^1$, tipo espaço, tem retas de nível
+                        $x^1 = \text{const}$: a estrela troca tipo tempo por tipo espaço. (c) O covetor nulo $dx^0 - dx^1$
+                        tem retas de nível paralelas ao raio de luz $x^0 = x^1$ e é fixado pela estrela.</figcaption>
+                </figure>
+
+                <h2 id="estrela-dupla">A estrela dupla</h2>
+
+                <p>
+                    Aplicar a estrela duas vezes volta ao grau original. Os exemplos mostram que o resultado é $\pm$ a forma
+                    de partida, com um sinal que depende do grau, da dimensão e da métrica: $\ast\ast = 1$ em $\mathbb{R}^3$,
+                    $\star\star = -1$ nas $1$-formas do plano euclidiano, $\star\star = 1$ nas $1$-formas do plano de
+                    Minkowski.
+                </p>
+
+                <div class="definition-box" id="teo-4-4-15">
+                    <p><strong>Teorema 4.4.15 (A estrela dupla).</strong> Em $\Lambda^k(V^*)$,</p>
+                    <p>$$ \star\star = \operatorname{sign}(g)\,(-1)^{k(n-k)}. \tag{4.4.6} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Basta verificar na base $\theta^I$. Pela (4.4.3) aplicada duas vezes, a segunda
+                    com o multi-índice $I^c$, cujo complementar é $I$,
+                    $\star\star\theta^I = \epsilon_I\,\sigma(I)\,\star\theta^{I^c} = \epsilon_I\,\epsilon_{I^c}\,\sigma(I)\,\sigma(I^c)\,\theta^I$.
+                    Primeiro, $\epsilon_I\,\epsilon_{I^c} = \epsilon_1\cdots\epsilon_n = (-1)^s = \operatorname{sign}(g)$. Depois,
+                    $\theta^{I^c}\wedge\theta^I = (-1)^{k(n-k)}\,\theta^I\wedge\theta^{I^c}$ pela anticomutatividade do produto
+                    exterior (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[11] - Produto Exterior.html#teo-3-11-20">Teorema 3.11.20</a>), isto é, $\sigma(I^c) = (-1)^{k(n-k)}\sigma(I)$, e
+                    $\sigma(I)\,\sigma(I^c) = \sigma(I)^2(-1)^{k(n-k)} = (-1)^{k(n-k)}$. $\blacksquare$
+                </p>
+
+                <p id="ex-4-4-16"><strong>Exemplo 4.4.16 (A conta das aulas em dimensão dois).</strong> A (4.4.6) também sai das
+                    componentes, sem bases ortonormais, e vale a pena ver isso uma vez. Em dimensão $2$, com uma métrica
+                    $g_{ij}$ qualquer, a (4.4.4) aplicada à $2$-forma $\beta = B_{12}\,dx^1\wedge dx^2$ ($B_{21} = -B_{12}$) dá a
+                    função</p>
+
+                <p>
+                    $$ \begin{aligned}
+                    \star\beta &= \frac{\sqrt{\lvert g\rvert}}{2!}\,g^{ja}g^{ib}\,\tilde\varepsilon_{ab}\,B_{ji}
+                    = \frac{\sqrt{\lvert g\rvert}}{2}\big(g^{1a}g^{2b} - g^{2a}g^{1b}\big)\tilde\varepsilon_{ab}\,B_{12}\\
+                    &= \sqrt{\lvert g\rvert}\,\big(g^{11}g^{22} - g^{12}g^{21}\big)B_{12}
+                    = \sqrt{\lvert g\rvert}\,\det(g^{-1})\,B_{12} = \frac{\operatorname{sign}(g)}{\sqrt{\lvert g\rvert}}\,B_{12},
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    porque $\det(g^{-1}) = 1/\det(g_{ij}) = \operatorname{sign}(g)/\lvert g\rvert$ (<a href="[03] - Métricas e Volume Invariante.html#prop-4-3-3">Proposição 4.3.3</a>). Para
+                    $\beta = dx^1\wedge dx^2$, $\star(dx^1\wedge dx^2) = \operatorname{sign}(g)/\sqrt{\lvert g\rvert}$, logo
+                    $\star\big(\sqrt{\lvert g\rvert}\,dx^1\wedge dx^2\big) = \operatorname{sign}(g)$. Como
+                    $\star1 = \sqrt{\lvert g\rvert}\,dx^1\wedge dx^2$ (pela (4.4.5) com $k = 0$), isso diz
+                    $\star\star1 = \operatorname{sign}(g)$. Lida ao contrário, a mesma conta faz o $1$ aparecer sozinho, sem usar
+                    a estrela em grau $0$: ela diz que $\star\big(\operatorname{sign}(g)\sqrt{\lvert g\rvert}\,dx^1\wedge dx^2\big) = 1$, e,
+                    aplicando $\star$ e usando $\star\star = \operatorname{sign}(g)$ em $2$-formas,
+                    $\star1 = \star\star\big(\operatorname{sign}(g)\sqrt{\lvert g\rvert}\,dx^1\wedge dx^2\big) = \sqrt{\lvert g\rvert}\,dx^1\wedge dx^2$.
+                    A $0$-forma cuja estrela é a forma de volume é a constante $1$, não só por convenção de nome. O
+                    <a href="#exr-4-4-8">Exercício 4.4.8</a> faz a conta em dimensão $3$.
+                </p>
+
+                <div class="definition-box" id="cor-4-4-17">
+                    <p><strong>Corolário 4.4.17 (Consequências).</strong> Para $\alpha,\beta \in \Lambda^k(V^*)$:</p>
+                    <ol type="a">
+                        <li>$\star: \Lambda^k \to \Lambda^{n-k}$ é um isomorfismo, com inversa
+                            $\operatorname{sign}(g)(-1)^{k(n-k)}\,\star$;</li>
+                        <li>$\langle\star\alpha,\star\beta\rangle = \operatorname{sign}(g)\,\langle\alpha,\beta\rangle$;</li>
+                        <li>$\alpha\wedge\star\beta = \beta\wedge\star\alpha$;</li>
+                        <li>$\star\alpha\wedge\beta = (-1)^{k(n-k)}\,\langle\alpha,\beta\rangle\operatorname{vol}_g$.</li>
+                    </ol>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Pela (4.4.6), $\star\circ\star$ é $\pm$ a identidade em $\Lambda^k$, e o mesmo
+                    vale em $\Lambda^{n-k}$ com o mesmo sinal, porque $(n-k)k = k(n-k)$. (b) Pela (4.4.3), $\star$ leva a base
+                    ortonormal $\{\theta^I\}$ na base $\{\pm\theta^{I^c}\}$, também ortonormal; logo
+                    $\langle\star\theta^I,\star\theta^K\rangle = 0$ se $I \ne K$, e
+                    $\langle\star\theta^I,\star\theta^I\rangle = \epsilon_{I^c} = \operatorname{sign}(g)\,\epsilon_I$ (de
+                    $\epsilon_I\epsilon_{I^c} = \operatorname{sign}(g)$ e $\epsilon_I^2 = 1$). Por bilinearidade vale para todos
+                    $\alpha,\beta$. (c) Os dois lados são $\langle\alpha,\beta\rangle\operatorname{vol}_g$, e o produto interno é
+                    simétrico. (d) $\star\alpha\wedge\beta = (-1)^{k(n-k)}\beta\wedge\star\alpha$ (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[11] - Produto Exterior.html#teo-3-11-20">Teorema 3.11.20</a>), e pela (c) e
+                    pela (4.4.2) isso é $(-1)^{k(n-k)}\langle\alpha,\beta\rangle\operatorname{vol}_g$. $\blacksquare$
+                </p>
+
+                <p id="ex-4-4-18"><strong>Exemplo 4.4.18 (O sinal nos casos do capítulo).</strong> A tabela dá o valor de
+                    $\star\star$ pela (4.4.6):</p>
+
+                <div style="overflow-x: auto;">
+                <table>
+                    <tr><th>Espaço</th><th>$n$</th><th>$\operatorname{sign}(g)$</th><th>$\star\star$ em $\Lambda^0,\Lambda^1,\dots,\Lambda^n$</th></tr>
+                    <tr><td>$\mathbb{R}^2$ euclidiano</td><td>$2$</td><td>$+1$</td><td>$1,\ -1,\ 1$</td></tr>
+                    <tr><td>$\mathbb{R}^3$ euclidiano</td><td>$3$</td><td>$+1$</td><td>$1,\ 1,\ 1,\ 1$</td></tr>
+                    <tr><td>$\mathbb{R}^4$ euclidiano</td><td>$4$</td><td>$+1$</td><td>$1,\ -1,\ 1,\ -1,\ 1$</td></tr>
+                    <tr><td>Minkowski $1+1$</td><td>$2$</td><td>$-1$</td><td>$-1,\ 1,\ -1$</td></tr>
+                    <tr><td>Minkowski $3+1$</td><td>$4$</td><td>$-1$</td><td>$-1,\ 1,\ -1,\ 1,\ -1$</td></tr>
+                </table>
+                </div>
+
+                <p>
+                    Em Minkowski, $\star\star dx^1 = dx^1$, como se vê também da tabela do <a href="#ex-4-4-13">Exemplo 4.4.13</a>:
+                    $\star dx^1 = -dx^0\wedge dx^2\wedge dx^3$ e $\star(dx^0\wedge dx^2\wedge dx^3) = -dx^1$. Duas linhas da tabela
+                    importam para a física. Em $\mathbb{R}^3$ euclidiano, $\ast\ast = 1$ em todos os graus, e por isso as
+                    relações $D = \varepsilon_0\ast E$ e $H = \ast B/\mu_0$ do tópico 4.5 se invertem sem sinais. Em
+                    $2$-formas de Minkowski, $\star\star = -1$: aplicada duas vezes a $F$, a estrela devolve $-F$, e não existe
+                    $2$-forma real não nula com $\star\omega = \lambda\omega$ ($\lambda^2 = -1$; <a href="#exr-4-4-10">Exercício 4.4.10</a>).
+                </p>
+
+                <h2 id="invariancia">Invariância e unicidade</h2>
+
+                <p>
+                    A definição (4.4.2) só usa a métrica e a orientação. Toda aplicação que preserva as duas deve, então,
+                    comutar com a estrela. Uma aplicação suave $F: M \to N$ entre variedades pseudo-riemannianas de mesma
+                    dimensão é uma <strong>isometria local</strong> se $F^*h = g$, isto é,
+                    $h(dF_p v, dF_p w) = g(v,w)$ para todos $v,w \in T_pM$. Então cada $dF_p$ é injetiva (se $dF_pv = 0$,
+                    $g(v,\cdot) = 0$ e $v = 0$, porque $g$ é não degenerada), logo é um isomorfismo.
+                </p>
+
+                <div class="definition-box" id="prop-4-4-19">
+                    <p><strong>Proposição 4.4.19 (Isometrias e a estrela).</strong> Sejam $(M,g)$ e $(N,h)$ orientadas e
+                        $F: M \to N$ uma isometria local. Se $F$ preserva a orientação,
+                        $F^*(\star\beta) = \star(F^*\beta)$ para toda forma $\beta$ em $N$; se inverte,
+                        $F^*(\star\beta) = -\star(F^*\beta)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Fixe $p$, $q = F(p)$ e $T = dF_p$. <strong>Passo 1.</strong> Seja $(E_i)$ uma
+                    base ortonormal de $T_pM$; então $(TE_i)$ é ortonormal em $T_qN$, com os mesmos sinais. Se $(\theta^i)$ é
+                    a base dual de $(TE_i)$, os covetores $T^*\theta^i$ formam a base dual de $(E_i)$, porque
+                    $(T^*\theta^i)(E_j) = \theta^i(TE_j) = \delta^i{}_j$. Pelo início da seção
+                    <a href="#definicao">A definição invariante</a>, as duas bases duais são ortonormais com os mesmos sinais;
+                    logo $T^*$ leva uma base ortonormal de $T_q^*N$ em uma de $T_p^*M$ e, pela (4.3.1),
+                    $\langle T^*\alpha,T^*\beta\rangle_g = \langle\alpha,\beta\rangle_h$ em todos os graus.
+                </p>
+
+                <p>
+                    <strong>Passo 2.</strong> Se $T$ preserva a orientação, tome $(E_i)$ positiva; $(TE_i)$ é positiva,
+                    $\operatorname{vol}_h = \theta^1\wedge\dots\wedge\theta^n$ e
+                    $T^*\operatorname{vol}_h = T^*\theta^1\wedge\dots\wedge T^*\theta^n = \operatorname{vol}_g$ (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[11] - Produto Exterior.html#prop-3-11-28">Proposição 3.11.28</a>).
+                    Se inverte, o mesmo argumento dá $T^*\operatorname{vol}_h = -\operatorname{vol}_g$. Escreva
+                    $T^*\operatorname{vol}_h = \pm\operatorname{vol}_g$.
+                </p>
+
+                <p>
+                    <strong>Passo 3.</strong> Para todo $\alpha \in \Lambda^k(T_q^*N)$,
+                    $T^*\alpha\wedge T^*(\star\beta) = T^*(\alpha\wedge\star\beta) = \langle\alpha,\beta\rangle_h\,T^*\operatorname{vol}_h
+                    = \pm\langle T^*\alpha,T^*\beta\rangle_g\operatorname{vol}_g$. Como $T$ é um isomorfismo, todo
+                    $\alpha' \in \Lambda^k(T_p^*M)$ é da forma $T^*\alpha$, e então $\pm T^*(\star\beta)$ satisfaz a (4.4.2) para
+                    $T^*\beta$. Pela unicidade, $\pm T^*(\star\beta) = \star(T^*\beta)$. $\blacksquare$
+                </p>
+
+                <p id="ex-4-4-20"><strong>Exemplo 4.4.20 (Rotações, paridade, boosts).</strong> (a) Toda rotação
+                    $R \in SO(3)$ é uma isometria de $\mathbb{R}^3$ que preserva a orientação, e $R^*\ast = \ast R^*$: é o que o
+                    <a href="#ex-4-4-1">Exemplo 4.4.1</a> verificou à mão para uma rotação de $90°$. (b) A paridade $P(x) = -x$ é uma isometria de
+                    $\mathbb{R}^3$ com $\det P = -1$; ela inverte a orientação, e $P^*\ast = -\ast P^*$. Por exemplo,
+                    $P^*dx^1 = -dx^1$ e $\ast(P^*dx^1) = -dx^2\wedge dx^3$, enquanto
+                    $P^*(\ast dx^1) = P^*(dx^2\wedge dx^3) = dx^2\wedge dx^3$. Esse sinal é a origem geométrica dos
+                    pseudovetores: um vetor obtido de uma $2$-forma pela estrela (como $\mathbf{B}$ no tópico 4.5) troca de
+                    comportamento sob paridade. (c) Um <em>boost</em> de Lorentz
+                    $\Lambda = \begin{pmatrix}\gamma & \gamma\beta\\ \gamma\beta & \gamma\end{pmatrix}$ nas variáveis $(x^0,x^1)$,
+                    com $\gamma = (1-\beta^2)^{-1/2}$, satisfaz $\Lambda^T\eta\Lambda = \eta$ e $\det\Lambda = \gamma^2(1-\beta^2) = 1$:
+                    comuta com $\star$. A inversão temporal $x^0 \mapsto -x^0$ é isometria de $\eta$ e inverte a orientação:
+                    anticomuta com $\star$.</p>
+
+                <p id="obs-4-4-21"><strong>Observação 4.4.21 (Em que sentido a estrela é única).</strong> As aulas observam
+                    que $\star$ é a aplicação linear $\Lambda^k \to \Lambda^{n-k}$ invariante por rotações. Isso é verdade com
+                    duas precisões. Seja $L: \Lambda^k(\mathbb{R}^n) \to \Lambda^{n-k}(\mathbb{R}^n)$ linear, com
+                    $R^*\circ L = L\circ R^*$ para toda $R \in SO(n)$, na métrica euclidiana. Então $K = \star^{-1}\circ L$ é
+                    uma aplicação de $\Lambda^k$ em si que comuta com todas as rotações (<a href="#prop-4-4-19">Proposição 4.4.19</a>). O <strong>lema de
+                    Schur</strong> diz que, se uma representação real $W$ de um grupo é irredutível, as aplicações lineares
+                    $W \to W$ que comutam com o grupo formam uma álgebra com divisão (os reais, os complexos ou os
+                    quatérnions); se, além disso, ela continua irredutível depois de complexificada, só sobram os múltiplos
+                    da identidade. Da teoria de representações dos grupos ortogonais (Fulton e Harris, <em>Representation
+                    Theory</em>, a parte sobre os grupos ortogonais) vem que, para $n \ne 2k$, $\Lambda^k(\mathbb{R}^n)$ é
+                    desse último tipo; logo $K = a\,\mathrm{id}$ e $L = a\,\star$. A estrela é única <em>a menos de uma
+                    constante</em>. Para $n = 2k$ isso falha: $\Lambda^k \to \Lambda^k$ e as aplicações invariantes são
+                    exatamente as combinações $a\,\mathrm{id} + b\,\star$. Em $n = 4$, $k = 2$, $\Lambda^2$ se decompõe nas
+                    $2$-formas autoduais e antiautoduais (<a href="#exr-4-4-10">Exercício 4.4.10</a>), e cada uma pode ser multiplicada por uma constante
+                    diferente; em $n = 2$, $k = 1$, $\star$ é a rotação de $90°$, que comuta com todas as rotações do plano.
+                    O mesmo vale em Minkowski para as $2$-formas sob o grupo de Lorentz próprio: as aplicações invariantes
+                    são $a\,\mathrm{id} + b\,\star$. Por isso, no tópico 4.8, a relação linear e invariante mais geral entre
+                    a excitação $\mathcal{M}$ e $F$ será $\mathcal{M} = a\,\star F + b\,F$, e não só um múltiplo de $\star F$; o
+                    termo $b\,F$ não muda $d\mathcal{M} = j$, porque $dF = 0$.</p>
+
+                <h2 id="calculo-vetorial">O cálculo vetorial com $d$ e $\ast$</h2>
+
+                <p>
+                    No tópico 3.12 o dicionário traduziu campos de $\mathbb{R}^3$ em formas, e o
+                    <a href="../[2] - Cálculo em Variedades Diferenciáveis/[13] - Derivada Exterior.html#ex-3-13-3">Exemplo 3.13.3</a> mostrou que $d$ faz, conforme o grau, o papel do gradiente, do rotacional e do divergente:
+                    $df = \omega_{\operatorname{grad}f}$, $d\omega_{\mathbf{F}} = \Phi_{\operatorname{rot}\mathbf{F}}$ e
+                    $d\Phi_{\mathbf{F}} = (\operatorname{div}\mathbf{F})\,dV$. O que faltava era voltar de uma $2$-forma a uma
+                    $1$-forma e de uma $3$-forma a uma função. A estrela faz isso, e o cálculo vetorial inteiro fica escrito
+                    com dois operadores.
+                </p>
+
+                <div class="definition-box" id="prop-4-4-22">
+                    <p><strong>Proposição 4.4.22 (O cálculo vetorial em $\mathbb{R}^3$).</strong> Para $f$, $\mathbf{F}$,
+                        $\mathbf{a}$, $\mathbf{b}$ suaves em $\mathbb{R}^3$, com $dV = dx^1\wedge dx^2\wedge dx^3$:</p>
+                    <ol type="a">
+                        <li>$\ast1 = dV$, $\ast\omega_{\mathbf{F}} = \Phi_{\mathbf{F}}$, $\ast\Phi_{\mathbf{F}} = \omega_{\mathbf{F}}$ e
+                            $\ast(h\,dV) = h$;</li>
+                        <li>$\ast d\,\omega_{\mathbf{F}} = \omega_{\operatorname{rot}\mathbf{F}}$ e
+                            $\ast d\ast\omega_{\mathbf{F}} = \operatorname{div}\mathbf{F}$;</li>
+                        <li>$\ast d\ast df = \nabla^2 f$, o laplaciano;</li>
+                        <li>$\ast(\omega_{\mathbf{a}}\wedge\omega_{\mathbf{b}}) = \omega_{\mathbf{a}\times\mathbf{b}}$ e
+                            $(\ast\omega_{\mathbf{a}})\wedge\omega_{\mathbf{b}} = (\mathbf{a}\cdot\mathbf{b})\,dV$.</li>
+                    </ol>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) $\ast1 = dV$ e $\ast dV = 1$ são a <a href="#prop-4-4-6">Proposição 4.4.6</a>; $\ast\omega_{\mathbf{F}} = \Phi_{\mathbf{F}}$
+                    é o <a href="#cor-4-4-9">Corolário 4.4.9</a> (ou a tabela do <a href="#ex-4-4-11">Exemplo 4.4.11</a>, termo a termo), e aplicando $\ast$ e $\ast\ast = 1$ vem
+                    $\ast\Phi_{\mathbf{F}} = \omega_{\mathbf{F}}$. (b) $\ast d\omega_{\mathbf{F}} = \ast\Phi_{\operatorname{rot}\mathbf{F}} = \omega_{\operatorname{rot}\mathbf{F}}$
+                    e $\ast d\ast\omega_{\mathbf{F}} = \ast d\Phi_{\mathbf{F}} = \ast\big((\operatorname{div}\mathbf{F})\,dV\big) = \operatorname{div}\mathbf{F}$.
+                    (c) É a (b) com $\mathbf{F} = \operatorname{grad}f$, porque $df = \omega_{\operatorname{grad}f}$ e
+                    $\operatorname{div}\operatorname{grad}f = \nabla^2f$. (d) Pelo dicionário,
+                    $\omega_{\mathbf{a}}\wedge\omega_{\mathbf{b}} = \Phi_{\mathbf{a}\times\mathbf{b}}$, e a (a) dá a primeira
+                    igualdade; para a segunda,
+                    $(\ast\omega_{\mathbf{a}})\wedge\omega_{\mathbf{b}} = \Phi_{\mathbf{a}}\wedge\omega_{\mathbf{b}} = \omega_{\mathbf{b}}\wedge\Phi_{\mathbf{a}} = (\mathbf{a}\cdot\mathbf{b})\,dV$
+                    (uma $2$-forma comuta com uma $1$-forma). $\blacksquare$
+                </p>
+
+                <p>
+                    Em notação vetorial: $\ast d$ em $1$-formas é $\nabla\times$, $\ast d\ast$ em $1$-formas é $\nabla\cdot$, e
+                    $\ast d\ast d$ em funções é $\nabla^2$. A segunda igualdade de (d) é o caso particular, em $\mathbb{R}^3$, da
+                    definição (4.4.2): $\omega_{\mathbf{a}}\wedge\ast\omega_{\mathbf{b}} = \langle\omega_{\mathbf{a}},\omega_{\mathbf{b}}\rangle\,dV$.
+                    O produto escalar é a estrela seguida do produto exterior; o produto vetorial é o produto exterior
+                    seguido da estrela.
+                </p>
+
+                <p>
+                    Em coordenadas quaisquer o divergente e o laplaciano ganham fatores da métrica, e a estrela os produz
+                    sozinha. A ligação é a divergência relativa a uma forma de volume do tópico 3.14 (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[14] - Fórmula de Cartan.html#def-3-14-25">Definição 3.14.25</a>), aqui
+                    com $\mu = \operatorname{vol}_g$.
+                </p>
+
+                <div class="definition-box" id="prop-4-4-23">
+                    <p><strong>Proposição 4.4.23 ($\star d\star$ em coordenadas).</strong> Em uma variedade pseudo-riemanniana
+                        orientada, para toda $1$-forma $\alpha$, $d\star\alpha = \big(\operatorname{div}_{\operatorname{vol}_g}\alpha^\sharp\big)\operatorname{vol}_g$.
+                        Em uma carta positiva,</p>
+                    <p>$$ \begin{aligned}
+                        \star d\star\alpha &= \operatorname{sign}(g)\,\frac{1}{\sqrt{\lvert g\rvert}}\,
+                        \partial_\mu\big(\sqrt{\lvert g\rvert}\,g^{\mu\nu}\alpha_\nu\big),\\
+                        \star d\star df &= \operatorname{sign}(g)\,\frac{1}{\sqrt{\lvert g\rvert}}\,
+                        \partial_\mu\big(\sqrt{\lvert g\rvert}\,g^{\mu\nu}\partial_\nu f\big).
+                        \end{aligned} \tag{4.4.7} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Seja $X = \alpha^\sharp$, $X^\mu = g^{\mu\nu}\alpha_\nu$. Pelo <a href="#cor-4-4-9">Corolário 4.4.9</a>,
+                    $\star\alpha = i_X\operatorname{vol}_g$; pela <a href="../[2] - Cálculo em Variedades Diferenciáveis/[14] - Fórmula de Cartan.html#prop-3-14-26">Proposição 3.14.26</a>, $d(i_X\operatorname{vol}_g) = \mathcal{L}_X\operatorname{vol}_g = (\operatorname{div}_{\operatorname{vol}_g}X)\operatorname{vol}_g$,
+                    e pela (3.14.8) com $\rho = \sqrt{\lvert g\rvert}$,
+                    $\operatorname{div}_{\operatorname{vol}_g}X = \frac{1}{\sqrt{\lvert g\rvert}}\partial_\mu\big(\sqrt{\lvert g\rvert}X^\mu\big)$. Por fim,
+                    $\star\big(h\operatorname{vol}_g\big) = h\,\star\operatorname{vol}_g = \operatorname{sign}(g)\,h$ (<a href="#prop-4-4-6">Proposição 4.4.6</a>). A
+                    segunda fórmula é a primeira com $\alpha = df$. $\blacksquare$
+                </p>
+
+                <p>
+                    Em uma métrica riemanniana, a (4.4.7) é o divergente e o laplaciano em coordenadas curvilíneas (o
+                    operador de Laplace–Beltrami). Em coordenadas polares do plano, por exemplo, $\sqrt{\lvert g\rvert} = r$,
+                    $g^{rr} = 1$ e $g^{\theta\theta} = 1/r^2$, e
+                    $\star d\star df = \frac1r\partial_r(r\,\partial_rf) + \frac1{r^2}\partial_\theta^2f$; o caso das esféricas é o
+                    <a href="#exr-4-4-9">Exercício 4.4.9</a>.
+                </p>
+
+                <p id="ex-4-4-24"><strong>Exemplo 4.4.24 (O operador de onda).</strong> Em Minkowski, $\sqrt{\lvert\eta\rvert} = 1$,
+                    $\operatorname{sign}(\eta) = -1$ e $\eta^{\mu\nu}$ é diagonal; a (4.4.7) dá</p>
+
+                <p>
+                    $$ \star d\star df = -\eta^{\mu\nu}\partial_\mu\partial_\nu f = \partial_0^2f - \nabla^2f
+                    = \frac{1}{c^2}\frac{\partial^2f}{\partial t^2} - \nabla^2 f, $$
+                </p>
+
+                <p>
+                    com $x^0 = ct$. O mesmo operador $\star d\star d$ que em $\mathbb{R}^3$ é o laplaciano é, no espaço-tempo, o
+                    operador de onda com velocidade $c$ (o d'alembertiano, a menos do sinal:
+                    $\star d\star df = -\Box f$ com $\Box = \eta^{\mu\nu}\partial_\mu\partial_\nu$). A equação $\star d\star df = 0$ é a
+                    equação de onda; a métrica de Minkowski já traz a velocidade $c$ embutida.
+                </p>
+
+                <h2 id="fisica">Ponte com a física: onde a geometria entra</h2>
+
+                <p>
+                    O tópico 4.5 escreve as equações de Maxwell em $\mathbb{R}^3$ com formas. As leis "de contagem" (Gauss e
+                    Ampère–Maxwell) envolvem o deslocamento elétrico $D$ e o campo magnético $H$; as leis "de força" (Faraday
+                    e a ausência de monopolos) envolvem o campo elétrico $E$ e a indução magnética $B$. No vácuo, os dois
+                    pares se ligam pela estrela:
+                </p>
+
+                <p>
+                    $$ D = \varepsilon_0\,\ast E, \qquad H = \frac{1}{\mu_0}\,\ast B. $$
+                </p>
+
+                <p>
+                    Como $\ast\ast = 1$ em $\mathbb{R}^3$, essas relações se invertem sem sinais: $E = \ast D/\varepsilon_0$ e
+                    $B = \mu_0\ast H$. Elas são a única parte das equações em que a métrica aparece: $dB = 0$,
+                    $dE + \partial_tB = 0$, $dD = \varrho$ e $dH = J + \partial_tD$ usam só $d$, que não depende de métrica
+                    nenhuma (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[13] - Derivada Exterior.html#obs-3-13-9">Observação 3.13.9</a>). A geometria entra na física exatamente onde entra a estrela.
+                </p>
+
+                <p>
+                    Daí uma pergunta que guia o resto da primeira parte: <em>qual</em> métrica é a da estrela? Nada obriga que
+                    ela seja a métrica com que medimos distâncias. Num cristal anisotrópico a relação entre $D$ e $E$ é
+                    $D^i = \varepsilon^{ij}E_j$, e o tópico 4.6 mostra que isso é ainda uma estrela, mas para uma métrica
+                    efetiva, determinada pelo meio. No vácuo essa métrica é a euclidiana, por hipóteses físicas sobre o vácuo
+                    (homogêneo e isotrópico) que o 4.6 deixa explícitas. Em quatro dimensões, a mesma pergunta, feita sobre
+                    $\mathcal{M} = \star F/\mu_0$, tem como resposta a métrica de Minkowski (tópico 4.8).
+                </p>
+
+                <p>
+                    A estrela também explica uma distinção antiga do eletromagnetismo vetorial. O campo elétrico $\mathbf{E}$ é
+                    um vetor "polar" e a indução $\mathbf{B}$, um vetor "axial": sob a paridade $x \mapsto -x$, $\mathbf{E}$
+                    troca de sinal e $\mathbf{B}$ não. Na linguagem de formas não há nada de especial: $E$ é uma $1$-forma e $B$
+                    uma $2$-forma, e as duas se transformam pelo <em>pullback</em>, como qualquer forma. A diferença aparece
+                    só quando se passa da $2$-forma $B$ ao vetor $\mathbf{B}$, porque essa passagem usa $\ast$, que depende da
+                    orientação e troca de sinal sob paridade (<a href="#ex-4-4-20">Exemplo 4.4.20</a>). O "pseudo" de pseudovetor é a estrela.
+                </p>
+
+                <p>
+                    Em Minkowski, o <a href="#ex-4-4-24">Exemplo 4.4.24</a> mostra que $\star d\star d$ é o operador de onda. No tópico 4.8, as equações de
+                    Maxwell no vácuo virão como $dF = 0$ e $d\star F = 0$ e, com $F = dA$ e um calibre conveniente, cada
+                    componente de $A$ satisfará uma equação de onda: a luz se propaga com a velocidade $c$ que a métrica traz.
+                </p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p>
+                    Os oito primeiros são os das notas de aula; os três últimos são extras. Todas as contas foram conferidas
+                    em sympy.
+                </p>
+
+                <p id="exr-4-4-1"><strong>Exercício 4.4.1 (das notas de aula).</strong> Repita o <a href="#ex-4-4-1">Exemplo 4.4.1</a> para as
+                    rotações de $90°$ em torno dos eixos $x^2$ e $x^3$.</p>
+
+                <p>
+                    <em>Solução.</em> Em torno de $x^2$, a rotação de $90°$ é a substituição $x^1 \mapsto -x^3$,
+                    $x^2 \mapsto x^2$, $x^3 \mapsto x^1$ (a mesma regra de $x^1$, com os índices permutados ciclicamente), que
+                    leva $dx^1 \mapsto -dx^3$, $dx^2 \mapsto dx^2$, $dx^3 \mapsto dx^1$. Aplicando-a a (4.4.1):
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    \ast dx^1 = dx^2\wedge dx^3 &\ \longmapsto\ \ast(-dx^3) = dx^2\wedge dx^1 = -dx^1\wedge dx^2,\\
+                    \ast dx^2 = dx^3\wedge dx^1 &\ \longmapsto\ \ast dx^2 = dx^1\wedge(-dx^3) = dx^3\wedge dx^1,\\
+                    \ast dx^3 = dx^1\wedge dx^2 &\ \longmapsto\ \ast dx^1 = -dx^3\wedge dx^2 = dx^2\wedge dx^3.
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    As três linhas são de novo (4.4.1). Em torno de $x^3$: $x^1 \mapsto x^2$, $x^2 \mapsto -x^1$,
+                    $x^3 \mapsto x^3$, isto é, $dx^1 \mapsto dx^2$, $dx^2 \mapsto -dx^1$, $dx^3 \mapsto dx^3$, e
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    \ast dx^1 = dx^2\wedge dx^3 &\ \longmapsto\ \ast dx^2 = -dx^1\wedge dx^3 = dx^3\wedge dx^1,\\
+                    \ast dx^2 = dx^3\wedge dx^1 &\ \longmapsto\ \ast(-dx^1) = dx^3\wedge dx^2 = -dx^2\wedge dx^3,\\
+                    \ast dx^3 = dx^1\wedge dx^2 &\ \longmapsto\ \ast dx^3 = dx^2\wedge(-dx^1) = dx^1\wedge dx^2.
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    Mais uma vez a regra é preservada. As duas substituições têm determinante $1$, e o resultado é o caso
+                    particular da <a href="#prop-4-4-19">Proposição 4.4.19</a>.
+                </p>
+
+                <p id="exr-4-4-2"><strong>Exercício 4.4.2 (das notas de aula).</strong> Em $\mathbb{R}^3$ euclidiano,
+                    determine $\ast$ nos demais elementos da base das $2$-formas, pela fórmula
+                    $\ast\big(\tfrac12B_{mn}\,dx^m\wedge dx^n\big) = \tfrac12\tilde\varepsilon_{kmn}B_{mn}\,dx^k$.</p>
+
+                <p>
+                    <em>Solução.</em> Para $dx^3\wedge dx^1$: $B_{31} = -B_{13} = 1$, e as outras componentes são nulas. Então
+                    $B_2 = \tfrac12(\tilde\varepsilon_{231}B_{31} + \tilde\varepsilon_{213}B_{13}) = \tfrac12(1 + 1) = 1$, e
+                    $B_1 = B_3 = 0$ porque $\tilde\varepsilon_{131} = \tilde\varepsilon_{331} = 0$. Logo $\ast(dx^3\wedge dx^1) = dx^2$. Para
+                    $dx^1\wedge dx^2$: $B_{12} = -B_{21} = 1$, $B_3 = \tfrac12(\tilde\varepsilon_{312} + \tilde\varepsilon_{321}\cdot(-1)) = 1$, e
+                    $\ast(dx^1\wedge dx^2) = dx^3$. Por linearidade, $\ast(dx^1\wedge dx^3) = -\ast(dx^3\wedge dx^1) = -dx^2$,
+                    $\ast(dx^3\wedge dx^2) = -dx^1$ e $\ast(dx^2\wedge dx^1) = -dx^3$. Pela (4.4.3), com
+                    $\sigma(2,3) = \operatorname{sgn}(2,3,1) = 1$, $\sigma(1,3) = \operatorname{sgn}(1,3,2) = -1$ e
+                    $\sigma(1,2) = 1$, o resultado é o mesmo.
+                </p>
+
+                <p id="exr-4-4-3"><strong>Exercício 4.4.3 (das notas de aula).</strong> Em $\mathbb{R}^2$ euclidiano, mostre
+                    que $\star\star dx^i = -dx^i$, $i = 1,2$.</p>
+
+                <p>
+                    <em>Solução.</em> Pela (4.4.4) com $n = 2$, $k = 1$, $(\star\alpha)_i = \alpha_j\,\tilde\varepsilon_{ji}$, isto é,
+                    $\star\alpha = \alpha_j\tilde\varepsilon_{ji}\,dx^i$. Assim $\star dx^1 = \tilde\varepsilon_{12}\,dx^2 = dx^2$ e
+                    $\star dx^2 = \tilde\varepsilon_{21}\,dx^1 = -dx^1$. Logo $\star\star dx^1 = \star dx^2 = -dx^1$ e
+                    $\star\star dx^2 = -\star dx^1 = -dx^2$. Pelo <a href="#teo-4-4-15">Teorema 4.4.15</a>: $\operatorname{sign}(g)(-1)^{1\cdot1} = -1$.
+                </p>
+
+                <p id="exr-4-4-4"><strong>Exercício 4.4.4 (das notas de aula).</strong> Em $\mathbb{R}^4$ com a métrica de
+                    Minkowski $\eta = \operatorname{diag}(-1,1,1,1)$ e coordenadas $(x^0,x^1,x^2,x^3)$, determine
+                    $\star(dx^0\wedge dx^1)$ e $\star\star dx^1$.</p>
+
+                <p>
+                    <em>Solução.</em> Pela (4.4.5), com $\sqrt{\lvert\eta\rvert} = 1$ e $\eta^{00} = -1$, $\eta^{11} = 1$,
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    \star(dx^0\wedge dx^1) &= \frac{1}{2!}\,\eta^{00}\eta^{11}\,\tilde\varepsilon_{01\gamma\delta}\,dx^\gamma\wedge dx^\delta\\
+                    &= -\frac12\big(\tilde\varepsilon_{0123}\,dx^2\wedge dx^3 + \tilde\varepsilon_{0132}\,dx^3\wedge dx^2\big)
+                    = -dx^2\wedge dx^3.
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    Do mesmo modo, só os termos com $\{\beta,\gamma,\delta\} = \{0,2,3\}$ sobrevivem em
+                    $\star dx^1 = \tfrac1{3!}\eta^{11}\tilde\varepsilon_{1\beta\gamma\delta}\,dx^\beta\wedge dx^\gamma\wedge dx^\delta$, e as $3!$
+                    ordenações dão o mesmo termo: $\star dx^1 = \tilde\varepsilon_{1023}\,dx^0\wedge dx^2\wedge dx^3 = -dx^0\wedge dx^2\wedge dx^3$.
+                    Depois,
+                    $\star(dx^0\wedge dx^2\wedge dx^3) = \eta^{00}\eta^{22}\eta^{33}\,\tilde\varepsilon_{0231}\,dx^1 = -dx^1$, porque
+                    $(0,2,3,1)$ é uma permutação par. Logo $\star\star dx^1 = -\star(dx^0\wedge dx^2\wedge dx^3) = dx^1$, de
+                    acordo com o <a href="#teo-4-4-15">Teorema 4.4.15</a>: $\operatorname{sign}(\eta)(-1)^{1\cdot3} = (-1)(-1) = 1$.
+                </p>
+
+                <p id="exr-4-4-5"><strong>Exercício 4.4.5 (das notas de aula).</strong> Em $\mathbb{R}^3$ euclidiano,
+                    determine $\ast(dx^1\wedge dx^2)$ e $\ast(dx^1\wedge dx^2\wedge dx^3)$.</p>
+
+                <p>
+                    <em>Solução.</em> Pela (4.4.4) com $k = 2$: $(\ast\beta)_k = \tfrac12\beta_{mn}\tilde\varepsilon_{mnk}$. Para
+                    $\beta = dx^1\wedge dx^2$, só $\beta_{12} = -\beta_{21} = 1$, e
+                    $(\ast\beta)_3 = \tfrac12(\tilde\varepsilon_{123} - \tilde\varepsilon_{213}) = 1$, as outras nulas:
+                    $\ast(dx^1\wedge dx^2) = dx^3$. Com $k = 3$, $\beta_{mnp} = \tilde\varepsilon_{mnp}$ e
+                    $\ast\beta = \tfrac1{3!}\tilde\varepsilon_{mnp}\tilde\varepsilon_{mnp} = \tfrac{3!}{3!} = 1$:
+                    $\ast(dx^1\wedge dx^2\wedge dx^3) = 1$, como na <a href="#prop-4-4-6">Proposição 4.4.6</a>.
+                </p>
+
+                <p id="exr-4-4-6"><strong>Exercício 4.4.6 (das notas de aula).</strong> Para
+                    $\omega = a\,dx + b\,dy + c\,dz$ e $\sigma = A\,dx + B\,dy + C\,dz$ em $\mathbb{R}^3$ (coeficientes
+                    constantes), calcule $\ast(\omega\wedge\sigma)$ e $(\ast\omega)\wedge\sigma$.</p>
+
+                <p>
+                    <em>Solução.</em> Expandindo,
+                    $\omega\wedge\sigma = (bC - cB)\,dy\wedge dz + (cA - aC)\,dz\wedge dx + (aB - bA)\,dx\wedge dy$, e pela
+                    tabela do <a href="#ex-4-4-11">Exemplo 4.4.11</a>
+                </p>
+
+                <p>
+                    $$ \ast(\omega\wedge\sigma) = (bC - cB)\,dx + (cA - aC)\,dy + (aB - bA)\,dz, $$
+                </p>
+
+                <p>
+                    a forma de trabalho do produto vetorial $(a,b,c)\times(A,B,C)$. E
+                    $\ast\omega = a\,dy\wedge dz + b\,dz\wedge dx + c\,dx\wedge dy$, de modo que, como
+                    $dy\wedge dz\wedge dx = dz\wedge dx\wedge dy = dx\wedge dy\wedge dz$ e os termos com diferencial repetido se
+                    anulam,
+                </p>
+
+                <p>
+                    $$ (\ast\omega)\wedge\sigma = (aA + bB + cC)\,dx\wedge dy\wedge dz, $$
+                </p>
+
+                <p>
+                    o produto escalar vezes a forma de volume. São as duas igualdades da <a href="#prop-4-4-22">Proposição 4.4.22</a>(d).
+                </p>
+
+                <p id="exr-4-4-7"><strong>Exercício 4.4.7 (das notas de aula).</strong> Para uma função $f$ em
+                    $\mathbb{R}^3$, mostre que $\ast d\ast df = \nabla^2f$.</p>
+
+                <p>
+                    <em>Solução.</em> $df = f_x\,dx + f_y\,dy + f_z\,dz$, com $f_x = \partial f/\partial x$ etc. Pela tabela,
+                    $\ast df = f_x\,dy\wedge dz + f_y\,dz\wedge dx + f_z\,dx\wedge dy$. Na derivada exterior, de cada termo só
+                    sobrevive a derivada na variável que falta:
+                    $d\ast df = (f_{xx} + f_{yy} + f_{zz})\,dx\wedge dy\wedge dz$. Como $\ast(dx\wedge dy\wedge dz) = 1$,
+                    $\ast d\ast df = f_{xx} + f_{yy} + f_{zz} = \nabla^2f$.
+                </p>
+
+                <p id="exr-4-4-8"><strong>Exercício 4.4.8 (das notas de aula).</strong> Em dimensão $3$, com uma métrica
+                    $g_{ij}$ qualquer, repita a conta do <a href="#ex-4-4-16">Exemplo 4.4.16</a> e verifique que $\star\star1 = \operatorname{sign}(g)$.</p>
+
+                <p>
+                    <em>Solução.</em> Pela (4.4.5) com $k = 0$,
+                    $\star1 = \tfrac{\sqrt{\lvert g\rvert}}{3!}\tilde\varepsilon_{ijk}\,dx^i\wedge dx^j\wedge dx^k = \sqrt{\lvert g\rvert}\,dx^1\wedge dx^2\wedge dx^3$
+                    (as $3!$ ordenações dão o mesmo termo). A $3$-forma $\beta = dx^1\wedge dx^2\wedge dx^3$ tem componentes
+                    $\beta_{ijk} = \tilde\varepsilon_{ijk}$, e pela (4.4.4)
+                </p>
+
+                <p>
+                    $$ \star\beta = \frac{\sqrt{\lvert g\rvert}}{3!}\,g^{ia}g^{jb}g^{kc}\,\tilde\varepsilon_{abc}\,\tilde\varepsilon_{ijk}
+                    = \frac{\sqrt{\lvert g\rvert}}{3!}\,\det(g^{-1})\,\tilde\varepsilon^{\,ijk}\tilde\varepsilon_{ijk}
+                    = \sqrt{\lvert g\rvert}\,\det(g^{-1}), $$
+                </p>
+
+                <p>
+                    em que usamos a (4.3.5) com a matriz simétrica $g^{-1}$ e $\tilde\varepsilon^{\,ijk}\tilde\varepsilon_{ijk} = 3! = 6$
+                    (uma parcela igual a $1$ para cada permutação). Como $\det(g^{-1}) = \operatorname{sign}(g)/\lvert g\rvert$,
+                    $\star\beta = \operatorname{sign}(g)/\sqrt{\lvert g\rvert}$, e
+                    $\star\star1 = \sqrt{\lvert g\rvert}\,\star\beta = \operatorname{sign}(g)$.
+                </p>
+
+                <p id="exr-4-4-9"><strong>Exercício 4.4.9.</strong> Em coordenadas esféricas $(r,\theta,\phi)$ de
+                    $\mathbb{R}^3$, calcule $\ast dr$, $\ast d\theta$, $\ast d\phi$ e deduza o laplaciano esférico de
+                    $\ast d\ast df$.</p>
+
+                <p>
+                    <em>Solução.</em> A métrica é $\operatorname{diag}(1, r^2, r^2\sin^2\theta)$, com
+                    $\sqrt{\lvert g\rvert} = r^2\sin\theta$ (para $0 \lt \theta \lt \pi$) e a carta $(r,\theta,\phi)$ positiva. Pelo
+                    <a href="#cor-4-4-9">Corolário 4.4.9</a>, $\ast dx^i = \sqrt{\lvert g\rvert}\,g^{ii}\,dx^j\wedge dx^k$ para $(i,j,k)$ cíclico:
+                </p>
+
+                <p>
+                    $$ \ast dr = r^2\sin\theta\,d\theta\wedge d\phi, \qquad \ast d\theta = \sin\theta\,d\phi\wedge dr, \qquad
+                    \ast d\phi = \frac{1}{\sin\theta}\,dr\wedge d\theta. $$
+                </p>
+
+                <p>
+                    Então $\ast df = r^2\sin\theta\,f_r\,d\theta\wedge d\phi + \sin\theta\,f_\theta\,d\phi\wedge dr + \frac{f_\phi}{\sin\theta}\,dr\wedge d\theta$,
+                    e, como os três produtos cíclicos valem $dr\wedge d\theta\wedge d\phi$,
+                </p>
+
+                <p>
+                    $$ d\ast df = \Big[\partial_r\big(r^2\sin\theta\,f_r\big) + \partial_\theta\big(\sin\theta\,f_\theta\big)
+                    + \partial_\phi\Big(\frac{f_\phi}{\sin\theta}\Big)\Big]\,dr\wedge d\theta\wedge d\phi. $$
+                </p>
+
+                <p>
+                    Como $\operatorname{vol}_g = r^2\sin\theta\,dr\wedge d\theta\wedge d\phi$ e $\ast\operatorname{vol}_g = 1$,
+                    $\ast(dr\wedge d\theta\wedge d\phi) = 1/(r^2\sin\theta)$, e
+                </p>
+
+                <p>
+                    $$ \ast d\ast df = \frac{1}{r^2}\,\partial_r\big(r^2\partial_rf\big)
+                    + \frac{1}{r^2\sin\theta}\,\partial_\theta\big(\sin\theta\,\partial_\theta f\big)
+                    + \frac{1}{r^2\sin^2\theta}\,\partial_\phi^2 f, $$
+                </p>
+
+                <p>
+                    o laplaciano em esféricas. É a (4.4.7) com $\operatorname{sign}(g) = 1$.
+                </p>
+
+                <p id="exr-4-4-10"><strong>Exercício 4.4.10.</strong> (a) Em $\mathbb{R}^4$ euclidiano, mostre que as
+                    $2$-formas com $\star\omega = \omega$ (autoduais) e com $\star\omega = -\omega$ (antiautoduais) formam
+                    subespaços de dimensão $3$ cada, e que $\Lambda^2$ é a soma direta deles. (b) Em Minkowski, mostre que
+                    nenhuma $2$-forma real não nula satisfaz $\star\omega = \lambda\omega$ com $\lambda$ real.</p>
+
+                <p>
+                    <em>Solução.</em> (a) Pelo <a href="#ex-4-4-12">Exemplo 4.4.12</a>, $\star\star = 1$ em $\Lambda^2(\mathbb{R}^4)$. Toda $\omega$ se escreve
+                    $\omega = \tfrac12(\omega + \star\omega) + \tfrac12(\omega - \star\omega)$, com
+                    $\star\tfrac12(\omega\pm\star\omega) = \pm\tfrac12(\omega\pm\star\omega)$, e uma forma nos dois subespaços é
+                    nula ($\omega = \star\omega = -\omega$); logo a soma é direta. A tabela do <a href="#ex-4-4-12">Exemplo 4.4.12</a> dá bases:
+                    autoduais $dx^1\wedge dx^2 + dx^3\wedge dx^4$, $dx^1\wedge dx^3 - dx^2\wedge dx^4$,
+                    $dx^1\wedge dx^4 + dx^2\wedge dx^3$; antiautoduais, as mesmas com o sinal do meio trocado. São seis formas
+                    linearmente independentes (cada par envolve elementos da base que os outros pares não usam), logo cada
+                    subespaço tem dimensão $3$. (b) Pelo <a href="#teo-4-4-15">Teorema 4.4.15</a>, $\star\star = -1$ em $\Lambda^2$ de Minkowski. Se
+                    $\star\omega = \lambda\omega$, então $-\omega = \star\star\omega = \lambda^2\omega$, e $\omega \ne 0$ exige
+                    $\lambda^2 = -1$, impossível para $\lambda$ real. Os autovalores de $\star$ em $2$-formas são $\pm i$; as
+                    combinações autoduais da física, como $F \pm i\star F$, são complexas.
+                </p>
+
+                <p id="exr-4-4-11"><strong>Exercício 4.4.11.</strong> Em Minkowski, mostre que $\star d\star du = 0$ é a
+                    equação de onda $\frac{1}{c^2}\partial_t^2u = \nabla^2u$ e que toda $u = h(x^1 - x^0)$, com $h$ suave de uma
+                    variável, é solução.</p>
+
+                <p>
+                    <em>Solução.</em> Pelo <a href="#ex-4-4-24">Exemplo 4.4.24</a>, $\star d\star du = \partial_0^2u - \nabla^2u$, e com $x^0 = ct$,
+                    $\partial_0 = \tfrac1c\partial_t$. Logo $\star d\star du = 0$ equivale a $\tfrac1{c^2}\partial_t^2u = \nabla^2u$. Para
+                    $u = h(x^1 - x^0)$: $\partial_0^2u = h''(x^1 - x^0)$, $\partial_1^2u = h''(x^1 - x^0)$ e
+                    $\partial_2^2u = \partial_3^2u = 0$, de modo que $\partial_0^2u - \nabla^2u = 0$. É uma onda que se desloca no sentido de
+                    $x^1$ crescente com velocidade $dx^1/dt = c$: o perfil $h$ é constante ao longo das retas
+                    $x^1 - x^0 = \text{const}$, paralelas ao raio de luz da <a href="#fig-4-4-2">Figura 4.4.2</a>.
+                </p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <ul>
+                    <li>A estrela de Hodge, definida sem coordenadas por
+                        $\alpha\wedge\star\beta = \langle\alpha,\beta\rangle\operatorname{vol}_g$ (<a href="#teo-4-4-3">Teorema 4.4.3</a> e <a href="#def-4-4-4">Definição 4.4.4</a>), e o seu
+                        valor numa base ortonormal (<a href="#prop-4-4-5">Proposição 4.4.5</a>).</li>
+                    <li>A fórmula em componentes (<a href="#teo-4-4-7">Teorema 4.4.7</a>), que é a das aulas: contração nos primeiros índices,
+                        $\sqrt{\lvert g\rvert}$ e a métrica inversa; para $1$-formas, $\star\alpha = i_{\alpha^\sharp}\operatorname{vol}_g$
+                        (<a href="#cor-4-4-9">Corolário 4.4.9</a>).</li>
+                    <li>As tabelas de $\mathbb{R}^2$, $\mathbb{R}^3$, $\mathbb{R}^4$ e de Minkowski (<a href="#ex-4-4-11">Exemplo 4.4.11</a> e <a href="#ex-4-4-13">Exemplo 4.4.13</a>).</li>
+                    <li>A estrela dupla $\star\star = \operatorname{sign}(g)(-1)^{k(n-k)}$ (<a href="#teo-4-4-15">Teorema 4.4.15</a>) e suas consequências
+                        (<a href="#cor-4-4-17">Corolário 4.4.17</a>).</li>
+                    <li>A invariância por isometrias e o sinal sob as que invertem a orientação (<a href="#prop-4-4-19">Proposição 4.4.19</a>), e o sentido
+                        em que a estrela é única (<a href="#obs-4-4-21">Observação 4.4.21</a>).</li>
+                    <li>O cálculo vetorial com $d$ e $\ast$ (<a href="#prop-4-4-22">Proposição 4.4.22</a>), o laplaciano em coordenadas e o operador de onda
+                        (<a href="#prop-4-4-23">Proposição 4.4.23</a> e <a href="#ex-4-4-24">Exemplo 4.4.24</a>).</li>
+                </ul>
+
+                <p>
+                    Com isso terminam as ferramentas. O lema de Poincaré diz quando uma forma fechada tem potencial; a
+                    métrica dá o produto interno e o volume; a estrela transforma formas de um grau em formas do grau
+                    complementar. Falta usá-las. A primeira parte do capítulo começa no próximo tópico, que escreve as
+                    equações de Maxwell em $\mathbb{R}^3$ com formas e mostra que a métrica só entra em
+                    $D = \varepsilon_0\ast E$ e $H = \ast B/\mu_0$:
+                    <a href="[05] - Maxwell em 3D com Formas.html">4.5 Maxwell em 3D com Formas</a>.
+                </p>
 
             </div>
         </main>
@@ -176,6 +1378,16 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#estrela-de-hodge">O Operador Estrela de Hodge</a></li>
+                    <li><a href="#motivacao-r3">A estrela em ℝ³</a></li>
+                    <li><a href="#definicao">A definição invariante</a></li>
+                    <li><a href="#componentes">A fórmula em componentes</a></li>
+                    <li><a href="#exemplos">As tabelas</a></li>
+                    <li><a href="#estrela-dupla">A estrela dupla</a></li>
+                    <li><a href="#invariancia">Invariância e unicidade</a></li>
+                    <li><a href="#calculo-vetorial">Cálculo vetorial</a></li>
+                    <li><a href="#fisica">Ponte com a física</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
                 </ul>
             </div>
         </aside>
