@@ -164,9 +164,579 @@
             <div class="prose">
 
                 <h1 id="principio-variacional">4.12 O Princípio Variacional</h1>
-                <p class="lead">Funcionais, variações com extremos fixos, o lema fundamental do cálculo variacional, as equações de Euler–Lagrange e a derivada funcional.</p>
+                <p class="lead">Funções e funcionais, a primeira variação, o lema fundamental do cálculo variacional, as equações de Euler–Lagrange para uma e várias funções e para campos, as integrais primeiras e a equivalência entre os extremais do comprimento e da energia.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>
+                    O tópico <a href="[11] - Massa, Velocidade Limite e Causalidade.html">4.11</a> postulou que uma partícula livre segue
+                    uma curva que torna o comprimento estacionário (4.11.1). O postulado só foi usado pelas suas consequências qualitativas:
+                    para tirar dele equações do movimento, é preciso responder a uma pergunta de outro tipo. Dada uma integral
+                    $I = \int_a^bF\big(y(x), y'(x), x\big)\,dx$, para quais funções $y$ ela é um extremo?
+                </p>
+
+                <p>
+                    No cálculo de funções de uma variável, a resposta é "onde a derivada se anula". Aqui o argumento é uma função inteira, e
+                    o número $I$ depende dos valores de $y$ em todos os pontos de $[a,b]$. A ideia é a mesma: variar a função numa direção,
+                    $y + \epsilon h$, e exigir que a derivada em $\epsilon$ se anule para toda direção $h$. O resultado é uma equação diferencial,
+                    a equação de Euler–Lagrange. O passo que transforma "para toda $h$" em "o integrando é zero" é o lema fundamental do
+                    cálculo variacional, que provamos com as funções <em>bump</em> do capítulo 3 (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[04] - Funções e Aplicações Suaves.html#lema-3-4-27">Lema 3.4.27</a>).
+                </p>
+
+                <p>
+                    Usamos a derivação sob o sinal de integral (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[02] - Preliminares de Topologia e Cálculo.html#teo-3-2-66">Teorema 3.2.66</a>) e o teorema de Fubini (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[02] - Preliminares de Topologia e Cálculo.html#teo-3-2-62">Teorema 3.2.62</a>), citados no tópico
+                    <a href="../[2] - Cálculo em Variedades Diferenciáveis/[02] - Preliminares de Topologia e Cálculo.html">3.2</a>, e, nos
+                    exemplos, o comprimento e a energia do tópico <a href="[10] - Comprimento e Energia de Curvas.html">4.10</a>. No fim, a
+                    ferramenta cumpre uma promessa do 4.10: o comprimento e a energia têm as mesmas curvas estacionárias, desde que a energia
+                    seja tomada com velocidade constante.
+                </p>
+
+                <h2 id="funcionais">Funções e funcionais</h2>
+
+                <div class="definition-box" id="def-4-12-1" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.12.1 (Funcional).</strong> Seja $F(Y, P, x)$ uma função de classe $C^2$ num aberto de
+                        $\mathbb{R}^3$, a <strong>lagrangiana</strong>. Para $y \in C^2([a,b])$ com $\big(y(x), y'(x), x\big)$ no domínio de $F$, o
+                        <strong>funcional</strong> associado é</p>
+                    <p>$$ I[y] = \int_a^bF\big(y(x), y'(x), x\big)\,dx. \tag{4.12.1} $$</p>
+                    <p>Escrevemos $F_y$, $F_{y'}$ para as derivadas parciais de $F$ em relação ao primeiro e ao segundo argumento, calculadas
+                        em $\big(y(x), y'(x), x\big)$.</p>
+                </div>
+
+                <p>
+                    Para conhecer o valor de $F$ num ponto basta conhecer três números, $Y = y(x)$, $P = y'(x)$ e $x$: $F$ é uma função de
+                    três variáveis, e $F_y$ e $F_{y'}$ são as suas derivadas parciais nessas variáveis. Já $I$ depende de todos os valores de
+                    $y$ em $[a,b]$: é uma função de funções, um <strong>funcional</strong>, e escrevemos $I[y]$ com colchetes.
+                </p>
+
+                <p id="obs-4-12-2"><strong>Observação 4.12.2 (Em que sentido $y$ e $y'$ são independentes).</strong> Dados os números
+                    $y(x_0) = a_1$ e $y'(x_0) = a_2$, sempre existe uma função com esses dois valores (por exemplo, $a_1 + a_2(x - x_0)$): saber
+                    $y(x_0)$ não diz nada sobre $y'(x_0)$. É nesse sentido que $y$ e $y'$ são variáveis independentes de $F$, como $q$ e $\dot q$
+                    na lagrangiana $L(q, \dot q, t)$ da mecânica. Para o funcional não são: dada a função inteira, a derivada está determinada,
+                    e não se pode variar $y$ e $y'$ separadamente. É por isso que, na conta abaixo, a variação de $y'$ será a derivada da
+                    variação de $y$.</p>
+
+                <div class="definition-box" id="def-4-12-3" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.12.3 (Variação admissível; função estacionária).</strong> Uma <strong>variação admissível</strong>
+                        é uma função $h \in C^2([a,b])$ com $h(a) = h(b) = 0$. A função $y$ é <strong>estacionária</strong> para $I$ se, para toda
+                        variação admissível $h$,</p>
+                    <p>$$ \frac{d}{d\epsilon}\Big\vert_{\epsilon=0}I[y + \epsilon h] = 0. $$</p>
+                </div>
+
+                <p>
+                    As funções $y + \epsilon h$ têm os mesmos extremos que $y$ (Figura 4.12.1): estamos comparando caminhos com o mesmo ponto
+                    inicial e o mesmo ponto final. Para $\lvert\epsilon\rvert$ pequeno, $(y + \epsilon h, y' + \epsilon h', x)$ continua no domínio de $F$,
+                    porque o conjunto dos pontos $(y(x), y'(x), x)$ é compacto e o domínio é aberto. A definição é a mesma da <a href="[11] - Massa, Velocidade Limite e Causalidade.html#def-4-11-1">Definição 4.11.1</a>,
+                    restrita a variações da forma $y + \epsilon h$; a <a href="#obs-4-12-9">Observação 4.12.9</a> mostra que isso não perde nada.
+                </p>
+
+                <figure class="lecture-figure" id="fig-4-12-1">
+                    <svg viewBox="0 0 640 260" role="img" style="min-width: 560px;" aria-label="Eixos x e y. Uma curva contínua, o caminho estacionário y de x, passa por dois pontos marcados em x igual a a e x igual a b, com guias tracejadas até o eixo. Duas curvas tracejadas, os caminhos variados y mais epsilon h, saem do mesmo ponto em a e chegam ao mesmo ponto em b, uma acima e outra abaixo do caminho estacionário.">
+<defs><marker id="arr-4-12-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="70" y1="235" x2="600" y2="235" class="fig-axis" marker-end="url(#arr-4-12-1)"/>
+<text x="604" y="239" class="fig-label fig-it">x</text>
+<line x1="70" y1="235" x2="70" y2="20" class="fig-axis" marker-end="url(#arr-4-12-1)"/>
+<text x="64" y="24" text-anchor="end" class="fig-label fig-it">y</text>
+<line x1="170" y1="190" x2="170" y2="235" class="fig-guide fig-dashed"/>
+<text x="170" y="253" text-anchor="middle" class="fig-label fig-it">a</text>
+<line x1="500" y1="80" x2="500" y2="235" class="fig-guide fig-dashed"/>
+<text x="500" y="253" text-anchor="middle" class="fig-label fig-it">b</text>
+<path d="M110,200.3 L112,199.9 L114,199.5 L116,199.1 L118,198.8 L120,198.4 L122,198.1 L124,197.7 L126,197.3 L128,197 L130,196.6 L132,196.3 L134,196 L136,195.6 L138,195.3 L140,194.9 L142,194.6 L144,194.3 L146,193.9 L148,193.6 L150,193.3 L152,192.9 L154,192.6 L156,192.3 L158,191.9 L160,191.6 L162,191.3 L164,191 L166,190.6 L168,190.3 L170,190 L172,189.7 L174,189.4 L176,189 L178,188.7 L180,188.4 L182,188.1 L184,187.7 L186,187.4 L188,187.1 L190,186.7 L192,186.4 L194,186.1 L196,185.7 L198,185.4 L200,185.1 L202,184.7 L204,184.4 L206,184 L208,183.7 L210,183.4 L212,183 L214,182.7 L216,182.3 L218,181.9 L220,181.6 L222,181.2 L224,180.9 L226,180.5 L228,180.1 L230,179.7 L232,179.4 L234,179 L236,178.6 L238,178.2 L240,177.8 L242,177.4 L244,177 L246,176.6 L248,176.2 L250,175.8 L252,175.3 L254,174.9 L256,174.5 L258,174 L260,173.6 L262,173.2 L264,172.7 L266,172.3 L268,171.8 L270,171.3 L272,170.9 L274,170.4 L276,169.9 L278,169.4 L280,168.9 L282,168.4 L284,167.9 L286,167.4 L288,166.9 L290,166.4 L292,165.8 L294,165.3 L296,164.8 L298,164.2 L300,163.7 L302,163.1 L304,162.6 L306,162 L308,161.4 L310,160.8 L312,160.2 L314,159.6 L316,159 L318,158.4 L320,157.8 L322,157.2 L324,156.6 L326,155.9 L328,155.3 L330,154.6 L332,154 L334,153.3 L336,152.7 L338,152 L340,151.3 L342,150.6 L344,149.9 L346,149.2 L348,148.5 L350,147.8 L352,147.1 L354,146.4 L356,145.6 L358,144.9 L360,144.2 L362,143.4 L364,142.7 L366,141.9 L368,141.1 L370,140.3 L372,139.6 L374,138.8 L376,138 L378,137.2 L380,136.4 L382,135.6 L384,134.7 L386,133.9 L388,133.1 L390,132.3 L392,131.4 L394,130.6 L396,129.7 L398,128.9 L400,128 L402,127.1 L404,126.3 L406,125.4 L408,124.5 L410,123.6 L412,122.7 L414,121.8 L416,120.9 L418,120 L420,119.1 L422,118.2 L424,117.2 L426,116.3 L428,115.4 L430,114.5 L432,113.5 L434,112.6 L436,111.6 L438,110.7 L440,109.7 L442,108.8 L444,107.8 L446,106.9 L448,105.9 L450,104.9 L452,103.9 L454,103 L456,102 L458,101 L460,100 L462,99 L464,98 L466,97.1 L468,96.1 L470,95.1 L472,94.1 L474,93.1 L476,92.1 L478,91.1 L480,90.1 L482,89.1 L484,88.1 L486,87.1 L488,86.1 L490,85 L492,84 L494,83 L496,82 L498,81 L500,80 L502,79 L504,78 L506,77 L508,76 L510,75 L512,73.9 L514,72.9 L516,71.9 L518,70.9 L520,69.9 L522,68.9 L524,67.9 L526,66.9 L528,65.9 L530,64.9 L532,63.9 L534,62.9 L536,62 L538,61 L540,60 L542,59 L544,58 L546,57 L548,56.1 L550,55.1 L552,54.1 L554,53.1 L556,52.2 L558,51.2 L560,50.3" class="fig-curve"/>
+<path d="M170,190 L172,190.4 L174,190.9 L176,191.3 L178,191.8 L180,192.3 L182,192.9 L184,193.4 L186,194 L188,194.6 L190,195.3 L192,195.9 L194,196.6 L196,197.3 L198,198 L200,198.7 L202,199.4 L204,200.1 L206,200.9 L208,201.6 L210,202.4 L212,203.1 L214,203.9 L216,204.6 L218,205.3 L220,206.1 L222,206.8 L224,207.5 L226,208.2 L228,208.9 L230,209.6 L232,210.3 L234,210.9 L236,211.5 L238,212.1 L240,212.7 L242,213.2 L244,213.7 L246,214.2 L248,214.7 L250,215.1 L252,215.4 L254,215.8 L256,216.1 L258,216.3 L260,216.5 L262,216.7 L264,216.8 L266,216.9 L268,216.9 L270,216.9 L272,216.8 L274,216.7 L276,216.6 L278,216.3 L280,216.1 L282,215.8 L284,215.4 L286,215 L288,214.5 L290,214 L292,213.4 L294,212.8 L296,212.2 L298,211.4 L300,210.7 L302,209.9 L304,209 L306,208.1 L308,207.2 L310,206.2 L312,205.2 L314,204.1 L316,203 L318,201.9 L320,200.7 L322,199.5 L324,198.3 L326,197 L328,195.7 L330,194.4 L332,193.1 L334,191.7 L336,190.3 L338,188.9 L340,187.5 L342,186 L344,184.6 L346,183.1 L348,181.6 L350,180.1 L352,178.6 L354,177.1 L356,175.6 L358,174.1 L360,172.6 L362,171.1 L364,169.6 L366,168.1 L368,166.6 L370,165.2 L372,163.7 L374,162.2 L376,160.8 L378,159.3 L380,157.9 L382,156.5 L384,155.1 L386,153.7 L388,152.3 L390,150.9 L392,149.6 L394,148.2 L396,146.9 L398,145.6 L400,144.3 L402,143.1 L404,141.8 L406,140.6 L408,139.3 L410,138.1 L412,136.9 L414,135.7 L416,134.5 L418,133.4 L420,132.2 L422,131.1 L424,129.9 L426,128.8 L428,127.7 L430,126.5 L432,125.4 L434,124.3 L436,123.2 L438,122.1 L440,120.9 L442,119.8 L444,118.7 L446,117.5 L448,116.4 L450,115.2 L452,114.1 L454,112.9 L456,111.7 L458,110.5 L460,109.3 L462,108 L464,106.8 L466,105.5 L468,104.2 L470,102.9 L472,101.5 L474,100.2 L476,98.8 L478,97.4 L480,95.9 L482,94.5 L484,93 L486,91.4 L488,89.9 L490,88.3 L492,86.7 L494,85.1 L496,83.4 L498,81.7 L500,80" class="fig-curve fig-dashed"/>
+<path d="M170,190 L172,189.1 L174,188.2 L176,187.2 L178,186.2 L180,185.3 L182,184.2 L184,183.2 L186,182.2 L188,181.1 L190,180 L192,178.9 L194,177.8 L196,176.6 L198,175.5 L200,174.3 L202,173.2 L204,172 L206,170.8 L208,169.6 L210,168.4 L212,167.1 L214,165.9 L216,164.7 L218,163.5 L220,162.2 L222,161 L224,159.8 L226,158.6 L228,157.3 L230,156.1 L232,154.9 L234,153.7 L236,152.6 L238,151.4 L240,150.2 L242,149.1 L244,148 L246,146.9 L248,145.8 L250,144.7 L252,143.7 L254,142.6 L256,141.6 L258,140.7 L260,139.7 L262,138.8 L264,137.9 L266,137 L268,136.2 L270,135.3 L272,134.6 L274,133.8 L276,133.1 L278,132.4 L280,131.7 L282,131 L284,130.4 L286,129.9 L288,129.3 L290,128.8 L292,128.3 L294,127.8 L296,127.4 L298,127 L300,126.6 L302,126.2 L304,125.9 L306,125.6 L308,125.3 L310,125 L312,124.7 L314,124.5 L316,124.3 L318,124.1 L320,123.9 L322,123.8 L324,123.6 L326,123.5 L328,123.4 L330,123.3 L332,123.1 L334,123 L336,123 L338,122.9 L340,122.8 L342,122.7 L344,122.6 L346,122.5 L348,122.4 L350,122.3 L352,122.2 L354,122.1 L356,122 L358,121.8 L360,121.7 L362,121.5 L364,121.4 L366,121.2 L368,121 L370,120.8 L372,120.5 L374,120.3 L376,120 L378,119.7 L380,119.4 L382,119.1 L384,118.7 L386,118.3 L388,117.9 L390,117.5 L392,117.1 L394,116.6 L396,116.1 L398,115.6 L400,115.1 L402,114.6 L404,114 L406,113.4 L408,112.8 L410,112.2 L412,111.5 L414,110.8 L416,110.1 L418,109.4 L420,108.7 L422,108 L424,107.2 L426,106.5 L428,105.7 L430,104.9 L432,104.1 L434,103.3 L436,102.5 L438,101.7 L440,100.9 L442,100.1 L444,99.2 L446,98.4 L448,97.6 L450,96.8 L452,95.9 L454,95.1 L456,94.3 L458,93.5 L460,92.7 L462,91.9 L464,91.2 L466,90.4 L468,89.6 L470,88.9 L472,88.2 L474,87.5 L476,86.8 L478,86.1 L480,85.5 L482,84.8 L484,84.2 L486,83.6 L488,83 L490,82.5 L492,81.9 L494,81.4 L496,80.9 L498,80.4 L500,80" class="fig-curve fig-dashed"/>
+<circle cx="170" cy="190" r="3.5" class="fig-arrowhead"/>
+<circle cx="500" cy="80" r="3.5" class="fig-arrowhead"/>
+<line x1="322.5" y1="160.3" x2="388.5" y2="218.3" class="fig-guide"/>
+<text x="392.5" y="230.3" class="fig-label fig-small">caminho estacionário y(x)</text>
+<line x1="265" y1="133.8" x2="199" y2="95.8" class="fig-guide"/>
+<text x="195" y="89.8" text-anchor="end" class="fig-label fig-it">y + ϵh</text>
+<line x1="378.6" y1="163.8" x2="434.6" y2="189.8" class="fig-guide"/>
+<text x="438.6" y="197.8" class="fig-label fig-small">outro caminho variado</text>
+</svg>
+                    <figcaption><strong>Figura 4.12.1.</strong> O caminho estacionário $y(x)$ (contínuo) e dois caminhos variados
+                        $y + \epsilon h$ (tracejados), todos com os mesmos extremos $(a, y(a))$ e $(b, y(b))$. A variação $h$ é uma função
+                        que se anula em $a$ e em $b$; $\epsilon$ mede o tamanho do desvio. Adaptada de Marion e Thornton, <em>Classical Dynamics
+                        of Particles and Systems</em>.</figcaption>
+                </figure>
+
+                <p id="obs-4-12-4"><strong>Observação 4.12.4 (Por que a derivada se anula).</strong> Se $y$ é um mínimo (ou máximo) de $I$
+                    entre as funções com os mesmos extremos, então, para cada $h$ fixa, a função de uma variável $\epsilon \mapsto I[y + \epsilon h]$
+                    tem um mínimo em $\epsilon = 0$, e a sua derivada lá é zero: todo extremo é estacionário. É o mesmo argumento do cálculo
+                    usual: num extremo, deslocar o argumento de uma quantidade infinitesimal não muda o valor em primeira ordem. Um funcional
+                    pode ser pensado como uma função de infinitas variáveis, $I\big(y(x_1), y(x_2), \dots\big)$, e cada $h$ é uma direção
+                    nesse espaço; ser estacionário é ter derivada direcional nula em todas as direções. O recíproco é falso: há funções
+                    estacionárias que não são extremos (<a href="#obs-4-12-10">Observação 4.12.10</a>).</p>
+
+                <h2 id="primeira-variacao">A primeira variação</h2>
+
+                <div class="definition-box" id="prop-4-12-5">
+                    <p><strong>Proposição 4.12.5 (A primeira variação).</strong> Para $y \in C^2([a,b])$ e $h$ uma variação admissível,</p>
+                    <p>$$ \begin{aligned}
+                        \frac{d}{d\epsilon}\Big\vert_{\epsilon=0}I[y + \epsilon h] &= \int_a^b\big(F_y\,h + F_{y'}\,h'\big)\,dx\\
+                        &= \int_a^b\Big(F_y - \frac{d}{dx}F_{y'}\Big)h\,dx.
+                        \end{aligned} \tag{4.12.2} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> <strong>A derivada.</strong> Seja $\Phi(\epsilon, x) = F\big(y(x) + \epsilon h(x), y'(x) + \epsilon h'(x), x\big)$
+                    para $\lvert\epsilon\rvert \lt \epsilon_0$. Como $F$ é $C^2$ e $y, h$ são $C^2$, $\Phi$ é contínua e, pela regra da cadeia,
+                    $\partial_\epsilon\Phi = F_Y(\dots)\,h + F_P(\dots)\,h'$ é contínua em $(-\epsilon_0, \epsilon_0)\times[a,b]$. Pela derivação sob o sinal de
+                    integral (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[02] - Preliminares de Topologia e Cálculo.html#teo-3-2-66">Teorema 3.2.66</a>), $\frac{d}{d\epsilon}\int_a^b\Phi\,dx = \int_a^b\partial_\epsilon\Phi\,dx$, e em $\epsilon = 0$ isso é a primeira
+                    integral de (4.12.2).
+                </p>
+
+                <p>
+                    <strong>Integração por partes.</strong> A função $x \mapsto F_{y'}(y(x), y'(x), x)$ é $C^1$, porque $F_P$ é $C^1$ e $y'$ é $C^1$;
+                    por isso pedimos $y \in C^2$ e $F \in C^2$. Então $(F_{y'}h)' = \big(\frac{d}{dx}F_{y'}\big)h + F_{y'}h'$, e
+                </p>
+
+                <p>
+                    $$ \int_a^bF_{y'}\,h'\,dx = \Big[F_{y'}\,h\Big]_a^b - \int_a^b\Big(\frac{d}{dx}F_{y'}\Big)h\,dx = -\int_a^b\Big(\frac{d}{dx}F_{y'}\Big)h\,dx, $$
+                </p>
+
+                <p>
+                    porque $h(a) = h(b) = 0$. Somando com $\int F_yh$, obtemos a segunda forma. $\blacksquare$
+                </p>
+
+                <p>
+                    A derivada $\frac{d}{dx}F_{y'}$ é a derivada <em>total</em> em $x$ da função composta $x \mapsto F_P(y(x), y'(x), x)$; pela regra da
+                    cadeia, $\frac{d}{dx}F_{y'} = F_{y'y}\,y' + F_{y'y'}\,y'' + F_{y'x}$. A forma (4.12.2) separa a dependência em $h$: o integrando é
+                    $h$ multiplicada por uma função que só depende de $y$. Se essa função não fosse zero, uma $h$ bem escolhida tornaria a
+                    integral diferente de zero. É o conteúdo do lema seguinte.
+                </p>
+
+                <h2 id="lema-fundamental">O lema fundamental do cálculo variacional</h2>
+
+                <div class="definition-box" id="lema-4-12-6">
+                    <p><strong>Lema 4.12.6 (Lema fundamental).</strong> Seja $\Omega = [a_1, b_1]\times\dots\times[a_n, b_n] \subset \mathbb{R}^n$ um
+                        retângulo fechado (para $n = 1$, um intervalo) e $f: \Omega \to \mathbb{R}$ contínua. Se $\int_\Omega f\,h = 0$ para toda função
+                        suave $h$ com suporte compacto contido no interior de $\Omega$, então $f \equiv 0$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Basta mostrar que $f$ se anula no interior: como o interior é denso em $\Omega$ e $f$ é contínua, ela se
+                    anula também no bordo. Suponha, por absurdo, que $f(x_0) \ne 0$ num ponto $x_0$ do interior; trocando $f$ por $-f$, podemos
+                    supor $f(x_0) \gt 0$. Pela continuidade, existe $r \gt 0$ tal que a bola fechada $\bar B_{2r}(x_0)$ está no interior de $\Omega$
+                    e $f \gt f(x_0)/2$ nela. Seja $H$ a função <em>bump</em> do <a href="../[2] - Cálculo em Variedades Diferenciáveis/[04] - Funções e Aplicações Suaves.html#lema-3-4-27">Lema 3.4.27</a> com $r_1 = r$ e $r_2 = 2r$, transladada para $x_0$:
+                    $H$ é suave, $0 \le H \le 1$, $H = 1$ em $\bar B_r(x_0)$ e $H = 0$ fora de $\bar B_{2r}(x_0)$. O seu suporte é compacto e está
+                    no interior de $\Omega$, e
+                </p>
+
+                <p>
+                    $$ \int_\Omega f\,H \ge \int_{\bar B_r(x_0)}f\,H \gt \frac{f(x_0)}{2}\,\operatorname{vol}\big(\bar B_r(x_0)\big) \gt 0, $$
+                </p>
+
+                <p>
+                    porque $fH \ge 0$ em todo $\Omega$ (onde $H \ne 0$, $f \gt 0$) e $fH = f \gt f(x_0)/2$ na bola menor. Isso contradiz a hipótese.
+                    $\blacksquare$
+                </p>
+
+                <p>
+                    As funções $h$ do lema são suaves e se anulam perto do bordo; em particular, para $n = 1$, são variações admissíveis. O
+                    lema pede menos do que a <a href="#def-4-12-3">Definição 4.12.3</a> dá, e é isso que o torna aplicável. É o passo que costuma ser resumido como "a
+                    integral só se anula para toda $h$ se o integrando for zero"; note que ele não "divide por $h$".
+                </p>
+
+                <h2 id="euler-lagrange">As equações de Euler–Lagrange</h2>
+
+                <div class="definition-box" id="teo-4-12-7">
+                    <p><strong>Teorema 4.12.7 (Euler–Lagrange).</strong> Seja $y \in C^2([a,b])$. Então $y$ é estacionária para $I$ se, e somente
+                        se,</p>
+                    <p>$$ F_y - \frac{d}{dx}F_{y'} = 0 \quad\text{em } [a,b]. \tag{4.12.3} $$</p>
+                    <p>Mais geralmente, para $k$ funções $y_1, \dots, y_k$ e $F(y_1, \dots, y_k, y_1', \dots, y_k', x)$ de classe $C^2$, com
+                        $I[y_1, \dots, y_k] = \int_a^bF\,dx$ e variações $y_i + \epsilon h_i$ com cada $h_i$ admissível, as funções são estacionárias
+                        se, e somente se,</p>
+                    <p>$$ F_{y_i} - \frac{d}{dx}F_{y_i'} = 0, \qquad i = 1, \dots, k. \tag{4.12.4} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Se (4.12.3) vale, a segunda forma de (4.12.2) é zero para toda $h$: $y$ é estacionária. Reciprocamente,
+                    se $y$ é estacionária, $f = F_y - \frac{d}{dx}F_{y'}$ é contínua (é $C^0$ pelos argumentos da <a href="#prop-4-12-5">Proposição 4.12.5</a>) e
+                    $\int_a^bf\,h\,dx = 0$ para toda variação admissível, em particular para toda $h$ suave com suporte compacto em $(a,b)$; pelo
+                    <a href="#lema-4-12-6">Lema 4.12.6</a> com $n = 1$, $f \equiv 0$. Para várias funções, a mesma conta, com a regra da cadeia em todas as variáveis, dá
+                </p>
+
+                <p>
+                    $$ \frac{d}{d\epsilon}\Big\vert_0I[y + \epsilon h] = \sum_{i=1}^k\int_a^b\Big(F_{y_i} - \frac{d}{dx}F_{y_i'}\Big)h_i\,dx. $$
+                </p>
+
+                <p>
+                    As variações $h_i$ são independentes: tomando $h_j = 0$ para $j \ne i$, sobra um único termo, e o lema dá (4.12.4) para cada $i$.
+                    A recíproca é imediata. $\blacksquare$
+                </p>
+
+                <p>
+                    A equação (4.12.3) é a <strong>equação de Euler</strong> (ou de Euler–Lagrange). É uma equação diferencial ordinária de segunda
+                    ordem para $y$, porque $\frac{d}{dx}F_{y'}$ contém $F_{y'y'}\,y''$; ela não diz nada sobre os extremos $y(a)$, $y(b)$, que são dados.
+                </p>
+
+                <p>
+                    <strong>A notação $\delta$.</strong> Os livros escrevem
+                </p>
+
+                <p>
+                    $$ \delta I[y] = \frac{d}{d\epsilon}\Big\vert_0I[y + \epsilon h], \qquad \delta y = \epsilon h, \qquad
+                    \delta\!\int_a^bF\,dx = 0 \;\Longleftrightarrow\; \text{(4.12.3)}, $$
+                </p>
+
+                <p>
+                    e chamam $\delta I$ de variação do funcional. Para funções bem comportadas, como as deste tópico, $\delta$ é só uma notação para a
+                    derivada em $\epsilon$; há muito mais no cálculo variacional (espaços de funções menos regulares, existência de minimizantes),
+                    que não usamos. Com ela vem uma segunda noção, que generaliza o gradiente.
+                </p>
+
+                <div class="definition-box" id="def-4-12-8" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.12.8 (Derivada funcional).</strong> A <strong>derivada funcional</strong> de $I$ em relação a $y_i$ é a
+                        função contínua $\frac{\delta I}{\delta y_i}$ tal que, para toda variação admissível,</p>
+                    <p>$$ \begin{aligned}
+                        &\frac{d}{d\epsilon}\Big\vert_0I[y + \epsilon h] = \sum_i\int_a^b\frac{\delta I}{\delta y_i}\,h_i\,dx,\\
+                        &\frac{\delta I}{\delta y_i} = F_{y_i} - \frac{d}{dx}F_{y_i'}.
+                        \end{aligned} \tag{4.12.5} $$</p>
+                </div>
+
+                <p>
+                    A função $\frac{\delta I}{\delta y_i}$ existe pela <a href="#prop-4-12-5">Proposição 4.12.5</a> e é única pelo <a href="#lema-4-12-6">Lema 4.12.6</a> (duas candidatas teriam diferença
+                    ortogonal a toda $h$). Ela faz o papel do gradiente: assim como $df = \sum_i\frac{\partial f}{\partial x^i}dx^i$, a primeira
+                    variação é a "soma" (a integral) de $\frac{\delta I}{\delta y_i}$ vezes os deslocamentos $h_i$. Em particular,
+                    $\frac{\delta I}{\delta y'}$ não faz sentido: $y'$ não é uma variável independente do funcional (<a href="#obs-4-12-2">Observação 4.12.2</a>). As equações de
+                    Euler–Lagrange dizem que a derivada funcional é zero.
+                </p>
+
+                <p id="obs-4-12-9"><strong>Observação 4.12.9 (Variações mais gerais).</strong> A <a href="[11] - Massa, Velocidade Limite e Causalidade.html#def-4-11-1">Definição 4.11.1</a> usa variações quaisquer
+                    $\Psi(\epsilon, x)$ (lá chamadas $\Gamma$) com $\Psi(0, \cdot) = y$ e extremos fixos, não só as da forma $y + \epsilon h$. Nada muda: a mesma conta da
+                    <a href="#prop-4-12-5">Proposição 4.12.5</a>, com $h = \partial_\epsilon\Psi\vert_{\epsilon=0}$ (que é admissível), dá
+                    $\frac{d}{d\epsilon}\vert_0I[\Psi(\epsilon,\cdot)] = \int\frac{\delta I}{\delta y}\,h\,dx$, porque em primeira ordem só entram as
+                    derivadas de $\Gamma$ em $\epsilon = 0$. As duas definições de função estacionária coincidem.</p>
+
+                <p id="obs-4-12-10"><strong>Observação 4.12.10 (Estacionário não é extremo).</strong> As equações de Euler–Lagrange só
+                    dizem que a primeira variação é zero. Decidir se a função estacionária é um mínimo, um máximo ou nenhum dos dois exige a
+                    segunda variação, $\frac{d^2}{d\epsilon^2}I[y + \epsilon h]$; por exemplo, para um mínimo é necessário que $F_{y'y'} \ge 0$ ao longo de
+                    $y$ (condição de Legendre). Não usamos isso. Na física, o que importa é ser estacionário: em Minkowski a reta tipo tempo é
+                    um <em>máximo</em> do comprimento (tópico 4.10), e há trajetórias da mecânica que não são nem mínimo nem máximo da ação.
+                    Ver Gelfand e Fomin, <em>Calculus of Variations</em>.</p>
+
+                <h2 id="integrais-primeiras">Integrais primeiras</h2>
+
+                <p>
+                    As equações de Euler–Lagrange são de segunda ordem. Quando $F$ não depende de alguma das suas variáveis, uma combinação
+                    de primeira ordem se conserva ao longo das soluções, e o problema fica mais fácil.
+                </p>
+
+                <div class="definition-box" id="prop-4-12-11">
+                    <p><strong>Proposição 4.12.11 (Variável cíclica).</strong> Se $F$ não depende de $y_i$ (mas pode depender de $y_i'$), então
+                        $F_{y_i'}$ é constante ao longo de toda solução de (4.12.4).</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Com $F_{y_i} = 0$, a equação $i$ é $\frac{d}{dx}F_{y_i'} = 0$. $\blacksquare$
+                </p>
+
+                <p>
+                    Na mecânica, com $x$ o tempo e $y_i$ uma coordenada, $F_{y_i'}$ é o momento conjugado a $y_i$, e a proposição diz que o momento
+                    de uma coordenada cíclica se conserva. O tópico 4.13 usa isso para a partícula livre relativística: a lagrangiana não depende
+                    da posição, e o momento relativístico se conserva.
+                </p>
+
+                <div class="definition-box" id="prop-4-12-12">
+                    <p><strong>Proposição 4.12.12 (Identidade de Beltrami).</strong> Se $F$ não depende de $x$, então, para toda $y \in C^2$,</p>
+                    <p>$$ \frac{d}{dx}\Big(F - \sum_iy_i'\,F_{y_i'}\Big) = \sum_iy_i'\Big(F_{y_i} - \frac{d}{dx}F_{y_i'}\Big), \tag{4.12.6} $$</p>
+                    <p>e em particular $F - \sum_iy_i'F_{y_i'}$ é constante ao longo de toda solução de (4.12.4).</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela regra da cadeia, como $F_x = 0$, $\frac{d}{dx}F = \sum_i\big(F_{y_i}\,y_i' + F_{y_i'}\,y_i''\big)$. Pela regra do
+                    produto, $\frac{d}{dx}\big(y_i'F_{y_i'}\big) = y_i''F_{y_i'} + y_i'\frac{d}{dx}F_{y_i'}$. Subtraindo, os termos com $y_i''$ se cancelam e
+                    sobra (4.12.6). Ao longo de uma solução o lado direito é zero. $\blacksquare$
+                </p>
+
+                <p>
+                    Na mecânica, com $F = L(q, \dot q)$ sem dependência explícita no tempo, $\sum_i\dot q_iL_{\dot q_i} - L$ é a hamiltoniana, e a
+                    identidade é a conservação da energia. Em problemas geométricos ela reduz a equação de Euler a uma equação de primeira ordem:
+                    é assim que se resolvem a catenária e a braquistócrona (<a href="#exr-4-12-2">Exercício 4.12.2</a>, <a href="#exr-4-12-5">Exercício 4.12.5</a>).
+                </p>
+
+                <h2 id="varios-parametros">Vários parâmetros: campos</h2>
+
+                <p>
+                    Uma corda vibrante não é descrita por uma função de uma variável, mas pelo deslocamento $y(x, t)$, que depende da posição
+                    e do tempo. O funcional passa a ser uma integral dupla. Mais geralmente, sejam $n$ parâmetros $(x^1, \dots, x^n)$ num
+                    retângulo $\Omega$, $k$ funções $y^j(x^1, \dots, x^n)$ (os <strong>campos</strong>) e uma lagrangiana
+                    $G\big(y^j, \partial_iy^j, x^i\big)$ de classe $C^2$, com o funcional
+                </p>
+
+                <p>
+                    $$ I[y] = \int_\Omega G\big(y^j(x), \partial_iy^j(x), x\big)\,dx^1\cdots dx^n. $$
+                </p>
+
+                <p>
+                    As variações admissíveis são $y^j + \epsilon h^j$, com $h^j \in C^2(\Omega)$ nulas no bordo $\partial\Omega$; os campos são estacionários se
+                    a derivada em $\epsilon = 0$ se anula para todas elas.
+                </p>
+
+                <div class="definition-box" id="teo-4-12-13">
+                    <p><strong>Teorema 4.12.13 (Euler–Lagrange para campos).</strong> Campos $y^j \in C^2(\Omega)$ são estacionários se, e somente se,</p>
+                    <p>$$ \frac{\partial G}{\partial y^j} - \sum_{i=1}^n\frac{\partial}{\partial x^i}\frac{\partial G}{\partial(\partial_iy^j)} = 0, \qquad j = 1, \dots, k,
+                        \tag{4.12.7} $$</p>
+                    <p>em que $\frac{\partial}{\partial x^i}$ é a derivada da função composta $x \mapsto \frac{\partial G}{\partial(\partial_iy^j)}\big(y(x), \partial y(x), x\big)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Como na <a href="#prop-4-12-5">Proposição 4.12.5</a>, pela derivação sob o sinal de integral (aplicada a uma integral sobre o retângulo,
+                    que pelo teorema de Fubini, <a href="../[2] - Cálculo em Variedades Diferenciáveis/[02] - Preliminares de Topologia e Cálculo.html#teo-3-2-62">Teorema 3.2.62</a>, é uma sequência de integrais simples),
+                </p>
+
+                <p>
+                    $$ \frac{d}{d\epsilon}\Big\vert_0I[y + \epsilon h] = \int_\Omega\sum_j\Big(\frac{\partial G}{\partial y^j}h^j + \sum_i\frac{\partial G}{\partial(\partial_iy^j)}\,\partial_ih^j\Big)\,dx. $$
+                </p>
+
+                <p>
+                    Para cada $i$, integre o termo com $\partial_ih^j$ primeiro na variável $x^i$ (Fubini) e por partes: o termo de bordo é avaliado nas
+                    faces $x^i = a_i$ e $x^i = b_i$ de $\Omega$, onde $h^j = 0$, e sobra $-\int_\Omega\partial_i\big(\frac{\partial G}{\partial(\partial_iy^j)}\big)h^j\,dx$.
+                    Então a primeira variação é $\int_\Omega\sum_jf_j\,h^j$, com $f_j$ o lado esquerdo de (4.12.7). Tomando todas as $h$ nulas menos uma,
+                    o <a href="#lema-4-12-6">Lema 4.12.6</a> dá $f_j = 0$; a recíproca é imediata. $\blacksquare$
+                </p>
+
+                <p id="ex-4-12-14"><strong>Exemplo 4.12.14 (Ondas e o laplaciano).</strong> (a) Para a corda vibrante,
+                    $G = \frac12\big(y_t^2 - v^2y_x^2\big)$, com $y_t = \partial_ty$ e $y_x = \partial_xy$. Então $G_y = 0$,
+                    $\frac{\partial G}{\partial y_t} = y_t$ e $\frac{\partial G}{\partial y_x} = -v^2y_x$, e (4.12.7) é $-\partial_t(y_t) - \partial_x(-v^2y_x) = 0$, isto é,</p>
+
+                <p>
+                    $$ \frac{\partial^2y}{\partial t^2} = v^2\,\frac{\partial^2y}{\partial x^2}, $$
+                </p>
+
+                <p>
+                    a equação de onda, com soluções $f(x - vt) + g(x + vt)$. (b) Para $G = \frac12\lvert\nabla y\rvert^2 = \frac12\sum_i(\partial_iy)^2$ em
+                    $\mathbb{R}^n$, (4.12.7) é $-\sum_i\partial_i\partial_iy = 0$: a equação de Laplace, $\nabla^2y = 0$. Com a métrica de Minkowski, a
+                    lagrangiana $\frac12\eta^{\mu\nu}\partial_\mu y\,\partial_\nu y$ dá $\Box y = 0$; a ação de Maxwell da ponte com a física do tópico 4.3
+                    dá, da mesma forma, as equações de Maxwell no vácuo.
+                </p>
+
+                <h2 id="comprimento-e-energia">Comprimento e energia têm os mesmos extremais</h2>
+
+                <p>
+                    Voltamos às curvas numa variedade com métrica. Numa carta, uma curva é uma $k$-upla de funções $x^a(t)$, e o comprimento e a
+                    energia (<a href="[10] - Comprimento e Energia de Curvas.html#def-4-10-4">Definição 4.10.4</a>, <a href="[10] - Comprimento e Energia de Curvas.html#def-4-10-10">Definição 4.10.10</a>) são funcionais da forma (4.12.1), com as lagrangianas
+                </p>
+
+                <p>
+                    $$ \ell(x, \dot x) = \sqrt{\big\lvert g_{ab}(x)\,\dot x^a\dot x^b\big\rvert}, \qquad e(x, \dot x) = \tfrac12\,g_{ab}(x)\,\dot x^a\dot x^b. $$
+                </p>
+
+                <p>
+                    A energia é $C^\infty$; o comprimento só é derivável onde $q = g_{ab}\dot x^a\dot x^b \ne 0$. Escrevemos as equações de Euler–Lagrange
+                    da energia como
+                </p>
+
+                <p>
+                    $$ \mathcal{G}_a := \frac{d}{dt}\big(g_{ab}\,\dot x^b\big) - \frac12\,\partial_ag_{bc}\,\dot x^b\dot x^c = 0, \tag{4.12.8} $$
+                </p>
+
+                <p>
+                    porque $\frac{\partial e}{\partial\dot x^a} = g_{ab}\dot x^b$ e $\frac{\partial e}{\partial x^a} = \frac12\partial_ag_{bc}\dot x^b\dot x^c$, e (4.12.8) é
+                    $\frac{d}{dt}\frac{\partial e}{\partial\dot x^a} - \frac{\partial e}{\partial x^a} = 0$, isto é, menos o lado esquerdo de (4.12.4).
+                </p>
+
+                <div class="definition-box" id="prop-4-12-15">
+                    <p><strong>Proposição 4.12.15 (Comprimento e energia).</strong> Seja $\gamma: [a,b] \to M$ uma curva $C^2$ numa carta.</p>
+                    <ol type="a">
+                        <li>Se $\gamma$ é estacionária para a energia, $g(\gamma',\gamma')$ é constante ao longo dela.</li>
+                        <li>Se $g(\gamma',\gamma') \ne 0$ em todo ponto, com sinal $\sigma = \pm1$, e $\ell = \sqrt{\sigma\,g(\gamma',\gamma')}$, as
+                            equações de Euler–Lagrange do comprimento são equivalentes a
+                            $$ \mathcal{G}_a = \frac{\dot\ell}{\ell}\,g_{ab}\,\dot x^b. \tag{4.12.9} $$</li>
+                        <li>Uma curva com $g(\gamma',\gamma') \ne 0$ é estacionária para a energia se, e só se, é estacionária para o comprimento e tem
+                            $\lvert g(\gamma',\gamma')\rvert$ constante.</li>
+                        <li>Toda curva estacionária para o comprimento, reparametrizada pelo comprimento de arco (<a href="[10] - Comprimento e Energia de Curvas.html#prop-4-10-7">Proposição 4.10.7</a>), é estacionária
+                            para a energia.</li>
+                    </ol>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) A lagrangiana $e$ não depende de $t$, e pela identidade de Beltrami (<a href="#prop-4-12-12">Proposição 4.12.12</a>)
+                    $e - \dot x^a\frac{\partial e}{\partial\dot x^a} = \frac12q - q = -\frac12q$ é constante ao longo das soluções.
+                </p>
+
+                <p>
+                    (b) Onde $\sigma q \gt 0$, $\ell = \sqrt{\sigma q}$ é suave e $\partial\ell = \sigma\,\partial q/(2\ell)$ para qualquer derivada parcial. Logo
+                    $\frac{\partial\ell}{\partial\dot x^a} = \frac{\sigma}{\ell}g_{ab}\dot x^b$ e $\frac{\partial\ell}{\partial x^a} = \frac{\sigma}{2\ell}\partial_ag_{bc}\dot x^b\dot x^c$, e
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    \frac{d}{dt}\frac{\partial\ell}{\partial\dot x^a} - \frac{\partial\ell}{\partial x^a}
+                    &= \frac{\sigma}{\ell}\Big(\frac{d}{dt}\big(g_{ab}\dot x^b\big) - \frac12\partial_ag_{bc}\dot x^b\dot x^c\Big) - \frac{\sigma\dot\ell}{\ell^2}\,g_{ab}\dot x^b\\
+                    &= \frac{\sigma}{\ell}\Big(\mathcal{G}_a - \frac{\dot\ell}{\ell}\,g_{ab}\dot x^b\Big).
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    Como $\sigma/\ell \ne 0$, as equações do comprimento são equivalentes a (4.12.9).
+                </p>
+
+                <p>
+                    (c) Se $\gamma$ é estacionária para a energia, $\mathcal{G}_a = 0$ e, por (a), $q$ e $\ell$ são constantes, logo $\dot\ell = 0$ e
+                    (4.12.9) vale: $\gamma$ é estacionária para o comprimento. Reciprocamente, se $\gamma$ satisfaz (4.12.9) com $\ell$ constante, então
+                    $\mathcal{G}_a = 0$.
+                </p>
+
+                <p>
+                    (d) Seja $\gamma$ estacionária para o comprimento e $\sigma = \gamma\circ\varphi$ uma reparametrização. Toda variação $\tilde\Psi$ de
+                    $\sigma$ com extremos fixos é da forma $\tilde\Psi(\epsilon, s) = \Psi(\epsilon, \varphi(s))$, com $\Psi(\epsilon, t) = \tilde\Psi(\epsilon, \varphi^{-1}(t))$
+                    uma variação de $\gamma$ com extremos fixos. Pelo <a href="[10] - Comprimento e Energia de Curvas.html#teo-4-10-6">Teorema 4.10.6</a>, $L[\tilde\Psi(\epsilon,\cdot)] = L[\Psi(\epsilon,\cdot)]$ para cada $\epsilon$; a
+                    derivada em $\epsilon = 0$ do lado direito é zero (<a href="#obs-4-12-9">Observação 4.12.9</a>), logo a do esquerdo também: $\sigma$ é estacionária para o
+                    comprimento. Pelo parâmetro de arco, $\lvert g(\sigma',\sigma')\rvert = 1$, e por (c) $\sigma$ é estacionária para a energia.
+                    $\blacksquare$
+                </p>
+
+                <p>
+                    A proposição explica a <a href="[10] - Comprimento e Energia de Curvas.html#obs-4-10-13">Observação 4.10.13</a>. O comprimento não vê a parametrização, e por isso as suas equações (4.12.9) não a fixam:
+                    o termo $\dot\ell/\ell$ é exatamente a liberdade de reparametrizar. A energia fixa a parametrização com velocidade constante e
+                    tem equações mais simples, sem raiz. Além disso, ela continua definida para curvas com $g(\gamma',\gamma') = 0$: as curvas nulas
+                    que satisfazem $\mathcal{G}_a = 0$ (e, por (a), continuam nulas) são o substituto, para partículas sem massa, das curvas
+                    estacionárias do comprimento (tópico 4.11, ponte com a física).
+                </p>
+
+                <p>
+                    Em $\mathbb{R}^n$ euclidiano, $g_{ab} = \delta_{ab}$ e $\mathcal{G}_a = \ddot x^a$: as curvas estacionárias da energia são as retas
+                    percorridas com velocidade constante, e as do comprimento são os segmentos de reta com qualquer parametrização. Isso
+                    cumpre a afirmação do <a href="[11] - Massa, Velocidade Limite e Causalidade.html#exr-4-11-1">Exercício 4.11.1</a> de que o segmento é estacionário para toda variação. Em geral, abrindo a derivada,
+                    $\mathcal{G}_a = g_{ab}\big(\ddot x^b + \Gamma^b{}_{cd}\,\dot x^c\dot x^d\big)$ com os símbolos de Christoffel
+                    $\Gamma^b{}_{cd} = \frac12g^{be}(\partial_cg_{ed} + \partial_dg_{ec} - \partial_eg_{cd})$: $\mathcal{G}_a = 0$ é a <strong>equação da
+                    geodésica</strong>. A sua leitura geométrica, pela conexão de Levi-Civita, é assunto do próximo capítulo.
+                </p>
+
+                <h2 id="fisica">Ponte com a física: o princípio de Hamilton</h2>
+
+                <p>
+                    Na mecânica clássica, o movimento de um sistema com coordenadas $q_1, \dots, q_k$ é descrito por uma lagrangiana
+                    $L(q, \dot q, t)$, em geral $L = K - U$, e o <strong>princípio de Hamilton</strong> diz que, entre dois instantes, o movimento real
+                    torna estacionária a ação
+                </p>
+
+                <p>
+                    $$ S[q] = \int_{t_1}^{t_2}L\big(q(t), \dot q(t), t\big)\,dt, \qquad \delta S = 0. $$
+                </p>
+
+                <p>
+                    Pelo <a href="#teo-4-12-7">Teorema 4.12.7</a>, com $x = t$ e $y_i = q_i$, isso equivale às equações de Lagrange
+                    $\frac{d}{dt}\frac{\partial L}{\partial\dot q_i} = \frac{\partial L}{\partial q_i}$; para $L = \frac12m\lvert\dot{\mathbf{q}}\rvert^2 - U(\mathbf{q})$, são as equações de
+                    Newton, $m\ddot{\mathbf{q}} = -\nabla U$. As integrais primeiras são as leis de conservação: o momento de uma coordenada cíclica
+                    (<a href="#prop-4-12-11">Proposição 4.12.11</a>) e a energia, quando $L$ não depende do tempo (<a href="#prop-4-12-12">Proposição 4.12.12</a>). Ver Marion e Thornton, caps. 6 e 7.
+                </p>
+
+                <p>
+                    O cálculo variacional transforma a pergunta "que equação descreve o movimento?" em "que quantidade a natureza torna
+                    estacionária?". A segunda pergunta é a que este capítulo faz desde o 4.11: para a luz, o tempo de percurso (Fermat); para uma
+                    partícula livre num espaço-tempo com métrica, o comprimento, multiplicado pela massa. O próximo tópico escolhe a ação de uma
+                    partícula relativística, $S = -mc\int dl$, e obtém dela o momento e a energia relativísticos; o 4.14 acrescenta o acoplamento com
+                    o campo eletromagnético. Para campos, o <a href="#teo-4-12-13">Teorema 4.12.13</a> é o ponto de partida da teoria clássica de campos: a ação de Maxwell
+                    (tópico 4.3, ponte com a física) e, no próximo capítulo, a ação de Einstein–Hilbert, cuja variação em relação à métrica dá as
+                    equações de Einstein.
+                </p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p>
+                    As notas não trazem exercícios formais nesta parte; as perguntas que elas fazem (o que é extremo de um funcional, por que a
+                    derivada se anula num extremo, como o funcional varia com $\epsilon$) foram respondidas no texto. Os exercícios abaixo são extras.
+                    As equações de Euler–Lagrange de todos foram conferidas em sympy.
+                </p>
+
+                <p id="exr-4-12-1"><strong>Exercício 4.12.1.</strong> Mostre que as curvas estacionárias de $\int_a^b\sqrt{1 + y'^2}\,dx$, o
+                    comprimento do gráfico de $y$ no plano, são retas.</p>
+
+                <p>
+                    <em>Solução.</em> $F = \sqrt{1 + y'^2}$ não depende de $y$, e pela <a href="#prop-4-12-11">Proposição 4.12.11</a>
+                    $F_{y'} = \frac{y'}{\sqrt{1 + y'^2}}$ é constante ao longo das soluções. A função $p \mapsto p/\sqrt{1 + p^2}$ é estritamente
+                    crescente (derivada $(1 + p^2)^{-3/2} \gt 0$), logo $y'$ é constante e $y = Ax + B$. Pelo <a href="#teo-4-12-7">Teorema 4.12.7</a>, as retas são de fato
+                    estacionárias, e os extremos fixam $A$ e $B$. Em forma de equação, $F_y - \frac{d}{dx}F_{y'} = -\frac{y''}{(1 + y'^2)^{3/2}}$, que se
+                    anula se, e só se, $y'' = 0$.
+                </p>
+
+                <p id="exr-4-12-2"><strong>Exercício 4.12.2 (A braquistócrona).</strong> Uma conta desliza sem atrito, sob a gravidade, ao
+                    longo de um arame que liga a origem a um ponto mais baixo. Com $y$ medido para baixo, que forma do arame minimiza o tempo de
+                    descida?</p>
+
+                <p>
+                    <em>Solução.</em> Partindo do repouso, a conservação da energia dá a velocidade $v = \sqrt{2g_0y}$ na altura $y$ ($g_0$ é a aceleração
+                    da gravidade). O tempo é $T = \int\frac{dl}{v} = \frac{1}{\sqrt{2g_0}}\int\sqrt{\frac{1 + y'^2}{y}}\,dx$, e basta tratar
+                    $F = \sqrt{(1 + y'^2)/y}$ (para $y \gt 0$; a singularidade na origem não interfere no argumento no interior). $F$ não depende de
+                    $x$, e pela <a href="#prop-4-12-12">Proposição 4.12.12</a>
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    &F - y'F_{y'} = \frac{1 + y'^2 - y'^2}{\sqrt{y(1 + y'^2)}} = \frac{1}{\sqrt{y\,(1 + y'^2)}} = C,\\
+                    &\text{isto é,}\qquad y\,(1 + y'^2) = 2a,
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    com $2a = 1/C^2$. A cicloide $x = a(\theta - \sin\theta)$, $y = a(1 - \cos\theta)$ satisfaz essa equação: $y' = \frac{\sin\theta}{1 - \cos\theta}$,
+                    $1 + y'^2 = \frac{2}{1 - \cos\theta}$ e $y(1 + y'^2) = 2a$. Pela (4.12.6), onde $y' \ne 0$ a constância de $F - y'F_{y'}$ implica a
+                    equação de Euler, e por continuidade ela vale em toda a curva (conferido em sympy). A braquistócrona é um arco de cicloide, a
+                    curva traçada por um ponto de um círculo de raio $a$ que rola sobre a reta $y = 0$.
+                </p>
+
+                <p id="exr-4-12-3"><strong>Exercício 4.12.3.</strong> Ache as curvas estacionárias da energia no plano em coordenadas polares,
+                    $e = \frac12(\dot r^2 + r^2\dot\theta^2)$, e mostre que são retas percorridas com velocidade constante.</p>
+
+                <p>
+                    <em>Solução.</em> As equações (4.12.8) são $\ddot r - r\dot\theta^2 = 0$ e $\frac{d}{dt}(r^2\dot\theta) = 0$; a segunda é a da variável
+                    cíclica $\theta$ (<a href="#prop-4-12-11">Proposição 4.12.11</a>). Pela <a href="#prop-4-12-15">Proposição 4.12.15</a>(a), $\dot r^2 + r^2\dot\theta^2 = v^2$ é constante. A curva
+                    $r(t) = \sqrt{p^2 + v^2t^2}$, $\theta(t) = \theta_0 + \arctan(vt/p)$ satisfaz as duas equações (conferido em sympy), tem velocidade
+                    $v$ e $r^2\dot\theta = pv$. Como $\cos\big(\arctan u\big) = (1 + u^2)^{-1/2}$, $r\cos(\theta - \theta_0) = p$: é a reta a distância $p$ da
+                    origem, na direção perpendicular a $\theta_0$. A energia, calculada em coordenadas polares, dá as mesmas curvas que em
+                    cartesianas, como deve: as equações de Euler–Lagrange descrevem curvas, não coordenadas.
+                </p>
+
+                <p id="exr-4-12-4"><strong>Exercício 4.12.4.</strong> Uma corda de densidade linear $\mu$ e tensão $\tau_0$ tem a lagrangiana
+                    $G = \frac12\mu\,y_t^2 - \frac12\tau_0\,y_x^2$. Escreva a equação de Euler–Lagrange e a velocidade das ondas.</p>
+
+                <p>
+                    <em>Solução.</em> $G_y = 0$, $\frac{\partial G}{\partial y_t} = \mu y_t$ e $\frac{\partial G}{\partial y_x} = -\tau_0y_x$. A (4.12.7) dá
+                    $-\mu y_{tt} + \tau_0y_{xx} = 0$, isto é, $y_{tt} = v^2y_{xx}$ com $v = \sqrt{\tau_0/\mu}$. Os dois termos de $G$ são a energia cinética e a
+                    energia potencial elástica por unidade de comprimento, e o princípio de Hamilton para o campo $y(x,t)$ é a versão contínua do
+                    princípio para muitas partículas acopladas.
+                </p>
+
+                <p id="exr-4-12-5"><strong>Exercício 4.12.5 (A catenária).</strong> Ache as curvas estacionárias de $\int y\sqrt{1 + y'^2}\,dx$
+                    (o funcional do <a href="[11] - Massa, Velocidade Limite e Causalidade.html#exr-4-11-1">Exercício 4.11.1</a>, para $y \gt 0$).</p>
+
+                <p>
+                    <em>Solução.</em> $F = y\sqrt{1 + y'^2}$ não depende de $x$, e $F - y'F_{y'} = \frac{y(1 + y'^2) - yy'^2}{\sqrt{1 + y'^2}} = \frac{y}{\sqrt{1 + y'^2}} = a$,
+                    constante positiva. Então $y'^2 = y^2/a^2 - 1$, e com $y = a\cosh u$ obtém-se $a\sinh u\;u' = \sinh u$, isto é, $u' = 1/a$ (onde
+                    $\sinh u \ne 0$): $y = a\cosh\big((x - b)/a\big)$, a catenária, que é a forma de um fio pesado pendurado (o funcional é a energia
+                    potencial do fio, a menos de constantes). A reta $y = 1$ do <a href="[11] - Massa, Velocidade Limite e Causalidade.html#exr-4-11-1">Exercício 4.11.1</a> não é desse tipo, e de fato não era estacionária.
+                </p>
+
+                <p id="exr-4-12-6"><strong>Exercício 4.12.6.</strong> Calcule a derivada funcional de $I[y] = \int_a^b(y'^2 + y^2)\,dx$ e as funções
+                    estacionárias.</p>
+
+                <p>
+                    <em>Solução.</em> $F_y = 2y$ e $F_{y'} = 2y'$, logo $\frac{\delta I}{\delta y} = 2y - 2y''$. Diretamente: com $h$ admissível,
+                    $\frac{d}{d\epsilon}\vert_0\int\big((y' + \epsilon h')^2 + (y + \epsilon h)^2\big) = \int(2y'h' + 2yh) = \int(2y - 2y'')h$, integrando por partes. As
+                    estacionárias resolvem $y'' = y$: $y = A\cosh x + B\sinh x$, com $A$, $B$ fixados pelos extremos. Como $F_{y'y'} = 2 \gt 0$ e o
+                    funcional é a soma de dois quadrados, é um mínimo (a segunda variação, $2\int(h'^2 + h^2)$, é positiva).
+                </p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <ul>
+                    <li>Funcionais e lagrangianas (<a href="#def-4-12-1">Definição 4.12.1</a>), variações admissíveis e funções estacionárias (<a href="#def-4-12-3">Definição 4.12.3</a>), com o sentido em
+                        que $y$ e $y'$ são independentes (<a href="#obs-4-12-2">Observação 4.12.2</a>).</li>
+                    <li>A primeira variação (<a href="#prop-4-12-5">Proposição 4.12.5</a>) e o lema fundamental do cálculo variacional, provado com funções <em>bump</em>
+                        (<a href="#lema-4-12-6">Lema 4.12.6</a>).</li>
+                    <li>As equações de Euler–Lagrange para uma e várias funções (<a href="#teo-4-12-7">Teorema 4.12.7</a>), a derivada funcional (<a href="#def-4-12-8">Definição 4.12.8</a>), variações
+                        gerais (<a href="#obs-4-12-9">Observação 4.12.9</a>) e a diferença entre estacionário e extremo (<a href="#obs-4-12-10">Observação 4.12.10</a>).</li>
+                    <li>As integrais primeiras: variável cíclica (<a href="#prop-4-12-11">Proposição 4.12.11</a>) e identidade de Beltrami (<a href="#prop-4-12-12">Proposição 4.12.12</a>).</li>
+                    <li>Euler–Lagrange para campos (<a href="#teo-4-12-13">Teorema 4.12.13</a>), com a equação de onda e a de Laplace (<a href="#ex-4-12-14">Exemplo 4.12.14</a>).</li>
+                    <li>A relação entre comprimento e energia (<a href="#prop-4-12-15">Proposição 4.12.15</a>): mesmas curvas estacionárias com velocidade constante, e a equação
+                        da geodésica (4.12.8).</li>
+                </ul>
+
+                <p>
+                    Com a ferramenta pronta, voltamos ao postulado do 4.11 com a métrica de Minkowski. A ação de uma partícula livre é
+                    $S = -mc\int dl$; parametrizada pelo tempo coordenado, ela é a integral de uma lagrangiana $L(\mathbf{v})$, e as equações de
+                    Euler–Lagrange e as integrais primeiras dão o momento e a energia relativísticos, a quadrivelocidade e o quadrimomento:
+                    <a href="[13] - Mecânica Relativística.html">4.13 Mecânica Relativística</a>.
+                </p>
 
             </div>
         </main>
@@ -176,6 +746,16 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#principio-variacional">O Princípio Variacional</a></li>
+                    <li><a href="#funcionais">Funções e funcionais</a></li>
+                    <li><a href="#primeira-variacao">A primeira variação</a></li>
+                    <li><a href="#lema-fundamental">O lema fundamental</a></li>
+                    <li><a href="#euler-lagrange">Euler–Lagrange</a></li>
+                    <li><a href="#integrais-primeiras">Integrais primeiras</a></li>
+                    <li><a href="#varios-parametros">Campos</a></li>
+                    <li><a href="#comprimento-e-energia">Comprimento e energia</a></li>
+                    <li><a href="#fisica">Ponte com a física</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
                 </ul>
             </div>
         </aside>
