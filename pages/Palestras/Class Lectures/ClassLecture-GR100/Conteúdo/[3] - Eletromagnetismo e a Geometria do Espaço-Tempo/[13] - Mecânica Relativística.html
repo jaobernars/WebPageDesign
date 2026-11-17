@@ -164,9 +164,740 @@
             <div class="prose">
 
                 <h1 id="mecanica-relativistica">4.13 Mecânica Relativística</h1>
-                <p class="lead">A ação da partícula livre, momento e energia relativísticos, tempo próprio, quadrivelocidade e quadrimomento, e a leitura da massa como acoplamento.</p>
+                <p class="lead">A ação da partícula livre, momento e energia relativísticos, tempo próprio, quadrivelocidade e quadrimomento, a camada de massa, a força com potencial, a massa como acoplamento e o paradoxo dos gêmeos.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>
+                    O tópico <a href="[11] - Massa, Velocidade Limite e Causalidade.html">4.11</a> postulou que uma partícula livre de massa $m$
+                    segue uma curva que torna estacionário o funcional $m\int dl$, e o tópico
+                    <a href="[12] - O Princípio Variacional.html">4.12</a> deu a ferramenta para tirar disso equações: as equações de
+                    Euler–Lagrange e as suas integrais primeiras. Aqui juntamos as duas coisas na métrica de Minkowski $\eta$, deduzida das
+                    equações de Maxwell no tópico <a href="[08] - Inomogêneas e a Métrica de Minkowski.html">4.8</a>. Parametrizada pelo tempo
+                    coordenado, a ação vira a integral de uma lagrangiana $L(\mathbf{v})$; a variável cíclica dá o momento relativístico, a
+                    identidade de Beltrami dá a energia, e a reparametrização pelo comprimento, o tempo próprio do tópico
+                    <a href="[10] - Comprimento e Energia de Curvas.html">4.10</a>, junta os dois num único vetor de $\mathbb{R}^4$, o quadrimomento.
+                </p>
+
+                <p>
+                    Nada além da geometria entra na construção: a métrica, que veio do eletromagnetismo, e a escala $m$, que rotula a classe da
+                    partícula. A dinâmica livre, as quantidades conservadas e a relação entre energia, momento e massa saem daí. O tópico termina
+                    com a pergunta que leva ao <a href="[14] - Acoplamento e Força de Lorentz.html">4.14</a>: que outros termos uma ação pode ter?
+                    A resposta das notas, que tornamos precisa, é que a massa é a "carga" que acopla a velocidade ao deslocamento, e que um campo
+                    se acopla da mesma forma, por uma $1$-forma integrada ao longo da curva.
+                </p>
+
+                <p>
+                    <strong>Notação.</strong> Nesta página, $\gamma = (1 - v^2/c^2)^{-1/2}$ é sempre o fator de Lorentz, e as curvas são chamadas
+                    $\sigma$. A quadrivelocidade é $u$, com componentes $u^\mu$; a energia relativística é $\mathcal{E}$ (a letra $E$ é o campo
+                    elétrico). Usamos $x^0 = ct$, $\eta = \operatorname{diag}(-1,1,1,1)$, $v = \lvert\mathbf{v}\rvert$ e coordenadas inerciais
+                    (cartesianas de Minkowski) salvo menção em contrário.
+                </p>
+
+                <h2 id="acao-livre">A ação da partícula livre</h2>
+
+                <div class="definition-box" id="def-4-13-1" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.13.1 (Ação da partícula livre).</strong> Seja $m \gt 0$. Para uma curva $\sigma: [a,b] \to \mathbb{R}^4$ tipo
+                        tempo e dirigida ao futuro (<a href="[10] - Comprimento e Energia de Curvas.html#def-4-10-14">Definição 4.10.14</a>, <a href="[11] - Massa, Velocidade Limite e Causalidade.html#def-4-11-7">Definição 4.11.7</a>), a <strong>ação da partícula livre</strong> de massa $m$ é</p>
+                    <p>$$ S[\sigma] = -mc\,L[\sigma] = -mc\int_a^b\sqrt{-\eta(\sigma',\sigma')}\;d\lambda. \tag{4.13.1} $$</p>
+                </div>
+
+                <p>
+                    É o funcional $\int d\tilde l = m\int dl$ da (4.11.2), multiplicado por $-c$. Pelo <a href="[10] - Comprimento e Energia de Curvas.html#teo-4-10-6">Teorema 4.10.6</a>, $S$ não depende da
+                    parametrização. O fator $c$ dá a $S$ a unidade de ação (massa × velocidade × comprimento, isto é, J·s), e o sinal é discutido
+                    na <a href="#obs-4-13-3">Observação 4.13.3</a>. As curvas estacionárias de $S$ são as de $\int dl$ (<a href="[11] - Massa, Velocidade Limite e Causalidade.html#prop-4-11-2">Proposição 4.11.2</a>): a massa não muda a trajetória livre,
+                    só a escala do funcional.
+                </p>
+
+                <div class="definition-box" id="prop-4-13-2">
+                    <p><strong>Proposição 4.13.2 (Parametrização pelo tempo coordenado).</strong> Se $\sigma$ é tipo tempo e dirigida ao futuro,
+                        então $x^0\circ\sigma$ é estritamente crescente, e $\sigma$ pode ser reparametrizada como $\sigma(t) = \big(ct, \mathbf{x}(t)\big)$,
+                        $t \in [t_a, t_b]$, com velocidade $\mathbf{v} = d\mathbf{x}/dt$ de módulo $v \lt c$. Nesse parâmetro,</p>
+                    <p>$$ S[\sigma] = \int_{t_a}^{t_b}L(\mathbf{v})\,dt, \qquad L(\mathbf{v}) = -mc^2\sqrt{1 - \frac{v^2}{c^2}}. \tag{4.13.2} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela <a href="[11] - Massa, Velocidade Limite e Causalidade.html#def-4-11-7">Definição 4.11.7</a>, todo vetor velocidade $\sigma'(\lambda)$ tem componente $(x^0\circ\sigma)'(\lambda) \gt 0$.
+                    Logo $t(\lambda) = x^0(\sigma(\lambda))/c$ é suave, com derivada positiva, e é um difeomorfismo de $[a,b]$ sobre
+                    $[t_a, t_b] = [t(a), t(b)]$ (a inversa de uma função de uma variável com derivada positiva é suave, com derivada
+                    $1/t'$). Pelo <a href="[10] - Comprimento e Energia de Curvas.html#teo-4-10-6">Teorema 4.10.6</a>, o comprimento, e portanto $S$, não muda. No parâmetro $t$, $\sigma'(t) = (c, \mathbf{v})$ e
+                    $\eta(\sigma',\sigma') = -c^2 + v^2$, que é negativo porque a curva é tipo tempo: $v \lt c$. Então
+                    $\sqrt{-\eta(\sigma',\sigma')} = c\sqrt{1 - v^2/c^2}$ (é a (4.10.5) do <a href="[10] - Comprimento e Energia de Curvas.html#ex-4-10-15">Exemplo 4.10.15</a>) e $S = -mc\int c\sqrt{1 - v^2/c^2}\,dt$. $\blacksquare$
+                </p>
+
+                <p>
+                    Toda curva tipo tempo futura suficientemente próxima de $\sigma$ também é um gráfico sobre $t$. Por isso, variar a função
+                    $\mathbf{x}(t)$ com $\mathbf{x}(t_a)$ e $\mathbf{x}(t_b)$ fixos é o mesmo que variar a curva com os eventos inicial e final fixos, e
+                    as equações de Euler–Lagrange de $L(\mathbf{v})$ são as equações do movimento da partícula livre. O domínio de $L$, a bola
+                    $\{v \lt c\}$, é aberto, e $L$ é suave nele: estamos nas hipóteses do <a href="[12] - O Princípio Variacional.html#teo-4-12-7">Teorema 4.12.7</a>.
+                </p>
+
+                <p id="obs-4-13-3"><strong>Observação 4.13.3 (O sinal e a constante).</strong> Para $v \ll c$,
+                    $L = -mc^2 + \tfrac12mv^2 + O(v^4/c^2)$ (<a href="#exr-4-13-2">Exercício 4.13.2</a>). A constante $-mc^2$ não altera as equações de Euler–Lagrange, e
+                    $\tfrac12mv^2$ é a energia cinética newtoniana: com o sinal escolhido, $L$ se reduz à lagrangiana da partícula livre
+                    newtoniana, $L = K$, e a mecânica de Newton é o limite de baixas velocidades. As curvas estacionárias de $S$ e de $-S$ são as
+                    mesmas, então o sinal não muda o movimento livre. Ele importa por dois motivos. Primeiro, com o sinal oposto, o momento
+                    canônico $\partial L/\partial\mathbf{v}$ apontaria contra a velocidade e a energia $\mathbf{p}\cdot\mathbf{v} - L$ seria negativa
+                    (<a href="#prop-4-13-5">Proposição 4.13.5</a> com $m \mapsto -m$). Segundo, quando $L$ for somada a outros termos (o potencial $-U$ neste tópico, o
+                    acoplamento eletromagnético no 4.14), o sinal relativo é físico e é fixado pelo limite newtoniano $L \approx K - U$. Há ainda
+                    uma consequência curiosa: como a reta tipo tempo <em>maximiza</em> o comprimento (<a href="#teo-4-13-20">Teorema 4.13.20</a>), o sinal de menos faz dela
+                    um <em>mínimo</em> da ação, e o "princípio de mínima ação" vale aqui ao pé da letra.</p>
+
+                <div class="definition-box" id="prop-4-13-4">
+                    <p><strong>Proposição 4.13.4 (O movimento livre).</strong> Uma função $\mathbf{x} \in C^2([t_a,t_b];\mathbb{R}^3)$ com $v \lt c$ é
+                        estacionária para $\int L(\mathbf{v})\,dt$ se, e só se, $\mathbf{v}$ é constante: o movimento livre é retilíneo e uniforme.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Aplicamos o <a href="[12] - O Princípio Variacional.html#teo-4-12-7">Teorema 4.12.7</a> com $x = t$, $y_i = x^i$ e $F(Y, P, t) = -mc^2\sqrt{1 - \lvert P\rvert^2/c^2}$.
+                    Como $F$ não depende de $Y$, $F_{y_i} = 0$, e
+                </p>
+
+                <p>
+                    $$ F_{y_i'} = \frac{\partial L}{\partial v^i} = -mc^2\cdot\frac{1}{2}\Big(1 - \frac{v^2}{c^2}\Big)^{-1/2}\cdot\Big(-\frac{2v^i}{c^2}\Big) = \gamma mv^i. $$
+                </p>
+
+                <p>
+                    As equações de Euler–Lagrange são $\frac{d}{dt}(\gamma m\mathbf{v}) = 0$: $\gamma\mathbf{v} = \mathbf{w}$ é constante. A aplicação
+                    $\mathbf{v} \mapsto \gamma\mathbf{v}$ da bola $\{v \lt c\}$ em $\mathbb{R}^3$ é injetiva: ela preserva a direção, e o módulo
+                    $s \mapsto s/\sqrt{1 - s^2/c^2}$ é estritamente crescente em $[0, c)$ (derivada $(1 - s^2/c^2)^{-3/2} \gt 0$). Explicitamente,
+                    $1 + \lvert\mathbf{w}\rvert^2/c^2 = \gamma^2$, e $\mathbf{v} = \mathbf{w}/\sqrt{1 + \lvert\mathbf{w}\rvert^2/c^2}$. Logo $\mathbf{v}$ é constante.
+                    Reciprocamente, se $\mathbf{v}$ é constante, $\gamma\mathbf{v}$ também é. $\blacksquare$
+                </p>
+
+                <h2 id="momento-e-energia">Momento e energia relativísticos</h2>
+
+                <div class="definition-box" id="prop-4-13-5">
+                    <p><strong>Proposição 4.13.5 (Momento e energia).</strong> Para a lagrangiana (4.13.2), o <strong>momento relativístico</strong> e a
+                        <strong>energia relativística</strong> são</p>
+                    <p>$$ \mathbf{p} = \frac{\partial L}{\partial\mathbf{v}} = \gamma m\mathbf{v}, \tag{4.13.3} $$</p>
+                    <p>$$ \mathcal{E} = \mathbf{p}\cdot\mathbf{v} - L = \gamma mc^2, \tag{4.13.4} $$</p>
+                    <p>e ambos são constantes ao longo de toda solução das equações de Euler–Lagrange.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> A derivada $\partial L/\partial v^i = \gamma mv^i$ foi calculada na demonstração da <a href="#prop-4-13-4">Proposição 4.13.4</a>. Então
+                    $\mathbf{p}\cdot\mathbf{v} - L = \gamma mv^2 + mc^2\sqrt{1 - v^2/c^2} = \gamma m\big(v^2 + c^2(1 - v^2/c^2)\big) = \gamma mc^2$, usando
+                    $\sqrt{1 - v^2/c^2} = 1/\gamma$. Cada coordenada $x^i$ é cíclica ($L$ não depende de $\mathbf{x}$), e pela <a href="[12] - O Princípio Variacional.html#prop-4-12-11">Proposição 4.12.11</a> cada
+                    $p_i = \partial L/\partial v^i$ é constante ao longo das soluções. $L$ não depende de $t$, e pela <a href="[12] - O Princípio Variacional.html#prop-4-12-12">Proposição 4.12.12</a>
+                    $L - \sum_iv^i\,\partial L/\partial v^i = -\mathcal{E}$ é constante ao longo das soluções. $\blacksquare$
+                </p>
+
+                <p>
+                    As duas leis de conservação vêm de duas simetrias: $\mathbf{p}$ se conserva porque $L$ não muda quando a curva é transladada no
+                    espaço, e $\mathcal{E}$ porque $L$ não muda quando ela é transladada no tempo. É a forma mais simples do teorema de Noether, a
+                    mesma da mecânica newtoniana (Marion e Thornton, cap. 7). O momento (4.13.3) é o momento canônico da lagrangiana livre; no
+                    4.14, com o campo eletromagnético, o momento canônico deixa de coincidir com $\mathbf{p}$.
+                </p>
+
+                <p id="obs-4-13-6"><strong>Observação 4.13.6 (Duas leituras do momento).</strong> A (4.13.3) pode ser agrupada de dois modos:</p>
+
+                <p>
+                    $$ \mathbf{p} = (\gamma m)\,\mathbf{v} = m\,(\gamma\mathbf{v}). $$
+                </p>
+
+                <p>
+                    Na primeira leitura, $\mathbf{p}$ é a velocidade usual multiplicada por uma "massa relativística" $\gamma m$, que cresce com a
+                    velocidade; foi a leitura comum nos primeiros textos de relatividade. Na segunda, $\mathbf{p}$ é a massa $m$ multiplicada por
+                    uma "velocidade relativística" $\gamma\mathbf{v} = d\mathbf{x}/d\tau$, a derivada da posição em relação ao tempo próprio. Adotamos a
+                    segunda, como a física atual: a palavra <strong>massa</strong> designa sempre o invariante $m$, o rótulo da classe da partícula
+                    (<a href="[11] - Massa, Velocidade Limite e Causalidade.html#obs-4-11-3">Observação 4.11.3</a>), e $\gamma m$ é só $\mathcal{E}/c^2$. Há duas razões. A "massa relativística" não faz o papel de massa em
+                    $\mathbf{F} = m\mathbf{a}$: a relação entre força e aceleração tem coeficiente $\gamma^3m$ na direção da velocidade e $\gamma m$ na
+                    direção perpendicular (<a href="#exr-4-13-1">Exercício 4.13.1</a>). E $\gamma\mathbf{v}$ é a parte espacial de um vetor de $\mathbb{R}^4$, a quadrivelocidade da
+                    próxima seção, enquanto $\gamma m$ não é um invariante.</p>
+
+                <p id="obs-4-13-7"><strong>Observação 4.13.7 (Energia de repouso e velocidade limite).</strong> Em repouso, $\mathcal{E} = mc^2$: a
+                    energia relativística não se anula. A diferença $\mathcal{E} - mc^2 = \tfrac12mv^2 + \tfrac38mv^4/c^2 + \dots$ (<a href="#exr-4-13-2">Exercício 4.13.2</a>) é a
+                    energia cinética, que se reduz à newtoniana para $v \ll c$. Quando $v \to c$, $\gamma \to \infty$, e tanto $\mathcal{E}$ quanto
+                    $\lvert\mathbf{p}\rvert$ crescem sem limite: nenhuma quantidade finita de energia leva uma partícula de massa $m \gt 0$ à
+                    velocidade $c$. É a leitura dinâmica da velocidade limite (4.11.5). Em aceleradores, a energia de um elétron pode ser
+                    aumentada muitas vezes além de $mc^2$, e a sua velocidade se aproxima de $c$ sem passar.</p>
+
+                <h2 id="quadrivelocidade">Quadrivelocidade e quadrimomento</h2>
+
+                <div class="definition-box" id="def-4-13-8" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.13.8 (Tempo próprio; quadrivelocidade).</strong> Seja $\sigma: [a,b] \to \mathbb{R}^4$ tipo tempo e dirigida
+                        ao futuro. O <strong>tempo próprio</strong> ao longo de $\sigma$, contado a partir de $\sigma(a)$, é
+                        $\tau(\lambda) = \frac1c\int_a^\lambda\sqrt{-\eta(\sigma',\sigma')}\,d\lambda'$, o comprimento do trecho de $\sigma(a)$ a $\sigma(\lambda)$
+                        dividido por $c$. Reparametrizada por $\tau$, a curva tem em cada ponto o vetor velocidade $u(\tau) = \frac{d\sigma}{d\tau}$, a
+                        <strong>quadrivelocidade</strong>, de componentes</p>
+                    <p>$$ u^\mu = \frac{dx^\mu}{d\tau}. \tag{4.13.5} $$</p>
+                </div>
+
+                <p>
+                    O tempo próprio é o comprimento de arco da <a href="[10] - Comprimento e Energia de Curvas.html#prop-4-10-7">Proposição 4.10.7</a> dividido por $c$; como $\tau' \gt 0$, ele é um parâmetro. Fisicamente,
+                    é o tempo marcado por um relógio levado ao longo da curva (a hipótese do relógio, na ponte com a física do 4.10).
+                </p>
+
+                <div class="definition-box" id="prop-4-13-9">
+                    <p><strong>Proposição 4.13.9 (A quadrivelocidade).</strong> Seja $\sigma$ tipo tempo e dirigida ao futuro.</p>
+                    <p>(a) $u(\tau) \in T_{\sigma(\tau)}\mathbb{R}^4$ é um vetor tangente, definido sem coordenadas. Em outras coordenadas inerciais
+                        $x' = \Lambda x + b$, com $\Lambda \in SO^+(3,1)$, as suas componentes são $u'^\mu = \Lambda^\mu{}_\nu\,u^\nu$.</p>
+                    <p>(b) Em coordenadas inerciais, com $\sigma(t) = (ct, \mathbf{x}(t))$, vale $d\tau/dt = 1/\gamma$ e</p>
+                    <p>$$ u^0 = \gamma c, \qquad u^i = \gamma v^i. \tag{4.13.6} $$</p>
+                    <p>(c) A norma é constante:</p>
+                    <p>$$ \eta(u,u) = u_\mu u^\mu = -c^2, \qquad u_0 = -\gamma c, \quad u_i = \gamma v^i. \tag{4.13.7} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) O tempo próprio é definido pelo tensor $\eta$ e pela curva, não pelas coordenadas, e $u$ é a
+                    velocidade (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[05] - Vetores Tangentes.html#def-3-5-22">Definição 3.5.22</a>) da curva $\tau \mapsto \sigma(\tau)$: é um vetor tangente como qualquer velocidade de curva. Pela regra
+                    da cadeia, em coordenadas $x'$ as componentes são $\frac{dx'^\mu}{d\tau} = \frac{\partial x'^\mu}{\partial x^\nu}\frac{dx^\nu}{d\tau}$, e para
+                    $x' = \Lambda x + b$ a matriz jacobiana é $\Lambda$. Como $\Lambda$ preserva $\eta$ (<a href="[08] - Inomogêneas e a Métrica de Minkowski.html#prop-4-8-17">Proposição 4.8.17</a>), o tempo próprio calculado nas
+                    coordenadas $x'$ é o mesmo.
+                </p>
+
+                <p>
+                    (b) Na demonstração da <a href="#prop-4-13-2">Proposição 4.13.2</a>, $\sqrt{-\eta(\sigma',\sigma')} = c\sqrt{1 - v^2/c^2}$ no parâmetro $t$, logo
+                    $\tau(t) = \int_{t_a}^t\sqrt{1 - v^2/c^2}\,dt'$ e $d\tau/dt = \sqrt{1 - v^2/c^2} = 1/\gamma \gt 0$. Pela regra da cadeia,
+                    $u^\mu = \frac{dx^\mu}{dt}\frac{dt}{d\tau} = \gamma\frac{dx^\mu}{dt}$, com $\frac{dx^0}{dt} = c$ e $\frac{dx^i}{dt} = v^i$.
+                </p>
+
+                <p>
+                    (c) $\eta(u,u) = -(\gamma c)^2 + \gamma^2v^2 = -\gamma^2c^2\big(1 - v^2/c^2\big) = -c^2$. Abaixando o índice com $\eta$,
+                    $u_0 = \eta_{00}u^0 = -\gamma c$ e $u_i = u^i$. $\blacksquare$
+                </p>
+
+                <p>
+                    O argumento heurístico "$dx^\mu$ é um vetor e $d\tau$ é um invariante, logo o quociente é um vetor" tem uma versão precisa, que
+                    é a parte (a): o que é um vetor não é o "deslocamento" $dx^\mu$, mas a velocidade da curva, e o papel do invariante $d\tau$ é
+                    escolher um parâmetro que não depende de referencial. A parte espacial de $u$ é a "velocidade relativística" $\gamma\mathbf{v}$
+                    da <a href="#obs-4-13-6">Observação 4.13.6</a>.
+                </p>
+
+                <p id="obs-4-13-10"><strong>Observação 4.13.10 (Em qualquer métrica).</strong> Nada disso depende de a métrica ser a de
+                    Minkowski. Numa variedade $M$ com métrica $g$ qualquer, uma curva com $g(\sigma',\sigma') \ne 0$ tem tipo causal constante
+                    (<a href="[11] - Massa, Velocidade Limite e Causalidade.html#prop-4-11-5">Proposição 4.11.5</a>) e pode ser parametrizada pelo comprimento de arco $l$ (<a href="[10] - Comprimento e Energia de Curvas.html#prop-4-10-7">Proposição 4.10.7</a>). O vetor tangente unitário
+                    $u = d\sigma/dl$, de componentes $dx^\mu/dl$, satisfaz $g(u,u) = \pm1$: $+1$ numa métrica riemanniana ou numa curva tipo
+                    espaço, $-1$ numa curva tipo tempo de uma métrica lorentziana com a nossa assinatura. Com $c = 1$, $l = \tau$ e $u$ é a
+                    quadrivelocidade, com $\eta(u,u) = -1$; com $c$ explícito, $u^\mu = c\,dx^\mu/dl$ e $\eta(u,u) = -c^2$. Em todos os casos, o escalar
+                    $g(u,u)$ é uma constante e não carrega informação sobre o movimento: com a métrica e a velocidade, sozinhas, não se constrói
+                    nenhum invariante novo ao longo da curva. Os invariantes interessantes precisarão de outro campo (4.14).</p>
+
+                <div class="definition-box" id="def-4-13-11" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.13.11 (Quadrimomento).</strong> O <strong>quadrimomento</strong> (ou vetor energia-momento) de uma partícula
+                        de massa $m$ é $p = mu$. Pela (4.13.6), (4.13.3) e (4.13.4),</p>
+                    <p>$$ p^\mu = \Big(\frac{\mathcal{E}}{c},\ \mathbf{p}\Big), \qquad p_\mu = \Big(-\frac{\mathcal{E}}{c},\ \mathbf{p}\Big). \tag{4.13.8} $$</p>
+                </div>
+
+                <p>
+                    De fato, $p^0 = m\gamma c = \gamma mc^2/c = \mathcal{E}/c$ e $p^i = \gamma mv^i$. A energia e o momento, que a <a href="#prop-4-13-5">Proposição 4.13.5</a> obteve
+                    de duas integrais primeiras diferentes, são as componentes de um único vetor.
+                </p>
+
+                <div class="definition-box" id="prop-4-13-12">
+                    <p><strong>Proposição 4.13.12 (Camada de massa).</strong> O quadrimomento satisfaz $\eta(p,p) = -m^2c^2$, isto é,</p>
+                    <p>$$ \mathcal{E}^2 = \lvert\mathbf{p}\rvert^2c^2 + m^2c^4, \tag{4.13.9} $$</p>
+                    <p>e a velocidade se escreve $\mathbf{v} = \mathbf{p}\,c^2/\mathcal{E}$. O quadrimomento de uma partícula de massa $m$ está sempre na
+                        <strong>camada de massa</strong> $\{p : \eta(p,p) = -m^2c^2,\ p^0 \gt 0\}$, uma folha de hiperboloide.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela (4.13.7), $\eta(p,p) = m^2\eta(u,u) = -m^2c^2$. Pela (4.13.8),
+                    $\eta(p,p) = -\mathcal{E}^2/c^2 + \lvert\mathbf{p}\rvert^2$; igualando e multiplicando por $-c^2$, sai (4.13.9). Por fim,
+                    $\mathbf{p}c^2/\mathcal{E} = \gamma m\mathbf{v}c^2/(\gamma mc^2) = \mathbf{v}$, e $p^0 = \mathcal{E}/c \gt 0$. $\blacksquare$
+                </p>
+
+                <p id="obs-4-13-13"><strong>Observação 4.13.13 (A dinâmica livre vem só da geometria).</strong> As únicas entradas foram a métrica
+                    $\eta$, que veio do eletromagnetismo, e a escala $m$. Não postulamos lei de força nem lei de Newton: o movimento retilíneo
+                    uniforme, as quantidades conservadas e a relação (4.13.9) saíram do princípio variacional. E, como $\mathcal{E}/c$ e $\mathbf{p}$
+                    são componentes de um vetor, em outro referencial inercial $p'^\mu = \Lambda^\mu{}_\nu\,p^\nu$ (<a href="#prop-4-13-9">Proposição 4.13.9</a>(a)): energia e momento
+                    se misturam como tempo e espaço. Para um <em>boost</em> com velocidade $\beta c$ ao longo de $x^1$ (<a href="[08] - Inomogêneas e a Métrica de Minkowski.html#ex-4-8-19">Exemplo 4.8.19</a>), com
+                    $\gamma_\beta = (1 - \beta^2)^{-1/2}$,</p>
+
+                <p>
+                    $$ \frac{\mathcal{E}'}{c} = \gamma_\beta\Big(\frac{\mathcal{E}}{c} - \beta p^1\Big), \qquad p'^1 = \gamma_\beta\Big(p^1 - \beta\frac{\mathcal{E}}{c}\Big), \qquad p'^2 = p^2,\quad p'^3 = p^3. $$
+                </p>
+
+                <p>
+                    Como $\Lambda$ é constante, se $p$ é conservado num referencial, $p' = \Lambda p$ é conservado em todos; e a massa
+                    $m = \sqrt{-\eta(p,p)}/c$ é a mesma em todos.
+                </p>
+
+                <h2 id="forca">Força</h2>
+
+                <p>
+                    A partícula livre não sente força. Para incluir uma interação, a receita da mecânica newtoniana é subtrair da lagrangiana uma
+                    energia potencial $U(\mathbf{x})$. Feito o mesmo aqui, a noção de força continua sendo a taxa de variação do momento; só o
+                    momento muda.
+                </p>
+
+                <div class="definition-box" id="prop-4-13-14">
+                    <p><strong>Proposição 4.13.14 (Força com potencial).</strong> Seja $U$ uma função de classe $C^2$ num aberto de $\mathbb{R}^3$.
+                        As equações de Euler–Lagrange de $L = -mc^2\sqrt{1 - v^2/c^2} - U(\mathbf{x})$ são</p>
+                    <p>$$ \frac{d\mathbf{p}}{dt} = -\nabla U = \mathbf{F}, \qquad \mathbf{p} = \gamma m\mathbf{v}, \tag{4.13.10} $$</p>
+                    <p>e $\mathcal{E} + U$ é constante ao longo das soluções.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> No <a href="[12] - O Princípio Variacional.html#teo-4-12-7">Teorema 4.12.7</a>, agora $F_{y_i} = -\partial_iU$ e $F_{y_i'} = \gamma mv^i$, como antes; a equação $i$ é
+                    $\frac{d}{dt}(\gamma mv^i) = -\partial_iU$. $L$ não depende de $t$, e pela <a href="[12] - O Princípio Variacional.html#prop-4-12-12">Proposição 4.12.12</a> é constante
+                    $\sum_iv^i\,\partial L/\partial v^i - L = \gamma mv^2 + mc^2\sqrt{1 - v^2/c^2} + U = \mathcal{E} + U$. $\blacksquare$
+                </p>
+
+                <p>
+                    É a segunda lei de Newton na forma $\mathbf{F} = d\mathbf{p}/dt$, com o momento relativístico no lugar de $m\mathbf{v}$: mantida a
+                    noção física de força, a mecânica de Newton continua valendo, atualizada pelo momento. A forma $\mathbf{F} = m\mathbf{a}$ é que se
+                    perde (<a href="#exr-4-13-1">Exercício 4.13.1</a>). No <a href="#exr-4-13-5">Exercício 4.13.5</a>, uma força constante acelera a partícula indefinidamente sem que ela chegue a $c$.
+                </p>
+
+                <p id="obs-4-13-15"><strong>Observação 4.13.15 (Um potencial escalar depende do referencial).</strong> A (4.13.10) foi escrita
+                    num referencial inercial particular, e a pergunta é se ela é compatível com a invariância de Lorentz. Estendendo $U$ ao
+                    espaço-tempo, constante em $x^0$, o termo de interação é a integral de uma $1$-forma ao longo da curva:</p>
+
+                <p>
+                    $$ -\int U\,dt = \int_\sigma f, \qquad f = -\frac{U}{c}\,dx^0, $$
+                </p>
+
+                <p>
+                    porque, no parâmetro $t$, $\sigma^*dx^0 = c\,dt$. A integral de uma $1$-forma não depende da parametrização (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[09] - Covetores e 1-Formas.html#prop-3-9-30">Proposição 3.9.30</a>) nem das
+                    coordenadas; o que depende do referencial é a <em>forma</em> de $f$, que aqui só tem componente temporal. Num referencial que se
+                    move com velocidade $\beta c$ ao longo de $x^1$ (<a href="[08] - Inomogêneas e a Métrica de Minkowski.html#ex-4-8-19">Exemplo 4.8.19</a>), $dx^0 = \gamma_\beta(dx'^0 + \beta\,dx'^1)$, e
+                </p>
+
+                <p>
+                    $$ f = -\frac{U}{c}\,\gamma_\beta\big(dx'^0 + \beta\,dx'^1\big), $$
+                </p>
+
+                <p>
+                    com $U$ calculada em $x^1 = \gamma_\beta(x'^1 + \beta x'^0)$, que depende de $t'$. No novo referencial, a interação ganha um termo
+                    $-\gamma_\beta\beta\frac{U}{c}\,v'^1\,dt'$, que depende da velocidade: ela não é mais da forma $-U'(\mathbf{x}')\,dt'$. Então "a
+                    interação é uma função da posição" não é uma afirmação invariante; a classe invariante é a das $1$-formas $f_\mu dx^\mu$, da
+                    qual o potencial estático é o caso particular em que, num referencial, só $f_0$ é diferente de zero. É exatamente a
+                    estrutura do potencial eletromagnético $A = A_\mu dx^\mu$, com $A_0 = -\phi/c$ (<a href="[08] - Inomogêneas e a Métrica de Minkowski.html#obs-4-8-14">Observação 4.8.14</a>): com $f = qA$, a parte
+                    temporal é $-q\phi\,dt$, isto é, $U = q\phi$, e a parte espacial, $q\mathbf{A}\cdot\mathbf{v}\,dt$, é o que um potencial escalar não
+                    tem. O tópico 4.14 desenvolve esse acoplamento.</p>
+
+                <h2 id="acoplamento-pela-massa">A massa como acoplamento</h2>
+
+                <p>
+                    Que outros termos podemos acrescentar à ação? Em princípio, qualquer funcional da curva que seja invariante: que não dependa
+                    da parametrização nem das coordenadas, e que respeite as simetrias postuladas. A estratégia é escrever a ação mais geral com os
+                    invariantes disponíveis, descartar os termos que uma simetria extra proíbe e deixar ao experimento a decisão sobre os que
+                    sobram. Para a partícula livre, com só a métrica à disposição, a estratégia dá uma resposta única. Começamos por um lema sobre
+                    o grupo de Lorentz.
+                </p>
+
+                <div class="definition-box" id="lema-4-13-16">
+                    <p><strong>Lema 4.13.16 (Todo vetor tipo tempo futuro pode ser levado ao eixo do tempo).</strong> Para todo $w \in \mathbb{R}^4$
+                        tipo tempo e dirigido ao futuro existe $\Lambda \in SO^+(3,1)$ com $\Lambda w = \big(\lvert w\rvert, 0, 0, 0\big)$, onde
+                        $\lvert w\rvert = \sqrt{-\eta(w,w)}$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Escreva $w = (w^0, \mathbf{w})$, com $w^0 \gt \lvert\mathbf{w}\rvert$ (tipo tempo e futuro). Se $\mathbf{w} \ne 0$,
+                    complete $\mathbf{n} = \mathbf{w}/\lvert\mathbf{w}\rvert$ a uma base ortonormal positiva $(\mathbf{n}, \mathbf{e}, \mathbf{f})$ de $\mathbb{R}^3$ e
+                    seja $R$ a matriz de linhas $\mathbf{n}, \mathbf{e}, \mathbf{f}$: $R^TR = I$, $\det R = 1$ e $R\mathbf{w} = (\lvert\mathbf{w}\rvert, 0, 0)$. A matriz
+                    $\Lambda_1 = \operatorname{diag}(1, R)$ satisfaz $\Lambda_1^T\eta\Lambda_1 = \eta$, $\det\Lambda_1 = 1$ e $(\Lambda_1)^0{}_0 = 1$: está em
+                    $SO^+(3,1)$, e $\Lambda_1w = (w^0, \lvert\mathbf{w}\rvert, 0, 0)$. (Se $\mathbf{w} = 0$, tome $\Lambda_1 = I$.) Agora seja $\Lambda_2$ o
+                    <em>boost</em> do <a href="[08] - Inomogêneas e a Métrica de Minkowski.html#ex-4-8-19">Exemplo 4.8.19</a> com $\beta = \lvert\mathbf{w}\rvert/w^0 \lt 1$, que está em $SO^+(3,1)$. Então
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    \Lambda_2\Lambda_1w &= \Big(\gamma_\beta\big(w^0 - \beta\lvert\mathbf{w}\rvert\big),\ \gamma_\beta\big(\lvert\mathbf{w}\rvert - \beta w^0\big),\ 0,\ 0\Big)\\
+                    &= \Big(\gamma_\beta\,w^0(1 - \beta^2),\ 0,\ 0,\ 0\Big) = \Big(\sqrt{(w^0)^2 - \lvert\mathbf{w}\rvert^2},\ 0,\ 0,\ 0\Big),
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    porque $\gamma_\beta(1 - \beta^2) = \sqrt{1 - \beta^2}$ e $w^0\sqrt{1 - \beta^2} = \sqrt{(w^0)^2 - \lvert\mathbf{w}\rvert^2}$. Como $SO^+(3,1)$ é um
+                    grupo (<a href="[08] - Inomogêneas e a Métrica de Minkowski.html#def-4-8-16">Definição 4.8.16</a>), $\Lambda = \Lambda_2\Lambda_1$ serve. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="prop-4-13-17">
+                    <p><strong>Proposição 4.13.17 (A única ação livre).</strong> Seja $\mathcal{C}^+$ o cone futuro (<a href="[11] - Massa, Velocidade Limite e Causalidade.html#def-4-11-7">Definição 4.11.7</a>) e
+                        $\Phi: \mathcal{C}^+ \to \mathbb{R}$ uma função tal que (i) $\Phi(\Lambda w) = \Phi(w)$ para todo $\Lambda \in SO^+(3,1)$ e (ii)
+                        $\Phi(sw) = s\,\Phi(w)$ para todo $s \gt 0$. Então $\Phi(w) = k\sqrt{-\eta(w,w)}$, com $k = \Phi(1,0,0,0)$. Em particular, uma ação
+                        $\int\Phi(\sigma')\,d\lambda$ de curvas tipo tempo futuras com essas propriedades é $k\,L[\sigma]$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Dado $w \in \mathcal{C}^+$, o <a href="#lema-4-13-16">Lema 4.13.16</a> dá $\Lambda$ com $\Lambda w = \lvert w\rvert\,e_0$, onde $e_0 = (1,0,0,0)$.
+                    Por (i) e (ii), $\Phi(w) = \Phi(\Lambda w) = \Phi(\lvert w\rvert e_0) = \lvert w\rvert\,\Phi(e_0)$. $\blacksquare$
+                </p>
+
+                <p>
+                    A leitura física exige listar as hipóteses. Suponha que a ação de uma partícula livre (i) seja a integral ao longo da curva de
+                    uma função só da velocidade, sem dependência da posição (homogeneidade do espaço-tempo) nem de derivadas mais altas; (ii) não
+                    dependa da parametrização, o que obriga a função a ser homogênea de grau $1$ (compare $\sigma(\lambda)$ com $\sigma(s\lambda)$,
+                    $s \gt 0$, em intervalos pequenos); (iii) seja invariante por $SO^+(3,1)$. Então, pela <a href="#prop-4-13-17">Proposição 4.13.17</a>, ela é um múltiplo do comprimento, e o
+                    múltiplo é $-mc$: a ação (4.13.1) não é uma escolha entre outras, é a única compatível com as simetrias.
+                </p>
+
+                <div class="definition-box" id="prop-4-13-18">
+                    <p><strong>Proposição 4.13.18 (A ação como $m\,u_\mu dx^\mu$).</strong> Seja $\sigma$ tipo tempo e dirigida ao futuro, com parâmetro
+                        qualquer $\lambda$, e $u$ a sua quadrivelocidade. Ao longo de $\sigma$,</p>
+                    <p>$$ m\,u_\mu\,\frac{dx^\mu}{d\lambda}\,d\lambda = m\,\eta(u, \sigma')\,d\lambda = -mc\,dl, \tag{4.13.11} $$</p>
+                    <p>e portanto $S[\sigma] = \int m\,u_\mu\,dx^\mu$, entendida como a integral do lado esquerdo.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela regra da cadeia, $\sigma' = \frac{d\sigma}{d\lambda} = \frac{d\tau}{d\lambda}\,u$, com $\frac{d\tau}{d\lambda} \gt 0$.
+                    Então $\eta(u, \sigma') = \frac{d\tau}{d\lambda}\,\eta(u,u) = -c^2\frac{d\tau}{d\lambda}$, pela (4.13.7). Por outro lado,
+                    $dl = \sqrt{-\eta(\sigma',\sigma')}\,d\lambda = \frac{d\tau}{d\lambda}\sqrt{-\eta(u,u)}\,d\lambda = c\,\frac{d\tau}{d\lambda}\,d\lambda$. Logo
+                    $m\,\eta(u,\sigma')\,d\lambda = -mc^2\frac{d\tau}{d\lambda}\,d\lambda = -mc\,dl$. $\blacksquare$
+                </p>
+
+                <p>
+                    O símbolo $u_\mu dx^\mu$ precisa de cuidado. O covetor $u_\mu$ só existe ao longo da curva, e depende dela: é o $(\sigma')^\flat$
+                    da <a href="[10] - Comprimento e Energia de Curvas.html#obs-4-10-9">Observação 4.10.9</a>, normalizado. Então $m\,u_\mu dx^\mu$ não é uma $1$-forma em $\mathbb{R}^4$ que se integra sobre curvas
+                    quaisquer; é outra maneira de escrever o mesmo integrando $-mc\,dl$, e a (4.13.11) diz que as duas leituras dão o mesmo
+                    funcional, logo as mesmas equações do movimento.
+                </p>
+
+                <p id="obs-4-13-19"><strong>Observação 4.13.19 (A massa acopla a velocidade ao deslocamento).</strong> A forma
+                    $dS = m\,u_\mu dx^\mu$ tem uma vantagem de leitura: ela diz que $m$ é o coeficiente que acopla a velocidade $u$ ao
+                    deslocamento $dx^\mu$, e é por isso que corpos de massas diferentes, sob a mesma ação externa, não adquirem a mesma
+                    quadrivelocidade. A ideia se generaliza. Se existe no espaço-tempo um campo, uma $1$-forma $f = f_\mu dx^\mu$ definida em
+                    $\mathbb{R}^4$ independentemente da curva, que influencia a dinâmica, ele se acopla ao deslocamento da mesma forma, com uma
+                    "carga" $q$ no papel de $m$:</p>
+
+                <p>
+                    $$ S[\sigma] = \int_\sigma\big(m\,u_\mu + q\,f_\mu\big)\,dx^\mu = -mc\,L[\sigma] + q\int_\sigma f. \tag{4.13.12} $$
+                </p>
+
+                <p>
+                    O segundo termo é a integral de linha de uma $1$-forma (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[09] - Covetores e 1-Formas.html#def-3-9-31">Definição 3.9.31</a>): não depende da parametrização nem das coordenadas, e,
+                    diferentemente do primeiro, é uma interação de verdade, porque $f$ não é determinado pela curva. O potencial da
+                    <a href="#obs-4-13-15">Observação 4.13.15</a> é o caso $qf = -U\,dt$; o eletromagnetismo é o caso $f = A$, com $q$ a carga elétrica (4.14). A construção usa só a
+                    métrica, para definir $dl$ e $u$, e uma $1$-forma: vale do mesmo modo numa variedade com uma métrica lorentziana qualquer,
+                    com $g$ no lugar de $\eta$ (<a href="#obs-4-13-10">Observação 4.13.10</a>).
+                </p>
+
+                <h2 id="fisica">Ponte com a física: energia de repouso, colisões e o paradoxo dos gêmeos</h2>
+
+                <p>
+                    <strong>Energia de repouso e colisões.</strong> A <a href="#obs-4-13-7">Observação 4.13.7</a> mostrou que uma partícula parada tem energia $\mathcal{E} = mc^2$.
+                    Ela só ganha significado físico quando partículas interagem. Suponha que (i) um sistema isolado de partículas só interaja numa
+                    região pequena do espaço-tempo (uma colisão ou um decaimento), sendo livre antes e depois; (ii) a soma dos quadrimomentos,
+                    $P = \sum p_{(k)}$, seja a mesma antes e depois. A hipótese (ii) generaliza a <a href="#prop-4-13-5">Proposição 4.13.5</a> para várias partículas: numa
+                    teoria invariante por translações, é o que o teorema de Noether dá; aqui ela é postulada. Então a componente temporal de
+                    $P$ dá a conservação da energia, e a espacial, a do momento, em todo referencial inercial (<a href="#obs-4-13-13">Observação 4.13.13</a>).
+                </p>
+
+                <p>
+                    A massa não entra nessa lista. A massa do sistema é $Mc = \sqrt{-\eta(P,P)}$, que é invariante e conservada, mas em geral
+                    $M \ne \sum m_{(k)}$: num decaimento $M \to m_1 + m_2$ em repouso, a energia de repouso $Mc^2$ se reparte em energias de repouso e
+                    cinéticas, e é preciso $M \ge m_1 + m_2$ (<a href="#exr-4-13-6">Exercício 4.13.6</a>). É a leitura física de $\mathcal{E} = mc^2$: massa e energia de repouso são a
+                    mesma grandeza, e uma pode ser convertida em energia cinética, como nas reações nucleares. Ver Jackson, cap. 12, e Marion e
+                    Thornton, cap. 14.
+                </p>
+
+                <p>
+                    <strong>O paradoxo dos gêmeos.</strong> O tópico 4.10 mostrou que, entre curvas que partem de um ponto e voltam ao mesmo lugar,
+                    a que fica parada tem o maior comprimento. Com o <a href="#lema-4-13-16">Lema 4.13.16</a>, isso vale para quaisquer dois eventos com separação tipo
+                    tempo.
+                </p>
+
+                <div class="definition-box" id="teo-4-13-20">
+                    <p><strong>Teorema 4.13.20 (A reta maximiza o tempo próprio).</strong> Sejam $P, Q \in \mathbb{R}^4$ com $Q - P$ tipo tempo e
+                        dirigido ao futuro, e $\sigma: [a,b] \to \mathbb{R}^4$ uma curva tipo tempo dirigida ao futuro com $\sigma(a) = P$ e
+                        $\sigma(b) = Q$. Então</p>
+                    <p>$$ L[\sigma] \le \sqrt{-\eta(Q - P, Q - P)}, $$</p>
+                    <p>que é o comprimento do segmento de $P$ a $Q$, com igualdade se, e só se, $\sigma$ é uma reparametrização desse segmento. Em
+                        termos de tempo próprio, $\Delta\tau[\sigma] \le \Delta\tau_{\text{reta}}$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> <strong>Passo 1: redução ao eixo do tempo.</strong> Seja $cT = \sqrt{-\eta(Q - P, Q - P)}$. Pelo
+                    <a href="#lema-4-13-16">Lema 4.13.16</a>, existe $\Lambda \in SO^+(3,1)$ com $\Lambda(Q - P) = (cT, 0, 0, 0)$. A aplicação $\varphi(x) = \Lambda(x - P)$ preserva
+                    $\eta$ (<a href="[08] - Inomogêneas e a Métrica de Minkowski.html#prop-4-8-17">Proposição 4.8.17</a>): $(\varphi\circ\sigma)' = \Lambda\sigma'$ e $\eta(\Lambda\sigma', \Lambda\sigma') = \eta(\sigma',\sigma')$. Logo
+                    $L[\varphi\circ\sigma] = L[\sigma]$, e $\varphi\circ\sigma$ é tipo tempo, vai de $0$ a $(cT, 0, 0, 0)$, e $\varphi$ leva o segmento
+                    $PQ$ no segmento do eixo do tempo. A componente $x^0$ da velocidade de $\varphi\circ\sigma$ nunca se anula (o parágrafo após a
+                    <a href="[11] - Massa, Velocidade Limite e Causalidade.html#def-4-11-7">Definição 4.11.7</a>) e é contínua, logo tem sinal constante; como $x^0$ vai de $0$ a $cT \gt 0$, o sinal é positivo, e
+                    $\varphi\circ\sigma$ é dirigida ao futuro.
+                </p>
+
+                <p>
+                    <strong>Passo 2: a desigualdade.</strong> Pela <a href="#prop-4-13-2">Proposição 4.13.2</a>, $\varphi\circ\sigma$ se parametriza como $(ct, \mathbf{x}(t))$,
+                    $t \in [0, T]$, com $\mathbf{x}(0) = \mathbf{x}(T) = 0$, e
+                </p>
+
+                <p>
+                    $$ L[\sigma] = c\int_0^T\sqrt{1 - \frac{v^2}{c^2}}\,dt \le c\int_0^T1\,dt = cT. $$
+                </p>
+
+                <p>
+                    O integrando é contínuo e $\le 1$, então a igualdade vale se, e só se, ele é $1$ em todo ponto, isto é, $\mathbf{v} \equiv 0$ e
+                    $\mathbf{x} \equiv 0$: $\varphi\circ\sigma$ é o segmento do eixo do tempo, e $\sigma$ é o segmento $PQ$. $\blacksquare$
+                </p>
+
+                <figure class="lecture-figure" id="fig-4-13-1" style="overflow-x: auto; overflow-y: hidden;">
+                    <svg viewBox="0 0 640 290" role="img" style="min-width: 560px;" aria-label="Diagrama de espaço-tempo com x¹ na horizontal e x⁰ igual a ct na vertical. Do evento O, embaixo, ao evento Q, em cima, vai uma reta vertical, a linha de universo do gêmeo que fica, rotulada tau igual a T. Uma linha quebrada sai de O, vai para a direita até o evento R, na metade da altura, e volta a Q: é o gêmeo que viaja com velocidade 0,6 c, rotulado tau igual a T vezes raiz de 1 menos v ao quadrado sobre c ao quadrado, igual a 0,8 T. Retas tracejadas a quarenta e cinco graus, os cones de luz de O e de Q, formam um losango que contém as duas linhas.">
+<defs><marker id="arr-4-13-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="230" y1="272" x2="112" y2="154" class="fig-guide fig-dashed"/>
+<line x1="230" y1="36" x2="112" y2="154" class="fig-guide fig-dashed"/>
+<line x1="230" y1="272" x2="348" y2="154" class="fig-guide fig-dashed"/>
+<line x1="230" y1="36" x2="348" y2="154" class="fig-guide fig-dashed"/>
+<line x1="40" y1="272" x2="86" y2="272" class="fig-axis" marker-end="url(#arr-4-13-1)"/>
+<text x="90" y="276" class="fig-label fig-it">x¹</text>
+<line x1="40" y1="272" x2="40" y2="226" class="fig-axis" marker-end="url(#arr-4-13-1)"/>
+<text x="36" y="220" class="fig-label fig-it">x⁰ = ct</text>
+<line x1="230" y1="272" x2="230" y2="36" class="fig-curve"/>
+<path d="M230,272 L300.8,154 L230,36" class="fig-curve"/>
+<circle cx="230" cy="272" r="3.5" class="fig-arrowhead"/>
+<circle cx="230" cy="36" r="3.5" class="fig-arrowhead"/>
+<circle cx="300.8" cy="154" r="3.5" class="fig-arrowhead"/>
+<text x="220" y="276" text-anchor="end" class="fig-label fig-it">O</text>
+<text x="220" y="40" text-anchor="end" class="fig-label fig-it">Q</text>
+<text x="310.8" y="158" class="fig-label fig-it">R</text>
+<text x="220" y="148" text-anchor="end" class="fig-label">τ = T</text>
+<text x="220" y="166" text-anchor="end" class="fig-label fig-small">(fica)</text>
+<line x1="287.1" y1="183.5" x2="420" y2="200" class="fig-guide"/>
+<text x="424" y="204" class="fig-label">τ = T√(1 − v²/c²) = 0,8 T</text>
+<text x="424" y="222" class="fig-label fig-small">(viaja com v = 0,6 c)</text>
+<text x="356" y="130" class="fig-label fig-small">cones de luz</text>
+<text x="356" y="144" class="fig-label fig-small">de O e de Q</text>
+</svg>
+                    <figcaption><strong>Figura 4.13.1.</strong> O paradoxo dos gêmeos no plano $(x^1, x^0)$. Os dois gêmeos se separam no evento
+                        $O$ (a origem) e se reencontram em $Q$, com $x^0 = cT$ e $x^1 = 0$. O que fica parado segue a reta, com tempo próprio $T$; o
+                        que viaja com velocidade $v$ até o evento $R$, com $x^0 = cT/2$ e $x^1 = vT/2$, e volta segue a linha quebrada, com tempo próprio $T\sqrt{1 - v^2/c^2}$, menor (desenhado com
+                        $v = 0{,}6\,c$: $0{,}8\,T$). As retas tracejadas são os cones de luz de $O$ e de $Q$; as duas linhas de universo ficam entre
+                        eles.</figcaption>
+                </figure>
+
+                <p>
+                    O "paradoxo" é a objeção: cada gêmeo vê o relógio do outro atrasar, então cada um deveria achar o outro mais novo no
+                    reencontro. O <a href="#teo-4-13-20">Teorema 4.13.20</a> mostra que a situação não é simétrica. Ele compara <em>curvas</em>, não referenciais: entre todas
+                    as curvas tipo tempo de $O$ a $Q$, a reta, a única que é a linha de universo de um observador inercial, tem o maior tempo
+                    próprio. O gêmeo viajante não é inercial: a sua curva tem uma quina em $R$ (ou, suavizada, uma aceleração), e é ele quem
+                    volta mais novo (<a href="#exr-4-13-4">Exercício 4.13.4</a> e <a href="#fig-4-13-1">Figura 4.13.1</a>). O teorema só usa a geometria de $\eta$ e a hipótese do relógio do 4.10. Não há
+                    mínimo: linhas quebradas com $v$ próximo de $c$ têm tempo próprio tão pequeno quanto se queira. E o sinal de menos da
+                    (4.13.1) transforma o máximo do tempo próprio no mínimo da ação (<a href="#obs-4-13-3">Observação 4.13.3</a>).
+                </p>
+
+                <p id="obs-4-13-21"><strong>Observação 4.13.21 (Partículas sem massa).</strong> Para $m = 0$ a ação (4.13.1) é zero, e numa curva
+                    nula o comprimento também é. O tópico 4.11 anunciou que a energia da curva (<a href="[10] - Comprimento e Energia de Curvas.html#def-4-10-10">Definição 4.10.10</a>) trata os dois casos do mesmo modo.
+                    Tome, num parâmetro $\lambda$, a lagrangiana $e = \frac{\kappa}{2}\,\eta_{\mu\nu}\dot x^\mu\dot x^\nu$, com $\kappa \gt 0$ constante. Todas
+                    as coordenadas são cíclicas, e pela <a href="[12] - O Princípio Variacional.html#prop-4-12-11">Proposição 4.12.11</a></p>
+
+                <p>
+                    $$ p_\mu = \frac{\partial e}{\partial\dot x^\mu} = \kappa\,\eta_{\mu\nu}\dot x^\nu $$
+                </p>
+
+                <p>
+                    é constante ao longo das soluções: são retas percorridas com velocidade constante, e $\eta(\dot x, \dot x)$ é constante
+                    (<a href="[12] - O Princípio Variacional.html#prop-4-12-15">Proposição 4.12.15</a>(a)). Se a curva é tipo tempo, escolhendo $\lambda = \tau$ e $\kappa = m$, $p_\mu = m\,u_\mu$ é o quadrimomento, e as
+                    curvas são as mesmas de $-mc\int dl$ (<a href="[12] - O Princípio Variacional.html#prop-4-12-15">Proposição 4.12.15</a>). Se a curva é nula, $\eta(p,p) = \kappa^2\eta(\dot x,\dot x) = 0$: pela
+                    (4.13.8), $\mathcal{E} = \lvert\mathbf{p}\rvert c$, que é a (4.13.9) com $m = 0$, e $\mathbf{v} = \mathbf{p}c^2/\mathcal{E}$ tem módulo $c$. Para
+                    uma curva nula não há tempo próprio, e a escala $\kappa$ do parâmetro não é fixada pela geometria: o valor de $\mathcal{E}$ para um
+                    fóton vem de fora (na física quântica, $\mathcal{E} = h\nu$). A camada de massa com $m = 0$ é o cone de luz futuro.</p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p>
+                    As notas não trazem exercícios formais nesta parte; as perguntas que elas fazem (que outros termos cabem na ação, o que
+                    acontece com a norma da velocidade numa métrica qualquer) foram respondidas no texto. Os exercícios abaixo são extras, e
+                    todas as contas foram conferidas em sympy.
+                </p>
+
+                <p id="exr-4-13-1"><strong>Exercício 4.13.1.</strong> Para uma trajetória qualquer com $v \lt c$, mostre que
+                    $\frac{d\mathbf{p}}{dt} = \gamma m\mathbf{a} + \gamma^3m\,\frac{(\mathbf{v}\cdot\mathbf{a})}{c^2}\,\mathbf{v}$, com $\mathbf{a} = d\mathbf{v}/dt$.
+                    Conclua que $d\mathbf{p}/dt = 0$ se, e só se, $\mathbf{a} = 0$, e que a relação entre força e aceleração tem coeficiente $\gamma^3m$
+                    quando $\mathbf{a}$ é paralela a $\mathbf{v}$ e $\gamma m$ quando é perpendicular.</p>
+
+                <p>
+                    <em>Solução.</em> $\gamma = (1 - \mathbf{v}\cdot\mathbf{v}/c^2)^{-1/2}$, logo
+                    $\dot\gamma = -\frac12\big(1 - v^2/c^2\big)^{-3/2}\cdot\big(-2\,\mathbf{v}\cdot\mathbf{a}/c^2\big) = \gamma^3\,(\mathbf{v}\cdot\mathbf{a})/c^2$, e
+                    $\frac{d}{dt}(\gamma m\mathbf{v}) = m\dot\gamma\,\mathbf{v} + \gamma m\mathbf{a}$ é a fórmula. Se $d\mathbf{p}/dt = 0$, o produto com $\mathbf{v}$ dá
+                    $\gamma m(\mathbf{v}\cdot\mathbf{a})\big(1 + \gamma^2v^2/c^2\big) = \gamma^3m\,(\mathbf{v}\cdot\mathbf{a}) = 0$, porque $1 + \gamma^2v^2/c^2 = \gamma^2$;
+                    então $\mathbf{v}\cdot\mathbf{a} = 0$, e a fórmula se reduz a $\gamma m\mathbf{a} = 0$. Com $\mathbf{a} = a\,\mathbf{v}/v$,
+                    $\frac{d\mathbf{p}}{dt} = \big(\gamma + \gamma^3v^2/c^2\big)m\mathbf{a} = \gamma^3m\mathbf{a}$; com $\mathbf{a}\perp\mathbf{v}$, $\frac{d\mathbf{p}}{dt} = \gamma m\mathbf{a}$.
+                    Uma força não é proporcional à aceleração que produz, e os dois coeficientes ("massa longitudinal" e "massa transversal"
+                    dos primeiros textos) são a razão de não chamar $\gamma m$ de massa (<a href="#obs-4-13-6">Observação 4.13.6</a>).
+                </p>
+
+                <p id="exr-4-13-2"><strong>Exercício 4.13.2.</strong> Expanda $L$ e $\mathcal{E}$ até a ordem $v^4/c^2$. Para que velocidade a primeira
+                    correção relativística da energia cinética é $1\%$ do termo newtoniano?</p>
+
+                <p>
+                    <em>Solução.</em> Com $\sqrt{1 - x} = 1 - \frac x2 - \frac{x^2}8 + O(x^3)$ e $(1 - x)^{-1/2} = 1 + \frac x2 + \frac38x^2 + O(x^3)$, para
+                    $x = v^2/c^2$:
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    L &= -mc^2 + \frac12mv^2 + \frac18\,\frac{mv^4}{c^2} + O\Big(\frac{v^6}{c^4}\Big),\\
+                    \mathcal{E} &= mc^2 + \frac12mv^2 + \frac38\,\frac{mv^4}{c^2} + O\Big(\frac{v^6}{c^4}\Big).
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    O termo $-mc^2$ de $L$ é constante e não aparece nas equações; o termo $mc^2$ de $\mathcal{E}$ é a energia de repouso. A razão entre a
+                    correção e a energia cinética newtoniana é $\frac{3mv^4/(8c^2)}{mv^2/2} = \frac34\,\frac{v^2}{c^2}$, que vale $0{,}01$ para
+                    $v = c\sqrt{0{,}04/3} \approx 0{,}115\,c$, cerca de $35\,000$ km/s. Abaixo disso, a mecânica newtoniana erra a energia cinética em
+                    menos de $1\%$.
+                </p>
+
+                <p id="exr-4-13-3"><strong>Exercício 4.13.3.</strong> A partir da camada de massa, mostre que (a) $v \lt c$ para $m \gt 0$ e
+                    $v = c$ para $m = 0$; (b) a hamiltoniana $H(\mathbf{p}) = \sqrt{\lvert\mathbf{p}\rvert^2c^2 + m^2c^4}$ satisfaz
+                    $\partial H/\partial p_i = v^i$; (c) para $\lvert\mathbf{p}\rvert \gg mc$, $\mathcal{E} \approx \lvert\mathbf{p}\rvert c$.</p>
+
+                <p>
+                    <em>Solução.</em> (a) Pela <a href="#prop-4-13-12">Proposição 4.13.12</a>,
+                </p>
+
+                <p>
+                    $$ v = \frac{\lvert\mathbf{p}\rvert c^2}{\mathcal{E}} = c\,\frac{\lvert\mathbf{p}\rvert c}{\sqrt{\lvert\mathbf{p}\rvert^2c^2 + m^2c^4}}, $$
+                </p>
+
+                <p>
+                    que é menor que $c$ se $m \gt 0$ e igual a $c$ se $m = 0$ (e $\mathbf{p} \ne 0$). (b) $\partial H/\partial p_i = p_ic^2/H = p_ic^2/\mathcal{E} = v^i$:
+                    é a equação de Hamilton $\dot x^i = \partial H/\partial p_i$, e $H$ é a energia (4.13.4) escrita como função do momento. (c)
+                    $\mathcal{E} = \lvert\mathbf{p}\rvert c\sqrt{1 + m^2c^2/\lvert\mathbf{p}\rvert^2} = \lvert\mathbf{p}\rvert c\,\big(1 + O(m^2c^2/\lvert\mathbf{p}\rvert^2)\big)$: no
+                    regime ultrarrelativístico, a massa é desprezível e a partícula se comporta como uma partícula sem massa.
+                </p>
+
+                <p id="exr-4-13-4"><strong>Exercício 4.13.4 (Os gêmeos).</strong> Em Minkowski 1+1, compare o tempo próprio da reta da origem $O$
+                    ao evento $Q$ ($x^0 = cT$, $x^1 = 0$) com o da linha quebrada que passa pelo evento $R$ ($x^0 = cT/2$, $x^1 = vT/2$). Depois
+                    prove a <strong>desigualdade triangular invertida</strong>: para $X$, $Y$ tipo tempo e dirigidos ao futuro em $\mathbb{R}^{1,1}$,
+                    $\lvert X + Y\rvert \ge \lvert X\rvert + \lvert Y\rvert$, com $\lvert X\rvert = \sqrt{-\eta(X,X)}$, e igualdade se, e só se, $X$ e $Y$ são
+                    paralelos.</p>
+
+                <p>
+                    <em>Solução.</em> A reta tem $\Delta\tau = T$. Cada trecho da linha quebrada é percorrido com velocidade de módulo $v$ durante um
+                    tempo coordenado $T/2$, logo $\Delta\tau = 2\cdot\frac T2\sqrt{1 - v^2/c^2} = T\sqrt{1 - v^2/c^2} \lt T$. Para a desigualdade, sejam
+                    $X = (X^0, a)$ e $Y = (Y^0, b)$, com $X^0 \gt \lvert a\rvert$, $Y^0 \gt \lvert b\rvert$. Então $-\eta(X,Y) = X^0Y^0 - ab \gt 0$ e
+                </p>
+
+                <p>
+                    $$ (X^0Y^0 - ab)^2 - \big((X^0)^2 - a^2\big)\big((Y^0)^2 - b^2\big) = (X^0b - aY^0)^2 \ge 0, $$
+                </p>
+
+                <p>
+                    isto é, $-\eta(X,Y) \ge \lvert X\rvert\,\lvert Y\rvert$ (a desigualdade de Cauchy–Schwarz invertida). Como $X + Y$ é tipo tempo e futuro
+                    ($X^0 + Y^0 \gt \lvert a\rvert + \lvert b\rvert \ge \lvert a + b\rvert$),
+                </p>
+
+                <p>
+                    $$ \lvert X + Y\rvert^2 = \lvert X\rvert^2 + 2\big(-\eta(X,Y)\big) + \lvert Y\rvert^2 \ge \big(\lvert X\rvert + \lvert Y\rvert\big)^2. $$
+                </p>
+
+                <p>
+                    A igualdade exige
+                    $X^0b = aY^0$, isto é, $X$ e $Y$ paralelos. Aplicada a $X = \overrightarrow{OR}$ e $Y = \overrightarrow{RQ}$, que não são paralelos se
+                    $v \ne 0$, ela dá de novo $c\,\Delta\tau_{\text{quebrada}} = \lvert X\rvert + \lvert Y\rvert \lt \lvert X + Y\rvert = cT$. Por indução, qualquer
+                    linha poligonal tipo tempo futura de $O$ a $Q$ tem tempo próprio menor que a reta, como no <a href="#teo-4-13-20">Teorema 4.13.20</a>.
+                </p>
+
+                <p id="exr-4-13-5"><strong>Exercício 4.13.5 (Força constante).</strong> Em uma dimensão, uma partícula parte do repouso em $x = 0$
+                    sob uma força constante $F \gt 0$. Com $a = F/m$, ache $x(t)$ e compare com a parábola newtoniana e com o observador
+                    uniformemente acelerado do <a href="[10] - Comprimento e Energia de Curvas.html#exr-4-10-5">Exercício 4.10.5</a>.</p>
+
+                <p>
+                    <em>Solução.</em> Pela (4.13.10), $\dot p = F$, logo $p = Ft = mat$. Pela <a href="#prop-4-13-12">Proposição 4.13.12</a>,
+                    $v = \frac{pc^2}{\mathcal{E}} = \frac{pc}{\sqrt{p^2 + m^2c^2}} = \frac{at}{\sqrt{1 + (at/c)^2}}$, e integrando com $x(0) = 0$,
+                </p>
+
+                <p>
+                    $$ x(t) = \frac{c^2}{a}\Big(\sqrt{1 + \Big(\frac{at}{c}\Big)^2} - 1\Big). $$
+                </p>
+
+                <p>
+                    Para $at \ll c$, $x \approx \frac12at^2$, a parábola newtoniana. Para $t \to \infty$, $v \to c$ e $x - (ct - c^2/a) \to 0$: a curva é
+                    assintótica a uma reta paralela ao cone de luz, e fica sempre abaixo de $x = ct$ (Figura 4.13.2). Além disso,
+                    $(x + c^2/a)^2 - (ct)^2 = c^4/a^2$: é a hipérbole do <a href="[10] - Comprimento e Energia de Curvas.html#exr-4-10-5">Exercício 4.10.5</a>, deslocada de $c^2/a$, e o tempo próprio é
+                    $\tau(t) = \int_0^t\sqrt{1 - v^2/c^2}\,dt' = \frac ca\operatorname{arcsinh}\frac{at}{c}$. A força constante no referencial em que a
+                    partícula parte do repouso é uma aceleração própria constante; um elétron num campo elétrico uniforme (4.14) segue essa
+                    curva.
+                </p>
+
+                <figure class="lecture-figure" id="fig-4-13-2" style="overflow-x: auto; overflow-y: hidden;">
+                    <svg viewBox="0 0 640 300" role="img" style="min-width: 560px;" aria-label="Gráfico com o tempo t na horizontal, em unidades c sobre a, e a posição x na vertical, em unidades c ao quadrado sobre a. Uma reta contínua fina pela origem é x igual a ct. Uma parábola tracejada, a newtoniana a t ao quadrado sobre 2, sobe depressa e cruza a reta x igual a ct no ponto marcado t igual a 2c sobre a. A curva contínua relativística começa igual à parábola, fica sempre abaixo da reta x igual a ct e se aproxima de uma guia tracejada paralela a ela, a assíntota x igual a ct menos c ao quadrado sobre a.">
+<defs><marker id="arr-4-13-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="70" y1="262" x2="591.4" y2="262" class="fig-axis" marker-end="url(#arr-4-13-2)"/>
+<text x="581.4" y="292" text-anchor="end" class="fig-label fig-small">t (em c/a)</text>
+<line x1="70" y1="262" x2="70" y2="18.4" class="fig-axis" marker-end="url(#arr-4-13-2)"/>
+<text x="78" y="24.4" class="fig-label fig-small">x (em c²/a)</text>
+<line x1="188" y1="262" x2="188" y2="267" class="fig-axis"/>
+<text x="188" y="280" text-anchor="middle" class="fig-label fig-small">1</text>
+<line x1="65" y1="206" x2="70" y2="206" class="fig-axis"/>
+<text x="62" y="210" text-anchor="end" class="fig-label fig-small">1</text>
+<line x1="306" y1="262" x2="306" y2="267" class="fig-axis"/>
+<text x="306" y="280" text-anchor="middle" class="fig-label fig-small">2</text>
+<line x1="65" y1="150" x2="70" y2="150" class="fig-axis"/>
+<text x="62" y="154" text-anchor="end" class="fig-label fig-small">2</text>
+<line x1="424" y1="262" x2="424" y2="267" class="fig-axis"/>
+<text x="424" y="280" text-anchor="middle" class="fig-label fig-small">3</text>
+<line x1="65" y1="94" x2="70" y2="94" class="fig-axis"/>
+<text x="62" y="98" text-anchor="end" class="fig-label fig-small">3</text>
+<line x1="542" y1="262" x2="542" y2="267" class="fig-axis"/>
+<text x="542" y="280" text-anchor="middle" class="fig-label fig-small">4</text>
+<line x1="65" y1="38" x2="70" y2="38" class="fig-axis"/>
+<text x="62" y="42" text-anchor="end" class="fig-label fig-small">4</text>
+<line x1="70" y1="262" x2="553.8" y2="32.4" class="fig-guide"/>
+<line x1="188" y1="262" x2="577.4" y2="77.2" class="fig-guide fig-dashed"/>
+<path d="M70,262 L72.4,262 L74.7,262 L77.1,261.9 L79.4,261.8 L81.8,261.7 L84.2,261.6 L86.5,261.5 L88.9,261.3 L91.2,261.1 L93.6,260.9 L96,260.6 L98.3,260.4 L100.7,260.1 L103,259.8 L105.4,259.5 L107.8,259.1 L110.1,258.8 L112.5,258.4 L114.8,258 L117.2,257.5 L119.6,257.1 L121.9,256.6 L124.3,256.1 L126.6,255.5 L129,255 L131.4,254.4 L133.7,253.8 L136.1,253.2 L138.4,252.6 L140.8,251.9 L143.2,251.2 L145.5,250.5 L147.9,249.8 L150.2,249.1 L152.6,248.3 L155,247.5 L157.3,246.7 L159.7,245.8 L162,245 L164.4,244.1 L166.8,243.2 L169.1,242.2 L171.5,241.3 L173.8,240.3 L176.2,239.3 L178.6,238.3 L180.9,237.3 L183.3,236.2 L185.6,235.1 L188,234 L190.4,232.9 L192.7,231.7 L195.1,230.5 L197.4,229.3 L199.8,228.1 L202.2,226.9 L204.5,225.6 L206.9,224.3 L209.2,223 L211.6,221.7 L214,220.3 L216.3,218.9 L218.7,217.5 L221,216.1 L223.4,214.7 L225.8,213.2 L228.1,211.7 L230.5,210.2 L232.8,208.7 L235.2,207.1 L237.6,205.5 L239.9,203.9 L242.3,202.3 L244.6,200.7 L247,199 L249.4,197.3 L251.7,195.6 L254.1,193.9 L256.4,192.1 L258.8,190.3 L261.2,188.5 L263.5,186.7 L265.9,184.8 L268.2,183 L270.6,181.1 L273,179.2 L275.3,177.2 L277.7,175.3 L280,173.3 L282.4,171.3 L284.8,169.3 L287.1,167.2 L289.5,165.1 L291.8,163 L294.2,160.9 L296.6,158.8 L298.9,156.6 L301.3,154.4 L303.6,152.2 L306,150 L308.4,147.7 L310.7,145.5 L313.1,143.2 L315.4,140.9 L317.8,138.5 L320.2,136.2 L322.5,133.8 L324.9,131.4 L327.2,128.9 L329.6,126.5 L332,124 L334.3,121.5 L336.7,119 L339,116.4 L341.4,113.9 L343.8,111.3 L346.1,108.7 L348.5,106.1 L350.8,103.4 L353.2,100.7 L355.6,98 L357.9,95.3 L360.3,92.6 L362.6,89.8 L365,87 L367.4,84.2 L369.7,81.4 L372.1,78.5 L374.4,75.6 L376.8,72.7 L379.2,69.8 L381.5,66.9 L383.9,63.9 L386.2,60.9 L388.6,57.9 L391,54.8 L393.3,51.8 L395.7,48.7 L398,45.6 L400.4,42.5 L402.8,39.3 L405.1,36.2 L407.5,33" class="fig-curve fig-dashed"/>
+<path d="M70,262 L72.4,262 L74.7,262 L77.1,261.9 L79.4,261.8 L81.8,261.7 L84.2,261.6 L86.5,261.5 L88.9,261.3 L91.2,261.1 L93.6,260.9 L96,260.7 L98.3,260.4 L100.7,260.1 L103,259.8 L105.4,259.5 L107.8,259.2 L110.1,258.9 L112.5,258.5 L114.8,258.1 L117.2,257.7 L119.6,257.3 L121.9,256.8 L124.3,256.4 L126.6,255.9 L129,255.4 L131.4,254.9 L133.7,254.4 L136.1,253.8 L138.4,253.3 L140.8,252.7 L143.2,252.1 L145.5,251.5 L147.9,250.9 L150.2,250.3 L152.6,249.6 L155,249 L157.3,248.3 L159.7,247.7 L162,247 L164.4,246.3 L166.8,245.6 L169.1,244.9 L171.5,244.1 L173.8,243.4 L176.2,242.7 L178.6,241.9 L180.9,241.1 L183.3,240.4 L185.6,239.6 L188,238.8 L190.4,238 L192.7,237.2 L195.1,236.4 L197.4,235.6 L199.8,234.8 L202.2,233.9 L204.5,233.1 L206.9,232.2 L209.2,231.4 L211.6,230.5 L214,229.7 L216.3,228.8 L218.7,227.9 L221,227 L223.4,226.2 L225.8,225.3 L228.1,224.4 L230.5,223.5 L232.8,222.6 L235.2,221.7 L237.6,220.7 L239.9,219.8 L242.3,218.9 L244.6,218 L247,217 L249.4,216.1 L251.7,215.2 L254.1,214.2 L256.4,213.3 L258.8,212.3 L261.2,211.4 L263.5,210.4 L265.9,209.5 L268.2,208.5 L270.6,207.6 L273,206.6 L275.3,205.6 L277.7,204.6 L280,203.7 L282.4,202.7 L284.8,201.7 L287.1,200.7 L289.5,199.7 L291.8,198.8 L294.2,197.8 L296.6,196.8 L298.9,195.8 L301.3,194.8 L303.6,193.8 L306,192.8 L308.4,191.8 L310.7,190.8 L313.1,189.8 L315.4,188.8 L317.8,187.7 L320.2,186.7 L322.5,185.7 L324.9,184.7 L327.2,183.7 L329.6,182.7 L332,181.6 L334.3,180.6 L336.7,179.6 L339,178.6 L341.4,177.6 L343.8,176.5 L346.1,175.5 L348.5,174.5 L350.8,173.4 L353.2,172.4 L355.6,171.4 L357.9,170.3 L360.3,169.3 L362.6,168.3 L365,167.2 L367.4,166.2 L369.7,165.1 L372.1,164.1 L374.4,163 L376.8,162 L379.2,161 L381.5,159.9 L383.9,158.9 L386.2,157.8 L388.6,156.8 L391,155.7 L393.3,154.7 L395.7,153.6 L398,152.6 L400.4,151.5 L402.8,150.4 L405.1,149.4 L407.5,148.3 L409.8,147.3 L412.2,146.2 L414.6,145.2 L416.9,144.1 L419.3,143 L421.6,142 L424,140.9 L426.4,139.8 L428.7,138.8 L431.1,137.7 L433.4,136.7 L435.8,135.6 L438.2,134.5 L440.5,133.5 L442.9,132.4 L445.2,131.3 L447.6,130.3 L450,129.2 L452.3,128.1 L454.7,127 L457,126 L459.4,124.9 L461.8,123.8 L464.1,122.8 L466.5,121.7 L468.8,120.6 L471.2,119.5 L473.6,118.5 L475.9,117.4 L478.3,116.3 L480.6,115.2 L483,114.2 L485.4,113.1 L487.7,112 L490.1,110.9 L492.4,109.8 L494.8,108.8 L497.2,107.7 L499.5,106.6 L501.9,105.5 L504.2,104.4 L506.6,103.4 L509,102.3 L511.3,101.2 L513.7,100.1 L516,99 L518.4,98 L520.8,96.9 L523.1,95.8 L525.5,94.7 L527.8,93.6 L530.2,92.5 L532.6,91.4 L534.9,90.4 L537.3,89.3 L539.6,88.2 L542,87.1 L544.4,86 L546.7,84.9 L549.1,83.8 L551.4,82.8 L553.8,81.7 L556.2,80.6 L558.5,79.5 L560.9,78.4 L563.2,77.3 L565.6,76.2 L568,75.1 L570.3,74 L572.7,73 L575,71.9 L577.4,70.8" class="fig-curve"/>
+<circle cx="306" cy="150" r="3" class="fig-arrowhead"/>
+<text x="433.7" y="79.6" text-anchor="end" class="fig-label fig-small">x = ct</text>
+<text x="632" y="114" text-anchor="end" class="fig-label fig-small">x = ct − c²/a</text>
+<line x1="462.4" y1="127.9" x2="499.4" y2="164.9" class="fig-guide"/>
+<text x="503.4" y="176.9" class="fig-label fig-small">relativística</text>
+<line x1="361" y1="89" x2="305" y2="97" class="fig-guide"/>
+<text x="301" y="101" text-anchor="end" class="fig-label fig-small">newtoniana, at²/2</text>
+<text x="316" y="166" class="fig-label fig-small">t = 2c/a</text>
+</svg>
+                    <figcaption><strong>Figura 4.13.2.</strong> Movimento sob força constante, em unidades $c/a$ para o tempo e $c^2/a$ para a
+                        distância. A curva contínua é a trajetória relativística $x(t)$ do <a href="#exr-4-13-5">Exercício 4.13.5</a>; a tracejada, a parábola newtoniana
+                        $\frac12at^2$, que coincide com ela para $t$ pequeno e ultrapassa a reta $x = ct$ (a linha do cone de luz) em $t = 2c/a$. A
+                        trajetória relativística fica abaixo de $x = ct$ e se aproxima da assíntota $x = ct - c^2/a$ (guia tracejada).</figcaption>
+                </figure>
+
+                <p id="exr-4-13-6"><strong>Exercício 4.13.6 (Decaimento em dois corpos).</strong> Uma partícula de massa $M$, em repouso, decai em
+                    duas de massas $m_1$ e $m_2$. Ache as energias e o módulo do momento dos produtos. Aplique ao decaimento do píon,
+                    $\pi^+ \to \mu^+\nu_\mu$, com $Mc^2 = 139{,}57$ MeV, $m_\mu c^2 = 105{,}66$ MeV e o neutrino tratado como sem massa.</p>
+
+                <p>
+                    <em>Solução.</em> Pela conservação do quadrimomento (hipótese (ii) da ponte com a física), $P = (Mc, \mathbf{0}) = p_1 + p_2$, logo
+                    $\mathbf{p}_1 = -\mathbf{p}_2$ e $p_2 = P - p_1$. Pela <a href="#prop-4-13-12">Proposição 4.13.12</a>,
+                    $-m_2^2c^2 = \eta(P,P) - 2\eta(P, p_1) + \eta(p_1,p_1) = -M^2c^2 + 2M\mathcal{E}_1 - m_1^2c^2$, porque $\eta(P,p_1) = -Mc\cdot\mathcal{E}_1/c$.
+                    Então
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    \mathcal{E}_1 &= \frac{(M^2 + m_1^2 - m_2^2)\,c^2}{2M}, \qquad \mathcal{E}_2 = \frac{(M^2 + m_2^2 - m_1^2)\,c^2}{2M},\\
+                    \lvert\mathbf{p}\rvert &= \frac{c}{2M}\sqrt{\big(M^2 - (m_1 + m_2)^2\big)\big(M^2 - (m_1 - m_2)^2\big)}.
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    Confere-se que $\mathcal{E}_1 + \mathcal{E}_2 = Mc^2$ e que $\mathcal{E}_k^2 - m_k^2c^4 = \lvert\mathbf{p}\rvert^2c^2$ para $k = 1, 2$. O momento só é
+                    real se $M \ge m_1 + m_2$: uma partícula só decai em produtos cuja soma das massas não excede a sua. Para o píon, com $m_2 = 0$,
+                    $\mathcal{E}_\nu = \lvert\mathbf{p}\rvert c = \frac{(M^2 - m_\mu^2)c^2}{2M} = \frac{139{,}57^2 - 105{,}66^2}{2\cdot139{,}57}$ MeV $\approx 29{,}8$ MeV, e o
+                    múon leva $\mathcal{E}_\mu = Mc^2 - \mathcal{E}_\nu \approx 109{,}8$ MeV, dos quais $4{,}1$ MeV de energia cinética. As energias são
+                    fixas: num decaimento em dois corpos, os produtos saem com energias bem determinadas, ao contrário do decaimento em três
+                    corpos.
+                </p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <ul>
+                    <li>A ação da partícula livre, $S = -mc\int dl$ (<a href="#def-4-13-1">Definição 4.13.1</a>), parametrizada pelo tempo coordenado como
+                        $\int L(\mathbf{v})\,dt$ com $L = -mc^2\sqrt{1 - v^2/c^2}$ (<a href="#prop-4-13-2">Proposição 4.13.2</a>), o seu sinal (<a href="#obs-4-13-3">Observação 4.13.3</a>) e o movimento livre
+                        retilíneo e uniforme (<a href="#prop-4-13-4">Proposição 4.13.4</a>).</li>
+                    <li>O momento $\mathbf{p} = \gamma m\mathbf{v}$ e a energia $\mathcal{E} = \gamma mc^2$, conservados pelas integrais primeiras do 4.12
+                        (<a href="#prop-4-13-5">Proposição 4.13.5</a>), a leitura de $m$ como invariante (<a href="#obs-4-13-6">Observação 4.13.6</a>), a energia de repouso e a velocidade limite (<a href="#obs-4-13-7">Observação 4.13.7</a>).</li>
+                    <li>O tempo próprio e a quadrivelocidade (<a href="#def-4-13-8">Definição 4.13.8</a>), com $u^\mu = (\gamma c, \gamma\mathbf{v})$ e $\eta(u,u) = -c^2$
+                        (<a href="#prop-4-13-9">Proposição 4.13.9</a>); o caso de uma métrica qualquer (<a href="#obs-4-13-10">Observação 4.13.10</a>).</li>
+                    <li>O quadrimomento $p^\mu = (\mathcal{E}/c, \mathbf{p})$ (<a href="#def-4-13-11">Definição 4.13.11</a>) e a camada de massa
+                        $\mathcal{E}^2 = \lvert\mathbf{p}\rvert^2c^2 + m^2c^4$ (<a href="#prop-4-13-12">Proposição 4.13.12</a>): a dinâmica livre vem só da geometria (<a href="#obs-4-13-13">Observação 4.13.13</a>).</li>
+                    <li>A força como derivada do momento relativístico (<a href="#prop-4-13-14">Proposição 4.13.14</a>), e por que um potencial escalar depende do referencial
+                        enquanto uma $1$-forma não (<a href="#obs-4-13-15">Observação 4.13.15</a>).</li>
+                    <li>O grupo de Lorentz leva todo vetor tipo tempo futuro ao eixo do tempo (<a href="#lema-4-13-16">Lema 4.13.16</a>), e por isso $-mc\int dl$ é a única
+                        ação livre compatível com as simetrias (<a href="#prop-4-13-17">Proposição 4.13.17</a>); a mesma ação escrita como $\int m\,u_\mu dx^\mu$ (<a href="#prop-4-13-18">Proposição 4.13.18</a>) e
+                        a massa como acoplamento, com o termo $q\int f$ de um campo (<a href="#obs-4-13-19">Observação 4.13.19</a>).</li>
+                    <li>A reta maximiza o tempo próprio entre dois eventos (<a href="#teo-4-13-20">Teorema 4.13.20</a>), o paradoxo dos gêmeos, e as partículas sem massa
+                        pela energia da curva (<a href="#obs-4-13-21">Observação 4.13.21</a>).</li>
+                </ul>
+
+                <p>
+                    Falta no argumento do capítulo o passo anunciado na (4.13.12): tomar como $f$ o potencial eletromagnético $A$, que os
+                    tópicos 4.5 a 4.8 construíram, e ver que equação do movimento sai da ação $-mc\int dl + q\int A$. A resposta é a força de
+                    Lorentz, e ela fecha o ciclo do capítulo: o eletromagnetismo deu a métrica, a métrica deu a dinâmica, e a dinâmica, acoplada
+                    ao campo, diz como os campos movem as cargas:
+                    <a href="[14] - Acoplamento e Força de Lorentz.html">4.14 Acoplamento Eletromagnético e a Força de Lorentz</a>.
+                </p>
 
             </div>
         </main>
@@ -176,6 +907,14 @@
                 <h4>Nesta página</h4>
                 <ul>
                     <li><a href="#mecanica-relativistica">Mecânica Relativística</a></li>
+                    <li><a href="#acao-livre">A ação livre</a></li>
+                    <li><a href="#momento-e-energia">Momento e energia</a></li>
+                    <li><a href="#quadrivelocidade">Quadrivelocidade</a></li>
+                    <li><a href="#forca">Força</a></li>
+                    <li><a href="#acoplamento-pela-massa">A massa como acoplamento</a></li>
+                    <li><a href="#fisica">Ponte com a física</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
                 </ul>
             </div>
         </aside>
