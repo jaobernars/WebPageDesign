@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>As Equações de Euler–Lagrange para Campos | Relatividade Geral | The Journal of a Physicist</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../../../assets/images/Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../../../assets/images/Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../../../assets/images/Favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="../../../../../../assets/images/Favicon/favicon.ico">
+    <link rel="stylesheet" href="../../../../../../assets/css/class-lecture.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                        <line x1="9" x2="9" y1="3" y2="21"></line>
+                    </svg>
+                </button>
+                <button id="theme-toggle" class="sidebar-toggle" aria-label="Toggle Theme">
+                    <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="breadcrumbs-header">
+                    <a href="../../index.html" class="breadcrumb-link active">Relatividade Geral</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-category" class="breadcrumb-link">Eletromagnetismo e a Geometria do Espaço-Tempo</span>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-current" class="breadcrumb-link active">4.16 Euler–Lagrange para Campos</span>
+                </div>
+            </div>
+            <nav class="top-nav">
+                <a href="../../../../../../Páginas Principais/Lectures.html">Lectures</a>
+                <a href="../../../../../../index.html">Home</a>
+            </nav>
+        </div>
+
+        <script>
+            MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']]
+                }
+            };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    </header>
+
+    <div class="main-layout">
+        <aside class="left-sidebar" id="left-sidebar">
+            <div class="sidebar-content">
+
+                <button class="search-trigger" id="search-trigger">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                    </svg>
+                    <span>Search docs...</span>
+                </button>
+
+                <div class="sidebar-group">
+                    <h3>Início</h3>
+                    <ul>
+                        <li><a href="../../index.html">Overview</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Introdução a Simetrias em Mecânica Clássica</h3>
+                    <ul>
+                        <li><a href="../[0] - Introdução a Simetrias em Mecânica Clássica/1-HistoricalIntroduction.html">Introdução Histórica</a></li>
+                        <li><a href="../[0] - Introdução a Simetrias em Mecânica Clássica/1-TR.html">Teoria da Relatividade</a></li>
+                        <li><a href="../[0] - Introdução a Simetrias em Mecânica Clássica/1-Galilean-Relativity.html">Relatividade Galileana</a></li>
+                        <li><a href="../[0] - Introdução a Simetrias em Mecânica Clássica/1-Classical-Electromagnetism.html">Eletromagnetismo Clássico</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Introdução a Simetrias em Mecânica Relativística</h3>
+                    <ul>
+                        <li><a href="../[1] - Introdução a Simetrias em Mecânica Relativística/Tópico 1.html">Tópico 1</a></li>
+                        <li><a href="../[1] - Introdução a Simetrias em Mecânica Relativística/Tópico 2.html">Tópico 2</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Cálculo em Variedades Diferenciáveis</h3>
+                    <ul>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[01] - Motivação e Roteiro.html">3.1 Motivação e Roteiro</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[02] - Preliminares de Topologia e Cálculo.html">3.2 Preliminares de Topologia e Cálculo</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[03] - Variedades Diferenciáveis.html">3.3 Variedades Diferenciáveis</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[04] - Funções e Aplicações Suaves.html">3.4 Funções e Aplicações Suaves</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[05] - Vetores Tangentes.html">3.5 Vetores Tangentes</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[06] - Subvariedades.html">3.6 Subvariedades</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[07] - Fibrado Tangente e Campos Vetoriais.html">3.7 Fibrado Tangente e Campos Vetoriais</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[08] - Fluxos e Derivada de Lie.html">3.8 Fluxos e Derivada de Lie</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[09] - Covetores e 1-Formas.html">3.9 Covetores e 1-Formas</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[10] - Álgebra Multilinear e Tensores.html">3.10 Álgebra Multilinear e Tensores</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[11] - Produto Exterior.html">3.11 Produto Exterior</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[12] - Formas Diferenciais.html">3.12 Formas Diferenciais</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[13] - Derivada Exterior.html">3.13 Derivada Exterior</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[14] - Fórmula de Cartan.html">3.14 Fórmula de Cartan</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[15] - Orientação.html">3.15 Orientação</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[16] - Variedades com Bordo.html">3.16 Variedades com Bordo</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[17] - Integração de Formas.html">3.17 Integração de Formas</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[18] - Teorema de Stokes Geral.html">3.18 Teorema de Stokes Geral</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[19] - Teoremas Clássicos.html">3.19 Teoremas Clássicos</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Eletromagnetismo e a Geometria do Espaço-Tempo</h3>
+                    <ul>
+                        <li><a href="[01] - Motivação e Roteiro.html">4.1 Motivação e Roteiro</a></li>
+                        <li><a href="[02] - O Lema de Poincaré.html">4.2 O Lema de Poincaré</a></li>
+                        <li><a href="[03] - Métricas e Volume Invariante.html">4.3 Métricas e Volume Invariante</a></li>
+                        <li><a href="[04] - O Operador Estrela de Hodge.html">4.4 O Operador Estrela de Hodge</a></li>
+                        <li><a href="[05] - Maxwell em 3D com Formas.html">4.5 Maxwell em 3D com Formas</a></li>
+                        <li><a href="[06] - Meios Materiais e Métrica Induzida.html">4.6 Meios Materiais e Métrica Induzida</a></li>
+                        <li><a href="[07] - Equações Homogêneas em 4D.html">4.7 Equações Homogêneas em 4D</a></li>
+                        <li><a href="[08] - Inomogêneas e a Métrica de Minkowski.html">4.8 Inomogêneas e a Métrica de Minkowski</a></li>
+                        <li><a href="[09] - Carga, Monopolos e Correntes.html">4.9 Carga, Monopolos e Correntes</a></li>
+                        <li><a href="[10] - Comprimento e Energia de Curvas.html">4.10 Comprimento e Energia de Curvas</a></li>
+                        <li><a href="[11] - Massa, Velocidade Limite e Causalidade.html">4.11 Massa, Velocidade Limite e Causalidade</a></li>
+                        <li><a href="[12] - O Princípio Variacional.html">4.12 O Princípio Variacional</a></li>
+                        <li><a href="[13] - Mecânica Relativística.html">4.13 Mecânica Relativística</a></li>
+                        <li><a href="[14] - Acoplamento e Força de Lorentz.html">4.14 Acoplamento e Força de Lorentz</a></li>
+                        <li><a href="[15] - Densidades Lagrangianas.html">4.15 Densidades Lagrangianas</a></li>
+                        <li><a href="[16] - Euler-Lagrange para Campos.html" class="active">4.16 Euler–Lagrange para Campos</a></li>
+                        <li><a href="[17] - Derivada na Fibra e Legendre.html">4.17 Derivada na Fibra e Legendre</a></li>
+                        <li><a href="[18] - Equações de Hamilton.html">4.18 Hamiltoniana e Equações de Hamilton</a></li>
+                        <li><a href="[19] - Teorias de Calibre e Vínculos.html">4.19 Vínculos e Calibre</a></li>
+                        <li><a href="[20] - Tensor de Energia-Momento.html">4.20 Tensor de Energia-Momento</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="prose">
+
+                <h1 id="euler-lagrange-para-campos">4.16 As Equações de Euler–Lagrange para Campos</h1>
+                <p class="lead">Variar um campo em vez de uma curva: a primeira variação com suporte compacto, as equações de Euler–Lagrange para campos e as equações de Maxwell com fontes como equações do movimento da ação eletromagnética.</p>
+
+                <p>
+                    No tópico <a href="[12] - O Princípio Variacional.html">4.12</a> variamos curvas $x^\mu(\tau)$: o parâmetro era o tempo próprio, e
+                    as equações de Euler–Lagrange eram equações diferenciais ordinárias. Agora a incógnita é um campo $\varphi^a(x)$, que tem
+                    um valor em cada ponto do espaço-tempo. O papel do parâmetro passa a ser feito pelas quatro coordenadas $x^\mu$ de uma
+                    vez, e as equações de Euler–Lagrange passam a ser equações diferenciais parciais.
+                </p>
+
+                <p>
+                    O 4.12 já provou essas equações para funções definidas num retângulo e nulas no bordo (<a href="[12] - O Princípio Variacional.html#teo-4-12-13">Teorema 4.12.13</a>). Aqui as
+                    reescrevemos na forma que a física usa: numa região aberta qualquer do espaço-tempo, com variações que se anulam fora
+                    de um compacto, o que torna preciso o que se costuma chamar de "campos bem-comportados". Depois aplicamos o teorema
+                    à densidade $\mathcal{L}_{EM}$ do tópico <a href="[15] - Densidades Lagrangianas.html">4.15</a>, e as equações do movimento
+                    do potencial $A$ são as equações de Maxwell com fontes do tópico
+                    <a href="[08] - Inomogêneas e a Métrica de Minkowski.html">4.8</a>, com o mesmo sinal. As homogêneas vêm de graça, de
+                    $F = dA$. Com a ação da partícula do 4.14, a teoria inteira (campo, cargas e o acoplamento entre eles) passa a caber
+                    numa única ação.
+                </p>
+
+                <h2 id="variacoes">Variações de um campo</h2>
+
+                <p>
+                    Seja $U \subset \mathbb{R}^4$ um aberto, com coordenadas inerciais $x = (x^0, x^1, x^2, x^3)$ e $x^0 = ct$. Um <em>campo</em> em $U$ é
+                    uma lista de $k$ funções $\varphi = (\varphi^1, \dots, \varphi^k)$ de classe $C^2$; escrevemos $\partial_\mu\varphi^a = \partial\varphi^a/\partial x^\mu$. A
+                    densidade lagrangiana é uma função $\mathcal{L}(\phi, P, x)$ de $k + 4k + 4$ variáveis, com $\phi \in \mathbb{R}^k$, $P = (P^a_\mu) \in \mathbb{R}^{4k}$ e
+                    $x \in U$, que avaliamos em $\phi = \varphi(x)$ e $P^a_\mu = \partial_\mu\varphi^a(x)$. Como no 4.12, as derivadas parciais de $\mathcal{L}$ em relação aos
+                    seus argumentos se escrevem
+                </p>
+
+                <p>
+                    $$ \frac{\partial\mathcal{L}}{\partial\varphi^a} := \frac{\partial\mathcal{L}}{\partial\phi^a}\big(\varphi(x), \partial\varphi(x), x\big), \qquad
+                    \frac{\partial\mathcal{L}}{\partial(\partial_\mu\varphi^a)} := \frac{\partial\mathcal{L}}{\partial P^a_\mu}\big(\varphi(x), \partial\varphi(x), x\big), $$
+                </p>
+
+                <p>
+                    e "$\partial_\mu$" aplicado a uma dessas expressões é a derivada da função composta de $x$ (a derivada total). Suporemos que
+                    $\mathcal{L}$ é de classe $C^1$ e que as derivadas $\partial\mathcal{L}/\partial P^a_\mu$ são de classe $C^1$ (vale, por exemplo, se $\mathcal{L}$ é $C^2$).
+                </p>
+
+                <p>
+                    A ação de todo o aberto $U$, $\frac1c\int_U\mathcal{L}\,d^4x$, em geral não existe: para uma onda plana, ou para o campo
+                    estático de uma carga, a integral sobre todo o espaço-tempo diverge. O que se compara é a ação de dois campos que
+                    diferem apenas numa parte limitada do espaço-tempo, e essa diferença é sempre finita.
+                </p>
+
+                <div class="definition-box" id="def-4-16-1" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.16.1 (Variações admissíveis e campos estacionários).</strong> Uma <em>variação admissível</em> de $\varphi$ em
+                        $U$ é uma lista $h = (h^1, \dots, h^k)$ de funções suaves em $U$ com <em>suporte compacto</em>: existe um compacto $K \subset U$
+                        fora do qual todas as $h^a$ se anulam. Para $\epsilon \in \mathbb{R}$, a variação da ação é</p>
+                    <p>$$ \Delta S(\epsilon) = \frac1c\int_U\Big[\mathcal{L}\big(\varphi + \epsilon h, \partial\varphi + \epsilon\,\partial h, x\big) - \mathcal{L}\big(\varphi, \partial\varphi, x\big)\Big]\,d^4x, $$</p>
+                    <p>uma integral sobre o compacto $K$, porque o integrando se anula fora dele. O campo $\varphi$ é <em>estacionário</em> em $U$ se
+                        $\Delta S'(0) = 0$ para toda variação admissível.</p>
+                </div>
+
+                <p id="obs-4-16-2"><strong>Observação 4.16.2 (Por que suporte compacto).</strong> Se a ação de uma região limitada $D \supset K$ existe, por
+                    exemplo a de um retângulo fechado contido em $U$, então $\Delta S(\epsilon) = S_D[\varphi + \epsilon h] - S_D[\varphi]$, e a definição é a
+                    de sempre: a derivada da ação de $D$ na direção $h$. A vantagem do suporte compacto é não precisar escolher $D$ nem
+                    supor que alguma ação total seja finita. Ele também é a versão precisa de "variações que se anulam nos extremos":
+                    $h$ e todas as suas derivadas se anulam perto do bordo de qualquer região que contenha $K$, e os termos de bordo
+                    das integrações por partes desaparecem. O 4.12 usou variações nulas no bordo de um retângulo; a única diferença é a
+                    classe de variações, e o <a href="#lema-4-16-4">Lema 4.16.4</a> abaixo mostra que as de suporte compacto bastam.</p>
+
+                <div class="definition-box" id="prop-4-16-3">
+                    <p><strong>Proposição 4.16.3 (A primeira variação).</strong> Para toda variação admissível $h$,</p>
+                    <p>$$ \begin{aligned}
+                        \Delta S'(0) &= \frac1c\int_U\Big(\frac{\partial\mathcal{L}}{\partial\varphi^a}\,h^a + \frac{\partial\mathcal{L}}{\partial(\partial_\mu\varphi^a)}\,\partial_\mu h^a\Big)d^4x\\
+                        &= \frac1c\int_U\mathcal{E}_a\,h^a\,d^4x,
+                        \end{aligned} \tag{4.16.1} $$</p>
+                    <p>com soma em $a$ e em $\mu$, e</p>
+                    <p>$$ \mathcal{E}_a = \frac{\partial\mathcal{L}}{\partial\varphi^a} - \partial_\mu\frac{\partial\mathcal{L}}{\partial(\partial_\mu\varphi^a)}. $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> <strong>A derivada.</strong> Seja $K \subset U$ um compacto fora do qual $h = 0$, e seja $R \subset \mathbb{R}^4$ um
+                    retângulo fechado que contém $K$ no seu interior. Estendemos o integrando $\Phi(\epsilon, x)$ de $\Delta S$ por zero fora de $U$; como ele
+                    se anula no aberto $U \setminus K$, a extensão é contínua em $\mathbb{R}\times\mathbb{R}^4$, e o mesmo vale para
+                    $\partial_\epsilon\Phi = \frac{\partial\mathcal{L}}{\partial\phi^a}(\dots)\,h^a + \frac{\partial\mathcal{L}}{\partial P^a_\mu}(\dots)\,\partial_\mu h^a$, que é contínua em $U$ pela regra
+                    da cadeia e também se anula fora de $K$. Pela derivação sob o sinal de integral (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[02] - Preliminares de Topologia e Cálculo.html#teo-3-2-66">Teorema 3.2.66</a>), aplicada à integral sobre
+                    $R$, que pelo teorema de Fubini (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[02] - Preliminares de Topologia e Cálculo.html#teo-3-2-62">Teorema 3.2.62</a>) é uma sequência de integrais simples, $\Delta S'(0) = \frac1c\int_R\partial_\epsilon\Phi(0, x)\,d^4x$: é a
+                    primeira integral de (4.16.1).
+                </p>
+
+                <p>
+                    <strong>Integração por partes.</strong> As funções $\pi^\mu{}_a(x) = \frac{\partial\mathcal{L}}{\partial(\partial_\mu\varphi^a)}$ são de classe $C^1$ em $U$, porque
+                    $\partial\mathcal{L}/\partial P^a_\mu$ é $C^1$ e $\varphi$ é $C^2$. Então $\pi^\mu{}_ah^a$ é $C^1$, se anula fora de $K$ e, estendida por zero, é $C^1$ em
+                    $\mathbb{R}^4$, com
+                </p>
+
+                <p>
+                    $$ \partial_\mu\big(\pi^\mu{}_a\,h^a\big) = \big(\partial_\mu\pi^\mu{}_a\big)h^a + \pi^\mu{}_a\,\partial_\mu h^a. $$
+                </p>
+
+                <p>
+                    Para cada $\mu$ fixo, integramos $\partial_\mu(\pi^\mu{}_ah^a)$ sobre $R = [a_0, b_0]\times\dots\times[a_3, b_3]$ primeiro na variável $x^\mu$ (Fubini):
+                    pelo teorema fundamental do cálculo, sobra a diferença dos valores de $\pi^\mu{}_ah^a$ nas faces $x^\mu = b_\mu$ e $x^\mu = a_\mu$, onde
+                    $h = 0$ porque $K$ está no interior de $R$. Logo $\int_R\partial_\mu(\pi^\mu{}_ah^a)\,d^4x = 0$, e
+                    $\int\pi^\mu{}_a\,\partial_\mu h^a = -\int(\partial_\mu\pi^\mu{}_a)h^a$. Substituindo na primeira integral, obtemos a segunda. $\blacksquare$
+                </p>
+
+                <p>
+                    A integral da divergência $\partial_\mu(\pi^\mu{}_ah^a)$ é o "termo de fronteira" que se costuma descartar. Ela poderia ser tratada pelo
+                    teorema da divergência, mas para um integrando de suporte compacto num retângulo o teorema de Fubini basta, e não
+                    precisamos de nenhuma hipótese sobre o bordo de $U$. Falta o análogo do lema fundamental.
+                </p>
+
+                <div class="definition-box" id="lema-4-16-4">
+                    <p><strong>Lema 4.16.4 (Lema fundamental em abertos).</strong> Seja $U \subset \mathbb{R}^n$ aberto e $f: U \to \mathbb{R}$ contínua. Se
+                        $\int_Uf\,h = 0$ para toda função suave $h$ com suporte compacto em $U$, então $f \equiv 0$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Seja $x_0 \in U$. Como $U$ é aberto, existe um cubo fechado $\Omega$ centrado em $x_0$ e contido em $U$. Toda
+                    função suave $h$ com suporte compacto no interior de $\Omega$, estendida por zero, é suave com suporte compacto em $U$, e para
+                    ela $\int_\Omega f\,h = \int_Uf\,h = 0$. Pelo <a href="[12] - O Princípio Variacional.html#lema-4-12-6">Lema 4.12.6</a>, $f = 0$ em $\Omega$, e em particular $f(x_0) = 0$. $\blacksquare$
+                </p>
+
+                <h2 id="euler-lagrange">As equações de Euler–Lagrange</h2>
+
+                <div class="definition-box" id="teo-4-16-5">
+                    <p><strong>Teorema 4.16.5 (Euler–Lagrange para campos).</strong> Nas hipóteses acima, $\varphi$ é estacionário em $U$ se, e somente se,
+                        em todo ponto de $U$,</p>
+                    <p>$$ \frac{\partial\mathcal{L}}{\partial\varphi^a} - \partial_\mu\frac{\partial\mathcal{L}}{\partial(\partial_\mu\varphi^a)} = 0, \qquad a = 1, \dots, k. \tag{4.16.2} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Se (4.16.2) vale, $\mathcal{E}_a = 0$ e a <a href="#prop-4-16-3">Proposição 4.16.3</a> dá $\Delta S'(0) = 0$ para toda variação admissível.
+                    Reciprocamente, fixe $b$ e tome variações com $h^a = 0$ para $a \ne b$: a <a href="#prop-4-16-3">Proposição 4.16.3</a> dá $\int_U\mathcal{E}_b\,h^b\,d^4x = 0$ para
+                    toda $h^b$ suave de suporte compacto. A função $\mathcal{E}_b$ é contínua, porque $\partial\mathcal{L}/\partial\phi^b$ é contínua e $\pi^\mu{}_b$ é $C^1$; pelo
+                    <a href="#lema-4-16-4">Lema 4.16.4</a>, $\mathcal{E}_b = 0$. $\blacksquare$
+                </p>
+
+                <p>
+                    O lado esquerdo de (4.16.2) é a <strong>derivada funcional</strong> $\delta S/\delta\varphi^a$, como em (4.12.5), a menos do fator $\frac1c$ da
+                    convenção (4.15.2): pela (4.16.1), $\Delta S'(0) = \int_U\frac{\delta S}{\delta\varphi^a}\,h^a\,d^4x$ com $\frac{\delta S}{\delta\varphi^a} = \frac1c\mathcal{E}_a$, e o teorema se
+                    resume na forma usual $\delta S/\delta\varphi^a = 0$.
+                </p>
+
+                <p id="obs-4-16-6"><strong>Observação 4.16.6 (Relação com o 4.12).</strong> A equação (4.16.2) é a (4.12.7) do <a href="[12] - O Princípio Variacional.html#teo-4-12-13">Teorema 4.12.13</a>, com os
+                    parâmetros $x^\mu$ no lugar de $x^i$ e $\mathcal{L}$ no lugar de $G$. O teorema do 4.12 vale num retângulo, com variações nulas no
+                    bordo; o <a href="#teo-4-16-5">Teorema 4.16.5</a> vale num aberto qualquer, com variações de suporte compacto. As duas versões são equivalentes
+                    onde ambas se aplicam: num retângulo, o teorema do 4.12 dá (4.16.2) no interior, e (4.16.2) no interior dá, pela
+                    continuidade, a mesma equação no retângulo fechado. A versão local é a que se usa em física: (4.16.2) é uma equação
+                    pontual, e para obtê-la basta comparar o campo com outros que diferem dele perto de cada ponto.</p>
+
+                <p id="obs-4-16-7"><strong>Observação 4.16.7 (O número de campos).</strong> O número $k$ de campos não tem nada a ver com o número
+                    de coordenadas. Um <em>campo escalar</em> tem uma componente ($k = 1$). O potencial eletromagnético tem as quatro componentes
+                    $A_\mu$ da $1$-forma $A$ ($k = 4$, com o índice $a$ substituído por $\mu$). Um campo de valores complexos conta como dois campos
+                    reais, a parte real e a imaginária (<a href="#exr-4-16-5">Exercício 4.16.5</a>). Os campos de partículas de spin $\frac12$, como o elétron, são <em>espinores</em>:
+                    um espinor de Weyl tem duas componentes complexas, e o de Dirac, quatro. Aqui só registramos que eles cabem no mesmo
+                    esquema, com uma densidade de primeira ordem nas derivadas; a sua construção (a partir das representações do grupo
+                    de Lorentz) está fora deste curso.</p>
+
+                <p id="obs-4-16-8"><strong>Observação 4.16.8 (O dicionário).</strong> Comparando (4.16.2) com as equações de Euler–Lagrange de uma
+                    partícula, (4.12.4), a passagem da mecânica para a teoria de campos é a troca</p>
+
+                <p>
+                    $$ q^i(t) \longrightarrow \varphi^a(x), \qquad t \longrightarrow (x^0, x^1, x^2, x^3), \qquad \frac{d}{dt} \longrightarrow \partial_\mu, $$
+                </p>
+
+                <p>
+                    com uma soma sobre $\mu$ no termo das derivadas: em vez de uma "velocidade" $\dot q^i$, o campo tem quatro, as
+                    $\partial_\mu\varphi^a$. Os índices $a$ dizem <em>qual</em> campo; os índices $\mu$ dizem <em>onde</em>. Na lagrangiana de uma partícula, $L$ é uma soma
+                    finita sobre os graus de liberdade; na de um campo, $L = \int\mathcal{L}\,d^3x$ é uma "soma" contínua sobre os pontos do
+                    espaço, e $\varphi^a(t, \mathbf{x})$ faz o papel de $q^i(t)$ com o índice contínuo $\mathbf{x}$ ao lado do discreto $a$. O tópico 4.17 usa esse
+                    dicionário para passar à descrição hamiltoniana.
+                </p>
+
+                <p>
+                    Como na mecânica, a densidade lagrangiana não é única: acrescentar uma divergência não muda as equações.
+                </p>
+
+                <div class="definition-box" id="prop-4-16-9">
+                    <p><strong>Proposição 4.16.9 (Divergências não mudam as equações).</strong> Sejam $K^\mu(\phi, x)$, $\mu = 0, \dots, 3$, funções de classe $C^3$,
+                        e $\mathcal{L}' = \mathcal{L} + \partial_\mu\big[K^\mu(\varphi, x)\big]$, em que $\partial_\mu$ é a derivada total,</p>
+                    <p>$$ \partial_\mu\big[K^\mu(\varphi, x)\big] = \frac{\partial K^\mu}{\partial x^\mu} + \frac{\partial K^\mu}{\partial\phi^a}\,\partial_\mu\varphi^a. $$</p>
+                    <p>Então, para todo campo $\varphi$ de classe $C^2$, as expressões $\mathcal{E}'_a$ e $\mathcal{E}_a$ de (4.16.2) para $\mathcal{L}'$ e para $\mathcal{L}$ coincidem. Em
+                        particular, $\mathcal{L}$ e $\mathcal{L}'$ têm os mesmos campos estacionários.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> $\mathcal{L}'$ satisfaz as hipóteses da <a href="#prop-4-16-3">Proposição 4.16.3</a> (é $C^2$ se $\mathcal{L}$ é $C^2$, porque $K$ é $C^3$). Seja $h$ uma
+                    variação admissível, nula fora do compacto $K_h$. A diferença entre as variações das duas ações é</p>
+
+                <p>
+                    $$ \Delta S'(\epsilon) - \Delta S(\epsilon) = \frac1c\int_U\partial_\mu\Big[K^\mu(\varphi + \epsilon h, x) - K^\mu(\varphi, x)\Big]\,d^4x, $$
+                </p>
+
+                <p>
+                    em que a função entre colchetes é $C^1$ em $x$ e se anula fora de $K_h$. Pelo argumento de Fubini da <a href="#prop-4-16-3">Proposição 4.16.3</a>, essa
+                    integral é zero para todo $\epsilon$. Logo as primeiras variações coincidem, e pela (4.16.1),
+                    $\int_U(\mathcal{E}'_a - \mathcal{E}_a)h^a\,d^4x = 0$ para toda variação admissível. Pelo <a href="#lema-4-16-4">Lema 4.16.4</a>, aplicado componente a componente,
+                    $\mathcal{E}'_a = \mathcal{E}_a$. $\blacksquare$
+                </p>
+
+                <p>
+                    Para $k = 1$ e uma só coordenada, a proposição diz que $L$ e $L + \frac{d}{dt}K(q, t)$ têm as mesmas equações de Euler–Lagrange, um
+                    fato conhecido da mecânica. A conta direta também é possível: os termos de $\mathcal{E}'_a - \mathcal{E}_a$ se cancelam aos pares pela
+                    igualdade das derivadas mistas de $K$, e é por isso que pedimos $K \in C^3$. O termo topológico $\theta\,F\wedge F$ da
+                    <a href="[15] - Densidades Lagrangianas.html#obs-4-15-12">Observação 4.15.12</a> também é uma divergência, mas a sua $K^\mu$ depende das derivadas de $A$; o <a href="#exr-4-16-3">Exercício 4.16.3</a> verifica diretamente
+                    que ele não contribui para as equações.
+                </p>
+
+                <h2 id="escalar">O campo escalar</h2>
+
+                <p>
+                    O exemplo mais simples é um único campo real $\varphi$ ($k = 1$). A densidade tem de ser um escalar (<a href="[15] - Densidades Lagrangianas.html#prop-4-15-4">Proposição 4.15.4</a>), e o
+                    escalar mais simples que contém as derivadas é $\eta^{\mu\nu}\partial_\mu\varphi\,\partial_\nu\varphi$.
+                </p>
+
+                <div class="definition-box" id="prop-4-16-10">
+                    <p><strong>Proposição 4.16.10 (O campo escalar).</strong> Seja $V: \mathbb{R} \to \mathbb{R}$ de classe $C^2$ e</p>
+                    <p>$$ \mathcal{L} = -\frac12\,\eta^{\mu\nu}\,\partial_\mu\varphi\,\partial_\nu\varphi - V(\varphi) = \frac{1}{2c^2}\big(\partial_t\varphi\big)^2 - \frac12\lvert\nabla\varphi\rvert^2 - V(\varphi). $$</p>
+                    <p>A equação de Euler–Lagrange (4.16.2) é</p>
+                    <p>$$ \Box\varphi = V'(\varphi), \qquad \Box = \eta^{\mu\nu}\partial_\mu\partial_\nu = -\frac{1}{c^2}\,\partial_t^2 + \nabla^2. \tag{4.16.3} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> $\frac{\partial\mathcal{L}}{\partial\varphi} = -V'(\varphi)$. Para a derivada em relação a $\partial_\mu\varphi$, o termo quadrático é
+                    $-\frac12\eta^{\alpha\beta}P_\alpha P_\beta$, com derivada $-\frac12\eta^{\alpha\beta}(\delta^\mu_\alpha P_\beta + P_\alpha\delta^\mu_\beta) = -\eta^{\mu\beta}P_\beta$ (a simetria de $\eta$ junta as duas
+                    parcelas). Então $\frac{\partial\mathcal{L}}{\partial(\partial_\mu\varphi)} = -\eta^{\mu\nu}\partial_\nu\varphi$, e (4.16.2) fica $-V'(\varphi) + \eta^{\mu\nu}\partial_\mu\partial_\nu\varphi = 0$. A segunda forma de $\mathcal{L}$
+                    vem de $\eta^{00} = -1$ e $\partial_0 = \frac1c\partial_t$. $\blacksquare$
+                </p>
+
+                <p>
+                    O operador $\Box$ é o operador de onda do <a href="[04] - O Operador Estrela de Hodge.html#ex-4-4-24">Exemplo 4.4.24</a>, onde apareceu como $\star d\star df = -\Box f$. Ele é invariante por
+                    Lorentz, como deve ser: a equação vem de uma densidade escalar. Com $V = 0$, (4.16.3) é a equação de onda, e as
+                    perturbações de $\varphi$ se propagam com velocidade $c$.
+                </p>
+
+                <p id="ex-4-16-11"><strong>Exemplo 4.16.11 (Klein–Gordon).</strong> Para $V(\varphi) = \frac12\kappa^2\varphi^2$, com $\kappa \gt 0$ uma constante
+                    com unidade de inverso de comprimento, (4.16.3) é a <strong>equação de Klein–Gordon</strong></p>
+
+                <p>
+                    $$ \big(\Box - \kappa^2\big)\varphi = 0. \tag{4.16.4} $$
+                </p>
+
+                <p>
+                    Na física quântica escreve-se $\kappa = mc/\hbar$, e (4.16.4) é a equação de uma partícula de massa $m$ e spin zero: com
+                    $E = \hbar\omega$ e $\mathbf{p} = \hbar\mathbf{k}$, as ondas planas de (4.16.4) satisfazem $E^2 = \lvert\mathbf{p}\rvert^2c^2 + m^2c^4$, a relação do tópico
+                    <a href="[13] - Mecânica Relativística.html">4.13</a> (<a href="#exr-4-16-4">Exercício 4.16.4</a>). A constante $\kappa^{-1} = \hbar/(mc)$ é o comprimento de onda de Compton.
+                    Com a convenção (4.15.2), $\mathcal{L}$ tem unidade de energia por volume, e $\varphi^2$ tem unidade de J/m.
+                </p>
+
+                <p id="obs-4-16-12"><strong>Observação 4.16.12 (O sinal).</strong> A equação (4.16.3) não muda se $\mathcal{L}$ for multiplicada por $-1$, mas a
+                    física sim. Na forma 3+1, $\mathcal{L}$ é "cinética menos potencial": $\frac{1}{2c^2}(\partial_t\varphi)^2$ é o análogo de $\frac12m\dot q^2$, e
+                    $\frac12\lvert\nabla\varphi\rvert^2 + V(\varphi)$, o de uma energia potencial (a de uma corda esticada, <a href="[15] - Densidades Lagrangianas.html#exr-4-15-5">Exercício 4.15.5</a>, mais a de uma mola em cada
+                    ponto). Com o sinal oposto, a energia do campo seria negativa, e qualquer acoplamento com outros sistemas o faria
+                    perder energia sem limite. É o mesmo critério que fixou o sinal de $\mathcal{L}_M$ (<a href="[15] - Densidades Lagrangianas.html#obs-4-15-10">Observação 4.15.10</a>); o tópico 4.20 calcula essa
+                    energia. Na assinatura $(+,-,-,-)$, a mesma densidade se escreve $+\frac12\eta^{\mu\nu}\partial_\mu\varphi\,\partial_\nu\varphi - V$.</p>
+
+                <h2 id="maxwell-da-acao">As equações de Maxwell a partir da ação</h2>
+
+                <p>
+                    Agora os campos são as quatro componentes $A_\nu$ do potencial, e a densidade é a $\mathcal{L}_{EM}$ de (4.15.7), com a corrente $J$
+                    dada (uma <em>fonte externa</em>: a corrente não é variada). A densidade depende de $A$ por $A_\mu J^\mu$ e das derivadas por
+                    $F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu$. A única conta delicada é a derivada de $F_{\alpha\beta}F^{\alpha\beta}$, em que cada $\partial_\mu A_\nu$ aparece
+                    mais de uma vez.
+                </p>
+
+                <div class="definition-box" id="lema-4-16-13">
+                    <p><strong>Lema 4.16.13 (A derivada de $F_{\alpha\beta}F^{\alpha\beta}$).</strong> Considerando $F_{\alpha\beta} = P_{\alpha\beta} - P_{\beta\alpha}$ como função das variáveis
+                        independentes $P_{\mu\nu} = \partial_\mu A_\nu$,</p>
+                    <p>$$ \frac{\partial\big(F_{\alpha\beta}F^{\alpha\beta}\big)}{\partial(\partial_\mu A_\nu)} = 4F^{\mu\nu}, \tag{4.16.5} $$</p>
+                    <p>e, portanto, $\dfrac{\partial\mathcal{L}_{EM}}{\partial(\partial_\mu A_\nu)} = -\dfrac{1}{\mu_0}F^{\mu\nu}$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> $F_{\alpha\beta}F^{\alpha\beta} = \eta^{\alpha\gamma}\eta^{\beta\delta}F_{\alpha\beta}F_{\gamma\delta}$ é uma forma quadrática simétrica nas $F$, e a sua
+                    derivada em relação a $F_{\alpha\beta}$, tratadas como independentes, é $2F^{\alpha\beta}$. Pela regra da cadeia, com
+                    $\partial F_{\alpha\beta}/\partial P_{\mu\nu} = \delta^\mu_\alpha\delta^\nu_\beta - \delta^\mu_\beta\delta^\nu_\alpha$,
+                </p>
+
+                <p>
+                    $$ \frac{\partial\big(F_{\alpha\beta}F^{\alpha\beta}\big)}{\partial P_{\mu\nu}} = 2F^{\alpha\beta}\big(\delta^\mu_\alpha\delta^\nu_\beta - \delta^\mu_\beta\delta^\nu_\alpha\big) = 2\big(F^{\mu\nu} - F^{\nu\mu}\big) = 4F^{\mu\nu}. $$
+                </p>
+
+                <p>
+                    O termo $A_\mu J^\mu$ não depende de $P$, e multiplicar por $-\frac{1}{4\mu_0}$ dá a segunda fórmula. $\blacksquare$
+                </p>
+
+                <p>
+                    Um dos dois fatores $2$ vem do quadrado; o outro, da antissimetria, que faz cada $\partial_\mu A_\nu$ aparecer em $F_{\mu\nu}$ e em $F_{\nu\mu}$.
+                    Esquecer um deles dá $\partial_\mu F^{\mu\nu} = -2\mu_0J^\nu$ ou $-\frac12\mu_0J^\nu$, e a lei de Gauss sai com o coeficiente errado.
+                </p>
+
+                <div class="definition-box" id="teo-4-16-14">
+                    <p><strong>Teorema 4.16.14 (Maxwell a partir da ação).</strong> Seja $U \subset \mathbb{R}^4$ aberto, $J$ uma corrente contínua dada em $U$ e
+                        $A$ uma $1$-forma de classe $C^2$ em $U$. Então $A$ é estacionário para a ação $S_{EM} = \frac1c\int\mathcal{L}_{EM}\,d^4x$, com
+                        $\mathcal{L}_{EM} = -\frac{1}{4\mu_0}F_{\mu\nu}F^{\mu\nu} + A_\mu J^\mu$ e $F = dA$, se, e somente se,</p>
+                    <p>$$ \partial_\mu F^{\mu\nu} = -\mu_0\,J^\nu, \qquad \nu = 0, 1, 2, 3, $$</p>
+                    <p>que é a (4.8.11). Pela <a href="[08] - Inomogêneas e a Métrica de Minkowski.html#prop-4-8-22">Proposição 4.8.22</a>, isso equivale a $d\star F = \mu_0j$, isto é, à lei de Gauss e à de Ampère–Maxwell.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> $\mathcal{L}_{EM}$ é um polinômio nas $P_{\mu\nu}$ mais o termo $A_\mu J^\mu(x)$, que é linear em $A$ com coeficientes
+                    contínuos; as hipóteses do <a href="#teo-4-16-5">Teorema 4.16.5</a> valem, porque $\partial\mathcal{L}_{EM}/\partial P_{\mu\nu} = -F^{\mu\nu}/\mu_0$ é linear nas $P$. Os campos
+                    são as componentes $\varphi^\nu = A_\nu$, e
+                </p>
+
+                <p>
+                    $$ \frac{\partial\mathcal{L}_{EM}}{\partial A_\nu} = J^\nu, \qquad \frac{\partial\mathcal{L}_{EM}}{\partial(\partial_\mu A_\nu)} = -\frac{1}{\mu_0}F^{\mu\nu} \quad\text{(4.16.5)}. $$
+                </p>
+
+                <p>
+                    A equação (4.16.2) para a componente $A_\nu$ é $J^\nu - \partial_\mu\big(-\frac{1}{\mu_0}F^{\mu\nu}\big) = 0$, isto é, $\partial_\mu F^{\mu\nu} = -\mu_0J^\nu$. A
+                    equivalência com $d\star F = \mu_0j$ é a <a href="[08] - Inomogêneas e a Métrica de Minkowski.html#prop-4-8-22">Proposição 4.8.22</a>(a). $\blacksquare$
+                </p>
+
+                <p>
+                    O sinal confere com o do 4.8, que foi fixado pela lei de Gauss: para $\nu = 0$, $\partial_iF^{i0} = -\frac1c\nabla\cdot\mathbf{E}$ e $J^0 = c\rho$, e a equação
+                    é $\nabla\cdot\mathbf{E} = \rho/\varepsilon_0$. As componentes, uma a uma, estão no <a href="#exr-4-16-2">Exercício 4.16.2</a>, que também refaz a conta na forma 3+1, variando
+                    $\phi$ e $\mathbf{A}$ separadamente. Esse acordo não é automático: ele depende do sinal relativo entre $\mathcal{L}_M$ e $\mathcal{L}_{\text{int}}$, que
+                    a <a href="[15] - Densidades Lagrangianas.html#obs-4-15-10">Observação 4.15.10</a> fixou pela positividade da energia, e do sinal de $\mathcal{L}_{\text{int}} = A_\mu J^\mu$, que o 4.15 tirou da ação
+                    $q\int A$ de uma carga (<a href="[15] - Densidades Lagrangianas.html#prop-4-15-8">Proposição 4.15.8</a>), a mesma que dá a força de Lorentz com o sinal certo (<a href="[14] - Acoplamento e Força de Lorentz.html#teo-4-14-5">Teorema 4.14.5</a>).
+                </p>
+
+                <p id="obs-4-16-15"><strong>Observação 4.16.15 (As homogêneas não vêm da variação).</strong> As equações $dF = 0$ não aparecem
+                    como equações de Euler–Lagrange: elas são identidades, porque o campo variado é $A$ e $F = dA$ satisfaz $dF = d^2A = 0$
+                    (a identidade de Bianchi, <a href="[07] - Equações Homogêneas em 4D.html#prop-4-7-14">Proposição 4.7.14</a>). O potencial não é só uma conveniência. Se tentássemos variar as componentes
+                    $F_{\mu\nu}$ como campos independentes na mesma densidade, que não contém derivadas de $F$, as equações seriam
+                    $\partial\mathcal{L}_M/\partial F_{\mu\nu} = -\frac{1}{2\mu_0}F^{\mu\nu} = 0$: o campo seria nulo. A ação de Maxwell usa a estrutura da Parte I: as homogêneas
+                    dizem que $F$ é fechada (<a href="[07] - Equações Homogêneas em 4D.html#teo-4-7-15">Teorema 4.7.15</a> dá o potencial, localmente), e as inomogêneas são as equações do movimento de $A$.</p>
+
+                <p>
+                    O potencial tem um preço: ele não é único (<a href="[07] - Equações Homogêneas em 4D.html#prop-4-7-17">Proposição 4.7.17</a>). A próxima proposição mostra como a ação convive com essa
+                    liberdade, e que a resposta é a conservação da carga.
+                </p>
+
+                <div class="definition-box" id="prop-4-16-16">
+                    <p><strong>Proposição 4.16.16 (Calibre e conservação da carga).</strong> Seja $J$ de classe $C^1$ em $U$ e $A$ de classe $C^2$.</p>
+                    <ol type="a">
+                        <li>Para $f$ de classe $C^3$ em $U$, $A' = A + df$ tem o mesmo $F$, logo o mesmo $\mathcal{L}_M$, e
+                            $$ A'_\mu J^\mu - A_\mu J^\mu = J^\mu\,\partial_\mu f = \partial_\mu\big(fJ^\mu\big) - f\,\partial_\mu J^\mu. \tag{4.16.6} $$</li>
+                        <li>Para $f$ suave com suporte compacto em $U$, a diferença das ações, no sentido da <a href="#def-4-16-1">Definição 4.16.1</a>, é
+                            $\displaystyle S_{EM}[A + df] - S_{EM}[A] = -\frac1c\int_Uf\,\partial_\mu J^\mu\,d^4x$.</li>
+                        <li>A ação é invariante por todas essas transformações de calibre se, e somente se, $\partial_\mu J^\mu = 0$ em $U$.</li>
+                    </ol>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) $F'_{\mu\nu} = F_{\mu\nu} + \partial_\mu\partial_\nu f - \partial_\nu\partial_\mu f = F_{\mu\nu}$, pela igualdade das derivadas mistas; o resto é
+                    a regra do produto. (b) O integrando da diferença é (4.16.6), que se anula fora do suporte de $f$. A integral de
+                    $\partial_\mu(fJ^\mu)$, uma divergência de uma função $C^1$ de suporte compacto, é zero pelo argumento de Fubini da <a href="#prop-4-16-3">Proposição 4.16.3</a>.
+                    (c) Se $\partial_\mu J^\mu = 0$, a diferença é zero por (b). Se a diferença é zero para toda $f$, o <a href="#lema-4-16-4">Lema 4.16.4</a>, aplicado à função
+                    contínua $\partial_\mu J^\mu$, dá $\partial_\mu J^\mu = 0$. $\blacksquare$
+                </p>
+
+                <p>
+                    Para uma $f$ que não se anula longe, sobra o termo de bordo $\frac1c\int\partial_\mu(fJ^\mu)\,d^4x$: é o análogo, para o campo, do
+                    $q\big[f(Q) - f(P)\big]$ da ação de uma partícula (<a href="[14] - Acoplamento e Força de Lorentz.html#prop-4-14-3">Proposição 4.14.3</a>), que também não muda as equações do movimento.
+                </p>
+
+                <p id="obs-4-16-17"><strong>Observação 4.16.17 (A conservação como condição de consistência).</strong> Para $A$ de classe $C^3$,
+                    $\partial_\nu\partial_\mu F^{\mu\nu} = 0$ identicamente, porque $\partial_\nu\partial_\mu$ é simétrico em $(\mu, \nu)$ e $F^{\mu\nu}$ é antissimétrico. Aplicando $\partial_\nu$ às
+                    equações do <a href="#teo-4-16-14">Teorema 4.16.14</a>, obtemos $\partial_\nu J^\nu = 0$: uma corrente que não se conserva não admite nenhuma solução. É a
+                    versão em componentes do <a href="[08] - Inomogêneas e a Métrica de Minkowski.html#cor-4-8-6">Corolário 4.8.6</a> ($d\star F = \mu_0j$ implica $dj = \mu_0^{-1}d^2\!\star\!F = 0$). As duas faces se correspondem: a
+                    invariância de calibre da <a href="#prop-4-16-16">Proposição 4.16.16</a> força uma identidade entre as quatro equações do movimento, que por isso não
+                    são independentes. Esse vínculo entre simetrias locais e identidades é o conteúdo do segundo teorema de Noether, e é
+                    o ponto de partida do tópico 4.19, onde o calibre aparece como um vínculo da descrição hamiltoniana.</p>
+
+                <p id="obs-4-16-18"><strong>Observação 4.16.18 (Coordenadas quaisquer e a métrica como campo).</strong> Numa carta positiva
+                    qualquer, a ação é $\frac1c\int\mathcal{L}_{EM}\sqrt{\lvert g\rvert}\,d^4x$ (<a href="[15] - Densidades Lagrangianas.html#prop-4-15-5">Proposição 4.15.5</a>), e a função $\mathcal{L}_{EM}\sqrt{\lvert g\rvert}$, que depende de $x$
+                    também pela métrica, é uma densidade como as do <a href="#teo-4-16-5">Teorema 4.16.5</a>. A conta do <a href="#teo-4-16-14">Teorema 4.16.14</a>, com $\sqrt{\lvert g\rvert}$ multiplicando tudo,
+                    dá</p>
+
+                <p>
+                    $$ \partial_\mu\Big(\sqrt{\lvert g\rvert}\,F^{\mu\nu}\Big) = -\mu_0\sqrt{\lvert g\rvert}\,J^\nu, \tag{4.16.7} $$
+                </p>
+
+                <p>
+                    com os índices de $F$ levantados por $g^{\mu\nu}$. Como a ação não depende da carta (<a href="[15] - Densidades Lagrangianas.html#prop-4-15-5">Proposição 4.15.5</a>), e uma variação de suporte
+                    compacto numa carta é uma variação de suporte compacto na outra, (4.16.7) em coordenadas curvilíneas tem as mesmas
+                    soluções que (4.8.11) em coordenadas inerciais: é a forma de $d\star F = \mu_0j$ numa carta qualquer, e o $\sqrt{\lvert g\rvert}$ faz o
+                    papel do que se chama divergência covariante. A mesma ação, olhada como função também de $g_{\mu\nu}$, pode ser variada em
+                    relação à métrica. Na Relatividade Geral, somando a ação de Einstein–Hilbert, esse é o caminho das equações de
+                    Einstein (Carroll, cap. 4); aqui só registramos que a métrica, que nas Partes I e II era um dado, também pode ser
+                    tratada como um campo.
+                </p>
+
+                <h2 id="fisica">Ponte com a física</h2>
+
+                <p>
+                    <strong>Campo e cargas numa só ação.</strong> Somando a ação de cada partícula do 4.14 (sem o acoplamento, que já está em
+                    $\mathcal{L}_{EM}$) com $S_{EM}$, obtemos uma ação que depende das linhas de mundo e do potencial. Variar as linhas de mundo dá a
+                    força de Lorentz (<a href="[14] - Acoplamento e Força de Lorentz.html#teo-4-14-5">Teorema 4.14.5</a>); variar $A$ dá as equações de Maxwell, com a corrente das próprias partículas
+                    (<a href="[15] - Densidades Lagrangianas.html#prop-4-15-8">Proposição 4.15.8</a>) como fonte. Essa corrente se conserva sem nenhuma hipótese extra, porque a carga de cada partícula
+                    é constante ao longo da sua linha de mundo: a condição de consistência da <a href="#obs-4-16-17">Observação 4.16.17</a> é satisfeita automaticamente.
+                    O sistema acoplado é o eletromagnetismo clássico completo. Ele tem um problema conhecido, a energia própria infinita de
+                    uma carga pontual (<a href="[15] - Densidades Lagrangianas.html#exr-4-15-3">Exercício 4.15.3</a>), que reaparece na reação de radiação; a teoria só fica consistente para distribuições
+                    contínuas de carga ou, no fim, na eletrodinâmica quântica.
+                </p>
+
+                <p>
+                    <strong>Por que uma ação.</strong> Uma única função escalar codifica todas as equações, e as simetrias da teoria ficam visíveis
+                    nela: a invariância de Lorentz é a condição de $\mathcal{L}$ ser um escalar (<a href="[15] - Densidades Lagrangianas.html#prop-4-15-4">Proposição 4.15.4</a>), e a de calibre está na
+                    <a href="#prop-4-16-16">Proposição 4.16.16</a>. O teorema de Noether transforma simetrias contínuas da ação em leis de conservação; o tópico 4.20 o
+                    aplica às translações do espaço-tempo e obtém a conservação da energia e do momento do campo. Na mecânica
+                    quântica, a ação aparece no expoente $e^{iS/\hbar}$ da integral de trajetória de Feynman, o que explica por que ela tem a
+                    unidade de $\hbar$ (<a href="[15] - Densidades Lagrangianas.html#exr-4-15-2">Exercício 4.15.2</a>).
+                </p>
+
+                <p>
+                    <strong>A massa do fóton.</strong> A densidade de Maxwell não tem um termo de massa como o $\frac12\kappa^2\varphi^2$ de Klein–Gordon. O
+                    termo análogo, $-\frac{\kappa^2}{2\mu_0}A_\mu A^\mu$, define a teoria de Proca, em que o potencial estático de uma carga é o de Yukawa,
+                    $\propto e^{-\kappa r}/r$, de alcance $\kappa^{-1}$ (<a href="#exr-4-16-6">Exercício 4.16.6</a>). Esse termo não é invariante de calibre, e as medidas confirmam a teoria de
+                    Maxwell: os limites experimentais para a massa do fóton são extremamente pequenos, e o alcance do eletromagnetismo é,
+                    até onde se sabe, infinito. Na teoria clássica, é a invariância de calibre que proíbe o termo de massa.
+                </p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p id="exr-4-16-1"><strong>Exercício 4.16.1 (das notas de aula).</strong> Para $S = \frac1c\int\mathcal{L}(\varphi, \partial_\mu\varphi)\,d^4x$, com um campo escalar
+                    $\varphi$ e $\mathcal{L}$ de classe $C^2$, faça a substituição $\varphi \to \varphi + \epsilon h$, expanda $\mathcal{L}$ em Taylor até a primeira ordem em $\epsilon$ e
+                    obtenha a equação de Euler–Lagrange, controlando o resto.</p>
+
+                <p>
+                    <em>Solução.</em> Seja $K$ um compacto fora do qual $h = 0$. Pela fórmula de Taylor com resto, para cada $x \in K$,
+                </p>
+
+                <p>
+                    $$ \mathcal{L}\big(\varphi + \epsilon h, \partial\varphi + \epsilon\,\partial h\big) = \mathcal{L}(\varphi, \partial\varphi) + \epsilon\Big(\frac{\partial\mathcal{L}}{\partial\varphi}\,h + \frac{\partial\mathcal{L}}{\partial(\partial_\mu\varphi)}\,\partial_\mu h\Big) + R(\epsilon, x), $$
+                </p>
+
+                <p>
+                    em que $R$ é $\frac{\epsilon^2}2$ vezes a segunda derivada de $\mathcal{L}$ na direção $(h, \partial h)$, avaliada num ponto intermediário
+                    $(\varphi + s\epsilon h, \partial\varphi + s\epsilon\,\partial h)$, $0 \lt s \lt 1$. Para $\lvert\epsilon\rvert \le 1$, esses pontos ficam num compacto (a imagem de
+                    $[0,1]\times K$ por uma função contínua), onde as segundas derivadas de $\mathcal{L}$ são limitadas; como $h$ e $\partial h$ também são
+                    limitadas, $\lvert R(\epsilon, x)\rvert \le C\epsilon^2$ com $C$ independente de $x$. Fora de $K$ o integrando de $\Delta S$ é nulo. Integrando,
+                </p>
+
+                <p>
+                    $$ \Delta S(\epsilon) = \frac{\epsilon}{c}\int_K\Big(\frac{\partial\mathcal{L}}{\partial\varphi}\,h + \frac{\partial\mathcal{L}}{\partial(\partial_\mu\varphi)}\,\partial_\mu h\Big)\,d^4x + O(\epsilon^2), $$
+                </p>
+
+                <p>
+                    com $\lvert O(\epsilon^2)\rvert \le C\operatorname{vol}(K)\,\epsilon^2/c$. Então $\Delta S'(0)$ é a integral entre parênteses dividida por $c$, que é a primeira forma
+                    de (4.16.1). A integração por partes da <a href="#prop-4-16-3">Proposição 4.16.3</a> transforma o termo em $\partial_\mu h$ em $-\int\big(\partial_\mu\frac{\partial\mathcal{L}}{\partial(\partial_\mu\varphi)}\big)h$, e o
+                    <a href="#lema-4-16-4">Lema 4.16.4</a> dá
+                </p>
+
+                <p>
+                    $$ \frac{\partial\mathcal{L}}{\partial\varphi} - \partial_\mu\frac{\partial\mathcal{L}}{\partial(\partial_\mu\varphi)} = 0. $$
+                </p>
+
+                <p>
+                    A expansão de Taylor é o argumento da derivação sob o sinal de integral feito à mão: o controle uniforme do resto é o
+                    que permite trocar o limite $\epsilon \to 0$ com a integral.
+                </p>
+
+                <p id="exr-4-16-2"><strong>Exercício 4.16.2 (das notas de aula).</strong> Faça a variação da ação $S_{EM}$ em relação ao potencial e mostre,
+                    componente a componente, que ela dá as equações de Maxwell com fontes. Refaça a conta na forma 3+1, variando $\phi$ e
+                    $\mathbf{A}$.</p>
+
+                <p>
+                    <em>Solução.</em> <strong>Componentes.</strong> Pelo <a href="#teo-4-16-14">Teorema 4.16.14</a>, as equações são $\partial_\mu F^{\mu\nu} = -\mu_0J^\nu$, com
+                    $F^{i0} = -E_i/c$, $F^{0i} = E_i/c$, $F^{ij} = \tilde\varepsilon_{ijk}B^k$ e $J^\nu = (c\rho, \mathbf{J})$. Para $\nu = 0$: $\partial_iF^{i0} = -\frac1c\nabla\cdot\mathbf{E} = -\mu_0c\rho$, isto é,
+                    $\nabla\cdot\mathbf{E} = \mu_0c^2\rho = \rho/\varepsilon_0$, a lei de Gauss. Para $\nu = j$:
+                    $\partial_0F^{0j} + \partial_iF^{ij} = \frac{1}{c^2}\partial_tE_j - (\nabla\times\mathbf{B})_j = -\mu_0J_j$, isto é, $\nabla\times\mathbf{B} = \mu_0\mathbf{J} + \frac{1}{c^2}\partial_t\mathbf{E}$, a lei de
+                    Ampère–Maxwell (as contas de índices estão na <a href="[08] - Inomogêneas e a Métrica de Minkowski.html#prop-4-8-22">Proposição 4.8.22</a>).
+                </p>
+
+                <p>
+                    <strong>Forma 3+1.</strong> Com $A_0 = -\phi/c$ e $J^0 = c\rho$, $A_\mu J^\mu = -\rho\phi + \mathbf{J}\cdot\mathbf{A}$, e pela <a href="[15] - Densidades Lagrangianas.html#prop-4-15-9">Proposição 4.15.9</a>,
+                </p>
+
+                <p>
+                    $$ \mathcal{L}_{EM} = \frac{\varepsilon_0}{2}\big\lvert\nabla\phi + \partial_t\mathbf{A}\big\rvert^2 - \frac{1}{2\mu_0}\big\lvert\nabla\times\mathbf{A}\big\rvert^2 - \rho\phi + \mathbf{J}\cdot\mathbf{A}, $$
+                </p>
+
+                <p>
+                    como função dos quatro campos $\phi, A_1, A_2, A_3$ das variáveis $(t, \mathbf{x})$; como $S = \int\mathcal{L}\,dt\,d^3x$, o <a href="#teo-4-16-5">Teorema 4.16.5</a> se aplica com
+                    $t$ no lugar de $x^0$. <em>Variando $\phi$:</em> $\frac{\partial\mathcal{L}}{\partial\phi} = -\rho$ e $\frac{\partial\mathcal{L}}{\partial(\partial_i\phi)} = \varepsilon_0(\partial_i\phi + \partial_tA_i) = -\varepsilon_0E_i$; a equação é
+                    $-\rho + \varepsilon_0\,\partial_iE_i = 0$, a lei de Gauss. <em>Variando $A_i$:</em> $\frac{\partial\mathcal{L}}{\partial A_i} = J_i$ e $\frac{\partial\mathcal{L}}{\partial(\partial_tA_i)} = -\varepsilon_0E_i$. Com
+                    $B_k = \tilde\varepsilon_{klm}\partial_lA_m$, $\partial B_k/\partial(\partial_jA_i) = \tilde\varepsilon_{kji}$, e
+                    $\frac{\partial\mathcal{L}}{\partial(\partial_jA_i)} = -\frac{1}{\mu_0}B_k\tilde\varepsilon_{kji} = \frac{1}{\mu_0}\tilde\varepsilon_{ijk}B_k$. A equação é
+                </p>
+
+                <p>
+                    $$ J_i + \varepsilon_0\,\partial_tE_i - \frac{1}{\mu_0}\,\tilde\varepsilon_{ijk}\,\partial_jB_k = 0, \qquad\text{isto é,}\qquad \nabla\times\mathbf{B} = \mu_0\mathbf{J} + \varepsilon_0\mu_0\,\partial_t\mathbf{E}, $$
+                </p>
+
+                <p>
+                    a lei de Ampère–Maxwell. Variar o potencial escalar dá a equação sem derivada temporal de $\mathbf{E}$; variar o vetorial, as
+                    três de evolução. As duas homogêneas, $\nabla\cdot\mathbf{B} = 0$ e a lei de Faraday, são identidades para $\mathbf{B} = \nabla\times\mathbf{A}$ e
+                    $\mathbf{E} = -\nabla\phi - \partial_t\mathbf{A}$ (<a href="#obs-4-16-15">Observação 4.16.15</a>).
+                </p>
+
+                <p id="exr-4-16-3"><strong>Exercício 4.16.3.</strong> Seja $Q = \tilde\varepsilon^{\alpha\beta\gamma\delta}F_{\alpha\beta}F_{\gamma\delta}$, com $\tilde\varepsilon$ o símbolo de permutação e $\theta$ uma
+                    constante. Mostre que $Q = -\frac8c\,\mathbf{E}\cdot\mathbf{B}$, que $F\wedge F = \frac14Q\,dx^0\wedge dx^1\wedge dx^2\wedge dx^3$, e que acrescentar $\theta Q$ a
+                    $\mathcal{L}_{EM}$ não muda as equações de Euler–Lagrange.</p>
+
+                <p>
+                    <em>Solução.</em> $F\wedge F = \frac14F_{\alpha\beta}F_{\gamma\delta}\,dx^\alpha\wedge dx^\beta\wedge dx^\gamma\wedge dx^\delta$, e
+                    $dx^\alpha\wedge dx^\beta\wedge dx^\gamma\wedge dx^\delta = \tilde\varepsilon^{\alpha\beta\gamma\delta}\,dx^0\wedge\dots\wedge dx^3$, o que dá a segunda afirmação. Pela
+                    <a href="[14] - Acoplamento e Força de Lorentz.html#prop-4-14-11">Proposição 4.14.11</a>, $F\wedge F = -\frac2c(\mathbf{E}\cdot\mathbf{B})\operatorname{vol}$, logo $Q = -\frac8c\,\mathbf{E}\cdot\mathbf{B}$. Para as equações: $\theta Q$ não depende de $A$, e,
+                    como no <a href="#lema-4-16-13">Lema 4.16.13</a>,
+                </p>
+
+                <p>
+                    $$ \frac{\partial(\theta Q)}{\partial(\partial_\mu A_\nu)} = 2\theta\,\tilde\varepsilon^{\alpha\beta\gamma\delta}F_{\gamma\delta}\big(\delta^\mu_\alpha\delta^\nu_\beta - \delta^\mu_\beta\delta^\nu_\alpha\big) = 4\theta\,\tilde\varepsilon^{\mu\nu\gamma\delta}F_{\gamma\delta}, $$
+                </p>
+
+                <p>
+                    usando a antissimetria de $\tilde\varepsilon$ e a simetria de $Q$ na troca dos pares. A contribuição para (4.16.2) é
+                    $-4\theta\,\tilde\varepsilon^{\mu\nu\gamma\delta}\partial_\mu F_{\gamma\delta} = -8\theta\,\tilde\varepsilon^{\mu\nu\gamma\delta}\partial_\mu\partial_\gamma A_\delta = 0$, porque $\partial_\mu\partial_\gamma$ é simétrico e $\tilde\varepsilon$ é
+                    antissimétrico em $(\mu, \gamma)$. A anulação é a identidade de Bianchi: $\tilde\varepsilon^{\mu\nu\gamma\delta}\partial_\mu F_{\gamma\delta}$ são as componentes de
+                    $dF$. A <a href="#prop-4-16-9">Proposição 4.16.9</a> não se aplica diretamente, porque $Q = \partial_\mu(4\tilde\varepsilon^{\mu\nu\gamma\delta}A_\nu\partial_\gamma A_\delta)$ é uma divergência de uma
+                    $K^\mu$ que depende das derivadas de $A$, mas a conclusão é a mesma, e é a versão em componentes da <a href="[15] - Densidades Lagrangianas.html#obs-4-15-12">Observação 4.15.12</a> e do
+                    <a href="[15] - Densidades Lagrangianas.html#exr-4-15-4">Exercício 4.15.4</a>.
+                </p>
+
+                <p id="exr-4-16-4"><strong>Exercício 4.16.4.</strong> Ache as ondas planas $\varphi = \cos(\mathbf{k}\cdot\mathbf{x} - \omega t)$ que resolvem a equação de
+                    Klein–Gordon (4.16.4), verifique as unidades e calcule as velocidades de fase e de grupo.</p>
+
+                <p>
+                    <em>Solução.</em> $\partial_t^2\varphi = -\omega^2\varphi$ e $\nabla^2\varphi = -\lvert\mathbf{k}\rvert^2\varphi$, logo
+                    $(\Box - \kappa^2)\varphi = \big(\frac{\omega^2}{c^2} - \lvert\mathbf{k}\rvert^2 - \kappa^2\big)\varphi$, e $\varphi$ é solução se, e só se,
+                </p>
+
+                <p>
+                    $$ \omega^2 = c^2\lvert\mathbf{k}\rvert^2 + c^2\kappa^2. $$
+                </p>
+
+                <p>
+                    As três parcelas têm unidade de $\text{s}^{-2}$ ($\kappa$ e $\lvert\mathbf{k}\rvert$ em $\text{m}^{-1}$). Multiplicando por $\hbar^2$, com $\kappa = mc/\hbar$,
+                    $E = \hbar\omega$ e $\mathbf{p} = \hbar\mathbf{k}$, obtemos $E^2 = \lvert\mathbf{p}\rvert^2c^2 + m^2c^4$. A velocidade de fase é
+                    $v_f = \omega/\lvert\mathbf{k}\rvert = c\sqrt{1 + \kappa^2/\lvert\mathbf{k}\rvert^2} \gt c$, e a de grupo, $v_g = \frac{d\omega}{d\lvert\mathbf{k}\rvert} = \frac{c^2\lvert\mathbf{k}\rvert}{\omega} \lt c$, com
+                    $v_fv_g = c^2$. A velocidade de grupo, que é a do transporte de energia, é $\lvert\mathbf{p}\rvert c^2/E$, a velocidade $v$ de uma partícula
+                    de massa $m$ (com $\mathbf{p} = \gamma m\mathbf{v}$ e $E = \gamma mc^2$ do 4.13): menor que $c$, como pede o tópico
+                    <a href="[11] - Massa, Velocidade Limite e Causalidade.html">4.11</a>. A velocidade de fase maior que $c$ não transporta sinal.
+                </p>
+
+                <p id="exr-4-16-5"><strong>Exercício 4.16.5 (O campo escalar complexo).</strong> Seja $\varphi = (\varphi_1 + i\varphi_2)/\sqrt2$ com $\varphi_1, \varphi_2$ reais, e
+                    $\mathcal{L} = -\eta^{\mu\nu}\,\partial_\mu\bar\varphi\,\partial_\nu\varphi - \kappa^2\bar\varphi\varphi$. Mostre que as equações de Euler–Lagrange são $(\Box - \kappa^2)\varphi = 0$, que
+                    se obtêm as mesmas tratando $\varphi$ e $\bar\varphi$ como "independentes", e que
+                    $j^\mu = i\big(\bar\varphi\,\partial^\mu\varphi - \varphi\,\partial^\mu\bar\varphi\big)$ é real e satisfaz $\partial_\mu j^\mu = 0$ nas soluções.</p>
+
+                <p>
+                    <em>Solução.</em> Como $\bar\varphi\varphi = \frac12(\varphi_1^2 + \varphi_2^2)$ e $\partial_\mu\bar\varphi\,\partial_\nu\varphi + \partial_\nu\bar\varphi\,\partial_\mu\varphi = \partial_\mu\varphi_1\partial_\nu\varphi_1 + \partial_\mu\varphi_2\partial_\nu\varphi_2$,
+                    $\mathcal{L}$ é a soma de duas densidades de Klein–Gordon, uma para $\varphi_1$ e outra para $\varphi_2$ (<a href="#ex-4-16-11">Exemplo 4.16.11</a>). As equações são
+                    $(\Box - \kappa^2)\varphi_1 = 0$ e $(\Box - \kappa^2)\varphi_2 = 0$, equivalentes a $(\Box - \kappa^2)\varphi = 0$. Tratar $\varphi$ e $\bar\varphi$ como independentes é a
+                    regra da cadeia com $\varphi_1 = (\varphi + \bar\varphi)/\sqrt2$, $\varphi_2 = (\varphi - \bar\varphi)/(i\sqrt2)$, que dá
+                    $\frac{\partial}{\partial\bar\varphi} = \frac{1}{\sqrt2}\big(\frac{\partial}{\partial\varphi_1} + i\frac{\partial}{\partial\varphi_2}\big)$. Então a "equação de $\bar\varphi$" é $\frac{1}{\sqrt2}(\mathcal{E}_1 + i\mathcal{E}_2) = 0$, que, com
+                    $\mathcal{E}_1, \mathcal{E}_2$ reais ($\mathcal{L}$ é real), equivale a $\mathcal{E}_1 = \mathcal{E}_2 = 0$; e é $-\kappa^2\varphi + \Box\varphi = 0$, calculada derivando $\mathcal{L}$ em
+                    $\bar\varphi$ e $\partial_\mu\bar\varphi$ como se $\varphi$ fosse constante. Para a corrente, uma conta direta dá
+                    $j^\mu = \varphi_2\,\partial^\mu\varphi_1 - \varphi_1\,\partial^\mu\varphi_2$, real. E
+                </p>
+
+                <p>
+                    $$ \partial_\mu j^\mu = i\big(\partial_\mu\bar\varphi\,\partial^\mu\varphi + \bar\varphi\,\Box\varphi - \partial_\mu\varphi\,\partial^\mu\bar\varphi - \varphi\,\Box\bar\varphi\big) = i\big(\bar\varphi\,\kappa^2\varphi - \varphi\,\kappa^2\bar\varphi\big) = 0. $$
+                </p>
+
+                <p>
+                    A densidade não muda por $\varphi \mapsto e^{i\alpha}\varphi$ com $\alpha$ constante, e é dessa simetria que a corrente vem (teorema de
+                    Noether; o 4.20 trata o caso das translações). Multiplicada pela carga, $j^\mu$ é a corrente elétrica de uma partícula
+                    carregada de spin zero; para acoplá-la a $A$ de modo invariante de calibre, troca-se $\partial_\mu$ por uma derivada da forma
+                    $\partial_\mu - i\frac{q}{\hbar}A_\mu$, que o capítulo 5 interpreta como uma conexão.
+                </p>
+
+                <p id="exr-4-16-6"><strong>Exercício 4.16.6 (Proca).</strong> Seja $\mathcal{L}_P = -\frac{1}{4\mu_0}F_{\mu\nu}F^{\mu\nu} - \frac{\kappa^2}{2\mu_0}A_\mu A^\mu + A_\mu J^\mu$. Ache as
+                    equações de Euler–Lagrange, mostre que, para $J$ conservada, elas implicam $\partial_\mu A^\mu = 0$ e
+                    $(\Box - \kappa^2)A^\nu = -\mu_0J^\nu$, e ache o potencial estático de uma carga pontual.</p>
+
+                <p>
+                    <em>Solução.</em> O termo de massa só depende de $A$: $\frac{\partial}{\partial A_\nu}\big(-\frac{\kappa^2}{2\mu_0}\eta^{\alpha\beta}A_\alpha A_\beta\big) = -\frac{\kappa^2}{\mu_0}A^\nu$. Com o
+                    <a href="#lema-4-16-13">Lema 4.16.13</a>, (4.16.2) dá
+                </p>
+
+                <p>
+                    $$ \partial_\mu F^{\mu\nu} - \kappa^2A^\nu = -\mu_0J^\nu. $$
+                </p>
+
+                <p>
+                    O termo de massa não é invariante de calibre: $(A + df)_\mu(A + df)^\mu - A_\mu A^\mu = 2A^\mu\partial_\mu f + \partial_\mu f\,\partial^\mu f$, que não é zero
+                    em geral. Aplicando $\partial_\nu$ (para $A$ de classe $C^3$ e $J$ de classe $C^1$) e usando $\partial_\nu\partial_\mu F^{\mu\nu} = 0$ (<a href="#obs-4-16-17">Observação 4.16.17</a>), obtemos
+                    $-\kappa^2\partial_\nu A^\nu = -\mu_0\partial_\nu J^\nu = 0$. Como $\kappa \ne 0$, $\partial_\nu A^\nu = 0$: a condição de Lorenz deixa de ser uma escolha de calibre e
+                    passa a ser uma consequência das equações. Então $\partial_\mu F^{\mu\nu} = \Box A^\nu - \partial^\nu(\partial_\mu A^\mu) = \Box A^\nu$, e
+                    $(\Box - \kappa^2)A^\nu = -\mu_0J^\nu$: cada componente satisfaz uma equação de Klein–Gordon com fonte. Para uma carga em repouso, $A^i = 0$
+                    e $A^0 = -A_0 = \phi/c$, e a componente $\nu = 0$ é $(\nabla^2 - \kappa^2)\phi = -\rho/\varepsilon_0$. Fora da carga, a solução esfericamente
+                    simétrica que se anula no infinito é
+                </p>
+
+                <p>
+                    $$ \phi(r) = \frac{q}{4\pi\varepsilon_0}\,\frac{e^{-\kappa r}}{r}, $$
+                </p>
+
+                <p>
+                    porque $\frac{1}{r^2}\frac{d}{dr}\big(r^2\frac{d}{dr}\frac{e^{-\kappa r}}{r}\big) = \kappa^2\frac{e^{-\kappa r}}{r}$ para $r \gt 0$. Perto de $r = 0$ ela se comporta como o potencial de
+                    Coulomb, o que fixa o coeficiente pela carga $q$, e para $\kappa \to 0$ ela é o de Coulomb. É o potencial de Yukawa, com alcance
+                    $\kappa^{-1}$. Nas equações de Proca, a divergência de $J$ não precisa ser zero: ela só fixa
+                    $\partial_\nu A^\nu = \frac{\mu_0}{\kappa^2}\partial_\nu J^\nu$, enquanto nas de Maxwell ($\kappa = 0$) ela tem de se anular. Sem a simetria de calibre, desaparece a
+                    condição de consistência da <a href="#obs-4-16-17">Observação 4.16.17</a>.
+                </p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <ul>
+                    <li>Variações de suporte compacto num aberto do espaço-tempo e a primeira variação (<a href="#def-4-16-1">Definição 4.16.1</a>, <a href="#obs-4-16-2">Observação 4.16.2</a>, <a href="#prop-4-16-3">Proposição 4.16.3</a>), com o
+                        termo de bordo eliminado por Fubini, e o lema fundamental em abertos (<a href="#lema-4-16-4">Lema 4.16.4</a>).</li>
+                    <li>As equações de Euler–Lagrange para campos, $\frac{\partial\mathcal{L}}{\partial\varphi^a} - \partial_\mu\frac{\partial\mathcal{L}}{\partial(\partial_\mu\varphi^a)} = 0$ (<a href="#teo-4-16-5">Teorema 4.16.5</a>), a sua relação
+                        com o 4.12 (<a href="#obs-4-16-6">Observação 4.16.6</a>), o número de campos e o dicionário da mecânica (<a href="#obs-4-16-7">Observação 4.16.7</a>, <a href="#obs-4-16-8">Observação 4.16.8</a>), e a liberdade de
+                        somar divergências (<a href="#prop-4-16-9">Proposição 4.16.9</a>).</li>
+                    <li>O campo escalar, $\Box\varphi = V'(\varphi)$, e a equação de Klein–Gordon (<a href="#prop-4-16-10">Proposição 4.16.10</a>, <a href="#ex-4-16-11">Exemplo 4.16.11</a>), com o sinal fixado pela
+                        energia (<a href="#obs-4-16-12">Observação 4.16.12</a>).</li>
+                    <li>As equações de Maxwell com fontes como equações de Euler–Lagrange de $\mathcal{L}_{EM}$, $\partial_\mu F^{\mu\nu} = -\mu_0J^\nu$, com o mesmo sinal
+                        do 4.8 (<a href="#lema-4-16-13">Lema 4.16.13</a>, <a href="#teo-4-16-14">Teorema 4.16.14</a>); as homogêneas como identidades de $F = dA$ (<a href="#obs-4-16-15">Observação 4.16.15</a>); a invariância de
+                        calibre da ação equivalente à conservação da carga (<a href="#prop-4-16-16">Proposição 4.16.16</a>, <a href="#obs-4-16-17">Observação 4.16.17</a>); e a forma em coordenadas quaisquer,
+                        com a métrica como campo (<a href="#obs-4-16-18">Observação 4.16.18</a>).</li>
+                </ul>
+
+                <p>
+                    Com $F = dA$ e uma única ação, o eletromagnetismo inteiro está no formalismo lagrangiano. O próximo passo é a descrição
+                    hamiltoniana, em que a variável conjugada de cada campo é a derivada de $\mathcal{L}$ em relação a $\partial_0\varphi^a$, a componente
+                    $\mu = 0$ das $\pi^\mu{}_a$ da <a href="#prop-4-16-3">Proposição 4.16.3</a>. A passagem é feita pela derivada na fibra e pela transformada de Legendre:
+                    <a href="[17] - Derivada na Fibra e Legendre.html">4.17 A Derivada na Fibra e a Transformada de Legendre</a>. No eletromagnetismo
+                    ela falha de um modo instrutivo, porque $\mathcal{L}_{EM}$ não contém $\partial_0A_0$, e é isso que o tópico 4.19 transforma na teoria dos
+                    vínculos e do calibre.
+                </p>
+
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="toc-container">
+                <h4>Nesta página</h4>
+                <ul>
+                    <li><a href="#euler-lagrange-para-campos">Euler–Lagrange para Campos</a></li>
+                    <li><a href="#variacoes">Variações de um campo</a></li>
+                    <li><a href="#euler-lagrange">As equações de Euler–Lagrange</a></li>
+                    <li><a href="#escalar">O campo escalar</a></li>
+                    <li><a href="#maxwell-da-acao">Maxwell a partir da ação</a></li>
+                    <li><a href="#fisica">Ponte com a física</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Search Modal Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-modal">
+            <div class="search-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search documentation..." autocomplete="off">
+            </div>
+            <div class="search-results" id="search-results"></div>
+            <div class="search-footer">
+                <div class="search-commands">
+                    <span class="cmd-key">↑</span>
+                    <span class="cmd-key">↓</span>
+                    <span class="cmd-label">navigate</span>
+                    <span class="cmd-key">↵</span>
+                    <span class="cmd-label">select</span>
+                </div>
+                <div class="search-commands">
+                    <span class="cmd-key">esc</span>
+                    <span class="cmd-label">close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../../../assets/js/class-lecture.js"></script>
+</body>
+
+</html>

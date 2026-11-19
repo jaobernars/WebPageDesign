@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Densidades Lagrangianas e a Ação do Campo | Relatividade Geral | The Journal of a Physicist</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../../../assets/images/Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../../../assets/images/Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../../../assets/images/Favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="../../../../../../assets/images/Favicon/favicon.ico">
+    <link rel="stylesheet" href="../../../../../../assets/css/class-lecture.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                        <line x1="9" x2="9" y1="3" y2="21"></line>
+                    </svg>
+                </button>
+                <button id="theme-toggle" class="sidebar-toggle" aria-label="Toggle Theme">
+                    <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="breadcrumbs-header">
+                    <a href="../../index.html" class="breadcrumb-link active">Relatividade Geral</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-category" class="breadcrumb-link">Eletromagnetismo e a Geometria do Espaço-Tempo</span>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-current" class="breadcrumb-link active">4.15 Densidades Lagrangianas</span>
+                </div>
+            </div>
+            <nav class="top-nav">
+                <a href="../../../../../../Páginas Principais/Lectures.html">Lectures</a>
+                <a href="../../../../../../index.html">Home</a>
+            </nav>
+        </div>
+
+        <script>
+            MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']]
+                }
+            };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    </header>
+
+    <div class="main-layout">
+        <aside class="left-sidebar" id="left-sidebar">
+            <div class="sidebar-content">
+
+                <button class="search-trigger" id="search-trigger">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                    </svg>
+                    <span>Search docs...</span>
+                </button>
+
+                <div class="sidebar-group">
+                    <h3>Início</h3>
+                    <ul>
+                        <li><a href="../../index.html">Overview</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Introdução a Simetrias em Mecânica Clássica</h3>
+                    <ul>
+                        <li><a href="../[0] - Introdução a Simetrias em Mecânica Clássica/1-HistoricalIntroduction.html">Introdução Histórica</a></li>
+                        <li><a href="../[0] - Introdução a Simetrias em Mecânica Clássica/1-TR.html">Teoria da Relatividade</a></li>
+                        <li><a href="../[0] - Introdução a Simetrias em Mecânica Clássica/1-Galilean-Relativity.html">Relatividade Galileana</a></li>
+                        <li><a href="../[0] - Introdução a Simetrias em Mecânica Clássica/1-Classical-Electromagnetism.html">Eletromagnetismo Clássico</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Introdução a Simetrias em Mecânica Relativística</h3>
+                    <ul>
+                        <li><a href="../[1] - Introdução a Simetrias em Mecânica Relativística/Tópico 1.html">Tópico 1</a></li>
+                        <li><a href="../[1] - Introdução a Simetrias em Mecânica Relativística/Tópico 2.html">Tópico 2</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Cálculo em Variedades Diferenciáveis</h3>
+                    <ul>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[01] - Motivação e Roteiro.html">3.1 Motivação e Roteiro</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[02] - Preliminares de Topologia e Cálculo.html">3.2 Preliminares de Topologia e Cálculo</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[03] - Variedades Diferenciáveis.html">3.3 Variedades Diferenciáveis</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[04] - Funções e Aplicações Suaves.html">3.4 Funções e Aplicações Suaves</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[05] - Vetores Tangentes.html">3.5 Vetores Tangentes</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[06] - Subvariedades.html">3.6 Subvariedades</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[07] - Fibrado Tangente e Campos Vetoriais.html">3.7 Fibrado Tangente e Campos Vetoriais</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[08] - Fluxos e Derivada de Lie.html">3.8 Fluxos e Derivada de Lie</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[09] - Covetores e 1-Formas.html">3.9 Covetores e 1-Formas</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[10] - Álgebra Multilinear e Tensores.html">3.10 Álgebra Multilinear e Tensores</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[11] - Produto Exterior.html">3.11 Produto Exterior</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[12] - Formas Diferenciais.html">3.12 Formas Diferenciais</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[13] - Derivada Exterior.html">3.13 Derivada Exterior</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[14] - Fórmula de Cartan.html">3.14 Fórmula de Cartan</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[15] - Orientação.html">3.15 Orientação</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[16] - Variedades com Bordo.html">3.16 Variedades com Bordo</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[17] - Integração de Formas.html">3.17 Integração de Formas</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[18] - Teorema de Stokes Geral.html">3.18 Teorema de Stokes Geral</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[19] - Teoremas Clássicos.html">3.19 Teoremas Clássicos</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Eletromagnetismo e a Geometria do Espaço-Tempo</h3>
+                    <ul>
+                        <li><a href="[01] - Motivação e Roteiro.html">4.1 Motivação e Roteiro</a></li>
+                        <li><a href="[02] - O Lema de Poincaré.html">4.2 O Lema de Poincaré</a></li>
+                        <li><a href="[03] - Métricas e Volume Invariante.html">4.3 Métricas e Volume Invariante</a></li>
+                        <li><a href="[04] - O Operador Estrela de Hodge.html">4.4 O Operador Estrela de Hodge</a></li>
+                        <li><a href="[05] - Maxwell em 3D com Formas.html">4.5 Maxwell em 3D com Formas</a></li>
+                        <li><a href="[06] - Meios Materiais e Métrica Induzida.html">4.6 Meios Materiais e Métrica Induzida</a></li>
+                        <li><a href="[07] - Equações Homogêneas em 4D.html">4.7 Equações Homogêneas em 4D</a></li>
+                        <li><a href="[08] - Inomogêneas e a Métrica de Minkowski.html">4.8 Inomogêneas e a Métrica de Minkowski</a></li>
+                        <li><a href="[09] - Carga, Monopolos e Correntes.html">4.9 Carga, Monopolos e Correntes</a></li>
+                        <li><a href="[10] - Comprimento e Energia de Curvas.html">4.10 Comprimento e Energia de Curvas</a></li>
+                        <li><a href="[11] - Massa, Velocidade Limite e Causalidade.html">4.11 Massa, Velocidade Limite e Causalidade</a></li>
+                        <li><a href="[12] - O Princípio Variacional.html">4.12 O Princípio Variacional</a></li>
+                        <li><a href="[13] - Mecânica Relativística.html">4.13 Mecânica Relativística</a></li>
+                        <li><a href="[14] - Acoplamento e Força de Lorentz.html">4.14 Acoplamento e Força de Lorentz</a></li>
+                        <li><a href="[15] - Densidades Lagrangianas.html" class="active">4.15 Densidades Lagrangianas</a></li>
+                        <li><a href="[16] - Euler-Lagrange para Campos.html">4.16 Euler–Lagrange para Campos</a></li>
+                        <li><a href="[17] - Derivada na Fibra e Legendre.html">4.17 Derivada na Fibra e Legendre</a></li>
+                        <li><a href="[18] - Equações de Hamilton.html">4.18 Hamiltoniana e Equações de Hamilton</a></li>
+                        <li><a href="[19] - Teorias de Calibre e Vínculos.html">4.19 Vínculos e Calibre</a></li>
+                        <li><a href="[20] - Tensor de Energia-Momento.html">4.20 Tensor de Energia-Momento</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="prose">
+
+                <h1 id="densidades-lagrangianas">4.15 Densidades Lagrangianas e a Ação do Campo</h1>
+                <p class="lead">Da ação de uma partícula à ação de um campo: a densidade lagrangiana como escalar, a medida invariante e as densidades da matéria, do acoplamento e do campo eletromagnético.</p>
+
+                <p>
+                    A Parte II construiu a dinâmica de uma partícula a partir da métrica: a ação é a integral de um invariante sobre a
+                    linha de mundo (tópicos <a href="[13] - Mecânica Relativística.html">4.13</a> e
+                    <a href="[14] - Acoplamento e Força de Lorentz.html">4.14</a>), e o campo eletromagnético entra nela como um dado. A
+                    Parte III faz a pergunta simétrica: como o próprio campo se move? Para isso o campo precisa de uma ação. Um campo tem
+                    um valor em cada ponto do espaço, isto é, infinitos graus de liberdade, e a sua ação não é uma integral sobre uma curva,
+                    mas sobre uma região do espaço-tempo.
+                </p>
+
+                <p>
+                    Este tópico constrói essa ação. A lagrangiana passa a ser a integral espacial de uma <em>densidade lagrangiana</em>
+                    $\mathcal{L}$, e a ação, a integral de $\mathcal{L}$ sobre uma região do espaço-tempo. Para que a ação não dependa do observador,
+                    $\mathcal{L}$ tem de ser um escalar e a medida tem de ser a forma de volume da métrica, $\operatorname{vol}_g = \star1$, construída nos
+                    tópicos <a href="[03] - Métricas e Volume Invariante.html">4.3</a> e
+                    <a href="[04] - O Operador Estrela de Hodge.html">4.4</a>. Escrevemos então as três densidades do eletromagnetismo: a
+                    da matéria, a do acoplamento entre campo e cargas e a do campo livre, com todos os fatores de $c$, $\varepsilon_0$ e $\mu_0$
+                    do SI.
+                </p>
+
+                <p>
+                    A métrica entra de novo num único lugar, agora na medida de integração (e nos índices levantados de $F^{\mu\nu}$). No
+                    tópico <a href="[16] - Euler-Lagrange para Campos.html">4.16</a>, as equações de Euler–Lagrange desta ação serão as
+                    equações de Maxwell com fontes do tópico <a href="[08] - Inomogêneas e a Métrica de Minkowski.html">4.8</a>.
+                </p>
+
+                <h2 id="acao-de-um-invariante">A ação de um invariante</h2>
+
+                <p>
+                    O ponto de partida é a forma geral das ações da Parte II: a integral sobre a curva de um escalar $I$ vezes o elemento de
+                    comprimento, $S = \int I\,dl$. Para separar o tempo, parametrizamos a curva pela coordenada $x^0$.
+                </p>
+
+                <div class="definition-box" id="prop-4-15-1">
+                    <p><strong>Proposição 4.15.1 (A lagrangiana de um invariante).</strong> Seja $g$ uma métrica lorentziana e $\sigma$ uma curva tipo
+                        tempo parametrizada por $x^0$, com $\beta^i = dx^i/dx^0$. Então $\int I\,dl = \int L\,dx^0$ com</p>
+                    <p>$$ L = I\,\frac{dl}{dx^0} = I\sqrt{-\big(g_{00} + 2g_{0i}\beta^i + g_{ik}\beta^i\beta^k\big)}. \tag{4.15.1} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela (4.10.2), $dl = \sqrt{\lvert g(\sigma', \sigma')\rvert}\,dx^0$, e com $\sigma'$ de componentes $(1, \beta^1, \beta^2, \beta^3)$,
+                    $g(\sigma', \sigma') = g_{00} + 2g_{0i}\beta^i + g_{ik}\beta^i\beta^k$, que é negativo porque $\sigma$ é tipo tempo. $\blacksquare$
+                </p>
+
+                <p>
+                    Em Minkowski, $dl/dx^0 = \sqrt{1 - v^2/c^2}$ com $\beta^i = v^i/c$. Dois invariantes já apareceram. Com $I = -mc$, a ação livre do
+                    4.13: como $dx^0 = c\,dt$, a lagrangiana por unidade de tempo é $-mc^2\sqrt{1 - v^2/c^2}$, com unidade de energia
+                    (<a href="[13] - Mecânica Relativística.html#prop-4-13-2">Proposição 4.13.2</a>). Com $I = qA_\mu u^\mu/c$, em que $u = c\,dx/dl$ é a quadrivelocidade, $I\,dl = qA_\mu\,dx^\mu$: é o termo de acoplamento
+                    da <a href="[14] - Acoplamento e Força de Lorentz.html#def-4-14-1">Definição 4.14.1</a>. No SI deste capítulo a ação de acoplamento é $q\int A_\mu dx^\mu$, sem fator $1/c$; com o fator, ela seria a
+                    forma gaussiana.
+                </p>
+
+                <h2 id="densidade-lagrangiana">A densidade lagrangiana</h2>
+
+                <p>
+                    Num meio contínuo, ou num campo, a lagrangiana é uma soma sobre todos os pontos do espaço. Em cada instante ela se
+                    escreve como a integral de uma densidade sobre a fatia $x^0 = \text{const}$.
+                </p>
+
+                <div class="definition-box" id="def-4-15-2" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.15.2 (Densidade lagrangiana).</strong> Uma <em>densidade lagrangiana</em> é uma função $\mathcal{L}$ no
+                        espaço-tempo, construída a partir dos campos e das suas derivadas, tal que a lagrangiana é
+                        $L(t) = \int\mathcal{L}\,d^3x$ e a ação numa região $U$ é</p>
+                    <p>$$ S = \int L\,dt = \int_U\mathcal{L}\,dt\,d^3x = \frac1c\int_U\mathcal{L}\,d^4x, \tag{4.15.2} $$</p>
+                    <p>com $d^3x = dx^1dx^2dx^3$ e $d^4x = dx^0\,d^3x$. Com esta convenção, $\mathcal{L}$ tem unidade de energia por volume.</p>
+                </div>
+
+                <p id="obs-4-15-3"><strong>Observação 4.15.3 (Outra convenção).</strong> Também é comum escrever $S = \int\mathcal{L}'\,d^4x$, com
+                    $\mathcal{L}' = \mathcal{L}/c$. As duas escolhas dão a mesma ação; a de (4.15.2) tem a vantagem de que $\mathcal{L}$ se compara diretamente
+                    com uma densidade de energia, como no tópico 4.3, e de que a densidade de acoplamento fica sem fatores de $c$. Em
+                    dimensão $n$, com coordenadas $x^0, \dots, x^{n-1}$, escreve-se $d^{n-1}x = dx^1\cdots dx^{n-1}$ e $d^nx = dx^0\,d^{n-1}x$.</p>
+
+                <p>
+                    Qual condição sobre $\mathcal{L}$ garante que todos os observadores inerciais calculem a mesma ação? A medida $d^4x$ não
+                    muda sob uma transformação de Lorentz, porque $\lvert\det\Lambda\rvert = 1$ (<a href="[08] - Inomogêneas e a Métrica de Minkowski.html#prop-4-8-17">Proposição 4.8.17</a>). A resposta, então, é que $\mathcal{L}$ seja um
+                    escalar.
+                </p>
+
+                <div class="definition-box" id="prop-4-15-4">
+                    <p><strong>Proposição 4.15.4 (A densidade de uma ação invariante é um escalar).</strong> Sejam $\Lambda \in SO^+(3,1)$, $x' = \Lambda x$, e
+                        $\mathcal{L}$, $\mathcal{L}'$ as densidades (contínuas) calculadas nos dois referenciais. A ação de toda região é a mesma nos dois,
+                        $\int_U\mathcal{L}\,d^4x = \int_{\Lambda U}\mathcal{L}'\,d^4x'$ para todo $U$, se, e somente se, $\mathcal{L}'(\Lambda x) = \mathcal{L}(x)$ em todo ponto.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela mudança de variáveis $x' = \Lambda x$, com jacobiano $\lvert\det\Lambda\rvert = 1$,
+                    $\int_{\Lambda U}\mathcal{L}'\,d^4x' = \int_U\mathcal{L}'(\Lambda x)\,d^4x$. A igualdade das ações para todo $U$ é então
+                    $\int_U\big(\mathcal{L}(x) - \mathcal{L}'(\Lambda x)\big)\,d^4x = 0$ para todo $U$. Se $\mathcal{L}' \circ \Lambda = \mathcal{L}$, isso vale. Reciprocamente, tomando
+                    como $U$ todos os cubos coordenados, o lema de localização (<a href="[05] - Maxwell em 3D com Formas.html#lema-4-5-6">Lema 4.5.6</a>, com $k = n = 4$) dá $\mathcal{L} - \mathcal{L}'\circ\Lambda = 0$. $\blacksquare$
+                </p>
+
+                <p>
+                    Para mudanças de coordenadas quaisquer, $d^4x$ ganha o fator $\lvert\det J\rvert$ (<a href="[03] - Métricas e Volume Invariante.html#prop-4-3-10">Proposição 4.3.10</a>) e deixa de ser invariante. A medida
+                    certa é a forma de volume da métrica.
+                </p>
+
+                <div class="definition-box" id="prop-4-15-5">
+                    <p><strong>Proposição 4.15.5 (A ação em coordenadas quaisquer).</strong> Se $\mathcal{L}$ é uma função escalar na variedade orientada
+                        $(M, g)$, a ação</p>
+                    <p>$$ S = \frac1c\int_U\mathcal{L}\operatorname{vol}_g = \frac1c\int_U\mathcal{L}\star1 = \frac1c\int\mathcal{L}\sqrt{\lvert g\rvert}\,d^4x \tag{4.15.3} $$</p>
+                    <p>(a última numa carta positiva) não depende da carta, e é invariante por toda isometria que preserva a orientação. Em
+                        coordenadas inerciais de Minkowski, $\sqrt{\lvert g\rvert} = 1$ e (4.15.3) é (4.15.2).</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> $\star1 = \operatorname{vol}_g$ (<a href="[04] - O Operador Estrela de Hodge.html#prop-4-4-6">Proposição 4.4.6</a>), e $\operatorname{vol}_g = \sqrt{\lvert g\rvert}\,dx^0\wedge\dots\wedge dx^3$ numa carta positiva
+                    (<a href="[03] - Métricas e Volume Invariante.html#teo-4-3-11">Teorema 4.3.11</a>). A integral de uma $4$-forma não depende da carta positiva usada para calculá-la
+                    (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[17] - Integração de Formas.html">tópico 3.17</a>; <a href="[03] - Métricas e Volume Invariante.html#obs-4-3-12">Observação 4.3.12</a>). Se $\varphi$ é
+                    uma isometria que preserva a orientação, $\varphi^*\operatorname{vol}_g = \operatorname{vol}_g$, e a mudança de variáveis dá
+                    $\int_{\varphi(U)}\mathcal{L}\operatorname{vol}_g = \int_U(\mathcal{L}\circ\varphi)\operatorname{vol}_g$. $\blacksquare$
+                </p>
+
+                <p id="obs-4-15-6"><strong>Observação 4.15.6 (Escalar e densidade).</strong> $\mathcal{L}$ é um escalar: o seu valor num ponto não
+                    depende das coordenadas. Já $\mathcal{L}\sqrt{\lvert g\rvert}$, o coeficiente de $dx^0\wedge\dots\wedge dx^3$ na $4$-forma $\mathcal{L}\operatorname{vol}_g$, depende: é
+                    uma densidade de peso $-1$, como $\sqrt{\lvert g\rvert}$ (<a href="[03] - Métricas e Volume Invariante.html#ex-4-3-20">Exemplo 4.3.20</a>). O invariante é a função $\mathcal{L}$ (e a $4$-forma $\mathcal{L}\operatorname{vol}_g$
+                    como um todo); a componente da $4$-forma numa carta não é.
+                    Em (4.15.3) a ação passa a depender também da métrica: para uma partícula, $S = S[q, A, g]$, e para campos, de todos os
+                    campos e de $g$. A métrica pode ser tratada como mais um campo e variada, o que leva às equações de Einstein (fora do
+                    escopo deste capítulo; Carroll, cap. 4).</p>
+
+                <h2 id="materia-e-acoplamento">Poeira e acoplamento</h2>
+
+                <p>
+                    O primeiro exemplo é uma distribuição contínua de partículas livres que não interagem entre si, a <em>poeira</em>. Seja
+                    $\rho_m(\mathbf{x}, t)$ a densidade de massa medida no laboratório e $\mathbf{v}(\mathbf{x}, t)$ o campo de velocidades.
+                </p>
+
+                <div class="definition-box" id="prop-4-15-7">
+                    <p><strong>Proposição 4.15.7 (A densidade da poeira).</strong> A ação livre $\sum_a(-m_ac\int dl_a)$ de um conjunto de partículas,
+                        escrita com a densidade de massa, é (4.15.2) com</p>
+                    <p>$$ \mathcal{L}_0 = -\rho_mc^2\sqrt{1 - \frac{v^2}{c^2}} = -\rho_0c^2, \tag{4.15.4} $$</p>
+                    <p>em que $\rho_0 = \rho_m\sqrt{1 - v^2/c^2}$ é a densidade de massa no referencial de repouso local. Em particular, $\mathcal{L}_0$ é um
+                        escalar.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela <a href="[13] - Mecânica Relativística.html#prop-4-13-2">Proposição 4.13.2</a>, a ação de cada partícula é $\int\big(-m_ac^2\sqrt{1 - v_a^2/c^2}\big)dt$. Somando e
+                    escrevendo a soma das massas pontuais como a integral da densidade, $\sum_am_af(\mathbf{x}_a) = \int\rho_mf\,d^3x$ (para uma
+                    distribuição contínua; com partículas pontuais, $\rho_m = \sum_am_a\delta^3(\mathbf{x} - \mathbf{x}_a)$ no sentido das distribuições, que só
+                    usamos como notação), obtemos $L = \int\mathcal{L}_0\,d^3x$ com a primeira forma de (4.15.4). Para a segunda: um elemento de poeira
+                    que, no seu referencial de repouso, ocupa o volume $V_0$ e tem densidade $\rho_0$ ocupa no laboratório o volume
+                    $V_0\sqrt{1 - v^2/c^2}$ (contração na direção do movimento), com a mesma massa $m$; logo $\rho_m = \rho_0/\sqrt{1 - v^2/c^2}$, e
+                    $\mathcal{L}_0 = -\rho_0c^2$. Como $\rho_0$ é definida num referencial escolhido pela própria poeira, não depende do observador. $\blacksquare$
+                </p>
+
+                <p>
+                    A ação de acoplamento se generaliza do mesmo modo, trocando a carga pontual por uma distribuição de carga e corrente.
+                    Com a densidade de carga $\rho$ e a densidade de corrente $\mathbf{J} = \rho\mathbf{v}$, a quadricorrente é $J^\mu = (c\rho, \mathbf{J})$ (tópico 4.8,
+                    <a href="[08] - Inomogêneas e a Métrica de Minkowski.html#prop-4-8-21">Proposição 4.8.21</a>).
+                </p>
+
+                <div class="definition-box" id="prop-4-15-8">
+                    <p><strong>Proposição 4.15.8 (A densidade de acoplamento).</strong> A ação de acoplamento de uma distribuição de cargas com o
+                        potencial $A$ é (4.15.2) com</p>
+                    <p>$$ \mathcal{L}_{\text{int}} = A_\mu J^\mu = -\rho\phi + \mathbf{J}\cdot\mathbf{A}. \tag{4.15.5} $$</p>
+                    <p>Para uma carga pontual, $\int\mathcal{L}_{\text{int}}\,d^3x\,dt = q\int A_\mu\,dx^\mu$, a ação da <a href="[14] - Acoplamento e Força de Lorentz.html#def-4-14-1">Definição 4.14.1</a>.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Com $A_0 = -\phi/c$ e $J^0 = c\rho$, $A_\mu J^\mu = A_0c\rho + A_iJ^i = -\rho\phi + \mathbf{J}\cdot\mathbf{A}$. Para uma carga pontual em
+                    $\mathbf{x}(t)$, $\rho = q\delta^3(\mathbf{x} - \mathbf{x}(t))$ e $\mathbf{J} = q\mathbf{v}\,\delta^3(\mathbf{x} - \mathbf{x}(t))$, e a integral espacial dá
+                    $q\big(-\phi + \mathbf{A}\cdot\mathbf{v}\big) = q\,A_\mu\frac{dx^\mu}{dt}$, calculada no ponto da carga; integrando em $t$, $q\int A_\mu dx^\mu$. $\blacksquare$
+                </p>
+
+                <p>
+                    $\mathcal{L}_{\text{int}}$ é um escalar porque é a contração de uma $1$-forma com um vetor. Também se escreve como forma: pela
+                    <a href="[08] - Inomogêneas e a Métrica de Minkowski.html#prop-4-8-21">Proposição 4.8.21</a>, a $3$-forma de corrente é $j = \star(J^\flat)$, e $A\wedge j = A\wedge\star J^\flat = \langle A, J^\flat\rangle\operatorname{vol}_\eta = A_\mu J^\mu\operatorname{vol}_\eta$, de
+                    modo que a ação de acoplamento é $\frac1c\int A\wedge j$, sem métrica explícita (a métrica está escondida em $j = \star J^\flat$).
+                </p>
+
+                <h2 id="lagrangiana-de-maxwell">A densidade do campo livre</h2>
+
+                <p>
+                    Falta a parte do próprio campo. A densidade tem de ser um escalar construído com $F$; o mais simples é quadrático em $F$,
+                    e há dois candidatos, os invariantes da <a href="[14] - Acoplamento e Força de Lorentz.html#prop-4-14-11">Proposição 4.14.11</a>. O segundo, $F\wedge F$, não serve: é ímpar por paridade
+                    (<a href="[14] - Acoplamento e Força de Lorentz.html#prop-4-14-12">Proposição 4.14.12</a>) e, como veremos, é uma derivada total (<a href="#obs-4-15-12">Observação 4.15.12</a>). Fica o primeiro, e a pergunta é o coeficiente.
+                </p>
+
+                <div class="definition-box" id="prop-4-15-9">
+                    <p><strong>Proposição 4.15.9 (A densidade de Maxwell).</strong> Com $\varepsilon_0\mu_0c^2 = 1$,</p>
+                    <p>$$ \begin{aligned}
+                        \mathcal{L}_M &= -\frac{1}{4\mu_0}F_{\mu\nu}F^{\mu\nu} = -\frac{1}{2\mu_0}\langle F, F\rangle\\
+                        &= \frac{\varepsilon_0}{2}\lvert\mathbf{E}\rvert^2 - \frac{1}{2\mu_0}\lvert\mathbf{B}\rvert^2,
+                        \end{aligned} \tag{4.15.6} $$</p>
+                    <p>e a ação do campo livre é $S_M = \frac1c\int\mathcal{L}_M\operatorname{vol}_\eta = -\frac{1}{2\mu_0c}\int F\wedge\star F$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> $\tfrac12F_{\mu\nu}F^{\mu\nu} = \langle F, F\rangle$ (4.3.2) e $\langle F, F\rangle = \lvert\mathbf{B}\rvert^2 - \lvert\mathbf{E}\rvert^2/c^2$ (4.3.3), logo
+                    $\mathcal{L}_M = -\frac{1}{2\mu_0}\lvert\mathbf{B}\rvert^2 + \frac{1}{2\mu_0c^2}\lvert\mathbf{E}\rvert^2$, e $\frac{1}{\mu_0c^2} = \varepsilon_0$. A forma da ação vem da definição da estrela,
+                    $F\wedge\star F = \langle F, F\rangle\operatorname{vol}_\eta$ (4.4.2). $\blacksquare$
+                </p>
+
+                <p>
+                    É a ação da ponte com a física do <a href="[03] - Métricas e Volume Invariante.html#fisica">tópico 4.3</a>. Os fatores se
+                    explicam assim: o $\tfrac12$ de $\langle F, F\rangle$ compensa a dupla contagem de cada par $(\mu, \nu)$ na soma antissimétrica; o outro $\tfrac12$
+                    e o $1/\mu_0$ fazem com que, no tópico 4.20, a energia do campo seja $\frac{\varepsilon_0}{2}\lvert\mathbf{E}\rvert^2 + \frac{1}{2\mu_0}\lvert\mathbf{B}\rvert^2$, a densidade de
+                    energia de Jackson, cap. 6. O sinal precisa de justificativa.
+                </p>
+
+                <p id="obs-4-15-10"><strong>Observação 4.15.10 (O sinal de $\mathcal{L}_M$).</strong> Suponha que (i) a ação do campo seja quadrática em $F$
+                    e invariante, e que (ii) a energia associada seja positiva. Como $\mathbf{E} = -\nabla\phi - \partial_t\mathbf{A}$, a parte de $\mathcal{L}_M$ que contém
+                    derivadas temporais do potencial está em $\lvert\mathbf{E}\rvert^2$: é o análogo da energia cinética $\tfrac12m\dot q^2$ de uma lagrangiana
+                    $T - V$, e tem de entrar com sinal positivo. Isso fixa $\mathcal{L}_M = -\frac{1}{4\mu_0}F_{\mu\nu}F^{\mu\nu}$, e não $+\frac{1}{4\mu_0}F_{\mu\nu}F^{\mu\nu}$, que
+                    daria $-\frac{\varepsilon_0}{2}\lvert\mathbf{E}\rvert^2$. O valor $1/\mu_0$ do coeficiente é uma escolha de unidades (a do SI); o sinal não é.
+                    O produto $F_{\mu\nu}F^{\mu\nu}$ tem dois índices levantados e por isso não muda com a convenção de assinatura, $(-,+,+,+)$ ou
+                    $(+,-,-,-)$: o sinal de $\mathcal{L}_M$ é o mesmo nas duas.</p>
+
+                <div class="definition-box" id="def-4-15-11" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.15.11 (A densidade lagrangiana do eletromagnetismo).</strong> A densidade do campo eletromagnético
+                        acoplado a uma corrente $J$ é</p>
+                    <p>$$ \mathcal{L}_{EM} = \mathcal{L}_M + \mathcal{L}_{\text{int}} = -\frac{1}{4\mu_0}F_{\mu\nu}F^{\mu\nu} + A_\mu J^\mu, \tag{4.15.7} $$</p>
+                    <p>com a ação (4.15.3), $S_{EM} = \frac1c\int\mathcal{L}_{EM}\sqrt{\lvert g\rvert}\,d^4x$, que em coordenadas inerciais é
+                        $\int\mathcal{L}_{EM}\,dt\,d^3x$. Somando a densidade da matéria (4.15.4), a teoria inteira (campo, cargas e o acoplamento entre
+                        eles) cabe numa única densidade.</p>
+                </div>
+
+                <p id="obs-4-15-12"><strong>Observação 4.15.12 (O termo $F\wedge F$ é uma derivada total).</strong> Para $F = dA$,
+                    $d(A\wedge F) = dA\wedge F - A\wedge dF = F\wedge F$, porque $dF = 0$. Pelo Teorema de Stokes
+                    (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[18] - Teorema de Stokes Geral.html">tópico 3.18</a>), somar
+                    $\theta\,F\wedge F$ à ação só acrescenta uma integral sobre o bordo da região, que não muda as equações do movimento (o
+                    <a href="#exr-4-15-4">Exercício 4.15.4</a> escreve isso em 3+1). Além disso, pela <a href="[14] - Acoplamento e Força de Lorentz.html#prop-4-14-11">Proposição 4.14.11</a>, $F\wedge F = -\frac2c(\mathbf{E}\cdot\mathbf{B})\operatorname{vol}_\eta$ troca de sinal por
+                    paridade. As duas razões excluem esse termo da densidade de Maxwell clássica; ele reaparece na física de partículas
+                    (o termo $\theta$ e o áxion, já mencionado na <a href="[08] - Inomogêneas e a Métrica de Minkowski.html#obs-4-8-15">Observação 4.8.15</a>).</p>
+
+                <h2 id="fisica">Ponte com a física</h2>
+
+                <p>
+                    <strong>Unidades.</strong> Em unidades gaussianas a densidade do campo livre se escreve $-\frac{1}{16\pi}F_{\mu\nu}F^{\mu\nu}$ e o acoplamento,
+                    $\frac1cA_\mu J^\mu$; o $\frac{1}{4\mu_0}$ e a ausência de $1/c$ no acoplamento são o SI deste capítulo. O que não muda entre os sistemas de
+                    unidades é o sinal relativo: a energia do campo elétrico tem de ser positiva (<a href="#obs-4-15-10">Observação 4.15.10</a>).
+                </p>
+
+                <p>
+                    <strong>Infinitos graus de liberdade.</strong> Uma partícula tem três coordenadas; um campo tem um valor em cada ponto do
+                    espaço. A densidade lagrangiana é a forma de escrever uma lagrangiana com um "índice contínuo": no lugar de $\sum_a$, uma
+                    integral $\int d^3x$. Discretizando o espaço numa rede, um campo escalar vira um sistema de muitos osciladores acoplados aos
+                    vizinhos, e a densidade vira a lagrangiana desse sistema dividida pelo volume de cada célula (<a href="#exr-4-15-5">Exercício 4.15.5</a>).
+                </p>
+
+                <p>
+                    <strong>A métrica como campo.</strong> Na Relatividade Geral, a própria métrica tem uma ação, a de Einstein–Hilbert, a integral
+                    do escalar de curvatura contra $\operatorname{vol}_g$, com coeficiente $\frac{c^3}{16\pi G}$ nas convenções de Carroll (cap. 4). Variar a ação total
+                    em relação a $g$ dá as equações de Einstein, em que a fonte é o tensor de energia-momento da matéria e dos campos, que o
+                    tópico 4.20 constrói para o campo eletromagnético. A curvatura é o assunto do capítulo 5.
+                </p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p id="exr-4-15-1"><strong>Exercício 4.15.1 (das notas de aula).</strong> A ação $\int I\,dl$, com $I$ escalar, é invariante por qualquer
+                    mudança de coordenadas, enquanto $\int\mathcal{L}\,d^nx$ só é invariante por isometrias (e mudanças com $\lvert\det J\rvert = 1$). Em que
+                    passo se perdeu a invariância, e como recuperá-la?</p>
+
+                <p>
+                    <em>Solução.</em> $\int I\,dl$ é a integral do escalar $I$ contra a forma de volume da curva, $dl$, que é definida pela métrica induzida
+                    (<a href="[10] - Comprimento e Energia de Curvas.html#prop-4-10-5">Proposição 4.10.5</a>) e não depende das coordenadas de $M$ nem da parametrização (<a href="[10] - Comprimento e Energia de Curvas.html#teo-4-10-6">Teorema 4.10.6</a>). Ao passar para uma densidade,
+                    trocamos essa medida geométrica pela medida coordenada $d^nx = dx^0\cdots dx^{n-1}$. Numa mudança de coordenadas
+                    $x \mapsto \tilde x$, a fórmula de mudança de variáveis dá $d^n\tilde x = \lvert\det(\partial\tilde x/\partial x)\rvert\,d^nx$, e
+                    $\int\mathcal{L}\,d^n\tilde x = \int\mathcal{L}\,d^nx$ só quando $\lvert\det(\partial\tilde x/\partial x)\rvert = 1$, como nas transformações de Lorentz (para
+                    as quais, além disso, a métrica tem as mesmas componentes $\eta$ nos dois sistemas). A invariância se perdeu na medida, não no
+                    integrando. Ela é recuperada trocando $d^nx$ por $\sqrt{\lvert g\rvert}\,d^nx$: pela <a href="[03] - Métricas e Volume Invariante.html#prop-4-3-10">Proposição 4.3.10</a>, $\sqrt{\lvert\tilde g\rvert} = \lvert\det J\rvert\sqrt{\lvert g\rvert}$ com
+                    $J = \partial x/\partial\tilde x$, e os dois fatores se cancelam. É a ação (4.15.3).
+                </p>
+
+                <p id="exr-4-15-2"><strong>Exercício 4.15.2.</strong> Verifique as unidades de $\mathcal{L}_0$, $\mathcal{L}_{\text{int}}$ e $\mathcal{L}_M$ e da ação (4.15.2).</p>
+
+                <p>
+                    <em>Solução.</em> $[\rho_0c^2] = \frac{\text{kg}}{\text{m}^3}\cdot\frac{\text{m}^2}{\text{s}^2} = \frac{\text{J}}{\text{m}^3}$. $[\rho\phi] = \frac{\text{C}}{\text{m}^3}\cdot\text{V} = \frac{\text{J}}{\text{m}^3}$ e
+                    $[\mathbf{J}\cdot\mathbf{A}] = \frac{\text{A}}{\text{m}^2}\cdot\frac{\text{V}\cdot\text{s}}{\text{m}} = \frac{\text{J}}{\text{m}^3}$. $[\varepsilon_0\lvert\mathbf{E}\rvert^2] = \frac{\text{C}^2}{\text{J}\cdot\text{m}}\cdot\frac{\text{V}^2}{\text{m}^2} = \frac{\text{J}}{\text{m}^3}$ (com
+                    $\text{V} = \text{J}/\text{C}$) e $[\lvert\mathbf{B}\rvert^2/\mu_0] = \frac{\text{J}}{\text{m}^3}$ do mesmo modo. A ação: $\frac1c\int\mathcal{L}\,d^4x$ tem unidade
+                    $\frac{\text{s}}{\text{m}}\cdot\frac{\text{J}}{\text{m}^3}\cdot\text{m}^4 = \text{J}\cdot\text{s}$, a unidade de ação (a de $\hbar$).
+                </p>
+
+                <p id="exr-4-15-3"><strong>Exercício 4.15.3.</strong> Com as fórmulas do <em>boost</em> do <a href="[08] - Inomogêneas e a Métrica de Minkowski.html#ex-4-8-19">Exemplo 4.8.19</a>, verifique diretamente que $\mathcal{L}_M$ é a
+                    mesma nos dois referenciais, e calcule $\mathcal{L}_M$ para uma onda plana e para o campo de uma carga pontual em repouso.</p>
+
+                <p>
+                    <em>Solução.</em> Para um <em>boost</em> com velocidade $v$ na direção $x$, $E'_x = E_x$, $B'_x = B_x$, $E'_y = \gamma(E_y - vB_z)$,
+                    $E'_z = \gamma(E_z + vB_y)$, $B'_y = \gamma(B_y + vE_z/c^2)$, $B'_z = \gamma(B_z - vE_y/c^2)$. Então
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    E_y'^2 - c^2B_z'^2 &= \gamma^2\Big[(E_y - vB_z)^2 - \big(cB_z - \tfrac{v}{c}E_y\big)^2\Big]\\
+                    &= \gamma^2\Big(1 - \frac{v^2}{c^2}\Big)\big(E_y^2 - c^2B_z^2\big) = E_y^2 - c^2B_z^2,
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    e do mesmo modo para o par $(E_z, B_y)$; somando com $E_x^2 - c^2B_x^2$, que não muda, $\lvert\mathbf{E}'\rvert^2 - c^2\lvert\mathbf{B}'\rvert^2 = \lvert\mathbf{E}\rvert^2 - c^2\lvert\mathbf{B}\rvert^2$, e
+                    $\mathcal{L}_M = \frac{\varepsilon_0}{2}\big(\lvert\mathbf{E}\rvert^2 - c^2\lvert\mathbf{B}\rvert^2\big)$ não muda. Na onda plana, $\lvert\mathbf{E}\rvert = c\lvert\mathbf{B}\rvert$ e $\mathcal{L}_M = 0$ em todo ponto (é um
+                    campo nulo, <a href="[14] - Acoplamento e Força de Lorentz.html#exr-4-14-5">Exercício 4.14.5</a>). Para a carga pontual em repouso, $\mathbf{B} = 0$ e $\mathcal{L}_M = \frac{\varepsilon_0}{2}\frac{q^2}{(4\pi\varepsilon_0)^2r^4} = \frac{q^2}{32\pi^2\varepsilon_0r^4}$,
+                    cuja integral diverge perto de $r = 0$: a energia própria de uma carga pontual é infinita, um problema que a eletrodinâmica
+                    clássica não resolve.
+                </p>
+
+                <p id="exr-4-15-4"><strong>Exercício 4.15.4.</strong> Mostre que, para $\mathbf{B} = \nabla\times\mathbf{A}$ e $\mathbf{E} = -\nabla\phi - \partial_t\mathbf{A}$,</p>
+
+                <p>
+                    $$ \mathbf{E}\cdot\mathbf{B} = -\frac12\,\partial_t\big(\mathbf{A}\cdot\mathbf{B}\big) + \frac12\,\nabla\cdot\big(-\phi\,\mathbf{B} + \mathbf{A}\times\mathbf{E}\big), $$
+                </p>
+
+                <p>
+                    e conclua que acrescentar $\mathbf{E}\cdot\mathbf{B}$ à densidade não muda as equações do movimento.
+                </p>
+
+                <p>
+                    <em>Solução.</em> Pela regra do produto, $\partial_t(\mathbf{A}\cdot\mathbf{B}) = \partial_t\mathbf{A}\cdot\mathbf{B} + \mathbf{A}\cdot\partial_t\mathbf{B}$ e, usando
+                    $\nabla\cdot(\mathbf{A}\times\mathbf{E}) = \mathbf{E}\cdot(\nabla\times\mathbf{A}) - \mathbf{A}\cdot(\nabla\times\mathbf{E}) = \mathbf{E}\cdot\mathbf{B} + \mathbf{A}\cdot\partial_t\mathbf{B}$ (lei de Faraday) e
+                    $\nabla\cdot(\phi\mathbf{B}) = \nabla\phi\cdot\mathbf{B}$ ($\nabla\cdot\mathbf{B} = 0$), o lado direito fica
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    &-\tfrac12\partial_t\mathbf{A}\cdot\mathbf{B} - \tfrac12\mathbf{A}\cdot\partial_t\mathbf{B} - \tfrac12\nabla\phi\cdot\mathbf{B} + \tfrac12\mathbf{E}\cdot\mathbf{B} + \tfrac12\mathbf{A}\cdot\partial_t\mathbf{B}\\
+                    &\qquad= \tfrac12\big(-\nabla\phi - \partial_t\mathbf{A}\big)\cdot\mathbf{B} + \tfrac12\mathbf{E}\cdot\mathbf{B} = \mathbf{E}\cdot\mathbf{B}.
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    Assim $\mathbf{E}\cdot\mathbf{B} = \partial_\mu K^\mu$ é uma divergência no espaço-tempo, e a sua integral sobre uma região é uma integral sobre o
+                    bordo, que não varia com variações dos campos que se anulam no bordo. É a versão em 3+1 de $F\wedge F = d(A\wedge F)$
+                    (<a href="#obs-4-15-12">Observação 4.15.12</a>).
+                </p>
+
+                <p id="exr-4-15-5"><strong>Exercício 4.15.5.</strong> Uma corda de densidade linear $\mu$ e tensão $\tau_0$ tem deslocamento transversal $y(x, t)$.
+                    Escreva a energia cinética e a potencial de um pedaço $dx$ e mostre que a lagrangiana é $L = \int\mathcal{L}\,dx$ com
+                    $\mathcal{L} = \frac12\mu(\partial_ty)^2 - \frac12\tau_0(\partial_xy)^2$. Compare com $\mathcal{L}_M$.</p>
+
+                <p>
+                    <em>Solução.</em> O pedaço $dx$ tem massa $\mu\,dx$ e velocidade $\partial_ty$: energia cinética $\frac12\mu(\partial_ty)^2dx$. Esticado, ele passa a ter
+                    comprimento $\sqrt{1 + (\partial_xy)^2}\,dx \approx \big(1 + \frac12(\partial_xy)^2\big)dx$, e a tensão realiza o trabalho
+                    $\tau_0\cdot\frac12(\partial_xy)^2dx$: é a energia potencial, para pequenas deformações. A lagrangiana $T - V$ é então a integral de
+                    $\mathcal{L} = \frac12\mu(\partial_ty)^2 - \frac12\tau_0(\partial_xy)^2$, a densidade já tratada no <a href="[12] - O Princípio Variacional.html#exr-4-12-4">Exercício 4.12.4</a> (onde ela dá a equação de onda com
+                    $v = \sqrt{\tau_0/\mu}$). A estrutura é a de $\mathcal{L}_M$: um termo positivo com derivadas temporais ($\frac{\varepsilon_0}{2}\lvert\mathbf{E}\rvert^2$, que contém
+                    $(\partial_t\mathbf{A})^2$) menos um termo com derivadas espaciais ($\frac{1}{2\mu_0}\lvert\nabla\times\mathbf{A}\rvert^2$).
+                </p>
+
+                <p id="exr-4-15-6"><strong>Exercício 4.15.6.</strong> Em Minkowski, com coordenadas $(x^0, r, \theta, \phi)$ e $x^0 = ct$, calcule $\sqrt{\lvert g\rvert}$ e a
+                    "ação" $\frac1c\int\operatorname{vol}_\eta$ (a de $\mathcal{L} = 1$) da região $\{r_1 \le r \le r_2,\ 0 \le t \le T\}$.</p>
+
+                <p>
+                    <em>Solução.</em> $g = \operatorname{diag}(-1, 1, r^2, r^2\sin^2\theta)$, $\lvert\det g\rvert = r^4\sin^2\theta$ e $\sqrt{\lvert g\rvert} = r^2\sin\theta$ (para $0 \lt \theta \lt \pi$). Então
+                    $\frac1c\int\operatorname{vol}_\eta = \frac1c\int_0^{cT}dx^0\int_{r_1}^{r_2}\!\!\int_0^\pi\!\!\int_0^{2\pi}r^2\sin\theta\,d\phi\,d\theta\,dr = T\cdot\frac{4\pi}{3}\big(r_2^3 - r_1^3\big)$, o volume da casca
+                    vezes a duração, o mesmo que em coordenadas cartesianas, como garante a <a href="#prop-4-15-5">Proposição 4.15.5</a>.
+                </p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <ul>
+                    <li>A lagrangiana de um invariante, $L = I\,dl/dx^0$ (<a href="#prop-4-15-1">Proposição 4.15.1</a>), que reúne as ações da Parte II.</li>
+                    <li>A densidade lagrangiana e a convenção $S = \int\mathcal{L}\,dt\,d^3x = \frac1c\int\mathcal{L}\,d^4x$ (<a href="#def-4-15-2">Definição 4.15.2</a>, <a href="#obs-4-15-3">Observação 4.15.3</a>); a densidade de uma
+                        ação invariante é um escalar (<a href="#prop-4-15-4">Proposição 4.15.4</a>), e em coordenadas quaisquer a medida é $\operatorname{vol}_g = \star1$ (<a href="#prop-4-15-5">Proposição 4.15.5</a>), com a
+                        diferença entre o escalar $\mathcal{L}$ e a densidade $\mathcal{L}\sqrt{\lvert g\rvert}$ (<a href="#obs-4-15-6">Observação 4.15.6</a>).</li>
+                    <li>As três densidades do eletromagnetismo: a poeira, $\mathcal{L}_0 = -\rho_0c^2$ (<a href="#prop-4-15-7">Proposição 4.15.7</a>); o acoplamento, $A_\mu J^\mu$ (<a href="#prop-4-15-8">Proposição 4.15.8</a>);
+                        o campo livre, $\mathcal{L}_M = -\frac{1}{4\mu_0}F_{\mu\nu}F^{\mu\nu}$, com o sinal justificado (<a href="#prop-4-15-9">Proposição 4.15.9</a>, <a href="#obs-4-15-10">Observação 4.15.10</a>); e a densidade total
+                        $\mathcal{L}_{EM}$ (<a href="#def-4-15-11">Definição 4.15.11</a>). O termo $F\wedge F$ é uma derivada total (<a href="#obs-4-15-12">Observação 4.15.12</a>).</li>
+                </ul>
+
+                <p>
+                    A ação do campo está escrita, mas ainda não foi usada. O próximo passo é variar o campo, como o 4.12 variou curvas, e ver
+                    que equações saem: as de Maxwell com fontes do tópico 4.8, agora como equações de Euler–Lagrange de $\mathcal{L}_{EM}$:
+                    <a href="[16] - Euler-Lagrange para Campos.html">4.16 As Equações de Euler–Lagrange para Campos</a>.
+                </p>
+
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="toc-container">
+                <h4>Nesta página</h4>
+                <ul>
+                    <li><a href="#densidades-lagrangianas">Densidades Lagrangianas</a></li>
+                    <li><a href="#acao-de-um-invariante">A ação de um invariante</a></li>
+                    <li><a href="#densidade-lagrangiana">A densidade lagrangiana</a></li>
+                    <li><a href="#materia-e-acoplamento">Poeira e acoplamento</a></li>
+                    <li><a href="#lagrangiana-de-maxwell">O campo livre</a></li>
+                    <li><a href="#fisica">Ponte com a física</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Search Modal Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-modal">
+            <div class="search-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search documentation..." autocomplete="off">
+            </div>
+            <div class="search-results" id="search-results"></div>
+            <div class="search-footer">
+                <div class="search-commands">
+                    <span class="cmd-key">↑</span>
+                    <span class="cmd-key">↓</span>
+                    <span class="cmd-label">navigate</span>
+                    <span class="cmd-key">↵</span>
+                    <span class="cmd-label">select</span>
+                </div>
+                <div class="search-commands">
+                    <span class="cmd-key">esc</span>
+                    <span class="cmd-label">close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../../../assets/js/class-lecture.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Derivada na Fibra e a Transformada de Legendre | Relatividade Geral | The Journal of a Physicist</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../../../assets/images/Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../../../assets/images/Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../../../assets/images/Favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="../../../../../../assets/images/Favicon/favicon.ico">
+    <link rel="stylesheet" href="../../../../../../assets/css/class-lecture.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                        <line x1="9" x2="9" y1="3" y2="21"></line>
+                    </svg>
+                </button>
+                <button id="theme-toggle" class="sidebar-toggle" aria-label="Toggle Theme">
+                    <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="breadcrumbs-header">
+                    <a href="../../index.html" class="breadcrumb-link active">Relatividade Geral</a>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-category" class="breadcrumb-link">Eletromagnetismo e a Geometria do Espaço-Tempo</span>
+                    <svg class="separator" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                    <span id="breadcrumb-current" class="breadcrumb-link active">4.17 Derivada na Fibra e Legendre</span>
+                </div>
+            </div>
+            <nav class="top-nav">
+                <a href="../../../../../../Páginas Principais/Lectures.html">Lectures</a>
+                <a href="../../../../../../index.html">Home</a>
+            </nav>
+        </div>
+
+        <script>
+            MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']]
+                }
+            };
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    </header>
+
+    <div class="main-layout">
+        <aside class="left-sidebar" id="left-sidebar">
+            <div class="sidebar-content">
+
+                <button class="search-trigger" id="search-trigger">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                    </svg>
+                    <span>Search docs...</span>
+                </button>
+
+                <div class="sidebar-group">
+                    <h3>Início</h3>
+                    <ul>
+                        <li><a href="../../index.html">Overview</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Introdução a Simetrias em Mecânica Clássica</h3>
+                    <ul>
+                        <li><a href="../[0] - Introdução a Simetrias em Mecânica Clássica/1-HistoricalIntroduction.html">Introdução Histórica</a></li>
+                        <li><a href="../[0] - Introdução a Simetrias em Mecânica Clássica/1-TR.html">Teoria da Relatividade</a></li>
+                        <li><a href="../[0] - Introdução a Simetrias em Mecânica Clássica/1-Galilean-Relativity.html">Relatividade Galileana</a></li>
+                        <li><a href="../[0] - Introdução a Simetrias em Mecânica Clássica/1-Classical-Electromagnetism.html">Eletromagnetismo Clássico</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Introdução a Simetrias em Mecânica Relativística</h3>
+                    <ul>
+                        <li><a href="../[1] - Introdução a Simetrias em Mecânica Relativística/Tópico 1.html">Tópico 1</a></li>
+                        <li><a href="../[1] - Introdução a Simetrias em Mecânica Relativística/Tópico 2.html">Tópico 2</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Cálculo em Variedades Diferenciáveis</h3>
+                    <ul>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[01] - Motivação e Roteiro.html">3.1 Motivação e Roteiro</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[02] - Preliminares de Topologia e Cálculo.html">3.2 Preliminares de Topologia e Cálculo</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[03] - Variedades Diferenciáveis.html">3.3 Variedades Diferenciáveis</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[04] - Funções e Aplicações Suaves.html">3.4 Funções e Aplicações Suaves</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[05] - Vetores Tangentes.html">3.5 Vetores Tangentes</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[06] - Subvariedades.html">3.6 Subvariedades</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[07] - Fibrado Tangente e Campos Vetoriais.html">3.7 Fibrado Tangente e Campos Vetoriais</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[08] - Fluxos e Derivada de Lie.html">3.8 Fluxos e Derivada de Lie</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[09] - Covetores e 1-Formas.html">3.9 Covetores e 1-Formas</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[10] - Álgebra Multilinear e Tensores.html">3.10 Álgebra Multilinear e Tensores</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[11] - Produto Exterior.html">3.11 Produto Exterior</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[12] - Formas Diferenciais.html">3.12 Formas Diferenciais</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[13] - Derivada Exterior.html">3.13 Derivada Exterior</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[14] - Fórmula de Cartan.html">3.14 Fórmula de Cartan</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[15] - Orientação.html">3.15 Orientação</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[16] - Variedades com Bordo.html">3.16 Variedades com Bordo</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[17] - Integração de Formas.html">3.17 Integração de Formas</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[18] - Teorema de Stokes Geral.html">3.18 Teorema de Stokes Geral</a></li>
+                        <li><a href="../[2] - Cálculo em Variedades Diferenciáveis/[19] - Teoremas Clássicos.html">3.19 Teoremas Clássicos</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-group">
+                    <h3>Eletromagnetismo e a Geometria do Espaço-Tempo</h3>
+                    <ul>
+                        <li><a href="[01] - Motivação e Roteiro.html">4.1 Motivação e Roteiro</a></li>
+                        <li><a href="[02] - O Lema de Poincaré.html">4.2 O Lema de Poincaré</a></li>
+                        <li><a href="[03] - Métricas e Volume Invariante.html">4.3 Métricas e Volume Invariante</a></li>
+                        <li><a href="[04] - O Operador Estrela de Hodge.html">4.4 O Operador Estrela de Hodge</a></li>
+                        <li><a href="[05] - Maxwell em 3D com Formas.html">4.5 Maxwell em 3D com Formas</a></li>
+                        <li><a href="[06] - Meios Materiais e Métrica Induzida.html">4.6 Meios Materiais e Métrica Induzida</a></li>
+                        <li><a href="[07] - Equações Homogêneas em 4D.html">4.7 Equações Homogêneas em 4D</a></li>
+                        <li><a href="[08] - Inomogêneas e a Métrica de Minkowski.html">4.8 Inomogêneas e a Métrica de Minkowski</a></li>
+                        <li><a href="[09] - Carga, Monopolos e Correntes.html">4.9 Carga, Monopolos e Correntes</a></li>
+                        <li><a href="[10] - Comprimento e Energia de Curvas.html">4.10 Comprimento e Energia de Curvas</a></li>
+                        <li><a href="[11] - Massa, Velocidade Limite e Causalidade.html">4.11 Massa, Velocidade Limite e Causalidade</a></li>
+                        <li><a href="[12] - O Princípio Variacional.html">4.12 O Princípio Variacional</a></li>
+                        <li><a href="[13] - Mecânica Relativística.html">4.13 Mecânica Relativística</a></li>
+                        <li><a href="[14] - Acoplamento e Força de Lorentz.html">4.14 Acoplamento e Força de Lorentz</a></li>
+                        <li><a href="[15] - Densidades Lagrangianas.html">4.15 Densidades Lagrangianas</a></li>
+                        <li><a href="[16] - Euler-Lagrange para Campos.html">4.16 Euler–Lagrange para Campos</a></li>
+                        <li><a href="[17] - Derivada na Fibra e Legendre.html" class="active">4.17 Derivada na Fibra e Legendre</a></li>
+                        <li><a href="[18] - Equações de Hamilton.html">4.18 Hamiltoniana e Equações de Hamilton</a></li>
+                        <li><a href="[19] - Teorias de Calibre e Vínculos.html">4.19 Vínculos e Calibre</a></li>
+                        <li><a href="[20] - Tensor de Energia-Momento.html">4.20 Tensor de Energia-Momento</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="prose">
+
+                <h1 id="derivada-na-fibra-e-legendre">4.17 A Derivada na Fibra e a Transformada de Legendre</h1>
+                <p class="lead">Onde vivem as velocidades e os momentos: a lagrangiana como função no fibrado tangente, a derivada na fibra que leva velocidades em covetores, a transformada de Legendre e o espaço de fase.</p>
+
+                <p>
+                    No tópico <a href="[12] - O Princípio Variacional.html">4.12</a>, as equações de Euler–Lagrange foram escritas em coordenadas
+                    $(q, \dot q)$, e o momento $p_i = \partial L/\partial\dot q^i$ apareceu como uma abreviação. Para passar à descrição hamiltoniana, em que $q$ e $p$
+                    são as variáveis independentes, é preciso saber em que espaço vivem $\dot q$ e $p$. A resposta é geométrica: a velocidade
+                    é um vetor tangente, o par $(q, \dot q)$ é um ponto do fibrado tangente $TM$, e a lagrangiana é uma função em $TM$. O
+                    momento, por outro lado, é um <em>covetor</em>, e o par $(q, p)$ é um ponto do fibrado cotangente $T^*M$, o espaço de fase.
+                </p>
+
+                <p>
+                    Este tópico constrói a ponte entre os dois espaços. A <em>derivada na fibra</em> de uma função $f$ em $TM$ é uma aplicação
+                    $\mathbb{F}f: TM \to T^*M$, definida sem coordenadas, que leva cada velocidade no momento correspondente; a
+                    <em>transformada de Legendre</em> usa essa aplicação para trocar a variável $v$ pela variável $p$ e produz uma função $\check f$ no
+                    espaço de fase. A troca só é possível onde a hessiana de $f$ na fibra é invertível, e essa condição de regularidade
+                    é o que falhará, de modo instrutivo, no eletromagnetismo (tópico 4.19). O tópico é matemático; a física, as
+                    equações de Hamilton, fica para o 4.18.
+                </p>
+
+                <p>
+                    Usamos os resultados do capítulo 3 sobre o fibrado tangente
+                    (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[07] - Fibrado Tangente e Campos Vetoriais.html">tópico 3.7</a>), os
+                    covetores e o fibrado cotangente
+                    (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[09] - Covetores e 1-Formas.html">tópico 3.9</a>) e o <em>pullback</em>
+                    de formas (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[12] - Formas Diferenciais.html">tópico 3.12</a>). Ao longo
+                    do tópico, $M$ é uma variedade suave de dimensão $n$, os pontos de $M$ se chamam $x$ e os elementos de $T^*_xM$ se chamam $p$.
+                </p>
+
+                <h2 id="funcoes-no-fibrado">Funções no fibrado tangente</h2>
+
+                <p>
+                    O fibrado tangente $TM$ é a união disjunta dos espaços tangentes $T_xM$ (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[07] - Fibrado Tangente e Campos Vetoriais.html#def-3-7-1">Definição 3.7.1</a>); os seus elementos são pares $(x, v)$
+                    com $v \in T_xM$, e a projeção $\pi(x, v) = x$ esquece o vetor. Cada carta $(U, x^i)$ de $M$ dá uma <em>carta natural</em> de $TM$,
+                    com as $2n$ coordenadas $(x^i, v^i)$, em que $v = v^i\partial_i$ (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[07] - Fibrado Tangente e Campos Vetoriais.html#teo-3-7-2">Teorema 3.7.2</a>). Numa mudança de carta $x \mapsto \tilde x$, as coordenadas
+                    de $TM$ mudam por (3.7.2):
+                </p>
+
+                <p>
+                    $$ \tilde x^j = \tilde x^j(x), \qquad \tilde v^j = \frac{\partial\tilde x^j}{\partial x^i}(x)\,v^i. $$
+                </p>
+
+                <p>
+                    As componentes do vetor mudam linearmente, mas com coeficientes que dependem do ponto. Em cada $T_xM$, isto é, com $x$ fixo,
+                    a mudança é linear: a <em>fibra</em> $T_xM = \pi^{-1}(x)$ é um espaço vetorial, e a sua estrutura não depende da carta.
+                </p>
+
+                <div class="definition-box" id="def-4-17-1" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.17.1 (Funções no fibrado tangente).</strong> Seja $W \subset TM$ aberto. Uma função $f: W \to \mathbb{R}$ suave é uma
+                        <em>função no fibrado tangente</em>; em coordenadas naturais, escrevemos $f = f(x^i, v^i)$. A <em>restrição de $f$ à fibra</em> sobre
+                        $x$ é a função $f_x = f\vert_{W\cap T_xM}$, definida num aberto do espaço vetorial $T_xM$. Uma <em>lagrangiana</em> em $M$ é uma
+                        função no fibrado tangente, $L(x, v)$; na notação da mecânica, $L(q, \dot q)$.</p>
+                </div>
+
+                <p id="ex-4-17-2"><strong>Exemplo 4.17.2.</strong> (a) Se $g$ é uma métrica em $M$ (riemanniana ou não), a <em>energia cinética</em>
+                    $f(x, v) = \frac12g_x(v, v) = \frac12g_{ij}(x)v^iv^j$ é uma função em todo $TM$; em cada fibra, é uma forma quadrática. (b) Uma $1$-forma
+                    $A$ define $f(x, v) = A_x(v) = A_i(x)v^i$, linear em cada fibra. (c) A lagrangiana de uma partícula num potencial,
+                    $L = \frac12m\lvert\mathbf{v}\rvert^2 - U(\mathbf{x})$, e a de uma carga num campo, $L = \frac12m\lvert\mathbf{v}\rvert^2 + q\mathbf{A}\cdot\mathbf{v} - q\phi$, em $T\mathbb{R}^3$. (d) A
+                    lagrangiana relativística $L = -mc^2\sqrt{1 - \lvert\mathbf{v}\rvert^2/c^2}$ do tópico <a href="[13] - Mecânica Relativística.html">4.13</a> só está
+                    definida no aberto $W = \{\lvert\mathbf{v}\rvert \lt c\}$ de $T\mathbb{R}^3$, e por isso a definição admite abertos de $TM$.</p>
+
+                <p>
+                    Sobre uma função no fibrado podemos fazer duas perguntas: como ela varia quando o vetor $v$ muda, com o ponto $x$ fixo,
+                    e como ela varia quando o ponto muda. A primeira tem uma resposta intrínseca, porque $v$ e $v + sw$ estão no mesmo espaço
+                    vetorial $T_xM$. A segunda não tem.
+                </p>
+
+                <p id="obs-4-17-3"><strong>Observação 4.17.3 (A derivada na direção da base depende da carta).</strong> A derivada parcial
+                    $\partial f/\partial x^i$ numa carta natural é a derivada com as componentes $v^i$ fixas. Mas "manter $v^i$ fixo" significa coisas diferentes
+                    em cartas diferentes, porque a lei (3.7.2) mistura o ponto com as componentes do vetor. Exemplo: em $\mathbb{R}^2$, a energia
+                    cinética é $f = \frac12m(v_x^2 + v_y^2)$ em coordenadas cartesianas e $f = \frac12m(\dot r^2 + r^2\dot\theta^2)$ em polares. Na primeira carta,
+                    $\partial f/\partial x = \partial f/\partial y = 0$; na segunda, $\partial f/\partial r = mr\dot\theta^2 \ne 0$. Não há contradição: no segundo caso, mover o ponto com $\dot r$ e
+                    $\dot\theta$ fixos muda o vetor. Comparar vetores em pontos diferentes exige uma estrutura extra, uma <em>conexão</em>, que é o
+                    assunto do capítulo 5. Ali também aparecem os <em>fibrados vetoriais</em> gerais (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[07] - Fibrado Tangente e Campos Vetoriais.html#def-3-7-5">Definição 3.7.5</a>), em que a cada ponto se associa
+                    um espaço vetorial que não precisa ser o tangente; aqui só usamos $TM$ e $T^*M$.</p>
+
+                <h2 id="derivada-na-fibra">A derivada na fibra</h2>
+
+                <p>
+                    No capítulo 3, a diferencial de uma função $g: M \to \mathbb{R}$ foi construída a partir das derivadas direcionais: $w \mapsto dg_x(w) = w(g)$
+                    é linear, logo é um covetor em $T^*_xM$ (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[09] - Covetores e 1-Formas.html#def-3-9-9">Definição 3.9.9</a>), com componentes $\partial_ig$ (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[09] - Covetores e 1-Formas.html#prop-3-9-12">Proposição 3.9.12</a>). A mesma construção, aplicada à
+                    restrição $f_x$ de uma função no fibrado, que é uma função num espaço vetorial, dá a derivada na fibra.
+                </p>
+
+                <div class="definition-box" id="def-4-17-4" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.17.4 (Derivada na fibra).</strong> Seja $f: W \to \mathbb{R}$ uma função no fibrado tangente. Para $(x, v) \in W$ e
+                        $w \in T_xM$, a <em>derivada de $f$ na fibra, na direção $w$</em>, é</p>
+                    <p>$$ \mathcal{D}_wf(x, v) = \frac{d}{ds}\Big\vert_{s=0}f(x, v + sw). \tag{4.17.1} $$</p>
+                    <p>A soma $v + sw$ é feita no espaço vetorial $T_xM$, e para $\lvert s\rvert$ pequeno $(x, v + sw)$ está no aberto $W$.</p>
+                </div>
+
+                <div class="definition-box" id="prop-4-17-5">
+                    <p><strong>Proposição 4.17.5 (A derivada na fibra é um covetor).</strong> Seja $f: W \to \mathbb{R}$ suave.</p>
+                    <ol type="a">
+                        <li>Numa carta natural, $\mathcal{D}_wf(x, v) = w^i\,\dfrac{\partial f}{\partial v^i}(x, v)$.</li>
+                        <li>Para cada $(x, v) \in W$, a aplicação $w \mapsto \mathcal{D}_wf(x, v)$ é linear em $T_xM$. Ela define um covetor
+                            $\mathbb{F}f(x, v) \in T^*_xM$, a <strong>derivada na fibra</strong> de $f$ em $(x, v)$, com componentes
+                            $$ p_i = \big(\mathbb{F}f(x, v)\big)_i = \frac{\partial f}{\partial v^i}(x, v), \tag{4.17.2} $$
+                            isto é, $\mathbb{F}f(x, v) = \frac{\partial f}{\partial v^i}(x, v)\,dx^i\big\vert_x$.</li>
+                        <li>Numa mudança de carta, as componentes mudam pela lei covariante (3.9.2): $\tilde p_j = \dfrac{\partial x^i}{\partial\tilde x^j}\,p_i$.</li>
+                        <li>A aplicação $\mathbb{F}f: W \to T^*M$ é suave e preserva as fibras: $\pi\circ\mathbb{F}f = \pi$.</li>
+                    </ol>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) Na carta natural, o ponto $(x, v + sw)$ tem coordenadas $(x^i, v^i + sw^i)$, porque as coordenadas da
+                    fibra são as componentes na base $(\partial_i)$, que dependem linearmente do vetor. Pela regra da cadeia,
+                    $\frac{d}{ds}\big\vert_0f(x^i, v^i + sw^i) = w^i\,\partial f/\partial v^i$. (b) A expressão de (a) é linear em $w$; um funcional linear em $T_xM$ é, por definição, um
+                    elemento de $T^*_xM$ (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[09] - Covetores e 1-Formas.html#def-3-9-8">Definição 3.9.8</a>), e os seus valores nos vetores da base, $\mathbb{F}f(x, v)(\partial_i) = \partial f/\partial v^i$, são as componentes na
+                    base dual $(dx^i)$ (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[09] - Covetores e 1-Formas.html#prop-3-9-11">Proposição 3.9.11</a>). (c) $\mathbb{F}f(x, v)$ foi definido sem coordenadas, por (4.17.1); as suas componentes em duas bases
+                    obedecem, então, à lei covariante da <a href="../[2] - Cálculo em Variedades Diferenciáveis/[09] - Covetores e 1-Formas.html#prop-3-9-14">Proposição 3.9.14</a>. A conta direta confirma: em coordenadas $\tilde x$, $f$ é a função
+                    $\tilde f(\tilde x, \tilde v) = f\big(x(\tilde x), v(\tilde x, \tilde v)\big)$ com $v^i = \frac{\partial x^i}{\partial\tilde x^j}\tilde v^j$, e, como $x(\tilde x)$ não depende de $\tilde v$,
+                    $\frac{\partial\tilde f}{\partial\tilde v^j} = \frac{\partial f}{\partial v^i}\frac{\partial v^i}{\partial\tilde v^j} = \frac{\partial x^i}{\partial\tilde x^j}\,p_i$. (d) Nas cartas naturais de $TM$ e de $T^*M$
+                    (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[09] - Covetores e 1-Formas.html#def-3-9-16">Definição 3.9.16</a>), $\mathbb{F}f$ é $(x^i, v^i) \mapsto \big(x^i, \partial f/\partial v^i(x, v)\big)$, suave porque $f$ é suave; a primeira componente mostra que o
+                    ponto base não muda. $\blacksquare$
+                </p>
+
+                <p>
+                    A notação $\mathbb{F}f$ é a de Marsden e Ratiu. Para uma lagrangiana, $\mathbb{F}L(q, \dot q)$ é o covetor de componentes $p_i = \partial L/\partial\dot q^i$, o
+                    <strong>momento conjugado</strong> a $\dot q^i$; o item (c) é o que justifica a frase "o momento é um covetor": as suas componentes mudam
+                    como as de $df$, e não como as de $\dot q$.
+                </p>
+
+                <p id="obs-4-17-6"><strong>Observação 4.17.6 (A diferencial de $f$ em $TM$).</strong> Como $TM$ é uma variedade de dimensão $2n$, a função $f$
+                    tem uma diferencial $df$, que é uma $1$-forma em $TM$, isto é, um elemento de $T^*_{(x,v)}(TM)$ em cada ponto. Numa carta natural,</p>
+
+                <p>
+                    $$ df = \frac{\partial f}{\partial x^i}\,dx^i + p_i\,dv^i, \qquad p_i = \frac{\partial f}{\partial v^i}. \tag{4.17.3} $$
+                </p>
+
+                <p>
+                    Nenhuma das duas parcelas é uma $1$-forma em $M$, nem um covetor em $T^*_xM$: os coeficientes dependem do ponto $(x, v)$ de $TM$, e as
+                    formas $dx^i$, $dv^i$ são formas em $TM$. Das duas, só a segunda tem significado intrínseco. Os vetores tangentes à fibra, os
+                    <em>verticais</em>, formam o núcleo de $d\pi$ e não dependem da carta; restrita a eles, $df$ é a derivada da restrição $f_x$, que é a
+                    derivada na fibra. Já a separação entre a "parte em $dx$" e a "parte em $dv$" depende da carta, porque, pela lei (3.7.2),
+                    $d\tilde v^j = \frac{\partial\tilde x^j}{\partial x^i}\,dv^i + \frac{\partial^2\tilde x^j}{\partial x^k\partial x^i}\,v^i\,dx^k$ tem um termo em $dx$: é a versão em formas da <a href="#obs-4-17-3">Observação 4.17.3</a>.
+                </p>
+
+                <p id="ex-4-17-7"><strong>Exemplo 4.17.7.</strong> (a) Para a energia cinética $f = \frac12g_{ij}v^iv^j$, $p_i = g_{ij}v^j$: a derivada na fibra é o
+                    abaixamento de índice do tópico <a href="[03] - Métricas e Volume Invariante.html">4.3</a>, $\mathbb{F}f(x, v) = v^\flat$. Aqui, e só porque há uma
+                    métrica, velocidades e momentos podem ser identificados. (b) Para $f = A_i(x)v^i$, $\mathbb{F}f(x, v) = A_x$ não depende de $v$: a
+                    derivada na fibra leva toda a fibra $T_xM$ num único covetor. (c) Para a carga num campo,
+                    $L = \frac12m\lvert\mathbf{v}\rvert^2 + q\mathbf{A}\cdot\mathbf{v} - q\phi$, $p_i = mv_i + qA_i$; com a lagrangiana relativística, $p_i = \gamma mv_i + qA_i$, o momento
+                    canônico da <a href="[14] - Acoplamento e Força de Lorentz.html#prop-4-14-4">Proposição 4.14.4</a>.</p>
+
+                <h2 id="legendre">A transformada de Legendre</h2>
+
+                <p>
+                    A derivada na fibra leva velocidades em momentos. Para trocar a variável $v$ pela variável $p$, é preciso inverter essa
+                    aplicação, e a derivada dela na direção da fibra é a matriz das segundas derivadas de $f$ em $v$.
+                </p>
+
+                <div class="definition-box" id="def-4-17-8" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.17.8 (Hessiana na fibra; regularidade).</strong> A <em>hessiana na fibra</em> de $f$ em $(x, v)$, numa carta natural, é a
+                        matriz</p>
+                    <p>$$ W_{ij}(x, v) = \frac{\partial^2f}{\partial v^i\partial v^j}(x, v). $$</p>
+                    <p>A função $f$ é <em>regular</em> em $(x, v)$ se $W(x, v)$ é invertível, e <em>regular</em> se é regular em todo ponto de $W$.</p>
+                </div>
+
+                <p>
+                    A condição não depende da carta: $W_{ij}$ é a matriz da forma bilinear $(w_1, w_2) \mapsto \mathcal{D}_{w_1}\mathcal{D}_{w_2}f(x, v)$ em $T_xM$, a segunda derivada
+                    de $f_x$, e numa mudança de carta $\tilde W = J^{\mathsf T}WJ$, com $J = (\partial x^i/\partial\tilde x^j)$ invertível, logo $\det\tilde W = (\det J)^2\det W$.
+                </p>
+
+                <div class="definition-box" id="prop-4-17-9">
+                    <p><strong>Proposição 4.17.9 (Regularidade e inversão local).</strong> $\mathbb{F}f$ é um difeomorfismo local perto de $(x_0, v_0)$ se, e
+                        somente se, $f$ é regular em $(x_0, v_0)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Nas cartas naturais, $\mathbb{F}f(x, v) = \big(x, p(x, v)\big)$ com $p_i = \partial f/\partial v^i$, e a matriz jacobiana tem a forma de blocos
+                </p>
+
+                <p>
+                    $$ D(\mathbb{F}f) = \begin{pmatrix} I & 0\\ \dfrac{\partial^2f}{\partial x^k\partial v^i} & W_{ik}\end{pmatrix}, \qquad \det D(\mathbb{F}f) = \det W. $$
+                </p>
+
+                <p>
+                    Se $\det W(x_0, v_0) \ne 0$, o teorema da função inversa (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[02] - Preliminares de Topologia e Cálculo.html#teo-3-2-53">Teorema 3.2.53</a>) dá vizinhanças em que $\mathbb{F}f$ é um difeomorfismo. Se $\mathbb{F}f$ é
+                    um difeomorfismo local, a sua jacobiana é invertível, e $\det W \ne 0$. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="def-4-17-10" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.17.10 (Transformada de Legendre).</strong> Seja $\mathcal{V} \subset W$ um aberto em que $\mathbb{F}f$ se restringe a um
+                        difeomorfismo sobre um aberto $\mathcal{P} = \mathbb{F}f(\mathcal{V})$ de $T^*M$. Como $\mathbb{F}f$ preserva as fibras, a inversa também preserva:
+                        para cada $(x, p) \in \mathcal{P}$ há um único $v = v(x, p) \in T_xM$ com $(x, v) \in \mathcal{V}$ e $\mathbb{F}f(x, v) = p$. A <strong>transformada de Legendre</strong> de
+                        $f$ é a função $\check f: \mathcal{P} \to \mathbb{R}$,</p>
+                    <p>$$ \check f(x, p) = \langle p, v\rangle - f(x, v), \qquad v = v(x, p), \tag{4.17.4} $$</p>
+                    <p>em que $\langle p, v\rangle = p(v) = p_iv^i$ é o pareamento entre $T^*_xM$ e $T_xM$.</p>
+                </div>
+
+                <p>
+                    Pela <a href="#prop-4-17-9">Proposição 4.17.9</a>, um tal $\mathcal{V}$ existe perto de todo ponto regular. A definição não usa coordenadas: $\langle p, v\rangle$ é intrínseco, e
+                    $\check f$ é uma função no aberto $\mathcal{P}$ do fibrado cotangente. Em termos da <em>função energia</em> $E_f(x, v) = \langle\mathbb{F}f(x, v), v\rangle - f(x, v)$,
+                    definida em $TM$, a transformada é $\check f = E_f\circ(\mathbb{F}f\vert_{\mathcal{V}})^{-1}$: a mesma função, escrita nas variáveis $(x, p)$. A notação $\check f$
+                    evita duas colisões: $f^*$ já é o <em>pullback</em>, e $\ast$ é a estrela de Hodge em 3D. Alguns textos (Marsden e Ratiu, cap. 7)
+                    chamam a própria aplicação $\mathbb{F}L$ de transformada de Legendre, e $E_L$ de energia; a hamiltoniana do 4.18 é a nossa $\check L$.
+                </p>
+
+                <div class="definition-box" id="teo-4-17-11">
+                    <p><strong>Teorema 4.17.11 (A diferencial da transformada).</strong> Nas cartas naturais de $TM$ e $T^*M$ associadas a uma carta de $M$,</p>
+                    <p>$$ \frac{\partial\check f}{\partial p_i}(x, p) = v^i(x, p), \qquad \frac{\partial\check f}{\partial x^i}(x, p) = -\frac{\partial f}{\partial x^i}\big(x, v(x, p)\big), $$</p>
+                    <p>isto é,</p>
+                    <p>$$ d\check f = v^i\,dp_i - \frac{\partial f}{\partial x^i}\,dx^i. \tag{4.17.5} $$</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Nas coordenadas, $\check f(x, p) = p_iv^i(x, p) - f\big(x, v(x, p)\big)$, com $v(x, p)$ suave (é a segunda componente da inversa de
+                    $\mathbb{F}f$). Pela regra da cadeia,
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    \frac{\partial\check f}{\partial p_j} &= v^j + p_i\frac{\partial v^i}{\partial p_j} - \frac{\partial f}{\partial v^i}\frac{\partial v^i}{\partial p_j} = v^j,\\
+                    \frac{\partial\check f}{\partial x^j} &= p_i\frac{\partial v^i}{\partial x^j} - \frac{\partial f}{\partial x^j} - \frac{\partial f}{\partial v^i}\frac{\partial v^i}{\partial x^j} = -\frac{\partial f}{\partial x^j},
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    porque $\partial f/\partial v^i = p_i$ no ponto $(x, v(x, p))$: os termos com as derivadas de $v(x, p)$ se cancelam. $\blacksquare$
+                </p>
+
+                <p>
+                    O cancelamento é o coração da transformada: $\check f$ foi construída para que a sua derivada em $p$ não dependa de como $v$ varia com
+                    $p$. As derivadas em $x$, com $v$ fixo de um lado e $p$ fixo do outro, dependem da carta (<a href="#obs-4-17-3">Observação 4.17.3</a>), mas a relação entre elas
+                    vale em toda carta natural.
+                </p>
+
+                <div class="definition-box" id="prop-4-17-12">
+                    <p><strong>Proposição 4.17.12 (A transformada é uma involução).</strong> Nas hipóteses da <a href="#def-4-17-10">Definição 4.17.10</a>, $\check f$ é regular em $\mathcal{P}$, a sua
+                        derivada na fibra é a inversa de $\mathbb{F}f\vert_{\mathcal{V}}$, e a transformada de Legendre de $\check f$ é $f$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> A derivada na fibra de $\check f$ em $(x, p)$ é um funcional linear em $T^*_xM$, isto é, um elemento de
+                    $(T^*_xM)^* = T_xM$ pela identificação canônica do bidual (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[09] - Covetores e 1-Formas.html#prop-3-9-5">Proposição 3.9.5</a>), e pelo <a href="#teo-4-17-11">Teorema 4.17.11</a> as suas componentes são
+                    $\partial\check f/\partial p_i = v^i(x, p)$: $\mathbb{F}\check f(x, p) = v(x, p)$, a inversa de $\mathbb{F}f$. A hessiana de $\check f$ na fibra é $\partial v^i/\partial p_j$, o bloco inferior
+                    direito da inversa da jacobiana da <a href="#prop-4-17-9">Proposição 4.17.9</a>, que é $W^{-1}$: invertível. Finalmente, a transformada de $\check f$ no ponto $(x, v)$ de $\mathcal{V}$ é,
+                    com $p = \mathbb{F}f(x, v)$,
+                </p>
+
+                <p>
+                    $$ \langle p, v\rangle - \check f(x, p) = \langle p, v\rangle - \big(\langle p, v\rangle - f(x, v)\big) = f(x, v). \qquad\blacksquare $$
+                </p>
+
+                <p id="obs-4-17-13"><strong>Observação 4.17.13 (Local e global).</strong> A transformada depende da escolha de $\mathcal{V}$ onde $\mathbb{F}f$ é injetiva.
+                    Para $f(v) = v^3/3$ em $T\mathbb{R} = \mathbb{R}\times\mathbb{R}$ (sem dependência em $x$), $\mathbb{F}f(v) = v^2$ leva $v$ e $-v$ no mesmo $p$, e $W = 2v$ se anula em $v = 0$.
+                    Em $\mathcal{V} = \{v \gt 0\}$, $v = \sqrt p$ e $\check f = \frac23p^{3/2}$; em $\{v \lt 0\}$, $v = -\sqrt p$ e $\check f = -\frac23p^{3/2}$: duas transformadas diferentes no mesmo
+                    $\mathcal{P} = \{p \gt 0\}$. Quando $\mathbb{F}f: TM \to T^*M$ é um difeomorfismo global, $f$ se diz <em>hiper-regular</em>, e $\check f$ está definida em todo
+                    $T^*M$; é o caso da energia cinética de uma métrica riemanniana, mais um termo linear e um potencial (<a href="#ex-4-17-14">Exemplo 4.17.14</a>).</p>
+
+                <p id="ex-4-17-14"><strong>Exemplo 4.17.14 (Quatro transformadas).</strong> (a) <em>Métrica.</em> Para $f = \frac12g_{ij}v^iv^j$, $W = g$ é invertível,
+                    $\mathbb{F}f = \flat$, $v^i = g^{ij}p_j$ ($\sharp$), e $\check f = p_ig^{ij}p_j - \frac12g_{ij}g^{ik}p_kg^{jl}p_l = \frac12g^{ij}p_ip_j$: a transformada de Legendre da forma quadrática
+                    da métrica é a forma quadrática da métrica inversa, e o par $\flat$, $\sharp$ do 4.3 é o par $\mathbb{F}f$, $\mathbb{F}\check f$. Em particular, para
+                    $f = \frac12m\lvert\mathbf{v}\rvert^2$, $\check f = \lvert\mathbf{p}\rvert^2/(2m)$. (b) <em>Partícula relativística.</em> Em $W = \{\lvert\mathbf{v}\rvert \lt c\}$,
+                    $f = -mc^2\sqrt{1 - \lvert\mathbf{v}\rvert^2/c^2}$ dá $\mathbf{p} = \gamma m\mathbf{v}$, que leva $W$ em todo $\mathbb{R}^3$ com inversa $\mathbf{v} = c\,\mathbf{p}/\sqrt{\lvert\mathbf{p}\rvert^2 + m^2c^2}$,
+                    e</p>
+
+                <p>
+                    $$ \check f = \mathbf{p}\cdot\mathbf{v} - f = \gamma m\lvert\mathbf{v}\rvert^2 + \frac{mc^2}{\gamma} = \gamma mc^2 = \sqrt{\lvert\mathbf{p}\rvert^2c^2 + m^2c^4}, $$
+                </p>
+
+                <p>
+                    a energia do tópico 4.13. (c) <em>Termo linear.</em> Para $f = A_i(x)v^i$, $W = 0$: $\mathbb{F}f$ leva cada fibra num único ponto $A_x$ (<a href="#ex-4-17-7">Exemplo 4.17.7</a>), não é
+                    invertível em lugar nenhum, e não há transformada. (d) <em>Homogênea de grau 1.</em> O mesmo acontece com $f = \lvert\mathbf{v}\rvert$, o integrando
+                    do comprimento de curvas (<a href="#exr-4-17-5">Exercício 4.17.5</a>). Esses dois casos, uma lagrangiana linear nas velocidades e uma invariante por
+                    reparametrização, são os protótipos das lagrangianas singulares do tópico 4.19.
+                </p>
+
+                <p id="obs-4-17-15"><strong>Observação 4.17.15 (A figura de uma variável).</strong> Para $f: I \to \mathbb{R}$ num intervalo aberto, com $f'' \gt 0$, a
+                    transformada tem uma leitura geométrica (Figura 4.17.1). A reta tangente ao gráfico em $v$ tem inclinação $p = f'(v)$ e corta o eixo
+                    vertical em $f(v) - pv = -\check f(p)$. Como $f$ é convexa, o gráfico fica acima de cada tangente, $f(u) \ge f(v) + p(u - v)$, isto é,
+                    $pu - f(u) \le pv - f(v)$ para todo $u \in I$. Logo</p>
+
+                <p>
+                    $$ \check f(p) = \max_{u\in I}\big(pu - f(u)\big), $$
+                </p>
+
+                <p>
+                    atingido no único $u$ com $f'(u) = p$. Essa fórmula, que não pede derivadas, é a <em>transformada de Legendre–Fenchel</em>, e estende a
+                    definição a funções convexas quaisquer.
+                </p>
+
+                <figure class="lecture-figure" id="fig-4-17-1" style="overflow-x: auto; overflow-y: hidden;">
+                    <svg viewBox="0 0 640 320" role="img" style="min-width: 560px;" aria-label="Eixos v e f. Uma parábola convexa, f de v, e a sua reta tangente tracejada num ponto marcado de abscissa v, com inclinação p igual a f linha de v. A reta corta o eixo vertical abaixo da origem, num ponto marcado com o valor f de v menos p v, que é menos a transformada de Legendre f check de p. Uma seta vertical ao lado do ponto de tangência mostra a subida p v da reta entre o eixo vertical e a abscissa v.">
+<defs><marker id="arr-4-17-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="60" y1="235.8" x2="606" y2="235.8" class="fig-axis" marker-end="url(#arr-4-17-1)"/>
+<text x="610" y="239.8" class="fig-label fig-it">v</text>
+<line x1="235.5" y1="300" x2="235.5" y2="14" class="fig-axis" marker-end="url(#arr-4-17-1)"/>
+<text x="227.5" y="20" text-anchor="end" class="fig-label fig-it">f</text>
+<path d="M60,151.5 L63.4,153.4 L66.8,155.3 L70.1,157.1 L73.5,158.8 L76.9,160.6 L80.2,162.3 L83.6,163.9 L87,165.5 L90.4,167.1 L93.8,168.7 L97.1,170.2 L100.5,171.7 L103.9,173.1 L107.2,174.5 L110.6,175.9 L114,177.2 L117.4,178.5 L120.8,179.8 L124.1,181 L127.5,182.2 L130.9,183.3 L134.2,184.4 L137.6,185.5 L141,186.5 L144.4,187.5 L147.8,188.5 L151.1,189.4 L154.5,190.3 L157.9,191.2 L161.2,192 L164.6,192.8 L168,193.5 L171.4,194.3 L174.8,194.9 L178.1,195.6 L181.5,196.2 L184.9,196.7 L188.2,197.3 L191.6,197.8 L195,198.2 L198.4,198.6 L201.8,199 L205.1,199.4 L208.5,199.7 L211.9,199.9 L215.2,200.2 L218.6,200.4 L222,200.5 L225.4,200.7 L228.8,200.8 L232.1,200.8 L235.5,200.8 L238.9,200.8 L242.2,200.8 L245.6,200.7 L249,200.5 L252.4,200.4 L255.8,200.2 L259.1,199.9 L262.5,199.7 L265.9,199.4 L269.2,199 L272.6,198.6 L276,198.2 L279.4,197.8 L282.8,197.3 L286.1,196.7 L289.5,196.2 L292.9,195.6 L296.2,194.9 L299.6,194.3 L303,193.5 L306.4,192.8 L309.8,192 L313.1,191.2 L316.5,190.3 L319.9,189.4 L323.2,188.5 L326.6,187.5 L330,186.5 L333.4,185.5 L336.8,184.4 L340.1,183.3 L343.5,182.2 L346.9,181 L350.2,179.8 L353.6,178.5 L357,177.2 L360.4,175.9 L363.8,174.5 L367.1,173.1 L370.5,171.7 L373.9,170.2 L377.2,168.7 L380.6,167.1 L384,165.5 L387.4,163.9 L390.8,162.3 L394.1,160.6 L397.5,158.8 L400.9,157.1 L404.2,155.3 L407.6,153.4 L411,151.5 L414.4,149.6 L417.8,147.7 L421.1,145.7 L424.5,143.7 L427.9,141.6 L431.2,139.5 L434.6,137.4 L438,135.2 L441.4,133 L444.8,130.8 L448.1,128.5 L451.5,126.2 L454.9,123.8 L458.2,121.4 L461.6,119 L465,116.5 L468.4,114 L471.8,111.5 L475.1,108.9 L478.5,106.3 L481.9,103.7 L485.2,101 L488.6,98.3 L492,95.5 L495.4,92.8 L498.8,89.9 L502.1,87.1 L505.5,84.2 L508.9,81.2 L512.2,78.3 L515.6,75.3 L519,72.2 L522.4,69.1 L525.8,66 L529.1,62.9 L532.5,59.7 L535.9,56.4 L539.2,53.2 L542.6,49.9 L546,46.5 L549.4,43.2 L552.8,39.8 L556.1,36.3 L559.5,32.8 L562.9,29.3 L566.2,25.8 L569.6,22.2 L573,18.5" class="fig-curve"/>
+<text x="93.8" y="158.7" class="fig-label fig-it">f(v)</text>
+<line x1="114" y1="359.5" x2="579.8" y2="37.5" class="fig-curve fig-dashed"/>
+<text x="532.5" y="96.2" class="fig-label fig-small">inclinação p = f′(v)</text>
+<circle cx="451.5" cy="126.2" r="3.5" class="fig-arrowhead"/>
+<line x1="451.5" y1="126.2" x2="451.5" y2="235.8" class="fig-guide fig-dashed"/>
+<text x="451.5" y="253.8" text-anchor="middle" class="fig-label fig-it">v</text>
+<circle cx="235.5" cy="275.5" r="3.5" class="fig-arrowhead"/>
+<line x1="239.5" y1="277.5" x2="281.5" y2="297.5" class="fig-guide"/>
+<text x="285.5" y="305.5" class="fig-label">f(v) − pv = −f̌(p)</text>
+<line x1="235.5" y1="275.5" x2="451.5" y2="275.5" class="fig-guide fig-dashed"/>
+<line x1="465.5" y1="275.5" x2="465.5" y2="126.2" class="fig-guide" marker-end="url(#arr-4-17-1)"/>
+<text x="471.5" y="204.8" class="fig-label fig-it">pv</text>
+</svg>
+                    <figcaption><strong>Figura 4.17.1.</strong> A transformada de Legendre de uma função convexa de uma variável. A reta tangente ao gráfico
+                        de $f$ no ponto de abscissa $v$ tem inclinação $p = f'(v)$; ela sobe $pv$ entre o eixo vertical e $v$, e corta o eixo vertical em
+                        $f(v) - pv = -\check f(p)$. Cada inclinação $p$ determina uma única tangente, e por isso $\check f$ é uma função de $p$.</figcaption>
+                </figure>
+
+                <p id="obs-4-17-16"><strong>Observação 4.17.16 (Transformadas parciais e termodinâmica).</strong> Se $f = f(x, v, b)$ depende de outras variáveis,
+                    pode-se transformar só em $v$, mantendo $b$ como parâmetro; o <a href="#teo-4-17-11">Teorema 4.17.11</a> vale com $\partial\check f/\partial b = -\partial f/\partial b$. É o mecanismo dos
+                    potenciais termodinâmicos. A energia interna $U(S, V)$ de um fluido satisfaz $dU = T\,dS - P\,dV$, isto é, $T = \partial U/\partial S$ e
+                    $P = -\partial U/\partial V$ (a física do
+                    <a href="../[2] - Cálculo em Variedades Diferenciáveis/[13] - Derivada Exterior.html">tópico 3.13</a>). A transformada em $S$ troca
+                    $S$ pela sua variável conjugada $T$: $\check U(T, V) = TS - U$, com $\partial\check U/\partial T = S$ e $\partial\check U/\partial V = P$. A termodinâmica usa o sinal oposto, a
+                    <em>energia livre de Helmholtz</em> $F(T, V) = U - TS = -\check U$, com</p>
+
+                <p>
+                    $$ dF = -S\,dT - P\,dV. $$
+                </p>
+
+                <p>
+                    A regularidade é $\partial^2U/\partial S^2 = T/C_V \gt 0$, a positividade da capacidade térmica; transformando em $V$ obtém-se a entalpia
+                    (<a href="#exr-4-17-6">Exercício 4.17.6</a>).
+                </p>
+
+                <h2 id="espaco-de-fase">O espaço de fase</h2>
+
+                <p>
+                    A transformada de Legendre é uma função em $T^*M$. Esse espaço tem uma estrutura própria, que não depende de nenhuma
+                    lagrangiana e que o tópico 4.18 usa para escrever as equações de Hamilton.
+                </p>
+
+                <div class="definition-box" id="def-4-17-17" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.17.17 (Espaço de fase; formas canônicas).</strong> O <em>espaço de fase</em> de $M$ é o fibrado cotangente $T^*M$, com a
+                        projeção $\pi: T^*M \to M$, $\pi(x, p) = x$, e as coordenadas naturais $(x^i, p_i)$, em que $p = p_i\,dx^i\vert_x$ (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[09] - Covetores e 1-Formas.html#def-3-9-16">Definição 3.9.16</a>). A
+                        <em>$1$-forma canônica</em> $\theta$ e a <em>$2$-forma canônica</em> $\omega$ em $T^*M$ são</p>
+                    <p>$$ \theta_{(x,p)}(X) = p\big(d\pi_{(x,p)}(X)\big), \qquad X \in T_{(x,p)}(T^*M), \tag{4.17.6} $$</p>
+                    <p>e $\omega = d\theta$.</p>
+                </div>
+
+                <div class="definition-box" id="prop-4-17-18">
+                    <p><strong>Proposição 4.17.18 (As formas canônicas em coordenadas).</strong> Em toda carta natural de $T^*M$,
+                        $\theta = p_i\,dx^i$ e $\omega = dp_i\wedge dx^i$. A forma $\omega$ é fechada e não degenerada: se $\omega(X, Y) = 0$ para todo $Y$, então $X = 0$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Em coordenadas, $\pi$ é $(x, p) \mapsto x$, logo $d\pi(\partial/\partial x^i) = \partial_i$ e $d\pi(\partial/\partial p_i) = 0$. Então
+                    $\theta(\partial/\partial x^i) = p(\partial_i) = p_i$ e $\theta(\partial/\partial p_i) = 0$, isto é, $\theta = p_i\,dx^i$. Pela regra de Leibniz da derivada exterior,
+                    $\omega = d(p_i\,dx^i) = dp_i\wedge dx^i$, e $d\omega = d^2\theta = 0$. Para $X = a^i\,\partial/\partial x^i + b_i\,\partial/\partial p_i$, o produto interior é $i_X\omega = b_i\,dx^i - a^i\,dp_i$,
+                    que só se anula se $a = b = 0$. $\blacksquare$
+                </p>
+
+                <p>
+                    Como $\theta$ foi definida sem coordenadas, a sua expressão $p_i\,dx^i$ tem a mesma forma em toda carta natural; o <a href="#exr-4-17-1">Exercício 4.17.1</a> confere
+                    isso em coordenadas polares. Fixamos o sinal $\omega = dp_i\wedge dx^i$ (o de Arnold); outros textos usam $dx^i\wedge dp_i$, e as equações de
+                    Hamilton do 4.18 mudam de sinal com essa escolha. Uma $2$-forma fechada e não degenerada se chama <em>simplética</em>.
+                </p>
+
+                <p>
+                    Falta escrever a relação entre as formas de $T^*M$ e as de $TM$. O instrumento é o <em>pullback</em> pela derivada na fibra.
+                </p>
+
+                <div class="definition-box" id="prop-4-17-19">
+                    <p><strong>Proposição 4.17.19 (O <em>pullback</em> por $\mathbb{F}f$).</strong> Seja $f: W \to \mathbb{R}$ suave. Nas cartas naturais,</p>
+                    <ol type="a">
+                        <li>$(\mathbb{F}f)^*x^i = x^i$, $(\mathbb{F}f)^*p_i = \dfrac{\partial f}{\partial v^i}$ e
+                            $$ (\mathbb{F}f)^*dp_i = \frac{\partial^2f}{\partial x^k\partial v^i}\,dx^k + W_{ik}\,dv^k; \tag{4.17.7} $$</li>
+                        <li>$(\mathbb{F}f)^*\theta = \dfrac{\partial f}{\partial v^i}\,dx^i$, a <em>$1$-forma de Lagrange</em> de $f$ em $TM$;</li>
+                        <li>no aberto $\mathcal{V}$ da <a href="#def-4-17-10">Definição 4.17.10</a>, $(\mathbb{F}f)^*\check f = E_f = v^i\dfrac{\partial f}{\partial v^i} - f$, e
+                            $(\mathbb{F}f)^*d\check f = dE_f = v^i\,(\mathbb{F}f)^*dp_i - \dfrac{\partial f}{\partial x^i}\,dx^i$.</li>
+                    </ol>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> O <em>pullback</em> de uma função é a composição, e $x^i\circ\mathbb{F}f = x^i$, $p_i\circ\mathbb{F}f = \partial f/\partial v^i$ pela (4.17.2). O
+                    <em>pullback</em> comuta com $d$ e com produtos (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[12] - Formas Diferenciais.html#teo-3-12-12">Teorema 3.12.12</a>): $(\mathbb{F}f)^*dp_i = d(\partial f/\partial v^i)$, que é (4.17.7), e
+                    $(\mathbb{F}f)^*(p_i\,dx^i) = \frac{\partial f}{\partial v^i}\,dx^i$. Em (c), $\check f\circ\mathbb{F}f = E_f$ em $\mathcal{V}$ pela definição (4.17.4), e a segunda igualdade é o
+                    <em>pullback</em> de (4.17.5), que se confere também derivando $E_f$: $dE_f = p_i\,dv^i + v^i\,d(\partial f/\partial v^i) - df$, e o $p_i\,dv^i$ se cancela com o de
+                    (4.17.3). $\blacksquare$
+                </p>
+
+                <p id="obs-4-17-20"><strong>Observação 4.17.20 (Dois espaços, uma ponte).</strong> As fórmulas $d\check f = v^i\,dp_i - \partial_if\,dx^i$ e
+                    $dp_i = \frac{\partial p_i}{\partial x^k}dx^k + \frac{\partial p_i}{\partial v^k}dv^k$ costumam ser escritas lado a lado, como se fossem igualdades no mesmo espaço. Não são: a
+                    primeira é uma igualdade de $1$-formas em $T^*M$ (elementos de $T^*_{(x,p)}(T^*M)$, não de $T^*_xM$), em que $dp_i$ é uma das formas
+                    coordenadas; a segunda só faz sentido depois do <em>pullback</em> para $TM$ pela aplicação $\mathbb{F}f$, e é a (4.17.7). A ponte entre os dois
+                    espaços é $\mathbb{F}f$, e ela só é um difeomorfismo, local, onde $f$ é regular.</p>
+
+                <h2 id="fisica">Ponte com a física</h2>
+
+                <p>
+                    <strong>Por que o momento canônico é um covetor.</strong> Para uma partícula livre, $\mathbf{p} = m\mathbf{v}^\flat$ (<a href="#ex-4-17-7">Exemplo 4.17.7</a>), e a métrica permite
+                    confundir o momento com a velocidade. Com um campo eletromagnético, $\pi_i = \gamma mv_i + qA_i$ (<a href="[14] - Acoplamento e Força de Lorentz.html#prop-4-14-4">Proposição 4.14.4</a>), e a parcela $qA_i$ é a
+                    componente de uma $1$-forma: não há como lê-la como uma velocidade. Uma transformação de calibre $A \mapsto A + df$ muda o
+                    momento canônico por $q\,df$, isto é, translada cada fibra de $T^*M$ pelo covetor $q\,df_x$. Essa translação preserva a forma
+                    simplética: em coordenadas, $p_i \mapsto p_i + q\,\partial_if$ leva $\theta$ em $\theta + q\,df$, e $\omega = d\theta$ em $\omega + q\,d^2f = \omega$. O momento canônico
+                    não é observável, mas a estrutura do espaço de fase não muda; o momento cinético $\gamma m\mathbf{v} = \boldsymbol\pi - q\mathbf{A}$ é invariante.
+                </p>
+
+                <p>
+                    <strong>A energia.</strong> A função $E_L = v^i\,\partial L/\partial v^i - L$ em $TM$ é, a menos do sinal, a quantidade da identidade de Beltrami
+                    (<a href="[12] - O Princípio Variacional.html#prop-4-12-12">Proposição 4.12.12</a>): se $L$ não depende do tempo, ela se conserva ao longo das soluções. Para $L = \frac12m\lvert\mathbf{v}\rvert^2 - U$,
+                    $E_L = \frac12m\lvert\mathbf{v}\rvert^2 + U$; para a carga relativística, $E_L = \gamma mc^2 + q\phi$, e o termo $q\mathbf{A}\cdot\mathbf{v}$ não contribui, porque uma
+                    parcela linear em $v$ tem $E = 0$ (as forças magnéticas não realizam trabalho, <a href="[14] - Acoplamento e Força de Lorentz.html#cor-4-14-6">Corolário 4.14.6</a>). A hamiltoniana do 4.18 é essa
+                    energia escrita em $(x, p)$: $H = \check L$.
+                </p>
+
+                <p>
+                    <strong>Termodinâmica.</strong> Os potenciais $U(S, V)$, $F(T, V)$, $H(S, P)$ e $G(T, P)$ são transformadas de Legendre parciais uns dos
+                    outros (<a href="#obs-4-17-16">Observação 4.17.16</a>). Cada um é o natural para um tipo de vínculo experimental: $F$ para um sistema em contato com um
+                    reservatório térmico, a temperatura fixa; $H$ para processos a pressão fixa, como as reações químicas ao ar livre. A
+                    involução (<a href="#prop-4-17-12">Proposição 4.17.12</a>) garante que nenhuma informação se perde na troca, desde que a função seja estritamente convexa
+                    na variável transformada; é o que as condições de estabilidade termodinâmica ($C_V \gt 0$, compressibilidade positiva)
+                    asseguram.
+                </p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p id="exr-4-17-1"><strong>Exercício 4.17.1.</strong> Para $f = \frac12m(v_x^2 + v_y^2)$ em $T\mathbb{R}^2$, calcule os momentos em coordenadas polares,
+                    confira a lei covariante da <a href="#prop-4-17-5">Proposição 4.17.5</a> e verifique que $\theta = p_x\,dx + p_y\,dy = p_r\,dr + p_\theta\,d\theta$.</p>
+
+                <p>
+                    <em>Solução.</em> Com $x = r\cos\theta$, $y = r\sin\theta$, a lei (3.7.2) dá $v_x = \cos\theta\,\dot r - r\sin\theta\,\dot\theta$, $v_y = \sin\theta\,\dot r + r\cos\theta\,\dot\theta$, e
+                    $f = \frac12m(\dot r^2 + r^2\dot\theta^2)$. Então $p_r = m\dot r$ e $p_\theta = mr^2\dot\theta$. Pela lei covariante, com $p_x = mv_x$, $p_y = mv_y$,
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    p_r &= \frac{\partial x}{\partial r}p_x + \frac{\partial y}{\partial r}p_y = m\big(\cos\theta\,v_x + \sin\theta\,v_y\big) = m\dot r,\\
+                    p_\theta &= \frac{\partial x}{\partial\theta}p_x + \frac{\partial y}{\partial\theta}p_y = mr\big(-\sin\theta\,v_x + \cos\theta\,v_y\big) = mr^2\dot\theta.
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    Para $\theta$: invertendo essas relações, $p_x = \cos\theta\,p_r - \frac{\sin\theta}{r}p_\theta$ e $p_y = \sin\theta\,p_r + \frac{\cos\theta}{r}p_\theta$; com
+                    $dx = \cos\theta\,dr - r\sin\theta\,d\theta$ e $dy = \sin\theta\,dr + r\cos\theta\,d\theta$, o coeficiente de $dr$ em $p_x\,dx + p_y\,dy$ é $p_r$, e o de $d\theta$ é $p_\theta$. A
+                    derivada na base, por outro lado, não se transforma assim: $\partial f/\partial x = 0$ em cartesianas, mas $\partial f/\partial r = mr\dot\theta^2$ em polares
+                    (<a href="#obs-4-17-3">Observação 4.17.3</a>).
+                </p>
+
+                <p id="exr-4-17-2"><strong>Exercício 4.17.2.</strong> Para $f = \frac12g_{ij}(x)v^iv^j + A_i(x)v^i - U(x)$, com $g$ riemanniana, mostre que $f$ é hiper-regular e
+                    calcule $\check f$ e a hessiana de $\check f$ na fibra.</p>
+
+                <p>
+                    <em>Solução.</em> $p_i = g_{ij}v^j + A_i$ e $W = g$, invertível. Em cada fibra, $v \mapsto p$ é afim e invertível, com inversa
+                    $v^i = g^{ij}(p_j - A_j)$, definida em toda a fibra $T^*_xM$: $\mathbb{F}f$ é um difeomorfismo de $TM$ sobre $T^*M$ (a inversa é suave, dada pela
+                    fórmula). Com $\langle p, v\rangle = (g_{ij}v^j + A_i)v^i$,
+                </p>
+
+                <p>
+                    $$ \check f = \tfrac12g_{ij}v^iv^j + U = \tfrac12\,g^{ij}(p_i - A_i)(p_j - A_j) + U(x), $$
+                </p>
+
+                <p>
+                    e a hessiana é $\partial^2\check f/\partial p_i\partial p_j = g^{ij} = (W^{-1})^{ij}$, como afirma a <a href="#prop-4-17-12">Proposição 4.17.12</a>. O termo linear $A$ não muda a hessiana; ele só
+                    translada o momento.
+                </p>
+
+                <p id="exr-4-17-3"><strong>Exercício 4.17.3.</strong> Calcule a transformada de Legendre de $L = \frac12m\lvert\mathbf{v}\rvert^2 + q\mathbf{A}\cdot\mathbf{v} - q\phi$ e a de
+                    $L = -mc^2\sqrt{1 - \lvert\mathbf{v}\rvert^2/c^2} + q\mathbf{A}\cdot\mathbf{v} - q\phi$.</p>
+
+                <p>
+                    <em>Solução.</em> O primeiro caso é o <a href="#exr-4-17-2">Exercício 4.17.2</a> com $g = m\,\delta$, o termo linear $q\mathbf{A}$ no lugar de $A$ e
+                    $U = q\phi$: $\check L = \frac{1}{2m}\lvert\mathbf{p} - q\mathbf{A}\rvert^2 + q\phi$. No
+                    segundo, $\mathbf{p} = \gamma m\mathbf{v} + q\mathbf{A}$; pelo <a href="#ex-4-17-14">Exemplo 4.17.14</a>(b) aplicado a $\mathbf{k} = \mathbf{p} - q\mathbf{A} = \gamma m\mathbf{v}$, a inversa é
+                    $\mathbf{v} = c\,\mathbf{k}/\sqrt{\lvert\mathbf{k}\rvert^2 + m^2c^2}$, e
+                </p>
+
+                <p>
+                    $$ \check L = \mathbf{p}\cdot\mathbf{v} - L = \mathbf{k}\cdot\mathbf{v} + \frac{mc^2}{\gamma} + q\phi = \sqrt{\lvert\mathbf{p} - q\mathbf{A}\rvert^2c^2 + m^2c^4} + q\phi. $$
+                </p>
+
+                <p>
+                    Nos dois casos o campo entra pela "substituição mínima" $\mathbf{p} \to \mathbf{p} - q\mathbf{A}$ e pela soma de $q\phi$: são as hamiltonianas de uma carga
+                    num campo, que o 4.18 usa.
+                </p>
+
+                <p id="exr-4-17-4"><strong>Exercício 4.17.4.</strong> Para $f(v) = e^v$, calcule $\check f$, confira a involução e a fórmula do máximo da
+                    <a href="#obs-4-17-15">Observação 4.17.15</a> para $p = 3$.</p>
+
+                <p>
+                    <em>Solução.</em> $p = f'(v) = e^v$ leva $\mathbb{R}$ em $\mathcal{P} = (0, \infty)$, com inversa $v = \ln p$, e $\check f(p) = p\ln p - p$. Então
+                    $\check f'(p) = \ln p = v$, e a transformada de $\check f$ é $vp - \check f(p) = ve^v - (ve^v - e^v) = e^v$. Para $p = 3$, a função $3u - e^u$ tem derivada
+                    $3 - e^u$, nula em $u = \ln 3$, e segunda derivada $-e^u \lt 0$: o máximo é $3\ln3 - 3 = \check f(3)$. Note que $\check f$ só está definida para $p \gt 0$: as
+                    inclinações das tangentes ao gráfico de $e^v$ são positivas.
+                </p>
+
+                <p id="exr-4-17-5"><strong>Exercício 4.17.5.</strong> Seja $f(v) = \lvert\mathbf{v}\rvert$ em $\{\mathbf{v} \ne 0\} \subset T\mathbb{R}^n$. Calcule $\mathbb{F}f$, a sua imagem, a hessiana e
+                    a energia $E_f$. O que acontece com qualquer $f$ homogênea de grau $1$ em $v$?</p>
+
+                <p>
+                    <em>Solução.</em> $p_i = v_i/\lvert\mathbf{v}\rvert$: o momento é o vetor unitário na direção de $\mathbf{v}$, e a imagem de $\mathbb{F}f$ é a esfera $\lvert\mathbf{p}\rvert = 1$, de
+                    dimensão $n - 1$; todos os múltiplos positivos de um $\mathbf{v}$ têm o mesmo $\mathbf{p}$. A hessiana é
+                    $W_{ij} = \big(\delta_{ij} - v_iv_j/\lvert\mathbf{v}\rvert^2\big)/\lvert\mathbf{v}\rvert$, com $W\mathbf{v} = 0$, logo $\det W = 0$, e $E_f = \mathbf{v}\cdot\mathbf{p} - \lvert\mathbf{v}\rvert = 0$. Para $f$ homogênea de grau
+                    $1$, $f(x, \lambda v) = \lambda f(x, v)$ para $\lambda \gt 0$; derivando em $\lambda = 1$, $v^i\,\partial f/\partial v^i = f$ (relação de Euler), isto é, $E_f = 0$, e
+                    derivando de novo em $v^j$, $W_{ij}v^i = 0$: $v$ está no núcleo da hessiana, e $f$ nunca é regular. É o caso do integrando do
+                    comprimento $\int\sqrt{\lvert g(\dot\gamma, \dot\gamma)\rvert}\,d\tau$ (tópico <a href="[10] - Comprimento e Energia de Curvas.html">4.10</a>): a invariância por
+                    reparametrização é exatamente a homogeneidade de grau $1$, e ela torna a lagrangiana singular (tópico 4.19). A energia
+                    $\frac12g(v, v)$, que tem as mesmas soluções com parâmetro afim (<a href="[12] - O Princípio Variacional.html#prop-4-12-15">Proposição 4.12.15</a>), é regular.
+                </p>
+
+                <p id="exr-4-17-6"><strong>Exercício 4.17.6.</strong> A energia interna de um gás ideal monoatômico de $N$ partículas é
+                    $U(S, V) = U_0\,(V_0/V)^{2/3}\,e^{2(S - S_0)/(3Nk)}$. Calcule $T$ e $P$, confira $PV = NkT$ e $U = \frac32NkT$, e calcule a entalpia
+                    $H(S, P) = U + PV$, verificando $\partial H/\partial S = T$ e $\partial H/\partial P = V$.</p>
+
+                <p>
+                    <em>Solução.</em> $T = \partial U/\partial S = \frac{2U}{3Nk}$, logo $U = \frac32NkT$; $P = -\partial U/\partial V = \frac{2U}{3V}$, logo $PV = \frac23U = NkT$. A entalpia é a
+                    transformada parcial em $V$, com a variável conjugada $-P$ e o sinal termodinâmico: $\check U_V = (-P)V - U = -(U + PV) = -H$. Pelo
+                    <a href="#teo-4-17-11">Teorema 4.17.11</a> (na versão parcial da <a href="#obs-4-17-16">Observação 4.17.16</a>), $\partial\check U_V/\partial(-P) = V$ e $\partial\check U_V/\partial S = -\partial U/\partial S$, isto é,
+                    $dH = T\,dS + V\,dP$. Explicitamente, invertendo $P(S, V)$,
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    V &= \Big(\frac{2U_0V_0^{2/3}e^{2(S - S_0)/(3Nk)}}{3P}\Big)^{3/5},\\
+                    H &= U + PV = \frac53U = \frac52\,PV = \frac52\,NkT,
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    e $H$, como função de $(S, P)$, é proporcional a $P^{2/5}e^{2(S - S_0)/(5Nk)}$; derivando, $\partial H/\partial P = \frac25H/P = V$ e
+                    $\partial H/\partial S = \frac{2H}{5Nk} = \frac{2}{5Nk}\cdot\frac52NkT = T$. A regularidade é $\partial^2U/\partial V^2 = \frac{10U}{9V^2} \gt 0$.
+                </p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <ul>
+                    <li>Funções no fibrado tangente e a restrição a uma fibra (<a href="#def-4-17-1">Definição 4.17.1</a>, <a href="#ex-4-17-2">Exemplo 4.17.2</a>); a derivada na direção da base depende da carta
+                        (<a href="#obs-4-17-3">Observação 4.17.3</a>).</li>
+                    <li>A derivada na fibra $\mathbb{F}f: TM \to T^*M$, definida sem coordenadas, com componentes $p_i = \partial f/\partial v^i$ que mudam como as de um covetor
+                        (<a href="#def-4-17-4">Definição 4.17.4</a>, <a href="#prop-4-17-5">Proposição 4.17.5</a>); a diferencial de $f$ em $TM$ e a parte intrínseca dela (<a href="#obs-4-17-6">Observação 4.17.6</a>); o momento canônico e o
+                        $\flat$ como derivadas na fibra (<a href="#ex-4-17-7">Exemplo 4.17.7</a>).</li>
+                    <li>A hessiana na fibra e a regularidade, equivalente à inversão local de $\mathbb{F}f$ (<a href="#def-4-17-8">Definição 4.17.8</a>, <a href="#prop-4-17-9">Proposição 4.17.9</a>); a transformada de
+                        Legendre $\check f = \langle p, v\rangle - f$ (<a href="#def-4-17-10">Definição 4.17.10</a>), a sua diferencial $d\check f = v^i\,dp_i - \partial_if\,dx^i$ (<a href="#teo-4-17-11">Teorema 4.17.11</a>) e a involução
+                        (<a href="#prop-4-17-12">Proposição 4.17.12</a>); o caráter local (<a href="#obs-4-17-13">Observação 4.17.13</a>), os exemplos (<a href="#ex-4-17-14">Exemplo 4.17.14</a>), a figura convexa e o máximo
+                        (<a href="#obs-4-17-15">Observação 4.17.15</a>), e as transformadas parciais da termodinâmica (<a href="#obs-4-17-16">Observação 4.17.16</a>).</li>
+                    <li>O espaço de fase $T^*M$ com as formas canônicas $\theta = p_i\,dx^i$ e $\omega = dp_i\wedge dx^i$ (<a href="#def-4-17-17">Definição 4.17.17</a>, <a href="#prop-4-17-18">Proposição 4.17.18</a>), e o <em>pullback</em>
+                        por $\mathbb{F}f$, que é a ponte entre as formas de $TM$ e as de $T^*M$ (<a href="#prop-4-17-19">Proposição 4.17.19</a>, <a href="#obs-4-17-20">Observação 4.17.20</a>).</li>
+                </ul>
+
+                <p>
+                    Uma lagrangiana regular $L$ tem agora uma transformada $H = \check L$ no espaço de fase. O próximo passo é ver o que acontece com as
+                    equações de Euler–Lagrange quando se troca $\dot q$ por $p$: elas viram as equações de Hamilton, de primeira ordem, e a forma $\omega$
+                    passa a governar a dinâmica:
+                    <a href="[18] - Equações de Hamilton.html">4.18 A Hamiltoniana e as Equações de Hamilton</a>.
+                </p>
+
+            </div>
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="toc-container">
+                <h4>Nesta página</h4>
+                <ul>
+                    <li><a href="#derivada-na-fibra-e-legendre">Derivada na Fibra e Legendre</a></li>
+                    <li><a href="#funcoes-no-fibrado">Funções no fibrado tangente</a></li>
+                    <li><a href="#derivada-na-fibra">A derivada na fibra</a></li>
+                    <li><a href="#legendre">A transformada de Legendre</a></li>
+                    <li><a href="#espaco-de-fase">O espaço de fase</a></li>
+                    <li><a href="#fisica">Ponte com a física</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Search Modal Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-modal">
+            <div class="search-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search documentation..." autocomplete="off">
+            </div>
+            <div class="search-results" id="search-results"></div>
+            <div class="search-footer">
+                <div class="search-commands">
+                    <span class="cmd-key">↑</span>
+                    <span class="cmd-key">↓</span>
+                    <span class="cmd-label">navigate</span>
+                    <span class="cmd-key">↵</span>
+                    <span class="cmd-label">select</span>
+                </div>
+                <div class="search-commands">
+                    <span class="cmd-key">esc</span>
+                    <span class="cmd-label">close</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../../../assets/js/class-lecture.js"></script>
+</body>
+
+</html>
