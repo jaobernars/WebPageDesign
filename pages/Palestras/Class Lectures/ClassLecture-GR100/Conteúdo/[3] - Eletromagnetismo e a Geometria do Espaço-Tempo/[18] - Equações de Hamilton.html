@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hamiltoniana e Equações de Hamilton | Relatividade Geral | The Journal of a Physicist</title>
+    <title>A Hamiltoniana e as Equações de Hamilton | Relatividade Geral | The Journal of a Physicist</title>
     <link rel="apple-touch-icon" sizes="180x180" href="../../../../../../assets/images/Favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../../../../../assets/images/Favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../../../../../assets/images/Favicon/favicon-16x16.png">
@@ -169,10 +169,442 @@
         <main class="content-area">
             <div class="prose">
 
-                <h1 id="hamilton">4.18 Hamiltoniana e Equações de Hamilton</h1>
-                <p class="lead">A hamiltoniana como transformada de Legendre da lagrangiana, as equações de Hamilton, a conservação da energia e o critério de regularidade.</p>
+                <h1 id="equacoes-de-hamilton">4.18 A Hamiltoniana e as Equações de Hamilton</h1>
+                <p class="lead">A transformada de Legendre aplicada à mecânica: a hamiltoniana, a equivalência entre as equações de Hamilton e as de Euler–Lagrange, a conservação da energia e o critério de regularidade, que falha para a ação relativística invariante por reparametrização.</p>
 
-                <p style="color: red">Texto que precisa ser desenvolvido.</p>
+                <p>
+                    O tópico <a href="[17] - Derivada na Fibra e Legendre.html">4.17</a> construiu a ponte entre o fibrado tangente e o espaço de
+                    fase: a derivada na fibra $\mathbb{F}L$ leva velocidades em momentos, e, onde a hessiana na fibra é invertível, a
+                    transformada de Legendre troca a lagrangiana $L(q, v)$ por uma função $\check L(q, p)$. Aqui essa função ganha o seu nome, a
+                    <em>hamiltoniana</em>, e mostramos que as $n$ equações de Euler–Lagrange, de segunda ordem, equivalem às $2n$ equações de
+                    Hamilton, de primeira ordem, que dizem como o ponto $(q, p)$ se move no espaço de fase.
+                </p>
+
+                <p>
+                    Duas consequências imediatas organizam o resto do tópico. A hamiltoniana se conserva quando a lagrangiana não depende
+                    explicitamente do tempo: é a energia. E a passagem só é possível quando a lagrangiana é regular, condição que se lê
+                    como um jacobiano entre as formas de volume de $TM$ e de $T^*M$. As lagrangianas relativísticas dos tópicos
+                    <a href="[13] - Mecânica Relativística.html">4.13</a> e <a href="[14] - Acoplamento e Força de Lorentz.html">4.14</a>, escritas
+                    com o tempo $t$ como parâmetro, são regulares, e as equações de Hamilton reproduzem a força de Lorentz. A mesma ação,
+                    escrita com um parâmetro arbitrário, não é: a sua hamiltoniana é identicamente nula, e os momentos não são
+                    independentes. É o primeiro exemplo de uma teoria com vínculos, o assunto do tópico 4.19.
+                </p>
+
+                <p>
+                    Notação: $M$ é a variedade de configuração, de dimensão $n$, com coordenadas $q^i$; as coordenadas naturais de $TM$ são
+                    $(q^i, v^i)$ e as de $T^*M$, $(q^i, p_i)$, com o índice de $p$ embaixo. Ao longo de uma curva $q(t)$, a velocidade é $\dot q^i = dq^i/dt$,
+                    e a lagrangiana é avaliada em $v = \dot q$; na notação da mecânica, escreve-se $L(q, \dot q)$.
+                </p>
+
+                <h2 id="hamiltoniana">A hamiltoniana</h2>
+
+                <p>
+                    Admitimos uma dependência explícita no tempo, $L = L(q, v, t)$, com $t$ num intervalo $I$: o tempo entra como um parâmetro, e a
+                    transformada é a parcial da <a href="[17] - Derivada na Fibra e Legendre.html#obs-4-17-16">Observação 4.17.16</a>, feita só na velocidade.
+                </p>
+
+                <div class="definition-box" id="def-4-18-1" style="border-left: 4px solid #45503B;">
+                    <p><strong>Definição 4.18.1 (Hamiltoniana).</strong> Seja $L: \mathcal{V}\times I \to \mathbb{R}$ suave, com $\mathcal{V} \subset TM$ aberto, tal que, para cada
+                        $t \in I$, a derivada na fibra $(q, v) \mapsto \big(q, \partial L/\partial v(q, v, t)\big)$ é um difeomorfismo de $\mathcal{V}$ sobre um aberto $\mathcal{P}$ de $T^*M$
+                        (o mesmo para todo $t$), com inversa $(q, p) \mapsto \big(q, v(q, p, t)\big)$ suave também em $t$. A <strong>hamiltoniana</strong> é a
+                        transformada de Legendre de $L$ na velocidade,</p>
+                    <p>$$ H(q, p, t) = p_i\,v^i - L(q, v, t), \qquad v = v(q, p, t), \tag{4.18.1} $$</p>
+                    <p>em que $v(q, p, t)$ é a velocidade com $p_i = \partial L/\partial v^i(q, v, t)$.</p>
+                    <p>A quantidade $p_i$ é o <em>momento conjugado</em> à coordenada $q^i$.</p>
+                </div>
+
+                <p>
+                    Pela <a href="[17] - Derivada na Fibra e Legendre.html#prop-4-17-9">Proposição 4.17.9</a>, essas hipóteses valem perto de todo ponto em que $L$ é regular, isto é, em que a hessiana
+                    $W_{ij} = \partial^2L/\partial v^i\partial v^j$ é invertível. Na notação da mecânica, $H = p_i\dot q^i - L$, com $\dot q$ expresso em função de $(q, p, t)$.
+                </p>
+
+                <div class="definition-box" id="prop-4-18-2">
+                    <p><strong>Proposição 4.18.2 (As derivadas de $H$).</strong> Nas hipóteses da <a href="#def-4-18-1">Definição 4.18.1</a>,</p>
+                    <p>$$ \frac{\partial H}{\partial p_i} = v^i, \qquad \frac{\partial H}{\partial q^i} = -\frac{\partial L}{\partial q^i}, \qquad \frac{\partial H}{\partial t} = -\frac{\partial L}{\partial t}, \tag{4.18.2} $$</p>
+                    <p>com o lado direito avaliado em $\big(q, v(q, p, t), t\big)$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> As duas primeiras são o <a href="[17] - Derivada na Fibra e Legendre.html#teo-4-17-11">Teorema 4.17.11</a> com $t$ fixo. A terceira é a mesma conta, feita com a variável $t$: pela
+                    regra da cadeia, $\frac{\partial H}{\partial t} = p_i\frac{\partial v^i}{\partial t} - \frac{\partial L}{\partial v^i}\frac{\partial v^i}{\partial t} - \frac{\partial L}{\partial t} = -\frac{\partial L}{\partial t}$, porque $\partial L/\partial v^i = p_i$. $\blacksquare$
+                </p>
+
+                <p>
+                    Cuidado com as derivadas parciais: $\partial H/\partial q^i$ é tomada com $p$ fixo, e $\partial L/\partial q^i$, com $v$ fixo. Elas são iguais a menos do sinal, e
+                    não "porque $H = -L$": o cancelamento é o do <a href="[17] - Derivada na Fibra e Legendre.html#teo-4-17-11">Teorema 4.17.11</a>.
+                </p>
+
+                <div class="definition-box" id="teo-4-18-3">
+                    <p><strong>Teorema 4.18.3 (Equações de Hamilton).</strong> Nas hipóteses da <a href="#def-4-18-1">Definição 4.18.1</a>:</p>
+                    <ol type="a">
+                        <li>Se $q: J \to M$ é uma curva $C^2$, com $J \subset I$ um intervalo e $(q(t), \dot q(t)) \in \mathcal{V}$, que resolve as equações de Euler–Lagrange,
+                            então $(q(t), p(t))$, com $p_i(t) = \frac{\partial L}{\partial v^i}\big(q(t), \dot q(t), t\big)$, é uma curva $C^1$ em $\mathcal{P}$ que resolve as
+                            <strong>equações de Hamilton</strong>
+                            $$ \dot q^i = \frac{\partial H}{\partial p_i}, \qquad \dot p_i = -\frac{\partial H}{\partial q^i}. \tag{4.18.3} $$</li>
+                        <li>Reciprocamente, se $(q(t), p(t))$ é uma curva $C^1$ em $\mathcal{P}$ que resolve (4.18.3), então $q$ é de classe $C^2$,
+                            $(q(t), \dot q(t)) \in \mathcal{V}$, $p_i(t) = \frac{\partial L}{\partial v^i}\big(q(t), \dot q(t), t\big)$, e $q$ resolve as equações de Euler–Lagrange.</li>
+                    </ol>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> (a) A curva $p(t)$ é $C^1$, porque $\partial L/\partial v$ é suave e $q$ é $C^2$, e ela fica em $\mathcal{P}$, porque é a imagem de
+                    $(q(t), \dot q(t)) \in \mathcal{V}$ pela derivada na fibra. Como a inversa leva $(q(t), p(t))$ de volta em $(q(t), \dot q(t))$, temos
+                    $v\big(q(t), p(t), t\big) = \dot q(t)$, e pela (4.18.2), $\frac{\partial H}{\partial p_i} = v^i = \dot q^i$: é a primeira equação. Pela equação de Euler–Lagrange e
+                    pela (4.18.2), $\dot p_i = \frac{d}{dt}\frac{\partial L}{\partial v^i} = \frac{\partial L}{\partial q^i} = -\frac{\partial H}{\partial q^i}$: é a segunda.
+                </p>
+
+                <p>
+                    (b) A primeira equação de Hamilton e a (4.18.2) dizem que $\dot q(t) = v\big(q(t), p(t), t\big)$. Isso tem duas consequências. Como $v$ é suave e $q$,
+                    $p$ são $C^1$, $\dot q$ é $C^1$, isto é, $q$ é $C^2$. E, pela definição de $v(q, p, t)$, $(q(t), \dot q(t))$ é o ponto de $\mathcal{V}$ cuja derivada na
+                    fibra é $p(t)$: $p_i(t) = \frac{\partial L}{\partial v^i}(q(t), \dot q(t), t)$. Então a segunda equação de Hamilton e a (4.18.2) dão
+                    $\frac{d}{dt}\frac{\partial L}{\partial v^i} = \dot p_i = -\frac{\partial H}{\partial q^i} = \frac{\partial L}{\partial q^i}$, que são as equações de Euler–Lagrange. $\blacksquare$
+                </p>
+
+                <p>
+                    A prova não usa a unicidade das soluções de equações diferenciais: a equivalência é ponto a ponto, curva a curva. A
+                    regularidade entra em dois lugares: para definir $H$ e, na volta, para recuperar $\dot q$ a partir de $p$. Nas equações de
+                    Hamilton, os índices ficam onde a geometria manda: $q^i$ em cima, como as coordenadas de um ponto, e $p_i$ embaixo, como
+                    as componentes de um covetor.
+                </p>
+
+                <p id="obs-4-18-4"><strong>Observação 4.18.4 (O campo hamiltoniano).</strong> Para $H$ independente do tempo, as equações (4.18.3) dizem
+                    que $(q(t), p(t))$ é uma curva integral do campo vetorial em $\mathcal{P}$</p>
+
+                <p>
+                    $$ X_H = \frac{\partial H}{\partial p_i}\,\frac{\partial}{\partial q^i} - \frac{\partial H}{\partial q^i}\,\frac{\partial}{\partial p_i}. $$
+                </p>
+
+                <p>
+                    Esse campo tem uma definição sem coordenadas. Com a forma canônica $\omega = dp_i\wedge dq^i$ do 4.17, o produto interior de
+                    $X = a^i\,\partial/\partial q^i + b_i\,\partial/\partial p_i$ é $i_X\omega = b_i\,dq^i - a^i\,dp_i$ (<a href="[17] - Derivada na Fibra e Legendre.html#prop-4-17-18">Proposição 4.17.18</a>), e $i_X\omega = -dH$ se, e só se, $a^i = \partial H/\partial p_i$ e
+                    $b_i = -\partial H/\partial q^i$. Como $\omega$ é não degenerada, $X_H$ é o único campo com
+                </p>
+
+                <p>
+                    $$ i_{X_H}\omega = -dH. $$
+                </p>
+
+                <p>
+                    O capítulo 3 usou a forma de área $dq\wedge dp = -\omega$ e escreveu a mesma condição como $i_{X_H}(dq\wedge dp) = dH$ (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[14] - Fórmula de Cartan.html#ex-3-14-30">Exemplo 3.14.30</a>): as duas
+                    convenções dão o mesmo campo. A dinâmica é determinada pela função $H$ e pela forma $\omega$, que não depende de nenhuma
+                    lagrangiana.
+                </p>
+
+                <p id="obs-4-18-5"><strong>Observação 4.18.5 (Por que a regularidade).</strong> Expandindo a derivada total, as equações de Euler–Lagrange
+                    são</p>
+
+                <p>
+                    $$ W_{ij}\,\ddot q^j + \frac{\partial^2L}{\partial v^i\partial q^j}\,\dot q^j + \frac{\partial^2L}{\partial v^i\partial t} - \frac{\partial L}{\partial q^i} = 0, $$
+                </p>
+
+                <p>
+                    e as acelerações só podem ser isoladas, $\ddot q = W^{-1}(\cdots)$, se $W$ é invertível. Quando $W$ é singular, as equações não determinam
+                    todas as acelerações: algumas combinações delas são relações entre $q$ e $\dot q$ apenas, e as soluções podem conter funções
+                    arbitrárias do tempo. É exatamente o que acontece nas teorias de calibre (tópico 4.19).
+                </p>
+
+                <h2 id="conservacao">Conservação da energia</h2>
+
+                <div class="definition-box" id="prop-4-18-6">
+                    <p><strong>Proposição 4.18.6 (A variação da hamiltoniana).</strong> Ao longo de toda solução $(q(t), p(t))$ das equações de Hamilton,</p>
+                    <p>$$ \frac{d}{dt}H\big(q(t), p(t), t\big) = \frac{\partial H}{\partial t} = -\frac{\partial L}{\partial t}. \tag{4.18.4} $$</p>
+                    <p>Mais geralmente, sem supor $L$ regular, a <em>função energia</em> $E_L = v^i\,\partial L/\partial v^i - L$ do 4.17 satisfaz, ao longo de toda solução $C^2$ das
+                        equações de Euler–Lagrange, $\frac{d}{dt}E_L\big(q, \dot q, t\big) = -\frac{\partial L}{\partial t}$.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> Pela regra da cadeia e pelas equações de Hamilton,
+                </p>
+
+                <p>
+                    $$ \frac{dH}{dt} = \frac{\partial H}{\partial q^i}\dot q^i + \frac{\partial H}{\partial p_i}\dot p_i + \frac{\partial H}{\partial t} = \frac{\partial H}{\partial q^i}\frac{\partial H}{\partial p_i} - \frac{\partial H}{\partial p_i}\frac{\partial H}{\partial q^i} + \frac{\partial H}{\partial t} = \frac{\partial H}{\partial t}, $$
+                </p>
+
+                <p>
+                    e $\partial H/\partial t = -\partial L/\partial t$ pela (4.18.2). Para a segunda afirmação, com $p_i = \partial L/\partial v^i$ avaliado na curva,
+                </p>
+
+                <p>
+                    $$ \begin{aligned}
+                    \frac{d}{dt}\Big(\dot q^ip_i - L\Big) &= \ddot q^ip_i + \dot q^i\dot p_i - \frac{\partial L}{\partial q^i}\dot q^i - \frac{\partial L}{\partial v^i}\ddot q^i - \frac{\partial L}{\partial t}\\
+                    &= \dot q^i\Big(\frac{d}{dt}\frac{\partial L}{\partial v^i} - \frac{\partial L}{\partial q^i}\Big) - \frac{\partial L}{\partial t},
+                    \end{aligned} $$
+                </p>
+
+                <p>
+                    e o parêntese é zero pelas equações de Euler–Lagrange. Quando $L$ é regular, $E_L = H\circ\mathbb{F}L$ (<a href="[17] - Derivada na Fibra e Legendre.html#prop-4-17-19">Proposição 4.17.19</a>), e as duas afirmações
+                    coincidem. $\blacksquare$
+                </p>
+
+                <div class="definition-box" id="cor-4-18-7">
+                    <p><strong>Corolário 4.18.7 (Conservação da energia).</strong> Se $L$ não depende explicitamente do tempo, a energia $E_L$, e, no caso
+                        regular, a hamiltoniana $H$, é constante ao longo de toda solução.</p>
+                </div>
+
+                <p>
+                    A segunda forma da proposição é a identidade de Beltrami do tópico 4.12 (<a href="[12] - O Princípio Variacional.html#prop-4-12-12">Proposição 4.12.12</a>), com o sinal trocado e com a
+                    dependência temporal incluída. Ela não precisa de regularidade: a energia se conserva também nas teorias singulares, mas
+                    lá pode acontecer de ela ser identicamente nula (<a href="#ex-4-18-11">Exemplo 4.18.11</a>).
+                </p>
+
+                <p id="ex-4-18-8"><strong>Exemplo 4.18.8 (A energia de uma carga).</strong> Para a carga relativística,
+                    $L = -mc^2/\gamma + q\mathbf{A}\cdot\mathbf{v} - q\phi$, o termo linear em $\mathbf{v}$ não contribui para $E_L$, e $E_L = \gamma mc^2 + q\phi$ (<a href="#ex-4-18-10">Exemplo 4.18.10</a>).
+                    Se os potenciais não dependem do tempo, ela se conserva: a energia cinética relativística mais a energia potencial
+                    elétrica. Se $\mathbf{A}$ ou $\phi$ dependem de $t$, $\frac{d}{dt}(\gamma mc^2 + q\phi) = q\big(\partial_t\phi - \mathbf{v}\cdot\partial_t\mathbf{A}\big)$, e o campo troca energia com a
+                    partícula. Em particular, num campo magnético estático o termo $q\mathbf{v}\cdot(\mathbf{v}\times\mathbf{B})$ nunca aparece: a força magnética não realiza
+                    trabalho (<a href="[14] - Acoplamento e Força de Lorentz.html#cor-4-14-6">Corolário 4.14.6</a>).</p>
+
+                <h2 id="regularidade">Quando a passagem é possível</h2>
+
+                <p>
+                    A condição de regularidade tem uma leitura em termos de formas de volume. Escrevemos, em $T^*M$ e em $TM$,
+                    $dq\wedge dp = dq^1\wedge\dots\wedge dq^n\wedge dp_1\wedge\dots\wedge dp_n$ e $dq\wedge dv = dq^1\wedge\dots\wedge dq^n\wedge dv^1\wedge\dots\wedge dv^n$.
+                </p>
+
+                <div class="definition-box" id="prop-4-18-9">
+                    <p><strong>Proposição 4.18.9 (O jacobiano da passagem).</strong> Para $L$ suave num aberto de $TM$,</p>
+                    <p>$$ (\mathbb{F}L)^*\big(dq\wedge dp\big) = \det\Big(\frac{\partial^2L}{\partial v^i\partial v^j}\Big)\,dq\wedge dv. \tag{4.18.5} $$</p>
+                    <p>Em particular, $\mathbb{F}L$ é um difeomorfismo local entre abertos de $TM$ e de $T^*M$ perto de um ponto se, e só se, $\det W \ne 0$ nele.</p>
+                </div>
+
+                <p>
+                    <em>Demonstração.</em> O <em>pullback</em> preserva o produto exterior (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[12] - Formas Diferenciais.html#teo-3-12-12">Teorema 3.12.12</a>). Pela <a href="[17] - Derivada na Fibra e Legendre.html#prop-4-17-19">Proposição 4.17.19</a>, $(\mathbb{F}L)^*dq^i = dq^i$ e
+                    $(\mathbb{F}L)^*dp_i = \frac{\partial^2L}{\partial q^k\partial v^i}dq^k + W_{ik}\,dv^k$. No produto com $dq^1\wedge\dots\wedge dq^n$, os termos em $dq^k$ se anulam
+                    ($dq^k\wedge dq^k = 0$), e sobra $dq^1\wedge\dots\wedge dq^n\wedge(W_{1k}dv^k)\wedge\dots\wedge(W_{nk}dv^k) = \det W\,dq\wedge dv$, pela fórmula do determinante para o
+                    produto de $n$ combinações lineares de $n$ covetores (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[12] - Formas Diferenciais.html#teo-3-12-14">Teorema 3.12.14</a>). A segunda afirmação é a <a href="[17] - Derivada na Fibra e Legendre.html#prop-4-17-9">Proposição 4.17.9</a>. $\blacksquare$
+                </p>
+
+                <p>
+                    O determinante $\det W$ é o jacobiano da mudança de variáveis $(q, v) \mapsto (q, p)$, e a fórmula diz como os volumes se
+                    transformam. Um jacobiano não nulo dá um difeomorfismo local entre o fibrado tangente e o cotangente, e não entre dois
+                    espaços cotangentes: de um lado estão as velocidades, do outro, os momentos.
+                </p>
+
+                <p id="ex-4-18-10"><strong>Exemplo 4.18.10 (A carga relativística).</strong> Para
+                    $L = -mc^2\sqrt{1 - \lvert\mathbf{v}\rvert^2/c^2} + q\mathbf{A}(\mathbf{x}, t)\cdot\mathbf{v} - q\phi(\mathbf{x}, t)$ em $\{\lvert\mathbf{v}\rvert \lt c\}$, o termo linear não contribui
+                    para a hessiana, e</p>
+
+                <p>
+                    $$ W_{ij} = \gamma m\Big(\delta_{ij} + \frac{\gamma^2v_iv_j}{c^2}\Big), \qquad \det W = m^3\gamma^5 \gt 0, $$
+                </p>
+
+                <p>
+                    porque $W$ tem o autovalor $\gamma^3m$ na direção de $\mathbf{v}$ e $\gamma m$ nas duas transversais. A lagrangiana é regular, e mais:
+                    $\mathbf{p} = \gamma m\mathbf{v} + q\mathbf{A}$ leva $\{\lvert\mathbf{v}\rvert \lt c\}$ em todo o $\mathbb{R}^3$, com a hamiltoniana do <a href="[17] - Derivada na Fibra e Legendre.html#exr-4-17-3">Exercício 4.17.3</a>,
+                </p>
+
+                <p>
+                    $$ H = \sqrt{\lvert\mathbf{p} - q\mathbf{A}\rvert^2c^2 + m^2c^4} + q\phi. $$
+                </p>
+
+                <p>
+                    As equações de Hamilton são $\dot{\mathbf{x}} = c^2(\mathbf{p} - q\mathbf{A})/(H - q\phi) = \mathbf{v}$ e $\dot p_i = q\,v_j\,\partial_iA_j - q\,\partial_i\phi$. Com
+                    $\mathbf{p} = \gamma m\mathbf{v} + q\mathbf{A}$ e $\frac{dA_i}{dt} = \partial_tA_i + v_j\partial_jA_i$ (a derivada ao longo da trajetória),
+                </p>
+
+                <p>
+                    $$ \frac{d}{dt}(\gamma mv_i) = q\big(-\partial_i\phi - \partial_tA_i\big) + q\big(v_j\partial_iA_j - v_j\partial_jA_i\big) = q\big(\mathbf{E} + \mathbf{v}\times\mathbf{B}\big)_i, $$
+                </p>
+
+                <p>
+                    a força de Lorentz do <a href="[14] - Acoplamento e Força de Lorentz.html#teo-4-14-5">Teorema 4.14.5</a>, agora pelas equações de Hamilton.
+                </p>
+
+                <p id="ex-4-18-11"><strong>Exemplo 4.18.11 (A ação com parâmetro arbitrário).</strong> A ação de uma partícula livre do 4.13,
+                    $-mc\int dl$, escrita com um parâmetro $\lambda$ qualquer ao longo da linha de mundo, tem a lagrangiana</p>
+
+                <p>
+                    $$ L(x, \dot x) = -mc\sqrt{-\eta_{\mu\nu}\dot x^\mu\dot x^\nu}, \qquad \dot x^\mu = \frac{dx^\mu}{d\lambda}, $$
+                </p>
+
+                <p>
+                    definida no aberto dos $\dot x$ tipo tempo de $T\mathbb{R}^4$. Ela é homogênea de grau $1$ em $\dot x$, porque a ação não depende do parâmetro
+                    (tópico 4.10). Os momentos são $p_\mu = mc\,\dot x_\mu/\sqrt{-\dot x\cdot\dot x}$, e pelo <a href="[17] - Derivada na Fibra e Legendre.html#exr-4-17-5">Exercício 4.17.5</a>:
+                </p>
+
+                <ul>
+                    <li>a hessiana tem $\dot x$ no núcleo, $W_{\mu\nu}\dot x^\nu = 0$; ela tem posto $3$ (é a projeção no complemento ortogonal de $\dot x$, espacial e de
+                        dimensão $3$), e $\det W = 0$: a lagrangiana é <strong>singular</strong> em todo ponto;</li>
+                    <li>$H = p_\mu\dot x^\mu - L \equiv 0$, pela relação de Euler $\dot x^\mu\partial L/\partial\dot x^\mu = L$;</li>
+                    <li>os momentos não são independentes: $\eta^{\mu\nu}p_\mu p_\nu = -m^2c^2$. Em cada fibra, a imagem de $\mathbb{F}L$ está nesse hiperboloide, de
+                        dimensão $3$, e não é um aberto de $T^*_x\mathbb{R}^4$.</li>
+                </ul>
+
+                <p>
+                    A relação $p\cdot p + m^2c^2 = 0$ é uma relação entre $q$ e $p$ que vem da própria definição dos momentos: é um <em>vínculo</em>. A causa é a
+                    liberdade de reparametrização: $\lambda$ e qualquer outro parâmetro descrevem a mesma linha de mundo, e as equações do movimento
+                    não podem determinar como $x^\mu$ depende de $\lambda$.
+                </p>
+
+                <p id="obs-4-18-12"><strong>Observação 4.18.12 (Fixar o parâmetro).</strong> Escolhendo $\lambda = t = x^0/c$, isto é, $\dot x^0 = c$ e $\dot x^i = v^i$,
+                    a lagrangiana do <a href="#ex-4-18-11">Exemplo 4.18.11</a> vira $-mc^2\sqrt{1 - \lvert\mathbf{v}\rvert^2/c^2}$, a do 4.13, que é regular, e a hamiltoniana vira
+                    $\sqrt{\lvert\mathbf{p}\rvert^2c^2 + m^2c^4}$: o vínculo foi resolvido para $p_0$, e a componente $-cp_0$ passou a ser a hamiltoniana. Fixar o parâmetro é o
+                    exemplo mais simples de uma <em>fixação de calibre</em>. O tópico 4.19 trata as lagrangianas singulares em geral, e o
+                    eletromagnetismo, em que a densidade $\mathcal{L}_{EM}$ não contém $\partial_0A_0$, é o caso de campo.</p>
+
+                <h2 id="fisica">Ponte com a física</h2>
+
+                <p>
+                    <strong>Liouville.</strong> O fluxo do campo hamiltoniano preserva a forma $\omega$: pela fórmula de Cartan (<a href="../[2] - Cálculo em Variedades Diferenciáveis/[14] - Fórmula de Cartan.html#teo-3-14-15">Teorema 3.14.15</a>),
+                    $\mathcal{L}_{X_H}\omega = d(i_{X_H}\omega) + i_{X_H}d\omega = d(-dH) + 0 = 0$. Como a derivada de Lie é uma derivação do produto exterior, o fluxo
+                    preserva também $\omega\wedge\dots\wedge\omega$ ($n$ fatores), que é, a menos de uma constante, a forma de volume $dq\wedge dp$ do espaço de fase. Esse é o
+                    teorema de Liouville: uma região do espaço de fase muda de forma ao longo do movimento, mas não de volume. O caso de
+                    um grau de liberdade foi provado no <a href="../[2] - Cálculo em Variedades Diferenciáveis/[14] - Fórmula de Cartan.html#ex-3-14-30">Exemplo 3.14.30</a>, e o argumento geral é o da ponte com a física do
+                    <a href="../[2] - Cálculo em Variedades Diferenciáveis/[14] - Fórmula de Cartan.html">tópico 3.14</a>. É o fundamento da
+                    mecânica estatística: uma distribuição uniforme no espaço de fase permanece uniforme. Transportado para $TM$ por $\mathbb{F}L$, o volume
+                    preservado é $\det W\,dq\wedge dv$ (<a href="#prop-4-18-9">Proposição 4.18.9</a>), e não $dq\wedge dv$, a menos que $\det W$ seja constante.
+                </p>
+
+                <p>
+                    <strong>A energia depende do observador.</strong> Para a partícula livre, $H = \gamma mc^2 = -cp_0$ é a componente temporal do
+                    quadrimomento do 4.13. Ela não é invariante de Lorentz: observadores em movimento relativo medem energias diferentes,
+                    e a hamiltoniana de cada um é a componente temporal num referencial diferente. A formulação hamiltoniana escolhe um
+                    tempo, e com ele quebra a simetria manifesta entre espaço e tempo que a ação tinha. Para campos, o 4.20 mostra que a
+                    energia é a integral de uma componente, $T^{00}$, de um tensor.
+                </p>
+
+                <p>
+                    <strong>O caminho para a física quântica.</strong> Na mecânica quântica, $q^i$ e $p_i$ viram operadores com $[\hat q^i, \hat p_j] = i\hbar\,\delta^i_j$, e a
+                    hamiltoniana gera a evolução no tempo pela equação de Schrödinger. A passagem usa a estrutura do espaço de fase, os
+                    parênteses de Poisson, que o 4.19 define. Por isso uma teoria clássica precisa de uma formulação hamiltoniana para ser
+                    quantizada canonicamente, e as teorias singulares, como o eletromagnetismo, exigem o tratamento de vínculos de Dirac.
+                </p>
+
+                <h2 id="exercicios">Exercícios Resolvidos</h2>
+
+                <p id="exr-4-18-1"><strong>Exercício 4.18.1 (das notas de aula).</strong> Se a lagrangiana depende explicitamente do tempo, $L = L(q, \dot q, t)$, a
+                    hamiltoniana ainda se conserva ao longo das soluções? Dê um exemplo.</p>
+
+                <p>
+                    <em>Solução.</em> Em geral, não. Pela <a href="#prop-4-18-6">Proposição 4.18.6</a>, $dH/dt = -\partial L/\partial t$ ao longo das soluções, que só é zero se a dependência explícita
+                    em $t$ desaparecer. Exemplo: o oscilador de frequência variável, $L = \frac12m\dot q^2 - \frac12m\omega(t)^2q^2$, tem
+                    $H = \frac{p^2}{2m} + \frac12m\omega(t)^2q^2$ e
+                </p>
+
+                <p>
+                    $$ \frac{dH}{dt} = -\frac{\partial L}{\partial t} = m\,\omega\,\dot\omega\,q^2, $$
+                </p>
+
+                <p>
+                    que é positiva quando a frequência cresce e a partícula não está na origem: quem varia $\omega$ (a mola, ou o agente externo
+                    que a modifica) realiza trabalho sobre o sistema. Uma lagrangiana dependente do tempo descreve um sistema que não está
+                    isolado.
+                </p>
+
+                <p id="exr-4-18-2"><strong>Exercício 4.18.2.</strong> Escreva as equações de Hamilton do oscilador harmônico,
+                    $H = \frac{p^2}{2m} + \frac12m\omega^2q^2$, resolva-as e descreva as órbitas no plano $(q, p)$.</p>
+
+                <p>
+                    <em>Solução.</em> $\dot q = p/m$ e $\dot p = -m\omega^2q$. Derivando a primeira, $\ddot q = -\omega^2q$, com $q = A\cos(\omega t + \varphi)$ e
+                    $p = -m\omega A\sin(\omega t + \varphi)$. As órbitas são as curvas de nível $H = E$ (<a href="#cor-4-18-7">Corolário 4.18.7</a>), elipses de semieixos $\sqrt{2E/(m\omega^2)}$ em $q$
+                    e $\sqrt{2mE}$ em $p$, percorridas no sentido horário: no semiplano $p \gt 0$, $q$ cresce (Figura 4.18.1). A área de cada elipse é
+                    $\pi\sqrt{2E/(m\omega^2)}\sqrt{2mE} = 2\pi E/\omega$, e o período, $2\pi/\omega$, não depende da energia. A área $\oint p\,dq$ é o <em>invariante
+                    adiabático</em> do oscilador: quando $\omega$ varia devagar (<a href="#exr-4-18-1">Exercício 4.18.1</a>), $E$ muda, mas $E/\omega$ fica aproximadamente constante.
+                </p>
+
+                <figure class="lecture-figure" id="fig-4-18-1" style="overflow-x: auto; overflow-y: hidden;">
+                    <svg viewBox="0 0 640 320" role="img" style="min-width: 520px;" aria-label="Eixos q horizontal e p vertical. Três elipses concêntricas centradas na origem, rotuladas H igual a E1, E2 e E3, da menor para a maior. Uma seta no alto de cada elipse aponta para a direita: as órbitas são percorridas no sentido horário. A origem, o ponto de equilíbrio, está marcada.">
+<defs><marker id="arr-4-18-1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fig-arrowhead"/></marker></defs>
+<line x1="90" y1="160" x2="550" y2="160" class="fig-axis" marker-end="url(#arr-4-18-1)"/>
+<text x="556" y="164" class="fig-label fig-it">q</text>
+<line x1="320" y1="305" x2="320" y2="15" class="fig-axis" marker-end="url(#arr-4-18-1)"/>
+<text x="312" y="20" text-anchor="end" class="fig-label fig-it">p</text>
+<path d="M387.5,160 L387.4,157.2 L387.1,154.4 L386.7,151.6 L386,148.8 L385.2,146 L384.2,143.3 L383,140.6 L381.7,138 L380.1,135.5 L378.5,133 L376.6,130.6 L374.6,128.3 L372.5,126 L370.2,123.9 L367.7,121.8 L365.2,119.9 L362.5,118 L359.7,116.3 L356.8,114.7 L353.8,113.2 L350.6,111.9 L347.5,110.7 L344.2,109.6 L340.9,108.6 L337.5,107.8 L334,107.2 L330.6,106.7 L327.1,106.3 L323.5,106.1 L320,106 L316.5,106.1 L312.9,106.3 L309.4,106.7 L306,107.2 L302.5,107.8 L299.1,108.6 L295.8,109.6 L292.5,110.7 L289.4,111.9 L286.2,113.2 L283.2,114.7 L280.3,116.3 L277.5,118 L274.8,119.9 L272.3,121.8 L269.8,123.9 L267.5,126 L265.4,128.3 L263.4,130.6 L261.5,133 L259.9,135.5 L258.3,138 L257,140.6 L255.8,143.3 L254.8,146 L254,148.8 L253.3,151.6 L252.9,154.4 L252.6,157.2 L252.5,160 L252.6,162.8 L252.9,165.6 L253.3,168.4 L254,171.2 L254.8,174 L255.8,176.7 L257,179.4 L258.3,182 L259.9,184.5 L261.5,187 L263.4,189.4 L265.4,191.7 L267.5,194 L269.8,196.1 L272.3,198.2 L274.8,200.1 L277.5,202 L280.3,203.7 L283.2,205.3 L286.2,206.8 L289.4,208.1 L292.5,209.3 L295.8,210.4 L299.1,211.4 L302.5,212.2 L306,212.8 L309.4,213.3 L312.9,213.7 L316.5,213.9 L320,214 L323.5,213.9 L327.1,213.7 L330.6,213.3 L334,212.8 L337.5,212.2 L340.9,211.4 L344.2,210.4 L347.5,209.3 L350.6,208.1 L353.8,206.8 L356.8,205.3 L359.7,203.7 L362.5,202 L365.2,200.1 L367.7,198.2 L370.2,196.1 L372.5,194 L374.6,191.7 L376.6,189.4 L378.5,187 L380.1,184.5 L381.7,182 L383,179.4 L384.2,176.7 L385.2,174 L386,171.2 L386.7,168.4 L387.1,165.6 L387.4,162.8 L387.5,160" class="fig-curve"/>
+<line x1="308.3" y1="106.8" x2="331.7" y2="106.8" class="fig-curve" marker-end="url(#arr-4-18-1)"/>
+<text x="381.3" y="203" class="fig-label fig-small">H = E₁</text>
+<path d="M428,160 L427.9,155.5 L427.4,151 L426.7,146.5 L425.6,142 L424.3,137.6 L422.7,133.3 L420.8,129 L418.7,124.9 L416.2,120.8 L413.5,116.8 L410.6,112.9 L407.4,109.2 L403.9,105.6 L400.3,102.2 L396.4,98.9 L392.3,95.8 L388,92.9 L383.5,90.1 L378.8,87.5 L374,85.2 L369,83 L363.9,81.1 L358.7,79.3 L353.4,77.8 L348,76.5 L342.5,75.5 L336.9,74.7 L331.3,74.1 L325.7,73.7 L320,73.6 L314.3,73.7 L308.7,74.1 L303.1,74.7 L297.5,75.5 L292,76.5 L286.6,77.8 L281.3,79.3 L276.1,81.1 L271,83 L266,85.2 L261.2,87.5 L256.5,90.1 L252,92.9 L247.7,95.8 L243.6,98.9 L239.7,102.2 L236.1,105.6 L232.6,109.2 L229.4,112.9 L226.5,116.8 L223.8,120.8 L221.3,124.9 L219.2,129 L217.3,133.3 L215.7,137.6 L214.4,142 L213.3,146.5 L212.6,151 L212.1,155.5 L212,160 L212.1,164.5 L212.6,169 L213.3,173.5 L214.4,178 L215.7,182.4 L217.3,186.7 L219.2,191 L221.3,195.1 L223.8,199.2 L226.5,203.2 L229.4,207.1 L232.6,210.8 L236.1,214.4 L239.7,217.8 L243.6,221.1 L247.7,224.2 L252,227.1 L256.5,229.9 L261.2,232.5 L266,234.8 L271,237 L276.1,238.9 L281.3,240.7 L286.6,242.2 L292,243.5 L297.5,244.5 L303.1,245.3 L308.7,245.9 L314.3,246.3 L320,246.4 L325.7,246.3 L331.3,245.9 L336.9,245.3 L342.5,244.5 L348,243.5 L353.4,242.2 L358.7,240.7 L363.9,238.9 L369,237 L374,234.8 L378.8,232.5 L383.5,229.9 L388,227.1 L392.3,224.2 L396.4,221.1 L400.3,217.8 L403.9,214.4 L407.4,210.8 L410.6,207.1 L413.5,203.2 L416.2,199.2 L418.7,195.1 L420.8,191 L422.7,186.7 L424.3,182.4 L425.6,178 L426.7,173.5 L427.4,169 L427.9,164.5 L428,160" class="fig-curve"/>
+<line x1="301.2" y1="74.9" x2="338.8" y2="74.9" class="fig-curve" marker-end="url(#arr-4-18-1)"/>
+<text x="414.5" y="221.6" class="fig-label fig-small">H = E₂</text>
+<path d="M470,160 L469.8,153.7 L469.2,147.5 L468.2,141.2 L466.7,135.1 L464.9,128.9 L462.7,122.9 L460,117 L457,111.2 L453.7,105.5 L449.9,100 L445.8,94.6 L441.4,89.5 L436.6,84.5 L431.5,79.7 L426.1,75.1 L420.4,70.8 L414.4,66.7 L408.2,62.9 L401.7,59.4 L395,56.1 L388.1,53.1 L381,50.4 L373.8,48 L366.4,45.9 L358.8,44.1 L351.2,42.6 L343.5,41.5 L335.7,40.7 L327.9,40.2 L320,40 L312.1,40.2 L304.3,40.7 L296.5,41.5 L288.8,42.6 L281.2,44.1 L273.6,45.9 L266.2,48 L259,50.4 L251.9,53.1 L245,56.1 L238.3,59.4 L231.8,62.9 L225.6,66.7 L219.6,70.8 L213.9,75.1 L208.5,79.7 L203.4,84.5 L198.6,89.5 L194.2,94.6 L190.1,100 L186.3,105.5 L183,111.2 L180,117 L177.3,122.9 L175.1,128.9 L173.3,135.1 L171.8,141.2 L170.8,147.5 L170.2,153.7 L170,160 L170.2,166.3 L170.8,172.5 L171.8,178.8 L173.3,184.9 L175.1,191.1 L177.3,197.1 L180,203 L183,208.8 L186.3,214.5 L190.1,220 L194.2,225.4 L198.6,230.5 L203.4,235.5 L208.5,240.3 L213.9,244.9 L219.6,249.2 L225.6,253.3 L231.8,257.1 L238.3,260.6 L245,263.9 L251.9,266.9 L259,269.6 L266.2,272 L273.6,274.1 L281.2,275.9 L288.8,277.4 L296.5,278.5 L304.3,279.3 L312.1,279.8 L320,280 L327.9,279.8 L335.7,279.3 L343.5,278.5 L351.2,277.4 L358.8,275.9 L366.4,274.1 L373.8,272 L381,269.6 L388.1,266.9 L395,263.9 L401.7,260.6 L408.2,257.1 L414.4,253.3 L420.4,249.2 L426.1,244.9 L431.5,240.3 L436.6,235.5 L441.4,230.5 L445.8,225.4 L449.9,220 L453.7,214.5 L457,208.8 L460,203 L462.7,197.1 L464.9,191.1 L466.7,184.9 L468.2,178.8 L469.2,172.5 L469.8,166.3 L470,160" class="fig-curve"/>
+<line x1="294" y1="41.8" x2="346" y2="41.8" class="fig-curve" marker-end="url(#arr-4-18-1)"/>
+<text x="448.9" y="240.8" class="fig-label fig-small">H = E₃</text>
+<circle cx="320" cy="160" r="3.5" class="fig-arrowhead"/>
+</svg>
+                    <figcaption><strong>Figura 4.18.1.</strong> Retrato de fase do oscilador harmônico: as curvas de nível $H = E$ são elipses centradas
+                        no equilíbrio $(0, 0)$, percorridas no sentido horário. A energia determina a órbita, e o fluxo preserva as áreas
+                        (teorema de Liouville).</figcaption>
+                </figure>
+
+                <p id="exr-4-18-3"><strong>Exercício 4.18.3.</strong> Escreva a hamiltoniana de uma partícula num potencial central $U(r)$ no plano, em
+                    coordenadas polares, e ache duas quantidades conservadas.</p>
+
+                <p>
+                    <em>Solução.</em> $L = \frac12m(\dot r^2 + r^2\dot\theta^2) - U(r)$ dá $p_r = m\dot r$, $p_\theta = mr^2\dot\theta$ (<a href="[17] - Derivada na Fibra e Legendre.html#exr-4-17-1">Exercício 4.17.1</a>), $W = \operatorname{diag}(m, mr^2)$, regular para
+                    $r \gt 0$, e
+                </p>
+
+                <p>
+                    $$ H = \frac{p_r^2}{2m} + \frac{p_\theta^2}{2mr^2} + U(r). $$
+                </p>
+
+                <p>
+                    Como $H$ não depende de $\theta$, $\dot p_\theta = -\partial H/\partial\theta = 0$: o momento angular $p_\theta$ se conserva (a variável cíclica da <a href="[12] - O Princípio Variacional.html#prop-4-12-11">Proposição 4.12.11</a>,
+                    agora nas equações de Hamilton). Como $H$ não depende de $t$, a energia se conserva. Com $p_\theta = \ell$ fixo, o movimento radial é o
+                    de uma partícula em uma dimensão com o potencial efetivo $U(r) + \ell^2/(2mr^2)$.
+                </p>
+
+                <p id="exr-4-18-4"><strong>Exercício 4.18.4.</strong> Para a partícula relativística livre, $H = \sqrt{\lvert\mathbf{p}\rvert^2c^2 + m^2c^4}$, escreva as equações de
+                    Hamilton e mostre que a velocidade é sempre menor que $c$.</p>
+
+                <p>
+                    <em>Solução.</em> $\dot{\mathbf{p}} = -\partial H/\partial\mathbf{x} = 0$ e $\dot{\mathbf{x}} = \partial H/\partial\mathbf{p} = c^2\mathbf{p}/H$. Então
+                    $c^2 - \lvert\dot{\mathbf{x}}\rvert^2 = c^2\big(H^2 - \lvert\mathbf{p}\rvert^2c^2\big)/H^2 = m^2c^6/H^2 \gt 0$ para $m \gt 0$: a velocidade é menor que $c$ para todo momento, por maior
+                    que seja, e tende a $c$ quando $\lvert\mathbf{p}\rvert \to \infty$. O limite de velocidade do tópico
+                    <a href="[11] - Massa, Velocidade Limite e Causalidade.html">4.11</a> está embutido na forma de $H$. Com $\mathbf{p} = \gamma m\mathbf{v}$, $H = \gamma mc^2$.
+                </p>
+
+                <p id="exr-4-18-5"><strong>Exercício 4.18.5.</strong> Uma carga $q$ de massa $m$ (não relativística) está num campo magnético uniforme
+                    $\mathbf{B} = B\,\mathbf{e}_z$, com $\mathbf{A} = \frac B2(-y, x, 0)$. Escreva a hamiltoniana e as equações de Hamilton, e mostre que elas dão o
+                    movimento ciclotrônico.</p>
+
+                <p>
+                    <em>Solução.</em> Pelo <a href="[17] - Derivada na Fibra e Legendre.html#exr-4-17-3">Exercício 4.17.3</a> com $\phi = 0$, $H = \frac{1}{2m}\lvert\mathbf{p} - q\mathbf{A}\rvert^2$. As equações são $m\dot{\mathbf{x}} = \mathbf{p} - q\mathbf{A}$ e
+                    $\dot p_x = -\partial H/\partial x = \frac{qB}{2}\dot y$, $\dot p_y = -\frac{qB}{2}\dot x$, $\dot p_z = 0$. Derivando $m\dot x = p_x + \frac{qB}{2}y$, $m\ddot x = \dot p_x + \frac{qB}{2}\dot y = qB\,\dot y$; do
+                    mesmo modo, $m\ddot y = -qB\,\dot x$, e $m\ddot z = 0$. É $m\ddot{\mathbf{x}} = q\,\dot{\mathbf{x}}\times\mathbf{B}$: no plano $xy$, um círculo percorrido com a frequência
+                    $\omega_c = qB/m$ (o caso não relativístico da hélice da Figura 4.14.2), e movimento uniforme ao longo de $z$. O momento canônico $p_x$
+                    não é $m\dot x$: ele contém $q A_x$, que depende da escolha do potencial (<a href="[14] - Acoplamento e Força de Lorentz.html#prop-4-14-4">Proposição 4.14.4</a>, <a href="[14] - Acoplamento e Força de Lorentz.html#prop-4-14-3">Proposição 4.14.3</a>), enquanto as trajetórias não
+                    dependem.
+                </p>
+
+                <p id="exr-4-18-6"><strong>Exercício 4.18.6.</strong> Um pêndulo simples tem o fio puxado através de um furo, de modo que o comprimento
+                    $l(t)$ é uma função dada do tempo. Escreva $L$, $H$ e compare $H$ com a energia mecânica.</p>
+
+                <p>
+                    <em>Solução.</em> A massa está em $(l\sin\theta, -l\cos\theta)$, com velocidade ao quadrado $\dot l^2 + l^2\dot\theta^2$, e a única coordenada é $\theta$:
+                    $L = \frac12m\big(\dot l^2 + l^2\dot\theta^2\big) + mgl\cos\theta$. Então $p_\theta = ml^2\dot\theta$ e
+                </p>
+
+                <p>
+                    $$ H = p_\theta\dot\theta - L = \frac{p_\theta^2}{2ml^2} - \frac12m\dot l^2 - mgl\cos\theta, $$
+                </p>
+
+                <p>
+                    que depende de $t$ por $l(t)$ e $\dot l(t)$, e não se conserva: $dH/dt = -\partial L/\partial t$. A energia mecânica,
+                    $E = \frac12m(\dot l^2 + l^2\dot\theta^2) - mgl\cos\theta$, difere de $H$ por $m\dot l^2$. As duas não coincidem porque o termo $\frac12m\dot l^2$ de $L$ não depende de $\dot\theta$
+                    e entra em $H$ com o sinal trocado: a hamiltoniana é a energia só quando a energia cinética é quadrática nas velocidades
+                    das coordenadas e não há termos dependentes do tempo, condições que um vínculo móvel viola.
+                </p>
+
+                <h2 id="o-que-construimos">O que construímos</h2>
+
+                <ul>
+                    <li>A hamiltoniana $H = p_iv^i - L$ como transformada de Legendre na velocidade, com o tempo como parâmetro, e as suas derivadas
+                        (<a href="#def-4-18-1">Definição 4.18.1</a>, <a href="#prop-4-18-2">Proposição 4.18.2</a>).</li>
+                    <li>As equações de Hamilton, $\dot q^i = \partial H/\partial p_i$ e $\dot p_i = -\partial H/\partial q^i$, equivalentes às de Euler–Lagrange nas duas direções quando $L$ é
+                        regular (<a href="#teo-4-18-3">Teorema 4.18.3</a>); o campo hamiltoniano, com $i_{X_H}\omega = -dH$ (<a href="#obs-4-18-4">Observação 4.18.4</a>); e o papel da regularidade na resolução das
+                        acelerações (<a href="#obs-4-18-5">Observação 4.18.5</a>).</li>
+                    <li>A variação $dH/dt = -\partial L/\partial t$ e a conservação da energia, inclusive sem regularidade (<a href="#prop-4-18-6">Proposição 4.18.6</a>, <a href="#cor-4-18-7">Corolário 4.18.7</a>, <a href="#ex-4-18-8">Exemplo 4.18.8</a>).</li>
+                    <li>O jacobiano $\det W$ como razão entre as formas de volume de $T^*M$ e de $TM$ (<a href="#prop-4-18-9">Proposição 4.18.9</a>); a carga relativística, regular, com a
+                        força de Lorentz pelas equações de Hamilton (<a href="#ex-4-18-10">Exemplo 4.18.10</a>); e a ação com parâmetro arbitrário, singular, com $H \equiv 0$ e o vínculo
+                        $p\cdot p = -m^2c^2$ (<a href="#ex-4-18-11">Exemplo 4.18.11</a>, <a href="#obs-4-18-12">Observação 4.18.12</a>).</li>
+                </ul>
+
+                <p>
+                    As teorias com uma liberdade que as equações não fixam, a reparametrização de uma linha de mundo ou o calibre do
+                    potencial eletromagnético, têm lagrangianas singulares. A passagem para o espaço de fase continua possível, mas os
+                    momentos ficam presos a uma subvariedade, e a dinâmica precisa levar em conta esses vínculos:
+                    <a href="[19] - Teorias de Calibre e Vínculos.html">4.19 Lagrangianas Singulares, Vínculos e Calibre</a>.
+                </p>
 
             </div>
         </main>
@@ -181,7 +613,13 @@
             <div class="toc-container">
                 <h4>Nesta página</h4>
                 <ul>
-                    <li><a href="#hamilton">Hamiltoniana e Equações de Hamilton</a></li>
+                    <li><a href="#equacoes-de-hamilton">Hamiltoniana e Equações de Hamilton</a></li>
+                    <li><a href="#hamiltoniana">A hamiltoniana</a></li>
+                    <li><a href="#conservacao">Conservação da energia</a></li>
+                    <li><a href="#regularidade">Quando a passagem é possível</a></li>
+                    <li><a href="#fisica">Ponte com a física</a></li>
+                    <li><a href="#exercicios">Exercícios Resolvidos</a></li>
+                    <li><a href="#o-que-construimos">O que construímos</a></li>
                 </ul>
             </div>
         </aside>
