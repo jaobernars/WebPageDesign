@@ -186,7 +186,164 @@
 
                 <hr class="resolucao-sep">
 
-                <!-- SOLUCAO-EXERCICIO-1 -->
+                <p><strong>Resolução - Exercício 1:</strong></p>
+                <p>O hamiltoniano não perturbado $H^0$ não depende do tempo, e seus autoestados $\psi_n$ formam uma base
+                ortonormal e completa:</p>
+                <p>$$H^0\psi_n=E_n^0\psi_n,
+                \qquad \langle\psi_n|\psi_k\rangle=\delta_{nk}.$$</p>
+                <p>Por isso a expansão do enunciado não é uma restrição: em cada instante, $\Psi(t)$ pode ser escrita
+                nessa base, e toda a dependência temporal que não vem de $H^0$ fica nos coeficientes $c_n(t)$. Os
+                fatores $e^{-iE_n^0t/\hbar}$ já incorporam a evolução livre: se $\lambda=0$, cada termo
+                $c_n\,e^{-iE_n^0t/\hbar}\psi_n$ com $c_n$ constante já é solução, de modo que os $c_n$ só variam por
+                causa da perturbação.</p>
+
+                <p><strong>Passo 1: a equação de Schrödinger.</strong> O estado obedece a</p>
+                <p>$$i\hbar\frac{\partial\Psi}{\partial t}
+                =\bigl[H^0+\lambda V(t)\bigr]\Psi.$$</p>
+
+                <p><strong>Passo 2: o lado esquerdo.</strong> Como os $\psi_n$ não dependem do tempo, a derivada atua
+                apenas no produto $c_n(t)\,e^{-iE_n^0t/\hbar}$. Pela regra do produto, para cada termo da soma,</p>
+                <p>$$\begin{aligned}
+                \frac{d}{dt}\Bigl[c_n\,e^{-iE_n^0t/\hbar}\Bigr]
+                &=\dot c_n\,e^{-iE_n^0t/\hbar}\\
+                &\quad+c_n\,\frac{d}{dt}e^{-iE_n^0t/\hbar}\\
+                &=\dot c_n\,e^{-iE_n^0t/\hbar}\\
+                &\quad-\frac{iE_n^0}{\hbar}\,c_n\,e^{-iE_n^0t/\hbar}.
+                \end{aligned}$$</p>
+                <p>Multiplicando por $i\hbar$ e usando $i\hbar\cdot(-i/\hbar)=-i^2=1$,</p>
+                <p>$$\begin{aligned}
+                i\hbar\frac{\partial\Psi}{\partial t}
+                &=\sum_n\Bigl[i\hbar\,\dot c_n
+                +E_n^0c_n\Bigr]e^{-iE_n^0t/\hbar}\psi_n.
+                \end{aligned}$$</p>
+
+                <p><strong>Passo 3: o lado direito.</strong> Os operadores $H^0$ e $V(t)$ são lineares e atuam apenas na
+                parte espacial; os números $c_n(t)$ e $e^{-iE_n^0t/\hbar}$ passam para fora deles. Assim,</p>
+                <p>$$\begin{aligned}
+                H^0\Psi
+                &=\sum_nc_n\,e^{-iE_n^0t/\hbar}\,H^0\psi_n\\
+                &=\sum_nE_n^0c_n\,e^{-iE_n^0t/\hbar}\psi_n,\\
+                \lambda V\Psi
+                &=\lambda\sum_jc_j\,e^{-iE_j^0t/\hbar}\,V\psi_j.
+                \end{aligned}$$</p>
+                <p>Na segunda soma chamamos o índice mudo de $j$, para não confundi-lo com o índice $n$ que vamos
+                isolar adiante.</p>
+
+                <p><strong>Passo 4: o cancelamento.</strong> Igualando os dois lados,</p>
+                <p>$$\begin{aligned}
+                &\sum_n\Bigl[i\hbar\,\dot c_n
+                +E_n^0c_n\Bigr]e^{-iE_n^0t/\hbar}\psi_n\\
+                &\quad=\sum_nE_n^0c_n\,e^{-iE_n^0t/\hbar}\psi_n\\
+                &\qquad+\lambda\sum_jc_j\,e^{-iE_j^0t/\hbar}\,V\psi_j.
+                \end{aligned}$$</p>
+                <p>A soma com $E_n^0c_n$ aparece idêntica dos dois lados e se cancela. Esse cancelamento é justamente o
+                que os fatores $e^{-iE_n^0t/\hbar}$ foram escolhidos para produzir. Renomeando para $k$ o índice que
+                sobra do lado esquerdo,</p>
+                <p>$$\begin{aligned}
+                i\hbar\sum_k\dot c_k\,e^{-iE_k^0t/\hbar}\psi_k
+                &=\lambda\sum_jc_j\,e^{-iE_j^0t/\hbar}\,V\psi_j.
+                \end{aligned}$$</p>
+
+                <p><strong>Passo 5: projeção sobre $\psi_n$.</strong> Para isolar um único coeficiente, tomamos o
+                produto interno de ambos os lados com $\psi_n$. O produto interno é linear no segundo argumento, então
+                os números saem da integral. Do lado esquerdo, a ortonormalidade elimina a soma:</p>
+                <p>$$\begin{aligned}
+                \Bigl\langle\psi_n\Bigm|i\hbar\sum_k\dot c_k\,
+                e^{-iE_k^0t/\hbar}\psi_k\Bigr\rangle
+                &=i\hbar\sum_k\dot c_k\,e^{-iE_k^0t/\hbar}
+                \,\delta_{nk}\\
+                &=i\hbar\,\dot c_n\,e^{-iE_n^0t/\hbar}.
+                \end{aligned}$$</p>
+                <p>Do lado direito, o produto interno de $\psi_n$ com $V\psi_j$ é o elemento de matriz
+                $\langle\psi_n|V(t)|\psi_j\rangle$, que em geral não é nulo para $j\ne n$:</p>
+                <p>$$\begin{aligned}
+                \Bigl\langle\psi_n\Bigm|\lambda\sum_jc_j\,
+                e^{-iE_j^0t/\hbar}V\psi_j\Bigr\rangle
+                &=\lambda\sum_jc_j\,e^{-iE_j^0t/\hbar}\\
+                &\quad\times\langle\psi_n|V(t)|\psi_j\rangle.
+                \end{aligned}$$</p>
+
+                <p><strong>Passo 6: o resultado.</strong> Igualando as duas projeções e multiplicando por
+                $e^{+iE_n^0t/\hbar}$, que remove a exponencial do lado esquerdo e combina com a do lado direito,</p>
+                <p>$$e^{iE_n^0t/\hbar}\,e^{-iE_j^0t/\hbar}
+                =e^{i(E_n^0-E_j^0)t/\hbar},$$</p>
+                <p>obtemos a equação pedida:</p>
+                <p>$$\begin{aligned}
+                i\hbar\frac{d}{dt}c_n(t)
+                &=\lambda\sum_jc_j(t)\,e^{i(E_n^0-E_j^0)t/\hbar}\\
+                &\quad\times\langle\psi_n|V(t)|\psi_j\rangle.
+                \end{aligned}$$</p>
+                <p>O resultado é <strong>exato</strong>: em nenhum passo usamos $|\lambda|\ll1$. Essa hipótese só passa
+                a importar quando resolvemos o sistema por iteração, como no
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[01] - Sistemas de Dois Níveis.html#teo-serie-muitos-niveis">teorema da série de perturbação para muitos níveis</a>,
+                cujo Passo 1 é exatamente esta dedução.</p>
+
+                <p><strong>Verificação: o caso de dois níveis.</strong> Com apenas $\psi_a$ e $\psi_b$, escrevemos
+                $H'_{nj}\equiv\lambda\langle\psi_n|V|\psi_j\rangle$ e
+                $\omega_0\equiv(E_b^0-E_a^0)/\hbar$. Para $n=a$, a soma tem os termos $j=a$ e $j=b$:</p>
+                <p>$$\begin{aligned}
+                i\hbar\,\dot c_a
+                &=c_a\,e^{0}\,H'_{aa}
+                +c_b\,e^{i(E_a^0-E_b^0)t/\hbar}H'_{ab}\\
+                &=H'_{aa}\,c_a
+                +H'_{ab}\,e^{-i\omega_0t}c_b.
+                \end{aligned}$$</p>
+                <p>Analogamente, para $n=b$,</p>
+                <p>$$i\hbar\,\dot c_b
+                =H'_{ba}\,e^{i\omega_0t}c_a
+                +H'_{bb}\,c_b.$$</p>
+                <p>Com a hipótese de sala, $H'_{aa}=H'_{bb}=0$, e dividindo por $i\hbar$ (isto é, multiplicando por
+                $-i/\hbar$), recuperamos as
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[01] - Sistemas de Dois Níveis.html#teo-equacoes-dos-coeficientes">Eqs. (11.17)</a>:</p>
+                <p>$$\begin{aligned}
+                \dot c_a&=-\frac{i}{\hbar}H'_{ab}\,e^{-i\omega_0t}c_b,\\
+                \dot c_b&=-\frac{i}{\hbar}H'_{ba}\,e^{i\omega_0t}c_a.
+                \end{aligned}$$</p>
+
+                <p><strong>Por que a hipótese $V_{nn}=0$ é dispensável.</strong> Os elementos diagonais
+                $V_{nn}\equiv\langle\psi_n|V|\psi_n\rangle$ são reais, porque $V$ é hermitiano. Vamos mostrar que eles
+                só produzem fases e podem ser absorvidos nos coeficientes. Definimos a fase acumulada</p>
+                <p>$$\varphi_n(t)\equiv\frac{\lambda}{\hbar}
+                \int_0^tV_{nn}(t')\,dt',
+                \qquad \dot\varphi_n=\frac{\lambda}{\hbar}V_{nn}(t),$$</p>
+                <p>que é real, e novos coeficientes $d_n$ por $c_n(t)=d_n(t)\,e^{-i\varphi_n(t)}$. Como
+                $|e^{-i\varphi_n}|=1$, temos $|c_n|^2=|d_n|^2$: as probabilidades são as mesmas. Pela regra do
+                produto,</p>
+                <p>$$\begin{aligned}
+                \dot c_n
+                &=\bigl(\dot d_n-i\dot\varphi_n\,d_n\bigr)
+                e^{-i\varphi_n},\\
+                i\hbar\,\dot c_n
+                &=\bigl(i\hbar\,\dot d_n+\hbar\dot\varphi_n\,d_n\bigr)
+                e^{-i\varphi_n}\\
+                &=\bigl(i\hbar\,\dot d_n+\lambda V_{nn}\,d_n\bigr)
+                e^{-i\varphi_n}.
+                \end{aligned}$$</p>
+                <p>Do lado direito da equação dos coeficientes, separamos o termo $j=n$, para o qual a exponencial vale
+                $e^{0}=1$, e abreviamos $\omega_{nj}\equiv(E_n^0-E_j^0)/\hbar$:</p>
+                <p>$$\begin{aligned}
+                &\lambda V_{nn}\,d_n\,e^{-i\varphi_n}\\
+                &\quad+\lambda\sum_{j\ne n}d_j\,e^{-i\varphi_j}
+                e^{i\omega_{nj}t}V_{nj}.
+                \end{aligned}$$</p>
+                <p>O termo $\lambda V_{nn}d_n\,e^{-i\varphi_n}$ aparece dos dois lados e se cancela. Multiplicando o
+                que sobra por $e^{i\varphi_n}$,</p>
+                <p>$$\begin{aligned}
+                i\hbar\,\dot d_n
+                &=\lambda\sum_{j\ne n}d_j\,V_{nj}(t)\\
+                &\quad\times e^{i[\omega_{nj}t+\varphi_n(t)-\varphi_j(t)]}.
+                \end{aligned}$$</p>
+                <p>Essa é uma equação com a mesma estrutura da original, porém <em>sem termos diagonais</em>: as
+                fases apenas trocam $\omega_{nj}t$ por $\omega_{nj}t+\varphi_n-\varphi_j$. Para $V$ constante,
+                $\varphi_n=\lambda V_{nn}t/\hbar$, e isso equivale a deslocar cada energia de
+                $E_n^0$ para $E_n^0+\lambda V_{nn}$, que é a correção de primeira ordem da
+                <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[01] - Teoria de Perturbação Não Degenerada.html#teo-correcao-primeira-ordem">Eq. 7.9</a>.
+                Em particular, se $V$ fosse puramente diagonal, teríamos $\dot d_n=0$ e
+                $c_n(t)=c_n(0)\,e^{-i\varphi_n(t)}$, com $|c_n|$ constante: nenhuma transição. As transições vêm
+                apenas dos elementos fora da diagonal, e por isso a hipótese $V_{nn}=0$ feita em sala simplifica a
+                álgebra sem alterar a física.<span class="qed" aria-label="Fim da resolução">&#x220E;</span></p>
+
+                <hr class="resolucao-sep">
 
                 <h3 id="exercicio-2">Exercício 2</h3>
                 <p>Considere uma perturbação tal que $\tilde{H}_{ab} = V_{ab}e^{i\omega t}/2$, sendo que
@@ -201,7 +358,296 @@
 
                 <hr class="resolucao-sep">
 
-                <!-- SOLUCAO-EXERCICIO-2 -->
+                <p><strong>Resolução - Exercício 2:</strong></p>
+                <p>A perturbação do enunciado é exatamente a da
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[01] - Sistemas de Dois Níveis.html#rabi">Eq. 11.36</a>
+                de Griffiths, isto é, a perturbação senoidal já na aproximação de onda girante.
+                Como $V$ é hermitiano, $V_{ba}=V_{ab}^*$, e a condição $\tilde H_{ba}=\tilde H_{ab}^*$ fica</p>
+                <p>$$\begin{aligned}
+                \tilde H_{ab} &= \frac{V_{ab}}{2}\,e^{i\omega t},\\
+                \tilde H_{ba} &= \left(\frac{V_{ab}}{2}\,e^{i\omega t}\right)^{\!*}
+                =\frac{V_{ba}}{2}\,e^{-i\omega t}.
+                \end{aligned}$$</p>
+                <p>Os elementos diagonais são nulos, $\tilde H_{aa}=\tilde H_{bb}=0$.
+                Supomos $V_{ab}\ne0$; caso contrário, nada acontece e $c_a(t)=1$, $c_b(t)=0$ para todo $t$. Ao longo
+                da resolução usamos a dessintonia</p>
+                <p>$$\delta\equiv\omega-\omega_0,
+                \qquad \omega_0=\frac{E_b-E_a}{\hbar}.$$</p>
+                <p>Em termos dela, a frequência de Rabi é $\omega_r=\tfrac12\sqrt{\delta^2+|V_{ab}|^2/\hbar^2}$.
+                Elevando ao quadrado e isolando o termo em $|V_{ab}|^2$, obtemos duas relações que usaremos várias
+                vezes:</p>
+                <p>$$\begin{aligned}
+                4\omega_r^2&=\delta^2+\frac{|V_{ab}|^2}{\hbar^2},\\
+                \omega_r^2-\frac{\delta^2}{4}&=\frac{|V_{ab}|^2}{4\hbar^2}.
+                \end{aligned}$$</p>
+                <p>Em particular, $\omega_r\ge|V_{ab}|/2\hbar>0$.</p>
+
+                <p><strong>(a)</strong> <strong>Passo 1: as equações acopladas.</strong> O ponto de partida são as
+                equações exatas dos coeficientes,
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[01] - Sistemas de Dois Níveis.html#teo-equacoes-dos-coeficientes">Eq. 11.17</a>
+                de Griffiths, válidas para qualquer perturbação com elementos diagonais nulos (veja o Exercício 1):</p>
+                <p>$$\begin{aligned}
+                \dot c_a &= -\frac{i}{\hbar}\tilde H_{ab}\,e^{-i\omega_0t}c_b,\\
+                \dot c_b &= -\frac{i}{\hbar}\tilde H_{ba}\,e^{i\omega_0t}c_a.
+                \end{aligned}$$</p>
+                <p>Substituindo $\tilde H_{ab}$ e $\tilde H_{ba}$, as exponenciais se combinam:</p>
+                <p>$$\begin{aligned}
+                \tilde H_{ab}\,e^{-i\omega_0t}
+                &=\frac{V_{ab}}{2}\,e^{i\omega t}e^{-i\omega_0t}
+                =\frac{V_{ab}}{2}\,e^{i\delta t},\\
+                \tilde H_{ba}\,e^{i\omega_0t}
+                &=\frac{V_{ba}}{2}\,e^{-i\omega t}e^{i\omega_0t}
+                =\frac{V_{ba}}{2}\,e^{-i\delta t}.
+                \end{aligned}$$</p>
+                <p>Logo,</p>
+                <p>$$\begin{aligned}
+                \dot c_a &= -\frac{iV_{ab}}{2\hbar}\,e^{i\delta t}c_b,
+                &&\text{(I)}\\
+                \dot c_b &= -\frac{iV_{ba}}{2\hbar}\,e^{-i\delta t}c_a.
+                &&\text{(II)}
+                \end{aligned}$$</p>
+                <p>Nenhuma aproximação foi feita até aqui: este é um sistema linear de duas equações de primeira ordem.
+                A dependência temporal explícita aparece apenas nas fases $e^{\pm i\delta t}$, e é isso que permite
+                desacoplá-lo.</p>
+
+                <p><strong>Passo 2: desacoplando.</strong> Derivamos (II) em relação ao tempo. Pela regra do
+                produto,</p>
+                <p>$$\begin{aligned}
+                \ddot c_b
+                &= -\frac{iV_{ba}}{2\hbar}\,\frac{d}{dt}
+                \left(e^{-i\delta t}c_a\right)\\
+                &= -\frac{iV_{ba}}{2\hbar}\Bigl[
+                -i\delta\,e^{-i\delta t}c_a\\
+                &\hspace{70pt}+e^{-i\delta t}\dot c_a\Bigr].
+                \end{aligned}$$</p>
+                <p>O primeiro termo contém de novo o lado direito de (II):</p>
+                <p>$$\begin{aligned}
+                -\frac{iV_{ba}}{2\hbar}\bigl(-i\delta\bigr)
+                e^{-i\delta t}c_a
+                &=-i\delta\left[-\frac{iV_{ba}}{2\hbar}
+                e^{-i\delta t}c_a\right]\\
+                &=-i\delta\,\dot c_b.
+                \end{aligned}$$</p>
+                <p>No segundo termo, substituímos $\dot c_a$ por (I). As fases se cancelam,
+                $e^{-i\delta t}e^{i\delta t}=1$, e $(-i)(-i)=i^2=-1$:</p>
+                <p>$$\begin{aligned}
+                -\frac{iV_{ba}}{2\hbar}e^{-i\delta t}\dot c_a
+                &=-\frac{iV_{ba}}{2\hbar}e^{-i\delta t}
+                \left(-\frac{iV_{ab}}{2\hbar}e^{i\delta t}c_b\right)\\
+                &=\frac{(-i)(-i)\,V_{ba}V_{ab}}{4\hbar^2}\,c_b\\
+                &=-\frac{|V_{ab}|^2}{4\hbar^2}\,c_b,
+                \end{aligned}$$</p>
+                <p>em que usamos $V_{ba}V_{ab}=V_{ab}^*V_{ab}=|V_{ab}|^2$. Somando os dois termos, obtemos uma equação
+                de segunda ordem para $c_b$ sozinho, com coeficientes <em>constantes</em>:</p>
+                <p>$$\ddot c_b+i\delta\,\dot c_b
+                +\frac{|V_{ab}|^2}{4\hbar^2}\,c_b=0.$$</p>
+
+                <p><strong>Passo 3: a equação característica.</strong> Com o ansatz $c_b=e^{st}$, temos
+                $\dot c_b=se^{st}$ e $\ddot c_b=s^2e^{st}$. Dividindo por $e^{st}\ne0$,</p>
+                <p>$$s^2+i\delta\,s+\frac{|V_{ab}|^2}{4\hbar^2}=0.$$</p>
+                <p>Pela fórmula de Bhaskara, com coeficientes $1$, $i\delta$ e $|V_{ab}|^2/4\hbar^2$, o discriminante
+                é</p>
+                <p>$$\begin{aligned}
+                \Delta&=(i\delta)^2-4\cdot\frac{|V_{ab}|^2}{4\hbar^2}\\
+                &=-\delta^2-\frac{|V_{ab}|^2}{\hbar^2}
+                =-4\omega_r^2,
+                \end{aligned}$$</p>
+                <p>em que usamos $4\omega_r^2=\delta^2+|V_{ab}|^2/\hbar^2$. Então $\sqrt\Delta=2i\omega_r$, e as
+                raízes são</p>
+                <p>$$s_\pm=\frac{-i\delta\pm2i\omega_r}{2}
+                =-\frac{i\delta}{2}\pm i\omega_r.$$</p>
+                <p>As raízes são distintas, pois $\omega_r>0$. A solução geral é uma combinação das duas
+                exponenciais. Pondo em evidência o fator comum $e^{-i\delta t/2}$ e reescrevendo
+                $e^{\pm i\omega_rt}=\cos(\omega_rt)\pm i\sin(\omega_rt)$,</p>
+                <p>$$\begin{aligned}
+                c_b(t)
+                &=C_+e^{s_+t}+C_-e^{s_-t}\\
+                &=e^{-i\delta t/2}\bigl[C_+e^{i\omega_rt}
+                +C_-e^{-i\omega_rt}\bigr]\\
+                &=e^{-i\delta t/2}\bigl[A\cos(\omega_rt)
+                +B\sin(\omega_rt)\bigr],
+                \end{aligned}$$</p>
+                <p>com as novas constantes $A\equiv C_++C_-$ e $B\equiv i(C_+-C_-)$.</p>
+
+                <p><strong>Passo 4: as condições iniciais.</strong> Uma equação de segunda ordem pede duas
+                condições, $c_b(0)$ e $\dot c_b(0)$. A primeira é dada:</p>
+                <p>$$c_b(0)=e^{0}\bigl[A\cdot1+B\cdot0\bigr]=A=0.$$</p>
+                <p>Com $A=0$, derivamos $c_b=B\,e^{-i\delta t/2}\sin(\omega_rt)$ pela regra do produto:</p>
+                <p>$$\begin{aligned}
+                \dot c_b
+                &=B\Bigl[-\frac{i\delta}{2}e^{-i\delta t/2}\sin(\omega_rt)\\
+                &\hspace{40pt}+e^{-i\delta t/2}\,\omega_r\cos(\omega_rt)\Bigr]\\
+                &=B\,e^{-i\delta t/2}\Bigl[\omega_r\cos(\omega_rt)\\
+                &\hspace{60pt}-\frac{i\delta}{2}\sin(\omega_rt)\Bigr].
+                \end{aligned}$$</p>
+                <p>Em $t=0$, $\cos0=1$ e $\sin0=0$, então $\dot c_b(0)=B\,\omega_r$. A segunda condição vem de
+                $c_a(0)=1$, através de (II) calculada em $t=0$:</p>
+                <p>$$\dot c_b(0)=-\frac{iV_{ba}}{2\hbar}\,e^{0}\,c_a(0)
+                =-\frac{iV_{ba}}{2\hbar}.$$</p>
+                <p>Igualando as duas expressões para $\dot c_b(0)$,</p>
+                <p>$$B\,\omega_r=-\frac{iV_{ba}}{2\hbar}
+                \quad\Longrightarrow\quad
+                B=-\frac{iV_{ba}}{2\hbar\omega_r}.$$</p>
+                <p>Logo, como $-\delta=\omega_0-\omega$,</p>
+                <p>$$\begin{aligned}
+                c_b(t)
+                &=-\frac{iV_{ba}}{2\hbar\omega_r}\,
+                e^{i(\omega_0-\omega)t/2}\\
+                &\quad\times\sin(\omega_rt).
+                \end{aligned}$$</p>
+
+                <p><strong>Passo 5: obtendo $c_a$.</strong> Não é preciso resolver outra equação diferencial: basta
+                isolar $c_a$ em (II). Multiplicando (II) por $(2i\hbar/V_{ba})\,e^{i\delta t}$, o que é possível porque
+                $V_{ba}\ne0$, e usando $(2i\hbar)(-i)/(2\hbar)=1$,</p>
+                <p>$$c_a=\frac{2i\hbar}{V_{ba}}\,e^{i\delta t}\,\dot c_b.$$</p>
+                <p>Substituímos o $\dot c_b$ do Passo 4. O pré-fator numérico é</p>
+                <p>$$\frac{2i\hbar}{V_{ba}}\,B
+                =\frac{2i\hbar}{V_{ba}}\cdot
+                \left(-\frac{iV_{ba}}{2\hbar\omega_r}\right)
+                =\frac{1}{\omega_r},$$</p>
+                <p>e as fases se combinam em $e^{i\delta t}e^{-i\delta t/2}=e^{i\delta t/2}$. Assim,</p>
+                <p>$$\begin{aligned}
+                c_a(t)
+                &=\frac{e^{i\delta t/2}}{\omega_r}\Bigl[\omega_r\cos(\omega_rt)
+                -\frac{i\delta}{2}\sin(\omega_rt)\Bigr]\\
+                &=e^{i\delta t/2}\Bigl[\cos(\omega_rt)
+                -\frac{i\delta}{2\omega_r}\sin(\omega_rt)\Bigr]\\
+                &=e^{i(\omega-\omega_0)t/2}\Bigl[\cos(\omega_rt)\\
+                &\quad+i\,\frac{\omega_0-\omega}{2\omega_r}
+                \sin(\omega_rt)\Bigr].
+                \end{aligned}$$</p>
+                <p>Em $t=0$, $c_a(0)=e^{0}[1-0]=1$, como devia.</p>
+
+                <p><strong>Passo 6: verificação com (I).</strong> Construímos a solução usando apenas (II), de modo
+                que (I) serve como teste independente. Derivando a segunda forma de $c_a$ pela regra do produto,</p>
+                <p>$$\begin{aligned}
+                \dot c_a
+                &=\frac{i\delta}{2}e^{i\delta t/2}\Bigl[\cos(\omega_rt)
+                -\frac{i\delta}{2\omega_r}\sin(\omega_rt)\Bigr]\\
+                &\quad+e^{i\delta t/2}\Bigl[-\omega_r\sin(\omega_rt)
+                -\frac{i\delta}{2}\cos(\omega_rt)\Bigr].
+                \end{aligned}$$</p>
+                <p>Os termos em $\cos(\omega_rt)$ são $+\tfrac{i\delta}{2}$ e $-\tfrac{i\delta}{2}$ e se cancelam.
+                Nos termos em $\sin(\omega_rt)$, $\tfrac{i\delta}{2}\cdot\bigl(-\tfrac{i\delta}{2\omega_r}\bigr)
+                =-\tfrac{i^2\delta^2}{4\omega_r}=\tfrac{\delta^2}{4\omega_r}$. Então</p>
+                <p>$$\begin{aligned}
+                \dot c_a
+                &=e^{i\delta t/2}\left(\frac{\delta^2}{4\omega_r}
+                -\omega_r\right)\sin(\omega_rt)\\
+                &=-\frac{1}{\omega_r}\left(\omega_r^2-\frac{\delta^2}{4}\right)
+                e^{i\delta t/2}\sin(\omega_rt)\\
+                &=-\frac{|V_{ab}|^2}{4\hbar^2\omega_r}\,
+                e^{i\delta t/2}\sin(\omega_rt).
+                \end{aligned}$$</p>
+                <p>Por outro lado, substituindo o $c_b$ encontrado no lado direito de (I), com $(-i)(-i)=-1$ e
+                $e^{i\delta t}e^{-i\delta t/2}=e^{i\delta t/2}$,</p>
+                <p>$$\begin{aligned}
+                -\frac{iV_{ab}}{2\hbar}\,e^{i\delta t}c_b
+                &=-\frac{iV_{ab}}{2\hbar}\,e^{i\delta t}
+                \left(-\frac{iV_{ba}}{2\hbar\omega_r}\right)\\
+                &\quad\times e^{-i\delta t/2}\sin(\omega_rt)\\
+                &=-\frac{|V_{ab}|^2}{4\hbar^2\omega_r}\,
+                e^{i\delta t/2}\sin(\omega_rt),
+                \end{aligned}$$</p>
+                <p>que é a mesma expressão. Assim, $c_a(t)$ e $c_b(t)$ resolvem <em>exatamente</em> as equações
+                acopladas, com as condições iniciais dadas e para qualquer intensidade $|V_{ab}|$: não houve expansão
+                em potências de $V$. O resultado coincide com o
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[01] - Sistemas de Dois Níveis.html#teo-oscilacoes-de-rabi">teorema das oscilações de Rabi</a>.
+                Vale lembrar o sentido de "exato" aqui: a solução é exata para a perturbação $\tilde H$. Se $\tilde H$
+                provém de $H'=V\cos(\omega t)$, a única aproximação é a de onda girante, feita <em>antes</em> de
+                resolver as equações, que despreza o termo que oscila com $\omega+\omega_0$.</p>
+
+                <p><strong>(b)</strong> <strong>Passo 1: a probabilidade de transição.</strong> Ela é o módulo ao
+                quadrado de $c_b$. Calculamos o módulo de cada fator: a fase tem módulo unitário,
+                $|e^{i(\omega_0-\omega)t/2}|=1$; $|-i|=1$; e $|V_{ba}|=|V_{ab}^*|=|V_{ab}|$. Assim,</p>
+                <p>$$\begin{aligned}
+                P_{a\to b}(t)=|c_b(t)|^2
+                &=\left|\frac{-iV_{ba}}{2\hbar\omega_r}\right|^2
+                \sin^2(\omega_rt)\\
+                &=\frac{|V_{ab}|^2}{4\hbar^2\omega_r^2}\sin^2(\omega_rt).
+                \end{aligned}$$</p>
+                <p>Usando $4\omega_r^2=(\omega-\omega_0)^2+|V_{ab}|^2/\hbar^2$ e multiplicando por $\hbar^2$, o
+                denominador é</p>
+                <p>$$4\hbar^2\omega_r^2
+                =\hbar^2(\omega-\omega_0)^2+|V_{ab}|^2,$$</p>
+                <p>de modo que</p>
+                <p>$$\begin{aligned}
+                P_{a\to b}(t)
+                &=\frac{|V_{ab}|^2}{|V_{ab}|^2+\hbar^2(\omega-\omega_0)^2}\\
+                &\quad\times\sin^2(\omega_rt).
+                \end{aligned}$$</p>
+
+                <p><strong>Passo 2: $P_{a\to b}\le1$.</strong> O pré-fator é uma fração cujo denominador excede o
+                numerador pela quantidade não negativa $\hbar^2(\omega-\omega_0)^2$; logo,</p>
+                <p>$$0\lt\frac{|V_{ab}|^2}{|V_{ab}|^2+\hbar^2(\omega-\omega_0)^2}\le1.$$</p>
+                <p>Como também $0\le\sin^2(\omega_rt)\le1$, o produto satisfaz $P_{a\to b}(t)\le1$ para todo $t$. A
+                probabilidade oscila entre $0$ e o pré-fator; como $\sin^2x$ tem período $\pi$, o período em $t$ é
+                $\pi/\omega_r$.</p>
+                <p>Como função de $\omega$, o pré-fator é uma lorentziana centrada em $\omega_0$. Ela vale $1/2$ quando
+                o termo extra do denominador iguala o numerador, $\hbar^2(\omega-\omega_0)^2=|V_{ab}|^2$, isto é, para
+                $|\omega-\omega_0|=|V_{ab}|/\hbar$: essa é a meia largura à meia altura.</p>
+                <p>O valor $P_{a\to b}=1$ exige pré-fator igual a $1$, o que só acontece na ressonância,
+                $\omega=\omega_0$. Nesse caso $\omega_r=\tfrac12\sqrt{0+|V_{ab}|^2/\hbar^2}=|V_{ab}|/2\hbar$ e</p>
+                <p>$$P_{a\to b}(t)=\sin^2\left(\frac{|V_{ab}|t}{2\hbar}\right).$$</p>
+                <p>Isso vale $1$ quando o argumento é um múltiplo ímpar de $\pi/2$:</p>
+                <p>$$\begin{aligned}
+                \frac{|V_{ab}|t_n}{2\hbar}&=\frac{(2n+1)\pi}{2}\\
+                \Longrightarrow\quad
+                t_n&=\frac{(2n+1)\pi\hbar}{|V_{ab}|},
+                \qquad n=0,1,2,\ldots
+                \end{aligned}$$</p>
+                <p>Nos instantes $t_n$ o sistema está <em>com certeza</em> no estado $\psi_b$; desligar a perturbação
+                em $t_0=\pi\hbar/|V_{ab}|$ é o chamado "pulso $\pi$". Fora da ressonância, a transferência nunca é
+                completa.</p>
+
+                <p><strong>Passo 3: a normalização.</strong> Escrevemos $c_a=e^{i\delta t/2}(u+iv)$, com as
+                quantidades <em>reais</em></p>
+                <p>$$u=\cos(\omega_rt),
+                \qquad v=\frac{\omega_0-\omega}{2\omega_r}\sin(\omega_rt).$$</p>
+                <p>Como $|e^{i\delta t/2}|=1$ e $|u+iv|^2=(u+iv)(u-iv)=u^2+v^2$,</p>
+                <p>$$|c_a(t)|^2=\cos^2(\omega_rt)
+                +\frac{(\omega_0-\omega)^2}{4\omega_r^2}\sin^2(\omega_rt).$$</p>
+                <p>Somando com $|c_b|^2=\dfrac{|V_{ab}|^2/\hbar^2}{4\omega_r^2}\sin^2(\omega_rt)$ (a forma do Passo 1
+                com $\hbar^2$ dividido em cima e embaixo) e juntando os termos em $\sin^2$,</p>
+                <p>$$\begin{aligned}
+                |c_a|^2+|c_b|^2
+                &=\cos^2(\omega_rt)\\
+                &\quad+\frac{(\omega-\omega_0)^2+|V_{ab}|^2/\hbar^2}
+                {4\omega_r^2}\sin^2(\omega_rt)\\
+                &=\cos^2(\omega_rt)+\frac{4\omega_r^2}{4\omega_r^2}\sin^2(\omega_rt)\\
+                &=\cos^2(\omega_rt)+\sin^2(\omega_rt)=1.
+                \end{aligned}$$</p>
+                <p>A norma se conserva exatamente, como garante a
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[01] - Sistemas de Dois Níveis.html#obs-conservacao-exata">observação sobre a conservação da norma</a>
+                para qualquer solução da Eq. 11.17. Isso fornece uma segunda prova de que
+                $P_{a\to b}=1-|c_a|^2\le1$.</p>
+
+                <p><strong>Passo 4: o limite perturbativo.</strong> A solução exata contém o resultado de primeira
+                ordem. Se o campo é fraco em comparação com a dessintonia, $|V_{ab}|\ll\hbar|\omega-\omega_0|$, então
+                $|V_{ab}|^2/\hbar^2\delta^2\ll1$ e</p>
+                <p>$$\begin{aligned}
+                \omega_r
+                &=\frac{|\delta|}{2}\sqrt{1+\frac{|V_{ab}|^2}{\hbar^2\delta^2}}
+                \simeq\frac{|\delta|}{2},\\
+                \frac{|V_{ab}|^2}{|V_{ab}|^2+\hbar^2\delta^2}
+                &\simeq\frac{|V_{ab}|^2}{\hbar^2\delta^2}.
+                \end{aligned}$$</p>
+                <p>Como $\sin^2$ é par, $\sin^2(|\delta|t/2)=\sin^2[(\omega_0-\omega)t/2]$, e
+                $\delta^2=(\omega_0-\omega)^2$. Portanto,</p>
+                <p>$$\begin{aligned}
+                P_{a\to b}(t)
+                &\simeq\frac{|V_{ab}|^2}{\hbar^2}\,
+                \frac{\sin^2\left[(\omega_0-\omega)t/2\right]}
+                {(\omega_0-\omega)^2},
+                \end{aligned}$$</p>
+                <p>que é a <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[01] - Sistemas de Dois Níveis.html#teo-probabilidade-senoidal">Eq. 11.35</a>
+                de Griffiths, obtida em primeira ordem. Na ressonância, essa condição falha por menor que seja
+                $V_{ab}$: a primeira ordem dá $(|V_{ab}|t/2\hbar)^2$, que cresce sem limite, enquanto a solução exata
+                dá $\sin^2(|V_{ab}|t/2\hbar)$. Usando $\sin x\simeq x$ para $x\ll1$, as duas concordam apenas para
+                $t\ll\hbar/|V_{ab}|$, quando a parábola é o começo da senoide e
+                $P_{a\to b}\ll1$.<span class="qed" aria-label="Fim da resolução">&#x220E;</span></p>
+
+                <hr class="resolucao-sep">
 
                 <h3 id="exercicio-3">Exercício 3</h3>
                 <p>Considere um elétron em um poço infinito unidimensional de largura $0 \le x \le 1\,\text{Å}$. Em $t = 0$
@@ -216,7 +662,289 @@
 
                 <hr class="resolucao-sep">
 
-                <!-- SOLUCAO-EXERCICIO-3 -->
+                <p><strong>Resolução - Exercício 3:</strong></p>
+                <p>Colocamos a origem na parede esquerda, de modo que o poço ocupa $0\le x\le a$, com
+                $a=1\,\text{Å}=10^{-8}\,\text{cm}$. O hamiltoniano não perturbado $H^0$ é o do poço quadrado infinito,
+                cujos autoestados e energias são os de sempre (veja o
+                <a class="ref-capitulo" href="../Conteúdo/[4] - Partículas Idênticas/[01] - Sistemas de Duas Partículas.html#exemplo-poco-infinito">exemplo do poço infinito</a>):</p>
+                <p>$$\begin{aligned}
+                \psi_n(x)&=\sqrt{\frac2a}\,\sin\left(\frac{n\pi x}{a}\right),\\
+                E_n&=n^2E_1,\\
+                E_1&=\frac{\pi^2\hbar^2}{2m_ea^2},
+                \qquad n=1,2,3,\ldots
+                \end{aligned}$$</p>
+                <p>A perturbação é um poço retangular de profundidade $V_0$ e largura $b$, centrado em $x=a/2$, que só
+                existe no intervalo $0\le t\le\Delta t$:</p>
+                <p>$$\begin{aligned}
+                H'(x,t)&=\begin{cases}
+                V(x), & 0\le t\le\Delta t,\\
+                0, & \text{caso contrário},
+                \end{cases}\\[4pt]
+                V(x)&=\begin{cases}
+                V_0, & |x-a/2|\le b/2,\\
+                0, & \text{caso contrário}.
+                \end{cases}
+                \end{aligned}$$</p>
+                <p>Denotamos os elementos de matriz por $H'_{nm}\equiv\tilde H_{nm}=\langle\psi_n|V|\psi_m\rangle$.
+                Enquanto a perturbação está ligada, eles não dependem do tempo.</p>
+
+                <p><strong>Passo 1: o coeficiente em primeira ordem.</strong> O elétron parte do estado fundamental,
+                $c_n(0)=\delta_{n1}$. Pela primeira ordem da
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[01] - Sistemas de Dois Níveis.html#teo-serie-muitos-niveis">série de perturbação para muitos níveis</a>
+                (Passo 2 da demonstração), com $i=1$,</p>
+                <p>$$\begin{aligned}
+                c_n^{(1)}(t)
+                &=\delta_{n1}-\frac{i}{\hbar}\int_0^t
+                H'_{n1}(t')\,e^{i\omega_{n1}t'}\,dt',\\
+                \omega_{n1}&\equiv\frac{E_n-E_1}{\hbar}.
+                \end{aligned}$$</p>
+                <p>Para $n\ne1$ o delta de Kronecker se anula. Para $t'>\Delta t$ o integrando é zero, porque $H'=0$;
+                logo, para qualquer $t\ge\Delta t$ a integral para em $\Delta t$ e o coeficiente fica congelado no valor
+                $c_n(\Delta t)$. Depois de desligada a perturbação, os $\psi_n$ voltam a ser autoestados do hamiltoniano,
+                e a probabilidade de encontrar o elétron no estado $n$ é $|c_n(\Delta t)|^2$, para qualquer instante
+                posterior. Como $H'_{n1}$ é constante em $[0,\Delta t]$, ele sai da integral:</p>
+                <p>$$\begin{aligned}
+                c_n^{(1)}(\Delta t)
+                &=-\frac{i}{\hbar}H'_{n1}
+                \int_0^{\Delta t}e^{i\omega_{n1}t'}\,dt'\\
+                &=-\frac{i}{\hbar}H'_{n1}
+                \left[\frac{e^{i\omega_{n1}t'}}{i\omega_{n1}}
+                \right]_0^{\Delta t}\\
+                &=-\frac{i}{\hbar}H'_{n1}\,
+                \frac{e^{i\omega_{n1}\Delta t}-1}{i\omega_{n1}}\\
+                &=-\frac{H'_{n1}}{\hbar\omega_{n1}}
+                \left(e^{i\omega_{n1}\Delta t}-1\right).
+                \end{aligned}$$</p>
+                <p>Na última linha cancelamos os dois fatores $i$. A divisão por $\omega_{n1}$ é legítima porque o
+                espectro do poço é não degenerado, $E_n\ne E_1$ para $n\ne1$. Para tomar o módulo ao quadrado, escrevemos
+                $\theta\equiv\omega_{n1}\Delta t$ e usamos $e^{i\theta}=\cos\theta+i\sin\theta$:</p>
+                <p>$$\begin{aligned}
+                \left|e^{i\theta}-1\right|^2
+                &=(\cos\theta-1)^2+\sin^2\theta\\
+                &=\cos^2\theta-2\cos\theta+1+\sin^2\theta\\
+                &=2-2\cos\theta\\
+                &=2\cdot2\sin^2(\theta/2)\\
+                &=4\sin^2(\theta/2).
+                \end{aligned}$$</p>
+                <p>Na terceira linha usamos $\cos^2\theta+\sin^2\theta=1$; na quarta, a identidade do ângulo metade,
+                $1-\cos\theta=2\sin^2(\theta/2)$. Portanto,</p>
+                <p>$$\begin{aligned}
+                P_{1\to n}
+                &=\left|c_n^{(1)}(\Delta t)\right|^2\\
+                &=\frac{|H'_{n1}|^2}{\hbar^2\omega_{n1}^2}
+                \,4\sin^2\left(\frac{\omega_{n1}\Delta t}{2}\right)\\
+                &=\frac{4|H'_{n1}|^2}{(E_n-E_1)^2}
+                \sin^2\left(\frac{\omega_{n1}\Delta t}{2}\right).
+                \end{aligned}$$</p>
+                <p>Na última forma usamos $\hbar\omega_{n1}=E_n-E_1$. O pré-fator é uma razão entre duas energias ao
+                quadrado e, portanto, é adimensional. Assim, podemos medir tanto $|H'_{n1}|$ quanto $E_n-E_1$ em eV, sem
+                converter nada. Este é o resultado de uma perturbação constante que é ligada e depois desligada, o mesmo
+                do <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[01] - Sistemas de Dois Níveis.html#exr-11-1-3">Exercício 11.1-3</a>
+                no limite de perturbação fraca. Falta calcular $H'_{n1}$ e $\omega_{n1}$.</p>
+
+                <p><strong>Passo 2: os elementos de matriz.</strong> As autofunções são reais, então não há conjugação
+                complexa. Como $V$ só é diferente de zero no intervalo de largura $b$ em torno de $a/2$,</p>
+                <p>$$\begin{aligned}
+                H'_{n1}
+                &=\int_0^a\psi_n(x)\,V(x)\,\psi_1(x)\,dx\\
+                &=\frac{2V_0}{a}
+                \int_{a/2-b/2}^{a/2+b/2}f_n(x)\,dx,\\
+                f_n(x)&\equiv\sin\left(\frac{n\pi x}{a}\right)
+                \sin\left(\frac{\pi x}{a}\right).
+                \end{aligned}$$</p>
+                <p>A dica manda aproximar a integral por um retângulo de base $b$ e altura $f_n(a/2)$:</p>
+                <p>$$\int_{a/2-b/2}^{a/2+b/2}f_n(x)\,dx
+                \approx b\,f_n(a/2).$$</p>
+                <p>Para ver por que isso vale, expandimos $f_n$ em torno do centro, com $u\equiv x-a/2$:</p>
+                <p>$$\begin{aligned}
+                f_n(a/2+u)&=f_n(a/2)+f_n'(a/2)\,u\\
+                &\quad+\tfrac12f_n''(a/2)\,u^2+\cdots
+                \end{aligned}$$</p>
+                <p>Integrando de $u=-b/2$ a $u=b/2$, o termo linear se anula, porque $u$ é ímpar num intervalo simétrico.
+                No termo quadrático, $\int_{-b/2}^{b/2}u^2\,du=b^3/12$. Assim,</p>
+                <p>$$\begin{aligned}
+                \int_{-b/2}^{b/2}f_n\,du
+                &=b\,f_n(a/2)+\frac{b^3}{24}f_n''(a/2)+\cdots\\
+                &=b\,f_n(a/2)\\
+                &\quad\times\left[1+\frac{b^2}{24}
+                \frac{f_n''(a/2)}{f_n(a/2)}+\cdots\right].
+                \end{aligned}$$</p>
+                <p>Derivando $f_n$ duas vezes, aparecem dois termos proporcionais a $f_n$ e um termo cruzado proporcional
+                a $\cos(n\pi x/a)\cos(\pi x/a)$, que se anula em $x=a/2$ porque $\cos(\pi/2)=0$. Sobra
+                $f_n''(a/2)=-(n^2+1)(\pi/a)^2f_n(a/2)$, e a correção relativa ao retângulo é</p>
+                <p>$$\begin{aligned}
+                -\frac{(n^2+1)\pi^2}{24}\left(\frac ba\right)^2,
+                \qquad
+                \frac ba=\frac{10^{-12}\,\text{cm}}{10^{-8}\,\text{cm}}
+                =10^{-4}.
+                \end{aligned}$$</p>
+                <p>Para $n=3$, ela vale $-10\pi^2\times10^{-8}/24\approx-4\times10^{-8}$; para $n=5$, vale
+                $\approx-1\times10^{-7}$. A aproximação é excelente. Fisicamente, as funções de onda variam numa escala
+                $a/n\pi$, muito maior que $b$, e por isso são praticamente constantes ao longo do pequeno poço. Na prática,
+                a perturbação age como um delta, $V(x)\approx V_0b\,\delta(x-a/2)$. Como
+                $f_n(a/2)=\sin(n\pi/2)\sin(\pi/2)=\sin(n\pi/2)$,</p>
+                <p>$$H'_{n1}\simeq\frac{2V_0b}{a}\,\sin\left(\frac{n\pi}{2}\right).$$</p>
+                <p>Agora os números: $V_0b/a=(-10^4\,\text{eV})\times10^{-4}=-1\,\text{eV}$, ou seja,
+                $|V_0|b/a=1\,\text{eV}$. Logo,</p>
+                <p>$$H'_{n1}\simeq-2\,\text{eV}\times\sin\left(\frac{n\pi}{2}\right).$$</p>
+                <p>Calculando o seno para cada estado pedido:</p>
+                <p>$$\begin{aligned}
+                n=2:&\quad\sin(\pi)=0
+                &&\Rightarrow\ H'_{21}=0,\\
+                n=3:&\quad\sin(3\pi/2)=-1
+                &&\Rightarrow\ H'_{31}=+2\,\text{eV},\\
+                n=4:&\quad\sin(2\pi)=0
+                &&\Rightarrow\ H'_{41}=0,\\
+                n=5:&\quad\sin(5\pi/2)=+1
+                &&\Rightarrow\ H'_{51}=-2\,\text{eV}.
+                \end{aligned}$$</p>
+                <p>Na última linha, $\sin(5\pi/2)=\sin(2\pi+\pi/2)=\sin(\pi/2)=1$. Portanto, $|H'_{31}|=|H'_{51}|=2\,\text{eV}$.</p>
+                <p><strong>Regra de seleção por paridade.</strong> Os zeros para $n$ par não vêm da aproximação. Considere
+                a reflexão em torno do centro do poço, $x\to a-x$. Expandindo o seno da diferença,</p>
+                <p>$$\begin{aligned}
+                \sin\left(n\pi-\frac{n\pi x}{a}\right)
+                &=\sin(n\pi)\cos\left(\frac{n\pi x}{a}\right)\\
+                &\quad-\cos(n\pi)\sin\left(\frac{n\pi x}{a}\right)\\
+                &=-(-1)^n\sin\left(\frac{n\pi x}{a}\right),
+                \end{aligned}$$</p>
+                <p>isto é, $\psi_n(a-x)=(-1)^{n+1}\psi_n(x)$. Os estados de $n$ ímpar são pares em relação a $x=a/2$, e os
+                de $n$ par são ímpares. Já a perturbação é par, $V(a-x)=V(x)$. Assim, o integrando $\psi_nV\psi_1$ muda
+                pelo fator $(-1)^{n+1}$ sob a reflexão. Para $n$ par ele é ímpar em torno de $a/2$, e sua integral num
+                intervalo simétrico em torno de $a/2$ é <em>exatamente</em> nula. A mesma conclusão aparece de forma
+                visual: os estados de $n$ par têm um nó em $x=a/2$, justamente onde a perturbação age. Como
+                $H^0+H'$ comuta com a reflexão, o estado inicial par continua par em todos os instantes. Por isso,</p>
+                <p>$$P_{1\to2}=P_{1\to4}=0,$$</p>
+                <p>e não só em primeira ordem, mas exatamente.</p>
+
+                <p><strong>Passo 3: energias e frequências.</strong> Usamos o $\hbar$ da dica e o valor padrão</p>
+                <p>$$\begin{aligned}
+                \frac{\hbar^2}{2m_e}
+                &=\frac{(\hbar c)^2}{2m_ec^2}
+                =\frac{(1973{,}27\,\text{eV}\cdot\text{Å})^2}
+                {2\times0{,}511\times10^{6}\,\text{eV}}\\
+                &=3{,}810\,\text{eV}\cdot\text{Å}^2.
+                \end{aligned}$$</p>
+                <p>Com $a=1\,\text{Å}$,</p>
+                <p>$$\begin{aligned}
+                E_1&=\pi^2\times\frac{3{,}810\,\text{eV}\cdot\text{Å}^2}
+                {(1\,\text{Å})^2}\\
+                &=9{,}870\times3{,}810\,\text{eV}\\
+                &=37{,}60\,\text{eV}.
+                \end{aligned}$$</p>
+                <p>As energias dos demais níveis são $E_n=n^2E_1$:</p>
+                <p>$$\begin{aligned}
+                E_2&=4E_1=150{,}4\,\text{eV},\\
+                E_3&=9E_1=338{,}4\,\text{eV},\\
+                E_4&=16E_1=601{,}6\,\text{eV},\\
+                E_5&=25E_1=940{,}1\,\text{eV}.
+                \end{aligned}$$</p>
+                <p>As diferenças que importam são $E_n-E_1=(n^2-1)E_1$. Dividindo por
+                $\hbar=6{,}582\times10^{-16}\,\text{eV}\cdot\text{s}$, obtemos as frequências:</p>
+                <p>$$\begin{aligned}
+                \hbar\omega_{31}&=8E_1=300{,}8\,\text{eV},\\
+                \omega_{31}&=\frac{300{,}8\,\text{eV}}
+                {6{,}582\times10^{-16}\,\text{eV}\cdot\text{s}}\\
+                &=4{,}570\times10^{17}\,\text{s}^{-1};\\[4pt]
+                \hbar\omega_{51}&=24E_1=902{,}5\,\text{eV},\\
+                \omega_{51}&=\frac{902{,}5\,\text{eV}}
+                {6{,}582\times10^{-16}\,\text{eV}\cdot\text{s}}\\
+                &=1{,}371\times10^{18}\,\text{s}^{-1}.
+                \end{aligned}$$</p>
+                <p>Para referência, $\hbar\omega_{21}=3E_1=112{,}8\,\text{eV}$ e $\hbar\omega_{41}=15E_1=564{,}0\,\text{eV}$.
+                Esses valores, porém, multiplicam elementos de matriz nulos. Os argumentos dos senos são</p>
+                <p>$$\begin{aligned}
+                \frac{\omega_{31}\Delta t}{2}
+                &=\frac{4{,}570\times10^{17}\times5\times10^{-8}}{2}\\
+                &=1{,}143\times10^{10}\,\text{rad},\\
+                \frac{\omega_{51}\Delta t}{2}
+                &=\frac{1{,}371\times10^{18}\times5\times10^{-8}}{2}\\
+                &=3{,}428\times10^{10}\,\text{rad}.
+                \end{aligned}$$</p>
+
+                <p><strong>Passo 4: as probabilidades.</strong> Para $n=3$, o numerador é
+                $4|H'_{31}|^2=4\times(2\,\text{eV})^2=16\,\text{eV}^2$. Esse é o "16" da resposta parcial, que está
+                escrita com $\hbar\omega_{31}$ medido em eV:</p>
+                <p>$$\begin{aligned}
+                P_{1\to3}
+                &=\frac{16\,\text{eV}^2}{(\hbar\omega_{31})^2}
+                \sin^2\left(\frac{\omega_{31}\Delta t}{2}\right)\\
+                &=\frac{16}{(300{,}8)^2}
+                \sin^2\left(\frac{\omega_{31}\Delta t}{2}\right)\\
+                &=\frac{16}{9{,}048\times10^{4}}
+                \sin^2\left(\frac{\omega_{31}\Delta t}{2}\right)\\
+                &=1{,}768\times10^{-4}\,
+                \sin^2\left(\frac{\omega_{31}\Delta t}{2}\right).
+                \end{aligned}$$</p>
+                <p>Para $n=5$, o numerador também é $4|H'_{51}|^2=16\,\text{eV}^2$:</p>
+                <p>$$\begin{aligned}
+                P_{1\to5}
+                &=\frac{16}{(902{,}5)^2}
+                \sin^2\left(\frac{\omega_{51}\Delta t}{2}\right)\\
+                &=\frac{16}{8{,}145\times10^{5}}
+                \sin^2\left(\frac{\omega_{51}\Delta t}{2}\right)\\
+                &=1{,}964\times10^{-5}\,
+                \sin^2\left(\frac{\omega_{51}\Delta t}{2}\right).
+                \end{aligned}$$</p>
+                <p>A razão entre os pré-fatores é $\left[(3^2-1)/(5^2-1)\right]^2=(8/24)^2=1/9$, como se confere
+                dividindo $1{,}768\times10^{-4}$ por $9$.</p>
+
+                <p><strong>Passo 5: o fator $\sin^2$.</strong> Os argumentos dos senos, da ordem de $10^{10}\,\text{rad}$,
+                mostram que o sistema oscila cerca de $\omega_{31}\Delta t/2\pi\approx3{,}6\times10^{9}$ vezes enquanto a
+                perturbação está ligada. O valor de $\sin^2$ depende do argumento <em>módulo</em> $\pi$, e mudar o
+                argumento de $1{,}143\times10^{10}$ por $\pi$ exige uma variação relativa de apenas</p>
+                <p>$$\frac{\pi}{1{,}143\times10^{10}}\approx2{,}7\times10^{-10}$$</p>
+                <p>em $\omega_{31}\Delta t$. As constantes do enunciado têm quatro algarismos significativos
+                ($\hbar$) ou um ($\Delta t$). Só a incerteza relativa de $\sim\!10^{-4}$ em $\hbar$ já desloca o argumento
+                por $\sim\!10^{6}\,\text{rad}$. O valor de $\sin^2$ fica, portanto, completamente indeterminado pelos
+                dados: qualquer número entre $0$ e $1$ é compatível com eles. Uma conta numérica em dupla precisão
+                ilustra o efeito:</p>
+                <ul>
+                    <li>com $\hbar=6{,}582\times10^{-16}\,\text{eV}\cdot\text{s}$ e
+                        $\hbar^2/2m_e=3{,}80998212\,\text{eV}\cdot\text{Å}^2$ (CODATA), obtemos
+                        $\sin^2(\omega_{31}\Delta t/2)=0{,}935$ e $\sin^2(\omega_{51}\Delta t/2)=0{,}509$. Daí vêm
+                        $P_{1\to3}=1{,}65\times10^{-4}$ e $P_{1\to5}=1{,}00\times10^{-5}$;</li>
+                    <li>arredondando apenas $\hbar^2/2m_e$ para $3{,}80998\,\text{eV}\cdot\text{Å}^2$ (variação relativa
+                        de $6\times10^{-7}$), os senos ao quadrado passam a $0{,}265$ e $0{,}997$, e obtemos
+                        $P_{1\to3}=4{,}69\times10^{-5}$ e $P_{1\to5}=1{,}96\times10^{-5}$.</li>
+                </ul>
+                <p>O valor $1{,}47\times10^{-4}$ da resposta parcial corresponde a
+                $\sin^2(\omega_{31}\Delta t/2)=1{,}47\times10^{-4}/1{,}768\times10^{-4}=0{,}831$. Ele é compatível
+                com o pré-fator obtido aqui, mas o algarismo exato reflete apenas a escolha particular dos valores das
+                constantes e dos arredondamentos. Ele não é uma previsão física. Há ainda motivos físicos para isso. A correção de primeira
+                ordem às energias é a mesma para $n=1,3,5$, pois $H'_{nn}=-2\,\text{eV}\sin^2(n\pi/2)=-2\,\text{eV}$, e
+                se cancela em $\omega_{n1}$. As de segunda ordem, porém, são da ordem de
+                $|H'_{31}|^2/(E_3-E_1)=4/300{,}8\approx10^{-2}\,\text{eV}$ e alteram $\omega_{31}$ em cerca de
+                $10^{-2}/300{,}8\approx4\times10^{-5}$. Isso basta para mover a fase por
+                $4\times10^{-5}\times1{,}1\times10^{10}\sim\!10^5\,\text{rad}$. Além disso, a fórmula supõe que a perturbação
+                liga e desliga em tempos muito menores que $1/\omega_{31}\approx2\times10^{-18}\,\text{s}$. Uma
+                ligação mais lenta tende a suprimir as transições, como no
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[01] - Sistemas de Dois Níveis.html#exr-11-1-6">Exercício 11.1-6</a>.</p>
+                <p>O resultado robusto é, então, a média sobre a fase, $\overline{\sin^2}=1/2$, junto com o valor máximo
+                ($\sin^2=1$):</p>
+                <p>$$\begin{aligned}
+                \overline{P}_{1\to3}
+                &=\frac{8\,\text{eV}^2}{(\hbar\omega_{31})^2}
+                \approx8{,}8\times10^{-5},\\
+                P_{1\to3}&\le1{,}77\times10^{-4};\\[4pt]
+                \overline{P}_{1\to5}
+                &=\frac{8\,\text{eV}^2}{(\hbar\omega_{51})^2}
+                \approx9{,}8\times10^{-6},\\
+                P_{1\to5}&\le1{,}96\times10^{-5}.
+                \end{aligned}$$</p>
+                <p>Em resumo: $P_{1\to2}=P_{1\to4}=0$ por paridade; $P_{1\to3}\sim10^{-4}$, com
+                $P_{1\to3}=1{,}65\times10^{-4}$ para as constantes CODATA citadas; e $P_{1\to5}\sim10^{-5}$, com
+                $P_{1\to5}=1{,}00\times10^{-5}$ para as mesmas constantes. Esses dois números pontuais não são
+                confiáveis além da ordem de grandeza.</p>
+                <p><strong>Validade da primeira ordem.</strong> A teoria de perturbação de primeira ordem exige
+                $|c_n|\ll1$ para $n\ne1$. Aqui isso vale para <em>qualquer</em> $\Delta t$, e não só para tempos curtos,
+                porque $|c_n|\le2|H'_{n1}|/(E_n-E_1)=4/300{,}8\approx1{,}3\times10^{-2}$ para $n=3$, e menos para $n$ maior.
+                Somando os máximos sobre todos os estados ímpares $n\ge3$, obtemos uma probabilidade total de sair do
+                fundamental de no máximo $\approx2\times10^{-4}$. Assim, $c_1\simeq1$, o que justifica ter usado
+                $c_1^{(0)}=1$ no lado direito. As probabilidades são pequenas porque a perturbação, embora intensa
+                ($|V_0|=10^4\,\text{eV}$), é estreita: o que importa é $|V_0|b/a=1\,\text{eV}$, muito menor que os
+                espaçamentos $E_n-E_1\sim10^2$&ndash;$10^3\,\text{eV}$.<span class="qed" aria-label="Fim da resolução">&#x220E;</span></p>
+
+                <hr class="resolucao-sep">
 
                 <h3 id="exercicio-4">Exercício 4</h3>
                 <p>Um átomo de hidrogênio se encontra no seu estado fundamental quando, em $t = 0$, um campo elétrico da
@@ -229,7 +957,321 @@
 
                 <hr class="resolucao-sep">
 
-                <!-- SOLUCAO-EXERCICIO-4 -->
+                <p><strong>Resolução - Exercício 4:</strong></p>
+                <p>Antes de $t=0$, o átomo está no estado estacionário $\psi_{100}$ do hamiltoniano não perturbado
+                $H^0$ do hidrogênio. A partir de $t=0$, o campo uniforme $\mathbf E(t)=E_0e^{-t/\tau}\hat{\mathbf z}$
+                passa a agir como perturbação. Como na
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[02] - Emissão e Absorção de Radiação.html#ondas-eletromagneticas">Eq. 11.39</a>,
+                um campo uniforme na direção $z$ é menos o gradiente do potencial $\varphi=-E(t)\,z$, e a energia de
+                uma carga $q$ nesse potencial é o hamiltoniano de perturbação</p>
+                <p>$$H'(t)=\begin{cases}
+                0, & t\lt0,\\
+                -qE_0\,e^{-t/\tau}\,z, & t\ge0.
+                \end{cases}$$</p>
+                <p><strong>Sobre o sinal.</strong> Aqui, como em Griffiths, $q$ é a carga do elétron, $q=-e$; logo
+                $H'=+eE_0e^{-t/\tau}z$. Se escrevêssemos o sinal oposto (por exemplo, $H'=+qEz$, tomando $q=e\gt0$),
+                o elemento de matriz $H'_{ba}$ e, com ele, a amplitude $c_b$ seriam multiplicados por $-1$. Uma fase
+                global não altera $|c_b|^2$: a probabilidade só envolve $q^2$. O mesmo vale para as convenções de
+                fase das funções de onda, que só mudam o sinal de $\langle 21m|z|100\rangle$.</p>
+
+                <p><strong>Amplitude em primeira ordem.</strong> O hidrogênio tem infinitos níveis, então usamos o
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[01] - Sistemas de Dois Níveis.html#teo-serie-muitos-niveis">teorema da série de perturbação para muitos níveis</a>.
+                Partindo de $c_n(0)=\delta_{ni}$, o Passo 2 da demonstração dá, em primeira ordem,</p>
+                <p>$$\begin{aligned}
+                c_n^{(1)}(t)
+                &=\delta_{ni}-\frac{i}{\hbar}\int_0^t H'_{ni}(t')\\
+                &\qquad\times e^{i(E_n-E_i)t'/\hbar}\,dt'.
+                \end{aligned}$$</p>
+                <p>Tomamos o estado inicial $i=a\equiv|1,0,0\rangle$ e o estado final $n=b\equiv|2,1,m\rangle$. Como
+                $b\ne a$, o delta é nulo e obtemos a versão para muitos níveis da
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[01] - Sistemas de Dois Níveis.html#perturbacao-dependente">Eq. 11.21</a>:</p>
+                <p>$$\begin{aligned}
+                c_b^{(1)}(t)&=-\frac{i}{\hbar}\int_0^t H'_{ba}(t')\,
+                e^{i\omega t'}\,dt',\\
+                \omega&\equiv\frac{E_2-E_1}{\hbar}.
+                \end{aligned}$$</p>
+                <p>Essa $\omega$ é a frequência de Bohr da transição, que nas notas se chama $\omega_0$; aqui não há
+                outra frequência em jogo, e seguimos a notação do enunciado. Os três estados $2p$ têm a mesma energia
+                $E_2$, qualquer que seja $m$. A degenerescência do nível $n=2$ não atrapalha: o teorema exige apenas uma
+                base ortonormal de autoestados de $H^0$, e em primeira ordem nunca dividimos por diferenças de energia
+                entre estados degenerados.</p>
+                <p>O elemento de matriz da perturbação é uma integral sobre o espaço, e o fator $-qE_0e^{-t/\tau}$ não
+                depende da posição. Ele sai da integral, e para $t\ge0$</p>
+                <p>$$\begin{aligned}
+                H'_{ba}(t)&=\langle 2,1,m|H'(t)|1,0,0\rangle\\
+                &=-qE_0\,e^{-t/\tau}\,\langle 21m|z|100\rangle.
+                \end{aligned}$$</p>
+                <p>O problema se separa, portanto, em uma parte espacial, o elemento de matriz de $z$, e uma parte
+                temporal, a integral em $t'$. Vamos calcular cada uma.</p>
+
+                <p><strong>As funções de onda.</strong> Os estados do hidrogênio são
+                $\psi_{n\ell m}=R_{n\ell}(r)\,Y_\ell^m(\theta,\phi)$, com as funções radiais e os harmônicos esféricos
+                tabelados no Cap. 4 de Griffiths ($a$ é o raio de Bohr):</p>
+                <p>$$\begin{aligned}
+                R_{10}(r)&=2a^{-3/2}\,e^{-r/a},\\
+                R_{21}(r)&=\frac{1}{\sqrt{24}}\,a^{-3/2}\,
+                \frac{r}{a}\,e^{-r/2a},
+                \end{aligned}$$</p>
+                <p>$$\begin{aligned}
+                Y_0^0&=\frac{1}{\sqrt{4\pi}},\\
+                Y_1^0&=\sqrt{\frac{3}{4\pi}}\,\cos\theta,\\
+                Y_1^{\pm1}&=\mp\sqrt{\frac{3}{8\pi}}\,
+                \sin\theta\,e^{\pm i\phi}.
+                \end{aligned}$$</p>
+                <p>Multiplicando, as funções de onda que entram no problema são</p>
+                <p>$$\begin{aligned}
+                \psi_{100}&=\frac{1}{\sqrt{\pi a^3}}\,e^{-r/a},\\
+                \psi_{210}&=\frac{1}{\sqrt{32\pi a^3}}\,
+                \frac{r}{a}\,e^{-r/2a}\cos\theta,\\
+                \psi_{21\pm1}&=\mp\frac{1}{\sqrt{64\pi a^3}}\,
+                \frac{r}{a}\,e^{-r/2a}\\
+                &\qquad\times\sin\theta\,e^{\pm i\phi}.
+                \end{aligned}$$</p>
+                <p>Por exemplo, para $\psi_{210}$ o coeficiente é
+                $\frac{1}{\sqrt{24}}\sqrt{\frac{3}{4\pi}}=\sqrt{\frac{3}{96\pi}}=\frac{1}{\sqrt{32\pi}}$.</p>
+
+                <p><strong>O elemento de matriz de $z$.</strong> Em coordenadas esféricas, $z=r\cos\theta$ e
+                $d^3\mathbf r=r^2\sin\theta\,dr\,d\theta\,d\phi$. Como as funções radiais são reais, a integral se
+                fatora em uma parte radial e uma parte angular:</p>
+                <p>$$\begin{aligned}
+                \langle 21m|z|100\rangle
+                &=\int\psi_{21m}^*\,r\cos\theta\,\psi_{100}\,d^3\mathbf r\\
+                &=I_r\,I_\Omega^{(m)},
+                \end{aligned}$$</p>
+                <p>com</p>
+                <p>$$\begin{aligned}
+                I_r&=\int_0^\infty R_{21}\,R_{10}\,r^3\,dr,\\
+                I_\Omega^{(m)}&=\int_0^{2\pi}\!\!\int_0^\pi
+                Y_1^{m*}\cos\theta\,Y_0^0\\
+                &\qquad\times\sin\theta\,d\theta\,d\phi.
+                \end{aligned}$$</p>
+                <p>Na integral radial, o fator $r^3$ junta o $r$ de $z$ com o $r^2$ do elemento de volume.</p>
+
+                <p><em>Integral em $\phi$.</em> Os três harmônicos $Y_1^m$ têm a forma
+                $\Theta_{1m}(\theta)\,e^{im\phi}$, com $\Theta_{10}=\sqrt{3/4\pi}\,\cos\theta$ e
+                $\Theta_{1,\pm1}=\mp\sqrt{3/8\pi}\,\sin\theta$. Então $Y_1^{m*}=\Theta_{1m}\,e^{-im\phi}$, enquanto
+                $\cos\theta\,Y_0^0$ não depende de $\phi$. A integral angular se separa:</p>
+                <p>$$\begin{aligned}
+                I_\Omega^{(m)}
+                &=\left[\int_0^{2\pi}e^{-im\phi}\,d\phi\right]\\
+                &\quad\times\int_0^\pi\Theta_{1m}(\theta)\cos\theta\,
+                \frac{\sin\theta}{\sqrt{4\pi}}\,d\theta.
+                \end{aligned}$$</p>
+                <p>Para $m\ne0$, a integral em $\phi$ é</p>
+                <p>$$\begin{aligned}
+                \int_0^{2\pi}e^{-im\phi}\,d\phi
+                &=\left[\frac{e^{-im\phi}}{-im}\right]_0^{2\pi}\\
+                &=\frac{e^{-2\pi im}-1}{-im}=0,
+                \end{aligned}$$</p>
+                <p>pois $e^{-2\pi im}=1$ para $m$ inteiro. Para $m=0$, o integrando vale $1$ e a integral dá $2\pi$.
+                Em resumo,</p>
+                <p>$$\int_0^{2\pi}e^{-im\phi}\,d\phi=2\pi\,\delta_{m0}.$$</p>
+                <p>Daqui sai o $\delta_{m0}$ do enunciado. Ele é a regra de seleção $\Delta m=0$ para a componente $z$
+                de um operador vetorial,
+                <a class="ref-capitulo" href="../Conteúdo/[5] - Simetrias e Leis de Conservação/[07] - Regras de Seleção Rotacionais.html#vetorial-m">Eq. 6.57</a>
+                (veja também as
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[03] - Emissão Espontânea.html#teo-regras-de-selecao">regras de seleção do dipolo elétrico</a>).
+                Fisicamente, um campo ao longo de $z$ não quebra a simetria de rotação em torno de $z$: $H'$ comuta
+                com $L_z$ e não pode mudar $m$. Os estados $|2,1,\pm1\rangle$ não são populados.</p>
+
+                <p><em>Integral em $\theta$.</em> Para $m=0$, $\Theta_{10}/\sqrt{4\pi}=\sqrt{3}\cos\theta/4\pi$, e</p>
+                <p>$$\begin{aligned}
+                I_\Omega^{(0)}
+                &=2\pi\cdot\frac{\sqrt3}{4\pi}
+                \int_0^\pi\cos^2\theta\,\sin\theta\,d\theta\\
+                &=\frac{\sqrt3}{2}
+                \int_0^\pi\cos^2\theta\,\sin\theta\,d\theta.
+                \end{aligned}$$</p>
+                <p>Com a substituição $u=\cos\theta$, temos $du=-\sin\theta\,d\theta$, e os limites $\theta=0$ e
+                $\theta=\pi$ viram $u=1$ e $u=-1$:</p>
+                <p>$$\begin{aligned}
+                \int_0^\pi\cos^2\theta\,\sin\theta\,d\theta
+                &=\int_1^{-1}u^2\,(-du)\\
+                &=\int_{-1}^{1}u^2\,du
+                =\left[\frac{u^3}{3}\right]_{-1}^{1}\\
+                &=\frac13+\frac13=\frac23.
+                \end{aligned}$$</p>
+                <p>Logo</p>
+                <p>$$\begin{aligned}
+                I_\Omega^{(0)}&=\frac{\sqrt3}{2}\cdot\frac23
+                =\frac{\sqrt3}{3}=\frac{1}{\sqrt3},\\
+                I_\Omega^{(m)}&=\frac{\delta_{m0}}{\sqrt3}.
+                \end{aligned}$$</p>
+
+                <p><em>Integral radial.</em> O produto das funções radiais é</p>
+                <p>$$\begin{aligned}
+                R_{21}R_{10}
+                &=\frac{2}{\sqrt{24}}\,a^{-3}\,\frac{r}{a}\,
+                e^{-r/2a}\,e^{-r/a}\\
+                &=\frac{2}{\sqrt{24}\,a^4}\;r\,e^{-3r/2a},
+                \end{aligned}$$</p>
+                <p>pois $\frac{r}{a}+\frac{r}{2a}=\frac{3r}{2a}$ no expoente. Multiplicando por $r^3$,</p>
+                <p>$$I_r=\frac{2}{\sqrt{24}\,a^4}
+                \int_0^\infty r^4\,e^{-3r/2a}\,dr.$$</p>
+                <p>Usamos a fórmula $\int_0^\infty x^ne^{-\alpha x}\,dx=n!/\alpha^{n+1}$ com $n=4$ e
+                $\alpha=3/2a$:</p>
+                <p>$$\begin{aligned}
+                \int_0^\infty r^4\,e^{-3r/2a}\,dr
+                &=\frac{4!}{(3/2a)^5}
+                =24\left(\frac{2a}{3}\right)^5\\
+                &=24\cdot\frac{32\,a^5}{243}
+                =\frac{768\,a^5}{243}\\
+                &=\frac{256\,a^5}{81}.
+                \end{aligned}$$</p>
+                <p>Na última passagem dividimos numerador e denominador por $3$. Com $\sqrt{24}=2\sqrt6$,</p>
+                <p>$$\begin{aligned}
+                I_r&=\frac{2}{\sqrt{24}\,a^4}\cdot\frac{256\,a^5}{81}
+                =\frac{512\,a}{81\sqrt{24}}\\
+                &=\frac{512\,a}{162\sqrt6}
+                =\frac{256\,a}{81\sqrt6}.
+                \end{aligned}$$</p>
+
+                <p><em>Resultado.</em> Juntando as duas partes e usando $\sqrt6\,\sqrt3=\sqrt{18}=3\sqrt2$,</p>
+                <p>$$\begin{aligned}
+                \langle 21m|z|100\rangle
+                &=\frac{256\,a}{81\sqrt6}\cdot\frac{\delta_{m0}}{\sqrt3}
+                =\frac{256\,a}{81\cdot3\sqrt2}\,\delta_{m0}\\
+                &=\frac{256}{243\sqrt2}\,a\,\delta_{m0}
+                =\frac{2^8}{3^5\sqrt2}\,a\,\delta_{m0}.
+                \end{aligned}$$</p>
+                <p>Numericamente, $\langle210|z|100\rangle\approx0{,}745\,a$: da ordem do raio de Bohr, como se
+                esperaria. Note ainda que, dos quatro estados com $n=2$, o $2s$ também não é alcançado:
+                $\psi_{200}$ e $\psi_{100}$ são pares e $z$ é ímpar, de modo que $\langle200|z|100\rangle=0$ pela
+                <a class="ref-capitulo" href="../Conteúdo/[5] - Simetrias e Leis de Conservação/[04] - Paridade.html#regras-de-selecao">regra de Laporte</a>.
+                Pelo mesmo motivo $H'_{aa}=0$
+                (<a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[02] - Emissão e Absorção de Radiação.html#obs-laporte-diagonais">observação sobre os elementos diagonais</a>),
+                embora em primeira ordem os elementos diagonais nem apareçam em $c_b^{(1)}$. Em primeira ordem, o
+                único estado com $n=2$ populado é $\psi_{210}$.</p>
+
+                <p><strong>A integral temporal.</strong> Substituindo $H'_{ba}$ na amplitude, os dois sinais negativos
+                se cancelam:</p>
+                <p>$$\begin{aligned}
+                c_b^{(1)}(t)
+                &=-\frac{i}{\hbar}\int_0^t\Bigl[-qE_0\,e^{-t'/\tau}
+                \langle21m|z|100\rangle\Bigr]e^{i\omega t'}dt'\\
+                &=\frac{iqE_0}{\hbar}\,\langle21m|z|100\rangle\,J(t),
+                \end{aligned}$$</p>
+                <p>com</p>
+                <p>$$J(t)\equiv\int_0^te^{-t'/\tau}\,e^{i\omega t'}\,dt'.$$</p>
+                <p>As duas exponenciais se combinam em uma só:</p>
+                <p>$$\begin{aligned}
+                e^{-t'/\tau}e^{i\omega t'}&=e^{-\beta t'},\\
+                \beta&\equiv\frac1\tau-i\omega=\frac{1-i\omega\tau}{\tau}.
+                \end{aligned}$$</p>
+                <p>Como $\mathrm{Re}\,\beta=1/\tau\gt0$, temos $\beta\ne0$, e a integral é elementar:</p>
+                <p>$$\begin{aligned}
+                J(t)&=\left[-\frac{e^{-\beta t'}}{\beta}\right]_0^t
+                =\frac{1-e^{-\beta t}}{\beta}\\
+                &=\frac{\tau}{1-i\omega\tau}
+                \left(1-e^{-t/\tau}e^{i\omega t}\right).
+                \end{aligned}$$</p>
+                <p>No limite $t\gg\tau$, o termo $e^{-t/\tau}e^{i\omega t}$ tem módulo $e^{-t/\tau}\to0$ (já para
+                $t=5\tau$ ele vale $e^{-5}\approx0{,}007$); a fase oscilante não importa, só o módulo, que decai. Assim</p>
+                <p>$$J(t\gg\tau)=\frac{\tau}{1-i\omega\tau}.$$</p>
+                <p>O módulo ao quadrado de um número complexo é o produto dele pelo seu conjugado:</p>
+                <p>$$\begin{aligned}
+                \left|\frac{\tau}{1-i\omega\tau}\right|^2
+                &=\frac{\tau^2}{(1-i\omega\tau)(1+i\omega\tau)}\\
+                &=\frac{\tau^2}{1-(i\omega\tau)^2}
+                =\frac{\tau^2}{1+(\omega\tau)^2}.
+                \end{aligned}$$</p>
+
+                <p><strong>A probabilidade.</strong> Juntando o elemento de matriz e a integral temporal, para
+                $t\gg\tau$,</p>
+                <p>$$\begin{aligned}
+                c_b^{(1)}&=\delta_{m0}\,\frac{iqE_0a}{\hbar}\,
+                \frac{256}{243\sqrt2}\,\frac{\tau}{1-i\omega\tau}.
+                \end{aligned}$$</p>
+                <p>Ao tomar o módulo ao quadrado, $|i|^2=1$ e $\delta_{m0}^2=\delta_{m0}$ (o delta só vale $0$ ou
+                $1$). Portanto</p>
+                <p>$$\begin{aligned}
+                P_{1s\to2p}&=\bigl|c_b^{(1)}\bigr|^2\\
+                &=\delta_{m0}\,\frac{q^2E_0^2a^2}{\hbar^2}
+                \left(\frac{256}{243\sqrt2}\right)^2\\
+                &\quad\times\frac{\tau^2}{1+(\omega\tau)^2},
+                \end{aligned}$$</p>
+                <p>que é o resultado pedido. O fator numérico vale
+                $\left(\frac{256}{243\sqrt2}\right)^2=\frac{2^{16}}{3^{10}\cdot2}=\frac{2^{15}}{3^{10}}
+                =\frac{32768}{59049}\approx0{,}555$. Para $t$ qualquer, o mesmo cálculo dá</p>
+                <p>$$\begin{aligned}
+                P_{1s\to2p}(t)&=P_{1s\to2p}\\
+                &\quad\times\left(1-2e^{-t/\tau}\cos\omega t
+                +e^{-2t/\tau}\right),
+                \end{aligned}$$</p>
+                <p>pois $|1-e^{-t/\tau}e^{i\omega t}|^2=(1-e^{-t/\tau}\cos\omega t)^2+e^{-2t/\tau}\sin^2\omega t$.
+                Depois que o campo morre, a probabilidade fica constante, já que não há mais perturbação para mudar
+                $c_b$ (a emissão espontânea, que de fato esvazia o $2p$ em cerca de $1{,}6\,\text{ns}$, está fora
+                deste modelo).</p>
+
+                <p><strong>A frequência $\omega$.</strong> A forma $\omega=3q^2/8\hbar a$ do enunciado está em unidades
+                gaussianas. Nesse sistema, a energia de Coulomb entre próton e elétron é $-q^2/r$ (com $q^2=e^2$), o
+                raio de Bohr é $a=\hbar^2/mq^2$ e os níveis do hidrogênio são</p>
+                <p>$$E_n=-\frac{q^2}{2a\,n^2}.$$</p>
+                <p>Então $E_1=-q^2/2a$ e $E_2=-q^2/8a$, e</p>
+                <p>$$\begin{aligned}
+                E_2-E_1&=-\frac{q^2}{8a}+\frac{q^2}{2a}
+                =-\frac{q^2}{8a}+\frac{4q^2}{8a}\\
+                &=\frac{3q^2}{8a},
+                \qquad
+                \omega=\frac{E_2-E_1}{\hbar}=\frac{3q^2}{8\hbar a}.
+                \end{aligned}$$</p>
+                <p>Em unidades SI, que são as de Griffiths, a constante da lei de Coulomb aparece explicitamente:
+                $E_n=-\frac{e^2}{4\pi\epsilon_0}\frac{1}{2an^2}$, com $a=4\pi\epsilon_0\hbar^2/me^2$. A troca é
+                $q^2\to e^2/4\pi\epsilon_0$:</p>
+                <p>$$\begin{aligned}
+                \omega&=\frac{3}{8\hbar}\,\frac{e^2}{4\pi\epsilon_0a}
+                =\frac{3e^2}{32\pi\epsilon_0\hbar a}.
+                \end{aligned}$$</p>
+                <p>Numericamente, $e^2/4\pi\epsilon_0a\approx27{,}2\,\text{eV}$, de modo que
+                $\hbar\omega=E_2-E_1\approx10{,}2\,\text{eV}$, $\omega\approx1{,}55\times10^{16}\,\text{s}^{-1}$ e
+                $1/\omega\approx6{,}4\times10^{-17}\,\text{s}$. Atenção: essa troca vale <em>apenas</em> em $\omega$.
+                O pré-fator $q^2E_0^2a^2/\hbar^2$ tem a mesma forma nos dois sistemas, porque $qE_0a$ é carga vezes
+                campo vezes comprimento, isto é, força vezes comprimento: uma energia, sem constante de Coulomb
+                escondida. A lei de Coulomb só entra através da estrutura do átomo, ou seja, de $E_n$ (e do valor de
+                $a$).</p>
+
+                <p><strong>Os dois limites.</strong> O parâmetro que decide o comportamento é $\omega\tau$: a razão
+                entre a duração do pulso e o tempo característico $1/\omega$ do movimento interno do átomo.</p>
+                <ul>
+                    <li><strong>Pulso súbito, $\omega\tau\ll1$.</strong> Então $1+(\omega\tau)^2\approx1$ e
+                        $P\approx0{,}555\,(qE_0a\tau/\hbar)^2$, que cresce como $\tau^2$. O campo age durante um tempo
+                        curto demais para o átomo "responder", e o que conta é só o impulso transferido,
+                        $\Delta p_z=q\int_0^\infty E\,dt=qE_0\tau$. De fato, um chute instantâneo é o operador
+                        $e^{i\Delta p_z z/\hbar}$; expandido em primeira ordem, ele dá a amplitude
+                        $i(\Delta p_z/\hbar)\langle210|z|100\rangle$, que é exatamente o limite $\omega\tau\to0$ de
+                        $c_b^{(1)}$.</li>
+                    <li><strong>Regime adiabático, $\omega\tau\gg1$.</strong> Então
+                        $\tau^2/[1+(\omega\tau)^2]\approx1/\omega^2$ e
+                        $P\approx0{,}555\,(qE_0a/\hbar\omega)^2
+                        =\bigl(qE_0\langle210|z|100\rangle/(E_2-E_1)\bigr)^2$. Comparado à estimativa de impulso
+                        $(qE_0\tau\langle z\rangle/\hbar)^2$, o resultado vem suprimido pelo fator
+                        $1/(\omega\tau)^2\ll1$: um campo que decai lentamente não consegue induzir transições, como
+                        prevê o
+                        <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[05] - A Aproximação Adiabática.html#teo-adiabatico">teorema adiabático</a>.
+                        O que sobra não depende de $\tau$ e é pequeno, da ordem de
+                        $(\text{energia de interação}/\hbar\omega)^2$, mas não vai a zero: ele vem do
+                        <em>ligamento</em> abrupto do campo em $t=0$, quando $E$ salta de $0$ para $E_0$. Não por
+                        acaso, $qE_0\langle210|z|100\rangle/(E_2-E_1)$ é, em módulo, o coeficiente com que um campo
+                        estático $E_0$ mistura $\psi_{210}$ ao estado fundamental
+                        (<a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[01] - Teoria de Perturbação Não Degenerada.html#teo-correcao-funcao-de-onda">Eq. 7.13</a>).
+                        Se o campo também fosse ligado suavemente, por exemplo $E_0e^{-|t|/\tau}$ desde
+                        $t=-\infty$, teríamos $\int_{-\infty}^{\infty}e^{-|t|/\tau}e^{i\omega t}dt
+                        =2\tau/[1+(\omega\tau)^2]$, e $P\propto4\tau^2/[1+(\omega\tau)^2]^2\approx4/\omega^4\tau^2\to0$
+                        quando $\tau\to\infty$.</li>
+                </ul>
+                <p><strong>Validade da primeira ordem.</strong> A aproximação supõe $c_a\approx1$, ou seja,
+                $P\ll1$ para este e para todos os outros canais. Como $\tau^2/[1+(\omega\tau)^2]\lt1/\omega^2$ para
+                qualquer $\tau$, vale sempre</p>
+                <p>$$P_{1s\to2p}\lt0{,}555\left(\frac{qE_0a}{\hbar\omega}\right)^2,$$</p>
+                <p>e basta que $|q|E_0a\ll\hbar\omega\approx10\,\text{eV}$, isto é,
+                $E_0\ll\hbar\omega/ea\approx2\times10^{11}\,\text{V/m}$, que é a escala do campo elétrico atômico
+                ($e/4\pi\epsilon_0a^2\approx5\times10^{11}\,\text{V/m}$). Mesmo para um campo de laboratório muito
+                intenso, $E_0=10^8\,\text{V/m}$, temos $eE_0a\approx5{,}3\times10^{-3}\,\text{eV}$ e
+                $P\lesssim0{,}555\,(5{,}3\times10^{-3}/10{,}2)^2\approx1{,}5\times10^{-7}$. Para campos comparáveis à
+                escala atômica, a primeira ordem deixa de valer (e a ionização passa a ser
+                relevante).<span class="qed" aria-label="Fim da resolução">&#x220E;</span></p>
+
+                <hr class="resolucao-sep">
 
                 <h3 id="exercicio-5">Exercício 5</h3>
                 <p>Uma partícula de massa $m$ está presa ao poço infinito de largura $a$. Porém, o poço agora sofre uma
@@ -247,7 +1289,424 @@
 
                 <hr class="resolucao-sep">
 
-                <!-- SOLUCAO-EXERCICIO-5 -->
+                <p><strong>Resolução - Exercício 5:</strong></p>
+                <p>Como no Exercício 3, pomos a origem na parede esquerda, de modo que o poço ocupa $0\le x\le a$. Os
+                autoestados e as energias do hamiltoniano não perturbado $H^0$ são os do
+                <a class="ref-capitulo" href="../Conteúdo/[4] - Partículas Idênticas/[01] - Sistemas de Duas Partículas.html#exemplo-poco-infinito">poço infinito</a>:</p>
+                <p>$$\begin{aligned}
+                \psi_n(x)&=\sqrt{\frac2a}\,\sin\left(\frac{n\pi x}{a}\right),\\
+                E_n&=n^2E_1,\\
+                E_1&=\frac{\pi^2\hbar^2}{2ma^2},
+                \qquad n=1,2,3,\ldots
+                \end{aligned}$$</p>
+                <p>A perturbação é ligada em $t=0$ e age para sempre:</p>
+                <p>$$H'(x,t)=\begin{cases}
+                0, & t\lt0,\\
+                \lambda\left(x-\frac a2\right)f(t), & t\ge0,
+                \end{cases}$$</p>
+                <p>com o perfil temporal</p>
+                <p>$$f(t)\equiv e^{-\epsilon t}\sin\omega t.$$</p>
+                <p>Ela é o produto de uma parte espacial por uma parte temporal. Por isso os elementos de matriz se
+                fatoram:</p>
+                <p>$$\begin{aligned}
+                H'_{n1}(t)&=\langle\psi_n|H'(t)|\psi_1\rangle
+                =\lambda\,X_{n1}\,f(t),\\
+                X_{n1}&\equiv\left\langle\psi_n\middle|\,x-\frac a2\,\middle|\psi_1\right\rangle.
+                \end{aligned}$$</p>
+                <p>Como no Exercício 4, o problema se separa em uma integral espacial, $X_{n1}$, e uma integral
+                temporal. As frequências de Bohr que aparecem são</p>
+                <p>$$\begin{aligned}
+                \omega_{n1}&\equiv\frac{E_n-E_1}{\hbar}
+                =(n^2-1)\frac{E_1}{\hbar}\\
+                &=(n^2-1)\frac{\pi^2\hbar}{2ma^2}.
+                \end{aligned}$$</p>
+
+                <p><strong>Passo 1: a amplitude em primeira ordem.</strong> A partícula parte do estado fundamental,
+                $c_n(0)=\delta_{n1}$. Pela primeira ordem da
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[01] - Sistemas de Dois Níveis.html#teo-serie-muitos-niveis">série de perturbação para muitos níveis</a>
+                (Passo 2 da demonstração), com $i=1$ e $n\ne1$, o delta de Kronecker se anula e ficamos com a versão
+                para muitos níveis da
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[01] - Sistemas de Dois Níveis.html#perturbacao-dependente">Eq. 11.21</a>:</p>
+                <p>$$\begin{aligned}
+                c_n^{(1)}(t)
+                &=-\frac{i}{\hbar}\int_0^t
+                H'_{n1}(t')\,e^{i\omega_{n1}t'}\,dt'\\
+                &=-\frac{i\lambda}{\hbar}\,X_{n1}
+                \int_0^t f(t')\,e^{i\omega_{n1}t'}\,dt'.
+                \end{aligned}$$</p>
+                <p>Na segunda linha, o fator $\lambda X_{n1}$ não depende do tempo e sai da integral. A perturbação
+                nunca é desligada, mas morre exponencialmente: para $t\gg1/\epsilon$ o integrando é desprezível, e
+                $c_n$ fica congelado. Os $\psi_n$ voltam então a ser autoestados do hamiltoniano total, e a
+                probabilidade pedida é $|c_n(\infty)|^2$, com</p>
+                <p>$$\begin{aligned}
+                c_n^{(1)}(\infty)&=-\frac{i\lambda}{\hbar}\,X_{n1}\,J_n,\\
+                J_n&\equiv\int_0^\infty e^{-\epsilon t}\sin(\omega t)\,
+                e^{i\omega_{n1}t}\,dt.
+                \end{aligned}$$</p>
+                <p>A integral converge absolutamente, porque o módulo do integrando é no máximo
+                $e^{-\epsilon t}$ e $\int_0^\infty e^{-\epsilon t}\,dt=1/\epsilon$ é finito para $\epsilon\gt0$.
+                Note ainda que, como $\sin(0)=0$, a perturbação parte de zero em $t=0$: não há salto em $H'$ no
+                instante em que ela é ligada.</p>
+
+                <p><strong>(a)</strong> <strong>Passo 2: o termo $a/2$ some.</strong> As autofunções são reais,
+                então não há conjugação complexa. Separando $x-a/2$ em dois termos,</p>
+                <p>$$\begin{aligned}
+                X_{21}&=\langle\psi_2|x|\psi_1\rangle
+                -\frac a2\,\langle\psi_2|\psi_1\rangle\\
+                &=\langle\psi_2|x|\psi_1\rangle
+                -\frac a2\cdot0\\
+                &=\frac2a\int_0^a x\,
+                \sin\left(\frac{2\pi x}{a}\right)
+                \sin\left(\frac{\pi x}{a}\right)dx.
+                \end{aligned}$$</p>
+                <p>O termo constante $a/2$ é proporcional ao produto interno $\langle\psi_2|\psi_1\rangle$, que é
+                nulo por ortogonalidade. Deslocar a origem do potencial linear não altera elementos de matriz entre
+                estados <em>diferentes</em>; ele só mexeria nos elementos diagonais, que não entram em
+                $c_n^{(1)}$ para $n\ne1$.</p>
+
+                <p><strong>Passo 3: a integral espacial.</strong> Usamos a identidade produto-para-soma
+                $\sin A\sin B=\tfrac12\left[\cos(A-B)-\cos(A+B)\right]$, com $A=2\pi x/a$ e $B=\pi x/a$:</p>
+                <p>$$\begin{aligned}
+                &\sin\left(\frac{2\pi x}{a}\right)
+                \sin\left(\frac{\pi x}{a}\right)\\
+                &\quad=\frac12\left[\cos\left(\frac{\pi x}{a}\right)
+                -\cos\left(\frac{3\pi x}{a}\right)\right].
+                \end{aligned}$$</p>
+                <p>Logo, o fator $2/a$ vezes $1/2$ dá $1/a$, e</p>
+                <p>$$\begin{aligned}
+                X_{21}&=\frac1a\left(I_1-I_3\right),\\
+                I_k&\equiv\int_0^a x\cos\left(\frac{k\pi x}{a}\right)dx.
+                \end{aligned}$$</p>
+                <p>Calculamos $I_k$ para $k$ inteiro positivo qualquer, já que vamos precisar de outros valores no
+                item (b). Integramos por partes, com $u=x$ e $dv=\cos(k\pi x/a)\,dx$, de modo que $du=dx$ e
+                $v=\frac{a}{k\pi}\sin(k\pi x/a)$:</p>
+                <p>$$\begin{aligned}
+                I_k&=\left[\frac{a\,x}{k\pi}
+                \sin\left(\frac{k\pi x}{a}\right)\right]_0^a\\
+                &\quad-\frac{a}{k\pi}\int_0^a
+                \sin\left(\frac{k\pi x}{a}\right)dx.
+                \end{aligned}$$</p>
+                <p>O termo de contorno se anula nos dois extremos: em $x=0$ por causa do fator $x$, e em $x=a$
+                porque $\sin(k\pi)=0$. A integral que sobra é elementar:</p>
+                <p>$$\begin{aligned}
+                \int_0^a\sin\left(\frac{k\pi x}{a}\right)dx
+                &=\left[-\frac{a}{k\pi}
+                \cos\left(\frac{k\pi x}{a}\right)\right]_0^a\\
+                &=-\frac{a}{k\pi}\left[\cos(k\pi)-1\right]\\
+                &=\frac{a}{k\pi}\left[1-(-1)^k\right].
+                \end{aligned}$$</p>
+                <p>Na segunda linha usamos $\cos(0)=1$; na terceira, $\cos(k\pi)=(-1)^k$. Portanto,</p>
+                <p>$$\begin{aligned}
+                I_k&=0-\frac{a}{k\pi}\cdot\frac{a}{k\pi}
+                \left[1-(-1)^k\right]\\
+                &=\frac{a^2}{k^2\pi^2}\left[(-1)^k-1\right]\\
+                &=\begin{cases}
+                -\dfrac{2a^2}{k^2\pi^2}, & k\ \text{ímpar},\\[6pt]
+                0, & k\ \text{par}.
+                \end{cases}
+                \end{aligned}$$</p>
+                <p>Para $k=1$ e $k=3$,</p>
+                <p>$$\begin{aligned}
+                I_1&=-\frac{2a^2}{\pi^2},\\
+                I_3&=-\frac{2a^2}{9\pi^2}.
+                \end{aligned}$$</p>
+                <p>Substituindo,</p>
+                <p>$$\begin{aligned}
+                X_{21}&=\frac1a\left(-\frac{2a^2}{\pi^2}
+                +\frac{2a^2}{9\pi^2}\right)\\
+                &=-\frac{2a}{\pi^2}\left(1-\frac19\right)
+                =-\frac{2a}{\pi^2}\cdot\frac89\\
+                &=-\frac{16a}{9\pi^2}\approx-0{,}180\,a.
+                \end{aligned}$$</p>
+                <p>O sinal negativo depende apenas da convenção de fase das autofunções e desaparece na
+                probabilidade. Em módulo, $|X_{21}|\approx0{,}18\,a$ é uma fração razoável da largura do poço, como
+                se espera de um "braço de dipolo" entre os dois primeiros estados. (Uma integração numérica dá o
+                mesmo valor, $-0{,}18013\,a$.)</p>
+
+                <p><strong>Passo 4: a integral temporal.</strong> Escrevemos o seno em exponenciais,
+                $\sin\omega t=\left(e^{i\omega t}-e^{-i\omega t}\right)/2i$, e juntamos tudo num único expoente:</p>
+                <p>$$\begin{aligned}
+                J_2&=\frac1{2i}\int_0^\infty
+                \Bigl[e^{-(\epsilon-i\omega_{21}-i\omega)t}\\
+                &\qquad\qquad-e^{-(\epsilon-i\omega_{21}+i\omega)t}\Bigr]dt.
+                \end{aligned}$$</p>
+                <p>Para encurtar, definimos o número complexo</p>
+                <p>$$\beta\equiv\epsilon-i\omega_{21},
+                \qquad\mathrm{Re}\,\beta=\epsilon\gt0.$$</p>
+                <p>Os dois expoentes ficam $-(\beta-i\omega)t$ e $-(\beta+i\omega)t$. Cada termo é uma exponencial
+                cuja parte real do coeficiente é $\epsilon$:</p>
+                <p>$$\begin{aligned}
+                \int_0^\infty e^{-(\beta\mp i\omega)t}\,dt
+                &=\left[-\frac{e^{-(\beta\mp i\omega)t}}
+                {\beta\mp i\omega}\right]_0^\infty\\
+                &=\frac{1-\lim_{t\to\infty}e^{-(\beta\mp i\omega)t}}
+                {\beta\mp i\omega}\\
+                &=\frac{1}{\beta\mp i\omega}.
+                \end{aligned}$$</p>
+                <p>O limite é zero porque $\left|e^{-(\beta\mp i\omega)t}\right|=e^{-\epsilon t}\to0$; a fase
+                oscilante não importa, só o módulo. É aqui que $\epsilon\gt0$ é essencial. Além disso,
+                $\beta\mp i\omega\ne0$, pois sua parte real é $\epsilon$. Assim,</p>
+                <p>$$\begin{aligned}
+                J_2&=\frac1{2i}\left[\frac1{\beta-i\omega}
+                -\frac1{\beta+i\omega}\right]\\
+                &=\frac1{2i}\cdot
+                \frac{(\beta+i\omega)-(\beta-i\omega)}
+                {(\beta-i\omega)(\beta+i\omega)}\\
+                &=\frac1{2i}\cdot\frac{2i\omega}{\beta^2+\omega^2}\\
+                &=\frac{\omega}{\beta^2+\omega^2}.
+                \end{aligned}$$</p>
+                <p>No denominador da segunda linha usamos $(\beta-i\omega)(\beta+i\omega)=\beta^2-(i\omega)^2
+                =\beta^2+\omega^2$. Voltando a $\beta=\epsilon-i\omega_{21}$, obtemos a forma fechada</p>
+                <p>$$J_2=\frac{\omega}{(\epsilon-i\omega_{21})^2+\omega^2}.$$</p>
+
+                <p><strong>Passo 5: o módulo ao quadrado.</strong> Expandimos o quadrado no denominador, usando
+                $i^2=-1$:</p>
+                <p>$$\begin{aligned}
+                (\epsilon-i\omega_{21})^2+\omega^2
+                &=\epsilon^2-2i\epsilon\omega_{21}
+                -\omega_{21}^2+\omega^2\\
+                &=\underbrace{\left(\epsilon^2+\omega^2-\omega_{21}^2\right)}_{\text{parte real}}\\
+                &\quad-i\,\underbrace{2\epsilon\omega_{21}}_{\text{parte imag.}}.
+                \end{aligned}$$</p>
+                <p>O numerador $\omega$ é real, e o módulo ao quadrado de $u+iv$ é $u^2+v^2$. Logo,</p>
+                <p>$$\begin{aligned}
+                |J_2|^2&=\frac{\omega^2}
+                {\left(\epsilon^2+\omega^2-\omega_{21}^2\right)^2
+                +4\epsilon^2\omega_{21}^2}.
+                \end{aligned}$$</p>
+                <p>Há uma segunda forma, mais útil para analisar os limites. Voltando à fatoração
+                $\beta^2+\omega^2=(\beta-i\omega)(\beta+i\omega)$, os fatores são</p>
+                <p>$$\begin{aligned}
+                \beta-i\omega&=\epsilon-i(\omega_{21}+\omega),\\
+                \beta+i\omega&=\epsilon-i(\omega_{21}-\omega),
+                \end{aligned}$$</p>
+                <p>e o módulo de um produto é o produto dos módulos:</p>
+                <p>$$\begin{aligned}
+                |J_2|^2&=\frac{\omega^2}
+                {\left[\epsilon^2+(\omega_{21}+\omega)^2\right]}\\
+                &\quad\times\frac{1}
+                {\left[\epsilon^2+(\omega_{21}-\omega)^2\right]}.
+                \end{aligned}$$</p>
+                <p>Para conferir que as duas formas coincidem, multiplicamos os colchetes:</p>
+                <p>$$\begin{aligned}
+                &\left[\epsilon^2+(\omega_{21}+\omega)^2\right]
+                \left[\epsilon^2+(\omega_{21}-\omega)^2\right]\\
+                &\quad=\epsilon^4+\epsilon^2\left[(\omega_{21}+\omega)^2
+                +(\omega_{21}-\omega)^2\right]\\
+                &\qquad+\left[(\omega_{21}+\omega)(\omega_{21}-\omega)\right]^2\\
+                &\quad=\epsilon^4+2\epsilon^2\left(\omega_{21}^2+\omega^2\right)\\
+                &\qquad+\left(\omega_{21}^2-\omega^2\right)^2.
+                \end{aligned}$$</p>
+                <p>E, expandindo o denominador da primeira forma,</p>
+                <p>$$\begin{aligned}
+                &\left(\epsilon^2+\omega^2-\omega_{21}^2\right)^2
+                +4\epsilon^2\omega_{21}^2\\
+                &\quad=\epsilon^4+2\epsilon^2\left(\omega^2-\omega_{21}^2\right)\\
+                &\qquad+\left(\omega^2-\omega_{21}^2\right)^2
+                +4\epsilon^2\omega_{21}^2\\
+                &\quad=\epsilon^4+2\epsilon^2\left(\omega^2+\omega_{21}^2\right)\\
+                &\qquad+\left(\omega_{21}^2-\omega^2\right)^2,
+                \end{aligned}$$</p>
+                <p>que é o mesmo polinômio. (Uma integração numérica de $J_2$, com $\epsilon=0{,}3$, $\omega=1{,}7$
+                e $\omega_{21}=2{,}5$ em unidades arbitrárias, reproduz $|J_2|^2=0{,}22329$ nas duas formas.)</p>
+
+                <p><strong>Passo 6: a probabilidade.</strong> Juntando o elemento de matriz e a integral
+                temporal,</p>
+                <p>$$\begin{aligned}
+                c_2^{(1)}(\infty)&=-\frac{i\lambda}{\hbar}
+                \left(-\frac{16a}{9\pi^2}\right)J_2\\
+                &=\frac{16\,i\lambda a}{9\pi^2\hbar}\,
+                \frac{\omega}{(\epsilon-i\omega_{21})^2+\omega^2}.
+                \end{aligned}$$</p>
+                <p>Ao tomar o módulo ao quadrado, $|i|^2=1$ e
+                $(16/9\pi^2)^2=256/81\pi^4$. Portanto,</p>
+                <p>$$\begin{aligned}
+                P_{1\to2}&=\left|c_2^{(1)}(\infty)\right|^2\\
+                &=\frac{256\,\lambda^2a^2}{81\pi^4\hbar^2}\\
+                &\quad\times\frac{\omega^2}
+                {\left(\epsilon^2+\omega^2-\omega_{21}^2\right)^2
+                +4\epsilon^2\omega_{21}^2},
+                \end{aligned}$$</p>
+                <p>com</p>
+                <p>$$\omega_{21}=\frac{E_2-E_1}{\hbar}
+                =\frac{3E_1}{\hbar}=\frac{3\pi^2\hbar}{2ma^2}.$$</p>
+                <p>O pré-fator numérico vale $256/81\pi^4\approx0{,}0324$. Na forma fatorada,</p>
+                <p>$$\begin{aligned}
+                P_{1\to2}&=\left(\frac{16\lambda a}{9\pi^2\hbar}\right)^2\\
+                &\quad\times\frac{\omega^2}
+                {\left[\epsilon^2+(\omega_{21}+\omega)^2\right]
+                \left[\epsilon^2+(\omega_{21}-\omega)^2\right]}.
+                \end{aligned}$$</p>
+                <p>Conferindo as dimensões: $\lambda$ é energia por comprimento, então $\lambda a/\hbar$ é uma
+                frequência; o segundo fator é $\omega^2$ dividido por uma frequência à quarta, isto é, o inverso de
+                uma frequência ao quadrado. O produto é adimensional, como deve ser uma probabilidade.</p>
+
+                <p><strong>(b)</strong> <strong>Passo 1: o elemento de matriz por paridade.</strong> Agora o estado
+                final é $\psi_3$, e a amplitude é proporcional a $X_{31}=\langle\psi_3|x-a/2|\psi_1\rangle$. No
+                Exercício 3 vimos que, sob a reflexão em torno do centro do poço, $x\to a-x$,</p>
+                <p>$$\psi_n(a-x)=(-1)^{n+1}\,\psi_n(x).$$</p>
+                <p>Os estados de $n$ ímpar, como $\psi_1$ e $\psi_3$, são pares em relação a $x=a/2$; os de $n$
+                par são ímpares. Já o operador da perturbação é <em>ímpar</em> sob a mesma reflexão:</p>
+                <p>$$(a-x)-\frac a2=\frac a2-x
+                =-\left(x-\frac a2\right).$$</p>
+                <p>Na variável $u\equiv x-a/2$, que vai de $-a/2$ a $a/2$, o integrando
+                $\psi_3\,u\,\psi_1$ é (par)$\times$(ímpar)$\times$(par) $=$ ímpar em $u$. A integral de uma função
+                ímpar num intervalo simétrico é nula:</p>
+                <p>$$\begin{aligned}
+                X_{31}&=\int_{-a/2}^{a/2}
+                \psi_3\!\left(\tfrac a2+u\right)u\,
+                \psi_1\!\left(\tfrac a2+u\right)du\\
+                &=0.
+                \end{aligned}$$</p>
+                <p>É a versão unidimensional da
+                <a class="ref-capitulo" href="../Conteúdo/[5] - Simetrias e Leis de Conservação/[04] - Paridade.html#regras-de-selecao">regra de seleção de paridade</a>:
+                um operador ímpar só conecta estados de paridades opostas. Em geral, $X_{n1}\ne0$ apenas para $n$
+                par. Observe que é o oposto do Exercício 3: lá a perturbação era par e só conectava $\psi_1$ aos
+                estados de $n$ ímpar.</p>
+
+                <p><strong>Passo 2: conferência pela conta direta.</strong> Como no item (a), o termo $a/2$ some
+                por ortogonalidade, $\langle\psi_3|\psi_1\rangle=0$, e sobra</p>
+                <p>$$X_{31}=\frac2a\int_0^a x\,
+                \sin\left(\frac{3\pi x}{a}\right)
+                \sin\left(\frac{\pi x}{a}\right)dx.$$</p>
+                <p>Agora a identidade produto-para-soma, com $A=3\pi x/a$ e $B=\pi x/a$, dá</p>
+                <p>$$\begin{aligned}
+                &\sin\left(\frac{3\pi x}{a}\right)
+                \sin\left(\frac{\pi x}{a}\right)\\
+                &\quad=\frac12\left[\cos\left(\frac{2\pi x}{a}\right)
+                -\cos\left(\frac{4\pi x}{a}\right)\right],
+                \end{aligned}$$</p>
+                <p>e, com a mesma integral $I_k$ do Passo 3 de (a),</p>
+                <p>$$\begin{aligned}
+                X_{31}&=\frac1a\left(I_2-I_4\right),\\
+                I_2&=\frac{a^2}{4\pi^2}\left[(-1)^2-1\right]=0,\\
+                I_4&=\frac{a^2}{16\pi^2}\left[(-1)^4-1\right]=0.
+                \end{aligned}$$</p>
+                <p>Logo $X_{31}=0$, confirmando o argumento de simetria. Os dois cossenos agora têm $k$ par, e cada
+                um, multiplicado por $x$, integra a zero no intervalo $[0,a]$.</p>
+
+                <p><strong>Passo 3: a probabilidade.</strong> Com $X_{31}=0$, a amplitude de primeira ordem se
+                anula para qualquer $\omega$ e qualquer $\epsilon$, independentemente da integral temporal $J_3$:</p>
+                <p>$$\begin{aligned}
+                c_3^{(1)}(\infty)&=-\frac{i\lambda}{\hbar}\cdot0\cdot J_3=0,\\
+                P_{1\to3}&=0\quad\text{(em primeira ordem)}.
+                \end{aligned}$$</p>
+                <p>A transição <em>direta</em> $1\to3$ é proibida. Isso não significa que o estado $\psi_3$ nunca seja
+                populado. O termo de segunda ordem da
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[01] - Sistemas de Dois Níveis.html#teo-serie-muitos-niveis">Eq. 11.25</a>
+                contém o produto $H'_{3m}H'_{m1}\propto X_{3m}X_{m1}$, somado sobre os estados intermediários $m$.
+                O fator $X_{m1}$ exige $m$ par, e o fator $X_{3m}$ também exige $m$ par; ambos são compatíveis, e
+                $X_{32}\ne0$. A partícula pode, portanto, chegar a $\psi_3$ em dois saltos, passando por
+                $\psi_2$ (e pelos demais $n$ pares), como na
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[01] - Sistemas de Dois Níveis.html#fig-11-3">Figura 11.3</a>.
+                A amplitude é de ordem $\lambda^2$, e $P_{1\to3}$ é de ordem $\lambda^4$: muito menor que
+                $P_{1\to2}$ quando a teoria de perturbação vale.</p>
+
+                <p><strong>(c)</strong> <strong>Passo 1: o limite $\omega\to0$.</strong> O resultado de (b) é nulo
+                para todo $\omega$ e continua nulo no limite. Para (a), fazemos $\omega\to0$ no denominador de
+                $P_{1\to2}$, com $\epsilon$ fixo:</p>
+                <p>$$\begin{aligned}
+                &\left(\epsilon^2+\omega^2-\omega_{21}^2\right)^2
+                +4\epsilon^2\omega_{21}^2\\
+                &\quad\xrightarrow{\ \omega\to0\ }
+                \left(\epsilon^2-\omega_{21}^2\right)^2
+                +4\epsilon^2\omega_{21}^2\\
+                &\quad=\epsilon^4-2\epsilon^2\omega_{21}^2
+                +\omega_{21}^4+4\epsilon^2\omega_{21}^2\\
+                &\quad=\left(\epsilon^2+\omega_{21}^2\right)^2.
+                \end{aligned}$$</p>
+                <p>O denominador tende a um valor finito e positivo, enquanto o numerador é $\omega^2$. Assim, para
+                $\omega\ll\sqrt{\epsilon^2+\omega_{21}^2}$,</p>
+                <p>$$\begin{aligned}
+                P_{1\to2}&\simeq\frac{256\,\lambda^2a^2}{81\pi^4\hbar^2}\,
+                \frac{\omega^2}{\left(\epsilon^2+\omega_{21}^2\right)^2}\\
+                &\xrightarrow{\ \omega\to0\ }0.
+                \end{aligned}$$</p>
+                <p>A probabilidade vai a zero quadraticamente em $\omega$: a amplitude é linear em $\omega$, e a
+                probabilidade, o seu módulo ao quadrado.</p>
+
+                <p><strong>Passo 2: interpretação.</strong> Em $\omega=0$ temos $\sin(\omega t)=0$ para todo $t$: a
+                perturbação é identicamente nula, e a partícula simplesmente fica no estado fundamental. Para
+                $\omega$ pequeno, mas não nulo, $\sin\omega t\approx\omega t$ enquanto $\omega t\ll1$, e como a
+                envoltória $e^{-\epsilon t}$ corta tudo depois de $t\sim1/\epsilon$, a perturbação efetiva é</p>
+                <p>$$H'\approx\lambda\,\omega\left(x-\frac a2\right)
+                t\,e^{-\epsilon t},$$</p>
+                <p>um pulso de amplitude proporcional a $\omega$. A integral temporal confirma isso:</p>
+                <p>$$\begin{aligned}
+                J_2&\approx\omega\int_0^\infty t\,e^{-\beta t}\,dt
+                =\frac{\omega}{\beta^2},
+                \end{aligned}$$</p>
+                <p>que é exatamente o limite $\omega\to0$ de $J_2=\omega/(\beta^2+\omega^2)$. (Usamos
+                $\int_0^\infty t\,e^{-\beta t}dt=1/\beta^2$, válida para $\mathrm{Re}\,\beta\gt0$, e
+                $|\beta|^2=\epsilon^2+\omega_{21}^2$.) Em outras palavras, o fator $\sin\omega t$ não está
+                "modulando" uma perturbação que já existe: ele é a própria intensidade da perturbação durante o
+                intervalo $\sim1/\epsilon$ em que ela vive. Quando $\omega\ll\epsilon$, o seno mal sai de zero antes de
+                a exponencial apagá-lo, e o pulso é fraco demais para provocar transições.</p>
+
+                <p><strong>Ressonância.</strong> O resultado de (a) também mostra o outro extremo. Suponha
+                $\epsilon\ll\omega_{21}$ e $\omega$ perto de $\omega_{21}$. Na forma fatorada, o primeiro colchete
+                varia pouco e vale $\epsilon^2+(\omega_{21}+\omega)^2\approx4\omega_{21}^2$; no numerador,
+                $\omega^2\approx\omega_{21}^2$. Logo,</p>
+                <p>$$\begin{aligned}
+                P_{1\to2}&\approx\left(\frac{16\lambda a}{9\pi^2\hbar}\right)^2
+                \frac{\omega_{21}^2}{4\omega_{21}^2}\,
+                \frac{1}{(\omega-\omega_{21})^2+\epsilon^2}\\
+                &=\left(\frac{8\lambda a}{9\pi^2\hbar}\right)^2
+                \frac{1}{(\omega-\omega_{21})^2+\epsilon^2}.
+                \end{aligned}$$</p>
+                <p>É um pico lorentziano centrado em $\omega=\omega_{21}$, que cai à metade do máximo em
+                $|\omega-\omega_{21}|=\epsilon$ (largura total $2\epsilon$). A altura do pico é</p>
+                <p>$$P_{1\to2}^{\text{máx}}\approx
+                \left(\frac{8\lambda a}{9\pi^2\hbar\,\epsilon}\right)^2
+                =\left(\frac{\lambda|X_{21}|}{2\hbar}\cdot\frac1\epsilon\right)^2.$$</p>
+                <p>Compare com o
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[01] - Sistemas de Dois Níveis.html#teo-probabilidade-senoidal">teorema da probabilidade sob perturbação senoidal</a>
+                (Eq. 11.35), com $|V_{ab}|=\lambda|X_{21}|$: lá o pico tem altura $(|V_{ab}|t/2\hbar)^2$ e largura
+                $\sim4\pi/t$. Aqui o papel do tempo $t$ é feito pela vida média $1/\epsilon$ da perturbação: quanto
+                mais tempo ela dura, mais alto e mais estreito é o pico. O fator $\omega^2$ no numerador da fórmula
+                exata é desprezível perto da ressonância, mas é ele que faz $P_{1\to2}$ morrer em $\omega\to0$.</p>
+
+                <p><strong>O limite $\epsilon\to0$.</strong> Fora da ressonância ($\omega\ne\omega_{21}$),</p>
+                <p>$$\begin{aligned}
+                P_{1\to2}&\xrightarrow{\ \epsilon\to0\ }
+                \left(\frac{16\lambda a}{9\pi^2\hbar}\right)^2
+                \frac{\omega^2}{\left(\omega_{21}^2-\omega^2\right)^2},
+                \end{aligned}$$</p>
+                <p>que continua indo a zero como $\omega^2$ quando $\omega\to0$. Com $\epsilon=0$ estrito, a
+                integral até $t$ é a análoga da
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[01] - Sistemas de Dois Níveis.html#perturbacao-senoidal">Eq. 11.32</a>,
+                com seno no lugar de cosseno, e a probabilidade oscila
+                sem parar, sem limite para $t\to\infty$. Um $\epsilon$ pequeno e positivo amortece os termos
+                oscilantes e deixa só as partes constantes daquela expressão, que dão justamente
+                $J_2\to\omega/(\omega^2-\omega_{21}^2)$. Na ressonância, ao contrário, $P_{1\to2}\propto1/\epsilon^2$
+                cresce sem limite quando $\epsilon\to0$, o equivalente do crescimento $\propto t^2$ do pico da
+                Eq. (11.35). Muito antes disso a primeira ordem deixa de valer.</p>
+
+                <p><strong>Validade da primeira ordem.</strong> A aproximação exige $c_1\approx1$, ou seja, que a
+                probabilidade total de sair do fundamental seja pequena. Como $|\sin\omega t|\le1$,</p>
+                <p>$$|J_n|\le\int_0^\infty e^{-\epsilon t}\,dt=\frac1\epsilon,
+                \qquad
+                P_{1\to n}\le\frac{\lambda^2|X_{n1}|^2}{\hbar^2\epsilon^2}.$$</p>
+                <p>Somando sobre todos os $n$ e usando a completeza da base, $\sum_n|X_{n1}|^2
+                =\langle\psi_1|(x-a/2)^2|\psi_1\rangle$, que é a variância de $x$ no fundamental:</p>
+                <p>$$\begin{aligned}
+                \sum_n|X_{n1}|^2
+                &=a^2\left(\frac1{12}-\frac1{2\pi^2}\right)
+                \approx0{,}0327\,a^2.
+                \end{aligned}$$</p>
+                <p>(Aqui usamos $\langle x\rangle=a/2$ e $\langle x^2\rangle=a^2(1/3-1/2\pi^2)$ no estado
+                fundamental.) Desse total, $|X_{21}|^2=256a^2/81\pi^4\approx0{,}0324\,a^2$ responde por mais de
+                $99\,\%$: o canal $n=2$ domina amplamente, e os demais $n$ pares têm elementos de matriz bem menores
+                (por exemplo, $X_{41}=-32a/225\pi^2\approx-0{,}014\,a$). Portanto,</p>
+                <p>$$\sum_{n\ne1}P_{1\to n}\le0{,}0327
+                \left(\frac{\lambda a}{\hbar\epsilon}\right)^2,$$</p>
+                <p>e basta $\lambda a\ll\hbar\epsilon$ para que a primeira ordem valha para qualquer $\omega$,
+                inclusive na ressonância. Longe da ressonância a condição é bem mais folgada:
+                $\lambda|X_{21}|\ll\hbar\,|\omega_{21}-\omega|$ já garante $P_{1\to2}\ll1$. Em particular, no limite
+                $\omega\to0$ do item (c) a primeira ordem fica cada vez <em>melhor</em>, porque a perturbação
+                efetiva some.<span class="qed" aria-label="Fim da resolução">&#x220E;</span></p>
+
+                <hr class="resolucao-sep">
 
                 <h3 id="exercicio-6">Exercício 6</h3>
                 <p>Considere uma partícula de massa $m$ e carga $q$ no estado fundamental do poço infinito simétrico de
@@ -259,7 +1718,835 @@
 
                 <hr class="resolucao-sep">
 
-                <!-- SOLUCAO-EXERCICIO-6 -->
+                <p><strong>Resolução - Exercício 6:</strong></p>
+                <p>"Simétrico de largura $L$" significa que o poço está centrado na origem: ele ocupa o intervalo
+                $-L/2\le x\le L/2$, e as funções de onda se anulam fora dele. O hamiltoniano não perturbado $H^0$ é o
+                da partícula livre no interior do poço, e a perturbação é a energia potencial de uma carga $q$ num campo
+                elétrico uniforme $\mathcal{E}(t)=\mathcal{E}_0e^{-|t|/\tau}$ ao longo de $x$, como na
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[02] - Emissão e Absorção de Radiação.html#ondas-eletromagneticas">Eq. 11.39</a>
+                (com $z\to x$ e um perfil temporal diferente):</p>
+                <p>$$\begin{aligned}
+                H^0&=-\frac{\hbar^2}{2m}\frac{d^2}{dx^2},
+                \qquad |x|\lt\frac L2,\\
+                H'(t)&=-q\mathcal{E}_0\,x\,e^{-|t|/\tau}.
+                \end{aligned}$$</p>
+                <p>O campo cresce desde zero em $t=-\infty$, atinge o máximo $\mathcal{E}_0$ em $t=0$ e volta a zero em
+                $t=+\infty$; a largura do pulso é da ordem de $\tau$. A partícula está no estado fundamental $\psi_1$ no
+                passado remoto, e queremos a probabilidade de encontrá-la em $\psi_2$ ou em $\psi_3$ depois que o pulso
+                passou. Como no <a class="ref-capitulo" href="#exercicio-4">Exercício 4</a>, o sinal de $q$ e as
+                convenções de fase das autofunções só mudam o sinal das amplitudes, e não as probabilidades.</p>
+
+                <p><strong>Passo 1: a amplitude em primeira ordem desde $t=-\infty$.</strong> Partimos da primeira ordem
+                da <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[01] - Sistemas de Dois Níveis.html#teo-serie-muitos-niveis">série de perturbação para muitos níveis</a>
+                (Passo 2 da demonstração), que nas notas está escrita para a condição inicial $c_n(0)=\delta_{ni}$:</p>
+                <p>$$\begin{aligned}
+                c_n^{(1)}(t)&=\delta_{ni}-\frac{i}{\hbar}\int_0^t
+                H'_{ni}(t')\\
+                &\qquad\times e^{i(E_n-E_i)t'/\hbar}\,dt'.
+                \end{aligned}$$</p>
+                <p>Aqui a condição inicial não é dada em $t=0$, e sim no passado remoto. A adaptação é direta. O Passo 1
+                da demonstração, as equações exatas</p>
+                <p>$$\begin{aligned}
+                \dot c_n&=-\frac{i}{\hbar}\sum_m H'_{nm}(t)\\
+                &\qquad\times e^{i(E_n-E_m)t/\hbar}\,c_m,
+                \end{aligned}$$</p>
+                <p>não faz referência a nenhum instante inicial: elas valem para todo $t$. A origem do tempo só entra no
+                Passo 2, quando integramos essas equações a partir do instante em que conhecemos o estado. Se em um
+                instante $t_0$ qualquer o sistema está em $\psi_i$, temos
+                $\Psi(t_0)=\psi_i\,e^{-iE_it_0/\hbar}$, isto é, $c_n(t_0)=\delta_{ni}$ (a fase
+                $e^{-iE_it_0/\hbar}$ já está fatorada na expansão $\Psi=\sum_nc_n\psi_ne^{-iE_nt/\hbar}$). Inserimos a
+                ordem zero, $c_m^{(0)}=\delta_{mi}$, no lado direito e integramos de $t_0$ a $t$:</p>
+                <p>$$\begin{aligned}
+                c_n^{(1)}(t)&=\delta_{ni}-\frac{i}{\hbar}\int_{t_0}^t
+                H'_{ni}(t')\\
+                &\qquad\times e^{i(E_n-E_i)t'/\hbar}\,dt'.
+                \end{aligned}$$</p>
+                <p>Agora tomamos $t_0\to-\infty$. O limite existe porque $|H'_{ni}(t')|\propto e^{-|t'|/\tau}$ decai
+                exponencialmente, de modo que a integral converge absolutamente. Fisicamente, no passado remoto a
+                perturbação é desprezível e a partícula está no autoestado $\psi_1$ de $H^0$. É o mesmo procedimento do
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[01] - Sistemas de Dois Níveis.html#exr-11-1-6">Exercício 11.1-6</a>,
+                que usa a <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[01] - Sistemas de Dois Níveis.html#perturbacao-dependente">Eq. 11.21</a>
+                "com o limite inferior em $-\infty$" para um pulso gaussiano. Com $i=1$ e $n\ne1$, o delta é nulo:</p>
+                <p>$$\begin{aligned}
+                c_n^{(1)}(t)&=-\frac{i}{\hbar}\int_{-\infty}^t
+                H'_{n1}(t')\,e^{i\omega_{n1}t'}\,dt',\\
+                \omega_{n1}&\equiv\frac{E_n-E_1}{\hbar}.
+                \end{aligned}$$</p>
+                <p>Para $t\to+\infty$ a perturbação volta a zero, os $\psi_n$ voltam a ser os autoestados do hamiltoniano
+                completo e os coeficientes ficam congelados. A probabilidade pedida é, então,</p>
+                <p>$$P_{1\to n}=\left|c_n^{(1)}(+\infty)\right|^2.$$</p>
+                <p>O fator $-q\mathcal{E}_0e^{-|t|/\tau}$ não depende de $x$ e sai do elemento de matriz:</p>
+                <p>$$\begin{aligned}
+                H'_{n1}(t)&=\langle\psi_n|H'(t)|\psi_1\rangle\\
+                &=-q\mathcal{E}_0\,e^{-|t|/\tau}\,x_{n1},\\
+                x_{n1}&\equiv\langle\psi_n|x|\psi_1\rangle.
+                \end{aligned}$$</p>
+                <p>Substituindo na amplitude, os dois sinais negativos se cancelam ($-i\cdot(-1)=+i$):</p>
+                <p>$$\begin{aligned}
+                c_n^{(1)}(+\infty)
+                &=\frac{iq\mathcal{E}_0}{\hbar}\,x_{n1}\,J(\omega_{n1}),\\
+                J(\omega)&\equiv\int_{-\infty}^{\infty}
+                e^{-|t|/\tau}\,e^{i\omega t}\,dt.
+                \end{aligned}$$</p>
+                <p>Como no Exercício 4, o problema se separa em uma parte espacial, o elemento de matriz $x_{n1}$, e uma
+                parte temporal, a integral $J$.</p>
+
+                <p><strong>Passo 2: autofunções e energias.</strong> No interior do poço, a equação de Schrödinger
+                independente do tempo e sua solução geral são</p>
+                <p>$$\begin{aligned}
+                -\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2}&=E\psi,\\
+                \psi(x)&=A\cos(kx)+B\sin(kx),\\
+                k^2&=\frac{2mE}{\hbar^2}.
+                \end{aligned}$$</p>
+                <p>As condições de contorno $\psi(\pm L/2)=0$ dão, usando que o cosseno é par e o seno é ímpar,</p>
+                <p>$$\begin{aligned}
+                A\cos(kL/2)+B\sin(kL/2)&=0,\\
+                A\cos(kL/2)-B\sin(kL/2)&=0.
+                \end{aligned}$$</p>
+                <p>Somando e subtraindo, $A\cos(kL/2)=0$ e $B\sin(kL/2)=0$. Há duas famílias de soluções não nulas: os
+                cossenos ($B=0$), com $kL/2=\pi/2,\,3\pi/2,\ldots$, e os senos ($A=0$), com $kL/2=\pi,\,2\pi,\ldots$.
+                Em ambos os casos $k_n=n\pi/L$, com $n$ ímpar para os cossenos e $n$ par para os senos, e</p>
+                <p>$$E_n=\frac{\hbar^2k_n^2}{2m}=\frac{n^2\pi^2\hbar^2}{2mL^2},
+                \qquad n=1,2,3,\ldots$$</p>
+                <p>São as energias do poço usual de largura $L$, como deve ser: deslocar o poço não muda o espectro. Os três
+                primeiros estados, com fases reais e positivas, são</p>
+                <p>$$\begin{aligned}
+                \psi_1(x)&=\sqrt{\frac2L}\cos\left(\frac{\pi x}{L}\right),\\
+                \psi_2(x)&=\sqrt{\frac2L}\sin\left(\frac{2\pi x}{L}\right),\\
+                \psi_3(x)&=\sqrt{\frac2L}\cos\left(\frac{3\pi x}{L}\right).
+                \end{aligned}$$</p>
+                <p>Conferindo as condições de contorno em $x=\pm L/2$:</p>
+                <p>$$\begin{aligned}
+                \psi_1(\pm L/2)&\propto\cos(\pm\pi/2)=0,\\
+                \psi_2(\pm L/2)&\propto\sin(\pm\pi)=0,\\
+                \psi_3(\pm L/2)&\propto\cos(\pm3\pi/2)=0.
+                \end{aligned}$$</p>
+                <p>Para a normalização, usamos $\cos^2\theta=\tfrac12(1+\cos2\theta)$:</p>
+                <p>$$\begin{aligned}
+                &\int_{-L/2}^{L/2}\cos^2\left(\frac{n\pi x}{L}\right)dx\\
+                &=\frac L2+\frac12\left[\frac{L}{2n\pi}
+                \sin\left(\frac{2n\pi x}{L}\right)\right]_{-L/2}^{L/2}\\
+                &=\frac L2+\frac{L}{4n\pi}\cdot2\sin(n\pi)\\
+                &=\frac L2.
+                \end{aligned}$$</p>
+                <p>Com $\sin^2\theta=\tfrac12(1-\cos2\theta)$, a integral de $\sin^2$ dá o mesmo $L/2$. Multiplicando pelo
+                fator $2/L$ da normalização, obtemos $1$ nos dois casos. As autofunções são reais, de modo que não haverá
+                conjugação complexa nos elementos de matriz. Além disso, elas têm paridade definida:</p>
+                <p>$$\psi_n(-x)=(-1)^{n+1}\psi_n(x),$$</p>
+                <p>pares para $n$ ímpar (cossenos) e ímpares para $n$ par (senos). As energias e frequências de que
+                precisamos são</p>
+                <p>$$\begin{aligned}
+                E_1&=\frac{\pi^2\hbar^2}{2mL^2},
+                \quad E_2=4E_1,\quad E_3=9E_1,\\
+                \omega_{21}&=\frac{3E_1}{\hbar}=\frac{3\pi^2\hbar}{2mL^2},\\
+                \omega_{31}&=\frac{8E_1}{\hbar}=\frac{4\pi^2\hbar}{mL^2}.
+                \end{aligned}$$</p>
+
+                <p><strong>Passo 3: o elemento de matriz $\langle\psi_2|x|\psi_1\rangle$.</strong> Substituindo as
+                autofunções,</p>
+                <p>$$x_{21}=\frac2L\int_{-L/2}^{L/2}x\,
+                \sin\left(\frac{2\pi x}{L}\right)
+                \cos\left(\frac{\pi x}{L}\right)dx.$$</p>
+                <p>Transformamos o produto em soma. Somando $\sin(\alpha+\beta)=\sin\alpha\cos\beta+\cos\alpha\sin\beta$
+                e $\sin(\alpha-\beta)=\sin\alpha\cos\beta-\cos\alpha\sin\beta$, obtemos
+                $2\sin\alpha\cos\beta=\sin(\alpha+\beta)+\sin(\alpha-\beta)$. Com $\alpha=2\pi x/L$ e $\beta=\pi x/L$,</p>
+                <p>$$\begin{aligned}
+                \sin\left(\frac{2\pi x}{L}\right)\cos\left(\frac{\pi x}{L}\right)
+                &=\frac12\left[\sin\left(\frac{3\pi x}{L}\right)\right.\\
+                &\qquad\left.+\sin\left(\frac{\pi x}{L}\right)\right].
+                \end{aligned}$$</p>
+                <p>Logo, o fator $\tfrac12$ cancela o $2$ da normalização e</p>
+                <p>$$\begin{aligned}
+                x_{21}&=\frac1L\bigl(I_3+I_1\bigr),\\
+                I_k&\equiv\int_{-L/2}^{L/2}x\,\sin(b_kx)\,dx,
+                \qquad b_k\equiv\frac{k\pi}{L}.
+                \end{aligned}$$</p>
+                <p>O integrando $x\sin(b_kx)$ é o produto de duas funções ímpares, portanto é par, e a integral no intervalo
+                simétrico é o dobro da integral em metade dele:</p>
+                <p>$$I_k=2\int_0^{L/2}x\,\sin(b_kx)\,dx.$$</p>
+                <p>Integramos por partes com $u=x$ e $dv=\sin(bx)\,dx$, ou seja, $du=dx$ e $v=-\cos(bx)/b$:</p>
+                <p>$$\begin{aligned}
+                \int_0^{L/2}x\sin(bx)\,dx
+                &=\left[-\frac{x\cos(bx)}{b}\right]_0^{L/2}\\
+                &\quad+\frac1b\int_0^{L/2}\cos(bx)\,dx\\
+                &=-\frac{L\cos(bL/2)}{2b}
+                +\left[\frac{\sin(bx)}{b^2}\right]_0^{L/2}\\
+                &=-\frac{L\cos(bL/2)}{2b}
+                +\frac{\sin(bL/2)}{b^2}.
+                \end{aligned}$$</p>
+                <p>Na primeira linha, o termo de contorno em $x=0$ se anula por causa do fator $x$; na segunda, usamos
+                $\sin0=0$. Agora avaliamos termo a termo.</p>
+                <p><em>Termo $k=1$.</em> Aqui $b_1=\pi/L$, $b_1L/2=\pi/2$, $\cos(\pi/2)=0$, $\sin(\pi/2)=1$ e
+                $b_1^2=\pi^2/L^2$:</p>
+                <p>$$\begin{aligned}
+                \int_0^{L/2}x\sin(b_1x)\,dx
+                &=0+\frac{1}{\pi^2/L^2}=\frac{L^2}{\pi^2},\\
+                I_1&=\frac{2L^2}{\pi^2}.
+                \end{aligned}$$</p>
+                <p><em>Termo $k=3$.</em> Aqui $b_3=3\pi/L$, $b_3L/2=3\pi/2$, $\cos(3\pi/2)=0$, $\sin(3\pi/2)=-1$ e
+                $b_3^2=9\pi^2/L^2$:</p>
+                <p>$$\begin{aligned}
+                \int_0^{L/2}x\sin(b_3x)\,dx
+                &=0+\frac{-1}{9\pi^2/L^2}=-\frac{L^2}{9\pi^2},\\
+                I_3&=-\frac{2L^2}{9\pi^2}.
+                \end{aligned}$$</p>
+                <p>Somando as duas contribuições,</p>
+                <p>$$\begin{aligned}
+                x_{21}&=\frac1L\left(-\frac{2L^2}{9\pi^2}
+                +\frac{2L^2}{\pi^2}\right)\\
+                &=\frac{2L}{\pi^2}\left(1-\frac19\right)
+                =\frac{2L}{\pi^2}\cdot\frac89\\
+                &=\frac{16L}{9\pi^2}\approx0{,}180\,L.
+                \end{aligned}$$</p>
+                <p>Com as fases escolhidas, o elemento é positivo; trocar o sinal de $\psi_2$ trocaria o sinal de $x_{21}$,
+                sem efeito em $|c_2|^2$. O resultado confere com a
+                <a class="ref-capitulo" href="[03] - 3ª Lista de Exercícios.html#exercicio-3">3ª lista, Exercício 3</a>,
+                em que o poço tem largura $2L$ e se obteve $X_{21}=32iL/(9\pi^2)$. Lá, o fator $i$ vem da fase $-i$ dos
+                estados pares; o módulo é $32L/(9\pi^2)$ para meia-largura $L$. Trocando a meia-largura $L$ por $L/2$, o
+                módulo fica $32(L/2)/(9\pi^2)=16L/(9\pi^2)$, como aqui. O momento de dipolo de transição,
+                $qx_{21}\approx0{,}18\,qL$, é uma fração razoável da largura do poço.</p>
+
+                <p><strong>Passo 4: o elemento de matriz $\langle\psi_3|x|\psi_1\rangle$.</strong> Agora</p>
+                <p>$$\begin{aligned}
+                x_{31}&=\int_{-L/2}^{L/2}f(x)\,dx,\\
+                f(x)&\equiv\psi_3(x)\,x\,\psi_1(x).
+                \end{aligned}$$</p>
+                <p>Os dois cossenos são pares e $x$ é ímpar, de modo que</p>
+                <p>$$f(-x)=\psi_3(x)\,(-x)\,\psi_1(x)=-f(x).$$</p>
+                <p>A integral de uma função ímpar num intervalo simétrico é nula. Para ver isso, separamos o intervalo em
+                duas metades e trocamos $x=-y$ na primeira, com $a\equiv L/2$:</p>
+                <p>$$\begin{aligned}
+                \int_{-a}^{0}f(x)\,dx
+                &=\int_{a}^{0}f(-y)\,(-dy)
+                =\int_0^af(-y)\,dy\\
+                &=-\int_0^af(y)\,dy,
+                \end{aligned}$$</p>
+                <p>que cancela exatamente a integral de $0$ a $a$. Portanto,</p>
+                <p>$$x_{31}=0\quad\Rightarrow\quad H'_{31}(t)=0
+                \quad\Rightarrow\quad c_3^{(1)}(+\infty)=0.$$</p>
+                <p>A conta direta confirma: $\cos(3u)\cos u=\tfrac12[\cos(4u)+\cos(2u)]$, e cada termo
+                $x\cos(\cdots)$ é ímpar. Esta é a
+                <a class="ref-capitulo" href="../Conteúdo/[5] - Simetrias e Leis de Conservação/[04] - Paridade.html#regras-de-selecao">regra de Laporte</a>
+                (Eq. 6.26): $x$ é ímpar sob paridade e só conecta estados de paridades opostas. Pelo mesmo argumento,
+                $x_{n1}=0$ para todo $n$ ímpar, inclusive $x_{11}=0$, pois $\psi_1$ não tem dipolo permanente. Em primeira
+                ordem, o segundo estado excitado não é atingido:</p>
+                <p>$$P_{1\to3}^{(1)}=0.$$</p>
+                <p>Ao contrário do <a class="ref-capitulo" href="#exercicio-3">Exercício 3</a> desta lista, este zero
+                <em>não</em> é exato. Lá, a perturbação era par e comutava com a reflexão, de modo que a paridade se
+                conservava em todas as ordens. Aqui $H'\propto x$ é ímpar e troca a paridade do estado. Por isso, duas
+                aplicações de $H'$ levam um estado par a outro estado par, como veremos ao final.</p>
+
+                <p><strong>Passo 5: a integral temporal.</strong> Com $\omega=\omega_{21}\gt0$, separamos a integral nas
+                regiões $t\lt0$, em que $|t|=-t$, e $t\gt0$, em que $|t|=t$:</p>
+                <p>$$\begin{aligned}
+                J(\omega)&=J_-+J_+,\\
+                J_-&=\int_{-\infty}^{0}e^{t/\tau}\,e^{i\omega t}\,dt,\\
+                J_+&=\int_0^{\infty}e^{-t/\tau}\,e^{i\omega t}\,dt.
+                \end{aligned}$$</p>
+                <p><em>Parte $t\lt0$.</em> As exponenciais se combinam em $e^{(1/\tau+i\omega)t}$. Seu módulo é
+                $e^{t/\tau}$, que vai a zero quando $t\to-\infty$; assim, o limite inferior não contribui:</p>
+                <p>$$\begin{aligned}
+                J_-&=\left[\frac{e^{(1/\tau+i\omega)t}}{1/\tau+i\omega}
+                \right]_{-\infty}^{0}
+                =\frac{1-0}{1/\tau+i\omega}\\
+                &=\frac{\tau}{1+i\omega\tau}.
+                \end{aligned}$$</p>
+                <p>Na última passagem, multiplicamos numerador e denominador por $\tau$.</p>
+                <p><em>Parte $t\gt0$.</em> Agora a combinação é $e^{-(1/\tau-i\omega)t}$, de módulo $e^{-t/\tau}\to0$
+                quando $t\to+\infty$:</p>
+                <p>$$\begin{aligned}
+                J_+&=\left[-\frac{e^{-(1/\tau-i\omega)t}}{1/\tau-i\omega}
+                \right]_0^{\infty}
+                =0+\frac{1}{1/\tau-i\omega}\\
+                &=\frac{\tau}{1-i\omega\tau}.
+                \end{aligned}$$</p>
+                <p>Este $J_+$ é exatamente o $J(t\gg\tau)$ do Exercício 4, em que o campo só existia para $t\ge0$.</p>
+                <p><em>Soma.</em> Colocamos as duas frações no denominador comum
+                $(1+i\omega\tau)(1-i\omega\tau)=1-(i\omega\tau)^2=1+\omega^2\tau^2$:</p>
+                <p>$$\begin{aligned}
+                J(\omega)&=\frac{\tau}{1+i\omega\tau}+\frac{\tau}{1-i\omega\tau}\\
+                &=\frac{\tau\bigl[(1-i\omega\tau)+(1+i\omega\tau)\bigr]}
+                {(1+i\omega\tau)(1-i\omega\tau)}\\
+                &=\frac{2\tau}{1+\omega^2\tau^2}.
+                \end{aligned}$$</p>
+                <p>As partes imaginárias se cancelam, e $J$ é real. Isso era esperado, porque $J_-=J_+^*$: trocando
+                $t\to-t$ em $J_-$, obtemos $\int_0^\infty e^{-t/\tau}e^{-i\omega t}dt$, de modo que $J=2\,\mathrm{Re}\,J_+$.
+                O pulso é par no tempo, e sua transformada de Fourier é real. Como verificação, para $\omega=0$ obtemos
+                $J(0)=2\tau$, que é a área sob $e^{-|t|/\tau}$.</p>
+
+                <p><strong>Passo 6: a probabilidade.</strong> Para $n=2$, levamos $x_{21}$ e $J(\omega_{21})$ à amplitude
+                do Passo 1:</p>
+                <p>$$\begin{aligned}
+                c_2^{(1)}(+\infty)
+                &=\frac{iq\mathcal{E}_0}{\hbar}\cdot\frac{16L}{9\pi^2}\\
+                &\quad\times\frac{2\tau}{1+\omega_{21}^2\tau^2}.
+                \end{aligned}$$</p>
+                <p>A amplitude é puramente imaginária, e $|i|^2=1$. O módulo ao quadrado é</p>
+                <p>$$\begin{aligned}
+                P_{1\to2}&=\left|c_2^{(1)}(+\infty)\right|^2\\
+                &=\left(\frac{q\mathcal{E}_0}{\hbar}\right)^2
+                \left(\frac{16L}{9\pi^2}\right)^2\\
+                &\quad\times\frac{4\tau^2}{(1+\omega_{21}^2\tau^2)^2}.
+                \end{aligned}$$</p>
+                <p>Juntando os fatores numéricos, $(16/9\pi^2)^2\cdot4=256\cdot4/(81\pi^4)=1024/(81\pi^4)$, e
+                $81\pi^4=81\times97{,}409=7890{,}1$, de modo que $1024/(81\pi^4)\approx0{,}130$. Assim,</p>
+                <p>$$\begin{aligned}
+                P_{1\to2}&=\frac{1024}{81\pi^4}\,
+                \frac{(q\mathcal{E}_0L\tau/\hbar)^2}
+                {(1+\omega_{21}^2\tau^2)^2}\\
+                &\approx0{,}130\,
+                \frac{(q\mathcal{E}_0L\tau/\hbar)^2}
+                {(1+\omega_{21}^2\tau^2)^2},\\
+                \omega_{21}&=\frac{3\pi^2\hbar}{2mL^2}.
+                \end{aligned}$$</p>
+                <p>A combinação $q\mathcal{E}_0L$ é a queda de energia potencial ao longo do poço, e
+                $q\mathcal{E}_0L\tau/\hbar$ é adimensional, como deve ser. Para o segundo estado excitado, pelo Passo 4,</p>
+                <p>$$P_{1\to3}=0\quad\text{(em primeira ordem)}.$$</p>
+
+                <p><strong>Os dois limites.</strong> O comportamento é decidido por $\omega_{21}\tau$, a razão entre a
+                duração do pulso e o período característico $1/\omega_{21}$ do movimento no poço. Para ver qual duração é
+                mais eficaz, basta estudar $\sqrt{P_{1\to2}}\propto g(\tau)\equiv\tau/(1+\omega_{21}^2\tau^2)$:</p>
+                <p>$$\begin{aligned}
+                g'(\tau)&=\frac{(1+\omega_{21}^2\tau^2)-2\omega_{21}^2\tau^2}
+                {(1+\omega_{21}^2\tau^2)^2}\\
+                &=\frac{1-\omega_{21}^2\tau^2}{(1+\omega_{21}^2\tau^2)^2}.
+                \end{aligned}$$</p>
+                <p>A derivada se anula em $\omega_{21}\tau=1$, onde $g=1/(2\omega_{21})$ e
+                $4\tau^2/(1+\omega_{21}^2\tau^2)^2=4g^2=1/\omega_{21}^2$. A probabilidade máxima, atingida quando a
+                duração do pulso casa com a frequência de Bohr, é</p>
+                <p>$$\begin{aligned}
+                P_{1\to2}^{\max}
+                &=\left(\frac{q\mathcal{E}_0x_{21}}{\hbar\omega_{21}}\right)^2\\
+                &=\left(\frac{q\mathcal{E}_0x_{21}}{E_2-E_1}\right)^2.
+                \end{aligned}$$</p>
+                <ul>
+                    <li><strong>Pulso súbito, $\omega_{21}\tau\ll1$.</strong> Então $1+\omega_{21}^2\tau^2\approx1$ e
+                        $P_{1\to2}\approx(q\mathcal{E}_0x_{21}\cdot2\tau/\hbar)^2$, que cresce como $\tau^2$. O pulso é
+                        curto demais para que a partícula se mova durante sua ação, e o que importa é só o impulso
+                        transferido,
+                        $\Delta p=\int_{-\infty}^{\infty}q\mathcal{E}_0e^{-|t|/\tau}dt=q\mathcal{E}_0\cdot2\tau$. Um chute
+                        instantâneo é o operador $e^{i\Delta p\,x/\hbar}\approx1+i\Delta p\,x/\hbar$, cuja amplitude
+                        entre $\psi_1$ e $\psi_2$ é $i(\Delta p/\hbar)x_{21}=i(q\mathcal{E}_0/\hbar)x_{21}\cdot2\tau$.
+                        Esse é exatamente o limite $\omega_{21}\tau\to0$ de $c_2^{(1)}$, pois nesse limite $J\to2\tau$.</li>
+                    <li><strong>Regime adiabático, $\omega_{21}\tau\gg1$.</strong> Então
+                        $(1+\omega_{21}^2\tau^2)^2\approx\omega_{21}^4\tau^4$ e
+                        $$\begin{aligned}
+                        P_{1\to2}&\approx\left(\frac{q\mathcal{E}_0x_{21}}{\hbar}\right)^2
+                        \frac{4}{\omega_{21}^4\tau^2}\\
+                        &=\frac{4P_{1\to2}^{\max}}{(\omega_{21}\tau)^2}\to0,
+                        \end{aligned}$$
+                        que decai como $1/\tau^2$. Um campo que cresce e decresce devagar não induz transições: a partícula
+                        acompanha o estado fundamental instantâneo de $H^0+H'(t)$ (um estado polarizado pelo campo), e esse
+                        estado volta a ser $\psi_1$ quando o campo se anula, como prevê o
+                        <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[05] - A Aproximação Adiabática.html#teo-adiabatico">teorema adiabático</a>.
+                        O contraste com o <a class="ref-capitulo" href="#exercicio-4">Exercício 4</a> é instrutivo. Lá, o
+                        campo era <em>ligado abruptamente</em> em $t=0$, e o fator temporal
+                        $|J_+|^2=\tau^2/(1+\omega^2\tau^2)\to1/\omega^2$ não ia a zero: sobrava uma probabilidade
+                        independente de $\tau$, deixada pelo salto do campo. Aqui o campo é contínuo, e a supressão
+                        aparece. Ela é só uma potência de $\tau$, porém, e não exponencial como no pulso gaussiano do
+                        <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[01] - Sistemas de Dois Níveis.html#exr-11-1-6">Exercício 11.1-6</a>,
+                        em que $P\propto e^{-\omega_0^2\tau^2/2}$. O motivo é o bico de $e^{-|t|/\tau}$ em $t=0$: a
+                        derivada salta de $+1/\tau$ para $-1/\tau$. Duas integrações por partes em $J$ mostram que esse
+                        salto, de tamanho $2/\tau$, dá $J\approx2/(\omega^2\tau)$ para $\omega\tau\gg1$, de acordo com o
+                        resultado exato. Quanto mais suave o perfil temporal, mais rápido $J$ cai com $\omega\tau$: um
+                        salto no campo dá $|J|\sim1/\omega$, um bico dá $J\sim1/\omega^2\tau$, e um perfil analítico, como
+                        a gaussiana, dá supressão exponencial.</li>
+                </ul>
+
+                <p><strong>O segundo estado excitado em segunda ordem.</strong> Como $H'$ é ímpar, ele leva $\psi_1$ a
+                estados pares em $n$ ($\psi_2,\psi_4,\ldots$) e estes de volta a estados ímpares em $n$, entre eles
+                $\psi_3$. Pela Eq. 11.25 do
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[01] - Sistemas de Dois Níveis.html#teo-serie-muitos-niveis">teorema da série para muitos níveis</a>,
+                com os limites adaptados como no Passo 1, a amplitude de segunda ordem é</p>
+                <p>$$\begin{aligned}
+                c_3^{(2)}(+\infty)
+                &=\left(-\frac{i}{\hbar}\right)^2
+                \sum_{m\text{ par}}
+                \int_{-\infty}^{\infty}\!dt'
+                \int_{-\infty}^{t'}\!dt''\\
+                &\quad\times H'_{3m}(t')\,e^{i\omega_{3m}t'}\\
+                &\quad\times H'_{m1}(t'')\,e^{i\omega_{m1}t''}.
+                \end{aligned}$$</p>
+                <p>A soma só tem termos com $m$ par, porque $x_{m1}=0$ para $m$ ímpar. O termo dominante é o estado
+                intermediário $m=2$, com $x_{21}=16L/(9\pi^2)$ e, por uma conta idêntica à do Passo 3,
+                $x_{32}=-48L/(25\pi^2)$. Assim, $c_3^{(2)}\propto(q\mathcal{E}_0)^2$ e
+                $P_{1\to3}=O\bigl((q\mathcal{E}_0L\tau/\hbar)^4\bigr)$: o segundo estado excitado é populado, mas só em
+                segunda ordem, via $\psi_2$, com probabilidade da ordem do quadrado de $P_{1\to2}$.</p>
+
+                <p><strong>Validade da primeira ordem.</strong> A aproximação supõe $c_1\simeq1$, isto é,
+                $|c_n|\ll1$ para todo $n\ne1$. Como $P_{1\to2}\le P_{1\to2}^{\max}$ para <em>qualquer</em> $\tau$, basta</p>
+                <p>$$\begin{aligned}
+                q\mathcal{E}_0x_{21}&\ll E_2-E_1=3E_1,\\
+                \text{ou seja,}\quad
+                q\mathcal{E}_0L&\ll\frac{27\pi^2}{16}E_1\approx17\,E_1.
+                \end{aligned}$$</p>
+                <p>A queda de potencial ao longo do poço deve ser pequena comparada ao espaçamento dos níveis. Os demais
+                canais são ainda mais fracos. Para $n=4$, por exemplo, $x_{41}=32L/(225\pi^2)=0{,}08\,x_{21}$ e
+                $E_4-E_1=15E_1=5(E_2-E_1)$, de modo que $P_{1\to4}^{\max}/P_{1\to2}^{\max}=(0{,}08/5)^2\approx3\times10^{-4}$.
+                No regime súbito, a condição pode ser relaxada: basta que o impulso seja pequeno,
+                $2q\mathcal{E}_0\tau\,x_{21}\ll\hbar$, mesmo que o campo de pico seja intenso. Quando essas condições
+                falham, a primeira ordem deixa de valer, e a própria $P_{1\to3}$ deixa de ser desprezível diante de
+                $P_{1\to2}$.<span class="qed" aria-label="Fim da resolução">&#x220E;</span></p>
+
+                <hr class="resolucao-sep">
+
+                <h3 id="exercicio-7">Exercício 7</h3>
+                <p>Um sistema de dois níveis, com estados $\psi_a$ e $\psi_b$ de energias $E_a &lt; E_b$ e
+                    $\omega_0 \equiv (E_b - E_a)/\hbar$, é submetido a uma perturbação senoidal de frequência $\omega$, de
+                    modo que a probabilidade de transição em primeira ordem é</p>
+                <p>$$ P_{a\to b}(t) = \frac{|V_{ab}|^2}{\hbar^2}\,
+                    \frac{\sin^2\left[(\omega_0 - \omega)t/2\right]}{(\omega_0 - \omega)^2}. $$</p>
+                <ol type="a">
+                    <li>Encarando $P_{a\to b}$ como função de $\omega$, para $t$ fixo, mostre que o máximo ocorre em
+                        $\omega = \omega_0$, com altura $\left(|V_{ab}|t/2\hbar\right)^2$, e que a distância entre os dois
+                        primeiros zeros que ladeiam o pico vale $4\pi/t$. Interprete o estreitamento do pico em termos da
+                        relação de incerteza energia-tempo.</li>
+                    <li>Defina a frequência de Rabi $\omega_R \equiv |V_{ab}|/\hbar$ e mostre que o resultado acima só é
+                        consistente (isto é, $P_{a\to b} \le 1$) para $t \lesssim 2/\omega_R$. Conclua que a amplitude de
+                        transição leva um tempo da ordem de $1/\omega_R$ para se acumular.</li>
+                    <li>Suponha que a perturbação seja produzida por uma onda eletromagnética de amplitude $E_0$, tal que
+                        $V_{ab} = -\wp E_0$, operando próximo da ressonância, $\omega \simeq \omega_0$. Mostre que, para
+                        campos de intensidade ordinária, $\omega_R \ll \omega$, de maneira que o tempo característico da
+                        transição compreende um número enorme de períodos do campo. Explique por que isso justifica
+                        substituir a densidade de energia instantânea $u = \frac{\epsilon_0}{2}E^2$ pela sua média temporal
+                        $\langle u\rangle = \frac{\epsilon_0}{4}E_0^2$ no tratamento das transições induzidas por luz
+                        incoerente.</li>
+                </ol>
+
+                <hr class="resolucao-sep">
+
+                <p><strong>Resolução - Exercício 7:</strong></p>
+                <p>A probabilidade do enunciado é a da
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[01] - Sistemas de Dois Níveis.html#teo-probabilidade-senoidal">Eq. 11.35</a>
+                de Griffiths, obtida em primeira ordem na aproximação de onda girante. Para abreviar, definimos a
+                dessintonia e a função que contém toda a dependência em $\omega$:</p>
+                <p>$$\begin{aligned}
+                \Delta&\equiv\omega_0-\omega,\\
+                f(\Delta)&\equiv\frac{\sin^2(\Delta t/2)}{\Delta^2},\\
+                P_{a\to b}&=\frac{|V_{ab}|^2}{\hbar^2}\,f(\Delta).
+                \end{aligned}$$</p>
+                <p>Com $t$ fixo, estudar $P_{a\to b}$ como função de $\omega$ é o mesmo que estudar $f$ como função de
+                $\Delta$, já que $\Delta$ e $\omega$ diferem por uma constante e um sinal.</p>
+
+                <p><strong>(a)</strong> <strong>Passo 1: o valor em $\omega=\omega_0$.</strong> Em $\Delta=0$ a
+                expressão é do tipo $0/0$. Mudamos de variável para $x\equiv\Delta t/2$, de modo que
+                $\Delta=2x/t$ e $\Delta^2=4x^2/t^2$:</p>
+                <p>$$\begin{aligned}
+                f&=\frac{\sin^2x}{4x^2/t^2}
+                =\frac{t^2}{4}\left(\frac{\sin x}{x}\right)^2.
+                \end{aligned}$$</p>
+                <p>Quando $\omega\to\omega_0$, temos $x\to0$ e o limite fundamental $\sin x/x\to1$ dá $f\to t^2/4$.
+                Portanto,</p>
+                <p>$$\begin{aligned}
+                P_{a\to b}\big|_{\omega=\omega_0}
+                &=\frac{|V_{ab}|^2}{\hbar^2}\cdot\frac{t^2}{4}
+                =\left(\frac{|V_{ab}|\,t}{2\hbar}\right)^2.
+                \end{aligned}$$</p>
+
+                <p><strong>Passo 2: esse é o máximo.</strong> Para $x\ge0$,</p>
+                <p>$$|\sin x|=\left|\int_0^x\cos s\,ds\right|
+                \le\int_0^x|\cos s|\,ds\le\int_0^x ds=x,$$</p>
+                <p>e, como $\sin^2$ e $x^2$ são pares, $\sin^2x\le x^2$ para todo $x$ real. Logo
+                $(\sin x/x)^2\le1$, com igualdade apenas em $x=0$ (para $x\ne0$ o cosseno não é identicamente $1$ no
+                intervalo, e a desigualdade é estrita). Então</p>
+                <p>$$f(\Delta)\le\frac{t^2}{4},
+                \qquad\text{com igualdade só em }\Delta=0.$$</p>
+                <p>O máximo absoluto de $P_{a\to b}$ como função de $\omega$ ocorre, portanto, em $\omega=\omega_0$, com
+                altura $\left(|V_{ab}|t/2\hbar\right)^2$.</p>
+
+                <p><strong>Passo 3: os zeros vizinhos ao pico.</strong> Para $\Delta\ne0$, $f=0$ exige
+                $\sin(\Delta t/2)=0$, isto é,</p>
+                <p>$$\begin{aligned}
+                \frac{\Delta t}{2}&=k\pi,
+                \qquad k=\pm1,\pm2,\ldots\\
+                \Longrightarrow\quad
+                \omega&=\omega_0-\frac{2k\pi}{t}.
+                \end{aligned}$$</p>
+                <p>O valor $k=0$ está excluído, porque ali fica o máximo, não um zero. Os dois zeros que ladeiam o pico
+                são $k=\pm1$:</p>
+                <p>$$\omega_\mp=\omega_0\mp\frac{2\pi}{t},
+                \qquad
+                \omega_+-\omega_-=\frac{4\pi}{t}.$$</p>
+
+                <p><strong>Passo 4: interpretação.</strong> A largura do pico, $\delta\omega\sim4\pi/t$, corresponde a
+                uma faixa de energias $\delta E=\hbar\,\delta\omega\sim4\pi\hbar/t$, ou seja,</p>
+                <p>$$\delta E\cdot t\sim4\pi\hbar.$$</p>
+                <p>Essa é a forma da relação de incerteza energia-tempo: uma perturbação que age durante um tempo $t$
+                só consegue "testar" a conservação de energia, $\hbar\omega=E_b-E_a$, com resolução $\sim\hbar/t$.
+                Por um tempo curto, frequências bem distantes de $\omega_0$ ainda induzem transições; à medida que $t$
+                cresce, o pico se estreita como $1/t$ e cresce como $t^2$. Sua área cresce como $t$: pelo
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[02] - Emissão e Absorção de Radiação.html#lema-integral-seno-quadrado">lema da Eq. 11.48</a>,
+                com $d\Delta=(2/t)\,dx$,</p>
+                <p>$$\begin{aligned}
+                \int_{-\infty}^{\infty}f\,d\Delta
+                &=\int_{-\infty}^{\infty}\frac{t^2}{4}\frac{\sin^2x}{x^2}\,
+                \frac{2}{t}\,dx\\
+                &=\frac t2\cdot\pi=\frac{\pi t}{2}.
+                \end{aligned}$$</p>
+                <p>Assim, $f/(\pi t/2)$ tem área $1$ e largura que vai a zero: para $t\to\infty$ ela tende a
+                $\delta(\omega-\omega_0)$, e a conservação de energia passa a valer exatamente. É isso que, integrado
+                sobre um espectro, produz a taxa constante da
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[02] - Emissão e Absorção de Radiação.html#perturbacoes-incoerentes">Eq. 11.50</a>.</p>
+
+                <p><strong>(b)</strong> <strong>Passo 1: a condição de consistência.</strong> Com
+                $\omega_R\equiv|V_{ab}|/\hbar$, a altura do pico encontrada em (a) é</p>
+                <p>$$P_{\max}(t)=\left(\frac{|V_{ab}|t}{2\hbar}\right)^2
+                =\left(\frac{\omega_Rt}{2}\right)^2.$$</p>
+                <p>Uma probabilidade não pode exceder $1$. Como os dois lados são positivos, podemos tirar a raiz
+                quadrada:</p>
+                <p>$$\begin{aligned}
+                \left(\frac{\omega_Rt}{2}\right)^2\le1
+                \quad&\Longleftrightarrow\quad
+                \frac{\omega_Rt}{2}\le1\\
+                &\Longleftrightarrow\quad
+                t\le\frac{2}{\omega_R}.
+                \end{aligned}$$</p>
+                <p>Para tempos maiores, a fórmula de primeira ordem prevê $P_{a\to b}\gt1$ na ressonância, o que é
+                absurdo. Na prática, ela só é confiável quando $P\ll1$, isto é, $t\ll2/\omega_R$; por isso escrevemos
+                $t\lesssim2/\omega_R$.</p>
+
+                <p><strong>Passo 2: o tempo de acumulação.</strong> Na ressonância, a raiz da probabilidade dá o
+                módulo da amplitude,</p>
+                <p>$$|c_b(t)|=\sqrt{P_{a\to b}}=\frac{\omega_R}{2}\,t,$$</p>
+                <p>que cresce linearmente com $t$ e só se torna de ordem $1$ quando $t\sim1/\omega_R$. Esse é o tempo
+                que a amplitude de transição leva para se acumular, e é também onde a primeira ordem deixa de valer,
+                porque ela supõe $c_a\simeq1$. A solução exata do
+                <a href="#exercicio-2">Exercício 2</a> confirma o quadro. Na ressonância, a frequência de Rabi daquele
+                exercício vale $\omega_r=|V_{ab}|/2\hbar=\omega_R/2$, e</p>
+                <p>$$\begin{aligned}
+                P_{a\to b}^{\text{exata}}
+                &=\sin^2\left(\frac{\omega_Rt}{2}\right)\\
+                &\simeq\left(\frac{\omega_Rt}{2}\right)^2
+                \quad\text{se }\omega_Rt\ll1.
+                \end{aligned}$$</p>
+                <p>O resultado de primeira ordem é só o começo da oscilação de Rabi; a transferência completa ocorre em
+                $t=\pi/\omega_R$, de fato da ordem de $1/\omega_R$. Fora da ressonância a situação é mais branda: como
+                $\sin^2\le1$, vale $P_{a\to b}\le\omega_R^2/\Delta^2$ para todo $t$, e a primeira ordem permanece
+                válida em qualquer instante se $|\Delta|\gg\omega_R$.</p>
+
+                <p><strong>(c)</strong> <strong>Passo 1: $\omega_R$ para uma onda eletromagnética.</strong> Com
+                $V_{ab}=-\wp E_0$
+                (<a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[02] - Emissão e Absorção de Radiação.html#ondas-eletromagneticas">Eq. 11.41</a>),</p>
+                <p>$$\omega_R=\frac{|\wp|E_0}{\hbar},
+                \qquad
+                \frac{\omega_R}{\omega}\simeq\frac{|\wp|E_0}{\hbar\omega_0},$$</p>
+                <p>em que usamos $\omega\simeq\omega_0$. A razão é a energia de interação do dipolo com o campo dividida
+                pela energia do fóton.</p>
+
+                <p><strong>Passo 2: estimativa numérica.</strong> Para uma transição atômica, $|\wp|\sim ea$, com
+                $a=5{,}29\times10^{-11}\,\text{m}$ o raio de Bohr:</p>
+                <p>$$\begin{aligned}
+                |\wp|&\sim(1{,}60\times10^{-19}\,\text{C})\\
+                &\quad\times(5{,}29\times10^{-11}\,\text{m})\\
+                &=8{,}5\times10^{-30}\,\text{C}\cdot\text{m}.
+                \end{aligned}$$</p>
+                <p>Como campo "ordinário", tomamos a luz do Sol na superfície da Terra, com intensidade
+                $I\approx10^3\,\text{W/m}^2$. Da relação $I=c\epsilon_0E_0^2/2$,</p>
+                <p>$$\begin{aligned}
+                E_0&=\sqrt{\frac{2I}{c\epsilon_0}}\\
+                &=\sqrt{\frac{2\times10^3}{(3{,}00\times10^8)(8{,}85\times10^{-12})}}\,
+                \frac{\text{V}}{\text{m}}\\
+                &=\sqrt{7{,}5\times10^{5}}\,\frac{\text{V}}{\text{m}}
+                \approx8{,}7\times10^2\,\frac{\text{V}}{\text{m}}.
+                \end{aligned}$$</p>
+                <p>Então</p>
+                <p>$$\begin{aligned}
+                \omega_R&=\frac{(8{,}5\times10^{-30})(8{,}7\times10^{2})}
+                {1{,}055\times10^{-34}}\,\text{s}^{-1}\\
+                &\approx7\times10^{7}\,\text{s}^{-1}.
+                \end{aligned}$$</p>
+                <p>Para luz visível com $\lambda=550\,\text{nm}$,</p>
+                <p>$$\begin{aligned}
+                \omega&=\frac{2\pi c}{\lambda}
+                =\frac{2\pi(3{,}00\times10^8)}{5{,}5\times10^{-7}}\,\text{s}^{-1}\\
+                &=3{,}4\times10^{15}\,\text{s}^{-1},\\
+                \frac{\omega_R}{\omega}
+                &\approx\frac{7\times10^{7}}{3{,}4\times10^{15}}
+                \approx2\times10^{-8}.
+                \end{aligned}$$</p>
+                <p>O tempo característico da transição, $1/\omega_R$, contém</p>
+                <p>$$\frac{1/\omega_R}{2\pi/\omega}
+                =\frac{\omega}{2\pi\,\omega_R}
+                \approx8\times10^{6}$$</p>
+                <p>períodos do campo. Mesmo um laser intenso, com $E_0=10^8\,\text{V/m}$, dá
+                $\omega_R\approx8\times10^{12}\,\text{s}^{-1}$ e $\omega_R/\omega\approx2\times10^{-3}$. Só para campos
+                comparáveis ao campo atômico, $e/4\pi\epsilon_0a^2\approx5\times10^{11}\,\text{V/m}$, teríamos
+                $\omega_R\sim\omega$.</p>
+
+                <p><strong>Passo 3: por que usar a média temporal.</strong> A densidade de energia elétrica instantânea
+                de $E=E_0\cos(\omega t)$ é, pela identidade $\cos^2\theta=(1+\cos2\theta)/2$,</p>
+                <p>$$\begin{aligned}
+                u&=\frac{\epsilon_0}{2}E_0^2\cos^2(\omega t)\\
+                &=\frac{\epsilon_0}{4}E_0^2
+                +\frac{\epsilon_0}{4}E_0^2\cos(2\omega t).
+                \end{aligned}$$</p>
+                <p>Ela tem uma parte constante e uma parte que oscila com $2\omega$. A média sobre um período
+                $T=2\pi/\omega$ elimina a segunda, porque $\int_0^T\cos(2\omega t)\,dt=\sin(4\pi)/2\omega=0$:</p>
+                <p>$$\langle u\rangle=\frac1T\int_0^Tu\,dt
+                =\frac{\epsilon_0}{4}E_0^2.$$</p>
+                <p>A amplitude $c_b$ só muda apreciavelmente num tempo $\sim1/\omega_R$, que contém milhões de períodos.
+                A parte de $u$ que oscila com $2\omega$ troca de sinal milhões de vezes nesse intervalo, e seu efeito
+                acumulado se cancela. É o mesmo argumento da aproximação de onda girante, que despreza os termos que
+                oscilam com $\omega+\omega_0\approx2\omega$. O átomo, portanto, só "sente" a média $\langle u\rangle$.</p>
+                <p>Para luz <em>incoerente</em>, o argumento é ainda mais importante. O campo é uma superposição de
+                componentes de frequências $\omega_i$ com fases aleatórias. No quadrado $E^2$ aparecem termos cruzados
+                $E_iE_j\cos[(\omega_i-\omega_j)t+\phi_i-\phi_j]$. Eles se anulam na média, tanto no tempo quanto
+                sobre as fases aleatórias. Sobram só os termos diagonais: as <em>energias</em> das componentes se
+                somam, e não as amplitudes. Isso só é legítimo porque a transição integra o campo por um tempo muito
+                maior que um período. É o que permite descrever a radiação pela densidade espectral $\rho(\omega)$, com
+                $u\to\rho(\omega)\,d\omega$ na
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[02] - Emissão e Absorção de Radiação.html#perturbacoes-incoerentes">Eq. 11.46</a>.</p>
+                <p>Uma nota sobre convenções: o $u$ do enunciado é só a parte elétrica. Numa onda plana, a parte
+                magnética $B^2/2\mu_0$ tem a mesma média, e a densidade total média é
+                $2\times\epsilon_0E_0^2/4=\epsilon_0E_0^2/2$, que é a
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[02] - Emissão e Absorção de Radiação.html#perturbacoes-incoerentes">Eq. 11.44</a>
+                usada nas notas. As duas convenções levam à mesma física, desde que se use a mesma $u$ na definição de
+                $\rho(\omega)$.<span class="qed" aria-label="Fim da resolução">&#x220E;</span></p>
+
+                <hr class="resolucao-sep">
+
+                <h3 id="exercicio-8">Exercício 8</h3>
+                <p>Um átomo em um estado excitado pode decair tanto por emissão espontânea quanto por emissão estimulada
+                    pela radiação de corpo negro que o cerca, à temperatura $T$. Considerando que as taxas desses dois
+                    processos são $A$ e $B\rho(\omega_0)$, respectivamente, e usando as relações de Einstein entre $A$ e
+                    $B$,</p>
+                <ol type="a">
+                    <li>determine a frequência $\omega_*$ para a qual os dois mecanismos contribuem igualmente, e mostre que
+                        ela depende apenas de $T$;</li>
+                    <li>avalie $\nu_* = \omega_*/2\pi$ para $T = 300\,\text{K}$ e identifique qual dos dois mecanismos
+                        predomina abaixo e acima dessa frequência. Qual deles domina no caso da luz visível?</li>
+                </ol>
+                <p>(Dica: por emissão termicamente estimulada entende-se simplesmente a emissão estimulada pelo campo
+                    ambiente, isto é, aquela cuja taxa é $B\rho(\omega_0)$ com $\rho$ dada pela fórmula de corpo negro; não
+                    se trata de um terceiro mecanismo.)</p>
+
+                <hr class="resolucao-sep">
+
+                <p><strong>Resolução - Exercício 8:</strong></p>
+                <p>Um átomo no estado excitado $\psi_b$, imerso em radiação de corpo negro à temperatura $T$, pode
+                decair para $\psi_a$ por dois canais independentes, com taxas por átomo</p>
+                <p>$$\begin{aligned}
+                R_{\text{esp}}&=A,\\
+                R_{\text{est}}&=B_{ba}\,\rho(\omega_0),
+                \qquad \omega_0=\frac{E_b-E_a}{\hbar}.
+                \end{aligned}$$</p>
+                <p>Como diz a dica, a emissão "termicamente estimulada" é a própria emissão estimulada, com $\rho$ dado
+                pela
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[03] - Emissão Espontânea.html#teo-formula-de-planck">fórmula de Planck (Eq. 11.59)</a>:</p>
+                <p>$$\rho(\omega)=\frac{\hbar}{\pi^2c^3}\,
+                \frac{\omega^3}{e^{\hbar\omega/k_BT}-1}.$$</p>
+                <p>As
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[03] - Emissão Espontânea.html#teo-relacoes-de-einstein">relações de Einstein (Eqs. 11.60–11.61)</a>
+                ligam os coeficientes:</p>
+                <p>$$B_{ab}=B_{ba},
+                \qquad A=\frac{\omega_0^3\hbar}{\pi^2c^3}\,B_{ba}.$$</p>
+
+                <p><strong>(a)</strong> <strong>Passo 1: a razão entre as taxas.</strong> Abreviamos
+                $x\equiv\hbar\omega_0/k_BT$, a energia do fóton em unidades de $k_BT$. Substituindo $\rho(\omega_0)$ e
+                $A$,</p>
+                <p>$$\begin{aligned}
+                \frac{R_{\text{est}}}{R_{\text{esp}}}
+                &=\frac{B_{ba}\,\dfrac{\hbar}{\pi^2c^3}\,
+                \dfrac{\omega_0^3}{e^{x}-1}}
+                {\dfrac{\omega_0^3\hbar}{\pi^2c^3}\,B_{ba}}\\
+                &=\frac{1}{e^{x}-1}.
+                \end{aligned}$$</p>
+                <p>Todos os fatores $B_{ba}$, $\hbar$, $\omega_0^3$ e $\pi^2c^3$ aparecem em cima e embaixo e se
+                cancelam. Em particular, o momento de dipolo $|\boldsymbol\wp|^2$, que está escondido em $B_{ba}$
+                (<a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[03] - Emissão Espontânea.html#teo-taxa-emissao-espontanea">Eq. 11.62</a>),
+                desaparece: a razão não depende de nenhum detalhe do átomo.</p>
+
+                <p><strong>Passo 2: a frequência de igualdade.</strong> Os dois mecanismos contribuem igualmente
+                quando a razão vale $1$:</p>
+                <p>$$\begin{aligned}
+                \frac{1}{e^{x_*}-1}=1
+                \quad&\Longleftrightarrow\quad e^{x_*}-1=1\\
+                &\Longleftrightarrow\quad e^{x_*}=2\\
+                &\Longleftrightarrow\quad x_*=\ln2.
+                \end{aligned}$$</p>
+                <p>Voltando a $x=\hbar\omega/k_BT$,</p>
+                <p>$$\omega_*=\frac{k_BT\,\ln2}{\hbar}.$$</p>
+                <p>Além de constantes universais, $\omega_*$ depende apenas de $T$, como queríamos mostrar.</p>
+
+                <p><strong>Interpretação.</strong> A razão encontrada é a distribuição de Bose-Einstein,</p>
+                <p>$$\bar n(\omega_0)=\frac{1}{e^{\hbar\omega_0/k_BT}-1},$$</p>
+                <p>isto é, o número médio de fótons por modo do campo térmico na frequência $\omega_0$. Então
+                $R_{\text{est}}=A\,\bar n$: cada fóton presente no modo estimula a emissão com a mesma taxa $A$ da
+                emissão espontânea. A taxa total de emissão é $A(1+\bar n)$, e os dois mecanismos se igualam quando há,
+                em média, exatamente um fóton por modo. Essa leitura, em que a emissão espontânea age como se houvesse
+                "um fóton a mais" no modo, é a ideia explorada no
+                <a href="#exercicio-9">Exercício 9</a>.</p>
+
+                <p><strong>(b)</strong> <strong>Passo 1: o valor numérico.</strong> Com $\omega=2\pi\nu$ e
+                $h=2\pi\hbar$,</p>
+                <p>$$\nu_*=\frac{\omega_*}{2\pi}
+                =\frac{k_BT\,\ln2}{2\pi\hbar}
+                =\frac{k_BT\,\ln2}{h}.$$</p>
+                <p>Para $T=300\,\text{K}$, com $k_B=8{,}617\times10^{-5}\,\text{eV/K}$ e
+                $h=4{,}136\times10^{-15}\,\text{eV}\cdot\text{s}$,</p>
+                <p>$$\begin{aligned}
+                k_BT&=(8{,}617\times10^{-5})(300)\,\text{eV}\\
+                &=2{,}585\times10^{-2}\,\text{eV},\\
+                \frac{k_BT}{h}
+                &=\frac{2{,}585\times10^{-2}}{4{,}136\times10^{-15}}\,\text{Hz}\\
+                &=6{,}251\times10^{12}\,\text{Hz}.
+                \end{aligned}$$</p>
+                <p>Multiplicando por $\ln2=0{,}6931$,</p>
+                <p>$$\begin{aligned}
+                \nu_*&=0{,}6931\times6{,}251\times10^{12}\,\text{Hz}\\
+                &=4{,}33\times10^{12}\,\text{Hz}\approx4{,}3\,\text{THz},\\
+                \omega_*&=2\pi\nu_*=2{,}72\times10^{13}\,\text{s}^{-1}.
+                \end{aligned}$$</p>
+                <p>O comprimento de onda correspondente é</p>
+                <p>$$\lambda_*=\frac{c}{\nu_*}
+                =\frac{3{,}00\times10^8\,\text{m/s}}{4{,}33\times10^{12}\,\text{Hz}}
+                \approx69\,\mu\text{m},$$</p>
+                <p>no infravermelho distante. Ele fica abaixo do pico do espectro de Planck em frequência, que está em
+                $x\approx2{,}82$, isto é, $\nu\approx2{,}82\,k_BT/h\approx17{,}6\,\text{THz}$.</p>
+
+                <p><strong>Passo 2: quem domina de cada lado.</strong> A função $1/(e^{x}-1)$ é estritamente
+                decrescente em $x$, pois $e^x$ é crescente. Assim,</p>
+                <p>$$\begin{aligned}
+                \nu\lt\nu_*\ (x\lt\ln2):&\quad e^x-1\lt1
+                \ \Rightarrow\ \frac{R_{\text{est}}}{R_{\text{esp}}}\gt1,\\
+                \nu\gt\nu_*\ (x\gt\ln2):&\quad e^x-1\gt1
+                \ \Rightarrow\ \frac{R_{\text{est}}}{R_{\text{esp}}}\lt1.
+                \end{aligned}$$</p>
+                <p>Abaixo de $\nu_*$ domina a emissão estimulada; acima, a espontânea. Os dois extremos ficam claros
+                expandindo a exponencial:</p>
+                <p>$$\frac{R_{\text{est}}}{R_{\text{esp}}}\simeq
+                \begin{cases}
+                \dfrac{1}{x}=\dfrac{k_BT}{\hbar\omega_0}\gg1, & x\ll1,\\[8pt]
+                e^{-x}\ll1, & x\gg1.
+                \end{cases}$$</p>
+                <p>No primeiro caso usamos $e^x-1\simeq x$; no segundo, $e^x-1\simeq e^x$. São os regimes de
+                Rayleigh-Jeans e de Wien da radiação de corpo negro.</p>
+
+                <p><strong>Passo 3: luz visível.</strong> Para $\lambda=550\,\text{nm}$,</p>
+                <p>$$\begin{aligned}
+                \nu&=\frac{c}{\lambda}
+                =\frac{3{,}00\times10^8}{5{,}50\times10^{-7}}\,\text{Hz}
+                =5{,}45\times10^{14}\,\text{Hz},\\
+                h\nu&=(4{,}136\times10^{-15})(5{,}45\times10^{14})\,\text{eV}\\
+                &=2{,}25\,\text{eV},\\
+                x&=\frac{h\nu}{k_BT}=\frac{2{,}25}{2{,}585\times10^{-2}}\approx87{,}2.
+                \end{aligned}$$</p>
+                <p>Estamos no regime $x\gg1$, e</p>
+                <p>$$\begin{aligned}
+                \frac{R_{\text{est}}}{R_{\text{esp}}}
+                &\simeq e^{-87{,}2}
+                =10^{-87{,}2/\ln10}\\
+                &=10^{-37{,}9}\approx1\times10^{-38}.
+                \end{aligned}$$</p>
+                <p>No visível, a emissão espontânea domina de forma esmagadora. À temperatura ambiente, o campo térmico
+                praticamente não tem fótons visíveis ($\bar n\sim10^{-38}$), e não há o que estimule a emissão. É por
+                isso que as transições ópticas decaem com o tempo de vida $1/A$, e que um laser precisa de inversão de
+                população e de uma cavidade para acumular fótons no modo, em vez de contar com a radiação ambiente.
+                No extremo oposto, para a linha de $21\,\text{cm}$ do
+                <a href="#exercicio-11">Exercício 11</a> ($\nu=1{,}42\,\text{GHz}$), temos
+                $x=h\nu/k_BT\approx2{,}3\times10^{-4}$ a $300\,\text{K}$, e a emissão estimulada vence por um fator
+                $1/x\approx4\times10^{3}$.<span class="qed" aria-label="Fim da resolução">&#x220E;</span></p>
+
+                <hr class="resolucao-sep">
+
+                <h3 id="exercicio-9">Exercício 9</h3>
+                <p>A taxa de emissão espontânea pode ser obtida sem recorrer aos coeficientes $A$ e $B$ de Einstein, desde
+                    que se conheça a densidade de energia do estado fundamental do campo eletromagnético, $\rho_0(\omega)$:
+                    nesse caso o decaimento é apenas um processo de emissão estimulada, com taxa
+                    $\pi|\wp|^2\rho_0(\omega_0)/3\epsilon_0\hbar^2$. Um tratamento honesto exigiria eletrodinâmica
+                    quântica, mas aceite aqui a hipótese de que o estado fundamental contém exatamente um fóton em cada
+                    modo clássico.</p>
+                <ol type="a">
+                    <li>Numa caixa cúbica vazia de aresta $l$, cada componente $f$ de $\mathbf{E}$ ou $\mathbf{B}$
+                        satisfaz $\left(c^{-2}\partial_t^2 - \nabla^2\right)f = 0$. Separando variáveis, com $f = 0$ nas
+                        seis faces, mostre que os modos são $f = A\cos(\omega t)\prod_{i=1}^{3}\sin(n_i\pi x_i/l)$, com
+                        frequências $\omega = (\pi c/l)\sqrt{n_x^2 + n_y^2 + n_z^2}$, havendo dois modos (as duas
+                        polarizações) por tripla de inteiros positivos.</li>
+                    <li>Atribuindo um fóton de energia $\hbar\omega$ a cada modo, calcule a energia total por unidade de
+                        volume no intervalo de frequências $d\omega$. Escrevendo o resultado na forma
+                        $l^{-3}dE = \rho_0(\omega)\,d\omega$, identifique $\rho_0(\omega)$. (Dica: conte os modos no
+                        octante positivo do espaço $\mathbf{n}$, como no cálculo do gás de elétrons livres.)</li>
+                    <li>Combine os dois resultados anteriores e obtenha a taxa de emissão espontânea, comparando-a com
+                        $A = \omega_0^3|\wp|^2/3\pi\epsilon_0\hbar c^3$.</li>
+                </ol>
+
+                <hr class="resolucao-sep">
+
+                <!-- SOLUCAO-EXERCICIO-9 -->
+
+                <h3 id="exercicio-10">Exercício 10</h3>
+                <p>Calcule o tempo de vida, em segundos, de cada um dos quatro estados $n = 2$ do átomo de hidrogênio, isto
+                    é, $\psi_{200}$ e $\psi_{21m}$ com $m = 0, \pm1$, supondo que o único canal de decaimento é a emissão
+                    espontânea para o estado fundamental. Explique fisicamente por que um deles se comporta de maneira
+                    qualitativamente distinta dos demais.</p>
+                <p>(Dicas: i. será preciso avaliar elementos de matriz do tipo $\langle\psi_{100}|x|\psi_{200}\rangle$,
+                    $\langle\psi_{100}|y|\psi_{211}\rangle$, etc., lembrando que $x = r\sin\theta\cos\phi$,
+                    $y = r\sin\theta\sin\phi$ e $z = r\cos\theta$; ii. a maioria dessas integrais se anula, de modo que
+                    vale inspecioná-las antes de calcular. Resposta: $1{,}60\times10^{-9}\,\text{s}$ para todos, exceto
+                    um deles.)</p>
+
+                <hr class="resolucao-sep">
+
+                <!-- SOLUCAO-EXERCICIO-10 -->
+
+                <h3 id="exercicio-11">Exercício 11</h3>
+                <p>No estado fundamental do hidrogênio, o acoplamento entre os spins do elétron e do próton separa o
+                    singleto $|0\rangle$ do tripleto $|1\rangle$, dando origem à célebre linha de $21\,\text{cm}$. A taxa
+                    de emissão espontânea correspondente é dada pela mesma expressão do caso elétrico, desde que se troque
+                    o momento de dipolo elétrico pelo magnético, $\wp \to M/c$, com
+                    $M = \langle1|\boldsymbol{\mu}_e + \boldsymbol{\mu}_p|0\rangle$, onde
+                    $\boldsymbol{\mu}_e = -(e/m_e)\mathbf{S}_e$ e $\boldsymbol{\mu}_p = 5{,}59\,(e/2m_p)\mathbf{S}_p$.
+                    (O fator $1/c$ acerta as unidades, como se verifica por análise dimensional.)</p>
+                <ol type="a">
+                    <li>Argumente que a contribuição do próton é desprezível. Nesse caso,
+                        $A = \omega_0^3e^2|\langle1|\mathbf{S}_e|0\rangle|^2/3\pi\epsilon_0\hbar c^5m_e^2$.</li>
+                    <li>Calcule $|\langle1|\mathbf{S}_e|0\rangle|^2$, usando o estado do tripleto que preferir, e obtenha
+                        numericamente a taxa de transição e o tempo de vida do tripleto. (Resposta:
+                        $1{,}1\times10^7$ anos.)</li>
+                    <li>Comente por que esse tempo de vida é tão maior que o das transições atômicas típicas de dipolo
+                        elétrico, e por que, ainda assim, a linha de $21\,\text{cm}$ é facilmente observada em escala
+                        astronômica.</li>
+                </ol>
+
+                <hr class="resolucao-sep">
+
+                <!-- SOLUCAO-EXERCICIO-11 -->
+
+                <h3 id="exercicio-12">Exercício 12</h3>
+                <p>Um elétron no estado $|300\rangle$ do hidrogênio decai até o estado fundamental por uma sequência de
+                    transições de dipolo elétrico, governadas pelas regras de seleção $\Delta\ell = \pm1$ e
+                    $\Delta m = 0, \pm1$.</p>
+                <ol type="a">
+                    <li>Quais rotas de decaimento estão abertas? Especifique-as na forma
+                        $|300\rangle \to |n\ell m\rangle \to \cdots \to |100\rangle$.</li>
+                    <li>Dado um frasco cheio de átomos nesse estado, que fração deles decairá por cada rota?</li>
+                    <li>Qual é o tempo de vida do estado $|300\rangle$? (Dica: uma vez feita a primeira transição o átomo
+                        já não está em $|300\rangle$, de modo que apenas o primeiro passo de cada sequência importa para
+                        esse cálculo.)</li>
+                </ol>
+
+                <hr class="resolucao-sep">
+
+                <!-- SOLUCAO-EXERCICIO-12 -->
+
+                <h3 id="exercicio-13">Exercício 13</h3>
+                <p>Cada um dos pares de estados do hidrogênio listados abaixo está proibido, por emissão espontânea de
+                    dipolo elétrico, por pelo menos uma das regras de seleção $\Delta\ell = \pm1$ e $\Delta m = 0, \pm1$.
+                    Para cada par, diga qual (ou quais) das duas regras é violada e explique em uma frase a origem física
+                    da proibição, lembrando que $\ell$ e $m$ se referem ao estado na notação $|n\ell m\rangle$.</p>
+                <ol type="a">
+                    <li>$|200\rangle \to |100\rangle$, $|300\rangle \to |200\rangle$ e $|320\rangle \to |210\rangle$,
+                        estes últimos dois com a mesma justificativa;</li>
+                    <li>$|322\rangle \to |200\rangle$ e $|2\,1\,{-1}\rangle \to |100\rangle$;</li>
+                    <li>$|300\rangle \to |310\rangle$, cuja proibição nada tem a ver com as regras acima.</li>
+                </ol>
+                <p>Em seguida, mostre que $|200\rangle$ é o único estado excitado do hidrogênio incapaz de decair por esse
+                    mecanismo, qualquer que seja $n$, e explique por que ele ainda assim acaba decaindo em situações
+                    realistas.</p>
+
+                <hr class="resolucao-sep">
+
+                <!-- SOLUCAO-EXERCICIO-13 -->
 
             </div>
         </main>
@@ -278,6 +2565,13 @@
                             <li><a href="#exercicio-4">Exercício 4</a></li>
                             <li><a href="#exercicio-5">Exercício 5</a></li>
                             <li><a href="#exercicio-6">Exercício 6</a></li>
+                            <li><a href="#exercicio-7">Exercício 7</a></li>
+                            <li><a href="#exercicio-8">Exercício 8</a></li>
+                            <li><a href="#exercicio-9">Exercício 9</a></li>
+                            <li><a href="#exercicio-10">Exercício 10</a></li>
+                            <li><a href="#exercicio-11">Exercício 11</a></li>
+                            <li><a href="#exercicio-12">Exercício 12</a></li>
+                            <li><a href="#exercicio-13">Exercício 13</a></li>
                         </ul>
                     </li>
                 </ul>
