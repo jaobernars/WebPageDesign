@@ -84,10 +84,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 })();
 
+/* =========================================================
+   FOOTER: BOTÃO DE SUGESTÕES
+   ========================================================= */
+(function () {
+    // Link do formulário de sugestões. Vale para todas as páginas.
+    const SUGGESTION_FORM_URL = 'https://forms.gle/ZedPfFquzcn8FwCR8';
 
-
-
-
-
-
-
+    document.querySelectorAll('.footer-suggest__btn').forEach((btn) => {
+        if (SUGGESTION_FORM_URL) {
+            btn.href = SUGGESTION_FORM_URL;
+            btn.target = '_blank';
+            btn.rel = 'noopener noreferrer';
+        } else {
+            // sem link ainda: o clique não faz nada (evita pular para o topo)
+            btn.addEventListener('click', (e) => e.preventDefault());
+        }
+    });
+})();

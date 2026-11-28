@@ -582,84 +582,143 @@ header {
 .site-footer {
     width: 100%;
     background-color: #161616;
-    padding: 80px 40px 48px 40px;
+    padding: 48px 40px 24px;
     border-top: 1px solid #1a1a1a;
     display: flex;
-    justify-content: center;
-    margin-top: 80px;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 48px;
 }
 
-/* Grid principal: coluna da marca (larga) + colunas de links, no estilo Anthropic.
-   O auto-fit colapsa as trilhas vazias, então as colunas de links se distribuem
-   sozinhas pela largura — dá para comentar ou acrescentar uma coluna no HTML
-   sem sobrar buraco nem precisar mexer aqui. */
+/* Três zonas: marca à esquerda, links no centro e sugestões à direita.
+   As laterais têm a mesma largura, então os links ficam no meio exato. */
 .footer-container {
     width: 100%;
-    max-width: 1400px;
+    max-width: 1200px;
     display: grid;
-    grid-template-columns: minmax(200px, 1.3fr) repeat(auto-fit, minmax(120px, 1fr));
-    gap: 48px 32px;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     align-items: start;
+    gap: 32px 48px;
 }
 
-/* Coluna da marca: logo no topo, copyright + redes lá embaixo */
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.footer-suggest {
+    justify-self: end;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    max-width: 240px;
+}
+
+.footer-suggest h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+}
+
+.footer-suggest p {
+    font-size: 14px;
+    line-height: 1.55;
+    color: #9a9a9a;
+    margin: 0;
+}
+
+.footer-suggest__btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #111111;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.footer-suggest__btn:hover {
+    opacity: 0.85;
+}
+
+.footer-suggest__btn:focus-visible {
+    outline: 2px solid #93c5fd;
+    outline-offset: 3px;
+}
+
 .footer-brand {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 48px;
-    min-height: 240px;
+    align-items: flex-start;
+    gap: 16px;
+    max-width: 320px;
 }
 
-/* Agrupa o logo e o título por cima, como um bloco só, para o espaço
-   entre eles ("copyright + redes") continuar sendo o único outro item
-   flex de .footer-brand — preserva o layout responsivo existente. */
 .footer-brand__top {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 20px;
+    gap: 8px;
 }
 
 .footer-brand__logo-link {
     display: inline-block;
     width: fit-content;
+    margin-bottom: 8px;
 }
 
 .footer-brand__title {
     font-family: 'Lora', Georgia, serif;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 600;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.3px;
     line-height: 1.25;
     color: #ffffff;
-    max-width: 220px;
 }
 
+.footer-brand__desc {
+    font-size: 14px;
+    line-height: 1.55;
+    color: #9a9a9a;
+    margin: 0;
+    max-width: 320px;
+}
+
+/* Logo da Timer Technology: letreiro branco no tema escuro, azul no claro */
 .footer-brand__logo {
-    height: 200px;
-    width: auto;
+    width: 220px;
+    max-width: 100%;
+    height: auto;
     display: block;
-    /* O selo é azul-marinho sobre fundo transparente: no rodapé escuro ele
-       desapareceria, então clareamos com invert. No tema claro o filtro é
-       removido e a arte volta ao azul original. */
-    filter: invert(0) brightness(1.05);
     transition: transform 0.3s ease;
+}
+
+.footer-brand__logo--light {
+    display: none;
 }
 
 .footer-brand__logo-link:hover .footer-brand__logo {
     transform: translateY(-2px);
 }
 
-.footer-brand__bottom {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
+/* Linha final: aviso de direitos, centralizado */
+.footer-bottom {
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid #2a2a2a;
+    text-align: center;
 }
 
 .footer-copyright {
     font-size: 13px;
-    color: #666666;
+    color: #8a8a8a;
 }
 
 .footer-social {
@@ -689,20 +748,20 @@ header {
 .footer-col {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 24px;
 }
 
 .footer-group {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 10px;
 }
 
 .footer-group h4 {
     font-size: 14px;
     font-weight: 600;
     color: #ffffff;
-    margin-bottom: 2px;
+    margin: 0 0 2px;
 }
 
 .footer-group a {
@@ -729,58 +788,56 @@ header {
     }
 }
 
-/* Footer: tablet — marca no topo (linha) + links em 4 colunas abaixo */
-@media (max-width: 1024px) {
+/* Footer: telas médias — marca e sugestões em cima, links centralizados abaixo */
+@media (max-width: 1100px) {
     .site-footer {
-        padding: 64px 24px 40px 24px;
+        padding: 40px 24px 24px;
     }
 
-    .footer-container {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-        gap: 40px 24px;
-    }
-
-    .footer-brand {
-        grid-column: 1 / -1;
-        min-height: 0;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-end;
-        gap: 24px;
-        padding-bottom: 8px;
-        margin-bottom: 8px;
-        border-bottom: 1px solid #1a1a1a;
-    }
-
-    .footer-brand__bottom {
-        align-items: flex-end;
-        text-align: right;
-    }
-}
-
-/* Footer: celular — 2 colunas de links; marca empilhada e centralizada */
-@media (max-width: 640px) {
     .footer-container {
         grid-template-columns: 1fr 1fr;
     }
 
-    .footer-brand__top {
-        align-items: center;
-        text-align: center;
+    .footer-links {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        flex-wrap: wrap;
+        gap: 32px 56px;
     }
 
-    .footer-brand__title {
-        max-width: none;
+    .footer-suggest {
+        grid-column: 2;
+        grid-row: 1;
+    }
+}
+
+/* Footer: celular — tudo empilhado e centralizado, links em 2 colunas */
+@media (max-width: 640px) {
+    .footer-container {
+        grid-template-columns: 1fr;
     }
 
     .footer-brand {
-        flex-direction: column;
+        justify-self: center;
         align-items: center;
-        gap: 24px;
         text-align: center;
     }
 
-    .footer-brand__bottom {
+    .footer-brand__top {
+        align-items: center;
+    }
+
+    .footer-links {
+        grid-row: auto;
+        display: grid;
+        grid-template-columns: repeat(2, max-content);
+        gap: 28px 56px;
+    }
+
+    .footer-suggest {
+        grid-column: 1;
+        grid-row: auto;
+        justify-self: center;
         align-items: center;
         text-align: center;
     }
@@ -888,6 +945,9 @@ body.landing p {
 body.landing footer {
     position: absolute;
     bottom: 1.5rem;
+    width: min(640px, calc(100% - 2.5rem));
+    padding-top: 1rem;
+    border-top: 1px solid #2a2a2a;
     font-size: 0.8rem;
     color: #555;
 }
@@ -978,6 +1038,7 @@ body.landing footer {
 
   body.landing footer {
     position: static;
+    width: 100%;
     margin-top: 2rem;
     margin-bottom: 1.5rem;
     font-size: 0.75rem;
@@ -1853,43 +1914,41 @@ body.light-theme .site-footer {
     border-top-color: #e5e7eb;
 }
 
-body.light-theme .footer-group h4 {
-    color: #111111;
-}
-
-body.light-theme .footer-group a {
-    color: #6b7280;
-}
-
-body.light-theme .footer-group a:hover {
-    color: #2563eb; /* azul de destaque no tema claro */
-}
-
-body.light-theme .footer-copyright,
-body.light-theme .footer-place {
-    color: #9ca3af;
-}
-
-body.light-theme .footer-social a {
-    color: #6b7280;
-}
-
-body.light-theme .footer-social a:hover {
-    color: #2563eb;
-}
-
-/* No tema claro o fundo é branco: a arte azul-marinho do selo aparece naturalmente */
-body.light-theme .footer-brand__logo {
-    filter: none;
-}
-
+body.light-theme .footer-group h4,
+body.light-theme .footer-suggest h4,
 body.light-theme .footer-brand__title {
     color: #111111;
 }
 
-/* Divisor da marca no layout tablet, tema claro */
-body.light-theme .footer-brand {
-    border-bottom-color: #e5e7eb;
+body.light-theme .footer-brand__desc,
+body.light-theme .footer-suggest p,
+body.light-theme .footer-group a,
+body.light-theme .footer-social a,
+body.light-theme .footer-copyright,
+body.light-theme .footer-place {
+    color: #6b7280;
+}
+
+body.light-theme .footer-group a:hover,
+body.light-theme .footer-social a:hover {
+    color: #2563eb; /* azul de destaque no tema claro */
+}
+
+body.light-theme .footer-bottom {
+    border-top-color: #e5e7eb;
+}
+
+body.light-theme .footer-suggest__btn {
+    background: #111111;
+    color: #ffffff;
+}
+
+body.light-theme .footer-brand__logo--dark {
+    display: none;
+}
+
+body.light-theme .footer-brand__logo--light {
+    display: block;
 }
 
 body.light-theme .logo-img {
