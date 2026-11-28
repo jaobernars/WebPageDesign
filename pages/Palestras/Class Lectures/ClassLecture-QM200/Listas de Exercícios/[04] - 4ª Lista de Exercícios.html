@@ -2487,7 +2487,252 @@
 
                 <hr class="resolucao-sep">
 
-                <!-- SOLUCAO-EXERCICIO-10 -->
+                <p><strong>Resolução - Exercício 10:</strong></p>
+                <p>Os quatro estados com $n=2$ têm a mesma energia, $E_2=E_1/4$, e o único nível abaixo deles é o
+                fundamental, $\psi_{100}$. Cada estado $\psi_{2\ell m}$ tem, portanto, um único canal de decaimento,
+                $\psi_{2\ell m}\to\psi_{100}$, cuja taxa é dada pelo
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[03] - Emissão Espontânea.html#teo-taxa-emissao-espontanea">teorema da taxa de emissão espontânea (Eq. 11.63)</a>:</p>
+                <p>$$A=\frac{\omega_0^3|\boldsymbol\wp|^2}{3\pi\epsilon_0\hbar c^3},
+                \qquad \omega_0=\frac{E_2-E_1}{\hbar}.$$</p>
+                <p>O tempo de vida é o inverso da taxa,
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[03] - Emissão Espontânea.html#def-tempo-de-vida">Eq. 11.66</a>:
+                $\tau=1/A$. Com um único canal, a soma da
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[03] - Emissão Espontânea.html#prop-canais-independentes">Eq. 11.67</a>
+                tem uma parcela só. O spin do elétron não participa: $\mathbf r$ não age sobre ele, e o estado decai
+                para $\psi_{100}$ com o mesmo spin.</p>
+                <p>O momento de dipolo é $\boldsymbol\wp=q\langle\psi_{2\ell m}|\mathbf r|\psi_{100}\rangle$, com $q=-e$.
+                Como $x$, $y$ e $z$ são hermitianos, trocar a ordem dos estados apenas conjuga o elemento de matriz e
+                não altera o seu módulo. Podemos, então, usar a ordem da dica e abreviar</p>
+                <p>$$\langle Q\rangle_{\ell m}\equiv\langle\psi_{100}|Q|\psi_{2\ell m}\rangle,$$</p>
+                <p>de modo que</p>
+                <p>$$\begin{aligned}
+                |\boldsymbol\wp|^2=e^2\Big(&|\langle x\rangle_{\ell m}|^2+|\langle y\rangle_{\ell m}|^2\\
+                &+|\langle z\rangle_{\ell m}|^2\Big).
+                \end{aligned}$$</p>
+                <p>A frequência $\omega_0$ e as constantes são as mesmas para os quatro estados. Tudo o que os distingue
+                está em doze elementos de matriz: três componentes para cada um dos quatro estados.</p>
+
+                <p><strong>Passo 1: as funções de onda.</strong> As de $\psi_{100}$ e $\psi_{21m}$ são as do
+                <a class="ref-capitulo" href="#exercicio-4">Exercício 4</a>. A de $\psi_{200}$ é
+                $R_{20}Y_0^0$, com $R_{20}=a^{-3/2}\left(1-r/2a\right)e^{-r/2a}/\sqrt2$ e $Y_0^0=1/\sqrt{4\pi}$:</p>
+                <p>$$\begin{aligned}
+                \psi_{100}&=\frac{1}{\sqrt{\pi a^3}}\,e^{-r/a},\\
+                \psi_{200}&=\frac{1}{\sqrt{8\pi a^3}}\left(1-\frac{r}{2a}\right)e^{-r/2a},\\
+                \psi_{210}&=\frac{1}{\sqrt{32\pi a^3}}\,
+                \frac{r}{a}\,e^{-r/2a}\cos\theta,\\
+                \psi_{21\pm1}&=\mp\frac{1}{\sqrt{64\pi a^3}}\,
+                \frac{r}{a}\,e^{-r/2a}\\
+                &\qquad\times\sin\theta\,e^{\pm i\phi}.
+                \end{aligned}$$</p>
+                <p>Com $x=r\sin\theta\cos\phi$, $y=r\sin\theta\sin\phi$, $z=r\cos\theta$ e
+                $d^3\mathbf r=r^2\sin\theta\,dr\,d\theta\,d\phi$, cada integral se fatora em uma parte radial, uma em
+                $\theta$ e uma em $\phi$, porque todas as funções são produtos de funções de uma variável. Para decidir
+                quais integrais se anulam, basta olhar a dependência angular: $1$, $\cos\theta$ e
+                $\sin\theta\,e^{\pm i\phi}$ nos estados $\psi_{200}$, $\psi_{210}$ e $\psi_{21\pm1}$;
+                $\sin\theta\cos\phi$, $\sin\theta\sin\phi$ e $\cos\theta$ nos operadores $x$, $y$ e $z$.</p>
+
+                <p><strong>Passo 2: inspeção das integrais.</strong> Seguindo a segunda dica, começamos pelas integrais
+                em $\phi$. Sobre um período completo,</p>
+                <p>$$\begin{aligned}
+                \int_0^{2\pi}\cos\phi\,d\phi&=\int_0^{2\pi}\sin\phi\,d\phi=0,\\
+                \int_0^{2\pi}e^{\pm i\phi}\,d\phi&=0.
+                \end{aligned}$$</p>
+                <p>Quando o operador e o estado dependem ambos de $\phi$, expandimos
+                $e^{\pm i\phi}=\cos\phi\pm i\sin\phi$. Como $\int_0^{2\pi}\sin\phi\cos\phi\,d\phi=0$ e
+                $\int_0^{2\pi}\cos^2\phi\,d\phi=\int_0^{2\pi}\sin^2\phi\,d\phi=\pi$, só os quadrados sobrevivem:</p>
+                <p>$$\begin{aligned}
+                \int_0^{2\pi}\cos\phi\,e^{\pm i\phi}\,d\phi&=\pi,\\
+                \int_0^{2\pi}\sin\phi\,e^{\pm i\phi}\,d\phi&=\pm i\pi.
+                \end{aligned}$$</p>
+                <p>Daqui saem três conclusões, sem nenhuma integral radial:</p>
+                <ul>
+                    <li>$\psi_{200}$ e $\psi_{210}$ não dependem de $\phi$. Em $\langle x\rangle$ e $\langle y\rangle$,
+                        a integral em $\phi$ é a de $\cos\phi$ ou a de $\sin\phi$ sozinha, e as duas se anulam.</li>
+                    <li>Para $\psi_{21\pm1}$, $z$ não depende de $\phi$, e $\langle z\rangle$ contém
+                        $\int_0^{2\pi}e^{\pm i\phi}\,d\phi=0$.</li>
+                    <li>Para $\psi_{200}$, o elemento $\langle z\rangle$ contém a integral em $\theta$
+                        $\int_0^\pi\cos\theta\sin\theta\,d\theta=\int_{-1}^{1}u\,du=0$, com $u=\cos\theta$.</li>
+                </ul>
+                <p>O quadro fica assim (✕ marca uma integral nula, ✓ uma que precisa ser calculada):</p>
+                <table>
+                    <tr><th>Estado</th><th>$\langle x\rangle$</th><th>$\langle y\rangle$</th><th>$\langle z\rangle$</th></tr>
+                    <tr><td>$\psi_{200}$</td><td>✕</td><td>✕</td><td>✕</td></tr>
+                    <tr><td>$\psi_{210}$</td><td>✕</td><td>✕</td><td>✓</td></tr>
+                    <tr><td>$\psi_{211}$</td><td>✓</td><td>✓</td><td>✕</td></tr>
+                    <tr><td>$\psi_{21-1}$</td><td>✓</td><td>✓</td><td>✕</td></tr>
+                </table>
+                <p>Sete das doze integrais se anulam por simetria. Esse é o conteúdo das
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[03] - Emissão Espontânea.html#teo-regras-de-selecao">regras de seleção do dipolo elétrico (Eq. 11.75)</a>.
+                A transição $\psi_{200}\to\psi_{100}$ tem $\Delta\ell=0$ e é proibida. Para $\psi_{210}$, $\Delta m=0$ e
+                só $z$ contribui. Para $\psi_{21\pm1}$, $\Delta m=\mp1$ e só $x$ e $y$ contribuem, ligados pela
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[03] - Emissão Espontânea.html#teo-regras-de-selecao">Eq. 11.76</a>.
+                Com o estado $\psi_{100}$ (de $m'=0$) à esquerda, ela dá
+                $\langle y\rangle_{1,\pm1}=\pm i\,\langle x\rangle_{1,\pm1}$, que vamos conferir.</p>
+
+                <p><strong>Passo 3: as cinco integrais restantes.</strong> <em>Estado $\psi_{210}$.</em> O
+                <a class="ref-capitulo" href="#exercicio-4">Exercício 4</a> calculou
+                $\langle210|z|100\rangle=(256/243\sqrt2)\,a$. Como as duas funções são reais, a ordem não importa, e</p>
+                <p>$$\langle z\rangle_{10}=\frac{2^7\sqrt2}{3^5}\,a\approx0{,}745\,a.$$</p>
+                <p><em>Estado $\psi_{211}$.</em> O produto das funções de onda é</p>
+                <p>$$\psi_{100}\,\psi_{211}=-\frac{1}{8\pi a^4}\,r\,e^{-3r/2a}\sin\theta\,e^{i\phi},$$</p>
+                <p>porque $\sqrt{\pi a^3}\,\sqrt{64\pi a^3}=8\pi a^3$ e o fator $r/a$ traz mais um $1/a$. Multiplicando
+                por $x=r\sin\theta\cos\phi$ e por $r^2\sin\theta$ do elemento de volume,</p>
+                <p>$$\begin{aligned}
+                \langle x\rangle_{11}
+                &=-\frac{1}{8\pi a^4}\int_0^\infty r^4e^{-3r/2a}\,dr\\
+                &\qquad\times\int_0^\pi\sin^3\theta\,d\theta
+                \int_0^{2\pi}\cos\phi\,e^{i\phi}\,d\phi.
+                \end{aligned}$$</p>
+                <p>A integral radial é a mesma do
+                <a class="ref-capitulo" href="#exercicio-4">Exercício 4</a>, $\int_0^\infty r^4e^{-3r/2a}\,dr=256\,a^5/81$.
+                Em $\theta$, com $u=\cos\theta$ e $\sin^2\theta=1-u^2$,</p>
+                <p>$$\begin{aligned}
+                \int_0^\pi\sin^3\theta\,d\theta
+                &=\int_{-1}^{1}\left(1-u^2\right)du\\
+                &=2-\frac23=\frac43.
+                \end{aligned}$$</p>
+                <p>A integral em $\phi$ vale $\pi$ (Passo 2). Juntando,</p>
+                <p>$$\begin{aligned}
+                \langle x\rangle_{11}
+                &=-\frac{1}{8\pi a^4}\cdot\frac{256\,a^5}{81}\cdot\frac43\cdot\pi\\
+                &=-\frac{1024}{1944}\,a
+                =-\frac{128}{243}\,a
+                =-\frac{2^7}{3^5}\,a.
+                \end{aligned}$$</p>
+                <p>Para $\langle y\rangle_{11}$, a única mudança é $\cos\phi\to\sin\phi$, e a integral em $\phi$ passa a
+                valer $i\pi$:</p>
+                <p>$$\langle y\rangle_{11}=-i\,\frac{2^7}{3^5}\,a
+                =i\,\langle x\rangle_{11},$$</p>
+                <p>como previa a Eq. 11.76.</p>
+                <p><em>Estado $\psi_{21-1}$.</em> Comparando as expressões do Passo 1, $\psi_{21-1}=-\psi_{211}^*$: a
+                conjugação troca $e^{i\phi}$ por $e^{-i\phi}$ e mantém o sinal negativo. Como $\psi_{100}$, $x$ e $y$
+                são reais,</p>
+                <p>$$\begin{aligned}
+                \langle Q\rangle_{1,-1}&=-\langle Q\rangle_{11}^*,\\
+                \langle x\rangle_{1,-1}&=\frac{2^7}{3^5}\,a,\\
+                \langle y\rangle_{1,-1}&=-i\,\frac{2^7}{3^5}\,a
+                =-i\,\langle x\rangle_{1,-1},
+                \end{aligned}$$</p>
+                <p>de novo de acordo com a Eq. 11.76. Os sinais dependem da convenção de fase de $\psi_{21\pm1}$, mas os
+                módulos, que são o que entra na taxa, não dependem.</p>
+
+                <p><strong>Passo 4: o módulo do dipolo.</strong> Para $\psi_{210}$, só $z$ contribui:</p>
+                <p>$$|\langle z\rangle_{10}|^2=\left(\frac{2^7\sqrt2}{3^5}\right)^2a^2
+                =\frac{2^{15}}{3^{10}}\,a^2.$$</p>
+                <p>Para $\psi_{21\pm1}$, as duas componentes têm o mesmo módulo:</p>
+                <p>$$\begin{aligned}
+                |\langle x\rangle_{1,\pm1}|^2+|\langle y\rangle_{1,\pm1}|^2
+                &=2\left(\frac{2^7}{3^5}\right)^2a^2\\
+                &=\frac{2^{15}}{3^{10}}\,a^2.
+                \end{aligned}$$</p>
+                <p>Os três estados $2p$ têm, portanto, o mesmo dipolo,</p>
+                <p>$$|\boldsymbol\wp|^2=\frac{2^{15}}{3^{10}}\,e^2a^2\approx0{,}5549\,e^2a^2,$$</p>
+                <p>o mesmo fator $2^{15}/3^{10}$ que apareceu no
+                <a class="ref-capitulo" href="#exercicio-4">Exercício 4</a>. Para $\psi_{200}$, $|\boldsymbol\wp|^2=0$.</p>
+                <p><strong>Por que o mesmo valor.</strong> A igualdade não é coincidência. O número $m$ é medido em
+                relação a um eixo $z$ escolhido por nós. Sem campos externos, nenhuma direção do espaço é privilegiada,
+                e o tempo de vida não pode depender da orientação do átomo. Concretamente, chame
+                $p_z\equiv\psi_{210}$ e defina $p_x$ e $p_y$ trocando $\cos\theta$ por $\sin\theta\cos\phi$ e por
+                $\sin\theta\sin\phi$. São os orbitais reais, cópias giradas de $p_z$, e
+                $\psi_{21\pm1}=\mp\left(p_x\pm ip_y\right)/\sqrt2$. Como $\psi_{100}$ é invariante por rotações,
+                $\langle\psi_{100}|x|p_x\rangle=\langle\psi_{100}|y|p_y\rangle=\langle z\rangle_{10}\equiv d$. Os
+                elementos cruzados, como $\langle\psi_{100}|x|p_y\rangle$, se anulam (contêm
+                $\int_0^{2\pi}\cos\phi\sin\phi\,d\phi=0$). Então $|\langle x\rangle_{1,\pm1}|=|\langle y\rangle_{1,\pm1}|=d/\sqrt2$,
+                e as duas metades somam $d^2$. O estado $2p_0$ funciona como um dipolo linear ao longo de $z$; os
+                estados $2p_{\pm1}$, como um dipolo que gira no plano $xy$, com duas componentes perpendiculares de
+                amplitude $d/\sqrt2$ defasadas de $90^\circ$. A potência total irradiada é a mesma.</p>
+
+                <p><strong>Passo 5: a taxa e o tempo de vida dos estados $2p$.</strong> A energia do fóton é a da linha
+                Lyman $\alpha$:</p>
+                <p>$$\begin{aligned}
+                \hbar\omega_0&=E_2-E_1=\frac34\,(13{,}606\,\text{eV})=10{,}204\,\text{eV},\\
+                \omega_0&=\frac{10{,}204\,\text{eV}}{6{,}5821\times10^{-16}\,\text{eV}\cdot\text{s}}\\
+                &=1{,}5503\times10^{16}\,\text{s}^{-1},
+                \end{aligned}$$</p>
+                <p>com comprimento de onda $\lambda=2\pi c/\omega_0\approx122\,\text{nm}$, no ultravioleta. Antes dos
+                números, vale levar a taxa a uma forma fechada. Com $\alpha=e^2/4\pi\epsilon_0\hbar c$, temos
+                $e^2/3\pi\epsilon_0\hbar c^3=4\alpha/3c^2$, e</p>
+                <p>$$\begin{aligned}
+                A&=\frac{\omega_0^3}{3\pi\epsilon_0\hbar c^3}\cdot\frac{2^{15}}{3^{10}}\,e^2a^2\\
+                &=\frac{2^{17}}{3^{11}}\,\alpha\,\omega_0\left(\frac{\omega_0a}{c}\right)^2.
+                \end{aligned}$$</p>
+                <p>Agora, $\hbar\omega_0=\frac34\cdot\frac12\alpha^2mc^2=\frac38\alpha^2mc^2$ e $a=\hbar/\alpha mc$, de modo
+                que $\omega_0a/c=3\alpha/8$. Substituindo,</p>
+                <p>$$\begin{aligned}
+                A&=\frac{2^{17}}{3^{11}}\cdot\frac{3^2}{2^6}\,\alpha^3\omega_0
+                =\frac{2^{11}}{3^9}\,\alpha^3\omega_0\\
+                &=\left(\frac23\right)^8\alpha^5\,\frac{mc^2}{\hbar}.
+                \end{aligned}$$</p>
+                <p>Na última forma, a taxa é a frequência de Compton do elétron, $mc^2/\hbar$, multiplicada por
+                $\alpha^5\approx2\times10^{-11}$: é por isso que um átomo excitado vive muitíssimos períodos de
+                oscilação ($\omega_0\tau\sim10^7$) antes de decair. Com $2^{11}/3^9=2048/19683=0{,}10405$ e
+                $\alpha^3=(1/137{,}036)^3=3{,}8859\times10^{-7}$,</p>
+                <p>$$\begin{aligned}
+                A&=0{,}10405\times3{,}8859\times10^{-7}\\
+                &\qquad\times1{,}5503\times10^{16}\,\text{s}^{-1}\\
+                &=6{,}27\times10^{8}\,\text{s}^{-1}.
+                \end{aligned}$$</p>
+                <p><em>Conferência em unidades SI.</em> Com $ea=(1{,}602\times10^{-19}\,\text{C})(5{,}292\times10^{-11}\,\text{m})$,
+                $|\boldsymbol\wp|^2=0{,}5549\,(ea)^2=3{,}988\times10^{-59}\,\text{C}^2\text{m}^2$. Além disso,
+                $\omega_0^3=3{,}726\times10^{48}\,\text{s}^{-3}$ e
+                $3\pi\epsilon_0\hbar c^3=2{,}371\times10^{-19}\,\text{C}^2\text{m}^2\text{s}^{-2}$. A
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[03] - Emissão Espontânea.html#teo-taxa-emissao-espontanea">Eq. 11.63</a>
+                dá de novo $A\approx6{,}27\times10^8\,\text{s}^{-1}$, dentro do arredondamento. O tempo de vida é</p>
+                <p>$$\tau_{210}=\tau_{211}=\tau_{21-1}=\frac1A=1{,}60\times10^{-9}\,\text{s},$$</p>
+                <p>a resposta do enunciado. Ela concorda com o valor medido para os estados $2p$, de cerca de
+                $1{,}6\,\text{ns}$. A massa finita do próton troca $m$ pela massa reduzida e altera $A$ em apenas
+                $0{,}05\%$.</p>
+
+                <p><strong>Passo 6: o estado $\psi_{200}$.</strong> Todos os elementos de matriz são nulos, então
+                $|\boldsymbol\wp|^2=0$, $A_{200\to100}=0$ e, pela
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[03] - Emissão Espontânea.html#tempo-de-vida">Eq. 11.65</a>,
+                $N_{200}(t)=N_{200}(0)$ para todo $t$. Sob a hipótese do enunciado,</p>
+                <p>$$\tau_{200}=\infty.$$</p>
+                <p>É este o estado que se comporta de maneira qualitativamente distinta. Seu tempo de vida não é apenas
+                maior: o canal de dipolo elétrico está fechado. É o estado metaestável da
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[03] - Emissão Espontânea.html#fig-11-9">Figura 11.9</a>,
+                do qual não sai nenhuma seta. A razão física pode ser vista de três ângulos complementares.</p>
+                <ul>
+                    <li><strong>Não há dipolo oscilante.</strong> Durante o decaimento, o átomo está na superposição
+                        $\Psi=c_a\psi_{100}e^{-iE_1t/\hbar}+c_b\psi_{2\ell m}e^{-iE_2t/\hbar}$. Os termos diagonais do
+                        dipolo se anulam por paridade
+                        (<a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[02] - Emissão e Absorção de Radiação.html#obs-laporte-diagonais">observação sobre os elementos diagonais</a>),
+                        e sobra o termo de interferência,
+                        $\langle q\mathbf r\rangle(t)=2\operatorname{Re}\!\left[c_a^*c_b\,\boldsymbol\wp^*e^{-i\omega_0t}\right]$.
+                        Nos estados $2p$, a nuvem eletrônica oscila de um lado para o outro (ou gira) na frequência
+                        $\omega_0$ e irradia como uma antena, como na
+                        <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[03] - Emissão Espontânea.html#teo-formula-de-larmor">fórmula de Larmor</a>.
+                        No $2s$, o termo de interferência $\psi_{100}\psi_{200}$ tem simetria esférica, e a nuvem apenas
+                        pulsa radialmente, sem deixar de ser esférica. Uma distribuição de carga esfericamente simétrica,
+                        mesmo variando no tempo, produz do lado de fora apenas o campo coulombiano da sua carga total, que
+                        é constante. Ela não irradia em nenhuma ordem multipolar, e não apenas na de dipolo.</li>
+                    <li><strong>Paridade e momento angular.</strong> $\psi_{100}$ e $\psi_{200}$ são pares, e $\mathbf r$
+                        é ímpar, de modo que o elemento de matriz se anula pela
+                        <a class="ref-capitulo" href="../Conteúdo/[5] - Simetrias e Leis de Conservação/[04] - Paridade.html#regras-de-selecao">regra de Laporte</a>.
+                        Além disso, os dois estados têm $\ell=0$, e um fóton leva no mínimo uma unidade $\hbar$ de momento
+                        angular, pois tem spin $1$ e não existe fóton de momento angular total nulo. Na descrição não
+                        relativística, em que o spin não participa, a transição $\ell=0\to\ell=0$ com um único fóton é
+                        proibida em qualquer ordem. (Correções relativísticas abrem um canal de dipolo magnético de um só
+                        fóton, com taxa desprezível, da ordem de $10^{-6}\,\text{s}^{-1}$.)</li>
+                    <li><strong>Não há outra saída.</strong> Os estados $\psi_{21m}$, permitidos pela regra
+                        $\Delta\ell=\pm1$, estão na mesma energia que $\psi_{200}$. Para esse canal, $\omega_0=0$, e a taxa,
+                        proporcional a $\omega_0^3$, é nula. Os estados $2p$ têm, ao contrário, uma saída aberta e larga,
+                        com $\hbar\omega_0=10{,}2\,\text{eV}$.</li>
+                </ul>
+                <p>Em resumo,</p>
+                <p>$$\begin{aligned}
+                \tau_{210}=\tau_{211}=\tau_{21-1}&=1{,}60\times10^{-9}\,\text{s},\\
+                \tau_{200}&=\infty.
+                \end{aligned}$$</p>
+                <p>O infinito vale apenas dentro da hipótese do enunciado. Na prática, o $2s$ isolado decai emitindo dois
+                fótons, com tempo de vida de cerca de $0{,}12\,\text{s}$, quase $10^8$ vezes o dos estados $2p$. Num
+                gás, colisões e campos elétricos fracos o misturam com os $2p$ e o esvaziam bem antes disso. Esses
+                mecanismos são o assunto do
+                <a class="ref-capitulo" href="#exercicio-13">Exercício 13</a> e da seção
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[03] - Emissão Espontânea.html#conexao">Conexão com o experimento</a>
+                das notas.<span class="qed" aria-label="Fim da resolução">&#x220E;</span></p>
+
+                <hr class="resolucao-sep">
 
                 <h3 id="exercicio-11">Exercício 11</h3>
                 <p>No estado fundamental do hidrogênio, o acoplamento entre os spins do elétron e do próton separa o
@@ -2510,7 +2755,216 @@
 
                 <hr class="resolucao-sep">
 
-                <!-- SOLUCAO-EXERCICIO-11 -->
+                <p><strong>Resolução - Exercício 11:</strong></p>
+                <p>No estado fundamental, a parte espacial é sempre $\psi_{100}$, e sobram os quatro estados de spin do par
+                elétron-próton. O acoplamento spin-spin os separa em um tripleto, de spin total $1$, e um singleto, de
+                spin total $0$
+                (<a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[05] - A Estrutura Hiperfina do Hidrogênio.html#teo-estrutura-hiperfina">Eq. 7.96</a>).
+                O tripleto fica acima, a uma distância dada pelas
+                <a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[05] - A Estrutura Hiperfina do Hidrogênio.html#estado-fundamental">Eqs. 7.97–7.98</a>:</p>
+                <p>$$\begin{aligned}
+                \hbar\omega_0&=\Delta E=5{,}88\times10^{-6}\,\text{eV},\\
+                \nu&=\frac{\omega_0}{2\pi}=1420\,\text{MHz}.
+                \end{aligned}$$</p>
+                <p>Escrevendo primeiro o spin do elétron e depois o do próton, os estados são</p>
+                <p>$$\begin{aligned}
+                |1,1\rangle&=\uparrow\uparrow,\\
+                |1,0\rangle&=\tfrac{1}{\sqrt2}\left(\uparrow\downarrow+\downarrow\uparrow\right),\\
+                |1,-1\rangle&=\downarrow\downarrow,\\
+                |0\rangle&=\tfrac{1}{\sqrt2}\left(\uparrow\downarrow-\downarrow\uparrow\right).
+                \end{aligned}$$</p>
+                <p>O enunciado escreve $|1\rangle$ para qualquer um dos três estados do tripleto.</p>
+
+                <p><strong>Por que dipolo magnético.</strong> Como $\mathbf r$ não age sobre o spin, o elemento de
+                matriz de dipolo elétrico entre o tripleto e o singleto se fatora em uma parte espacial e uma de
+                spin:</p>
+                <p>$$\langle1|\mathbf r|0\rangle
+                =\langle\psi_{100}|\mathbf r|\psi_{100}\rangle\,\langle1|0\rangle=\mathbf 0.$$</p>
+                <p>Os dois fatores se anulam. O primeiro, pela
+                <a class="ref-capitulo" href="../Conteúdo/[5] - Simetrias e Leis de Conservação/[04] - Paridade.html#regras-de-selecao">regra de Laporte</a>
+                ($\psi_{100}$ é par e $\mathbf r$ é ímpar); o segundo, porque estados de spin total diferentes são
+                ortogonais. Um operador que só mexe na posição não consegue virar um spin. Quem acopla os spins à
+                radiação são os momentos magnéticos, por meio do campo magnético da onda:</p>
+                <p>$$H'=-\left(\boldsymbol\mu_e+\boldsymbol\mu_p\right)\cdot\mathbf B.$$</p>
+                <p>Numa onda plana, $|\mathbf B|=|\mathbf E|/c$, como lembram as notas na discussão das
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[02] - Emissão e Absorção de Radiação.html#ondas-eletromagneticas">ondas eletromagnéticas</a>.
+                A perturbação magnética, de amplitude $\boldsymbol\mu\cdot\mathbf B_0$ com $B_0=E_0/c$, tem então
+                exatamente a forma da elétrica, de amplitude $\boldsymbol\wp\cdot\mathbf E_0$, com $\boldsymbol\wp$
+                trocado por $\boldsymbol\mu/c$. Numa radiação isotrópica e incoerente, o campo magnético tem direções
+                tão aleatórias quanto o elétrico. Por isso toda a cadeia que leva à
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[03] - Emissão Espontânea.html#teo-taxa-emissao-espontanea">Eq. 11.63</a>
+                se repete com $\boldsymbol\wp\to\mathbf M/c$. As unidades conferem:
+                $[\mu]=\text{J/T}=\text{A}\cdot\text{m}^2=\text{C}\cdot\text{m}^2/\text{s}$, de modo que
+                $[\mu/c]=\text{C}\cdot\text{m}$, a unidade de um dipolo elétrico.</p>
+
+                <p><strong>(a)</strong> <strong>Passo 1: o tamanho relativo dos dois momentos.</strong> Os coeficientes
+                de $\boldsymbol\mu_p$ e $\boldsymbol\mu_e$ estão na razão</p>
+                <p>$$\begin{aligned}
+                \frac{5{,}59\,e/2m_p}{e/m_e}
+                &=\frac{5{,}59}{2}\,\frac{m_e}{m_p}
+                =\frac{5{,}59}{2\times1836}\\
+                &=1{,}52\times10^{-3}\approx\frac{1}{657}.
+                \end{aligned}$$</p>
+                <p>Os dois spins têm o mesmo tamanho, $\hbar/2$, e o momento magnético é inversamente proporcional à
+                massa. Com o mesmo momento angular, uma carga mais pesada gira mais devagar e forma uma corrente menor.
+                O fator $5{,}59$, que reflete a estrutura interna do próton
+                (<a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[05] - A Estrutura Hiperfina do Hidrogênio.html#dipolo-do-proton">Eq. 7.89</a>),
+                não chega perto de compensar o $1836$ da massa.</p>
+
+                <p><strong>Passo 2: os elementos de matriz dos dois spins.</strong> Falta garantir que
+                $\langle1|\mathbf S_p|0\rangle$ não seja muito maior que $\langle1|\mathbf S_e|0\rangle$. O singleto
+                tem spin total nulo: com $\mathbf S=\mathbf S_e+\mathbf S_p$, vale
+                $\langle0|S^2|0\rangle=\sum_i\|S_i|0\rangle\|^2=0$, e portanto $S_i|0\rangle=0$ para cada componente.
+                Então $\mathbf S_p|0\rangle=-\mathbf S_e|0\rangle$, e</p>
+                <p>$$\langle1|\mathbf S_p|0\rangle=-\langle1|\mathbf S_e|0\rangle.$$</p>
+                <p>Os dois termos de $\mathbf M$ ficam proporcionais ao mesmo elemento de matriz:</p>
+                <p>$$\begin{aligned}
+                \mathbf M
+                &=-\frac{e}{m_e}\langle1|\mathbf S_e|0\rangle
+                +\frac{5{,}59\,e}{2m_p}\langle1|\mathbf S_p|0\rangle\\
+                &=-\frac{e}{m_e}\left(1+\frac{5{,}59\,m_e}{2m_p}\right)
+                \langle1|\mathbf S_e|0\rangle.
+                \end{aligned}$$</p>
+                <p>Na transição, o spin do próton vira no sentido oposto ao do elétron. Como as cargas têm sinais
+                opostos, os dois momentos magnéticos mudam no mesmo sentido, e o próton reforça o elétron. Mas o
+                reforço é de apenas $0{,}15\%$ em $\mathbf M$, e o fator $(1+1/657)^2\approx1{,}003$ altera a taxa em
+                $0{,}3\%$. Desprezando-o, $\mathbf M=-(e/m_e)\langle1|\mathbf S_e|0\rangle$, e a Eq. 11.63 com
+                $\boldsymbol\wp\to\mathbf M/c$ dá</p>
+                <p>$$\begin{aligned}
+                A&=\frac{\omega_0^3\,|\mathbf M|^2/c^2}{3\pi\epsilon_0\hbar c^3}\\
+                &=\frac{\omega_0^3e^2|\langle1|\mathbf S_e|0\rangle|^2}{3\pi\epsilon_0\hbar c^5m_e^2},
+                \end{aligned}$$</p>
+                <p>como queríamos. Aqui $|\langle1|\mathbf S_e|0\rangle|^2$ é a soma dos módulos quadrados das três
+                componentes.</p>
+
+                <p><strong>(b)</strong> <strong>Passo 1: $\mathbf S_e$ aplicado ao singleto.</strong> Para um spin
+                $1/2$,</p>
+                <p>$$\begin{aligned}
+                S_x\uparrow&=\tfrac\hbar2\downarrow, & S_x\downarrow&=\tfrac\hbar2\uparrow,\\
+                S_y\uparrow&=\tfrac{i\hbar}2\downarrow, & S_y\downarrow&=-\tfrac{i\hbar}2\uparrow,\\
+                S_z\uparrow&=\tfrac\hbar2\uparrow, & S_z\downarrow&=-\tfrac\hbar2\downarrow.
+                \end{aligned}$$</p>
+                <p>$\mathbf S_e$ age só na primeira seta. Aplicando-o a
+                $|0\rangle=(\uparrow\downarrow-\downarrow\uparrow)/\sqrt2$, termo a termo,</p>
+                <p>$$\begin{aligned}
+                S_{ex}|0\rangle&=\frac{\hbar}{2}\,
+                \frac{\downarrow\downarrow-\uparrow\uparrow}{\sqrt2},\\
+                S_{ey}|0\rangle&=\frac{i\hbar}{2}\,
+                \frac{\downarrow\downarrow+\uparrow\uparrow}{\sqrt2},\\
+                S_{ez}|0\rangle&=\frac{\hbar}{2}\,
+                \frac{\uparrow\downarrow+\downarrow\uparrow}{\sqrt2}
+                =\frac\hbar2\,|1,0\rangle.
+                \end{aligned}$$</p>
+                <p>No caso de $S_{ey}$, por exemplo, o primeiro termo dá $\tfrac{i\hbar}{2}\downarrow\downarrow$ e o
+                segundo, $-(-\tfrac{i\hbar}{2})\uparrow\uparrow$. Os três resultados estão inteiramente no tripleto.</p>
+
+                <p><strong>Passo 2: o elemento de matriz.</strong> Escolhemos $|1\rangle=|1,0\rangle$. Ele é ortogonal a
+                $\uparrow\uparrow$ e a $\downarrow\downarrow$, de modo que só a componente $z$ sobrevive:</p>
+                <p>$$\begin{aligned}
+                \langle1,0|\mathbf S_e|0\rangle&=\left(0,\,0,\,\tfrac\hbar2\right),\\
+                |\langle1,0|\mathbf S_e|0\rangle|^2&=\frac{\hbar^2}{4}.
+                \end{aligned}$$</p>
+                <p><em>Conferência com os outros estados.</em> Para $|1,1\rangle=\uparrow\uparrow$, só $x$ e $y$
+                contribuem: $\langle1,1|S_{ex}|0\rangle=-\hbar/2\sqrt2$ e $\langle1,1|S_{ey}|0\rangle=i\hbar/2\sqrt2$,
+                com soma dos quadrados $\hbar^2/8+\hbar^2/8=\hbar^2/4$. O mesmo vale para $|1,-1\rangle$. Os três
+                estados do tripleto decaem com a mesma taxa, pelo motivo visto no
+                <a class="ref-capitulo" href="#exercicio-10">Exercício 10</a> para os estados $2p$: sem campo externo,
+                não há direção privilegiada. Há ainda uma conta global. Como $\mathbf S_e|0\rangle$ está todo no
+                tripleto, a soma sobre os três estados é
+                $\langle0|S_e^2|0\rangle=\tfrac34\hbar^2$, um terço para cada.</p>
+                <p>Com isso, $|\mathbf M|=(e/m_e)(\hbar/2)=e\hbar/2m_e$: o momento de transição é exatamente um
+                magnéton de Bohr. A taxa fica</p>
+                <p>$$A=\frac{\omega_0^3e^2\hbar}{12\pi\epsilon_0c^5m_e^2}.$$</p>
+
+                <p><strong>Passo 3: a forma fechada e os números.</strong> Com $e^2/4\pi\epsilon_0=\alpha\hbar c$, temos
+                $e^2/12\pi\epsilon_0=\alpha\hbar c/3$, e</p>
+                <p>$$\begin{aligned}
+                A&=\frac{\alpha}{3}\,\frac{\omega_0^3\hbar^2}{m_e^2c^4}\\
+                &=\frac{\alpha}{3}\,\omega_0\left(\frac{\hbar\omega_0}{m_ec^2}\right)^2.
+                \end{aligned}$$</p>
+                <p>O valor medido da frequência é $\nu=1420{,}4\,\text{MHz}$, o que dá</p>
+                <p>$$\begin{aligned}
+                \omega_0&=2\pi\nu=8{,}925\times10^{9}\,\text{s}^{-1},\\
+                \hbar\omega_0&=h\nu=5{,}874\times10^{-6}\,\text{eV},\\
+                \frac{\hbar\omega_0}{m_ec^2}
+                &=\frac{5{,}874\times10^{-6}}{5{,}110\times10^{5}}
+                =1{,}1496\times10^{-11}.
+                \end{aligned}$$</p>
+                <p>Logo</p>
+                <p>$$\begin{aligned}
+                A&=\frac{8{,}925\times10^{9}\,\text{s}^{-1}\times(1{,}1496\times10^{-11})^2}{3\times137{,}04}\\
+                &=2{,}87\times10^{-15}\,\text{s}^{-1}.
+                \end{aligned}$$</p>
+                <p><em>Conferência em unidades SI.</em> Com $\omega_0^3=7{,}109\times10^{29}\,\text{s}^{-3}$,
+                $e^2\hbar=2{,}707\times10^{-72}\,\text{C}^2\text{J}\,\text{s}$ e
+                $12\pi\epsilon_0c^5m_e^2=6{,}708\times10^{-28}$ (em unidades SI), a fórmula do Passo 2 dá o mesmo
+                $A=2{,}87\times10^{-15}\,\text{s}^{-1}$. O tempo de vida do tripleto é</p>
+                <p>$$\begin{aligned}
+                \tau=\frac1A&=3{,}49\times10^{14}\,\text{s}\\
+                &=\frac{3{,}49\times10^{14}\,\text{s}}{3{,}156\times10^{7}\,\text{s/ano}}
+                \approx1{,}1\times10^{7}\,\text{anos},
+                \end{aligned}$$</p>
+                <p>a resposta do enunciado. A correção do próton, $0{,}3\%$, não altera esses algarismos.</p>
+
+                <p><strong>(c)</strong> <strong>Por que tão longo.</strong> Uma transição típica de dipolo elétrico, a
+                $2p\to1s$ do <a class="ref-capitulo" href="#exercicio-10">Exercício 10</a>, tem
+                $\tau=1{,}60\times10^{-9}\,\text{s}$: a linha de $21\,\text{cm}$ vive $2{,}2\times10^{23}$ vezes mais.
+                Pela Eq. 11.63, a razão entre as taxas se separa em dois fatores:</p>
+                <p>$$\frac{A_{2p}}{A_{21}}
+                =\left(\frac{\omega_{2p}}{\omega_{21}}\right)^3
+                \frac{|\boldsymbol\wp_{2p}|^2}{|\mathbf M|^2/c^2}.$$</p>
+                <ul>
+                    <li><strong>A frequência.</strong> $(10{,}204\,\text{eV}/5{,}874\,\mu\text{eV})^3
+                        =(1{,}737\times10^{6})^3=5{,}24\times10^{18}$. O fator $\omega_0^3$ vem da
+                        <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[03] - Emissão Espontânea.html#teo-relacoes-de-einstein">relação de Einstein (Eq. 11.61)</a>:
+                        a densidade de energia do campo de ponto zero, que estimula o decaimento, cresce como $\omega^3$
+                        (<a class="ref-capitulo" href="#exercicio-9">Exercício 9</a>). Em micro-ondas, quase não há campo
+                        para estimular a transição. E a separação é minúscula porque é uma interação entre dois dipolos
+                        magnéticos, um deles suprimido pela massa do próton:
+                        $\Delta E\sim(m_e/m_p)\,\alpha^4m_ec^2$, contra $\alpha^2m_ec^2$ para as transições entre níveis de
+                        Bohr
+                        (<a class="ref-capitulo" href="../Conteúdo/[6] - Teoria de Perturbação Independente do Tempo/[05] - A Estrutura Hiperfina do Hidrogênio.html#estado-fundamental">Eq. 7.97</a>).</li>
+                    <li><strong>O dipolo.</strong> $|\mathbf M|/c=e\cdot\hbar/2m_ec$: o "braço" do dipolo magnético é
+                        $\hbar/2m_ec=1{,}93\times10^{-13}\,\text{m}$, metade do comprimento de onda Compton reduzido,
+                        contra $|\boldsymbol\wp_{2p}|\approx0{,}745\,ea$ no $2p$. Como $a=\hbar/\alpha m_ec$, a razão
+                        é $|\boldsymbol\wp_{2p}|^2/(|\mathbf M|^2/c^2)=4\times0{,}5549/\alpha^2=4{,}17\times10^{4}$. É o
+                        mesmo $v/c\sim\alpha$ que as notas apontam para a força magnética: o acoplamento magnético de um
+                        átomo com a radiação é mais fraco que o elétrico por um fator da ordem de $\alpha$ na amplitude.</li>
+                </ul>
+                <p>O produto, $5{,}24\times10^{18}\times4{,}17\times10^{4}=2{,}2\times10^{23}$, explica toda a
+                diferença. Dos dois fatores, o decisivo é a frequência.</p>
+
+                <p><strong>Por que, ainda assim, se observa a linha.</strong></p>
+                <ul>
+                    <li><strong>A quantidade de átomos.</strong> O hidrogênio é o elemento mais abundante do universo, e
+                        uma linha de visada através da Galáxia atravessa colunas de $10^{20}$ a $10^{22}$ átomos
+                        por $\text{cm}^2$, conforme a direção. A emissão por unidade de volume é $n_1A$, linear no número
+                        $n_1$ de átomos no tripleto: uma taxa minúscula é compensada por um número enorme. Uma coluna de
+                        $10^{21}\,\text{cm}^{-2}=10^{25}\,\text{m}^{-2}$ emite cerca de
+                        $\tfrac34\times10^{25}\times2{,}87\times10^{-15}\approx2\times10^{10}$ fótons por segundo para
+                        cada $\text{m}^2$.</li>
+                    <li><strong>O reservatório não se esgota.</strong> A energia do fóton corresponde a
+                        $h\nu/k_B=0{,}068\,\text{K}$, muito menos que a temperatura de qualquer gás interestelar. Pelo
+                        fator de Boltzmann, os quatro estados de spin ficam praticamente igualmente povoados, e $3/4$ dos
+                        átomos estão no tripleto. As colisões, raras no meio interestelar em termos absolutos, ainda
+                        acontecem muito mais de uma vez a cada $10^7$ anos e mantêm essas populações. O decaimento
+                        espontâneo é um vazamento lento de um reservatório reposto continuamente.</li>
+                    <li><strong>Nada bloqueia a linha.</strong> Ondas de $21\,\text{cm}$ atravessam a poeira interestelar,
+                        que barra a luz visível, e a atmosfera terrestre, transparente nessa faixa de rádio. Assim, o
+                        hidrogênio é visto através de toda a Galáxia.</li>
+                    <li><strong>Uma linha estreita.</strong> A largura natural, $A/2\pi\approx5\times10^{-16}\,\text{Hz}$,
+                        é desprezível. A largura observada vem do efeito Doppler dos movimentos do gás, cerca de
+                        $4{,}7\,\text{kHz}$ por $\text{km/s}$. A linha se destaca do fundo numa faixa estreita, e os seus
+                        deslocamentos medem velocidades. É assim que se mapeiam a rotação e os braços espirais da
+                        Galáxia.</li>
+                </ul>
+                <p>Na Terra, ao contrário, a emissão espontânea dessa linha é praticamente inobservável, porque
+                uma amostra de laboratório tem poucos átomos e cada um colide inúmeras vezes antes de decair. Em laboratório, ela é usada por emissão estimulada, no maser de
+                hidrogênio, que serve de relógio atômico. Nessa frequência, a emissão estimulada domina com folga,
+                como vimos no
+                <a class="ref-capitulo" href="#exercicio-8">Exercício 8</a>.<span class="qed" aria-label="Fim da resolução">&#x220E;</span></p>
+
+                <hr class="resolucao-sep">
 
                 <h3 id="exercicio-12">Exercício 12</h3>
                 <p>Um elétron no estado $|300\rangle$ do hidrogênio decai até o estado fundamental por uma sequência de
@@ -2527,7 +2981,235 @@
 
                 <hr class="resolucao-sep">
 
-                <!-- SOLUCAO-EXERCICIO-12 -->
+                <p><strong>Resolução - Exercício 12:</strong></p>
+                <p>O estado $|300\rangle$ é o $3s$ do hidrogênio, com energia $E_3=E_1/9$. Abaixo dele estão os quatro
+                estados com $n=2$ e o fundamental. Cada transição de dipolo elétrico tem a taxa dada pelo
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[03] - Emissão Espontânea.html#teo-taxa-emissao-espontanea">teorema da taxa de emissão espontânea (Eq. 11.63)</a>,</p>
+                <p>$$\begin{aligned}
+                A&=\frac{\omega_0^3|\boldsymbol\wp|^2}{3\pi\epsilon_0\hbar c^3},\\
+                \boldsymbol\wp&=q\langle n'\ell'm'|\mathbf r|n\ell m\rangle,
+                \end{aligned}$$</p>
+                <p>com $q=-e$ e $\hbar\omega_0=E_n-E_{n'}$, e só é diferente de zero quando obedece às
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[03] - Emissão Espontânea.html#teo-regras-de-selecao">regras de seleção (Eq. 11.75)</a>.
+                Como no <a class="ref-capitulo" href="#exercicio-10">Exercício 10</a>, o spin do elétron não participa.
+                O plano é achar as rotas usando só as regras de seleção e as energias, e depois calcular as taxas do
+                primeiro passo, que decidem tanto as frações do item (b) quanto o tempo de vida do item (c).</p>
+
+                <p><strong>(a)</strong> <strong>Passo 1: o primeiro passo.</strong> Partindo de $\ell=0$, a regra
+                $\Delta\ell=\pm1$ só admite $\ell'=1$, já que $\ell'=-1$ não existe. Isso fecha os canais para os outros
+                estados $s$ de energia mais baixa: $|300\rangle\to|200\rangle$ e $|300\rangle\to|100\rangle$ têm
+                $\Delta\ell=0$. Do ponto de vista da paridade, os três estados $s$ são pares e $\mathbf r$ é ímpar, e
+                esses elementos de matriz se anulam pela
+                <a class="ref-capitulo" href="../Conteúdo/[5] - Simetrias e Leis de Conservação/[04] - Paridade.html#regras-de-selecao">regra de Laporte</a>.</p>
+                <p>Restam os estados $p$. Com $n=1$ não há nenhum, porque $\ell\le n-1$. Os estados $3p$, $|31m\rangle$,
+                têm a mesma energia que $|300\rangle$, já que no hidrogênio a energia só depende de $n$. Para eles
+                $\omega_0=0$, e a taxa, proporcional a $\omega_0^3$, é nula, como a do canal $2s\to2p$ no
+                <a class="ref-capitulo" href="#exercicio-10">Exercício 10</a>. Sobram os três estados $2p$,
+                $|21m\rangle$. A partir de $m=0$, a regra $\Delta m=0,\pm1$ admite $m'=0$ e $m'=\pm1$, e os três canais
+                estão abertos:</p>
+                <p>$$|300\rangle\to|21m\rangle,\qquad m=1,\,0,\,-1.$$</p>
+                <p>O fóton emitido tem</p>
+                <p>$$\begin{aligned}
+                \hbar\omega_0&=E_3-E_2=\left(\frac14-\frac19\right)(13{,}606\,\text{eV})\\
+                &=\frac{5}{36}\,(13{,}606\,\text{eV})=1{,}8897\,\text{eV},
+                \end{aligned}$$</p>
+                <p>com $\lambda=2\pi c/\omega_0\approx656\,\text{nm}$. É a linha vermelha $\text{H}\alpha$ da série de
+                Balmer.</p>
+
+                <p><strong>Passo 2: o segundo passo.</strong> Um átomo em $|21m\rangle$ está exatamente na situação do
+                <a class="ref-capitulo" href="#exercicio-10">Exercício 10</a>. O canal para $|200\rangle$ é permitido
+                pelas regras de seleção ($\Delta\ell=-1$), mas tem $\omega_0=0$. O canal para $|100\rangle$ tem
+                $\Delta\ell=-1$ e $\Delta m=-m\in\{0,\mp1\}$ e está aberto. É a única saída, e o átomo a toma com
+                certeza, depois de em média $1{,}60\,\text{ns}$. As rotas abertas são, portanto, três:</p>
+                <p>$$\begin{aligned}
+                &|300\rangle\to|211\rangle\to|100\rangle,\\
+                &|300\rangle\to|210\rangle\to|100\rangle,\\
+                &|300\rangle\to|2\,1\,{-1}\rangle\to|100\rangle.
+                \end{aligned}$$</p>
+                <p>Em cada uma, o átomo emite dois fótons: um $\text{H}\alpha$ ($1{,}89\,\text{eV}$) e depois um
+                Lyman $\alpha$ ($10{,}2\,\text{eV}$, $\lambda\approx122\,\text{nm}$). Nenhuma rota passa pelo $2s$: o
+                estado metaestável não é alimentado pelo $3s$, e sim pelos estados $np$ com $n\ge3$, como mostram as setas
+                da
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[03] - Emissão Espontânea.html#fig-11-9">Figura 11.9</a>.
+                Ficam de fora, como pede o enunciado, os processos de dois fótons, que no $2s$ são a principal saída mas
+                aqui são desprezíveis diante dos canais de dipolo.</p>
+
+                <p><strong>(b)</strong> <strong>Passo 1: das taxas às frações.</strong> Com os três canais, a
+                população do estado inicial obedece a
+                $dN_{300}/dt=-\left(A_1+A_0+A_{-1}\right)N_{300}$, a soma de taxas que leva à
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[03] - Emissão Espontânea.html#prop-canais-independentes">Eq. 11.67</a>.
+                Escrevendo $A_{\text{tot}}=A_1+A_0+A_{-1}$, temos $N_{300}(t)=N_{300}(0)\,e^{-A_{\text{tot}}t}$. Num
+                intervalo $dt$, o número de átomos que passam para $|21m\rangle$ é $A_mN_{300}\,dt$. Somando sobre todo o
+                tempo, o número que passa por esse canal é</p>
+                <p>$$\begin{aligned}
+                \int_0^\infty A_mN_{300}(t)\,dt
+                &=A_mN_{300}(0)\int_0^\infty e^{-A_{\text{tot}}t}\,dt\\
+                &=\frac{A_m}{A_{\text{tot}}}\,N_{300}(0).
+                \end{aligned}$$</p>
+                <p>A fração é a razão de ramificação $A_m/A_{\text{tot}}$ das notas. Como cada $|21m\rangle$ segue
+                para $|100\rangle$ com certeza (Passo 2 do item (a)), essa é também a fração da rota inteira. A frequência
+                $\omega_0$ e as constantes são as mesmas nos três canais, e só os elementos de matriz podem distinguir
+                um do outro: $A_m\propto|\langle21m|\mathbf r|300\rangle|^2$.</p>
+
+                <p><strong>Passo 2: parte radial e parte angular.</strong> As funções de onda são
+                $\psi_{300}=R_{30}(r)\,Y_0^0$ e $\psi_{21m}=R_{21}(r)\,Y_1^m$. Escrevendo $\mathbf r=r\,\hat{\mathbf r}$,
+                com $\hat{\mathbf r}=(\sin\theta\cos\phi,\ \sin\theta\sin\phi,\ \cos\theta)$, cada componente se
+                fatora:</p>
+                <p>$$\begin{aligned}
+                \langle21m|r_i|300\rangle&=I\,C_{m,i},\\
+                I&=\int_0^\infty R_{21}R_{30}\,r^3\,dr,\\
+                C_{m,i}&=\int Y_1^{m*}\,\hat r_i\,Y_0^0\,d\Omega.
+                \end{aligned}$$</p>
+                <p>O $r^3$ junta o $r$ do operador e o $r^2$ do elemento de volume. A integral radial $I$ é a mesma
+                para os três valores de $m$, e tudo o que os distingue está nos fatores angulares $C_{m,i}$. Esses são
+                exatamente os do <a class="ref-capitulo" href="#exercicio-10">Exercício 10</a>, porque lá o outro
+                estado, $\psi_{100}=R_{10}Y_0^0$, também era um estado $s$. Só a função radial muda.</p>
+                <p>Com $Y_0^0=1/\sqrt{4\pi}$, $Y_1^0=\sqrt{3/4\pi}\,\cos\theta$ e
+                $Y_1^{\pm1}=\mp\sqrt{3/8\pi}\,\sin\theta\,e^{\pm i\phi}$, as integrais em $\phi$ do Passo 2 do
+                Exercício 10 e as integrais em $\theta$</p>
+                <p>$$\begin{aligned}
+                \int_0^\pi\cos^2\theta\sin\theta\,d\theta&=\frac23,\\
+                \int_0^\pi\sin^3\theta\,d\theta&=\frac43
+                \end{aligned}$$</p>
+                <p>dão, por exemplo,</p>
+                <p>$$\begin{aligned}
+                C_{0,z}&=\frac{\sqrt3}{4\pi}\cdot2\pi\cdot\frac23=\frac{1}{\sqrt3},\\
+                C_{1,x}&=-\frac{\sqrt3}{4\sqrt2\,\pi}\cdot\frac43\cdot\pi=-\frac{1}{\sqrt6}.
+                \end{aligned}$$</p>
+                <p>O quadro completo é o seguinte, com os zeros nas mesmas posições que os ✕ do Exercício 10:</p>
+                <table>
+                    <tr><th>$m$</th><th>$C_{m,x}$</th><th>$C_{m,y}$</th><th>$C_{m,z}$</th><th>$\sum_i|C_{m,i}|^2$</th></tr>
+                    <tr><td>$1$</td><td>$-1/\sqrt6$</td><td>$i/\sqrt6$</td><td>$0$</td><td>$1/3$</td></tr>
+                    <tr><td>$0$</td><td>$0$</td><td>$0$</td><td>$1/\sqrt3$</td><td>$1/3$</td></tr>
+                    <tr><td>$-1$</td><td>$1/\sqrt6$</td><td>$i/\sqrt6$</td><td>$0$</td><td>$1/3$</td></tr>
+                </table>
+                <p>Logo, para os três estados,</p>
+                <p>$$|\langle21m|\mathbf r|300\rangle|^2=\frac{I^2}{3},\qquad m=1,\,0,\,-1.$$</p>
+                <p><em>Conferência com o Exercício 10.</em> Trocando $R_{30}$ por $R_{10}=2a^{-3/2}e^{-r/a}$, a integral
+                radial fica</p>
+                <p>$$\begin{aligned}
+                I_{10}&=\frac{2}{\sqrt{24}\,a^4}\int_0^\infty r^4e^{-3r/2a}\,dr
+                =\frac{2^9}{3^4\sqrt{24}}\,a,\\
+                \frac{I_{10}^2}{3}&=\frac{2^{15}}{3^{10}}\,a^2,
+                \end{aligned}$$</p>
+                <p>exatamente o $|\boldsymbol\wp|^2/e^2$ dos estados $2p$ no Exercício 10.</p>
+
+                <p><strong>Passo 3: as frações.</strong> Os três elementos de matriz têm o mesmo módulo, e as três taxas
+                são iguais, $A_1=A_0=A_{-1}$. Cada rota leva</p>
+                <p>$$\frac{A_m}{A_1+A_0+A_{-1}}=\frac13$$</p>
+                <p>dos átomos do frasco. O resultado não depende de nenhuma conta radial e poderia ter sido previsto. O
+                estado $|300\rangle$ tem simetria esférica e não privilegia nenhuma direção, enquanto $m$ é medido em
+                relação a um eixo $z$ escolhido por nós. Não há como o átomo preferir um dos $2p$ aos outros. É o
+                argumento do “Por que o mesmo valor” do Exercício 10, agora com o estado esférico como estado inicial. Uma
+                consequência visível é que a luz $\text{H}\alpha$ do frasco sai igualmente em todas as direções. O canal
+                $\Delta m=0$ irradia como um dipolo linear ao longo de $z$, com padrão $\sin^2\theta$. Cada canal
+                $\Delta m=\pm1$ irradia como um dipolo girando no plano $xy$, com padrão $(1+\cos^2\theta)/2$. Com pesos
+                iguais, a soma é $\sin^2\theta+1+\cos^2\theta=2$, uma constante.</p>
+
+                <p><strong>(c)</strong> <strong>Passo 1: o que entra no tempo de vida.</strong> O tempo de vida mede a
+                rapidez com que $N_{300}$ diminui, e um átomo deixa $|300\rangle$ no instante em que emite o primeiro
+                fóton. Pela
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[03] - Emissão Espontânea.html#prop-canais-independentes">Eq. 11.67</a>,</p>
+                <p>$$\tau_{300}=\frac{1}{A_1+A_0+A_{-1}}=\frac{1}{3A_m}.$$</p>
+                <p>O segundo passo decide quanto tempo o átomo leva para chegar ao fundamental, mas não altera
+                $N_{300}(t)$; é esse o sentido da dica. Somando os três canais,</p>
+                <p>$$\begin{aligned}
+                \sum_m|\boldsymbol\wp_m|^2&=e^2I^2\sum_m\sum_i|C_{m,i}|^2\\
+                &=e^2I^2,\\
+                A_{\text{tot}}&=\frac{\omega_0^3\,e^2I^2}{3\pi\epsilon_0\hbar c^3}.
+                \end{aligned}$$</p>
+                <p>A soma angular vale $1$, como mostra o quadro. As notas chegam ao mesmo resultado sem calcular os
+                $C_{m,i}$, pela completeza dos harmônicos esféricos. Falta só a integral radial.</p>
+
+                <p><strong>Passo 2: a integral radial.</strong> As funções radiais são</p>
+                <p>$$\begin{aligned}
+                R_{30}&=\frac{2}{\sqrt{27}}\,a^{-3/2}\left(1-\frac{2r}{3a}+\frac{2r^2}{27a^2}\right)e^{-r/3a},\\
+                R_{21}&=\frac{1}{\sqrt{24}}\,a^{-3/2}\,\frac ra\,e^{-r/2a}.
+                \end{aligned}$$</p>
+                <p>As exponenciais se combinam em $e^{-r/3a}e^{-r/2a}=e^{-5r/6a}$. Com $x=r/a$ e
+                $\sqrt{24}\sqrt{27}=\sqrt{648}=18\sqrt2$,</p>
+                <p>$$\begin{aligned}
+                I&=\frac{2}{18\sqrt2}\,a\int_0^\infty x^4\left(1-\frac{2x}{3}+\frac{2x^2}{27}\right)\\
+                &\qquad\times e^{-5x/6}\,dx.
+                \end{aligned}$$</p>
+                <p>Cada termo sai de $\int_0^\infty x^ke^{-\beta x}\,dx=k!/\beta^{k+1}$, com $\beta=5/6$. Em unidades de
+                $J\equiv4!\,(6/5)^5=2^8\,3^6/5^5\approx59{,}72$, os três termos valem</p>
+                <p>$$\begin{aligned}
+                4!\left(\tfrac65\right)^5&=J,\\
+                -\tfrac23\cdot5!\left(\tfrac65\right)^6&=-4J,\\
+                \tfrac{2}{27}\cdot6!\left(\tfrac65\right)^7&=\tfrac{16}{5}J,
+                \end{aligned}$$</p>
+                <p>e somam $\left(1-4+\tfrac{16}{5}\right)J=J/5=2^8\,3^6/5^6$. O cancelamento é forte: o resultado é
+                um quinto do primeiro termo. É o efeito dos dois nós de $R_{30}$, em $r\approx1{,}9\,a$ e
+                $r\approx7{,}1\,a$, onde o integrando troca de sinal e os lóbulos positivos e negativos se compensam em
+                parte. Juntando o prefator $1/9\sqrt2$,</p>
+                <p>$$\begin{aligned}
+                I&=\frac{2^8\,3^6}{9\sqrt2\cdot5^6}\,a=\frac{2^7\,3^4\sqrt2}{5^6}\,a\approx0{,}9384\,a,\\
+                I^2&=\frac{2^{15}\,3^8}{5^{12}}\,a^2\approx0{,}8806\,a^2.
+                \end{aligned}$$</p>
+                <p>Cada canal tem $|\langle21m|\mathbf r|300\rangle|^2=I^2/3$, ou seja, $0{,}2935\,a^2$, cerca de metade do
+                valor $0{,}5549\,a^2$ dos estados $2p$ no Exercício 10.</p>
+
+                <p><strong>Passo 3: a taxa e o tempo de vida.</strong> Como no Exercício 10,
+                $e^2/3\pi\epsilon_0\hbar c^3=4\alpha/3c^2$, e</p>
+                <p>$$A_{\text{tot}}=\frac43\,\alpha\,\omega_0\left(\frac{\omega_0a}{c}\right)^2\left(\frac Ia\right)^2.$$</p>
+                <p>Agora, com $E_n=-\alpha^2mc^2/2n^2$, temos $\hbar\omega_0=\frac{5}{72}\alpha^2mc^2$ e
+                $a=\hbar/\alpha mc$, de modo que $\omega_0a/c=5\alpha/72$. Com $72^2=2^6\,3^4$,</p>
+                <p>$$\begin{aligned}
+                A_{\text{tot}}&=\frac43\cdot\frac{5^2}{2^6\,3^4}\cdot\frac{2^{15}\,3^8}{5^{12}}\,\alpha^3\omega_0\\
+                &=\frac{2^{11}\,3^3}{5^{10}}\,\alpha^3\omega_0
+                =\frac{2^8\cdot3}{5^9}\,\alpha^5\,\frac{mc^2}{\hbar}.
+                \end{aligned}$$</p>
+                <p>Para os números, a frequência é</p>
+                <p>$$\begin{aligned}
+                \omega_0&=\frac{1{,}8897\,\text{eV}}{6{,}5821\times10^{-16}\,\text{eV}\cdot\text{s}}\\
+                &=2{,}8710\times10^{15}\,\text{s}^{-1}.
+                \end{aligned}$$</p>
+                <p>Com $2^{11}\,3^3/5^{10}=55296/9765625=0{,}0056623$ e $\alpha^3=3{,}8859\times10^{-7}$,</p>
+                <p>$$\begin{aligned}
+                A_{\text{tot}}&=0{,}0056623\times3{,}8859\times10^{-7}\\
+                &\qquad\times2{,}8710\times10^{15}\,\text{s}^{-1}\\
+                &=6{,}32\times10^{6}\,\text{s}^{-1},
+                \end{aligned}$$</p>
+                <p>ou $A_m=2{,}11\times10^6\,\text{s}^{-1}$ por canal. <em>Conferência em unidades SI.</em> Com
+                $(ea)^2=7{,}188\times10^{-59}\,\text{C}^2\text{m}^2$, a soma dos dipolos é
+                $e^2I^2=0{,}8806\,(ea)^2=6{,}330\times10^{-59}\,\text{C}^2\text{m}^2$. Além disso,
+                $\omega_0^3=2{,}366\times10^{46}\,\text{s}^{-3}$ e, como no Exercício 10,
+                $3\pi\epsilon_0\hbar c^3=2{,}371\times10^{-19}\,\text{C}^2\text{m}^2\text{s}^{-2}$. A
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[03] - Emissão Espontânea.html#teo-taxa-emissao-espontanea">Eq. 11.63</a>
+                dá de novo $A_{\text{tot}}\approx6{,}32\times10^6\,\text{s}^{-1}$. O tempo de vida é</p>
+                <p>$$\tau_{300}=\frac{1}{A_{\text{tot}}}=1{,}58\times10^{-7}\,\text{s}\approx0{,}16\,\mu\text{s}.$$</p>
+                <p>É praticamente o valor tabelado para o $3s$ do hidrogênio. Como no Exercício 10, a massa reduzida
+                altera a taxa em apenas $0{,}05\%$.</p>
+
+                <p><strong>Passo 4: comparação com os estados $2p$.</strong> Dividindo a forma fechada
+                do Exercício 10 pela de cima, o fator comum $\alpha^5mc^2/\hbar$ se cancela, e sobra uma razão exata:</p>
+                <p>$$\begin{aligned}\frac{\tau_{300}}{\tau_{2p}}&=\frac{A_{2p}}{A_{\text{tot}}}=\frac{(2/3)^8}{2^8\cdot3/5^9}\\
+                &=\frac{2^8}{3^8}\cdot\frac{5^9}{2^8\cdot3}=\left(\frac53\right)^9\approx99.\end{aligned}$$</p>
+                <p>O $3s$ vive cerca de cem vezes mais que um $2p$. A razão se decompõe em dois fatores:</p>
+                <ul>
+                    <li><strong>Frequência.</strong> $(E_2-E_1)/(E_3-E_2)=\frac34\big/\frac{5}{36}=\frac{27}{5}$, e o fator
+                        $\omega_0^3$ dá $(27/5)^3=157{,}5$. O fóton $\text{H}\alpha$ tem só $5/27\approx0{,}19$ da
+                        energia do Lyman $\alpha$.</li>
+                    <li><strong>Dipolo.</strong> $0{,}5549/0{,}8806=0{,}630$. Esse fator é menor que $1$: somando os três
+                        canais, o $3s$ tem um dipolo de transição maior que o de um $2p$.</li>
+                </ul>
+                <p>O produto $157{,}5\times0{,}630=99{,}2$ reproduz $(5/3)^9$. O tempo de vida mais longo vem, portanto,
+                inteiramente do fator $\omega_0^3$. Ainda assim, $\omega_0\tau_{300}\approx4{,}5\times10^8$: o átomo
+                oscila centenas de milhões de vezes antes de emitir.</p>
+
+                <p>Em resumo:</p>
+                <ul>
+                    <li>(a) as rotas são $|300\rangle\to|21m\rangle\to|100\rangle$, com $m=1,0,-1$;</li>
+                    <li>(b) cada uma recebe $1/3$ dos átomos;</li>
+                    <li>(c) $\tau_{300}=1{,}58\times10^{-7}\,\text{s}$.</li>
+                </ul>
+                <p>Depois do primeiro fóton, o átomo ainda passa em média $1{,}60\,\text{ns}$ no $2p$. O tempo médio até o
+                fundamental é, portanto, de cerca de $160\,\text{ns}$, quase todo gasto no $3s$. As notas trazem uma
+                versão resumida deste problema, com o argumento da completeza para a soma angular, no
+                <a class="ref-capitulo" href="../Conteúdo/[10] - Dinâmica Quântica/[03] - Emissão Espontânea.html#exr-11-3-5">Exercício 11.3-5</a>.<span class="qed" aria-label="Fim da resolução">&#x220E;</span></p>
+
+                <hr class="resolucao-sep">
 
                 <h3 id="exercicio-13">Exercício 13</h3>
                 <p>Cada um dos pares de estados do hidrogênio listados abaixo está proibido, por emissão espontânea de
